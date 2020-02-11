@@ -26,7 +26,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +33,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -58,9 +56,8 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
     private boolean[] pilih; 
     private String[] kode,nama;
     private int jml=0,i=0,index=0,jmlparsial=0;
-    private String kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",pemeriksaan="",kamar,namakamar,status="";
+    private String kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",kamar,namakamar,status="";
     private String norawatibu="",aktifkanparsial="no";
-    private final Properties prop = new Properties();
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -107,8 +104,8 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KodePerujuk.setDocument(new batasInput((byte)20).getKata(KodePerujuk));
         TNoPermintaan.setDocument(new batasInput((byte)15).getKata(TNoPermintaan));
-        InformasiTambahan.setDocument(new batasInput((int)100).getKata(InformasiTambahan));
-        DiagnosisKlinis.setDocument(new batasInput((int)150).getKata(DiagnosisKlinis));
+        InformasiTambahan.setDocument(new batasInput((int)60).getKata(InformasiTambahan));
+        DiagnosisKlinis.setDocument(new batasInput((int)80).getKata(DiagnosisKlinis));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCariPeriksa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -184,8 +181,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+            aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
         } catch (Exception ex) {            
             aktifkanparsial="no";
         }
