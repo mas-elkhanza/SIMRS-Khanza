@@ -111,7 +111,7 @@
                             $ttlc=0;
                         }
 
-                        $ttlc     = $baris6[0]+$baris["cuti_diambil"];
+                        $ttlc     = $baris6[0]+$baris["cuti_diambil"]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."%' and status='Disetujui' and nik='".$baris["nik"]."'");
                             
                         $masa_kerja=0;
                         if($baris["masker"]<1){

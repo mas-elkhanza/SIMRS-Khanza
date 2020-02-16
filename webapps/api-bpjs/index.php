@@ -45,6 +45,7 @@ if ($method == 'POST') {
             $response = array();
             if ($header['x-token'] == getToken()) {
                 $hari = hariindo($decode['tanggalperiksa']);
+                echo  ""+hariindo($decode['tanggalperiksa']);
                 $data = fetch_array(bukaquery("SELECT pasien.no_rkm_medis, pasien.no_ktp, pasien.no_peserta FROM pasien where pasien.no_ktp='$decode[nik]' and pasien.no_peserta='$decode[nomorkartu]'"));
                 $cek_kouta = fetch_array(bukaquery("SELECT jadwal.kuota - (select COUNT(booking_registrasi.tanggal_periksa) FROM booking_registrasi 
                                 WHERE booking_registrasi.tanggal_periksa='$decode[tanggalperiksa]' AND booking_registrasi.kd_dokter=jadwal.kd_dokter ) as sisa_kouta, jadwal.kd_dokter, jadwal.kd_poli, 

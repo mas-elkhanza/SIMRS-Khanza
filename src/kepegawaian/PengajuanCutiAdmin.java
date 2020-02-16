@@ -165,24 +165,6 @@ public final class PengajuanCutiAdmin extends javax.swing.JDialog {
         
         ChkInput.setSelected(false);
         isForm();
-        
-              
-//        Jumlah.getDocument().addDocumentListener(new DocumentListener() {
-//            @Override
-//            public void insertUpdate(DocumentEvent e) {
-//                isHitung();
-//            }
-//
-//            @Override
-//            public void removeUpdate(DocumentEvent e) {
-//                isHitung();
-//            }
-//
-//            @Override
-//            public void changedUpdate(DocumentEvent e) {
-//                isHitung();
-//            }
-//        });
     }
 
     private DlgCariPegawai petugas=new DlgCariPegawai(null,false);
@@ -550,11 +532,6 @@ public final class PengajuanCutiAdmin extends javax.swing.JDialog {
         KdPetugas.setEditable(false);
         KdPetugas.setHighlighter(null);
         KdPetugas.setName("KdPetugas"); // NOI18N
-        KdPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPetugasKeyPressed(evt);
-            }
-        });
         FormInput.add(KdPetugas);
         KdPetugas.setBounds(92, 40, 110, 23);
 
@@ -578,11 +555,6 @@ public final class PengajuanCutiAdmin extends javax.swing.JDialog {
         NmPetugas.setEditable(false);
         NmPetugas.setHighlighter(null);
         NmPetugas.setName("NmPetugas"); // NOI18N
-        NmPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmPetugasKeyPressed(evt);
-            }
-        });
         FormInput.add(NmPetugas);
         NmPetugas.setBounds(204, 40, 185, 23);
 
@@ -704,22 +676,12 @@ public final class PengajuanCutiAdmin extends javax.swing.JDialog {
         KdPetugasPJ.setEditable(false);
         KdPetugasPJ.setHighlighter(null);
         KdPetugasPJ.setName("KdPetugasPJ"); // NOI18N
-        KdPetugasPJ.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPetugasPJKeyPressed(evt);
-            }
-        });
         FormInput.add(KdPetugasPJ);
         KdPetugasPJ.setBounds(92, 70, 110, 23);
 
         NmPetugasPJ.setEditable(false);
         NmPetugasPJ.setHighlighter(null);
         NmPetugasPJ.setName("NmPetugasPJ"); // NOI18N
-        NmPetugasPJ.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmPetugasPJKeyPressed(evt);
-            }
-        });
         FormInput.add(NmPetugasPJ);
         NmPetugasPJ.setBounds(204, 70, 185, 23);
 
@@ -958,25 +920,34 @@ public final class PengajuanCutiAdmin extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptPengajuanCutiAdmin.jasper","report","::[ Data Pengajuan Cuti ]::",
-                   "select pengajuan_cuti.no_pengajuan,pengajuan_cuti.tanggal,pengajuan_cuti.tanggal_awal,pengajuan_cuti.tanggal_akhir,"+
-                   "pengajuan_cuti.nik,peg1.nama as namapengaju,peg1.bidang,peg1.departemen,"+
-                   "pengajuan_cuti.urgensi,pengajuan_cuti.alamat,"+
-                   "pengajuan_cuti.jumlah,"+
-                   "pengajuan_cuti.kepentingan,pengajuan_cuti.nik_pj,peg2.nama as namapj,pengajuan_cuti.status "+
-                   "from pengajuan_cuti inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_cuti.nik=peg1.nik "+
-                   "and pengajuan_cuti.nik_pj=peg2.nik where "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.no_pengajuan like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.nik like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.nama like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.bidang like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.departemen like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.urgensi like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.alamat like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.kepentingan like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.nik_pj like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg2.nama like '%"+TCari.getText().trim()+"%' or "+
-                   "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.status like '%"+TCari.getText().trim()+"%' order by pengajuan_cuti.tanggal",param);
+            if(TCari.getText().equals("")){
+                Valid.MyReportqry("rptPengajuanCutiAdmin.jasper","report","::[ Data Pengajuan Cuti ]::",
+                        "select pengajuan_cuti.no_pengajuan,pengajuan_cuti.tanggal,pengajuan_cuti.tanggal_awal,pengajuan_cuti.tanggal_akhir,"+
+                        "pengajuan_cuti.nik,peg1.nama as namapengaju,peg1.bidang,peg1.departemen,pengajuan_cuti.urgensi,pengajuan_cuti.alamat,"+
+                        "pengajuan_cuti.jumlah,pengajuan_cuti.kepentingan,pengajuan_cuti.nik_pj,peg2.nama as namapj,pengajuan_cuti.status "+
+                        "from pengajuan_cuti inner join pegawai as peg1 on pengajuan_cuti.nik=peg1.nik "+
+                        "inner join pegawai as peg2 on pengajuan_cuti.nik_pj=peg2.nik where "+
+                        "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' order by pengajuan_cuti.tanggal",param);
+            }else{
+                Valid.MyReportqry("rptPengajuanCutiAdmin.jasper","report","::[ Data Pengajuan Cuti ]::",
+                       "select pengajuan_cuti.no_pengajuan,pengajuan_cuti.tanggal,pengajuan_cuti.tanggal_awal,pengajuan_cuti.tanggal_akhir,"+
+                        "pengajuan_cuti.nik,peg1.nama as namapengaju,peg1.bidang,peg1.departemen,pengajuan_cuti.urgensi,pengajuan_cuti.alamat,"+
+                        "pengajuan_cuti.jumlah,pengajuan_cuti.kepentingan,pengajuan_cuti.nik_pj,peg2.nama as namapj,pengajuan_cuti.status "+
+                        "from pengajuan_cuti inner join pegawai as peg1 on pengajuan_cuti.nik=peg1.nik "+
+                        "inner join pegawai as peg2 on pengajuan_cuti.nik_pj=peg2.nik where "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.no_pengajuan like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.nik like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.nama like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.bidang like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg1.departemen like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.urgensi like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.alamat like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.kepentingan like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.nik_pj like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and peg2.nama like '%"+TCari.getText().trim()+"%' or "+
+                       "pengajuan_cuti.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and pengajuan_cuti.status like '%"+TCari.getText().trim()+"%' order by pengajuan_cuti.tanggal",param);
+           }
+                
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1038,26 +1009,12 @@ public final class PengajuanCutiAdmin extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatMouseClicked
 
-private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?",NmPetugas,KdPetugas.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
-        }else{            
-            Valid.pindah(evt,TCari,Tanggal);
-        }
-}//GEN-LAST:event_KdPetugasKeyPressed
-
 private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         pilihan=1;
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_btnPetugasActionPerformed
-
-private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmPetugasKeyPressed
-        //Valid.pindah(evt,TKd,TSpek);
-}//GEN-LAST:event_NmPetugasKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1086,14 +1043,6 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void DepartemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DepartemenKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_DepartemenKeyPressed
-
-    private void KdPetugasPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasPJKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdPetugasPJKeyPressed
-
-    private void NmPetugasPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmPetugasPJKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NmPetugasPJKeyPressed
 
     private void btnPetugasPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasPJActionPerformed
         pilihan=2;
@@ -1227,14 +1176,21 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement(
+            if(TCari.getText().equals("")){
+                ps=koneksi.prepareStatement(
                    "select pengajuan_cuti.no_pengajuan,pengajuan_cuti.tanggal,pengajuan_cuti.tanggal_awal,pengajuan_cuti.tanggal_akhir,"+
-                   "pengajuan_cuti.nik,peg1.nama as namapengaju,peg1.bidang,peg1.departemen,"+
-                   "pengajuan_cuti.urgensi,pengajuan_cuti.alamat,"+
-                   "pengajuan_cuti.jumlah,"+
-                   "pengajuan_cuti.kepentingan,pengajuan_cuti.nik_pj,peg2.nama as namapj,pengajuan_cuti.status "+
-                   "from pengajuan_cuti inner join pegawai as peg1 inner join pegawai as peg2 on pengajuan_cuti.nik=peg1.nik "+
-                   "and pengajuan_cuti.nik_pj=peg2.nik where "+
+                   "pengajuan_cuti.nik,peg1.nama as namapengaju,peg1.bidang,peg1.departemen,pengajuan_cuti.urgensi,pengajuan_cuti.alamat,"+
+                   "pengajuan_cuti.jumlah,pengajuan_cuti.kepentingan,pengajuan_cuti.nik_pj,peg2.nama as namapj,pengajuan_cuti.status "+
+                   "from pengajuan_cuti inner join pegawai as peg1 on pengajuan_cuti.nik=peg1.nik "+
+                   "inner join pegawai as peg2 on pengajuan_cuti.nik_pj=peg2.nik where "+
+                   "pengajuan_cuti.tanggal between ? and ? order by pengajuan_cuti.tanggal");
+            }else{
+                ps=koneksi.prepareStatement(
+                   "select pengajuan_cuti.no_pengajuan,pengajuan_cuti.tanggal,pengajuan_cuti.tanggal_awal,pengajuan_cuti.tanggal_akhir,"+
+                   "pengajuan_cuti.nik,peg1.nama as namapengaju,peg1.bidang,peg1.departemen,pengajuan_cuti.urgensi,pengajuan_cuti.alamat,"+
+                   "pengajuan_cuti.jumlah,pengajuan_cuti.kepentingan,pengajuan_cuti.nik_pj,peg2.nama as namapj,pengajuan_cuti.status "+
+                   "from pengajuan_cuti inner join pegawai as peg1 on pengajuan_cuti.nik=peg1.nik "+
+                   "inner join pegawai as peg2 on pengajuan_cuti.nik_pj=peg2.nik where "+
                    "pengajuan_cuti.tanggal between ? and ? and pengajuan_cuti.no_pengajuan like ? or "+
                    "pengajuan_cuti.tanggal between ? and ? and pengajuan_cuti.nik like ? or "+
                    "pengajuan_cuti.tanggal between ? and ? and peg1.nama like ? or "+
@@ -1247,50 +1203,55 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                    "pengajuan_cuti.tanggal between ? and ? and peg2.nama like ? or "+
                    "pengajuan_cuti.tanggal between ? and ? and pengajuan_cuti.status like ? "+
                    "order by pengajuan_cuti.tanggal");
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
-                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(27,"%"+TCari.getText().trim()+"%");
-                ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(30,"%"+TCari.getText().trim()+"%");
-                ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(33,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().equals("")){
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(15,"%"+TCari.getText().trim()+"%");
+                    ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                    ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(21,"%"+TCari.getText().trim()+"%");
+                    ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(24,"%"+TCari.getText().trim()+"%");
+                    ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(27,"%"+TCari.getText().trim()+"%");
+                    ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(30,"%"+TCari.getText().trim()+"%");
+                    ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(33,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
-                i=1;
                 total=0;
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_pengajuan"),rs.getString("tanggal"),rs.getString("tanggal_awal"),rs.getString("tanggal_akhir"),
                         rs.getString("nik"),rs.getString("namapengaju"),rs.getString("bidang"),rs.getString("departemen"),
-                        rs.getString("urgensi"),rs.getString("alamat"),
-                        rs.getString("jumlah"),
-                        rs.getString("kepentingan"),
+                        rs.getString("urgensi"),rs.getString("alamat"),rs.getString("jumlah"),rs.getString("kepentingan"),
                         rs.getString("nik_pj"),rs.getString("namapj"),rs.getString("status")
                     });
                     total=total+rs.getDouble("jumlah");

@@ -6,13 +6,13 @@ $password = "123";
 
 date_default_timezone_set('Asia/Jakarta');
 //koneksi database
-$db_hostname = "";
-$db_username = "";
+$db_hostname = "localhost";
+$db_username = "root";
 $db_password = "";
-$db_name = "";
+$db_name = "sik";
 
 //version php
-$version_php = "5";
+$version_php = "7";
 
 function php() {
     global $version_php;
