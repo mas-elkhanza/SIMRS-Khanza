@@ -924,10 +924,6 @@ public class DlgCariReturJual extends javax.swing.JDialog {
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
-    private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ppHapusActionPerformed
-
     private void tbReturMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbReturMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
