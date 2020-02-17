@@ -7957,6 +7957,10 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         penjab.setVisible(true);
     }//GEN-LAST:event_btnPenjabActionPerformed
 
+    private void nmpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nmpnjKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nmpnjKeyPressed
+
     private void MnPeniliaianAwalKeperawatanRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeniliaianAwalKeperawatanRalanActionPerformed
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");

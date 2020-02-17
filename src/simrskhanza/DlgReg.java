@@ -8656,6 +8656,22 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_ppResumeBtnPrintActionPerformed
 
+    private void DTPRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DTPRegActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPRegActionPerformed
+
+    private void TNoRwKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TNoRwKeyTyped
+
+    private void kdpoliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdpoliKeyTyped
+
+    private void TNoRwInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_TNoRwInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TNoRwInputMethodTextChanged
+
     private void MnPeniliaianAwalKeperawatanRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeniliaianAwalKeperawatanRalanActionPerformed
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
