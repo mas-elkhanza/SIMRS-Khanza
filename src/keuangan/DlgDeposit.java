@@ -686,9 +686,9 @@ public class DlgDeposit extends javax.swing.JDialog {
         }else if(tipeBayar.getSelectedItem().equals("")){
             Valid.textKosong(tipeBayar,"Tipe Bayar");
         }else{
-            if(Sequel.menyimpantf("deposit(no_rawat, diterima_dari, tgl_deposit, besar_deposit, nip, tipe_bayar)","?,?,?,?,?,?","Deposit",5,new String[]{
-                TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+"")+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                diterimaDari.getText().toString(),BesarDeposit.getText(),kdptg.getText(),tipeBayar.getSelectedItem().toString()})==true){
+            if(Sequel.menyimpantf("deposit(no_rawat, diterima_dari, tgl_deposit, besar_deposit, nip, tipe_bayar)","?,?,?,?,?,?","Deposit",6,new String[]{
+                TNoRw.getText(), diterimaDari.getText(), Valid.SetTgl(DTPTgl.getSelectedItem()+"")+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                BesarDeposit.getText(), kdptg.getText(), tipeBayar.getSelectedItem().toString()})==true){
                 tampil();
                 BtnBatalActionPerformed(evt);
             }else{
