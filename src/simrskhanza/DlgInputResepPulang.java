@@ -57,7 +57,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        tabMode=new DefaultTableModel(null,new Object[]{"Jml","Kode Barang","Nama Barang","Satuan","Dosis","Kandungan","Harga(Rp)","Jenis Obat","No.Batch","No.Faktur","Stok"}){
+        tabMode=new DefaultTableModel(null,new Object[]{"Jml","Kode Barang","Nama Barang","Satuan","Aturan Pakai","Lokasi","Harga(Rp)","Jenis Obat","No.Batch","No.Faktur","Stok"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if ((colIndex==0)||(colIndex==4)||(colIndex==8)||(colIndex==9)) {
@@ -81,7 +81,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(60);
             }else if(i==4){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(200);
             }else if(i==5){
                 column.setPreferredWidth(120);
             }else if(i==6){
@@ -458,13 +458,19 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }else{  
         Sequel.AutoComitFalse();
         sukses=true;
+        double embalase = 0;
+        double tuslah = 0;
+                
         for(i=0;i<tbKamar.getRowCount();i++){ 
             if(Valid.SetAngka(tbKamar.getValueAt(i,0).toString())>0){
-                if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
-                        TNoRw.getText(),tbKamar.getValueAt(i,1).toString(),tbKamar.getValueAt(i,0).toString(),
-                        tbKamar.getValueAt(i,6).toString(),""+Double.parseDouble(tbKamar.getValueAt(i,6).toString())*Double.parseDouble(tbKamar.getValueAt(i,0).toString()),
-                        tbKamar.getValueAt(i,4).toString(),Tanggal.getText(),Jam.getText(),akses.getkdbangsal(),
-                        tbKamar.getValueAt(i,8).toString(),tbKamar.getValueAt(i,9).toString()
+                embalase = Sequel.cariIsiAngka("select embalase_per_obat from set_embalase");
+                tuslah = Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
+                
+                if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?,?,?,?,?","data",13,new String[]{
+                        TNoRw.getText(), tbKamar.getValueAt(i,1).toString(), tbKamar.getValueAt(i,0).toString(),
+                        tbKamar.getValueAt(i,6).toString(), String.valueOf(embalase), String.valueOf(tuslah), ""+Double.parseDouble(tbKamar.getValueAt(i,6).toString())*Double.parseDouble(tbKamar.getValueAt(i,0).toString()),
+                        tbKamar.getValueAt(i,4).toString(), Tanggal.getText(), Jam.getText(), akses.getkdbangsal(),
+                        tbKamar.getValueAt(i,8).toString(), tbKamar.getValueAt(i,9).toString()
                     })==true){
                         if(aktifkanbatch.equals("yes")){
                             Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa-?",4,new String[]{
