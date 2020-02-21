@@ -155,7 +155,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Tarif Ranap Inhealth","[K]Tarif Radiologi Inhealth","[K]Tarif Laborat Inhealth","[K]Tarif Operasi Inhealth","[D]Hibah Obat & BHP","[F]Asal Hibah",
                     "[L]Asuhan Gizi","[K]Tagihan Inhealth","[D]Sirkulasi Obat, Alkes & BHP 4","[D]Sirkulasi Obat, Alkes & BHP 5","[E]Sirkulasi Non Medis 2",
                     "[L]Monitoring Asuhan Gizi","[N]Penerimaan Obat, Alkes & BHP Per Bulan","[I]Rekap Kunjungan","[O]Surat Keterangan Sakit","[L]Penilaian Awal Keperawatan Ralan",
-                    "[A]Permintaan Diet","[L]Master Masalah Keperawatan","[C]Pengajuan Cuti"
+                    "[A]Permintaan Diet","[L]Master Masalah Keperawatan","[C]Pengajuan Cuti","[I]Kedatangan Pasien Per Jam"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -330,7 +330,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 588;i++) {
+        for (i = 0; i < 589;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1142,6 +1142,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(163);
             }else if(i==587){
                 column.setPreferredWidth(96);
+            }else if(i==588){
+                column.setPreferredWidth(154);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1635,7 +1637,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2265,7 +2267,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "penilaian_awal_keperawatan_ralan='"+tbUser.getValueAt(i,584).toString()+"',"+
                     "permintaan_diet='"+tbUser.getValueAt(i,585).toString()+"',"+
                     "master_masalah_keperawatan='"+tbUser.getValueAt(i,586).toString()+"',"+
-                    "pengajuan_cuti='"+tbUser.getValueAt(i,587).toString()+"'");
+                    "pengajuan_cuti='"+tbUser.getValueAt(i,587).toString()+"',"+
+                    "kedatangan_pasien='"+tbUser.getValueAt(i,588).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2934,7 +2937,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "penilaian_awal_keperawatan_ralan='"+tbUser.getValueAt(barisdicopy,584).toString()+"',"+
                                     "permintaan_diet='"+tbUser.getValueAt(barisdicopy,585).toString()+"',"+
                                     "master_masalah_keperawatan='"+tbUser.getValueAt(barisdicopy,586).toString()+"',"+
-                                    "pengajuan_cuti='"+tbUser.getValueAt(barisdicopy,587).toString()+"'");
+                                    "pengajuan_cuti='"+tbUser.getValueAt(barisdicopy,587).toString()+"',"+
+                                    "kedatangan_pasien='"+tbUser.getValueAt(barisdicopy,588).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3242,7 +3246,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "inhealth_mapping_tindakan_radiologi,inhealth_mapping_tindakan_laborat,inhealth_mapping_tindakan_operasi,hibah_obat_bhp,"+
                         "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis2,monitoring_asuhan_gizi,"+
                         "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
-                        "pengajuan_cuti from user order by AES_DECRYPT(id_user,'nur')");
+                        "pengajuan_cuti,kedatangan_pasien from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3842,7 +3846,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penilaian_awal_keperawatan_ralan"),
                                rs.getBoolean("permintaan_diet"),
                                rs.getBoolean("master_masalah_keperawatan"),
-                               rs.getBoolean("pengajuan_cuti")
+                               rs.getBoolean("pengajuan_cuti"),
+                               rs.getBoolean("kedatangan_pasien")
                             });
                         }   
                     } catch (Exception e) {
@@ -4431,7 +4436,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penilaian_awal_keperawatan_ralan"),
                            rs.getBoolean("permintaan_diet"),
                            rs.getBoolean("master_masalah_keperawatan"),
-                           rs.getBoolean("pengajuan_cuti")
+                           rs.getBoolean("pengajuan_cuti"),
+                           rs.getBoolean("kedatangan_pasien")
                         });
                     }                                             
                  }
