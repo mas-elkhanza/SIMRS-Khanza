@@ -1327,7 +1327,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                
                              if(sukses==true){
                                 Sequel.mengedit("penjualan","nota_jual=?","status='Sudah Dibayar'",1,new String[]{rs.getString("nota_jual")});
-                                Sequel.menyimpan("tagihan_sadewa","'"+rs.getString("nota_jual")+"','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien").replaceAll("'","").replaceAll("\\","")+"','-',concat('"+rs.getString("tgl_jual")+
+                                Sequel.menyimpan("tagihan_sadewa","'"+rs.getString("nota_jual")+"','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien").replaceAll("'","")+"','-',concat('"+rs.getString("tgl_jual")+
                                        "',' ',CURTIME()),'Pelunasan','"+ttljual+"','"+ttljual+"','Sudah','"+akses.getkode()+"'","No.Nota");    
                                 Sequel.Commit();
                              }else{

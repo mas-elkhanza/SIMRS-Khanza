@@ -742,7 +742,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                         }
                     }
                     if(sukses==true){
-                        sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+Nomor.getText()+"','-','"+Keterangan.getText().replaceAll("'","").replaceAll("\\","")+"','-',concat('"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+
+                        sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+Nomor.getText()+"','-','"+Keterangan.getText().replaceAll("'","")+"','-',concat('"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+
                             "',' ',CURTIME()),'Pelunasan','"+total+"','"+pemasukan.getText()+"','Sudah','"+akses.getkode()+"'","No.Transaksi");
                     }   
                 } catch (Exception e) {
