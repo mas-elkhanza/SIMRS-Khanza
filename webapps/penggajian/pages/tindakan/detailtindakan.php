@@ -55,10 +55,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-		    $id                   =trim($_POST['id']);
-                    $nama                 =trim($_POST['nama']);
-                    $jm                   =trim($_POST['jm']);
-                    $jns                  =trim($_POST['jns']);
+		  $id                   =trim($_POST['id']);
+                    $nama                 = validTeks(trim($_POST['nama']));
+                    $jm                   = validangka(trim($_POST['jm']));
+                    $jns                  = validTeks(trim($_POST['jns']));
                     if ((!empty($nama))&&(!empty($jm))) {
                         switch($action) {
                             case "TAMBAH":

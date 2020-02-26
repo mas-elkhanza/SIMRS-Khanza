@@ -20,6 +20,7 @@
 		}
 		
         $keyword=$_GET['keyword'];
+        $keyword= validTeks($keyword);
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
 		        pegawai.departemen,sum(tindakan.jmlh),sum(tindakan.jm)
                 FROM tindakan right OUTER JOIN pegawai

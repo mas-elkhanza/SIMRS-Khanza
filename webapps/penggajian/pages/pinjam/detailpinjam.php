@@ -5,14 +5,14 @@
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action             =isset($_GET['action'])?$_GET['action']:NULL;
-                $id		    =isset($_GET['id'])?$_GET['id']:NULL;
-                $tanggal	    =isset($_GET['tanggal'])?$_GET['tanggal']:NULL;
-                $pinjaman	    =isset($_GET['pinjaman'])?$_GET['pinjaman']:NULL;
-                $banyak_angsur      =isset($_GET['banyak_angsur'])?$_GET['banyak_angsur']:NULL;
-                $pokok		    =isset($_GET['pokok'])?$_GET['pokok']:NULL;
-                $jasa		    =isset($_GET['jasa'])?$_GET['jasa']:NULL;
-                $status		    =isset($_GET['status'])?$_GET['status']:NULL;
+                $action                 =isset($_GET['action'])?$_GET['action']:NULL;
+                $id                     =isset($_GET['id'])?$_GET['id']:NULL;
+                $tanggal                =isset($_GET['tanggal'])?$_GET['tanggal']:NULL;
+                $pinjaman               =isset($_GET['pinjaman'])?$_GET['pinjaman']:NULL;
+                $banyak_angsur          =isset($_GET['banyak_angsur'])?$_GET['banyak_angsur']:NULL;
+                $pokok                  =isset($_GET['pokok'])?$_GET['pokok']:NULL;
+                $jasa                   =isset($_GET['jasa'])?$_GET['jasa']:NULL;
+                $status                 =isset($_GET['status'])?$_GET['status']:NULL;
                 
                 
                 echo "<input type=hidden name=id  value=$id>
@@ -106,14 +106,14 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim($_POST['id']);
-                    $banyak_angsur      =trim($_POST['banyak_angsur']);
-                    $pinjaman           =trim($_POST['pinjaman']);
-                    $pokok              =$pinjaman/$banyak_angsur;
-                    $jasa               =0.01*$pinjaman;
+                    $id                 = trim($_POST['id']);
+                    $banyak_angsur      = validangka(trim($_POST['banyak_angsur']));
+                    $pinjaman           = validangka(trim($_POST['pinjaman']));
+                    $pokok              = $pinjaman/$banyak_angsur;
+                    $jasa               = 0.01*$pinjaman;
 
                     $Tgl                = trim($_POST['Tgl']);
-                    $Bln 	         	= trim($_POST['Bln']);
+                    $Bln                = trim($_POST['Bln']);
                     $Thn                = trim($_POST['Thn']);
 
                     $tgl_pinjam         = $Thn.'-'.$Bln.'-'.$Tgl;
@@ -176,15 +176,14 @@
         </div>
         </form>
         <?php
-            if ($action=="HAPUS") {			
-                
+            if ($action=="HAPUS") {	
                 $_sql = "select id, tanggal_pinjam, tanggal_angsur, pokok, jasa
                         from angsuran_koperasi where id='".$_GET['id']."' and tanggal_pinjam='".$_GET['tanggal']."'";
                 $hasil=bukaquery($_sql);
                 while($baris = mysqli_fetch_array($hasil)) {
-					EditData(" potongan "," angkop='0' WHERE id='".$baris["id"]."' and tahun=year('".$baris["tanggal_angsur"]."') and bulan=(MONTH('".$baris["tanggal_angsur"]."')-1) ");
-			    }
-			    HapusAll(" angsuran_koperasi where id ='".$_GET['id']."' and tanggal_pinjam ='".$_GET['tanggal']."'");
+                        EditData(" potongan "," angkop='0' WHERE id='".$baris["id"]."' and tahun=year('".$baris["tanggal_angsur"]."') and bulan=(MONTH('".$baris["tanggal_angsur"]."')-1) ");
+                }
+                HapusAll(" angsuran_koperasi where id ='".$_GET['id']."' and tanggal_pinjam ='".$_GET['tanggal']."'");
                 Hapus(" peminjaman_koperasi "," id ='".$_GET['id']."' and tanggal ='".$_GET['tanggal']."'","?act=DetailPinjam&action=TAMBAH&id=".$_GET['id']);
             }
 

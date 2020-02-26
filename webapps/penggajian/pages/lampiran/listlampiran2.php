@@ -42,6 +42,7 @@
     <div style="width: 100%; height: 79%; overflow: auto;">
     <?php
         $keyword     =trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword     = validTeks($keyword);
         $action      =isset($_POST['action'])?$_POST['action']:NULL;
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.pendidikan,pegawai.mulai_kerja,pegawai.wajibmasuk,departemen.nama as departemen,
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,jnj_jabatan.nama as jnj_jabatan,

@@ -22,7 +22,8 @@
             $bulan=$blnini;
         }
             
-        $keyword=$_GET['keyword'];   
+        $keyword = $_GET['keyword'];  
+        $keyword = validTeks($keyword);
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.pendidikan,pegawai.mulai_kerja,
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,
                 jnj_jabatan.indek as indekjabatan,CONCAT(FLOOR(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'),

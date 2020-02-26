@@ -50,9 +50,9 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $kode_pencapaian    = trim($_POST['kode_pencapaian']);
-                    $nama_pencapaian    = trim($_POST['nama_pencapaian']);
-                    $indek   = trim($_POST['indek']);
+                    $kode_pencapaian    = validTeks(trim($_POST['kode_pencapaian']));
+                    $nama_pencapaian    = validTeks(trim($_POST['nama_pencapaian']));
+                    $indek              = validTeks(trim($_POST['indek']));
                     if ((!empty($kode_pencapaian))&&(!empty($nama_pencapaian))&&(!empty($indek))) {
                         switch($action) {
                             case "TAMBAH":

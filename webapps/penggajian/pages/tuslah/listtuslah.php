@@ -77,6 +77,7 @@
     <div style="width: 100%; height: 64%; overflow: auto;">
     <?php
 		$keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+                $keyword= validTeks($keyword);
         $_sql   = "SELECT pembagian_tuslah.id,pegawai.nama,pembagian_tuslah.persen FROM pembagian_tuslah inner join pegawai
                  on pembagian_tuslah.id=pegawai.id where pegawai.nama like '%".$keyword."%' ORDER BY persen desc";
         $hasil   =bukaquery($_sql);

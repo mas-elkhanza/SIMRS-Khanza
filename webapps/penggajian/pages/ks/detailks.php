@@ -49,9 +49,9 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim($_POST['id']);
-                    $jmlks              =trim($_POST['jmlks']);
-                    $bsr                =trim($_POST['bsr']);
+                    $id                 = trim($_POST['id']);
+                    $jmlks              = validangka(trim($_POST['jmlks']));
+                    $bsr                = validangka(trim($_POST['bsr']));
                     if (!empty($id)) {
                         switch($action) {
                             case "TAMBAH":

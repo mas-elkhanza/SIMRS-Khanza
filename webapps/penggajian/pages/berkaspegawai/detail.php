@@ -51,6 +51,7 @@
             if (isset($BtnSimpan)) {
                 $nik           = trim($_POST['nik']);
                 $kategori      = trim($_POST['kategori']);
+                $kategori      = validTeks($kategori);
                 $kode          = trim($_POST['kode']);
                 $tgl_uploud    = trim($_POST['ThnUploud'])."-".trim($_POST['BlnUploud'])."-".trim($_POST['TglUploud']);
                 $dokumen       = str_replace(" ","_","pages/berkaspegawai/berkas/".$_FILES['dokumen']['name']);
@@ -73,6 +74,7 @@
         ?>
         <div style="width: 100%; height: 85%; overflow: auto;">
         <?php
+            $keyword = validTeks($keyword);
             $_sql = "SELECT berkas_pegawai.nik, berkas_pegawai.tgl_uploud,berkas_pegawai.kode_berkas,
                     master_berkas_pegawai.nama_berkas,berkas_pegawai.berkas from berkas_pegawai inner join 
                     master_berkas_pegawai on berkas_pegawai.kode_berkas=master_berkas_pegawai.kode 

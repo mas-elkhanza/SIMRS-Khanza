@@ -65,7 +65,7 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $id                 =trim($_POST['id']);
-                    $jml                =trim($_POST['jml']);
+                    $jml                = validangka(trim($_POST['jml']));
                     if ((!empty($id))&&(!empty($jml))) {
                         switch($action) {
                             case "TAMBAH":

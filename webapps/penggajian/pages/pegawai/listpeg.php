@@ -44,7 +44,7 @@
     <?php
         $awal=$_GET['awal'];
         $keyword=trim($_POST['keyword']);
-
+        $keyword= validTeks($keyword);
         if (empty($awal)) $awal=0;
         $_sql = "select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
                 npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,

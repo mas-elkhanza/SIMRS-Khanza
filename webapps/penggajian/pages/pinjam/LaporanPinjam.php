@@ -8,6 +8,7 @@
     <body>
    <?php
         $keyword=$_GET['keyword'];
+        $keyword= validTeks($keyword);
         $say=" pegawai.id=keanggotaan.id and keanggotaan.koperasi='Y'  ";
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama
                 FROM pegawai,keanggotaan

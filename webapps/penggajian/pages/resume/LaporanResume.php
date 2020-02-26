@@ -46,14 +46,15 @@
     ?>
     <br>&nbsp;&nbsp;Pembagian Resume :
     <?php
-		$keyword 	= trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
-        $_sql 		= "SELECT pembagian_resume.id,pegawai.nama,persen FROM pembagian_resume inner join pegawai
-                    on pembagian_resume.id=pegawai.id where pegawai.nama like '%".$keyword."%' ORDER BY persen desc";
-        $hasil		= bukaquery($_sql);
-        $jumlah		= mysqli_num_rows($hasil);
-		$ttl		= 0;
-		$prosen		= 0;
-        $no			= 1;
+        $keyword            = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword            = validTeks($keyword);
+        $_sql               = "SELECT pembagian_resume.id,pegawai.nama,persen FROM pembagian_resume inner join pegawai
+                                on pembagian_resume.id=pegawai.id where pegawai.nama like '%".$keyword."%' ORDER BY persen desc";
+        $hasil              = bukaquery($_sql);
+        $jumlah             = mysqli_num_rows($hasil);
+        $ttl                = 0;
+        $prosen             = 0;
+        $no                 = 1;
         if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>

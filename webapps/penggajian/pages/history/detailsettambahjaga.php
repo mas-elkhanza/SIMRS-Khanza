@@ -49,8 +49,8 @@
             <?php
                 $BtnSimpan=$_POST['BtnSimpan'];
                 if (isset($BtnSimpan)) {
-                    $tnj                =trim($_POST['tnj']);
-                    $pendidikan         =trim($_POST['pendidikan']);
+                    $tnj                = validTeks(trim($_POST['tnj']));
+                    $pendidikan         = validTeks(trim($_POST['pendidikan']));
                     if (!empty($pendidikan)) {
                         switch($action) {
                             case "TAMBAH":

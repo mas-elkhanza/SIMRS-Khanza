@@ -190,6 +190,8 @@ public class KedatanganPasienPerJam extends javax.swing.JDialog {
         label11 = new widget.Label();
         ThnCari = new widget.ComboBox();
         BlnCari = new widget.ComboBox();
+        jLabel12 = new widget.Label();
+        cmbStatus = new widget.ComboBox();
         BtnCari = new widget.Button();
         label12 = new widget.Label();
         BtnAll = new widget.Button();
@@ -264,6 +266,16 @@ public class KedatanganPasienPerJam extends javax.swing.JDialog {
         BlnCari.setPreferredSize(new java.awt.Dimension(62, 23));
         panelGlass8.add(BlnCari);
 
+        jLabel12.setText("Stts.Daftar :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        jLabel12.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass8.add(jLabel12);
+
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Baru", "Lama" }));
+        cmbStatus.setName("cmbStatus"); // NOI18N
+        cmbStatus.setPreferredSize(new java.awt.Dimension(100, 23));
+        panelGlass8.add(cmbStatus);
+
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('3');
         BtnCari.setToolTipText("Alt+3");
@@ -282,7 +294,7 @@ public class KedatanganPasienPerJam extends javax.swing.JDialog {
         panelGlass8.add(BtnCari);
 
         label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(42, 23));
+        label12.setPreferredSize(new java.awt.Dimension(22, 23));
         panelGlass8.add(label12);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
@@ -659,7 +671,9 @@ public class KedatanganPasienPerJam extends javax.swing.JDialog {
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
     private widget.ComboBox ThnCari;
+    private widget.ComboBox cmbStatus;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel12;
     private widget.Label label11;
     private widget.Label label12;
     private widget.Label label17;
@@ -1650,7 +1664,7 @@ public class KedatanganPasienPerJam extends javax.swing.JDialog {
                 "select count(*) from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
                 "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where reg_periksa.tgl_registrasi='"+ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-"+tanggal+"' and reg_periksa.jam_reg between '"+jam1+"' and '"+jam2+"' "+
                 "and concat(reg_periksa.kd_poli,poliklinik.nm_poli) like '%"+KdPoli.getText()+NmPoli.getText()+"%' and concat(reg_periksa.kd_dokter,dokter.nm_dokter) like '%"+KdDokter.getText()+NmDokter.getText()+"%' "+
-                "and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%'");
+                "and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayar.getText()+NmCaraBayar.getText()+"%' and reg_periksa.stts_daftar like '%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%'");
     }
     
     private void isForm(){

@@ -52,6 +52,7 @@
     <br>&nbsp;&nbsp;Pembagian Resume :
     <?php
 		$keyword 	= trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+                $keyword= validTeks($keyword);
         $_sql 		= "SELECT pembagian_resume.id,pegawai.nama,persen FROM pembagian_resume inner join pegawai
                     on pembagian_resume.id=pegawai.id where pegawai.nama like '%".$keyword."%' ORDER BY persen desc";
         $hasil		= bukaquery($_sql);

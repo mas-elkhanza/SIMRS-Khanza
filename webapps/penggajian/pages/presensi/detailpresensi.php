@@ -98,8 +98,8 @@
                 if (isset($BtnSimpan)) {
                     $id                 =trim($_POST['id']);
                     $tgl                =$tahun."-".$bulan."-".trim($_POST['TglPres']);
-                    $lembur             =trim($_POST['lembur']);
-                    $jns                =trim($_POST['jns']);
+                    $lembur             = validangka(trim($_POST['lembur']));
+                    $jns                = trim($_POST['jns']);
                     if ((!empty($id))&&(!empty($tgl))&&(!empty($jns))) {
                         switch($action) {
                             case "TAMBAH":

@@ -63,7 +63,7 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-		    $id                 =trim(isset($_POST['id']))?trim($_POST['id']):NULL;
+		    $id               =trim(isset($_POST['id']))?trim($_POST['id']):NULL;
                     $id_tnj             =trim(isset($_POST['id_tnj']))?trim($_POST['id_tnj']):NULL;
                     if ((!empty($id))&&(!empty($id_tnj))) {
                         switch($action) {

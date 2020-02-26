@@ -240,72 +240,70 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $id        = trim($_POST['id']);
-                    $bpjs      = trim($_POST['bpjs']);
-                    $jamsostek = trim($_POST['jamsostek']);
-                    $dansos    = trim($_POST['dansos']);
-		    $simwajib  = trim($_POST['simwajib']);
-		    $angkop    = trim($_POST['angkop']);
-		    $angla     = trim($_POST['angla']);
-		    $telpri    = trim($_POST['telpri']);
-		    $pajak     = trim($_POST['pajak']);
-		    $pribadi   = trim($_POST['pribadi']);
-		    $lain      = trim($_POST['lain']);
-		    $ktg       = trim($_POST['ktg']);
+                    $bpjs      = validTeks(trim($_POST['bpjs']));
+                    $jamsostek = validTeks(trim($_POST['jamsostek']));
+                    $dansos    = validTeks(trim($_POST['dansos']));
+                    $simwajib  = validTeks(trim($_POST['simwajib']));
+                    $angkop    = validTeks(trim($_POST['angkop']));
+                    $angla     = validTeks(trim($_POST['angla']));
+                    $telpri    = validTeks(trim($_POST['telpri']));
+                    $pajak     = validTeks(trim($_POST['pajak']));
+                    $pribadi   = validTeks(trim($_POST['pribadi']));
+                    $lain      = validTeks(trim($_POST['lain']));
+                    $ktg       = validTeks(trim($_POST['ktg']));
 
                     if ((!empty($id))&&(!empty($bpjs))&&(!empty($simwajib))&&(!empty($jamsostek))&&
-					   (!empty($simwajib))&&(!empty($angkop))&&(!empty($angla))&&
-					   (!empty($telpri))&&(!empty($pajak))&&(!empty($pribadi))&&(!empty($lain))) {
+                           (!empty($simwajib))&&(!empty($angkop))&&(!empty($angla))&&
+                           (!empty($telpri))&&(!empty($pajak))&&(!empty($pribadi))&&(!empty($lain))) {
                         switch($action) {
                             case "TAMBAH":
-                                Tambah(" potongan ","'$tahun','$bulan','$id','$bpjs','$jamsostek','$dansos','$simwajib',
-										'$angkop','$angla','$telpri','$pajak',
-										'$pribadi','$lain','$ktg' ", " Potongan " );
-								
-								if($angkop>0){
-									if(strlen($bulan)==1){
-										$bulan="0".($bulan+1);
-									}else{
-                                                                            $bulan=$bulan+1;
-                                                                        }
-											
-									InsertData(" angsuran_koperasi ","'$id','$tanggal_pinjam','$tahun-$bulan-05','".($angkop-$jasa)."','$jasa'");
-									if($pinjaman<=getOne("select sum(pokok) from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal_pinjam'  group by id")){
-										EditData(" peminjaman_koperasi "," status='Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
-									}else{
-										EditData(" peminjaman_koperasi "," status='Belum Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
-									}
-								}		
+                                Tambah(" potongan ","'$tahun','$bulan','$id','$bpjs','$jamsostek','$dansos','$simwajib','$angkop','$angla','$telpri','$pajak','$pribadi','$lain','$ktg' ", " Potongan " );
+
+                                if($angkop>0){
+                                    if(strlen($bulan)==1){
+                                        $bulan="0".($bulan+1);
+                                    }else{
+                                        $bulan=$bulan+1;
+                                    }
+
+                                    InsertData(" angsuran_koperasi ","'$id','$tanggal_pinjam','$tahun-$bulan-05','".($angkop-$jasa)."','$jasa'");
+                                    if($pinjaman<=getOne("select sum(pokok) from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal_pinjam'  group by id")){
+                                        EditData(" peminjaman_koperasi "," status='Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                    }else{
+                                        EditData(" peminjaman_koperasi "," status='Belum Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                    }
+                                }		
 							    
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPotongan&id=$id'></head><body></body></html>";
                                 break;
                                 
                             case "UBAH":
                                 Ubah(" potongan "," bpjs='$bpjs',simwajib='$simwajib',jamsostek='$jamsostek',dansos='$dansos',
-									simwajib='$simwajib',angkop='$angkop',angla='$angla',telpri='$telpri',pajak='$pajak',
-									pribadi='$pribadi',lain='$lain',ktg='$ktg' WHERE id='$id' and tahun='$tahun' and bulan='$bulan' ", " Potongan ");
-																	
-								if($angkop>0){
-									if(strlen($bulan)==1){
-										$bulan="0".($bulan+1);
-									}else{
-                                                                            $bulan=$bulan+1;
-                                                                        }
-										
-									HapusAll(" angsuran_koperasi where id ='$id' and tanggal_angsur like '%$tahun-$bulan%' ");							    
-									InsertData(" angsuran_koperasi ","'$id','$tanggal_pinjam','$tahun-$bulan-05','".($angkop-$jasa)."','$jasa'");
-									if($pinjaman<=getOne("select sum(pokok) from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal_pinjam'  group by id")){
-										EditData(" peminjaman_koperasi "," status='Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
-									}else{
-										EditData(" peminjaman_koperasi "," status='Belum Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
-									}
-								}	
+                                        simwajib='$simwajib',angkop='$angkop',angla='$angla',telpri='$telpri',pajak='$pajak',
+                                        pribadi='$pribadi',lain='$lain',ktg='$ktg' WHERE id='$id' and tahun='$tahun' and bulan='$bulan' ", " Potongan ");
+
+                                if($angkop>0){
+                                    if(strlen($bulan)==1){
+                                        $bulan="0".($bulan+1);
+                                    }else{
+                                        $bulan=$bulan+1;
+                                    }
+
+                                    HapusAll(" angsuran_koperasi where id ='$id' and tanggal_angsur like '%$tahun-$bulan%' ");							    
+                                    InsertData(" angsuran_koperasi ","'$id','$tanggal_pinjam','$tahun-$bulan-05','".($angkop-$jasa)."','$jasa'");
+                                    if($pinjaman<=getOne("select sum(pokok) from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal_pinjam'  group by id")){
+                                        EditData(" peminjaman_koperasi "," status='Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                    }else{
+                                        EditData(" peminjaman_koperasi "," status='Belum Lunas' WHERE id='$id' and tanggal='$tanggal_pinjam' ");
+                                    }
+                                }	
 							    
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=InputPotongan&id=$id'></head><body></body></html>";
                                 break;
                         }
                     }else if ((empty($id))||(empty($bpjs))||(empty($jamsostek))||
-					    (empty($simwajib))||(empty($angkop))||(empty($angla))||
-						(empty($telpri))||(empty($pajak))||(empty($pribadi))||(empty($lain))){
+                            (empty($simwajib))||(empty($angkop))||(empty($angla))||
+                                (empty($telpri))||(empty($pajak))||(empty($pribadi))||(empty($lain))){
                         echo '<b>Semua field harus isi..!!</b>';
 						/*echo " simwajib='$simwajib',jamsostek='$jamsostek',dansos='$dansos',simwajib='$simwajib',
 						       angkop='$angkop',angla='$angla',telpri='$telpri',pajak='$pajak',

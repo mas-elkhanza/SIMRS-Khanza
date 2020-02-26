@@ -10,9 +10,9 @@
             <?php
                 echo "";
                 $action             =isset($_GET['action'])?$_GET['action']:NULL;				
-		$id                 =isset($_GET['id'])?$_GET['id']:NULL;
-		$nama               =str_replace("_"," ",isset($_GET['nama']))?str_replace("_"," ",$_GET['nama']):NULL;
-		$jm                 =isset($_GET['jm'])?$_GET['jm']:NULL;
+                $id                 =isset($_GET['id'])?$_GET['id']:NULL;
+                $nama               =str_replace("_"," ",isset($_GET['nama']))?str_replace("_"," ",$_GET['nama']):NULL;
+                $jm                 =isset($_GET['jm'])?$_GET['jm']:NULL;
                 $jns                =str_replace("_"," ",isset($_GET['jns']))?str_replace("_"," ",$_GET['jns']):NULL;
       
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
@@ -50,10 +50,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-		    $id                   =trim($_POST['id']);
-                    $nama                 =trim($_POST['nama']);
-                    $jm                   =trim($_POST['jm']);
-                    $jns                  =trim($_POST['jns']);
+                    $id                   = trim($_POST['id']);
+                    $nama                 = validTeks(trim($_POST['nama']));
+                    $jm                   = validangka(trim($_POST['jm']));
+                    $jns                  = validTeks(trim($_POST['jns']));
                     if ((!empty($nama))&&(!empty($jm))) {
                         switch($action) {
                             case "TAMBAH":

@@ -75,8 +75,8 @@
 		$bulan        = $baris[1];
 
                 if (isset($BtnSimpan)) {
-                    $id          = trim($_POST['id']);
-                    $persen      = trim($_POST['persen']);
+                    $id          = validTeks(trim($_POST['id']));
+                    $persen      = validangka(trim($_POST['persen']));
                     if ((!empty($id))&&(!empty($persen))) {
                         switch($action) {
                             case "TAMBAH":
