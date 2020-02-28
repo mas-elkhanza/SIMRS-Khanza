@@ -7166,7 +7166,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         dlgki.setLocationRelativeTo(internalFrame1);
         dlgki.emptTeks();
         dlgki.isCek();
-        dlgki.setNoRm(TNoRw.getText());  
+        dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());  
         dlgki.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }

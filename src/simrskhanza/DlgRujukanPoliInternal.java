@@ -50,7 +50,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     public DlgRujukanPoliInternal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(755,156);
+        setSize(755,136);
         
         dokter.addWindowListener(new WindowListener() {
             @Override

@@ -938,13 +938,25 @@ public class UTDPendonor extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(NoId.getText().trim().equals("")){
-            Valid.textKosong(NoId,"Kode Supplier");
+            Valid.textKosong(NoId,"No.ID Pendonor");
         }else if(Nama.getText().trim().equals("")){
-            Valid.textKosong(Nama,"Nama Supplier");
+            Valid.textKosong(Nama,"Nama Pendonor");
         }else if(KTP.getText().trim().equals("")){
-            Valid.textKosong(KTP,"Alamat Supplier");
+            Valid.textKosong(KTP,"No.KTP");
         }else if(Telp.getText().trim().equals("")){
             Valid.textKosong(Telp,"No.Telp");
+        }else if(Alamat.getText().trim().equals("")){
+            Valid.textKosong(Alamat,"Alamat");
+        }else if(Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
+            Valid.textKosong(Kecamatan,"Kecamatan");
+        }else if(Kelurahan.getText().trim().equals("")||Kelurahan.getText().trim().equals("KELURAHAN")){
+            Valid.textKosong(Kelurahan,"Kelurahan");
+        }else if(Kabupaten.getText().trim().equals("")||Kabupaten.getText().trim().equals("KABUPATEN")){
+            Valid.textKosong(Kabupaten,"Kabupaten");
+        }else if(Propinsi.getText().trim().equals("")||Propinsi.getText().trim().equals("PROPINSI")){
+            Valid.textKosong(Propinsi,"Propinsi");
+        }else if(Lahir.getText().trim().equals("")){
+            Valid.textKosong(Lahir,"Tempat Lahir");
         }else{
             /*Valid.editTable(tabMode,"datasuplier","kode_suplier","?","kode_suplier=?,nama_suplier=?,alamat=?,kota=?,no_telp=?,nama_bank=?,rekening=?",8,new String[]{
                 Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),Bank.getText(),NoRek.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
@@ -1023,20 +1035,33 @@ public class UTDPendonor extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoId.getText().trim().equals("")){
-            Valid.textKosong(NoId,"Kode Supplier");
+            Valid.textKosong(NoId,"No.ID Pendonor");
         }else if(Nama.getText().trim().equals("")){
-            Valid.textKosong(Nama,"Nama Supplier");
+            Valid.textKosong(Nama,"Nama Pendonor");
         }else if(KTP.getText().trim().equals("")){
-            Valid.textKosong(KTP,"Alamat Supplier");
+            Valid.textKosong(KTP,"No.KTP");
         }else if(Telp.getText().trim().equals("")){
             Valid.textKosong(Telp,"No.Telp");
+        }else if(Alamat.getText().trim().equals("")){
+            Valid.textKosong(Alamat,"Alamat");
+        }else if(Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
+            Valid.textKosong(Kecamatan,"Kecamatan");
+        }else if(Kelurahan.getText().trim().equals("")||Kelurahan.getText().trim().equals("KELURAHAN")){
+            Valid.textKosong(Kelurahan,"Kelurahan");
+        }else if(Kabupaten.getText().trim().equals("")||Kabupaten.getText().trim().equals("KABUPATEN")){
+            Valid.textKosong(Kabupaten,"Kabupaten");
+        }else if(Propinsi.getText().trim().equals("")||Propinsi.getText().trim().equals("PROPINSI")){
+            Valid.textKosong(Propinsi,"Propinsi");
+        }else if(Lahir.getText().trim().equals("")){
+            Valid.textKosong(Lahir,"Tempat Lahir");
         }else{
-            /*if(Sequel.menyimpantf("datasuplier","?,?,?,?,?,?,?","Kode Supplier",7,new String[]{
-                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),Bank.getText(),NoRek.getText()
+            if(Sequel.menyimpantf("utd_pendonor","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.ID Pendonor",14,new String[]{
+                NoId.getText(),Nama.getText(),KTP.getText(),JK.getSelectedItem().toString().substring(0,1),Lahir.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),
+                Alamat.getText(),kdkel,kdkec,kdkab,kdprop,GD.getSelectedItem().toString(),Resus.getSelectedItem().toString(),Telp.getText()
             })==true){
                 tampil();
                 emptTeks();
-            } */               
+            }               
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
