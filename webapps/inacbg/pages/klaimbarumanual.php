@@ -18,8 +18,9 @@
         ?>
     <div style="width: 100%; height: 90%; overflow: auto;">
     <?php
-        $BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
-        $keyword  =isset($_POST['keyword'])?trim($_POST['keyword']):NULL;
+        $BtnCari  = isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
+        $keyword  = isset($_POST['keyword'])?trim($_POST['keyword']):NULL;
+        $keyword  = validTeks($keyword);
         if (isset($BtnCari)) {      
                 $tahunawal      =trim($_POST['tahunawal']);
                 $bulanawal      =trim($_POST['bulanawal']);

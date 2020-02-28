@@ -421,7 +421,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -435,7 +435,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -555,7 +555,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         TPasien.setBounds(309, 10, 309, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2019" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -588,7 +588,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(0, 70, 71, 23);
 
-        Deku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IYA", "TIDAK" }));
+        Deku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TIDAK", "IYA" }));
         Deku.setName("Deku"); // NOI18N
         Deku.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

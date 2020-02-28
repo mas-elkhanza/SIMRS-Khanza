@@ -139,14 +139,14 @@
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
                 $id                 =trim($_POST['id']);
-                $tingkat            =trim($_POST['tingkat']);
-                $jenis              =trim($_POST['jenis']);
-                $nama_seminar       =trim($_POST['nama_seminar']);
-                $peranan            =trim($_POST['peranan']);
+                $tingkat            =validTeks(trim($_POST['tingkat']));
+                $jenis              =validTeks(trim($_POST['jenis']));
+                $nama_seminar       =validTeks(trim($_POST['nama_seminar']));
+                $peranan            =validTeks(trim($_POST['peranan']));
                 $mulai              =trim($_POST['ThnMulai'])."-".trim($_POST['BlnMulai'])."-".trim($_POST['TglMulai']);
                 $selesai            =trim($_POST['ThnSelesai'])."-".trim($_POST['BlnSelesai'])."-".trim($_POST['TglSelesai']);
-                $penyelengara       =trim($_POST['penyelengara']);
-                $tempat             =trim($_POST['tempat']);
+                $penyelengara       =validTeks(trim($_POST['penyelengara']));
+                $tempat             =validTeks(trim($_POST['tempat']));
                 $dokumen            = str_replace(" ","_","pages/riwayatseminar/berkas/".$_FILES['dokumen']['name']);
                 if ((!empty($id))&&(!empty($nama_seminar))&&(!empty($mulai))) {
                     switch($action) {

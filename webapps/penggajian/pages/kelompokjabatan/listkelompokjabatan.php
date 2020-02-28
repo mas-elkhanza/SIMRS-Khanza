@@ -25,7 +25,8 @@
     </form>
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php
-        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword = validTeks($keyword);
         $_sql = "SELECT kode_kelompok,nama_kelompok,indek FROM kelompok_jabatan where kode_kelompok like '%".$keyword."%' or nama_kelompok like '%".$keyword."%' ORDER BY indek desc ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
@@ -40,10 +41,10 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
-						       <td>
-                                    <center>
-                                        <a href=?act=InputKelompokJabatan&action=UBAH&kode_kelompok=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
-                                        <a href="?act=ListKelompokJabatan&action=HAPUS&kode_kelompok=<?php print $baris[0] ?>" >[hapus]</a>
+			    <td>
+                                  <center>
+                                    <a href=?act=InputKelompokJabatan&action=UBAH&kode_kelompok=".str_replace(" ","_",$baris[0]).">[edit]</a>";?>
+                                    <a href="?act=ListKelompokJabatan&action=HAPUS&kode_kelompok=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                             echo "</center>
                                </td>

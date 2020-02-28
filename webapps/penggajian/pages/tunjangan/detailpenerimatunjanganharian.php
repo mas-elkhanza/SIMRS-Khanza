@@ -67,8 +67,8 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-		    $id                 =trim($_POST['id']);
-                    $id_tnj             =trim($_POST['id_tnj']);
+		    $id                 = validTeks(trim($_POST['id']));
+                    $id_tnj             = validTeks(trim($_POST['id_tnj']));
                     if ((!empty($id))&&(!empty($id_tnj))) {
                         switch($action) {
                             case "TAMBAH":

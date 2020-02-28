@@ -22,20 +22,20 @@
                 if($action == "TAMBAH"){
                     $pendapatan_akte = str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL;
                     $persen_rs       = "";
-		    $bagian_rs       ="";
+                    $bagian_rs       ="";
                     $persen_kry      = "";
-		    $bagian_kry      ="";
+                    $bagian_kry      ="";
                 }else if($action == "UBAH"){
-                    $_sql         = "SELECT pendapatan_akte,persen_rs,
-                                    bagian_rs,persen_kry,bagian_kry
-                                    FROM set_akte WHERE tahun='$tahun' and bulan='$bulan'";
-                    $hasil        = bukaquery($_sql);
-                    $baris        = mysqli_fetch_row($hasil);
-                    $pendapatan_akte = $baris[0];
-                    $persen_rs       = $baris[1];
-		    $bagian_rs       = $baris[2];
-                    $persen_kry      = $baris[3];
-		    $bagian_kry      = $baris[4];
+                    $_sql               = "SELECT pendapatan_akte,persen_rs,
+                                            bagian_rs,persen_kry,bagian_kry
+                                            FROM set_akte WHERE tahun='$tahun' and bulan='$bulan'";
+                    $hasil              = bukaquery($_sql);
+                    $baris              = mysqli_fetch_row($hasil);
+                    $pendapatan_akte    = $baris[0];
+                    $persen_rs          = $baris[1];
+                    $bagian_rs          = $baris[2];
+                    $persen_kry         = $baris[3];
+                    $bagian_kry         = $baris[4];
                 }
                 echo"<input type=hidden name=pendapatan_akte value=$pendapatan_akte><input type=hidden name=action value=$action>";
             ?>
@@ -63,19 +63,22 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
 			
-				$_sql         = "SELECT * FROM set_tahun";
-				$hasil        = bukaquery($_sql);
-				$baris        = mysqli_fetch_row($hasil);
-				$tahun         = $baris[0];
-				$bulan          = $baris[1];
+                $_sql         = "SELECT * FROM set_tahun";
+                $hasil        = bukaquery($_sql);
+                $baris        = mysqli_fetch_row($hasil);
+                $tahun        = $baris[0];
+                $bulan        = $baris[1];
 
                 if (isset($BtnSimpan)) {
                     $pendapatan_akte    = trim($_POST['pendapatan_akte']);
+                    $pendapatan_akte    = validTeks($pendapatan_akte);
                     $persen_rs          = trim($_POST['persen_rs']);
-		    $bagian_rs          =($persen_rs/100)*$pendapatan_akte;
+                    $persen_rs          = validTeks($persen_rs);
                     $persen_kry         = trim($_POST['persen_kry']);
-		    $bagian_kry         =($persen_kry/100)*$pendapatan_akte;
+                    $persen_kry         = validTeks($persen_kry);
                     if ((!empty($pendapatan_akte))&&(!empty($persen_rs))&&(!empty($persen_kry))) {
+                        @$bagian_rs          = ($persen_rs/100)*$pendapatan_akte;
+                        @$bagian_kry         = ($persen_kry/100)*$pendapatan_akte;
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" set_akte ","'$tahun','$bulan','$pendapatan_akte','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry' ", " Pendapatan Akte" );

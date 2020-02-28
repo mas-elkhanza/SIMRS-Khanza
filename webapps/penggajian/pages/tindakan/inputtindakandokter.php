@@ -102,14 +102,19 @@
                     $DetikDatang        =isset($_POST['DetikDatang'])?$_POST['DetikDatang']:"00";
                     $tgl                =$tahun."-".$bulan."-01 ".$JamDatang.":".$MenitDatang.":".$DetikDatang;
                     $tnd                =trim(isset($_POST['tnd']))?trim($_POST['tnd']):NULL;
+                    $tnd                =validTeks($tnd);
                     $_sql = "SELECT jm FROM master_tindakan where id='$tnd'";
                     $hasil=bukaquery($_sql);
                     $baris = mysqli_fetch_array($hasil);
                     $jm                 =$baris[0];
                     $nm_pasien          =trim(isset($_POST['nm_pasien']))?trim($_POST['nm_pasien']):NULL;
+                    $nm_pasien          =validTeks($nm_pasien);
                     $kamar              =trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
+                    $kamar              =validTeks($kamar);
                     $diagnosa           =trim(isset($_POST['diagnosa']))?trim($_POST['diagnosa']):NULL;
+                    $diagnosa           =validTeks($diagnosa);
                     $jmlh               =trim(isset($_POST['jmlh']))?trim($_POST['jmlh']):NULL;
+                    $jmlh               =validangka($jmlh);
                     $ttljm              =$jm*$jmlh;
                     if ((!empty($id))&&(!empty($tgl))&&(!empty($tnd))) {
                         switch($action) {

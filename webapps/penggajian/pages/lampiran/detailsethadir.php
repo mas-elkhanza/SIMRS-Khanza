@@ -24,7 +24,7 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $tnj                =trim($_POST['tnj']);
+                    $tnj                = validangka(trim($_POST['tnj']));
                     if (!empty($tnj)) {
                         switch($action) {
                             case "TAMBAH":

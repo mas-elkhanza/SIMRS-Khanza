@@ -19,11 +19,11 @@
             <?php
                 echo "";
                 $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $dep_id     =str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
+                $dep_id      =str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
                 if($action == "TAMBAH"){
                     $dep_id      = str_replace("_"," ",isset($_GET['dep_id']))?str_replace("_"," ",$_GET['dep_id']):NULL;
                     $persen      = "";
-					$total_insentif="";
+		  $total_insentif="";
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT dep_id,persen FROM indexins WHERE dep_id='$dep_id' ";
                     $hasil        = bukaquery($_sql);
@@ -79,7 +79,8 @@
                 if (isset($BtnSimpan)) {
                     $dep_id    = trim($_POST['dep_id']);
                     $persen    = trim($_POST['persen']);
-					$total_insentif=($persen/100)*$dep_id;
+                    $persen    = validangka($persen);
+		  $total_insentif=($persen/100)*$dep_id;
                     if ((!empty($dep_id))&&(!empty($persen))) {
                         switch($action) {
                             case "TAMBAH":

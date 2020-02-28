@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="536" leftMargin="39" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7435c0f7-de74-4940-ae33-c2370e46f8e7">
 	<property name="ireport.zoom" value="1.399522140629204"/>
 	<property name="ireport.x" value="0"/>
@@ -41,7 +41,7 @@ resume_pasien.obat_pulang from resume_pasien inner join reg_periksa on resume_pa
 inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on resume_pasien.kd_dokter=dokter.kd_dokter 
 inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec 
 inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop
-where resume_pasien.no_rawat= $P{norawat} ]]>
+where resume_pasien.no_rawat= $P{norawat}]]>
 	</queryString>
 	<field name="tgl_registrasi" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.label" value="tgl_registrasi"/>
@@ -489,7 +489,7 @@ where resume_pasien.no_rawat= $P{norawat} ]]>
 				</textElement>
 				<text><![CDATA[Keluhan utama dari riwayat penyakit yang positif :]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement mode="Transparent" x="16" y="179" width="510" height="63" backcolor="#CCCCCC" uuid="c42de0a3-e391-4512-87c7-eb412a6450b6"/>
 				<textElement>
 					<font fontName="Tahoma" size="8" isItalic="false" isUnderline="false"/>
@@ -590,7 +590,7 @@ where resume_pasien.no_rawat= $P{norawat} ]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement mode="Transparent" x="16" y="257" width="510" height="63" backcolor="#CCCCCC" uuid="acdf2f7a-4e1f-4b4f-b7b6-32e12b3a4707"/>
 				<textElement>
 					<font fontName="Tahoma" size="8" isItalic="false" isUnderline="false"/>
@@ -598,7 +598,7 @@ where resume_pasien.no_rawat= $P{norawat} ]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jalannya_penyakit}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement mode="Transparent" x="16" y="335" width="510" height="63" backcolor="#CCCCCC" uuid="960c30f5-afa4-46eb-a156-261ddb442c78"/>
 				<textElement>
 					<font fontName="Tahoma" size="8" isItalic="false" isUnderline="false"/>
@@ -616,7 +616,7 @@ where resume_pasien.no_rawat= $P{norawat} ]]>
 				</textElement>
 				<text><![CDATA[Pemeriksaan penunjang yang positif :]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement mode="Transparent" x="16" y="413" width="510" height="63" backcolor="#CCCCCC" uuid="c097d9ac-7f62-4f3a-a160-b9fecd37c1f9"/>
 				<textElement>
 					<font fontName="Tahoma" size="8" isItalic="false" isUnderline="false"/>
@@ -1224,7 +1224,7 @@ where resume_pasien.no_rawat= $P{norawat} ]]>
 				</textElement>
 				<text><![CDATA[Kondisi pasien pulang :]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement mode="Transparent" x="11" y="633" width="520" height="63" backcolor="#CCCCCC" uuid="9f72a80f-6098-45c1-b6c3-f7ba8e7debab"/>
 				<textElement>
 					<font fontName="Tahoma" size="8" isItalic="false" isUnderline="false"/>

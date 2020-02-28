@@ -36,17 +36,17 @@
     <div style="width: 100%; height: 80%; overflow: auto;">
     <?php
         
-	$keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
-
-        $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
-		        pegawai.departemen,sum(bsr_jasa)
+	$keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
+         $keyword = validTeks($keyword);
+         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
+                pegawai.departemen,sum(bsr_jasa)
                 FROM jasa_lain right OUTER JOIN pegawai
-				ON jasa_lain.id=pegawai.id and thn='".$tahun."'
-                                and bln='".$bulan."'
-				where  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or 
-				pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and pegawai.departemen like '%".$keyword."%' 
-				group by pegawai.id order by pegawai.id ASC ";
+                ON jasa_lain.id=pegawai.id and thn='".$tahun."'
+                and bln='".$bulan."'
+                where  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or 
+                pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%' or
+                pegawai.stts_aktif<>'KELUAR' and pegawai.departemen like '%".$keyword."%' 
+                group by pegawai.id order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
         $ttljm=0;

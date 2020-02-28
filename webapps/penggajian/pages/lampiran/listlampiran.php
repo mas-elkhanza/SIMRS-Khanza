@@ -23,8 +23,8 @@
   <div class="entry">
     <div align="center" class="link">
         <a href=?act=InputSetJagaMalam&action=TAMBAH>| Set Jaga Malam |</a>
-	<a href=?act=InputSetTambahJaga&action=TAMBAH>| Set Tambah Jaga |</a>
-	<a href=?act=InputSetTunjanganHadir&action=TAMBAH>| Set Tnj.Hadir |</a>
+        <a href=?act=InputSetTambahJaga&action=TAMBAH>| Set Tambah Jaga |</a>
+        <a href=?act=InputSetTunjanganHadir&action=TAMBAH>| Set Tnj.Hadir |</a>
         <a href=?act=InputSetLemburHB&action=TAMBAH>| Set Lembur HB |</a>
         <a href=?act=InputSetLemburHR&action=TAMBAH>| Set Lembur HR |</a>
         <a href=?act=ListLampiran&action=LIHAT>| List Lampiran |</a>
@@ -48,6 +48,7 @@
         <div style="width: 100%; height: 78%; overflow: auto;">
         <?php
             $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+            $keyword = validTeks($keyword);
             $action =isset($_POST['action'])?$_POST['action']:NULL;
             $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.pendidikan,pegawai.mulai_kerja,pegawai.wajibmasuk,departemen.nama as departemen,
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,jnj_jabatan.nama as jnj_jabatan,
@@ -183,8 +184,8 @@
                 and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                 $hasil6   = bukaquery($_sql6);
                 $baris6   = mysqli_fetch_row($hasil6);
-                $ttlc     = $baris6[0];
-                if(empty ($baris6[0])){
+                $ttlc     = $baris6[0]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
+                if(empty ($ttlc)){
                     $ttlc=0;
                 }
 
@@ -407,8 +408,8 @@
                                 and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                                 $hasil6   = bukaquery($_sql6);
                                 $baris6   = mysqli_fetch_row($hasil6);
-                                $ttlc     = $baris6[0];
-                                if(empty ($baris6[0])){
+                                $ttlc     = $baris6[0]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
+                                if(empty ($ttlc)){
                                     $ttlc=0;
                                 }
 

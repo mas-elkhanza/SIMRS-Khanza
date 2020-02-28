@@ -95,9 +95,9 @@
                 if (isset($BtnSimpan)) {
                     $id                 =trim($_POST['id']);
                     $tgl                =$tahun."-".$bulan."-1";
-                    $ktg                =trim($_POST['ktg']);
-                    $jns                =trim($_POST['jns']);
-                    $jml                =trim($_POST['jml']);
+                    $ktg                = validTeks(trim($_POST['ktg']));
+                    $jns                = validTeks(trim($_POST['jns']));
+                    $jml                = validangka(trim($_POST['jml']));
                     if ((!empty($id))&&(!empty($tgl))&&(!empty($jns))) {
                         switch($action) {
                             case "TAMBAH":

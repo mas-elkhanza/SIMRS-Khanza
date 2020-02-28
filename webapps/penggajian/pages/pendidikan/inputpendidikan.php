@@ -65,12 +65,12 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $tingkat   = trim($_POST['tingkat']);
-                    $tingkatx  = trim($_POST['tingkatx']);
-                    $indek     = trim($_POST['indek']);
-                    $gapok1       = trim($_POST['gapok1']);
-                    $kenaikan       = trim($_POST['kenaikan']);
-                    $maksimal       = trim($_POST['maksimal']);
+                    $tingkat        = validTeks(trim($_POST['tingkat']));
+                    $tingkatx       = validTeks(trim($_POST['tingkatx']));
+                    $indek          = validTeks(trim($_POST['indek']));
+                    $gapok1         = validTeks(trim($_POST['gapok1']));
+                    $kenaikan       = validTeks(trim($_POST['kenaikan']));
+                    $maksimal       = validTeks(trim($_POST['maksimal']));
                     if (!empty($tingkat)&&!empty($indek)&&!empty($gapok1)&&!empty($kenaikan)&&!empty($maksimal)) {
                         switch($action) {
                             case "TAMBAH":

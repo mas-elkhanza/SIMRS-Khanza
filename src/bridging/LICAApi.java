@@ -168,7 +168,7 @@ public class LICAApi {
             Sequel.queryu("truncate table temporary_permintaan_lab");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    Sequel.menyimpan("temporary_permintaan_lab","'0','"+response+"','"+
+                    Sequel.menyimpan("temporary_permintaan_lab","'0','"+root.path("id_kunjungan").asText()+"','"+
                             list.path("nmdisplay").asText()+"','"+
                             list.path("hasil").asText()+"','"+
                             list.path("nn").asText()+"','"+

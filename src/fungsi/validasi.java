@@ -50,6 +50,8 @@ import net.sf.jasperreports.engine.export.JRExporterContext;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
+import widget.Button;
+import widget.TextArea;
 /**
  *
  * @author Owner
@@ -883,6 +885,14 @@ public final class validasi {
             kiri.requestFocus();
         }
     }
+    
+    public void pindah(KeyEvent evt, Button kiri, TextArea kanan) {
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            kanan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            kiri.requestFocus();
+        }
+    }
 
     public void pindah(java.awt.event.KeyEvent evt,JDateTimePicker kiri,JTextField kanan){
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -1140,5 +1150,7 @@ public final class validasi {
             return Math.round(number);
         }
     }
+
+    
        
 }

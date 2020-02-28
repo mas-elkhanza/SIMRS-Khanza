@@ -77,8 +77,8 @@
                     $id                 =trim($_POST['id']);
                     $thn                =$tahun;
                     $bln                =$bulan;
-                    $bsr_jasa           =trim($_POST['bsr_jasa']);
-                    $ktg                =trim($_POST['ktg']);
+                    $bsr_jasa           = validTeks(trim($_POST['bsr_jasa']));
+                    $ktg                = validTeks(trim($_POST['ktg']));
                     if ((!empty($id))&&(!empty($bsr_jasa))) {
                         switch($action) {
                             case "TAMBAH":

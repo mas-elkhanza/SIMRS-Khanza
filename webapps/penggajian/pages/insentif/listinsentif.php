@@ -27,7 +27,7 @@
                         <td width='12%'><div align='center'>Proses</div></td>
                         <td width='34%'><div align='center'>Pendapatan</div></td>
                         <td width='20%'><div align='center'>Prosentase</div></td>
-						<td width='34%'><div align='center'>Total Insentif</div></td>
+                        <td width='34%'><div align='center'>Total Insentif</div></td>
                     </tr>";					
                     while($baris = mysqli_fetch_array($hasil)) {
                         $total_insentif=$baris[2];						
@@ -70,7 +70,8 @@
     </form>
     <div style="width: 100%; height: 64%; overflow: auto;">
     <?php
-		$keyword =trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword = validTeks($keyword);
         $_sql    = "SELECT dep_id,persen FROM indexins where dep_id like '%".$keyword."%' ORDER BY persen desc";
         $hasil   =bukaquery($_sql);
         $jumlah  =mysqli_num_rows($hasil);

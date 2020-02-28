@@ -1,7 +1,7 @@
 
 
 <div id="post">
-	<div class="entry"> 
+  <div class="entry"> 
     <div align="center" class="link">
         <a href=?act=InputEmergencyIndex&action=TAMBAH>| Input Data |</a>
         <a href=?act=ListEmergencyIndex>| List Data |</a>
@@ -25,7 +25,8 @@
     </form>
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php
-        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword = validTeks($keyword);
         $_sql = "SELECT kode_emergency,nama_emergency,indek FROM emergency_index where kode_emergency like '%".$keyword."%' or nama_emergency like '%".$keyword."%' ORDER BY indek desc ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);

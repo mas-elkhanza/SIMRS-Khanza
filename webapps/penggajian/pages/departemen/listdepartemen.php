@@ -25,7 +25,8 @@
     </form>
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php
-        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword = validTeks($keyword);
         $_sql = "SELECT dep_id,nama FROM departemen where dep_id like '%".$keyword."%' or nama like '%".$keyword."%' ORDER BY dep_id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);

@@ -8,6 +8,7 @@
     <body>
    <?php
         $keyword=$_GET['keyword'];
+        $keyword= validTeks($keyword);
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,
 		 pegawai.departemen from pegawai
 		 where pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or

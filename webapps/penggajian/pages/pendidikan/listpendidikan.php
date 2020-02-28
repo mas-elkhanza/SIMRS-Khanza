@@ -26,7 +26,8 @@
     <div style="width: 100%; height: 78%; overflow: auto;">
 
     <?php
-        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword    = trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword    = validTeks($keyword);
         $_sql = "SELECT tingkat,indek,gapok1,kenaikan,maksimal FROM pendidikan where tingkat like '%".$keyword."%' ORDER BY indek DESC,tingkat ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);

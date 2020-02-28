@@ -18,7 +18,8 @@
         }else{
 		$bulan=$baris[1];
         } 
-		$keyword=$_GET['keyword'];
+        $keyword=$_GET['keyword'];
+        $keyword= validTeks($keyword);
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama
                 FROM pegawai where pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%'
                 ORDER BY pegawai.nik ASC ";
