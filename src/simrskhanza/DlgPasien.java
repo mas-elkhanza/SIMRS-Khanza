@@ -48,7 +48,6 @@ import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.event.DocumentEvent;

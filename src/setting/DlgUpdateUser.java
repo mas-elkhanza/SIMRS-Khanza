@@ -643,7 +643,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "inhealth_mapping_tindakan_radiologi,inhealth_mapping_tindakan_laborat,inhealth_mapping_tindakan_operasi,hibah_obat_bhp,"+
                         "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis,monitoring_asuhan_gizi,"+
                         "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
-                        "pengajuan_cuti,kedatangan_pasien from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "pengajuan_cuti,kedatangan_pasien,utd_pendonor from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2426,6 +2426,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[M]Penyerahan Darah".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[M]Penyerahan Darah",rs.getBoolean("utd_penyerahan_darah")});
+                    }
+                    
+                    if("[M]Data Pendonor".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[M]Data Pendonor",rs.getBoolean("utd_pendonor")});
                     }
                     
                     if("[N]Kunjungan Reg Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4797,6 +4801,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
             if("[M]Penyerahan Darah".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_penyerahan_darah='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[M]Data Pendonor".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_pendonor='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[N]Kunjungan Reg Per Poli".equals(tbUser.getValueAt(i,1).toString())){

@@ -128,7 +128,7 @@ public final class akses {
             inhealth_mapping_tindakan_operasi=false,hibah_obat_bhp=false,asal_hibah=false,asuhan_gizi=false,inhealth_kirim_tagihan=false,
             sirkulasi_obat4=false,sirkulasi_obat5=false,sirkulasi_non_medis2=false,monitoring_asuhan_gizi=false,penerimaan_obat_perbulan=false,
             rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false,master_masalah_keperawatan=false,
-            pengajuan_cuti=false,kedatangan_pasien=false;
+            pengajuan_cuti=false,kedatangan_pasien=false,utd_pendonor=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -737,6 +737,7 @@ public final class akses {
                         akses.master_masalah_keperawatan=true;
                         akses.pengajuan_cuti=true;
                         akses.kedatangan_pasien=true;
+                        akses.utd_pendonor=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1329,6 +1330,7 @@ public final class akses {
                         akses.master_masalah_keperawatan=rs2.getBoolean("master_masalah_keperawatan");
                         akses.pengajuan_cuti=rs2.getBoolean("pengajuan_cuti");
                         akses.kedatangan_pasien=rs2.getBoolean("kedatangan_pasien");
+                        akses.utd_pendonor=rs2.getBoolean("utd_pendonor");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1919,6 +1921,7 @@ public final class akses {
                         akses.master_masalah_keperawatan=false;
                         akses.pengajuan_cuti=false;
                         akses.kedatangan_pasien=false;
+                        akses.utd_pendonor=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2563,4 +2566,5 @@ public final class akses {
     public static boolean getmaster_masalah_keperawatan(){return akses.master_masalah_keperawatan;}
     public static boolean getpengajuan_cuti(){return akses.pengajuan_cuti;}
     public static boolean getkedatangan_pasien(){return akses.kedatangan_pasien;}
+    public static boolean getutd_pendonor(){return akses.utd_pendonor;}
 }   

@@ -586,6 +586,7 @@ import tranfusidarah.UTDMedisRusak;
 import tranfusidarah.UTDCekalDarah;
 import tranfusidarah.UTDKomponenDarah;
 import tranfusidarah.UTDPemisahanDarah;
+import tranfusidarah.UTDPendonor;
 import tranfusidarah.UTDPenunjangRusak;
 import tranfusidarah.UTDPenyerahanDarah;
 import tranfusidarah.UTDStokDarah;
@@ -15788,6 +15789,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPendonorDarahActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        UTDPendonor form=new UTDPendonor(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16380,7 +16392,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMappingPoliInhealth,btnMappingDokterInhealth,btnMappingTindakanRalanInhealth,btnMappingTindakanRanapInhealth,btnMappingTindakanRadiologiInhealth,
             btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah,btnAsuhanGizi,btnKirimTagihanInheath,
             btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2,btnMonitoringAsuhanGizi,btnGrafikPenerimaanObatPerBulan,btnRekapKunjungan,
-            btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam;
+            btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah;
     
     public void isWall(){
         try{            
@@ -18662,6 +18674,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getutd_komponen_darah()==true){
                 Panelmenu.add(btnUTDKomponenDarah); 
+                jmlmenu++;
+            } 
+            
+            if(akses.getutd_pendonor()==true){
+                Panelmenu.add(btnPendonorDarah); 
                 jmlmenu++;
             } 
 
@@ -21589,6 +21606,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnUTDKomponenDarah); 
             jmlmenu++;
         } 
+
+        if(akses.getutd_pendonor()==true){
+            Panelmenu.add(btnPendonorDarah); 
+            jmlmenu++;
+        }
 
         if(akses.getutd_donor()==true){
             Panelmenu.add(btnUTDDonorDarah); 
@@ -25376,6 +25398,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         } 
 
+        if(akses.getutd_pendonor()==true){
+            if(btnPendonorDarah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPendonorDarah); 
+                jmlmenu++;
+            }                
+        } 
+        
         if(akses.getutd_donor()==true){
             if(btnUTDDonorDarah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnUTDDonorDarah); 
@@ -27961,7 +27990,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnKedatanganPasienPerJam = new widget.ButtonBig();
-        btnKedatanganPasienPerJam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_preferences-system-time_8810.png"))); 
+        btnKedatanganPasienPerJam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_cmyk-04_906567.png"))); 
         btnKedatanganPasienPerJam.setText("Kedatangan Pasien Per Jam");
         btnKedatanganPasienPerJam.setIconTextGap(0);
         btnKedatanganPasienPerJam.setName("btnKedatanganPasienPerJam"); 
@@ -27969,6 +27998,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKedatanganPasienPerJam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKedatanganPasienPerJamActionPerformed(evt);
+            }
+        });
+        
+        btnPendonorDarah = new widget.ButtonBig();
+        btnPendonorDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_623_Love_sharing_heart_wedding_valentine_valentines_day_love_4171308.png"))); 
+        btnPendonorDarah.setText("Pendonor Darah");
+        btnPendonorDarah.setIconTextGap(0);
+        btnPendonorDarah.setName("btnPendonorDarah"); 
+        btnPendonorDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPendonorDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPendonorDarahActionPerformed(evt);
             }
         });
 
