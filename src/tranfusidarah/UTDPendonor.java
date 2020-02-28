@@ -13,6 +13,7 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -46,15 +47,18 @@ public class UTDPendonor extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        tabMode=new DefaultTableModel(null,new Object[]{"Kode Supplier","Nama Supplier","Alamat Supplier","Kota","No.Telp","Nama Bank","No.Rekening"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "No.ID","Nama Pendonor","No.KTP","J.K.","Tempat Lahir","Tgl.Lahir","Alamat","Kd.Kel","Kelurahan",
+                "Kd.Kec","Kecamatan","Kd.Kab","Kabupaten","Kd.Prop","Propinsi","G.D.","Resus","No.Telp"
+            }){
+                @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbDokter.setModel(tabMode);
 
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 18; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -74,10 +78,12 @@ public class UTDPendonor extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Kd.setDocument(new batasInput((byte)5).getKata(Kd));
-        Nm.setDocument(new batasInput((byte)50).getKata(Nm));      
-        Alamat.setDocument(new batasInput((byte)50).getKata(Alamat));     
-        Telp.setDocument(new batasInput((byte)13).getOnlyAngka(Telp)); 
+        NoId.setDocument(new batasInput((byte)15).getKata(NoId));
+        Nama.setDocument(new batasInput((byte)40).getKata(Nama));
+        KTP.setDocument(new batasInput((byte)20).getKata(KTP));
+        Lahir.setDocument(new batasInput((byte)15).getKata(Lahir));
+        Alamat.setDocument(new batasInput((int)100).getKata(Alamat));
+        Telp.setDocument(new batasInput((byte)40).getKata(Telp));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -210,6 +216,10 @@ public class UTDPendonor extends javax.swing.JDialog {
         internalFrame1 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
         panelisi2 = new widget.panelisi();
+        jLabel11 = new widget.Label();
+        CMbGd2 = new widget.ComboBox();
+        jLabel12 = new widget.Label();
+        CMbGd3 = new widget.ComboBox();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -228,23 +238,23 @@ public class UTDPendonor extends javax.swing.JDialog {
         PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
         label12 = new widget.Label();
-        Kd = new widget.TextBox();
-        Nm = new widget.TextBox();
+        NoId = new widget.TextBox();
+        Nama = new widget.TextBox();
         label18 = new widget.Label();
         label26 = new widget.Label();
         Telp = new widget.TextBox();
         label31 = new widget.Label();
-        Alamat = new widget.TextBox();
+        KTP = new widget.TextBox();
         jLabel8 = new widget.Label();
-        CmbJk = new widget.ComboBox();
+        JK = new widget.ComboBox();
         jLabel9 = new widget.Label();
-        CMbGd = new widget.ComboBox();
+        GD = new widget.ComboBox();
         DTPLahir = new widget.Tanggal();
         jLabel13 = new widget.Label();
-        TTmp = new widget.TextBox();
+        Lahir = new widget.TextBox();
         jLabel10 = new widget.Label();
-        CMbGd1 = new widget.ComboBox();
-        Alamat1 = new widget.TextBox();
+        Resus = new widget.ComboBox();
+        Alamat = new widget.TextBox();
         BtnKelurahan = new widget.Button();
         Kelurahan = new widget.TextBox();
         Kecamatan = new widget.TextBox();
@@ -279,13 +289,38 @@ public class UTDPendonor extends javax.swing.JDialog {
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
+        jLabel11.setText("G.D. :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        jLabel11.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelisi2.add(jLabel11);
+
+        CMbGd2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "A", "B", "AB", "O" }));
+        CMbGd2.setName("CMbGd2"); // NOI18N
+        CMbGd2.setPreferredSize(new java.awt.Dimension(85, 23));
+        panelisi2.add(CMbGd2);
+
+        jLabel12.setText("Resus :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        jLabel12.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelisi2.add(jLabel12);
+
+        CMbGd3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "(+)", "(-)" }));
+        CMbGd3.setName("CMbGd3"); // NOI18N
+        CMbGd3.setPreferredSize(new java.awt.Dimension(85, 23));
+        CMbGd3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CMbGd3KeyPressed(evt);
+            }
+        });
+        panelisi2.add(CMbGd3);
+
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(70, 23));
+        label9.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi2.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(400, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(210, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -503,25 +538,25 @@ public class UTDPendonor extends javax.swing.JDialog {
         FormInput.add(label12);
         label12.setBounds(0, 10, 60, 23);
 
-        Kd.setName("Kd"); // NOI18N
-        Kd.setPreferredSize(new java.awt.Dimension(207, 23));
-        Kd.addKeyListener(new java.awt.event.KeyAdapter() {
+        NoId.setName("NoId"); // NOI18N
+        NoId.setPreferredSize(new java.awt.Dimension(207, 23));
+        NoId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdKeyPressed(evt);
+                NoIdKeyPressed(evt);
             }
         });
-        FormInput.add(Kd);
-        Kd.setBounds(64, 10, 140, 23);
+        FormInput.add(NoId);
+        NoId.setBounds(64, 10, 140, 23);
 
-        Nm.setName("Nm"); // NOI18N
-        Nm.setPreferredSize(new java.awt.Dimension(207, 23));
-        Nm.addKeyListener(new java.awt.event.KeyAdapter() {
+        Nama.setName("Nama"); // NOI18N
+        Nama.setPreferredSize(new java.awt.Dimension(207, 23));
+        Nama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmKeyPressed(evt);
+                NamaKeyPressed(evt);
             }
         });
-        FormInput.add(Nm);
-        Nm.setBounds(64, 40, 310, 23);
+        FormInput.add(Nama);
+        Nama.setBounds(64, 40, 310, 23);
 
         label18.setText("Nama :");
         label18.setName("label18"); // NOI18N
@@ -561,50 +596,50 @@ public class UTDPendonor extends javax.swing.JDialog {
         FormInput.add(label31);
         label31.setBounds(0, 70, 60, 23);
 
-        Alamat.setName("Alamat"); // NOI18N
-        Alamat.setPreferredSize(new java.awt.Dimension(207, 23));
-        Alamat.addKeyListener(new java.awt.event.KeyAdapter() {
+        KTP.setName("KTP"); // NOI18N
+        KTP.setPreferredSize(new java.awt.Dimension(207, 23));
+        KTP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AlamatKeyPressed(evt);
+                KTPKeyPressed(evt);
             }
         });
-        FormInput.add(Alamat);
-        Alamat.setBounds(64, 70, 160, 23);
+        FormInput.add(KTP);
+        KTP.setBounds(64, 70, 160, 23);
 
         jLabel8.setText("J.K. :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
         jLabel8.setBounds(220, 70, 50, 23);
 
-        CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
-        CmbJk.setName("CmbJk"); // NOI18N
-        CmbJk.addKeyListener(new java.awt.event.KeyAdapter() {
+        JK.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
+        JK.setName("JK"); // NOI18N
+        JK.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                CmbJkKeyPressed(evt);
+                JKKeyPressed(evt);
             }
         });
-        FormInput.add(CmbJk);
-        CmbJk.setBounds(274, 70, 100, 23);
+        FormInput.add(JK);
+        JK.setBounds(274, 70, 100, 23);
 
         jLabel9.setText("G.D. :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
         jLabel9.setBounds(380, 10, 70, 23);
 
-        CMbGd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "AB", "O" }));
-        CMbGd.setName("CMbGd"); // NOI18N
-        FormInput.add(CMbGd);
-        CMbGd.setBounds(454, 10, 80, 23);
+        GD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "AB", "O" }));
+        GD.setName("GD"); // NOI18N
+        GD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GDKeyPressed(evt);
+            }
+        });
+        FormInput.add(GD);
+        GD.setBounds(454, 10, 80, 23);
 
         DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2020" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
-        DTPLahir.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DTPLahirItemStateChanged(evt);
-            }
-        });
         DTPLahir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DTPLahirKeyPressed(evt);
@@ -618,50 +653,50 @@ public class UTDPendonor extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(0, 100, 60, 23);
 
-        TTmp.setName("TTmp"); // NOI18N
-        TTmp.addKeyListener(new java.awt.event.KeyAdapter() {
+        Lahir.setName("Lahir"); // NOI18N
+        Lahir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TTmpKeyPressed(evt);
+                LahirKeyPressed(evt);
             }
         });
-        FormInput.add(TTmp);
-        TTmp.setBounds(64, 100, 206, 23);
+        FormInput.add(Lahir);
+        Lahir.setBounds(64, 100, 206, 23);
 
         jLabel10.setText("Resus :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
         jLabel10.setBounds(576, 10, 40, 23);
 
-        CMbGd1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(+)", "(-)" }));
-        CMbGd1.setName("CMbGd1"); // NOI18N
-        CMbGd1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Resus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(+)", "(-)" }));
+        Resus.setName("Resus"); // NOI18N
+        Resus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                CMbGd1KeyPressed(evt);
+                ResusKeyPressed(evt);
             }
         });
-        FormInput.add(CMbGd1);
-        CMbGd1.setBounds(620, 10, 80, 23);
+        FormInput.add(Resus);
+        Resus.setBounds(620, 10, 80, 23);
 
-        Alamat1.setText("ALAMAT");
-        Alamat1.setHighlighter(null);
-        Alamat1.setName("Alamat1"); // NOI18N
-        Alamat1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        Alamat.setText("ALAMAT");
+        Alamat.setHighlighter(null);
+        Alamat.setName("Alamat"); // NOI18N
+        Alamat.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                Alamat1MouseMoved(evt);
+                AlamatMouseMoved(evt);
             }
         });
-        Alamat1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Alamat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                Alamat1MouseExited(evt);
+                AlamatMouseExited(evt);
             }
         });
-        Alamat1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Alamat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Alamat1KeyPressed(evt);
+                AlamatKeyPressed(evt);
             }
         });
-        FormInput.add(Alamat1);
-        Alamat1.setBounds(454, 40, 283, 23);
+        FormInput.add(Alamat);
+        Alamat.setBounds(454, 40, 283, 23);
 
         BtnKelurahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKelurahan.setMnemonic('2');
@@ -878,16 +913,16 @@ public class UTDPendonor extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbDokterKeyPressed
 
-    private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyPressed
-       Valid.pindah(evt,Telp,Alamat);
-}//GEN-LAST:event_NmKeyPressed
+    private void NamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaKeyPressed
+       Valid.pindah(evt,Telp,KTP);
+}//GEN-LAST:event_NamaKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Nm.getText().trim().equals("")){
+        if(Nama.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kd,"datasuplier","kode_suplier");
+            Valid.hapusTable(tabMode,NoId,"datasuplier","kode_suplier");
             tampil();
             emptTeks();
         }
@@ -902,12 +937,12 @@ public class UTDPendonor extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Kd.getText().trim().equals("")){
-            Valid.textKosong(Kd,"Kode Supplier");
-        }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Supplier");
-        }else if(Alamat.getText().trim().equals("")){
-            Valid.textKosong(Alamat,"Alamat Supplier");
+        if(NoId.getText().trim().equals("")){
+            Valid.textKosong(NoId,"Kode Supplier");
+        }else if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Nama Supplier");
+        }else if(KTP.getText().trim().equals("")){
+            Valid.textKosong(KTP,"Alamat Supplier");
         }else if(Telp.getText().trim().equals("")){
             Valid.textKosong(Telp,"No.Telp");
         }else{
@@ -987,12 +1022,12 @@ public class UTDPendonor extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Kd.getText().trim().equals("")){
-            Valid.textKosong(Kd,"Kode Supplier");
-        }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Supplier");
-        }else if(Alamat.getText().trim().equals("")){
-            Valid.textKosong(Alamat,"Alamat Supplier");
+        if(NoId.getText().trim().equals("")){
+            Valid.textKosong(NoId,"Kode Supplier");
+        }else if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Nama Supplier");
+        }else if(KTP.getText().trim().equals("")){
+            Valid.textKosong(KTP,"Alamat Supplier");
         }else if(Telp.getText().trim().equals("")){
             Valid.textKosong(Telp,"No.Telp");
         }else{
@@ -1026,21 +1061,21 @@ public class UTDPendonor extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void TelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelpKeyPressed
-         Valid.pindah(evt,Kd,Nm);
+         Valid.pindah(evt,NoId,Nama);
     }//GEN-LAST:event_TelpKeyPressed
 
-private void AlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatKeyPressed
-        //Valid.pindah(evt,Nm,Kota);
-}//GEN-LAST:event_AlamatKeyPressed
+private void KTPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KTPKeyPressed
+        Valid.pindah(evt,Nama,JK);
+}//GEN-LAST:event_KTPKeyPressed
 /*
 private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKeyPressed
     Valid.pindah(evt,BtnCari,Nm);
 }//GEN-LAST:event_TKdKeyPressed
 */
 
-    private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKeyPressed
-        //Valid.pindah(evt,NoRek,Telp,TCari);
-    }//GEN-LAST:event_KdKeyPressed
+    private void NoIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoIdKeyPressed
+        Valid.pindah(evt,Alamat,Telp,TCari);
+    }//GEN-LAST:event_NoIdKeyPressed
 
     private void TelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelpMouseExited
         if(Telp.getText().equals("")){
@@ -1062,57 +1097,50 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
-    private void CmbJkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJkKeyPressed
-       // Valid.pindah(evt,TNm,CMbGd);
-    }//GEN-LAST:event_CmbJkKeyPressed
-
-    private void DTPLahirItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPLahirItemStateChanged
-       
-    }//GEN-LAST:event_DTPLahirItemStateChanged
+    private void JKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKKeyPressed
+        Valid.pindah(evt,KTP,Lahir);
+    }//GEN-LAST:event_JKKeyPressed
 
     private void DTPLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahirKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            TUmurTh.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            TTmp.requestFocus();
-        }*/
+        Valid.pindah(evt,Lahir,GD);
     }//GEN-LAST:event_DTPLahirKeyPressed
 
-    private void TTmpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTmpKeyPressed
-        Valid.pindah(evt,CMbGd,DTPLahir);
-    }//GEN-LAST:event_TTmpKeyPressed
+    private void LahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LahirKeyPressed
+        Valid.pindah(evt,JK,DTPLahir);
+    }//GEN-LAST:event_LahirKeyPressed
 
-    private void CMbGd1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CMbGd1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CMbGd1KeyPressed
+    private void ResusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResusKeyPressed
+        Valid.pindah(evt,GD,Alamat);
+    }//GEN-LAST:event_ResusKeyPressed
 
-    private void Alamat1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat1MouseMoved
-        if(Alamat.getText().equals("ALAMAT")){
-            Alamat.setText("");
+    private void AlamatMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlamatMouseMoved
+        if(KTP.getText().equals("ALAMAT")){
+            KTP.setText("");
         }
-    }//GEN-LAST:event_Alamat1MouseMoved
+    }//GEN-LAST:event_AlamatMouseMoved
 
-    private void Alamat1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Alamat1MouseExited
-        if(Alamat.getText().equals("")){
-            Alamat.setText("ALAMAT");
+    private void AlamatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlamatMouseExited
+        if(KTP.getText().equals("")){
+            KTP.setText("ALAMAT");
         }
-    }//GEN-LAST:event_Alamat1MouseExited
+    }//GEN-LAST:event_AlamatMouseExited
 
-    private void Alamat1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alamat1KeyPressed
+    private void AlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            if(Alamat.getText().equals("")){
-                Alamat.setText("ALAMAT");
+            if(KTP.getText().equals("")){
+                KTP.setText("ALAMAT");
             }
             if(Kelurahan.getText().equals("KELURAHAN")){
                 Kelurahan.setText("");
             }
-            Kelurahan.requestFocus();
+            BtnKelurahan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            if(Alamat.getText().equals("")){
-                Alamat.setText("ALAMAT");
+            if(KTP.getText().equals("")){
+                KTP.setText("ALAMAT");
             }
+            Resus.requestFocus();
         }
-    }//GEN-LAST:event_Alamat1KeyPressed
+    }//GEN-LAST:event_AlamatKeyPressed
 
     private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
         kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1140,7 +1168,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(Kecamatan.getText().equals("KECAMATAN")){
                 Kecamatan.setText("");
             }
-            Kecamatan.requestFocus();
+            BtnKecamatan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             if(Kelurahan.getText().equals("")){
                 Kelurahan.setText("KELURAHAN");
@@ -1189,7 +1217,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_KecamatanKeyPressed
 
     private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
-        akses.setform("DlgPasien");
         kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kec.setLocationRelativeTo(internalFrame1);
         kec.setVisible(true);
@@ -1230,7 +1257,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_KabupatenKeyPressed
 
     private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
-        akses.setform("DlgPasien");
         kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kab.setLocationRelativeTo(internalFrame1);
         kab.setVisible(true);
@@ -1253,6 +1279,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(Propinsi.getText().equals("")){
                 Propinsi.setText("PROPINSI");
             }
+            BtnSimpan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             if(Propinsi.getText().equals("")){
                 Propinsi.setText("PROPINSI");
@@ -1272,6 +1299,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         prop.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed
 
+    private void CMbGd3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CMbGd3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CMbGd3KeyPressed
+
+    private void GDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GDKeyPressed
+        Valid.pindah(evt,Lahir,Resus);
+    }//GEN-LAST:event_GDKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1290,7 +1325,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox Alamat;
-    private widget.TextBox Alamat1;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1303,25 +1337,30 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnPrint;
     private widget.Button BtnPropinsi;
     private widget.Button BtnSimpan;
-    private widget.ComboBox CMbGd;
-    private widget.ComboBox CMbGd1;
+    private widget.ComboBox CMbGd2;
+    private widget.ComboBox CMbGd3;
     private widget.CekBox ChkInput;
-    private widget.ComboBox CmbJk;
     private widget.Tanggal DTPLahir;
     private widget.PanelBiasa FormInput;
+    private widget.ComboBox GD;
+    private widget.ComboBox JK;
+    private widget.TextBox KTP;
     private widget.TextBox Kabupaten;
-    private widget.TextBox Kd;
     private widget.TextBox Kecamatan;
     private widget.TextBox Kelurahan;
     private widget.Label LCount;
-    private widget.TextBox Nm;
+    private widget.TextBox Lahir;
+    private widget.TextBox Nama;
+    private widget.TextBox NoId;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Propinsi;
+    private widget.ComboBox Resus;
     private widget.TextBox TCari;
-    private widget.TextBox TTmp;
     private widget.TextBox Telp;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private widget.Label jLabel11;
+    private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel21;
     private widget.Label jLabel8;
@@ -1341,7 +1380,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{
+        /*try{
             ps=koneksi.prepareStatement(
                     "select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
                     " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp,"+
@@ -1378,25 +1417,31 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-        }
+        }*/
         LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {
-        Kd.setText("");
-        Nm.setText("");
-        Alamat.setText("");
+        NoId.setText("");
+        Nama.setText("");
+        KTP.setText("");
         Telp.setText("0");
-        
-        Kd.requestFocus();
-        Valid.autoNomer("datasuplier","S",4,Kd);
+        Lahir.setText("");
+        Alamat.setText("");
+        Kelurahan.setText("KELURAHAN");
+        Kabupaten.setText("KABUPATEN");
+        Kecamatan.setText("KECAMATAN");
+        Propinsi.setText("PROPINSI");
+        DTPLahir.setDate(new Date());
+        NoId.requestFocus();
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pendonor,6),signed)),0) from utd_pendonor","UTD",6,NoId);
     }
 
     private void getData() {
         if(tbDokter.getSelectedRow()!= -1){
-            Kd.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            Nm.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
-            Alamat.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
+            NoId.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+            Nama.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
+            KTP.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
             Telp.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
         }
     }
