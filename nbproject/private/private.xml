@@ -12,14 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/keuangan/DlgDeposit.java</file>
             <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/keuangan/DlgBilingRanap.java</file>
-            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/inventory/DlgResepPulang.java</file>
-            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/simrskhanza/DlgCariJenisBedah.java</file>
-            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/simrskhanza/DlgInputResepPulang.java</file>
-            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/inventory/DlgCariReturBeli.java</file>
-            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/keuangan/DlgRBTindakanDokter.java</file>
-            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/simrskhanza/DlgCariTagihanOperasi.java</file>
+            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/keuangan/DlgPerkiraanBiayaRanap.java</file>
+            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/simrskhanza/DlgKamarInap.java</file>
+            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/keuangan/DlgKamar.java</file>
+            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/simrskhanza/DlgPemberianDiet.java</file>
+            <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/simrskhanza/DlgReg.java</file>
             <file>file:/Users/rsuiharapananda/project/SIMRS-Khanza/src/simrskhanza/DlgTagihanOperasi.java</file>
         </group>
     </open-files>

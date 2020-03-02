@@ -727,20 +727,21 @@ public class DlgDeposit extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane,"Maaf, data sudah habis...!!!!");
             DTPTgl.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(rootPane,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(TPasien.getText().trim().equals(""))){
             try{
                 Sequel.queryu2("delete from deposit where no_rawat=? and tgl_deposit=?",2,new String[]{
-                    tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()
+                    tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()
                 });
                 tampil();
+                JOptionPane.showMessageDialog(rootPane,"Alhamdulillah, Berhasil hapus data!");
                 BtnBatalActionPerformed(evt);
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih terlebih dulu data yang mau anda hapus...\n Klik data pada table untuk memilih data...!!!!");
+                JOptionPane.showMessageDialog(rootPane,"Maaf, Silahkan anda pilih terlebih dulu data yang mau anda hapus...\n Klik data pada table untuk memilih data...!!!!");
             }
         }
 }//GEN-LAST:event_BtnHapusActionPerformed

@@ -4274,7 +4274,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 //                BtnTambahTindakan.setVisible(true);
 //                TCari.setPreferredSize(new Dimension(207,23));            
 //                TabRawatTindakanDokterMouseClicked(null);
-                JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
+                JOptionPane.showMessageDialog(rootPane,"Astaghfirullah, maaf salah pilih menu nih!");
                 TabRawat.setSelectedIndex(2);
                 break;
             case 1:
@@ -4285,7 +4285,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 //                BtnTambahTindakan.setVisible(true); 
 //                TCari.setPreferredSize(new Dimension(207,23));
 //                TabRawatTindakanPetugasMouseClicked(null);
-                JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
+                JOptionPane.showMessageDialog(rootPane,"Astaghfirullah, maaf salah pilih menu nih!");
                 TabRawat.setSelectedIndex(2);
                 break;
             case 2:
@@ -7115,6 +7115,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         tbTindakan3.getValueAt(i,4).toString()
                     })==true){
                         tbTindakan3.setValueAt(false,i,0);
+                        JOptionPane.showMessageDialog(rootPane,"Alhamdulillah berhasil simpan ^_^ .");
                     }
                 }                           
             }

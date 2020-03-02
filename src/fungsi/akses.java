@@ -734,7 +734,8 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_ralan=true;
                         akses.permintaan_diet=true;
                         akses.master_masalah_keperawatan=true;
-                    }else if(rs2.getRow()>=1){   
+                        
+                    } else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
                         akses.kode=user;
@@ -1324,7 +1325,8 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_ralan=rs2.getBoolean("penilaian_awal_keperawatan_ralan");
                         akses.permintaan_diet=rs2.getBoolean("permintaan_diet");
                         akses.master_masalah_keperawatan=rs2.getBoolean("master_masalah_keperawatan");
-                    }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
+                        
+                    } else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
                         akses.obat_penyakit= false;

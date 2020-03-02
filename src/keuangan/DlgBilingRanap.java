@@ -554,13 +554,17 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
                     if(status.equals("belum")){
-                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());
+                        //uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());
                         uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
                         uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
+                        uangdeposit = uangMuka + uangLunasObat;
                     }else{
-                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
+//                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
+                        uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
+                        uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
+                        uangdeposit = uangMuka + uangLunasObat;
                     }
-                    Deposit.setText(Valid.SetAngka(uangdeposit));
+                    Deposit.setText(Valid.SetAngka(uangMuka+uangLunasObat));
                     isKembali();
                 }
             }
@@ -2291,7 +2295,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     
 
                 if(i<=0){
-                    int jawab=JOptionPane.showConfirmDialog(null, "Data pembayaran belum tersimpan, apa anda mau menyimpannya...????","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    int jawab=JOptionPane.showConfirmDialog(rootPane, "Data pembayaran belum tersimpan, apa anda mau menyimpannya...????","Konfirmasi",JOptionPane.YES_NO_OPTION);
                     if(jawab==JOptionPane.YES_OPTION){
                         BtnSimpanActionPerformed(evt);
                         dispose();
@@ -2344,7 +2348,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             String input;
             int pilih = 0;
             try{
-                input = (String) JOptionPane.showInputDialog(null,"Silahkan pilih yang mau ditampilkan!","Keuangan",JOptionPane.QUESTION_MESSAGE,null,options,"Nota 1");
+                input = (String) JOptionPane.showInputDialog(rootPane,"Silahkan pilih yang mau ditampilkan!","Keuangan",JOptionPane.QUESTION_MESSAGE,null,options,"Nota 1");
                 switch (input) {
                     case "Tagihan Masuk":
                         pilih=1;
@@ -3087,24 +3091,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(TNoRw.getText().trim().equals("")||TNoRM.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
         }else if(i>0){
-            JOptionPane.showMessageDialog(null,"Maaf, data tagihan pasien dengan No.Rawat tersebut sudah pernah disimpan...!!!");
+            JOptionPane.showMessageDialog(rootPane,"Maaf, data tagihan pasien dengan No.Rawat tersebut sudah pernah disimpan...!!!");
         }else if(i==0){ 
             if(piutang<=0){
                 if(kekurangan<0){
-                    JOptionPane.showMessageDialog(null,"Maaf, pembayaran pasien masih kurang ...!!!");
+                    JOptionPane.showMessageDialog(rootPane,"Maaf, pembayaran pasien masih kurang ...!!!");
                 }else if(kekurangan>0){
                     if(countbayar>1){
-                        JOptionPane.showMessageDialog(null,"Maaf, kembali harus bernilai 0 untuk cara bayar lebih dari 1...!!!");
+                        JOptionPane.showMessageDialog(rootPane,"Maaf, kembali harus bernilai 0 untuk cara bayar lebih dari 1...!!!");
                     }else{
                         if(ChkPiutang.isSelected()==true){
-                            JOptionPane.showMessageDialog(null,"Maaf, matikan centang di piutang ...!!!");
+                            JOptionPane.showMessageDialog(rootPane,"Maaf, matikan centang di piutang ...!!!");
                         }else{
                             isSimpan();
                         }                            
                     }                        
                 }else if(kekurangan==0){
                     if(ChkPiutang.isSelected()==true){
-                        JOptionPane.showMessageDialog(null,"Maaf, matikan centang di piutang ...!!!");
+                        JOptionPane.showMessageDialog(rootPane,"Maaf, matikan centang di piutang ...!!!");
                     }else{
                         isSimpan();
                     } 
@@ -3112,9 +3116,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }else if(piutang>=1){
                 if(ChkPiutang.isSelected()==true){
                     if(kekurangan<0){
-                        JOptionPane.showMessageDialog(null,"Maaf, piutang belum genap. Silahkan isi di jumlah piutang ...!!!");
+                        JOptionPane.showMessageDialog(rootPane,"Maaf, piutang belum genap. Silahkan isi di jumlah piutang ...!!!");
                     }else if(kekurangan>0){
-                        JOptionPane.showMessageDialog(null,"Maaf, terjadi kelebihan piutang ...!!!");
+                        JOptionPane.showMessageDialog(rootPane,"Maaf, terjadi kelebihan piutang ...!!!");
                     }else{
                         isSimpan();
                     }    
@@ -3365,7 +3369,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
                 i = 0;
                 try{
-                      biaya = (String)JOptionPane.showInputDialog(null,"Silahkan pilih nota yang mau dicetak!","Nota",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Nota 1", "Nota 2", "Kwitansi", "Nota & Kwitansi"},"Nota 1");
+                      biaya = (String)JOptionPane.showInputDialog(rootPane,"Silahkan pilih nota yang mau dicetak!","Nota",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Nota 1", "Nota 2", "Kwitansi", "Nota & Kwitansi"},"Nota 1");
                       switch (biaya) {
                             case "Nota 1":
                                   i=1;
@@ -3388,7 +3392,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText());
                     if(i==1){
-                        Valid.panggilUrl("billing/LaporanBilling2.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_")+"&no_nota="+noNota+"&no_rawat="+TNoRw.getText());
+                        Valid.panggilUrl("billing/LaporanBilling2.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_")+"&no_nota="+noNota+"&no_rawat="+TNoRw.getText()+"&piutang="+piutang);
                     }else if(i==2){
                         ttl=(ttlLaborat+ttlRadiologi+ttlOperasi+ttlObat+ttlRanap_Dokter+ttlRanap_Paramedis+ttlRalan_Dokter+
                                 ttlRalan_Paramedis+ttlTambahan+ttlKamar+ttlRegistrasi+ttlHarian+ttlRetur_Obat+ttlResep_Pulang+ttlService);
@@ -3396,10 +3400,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }else if(i==3){
                         if(piutang>0){
                             Valid.panggilUrl("billing/LaporanBilling8.php?petugas="+akses.getkode().replaceAll(" ","_")+"&nonota="+Sequel.cariIsi("select count(kamar_inap.no_rawat) from kamar_inap inner join reg_periksa "+
-                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4));
+                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+
+                                    kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4)+"&no_rawat="+TNoRw.getText()+"&pasien="+TPasien.getText().replaceAll(" ","_")+"&bayar="+(bayar+besarppn));
                         }else if(piutang<=0){
                             Valid.panggilUrl("billing/LaporanBilling4.php?petugas="+akses.getkode().replaceAll(" ","_")+"&nonota="+Sequel.cariIsi("select count(kamar_inap.no_rawat) from kamar_inap inner join reg_periksa "+
-                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4));
+                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+
+                                    kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4)+"&no_rawat="+TNoRw.getText()+"&pasien="+TPasien.getText().replaceAll(" ","_")+"&bayar="+(bayar+besarppn));
                         }                            
                     }else if(i==4){
                         ttl=(ttlLaborat+ttlRadiologi+ttlOperasi+ttlObat+ttlRanap_Dokter+ttlRanap_Paramedis+ttlRalan_Dokter+
@@ -4023,10 +4029,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             
             if(i<=0){
-                uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());
+                //uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());
                 uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
                 uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
-                Deposit.setText(Valid.SetAngka(uangdeposit));
+                uangdeposit = uangMuka + uangLunasObat;
+                Deposit.setText(Valid.SetAngka(uangMuka + uangLunasObat));
                 prosesCariReg();                     
                 prosesCariKamar();  
                 
@@ -4060,10 +4067,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 isHitung(); 
                 status="belum";
             }else if(i>0){
-                uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
+                //uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
                 uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
                 uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
-                Deposit.setText(Valid.SetAngka(uangdeposit));
+                uangdeposit = uangMuka + uangLunasObat;
+                Deposit.setText(Valid.SetAngka(uangMuka+uangLunasObat));
                 Valid.SetTgl2(DTPTgl,Sequel.cariIsi("select concat(tanggal,' ',jam) from nota_inap where no_rawat='"+TNoRw.getText()+"'"));
                 Valid.tabelKosong(tabModeRwJlDr);  
                 pssudahmasuk=koneksi.prepareStatement(sqlpssudahmasuk);

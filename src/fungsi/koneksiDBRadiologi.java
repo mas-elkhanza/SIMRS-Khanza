@@ -30,7 +30,7 @@ public class koneksiDBRadiologi {
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERBRIDGINGRADIOLOGI")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASBRIDGINGRADIOLOGI")));
                 connection=dataSource.getConnection();       
-                System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging radiologi...!!!");
+//                System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging radiologi...!!!");
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server bridging radiologi terputus : "+e);
             }

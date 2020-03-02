@@ -3418,7 +3418,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                                 cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                                 BagianRS.getText(),Bhp.getText(),JmDokter.getText(),JmPerawat.getText(),KSO.getText(),Menejemen.getText(),TTnd.getText()
                             })==true){
-                                
+                                JOptionPane.showMessageDialog(rootPane,"Alhamdulillah berhasil simpan ^_^ .");
                                 Sequel.queryu("delete from tampjurnal");
                                 if(Valid.SetAngka(TTnd.getText())>0){
                                     Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Tindakan_Ranap+"','Suspen Piutang Tindakan Ranap','"+TTnd.getText()+"','0'","Rekening");
@@ -4078,12 +4078,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         switch (TabRawat.getSelectedIndex()) {
             case 0:
 //                tampilDr();
-                JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
+                JOptionPane.showMessageDialog(rootPane,"Astaghfirullah, maaf salah pilih menu nih!");
                 TabRawat.setSelectedIndex(2);
                 break;
             case 1:
 //                tampilPr();
-                JOptionPane.showMessageDialog(rootPane,"Eitsss salah pilih menu!");
+                JOptionPane.showMessageDialog(rootPane,"Astaghfirullah, maaf salah pilih menu nih!");
                 TabRawat.setSelectedIndex(2);
                 break;
             case 2:
