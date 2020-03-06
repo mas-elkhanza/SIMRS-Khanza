@@ -7729,7 +7729,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="27/02/2020"/>
+            <StringItem index="0" value="02/03/2020"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -9212,7 +9212,7 @@
               <Image iconType="3" name="/picture/shopping-cart-insert24.png"/>
             </Property>
             <Property name="mnemonic" type="int" value="106"/>
-            <Property name="text" type="java.lang.String" value="Penjualan"/>
+            <Property name="text" type="java.lang.String" value="Farmasi"/>
             <Property name="toolTipText" type="java.lang.String" value="Alt+J"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>

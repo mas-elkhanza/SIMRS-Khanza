@@ -6937,7 +6937,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/02/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/02/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7176,7 +7176,7 @@ public class frmUtama extends javax.swing.JFrame {
         BtnToolJualObat.setBackground(new java.awt.Color(255, 255, 255));
         BtnToolJualObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/shopping-cart-insert24.png"))); // NOI18N
         BtnToolJualObat.setMnemonic('j');
-        BtnToolJualObat.setText("Penjualan");
+        BtnToolJualObat.setText("Farmasi");
         BtnToolJualObat.setToolTipText("Alt+J");
         BtnToolJualObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnToolJualObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
