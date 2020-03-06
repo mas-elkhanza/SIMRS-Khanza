@@ -51,16 +51,18 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
 			
-				$_sql         = "SELECT * FROM set_tahun";
-				$hasil        = bukaquery($_sql);
-				$baris        = mysqli_fetch_row($hasil);
-				$tahun         = $baris[0];
-				$bulan          = $baris[1];
+                $_sql         = "SELECT * FROM set_tahun";
+                $hasil        = bukaquery($_sql);
+                $baris        = mysqli_fetch_row($hasil);
+                $tahun         = $baris[0];
+                $bulan          = $baris[1];
 
                 if (isset($BtnSimpan)) {
-                    $pendapatan    = trim($_POST['pendapatan']);
-                    $persen    = trim($_POST['persen']);
-					$total_insentif=($persen/100)*$pendapatan;
+                    $pendapatan = trim($_POST['pendapatan']);
+                    $pendapatan = validangka($pendapatan);
+                    $persen     = trim($_POST['persen']);
+                    $persen     = validangka($persen);
+                    $total_insentif=($persen/100)*$pendapatan;
                     if ((!empty($pendapatan))&&(!empty($persen))) {
                         switch($action) {
                             case "TAMBAH":

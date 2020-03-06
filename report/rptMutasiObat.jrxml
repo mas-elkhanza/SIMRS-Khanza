@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e95053d9-a25c-4242-bf96-72609984b82e">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e95053d9-a25c-4242-bf96-72609984b82e">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -12,41 +25,76 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select mutasibarang.kd_bangsaldari,(select nm_bangsal from bangsal
- where kd_bangsal=kd_bangsaldari) as dari , mutasibarang.kd_bangsalke,
-(select nm_bangsal from bangsal where kd_bangsal=kd_bangsalke) as ke,
-mutasibarang.kode_brng,databarang.nama_brng,mutasibarang.jml,
-mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as total, mutasibarang.tanggal,mutasibarang.keterangan from mutasibarang inner join databarang
-                  on mutasibarang.kode_brng=databarang.kode_brng]]>
+		<![CDATA[select mutasibarang.kd_bangsaldari,bangsaldari.nm_bangsal as dari,
+mutasibarang.kd_bangsalke,bangsalke.nm_bangsal as ke,
+mutasibarang.kode_brng,databarang.nama_brng,mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as total,
+mutasibarang.tanggal,mutasibarang.keterangan,mutasibarang.no_batch,mutasibarang.no_faktur
+from mutasibarang inner join databarang on mutasibarang.kode_brng=databarang.kode_brng 
+inner join bangsal as bangsaldari on mutasibarang.kd_bangsaldari=bangsaldari.kd_bangsal 
+inner join bangsal as bangsalke on mutasibarang.kd_bangsalke=bangsalke.kd_bangsal 
+inner join jenis on databarang.kdjns=jenis.kdjns
+inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode
+inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode ]]>
 	</queryString>
 	<field name="kd_bangsaldari" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kd_bangsaldari"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mutasibarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="dari" class="java.lang.String"/>
+	<field name="dari" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="dari"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bangsal"/>
+	</field>
 	<field name="kd_bangsalke" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kd_bangsalke"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mutasibarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="ke" class="java.lang.String"/>
+	<field name="ke" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ke"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bangsal"/>
+	</field>
 	<field name="kode_brng" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_brng"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mutasibarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_brng" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_brng"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="databarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jml" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="jml"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mutasibarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="harga" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="harga"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mutasibarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tanggal" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mutasibarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="keterangan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="keterangan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mutasibarang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_batch" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_batch"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mutasibarang"/>
+	</field>
+	<field name="no_faktur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_faktur"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mutasibarang"/>
 	</field>
 	<variable name="total" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{total}]]></variableExpression>
@@ -57,7 +105,7 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 	<title>
 		<band height="84" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="52" width="802" height="23" uuid="193c2ea9-0b33-475c-912e-24e48bc39d62"/>
+				<reportElement x="0" y="52" width="960" height="23" uuid="193c2ea9-0b33-475c-912e-24e48bc39d62"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -65,7 +113,7 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 				<text><![CDATA[DATA MUTASI OBAT, ALKES & BHP MEDIS]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="14" width="802" height="14" uuid="1b41f62c-b19b-4166-a9ee-cbd84dfc05dd"/>
+				<reportElement x="0" y="14" width="960" height="14" uuid="1b41f62c-b19b-4166-a9ee-cbd84dfc05dd"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -73,7 +121,7 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="36" width="802" height="14" uuid="b3458df0-8ce4-4d05-94a6-20cc66537471"/>
+				<reportElement x="0" y="36" width="960" height="14" uuid="b3458df0-8ce4-4d05-94a6-20cc66537471"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -81,13 +129,13 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="49" width="802" height="1" uuid="4b3148ca-b1c5-4e6c-b06f-66fc442eec31"/>
+				<reportElement x="0" y="49" width="960" height="1" uuid="4b3148ca-b1c5-4e6c-b06f-66fc442eec31"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Double"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="0" y="0" width="802" height="17" uuid="2af0a45d-df3c-400b-ac17-f8fe5b0ac692"/>
+				<reportElement x="0" y="0" width="960" height="17" uuid="2af0a45d-df3c-400b-ac17-f8fe5b0ac692"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="13"/>
 					<paragraph lineSpacing="Single"/>
@@ -95,7 +143,7 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="25" width="802" height="14" uuid="58f0d567-2f23-4597-86e5-a40446ab3f5a"/>
+				<reportElement x="0" y="25" width="960" height="14" uuid="58f0d567-2f23-4597-86e5-a40446ab3f5a"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -113,6 +161,23 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 	</pageHeader>
 	<columnHeader>
 		<band height="18" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement mode="Opaque" x="802" y="0" width="68" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="05e48e78-6ad3-47f6-9cda-6c736959b554"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.Batch]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="870" y="0" width="90" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="8bcf89d6-1d4d-4d83-99f0-f1ce713db6c1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.Faktur]]></text>
+			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="441" y="0" width="62" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="38a8cea1-11a3-4263-8520-c5a5bae2f7ac"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -186,13 +251,13 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 				<text><![CDATA[Keterangan]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="0" width="802" height="1" uuid="8d041b6c-0709-4ceb-aedc-15a4404fe113"/>
+				<reportElement x="0" y="0" width="960" height="1" uuid="8d041b6c-0709-4ceb-aedc-15a4404fe113"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="16" width="802" height="1" uuid="d97f60bc-ef0d-4f34-828b-8f2dded7ed18"/>
+				<reportElement x="0" y="16" width="960" height="1" uuid="d97f60bc-ef0d-4f34-828b-8f2dded7ed18"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -200,7 +265,8 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="11" splitType="Stretch">
+		<band height="12" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="2" y="0" width="97" height="10" uuid="d31017ae-67df-4f2d-91f2-3dde2236881c"/>
 				<textElement>
@@ -273,6 +339,30 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 				</textElement>
 				<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
 			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="802" y="0" width="68" height="10" uuid="ad9d9861-f82f-43fb-80fe-a1d130820b44"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_batch}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="870" y="0" width="90" height="10" uuid="68592090-a2c5-420b-b9f2-f5e1ea2148f0"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_faktur}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="11" width="960" height="1" uuid="af3d2b97-65ca-45c1-a074-3a6f1cf745ef">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
@@ -281,7 +371,7 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 	<pageFooter>
 		<band height="26" splitType="Stretch">
 			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="764" y="6" width="36" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="19e59a3e-9358-43a9-b9b9-f0ba1ef6e166"/>
+				<reportElement key="textField" x="754" y="6" width="36" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="19e59a3e-9358-43a9-b9b9-f0ba1ef6e166"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -295,7 +385,7 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" x="621" y="6" width="143" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="056afa43-4e85-4da8-a3bd-2de2669afb99"/>
+				<reportElement key="textField" x="611" y="6" width="143" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="056afa43-4e85-4da8-a3bd-2de2669afb99"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -323,13 +413,13 @@ mutasibarang.jml,mutasibarang.harga,(mutasibarang.jml*mutasibarang.harga)  as to
 				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="0" width="802" height="1" uuid="495f9807-b99f-44d7-9e53-a5e95b0322b9"/>
+				<reportElement x="0" y="0" width="960" height="1" uuid="495f9807-b99f-44d7-9e53-a5e95b0322b9"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="23" width="802" height="1" uuid="a7a38721-7ce5-402d-947d-8bea018e7a88"/>
+				<reportElement x="0" y="23" width="960" height="1" uuid="a7a38721-7ce5-402d-947d-8bea018e7a88"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

@@ -14,14 +14,14 @@
                 $kode_resiko     =str_replace("_"," ",isset($_GET['kode_resiko'])?$_GET['kode_resiko']:NULL);
                 if($action == "TAMBAH"){
                     $kode_resiko       = str_replace("_"," ",isset($_GET['kode_resiko']))?str_replace("_"," ",$_GET['kode_resiko']):NULL;
-                    $nama_resiko        = "";
-                    $indek      ="";
+                    $nama_resiko       = "";
+                    $indek             = "";
                 }else if($action == "UBAH"){
                     $_sql           = "SELECT * FROM resiko_kerja WHERE kode_resiko='$kode_resiko'";
                     $hasil          = bukaquery($_sql);
                     $baris          = mysqli_fetch_row($hasil);
-                    $kode_resiko  = $baris[0];
-                    $nama_resiko  = $baris[1];
+                    $kode_resiko    = $baris[0];
+                    $nama_resiko    = $baris[1];
                     $indek          = $baris[2];
                 }
                 echo"<input type=hidden name=kode_resiko value=$kode_resiko><input type=hidden name=action value=$action>";
@@ -50,9 +50,9 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $kode_resiko    = trim($_POST['kode_resiko']);
-                    $nama_resiko    = trim($_POST['nama_resiko']);
-                    $indek   = trim($_POST['indek']);
+                    $kode_resiko    = validTeks(trim($_POST['kode_resiko']));
+                    $nama_resiko    = validTeks(trim($_POST['nama_resiko']));
+                    $indek          = validTeks(trim($_POST['indek']));
                     if ((!empty($kode_resiko))&&(!empty($nama_resiko))&&(!empty($indek))) {
                         switch($action) {
                             case "TAMBAH":

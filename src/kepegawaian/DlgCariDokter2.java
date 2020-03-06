@@ -37,7 +37,6 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariDokter2 extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
@@ -121,7 +120,6 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
             });
         }
     }
-    public DlgDokter dokter=new DlgDokter(null,false);
     
 
 
@@ -337,6 +335,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         //nm_dokter.setModal(true);
+        DlgDokter dokter=new DlgDokter(null,false);
         dokter.emptTeks();
         dokter.isCek();
         dokter.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());

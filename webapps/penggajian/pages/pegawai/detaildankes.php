@@ -91,8 +91,8 @@
                     $id           =trim($_POST['id']);
                     $TglAmbil     =trim($_POST['TglAmbil']);
                     $BlnAmbil     =trim($_POST['BlnAmbil']);
-                    $ktg          =trim($_POST['ktg']);
-                    $dankes       =trim($_POST['dankes']);
+                    $ktg          = validTeks(trim($_POST['ktg']));
+                    $dankes       = validangka(trim($_POST['dankes']));
                     if ((!empty($id))&&(!empty($dankes))) {
                         switch($action) {
                             case "TAMBAH":

@@ -51,8 +51,10 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $kode_emergency    = trim($_POST['kode_emergency']);
+                    $kode_emergency    = validTeks($kode_emergency);
                     $nama_emergency    = trim($_POST['nama_emergency']);
-                    $indek   = trim($_POST['indek']);
+                    $nama_emergency    = validTeks($nama_emergency);
+                    $indek             = validTeks(trim($_POST['indek']));
                     if ((!empty($kode_emergency))&&(!empty($nama_emergency))&&(!empty($indek))) {
                         switch($action) {
                             case "TAMBAH":

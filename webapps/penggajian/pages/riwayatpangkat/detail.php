@@ -142,15 +142,15 @@
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
                 $id                 =trim($_POST['id']);
-                $jabatan            =trim($_POST['jabatan']);
+                $jabatan            =validTeks(trim($_POST['jabatan']));
                 $tmt_pangkat        =trim($_POST['ThnJabatan'])."-".trim($_POST['BlnJabatan'])."-".trim($_POST['TglJabatan']);
                 $tmt_pangkat_yad    =trim($_POST['ThnJabatanYad'])."-".trim($_POST['BlnJabatanYad'])."-".trim($_POST['TglJabatanYad']);
-                $pejabat_penetap    =trim($_POST['pejabat_penetap']);
-                $nomor_sk           =trim($_POST['nomor_sk']);
+                $pejabat_penetap    =validTeks(trim($_POST['pejabat_penetap']));
+                $nomor_sk           =validTeks(trim($_POST['nomor_sk']));
                 $tgl_sk             =trim($_POST['ThnSK'])."-".trim($_POST['BlnSK'])."-".trim($_POST['TglSK']);
-                $dasar_peraturan    =trim($_POST['dasar_peraturan']);
-                $masa_kerja         =trim($_POST['masa_kerja']);
-                $bln_kerja          =trim($_POST['bln_kerja']);
+                $dasar_peraturan    =validTeks(trim($_POST['dasar_peraturan']));
+                $masa_kerja         =validTeks(trim($_POST['masa_kerja']));
+                $bln_kerja          =validTeks(trim($_POST['bln_kerja']));
                 $dokumen            = str_replace(" ","_","pages/riwayatpangkat/berkas/".$_FILES['dokumen']['name']);
                 if ((!empty($id))&&(!empty($jabatan))) {
                     switch($action) {

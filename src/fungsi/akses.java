@@ -123,7 +123,12 @@ public final class akses {
             grafik_emergency_indexpegawai=false,grafik_inventaris_ruang=false,harian_HAIs2=false,grafik_inventaris_jenis=false,data_resume_pasien=false,
             perkiraan_biaya_ranap=false,rekap_obat_poli=false,rekap_obat_pasien=false,grafik_HAIs_pasienbangsal=false,grafik_HAIs_pasienbulan=false,
             permintaan_perbaikan_inventaris=false,grafik_HAIs_laju_vap=false,grafik_HAIs_laju_iad=false,grafik_HAIs_laju_pleb=false,grafik_HAIs_laju_isk=false,
-            grafik_HAIs_laju_ilo=false,grafik_HAIs_laju_hap=false,inhealth_mapping_poli=false,inhealth_mapping_dokter=false,inhealth_mapping_tindakan_ralan=false;
+            grafik_HAIs_laju_ilo=false,grafik_HAIs_laju_hap=false,inhealth_mapping_poli=false,inhealth_mapping_dokter=false,inhealth_mapping_tindakan_ralan=false,
+            inhealth_mapping_tindakan_ranap=false,inhealth_mapping_tindakan_radiologi=false,inhealth_mapping_tindakan_laborat=false,
+            inhealth_mapping_tindakan_operasi=false,hibah_obat_bhp=false,asal_hibah=false,asuhan_gizi=false,inhealth_kirim_tagihan=false,
+            sirkulasi_obat4=false,sirkulasi_obat5=false,sirkulasi_non_medis2=false,monitoring_asuhan_gizi=false,penerimaan_obat_perbulan=false,
+            rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false,master_masalah_keperawatan=false,
+            pengajuan_cuti=false,kedatangan_pasien=false,utd_pendonor=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -712,6 +717,27 @@ public final class akses {
                         akses.inhealth_mapping_poli=true;
                         akses.inhealth_mapping_dokter=true;
                         akses.inhealth_mapping_tindakan_ralan=true;
+                        akses.inhealth_mapping_tindakan_ranap=true;
+                        akses.inhealth_mapping_tindakan_radiologi=true;
+                        akses.inhealth_mapping_tindakan_laborat=true;
+                        akses.inhealth_mapping_tindakan_operasi=true;
+                        akses.hibah_obat_bhp=true;
+                        akses.asal_hibah=true;
+                        akses.asuhan_gizi=true;
+                        akses.inhealth_kirim_tagihan=true;
+                        akses.sirkulasi_obat4=true;
+                        akses.sirkulasi_obat5=true;
+                        akses.sirkulasi_non_medis2=true;
+                        akses.monitoring_asuhan_gizi=true;
+                        akses.penerimaan_obat_perbulan=true;
+                        akses.rekap_kunjungan=true;
+                        akses.surat_sakit=true;
+                        akses.penilaian_awal_keperawatan_ralan=true;
+                        akses.permintaan_diet=true;
+                        akses.master_masalah_keperawatan=true;
+                        akses.pengajuan_cuti=true;
+                        akses.kedatangan_pasien=true;
+                        akses.utd_pendonor=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1284,6 +1310,27 @@ public final class akses {
                         akses.inhealth_mapping_poli=rs2.getBoolean("inhealth_mapping_poli");
                         akses.inhealth_mapping_dokter=rs2.getBoolean("inhealth_mapping_dokter");
                         akses.inhealth_mapping_tindakan_ralan=rs2.getBoolean("inhealth_mapping_tindakan_ralan");
+                        akses.inhealth_mapping_tindakan_ranap=rs2.getBoolean("inhealth_mapping_tindakan_ranap");
+                        akses.inhealth_mapping_tindakan_radiologi=rs2.getBoolean("inhealth_mapping_tindakan_radiologi");
+                        akses.inhealth_mapping_tindakan_laborat=rs2.getBoolean("inhealth_mapping_tindakan_laborat");
+                        akses.inhealth_mapping_tindakan_operasi=rs2.getBoolean("inhealth_mapping_tindakan_operasi");
+                        akses.hibah_obat_bhp=rs2.getBoolean("hibah_obat_bhp");
+                        akses.asal_hibah=rs2.getBoolean("asal_hibah");
+                        akses.asuhan_gizi=rs2.getBoolean("asuhan_gizi");
+                        akses.inhealth_kirim_tagihan=rs2.getBoolean("inhealth_kirim_tagihan");
+                        akses.sirkulasi_obat4=rs2.getBoolean("sirkulasi_obat4");
+                        akses.sirkulasi_obat5=rs2.getBoolean("sirkulasi_obat5");
+                        akses.sirkulasi_non_medis2=rs2.getBoolean("sirkulasi_non_medis2");
+                        akses.monitoring_asuhan_gizi=rs2.getBoolean("monitoring_asuhan_gizi");
+                        akses.penerimaan_obat_perbulan=rs2.getBoolean("penerimaan_obat_perbulan");
+                        akses.rekap_kunjungan=rs2.getBoolean("rekap_kunjungan");
+                        akses.surat_sakit=rs2.getBoolean("surat_sakit");
+                        akses.penilaian_awal_keperawatan_ralan=rs2.getBoolean("penilaian_awal_keperawatan_ralan");
+                        akses.permintaan_diet=rs2.getBoolean("permintaan_diet");
+                        akses.master_masalah_keperawatan=rs2.getBoolean("master_masalah_keperawatan");
+                        akses.pengajuan_cuti=rs2.getBoolean("pengajuan_cuti");
+                        akses.kedatangan_pasien=rs2.getBoolean("kedatangan_pasien");
+                        akses.utd_pendonor=rs2.getBoolean("utd_pendonor");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1854,6 +1901,27 @@ public final class akses {
                         akses.inhealth_mapping_poli=false;
                         akses.inhealth_mapping_dokter=false;
                         akses.inhealth_mapping_tindakan_ralan=false;
+                        akses.inhealth_mapping_tindakan_ranap=false;
+                        akses.inhealth_mapping_tindakan_radiologi=false;
+                        akses.inhealth_mapping_tindakan_laborat=false;
+                        akses.inhealth_mapping_tindakan_operasi=false;
+                        akses.hibah_obat_bhp=false;
+                        akses.asal_hibah=false;
+                        akses.asuhan_gizi=false;
+                        akses.inhealth_kirim_tagihan=false;
+                        akses.sirkulasi_obat4=false;
+                        akses.sirkulasi_obat5=false;
+                        akses.sirkulasi_non_medis2=false;
+                        akses.monitoring_asuhan_gizi=false;
+                        akses.penerimaan_obat_perbulan=false;
+                        akses.rekap_kunjungan=false;
+                        akses.surat_sakit=false;
+                        akses.penilaian_awal_keperawatan_ralan=false;
+                        akses.permintaan_diet=false;
+                        akses.master_masalah_keperawatan=false;
+                        akses.pengajuan_cuti=false;
+                        akses.kedatangan_pasien=false;
+                        akses.utd_pendonor=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2478,4 +2546,25 @@ public final class akses {
     public static boolean getinhealth_mapping_poli(){return akses.inhealth_mapping_poli;}
     public static boolean getinhealth_mapping_dokter(){return akses.inhealth_mapping_dokter;}
     public static boolean getinhealth_mapping_tindakan_ralan(){return akses.inhealth_mapping_tindakan_ralan;}
+    public static boolean getinhealth_mapping_tindakan_ranap(){return akses.inhealth_mapping_tindakan_ranap;}
+    public static boolean getinhealth_mapping_tindakan_radiologi(){return akses.inhealth_mapping_tindakan_radiologi;}
+    public static boolean getinhealth_mapping_tindakan_laborat(){return akses.inhealth_mapping_tindakan_laborat;}
+    public static boolean getinhealth_mapping_tindakan_operasi(){return akses.inhealth_mapping_tindakan_operasi;}
+    public static boolean gethibah_obat_bhp(){return akses.hibah_obat_bhp;}
+    public static boolean getasal_hibah(){return akses.asal_hibah;}
+    public static boolean getasuhan_gizi(){return akses.asuhan_gizi;}
+    public static boolean getinhealth_kirim_tagihan(){return akses.inhealth_kirim_tagihan;}
+    public static boolean getsirkulasi_obat4(){return akses.sirkulasi_obat4;}
+    public static boolean getsirkulasi_obat5(){return akses.sirkulasi_obat5;}
+    public static boolean getsirkulasi_non_medis2(){return akses.sirkulasi_non_medis2;}
+    public static boolean getmonitoring_asuhan_gizi(){return akses.monitoring_asuhan_gizi;}
+    public static boolean getpenerimaan_obat_perbulan(){return akses.penerimaan_obat_perbulan;}
+    public static boolean getrekap_kunjungan(){return akses.rekap_kunjungan;}
+    public static boolean getsurat_sakit(){return akses.surat_sakit;}
+    public static boolean getpenilaian_awal_keperawatan_ralan(){return akses.penilaian_awal_keperawatan_ralan;}
+    public static boolean getpermintaan_diet(){return akses.permintaan_diet;}
+    public static boolean getmaster_masalah_keperawatan(){return akses.master_masalah_keperawatan;}
+    public static boolean getpengajuan_cuti(){return akses.pengajuan_cuti;}
+    public static boolean getkedatangan_pasien(){return akses.kedatangan_pasien;}
+    public static boolean getutd_pendonor(){return akses.utd_pendonor;}
 }   

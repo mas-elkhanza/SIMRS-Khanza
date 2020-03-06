@@ -283,7 +283,7 @@ public class GrafikPasienHAIsRuang extends javax.swing.JDialog {
     private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint3ActionPerformed
         DefaultCategoryDataset dcd = new DefaultCategoryDataset();
         try {                
-            rs = koneksi.prepareStatement("select bangsal.nm_bangsal,count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal "+
+            rs = koneksi.prepareStatement("select bangsal.nm_bangsal,count(distinct data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal "+
                "on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal "+
                "between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by bangsal.kd_bangsal").executeQuery();
             while(rs.next()) {
@@ -320,7 +320,7 @@ public class GrafikPasienHAIsRuang extends javax.swing.JDialog {
 
     private void BtnPrint4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint4ActionPerformed
        grafiksql2 kas=new grafiksql2("Grafik Pasien HAIs Per Ruang Periode "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),
-               "select bangsal.nm_bangsal,count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal "+
+               "select bangsal.nm_bangsal,count(distinct data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal "+
                "on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal "+
                "between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' "+
                "group by bangsal.kd_bangsal","Ruang");
@@ -338,7 +338,7 @@ public class GrafikPasienHAIsRuang extends javax.swing.JDialog {
     private void BtnPrint5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint5ActionPerformed
         DefaultPieDataset dpd = new DefaultPieDataset();
         try {                
-            rs = koneksi.prepareStatement("select bangsal.nm_bangsal,count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal "+
+            rs = koneksi.prepareStatement("select bangsal.nm_bangsal,count(distinct data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal "+
                "on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal "+
                "between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by bangsal.kd_bangsal").executeQuery();
             while(rs.next()) {
@@ -437,7 +437,8 @@ public class GrafikPasienHAIsRuang extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                "select bangsal.nm_bangsal,count(data_HAIs.no_rawat) from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by bangsal.kd_bangsal");
+                "select bangsal.nm_bangsal as bangsal,count(distinct data_HAIs.no_rawat) "+
+                "from data_HAIs inner join kamar inner join bangsal on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where data_HAIs.tanggal between '"+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tanggal2.getSelectedItem()+"")+"' group by bangsal.kd_bangsal");
             try {
                 rs=ps.executeQuery();
                 total=0;

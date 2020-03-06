@@ -110,6 +110,7 @@ public class DlgCetak extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(50, 23));
         jPanel4.add(jLabel4);
 
+        BtnAbout.setBorder(null);
         BtnAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         BtnAbout.setText("Bukti Register 1");
         BtnAbout.setBorderPainted(false);
@@ -127,6 +128,7 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout);
 
+        BtnAbout4.setBorder(null);
         BtnAbout4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         BtnAbout4.setText("Bukti Register 2");
         BtnAbout4.setBorderPainted(false);
@@ -144,6 +146,7 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout4);
 
+        BtnAbout5.setBorder(null);
         BtnAbout5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         BtnAbout5.setText("Bukti Register 3");
         BtnAbout5.setBorderPainted(false);
@@ -161,6 +164,7 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout5);
 
+        BtnAbout1.setBorder(null);
         BtnAbout1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         BtnAbout1.setText("Lembar Periksa 1");
         BtnAbout1.setBorderPainted(false);
@@ -178,6 +182,7 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout1);
 
+        BtnAbout3.setBorder(null);
         BtnAbout3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         BtnAbout3.setText("Lembar Periksa 2");
         BtnAbout3.setBorderPainted(false);
@@ -195,6 +200,7 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout3);
 
+        BtnAbout2.setBorder(null);
         BtnAbout2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         BtnAbout2.setText("Barcode Perawatan");
         BtnAbout2.setBorderPainted(false);
@@ -212,6 +218,7 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout2);
 
+        BtnKeluar.setBorder(null);
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logout.png"))); // NOI18N
         BtnKeluar.setText("Selesai");
         BtnKeluar.setBorderPainted(false);

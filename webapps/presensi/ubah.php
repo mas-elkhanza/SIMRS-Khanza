@@ -40,8 +40,8 @@
             <?php
                 $BtnSimpan=$_POST['BtnSimpan'];
                 if (isset($BtnSimpan)) {
-                    $id           = trim($_POST['id']);
-                    $keterangan           = trim($_POST['keterangan']);     
+                    $id           = validTeks(trim($_POST['id']));
+                    $keterangan           = validTeks(trim($_POST['keterangan']));     
                     if ((!empty($id))&&(!empty($keterangan))) {
                                 Ubah(" rekap_presensi "," keterangan='$keterangan'  WHERE id='$id'  ", " Keterangan ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?page=TampilPulang'></head><body></body></html>";

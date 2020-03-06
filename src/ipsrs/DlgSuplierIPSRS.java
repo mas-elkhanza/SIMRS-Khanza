@@ -69,7 +69,8 @@ public class DlgSuplierIPSRS extends javax.swing.JDialog {
         Alamat.setDocument(new batasInput((byte)50).getKata(Alamat));  
         Kota.setDocument(new batasInput((byte)20).getKata(Kota));    
         Telp.setDocument(new batasInput((byte)13).getOnlyAngka(Telp)); 
-        NoRek.setDocument(new batasInput((byte)20).getKata(NoRek));  
+        NoRek.setDocument(new batasInput((byte)20).getKata(NoRek));   
+        Bank.setDocument(new batasInput((byte)30).getKata(Bank));  
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -850,6 +851,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     " ipsrssuplier.nama_suplier like ? or "+
                     " ipsrssuplier.alamat like ? or "+
                     " ipsrssuplier.kota like ? or "+
+                    " ipsrssuplier.nama_bank like ? or "+
                     " ipsrssuplier.no_telp like ? order by ipsrssuplier.kode_suplier");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -857,6 +859,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
                 ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{

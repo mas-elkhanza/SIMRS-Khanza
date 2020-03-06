@@ -123,14 +123,14 @@
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
                 $id                 =trim($_POST['id']);
-                $pendidikan         =trim($_POST['pendidikan']);
-                $sekolah            =trim($_POST['sekolah']);
-                $jurusan            =trim($_POST['jurusan']);
-                $thn_lulus          =trim($_POST['thn_lulus']);
-                $kepala             =trim($_POST['kepala']);
-                $pendanaan          =trim($_POST['pendanaan']);
-                $keterangan         =trim($_POST['keterangan']);
-                $status             =trim($_POST['status']);                    
+                $pendidikan         =validTeks(trim($_POST['pendidikan']));
+                $sekolah            =validTeks(trim($_POST['sekolah']));
+                $jurusan            =validTeks(trim($_POST['jurusan']));
+                $thn_lulus          =validTeks(trim($_POST['thn_lulus']));
+                $kepala             =validTeks(trim($_POST['kepala']));
+                $pendanaan          =validTeks(trim($_POST['pendanaan']));
+                $keterangan         =validTeks(trim($_POST['keterangan']));
+                $status             =validTeks(trim($_POST['status']));                    
                 $dokumen            = str_replace(" ","_","pages/riwayatpendidikan/berkas/".$_FILES['dokumen']['name']);
                 if ((!empty($id))&&(!empty($pendidikan))&&(!empty($sekolah))) {
                     switch($action) {

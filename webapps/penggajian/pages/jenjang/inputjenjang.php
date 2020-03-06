@@ -58,10 +58,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $kode    = trim($_POST['kode']);
-                    $nama    = trim($_POST['nama']);
-                    $tnj     = trim($_POST['tnj']);
-                    $indek   = trim($_POST['indek']);
+                    $kode    = validTeks(trim($_POST['kode']));
+                    $nama    = validTeks(trim($_POST['nama']));
+                    $tnj     = validTeks(trim($_POST['tnj']));
+                    $indek   = validTeks(trim($_POST['indek']));
                     if ((!empty($kode))&&(!empty($nama))&&(!empty($tnj))&&(!empty($indek))) {
                         switch($action) {
                             case "TAMBAH":

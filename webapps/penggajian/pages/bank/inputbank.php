@@ -35,6 +35,7 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $namabank    = trim($_POST['namabank']);
+                    $namabank    = validTeks($namabank);   
                     if (!empty($namabank)) {
                         switch($action) {
                             case "TAMBAH":

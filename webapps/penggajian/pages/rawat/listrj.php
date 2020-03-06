@@ -39,15 +39,15 @@
     <div style="width: 100%; height: 78%; overflow: auto;">
     <?php
         $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
-
-        $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
-		        pegawai.departemen,sum(rawatjalan.jmlh),sum(rawatjalan.jm)
-                FROM rawatjalan right OUTER JOIN pegawai
-				ON rawatjalan.id=pegawai.id and tgl like '%".$tahun."-".$bulan."%'                                
-				where pegawai.nik like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR' and pegawai.jbtn like '%dokter spesialis%' or
-				pegawai.nama like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR' and pegawai.jbtn like '%dokter spesialis%' or
-				pegawai.departemen like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR' and pegawai.jbtn like '%dokter spesialis%'
-				group by pegawai.id order by pegawai.id ASC ";
+        $keyword= validTeks($keyword);
+        $_sql   = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
+                    pegawai.departemen,sum(rawatjalan.jmlh),sum(rawatjalan.jm)
+                    FROM rawatjalan right OUTER JOIN pegawai
+                    ON rawatjalan.id=pegawai.id and tgl like '%".$tahun."-".$bulan."%'                                
+                    where pegawai.nik like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR' and pegawai.jbtn like '%dokter spesialis%' or
+                    pegawai.nama like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR' and pegawai.jbtn like '%dokter spesialis%' or
+                    pegawai.departemen like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR' and pegawai.jbtn like '%dokter spesialis%'
+                    group by pegawai.id order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
         $ttljm=0;
@@ -61,7 +61,7 @@
                         <td width='10%'><div align='center'>Ttl.JM Tindakan</div></td>
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
-					    $ttljm=$ttljm+$baris[5];
+                        $ttljm=$ttljm+$baris[5];
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
                                 <td>
                                     <center>
@@ -70,17 +70,18 @@
                                </td>
                                 <td><a href=?act=InputRj&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
                                 <td><a href=?act=InputRj&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
-                                <td><a href=?act=InputRj&action=TAMBAH&id=$baris[0]>";$_sql2="select master_tindakan.nama,sum(rawatjalan.jmlh)
-                                              from master_tindakan,rawatjalan
-                                              where rawatjalan.tnd=master_tindakan.id and
-                                              rawatjalan.id='$baris[0]' 
-                                              and tgl like '%".$tahun."-".$bulan."%'
-                                              group by rawatjalan.tnd ";
-				      $hasil2=bukaquery($_sql2);
-				     while($baris2 = mysqli_fetch_array($hasil2)) {
-					  echo "<table width='300px'><tr class='isi3'><td width='200px'>$baris2[0]</td><td>: $baris2[1]</td></tr></table>";
-				     }
-				    echo"&nbsp;</a>
+                                <td><a href=?act=InputRj&action=TAMBAH&id=$baris[0]>";
+                                $_sql2="select master_tindakan.nama,sum(rawatjalan.jmlh)
+                                          from master_tindakan,rawatjalan
+                                          where rawatjalan.tnd=master_tindakan.id and
+                                          rawatjalan.id='$baris[0]' 
+                                          and tgl like '%".$tahun."-".$bulan."%'
+                                          group by rawatjalan.tnd ";
+                                 $hasil2=bukaquery($_sql2);
+                                 while($baris2 = mysqli_fetch_array($hasil2)) {
+                                      echo "<table width='300px'><tr class='isi3'><td width='200px'>$baris2[0]</td><td>: $baris2[1]</td></tr></table>";
+                                 }
+                                 echo"&nbsp;</a>
 				</td>
                                 <td><a href=?act=InputRj&action=TAMBAH&id=$baris[0]>".formatDuit($baris[5])."</a></td>
                              </tr>";

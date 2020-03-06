@@ -94,13 +94,13 @@
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
                 $id                 =trim($_POST['id']);
-                $jenis_penelitian   =trim($_POST['jenis_penelitian']);
-                $peranan            =trim($_POST['peranan']);
-                $tahun              =trim($_POST['tahun']);
-                $judul_penelitian   =trim($_POST['judul_penelitian']);
-                $judul_jurnal       =trim($_POST['judul_jurnal']);
-                $biaya_penelitian   =trim($_POST['biaya_penelitian']);
-                $asal_dana          =trim($_POST['asal_dana']);
+                $jenis_penelitian   =validTeks(trim($_POST['jenis_penelitian']));
+                $peranan            =validTeks(trim($_POST['peranan']));
+                $tahun              =validTeks(trim($_POST['tahun']));
+                $judul_penelitian   =validTeks(trim($_POST['judul_penelitian']));
+                $judul_jurnal       =validTeks(trim($_POST['judul_jurnal']));
+                $biaya_penelitian   =validTeks(trim($_POST['biaya_penelitian']));
+                $asal_dana          =validTeks(trim($_POST['asal_dana']));
                 $dokumen            =str_replace(" ","_","pages/riwayatpenelitian/berkas/".$_FILES['dokumen']['name']);
                 if ((!empty($id))&&(!empty($jenis_penelitian))&&(!empty($judul_penelitian))) {
                     switch($action) {

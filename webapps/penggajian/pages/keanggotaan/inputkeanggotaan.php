@@ -115,10 +115,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id        = trim($_POST['id']);
-                    $koperasi  = trim($_POST['koperasi']);
-                    $jamsostek = trim($_POST['jamsostek']);
-                    $bpjs      = trim($_POST['bpjs']);
+                    $id        = validTeks(trim($_POST['id']));
+                    $koperasi  = validTeks(trim($_POST['koperasi']));
+                    $jamsostek = validTeks(trim($_POST['jamsostek']));
+                    $bpjs      = validTeks(trim($_POST['bpjs']));
                     if ((!empty($id))&&(!empty($koperasi))&&(!empty($jamsostek))&&(!empty($bpjs))) {
                         switch($action) {
                             case "TAMBAH":

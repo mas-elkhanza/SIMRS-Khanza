@@ -44,6 +44,7 @@
     <?php
         $awal=isset($_GET['awal'])?$_GET['awal']:NULL;
         $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword= validTeks($keyword);
         if (empty($awal)) $awal=0;
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.pendidikan,pegawai.mulai_kerja,
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,
@@ -111,7 +112,7 @@
                             $ttlc=0;
                         }
 
-                        $ttlc     = $baris6[0]+$baris["cuti_diambil"];
+                        $ttlc     = $baris6[0]+$baris["cuti_diambil"]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."%' and status='Disetujui' and nik='".$baris["nik"]."'");
                             
                         $masa_kerja=0;
                         if($baris["masker"]<1){

@@ -73,7 +73,7 @@
                 if (isset($BtnSimpan)) {
                     $id                 =trim($_POST['id']);
                     $tgl                =$tahun."-".$bulan."-01";
-                    $jml                =trim($_POST['jml']);
+                    $jml                = validTeks(trim($_POST['jml']));
                     if ((!empty($id))&&(!empty($jml))) {
                         switch($action) {
                             case "TAMBAH":

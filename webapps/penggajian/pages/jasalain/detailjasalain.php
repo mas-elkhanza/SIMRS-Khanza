@@ -19,34 +19,34 @@
                 $bsr_jasa           =isset($_GET['bsr_jasa'])?$_GET['bsr_jasa']:NULL;
                 $ktg                =isset($_GET['ktg'])?$_GET['ktg']:NULL;
                 echo "<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
-		$_sql = "SELECT nik,nama FROM pegawai where id='$id'";
+	       $_sql = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil=bukaquery($_sql);
                 $baris = mysqli_fetch_row($hasil);   
 
-                 $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
-                    $hasilnext        	= bukaquery($_sqlnext);
-                    $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
+                $hasilnext        	= bukaquery($_sqlnext);
+                $barisnext        	= mysqli_fetch_row($hasilnext);
+                $next               = $barisnext[0];
 
-                    $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
-                    $hasilprev        	= bukaquery($_sqlprev);
-                    $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
-                    
-                    if(empty($next)){
-                        $next=$prev;
-                    }
-                    
-                    if(empty($prev)){
-                        $prev=$next;
-                    }
+                $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
+                $hasilprev        	= bukaquery($_sqlprev);
+                $barisprev        	= mysqli_fetch_row($hasilprev);
+                $prev               = $barisprev[0];
 
-                    echo "<div align='center' class='link'>
-                          <a href=?act=InputJasLa&action=TAMBAH&id=$prev><<--</a>
-                          <a href=?act=ListJasLa&action=LIHAT>| List Jasa lain |</a>
-                          <a href=?act=HomeAdmin>| Menu Utama |</a>
-                          <a href=?act=InputJasLa&action=TAMBAH&id=$next>-->></a>
-                          </div>";
+                if(empty($next)){
+                    $next=$prev;
+                }
+
+                if(empty($prev)){
+                    $prev=$next;
+                }
+
+                echo "<div align='center' class='link'>
+                      <a href=?act=InputJasLa&action=TAMBAH&id=$prev><<--</a>
+                      <a href=?act=ListJasLa&action=LIHAT>| List Jasa lain |</a>
+                      <a href=?act=HomeAdmin>| Menu Utama |</a>
+                      <a href=?act=InputJasLa&action=TAMBAH&id=$next>-->></a>
+                      </div>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
@@ -74,11 +74,11 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim($_POST['id']);
-                    $thn                =$tahun;
-                    $bln                =$bulan;
-                    $bsr_jasa           =trim($_POST['bsr_jasa']);
-                    $ktg                =trim($_POST['ktg']);
+                    $id                 = trim($_POST['id']);
+                    $thn                = $tahun;
+                    $bln                = $bulan;
+                    $bsr_jasa           = validangka(trim($_POST['bsr_jasa']));
+                    $ktg                = validTeks(trim($_POST['ktg']));
                     if ((!empty($id))&&(!empty($bsr_jasa))) {
                         switch($action) {
                             case "TAMBAH":

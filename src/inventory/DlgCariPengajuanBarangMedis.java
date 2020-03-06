@@ -907,89 +907,110 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{  
-            ps=koneksi.prepareStatement(
-                    "select pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan, "+
-                    "pengajuan_barang_medis.keterangan,pengajuan_barang_medis.nip,pegawai.nama,pengajuan_barang_medis.status "+
-                    "from pengajuan_barang_medis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_medis "+
-                    "inner join jenis inner join databarang on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
-                    " and databarang.kode_sat=kodesatuan.kode_sat "+
-                    " and pengajuan_barang_medis.no_pengajuan=detail_pengajuan_barang_medis.no_pengajuan "+
-                    " and pengajuan_barang_medis.nip=pegawai.nik "+
-                    " and databarang.kdjns=jenis.kdjns "+
-                    " where pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and pengajuan_barang_medis.no_pengajuan like ? or "+
-                    " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and pengajuan_barang_medis.nip like ? or "+
-                    " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and pegawai.nama like ? or "+
-                    " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and jenis.nama like ? or "+
-                    " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and detail_pengajuan_barang_medis.kode_brng like ? or "+
-                    " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and databarang.nama_brng like ? or "+
-                    " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and detail_pengajuan_barang_medis.kode_sat like ? or "+
-                    " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and kodesatuan.satuan like ? "+
-                    " group by pengajuan_barang_medis.no_pengajuan order by pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan ");
+            if(NoPermintaan.getText().trim().equals("")&&Status.getSelectedItem().toString().equals("Semua")&&NmPeg.getText().trim().equals("")&&
+                    kdjenis.getText().trim().equals("")&&nmbar.getText().trim().equals("")&&TCari.getText().trim().equals("")){
+                ps=koneksi.prepareStatement(
+                        "select pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan, "+
+                        "pengajuan_barang_medis.keterangan,pengajuan_barang_medis.nip,pegawai.nama,pengajuan_barang_medis.status "+
+                        "from pengajuan_barang_medis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_medis "+
+                        "inner join jenis inner join databarang on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
+                        " and databarang.kode_sat=kodesatuan.kode_sat "+
+                        " and pengajuan_barang_medis.no_pengajuan=detail_pengajuan_barang_medis.no_pengajuan "+
+                        " and pengajuan_barang_medis.nip=pegawai.nik "+
+                        " and databarang.kdjns=jenis.kdjns "+
+                        " where pengajuan_barang_medis.tanggal between ? and ? group by pengajuan_barang_medis.no_pengajuan order by pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan ");
+            }else{
+                ps=koneksi.prepareStatement(
+                        "select pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan, "+
+                        "pengajuan_barang_medis.keterangan,pengajuan_barang_medis.nip,pegawai.nama,pengajuan_barang_medis.status "+
+                        "from pengajuan_barang_medis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_medis "+
+                        "inner join jenis inner join databarang on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
+                        " and databarang.kode_sat=kodesatuan.kode_sat "+
+                        " and pengajuan_barang_medis.no_pengajuan=detail_pengajuan_barang_medis.no_pengajuan "+
+                        " and pengajuan_barang_medis.nip=pegawai.nik "+
+                        " and databarang.kdjns=jenis.kdjns "+
+                        " where pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and pengajuan_barang_medis.no_pengajuan like ? or "+
+                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and pengajuan_barang_medis.nip like ? or "+
+                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and pegawai.nama like ? or "+
+                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and jenis.nama like ? or "+
+                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and detail_pengajuan_barang_medis.kode_brng like ? or "+
+                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and databarang.nama_brng like ? or "+
+                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and detail_pengajuan_barang_medis.kode_sat like ? or "+
+                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and kodesatuan.satuan like ? "+
+                        " group by pengajuan_barang_medis.no_pengajuan order by pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan ");
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(3,"%"+NoPermintaan.getText()+"%");
-                ps.setString(4,"%"+Status.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                ps.setString(5,"%"+NmPeg.getText()+"%");
-                ps.setString(6,"%"+kdjenis.getText()+"%");
-                ps.setString(7,"%"+nmbar.getText()+"%");
-                ps.setString(8,"%"+TCari.getText()+"%");
-                ps.setString(9,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(10,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(11,"%"+NoPermintaan.getText()+"%");
-                ps.setString(12,"%"+Status.getSelectedItem().toString()+"%");
-                ps.setString(13,"%"+NmPeg.getText()+"%");
-                ps.setString(14,"%"+kdjenis.getText()+"%");
-                ps.setString(15,"%"+nmbar.getText()+"%");
-                ps.setString(16,"%"+TCari.getText()+"%");
-                ps.setString(17,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(18,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(19,"%"+NoPermintaan.getText()+"%");
-                ps.setString(20,"%"+Status.getSelectedItem().toString()+"%");
-                ps.setString(21,"%"+NmPeg.getText()+"%");
-                ps.setString(22,"%"+kdjenis.getText()+"%");
-                ps.setString(23,"%"+nmbar.getText()+"%");
-                ps.setString(24,"%"+TCari.getText()+"%");
-                ps.setString(25,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(26,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(27,"%"+NoPermintaan.getText()+"%");
-                ps.setString(28,"%"+Status.getSelectedItem().toString()+"%");
-                ps.setString(29,"%"+NmPeg.getText()+"%");
-                ps.setString(30,"%"+kdjenis.getText()+"%");
-                ps.setString(31,"%"+nmbar.getText()+"%");
-                ps.setString(32,"%"+TCari.getText()+"%");
-                ps.setString(33,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(34,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(35,"%"+NoPermintaan.getText()+"%");
-                ps.setString(36,"%"+Status.getSelectedItem().toString()+"%");
-                ps.setString(37,"%"+NmPeg.getText()+"%");
-                ps.setString(38,"%"+kdjenis.getText()+"%");
-                ps.setString(39,"%"+nmbar.getText()+"%");
-                ps.setString(40,"%"+TCari.getText()+"%");
-                ps.setString(41,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(42,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(43,"%"+NoPermintaan.getText()+"%");
-                ps.setString(44,"%"+Status.getSelectedItem().toString()+"%");
-                ps.setString(45,"%"+NmPeg.getText()+"%");
-                ps.setString(46,"%"+kdjenis.getText()+"%");
-                ps.setString(47,"%"+nmbar.getText()+"%");
-                ps.setString(48,"%"+TCari.getText()+"%");
-                ps.setString(49,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(50,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(51,"%"+NoPermintaan.getText()+"%");
-                ps.setString(52,"%"+Status.getSelectedItem().toString()+"%");
-                ps.setString(53,"%"+NmPeg.getText()+"%");
-                ps.setString(54,"%"+kdjenis.getText()+"%");
-                ps.setString(55,"%"+nmbar.getText()+"%");
-                ps.setString(56,"%"+TCari.getText()+"%");
-                ps.setString(57,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                ps.setString(58,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                ps.setString(59,"%"+NoPermintaan.getText()+"%");
-                ps.setString(60,"%"+Status.getSelectedItem().toString()+"%");
-                ps.setString(61,"%"+NmPeg.getText()+"%");
-                ps.setString(62,"%"+kdjenis.getText()+"%");
-                ps.setString(63,"%"+nmbar.getText()+"%");
-                ps.setString(64,"%"+TCari.getText()+"%");
+                if(NoPermintaan.getText().trim().equals("")&&Status.getSelectedItem().toString().equals("Semua")&&NmPeg.getText().trim().equals("")&&
+                    kdjenis.getText().trim().equals("")&&nmbar.getText().trim().equals("")&&TCari.getText().trim().equals("")){
+                    ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
+                    ps.setString(3,"%"+NoPermintaan.getText()+"%");
+                    ps.setString(4,"%"+Status.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                    ps.setString(5,"%"+NmPeg.getText()+"%");
+                    ps.setString(6,"%"+kdjenis.getText()+"%");
+                    ps.setString(7,"%"+nmbar.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
+                    ps.setString(10,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
+                    ps.setString(11,"%"+NoPermintaan.getText()+"%");
+                    ps.setString(12,"%"+Status.getSelectedItem().toString()+"%");
+                    ps.setString(13,"%"+NmPeg.getText()+"%");
+                    ps.setString(14,"%"+kdjenis.getText()+"%");
+                    ps.setString(15,"%"+nmbar.getText()+"%");
+                    ps.setString(16,"%"+TCari.getText()+"%");
+                    ps.setString(17,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
+                    ps.setString(18,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
+                    ps.setString(19,"%"+NoPermintaan.getText()+"%");
+                    ps.setString(20,"%"+Status.getSelectedItem().toString()+"%");
+                    ps.setString(21,"%"+NmPeg.getText()+"%");
+                    ps.setString(22,"%"+kdjenis.getText()+"%");
+                    ps.setString(23,"%"+nmbar.getText()+"%");
+                    ps.setString(24,"%"+TCari.getText()+"%");
+                    ps.setString(25,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
+                    ps.setString(26,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
+                    ps.setString(27,"%"+NoPermintaan.getText()+"%");
+                    ps.setString(28,"%"+Status.getSelectedItem().toString()+"%");
+                    ps.setString(29,"%"+NmPeg.getText()+"%");
+                    ps.setString(30,"%"+kdjenis.getText()+"%");
+                    ps.setString(31,"%"+nmbar.getText()+"%");
+                    ps.setString(32,"%"+TCari.getText()+"%");
+                    ps.setString(33,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
+                    ps.setString(34,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
+                    ps.setString(35,"%"+NoPermintaan.getText()+"%");
+                    ps.setString(36,"%"+Status.getSelectedItem().toString()+"%");
+                    ps.setString(37,"%"+NmPeg.getText()+"%");
+                    ps.setString(38,"%"+kdjenis.getText()+"%");
+                    ps.setString(39,"%"+nmbar.getText()+"%");
+                    ps.setString(40,"%"+TCari.getText()+"%");
+                    ps.setString(41,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
+                    ps.setString(42,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
+                    ps.setString(43,"%"+NoPermintaan.getText()+"%");
+                    ps.setString(44,"%"+Status.getSelectedItem().toString()+"%");
+                    ps.setString(45,"%"+NmPeg.getText()+"%");
+                    ps.setString(46,"%"+kdjenis.getText()+"%");
+                    ps.setString(47,"%"+nmbar.getText()+"%");
+                    ps.setString(48,"%"+TCari.getText()+"%");
+                    ps.setString(49,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
+                    ps.setString(50,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
+                    ps.setString(51,"%"+NoPermintaan.getText()+"%");
+                    ps.setString(52,"%"+Status.getSelectedItem().toString()+"%");
+                    ps.setString(53,"%"+NmPeg.getText()+"%");
+                    ps.setString(54,"%"+kdjenis.getText()+"%");
+                    ps.setString(55,"%"+nmbar.getText()+"%");
+                    ps.setString(56,"%"+TCari.getText()+"%");
+                    ps.setString(57,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
+                    ps.setString(58,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
+                    ps.setString(59,"%"+NoPermintaan.getText()+"%");
+                    ps.setString(60,"%"+Status.getSelectedItem().toString()+"%");
+                    ps.setString(61,"%"+NmPeg.getText()+"%");
+                    ps.setString(62,"%"+kdjenis.getText()+"%");
+                    ps.setString(63,"%"+nmbar.getText()+"%");
+                    ps.setString(64,"%"+TCari.getText()+"%");
+                }
                 rs=ps.executeQuery();
                 total=0;
                 while(rs.next()){
@@ -997,35 +1018,53 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         rs.getString("tanggal"),rs.getString("no_pengajuan"),rs.getString("status"),
                         rs.getString("keterangan"),rs.getString("nip")+" "+rs.getString("nama")
                     });   
-                    ps2=koneksi.prepareStatement(
-                        "select detail_pengajuan_barang_medis.kode_brng,databarang.nama_brng, "+
-                        "detail_pengajuan_barang_medis.kode_sat,kodesatuan.satuan,detail_pengajuan_barang_medis.jumlah,"+
-                        "detail_pengajuan_barang_medis.h_pengajuan,detail_pengajuan_barang_medis.total "+
-                        "from detail_pengajuan_barang_medis inner join databarang inner join kodesatuan inner join jenis "+
-                        " on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
-                        " and detail_pengajuan_barang_medis.kode_sat=kodesatuan.kode_sat "+
-                        " and databarang.kdjns=jenis.kdjns where "+
-                        " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and detail_pengajuan_barang_medis.kode_brng like ? or "+
-                        " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and databarang.nama_brng like ? or "+
-                        " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and detail_pengajuan_barang_medis.kode_sat like ? or "+
-                        " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and jenis.nama like ? order by detail_pengajuan_barang_medis.kode_brng  ");
+                    if(nmbar.getText().trim().equals("")&&kdjenis.getText().trim().equals("")&&TCari.getText().trim().equals("")){
+                        ps2=koneksi.prepareStatement(
+                            "select detail_pengajuan_barang_medis.kode_brng,databarang.nama_brng, "+
+                            "detail_pengajuan_barang_medis.kode_sat,kodesatuan.satuan,detail_pengajuan_barang_medis.jumlah,"+
+                            "detail_pengajuan_barang_medis.h_pengajuan,detail_pengajuan_barang_medis.total "+
+                            "from detail_pengajuan_barang_medis inner join databarang inner join kodesatuan inner join jenis "+
+                            " on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
+                            " and detail_pengajuan_barang_medis.kode_sat=kodesatuan.kode_sat "+
+                            " and databarang.kdjns=jenis.kdjns where "+
+                            " detail_pengajuan_barang_medis.no_pengajuan=? order by detail_pengajuan_barang_medis.kode_brng  ");
+                    }else{
+                        ps2=koneksi.prepareStatement(
+                            "select detail_pengajuan_barang_medis.kode_brng,databarang.nama_brng, "+
+                            "detail_pengajuan_barang_medis.kode_sat,kodesatuan.satuan,detail_pengajuan_barang_medis.jumlah,"+
+                            "detail_pengajuan_barang_medis.h_pengajuan,detail_pengajuan_barang_medis.total "+
+                            "from detail_pengajuan_barang_medis inner join databarang inner join kodesatuan inner join jenis "+
+                            " on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
+                            " and detail_pengajuan_barang_medis.kode_sat=kodesatuan.kode_sat "+
+                            " and databarang.kdjns=jenis.kdjns where "+
+                            " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and detail_pengajuan_barang_medis.kode_brng like ? or "+
+                            " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and databarang.nama_brng like ? or "+
+                            " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and detail_pengajuan_barang_medis.kode_sat like ? or "+
+                            " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and jenis.nama like ? order by detail_pengajuan_barang_medis.kode_brng  ");
+                    }
+                        
                     try {
-                        ps2.setString(1,rs.getString(2));
-                        ps2.setString(2,"%"+nmbar.getText()+"%");
-                        ps2.setString(3,"%"+kdjenis.getText()+"%");
-                        ps2.setString(4,"%"+TCari.getText()+"%");
-                        ps2.setString(5,rs.getString(2));
-                        ps2.setString(6,"%"+nmbar.getText()+"%");
-                        ps2.setString(7,"%"+kdjenis.getText()+"%");
-                        ps2.setString(8,"%"+TCari.getText()+"%");
-                        ps2.setString(9,rs.getString(2));
-                        ps2.setString(10,"%"+nmbar.getText()+"%");
-                        ps2.setString(11,"%"+kdjenis.getText()+"%");
-                        ps2.setString(12,"%"+TCari.getText()+"%");
-                        ps2.setString(13,rs.getString(2));
-                        ps2.setString(14,"%"+nmbar.getText()+"%");
-                        ps2.setString(15,"%"+kdjenis.getText()+"%");
-                        ps2.setString(16,"%"+TCari.getText()+"%");
+                        if(nmbar.getText().trim().equals("")&&kdjenis.getText().trim().equals("")&&TCari.getText().trim().equals("")){
+                            ps2.setString(1,rs.getString(2));
+                        }else{
+                            ps2.setString(1,rs.getString(2));
+                            ps2.setString(2,"%"+nmbar.getText()+"%");
+                            ps2.setString(3,"%"+kdjenis.getText()+"%");
+                            ps2.setString(4,"%"+TCari.getText()+"%");
+                            ps2.setString(5,rs.getString(2));
+                            ps2.setString(6,"%"+nmbar.getText()+"%");
+                            ps2.setString(7,"%"+kdjenis.getText()+"%");
+                            ps2.setString(8,"%"+TCari.getText()+"%");
+                            ps2.setString(9,rs.getString(2));
+                            ps2.setString(10,"%"+nmbar.getText()+"%");
+                            ps2.setString(11,"%"+kdjenis.getText()+"%");
+                            ps2.setString(12,"%"+TCari.getText()+"%");
+                            ps2.setString(13,rs.getString(2));
+                            ps2.setString(14,"%"+nmbar.getText()+"%");
+                            ps2.setString(15,"%"+kdjenis.getText()+"%");
+                            ps2.setString(16,"%"+TCari.getText()+"%");
+                        }
+                            
                         rs2=ps2.executeQuery();
                         no=1;
                         subtotal=0;

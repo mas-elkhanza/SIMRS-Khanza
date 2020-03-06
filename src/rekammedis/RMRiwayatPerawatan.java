@@ -14,15 +14,10 @@ package rekammedis;
 import fungsi.batasInput;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
-import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JOptionPane;
 import simrskhanza.DlgPasien;
 
 /**
@@ -42,7 +37,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
         
-        TKd.setDocument(new batasInput((byte)20).getKata(TKd));
+        KdRw.setDocument(new batasInput((byte)20).getKata(TKd));
         
         pasien.addWindowListener(new WindowListener() {
             @Override

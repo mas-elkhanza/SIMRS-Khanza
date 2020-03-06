@@ -46,6 +46,11 @@
         if(preg_match($format,$url)) return true; else return false;
     }
     
+    function validTeks($data){
+        $save=str_replace("'","",$data);
+        return $save;
+    }
+    
     function validangka($angka){
         if(!is_numeric($angka)) {
             return 0;
