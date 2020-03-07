@@ -55,6 +55,7 @@ public class DlgDeposit extends javax.swing.JDialog {
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
     private String now=dateFormat.format(date);
+    private String filter_tipe_bayar = "";
     private int i=0;
     private PreparedStatement ps;
     private ResultSet rs;
@@ -66,7 +67,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocation(10,2);
-        setSize(628,674);
+        setSize(628,674);  
 
         Object[] row={"No.Rawat","Pasien","Diterima dari","Tanggal","Besar Deposit","Petugas","Tipe Bayar"};
         tabMode=new DefaultTableModel(null,row){
@@ -156,11 +157,11 @@ public class DlgDeposit extends javax.swing.JDialog {
                 "on deposit.no_rawat=reg_periksa.no_rawat " +
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "and deposit.nip=petugas.nip " +
-                "where deposit.tgl_deposit between ? and ? and deposit.no_rawat like ? or "+
-                "deposit.tgl_deposit between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                "deposit.tgl_deposit between ? and ? and pasien.nm_pasien like ? or " +
-                "deposit.tgl_deposit between ? and ? and deposit.nip like ? or "+
-                "deposit.tgl_deposit between ? and ? and petugas.nama like ? order by deposit.tgl_deposit desc");
+                "where deposit.tgl_deposit between ? and ? and deposit.no_rawat like ? and deposit.tipe_bayar like ? or "+
+                "deposit.tgl_deposit between ? and ? and reg_periksa.no_rkm_medis like ? and deposit.tipe_bayar like ? or "+
+                "deposit.tgl_deposit between ? and ? and pasien.nm_pasien like ? and deposit.tipe_bayar like ? or " +
+                "deposit.tgl_deposit between ? and ? and deposit.nip like ? and deposit.tipe_bayar like ? or "+
+                "deposit.tgl_deposit between ? and ? and petugas.nama like ? and deposit.tipe_bayar like ? order by deposit.tgl_deposit desc");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -197,6 +198,8 @@ public class DlgDeposit extends javax.swing.JDialog {
         DTPCari1 = new widget.Tanggal();
         jLabel21 = new widget.Label();
         DTPCari2 = new widget.Tanggal();
+        label12 = new widget.Label();
+        filterTipeBayar = new widget.ComboBox();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -413,7 +416,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -427,12 +430,32 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
+
+        label12.setText("Tipe Bayar :");
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(75, 23));
+        panelGlass9.add(label12);
+
+        filterTipeBayar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Uang Muka Perawatan", "Uang Muka Obat RI" }));
+        filterTipeBayar.setName("filterTipeBayar"); // NOI18N
+        filterTipeBayar.setPreferredSize(new java.awt.Dimension(160, 23));
+        filterTipeBayar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                filterTipeBayarItemStateChanged(evt);
+            }
+        });
+        filterTipeBayar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                filterTipeBayarKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(filterTipeBayar);
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
@@ -440,7 +463,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(335, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -519,7 +542,7 @@ public class DlgDeposit extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-01-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -781,17 +804,17 @@ public class DlgDeposit extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptDeposit.jasper","report","::[ Data Deposit/Titipan Pasien ]::","select deposit.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien) as pasien, " +
-                "deposit.tgl_deposit,deposit.besar_deposit,concat(deposit.nip,' ',petugas.nama) as petugas, deposit.tipe_bayar " +
+            Valid.MyReportqry("rptDeposit.jasper","report","::[ Data Deposit/Titipan Pasien ]::","select deposit.no_rawat,pasien.nm_pasien as pasien, " +
+                "deposit.tgl_deposit,deposit.besar_deposit,petugas.nama as petugas, deposit.tipe_bayar " +
                 "from deposit inner join reg_periksa inner join pasien inner join petugas " +
                 "on deposit.no_rawat=reg_periksa.no_rawat " +
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "and deposit.nip=petugas.nip " +
-                "where deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or " +
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.nip like '%"+TCari.getText().trim()+"%' or "+
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and petugas.nama like '%"+TCari.getText().trim()+"%' order by deposit.tgl_deposit desc",param);
+                "where deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.no_rawat like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' or "+
+                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' or "+
+                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' or " +
+                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.nip like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' or "+
+                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and petugas.nama like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' order by deposit.tgl_deposit desc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -916,6 +939,17 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         // TODO add your handling code here:
     }//GEN-LAST:event_diterimaDariKeyPressed
 
+    private void filterTipeBayarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filterTipeBayarItemStateChanged
+        filter_tipe_bayar = filterTipeBayar.getSelectedItem().toString().trim();
+        if(filter_tipe_bayar.equals("Semua")){
+            filter_tipe_bayar = "";
+        }
+    }//GEN-LAST:event_filterTipeBayarItemStateChanged
+
+    private void filterTipeBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filterTipeBayarKeyPressed
+        Valid.pindah(evt, TCari,BtnKeluar);
+    }//GEN-LAST:event_filterTipeBayarKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -960,6 +994,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.ComboBox cmbJam;
     private widget.ComboBox cmbMnt;
     private widget.TextBox diterimaDari;
+    private widget.ComboBox filterTipeBayar;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel13;
@@ -974,6 +1009,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdptg;
+    private widget.Label label12;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;
@@ -986,18 +1022,23 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
             ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
             ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(6,"%"+TCari.getText().trim()+"%");
-            ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(9,"%"+TCari.getText().trim()+"%");
-            ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(12,"%"+TCari.getText().trim()+"%");
+            ps.setString(4,"%"+filter_tipe_bayar+"%");
+            ps.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(7,"%"+TCari.getText().trim()+"%");
+            ps.setString(8,"%"+filter_tipe_bayar+"%");
+            ps.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(11,"%"+TCari.getText().trim()+"%");
+            ps.setString(12,"%"+filter_tipe_bayar+"%");
             ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
             ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
             ps.setString(15,"%"+TCari.getText().trim()+"%");
+            ps.setString(16,"%"+filter_tipe_bayar+"%");
+            ps.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(19,"%"+TCari.getText().trim()+"%");
+            ps.setString(20,"%"+filter_tipe_bayar+"%");
             rs=ps.executeQuery();
             while(rs.next()){
                 tabMode.addRow(new String[]{rs.getString(1),
@@ -1064,7 +1105,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
     public void isCek(){
         BtnSimpan.setEnabled(akses.getdeposit_pasien());
-        BtnHapus.setEnabled(akses.getdeposit_pasien());
+//        BtnHapus.setEnabled(akses.getdeposit_pasien());
+        if(akses.getkode().equals("Admin Utama")){
+            BtnHapus.setEnabled(true);
+        }else{
+            BtnHapus.setEnabled(false);
+        }   
         BtnPrint.setEnabled(akses.getdeposit_pasien());
     }
     
