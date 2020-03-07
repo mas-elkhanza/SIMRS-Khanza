@@ -328,12 +328,11 @@ public final class DlgCariJenisBedah extends javax.swing.JDialog {
         try{
             ps=koneksi.prepareStatement("select kode_bedah, nama "+
                     "from jenis_bedah "+
-                    "where status='1' or "+
-                    "status='1' and nama like ? or "+
+                    "where status='1' and nama like ? or "+
                     "status='1' and kode_bedah like ? order by nama");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(1,"%"+TCari.getText().toString().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().toString().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),
