@@ -468,7 +468,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 
                 if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?,?,?,?,?","data",13,new String[]{
                         TNoRw.getText(), tbKamar.getValueAt(i,1).toString(), tbKamar.getValueAt(i,0).toString(),
-                        tbKamar.getValueAt(i,6).toString(), String.valueOf(embalase), String.valueOf(tuslah), ""+Double.parseDouble(tbKamar.getValueAt(i,6).toString())*Double.parseDouble(tbKamar.getValueAt(i,0).toString()),
+                        tbKamar.getValueAt(i,6).toString(), String.valueOf(embalase), String.valueOf(tuslah), ""+ (Double.parseDouble(tbKamar.getValueAt(i,6).toString())*Double.parseDouble(tbKamar.getValueAt(i,0).toString()) + tuslah + embalase),
                         tbKamar.getValueAt(i,4).toString(), Tanggal.getText(), Jam.getText(), akses.getkdbangsal(),
                         tbKamar.getValueAt(i,8).toString(), tbKamar.getValueAt(i,9).toString()
                     })==true){
@@ -493,6 +493,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         
         if(sukses==true){
             Sequel.Commit();
+            JOptionPane.showMessageDialog(rootPane,"Alhamdulillah, berhasil disimpan ^_^");
         }else{
             sukses=false;
             JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
