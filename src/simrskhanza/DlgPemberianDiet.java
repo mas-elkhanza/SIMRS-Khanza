@@ -465,7 +465,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-02-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -479,7 +479,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-02-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -584,7 +584,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         TPasien.setBounds(205, 12, 290, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-02-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -610,7 +610,6 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
         jLabel10.setBounds(420, 42, 75, 23);
-        jLabel10.getAccessibleContext().setAccessibleName("Keterangan :");
 
         KdDiet.setHighlighter(null);
         KdDiet.setName("KdDiet"); // NOI18N
@@ -668,18 +667,6 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            isRawat();
-        }else{            
-            Valid.pindah(evt,cmbJam,KdDiet);
-        }
-}//GEN-LAST:event_TNoRwKeyPressed
-
-    private void DTPTglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPTglKeyPressed
-        Valid.pindah(evt,TCari,cmbJam);
-}//GEN-LAST:event_DTPTglKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
@@ -831,10 +818,6 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void cmbJamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbJamKeyPressed
-        Valid.pindah(evt,DTPTgl,KdDiet);
-}//GEN-LAST:event_cmbJamKeyPressed
-
     private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
@@ -854,33 +837,6 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
             }
         }
 }//GEN-LAST:event_tbObatKeyPressed
-
-private void KdDietKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDietKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_diet from diet where kd_diet=? ",NmDiet,KdDiet.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnSeek1ActionPerformed(null);
-        }else{
-            Valid.pindah(evt,TNoRw,BtnSimpan);
-        }
-}//GEN-LAST:event_KdDietKeyPressed
-
-private void BtnSeek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek1ActionPerformed
-        akses.setform("DlgPemberianObat");        
-        diet.emptTeks();
-        diet.isCek();
-        diet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        diet.setLocationRelativeTo(internalFrame1);
-        diet.setVisible(true);
-}//GEN-LAST:event_BtnSeek1ActionPerformed
-
-private void BtnSeek1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek1KeyPressed
-        Valid.pindah(evt,KdDiet,BtnSimpan);
-}//GEN-LAST:event_BtnSeek1KeyPressed
-
-private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
-  isForm();                
-}//GEN-LAST:event_ChkInputActionPerformed
 
     private void cmbJamCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbJamCariKeyPressed
         // TODO add your handling code here:
@@ -952,6 +908,49 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnLabelDiet1ActionPerformed
+
+    private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
+        isForm();
+    }//GEN-LAST:event_ChkInputActionPerformed
+
+    private void BtnSeek1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek1KeyPressed
+        Valid.pindah(evt,KdDiet,BtnSimpan);
+    }//GEN-LAST:event_BtnSeek1KeyPressed
+
+    private void BtnSeek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek1ActionPerformed
+        akses.setform("DlgPemberianObat");
+        diet.emptTeks();
+        diet.isCek();
+        diet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        diet.setLocationRelativeTo(internalFrame1);
+        diet.setVisible(true);
+    }//GEN-LAST:event_BtnSeek1ActionPerformed
+
+    private void KdDietKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDietKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            Sequel.cariIsi("select nama_diet from diet where kd_diet=? ",NmDiet,KdDiet.getText());
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnSeek1ActionPerformed(null);
+        }else{
+            Valid.pindah(evt,TNoRw,BtnSimpan);
+        }
+    }//GEN-LAST:event_KdDietKeyPressed
+
+    private void cmbJamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbJamKeyPressed
+        Valid.pindah(evt,DTPTgl,KdDiet);
+    }//GEN-LAST:event_cmbJamKeyPressed
+
+    private void DTPTglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPTglKeyPressed
+        Valid.pindah(evt,TCari,cmbJam);
+    }//GEN-LAST:event_DTPTglKeyPressed
+
+    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isRawat();
+        }else{
+            Valid.pindah(evt,cmbJam,KdDiet);
+        }
+    }//GEN-LAST:event_TNoRwKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1055,7 +1054,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     tabMode.addRow(new String[]{
                         rs.getString(1),rs.getString(2)+", "+rs.getString(3),
                         rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
-                        Sequel.cariIsi("select diagnosa_awal from kamar_inap where no_rawat=? order by tgl_masuk desc",rs.getString(1))
+                        Sequel.cariIsi("SELECT penyakit.nm_penyakit FROM `diagnosa_pasien` "
+                                + "INNER join penyakit on penyakit.kd_penyakit=diagnosa_pasien.kd_penyakit "
+                                + "where prioritas=1 and diagnosa_pasien.no_rawat=?",rs.getString(1))
                     });
                 }
             } catch (Exception e) {
