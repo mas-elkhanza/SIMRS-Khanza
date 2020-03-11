@@ -1220,6 +1220,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.textKosong(TCari,"Data");
         }else if(kdgudang.getText().equals("")){
             Valid.textKosong(TCari,"Lokasi");
+        }else if(ttl<=0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan terlebih dahulu obat yang mau diberikan...!!!");
+            TCari.requestFocus();
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {

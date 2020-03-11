@@ -735,26 +735,38 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptCekalDonor.jasper","report","::[ Data Pencekalan Darah Donor ]::",
-                    "select utd_cekal_darah.no_donor,utd_donor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_telp,"+
-                    "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
-                    "petugas.nama as namapetugas,utd_cekal_darah.keterangan "+
-                    "from utd_cekal_darah inner join utd_donor on utd_cekal_darah.no_donor=utd_donor.no_donor "+
-                    "inner join utd_pendonor on utd_donor.no_pendonor=utd_pendonor.no_pendonor "+
-                    "inner join petugas on utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.no_donor like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_pendonor.nama like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_donor.no_pendonor like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.dinas like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.keterangan like '%"+TCari.getText().trim()+"%' order by utd_cekal_darah.tanggal",param);
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            if(TCari.getText().equals("")){
+                Valid.MyReportqry("rptCekalDonor.jasper","report","::[ Data Pencekalan Darah Donor ]::",
+                        "select utd_cekal_darah.no_donor,utd_donor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_telp,"+
+                        "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
+                        "petugas.nama as namapetugas,utd_cekal_darah.keterangan "+
+                        "from utd_cekal_darah inner join utd_donor on utd_cekal_darah.no_donor=utd_donor.no_donor "+
+                        "inner join utd_pendonor on utd_donor.no_pendonor=utd_pendonor.no_pendonor "+
+                        "inner join petugas on utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by utd_cekal_darah.tanggal",param);
+            }else{
+                Valid.MyReportqry("rptCekalDonor.jasper","report","::[ Data Pencekalan Darah Donor ]::",
+                        "select utd_cekal_darah.no_donor,utd_donor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_telp,"+
+                        "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
+                        "petugas.nama as namapetugas,utd_cekal_darah.keterangan "+
+                        "from utd_cekal_darah inner join utd_donor on utd_cekal_darah.no_donor=utd_donor.no_donor "+
+                        "inner join utd_pendonor on utd_donor.no_pendonor=utd_pendonor.no_pendonor "+
+                        "inner join petugas on utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.no_donor like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_pendonor.nama like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_donor.no_pendonor like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.dinas like '%"+TCari.getText().trim()+"%' or "+
+                        "utd_cekal_darah.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and utd_cekal_darah.keterangan like '%"+TCari.getText().trim()+"%' order by utd_cekal_darah.tanggal",param);
+            }
+                
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -927,7 +939,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void tampil() {        
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement(
+            if(TCari.getText().equals("")){
+                ps=koneksi.prepareStatement(
+                    "select utd_cekal_darah.no_donor,utd_donor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_telp,"+
+                    "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
+                    "petugas.nama,utd_cekal_darah.keterangan "+
+                    "from utd_cekal_darah inner join utd_donor on utd_cekal_darah.no_donor=utd_donor.no_donor "+
+                    "inner join utd_pendonor on utd_donor.no_pendonor=utd_pendonor.no_pendonor "+
+                    "inner join petugas on utd_cekal_darah.petugas_pemusnahan=petugas.nip where "+
+                    "utd_cekal_darah.tanggal between ? and ? order by utd_cekal_darah.tanggal"
+                );
+            }else{
+                ps=koneksi.prepareStatement(
                     "select utd_cekal_darah.no_donor,utd_donor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_telp,"+
                     "utd_cekal_darah.tanggal,utd_cekal_darah.dinas,utd_cekal_darah.petugas_pemusnahan,"+
                     "petugas.nama,utd_cekal_darah.keterangan "+
@@ -940,26 +963,34 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "utd_cekal_darah.tanggal between ? and ? and petugas.nama like ? or "+
                     "utd_cekal_darah.tanggal between ? and ? and utd_cekal_darah.dinas like ? or "+
                     "utd_cekal_darah.tanggal between ? and ? and utd_cekal_darah.keterangan like ? order by utd_cekal_darah.tanggal"
-            );
+                );
+            }
+                
             try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                if(TCari.getText().equals("")){
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(15,"%"+TCari.getText().trim()+"%");
+                    ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                    ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{

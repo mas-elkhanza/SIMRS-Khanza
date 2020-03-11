@@ -12,44 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPindahGudang.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPengeluaranApotek.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/viabarcode/DlgBarcodeRalan.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgResepPulang.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgReturObatPasien.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariPemesanan.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgCariObatPenyakit.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariReturBeli.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgUbahPemesanan.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariObat.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/CariHibahObatBHP.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPemberianObat.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPengambilanUTD.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/viabarcode/DlgBarcodeRanap.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariPembelian.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgInputStokPasien.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/bridging/PCareDataPemberianObat.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgReturJual.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/riwayatobat.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgReturBeli.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgInputResepPulang.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPemesanan.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariPiutang.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariObat3.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariPenjualan.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPiutang.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgReturPiutang.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgInputStok.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPembelian.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgStokPasien.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariReturJual.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgMutasiBarang.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariObat2.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariPengambilanUTD.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/HibahObatBHP.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariReturPiutang.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPenjualan.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariPengeluaranApotek.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/setting/DlgUpdateUser.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/setting/DlgUser.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/toko/TokoSuplier.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/fungsi/akses.java</file>
         </group>
     </open-files>
 </project-private>
