@@ -179,6 +179,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
+        btnGanti = new widget.Button();
         BtnBatal = new widget.Button();
         BtnHapus = new widget.Button();
         BtnPrint = new widget.Button();
@@ -302,6 +303,19 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
             }
         });
         panelGlass8.add(BtnSimpan);
+
+        btnGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
+        btnGanti.setMnemonic('P');
+        btnGanti.setText("Ganti");
+        btnGanti.setToolTipText("Alt+P");
+        btnGanti.setName("btnGanti"); // NOI18N
+        btnGanti.setPreferredSize(new java.awt.Dimension(100, 30));
+        btnGanti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGantiActionPerformed(evt);
+            }
+        });
+        panelGlass8.add(btnGanti);
 
         BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
         BtnBatal.setMnemonic('B');
@@ -465,7 +479,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-02-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-03-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -479,7 +493,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-02-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-03-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -584,7 +598,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         TPasien.setBounds(205, 12, 290, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-02-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-03-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -598,6 +612,11 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 
         cmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehari", "Pagi", "Siang", "Sore", "Malam" }));
         cmbJam.setName("cmbJam"); // NOI18N
+        cmbJam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbJamActionPerformed(evt);
+            }
+        });
         cmbJam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cmbJamKeyPressed(evt);
@@ -952,6 +971,40 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TNoRwKeyPressed
 
+    private void cmbJamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbJamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbJamActionPerformed
+
+    private void btnGantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGantiActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(rootPane,"Astaghfirullah, data diet tidak ada yang dipilih nih!!!!");
+            btnGanti.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane,"Astaghfirullah, Silahkan anda pilih dahulu data inap pasien yang mau diganti dengan menklik data pada table...!!!");
+            tbObat.requestFocus();
+        }else{
+            gantiData();
+            TNoRw.setText("");
+            TPasien.setText("");
+            Kamar.setText("");
+            KdDiet.setText("");
+            NmDiet.setText("");
+            keterangan.setText("");
+        }
+    }//GEN-LAST:event_btnGantiActionPerformed
+
+    private void gantiData(){
+        try{
+            Sequel.queryu2("update detail_beri_diet set kd_diet=?, keterangan=? where no_rawat=? and kd_kamar=? and tanggal=? and waktu=?",6,
+                            new String[]{KdDiet.getText(), keterangan.getText(), TNoRw.getText(), Kamar.getText(), 
+                                Valid.SetTgl(DTPTgl.getSelectedItem()+""), cmbJam.getSelectedItem().toString()});
+            tampil();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane,"Astaghfirullah, Gagal update data nih!!!");
+            System.out.println("Error : "+e.getMessage());
+        }
+        
+    }
     /**
     * @param args the command line arguments
     */
@@ -995,6 +1048,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
     private widget.TextBox TCari;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
+    private widget.Button btnGanti;
     private widget.ComboBox cmbJam;
     private widget.ComboBox cmbJamCari;
     private widget.InternalFrame internalFrame1;
@@ -1141,6 +1195,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
             NmDiet.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             KdDiet.setText(Sequel.cariString("select kd_diet from diet where nama_diet='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"'"));
             Valid.SetTgl(DTPTgl,tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
 

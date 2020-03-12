@@ -5500,15 +5500,15 @@ private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKamarInapActionPerformed
         if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane,"Maaf, table masih kosong...!!!!");
             TNoReg.requestFocus();
         }else if(TPasien.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbPetugas.requestFocus();
         }else{
             if(tbPetugas.getSelectedRow()!= -1){
                 if(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),19).toString().equals("Batal")){
-                    JOptionPane.showMessageDialog(null,"Pasien berstatus batal periksa...!");
+                    JOptionPane.showMessageDialog(rootPane,"Pasien berstatus batal periksa...!");
                 }else{
                     if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                         JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
