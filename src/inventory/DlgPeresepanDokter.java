@@ -1053,6 +1053,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.textKosong(KdDokter,"Dokter");
         }else if(NoResep.getText().trim().equals("")){
             Valid.textKosong(NoResep,"No.Resep");
+        }else if(ttl<=0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan terlebih dahulu obat yang mau diberikan...!!!");
+            TCari.requestFocus();
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {                 

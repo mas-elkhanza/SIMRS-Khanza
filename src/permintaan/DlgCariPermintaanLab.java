@@ -2217,6 +2217,34 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                     pilihan="U";
                                 }
                                 Permintaan="";
+                                ps2=koneksi.prepareStatement("select kd_jenis_prw from permintaan_pemeriksaan_lab where noorder=?");
+                                try {
+                                    ps2.setString(1,NoPermintaan);
+                                    rs2=ps2.executeQuery();
+                                    while(rs2.next()){
+                                        Permintaan=rs2.getString("kd_jenis_prw")+"~"+Permintaan;
+                                    }
+                                    Permintaan=Permintaan.substring(0,Permintaan.length() - 1);
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs2!=null){
+                                        rs2.close();
+                                    }
+                                    if(ps2!=null){
+                                        ps2.close();
+                                    }
+                                }
+                                
+                                koneksisysmex.prepareStatement(
+                                        "insert into LIS_ORDER values('0',now(),'NW','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien")+"',"+
+                                        "'"+rs.getString("alamat")+"','"+rs.getString("nm_kel")+"','"+rs.getString("nm_kec")+"','"+rs.getString("nm_kab")+"',"+
+                                        "'OP','"+rs.getString("tgl_lahir")+"','"+rs.getString("jk")+"','"+rs.getString("noorder")+"','"+rs.getString("tgl_permintaan")+" "+rs.getString("jam_permintaan")+"',"+
+                                        "'"+rs.getString("kd_poli")+"^"+rs.getString("nm_poli")+"','"+rs.getString("dokter_perujuk")+"^"+rs.getString("nm_dokter")+"',"+
+                                        "'"+rs.getString("kd_poli")+"','"+pilihan+"','"+rs.getString("diagnosa_klinis")+"','"+rs.getString("no_rawat")+"',"+
+                                        "'"+Permintaan+"','0')").executeUpdate();
+                                
+                                Permintaan="";
                                 ps2=koneksi.prepareStatement("select id_template from permintaan_detail_permintaan_lab where noorder=?");
                                 try {
                                     ps2.setString(1,NoPermintaan);
@@ -2235,8 +2263,9 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                         ps2.close();
                                     }
                                 }
+                                
                                 koneksisysmex.prepareStatement(
-                                        "insert into LIS_ORDER values('0',now(),'NW','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien")+"',"+
+                                        "insert into LIS_ORDER_DETAIL values('0',now(),'NW','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien")+"',"+
                                         "'"+rs.getString("alamat")+"','"+rs.getString("nm_kel")+"','"+rs.getString("nm_kec")+"','"+rs.getString("nm_kab")+"',"+
                                         "'OP','"+rs.getString("tgl_lahir")+"','"+rs.getString("jk")+"','"+rs.getString("noorder")+"','"+rs.getString("tgl_permintaan")+" "+rs.getString("jam_permintaan")+"',"+
                                         "'"+rs.getString("kd_poli")+"^"+rs.getString("nm_poli")+"','"+rs.getString("dokter_perujuk")+"^"+rs.getString("nm_dokter")+"',"+
@@ -2297,6 +2326,34 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                     pilihan="U";
                                 }
                                 Permintaan="";
+                                ps2=koneksi.prepareStatement("select kd_jenis_prw from permintaan_pemeriksaan_lab where noorder=?");
+                                try {
+                                    ps2.setString(1,NoPermintaan);
+                                    rs2=ps2.executeQuery();
+                                    while(rs2.next()){
+                                        Permintaan=rs2.getString("kd_jenis_prw")+"~"+Permintaan;
+                                    }
+                                    Permintaan=Permintaan.substring(0,Permintaan.length() - 1);
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs2!=null){
+                                        rs2.close();
+                                    }
+                                    if(ps2!=null){
+                                        ps2.close();
+                                    }
+                                }
+                                
+                                koneksisysmex.prepareStatement(
+                                        "insert into LIS_ORDER values('0',now(),'NW','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien")+"',"+
+                                        "'"+rs.getString("alamat")+"','"+rs.getString("nm_kel")+"','"+rs.getString("nm_kec")+"','"+rs.getString("nm_kab")+"',"+
+                                        "'OP','"+rs.getString("tgl_lahir")+"','"+rs.getString("jk")+"','"+rs.getString("noorder")+"','"+rs.getString("tgl_permintaan")+" "+rs.getString("jam_permintaan")+"',"+
+                                        "'"+rs.getString("kd_poli")+"^"+rs.getString("nm_poli")+"','"+rs.getString("dokter_perujuk")+"^"+rs.getString("nm_dokter")+"',"+
+                                        "'"+rs.getString("kd_poli")+"','"+pilihan+"','"+rs.getString("diagnosa_klinis")+"','"+rs.getString("no_rawat")+"',"+
+                                        "'"+Permintaan+"','0')").executeUpdate();
+                                
+                                Permintaan="";
                                 ps2=koneksi.prepareStatement("select id_template from permintaan_detail_permintaan_lab where noorder=?");
                                 try {
                                     ps2.setString(1,NoPermintaan);
@@ -2315,12 +2372,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                         ps2.close();
                                     }
                                 }
+                                
                                 koneksisysmex.prepareStatement(
-                                        "insert into LIS_ORDER values('0',now(),'NW','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien")+"',"+
+                                        "insert into LIS_ORDER_DETAIL values('0',now(),'NW','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien")+"',"+
                                         "'"+rs.getString("alamat")+"','"+rs.getString("nm_kel")+"','"+rs.getString("nm_kec")+"','"+rs.getString("nm_kab")+"',"+
-                                        "'IN','"+rs.getString("tgl_lahir")+"','"+rs.getString("jk")+"','"+rs.getString("noorder")+"','"+rs.getString("tgl_permintaan")+" "+rs.getString("jam_permintaan")+"',"+
-                                        "'"+rs.getString("kd_bangsal")+"^"+rs.getString("nm_bangsal")+"','"+rs.getString("dokter_perujuk")+"^"+rs.getString("nm_dokter")+"',"+
-                                        "'"+rs.getString("kd_kamar")+"','"+pilihan+"','"+rs.getString("diagnosa_klinis")+"','"+rs.getString("no_rawat")+"',"+
+                                        "'OP','"+rs.getString("tgl_lahir")+"','"+rs.getString("jk")+"','"+rs.getString("noorder")+"','"+rs.getString("tgl_permintaan")+" "+rs.getString("jam_permintaan")+"',"+
+                                        "'"+rs.getString("kd_poli")+"^"+rs.getString("nm_poli")+"','"+rs.getString("dokter_perujuk")+"^"+rs.getString("nm_dokter")+"',"+
+                                        "'"+rs.getString("kd_poli")+"','"+pilihan+"','"+rs.getString("diagnosa_klinis")+"','"+rs.getString("no_rawat")+"',"+
                                         "'"+Permintaan+"','0')").executeUpdate();
                             }
                             JOptionPane.showMessageDialog(null,"Proses kirim berhasil..!!");

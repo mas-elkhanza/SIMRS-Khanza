@@ -35,9 +35,7 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariGolongan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    public DlgGolongan nama=new DlgGolongan(null,false);
     private PreparedStatement ps;
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
@@ -317,6 +315,7 @@ public final class DlgCariGolongan extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgGolongan nama=new DlgGolongan(null,false);
         nama.emptTeks();
         nama.isCek();
         nama.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

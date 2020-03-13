@@ -43,7 +43,6 @@ import fungsi.akses;
 import inventory.DlgPeresepanDokter;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -51,7 +50,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -64,10 +62,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -106,14 +102,10 @@ public final class DlgReg extends javax.swing.JDialog {
     public  DlgCariDokter2 dokter2=new DlgCariDokter2(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariPoli2 poli2=new DlgCariPoli2(null,false);
-    private DlgRujukanPoliInternal dlgrjk=new DlgRujukanPoliInternal(null,false);
     public  DlgRujukMasuk rujukmasuk=new DlgRujukMasuk(null,false);
-    private DlgCatatan catatan=new DlgCatatan(null,false);
     private PreparedStatement ps,ps3,pscaripiutang;
-    private Properties prop = new Properties();
     private ResultSet rs;
     private int pilihan=0,i=0,kuota=0,jmlparsial=0;
-    private Date cal=new Date();
     private boolean ceksukses=false;
     private String nosisrute="",aktifkanparsial="no",BASENOREG="",
             URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
@@ -759,40 +751,38 @@ public final class DlgReg extends javax.swing.JDialog {
         DlgCatatan.setSize(595,34);        
                 
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            
             try {
-                aktifjadwal=prop.getProperty("JADWALDOKTERDIREGISTRASI");
+                aktifjadwal=koneksiDB.JADWALDOKTERDIREGISTRASI();
             } catch (Exception e) {
                 aktifjadwal="nonaktif";
             }
             
             try {
-                IPPRINTERTRACER=prop.getProperty("IPPRINTERTRACER");
+                IPPRINTERTRACER=koneksiDB.IPPRINTERTRACER();
             } catch (Exception e) {
                 IPPRINTERTRACER="127.0.0.1";
             }
             
             try {
-                URUTNOREG=prop.getProperty("URUTNOREG");
+                URUTNOREG=koneksiDB.URUTNOREG();
             } catch (Exception e) {
                 URUTNOREG="dokter";
             }
             
             try {
-                BASENOREG=prop.getProperty("BASENOREG");
+                BASENOREG=koneksiDB.BASENOREG();
             } catch (Exception e) {
                 BASENOREG="registrasi";
             }
             
             try {
-                aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+                aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
             } catch (Exception e) {
                 aktifkanparsial="no";
             }
                 
             try {
-                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                if(koneksiDB.MENUTRANSPARAN().equals("yes")){
                     DlgCatatan.setOpacity(0.77f);
                 }
             } catch (Exception e) {
@@ -5083,11 +5073,8 @@ public final class DlgReg extends javax.swing.JDialog {
         pasien.satuantni.dispose();
         pasien.suku.dispose();
         dokter.dispose();
-        dokter.dokter.dispose();
-        dokter2.dokter.dispose();
         poli.dispose();
         poli2.dispose();
-        dlgrjk.dispose();
         rujukmasuk.WindowPerujuk.dispose();  
         DlgSakit2.dispose();
         DlgDemografi.dispose();
@@ -5422,7 +5409,7 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         dlgki.setLocationRelativeTo(internalFrame1);
                         dlgki.emptTeks();
                         dlgki.isCek();
-                        dlgki.setNoRm(TNoRw.getText());   
+                        dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());   
                         dlgki.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
@@ -6976,6 +6963,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgCatatan catatan=new DlgCatatan(null,false);
             catatan.setNoRm(TNoRM.getText());
             catatan.setSize(720,330);
             catatan.setLocationRelativeTo(internalFrame1);
@@ -7244,6 +7232,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             tbPetugas.requestFocus();
         }else{            
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgRujukanPoliInternal dlgrjk=new DlgRujukanPoliInternal(null,false);
             dlgrjk.setLocationRelativeTo(internalFrame1);
             dlgrjk.isCek();
             dlgrjk.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),internalFrame1.getWidth(),internalFrame1.getHeight()); 
@@ -7349,7 +7338,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         dlgki.setLocationRelativeTo(internalFrame1);
                         dlgki.emptTeks();
                         dlgki.isCek();
-                        dlgki.setNoRm(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString());   
+                        dlgki.setNoRm(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString(),tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),6).toString(),tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),7).toString());   
                         dlgki.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     } 
@@ -7948,7 +7937,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             DlgBerkasRawat berkas=new DlgBerkasRawat(null,true);
             berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
             try {
-                berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+TNoRw.getText());                    
+                berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+TNoRw.getText());                    
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);
             }
@@ -7970,7 +7959,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 DlgBerkasRawat berkas=new DlgBerkasRawat(null,true);
                 berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
                 try {
-                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString());                    
+                    berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString());                    
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
@@ -8567,7 +8556,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 resume.setLocationRelativeTo(internalFrame1);
                 resume.setNoRm(TNoRw.getText(),DTPCari2.getDate());
-                resume.emptTeks();
                 resume.tampil();
                 resume.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
@@ -9277,6 +9265,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 if(validasicatatan.equals("Yes")){
                     if(Sequel.cariInteger("select count(no_rkm_medis) from catatan_pasien where no_rkm_medis=?",TNoRM.getText())>0){
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        DlgCatatan catatan=new DlgCatatan(null,false);
                         catatan.setNoRm(TNoRM.getText());
                         catatan.setSize(720,330);
                         catatan.setLocationRelativeTo(internalFrame1);
@@ -9290,6 +9279,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(validasicatatan.equals("Yes")){
                 if(Sequel.cariInteger("select count(no_rkm_medis) from catatan_pasien where no_rkm_medis=?",TNoRM.getText())>0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    DlgCatatan catatan=new DlgCatatan(null,false);
                     catatan.setNoRm(TNoRM.getText());
                     catatan.setSize(720,330);
                     catatan.setLocationRelativeTo(internalFrame1);

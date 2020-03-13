@@ -21,8 +21,8 @@ import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -37,6 +37,8 @@ public class DlgAdmin extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private ResultSet rs;
+    private PreparedStatement ps;
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -435,22 +437,27 @@ public class DlgAdmin extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
-        String sql="select AES_DECRYPT(usere,'nur'),AES_DECRYPT(passworde,'windi') from admin";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
         Valid.tabelKosong(tabMode);
         try{
-            java.sql.Statement stat=koneksi.createStatement();
-            ResultSet rs=stat.executeQuery(sql);
-            while(rs.next()){
-                String kd=rs.getString(1);
-                String nm=rs.getString(2);
-                String[] data={kd,nm};
-                tabMode.addRow(data);
-             }
-        }catch(SQLException e){
+            ps=koneksi.prepareStatement("select AES_DECRYPT(usere,'nur'),AES_DECRYPT(passworde,'windi') from admin");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2)
+                    });
+                 }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
     }

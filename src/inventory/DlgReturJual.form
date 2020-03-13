@@ -666,6 +666,7 @@
                     <StringItem index="10" value="Harga Beli"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="10"/>
                 <Property name="name" type="java.lang.String" value="Jenisjual" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[45, 23]"/>

@@ -34,7 +34,7 @@ public class UTDPendonor extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i;
-    private String kdkel="",kdkec="",kdkab="",kdprop="";
+    private String kdkel="",kdkec="",kdkab="",kdprop="",sql="";
     private DlgKabupaten kab=new DlgKabupaten(null,false);
     private DlgKecamatan kec=new DlgKecamatan(null,false);
     private DlgKelurahan kel=new DlgKelurahan(null,false);
@@ -61,19 +61,45 @@ public class UTDPendonor extends javax.swing.JDialog {
         for (i = 0; i < 18; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==1){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(175);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(105);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(25);
             }else if(i==4){
                 column.setPreferredWidth(100);
             }else if(i==5){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(65);
             }else if(i==6){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(175);
+            }else if(i==7){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==8){
+                column.setPreferredWidth(90);
+            }else if(i==9){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==10){
+                column.setPreferredWidth(90);
+            }else if(i==11){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==12){
+                column.setPreferredWidth(90);
+            }else if(i==13){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==14){
+                column.setPreferredWidth(90);
+            }else if(i==15){
+                column.setPreferredWidth(40);
+            }else if(i==16){
+                column.setPreferredWidth(40);
+            }else if(i==17){
+                column.setPreferredWidth(90);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -213,25 +239,29 @@ public class UTDPendonor extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnKartu1 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
         panelisi2 = new widget.panelisi();
         jLabel11 = new widget.Label();
-        CMbGd2 = new widget.ComboBox();
+        GDCari = new widget.ComboBox();
         jLabel12 = new widget.Label();
-        CMbGd3 = new widget.ComboBox();
+        ResusCari = new widget.ComboBox();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        label10 = new widget.Label();
-        LCount = new widget.Label();
+        BtnAll = new widget.Button();
+        jLabel6 = new widget.Label();
+        cmbHlm = new widget.ComboBox();
         panelisi1 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
         BtnPrint = new widget.Button();
-        BtnAll = new widget.Button();
+        label10 = new widget.Label();
+        LCount = new widget.Label();
         BtnKeluar = new widget.Button();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -266,6 +296,22 @@ public class UTDPendonor extends javax.swing.JDialog {
         BtnPropinsi = new widget.Button();
         ChkInput = new widget.CekBox();
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnKartu1.setBackground(new java.awt.Color(255, 255, 254));
+        MnKartu1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKartu1.setForeground(new java.awt.Color(50, 50, 50));
+        MnKartu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKartu1.setText("Kartu Donor Darah");
+        MnKartu1.setName("MnKartu1"); // NOI18N
+        MnKartu1.setPreferredSize(new java.awt.Dimension(150, 26));
+        MnKartu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKartu1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnKartu1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -294,25 +340,25 @@ public class UTDPendonor extends javax.swing.JDialog {
         jLabel11.setPreferredSize(new java.awt.Dimension(40, 23));
         panelisi2.add(jLabel11);
 
-        CMbGd2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "A", "B", "AB", "O" }));
-        CMbGd2.setName("CMbGd2"); // NOI18N
-        CMbGd2.setPreferredSize(new java.awt.Dimension(85, 23));
-        panelisi2.add(CMbGd2);
+        GDCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "A", "B", "AB", "O" }));
+        GDCari.setName("GDCari"); // NOI18N
+        GDCari.setPreferredSize(new java.awt.Dimension(85, 23));
+        panelisi2.add(GDCari);
 
         jLabel12.setText("Resus :");
         jLabel12.setName("jLabel12"); // NOI18N
         jLabel12.setPreferredSize(new java.awt.Dimension(50, 23));
         panelisi2.add(jLabel12);
 
-        CMbGd3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "(+)", "(-)" }));
-        CMbGd3.setName("CMbGd3"); // NOI18N
-        CMbGd3.setPreferredSize(new java.awt.Dimension(85, 23));
-        CMbGd3.addKeyListener(new java.awt.event.KeyAdapter() {
+        ResusCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "(+)", "(-)" }));
+        ResusCari.setName("ResusCari"); // NOI18N
+        ResusCari.setPreferredSize(new java.awt.Dimension(85, 23));
+        ResusCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                CMbGd3KeyPressed(evt);
+                ResusCariKeyPressed(evt);
             }
         });
-        panelisi2.add(CMbGd3);
+        panelisi2.add(ResusCari);
 
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
@@ -320,7 +366,7 @@ public class UTDPendonor extends javax.swing.JDialog {
         panelisi2.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(210, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -345,16 +391,32 @@ public class UTDPendonor extends javax.swing.JDialog {
         });
         panelisi2.add(BtnCari);
 
-        label10.setText("Record :");
-        label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi2.add(label10);
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelisi2.add(BtnAll);
 
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelisi2.add(LCount);
+        jLabel6.setText("Limit Data :");
+        jLabel6.setName("jLabel6"); // NOI18N
+        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi2.add(jLabel6);
+
+        cmbHlm.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "100", "200", "300", "400", "500", "1000", "Semua" }));
+        cmbHlm.setName("cmbHlm"); // NOI18N
+        cmbHlm.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelisi2.add(cmbHlm);
 
         jPanel2.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
@@ -452,23 +514,16 @@ public class UTDPendonor extends javax.swing.JDialog {
         });
         panelisi1.add(BtnPrint);
 
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnAll);
+        label10.setText("Record :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(75, 23));
+        panelisi1.add(label10);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(85, 23));
+        panelisi1.add(LCount);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -495,7 +550,6 @@ public class UTDPendonor extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
-        tbDokter.setAutoCreateRowSorter(true);
         tbDokter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -508,6 +562,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         ));
         tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -636,7 +691,7 @@ public class UTDPendonor extends javax.swing.JDialog {
         FormInput.add(GD);
         GD.setBounds(454, 10, 80, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2020" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-03-2020" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -665,7 +720,7 @@ public class UTDPendonor extends javax.swing.JDialog {
         jLabel10.setText("Resus :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(576, 10, 40, 23);
+        jLabel10.setBounds(596, 10, 40, 23);
 
         Resus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "(+)", "(-)" }));
         Resus.setName("Resus"); // NOI18N
@@ -675,7 +730,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(Resus);
-        Resus.setBounds(620, 10, 80, 23);
+        Resus.setBounds(640, 10, 80, 23);
 
         Alamat.setText("ALAMAT");
         Alamat.setHighlighter(null);
@@ -696,7 +751,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(Alamat);
-        Alamat.setBounds(454, 40, 283, 23);
+        Alamat.setBounds(454, 40, 333, 23);
 
         BtnKelurahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKelurahan.setMnemonic('2');
@@ -708,7 +763,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnKelurahan);
-        BtnKelurahan.setBounds(566, 70, 28, 23);
+        BtnKelurahan.setBounds(591, 70, 28, 23);
 
         Kelurahan.setEditable(false);
         Kelurahan.setText("KELURAHAN");
@@ -730,7 +785,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kelurahan);
-        Kelurahan.setBounds(454, 70, 110, 23);
+        Kelurahan.setBounds(454, 70, 135, 23);
 
         Kecamatan.setEditable(false);
         Kecamatan.setText("KECAMATAN");
@@ -752,7 +807,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kecamatan);
-        Kecamatan.setBounds(597, 70, 110, 23);
+        Kecamatan.setBounds(622, 70, 135, 23);
 
         BtnKecamatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKecamatan.setMnemonic('3');
@@ -764,7 +819,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnKecamatan);
-        BtnKecamatan.setBounds(709, 70, 28, 23);
+        BtnKecamatan.setBounds(759, 70, 28, 23);
 
         Kabupaten.setEditable(false);
         Kabupaten.setText("KABUPATEN");
@@ -786,7 +841,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kabupaten);
-        Kabupaten.setBounds(454, 100, 110, 23);
+        Kabupaten.setBounds(454, 100, 135, 23);
 
         BtnKabupaten.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKabupaten.setMnemonic('4');
@@ -798,7 +853,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnKabupaten);
-        BtnKabupaten.setBounds(566, 100, 28, 23);
+        BtnKabupaten.setBounds(591, 100, 28, 23);
 
         jLabel21.setText("Alamat :");
         jLabel21.setName("jLabel21"); // NOI18N
@@ -825,7 +880,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(Propinsi);
-        Propinsi.setBounds(597, 100, 110, 23);
+        Propinsi.setBounds(622, 100, 135, 23);
 
         BtnPropinsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPropinsi.setMnemonic('4');
@@ -837,7 +892,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnPropinsi);
-        BtnPropinsi.setBounds(709, 100, 28, 23);
+        BtnPropinsi.setBounds(759, 100, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -922,7 +977,7 @@ public class UTDPendonor extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,NoId,"datasuplier","kode_suplier");
+            Valid.hapusTable(tabMode,NoId,"utd_pendonor","no_pendonor");
             tampil();
             emptTeks();
         }
@@ -938,19 +993,34 @@ public class UTDPendonor extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(NoId.getText().trim().equals("")){
-            Valid.textKosong(NoId,"Kode Supplier");
+            Valid.textKosong(NoId,"No.ID Pendonor");
         }else if(Nama.getText().trim().equals("")){
-            Valid.textKosong(Nama,"Nama Supplier");
+            Valid.textKosong(Nama,"Nama Pendonor");
         }else if(KTP.getText().trim().equals("")){
-            Valid.textKosong(KTP,"Alamat Supplier");
+            Valid.textKosong(KTP,"No.KTP");
         }else if(Telp.getText().trim().equals("")){
             Valid.textKosong(Telp,"No.Telp");
+        }else if(Alamat.getText().trim().equals("")){
+            Valid.textKosong(Alamat,"Alamat");
+        }else if(Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
+            Valid.textKosong(Kecamatan,"Kecamatan");
+        }else if(Kelurahan.getText().trim().equals("")||Kelurahan.getText().trim().equals("KELURAHAN")){
+            Valid.textKosong(Kelurahan,"Kelurahan");
+        }else if(Kabupaten.getText().trim().equals("")||Kabupaten.getText().trim().equals("KABUPATEN")){
+            Valid.textKosong(Kabupaten,"Kabupaten");
+        }else if(Propinsi.getText().trim().equals("")||Propinsi.getText().trim().equals("PROPINSI")){
+            Valid.textKosong(Propinsi,"Propinsi");
+        }else if(Lahir.getText().trim().equals("")){
+            Valid.textKosong(Lahir,"Tempat Lahir");
         }else{
-            /*Valid.editTable(tabMode,"datasuplier","kode_suplier","?","kode_suplier=?,nama_suplier=?,alamat=?,kota=?,no_telp=?,nama_bank=?,rekening=?",8,new String[]{
-                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),Bank.getText(),NoRek.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
-            });*/
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(tbDokter.getSelectedRow()!= -1){
+                Valid.editTable(tabMode,"utd_pendonor","no_pendonor","?","no_pendonor=?,nama=?,no_ktp=?,jk=?,tmp_lahir=?,tgl_lahir=?,alamat=?,kd_kel=?,kd_kec=?,kd_kab=?,kd_prop=?,golongan_darah=?,resus=?,no_telp=?",15,new String[]{
+                    NoId.getText(),Nama.getText(),KTP.getText(),JK.getSelectedItem().toString().substring(0,1),Lahir.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),
+                    Alamat.getText(),kdkel,kdkec,kdkab,kdprop,GD.getSelectedItem().toString(),Resus.getSelectedItem().toString(),Telp.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
+                });
+                if(tabMode.getRowCount()!=0){tampil();}
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -969,23 +1039,66 @@ public class UTDPendonor extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptSuplier.jasper","report","::[ Data Suplier ]::",
-                    " select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
-                    " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp,"+
-                    " datasuplier.nama_bank,datasuplier.rekening from datasuplier "+
-                    " where datasuplier.kode_suplier like '%"+TCari.getText().trim()+"%' or "+
-                    " datasuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
-                    " datasuplier.alamat like '%"+TCari.getText().trim()+"%' or "+
-                    " datasuplier.kota like '%"+TCari.getText().trim()+"%' or "+
-                    " datasuplier.nama_bank like '%"+TCari.getText().trim()+"%' or "+
-                    " datasuplier.no_telp like '%"+TCari.getText().trim()+"%' order by datasuplier.kode_suplier",param);            
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            sql="";
+            if(cmbHlm.getSelectedItem().toString().equals("Semua")){
+                if(TCari.getText().equals("")&&GDCari.getSelectedItem().toString().equals("Semua")&&ResusCari.getSelectedItem().toString().equals("Semua")){
+                    sql="select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,"+
+                        "utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,"+
+                        "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
+                        "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
+                        "order by utd_pendonor.no_pendonor desc";
+                }else{
+                    sql="select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,"+
+                        "utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,"+
+                        "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
+                        "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
+                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.nama like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.alamat like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_telp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kecamatan.nm_kec like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kabupaten.nm_kab like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and propinsi.nm_prop like '%"+TCari.getText()+"%' "+
+                        "order by utd_pendonor.no_pendonor desc";
+                }   
+            }else{
+                if(TCari.getText().equals("")&&GDCari.getSelectedItem().toString().equals("Semua")&&ResusCari.getSelectedItem().toString().equals("Semua")){
+                    sql="select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,"+
+                        "utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,"+
+                        "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
+                        "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
+                        "order by utd_pendonor.no_pendonor desc limit "+cmbHlm.getSelectedItem().toString();
+                }else{
+                    sql="select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,"+
+                        "utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,"+
+                        "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
+                        "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
+                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.nama like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.alamat like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_telp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kecamatan.nm_kec like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kabupaten.nm_kab like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and propinsi.nm_prop like '%"+TCari.getText()+"%' "+
+                        "order by utd_pendonor.no_pendonor desc limit "+cmbHlm.getSelectedItem().toString();
+                }
+            }
+            Valid.MyReportqry("rptDataPendonorDarah.jasper","report","::[ Data Pendonor Darah ]::",sql,param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1023,20 +1136,33 @@ public class UTDPendonor extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoId.getText().trim().equals("")){
-            Valid.textKosong(NoId,"Kode Supplier");
+            Valid.textKosong(NoId,"No.ID Pendonor");
         }else if(Nama.getText().trim().equals("")){
-            Valid.textKosong(Nama,"Nama Supplier");
+            Valid.textKosong(Nama,"Nama Pendonor");
         }else if(KTP.getText().trim().equals("")){
-            Valid.textKosong(KTP,"Alamat Supplier");
+            Valid.textKosong(KTP,"No.KTP");
         }else if(Telp.getText().trim().equals("")){
             Valid.textKosong(Telp,"No.Telp");
+        }else if(Alamat.getText().trim().equals("")){
+            Valid.textKosong(Alamat,"Alamat");
+        }else if(Kecamatan.getText().trim().equals("")||Kecamatan.getText().trim().equals("KECAMATAN")){
+            Valid.textKosong(Kecamatan,"Kecamatan");
+        }else if(Kelurahan.getText().trim().equals("")||Kelurahan.getText().trim().equals("KELURAHAN")){
+            Valid.textKosong(Kelurahan,"Kelurahan");
+        }else if(Kabupaten.getText().trim().equals("")||Kabupaten.getText().trim().equals("KABUPATEN")){
+            Valid.textKosong(Kabupaten,"Kabupaten");
+        }else if(Propinsi.getText().trim().equals("")||Propinsi.getText().trim().equals("PROPINSI")){
+            Valid.textKosong(Propinsi,"Propinsi");
+        }else if(Lahir.getText().trim().equals("")){
+            Valid.textKosong(Lahir,"Tempat Lahir");
         }else{
-            /*if(Sequel.menyimpantf("datasuplier","?,?,?,?,?,?,?","Kode Supplier",7,new String[]{
-                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),Bank.getText(),NoRek.getText()
+            if(Sequel.menyimpantf("utd_pendonor","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.ID Pendonor",14,new String[]{
+                NoId.getText(),Nama.getText(),KTP.getText(),JK.getSelectedItem().toString().substring(0,1),Lahir.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),
+                Alamat.getText(),kdkel,kdkec,kdkab,kdprop,GD.getSelectedItem().toString(),Resus.getSelectedItem().toString(),Telp.getText()
             })==true){
                 tampil();
                 emptTeks();
-            } */               
+            }               
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1299,13 +1425,39 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         prop.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed
 
-    private void CMbGd3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CMbGd3KeyPressed
+    private void ResusCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResusCariKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CMbGd3KeyPressed
+    }//GEN-LAST:event_ResusCariKeyPressed
 
     private void GDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GDKeyPressed
         Valid.pindah(evt,Lahir,Resus);
     }//GEN-LAST:event_GDKeyPressed
+
+    private void MnKartu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKartu1ActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            NoId.requestFocus();
+        }else if(Nama.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbDokter.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            Valid.MyReportqry("rptKartuDonorDarah.jasper","report","::[ Kartu Donor Darah ]::",
+                    "select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,"+
+                    "utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,"+
+                    "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
+                    "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
+                    "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop where utd_pendonor.no_pendonor='"+NoId.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnKartu1ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1337,12 +1489,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnPrint;
     private widget.Button BtnPropinsi;
     private widget.Button BtnSimpan;
-    private widget.ComboBox CMbGd2;
-    private widget.ComboBox CMbGd3;
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPLahir;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox GD;
+    private widget.ComboBox GDCari;
     private widget.ComboBox JK;
     private widget.TextBox KTP;
     private widget.TextBox Kabupaten;
@@ -1350,22 +1501,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox Kelurahan;
     private widget.Label LCount;
     private widget.TextBox Lahir;
+    private javax.swing.JMenuItem MnKartu1;
     private widget.TextBox Nama;
     private widget.TextBox NoId;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Propinsi;
     private widget.ComboBox Resus;
+    private widget.ComboBox ResusCari;
     private widget.TextBox TCari;
     private widget.TextBox Telp;
+    private widget.ComboBox cmbHlm;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel21;
+    private widget.Label jLabel6;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label10;
     private widget.Label label12;
     private widget.Label label18;
@@ -1380,29 +1536,69 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        /*try{
-            ps=koneksi.prepareStatement(
-                    "select datasuplier.kode_suplier, datasuplier.nama_suplier, "+
-                    " datasuplier.alamat,datasuplier.kota, datasuplier.no_telp,"+
-                    " datasuplier.nama_bank,datasuplier.rekening from datasuplier "+
-                    " where datasuplier.kode_suplier like ? or "+
-                    " datasuplier.nama_suplier like ? or "+
-                    " datasuplier.alamat like ? or "+
-                    " datasuplier.kota like ? or "+
-                    " datasuplier.nama_bank like ? or "+
-                    " datasuplier.no_telp like ? order by datasuplier.kode_suplier");
+        try{
+            sql="";
+            if(cmbHlm.getSelectedItem().toString().equals("Semua")){
+                if(TCari.getText().equals("")&&GDCari.getSelectedItem().toString().equals("Semua")&&ResusCari.getSelectedItem().toString().equals("Semua")){
+                    sql="select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,"+
+                        "utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,"+
+                        "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
+                        "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
+                        "order by utd_pendonor.no_pendonor desc";
+                }else{
+                    sql="select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,"+
+                        "utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,"+
+                        "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
+                        "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
+                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.nama like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.alamat like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_telp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kecamatan.nm_kec like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kabupaten.nm_kab like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and propinsi.nm_prop like '%"+TCari.getText()+"%' "+
+                        "order by utd_pendonor.no_pendonor desc";
+                }   
+            }else{
+                if(TCari.getText().equals("")&&GDCari.getSelectedItem().toString().equals("Semua")&&ResusCari.getSelectedItem().toString().equals("Semua")){
+                    sql="select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,"+
+                        "utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,"+
+                        "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
+                        "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
+                        "order by utd_pendonor.no_pendonor desc limit "+cmbHlm.getSelectedItem().toString();
+                }else{
+                    sql="select utd_pendonor.no_pendonor,utd_pendonor.nama,utd_pendonor.no_ktp,utd_pendonor.jk,utd_pendonor.tmp_lahir,utd_pendonor.tgl_lahir,"+
+                        "utd_pendonor.alamat,utd_pendonor.kd_kel,utd_pendonor.kd_kec,utd_pendonor.kd_kab,utd_pendonor.kd_prop,utd_pendonor.golongan_darah,"+
+                        "utd_pendonor.resus,utd_pendonor.no_telp,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop "+
+                        "from utd_pendonor inner join kelurahan on utd_pendonor.kd_kel=kelurahan.kd_kel inner join kecamatan on utd_pendonor.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on utd_pendonor.kd_kab=kabupaten.kd_kab inner join propinsi on utd_pendonor.kd_prop=propinsi.kd_prop "+
+                        "where utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_pendonor like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.nama like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_ktp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.alamat like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and utd_pendonor.no_telp like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kelurahan.nm_kel like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kecamatan.nm_kec like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and kabupaten.nm_kab like '%"+TCari.getText()+"%' or "+
+                        "utd_pendonor.golongan_darah like '%"+GDCari.getSelectedItem()+"%' and utd_pendonor.resus like '%"+ResusCari.getSelectedItem()+"%' and propinsi.nm_prop like '%"+TCari.getText()+"%' "+
+                        "order by utd_pendonor.no_pendonor desc limit "+cmbHlm.getSelectedItem().toString();
+                }
+            }
+            ps=koneksi.prepareStatement(sql);
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                        rs.getString(5),rs.getString(6),rs.getString(7)
+                        rs.getString("no_pendonor"),rs.getString("nama"),rs.getString("no_ktp"),rs.getString("jk"),
+                        rs.getString("tmp_lahir"),rs.getString("tgl_lahir"),rs.getString("alamat"),rs.getString("kd_kel"),
+                        rs.getString("nm_kel"),rs.getString("kd_kec"),rs.getString("nm_kec"),rs.getString("kd_kab"),
+                        rs.getString("nm_kab"),rs.getString("kd_prop"),rs.getString("nm_prop"),rs.getString("golongan_darah"),
+                        rs.getString("resus"),rs.getString("no_telp")
                     });
                 }
             } catch (Exception e) {
@@ -1417,7 +1613,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-        }*/
+        }
         LCount.setText(""+tabMode.getRowCount());
     }
 
@@ -1442,7 +1638,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             NoId.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
             Nama.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
             KTP.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
-            Telp.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
+            JK.setSelectedItem(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString().replaceAll("P","PEREMPUAN").replaceAll("L","LAKI-LAKI"));
+            Lahir.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
+            Valid.SetTgl(DTPLahir,tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString());
+            Alamat.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
+            kdkel=tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString();
+            Kelurahan.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),8).toString());
+            kdkec=tabMode.getValueAt(tbDokter.getSelectedRow(),9).toString();
+            Kecamatan.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),10).toString());
+            kdkab=tabMode.getValueAt(tbDokter.getSelectedRow(),11).toString();
+            Kabupaten.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),12).toString());
+            kdprop=tabMode.getValueAt(tbDokter.getSelectedRow(),13).toString();
+            Propinsi.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),14).toString());
+            GD.setSelectedItem(tabMode.getValueAt(tbDokter.getSelectedRow(),15).toString());
+            Resus.setSelectedItem(tabMode.getValueAt(tbDokter.getSelectedRow(),16).toString());
+            Telp.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),17).toString());
         }
     }
 

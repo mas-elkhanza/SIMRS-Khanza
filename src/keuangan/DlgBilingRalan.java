@@ -458,7 +458,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        dlgrwjl.perawatan.addWindowListener(new WindowListener() {
+        dlgrwjl.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
