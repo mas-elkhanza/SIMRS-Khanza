@@ -435,10 +435,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 rsretur=psretur.executeQuery();
                                 if(rsretur.next()){
                                     if(aktifkanbatch.equals("yes")){
+                                        Trackobat.catatRiwayat(tbObat.getValueAt(i,1).toString(),0,rsretur.getDouble("jml"),"Retur Pasien",akses.getkode(),kdgudang.getText(),"Hapus",tbObat.getValueAt(i,15).toString(),tbObat.getValueAt(i,16).toString());
                                         Sequel.mengedit("data_batch","no_batch=? and no_faktur=? and kode_brng=?","sisa=sisa-?",4,new String[]{
                                             ""+rsretur.getDouble("jml"),tbObat.getValueAt(i,15).toString(),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,1).toString()
                                         });
-                                        Trackobat.catatRiwayat(tbObat.getValueAt(i,1).toString(),0,rsretur.getDouble("jml"),"Retur Pasien",akses.getkode(),kdgudang.getText(),"Hapus",tbObat.getValueAt(i,15).toString(),tbObat.getValueAt(i,16).toString());
                                         psupdategudang= koneksi.prepareStatement("update gudangbarang set stok=stok-? where kode_brng=? and kd_bangsal=? and no_batch=? and no_faktur=?");           
                                         try {
                                             psupdategudang.setDouble(1,rsretur.getDouble("jml"));
@@ -509,10 +509,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 psimpanretur.executeUpdate();
 
                                 if(aktifkanbatch.equals("yes")){
+                                    Trackobat.catatRiwayat(tbObat.getValueAt(i,1).toString(),retur,0,"Retur Pasien",akses.getkode(),kdgudang.getText(),"Simpan",tbObat.getValueAt(i,15).toString(),tbObat.getValueAt(i,16).toString());
                                     Sequel.mengedit("data_batch","no_batch=? and no_faktur=? and kode_brng=?","sisa=sisa+?",4,new String[]{
                                         ""+retur,tbObat.getValueAt(i,15).toString(),tbObat.getValueAt(i,16).toString(),tbObat.getValueAt(i,1).toString()
                                     });
-                                    Trackobat.catatRiwayat(tbObat.getValueAt(i,1).toString(),retur,0,"Retur Pasien",akses.getkode(),kdgudang.getText(),"Simpan",tbObat.getValueAt(i,15).toString(),tbObat.getValueAt(i,16).toString());
                                     psupdategudang2= koneksi.prepareStatement("update gudangbarang set stok=stok+? where kode_brng=? and kd_bangsal=? and no_batch=? and no_faktur=?");
                                     try {
                                         psupdategudang2.setDouble(1,retur);

@@ -128,7 +128,8 @@ public final class akses {
             inhealth_mapping_tindakan_operasi=false,hibah_obat_bhp=false,asal_hibah=false,asuhan_gizi=false,inhealth_kirim_tagihan=false,
             sirkulasi_obat4=false,sirkulasi_obat5=false,sirkulasi_non_medis2=false,monitoring_asuhan_gizi=false,penerimaan_obat_perbulan=false,
             rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false,master_masalah_keperawatan=false,
-            pengajuan_cuti=false,kedatangan_pasien=false,utd_pendonor=false,toko_suplier=false,toko_jenis=false,toko_set_harga=false;
+            pengajuan_cuti=false,kedatangan_pasien=false,utd_pendonor=false,toko_suplier=false,toko_jenis=false,toko_set_harga=false,
+            toko_barang=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -741,6 +742,7 @@ public final class akses {
                         akses.toko_suplier=true;
                         akses.toko_jenis=true;
                         akses.toko_set_harga=true;
+                        akses.toko_barang=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1337,6 +1339,7 @@ public final class akses {
                         akses.toko_suplier=rs2.getBoolean("toko_suplier");
                         akses.toko_jenis=rs2.getBoolean("toko_jenis");
                         akses.toko_set_harga=rs2.getBoolean("toko_set_harga");
+                        akses.toko_barang=rs2.getBoolean("toko_barang");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1931,6 +1934,7 @@ public final class akses {
                         akses.toko_suplier=false;
                         akses.toko_jenis=false;
                         akses.toko_set_harga=false;
+                        akses.toko_barang=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2579,5 +2583,6 @@ public final class akses {
     public static boolean gettoko_suplier(){return akses.toko_suplier;}
     public static boolean gettoko_jenis(){return akses.toko_jenis;}
     public static boolean gettoko_set_harga(){return akses.toko_set_harga;}
+    public static boolean gettoko_barang(){return akses.toko_barang;}
     
 }   

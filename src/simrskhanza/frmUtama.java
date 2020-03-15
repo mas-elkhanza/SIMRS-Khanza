@@ -587,6 +587,7 @@ import surat.SuratRuang;
 import surat.SuratSakit;
 import surat.SuratSifat;
 import surat.SuratStatus;
+import toko.TokoBarang;
 import toko.TokoJenis;
 import toko.TokoSuplier;
 import tranfusidarah.UTDCariPenyerahanDarah;
@@ -637,7 +638,7 @@ public class frmUtama extends javax.swing.JFrame {
         //desktop.setAutoscrolls(true);
         edAdmin.setDocument(new batasInput((byte)100).getKata(edAdmin));
         edPwd.setDocument(new batasInput((byte)100).getKata(edPwd));
-        DlgLogin.setSize(319,191);
+        DlgLogin.setSize(299,180);
         DlgLogin.setVisible(false);
         DlgLogin.setLocationRelativeTo(null);
         
@@ -1351,7 +1352,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         panelGlass1.add(edAdmin);
-        edAdmin.setBounds(80, 12, 213, 23);
+        edAdmin.setBounds(80, 12, 193, 23);
 
         edPwd.setForeground(new java.awt.Color(50, 50, 50));
         edPwd.setToolTipText("Silahkan masukkan password");
@@ -1363,10 +1364,10 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         panelGlass1.add(edPwd);
-        edPwd.setBounds(80, 40, 213, 23);
+        edPwd.setBounds(80, 40, 193, 23);
 
         internalFrame3.add(panelGlass1);
-        panelGlass1.setBounds(-1, 30, 342, 76);
+        panelGlass1.setBounds(-1, 25, 342, 76);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/LaST (Cobalt) Lock n Gear.png"))); // NOI18N
         jLabel6.setName("jLabel6"); // NOI18N
@@ -1385,7 +1386,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         internalFrame3.add(BtnLogin);
-        BtnLogin.setBounds(12, 115, 105, 32);
+        BtnLogin.setBounds(12, 110, 105, 32);
 
         BtnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnCancel.setMnemonic('Y');
@@ -1399,10 +1400,10 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         internalFrame3.add(BtnCancel);
-        BtnCancel.setBounds(197, 115, 105, 32);
+        BtnCancel.setBounds(177, 110, 105, 32);
 
         internalFrame2.add(internalFrame3);
-        internalFrame3.setBounds(2, 15, 315, 160);
+        internalFrame3.setBounds(2, 12, 295, 155);
 
         DlgLogin.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
 
@@ -1629,7 +1630,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnRalan);
 
         btnKamarInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Home.png"))); // NOI18N
-        btnKamarInap.setText("Kamar Inap");
+        btnKamarInap.setText("Rawat Inap");
         btnKamarInap.setIconTextGap(0);
         btnKamarInap.setName("btnKamarInap"); // NOI18N
         btnKamarInap.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -2085,7 +2086,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnRBParamedis);
 
         btnKasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
-        btnKasir.setText("Kasir Ralan");
+        btnKasir.setText("Rawat Jalan");
         btnKasir.setIconTextGap(0);
         btnKasir.setName("btnKasir"); // NOI18N
         btnKasir.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6940,7 +6941,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/03/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13/03/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7452,7 +7453,7 @@ public class frmUtama extends javax.swing.JFrame {
         MenuBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         MenuBar.setForeground(new java.awt.Color(255, 255, 255));
         MenuBar.setName("MenuBar"); // NOI18N
-        MenuBar.setPreferredSize(new java.awt.Dimension(227, 26));
+        MenuBar.setPreferredSize(new java.awt.Dimension(227, 25));
 
         jMenu1.setBackground(new java.awt.Color(20, 0, 20));
         jMenu1.setBorder(null);
@@ -15854,6 +15855,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoBarang form=new TokoBarang(this,false);
+        form.emptTeks();
+        form.onCari();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16447,7 +16461,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah,btnAsuhanGizi,btnKirimTagihanInheath,
             btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2,btnMonitoringAsuhanGizi,btnGrafikPenerimaanObatPerBulan,btnRekapKunjungan,
             btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah,
-            btnSuplierToko,btnJenisToko,btnSetHargaToko;
+            btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko;
     
     public void isWall(){
         try{            
@@ -19382,6 +19396,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_jenis()==true){
                 Panelmenu.add(btnJenisToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_barang()==true){
+                Panelmenu.add(btnBarangToko); 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==17){   
@@ -22324,6 +22343,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettoko_jenis()==true){
             Panelmenu.add(btnJenisToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_barang()==true){
+            Panelmenu.add(btnBarangToko); 
             jmlmenu++;
         }
 
@@ -26393,6 +26417,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_barang()==true){
+            if(btnBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -28158,6 +28189,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSetHargaToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSetHargaTokoActionPerformed(evt);
+            }
+        });
+        
+        btnBarangToko = new widget.ButtonBig();
+        btnBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_shopping_cart_3440920.png"))); 
+        btnBarangToko.setText("Barang Toko");
+        btnBarangToko.setIconTextGap(0);
+        btnBarangToko.setName("btnBarangToko"); 
+        btnBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarangTokoActionPerformed(evt);
             }
         });
 

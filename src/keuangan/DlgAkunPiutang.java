@@ -55,9 +55,6 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        this.setLocation(8,1);
-        setSize(628,674);
-
         Object[] row={"P","Nama Akun","Kode Rekening","Nama Rekening","Cara Bayar","Kode Bayar"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -884,7 +881,6 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         LCount.setText(""+b);
     }
 
-
     public void emptTeks() {
        nmrek.setText("");
        kdrek.setText("");
@@ -903,6 +899,17 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             nmpnj.setText(tabMode.getValueAt(row,4).toString());
             kdpnj.setText(tabMode.getValueAt(row,5).toString());
         }
+    }
+    
+    public JTable getTable(){
+        return tbJadwal;
+    }
+    
+    public void isCek(){
+        BtnSimpan.setEnabled(akses.getakun_piutang());
+        BtnHapus.setEnabled(akses.getakun_piutang());
+        BtnEdit.setEnabled(akses.getakun_piutang());
+        BtnPrint.setEnabled(akses.getakun_piutang());
     }
     
     
