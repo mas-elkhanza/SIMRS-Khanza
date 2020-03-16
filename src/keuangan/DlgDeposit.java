@@ -69,7 +69,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);  
 
-        Object[] row={"No.Rawat","Pasien","Diterima dari","Tanggal","Besar Deposit","Petugas","Tipe Bayar"};
+        Object[] row={"No.Rawat","Pasien","Diterima dari","Tanggal","Besar Deposit","Petugas","Tipe Bayar", "Keterangan"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -79,7 +79,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 8; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(120);
@@ -95,6 +95,8 @@ public class DlgDeposit extends javax.swing.JDialog {
                 column.setPreferredWidth(300);
             }else if(i==6){
                 column.setPreferredWidth(120);
+            }else if(i==7){
+                column.setPreferredWidth(300);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -151,17 +153,17 @@ public class DlgDeposit extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         try {
-            ps=koneksi.prepareStatement("select deposit.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien), " +
-                "deposit.tgl_deposit,deposit.besar_deposit,concat(deposit.nip,' ',petugas.nama),deposit.tipe_bayar,deposit.diterima_dari " +
+            ps=koneksi.prepareStatement("select deposit.no_rawat, concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien), " +
+                "deposit.tgl_deposit, deposit.besar_deposit, concat(deposit.nip,' ',petugas.nama), deposit.tipe_bayar, deposit.diterima_dari, deposit.keterangan " +
                 "from deposit inner join reg_periksa inner join pasien inner join petugas " +
                 "on deposit.no_rawat=reg_periksa.no_rawat " +
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "and deposit.nip=petugas.nip " +
-                "where deposit.tgl_deposit between ? and ? and deposit.no_rawat like ? and deposit.tipe_bayar like ? or "+
-                "deposit.tgl_deposit between ? and ? and reg_periksa.no_rkm_medis like ? and deposit.tipe_bayar like ? or "+
-                "deposit.tgl_deposit between ? and ? and pasien.nm_pasien like ? and deposit.tipe_bayar like ? or " +
-                "deposit.tgl_deposit between ? and ? and deposit.nip like ? and deposit.tipe_bayar like ? or "+
-                "deposit.tgl_deposit between ? and ? and petugas.nama like ? and deposit.tipe_bayar like ? order by deposit.tgl_deposit desc");
+                "where deposit.tgl_deposit between ? and ? and deposit.no_rawat like ? and deposit.tipe_bayar like ? and deposit.keterangan like ? or "+
+                "deposit.tgl_deposit between ? and ? and reg_periksa.no_rkm_medis like ? and deposit.tipe_bayar like ? and deposit.keterangan like ? or "+
+                "deposit.tgl_deposit between ? and ? and pasien.nm_pasien like ? and deposit.tipe_bayar like ? and deposit.keterangan like ? or " +
+                "deposit.tgl_deposit between ? and ? and deposit.nip like ? and deposit.tipe_bayar like ? and deposit.keterangan like ? or "+
+                "deposit.tgl_deposit between ? and ? and petugas.nama like ? and deposit.tipe_bayar like ? and deposit.keterangan like ? order by deposit.tgl_deposit desc");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -225,6 +227,9 @@ public class DlgDeposit extends javax.swing.JDialog {
         jLabel16 = new widget.Label();
         jLabel17 = new widget.Label();
         diterimaDari = new widget.TextBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        keteranganDeposit = new javax.swing.JTextArea();
+        jLabel11 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -416,7 +421,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -430,7 +435,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -542,7 +547,7 @@ public class DlgDeposit extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-03-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -674,6 +679,21 @@ public class DlgDeposit extends javax.swing.JDialog {
         FormInput.add(diterimaDari);
         diterimaDari.setBounds(580, 12, 190, 23);
 
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        keteranganDeposit.setColumns(20);
+        keteranganDeposit.setRows(5);
+        keteranganDeposit.setName("keteranganDeposit"); // NOI18N
+        jScrollPane1.setViewportView(keteranganDeposit);
+
+        FormInput.add(jScrollPane1);
+        jScrollPane1.setBounds(860, 10, 244, 84);
+
+        jLabel11.setText("Keterangan :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        FormInput.add(jLabel11);
+        jLabel11.setBounds(780, 10, 75, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -708,10 +728,12 @@ public class DlgDeposit extends javax.swing.JDialog {
             Valid.textKosong(BesarDeposit,"Deposit");
         }else if(tipeBayar.getSelectedItem().equals("")){
             Valid.textKosong(tipeBayar,"Tipe Bayar");
+        }else if(keteranganDeposit.getText().equals("")){
+            Valid.textKosong(keteranganDeposit,"Keterangan");
         }else{
-            if(Sequel.menyimpantf("deposit(no_rawat, diterima_dari, tgl_deposit, besar_deposit, nip, tipe_bayar)","?,?,?,?,?,?","Deposit",6,new String[]{
+            if(Sequel.menyimpantf("deposit(no_rawat, diterima_dari, tgl_deposit, besar_deposit, nip, tipe_bayar, keterangan)","?,?,?,?,?,?,?","Deposit",7,new String[]{
                 TNoRw.getText(), diterimaDari.getText(), Valid.SetTgl(DTPTgl.getSelectedItem()+"")+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                BesarDeposit.getText(), kdptg.getText(), tipeBayar.getSelectedItem().toString()})==true){
+                BesarDeposit.getText(), kdptg.getText(), tipeBayar.getSelectedItem().toString(), keteranganDeposit.getText().toString().trim()})==true){
                 tampil();
                 BtnBatalActionPerformed(evt);
             }else{
@@ -735,6 +757,8 @@ public class DlgDeposit extends javax.swing.JDialog {
         BesarDeposit.setText("0");
         kdptg.setText("");
         TPetugas.setText("");
+        diterimaDari.setText("");
+        keteranganDeposit.setText("");
         cmbJam.setSelectedItem(now.substring(11,13));
         cmbMnt.setSelectedItem(now.substring(14,16));
         cmbDtk.setSelectedItem(now.substring(17,19));
@@ -805,16 +829,16 @@ public class DlgDeposit extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReportqry("rptDeposit.jasper","report","::[ Data Deposit/Titipan Pasien ]::","select deposit.no_rawat,pasien.nm_pasien as pasien, " +
-                "deposit.tgl_deposit,deposit.besar_deposit,petugas.nama as petugas, deposit.tipe_bayar " +
+                "deposit.tgl_deposit,deposit.besar_deposit,petugas.nama as petugas, deposit.tipe_bayar, deposit.keterangan " +
                 "from deposit inner join reg_periksa inner join pasien inner join petugas " +
                 "on deposit.no_rawat=reg_periksa.no_rawat " +
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "and deposit.nip=petugas.nip " +
-                "where deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.no_rawat like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' or "+
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' or "+
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' or " +
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.nip like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' or "+
-                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and petugas.nama like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' order by deposit.tgl_deposit desc",param);
+                "where deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.no_rawat like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' and deposit.keterangan like '%"+keteranganDeposit.getText().trim()+"%' or "+
+                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' and deposit.keterangan like '%"+keteranganDeposit.getText().trim()+"%' or "+
+                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' and deposit.keterangan like '%"+keteranganDeposit.getText().trim()+"%' or " +
+                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and deposit.nip like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' and deposit.keterangan like '%"+keteranganDeposit.getText().trim()+"%' or "+
+                "deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59"+"' and petugas.nama like '%"+TCari.getText().trim()+"%' and deposit.tipe_bayar like '%"+filter_tipe_bayar+"%' and deposit.keterangan like '%"+keteranganDeposit.getText().trim()+"%' order by deposit.tgl_deposit desc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -931,7 +955,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else{
             Valid.panggilUrl("billing/LaporanBilling6.php?norawat="+TNoRw.getText().replaceAll(" ","_")+"&pasien="+TPasien.getText().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem()
                     +"&deposit="+BesarDeposit.getText()+"&kd_petugas="+kdptg.getText().replaceAll(" ","_")+"&petugas="+TPetugas.getText().replaceAll(" ","_")
-                    +"&diterima_dari="+diterimaDari.getText().replaceAll(" ","_")+"&tipe_bayar="+tipeBayar.getSelectedItem().toString().replaceAll(" ","_"));
+                    +"&diterima_dari="+diterimaDari.getText().replaceAll(" ","_")+"&tipe_bayar="+tipeBayar.getSelectedItem().toString().replaceAll(" ","_")+"&keterangan="+keteranganDeposit.getText().toString().replaceAll(" ","_"));
         }
     }//GEN-LAST:event_MnKwitansiDepositActionPerformed
 
@@ -997,6 +1021,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.ComboBox filterTipeBayar;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private widget.Label jLabel11;
     private widget.Label jLabel13;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
@@ -1008,7 +1033,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
     private widget.TextBox kdptg;
+    private javax.swing.JTextArea keteranganDeposit;
     private widget.Label label12;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1023,22 +1050,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
             ps.setString(3,"%"+TCari.getText().trim()+"%");
             ps.setString(4,"%"+filter_tipe_bayar+"%");
-            ps.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(7,"%"+TCari.getText().trim()+"%");
-            ps.setString(8,"%"+filter_tipe_bayar+"%");
-            ps.setString(9,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(10,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(11,"%"+TCari.getText().trim()+"%");
-            ps.setString(12,"%"+filter_tipe_bayar+"%");
-            ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(15,"%"+TCari.getText().trim()+"%");
-            ps.setString(16,"%"+filter_tipe_bayar+"%");
-            ps.setString(17,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(18,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(19,"%"+TCari.getText().trim()+"%");
-            ps.setString(20,"%"+filter_tipe_bayar+"%");
+            ps.setString(5,"%"+keteranganDeposit.getText().toString().trim()+"%");
+            ps.setString(6,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(7,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(8,"%"+TCari.getText().trim()+"%");
+            ps.setString(9,"%"+filter_tipe_bayar+"%");
+            ps.setString(10,"%"+keteranganDeposit.getText().toString().trim()+"%");
+            ps.setString(11,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(12,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(13,"%"+TCari.getText().trim()+"%");
+            ps.setString(14,"%"+filter_tipe_bayar+"%");
+            ps.setString(15,"%"+keteranganDeposit.getText().toString().trim()+"%");
+            ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(18,"%"+TCari.getText().trim()+"%");
+            ps.setString(19,"%"+filter_tipe_bayar+"%");
+            ps.setString(20,"%"+keteranganDeposit.getText().toString().trim()+"%");
+            ps.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(23,"%"+TCari.getText().trim()+"%");
+            ps.setString(24,"%"+filter_tipe_bayar+"%");
+            ps.setString(25,"%"+keteranganDeposit.getText().toString().trim()+"%");
             rs=ps.executeQuery();
             while(rs.next()){
                 tabMode.addRow(new String[]{rs.getString(1),
@@ -1047,7 +1079,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                rs.getString(3),
                                Valid.SetAngka(rs.getDouble(4)),
                                rs.getString(5),
-                               rs.getString(6)
+                               rs.getString(6),
+                               rs.getString(8)
                 });
             }
         }catch(Exception e){
@@ -1071,6 +1104,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             kdptg.setText(kdpetugas);
             diterimaDari.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             tipeBayar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            keteranganDeposit.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
 
