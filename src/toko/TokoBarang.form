@@ -426,7 +426,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="93" y="10" width="170" height="23"/>
+                      <AbsoluteConstraints x="93" y="10" width="130" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -481,6 +481,7 @@
                 </Component>
                 <Component class="widget.TextBox" name="kode_sat">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="kode_sat" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[207, 23]"/>
@@ -564,9 +565,11 @@
                 </Component>
                 <Component class="widget.TextBox" name="dasar">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="name" type="java.lang.String" value="dasar" noResource="true"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dasarMouseExited"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="dasarKeyPressed"/>
                   </Events>
                   <Constraints>
@@ -588,6 +591,7 @@
                 </Component>
                 <Component class="widget.TextBox" name="kdjenis">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="name" type="java.lang.String" value="kdjenis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[207, 23]"/>
@@ -650,9 +654,11 @@
                 </Component>
                 <Component class="widget.TextBox" name="beli">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="name" type="java.lang.String" value="beli" noResource="true"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beliMouseExited"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="beliKeyPressed"/>
                   </Events>
                   <Constraints>
@@ -674,9 +680,11 @@
                 </Component>
                 <Component class="widget.TextBox" name="distributor">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="name" type="java.lang.String" value="distributor" noResource="true"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="distributorMouseExited"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="distributorKeyPressed"/>
                   </Events>
                   <Constraints>
@@ -698,9 +706,11 @@
                 </Component>
                 <Component class="widget.TextBox" name="grosir">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="name" type="java.lang.String" value="grosir" noResource="true"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="grosirMouseExited"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="grosirKeyPressed"/>
                   </Events>
                   <Constraints>
@@ -722,9 +732,11 @@
                 </Component>
                 <Component class="widget.TextBox" name="retail">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="name" type="java.lang.String" value="retail" noResource="true"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="retailMouseExited"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="retailKeyPressed"/>
                   </Events>
                   <Constraints>

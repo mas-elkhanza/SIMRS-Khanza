@@ -129,7 +129,7 @@ public final class akses {
             sirkulasi_obat4=false,sirkulasi_obat5=false,sirkulasi_non_medis2=false,monitoring_asuhan_gizi=false,penerimaan_obat_perbulan=false,
             rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false,master_masalah_keperawatan=false,
             pengajuan_cuti=false,kedatangan_pasien=false,utd_pendonor=false,toko_suplier=false,toko_jenis=false,toko_set_harga=false,
-            toko_barang=false;
+            toko_barang=false,penagihan_piutang_pasien=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -743,6 +743,7 @@ public final class akses {
                         akses.toko_jenis=true;
                         akses.toko_set_harga=true;
                         akses.toko_barang=true;
+                        akses.penagihan_piutang_pasien=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1340,6 +1341,7 @@ public final class akses {
                         akses.toko_jenis=rs2.getBoolean("toko_jenis");
                         akses.toko_set_harga=rs2.getBoolean("toko_set_harga");
                         akses.toko_barang=rs2.getBoolean("toko_barang");
+                        akses.penagihan_piutang_pasien=rs2.getBoolean("penagihan_piutang_pasien");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1935,6 +1937,7 @@ public final class akses {
                         akses.toko_jenis=false;
                         akses.toko_set_harga=false;
                         akses.toko_barang=false;
+                        akses.penagihan_piutang_pasien=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2584,5 +2587,6 @@ public final class akses {
     public static boolean gettoko_jenis(){return akses.toko_jenis;}
     public static boolean gettoko_set_harga(){return akses.toko_set_harga;}
     public static boolean gettoko_barang(){return akses.toko_barang;}
+    public static boolean getpenagihan_piutang_pasien(){return akses.penagihan_piutang_pasien;}
     
 }   
