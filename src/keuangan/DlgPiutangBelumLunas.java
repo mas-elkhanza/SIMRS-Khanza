@@ -960,4 +960,9 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             LCount1.setText(Valid.SetAngka(total));
         }   
     }
+    
+    public void isCek(){
+        TCari.requestFocus();
+        BtnBayar.setEnabled(akses.getbayar_piutang());
+    }
 }

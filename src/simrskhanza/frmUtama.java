@@ -530,6 +530,7 @@ import kepegawaian.PengajuanCutiAdmin;
 import kepegawaian.PengajuanCutiPegawai;
 import keuangan.DlgJnsPerawatanRanap;
 import keuangan.DlgPerkiraanBiayaRanap;
+import keuangan.KeuanganPenagihanPiutangPasien;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
 import rekammedis.RMDataResumePasien;
@@ -9067,6 +9068,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgLhtPiutang billing=new DlgLhtPiutang(this,false);
         billing.tampil();
+        billing.isCek();
         billing.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         billing.setLocationRelativeTo(PanelUtama);
         billing.setVisible(true);
@@ -10830,6 +10832,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgPiutangBelumLunas rbpaketbhp=new DlgPiutangBelumLunas(this,false);
         rbpaketbhp.tampil();
+        rbpaketbhp.isCek();
         rbpaketbhp.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         rbpaketbhp.setLocationRelativeTo(PanelUtama);
         rbpaketbhp.setVisible(true);
@@ -15869,7 +15872,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnPenagihanPiutangPasienActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganPenagihanPiutangPasien form=new KeuanganPenagihanPiutangPasien(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
