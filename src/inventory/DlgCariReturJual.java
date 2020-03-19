@@ -1041,8 +1041,8 @@ public class DlgCariReturJual extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),
                                    rs.getString(2),
-                                   rs.getString(3)+", "+rs.getString(4),
-                                   rs.getString(5)+", "+rs.getString(6),
+                                   rs.getString(4),
+                                   rs.getString(6),
                                    "Retur Jual : di "+rs.getString(7),"","","","",""
                     });
                     sat="";bar="";nonot="";
@@ -1078,7 +1078,7 @@ public class DlgCariReturJual extends javax.swing.JDialog {
                             subtotal=subtotal+rs2.getDouble(8);                            
                             tabMode.addRow(new Object[]{
                                 "","",no+". Batch : "+rs2.getString("no_batch"),"Faktur : "+rs2.getString("no_faktur"),"Nota : "+rs2.getString(1),
-                                rs2.getString(2)+", "+rs2.getString(3),rs2.getString(4)+", "+rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),
+                                rs2.getString(3),rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),
                                 rs2.getString(7),Valid.SetAngka(rs2.getDouble(8))
                             });
                             no++;
