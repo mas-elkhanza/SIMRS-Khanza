@@ -114,7 +114,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             sqlpsbiayaharian="select nama_biaya,besar_biaya,jml,(jml*besar_biaya*?) as total from biaya_harian "+
                     " where kd_kamar=? order by nama_biaya",
             sqlpsreseppulang="select databarang.nama_brng,resep_pulang.harga,"+
-                    "resep_pulang.jml_barang,resep_pulang.dosis,resep_pulang.total "+
+                    "resep_pulang.jml_barang,resep_pulang.aturan_pakai,resep_pulang.total "+
                     "from resep_pulang inner join databarang "+
                     "on resep_pulang.kode_brng=databarang.kode_brng where "+
                     "resep_pulang.no_rawat=? order by databarang.nama_brng",
@@ -136,7 +136,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "(sum(rawat_jl_drpr.material)+sum(rawat_jl_drpr.menejemen)+sum(rawat_jl_drpr.kso)) as totalmaterial,"+
                     "rawat_jl_drpr.tarif_tindakandr,"+
                     "sum(rawat_jl_drpr.tarif_tindakanpr) as totaltarif_tindakanpr,"+
-                    "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr  "+
+                    "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr "+
                     "from rawat_jl_drpr inner join jns_perawatan inner join kategori_perawatan "+
                     "on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
                     "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori where "+
@@ -157,11 +157,12 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "(sum(rawat_inap_drpr.material)+sum(rawat_inap_drpr.menejemen)+sum(rawat_inap_drpr.kso)) as totalmaterial,"+
                     "rawat_inap_drpr.tarif_tindakandr,"+
                     "sum(rawat_inap_drpr.tarif_tindakanpr) as totaltarif_tindakanpr, "+
-                    "sum(rawat_inap_drpr.tarif_tindakandr) as totaltarif_tindakandr "+
-                    "from rawat_inap_drpr inner join jns_perawatan_inap inner join kategori_perawatan "+
+                    "sum(rawat_inap_drpr.tarif_tindakandr) as totaltarif_tindakandr, "+
+                    "dokter.nm_dokter, rawat_inap_drpr.kd_dokter " +
+                    "from rawat_inap_drpr inner join jns_perawatan_inap inner join kategori_perawatan inner join dokter "+
                     "on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and "+
-                    "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "rawat_inap_drpr.no_rawat=? and kategori_perawatan.kd_kategori=? group by rawat_inap_drpr.kd_jenis_prw",
+                    "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori and dokter.kd_dokter=rawat_inap_drpr.kd_dokter where "+
+                    "rawat_inap_drpr.no_rawat=? and kategori_perawatan.kd_kategori=? group by rawat_inap_drpr.kd_dokter, rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan",
             sqlpsralanperawat="select jns_perawatan.nm_perawatan,jns_perawatan.total_byrpr,count(jns_perawatan.nm_perawatan) as jml, "+
                                            "jns_perawatan.total_byrpr*count(jns_perawatan.nm_perawatan) as biaya "+
                                            "from rawat_jl_pr inner join jns_perawatan inner join kategori_perawatan  "+
@@ -203,7 +204,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             sqlpstemporary="insert into temporary_bayar_ranap values('0',?,?,?,?,?,?,?,?,'','','','','','','','','')",
             sqlpsubahpenjab="select tgl_ubah,kd_pj1,kd_pj2 from ubah_penjab where no_rawat=?";    
     private double ttl=0,y=0,subttl=0,lab,ttl1,ttl2,ttlobat,ttlretur,ppnobat,piutang=0,kekurangan=0,itembayar=0,itempiutang=0, 
-            tamkur=0,detailjs=0,detailbhp=0,ppn=0,besarppn=0,tagihanppn=0,bayar=0,total=0,uangdeposit=0,
+            tamkur=0,detailjs=0,detailbhp=0,ppn=0,besarppn=0,tagihanppn=0,bayar=0,total=0,uangdeposit=0,uangMuka,uangLunasObat,
             ttlLaborat=0,ttlRadiologi=0,ttlOperasi=0,ttlObat=0,ttlRanap_Dokter=0,ttlRanap_Paramedis=0,ttlRalan_Dokter=0,
             ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlKamar=0,ttlRegistrasi=0,ttlHarian=0,ttlRetur_Obat=0,ttlResep_Pulang=0,
             laboratserv=0,radiologiserv=0,operasiserv=0,obatserv=0,
@@ -216,6 +217,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
     private WarnaTable2 warna2=new WarnaTable2();
     private String[] Nama_Akun_Piutang,Kode_Rek_Piutang,Kd_PJ,Besar_Piutang,Jatuh_Tempo,
             Nama_Akun_Bayar,Kode_Rek_Bayar,Bayar,PPN_Persen,PPN_Besar;
+    private String noNota;
 
     /** Creates new form DlgBiling
      * @param parent
@@ -552,11 +554,17 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DLgBilingRanap")){
                     if(status.equals("belum")){
-                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());                  
+                        //uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());
+                        uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
+                        uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
+                        uangdeposit = uangMuka + uangLunasObat;
                     }else{
-                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
+//                        uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
+                        uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
+                        uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
+                        uangdeposit = uangMuka + uangLunasObat;
                     }
-                    Deposit.setText(Valid.SetAngka(uangdeposit));
+                    Deposit.setText(Valid.SetAngka(uangMuka+uangLunasObat));
                     isKembali();
                 }
             }
@@ -2287,7 +2295,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     
 
                 if(i<=0){
-                    int jawab=JOptionPane.showConfirmDialog(null, "Data pembayaran belum tersimpan, apa anda mau menyimpannya...????","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    int jawab=JOptionPane.showConfirmDialog(rootPane, "Data pembayaran belum tersimpan, apa anda mau menyimpannya...????","Konfirmasi",JOptionPane.YES_NO_OPTION);
                     if(jawab==JOptionPane.YES_OPTION){
                         BtnSimpanActionPerformed(evt);
                         dispose();
@@ -2340,7 +2348,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             String input;
             int pilih = 0;
             try{
-                input = (String) JOptionPane.showInputDialog(null,"Silahkan pilih yang mau ditampilkan!","Keuangan",JOptionPane.QUESTION_MESSAGE,null,options,"Nota 1");
+                input = (String) JOptionPane.showInputDialog(rootPane,"Silahkan pilih yang mau ditampilkan!","Keuangan",JOptionPane.QUESTION_MESSAGE,null,options,"Nota 1");
                 switch (input) {
                     case "Tagihan Masuk":
                         pilih=1;
@@ -3083,24 +3091,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(TNoRw.getText().trim().equals("")||TNoRM.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
         }else if(i>0){
-            JOptionPane.showMessageDialog(null,"Maaf, data tagihan pasien dengan No.Rawat tersebut sudah pernah disimpan...!!!");
+            JOptionPane.showMessageDialog(rootPane,"Maaf, data tagihan pasien dengan No.Rawat tersebut sudah pernah disimpan...!!!");
         }else if(i==0){ 
             if(piutang<=0){
                 if(kekurangan<0){
-                    JOptionPane.showMessageDialog(null,"Maaf, pembayaran pasien masih kurang ...!!!");
+                    JOptionPane.showMessageDialog(rootPane,"Maaf, pembayaran pasien masih kurang ...!!!");
                 }else if(kekurangan>0){
                     if(countbayar>1){
-                        JOptionPane.showMessageDialog(null,"Maaf, kembali harus bernilai 0 untuk cara bayar lebih dari 1...!!!");
+                        JOptionPane.showMessageDialog(rootPane,"Maaf, kembali harus bernilai 0 untuk cara bayar lebih dari 1...!!!");
                     }else{
                         if(ChkPiutang.isSelected()==true){
-                            JOptionPane.showMessageDialog(null,"Maaf, matikan centang di piutang ...!!!");
+                            JOptionPane.showMessageDialog(rootPane,"Maaf, matikan centang di piutang ...!!!");
                         }else{
                             isSimpan();
                         }                            
                     }                        
                 }else if(kekurangan==0){
                     if(ChkPiutang.isSelected()==true){
-                        JOptionPane.showMessageDialog(null,"Maaf, matikan centang di piutang ...!!!");
+                        JOptionPane.showMessageDialog(rootPane,"Maaf, matikan centang di piutang ...!!!");
                     }else{
                         isSimpan();
                     } 
@@ -3108,9 +3116,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }else if(piutang>=1){
                 if(ChkPiutang.isSelected()==true){
                     if(kekurangan<0){
-                        JOptionPane.showMessageDialog(null,"Maaf, piutang belum genap. Silahkan isi di jumlah piutang ...!!!");
+                        JOptionPane.showMessageDialog(rootPane,"Maaf, piutang belum genap. Silahkan isi di jumlah piutang ...!!!");
                     }else if(kekurangan>0){
-                        JOptionPane.showMessageDialog(null,"Maaf, terjadi kelebihan piutang ...!!!");
+                        JOptionPane.showMessageDialog(rootPane,"Maaf, terjadi kelebihan piutang ...!!!");
                     }else{
                         isSimpan();
                     }    
@@ -3280,7 +3288,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(TNoRw.getText().trim().equals("")||TNoRM.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
         }else if(tbBilling.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tbBilling.getRowCount()!=0){
             try{
@@ -3341,7 +3349,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     Sequel.menyimpan("temporary_bayar_ranap","'0','PPN',':','','','','','<b>"+Valid.SetAngka(besarppn)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','TAGIHAN+PPN',':','','','','','<b>"+TagihanPPn.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','','','','','','','','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-                    Sequel.menyimpan("temporary_bayar_ranap","'0','DEPOSIT',':','','','','','<b>"+Deposit.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','DEPOSIT',':','','','','','','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','','Uang Muka Perawatan','','','','','<b>"+Valid.SetAngka(uangMuka)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','','Uang Muka Obat RI','','','','','<b>"+Valid.SetAngka(uangLunasObat)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
                     Sequel.menyimpan("temporary_bayar_ranap","'0','BAYAR',':','','','','','<b>"+Valid.SetAngka(bayar)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','KEMBALI',':','','','','','<b>"+TKembali.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                 }else if(ChkPiutang.isSelected()==true){                                            
@@ -3350,27 +3360,29 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     Sequel.menyimpan("temporary_bayar_ranap","'0','PPN',':','','','','','<b>"+Valid.SetAngka(besarppn)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','TAGIHAN + PPN',':','','','','','<b>"+TagihanPPn.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','','','','','','','','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-                    Sequel.menyimpan("temporary_bayar_ranap","'0','DEPOSIT',':','','','','','<b>"+Deposit.getText()+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','DEPOSIT',':','','','','','','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','','Uang Muka Perawatan','','','','','<b>"+Valid.SetAngka(uangMuka)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
+                    Sequel.menyimpan("temporary_bayar_ranap","'0','','Uang Muka Obat RI','','','','','<b>"+Valid.SetAngka(uangLunasObat)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");
                     Sequel.menyimpan("temporary_bayar_ranap","'0','EKSES',':','','','','','<b>"+Valid.SetAngka(bayar)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
                     Sequel.menyimpan("temporary_bayar_ranap","'0','SISA PIUTANG',':','','','','','<b>"+Valid.SetAngka(piutang)+"</b>','Tagihan','','','','','','','','',''","Rekap Harian Tindakan Dokter");                                      
                 }                
 
                 i = 0;
                 try{
-                      biaya = (String)JOptionPane.showInputDialog(null,"Silahkan pilih nota yang mau dicetak!","Nota",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Nota 1", "Nota 2", "Kwitansi", "Nota & Kwitansi"},"Nota 1");
+                      biaya = (String)JOptionPane.showInputDialog(rootPane,"Silahkan pilih nota yang mau dicetak!","Nota",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Nota 1", "Nota 2", "Nota Pasien Asuransi", "Kwitansi"},"Nota 1");
                       switch (biaya) {
                             case "Nota 1":
-                                  i=1;
-                                  break;
+                                i=1;
+                                break;
                             case "Nota 2":
-                                  i=2;
-                                  break;
+                                i=2;
+                                break;
                             case "Kwitansi":
-                                  i=3;
-                                  break;
-                            case "Nota & Kwitansi":
-                                  i=4;
-                                  break;
+                                i=3;
+                                break;
+                            case "Nota Pasien Asuransi":
+                                i=4;
+                                break;
                       }
                 }catch(Exception e){
                       i=0;
@@ -3380,31 +3392,27 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText());
                     if(i==1){
+                        Valid.panggilUrl("billing/LaporanBilling2.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_")+"&no_nota="
+                                +noNota+"&no_rawat="+TNoRw.getText()+"&piutang="+piutang+"&ppn="+besarppn+"&bayar="+bayar
+                                +"&kekurangan="+kekurangan+"&tagihanppn="+tagihanppn);
+                    }else if(i==2){
                         ttl=(ttlLaborat+ttlRadiologi+ttlOperasi+ttlObat+ttlRanap_Dokter+ttlRanap_Paramedis+ttlRalan_Dokter+
                                 ttlRalan_Paramedis+ttlTambahan+ttlKamar+ttlRegistrasi+ttlHarian+ttlRetur_Obat+ttlResep_Pulang+ttlService);
-                        Valid.panggilUrl("billing/LaporanBilling2.php?petugas="+akses.getkode().replaceAll(" ","_")+"&ttl="+ttl+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_"));
-                    }else if(i==2){
-                        Valid.panggilUrl("billing/LaporanBilling3.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_"));
+                        Valid.panggilUrl("billing/LaporanBilling12.php?petugas="+akses.getkode().replaceAll(" ","_")+"&ttl="+ttl+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_"));
                     }else if(i==3){
                         if(piutang>0){
-                            Valid.panggilUrl("billing/LaporanBilling8.php?petugas="+akses.getkode().replaceAll(" ","_")+"&nonota="+Sequel.cariIsi("select count(kamar_inap.no_rawat) from kamar_inap inner join reg_periksa "+
-                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4));
+                            Valid.panggilUrl("billing/LaporanBilling4.php?petugas="+akses.getkode().replaceAll(" ","_")+"&nonota="+Sequel.cariIsi("select count(kamar_inap.no_rawat) from kamar_inap inner join reg_periksa "+
+                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+
+                                    kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4)+"&no_rawat="+TNoRw.getText()+"&pasien="+TPasien.getText().replaceAll(" ","_")+"&bayar="+bayar);
                         }else if(piutang<=0){
                             Valid.panggilUrl("billing/LaporanBilling4.php?petugas="+akses.getkode().replaceAll(" ","_")+"&nonota="+Sequel.cariIsi("select count(kamar_inap.no_rawat) from kamar_inap inner join reg_periksa "+
-                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4));
+                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+
+                                    kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4)+"&no_rawat="+TNoRw.getText()+"&pasien="+TPasien.getText().replaceAll(" ","_")+"&bayar="+bayar);
                         }                            
-                    }else if(i==4){
-                        ttl=(ttlLaborat+ttlRadiologi+ttlOperasi+ttlObat+ttlRanap_Dokter+ttlRanap_Paramedis+ttlRalan_Dokter+
-                                ttlRalan_Paramedis+ttlTambahan+ttlKamar+ttlRegistrasi+ttlHarian+ttlRetur_Obat+ttlResep_Pulang+ttlService);
-                        Valid.panggilUrl("billing/LaporanBilling2.php?petugas="+akses.getkode().replaceAll(" ","_")+"&ttl="+ttl+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_"));
-                        Valid.panggilUrl("billing/LaporanBilling3.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_"));
-                        if(piutang>0){
-                            Valid.panggilUrl("billing/LaporanBilling8.php?petugas="+akses.getkode().replaceAll(" ","_")+"&nonota="+Sequel.cariIsi("select count(kamar_inap.no_rawat) from kamar_inap inner join reg_periksa "+
-                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4));
-                        }else if(piutang<=0){
-                            Valid.panggilUrl("billing/LaporanBilling4.php?petugas="+akses.getkode().replaceAll(" ","_")+"&nonota="+Sequel.cariIsi("select count(kamar_inap.no_rawat) from kamar_inap inner join reg_periksa "+
-                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat where reg_periksa.kd_pj='"+kd_pj+"' and kamar_inap.tgl_keluar like '%"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"%'")+"/RI/"+kd_pj+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(5,7)+"/"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,4));
-                        }
+                    } else if(i==4){
+                        Valid.panggilUrl("billing/LaporanBilling13.php?petugas="+akses.getkode().replaceAll(" ","_")+"&tanggal="+DTPTgl.getSelectedItem().toString().replaceAll(" ","_")+"&no_nota="
+                                +noNota+"&no_rawat="+TNoRw.getText()+"&piutang="+piutang+"&ppn="+besarppn+"&bayar="+bayar
+                                +"&kekurangan="+kekurangan+"&tagihanppn="+tagihanppn);
                     }
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -4015,8 +4023,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             
             if(i<=0){
-                uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());
-                Deposit.setText(Valid.SetAngka(uangdeposit));
+                //uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=?",TNoRw.getText());
+                uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
+                uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
+                uangdeposit = uangMuka + uangLunasObat;
+                Deposit.setText(Valid.SetAngka(uangMuka + uangLunasObat));
                 prosesCariReg();                     
                 prosesCariKamar();  
                 
@@ -4050,8 +4061,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 isHitung(); 
                 status="belum";
             }else if(i>0){
-                uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
-                Deposit.setText(Valid.SetAngka(uangdeposit));
+                //uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
+                uangMuka=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Perawatan");
+                uangLunasObat=Sequel.cariIsiAngka2("select ifnull(sum(besar_deposit),0) from deposit where no_rawat=? and tipe_bayar=?",TNoRw.getText(),"Uang Muka Obat RI");
+                uangdeposit = uangMuka + uangLunasObat;
+                Deposit.setText(Valid.SetAngka(uangMuka+uangLunasObat));
                 Valid.SetTgl2(DTPTgl,Sequel.cariIsi("select concat(tanggal,' ',jam) from nota_inap where no_rawat='"+TNoRw.getText()+"'"));
                 Valid.tabelKosong(tabModeRwJlDr);  
                 pssudahmasuk=koneksi.prepareStatement(sqlpssudahmasuk);
@@ -4136,6 +4150,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 psreg.setString(1,TNoRw.getText());
                 rsreg=psreg.executeQuery();            
                 while(rsreg.next()){
+                    noNota = Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_inap where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RI/",6);
+                    
                     tabModeRwJlDr.addRow(new Object[]{true,"No.Nota",": "+Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_inap where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RI/",6),"",null,null,null,null,"-"});
                     
                     pskamar=koneksi.prepareStatement("select concat(kamar.kd_kamar,', ',bangsal.nm_bangsal) from bangsal inner join kamar "+
@@ -4677,7 +4693,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     pstamkur=koneksi.prepareStatement(sqlpstamkur);            
                     try {
                         pstamkur.setString(1,TNoRw.getText());
-                        pstamkur.setString(2,rsreseppulang.getString("nama_brng")+" "+rsreseppulang.getString("dosis"));
+                        pstamkur.setString(2,rsreseppulang.getString("nama_brng")+" "+rsreseppulang.getString("aturan_pakai"));
                         pstamkur.setString(3,"Resep Pulang");
                         rstamkur=pstamkur.executeQuery();
                         if(rstamkur.next()){
@@ -4693,7 +4709,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             pstamkur.close();
                         }
                     }
-                    tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsreseppulang.getString("nama_brng")+" "+rsreseppulang.getString("dosis"),":",
+                    tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsreseppulang.getString("nama_brng")+" "+rsreseppulang.getString("aturan_pakai"),":",
                                    rsreseppulang.getDouble("harga"),rsreseppulang.getDouble("jml_barang"),tamkur,(tamkur+rsreseppulang.getDouble("total")),"Resep Pulang"});
                     subttl=subttl+rsreseppulang.getDouble("total")+tamkur;
                 }
@@ -5213,13 +5229,18 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
 
                                 if(rinciandokterranap.equals("Yes")){
+                                    String namaTindakan = rsranapdrpr.getString("nm_perawatan");
+                                    
                                     detailbhp=detailbhp+rsranapdrpr.getDouble("totalbhp");
                                     detailjs=detailjs+rsranapdrpr.getDouble("totalmaterial")+rsranapdrpr.getDouble("totaltarif_tindakanpr");
-                                    tabModeRwJlDr.addRow(new Object[]{true,"",rsranapdrpr.getString("nm_perawatan"),":",
+                                    tabModeRwJlDr.addRow(new Object[]{true,"", namaTindakan,":",
                                                 rsranapdrpr.getDouble("tarif_tindakandr"),rsranapdrpr.getDouble("jml"),tamkur,(rsranapdrpr.getDouble("totaltarif_tindakandr")+tamkur),"Ranap Dokter Paramedis"});
                                     subttl=subttl+rsranapdrpr.getDouble("totaltarif_tindakandr")+tamkur; 
                                 }else{
-                                    tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsranapdrpr.getString("nm_perawatan"),":",
+                                    String namaTindakan = rsranapdrpr.getString("nm_perawatan").contains("Visit") ? 
+                                                            rsranapdrpr.getString("nm_perawatan") + " (" + rsranapdrpr.getString("nm_dokter") + ")" : rsranapdrpr.getString("nm_perawatan");
+                                    
+                                    tabModeRwJlDr.addRow(new Object[]{true,"                           ",namaTindakan,":",
                                                        rsranapdrpr.getDouble("total_byrdr"),rsranapdrpr.getDouble("jml"),tamkur,(tamkur+rsranapdrpr.getDouble("biaya")),"Ranap Dokter Paramedis"});
                                     subttl=subttl+rsranapdrpr.getDouble("biaya")+tamkur;
                                 }

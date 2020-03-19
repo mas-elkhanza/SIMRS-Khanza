@@ -62,7 +62,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(628,674);        
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","Tgl.Resep","Jam","Pasien","Obat","Jml","Harga","Total","Dosis","No.Batch","No.Faktur"}){
+            "No.Rawat","Tgl.Resep","Jam","Pasien","Obat","Jml","Harga","Total","Aturan Pakai","No.Batch","No.Faktur"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
@@ -98,9 +98,9 @@ public final class DlgResepPulang extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(80);
             }else if(i==8){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(180);
             }else if(i==9){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(100);
             }else if(i==10){
                 column.setPreferredWidth(100);
             }
@@ -177,6 +177,8 @@ public final class DlgResepPulang extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppHapus = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbResep = new widget.Table();
@@ -210,6 +212,24 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         Satuan = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppHapus.setBackground(new java.awt.Color(255, 255, 254));
+        ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppHapus.setForeground(new java.awt.Color(50, 50, 50));
+        ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppHapus.setText("Hapus Retur");
+        ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppHapus.setName("ppHapus"); // NOI18N
+        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppHapusActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppHapus);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -222,6 +242,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbResep.setAutoCreateRowSorter(true);
+        tbResep.setComponentPopupMenu(jPopupMenu1);
         tbResep.setName("tbResep"); // NOI18N
         tbResep.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -352,7 +373,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -366,7 +387,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -523,14 +544,18 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 if(Sequel.queryu2tf("delete from resep_pulang where no_rawat=? and kode_brng=? and no_batch=? and no_faktur=? and tanggal=? and jam=?",6,new String[]{
                     tbResep.getValueAt(i,0).toString(),KdBarang.getText(),tbResep.getValueAt(i,9).toString(),tbResep.getValueAt(i,10).toString(),tbResep.getValueAt(i,1).toString(),tbResep.getValueAt(i,2).toString()
                 })==true){
-                    Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(tbResep.getValueAt(i,5).toString()),0,"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Hapus",tbResep.getValueAt(i,9).toString(),tbResep.getValueAt(i,10).toString());
                     if(aktifkanbatch.equals("yes")){
                         Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa+?",4,new String[]{
                             ""+tbResep.getValueAt(i,5).toString(),tabMode.getValueAt(i,9).toString(),KdBarang.getText(),tabMode.getValueAt(i,10).toString()
                         });
-                    }
-                    Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+akses.getkdbangsal()+"','"+tbResep.getValueAt(i,5).toString()+"','"+tbResep.getValueAt(i,9).toString()+"','"+tbResep.getValueAt(i,10).toString()+"'", 
+                        Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(tbResep.getValueAt(i,5).toString()),0,"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Hapus",tbResep.getValueAt(i,9).toString(),tbResep.getValueAt(i,10).toString());
+                        Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+akses.getkdbangsal()+"','"+tbResep.getValueAt(i,5).toString()+"','"+tbResep.getValueAt(i,9).toString()+"','"+tbResep.getValueAt(i,10).toString()+"'", 
                                      "stok=stok+'"+tbResep.getValueAt(i,5).toString()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+akses.getkdbangsal()+"' and no_batch='"+tbResep.getValueAt(i,9).toString()+"' and no_faktur='"+tbResep.getValueAt(i,10).toString()+"'");    
+                    }else{
+                        Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(tbResep.getValueAt(i,5).toString()),0,"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Hapus","","");
+                        Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+akses.getkdbangsal()+"','"+tbResep.getValueAt(i,5).toString()+"','',''", 
+                                     "stok=stok+'"+tbResep.getValueAt(i,5).toString()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+akses.getkdbangsal()+"' and no_batch='' and no_faktur=''");    
+                    }
                     tampil();
                 }
             }                
@@ -685,6 +710,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_TNoRwKeyPressed
 
+    private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
+        //
+    }//GEN-LAST:event_ppHapusActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -731,8 +760,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private javax.swing.JMenuItem ppHapus;
     private widget.Table tbResep;
     // End of variables declaration//GEN-END:variables
 
@@ -740,7 +771,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.tabelKosong(tabMode);
         try{      
             ps=koneksi.prepareStatement("select resep_pulang.no_rawat,resep_pulang.tanggal,resep_pulang.jam,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien),"+
-                    "concat(resep_pulang.kode_brng,' ',databarang.nama_brng),resep_pulang.jml_barang,resep_pulang.harga,resep_pulang.total,resep_pulang.dosis, "+
+                    "concat(resep_pulang.kode_brng,' ',databarang.nama_brng),resep_pulang.jml_barang,resep_pulang.harga,resep_pulang.total,resep_pulang.aturan_pakai, "+
                     "resep_pulang.no_batch,resep_pulang.no_faktur from resep_pulang inner join reg_periksa inner join pasien inner join databarang "+
                     "on reg_periksa.no_rawat=resep_pulang.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "and databarang.kode_brng=resep_pulang.kode_brng where "+
@@ -776,10 +807,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ps.setString(21,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 jumlahtotal=0;
+                double jumlahtotal_pasien = 0;
+                String no_rawat = "";
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),rs.getString(9),rs.getString(10),rs.getString(11)
-                    });
+                    if(!no_rawat.isEmpty() && no_rawat.equals(rs.getString(1))){
+                        tabMode.addRow(new Object[]{
+                            "","","","",rs.getString(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),rs.getString(9),rs.getString(10),rs.getString(11)
+                        });
+                    } else{
+                        tabMode.addRow(new Object[]{
+                            rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),rs.getString(9),rs.getString(10),rs.getString(11)
+                        });
+                    }
+                    no_rawat = rs.getString(1);
+                    jumlahtotal_pasien += rs.getDouble("total");
+                    
                     jumlahtotal=jumlahtotal+rs.getDouble("total");
                 }
             } catch (Exception e) {

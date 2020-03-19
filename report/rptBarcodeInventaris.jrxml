@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" columnCount="4" pageWidth="595" pageHeight="842" columnWidth="138" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f4f35f82-9407-4293-b105-c7ac85c48293">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
@@ -50,7 +50,7 @@
 	<field name="nama_merk" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="thn_produksi" class="java.sql.Date">
+	<field name="thn_produksi" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="isbn" class="java.lang.String">
@@ -87,9 +87,9 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="95" splitType="Stretch">
+		<band height="87" splitType="Stretch">
 			<textField>
-				<reportElement x="36" y="64" width="85" height="11" uuid="b83f33b2-1e7c-4a34-885b-c2fcb04a415c"/>
+				<reportElement x="6" y="64" width="85" height="11" uuid="b83f33b2-1e7c-4a34-885b-c2fcb04a415c"/>
 				<textElement>
 					<font fontName="Tahoma" size="6"/>
 					<paragraph lineSpacing="Single"/>
@@ -97,20 +97,12 @@
 				<textFieldExpression><![CDATA[$F{nama_ruang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="36" y="75" width="39" height="11" uuid="7be3bef7-83dc-4fc9-86ef-e628ea69a373"/>
+				<reportElement x="6" y="75" width="54" height="11" uuid="7be3bef7-83dc-4fc9-86ef-e628ea69a373"/>
 				<textElement>
 					<font fontName="Tahoma" size="6"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{no_rak}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="75" y="75" width="46" height="11" uuid="489aec19-4081-45d7-b0c0-1763eb7eeeb9"/>
-				<textElement>
-					<font fontName="Tahoma" size="6"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{no_box}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nama_jenis}]]></textFieldExpression>
 			</textField>
 			<componentElement>
 				<reportElement x="1" y="30" width="128" height="23" uuid="4874a351-72d0-4a18-9ced-e57e6554b3f4"/>
@@ -132,7 +124,7 @@
 			</line>
 			<textField>
 				<reportElement x="6" y="53" width="115" height="11" uuid="52a2e7ee-6c47-4999-955e-9676fc352569"/>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="6"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -144,14 +136,6 @@
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="6" y="64" width="30" height="11" uuid="d7444d6b-f818-47e4-a698-bef183978c3f"/>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="6"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[POSISI :]]></text>
-			</staticText>
 			<line>
 				<reportElement x="1" y="86" width="129" height="1" forecolor="#006666" uuid="96765408-4091-4961-87f1-03f65f3c2f5d"/>
 				<graphicElement>
@@ -164,14 +148,6 @@
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="6" y="75" width="30" height="11" uuid="2617cdc8-b5e8-4c97-900f-924d5f156762"/>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="6"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[RAK     :]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="1" y="18" width="129" height="8" uuid="ae20ffbd-6e5c-4b02-a9c9-a6ce9158f50a"/>
 				<textElement textAlignment="Center">
@@ -195,6 +171,13 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="32" width="51" height="21" uuid="0cb0c1b2-fc34-43f8-83f2-a9ab002d93bc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{thn_produksi}.substring($F{thn_produksi}.length()-10,4)]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -53,7 +53,7 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
     private double all=0,Laborat=0,Radiologi=0,Operasi=0,Obat=0,Ranap_Dokter=0,Ranap_Paramedis=0,Ranap_Dokter_Paramedis=0,Ralan_Dokter=0,
              Ralan_Paramedis=0,Ralan_Dokter_Paramedis=0,Tambahan=0,Potongan=0,Kamar=0,Registrasi=0,Harian=0,Retur_Obat=0,Resep_Pulang=0,
              ttlLaborat=0,ttlRadiologi=0,ttlOperasi=0,ttlObat=0,ttlRanap_Dokter=0,ttlRanap_Paramedis=0,ttlRalan_Dokter=0,
-             ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlKamar=0,ttlRegistrasi=0,ttlHarian=0,ttlRetur_Obat=0,ttlResep_Pulang=0;
+             ttlRalan_Paramedis=0,ttlTambahan=0,ttlPotongan=0,ttlKamar=0,ttlRegistrasi=0,ttlHarian=0,ttlRetur_Obat=0,ttlResep_Pulang=0,deposit=0,ttlDeposit=0;
     private String namakamar;
     
     /** Creates new form DlgLhtBiaya
@@ -66,8 +66,8 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
         setSize(885,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","No.RM","Nama Pasien","Kamar/Bangsal","Perujuk","Registrasi","Tindakan","Obt+Emb+Tsl","Retur Obat",
-                "Resep Pulang","Laborat","Radiologi","Potongan","Tambahan","Kamar","Operasi","Harian","Total"
+                "No.Rawat","No.RM","Nama Pasien","Jenis Bayar","Kamar/Bangsal","Registrasi","Tindakan","Obt+Emb+Tsl","Retur Obat",
+                "Resep Pulang","Laborat","Radiologi","Potongan","Tambahan","Kamar","Operasi","Harian","Total","Deposit"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -76,7 +76,7 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 19; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -87,8 +87,10 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==17){
+                column.setPreferredWidth(100);
+            }else if(i==18){
                 column.setPreferredWidth(100);
             }else{
                 column.setPreferredWidth(75);
@@ -349,7 +351,8 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,14).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','',''","Rekap Perkiraan Ranap");
+                                    tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
+                                    tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','',''","Rekap Perkiraan Ranap");
             }
             
             Map<String, Object> param = new HashMap<>();                 
@@ -472,10 +475,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         Valid.tabelKosong(tabMode);
         try{      
             ps= koneksi.prepareStatement(
-                "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,bangsal.nm_bangsal,kamar.kd_kamar,reg_periksa.biaya_reg "+
-                "from kamar_inap inner join reg_periksa inner join pasien inner join bangsal inner join kamar "+
+                "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,bangsal.nm_bangsal,kamar.kd_kamar,reg_periksa.biaya_reg, penjab.png_jawab "+
+                "from kamar_inap inner join reg_periksa inner join pasien inner join bangsal inner join kamar inner join penjab "+
                 "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
+                "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and reg_periksa.kd_pj=penjab.kd_pj "+
                 "where kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and kamar_inap.no_rawat like ? or "+
                 "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and reg_periksa.no_rkm_medis like ? or "+
                 "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? or "+
@@ -547,20 +550,23 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     Resep_Pulang=Sequel.cariIsiAngka("select sum(total) from resep_pulang where no_rawat=? ",rs.getString("no_rawat"));
                     ttlResep_Pulang=ttlResep_Pulang+Resep_Pulang;
                     
+                    deposit = Sequel.cariIsiAngka("select sum(besar_deposit) from deposit where no_rawat=? ",rs.getString("no_rawat"));
+                    ttlDeposit += deposit;
+                    
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),
-                        Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),Valid.SetAngka(Registrasi),
-                        Valid.SetAngka(Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("png_jawab"),rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),
+                        Valid.SetAngka(Registrasi),Valid.SetAngka(Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis),
                         Valid.SetAngka(Obat),Valid.SetAngka(Retur_Obat),Valid.SetAngka(Resep_Pulang),Valid.SetAngka(Laborat),Valid.SetAngka(Radiologi),Valid.SetAngka(Potongan),
                         Valid.SetAngka(Tambahan),Valid.SetAngka(Kamar),Valid.SetAngka(Operasi),Valid.SetAngka(Harian),Valid.SetAngka(Laborat+Radiologi+Operasi+Obat+Ranap_Dokter+
-                                Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Kamar+Registrasi+Harian+Retur_Obat+Resep_Pulang)
+                                Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Kamar+Registrasi+Harian+Retur_Obat+Resep_Pulang),
+                        Valid.SetAngka(deposit)
                     });
                     all=all+Laborat+Radiologi+Operasi+Obat+Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Kamar+Registrasi+Harian+Retur_Obat+Resep_Pulang;
                 }
                 tabMode.addRow(new Object[]{
                     ">> Total ",":","","","",Valid.SetAngka(ttlRegistrasi),Valid.SetAngka(ttlRanap_Dokter+ttlRanap_Paramedis+ttlRalan_Dokter+ttlRalan_Paramedis),
                     Valid.SetAngka(ttlObat),Valid.SetAngka(ttlRetur_Obat),Valid.SetAngka(ttlResep_Pulang),Valid.SetAngka(ttlLaborat),Valid.SetAngka(ttlRadiologi),Valid.SetAngka(ttlPotongan),
-                    Valid.SetAngka(ttlTambahan),Valid.SetAngka(ttlKamar),Valid.SetAngka(ttlOperasi),Valid.SetAngka(ttlHarian),Valid.SetAngka(all)
+                    Valid.SetAngka(ttlTambahan),Valid.SetAngka(ttlKamar),Valid.SetAngka(ttlOperasi),Valid.SetAngka(ttlHarian),Valid.SetAngka(all),Valid.SetAngka(ttlDeposit)
                 });
             } catch (Exception e) {
                 System.out.println("Notif 1 : "+e);

@@ -1740,19 +1740,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                           "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
                           "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
             if(btnObat1.isEnabled()==true){
-                Trackobat.catatRiwayat(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString(),
-                        Valid.SetAngka(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()),
-                        0,"Pemberian Obat",akses.getkode(),bangsal,"Hapus",
-                        tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),14).toString(),
-                        tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),15).toString());
-                Sequel.menyimpan("gudangbarang","'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"','"+bangsal+"',"+
-                                        "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"',"+
-                                        "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),14).toString()+"',"+
-                                        "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),15).toString()+"'", 
-                                        "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'",
-                                        "kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'  "+
-                                        "and no_batch='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),14).toString()+"' "+
-                                        "and no_faktur='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),15).toString()+"'");                    
                 if(aktifkanbatch.equals("yes")){
                     Sequel.mengedit("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa+?",4,new String[]{
                         tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString(),
@@ -1760,6 +1747,28 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString(),
                         tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),15).toString()
                     });
+                    Trackobat.catatRiwayat(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString(),
+                        Valid.SetAngka(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()),
+                        0,"Pemberian Obat",akses.getkode(),bangsal,"Hapus",
+                        tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),14).toString(),
+                        tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),15).toString());
+                    Sequel.menyimpan("gudangbarang","'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"','"+bangsal+"',"+
+                                        "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"',"+
+                                        "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),14).toString()+"',"+
+                                        "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),15).toString()+"'", 
+                                        "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'",
+                                        "kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'  "+
+                                        "and no_batch='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),14).toString()+"' "+
+                                        "and no_faktur='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),15).toString()+"'");   
+                }else{
+                    Trackobat.catatRiwayat(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString(),
+                        Valid.SetAngka(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()),
+                        0,"Pemberian Obat",akses.getkode(),bangsal,"Hapus","","");
+                    Sequel.menyimpan("gudangbarang","'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"','"+bangsal+"',"+
+                                        "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"','',''", 
+                                        "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'",
+                                        "kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'  "+
+                                        "and no_batch='' and no_faktur=''");   
                 }
             }
         }else{

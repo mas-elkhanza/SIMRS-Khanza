@@ -274,7 +274,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(50,50,50));
+        ppHapus.setForeground(new java.awt.Color(50, 50, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Retur");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -297,7 +297,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -833,13 +833,17 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     ps2.setString(1,rs.getString(1));
                     rs2=ps2.executeQuery();
                     while(rs2.next()){
-                        Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jml_retur2"),0,"Retur Beli",akses.getkode(),rs.getString("kd_bangsal"),"Hapus",rs2.getString("no_batch"),rs2.getString("no_faktur"));
-                        Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','"+rs2.getString("jml_retur2") +"','"+rs2.getString("no_batch")+"','"+rs2.getString("no_faktur")+"'", 
-                                               "stok=stok+'"+rs2.getString("jml_retur2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and no_batch='"+rs2.getString("no_batch")+"' and no_faktur='"+rs2.getString("no_faktur")+"'");
                         if(aktifkanbatch.equals("yes")){
                             Sequel.mengedit("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa+?",4,new String[]{
                                 rs2.getString("jml_retur2"),rs2.getString("no_batch"),rs2.getString("kode_brng"),rs2.getString("no_faktur")
                             });
+                            Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jml_retur2"),0,"Retur Beli",akses.getkode(),rs.getString("kd_bangsal"),"Hapus",rs2.getString("no_batch"),rs2.getString("no_faktur"));
+                            Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','"+rs2.getString("jml_retur2") +"','"+rs2.getString("no_batch")+"','"+rs2.getString("no_faktur")+"'", 
+                                               "stok=stok+'"+rs2.getString("jml_retur2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and no_batch='"+rs2.getString("no_batch")+"' and no_faktur='"+rs2.getString("no_faktur")+"'");
+                        }else{
+                            Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jml_retur2"),0,"Retur Beli",akses.getkode(),rs.getString("kd_bangsal"),"Hapus","","");
+                            Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','"+rs2.getString("jml_retur2") +"','',''", 
+                                               "stok=stok+'"+rs2.getString("jml_retur2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal")+"' and no_batch='' and no_faktur=''");
                         } 
                     } 
                 } catch (Exception e) {

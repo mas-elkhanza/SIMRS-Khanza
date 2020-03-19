@@ -5705,16 +5705,20 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             if(NoRawat.getText().equals("")&&kdmem.getText().equals("")&&kdptg.getText().equals("")&&TCari.getText().equals("")){
                 ps=koneksi.prepareStatement(
                     "select pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk from pasien inner join reg_periksa inner join periksa_lab inner join dokter inner join jns_perawatan_lab inner join petugas on "+
-                    "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=periksa_lab.no_rawat and periksa_lab.nip=petugas.nip "+
-                    "and periksa_lab.dokter_perujuk=dokter.kd_dokter and jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                    "pasien.jk from pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                    "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
+                    "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
+                    "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                    "inner join petugas on periksa_lab.nip=petugas.nip "+
                     "where periksa_lab.tgl_periksa between ? and ? group by pasien.no_rkm_medis order by tgl_registrasi desc");
             }else{
                 ps=koneksi.prepareStatement(
                     "select pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk from pasien inner join reg_periksa inner join periksa_lab inner join dokter inner join jns_perawatan_lab inner join petugas on "+
-                    "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=periksa_lab.no_rawat and periksa_lab.nip=petugas.nip "+
-                    "and periksa_lab.dokter_perujuk=dokter.kd_dokter and jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                    "pasien.jk from pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                    "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
+                    "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
+                    "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                    "inner join petugas on periksa_lab.nip=petugas.nip "+
                     "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and pasien.no_rkm_medis like ? or "+
                     "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
                     "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
@@ -5789,16 +5793,20 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     if(NoRawat.getText().equals("")&&kdmem.getText().equals("")&&kdptg.getText().equals("")&&TCari.getText().equals("")){
                         ps2=koneksi.prepareStatement(
                             "select periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam,dokter.nm_dokter from "+
-                            "pasien inner join reg_periksa inner join periksa_lab inner join dokter inner join jns_perawatan_lab inner join petugas on "+
-                            "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=periksa_lab.no_rawat and periksa_lab.nip=petugas.nip "+
-                            "and periksa_lab.dokter_perujuk=dokter.kd_dokter and jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                            "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                            "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
+                            "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
+                            "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                            "inner join petugas on periksa_lab.nip=petugas.nip "+
                             "where periksa_lab.tgl_periksa between ? and ? group by periksa_lab.tgl_periksa,periksa_lab.jam order by tgl_registrasi");
                     }else{
                         ps2=koneksi.prepareStatement(
                             "select periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam,dokter.nm_dokter from "+
-                            "pasien inner join reg_periksa inner join periksa_lab inner join dokter inner join jns_perawatan_lab inner join petugas on "+
-                            "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=periksa_lab.no_rawat and periksa_lab.nip=petugas.nip "+
-                            "and periksa_lab.dokter_perujuk=dokter.kd_dokter and jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                            "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                            "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
+                            "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
+                            "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                            "inner join petugas on periksa_lab.nip=petugas.nip "+
                             "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and pasien.no_rkm_medis like ? or "+
                             "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
                             "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
@@ -5874,16 +5882,20 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             if(NoRawat.getText().equals("")&&kdmem.getText().equals("")&&kdptg.getText().equals("")){
                                 ps3=koneksi.prepareStatement(
                                     "select periksa_lab.kd_dokter,dokter.nm_dokter,petugas.nama as nm_petugas,jns_perawatan_lab.nm_perawatan,periksa_lab.kd_jenis_prw from "+
-                                    "pasien inner join reg_periksa inner join periksa_lab inner join dokter inner join jns_perawatan_lab inner join petugas on "+
-                                    "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=periksa_lab.no_rawat and periksa_lab.nip=petugas.nip "+
-                                    "and periksa_lab.dokter_perujuk=dokter.kd_dokter and jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                                    "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                                    "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
+                                    "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
+                                    "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                                    "inner join petugas on periksa_lab.nip=petugas.nip "+
                                     "where periksa_lab.tgl_periksa between ? and ? order by tgl_registrasi");
                             }else{
                                 ps3=koneksi.prepareStatement(
                                     "select periksa_lab.kd_dokter,dokter.nm_dokter,petugas.nama as nm_petugas,jns_perawatan_lab.nm_perawatan,periksa_lab.kd_jenis_prw from "+
-                                    "pasien inner join reg_periksa inner join periksa_lab inner join dokter inner join jns_perawatan_lab inner join petugas on "+
-                                    "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=periksa_lab.no_rawat and periksa_lab.nip=petugas.nip "+
-                                    "and periksa_lab.dokter_perujuk=dokter.kd_dokter and jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                                    "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                                    "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
+                                    "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
+                                    "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                                    "inner join petugas on periksa_lab.nip=petugas.nip "+
                                     "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and pasien.no_rkm_medis like ? or "+
                                     "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
                                     "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+

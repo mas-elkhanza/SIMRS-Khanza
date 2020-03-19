@@ -272,6 +272,7 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        Kwitansi = new javax.swing.JMenuItem();
         ppHapus = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
@@ -312,9 +313,25 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        Kwitansi.setBackground(new java.awt.Color(255, 255, 254));
+        Kwitansi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Kwitansi.setForeground(new java.awt.Color(50, 50, 50));
+        Kwitansi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Kwitansi.setText("Kwitansi");
+        Kwitansi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Kwitansi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Kwitansi.setName("Kwitansi"); // NOI18N
+        Kwitansi.setPreferredSize(new java.awt.Dimension(200, 25));
+        Kwitansi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KwitansiActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(Kwitansi);
+
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(50,50,50));
+        ppHapus.setForeground(new java.awt.Color(50, 50, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Data Stok Keluar");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -332,7 +349,7 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -612,7 +629,7 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -948,6 +965,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
+    private void KwitansiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KwitansiActionPerformed
+        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Eitsss bentar, kelupaan nih belum pilih barangnya...!!!");
+        }else{
+            String noKeluar = tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim();
+            Valid.panggilUrl("billing/LaporanBilling11.php?no_keluar="+noKeluar);
+        }
+    }//GEN-LAST:event_KwitansiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -969,6 +995,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private javax.swing.JMenuItem Kwitansi;
     private widget.Label LTotal;
     private widget.TextBox NoKeluar;
     private widget.TextBox TCari;

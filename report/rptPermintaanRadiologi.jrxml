@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="522" leftMargin="56" rightMargin="17" topMargin="20" bottomMargin="20" uuid="18d1d442-507a-4505-8090-1b02bbcec47f">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -84,7 +84,7 @@
 	</background>
 	<title>
 		<band height="221" splitType="Stretch">
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="2" y="14" width="520" height="25" forecolor="#000000" backcolor="#00FF00" uuid="d59d1e25-b000-4b76-990e-43d1f762778a"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="20" isBold="false" isItalic="false"/>
@@ -92,7 +92,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="2" y="68" width="520" height="14" uuid="3d86d860-2aa0-450f-830f-d67f516f36e2"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
@@ -100,7 +100,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="2" y="55" width="520" height="14" uuid="78f068bf-9ce0-4719-ba91-dd93da2a497b"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
@@ -108,7 +108,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="2" y="42" width="520" height="14" uuid="330af5db-88ff-44ec-82db-4f62609d973e"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
@@ -140,7 +140,7 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="99" y="159" width="175" height="15" uuid="bc4b4e24-35c0-4a73-8283-cb20bcc60a5b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -148,7 +148,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{alamat}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="99" y="114" width="175" height="15" uuid="bde84a18-c6dc-4464-8221-a145fc8a0939"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -172,7 +172,7 @@
 				</textElement>
 				<text><![CDATA[No.RM]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="99" y="129" width="175" height="15" uuid="782d0356-a80f-4a4e-8e03-05bf0721f453"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -212,7 +212,7 @@
 				</textElement>
 				<text><![CDATA[JK/Umur]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="99" y="144" width="35" height="15" uuid="d7c165d1-c948-4b08-b758-470f544d1206"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -220,7 +220,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{jkel}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="385" y="114" width="136" height="15" uuid="62faaf26-9bfc-446a-bce2-c8cebeb873be"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -260,7 +260,7 @@
 				</textElement>
 				<text><![CDATA[Tgl.Permintaan]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="385" y="129" width="136" height="15" uuid="7855227c-d8e3-4391-89ec-42bf29470a49"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -276,7 +276,7 @@
 				</textElement>
 				<text><![CDATA[/]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="144" y="144" width="83" height="15" uuid="e1a3d1f0-9e7c-42da-ad29-60e113ae29aa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -292,7 +292,7 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="385" y="144" width="136" height="15" uuid="b24d41ca-0476-4cbf-b626-11610ca227bf"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -316,7 +316,7 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="99" y="174" width="175" height="15" uuid="ab2b28c3-91ff-45d8-82de-a7e9113ad335"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -340,7 +340,7 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="385" y="159" width="136" height="15" uuid="c7b05f85-13a2-48a4-8301-55af24543aa8"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -348,7 +348,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{namakamar}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="286" y="159" width="89" height="15" uuid="8e17121b-a2b7-4690-b5ff-842f955d6595"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -402,7 +402,7 @@
 	</title>
 	<detail>
 		<band height="14" splitType="Stretch">
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="1" width="518" height="13" uuid="a69804cc-3008-4577-83b2-a238dd437e8b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -444,7 +444,7 @@
 				</textElement>
 				<text><![CDATA[Dokter Pengirim]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="310" y="98" width="210" height="15" uuid="1cfeec0b-3036-4288-9e1a-f0b2d177354e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
@@ -452,7 +452,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{pengirim}]]></textFieldExpression>
 			</textField>
-			<textField pattern="dd/MM/yyyy HH.mm.ss" isBlankWhenNull="false">
+			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy HH.mm.ss" isBlankWhenNull="false">
 				<reportElement key="textField" x="405" y="5" width="109" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="a71e6e93-76d3-4560-a921-a23c055a37f2"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>

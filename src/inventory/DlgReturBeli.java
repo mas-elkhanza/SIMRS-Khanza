@@ -880,26 +880,47 @@ public class DlgReturBeli extends javax.swing.JDialog {
         }else{
             try {
                 stokobat=0;   
-                ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
-                try {
-                    ps.setString(1,kdgudang.getText());
-                    ps.setString(2,Kdbar.getText());
-                    ps.setString(3,NoBatch.getText());
-                    ps.setString(4,NoFaktur.getText());
-                    rs=ps.executeQuery();
-                    if(rs.next()){
-                        stokobat=rs.getDouble(1);
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
-                }  
+                if(aktifkanbatch.equals("yes")){
+                    ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
+                    try {
+                        ps.setString(1,kdgudang.getText());
+                        ps.setString(2,Kdbar.getText());
+                        ps.setString(3,NoBatch.getText());
+                        ps.setString(4,NoFaktur.getText());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            stokobat=rs.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }  
+                }else{
+                    ps=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch='' and no_faktur=''");
+                    try {
+                        ps.setString(1,kdgudang.getText());
+                        ps.setString(2,Kdbar.getText());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            stokobat=rs.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }  
+                }
                 
                 jumlahretur=Valid.SetAngka(Jmlretur.getText());
                 if(jumlahretur>stokobat){
@@ -1488,13 +1509,17 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 while(rs.next()){
                     if(Sequel.menyimpantf2("detreturbeli","'"+NoRetur.getText()+"','"+rs.getString(1) +"','"+rs.getString(2) +"','"+rs.getString(3) +
                         "','"+rs.getString(4)+"','"+rs.getString(5)+"','"+rs.getString(6)+"','"+rs.getString(7)+"','"+rs.getString(8)+"','"+rs.getString(9)+"','"+rs.getString(10)+"'","data")==true){
-                        Trackobat.catatRiwayat(rs.getString(2),0,rs.getDouble(10),"Retur Beli",akses.getkode(),kdgudang.getText(),"Simpan",rs.getString("no_batch"),rs.getString("no_faktur"));
-                        Sequel.menyimpan("gudangbarang","'"+rs.getString(2)+"','"+kdgudang.getText()+"','-"+rs.getString(10)+"','"+rs.getString("no_batch")+"','"+rs.getString("no_faktur")+"'", 
-                                    "stok=stok-'"+rs.getString(10)+"'","kode_brng='"+rs.getString(2)+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='"+rs.getString("no_batch")+"' and no_faktur='"+rs.getString("no_faktur")+"'");
                         if(aktifkanbatch.equals("yes")){
                             Sequel.mengedit("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa-?",4,new String[]{
                                 rs.getString(10),rs.getString(9),rs.getString(2),rs.getString("no_faktur")
                             });
+                            Trackobat.catatRiwayat(rs.getString(2),0,rs.getDouble(10),"Retur Beli",akses.getkode(),kdgudang.getText(),"Simpan",rs.getString("no_batch"),rs.getString("no_faktur"));
+                            Sequel.menyimpan("gudangbarang","'"+rs.getString(2)+"','"+kdgudang.getText()+"','-"+rs.getString(10)+"','"+rs.getString("no_batch")+"','"+rs.getString("no_faktur")+"'", 
+                                    "stok=stok-'"+rs.getString(10)+"'","kode_brng='"+rs.getString(2)+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='"+rs.getString("no_batch")+"' and no_faktur='"+rs.getString("no_faktur")+"'");
+                        }else{
+                            Trackobat.catatRiwayat(rs.getString(2),0,rs.getDouble(10),"Retur Beli",akses.getkode(),kdgudang.getText(),"Simpan","","");
+                            Sequel.menyimpan("gudangbarang","'"+rs.getString(2)+"','"+kdgudang.getText()+"','-"+rs.getString(10)+"','',''", 
+                                    "stok=stok-'"+rs.getString(10)+"'","kode_brng='"+rs.getString(2)+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='' and no_faktur=''");
                         } 
                     }else{
                        sukses=false;

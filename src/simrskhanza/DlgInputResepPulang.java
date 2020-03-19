@@ -57,7 +57,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        tabMode=new DefaultTableModel(null,new Object[]{"Jml","Kode Barang","Nama Barang","Satuan","Dosis","Kandungan","Harga(Rp)","Jenis Obat","No.Batch","No.Faktur","Stok"}){
+        tabMode=new DefaultTableModel(null,new Object[]{"Jml","Kode Barang","Nama Barang","Satuan","Aturan Pakai","Lokasi","Harga(Rp)","Jenis Obat","No.Batch","No.Faktur","Stok"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if ((colIndex==0)||(colIndex==4)||(colIndex==8)||(colIndex==9)) {
@@ -81,7 +81,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(60);
             }else if(i==4){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(200);
             }else if(i==5){
                 column.setPreferredWidth(120);
             }else if(i==6){
@@ -458,22 +458,33 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }else{  
         Sequel.AutoComitFalse();
         sukses=true;
+        double embalase = 0;
+        double tuslah = 0;
+                
         for(i=0;i<tbKamar.getRowCount();i++){ 
             if(Valid.SetAngka(tbKamar.getValueAt(i,0).toString())>0){
-                if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
-                        TNoRw.getText(),tbKamar.getValueAt(i,1).toString(),tbKamar.getValueAt(i,0).toString(),
-                        tbKamar.getValueAt(i,6).toString(),""+Double.parseDouble(tbKamar.getValueAt(i,6).toString())*Double.parseDouble(tbKamar.getValueAt(i,0).toString()),
-                        tbKamar.getValueAt(i,4).toString(),Tanggal.getText(),Jam.getText(),akses.getkdbangsal(),
-                        tbKamar.getValueAt(i,8).toString(),tbKamar.getValueAt(i,9).toString()
+                embalase = Sequel.cariIsiAngka("select embalase_per_obat from set_embalase");
+                tuslah = Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
+                
+                if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?,?,?,?,?","data",13,new String[]{
+                        TNoRw.getText(), tbKamar.getValueAt(i,1).toString(), tbKamar.getValueAt(i,0).toString(),
+                        tbKamar.getValueAt(i,6).toString(), String.valueOf(embalase), String.valueOf(tuslah), ""+ (Double.parseDouble(tbKamar.getValueAt(i,6).toString())*Double.parseDouble(tbKamar.getValueAt(i,0).toString()) + tuslah + embalase),
+                        tbKamar.getValueAt(i,4).toString(), Tanggal.getText(), Jam.getText(), akses.getkdbangsal(),
+                        tbKamar.getValueAt(i,8).toString(), tbKamar.getValueAt(i,9).toString()
                     })==true){
-                        Trackobat.catatRiwayat(tbKamar.getValueAt(i,1).toString(),0,Valid.SetAngka(tbKamar.getValueAt(i,0).toString()),"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Simpan",tbKamar.getValueAt(i,8).toString(),tbKamar.getValueAt(i,9).toString());
                         if(aktifkanbatch.equals("yes")){
                             Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa-?",4,new String[]{
                                 ""+tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,8).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,9).toString()
                             });
+                            Trackobat.catatRiwayat(tbKamar.getValueAt(i,1).toString(),0,Valid.SetAngka(tbKamar.getValueAt(i,0).toString()),"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Simpan",tbKamar.getValueAt(i,8).toString(),tbKamar.getValueAt(i,9).toString());
+                            Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+akses.getkdbangsal()+"','-"+tbKamar.getValueAt(i,0).toString()+"','"+tabMode.getValueAt(i,8).toString()+"','"+tabMode.getValueAt(i,9).toString()+"'", 
+                                         "stok=stok-'"+tbKamar.getValueAt(i,0).toString()+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+akses.getkdbangsal()+"' and no_batch='"+tabMode.getValueAt(i,8).toString()+"' and no_faktur='"+tabMode.getValueAt(i,9).toString()+"'");           
+                        }else{
+                            Trackobat.catatRiwayat(tbKamar.getValueAt(i,1).toString(),0,Valid.SetAngka(tbKamar.getValueAt(i,0).toString()),"Resep Pulang",akses.getkode(),akses.getkdbangsal(),"Simpan","","");
+                            Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+akses.getkdbangsal()+"','-"+tbKamar.getValueAt(i,0).toString()+"','',''", 
+                                         "stok=stok-'"+tbKamar.getValueAt(i,0).toString()+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+akses.getkdbangsal()+"' and no_batch='' and no_faktur=''");           
                         }
-                        Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+akses.getkdbangsal()+"','-"+tbKamar.getValueAt(i,0).toString()+"','"+tabMode.getValueAt(i,8).toString()+"','"+tabMode.getValueAt(i,9).toString()+"'", 
-                                         "stok=stok-'"+tbKamar.getValueAt(i,0).toString()+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+akses.getkdbangsal()+"' and no_batch='"+tabMode.getValueAt(i,8).toString()+"' and no_faktur='"+tabMode.getValueAt(i,9).toString()+"'");                               
+                                            
                 }else{
                     sukses=false;
                 }
@@ -482,6 +493,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         
         if(sukses==true){
             Sequel.Commit();
+            JOptionPane.showMessageDialog(rootPane,"Alhamdulillah, berhasil disimpan ^_^");
         }else{
             sukses=false;
             JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
@@ -901,26 +913,47 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 try {
                     if(Double.parseDouble(tabMode.getValueAt(row,0).toString())>0){
                         stokbarang=0;   
-                        psobat=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
-                        try {
-                            psobat.setString(1,akses.getkdbangsal());
-                            psobat.setString(2,tbKamar.getValueAt(row,1).toString());
-                            psobat.setString(3,tbKamar.getValueAt(row,8).toString());
-                            psobat.setString(4,tbKamar.getValueAt(row,9).toString());
-                            rs=psobat.executeQuery();
-                            if(rs.next()){
-                                stokbarang=rs.getDouble(1);
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi : "+e);
-                        } finally{
-                            if(rs!=null){
-                                rs.close();
-                            }
-                            if(psobat!=null){
-                                psobat.close();
-                            }
-                        }  
+                        if(aktifkanbatch.equals("yes")){
+                            psobat=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch=? and no_faktur=?");
+                            try {
+                                psobat.setString(1,akses.getkdbangsal());
+                                psobat.setString(2,tbKamar.getValueAt(row,1).toString());
+                                psobat.setString(3,tbKamar.getValueAt(row,8).toString());
+                                psobat.setString(4,tbKamar.getValueAt(row,9).toString());
+                                rs=psobat.executeQuery();
+                                if(rs.next()){
+                                    stokbarang=rs.getDouble(1);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(psobat!=null){
+                                    psobat.close();
+                                }
+                            }  
+                        }else{
+                            psobat=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=? and no_batch='' and no_faktur=''");
+                            try {
+                                psobat.setString(1,akses.getkdbangsal());
+                                psobat.setString(2,tbKamar.getValueAt(row,1).toString());
+                                rs=psobat.executeQuery();
+                                if(rs.next()){
+                                    stokbarang=rs.getDouble(1);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(psobat!=null){
+                                    psobat.close();
+                                }
+                            }  
+                        }   
 
                         tbKamar.setValueAt(stokbarang,row,10);
                         y=0;

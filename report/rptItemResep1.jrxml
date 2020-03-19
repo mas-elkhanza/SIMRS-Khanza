@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="184" pageHeight="113" columnWidth="174" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="14a260b5-cc0f-4343-9f6f-4d79ee09314a">
 	<property name="ireport.zoom" value="4.0"/>
 	<property name="ireport.x" value="0"/>
@@ -86,7 +86,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="3" y="35" width="169" height="9" uuid="40e57f38-7193-4f9a-9ef9-b08de5fa4a5f"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="7"/>
@@ -128,7 +128,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 				</textElement>
 				<text><![CDATA[Nama]]></text>
 			</staticText>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="26" y="17" width="147" height="9" uuid="4e3ba845-6bd1-447e-a34d-ccbd1230ef68"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="7"/>
@@ -136,7 +136,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="26" y="9" width="147" height="9" uuid="3dcb730d-2502-4cd9-b2fe-662ec106ff5f"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="7"/>
@@ -144,7 +144,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 				</textElement>
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="26" y="1" width="147" height="9" uuid="ce07815e-7351-4713-b69d-3766729fbe70"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="7"/>
@@ -180,7 +180,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="31" y="55" width="52" height="9" uuid="75891f39-e198-4470-953e-617e1ad88033"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
@@ -188,7 +188,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 				</textElement>
 				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="31" y="63" width="141" height="9" uuid="e8a7b53f-2e01-4102-ba58-1e4cb68916d4"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
@@ -196,7 +196,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="83" y="55" width="89" height="9" uuid="180db649-5049-4cea-b897-501585814a28"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
@@ -210,7 +210,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="3" y="82" width="169" height="20" uuid="1630a2ab-552f-4d3f-9b69-624818ecf0ed"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="7"/>
@@ -218,7 +218,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 				</textElement>
 				<textFieldExpression><![CDATA[$F{aturan}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="3" y="72" width="132" height="9" uuid="52b941c1-6f7c-45a1-bb76-4fc91daa804c"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
@@ -226,7 +226,7 @@ resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_brng}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement x="134" y="72" width="38" height="9" uuid="57442348-e23f-487b-a83d-910af503274b"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="7"/>
