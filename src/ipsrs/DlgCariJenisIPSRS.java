@@ -372,7 +372,7 @@ public final class DlgCariJenisIPSRS extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        false,rs.getString(1),rs.getString(2)
+                        rs.getString(1),rs.getString(2)
                     });
                 }
             } catch (Exception e) {
