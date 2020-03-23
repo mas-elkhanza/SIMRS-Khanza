@@ -592,13 +592,16 @@ public final class DlgResepPulang extends javax.swing.JDialog {
             
             for(int i=0;i<tabMode.getRowCount();i++){  
                 Sequel.menyimpan("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                    "0",tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
-                    tabMode.getValueAt(i,3).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
-                    Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString())),Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString())),
-                    tabMode.getValueAt(i,8).toString(),tabMode.getValueAt(i,9).toString(),tabMode.getValueAt(i,10).toString(),"","","","","","","","","","",
+                    "0", tabMode.getValueAt(i,0).toString(), tabMode.getValueAt(i,1).toString(), tabMode.getValueAt(i,2).toString(),
+                    tabMode.getValueAt(i,3).toString(), tabMode.getValueAt(i,4).toString(), tabMode.getValueAt(i,5).toString(),
+                    Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString())), Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString())),
+                    tabMode.getValueAt(i,8).toString(), tabMode.getValueAt(i,9).toString(), tabMode.getValueAt(i,10).toString(),"","","","","","","","","","",
                     "","","","","","","","","","","","","","","","",""
                 });
             }
+            
+            Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''"); 
+            Sequel.menyimpan("temporary","'0','Jml.Total :','','','','','','','','','','"+jumlahtotal+"','','','','','','','','','','','','','','','','','','','','','','','','','',''"); 
             
             
             Map<String, Object> param = new HashMap<>();  
