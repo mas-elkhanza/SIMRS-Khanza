@@ -31,7 +31,6 @@ public class DlgPiutangPercaraBayar extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private PreparedStatement pspenjab,pspiutang;
     private ResultSet rspenjab,rspiutang; 
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private int i=0,a=0;
     private double ttlpiutang=0,ttlsisapiutang,subttlpiutang,subttlsisapiutang;

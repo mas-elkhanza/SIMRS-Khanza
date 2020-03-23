@@ -10,7 +10,6 @@
  */
 
 package keuangan;
-import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -26,7 +25,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -228,7 +226,7 @@ public class DlgAkunBayar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Akun Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Akun Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -458,6 +456,7 @@ public class DlgAkunBayar extends javax.swing.JDialog {
         panelBiasa1.add(nmrek);
         nmrek.setBounds(186, 42, 389, 23);
 
+        kdrek.setEditable(false);
         kdrek.setHighlighter(null);
         kdrek.setName("kdrek"); // NOI18N
         kdrek.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -814,6 +813,5 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ppn.setText(tabMode.getValueAt(row,4).toString());
         }
     }
-    
     
 }
