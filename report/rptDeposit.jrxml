@@ -38,6 +38,9 @@ and deposit.nip=petugas.nip
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tipe_bayar" class="java.lang.String"/>
+	<variable name="totaldp" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{besar_deposit}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -172,7 +175,7 @@ and deposit.nip=petugas.nip
 	</columnHeader>
 	<detail>
 		<band height="11" splitType="Stretch">
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement mode="Transparent" x="2" y="0" width="83" height="10" uuid="721f7554-151a-4ca0-9683-efb0d53b60e0"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
@@ -180,7 +183,7 @@ and deposit.nip=petugas.nip
 				</textElement>
 				<textFieldExpression><![CDATA[$F{no_rawat}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight">
 				<reportElement mode="Transparent" x="85" y="0" width="140" height="10" uuid="8bc50813-f8b9-4b7d-82ad-8ff914e309db">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -190,7 +193,7 @@ and deposit.nip=petugas.nip
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pasien}]]></textFieldExpression>
 			</textField>
-			<textField pattern="dd/MM/yyyy HH.mm.ss">
+			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy HH.mm.ss">
 				<reportElement mode="Transparent" x="225" y="0" width="80" height="10" uuid="a17cda54-5bbd-4c5a-8fe9-2baefaa8d7c3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -208,7 +211,7 @@ and deposit.nip=petugas.nip
 				</textElement>
 				<textFieldExpression><![CDATA[$F{besar_deposit}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField textAdjust="StretchHeight" pattern="">
 				<reportElement mode="Transparent" x="305" y="0" width="96" height="10" uuid="78439ce8-c944-4cec-916e-3da5a34b4326">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -218,7 +221,7 @@ and deposit.nip=petugas.nip
 				</textElement>
 				<textFieldExpression><![CDATA[$F{petugas}]]></textFieldExpression>
 			</textField>
-			<textField pattern="">
+			<textField textAdjust="StretchHeight" pattern="">
 				<reportElement mode="Transparent" x="405" y="0" width="94" height="10" uuid="ec270a05-6472-44a7-812f-2d5727bf0eec">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -234,7 +237,7 @@ and deposit.nip=petugas.nip
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="24" splitType="Stretch">
+		<band height="40" splitType="Stretch">
 			<textField textAdjust="StretchHeight" evaluationTime="Report" pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" x="505" y="6" width="36" height="12" forecolor="#000000" backcolor="#FFFFFF" uuid="8d027a96-5cac-467a-8c3b-ceecd01369bb"/>
 				<box>
@@ -292,6 +295,24 @@ and deposit.nip=petugas.nip
 		</band>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="20" splitType="Stretch">
+			<textField textAdjust="StretchHeight" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="493" y="5" width="60" height="15" uuid="3c64d09d-0f07-4802-a943-9f3920edbf35">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totaldp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="409" y="5" width="70" height="15" uuid="858c3941-aea3-415d-b28c-ca4ee8a1fbca"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total Deposit :]]></text>
+			</staticText>
+		</band>
 	</summary>
 </jasperReport>
