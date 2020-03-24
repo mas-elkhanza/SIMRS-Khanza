@@ -1492,10 +1492,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void panggilgetData(String nopengajuan){
         try{
             ps=koneksi.prepareStatement(
-                "select tokobarang.kode_brng, tokobarang.nama_brng,tokobarang.kode_sat,detail_pengajuan_barang_nonmedis.jumlah,detail_pengajuan_barang_nonmedis.total,"+
-                " detail_pengajuan_barang_nonmedis.h_pengajuan from tokobarang inner join tokojenisbarang inner join detail_pengajuan_barang_nonmedis "+
-                " on tokobarang.jenis=tokojenisbarang.kd_jenis and tokobarang.kode_brng=detail_pengajuan_barang_nonmedis.kode_brng "+
-                " where detail_pengajuan_barang_nonmedis.no_pengajuan=?");
+                "select tokobarang.kode_brng, tokobarang.nama_brng,tokobarang.kode_sat,detail_pengajuan_barang_toko.jumlah,detail_pengajuan_barang_toko.total,"+
+                " detail_pengajuan_barang_toko.h_pengajuan from tokobarang inner join tokojenisbarang inner join detail_pengajuan_barang_toko "+
+                " on tokobarang.jenis=tokojenisbarang.kd_jenis and tokobarang.kode_brng=detail_pengajuan_barang_toko.kode_brng "+
+                " where detail_pengajuan_barang_toko.no_pengajuan=?");
             try {
                 ps.setString(1,nopengajuan);
                 rs=ps.executeQuery();

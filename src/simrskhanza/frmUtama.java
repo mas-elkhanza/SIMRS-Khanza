@@ -592,6 +592,7 @@ import surat.SuratStatus;
 import toko.TokoBarang;
 import toko.TokoInputStok;
 import toko.TokoJenis;
+import toko.TokoPengajuanBarang;
 import toko.TokoRiwayatBarang;
 import toko.TokoSuplier;
 import toko.TokoSuratPemesanan;
@@ -15936,6 +15937,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPengajuanBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPengajuanBarang form=new TokoPengajuanBarang(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16530,7 +16543,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2,btnMonitoringAsuhanGizi,btnGrafikPenerimaanObatPerBulan,btnRekapKunjungan,
             btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah,
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
-            btnRiwayatBarangToko,btnSuratPemesananToko;
+            btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko;
     
     public void isWall(){
         try{            
@@ -19490,6 +19503,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_riwayat_barang()==true){
                 Panelmenu.add(btnRiwayatBarangToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_pengajuan_barang()==true){
+                Panelmenu.add(btnPengajuanBarangToko); 
                 jmlmenu++;
             }
             
@@ -22465,6 +22483,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.gettoko_pengajuan_barang()==true){
+            Panelmenu.add(btnPengajuanBarangToko); 
+            jmlmenu++;
+        }
+
         if(akses.gettoko_surat_pemesanan()==true){
             Panelmenu.add(btnSuratPemesananToko); 
             jmlmenu++;
@@ -26571,6 +26594,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_pengajuan_barang()==true){
+            if(btnPengajuanBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengajuanBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettoko_surat_pemesanan()==true){
             if(btnSuratPemesananToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratPemesananToko);
@@ -28263,7 +28293,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnMasterMasalahKeperawatan = new widget.ButtonBig();
-        btnMasterMasalahKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Notebook_3387299.png"))); 
+        btnMasterMasalahKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_library-book-books-interface-education-read-reading_2914057.png"))); 
         btnMasterMasalahKeperawatan.setText("Master Masalah Keperawatan");
         btnMasterMasalahKeperawatan.setIconTextGap(0);
         btnMasterMasalahKeperawatan.setName("btnMasterMasalahKeperawatan"); 
@@ -28415,6 +28445,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratPemesananToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuratPemesananTokoActionPerformed(evt);
+            }
+        });
+        
+        btnPengajuanBarangToko = new widget.ButtonBig();
+        btnPengajuanBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-45-note-list_315263.png"))); 
+        btnPengajuanBarangToko.setText("Pengajuan Barang Toko");
+        btnPengajuanBarangToko.setIconTextGap(0);
+        btnPengajuanBarangToko.setName("btnPengajuanBarangToko"); 
+        btnPengajuanBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengajuanBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengajuanBarangTokoActionPerformed(evt);
             }
         });
     }

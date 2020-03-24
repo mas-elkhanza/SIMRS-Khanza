@@ -130,7 +130,7 @@ public final class akses {
             rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false,master_masalah_keperawatan=false,
             pengajuan_cuti=false,kedatangan_pasien=false,utd_pendonor=false,toko_suplier=false,toko_jenis=false,toko_set_harga=false,
             toko_barang=false,penagihan_piutang_pasien=false,akun_penagihan_piutang=false,stok_opname_toko=false,toko_riwayat_barang=false,
-            toko_surat_pemesanan=false;
+            toko_surat_pemesanan=false,toko_pengajuan_barang=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -749,6 +749,7 @@ public final class akses {
                         akses.stok_opname_toko=true;
                         akses.toko_riwayat_barang=true;
                         akses.toko_surat_pemesanan=true;
+                        akses.toko_pengajuan_barang=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1351,6 +1352,7 @@ public final class akses {
                         akses.stok_opname_toko=rs2.getBoolean("stok_opname_toko");
                         akses.toko_riwayat_barang=rs2.getBoolean("toko_riwayat_barang");
                         akses.toko_surat_pemesanan=rs2.getBoolean("toko_surat_pemesanan");
+                        akses.toko_pengajuan_barang=rs2.getBoolean("toko_pengajuan_barang");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1951,6 +1953,7 @@ public final class akses {
                         akses.stok_opname_toko=false;
                         akses.toko_riwayat_barang=false;
                         akses.toko_surat_pemesanan=false;
+                        akses.toko_pengajuan_barang=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2605,5 +2608,6 @@ public final class akses {
     public static boolean getstok_opname_toko(){return akses.stok_opname_toko;}
     public static boolean gettoko_riwayat_barang(){return akses.toko_riwayat_barang;}
     public static boolean gettoko_surat_pemesanan(){return akses.toko_surat_pemesanan;}
+    public static boolean gettoko_pengajuan_barang(){return akses.toko_pengajuan_barang;}
     
 }   
