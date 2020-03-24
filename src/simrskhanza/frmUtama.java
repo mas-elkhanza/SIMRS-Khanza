@@ -592,7 +592,9 @@ import surat.SuratStatus;
 import toko.TokoBarang;
 import toko.TokoInputStok;
 import toko.TokoJenis;
+import toko.TokoRiwayatBarang;
 import toko.TokoSuplier;
+import toko.TokoSuratPemesanan;
 import tranfusidarah.UTDCariPenyerahanDarah;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
@@ -2160,7 +2162,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLihatPiutang);
 
-        btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002039_laboratory.png"))); // NOI18N
+        btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laborat.png"))); // NOI18N
         btnLaboratorium.setText("Periksa Lab");
         btnLaboratorium.setIconTextGap(0);
         btnLaboratorium.setName("btnLaboratorium"); // NOI18N
@@ -6944,7 +6946,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/03/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/03/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -15910,6 +15912,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRiwayatBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoRiwayatBarang sirkulasi=new TokoRiwayatBarang(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnSuratPemesananTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoSuratPemesanan form=new TokoSuratPemesanan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16503,7 +16529,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah,btnAsuhanGizi,btnKirimTagihanInheath,
             btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2,btnMonitoringAsuhanGizi,btnGrafikPenerimaanObatPerBulan,btnRekapKunjungan,
             btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah,
-            btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko;
+            btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
+            btnRiwayatBarangToko,btnSuratPemesananToko;
     
     public void isWall(){
         try{            
@@ -19458,6 +19485,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getstok_opname_toko()==true){
                 Panelmenu.add(btnStokOpnameToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_riwayat_barang()==true){
+                Panelmenu.add(btnRiwayatBarangToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_surat_pemesanan()==true){
+                Panelmenu.add(btnSuratPemesananToko); 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==17){   
@@ -22420,6 +22457,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getstok_opname_toko()==true){
             Panelmenu.add(btnStokOpnameToko); 
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_riwayat_barang()==true){
+            Panelmenu.add(btnRiwayatBarangToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_surat_pemesanan()==true){
+            Panelmenu.add(btnSuratPemesananToko); 
             jmlmenu++;
         }
 
@@ -26517,6 +26564,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_riwayat_barang()==true){
+            if(btnRiwayatBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRiwayatBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_surat_pemesanan()==true){
+            if(btnSuratPemesananToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratPemesananToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -28330,6 +28391,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnStokOpnameToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStokOpnameTokoActionPerformed(evt);
+            }
+        });
+        
+        btnRiwayatBarangToko = new widget.ButtonBig();
+        btnRiwayatBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ecommerce-21_4707177.png"))); 
+        btnRiwayatBarangToko.setText("Riwayat Barang Toko");
+        btnRiwayatBarangToko.setIconTextGap(0);
+        btnRiwayatBarangToko.setName("btnRiwayatBarangToko"); 
+        btnRiwayatBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatBarangTokoActionPerformed(evt);
+            }
+        });
+        
+        btnSuratPemesananToko = new widget.ButtonBig();
+        btnSuratPemesananToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_internet-mail_118808.png"))); 
+        btnSuratPemesananToko.setText("Surat Pemesanan Toko");
+        btnSuratPemesananToko.setIconTextGap(0);
+        btnSuratPemesananToko.setName("btnSuratPemesananToko"); 
+        btnSuratPemesananToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratPemesananToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratPemesananTokoActionPerformed(evt);
             }
         });
     }

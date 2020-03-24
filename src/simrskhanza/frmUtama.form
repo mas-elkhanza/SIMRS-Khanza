@@ -1349,7 +1349,7 @@
                     <Component class="widget.ButtonBig" name="btnLaboratorium">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/48x48/1481002039_laboratory.png"/>
+                          <Image iconType="3" name="/48x48/laborat.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Periksa Lab"/>
                         <Property name="iconTextGap" type="int" value="0"/>
@@ -7730,7 +7730,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="20/03/2020"/>
+            <StringItem index="0" value="23/03/2020"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

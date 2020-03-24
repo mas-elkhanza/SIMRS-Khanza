@@ -39,12 +39,11 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private DlgSuplier suplier=new DlgSuplier(null,false);
     private DlgCariSuratPemesanan form=new DlgCariSuratPemesanan(null,false);
-    private double meterai=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,jmlkonversi=0;
+    private double meterai=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0;
     private int jml=0,i=0,row=0,index=0,pilihan=1;
     private String[] kodebarang,namabarang,satuan,satuanbeli;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok,isi,isibesar;
     public boolean tampilkan=true;
-    private DlgBarang barang=new DlgBarang(null,false);    
     private boolean sukses=true;    
     private DlgCariDataKonversi datakonversi=new DlgCariDataKonversi(null,false);
 
@@ -998,7 +997,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         DlgCetak.dispose();
         pegawai.dispose();
         suplier.dispose();
-        barang.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1010,6 +1008,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        
+        DlgBarang barang=new DlgBarang(null,false);
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

@@ -907,6 +907,10 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         BtnPrint.setEnabled(akses.getakun_penagihan_piutang());
     }
     
+    public JTable getTable(){
+        return tbJadwal;
+    }
+    
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
