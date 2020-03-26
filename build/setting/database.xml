@@ -53,7 +53,7 @@
     <entry key="IPPRINTERTRACER">10.50.150.57/label2</entry>
     <entry key="URLAPIINHEALTH">http://development.inhealth.co.id/pelkesws2</entry>
     <entry key="TOKENINHEALTH">inh_2de79bedbd97e8e440e0583a5794ebb1</entry>
-    <entry key="PEMBULATANHARGAOBAT">yes</entry>
+    <entry key="PEMBULATANHARGAOBAT">no</entry>
     <entry key="AKTIFKANBATCHOBAT">no</entry>
     <entry key="CETAKRINCIANOBAT">no</entry>
     <entry key="AKTIFKANBILLINGPARSIAL">no</entry>

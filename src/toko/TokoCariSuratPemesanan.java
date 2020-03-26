@@ -387,11 +387,11 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(70, 23));
+        label10.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(170, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(180, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -526,7 +526,7 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi4.add(label24);
-        label24.setBounds(0, 10, 75, 23);
+        label24.setBounds(0, 10, 50, 23);
 
         kdsat.setName("kdsat"); // NOI18N
         kdsat.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -536,7 +536,7 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdsat);
-        kdsat.setBounds(80, 10, 53, 23);
+        kdsat.setBounds(55, 10, 53, 23);
 
         btnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnSatuan.setMnemonic('3');
@@ -559,7 +559,7 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(nmsat);
-        nmsat.setBounds(135, 10, 115, 23);
+        nmsat.setBounds(110, 10, 140, 23);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -573,7 +573,7 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label15);
-        label15.setBounds(0, 10, 90, 23);
+        label15.setBounds(0, 10, 95, 23);
 
         NoFaktur.setName("NoFaktur"); // NOI18N
         NoFaktur.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -583,13 +583,13 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoFaktur);
-        NoFaktur.setBounds(94, 10, 219, 23);
+        NoFaktur.setBounds(99, 10, 209, 23);
 
         label11.setText("Tgl.Pemesanan :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
-        label11.setBounds(0, 40, 90, 23);
+        label11.setBounds(0, 40, 95, 23);
 
         TglBeli1.setDisplayFormat("dd-MM-yyyy");
         TglBeli1.setName("TglBeli1"); // NOI18N
@@ -599,7 +599,7 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglBeli1);
-        TglBeli1.setBounds(94, 40, 95, 23);
+        TglBeli1.setBounds(99, 40, 90, 23);
 
         label16.setText("Supplier :");
         label16.setName("label16"); // NOI18N
@@ -676,7 +676,7 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label12);
-        label12.setBounds(189, 40, 27, 23);
+        label12.setBounds(190, 40, 27, 23);
 
         TglBeli2.setDisplayFormat("dd-MM-yyyy");
         TglBeli2.setName("TglBeli2"); // NOI18N
@@ -686,7 +686,7 @@ public class TokoCariSuratPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglBeli2);
-        TglBeli2.setBounds(218, 40, 95, 23);
+        TglBeli2.setBounds(218, 40, 90, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
