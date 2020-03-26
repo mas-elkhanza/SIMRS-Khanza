@@ -20,6 +20,8 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import keuangan.DlgKamar;
 
 /**
  *
@@ -36,6 +39,7 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgHitungBOR extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2;
+    public  DlgKamar dlgKamar=new DlgKamar(null,false);
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -122,6 +126,30 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
         
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         
+        dlgKamar.bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgKamarInap")){
+                    if(dlgKamar.bangsal.getTable().getSelectedRow()!= -1){                   
+                        BangsalCari.setText(dlgKamar.bangsal.getTable().getValueAt(dlgKamar.bangsal.getTable().getSelectedRow(),1).toString());
+                    }     
+                    BangsalCari.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
     }    
 
     /** This method is called from within the constructor to
@@ -140,7 +168,11 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
         Tgl1 = new widget.Tanggal();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
+        jLabel21 = new widget.Label();
+        BangsalCari = new widget.TextBox();
+        btnBangsalCari = new widget.Button();
         BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
         jLabel7 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -167,7 +199,7 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Hitung BOR ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Hitung BOR ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -196,6 +228,27 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass5.add(Tgl2);
 
+        jLabel21.setText("Kamar :");
+        jLabel21.setName("jLabel21"); // NOI18N
+        jLabel21.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass5.add(jLabel21);
+
+        BangsalCari.setName("BangsalCari"); // NOI18N
+        BangsalCari.setPreferredSize(new java.awt.Dimension(230, 23));
+        panelGlass5.add(BangsalCari);
+
+        btnBangsalCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnBangsalCari.setMnemonic('3');
+        btnBangsalCari.setToolTipText("Alt+3");
+        btnBangsalCari.setName("btnBangsalCari"); // NOI18N
+        btnBangsalCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnBangsalCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBangsalCariActionPerformed(evt);
+            }
+        });
+        panelGlass5.add(btnBangsalCari);
+
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('2');
         BtnCari.setToolTipText("Alt+2");
@@ -212,6 +265,18 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(BtnCari);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        panelGlass5.add(BtnAll);
 
         jLabel7.setName("jLabel7"); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(130, 23));
@@ -257,7 +322,7 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -477,6 +542,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         // TODO add your handling code here:
     }//GEN-LAST:event_Tabel2KeyPressed
 
+    private void btnBangsalCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalCariActionPerformed
+        akses.setform("DlgKamarInap");
+        dlgKamar.bangsal.isCek();
+        dlgKamar.bangsal.emptTeks();
+        dlgKamar.bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dlgKamar.bangsal.setLocationRelativeTo(internalFrame1);
+        dlgKamar.bangsal.setVisible(true);
+    }//GEN-LAST:event_btnBangsalCariActionPerformed
+
+    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        BangsalCari.setText("");
+        if(TabRawat.getSelectedIndex()==0){
+            tampil();
+        }else if(TabRawat.getSelectedIndex()==1){
+            tampil2();
+        }
+    }//GEN-LAST:event_BtnAllActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -494,6 +577,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox BangsalCari;
+    private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
@@ -505,9 +590,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table Tabel2;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private widget.Button btnBangsalCari;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
+    private widget.Label jLabel21;
     private widget.Label jLabel7;
     private widget.Label label11;
     private widget.Label label18;
@@ -520,16 +607,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.tabelKosong(tabMode);   
             
             ps=koneksi.prepareStatement(
-                       "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar," +
-                       "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,kamar_inap.lama,kamar_inap.stts_pulang "+
+                       "select kamar_inap.no_rawat, reg_periksa.no_rkm_medis, pasien.nm_pasien, concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar," +
+                       "kamar_inap.tgl_masuk, if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar, kamar_inap.lama, kamar_inap.stts_pulang "+
                        "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal " +
                        "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
                        "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal  " +
-                       "where kamar_inap.tgl_masuk between ? and ?  order by kamar_inap.tgl_masuk");  
+                       "where kamar_inap.tgl_masuk between ? and ? and bangsal.nm_bangsal like ?  order by kamar_inap.tgl_masuk");  
             
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+BangsalCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;  
                 hari=0;
@@ -577,11 +665,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                        "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal " +
                        "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
                        "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal  " +
-                       "where kamar_inap.tgl_keluar between ? and ?  order by kamar_inap.tgl_keluar");  
+                       "where kamar_inap.tgl_keluar between ? and ? and bangsal.nm_bangsal like ?  order by kamar_inap.tgl_keluar");  
             
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+BangsalCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;  
                 hari=0;
