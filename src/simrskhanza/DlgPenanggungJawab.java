@@ -53,7 +53,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"P","Kode Asuransi","Nama Asuransi","Perusahaan Asuransi","Alamat Asuransi","No.Telp"};
+        Object[] row={"P","Kode Asuransi","Nama Asuransi","Perusahaan Asuransi","Alamat Asuransi","No.Telp","Attn"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -63,7 +63,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
                 return a;
              }
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -75,20 +75,22 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 7; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(100);
             }else if(i==2){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(160);
             }else if(i==3){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(160);
             }else if(i==4){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(170);
             }else if(i==5){
                 column.setPreferredWidth(100);
+            }else if(i==6){
+                column.setPreferredWidth(150);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -96,6 +98,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         KdAsuransi.setDocument(new batasInput((byte)3).getKata(KdAsuransi));
         NmAsuransi.setDocument(new batasInput((byte)30).getKata(NmAsuransi));
         Perusahaan.setDocument(new batasInput((int)60).getKata(Perusahaan));
+        Attn.setDocument(new batasInput((int)60).getKata(Attn));
         AlamatAsuransi.setDocument(new batasInput((int)130).getKata(AlamatAsuransi));
         NoTelp.setDocument(new batasInput((byte)40).getKata(NoTelp));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
@@ -169,6 +172,8 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         label37 = new widget.Label();
         NoTelp = new widget.TextBox();
         label38 = new widget.Label();
+        label39 = new widget.Label();
+        Attn = new widget.TextBox();
 
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
@@ -481,7 +486,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             }
         });
         FormInput.add(Perusahaan);
-        Perusahaan.setBounds(127, 40, 490, 23);
+        Perusahaan.setBounds(127, 40, 220, 23);
 
         label37.setText("Perusahaan Asuransi :");
         label37.setName("label37"); // NOI18N
@@ -505,6 +510,22 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
         FormInput.add(label38);
         label38.setBounds(448, 10, 40, 23);
 
+        label39.setText("Attn :");
+        label39.setName("label39"); // NOI18N
+        label39.setPreferredSize(new java.awt.Dimension(35, 23));
+        FormInput.add(label39);
+        label39.setBounds(353, 40, 40, 23);
+
+        Attn.setHighlighter(null);
+        Attn.setName("Attn"); // NOI18N
+        Attn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AttnKeyPressed(evt);
+            }
+        });
+        FormInput.add(Attn);
+        Attn.setBounds(397, 40, 220, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -515,7 +536,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AlamatAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatAsuransiKeyPressed
-        Valid.pindah(evt,Perusahaan,BtnSimpan);
+        Valid.pindah(evt,Attn,BtnSimpan);
 }//GEN-LAST:event_AlamatAsuransiKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
@@ -529,8 +550,10 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             Valid.textKosong(AlamatAsuransi,"Alamat Perusahaan Penanggung/Askes/Asuransi");
         }else if(NoTelp.getText().trim().equals("")){
             Valid.textKosong(NoTelp,"No.Telp Perusahaan Penanggung/Askes/Asuransi");
+        }else if(Attn.getText().trim().equals("")){
+            Valid.textKosong(Attn,"Attn");
         }else{
-            Sequel.menyimpan("penjab","'"+KdAsuransi.getText()+"','"+NmAsuransi.getText()+"','"+Perusahaan.getText()+"','"+AlamatAsuransi.getText()+"','"+NoTelp.getText()+"'","Kode Penanggung/Askes/Asuransi");
+            Sequel.menyimpan("penjab","'"+KdAsuransi.getText()+"','"+NmAsuransi.getText()+"','"+Perusahaan.getText()+"','"+AlamatAsuransi.getText()+"','"+NoTelp.getText()+"','"+Attn.getText()+"'","Kode Penanggung/Askes/Asuransi");
             BtnCariActionPerformed(evt);
             emptTeks();
         }
@@ -585,8 +608,10 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
             Valid.textKosong(AlamatAsuransi,"Alamat Perusahaan Penanggung/Askes/Asuransi");
         }else if(NoTelp.getText().trim().equals("")){
             Valid.textKosong(NoTelp,"No.Telp Perusahaan Penanggung/Askes/Asuransi");
+        }else if(Attn.getText().trim().equals("")){
+            Valid.textKosong(Attn,"Attn");
         }else{
-            Valid.editTable(tabMode,"penjab","kd_pj",Kd2,"png_jawab='"+NmAsuransi.getText()+"',kd_pj='"+KdAsuransi.getText()+"',nama_perusahaan='"+Perusahaan.getText()+"',alamat_asuransi='"+AlamatAsuransi.getText()+"',no_telp='"+NoTelp.getText()+"'");
+            Valid.editTable(tabMode,"penjab","kd_pj",Kd2,"png_jawab='"+NmAsuransi.getText()+"',kd_pj='"+KdAsuransi.getText()+"',nama_perusahaan='"+Perusahaan.getText()+"',alamat_asuransi='"+AlamatAsuransi.getText()+"',no_telp='"+NoTelp.getText()+"',attn='"+Attn.getText()+"'");
             if(tabMode.getRowCount()!=0){BtnCariActionPerformed(evt);}
             emptTeks();
         }
@@ -624,7 +649,7 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());       
-            Valid.MyReportqry("rptPenjab.jasper","report","::[ Data Satuan ]::","select kd_pj, png_jawab, nama_perusahaan, alamat_asuransi, no_telp "+
+            Valid.MyReportqry("rptPenjab.jasper","report","::[ Data Satuan ]::","select kd_pj, png_jawab, nama_perusahaan, alamat_asuransi, no_telp,attn "+
                 " from penjab where  kd_pj like '%"+TCari.getText().trim()+"%' or "+
                 " png_jawab like '%"+TCari.getText().trim()+"%' order by kd_pj",param);
         }
@@ -720,12 +745,16 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_KdAsuransiKeyPressed
 
     private void PerusahaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerusahaanKeyPressed
-        Valid.pindah(evt,NoTelp,AlamatAsuransi);
+        Valid.pindah(evt,NoTelp,Attn);
     }//GEN-LAST:event_PerusahaanKeyPressed
 
     private void NoTelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoTelpKeyPressed
         Valid.pindah(evt,NmAsuransi,Perusahaan);
     }//GEN-LAST:event_NoTelpKeyPressed
+
+    private void AttnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AttnKeyPressed
+        Valid.pindah(evt,Perusahaan,AlamatAsuransi);
+    }//GEN-LAST:event_AttnKeyPressed
 
     /**
     * @param args the command line arguments
@@ -745,6 +774,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox AlamatAsuransi;
+    private widget.TextBox Attn;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -772,6 +802,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Label label36;
     private widget.Label label37;
     private widget.Label label38;
+    private widget.Label label39;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
@@ -782,14 +813,14 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select kd_pj, png_jawab, nama_perusahaan, alamat_asuransi, no_telp "+
+                    "select kd_pj, png_jawab, nama_perusahaan, alamat_asuransi, no_telp,attn "+
                     "from penjab where  kd_pj like ? or png_jawab like ? order by png_jawab ");
             try{
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
+                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
                 }
             }catch(Exception ex){
                 System.out.println(ex);
@@ -813,6 +844,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         NmAsuransi.setText("");
         Perusahaan.setText("");
         AlamatAsuransi.setText("");
+        Attn.setText("");
         NoTelp.setText("0");
         KdAsuransi.requestFocus();        
         Valid.autoNomer("penjab","A",2,KdAsuransi);
@@ -826,6 +858,7 @@ private void NmAsuransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             Perusahaan.setText(tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString());
             AlamatAsuransi.setText(tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString());
             NoTelp.setText(tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString());
+            Attn.setText(tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString());
         }
     }
 
