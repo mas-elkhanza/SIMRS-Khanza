@@ -3922,6 +3922,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                                 "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
                                 "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
                                 "limit 1 ) ) as nm_bangsal, " +
+                                "ifnull((select kamar.kelas from kamar_inap " +
+                                "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                                "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                                "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                                "and if(rawat_inap_drpr.tgl_perawatan = kamar_inap.tgl_masuk, HOUR(rawat_inap_drpr.jam_rawat) >= HOUR(kamar_inap.jam_masuk), false) " +
+                                "limit 1 ), (select kamar.kelas from kamar_inap " +
+                                "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                                "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                                "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                                "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
+                                "limit 1 ) ) as kelas, " +
                                 "rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,"+
                                 "rawat_inap_drpr.kso,rawat_inap_drpr.menejemen,rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama "+
                                 "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -3953,6 +3964,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                                     "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
                                     "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
                                     "limit 1 ) ) as nm_bangsal, " +
+                                    "ifnull((select kamar.kelas from kamar_inap " +
+                                    "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                                    "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                                    "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                                    "and if(rawat_inap_drpr.tgl_perawatan = kamar_inap.tgl_masuk, HOUR(rawat_inap_drpr.jam_rawat) >= HOUR(kamar_inap.jam_masuk), false) " +
+                                    "limit 1 ), (select kamar.kelas from kamar_inap " +
+                                    "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                                    "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                                    "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                                    "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
+                                    "limit 1 ) ) as kelas, " +
                                     "rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,"+
                                     "rawat_inap_drpr.kso,rawat_inap_drpr.menejemen,rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama "+
                                     "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -3992,6 +4014,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                                     "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
                                     "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
                                     "limit 1 ) ) as nm_bangsal, " +
+                                    "ifnull((select kamar.kelas from kamar_inap " +
+                                    "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                                    "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                                    "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                                    "and if(rawat_inap_drpr.tgl_perawatan = kamar_inap.tgl_masuk, HOUR(rawat_inap_drpr.jam_rawat) >= HOUR(kamar_inap.jam_masuk), false) " +
+                                    "limit 1 ), (select kamar.kelas from kamar_inap " +
+                                    "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                                    "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                                    "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                                    "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
+                                    "limit 1 ) ) as kelas, " +
                                     "rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,"+
                                     "rawat_inap_drpr.kso,rawat_inap_drpr.menejemen,rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama "+
                                     "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -4032,6 +4065,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                                     "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
                                     "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
                                     "limit 1 ) ) as nm_bangsal, " +
+                                    "ifnull((select kamar.kelas from kamar_inap " +
+                                    "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                                    "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                                    "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                                    "and if(rawat_inap_drpr.tgl_perawatan = kamar_inap.tgl_masuk, HOUR(rawat_inap_drpr.jam_rawat) >= HOUR(kamar_inap.jam_masuk), false) " +
+                                    "limit 1 ), (select kamar.kelas from kamar_inap " +
+                                    "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                                    "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                                    "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                                    "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
+                                    "limit 1 ) ) as kelas, " +
                                     "rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,"+
                                     "rawat_inap_drpr.kso,rawat_inap_drpr.menejemen,rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama "+
                                     "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -6617,6 +6661,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
                         "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
                         "limit 1 ) ) as ruang, " +
+                        "ifnull((select kamar.kelas from kamar_inap " +
+                        "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                        "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                        "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                        "and if(rawat_inap_drpr.tgl_perawatan = kamar_inap.tgl_masuk, HOUR(rawat_inap_drpr.jam_rawat) >= HOUR(kamar_inap.jam_masuk), false) " +
+                        "limit 1 ), (select kamar.kelas from kamar_inap " +
+                        "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                        "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                        "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                        "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
+                        "limit 1 ) ) as kelas, " +
                         "rawat_inap_drpr.material, rawat_inap_drpr.bhp, rawat_inap_drpr.tarif_tindakandr, rawat_inap_drpr.tarif_tindakanpr, "+
                         "rawat_inap_drpr.kso, rawat_inap_drpr.menejemen, rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama "+
                         "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -6648,6 +6703,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                             "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
                             "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
                             "limit 1 ) ) as ruang, " +
+                            "ifnull((select kamar.kelas from kamar_inap " +
+                            "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                            "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                            "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                            "and if(rawat_inap_drpr.tgl_perawatan = kamar_inap.tgl_masuk, HOUR(rawat_inap_drpr.jam_rawat) >= HOUR(kamar_inap.jam_masuk), false) " +
+                            "limit 1 ), (select kamar.kelas from kamar_inap " +
+                            "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                            "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                            "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                            "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
+                            "limit 1 ) ) as kelas, " +
                             "rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,"+
                             "rawat_inap_drpr.kso,rawat_inap_drpr.menejemen,rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama "+
                             "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -6670,10 +6736,10 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                            " order by rawat_inap_drpr.no_rawat desc");
                 }else if(cmbStatus.getSelectedItem().equals("Belum Lunas")){
                     ps=koneksi.prepareStatement(
-                           "select rawat_inap_drpr.no_rawat,reg_periksa.no_rkm_medis, " +
-                            "pasien.nm_pasien,rawat_inap_drpr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan, " +
-                            "rawat_inap_drpr.kd_dokter,dokter.nm_dokter,rawat_inap_drpr.nip,petugas.nama,rawat_inap_drpr.tgl_perawatan, " +
-                            "rawat_inap_drpr.jam_rawat,penjab.png_jawab, " +
+                           "select rawat_inap_drpr.no_rawat, reg_periksa.no_rkm_medis, " +
+                            "pasien.nm_pasien, rawat_inap_drpr.kd_jenis_prw, jns_perawatan_inap.nm_perawatan, " +
+                            "rawat_inap_drpr.kd_dokter, dokter.nm_dokter, rawat_inap_drpr.nip, petugas.nama, rawat_inap_drpr.tgl_perawatan, " +
+                            "rawat_inap_drpr.jam_rawat, penjab.png_jawab, " +
                             "ifnull((select bangsal.nm_bangsal from kamar_inap " +
                             "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
                             "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal " +
@@ -6687,6 +6753,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                             "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
                             "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
                             "limit 1 ) ) as ruang, " +
+                            "ifnull((select kamar.kelas from kamar_inap " +
+                            "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                            "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                            "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                            "and if(rawat_inap_drpr.tgl_perawatan = kamar_inap.tgl_masuk, HOUR(rawat_inap_drpr.jam_rawat) >= HOUR(kamar_inap.jam_masuk), false) " +
+                            "limit 1 ), (select kamar.kelas from kamar_inap " +
+                            "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                            "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                            "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                            "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
+                            "limit 1 ) ) as kelas, " +
                             "rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,"+
                             "rawat_inap_drpr.kso,rawat_inap_drpr.menejemen,rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama "+
                             "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -6727,6 +6804,17 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                             "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
                             "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
                             "limit 1 ) ) as ruang, " +
+                            "ifnull((select kamar.kelas from kamar_inap " +
+                            "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                            "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                            "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                            "and if(rawat_inap_drpr.tgl_perawatan = kamar_inap.tgl_masuk, HOUR(rawat_inap_drpr.jam_rawat) >= HOUR(kamar_inap.jam_masuk), false) " +
+                            "limit 1 ), (select kamar.kelas from kamar_inap " +
+                            "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar " +
+                            "where kamar_inap.no_rawat=rawat_inap_drpr.no_rawat " +
+                            "and (rawat_inap_drpr.tgl_perawatan between kamar_inap.tgl_masuk and if(CAST(kamar_inap.tgl_keluar AS CHAR(10)) != '0000-00-00', kamar_inap.tgl_keluar, DATE(NOW()))) " +
+                            "ORDER BY `rawat_inap_drpr`.`tgl_perawatan` DESC " +
+                            "limit 1 ) ) as kelas, " +
                             "rawat_inap_drpr.material, rawat_inap_drpr.bhp, rawat_inap_drpr.tarif_tindakandr, rawat_inap_drpr.tarif_tindakanpr, "+
                             "rawat_inap_drpr.kso, rawat_inap_drpr.menejemen, rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama "+
                             "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -6818,6 +6906,11 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 i=1;
                 material=0;bhp=0;jmdokter=0;jmpetugas=0;kso=0;menejemen=0;total=0;
                 while(rs.next()){
+                    String kamar_sementara = "";
+                    String kamar_rawat = rs.getString(13) == null ? "-" : rs.getString(13);
+                    String kelas_rawat = rs.getString(14) == null ? "" : " (" + rs.getString(14) + ")";
+                    kamar_sementara = kamar_rawat + "" + kelas_rawat;
+                    
                     material=material+rs.getDouble("material");
                     bhp=bhp+rs.getDouble("bhp");
                     jmdokter=jmdokter+rs.getDouble("tarif_tindakandr");
@@ -6827,10 +6920,10 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     total=total+rs.getDouble("biaya_rawat");
                     tabModeRanapDokterParamedis.addRow(new Object[]{
                         i, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(7), rs.getString(9), rs.getString(21),
+                        rs.getString(5), rs.getString(7), rs.getString(9), rs.getString(22),
                         rs.getString(10), rs.getString(11), rs.getString(12),
-                        rs.getString(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
-                        rs.getDouble(17),rs.getDouble(18),rs.getDouble(19),rs.getDouble(20)
+                        kamar_sementara,rs.getDouble(15),rs.getDouble(16),rs.getDouble(17),
+                        rs.getDouble(18),rs.getDouble(19),rs.getDouble(20),rs.getDouble(21)
                     });
                     i++;
                 }
