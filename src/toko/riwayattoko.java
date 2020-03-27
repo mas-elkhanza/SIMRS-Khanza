@@ -43,7 +43,7 @@ public class riwayattoko {
                 }
             }
                      
-            ps=koneksi.prepareStatement("insert into riwayat_barang_toko values(?,?,?,?,?,?,current_date(),current_time(),?,?)");
+            ps=koneksi.prepareStatement("insert into toko_riwayat_barang values(?,?,?,?,?,?,current_date(),current_time(),?,?)");
             try {
                 if(posisi.equals("Opname")){
                     ps.setString(1,kodebarang);

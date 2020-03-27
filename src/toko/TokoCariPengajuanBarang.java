@@ -775,10 +775,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintKeyPressed
 
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
-    if(Sequel.cariInteger("select count(no_pengajuan) from pengajuan_barang_toko where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
+    if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
             Valid.textKosong(TCari,"pilihan data");
     }else{
-        Sequel.queryu("delete from pengajuan_barang_toko where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+        Sequel.queryu("delete from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
         tampil();
     }    
 }//GEN-LAST:event_ppHapusActionPerformed
@@ -807,22 +807,22 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_btnJenisActionPerformed
 
     private void ppProsesPengajuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppProsesPengajuanActionPerformed
-        if(Sequel.cariInteger("select count(no_pengajuan) from pengajuan_barang_toko where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
+        if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
             Valid.textKosong(TCari,"pilihan data");
         }else{
-            Sequel.queryu("update pengajuan_barang_toko set status='Proses Pengajuan' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+            Sequel.queryu("update toko_pengajuan_barang set status='Proses Pengajuan' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             tampil();
         }
     }//GEN-LAST:event_ppProsesPengajuanActionPerformed
 
     private void ppDisetujuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDisetujuiActionPerformed
-        if(Sequel.cariInteger("select count(no_pengajuan) from pengajuan_barang_toko where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
+        if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
             Valid.textKosong(TCari,"pilihan data");
         }else{
             if(tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString().equals("Disetujui")){
                 JOptionPane.showMessageDialog(null,"Data pengajuan sudah tervalidasi..!!");
             }else{
-                Sequel.queryu("update pengajuan_barang_toko set status='Disetujui' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                Sequel.queryu("update toko_pengajuan_barang set status='Disetujui' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 TokoSuratPemesanan aplikasi=new TokoSuratPemesanan(null,false);
                 aplikasi.tampilkan=false;
@@ -838,10 +838,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_ppDisetujuiActionPerformed
 
     private void ppDitolakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDitolakActionPerformed
-        if(Sequel.cariInteger("select count(no_pengajuan) from pengajuan_barang_toko where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
+        if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
             Valid.textKosong(TCari,"pilihan data");
         }else{
-            Sequel.queryu("update pengajuan_barang_toko set status='Ditolak' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+            Sequel.queryu("update toko_pengajuan_barang set status='Ditolak' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             tampil();
         }
     }//GEN-LAST:event_ppDitolakActionPerformed
@@ -909,23 +909,23 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
        Valid.tabelKosong(tabMode);
         try{  
             ps=koneksi.prepareStatement(
-                    "select pengajuan_barang_toko.tanggal,pengajuan_barang_toko.no_pengajuan, "+
-                    "pengajuan_barang_toko.keterangan,pengajuan_barang_toko.nip,pegawai.nama,pengajuan_barang_toko.status "+
-                    "from pengajuan_barang_toko inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_toko "+
-                    "inner join tokojenisbarang inner join tokobarang on detail_pengajuan_barang_toko.kode_brng=tokobarang.kode_brng "+
+                    "select toko_pengajuan_barang.tanggal,toko_pengajuan_barang.no_pengajuan, "+
+                    "toko_pengajuan_barang.keterangan,toko_pengajuan_barang.nip,pegawai.nama,toko_pengajuan_barang.status "+
+                    "from toko_pengajuan_barang inner join pegawai inner join kodesatuan inner join toko_detail_pengajuan_barang "+
+                    "inner join tokojenisbarang inner join tokobarang on toko_detail_pengajuan_barang.kode_brng=tokobarang.kode_brng "+
                     " and tokobarang.kode_sat=kodesatuan.kode_sat "+
-                    " and pengajuan_barang_toko.no_pengajuan=detail_pengajuan_barang_toko.no_pengajuan "+
-                    " and pengajuan_barang_toko.nip=pegawai.nik "+
+                    " and toko_pengajuan_barang.no_pengajuan=toko_detail_pengajuan_barang.no_pengajuan "+
+                    " and toko_pengajuan_barang.nip=pegawai.nik "+
                     " and tokobarang.jenis=tokojenisbarang.kd_jenis "+
-                    " where pengajuan_barang_toko.tanggal between ? and ? and pengajuan_barang_toko.no_pengajuan like ? and pengajuan_barang_toko.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and pengajuan_barang_toko.no_pengajuan like ? or "+
-                    " pengajuan_barang_toko.tanggal between ? and ? and pengajuan_barang_toko.no_pengajuan like ? and pengajuan_barang_toko.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and pengajuan_barang_toko.nip like ? or "+
-                    " pengajuan_barang_toko.tanggal between ? and ? and pengajuan_barang_toko.no_pengajuan like ? and pengajuan_barang_toko.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and pegawai.nama like ? or "+
-                    " pengajuan_barang_toko.tanggal between ? and ? and pengajuan_barang_toko.no_pengajuan like ? and pengajuan_barang_toko.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? or "+
-                    " pengajuan_barang_toko.tanggal between ? and ? and pengajuan_barang_toko.no_pengajuan like ? and pengajuan_barang_toko.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and detail_pengajuan_barang_toko.kode_brng like ? or "+
-                    " pengajuan_barang_toko.tanggal between ? and ? and pengajuan_barang_toko.no_pengajuan like ? and pengajuan_barang_toko.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokobarang.nama_brng like ? or "+
-                    " pengajuan_barang_toko.tanggal between ? and ? and pengajuan_barang_toko.no_pengajuan like ? and pengajuan_barang_toko.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and detail_pengajuan_barang_toko.kode_sat like ? or "+
-                    " pengajuan_barang_toko.tanggal between ? and ? and pengajuan_barang_toko.no_pengajuan like ? and pengajuan_barang_toko.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and kodesatuan.satuan like ? "+
-                    " group by pengajuan_barang_toko.no_pengajuan order by pengajuan_barang_toko.tanggal,pengajuan_barang_toko.no_pengajuan ");
+                    " where toko_pengajuan_barang.tanggal between ? and ? and toko_pengajuan_barang.no_pengajuan like ? and toko_pengajuan_barang.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and toko_pengajuan_barang.no_pengajuan like ? or "+
+                    " toko_pengajuan_barang.tanggal between ? and ? and toko_pengajuan_barang.no_pengajuan like ? and toko_pengajuan_barang.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and toko_pengajuan_barang.nip like ? or "+
+                    " toko_pengajuan_barang.tanggal between ? and ? and toko_pengajuan_barang.no_pengajuan like ? and toko_pengajuan_barang.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and pegawai.nama like ? or "+
+                    " toko_pengajuan_barang.tanggal between ? and ? and toko_pengajuan_barang.no_pengajuan like ? and toko_pengajuan_barang.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? or "+
+                    " toko_pengajuan_barang.tanggal between ? and ? and toko_pengajuan_barang.no_pengajuan like ? and toko_pengajuan_barang.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and toko_detail_pengajuan_barang.kode_brng like ? or "+
+                    " toko_pengajuan_barang.tanggal between ? and ? and toko_pengajuan_barang.no_pengajuan like ? and toko_pengajuan_barang.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokobarang.nama_brng like ? or "+
+                    " toko_pengajuan_barang.tanggal between ? and ? and toko_pengajuan_barang.no_pengajuan like ? and toko_pengajuan_barang.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and toko_detail_pengajuan_barang.kode_sat like ? or "+
+                    " toko_pengajuan_barang.tanggal between ? and ? and toko_pengajuan_barang.no_pengajuan like ? and toko_pengajuan_barang.status like ? and pegawai.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and kodesatuan.satuan like ? "+
+                    " group by toko_pengajuan_barang.no_pengajuan order by toko_pengajuan_barang.tanggal,toko_pengajuan_barang.no_pengajuan ");
             try {
                 ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
@@ -999,17 +999,17 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         rs.getString("keterangan"),rs.getString("nip")+" "+rs.getString("nama")
                     });   
                     ps2=koneksi.prepareStatement(
-                        "select detail_pengajuan_barang_toko.kode_brng,tokobarang.nama_brng, "+
-                        "detail_pengajuan_barang_toko.kode_sat,kodesatuan.satuan,detail_pengajuan_barang_toko.jumlah,"+
-                        "detail_pengajuan_barang_toko.h_pengajuan,detail_pengajuan_barang_toko.total "+
-                        "from detail_pengajuan_barang_toko inner join tokobarang inner join kodesatuan inner join tokojenisbarang "+
-                        " on detail_pengajuan_barang_toko.kode_brng=tokobarang.kode_brng "+
-                        " and detail_pengajuan_barang_toko.kode_sat=kodesatuan.kode_sat "+
+                        "select toko_detail_pengajuan_barang.kode_brng,tokobarang.nama_brng, "+
+                        "toko_detail_pengajuan_barang.kode_sat,kodesatuan.satuan,toko_detail_pengajuan_barang.jumlah,"+
+                        "toko_detail_pengajuan_barang.h_pengajuan,toko_detail_pengajuan_barang.total "+
+                        "from toko_detail_pengajuan_barang inner join tokobarang inner join kodesatuan inner join tokojenisbarang "+
+                        " on toko_detail_pengajuan_barang.kode_brng=tokobarang.kode_brng "+
+                        " and toko_detail_pengajuan_barang.kode_sat=kodesatuan.kode_sat "+
                         " and tokobarang.jenis=tokojenisbarang.kd_jenis where "+
-                        " detail_pengajuan_barang_toko.no_pengajuan=? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? and detail_pengajuan_barang_toko.kode_brng like ? or "+
-                        " detail_pengajuan_barang_toko.no_pengajuan=? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? or "+
-                        " detail_pengajuan_barang_toko.no_pengajuan=? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? and detail_pengajuan_barang_toko.kode_sat like ? or "+
-                        " detail_pengajuan_barang_toko.no_pengajuan=? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? and tokojenisbarang.nm_jenis like ? order by detail_pengajuan_barang_toko.kode_brng  ");
+                        " toko_detail_pengajuan_barang.no_pengajuan=? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? and toko_detail_pengajuan_barang.kode_brng like ? or "+
+                        " toko_detail_pengajuan_barang.no_pengajuan=? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? or "+
+                        " toko_detail_pengajuan_barang.no_pengajuan=? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? and toko_detail_pengajuan_barang.kode_sat like ? or "+
+                        " toko_detail_pengajuan_barang.no_pengajuan=? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? and tokojenisbarang.nm_jenis like ? order by toko_detail_pengajuan_barang.kode_brng  ");
                     try {
                         ps2.setString(1,rs.getString(2));
                         ps2.setString(2,"%"+nmbar.getText()+"%");

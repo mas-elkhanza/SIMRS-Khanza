@@ -382,28 +382,28 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(nmbar.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptRiwayatBarangToko.jasper","report","::[ Riwayat Barang Toko / Minimarket / Koperasi ]::",
-                    "select riwayat_barang_toko.kode_brng,tokobarang.nama_brng,"+
-                    "riwayat_barang_toko.stok_awal,riwayat_barang_toko.masuk,"+
-                    "riwayat_barang_toko.keluar,riwayat_barang_toko.stok_akhir,"+
-                    "riwayat_barang_toko.posisi,riwayat_barang_toko.tanggal,"+
-                    "riwayat_barang_toko.jam,riwayat_barang_toko.petugas,"+
-                    "riwayat_barang_toko.status from riwayat_barang_toko "+
-                    "inner join tokobarang on riwayat_barang_toko.kode_brng=tokobarang.kode_brng where "+
-                    "riwayat_barang_toko.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by riwayat_barang_toko.tanggal,riwayat_barang_toko.jam ",param);
+                    "select toko_riwayat_barang.kode_brng,tokobarang.nama_brng,"+
+                    "toko_riwayat_barang.stok_awal,toko_riwayat_barang.masuk,"+
+                    "toko_riwayat_barang.keluar,toko_riwayat_barang.stok_akhir,"+
+                    "toko_riwayat_barang.posisi,toko_riwayat_barang.tanggal,"+
+                    "toko_riwayat_barang.jam,toko_riwayat_barang.petugas,"+
+                    "toko_riwayat_barang.status from toko_riwayat_barang "+
+                    "inner join tokobarang on toko_riwayat_barang.kode_brng=tokobarang.kode_brng where "+
+                    "toko_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by toko_riwayat_barang.tanggal,toko_riwayat_barang.jam ",param);
             }else{
                 Valid.MyReportqry("rptRiwayatBarangToko.jasper","report","::[ Riwayat Barang Toko / Minimarket / Koperasi ]::",
-                    "select riwayat_barang_toko.kode_brng,tokobarang.nama_brng,"+
-                    "riwayat_barang_toko.stok_awal,riwayat_barang_toko.masuk,"+
-                    "riwayat_barang_toko.keluar,riwayat_barang_toko.stok_akhir,"+
-                    "riwayat_barang_toko.posisi,riwayat_barang_toko.tanggal,"+
-                    "riwayat_barang_toko.jam,riwayat_barang_toko.petugas,"+
-                    "riwayat_barang_toko.status from riwayat_barang_toko "+
-                    "inner join tokobarang on riwayat_barang_toko.kode_brng=tokobarang.kode_brng where "+
-                    "riwayat_barang_toko.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokobarang.nama_brng like '%"+nmbar.getText()+"%' and riwayat_barang_toko.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "riwayat_barang_toko.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokobarang.nama_brng like '%"+nmbar.getText()+"%' and tokobarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "riwayat_barang_toko.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokobarang.nama_brng like '%"+nmbar.getText()+"%' and riwayat_barang_toko.petugas like '%"+TCari.getText().trim()+"%' or "+
-                    "riwayat_barang_toko.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokobarang.nama_brng like '%"+nmbar.getText()+"%' and riwayat_barang_toko.status like '%"+TCari.getText().trim()+"%' "+
-                    "order by riwayat_barang_toko.tanggal,riwayat_barang_toko.jam ",param);
+                    "select toko_riwayat_barang.kode_brng,tokobarang.nama_brng,"+
+                    "toko_riwayat_barang.stok_awal,toko_riwayat_barang.masuk,"+
+                    "toko_riwayat_barang.keluar,toko_riwayat_barang.stok_akhir,"+
+                    "toko_riwayat_barang.posisi,toko_riwayat_barang.tanggal,"+
+                    "toko_riwayat_barang.jam,toko_riwayat_barang.petugas,"+
+                    "toko_riwayat_barang.status from toko_riwayat_barang "+
+                    "inner join tokobarang on toko_riwayat_barang.kode_brng=tokobarang.kode_brng where "+
+                    "toko_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokobarang.nama_brng like '%"+nmbar.getText()+"%' and toko_riwayat_barang.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                    "toko_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokobarang.nama_brng like '%"+nmbar.getText()+"%' and tokobarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
+                    "toko_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokobarang.nama_brng like '%"+nmbar.getText()+"%' and toko_riwayat_barang.petugas like '%"+TCari.getText().trim()+"%' or "+
+                    "toko_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and tokobarang.nama_brng like '%"+nmbar.getText()+"%' and toko_riwayat_barang.status like '%"+TCari.getText().trim()+"%' "+
+                    "order by toko_riwayat_barang.tanggal,toko_riwayat_barang.jam ",param);
             }
                 
             this.setCursor(Cursor.getDefaultCursor());
@@ -542,27 +542,27 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
        try{   
             if(nmbar.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select riwayat_barang_toko.kode_brng,tokobarang.nama_brng,"+
-                    "riwayat_barang_toko.stok_awal,riwayat_barang_toko.masuk,"+
-                    "riwayat_barang_toko.keluar,riwayat_barang_toko.stok_akhir,"+
-                    "riwayat_barang_toko.posisi,riwayat_barang_toko.tanggal,"+
-                    "riwayat_barang_toko.jam,riwayat_barang_toko.petugas,"+
-                    "riwayat_barang_toko.status from riwayat_barang_toko "+
-                    "inner join tokobarang on riwayat_barang_toko.kode_brng=tokobarang.kode_brng where "+
-                    "riwayat_barang_toko.tanggal between ? and ? order by riwayat_barang_toko.tanggal,riwayat_barang_toko.jam ");
+                    "select toko_riwayat_barang.kode_brng,tokobarang.nama_brng,"+
+                    "toko_riwayat_barang.stok_awal,toko_riwayat_barang.masuk,"+
+                    "toko_riwayat_barang.keluar,toko_riwayat_barang.stok_akhir,"+
+                    "toko_riwayat_barang.posisi,toko_riwayat_barang.tanggal,"+
+                    "toko_riwayat_barang.jam,toko_riwayat_barang.petugas,"+
+                    "toko_riwayat_barang.status from toko_riwayat_barang "+
+                    "inner join tokobarang on toko_riwayat_barang.kode_brng=tokobarang.kode_brng where "+
+                    "toko_riwayat_barang.tanggal between ? and ? order by toko_riwayat_barang.tanggal,toko_riwayat_barang.jam ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select riwayat_barang_toko.kode_brng,tokobarang.nama_brng,"+
-                    "riwayat_barang_toko.stok_awal,riwayat_barang_toko.masuk,"+
-                    "riwayat_barang_toko.keluar,riwayat_barang_toko.stok_akhir,"+
-                    "riwayat_barang_toko.posisi,riwayat_barang_toko.tanggal,"+
-                    "riwayat_barang_toko.jam,riwayat_barang_toko.petugas,"+
-                    "riwayat_barang_toko.status from riwayat_barang_toko "+
-                    "inner join tokobarang on riwayat_barang_toko.kode_brng=tokobarang.kode_brng where "+
-                    "riwayat_barang_toko.tanggal between ? and ? and tokobarang.nama_brng like ? and riwayat_barang_toko.kode_brng like ? or "+
-                    "riwayat_barang_toko.tanggal between ? and ? and tokobarang.nama_brng like ? and tokobarang.nama_brng like ? or "+
-                    "riwayat_barang_toko.tanggal between ? and ? and tokobarang.nama_brng like ? and riwayat_barang_toko.petugas like ? or "+
-                    "riwayat_barang_toko.tanggal between ? and ? and tokobarang.nama_brng like ? and riwayat_barang_toko.status like ? order by riwayat_barang_toko.tanggal,riwayat_barang_toko.jam ");
+                    "select toko_riwayat_barang.kode_brng,tokobarang.nama_brng,"+
+                    "toko_riwayat_barang.stok_awal,toko_riwayat_barang.masuk,"+
+                    "toko_riwayat_barang.keluar,toko_riwayat_barang.stok_akhir,"+
+                    "toko_riwayat_barang.posisi,toko_riwayat_barang.tanggal,"+
+                    "toko_riwayat_barang.jam,toko_riwayat_barang.petugas,"+
+                    "toko_riwayat_barang.status from toko_riwayat_barang "+
+                    "inner join tokobarang on toko_riwayat_barang.kode_brng=tokobarang.kode_brng where "+
+                    "toko_riwayat_barang.tanggal between ? and ? and tokobarang.nama_brng like ? and toko_riwayat_barang.kode_brng like ? or "+
+                    "toko_riwayat_barang.tanggal between ? and ? and tokobarang.nama_brng like ? and tokobarang.nama_brng like ? or "+
+                    "toko_riwayat_barang.tanggal between ? and ? and tokobarang.nama_brng like ? and toko_riwayat_barang.petugas like ? or "+
+                    "toko_riwayat_barang.tanggal between ? and ? and tokobarang.nama_brng like ? and toko_riwayat_barang.status like ? order by toko_riwayat_barang.tanggal,toko_riwayat_barang.jam ");
             }
                 
             try {

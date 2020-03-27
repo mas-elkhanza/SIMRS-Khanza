@@ -2,7 +2,6 @@ package toko;
 
 
 
-import ipsrs.*;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -1087,7 +1086,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
-                if(Sequel.menyimpantf2("surat_pemesanan_toko","?,?,?,?,?,?,?,?,?,?,?","No.Pemesanan",11,new String[]{
+                if(Sequel.menyimpantf2("toko_surat_pemesanan","?,?,?,?,?,?,?,?,?,?,?","No.Pemesanan",11,new String[]{
                     NoPemesanan.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                     ""+sbttl,""+ttldisk,""+ttl,
                     ""+ppn,""+meterai,""+(ttl+ppn+meterai),"Proses Pesan"
@@ -1095,7 +1094,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){
                         if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                            if(Sequel.menyimpantf2("detail_surat_pemesanan_toko","?,?,?,?,?,?,?,?,?","Transaksi Pemesanan",9,new String[]{
+                            if(Sequel.menyimpantf2("toko_detail_surat_pemesanan","?,?,?,?,?,?,?,?,?","Transaksi Pemesanan",9,new String[]{
                                 NoPemesanan.getText(),
                                 tbDokter.getValueAt(i,2).toString(),
                                 tbDokter.getValueAt(i,1).toString(),
@@ -1477,7 +1476,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pemesanan,3),signed)),0) from surat_pemesanan_toko where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pemesanan,3),signed)),0) from toko_surat_pemesanan where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
                 "SPT"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPemesanan); 
     }
 

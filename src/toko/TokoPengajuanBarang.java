@@ -537,14 +537,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
-                if(Sequel.menyimpantf2("pengajuan_barang_toko","?,?,?,?,?","No.Pengajuan",5,new String[]{
+                if(Sequel.menyimpantf2("toko_pengajuan_barang","?,?,?,?,?","No.Pengajuan",5,new String[]{
                         NoPengajuan.getText(),kdptg.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"Proses Pengajuan",Keterangan.getText()
                     })==true){
                         jml=tbDokter.getRowCount();
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    if(Sequel.menyimpantf2("detail_pengajuan_barang_toko","?,?,?,?,?,?","Detail Pengajuan Barang Toko",6,new String[]{
+                                    if(Sequel.menyimpantf2("toko_detail_pengajuan_barang","?,?,?,?,?,?","Detail Pengajuan Barang Toko",6,new String[]{
                                          NoPengajuan.getText(),tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,3).toString(),
                                          tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,5).toString(),tbDokter.getValueAt(i,6).toString()
                                     })==false){
@@ -848,7 +848,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pengajuan,3),signed)),0) from pengajuan_barang_toko where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pengajuan,3),signed)),0) from toko_pengajuan_barang where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
                 "PBNM"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPengajuan); 
     }
     

@@ -592,6 +592,7 @@ import surat.SuratStatus;
 import toko.TokoBarang;
 import toko.TokoInputStok;
 import toko.TokoJenis;
+import toko.TokoPemesanan;
 import toko.TokoPengajuanBarang;
 import toko.TokoRiwayatBarang;
 import toko.TokoSuplier;
@@ -2163,7 +2164,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLihatPiutang);
 
-        btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laborat.png"))); // NOI18N
+        btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laboratory.png"))); // NOI18N
         btnLaboratorium.setText("Periksa Lab");
         btnLaboratorium.setIconTextGap(0);
         btnLaboratorium.setName("btnLaboratorium"); // NOI18N
@@ -6947,7 +6948,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/03/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/03/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -15950,7 +15951,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnPenerimaanBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPemesanan pembelian=new TokoPemesanan(this,false);
+        pembelian.isCek();
+        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setLocationRelativeTo(PanelUtama);
+        pembelian.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
