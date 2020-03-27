@@ -34,7 +34,8 @@ public class TokoCariPemesanan extends javax.swing.JDialog {
     public  TokoSuplier suplier=new TokoSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  TokoBarang barang=new TokoBarang(null,false);
-    private PreparedStatement ps,ps2,pscaripesan,psipsrsdetailpesan;
+    private riwayattoko Trackbarang=new riwayattoko();
+    private PreparedStatement ps,ps2,pscaripesan,pstoko_detail_pesan;
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
@@ -46,7 +47,7 @@ public class TokoCariPemesanan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"No.Faktur","Suplier","Petugas","Jml","Harga Beli(Rp)","SubTotal(Rp)",
+        Object[] row={"No.Faktur","Suplier","Petugas","Jml","Harga(Rp)","SubTotal(Rp)",
                     "Disk(%)","Bsr.Disk(Rp)","Total(Rp)"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -241,8 +242,8 @@ public class TokoCariPemesanan extends javax.swing.JDialog {
         });
         
         try {
-            pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, tgl_faktur,status from ipsrspemesanan where no_faktur=?");
-            psipsrsdetailpesan=koneksi.prepareStatement("select kode_brng,jumlah from ipsrsdetailpesan where no_faktur=? ");
+            pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, tgl_faktur,status from tokopemesanan where no_faktur=?");
+            pstoko_detail_pesan=koneksi.prepareStatement("select kode_brng,jumlah from toko_detail_pesan where no_faktur=? ");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -341,7 +342,7 @@ public class TokoCariPemesanan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Penerimaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Penerimaan Barang Toko / Minimarket / Koperasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -750,12 +751,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());            
+            Sequel.cariIsi("select nama_suplier from tokosuplier where kode_suplier=?", nmsup,kdsup.getText());            
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select nama_suplier from tokosuplier where kode_suplier=?", nmsup,kdsup.getText());
             NoFaktur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select nama_suplier from tokosuplier where kode_suplier=?", nmsup,kdsup.getText());
             kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);
@@ -782,12 +783,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?", nmbar,kdbar.getText());
+            Sequel.cariIsi("select nama_brng from tokobarang where kode_brng=?", nmbar,kdbar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){            
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?", nmbar,kdbar.getText());
+            Sequel.cariIsi("select nama_brng from tokobarang where kode_brng=?", nmbar,kdbar.getText());
             kdjenis.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){            
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?", nmbar,kdbar.getText());
+            Sequel.cariIsi("select nama_brng from tokobarang where kode_brng=?", nmbar,kdbar.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBarangActionPerformed(null);
@@ -796,12 +797,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_jenis from ipsrsjenisbarang  where kd_jenis=?", nmjenis,kdjenis.getText());         
+            Sequel.cariIsi("select nm_jenis from tokojenisbarang  where kd_jenis=?", nmjenis,kdjenis.getText());         
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_jenis from ipsrsjenisbarang  where kd_jenis=?", nmjenis,kdjenis.getText());
+            Sequel.cariIsi("select nm_jenis from tokojenisbarang  where kd_jenis=?", nmjenis,kdjenis.getText());
             kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_jenis from ipsrsjenisbarang  where kd_jenis=?", nmjenis,kdjenis.getText());
+            Sequel.cariIsi("select nm_jenis from tokojenisbarang  where kd_jenis=?", nmjenis,kdjenis.getText());
             kdbar.requestFocus();   
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSatuanActionPerformed(null);
@@ -892,7 +893,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPemesananIPSRS.jasper","report","::[ Transaksi Penerimaan Barang Non Medis ]::",param);
+            Valid.MyReport("rptPemesananToko.jasper","report","::[ Transaksi Penerimaan Barang Toko / Minimarket / Koperasi ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -914,27 +915,27 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       Valid.textKosong(TCari,"No.Faktur");
   }else{
      try {
-         
          pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
          rs=pscaripesan.executeQuery();
          while(rs.next()){
-             psipsrsdetailpesan.setString(1,rs.getString(1));
-             rs2=psipsrsdetailpesan.executeQuery();
+             pstoko_detail_pesan.setString(1,rs.getString(1));
+             rs2=pstoko_detail_pesan.executeQuery();
              while(rs2.next()){
-                 Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok-?",2,new String[]{
+                 Trackbarang.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah"),"Penerimaan", akses.getkode(),"Hapus");
+                 Sequel.mengedit("tokobarang","kode_brng=?","stok=stok-?",2,new String[]{
                         rs2.getString("jumlah"),rs2.getString("kode_brng")
                  });
              }
              Sequel.queryu("delete from tampjurnal");
              Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select Penerimaan_NonMedis from set_akun"),"PERSEDIAAN BARANG NON MEDIS","0",rs.getString("tagihan")
+                 Sequel.cariIsi("select Penerimaan_Toko from set_akun"),"PERSEDIAAN BARANG TOKO","0",rs.getString("tagihan")
              });    
              Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select Kontra_Penerimaan_NonMedis from set_akun"),"HUTANG BARANG NON MEDIS",rs.getString("tagihan"),"0"
+                 Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun"),"HUTANG BARANG TOKO",rs.getString("tagihan"),"0"
              }); 
-             jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
+             jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN TOKO"+", OLEH "+akses.getkode());
          }          
-         Sequel.queryu2("delete from ipsrspemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
+         Sequel.queryu2("delete from tokopemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
          
          tampil();
      } catch (SQLException ex) {
@@ -1027,30 +1028,30 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
        Valid.tabelKosong(tabMode);
         try{   
             ps=koneksi.prepareStatement(
-                    "select ipsrspemesanan.tgl_pesan,ipsrspemesanan.no_faktur, "+
-                    "ipsrspemesanan.kode_suplier,ipsrssuplier.nama_suplier, "+
-                    "ipsrspemesanan.nip,petugas.nama,ipsrspemesanan.tgl_faktur, "+
-                    "ipsrspemesanan.tgl_tempo,ipsrspemesanan.status,ipsrspemesanan.total2,ipsrspemesanan.ppn,"+
-                    "ipsrspemesanan.meterai,ipsrspemesanan.tagihan,ipsrspemesanan.no_order "+
-                    " from ipsrspemesanan inner join ipsrssuplier inner join petugas  "+
-                    " inner join ipsrsdetailpesan inner join ipsrsbarang inner join kodesatuan "+
-                    " inner join ipsrsjenisbarang "+
-                    " on ipsrsdetailpesan.kode_brng=ipsrsbarang.kode_brng "+
-                    " and ipsrsdetailpesan.kode_sat=kodesatuan.kode_sat "+
-                    " and ipsrspemesanan.no_faktur=ipsrsdetailpesan.no_faktur "+
-                    " and ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
-                    " and ipsrspemesanan.nip=petugas.nip and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis"+
-                    " where ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspemesanan.no_faktur like ? or "+
-                    " ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspemesanan.kode_suplier like ? or "+
-                    " ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrssuplier.nama_suplier like ? or "+
-                    " ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspemesanan.nip like ? or "+
-                    " ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and petugas.nama like ? or "+
-                    " ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailpesan.kode_brng like ? or "+
-                    " ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                    " ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailpesan.kode_sat like ? or "+
-                    " ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspemesanan.no_order like ? or "+
-                    " ipsrspemesanan.tgl_pesan between ? and ? and ipsrspemesanan.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? "+
-                    " group by ipsrspemesanan.no_faktur order by ipsrspemesanan.tgl_pesan,ipsrspemesanan.no_faktur ");
+                    "select tokopemesanan.tgl_pesan,tokopemesanan.no_faktur, "+
+                    "tokopemesanan.kode_suplier,tokosuplier.nama_suplier, "+
+                    "tokopemesanan.nip,petugas.nama,tokopemesanan.tgl_faktur, "+
+                    "tokopemesanan.tgl_tempo,tokopemesanan.status,tokopemesanan.total2,tokopemesanan.ppn,"+
+                    "tokopemesanan.meterai,tokopemesanan.tagihan,tokopemesanan.no_order "+
+                    " from tokopemesanan inner join tokosuplier inner join petugas  "+
+                    " inner join toko_detail_pesan inner join tokobarang inner join kodesatuan "+
+                    " inner join tokojenisbarang "+
+                    " on toko_detail_pesan.kode_brng=tokobarang.kode_brng "+
+                    " and toko_detail_pesan.kode_sat=kodesatuan.kode_sat "+
+                    " and tokopemesanan.no_faktur=toko_detail_pesan.no_faktur "+
+                    " and tokopemesanan.kode_suplier=tokosuplier.kode_suplier "+
+                    " and tokopemesanan.nip=petugas.nip and tokobarang.jenis=tokojenisbarang.kd_jenis"+
+                    " where tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokopemesanan.no_faktur like ? or "+
+                    " tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokopemesanan.kode_suplier like ? or "+
+                    " tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokosuplier.nama_suplier like ? or "+
+                    " tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokopemesanan.nip like ? or "+
+                    " tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and petugas.nama like ? or "+
+                    " tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and toko_detail_pesan.kode_brng like ? or "+
+                    " tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokobarang.nama_brng like ? or "+
+                    " tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and toko_detail_pesan.kode_sat like ? or "+
+                    " tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokopemesanan.no_order like ? or "+
+                    " tokopemesanan.tgl_pesan between ? and ? and tokopemesanan.no_faktur like ? and tokosuplier.nama_suplier like ? and petugas.nama like ?  and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? "+
+                    " group by tokopemesanan.no_faktur order by tokopemesanan.tgl_pesan,tokopemesanan.no_faktur ");
             try {
                 ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
@@ -1139,16 +1140,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                           rs.getString(5)+", "+rs.getString(6),"","","","","",""
                     });  
                     
-                    ps2=koneksi.prepareStatement("select ipsrsdetailpesan.kode_brng,ipsrsbarang.nama_brng, "+
-                        "ipsrsdetailpesan.kode_sat,kodesatuan.satuan,ipsrsdetailpesan.jumlah,ipsrsdetailpesan.harga, "+
-                        "ipsrsdetailpesan.subtotal,ipsrsdetailpesan.dis,ipsrsdetailpesan.besardis,ipsrsdetailpesan.total "+
-                        "from ipsrsdetailpesan inner join ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang "+
-                        " on ipsrsdetailpesan.kode_brng=ipsrsbarang.kode_brng and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                        " and ipsrsdetailpesan.kode_sat=kodesatuan.kode_sat where "+
-                        " ipsrsdetailpesan.no_faktur=? and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailpesan.kode_brng like ? or "+
-                        " ipsrsdetailpesan.no_faktur=? and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                        " ipsrsdetailpesan.no_faktur=? and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailpesan.kode_sat like ? or "+
-                        " ipsrsdetailpesan.no_faktur=? and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? order by ipsrsdetailpesan.kode_brng  ");
+                    ps2=koneksi.prepareStatement("select toko_detail_pesan.kode_brng,tokobarang.nama_brng, "+
+                        "toko_detail_pesan.kode_sat,kodesatuan.satuan,toko_detail_pesan.jumlah,toko_detail_pesan.harga, "+
+                        "toko_detail_pesan.subtotal,toko_detail_pesan.dis,toko_detail_pesan.besardis,toko_detail_pesan.total "+
+                        "from toko_detail_pesan inner join tokobarang inner join kodesatuan inner join tokojenisbarang "+
+                        " on toko_detail_pesan.kode_brng=tokobarang.kode_brng and tokobarang.jenis=tokojenisbarang.kd_jenis "+
+                        " and toko_detail_pesan.kode_sat=kodesatuan.kode_sat where "+
+                        " toko_detail_pesan.no_faktur=? and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and toko_detail_pesan.kode_brng like ? or "+
+                        " toko_detail_pesan.no_faktur=? and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokobarang.nama_brng like ? or "+
+                        " toko_detail_pesan.no_faktur=? and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and toko_detail_pesan.kode_sat like ? or "+
+                        " toko_detail_pesan.no_faktur=? and tokojenisbarang.nm_jenis like ? and tokobarang.nama_brng like ? and tokojenisbarang.nm_jenis like ? order by toko_detail_pesan.kode_brng  ");
                     try {
                         ps2.setString(1,rs.getString(2));
                         ps2.setString(2,"%"+nmjenis.getText()+"%");
