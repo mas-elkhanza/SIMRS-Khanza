@@ -157,7 +157,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[L]Monitoring Asuhan Gizi","[N]Penerimaan Obat, Alkes & BHP Per Bulan","[I]Rekap Kunjungan","[O]Surat Keterangan Sakit","[L]Penilaian Awal Keperawatan Ralan",
                     "[A]Permintaan Diet","[L]Master Masalah Keperawatan","[C]Pengajuan Cuti","[I]Kedatangan Pasien Per Jam","[M]Data Pendonor","[Q]Suplier Toko",
                     "[Q]Jenis Barang Toko","[R]Set Harga Toko","[Q]Barang Toko","[J]Penagihan Piutang Pasien","[J]Akun Penagihan Piutang","[Q]Stok Opname Toko",
-                    "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko"
+                    "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -335,7 +335,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 601;i++) {
+        for (i = 0; i < 602;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1173,6 +1173,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(138);
             }else if(i==600){
                 column.setPreferredWidth(144);
+            }else if(i==601){
+                column.setPreferredWidth(140);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1314,7 +1316,7 @@ public class DlgUser extends javax.swing.JDialog {
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnCopyHakAkses.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCopyHakAkses.setForeground(new java.awt.Color(50,50,50));
+        MnCopyHakAkses.setForeground(new java.awt.Color(50, 50, 50));
         MnCopyHakAkses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCopyHakAkses.setText("Copy Hak Akses");
         MnCopyHakAkses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1329,7 +1331,7 @@ public class DlgUser extends javax.swing.JDialog {
         jPopupMenu1.add(MnCopyHakAkses);
 
         MnSetUser.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSetUser.setForeground(new java.awt.Color(50,50,50));
+        MnSetUser.setForeground(new java.awt.Color(50, 50, 50));
         MnSetUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSetUser.setText("Set Personal");
         MnSetUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1352,7 +1354,7 @@ public class DlgUser extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1383,7 +1385,7 @@ public class DlgUser extends javax.swing.JDialog {
         jLabel3.setText("Dokter/Petugas :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass5.add(jLabel3);
-        jLabel3.setBounds(10, 12, 94, 23);
+        jLabel3.setBounds(5, 12, 94, 23);
 
         jLabel4.setText("Password :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -1398,7 +1400,7 @@ public class DlgUser extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(TKd);
-        TKd.setBounds(107, 12, 107, 23);
+        TKd.setBounds(102, 12, 112, 23);
 
         TPass.setName("TPass"); // NOI18N
         TPass.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1465,12 +1467,12 @@ public class DlgUser extends javax.swing.JDialog {
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
+        jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
         jLabel6.setRequestFocusEnabled(false);
         panelGlass7.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(350, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(355, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -1667,7 +1669,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false'","User")==true){
+                    "'false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2310,7 +2312,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "toko_riwayat_barang='"+tbUser.getValueAt(i,597).toString()+"',"+
                     "toko_surat_pemesanan='"+tbUser.getValueAt(i,598).toString()+"',"+
                     "toko_pengajuan_barang='"+tbUser.getValueAt(i,599).toString()+"',"+
-                    "toko_penerimaan_barang='"+tbUser.getValueAt(i,600).toString()+"'");
+                    "toko_penerimaan_barang='"+tbUser.getValueAt(i,600).toString()+"',"+
+                    "toko_pengadaan_barang='"+tbUser.getValueAt(i,601).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2992,7 +2995,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "toko_riwayat_barang='"+tbUser.getValueAt(barisdicopy,597).toString()+"',"+
                                     "toko_surat_pemesanan='"+tbUser.getValueAt(barisdicopy,598).toString()+"',"+
                                     "toko_pengajuan_barang='"+tbUser.getValueAt(barisdicopy,599).toString()+"',"+
-                                    "toko_penerimaan_barang='"+tbUser.getValueAt(barisdicopy,600).toString()+"'");
+                                    "toko_penerimaan_barang='"+tbUser.getValueAt(barisdicopy,600).toString()+"',"+
+                                    "toko_pengadaan_barang='"+tbUser.getValueAt(barisdicopy,601).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3301,7 +3305,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis2,monitoring_asuhan_gizi,"+
                         "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
                         "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
-                        "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang from user order by AES_DECRYPT(id_user,'nur')");
+                        "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
+                        "toko_pengadaan_barang from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3914,7 +3919,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("toko_riwayat_barang"),
                                rs.getBoolean("toko_surat_pemesanan"),
                                rs.getBoolean("toko_pengajuan_barang"),
-                               rs.getBoolean("toko_penerimaan_barang")
+                               rs.getBoolean("toko_penerimaan_barang"),
+                               rs.getBoolean("toko_pengadaan_barang")
                             });
                         }   
                     } catch (Exception e) {
@@ -4516,7 +4522,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("toko_riwayat_barang"),
                            rs.getBoolean("toko_surat_pemesanan"),
                            rs.getBoolean("toko_pengajuan_barang"),
-                           rs.getBoolean("toko_penerimaan_barang")
+                           rs.getBoolean("toko_penerimaan_barang"),
+                           rs.getBoolean("toko_pengadaan_barang")
                         });
                     }                                             
                  }

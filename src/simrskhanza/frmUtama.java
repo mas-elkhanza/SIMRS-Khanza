@@ -592,6 +592,7 @@ import surat.SuratStatus;
 import toko.TokoBarang;
 import toko.TokoInputStok;
 import toko.TokoJenis;
+import toko.TokoPembelian;
 import toko.TokoPemesanan;
 import toko.TokoPengajuanBarang;
 import toko.TokoRiwayatBarang;
@@ -15962,6 +15963,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPengadaanBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPembelian pembelian=new TokoPembelian(this,false);
+        pembelian.isCek();
+        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setLocationRelativeTo(PanelUtama);
+        pembelian.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16556,7 +16569,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2,btnMonitoringAsuhanGizi,btnGrafikPenerimaanObatPerBulan,btnRekapKunjungan,
             btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah,
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
-            btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko;
+            btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko;
     
     public void isWall(){
         try{            
@@ -19531,6 +19544,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_penerimaan_barang()==true){
                 Panelmenu.add(btnPenerimaanBarangToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_pengadaan_barang()==true){
+                Panelmenu.add(btnPengadaanBarangToko); 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==17){   
@@ -22513,6 +22531,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.gettoko_penerimaan_barang()==true){
             Panelmenu.add(btnPenerimaanBarangToko); 
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_pengadaan_barang()==true){
+            Panelmenu.add(btnPengadaanBarangToko); 
             jmlmenu++;
         }
 
@@ -26638,6 +26661,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_pengadaan_barang()==true){
+            if(btnPengadaanBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengadaanBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -28499,6 +28529,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenerimaanBarangToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPenerimaanBarangTokoActionPerformed(evt);
+            }
+        });
+        
+        
+        btnPengadaanBarangToko = new widget.ButtonBig();
+        btnPengadaanBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Notebook_3387299.png"))); 
+        btnPengadaanBarangToko.setText("Pengadaan Barang Toko");
+        btnPengadaanBarangToko.setIconTextGap(0);
+        btnPengadaanBarangToko.setName("btnPengadaanBarangToko"); 
+        btnPengadaanBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengadaanBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengadaanBarangTokoActionPerformed(evt);
             }
         });
     }

@@ -98,7 +98,8 @@ public class TokoPemesanan extends javax.swing.JDialog {
             }else if(i==9){
                 column.setPreferredWidth(90);
             }else{
-                column.setPreferredWidth(80);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         warna.kolom=0;
@@ -159,7 +160,7 @@ public class TokoPemesanan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemesananIPSRS")){
+                if(akses.getform().equals("TokoPemesanan")){
                     if(form.suplier.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),1).toString());
@@ -182,7 +183,7 @@ public class TokoPemesanan extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgPemesananIPSRS")){
+                if(akses.getform().equals("TokoPemesanan")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         form.suplier.dispose();
                     }                
@@ -199,7 +200,7 @@ public class TokoPemesanan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemesananIPSRS")){
+                if(akses.getform().equals("TokoPemesanan")){
                     if(form.petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),1).toString());
@@ -805,7 +806,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 });
                                 if(tbDokter.getValueAt(i,4).toString().equals("true")&&(akses.gettoko_barang()==true)){
                                     Sequel.mengedit("tokobarang","kode_brng=?","dasar=?,h_beli=?,distributor=?,grosir=?,retail=?",6,new String[]{
-                                        tbDokter.getValueAt(i,10).toString(),tbDokter.getValueAt(i,5).toString(),tbDokter.getValueAt(i,11).toString(),tbDokter.getValueAt(i,12).toString(),tbDokter.getValueAt(i,13).toString(),tbDokter.getValueAt(i,1).toString()
+                                        tbDokter.getValueAt(i,10).toString(),(Double.parseDouble(tbDokter.getValueAt(i,5).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(i,5).toString())))+"",tbDokter.getValueAt(i,11).toString(),tbDokter.getValueAt(i,12).toString(),tbDokter.getValueAt(i,13).toString(),tbDokter.getValueAt(i,1).toString()
                                     }); 
                                 }
                             }else{
@@ -894,11 +895,15 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
             for(i=0;i<tbDokter.getRowCount();i++){ 
                 tbDokter.setValueAt("",i,0);
-                tbDokter.setValueAt("0",i,4);
-                tbDokter.setValueAt("0",i,5);
-                tbDokter.setValueAt("0",i,6);
-                tbDokter.setValueAt("0",i,7);
-                tbDokter.setValueAt("0",i,8);
+                tbDokter.setValueAt(false,i,4);
+                tbDokter.setValueAt(0,i,6);
+                tbDokter.setValueAt(0,i,7);
+                tbDokter.setValueAt(0,i,8);
+                tbDokter.setValueAt(0,i,9);
+                tbDokter.setValueAt(0,i,10);
+                tbDokter.setValueAt(0,i,11);
+                tbDokter.setValueAt(0,i,12);
+                tbDokter.setValueAt(0,i,13);
             }
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
@@ -995,7 +1000,7 @@ private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
 }//GEN-LAST:event_kdptgKeyPressed
 
 private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        akses.setform("DlgPemesananIPSRS");
+        akses.setform("TokoPemesanan");
         form.suplier.emptTeks();
         form.suplier.isCek();
         form.suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1005,7 +1010,7 @@ private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_btnSuplierActionPerformed
 
 private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("DlgPemesananIPSRS");
+        akses.setform("TokoPemesanan");
         form.petugas.emptTeks();
         form.petugas.isCek();
         form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1022,7 +1027,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        akses.setform("DlgPemesananIPSRS");
+        akses.setform("TokoPemesanan");
         TokoBarang barang=new TokoBarang(null,false);
         barang.emptTeks();
         barang.isCek();
@@ -1299,7 +1304,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from tokopemesanan where tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PNT"+TglPesan.getSelectedItem().toString().substring(8,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from tokopemesanan where tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PNT"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
 
     public void tampil(String noorder) {
