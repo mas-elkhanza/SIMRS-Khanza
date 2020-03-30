@@ -645,7 +645,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
                         "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
                         "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
-                        "toko_pengadaan_barang from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "toko_pengadaan_barang,toko_hutang from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1898,6 +1898,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[J]Akun Penagihan Piutang",rs.getBoolean("akun_penagihan_piutang")});
                     }
                     
+                    if("[J]Hutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]Hutang Toko",rs.getBoolean("toko_hutang")});
+                    }
+                    
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Cek NIK",rs.getBoolean("bpjs_cek_nik")});
                     }
@@ -2442,32 +2446,32 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[M]Data Pendonor",rs.getBoolean("utd_pendonor")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Poli",rs.getBoolean("grafik_kunjungan_poli")});
+                    if("[N]Registrasi Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Poli",rs.getBoolean("grafik_kunjungan_poli")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Dokter".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Dokter",rs.getBoolean("grafik_kunjungan_perdokter")});
+                    if("[N]Registrasi Per Dokter".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Dokter",rs.getBoolean("grafik_kunjungan_perdokter")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Pekerjaan",rs.getBoolean("grafik_kunjungan_perpekerjaan")});
+                    if("[N]Registrasi Per Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Pekerjaan",rs.getBoolean("grafik_kunjungan_perpekerjaan")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Pendidikan",rs.getBoolean("grafik_kunjungan_perpendidikan")});
+                    if("[N]Registrasi Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Pendidikan",rs.getBoolean("grafik_kunjungan_perpendidikan")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Tahun",rs.getBoolean("grafik_kunjungan_pertahun")});
+                    if("[N]Registrasi Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Tahun",rs.getBoolean("grafik_kunjungan_pertahun")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Bulan",rs.getBoolean("grafik_kunjungan_perbulan")});
+                    if("[N]Registrasi Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Bulan",rs.getBoolean("grafik_kunjungan_perbulan")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Tanggal",rs.getBoolean("grafik_kunjungan_pertanggal")});
+                    if("[N]Registrasi Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Tanggal",rs.getBoolean("grafik_kunjungan_pertanggal")});
                     }
                     
                     if("[N]Demografi Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -2510,8 +2514,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[N]Batal Periksa Per Tanggal",rs.getBoolean("grafik_kunjungan_statusbataltanggal")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Cara Bayar",rs.getBoolean("grafik_kunjungan_percarabayar")});
+                    if("[N]Registrasi Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Cara Bayar",rs.getBoolean("grafik_kunjungan_percarabayar")});
                     }
                     
                     if("[N]Kunjungan Ranap Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -2526,8 +2530,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[N]Kunjungan Rad Ralan Per Tahun",rs.getBoolean("grafik_rad_ralantahun")});
                     }
                     
-                    if("[N]Kunjungan Per Perujuk".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Per Perujuk",rs.getBoolean("grafik_per_perujuk")});
+                    if("[N]Registrasi Per Perujuk".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Perujuk",rs.getBoolean("grafik_per_perujuk")});
                     }
                     
                     if("[N]Kunjungan Lab Ralan Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -2566,24 +2570,24 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[N]Kejadian IKP Per Dampak",rs.getBoolean("grafik_ikp_dampak")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Agama".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Agama",rs.getBoolean("grafik_kunjungan_per_agama")});
+                    if("[N]Registrasi Per Agama".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Agama",rs.getBoolean("grafik_kunjungan_per_agama")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Umur".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Umur",rs.getBoolean("grafik_kunjungan_per_umur")});
+                    if("[N]Registrasi Per Umur".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Umur",rs.getBoolean("grafik_kunjungan_per_umur")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Suku/Bangsa".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Suku/Bangsa",rs.getBoolean("grafik_kunjungan_suku")});
+                    if("[N]Registrasi Per Suku/Bangsa".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Suku/Bangsa",rs.getBoolean("grafik_kunjungan_suku")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Bahasa".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Bahasa",rs.getBoolean("grafik_kunjungan_bahasa")});
+                    if("[N]Registrasi Per Bahasa".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Bahasa",rs.getBoolean("grafik_kunjungan_bahasa")});
                     }
                     
-                    if("[N]Kunjungan Reg Per Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[N]Kunjungan Reg Per Cacat Fisik",rs.getBoolean("grafik_kunjungan_per_cacat")});
+                    if("[N]Registrasi Per Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[N]Registrasi Per Cacat Fisik",rs.getBoolean("grafik_kunjungan_per_cacat")});
                     }
                     
                     if("[N]Periode Laporan TB".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4316,6 +4320,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             if("[J]Akun Penagihan Piutang".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","akun_penagihan_piutang='"+tbUser.getValueAt(i,2).toString()+"'");
             }
+            
+            if("[J]Hutang Toko".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","toko_hutang='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
         }
     }
     
@@ -4865,31 +4873,31 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","utd_pendonor='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Poli".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Poli".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_poli='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Dokter".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Dokter".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_perdokter='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Pekerjaan".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Pekerjaan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_perpekerjaan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Pendidikan".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Pendidikan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_perpendidikan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Tahun".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_pertahun='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Bulan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_perbulan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_pertanggal='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
@@ -4933,7 +4941,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_statusbataltanggal='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Cara Bayar".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Cara Bayar".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_percarabayar='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
@@ -4949,7 +4957,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_rad_ralantahun='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Per Perujuk".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Perujuk".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_per_perujuk='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
@@ -4989,23 +4997,23 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_ikp_dampak='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Agama".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Agama".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_per_agama='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Umur".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Umur".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_per_umur='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Suku/Bangsa".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Suku/Bangsa".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_suku='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Bahasa".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Bahasa".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_bahasa='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
-            if("[N]Kunjungan Reg Per Cacat Fisik".equals(tbUser.getValueAt(i,1).toString())){
+            if("[N]Registrasi Per Cacat Fisik".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","grafik_kunjungan_per_cacat='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 

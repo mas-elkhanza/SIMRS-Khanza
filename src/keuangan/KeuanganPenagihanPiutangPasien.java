@@ -788,7 +788,7 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
         panelisi1.add(jLabel10);
         jLabel10.setBounds(108, 10, 87, 23);
 
-        LCountDipilih2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        LCountDipilih2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         LCountDipilih2.setForeground(new java.awt.Color(50, 50, 50));
         LCountDipilih2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCountDipilih2.setText("0");
@@ -806,7 +806,7 @@ public final class KeuanganPenagihanPiutangPasien extends javax.swing.JDialog {
         panelisi1.add(jLabel12);
         jLabel12.setBounds(507, 10, 90, 23);
 
-        LCountBelumDibayar2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        LCountBelumDibayar2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         LCountBelumDibayar2.setForeground(new java.awt.Color(50, 50, 50));
         LCountBelumDibayar2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCountBelumDibayar2.setText("0");

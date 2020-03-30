@@ -221,14 +221,13 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
         panelisi1 = new widget.panelisi();
-        BtnBayar = new widget.Button();
-        BtnPrint = new widget.Button();
-        BtnKeluar = new widget.Button();
-        panelGlass11 = new widget.panelisi();
         jLabel10 = new javax.swing.JLabel();
         LCount = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         LCount1 = new javax.swing.JLabel();
+        BtnBayar = new widget.Button();
+        BtnPrint = new widget.Button();
+        BtnKeluar = new widget.Button();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
@@ -273,6 +272,11 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
                 tbBangsalMouseClicked(evt);
             }
         });
+        tbBangsal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbBangsalPropertyChange(evt);
+            }
+        });
         tbBangsal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbBangsalKeyPressed(evt);
@@ -307,7 +311,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         panelisi4.add(jLabel11);
 
         nama_bayar.setName("nama_bayar"); // NOI18N
-        nama_bayar.setPreferredSize(new java.awt.Dimension(325, 23));
+        nama_bayar.setPreferredSize(new java.awt.Dimension(420, 23));
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nama_bayarKeyPressed(evt);
@@ -319,7 +323,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 143));
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 101));
         jPanel1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelisi3.setName("panelisi3"); // NOI18N
@@ -342,7 +346,7 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
 
         nmpenjab.setEditable(false);
         nmpenjab.setName("nmpenjab"); // NOI18N
-        nmpenjab.setPreferredSize(new java.awt.Dimension(170, 23));
+        nmpenjab.setPreferredSize(new java.awt.Dimension(190, 23));
         panelisi3.add(nmpenjab);
 
         BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -364,11 +368,11 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
 
         label17.setText("Key Word :");
         label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(70, 23));
+        label17.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi3.add(label17);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(150, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(220, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -415,6 +419,38 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         panelisi1.setName("panelisi1"); // NOI18N
         panelisi1.setPreferredSize(new java.awt.Dimension(55, 55));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Belum Dibayar :");
+        jLabel10.setName("jLabel10"); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(87, 23));
+        panelisi1.add(jLabel10);
+
+        LCount.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        LCount.setForeground(new java.awt.Color(50, 50, 50));
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelisi1.add(LCount);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("Dipilih :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        jLabel12.setPreferredSize(new java.awt.Dimension(45, 23));
+        panelisi1.add(jLabel12);
+
+        LCount1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        LCount1.setForeground(new java.awt.Color(50, 50, 50));
+        LCount1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount1.setText("0");
+        LCount1.setName("LCount1"); // NOI18N
+        LCount1.setPreferredSize(new java.awt.Dimension(130, 23));
+        panelisi1.add(LCount1);
 
         BtnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnBayar.setMnemonic('B');
@@ -471,44 +507,6 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         panelisi1.add(BtnKeluar);
 
         jPanel1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
-
-        panelGlass11.setName("panelGlass11"); // NOI18N
-        panelGlass11.setPreferredSize(new java.awt.Dimension(44, 42));
-        panelGlass11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Belum Dibayar :");
-        jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(87, 23));
-        panelGlass11.add(jLabel10);
-
-        LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount.setForeground(new java.awt.Color(50, 50, 50));
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(230, 23));
-        panelGlass11.add(LCount);
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("Sisa Piutang Dipilih :");
-        jLabel12.setName("jLabel12"); // NOI18N
-        jLabel12.setPreferredSize(new java.awt.Dimension(107, 23));
-        panelGlass11.add(jLabel12);
-
-        LCount1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount1.setForeground(new java.awt.Color(50, 50, 50));
-        LCount1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount1.setText("0");
-        LCount1.setName("LCount1"); // NOI18N
-        LCount1.setPreferredSize(new java.awt.Dimension(230, 23));
-        panelGlass11.add(LCount1);
-
-        jPanel1.add(panelGlass11, java.awt.BorderLayout.PAGE_START);
 
         internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
@@ -764,6 +762,44 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }//GEN-LAST:event_tbBangsalMouseClicked
 
+    private void tbBangsalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbBangsalPropertyChange
+        if(this.isVisible()==true){
+            try {
+                if(tbBangsal.getSelectedRow()!= -1){
+                    if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
+                        tbBangsal.setValueAt(
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),5).toString())-
+                                (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString())+
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),7).toString())+
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString())),
+                                tbBangsal.getSelectedRow(),8);
+                    }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
+                        tbBangsal.setValueAt(
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),5).toString())-
+                                (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString())+
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),7).toString())),
+                                tbBangsal.getSelectedRow(),8);
+                        tbBangsal.setValueAt(
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),5).toString())-
+                                (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString())+
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),7).toString())),
+                                tbBangsal.getSelectedRow(),11);
+                    }
+                }  
+            } catch (Exception e) {
+            }
+            row=tbBangsal.getRowCount();
+            for(i=0;i<row;i++){  
+                if(tbBangsal.getValueAt(i,0).toString().equals("true")){
+                     total=total+Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-
+                            (Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+
+                            Double.parseDouble(tbBangsal.getValueAt(i,7).toString()));     
+                }
+            }
+            LCount1.setText(Valid.SetAngka(total));
+        }
+    }//GEN-LAST:event_tbBangsalPropertyChange
+
     /**
     * @param args the command line arguments
     */
@@ -806,7 +842,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Label label32;
     private widget.ComboBox nama_bayar;
     private widget.TextBox nmpenjab;
-    private widget.panelisi panelGlass11;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
