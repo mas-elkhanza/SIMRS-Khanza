@@ -528,6 +528,7 @@ import kepegawaian.K3RSPenyebabPerTahun;
 import kepegawaian.K3RSPeristiwa;
 import kepegawaian.PengajuanCutiAdmin;
 import kepegawaian.PengajuanCutiPegawai;
+import keuangan.DlgAkunPenagihanPiutang;
 import keuangan.DlgJnsPerawatanRanap;
 import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuanganPenagihanPiutangPasien;
@@ -589,8 +590,14 @@ import surat.SuratSakit;
 import surat.SuratSifat;
 import surat.SuratStatus;
 import toko.TokoBarang;
+import toko.TokoInputStok;
 import toko.TokoJenis;
+import toko.TokoPembelian;
+import toko.TokoPemesanan;
+import toko.TokoPengajuanBarang;
+import toko.TokoRiwayatBarang;
 import toko.TokoSuplier;
+import toko.TokoSuratPemesanan;
 import tranfusidarah.UTDCariPenyerahanDarah;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
@@ -2158,7 +2165,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLihatPiutang);
 
-        btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002039_laboratory.png"))); // NOI18N
+        btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laboratory.png"))); // NOI18N
         btnLaboratorium.setText("Periksa Lab");
         btnLaboratorium.setIconTextGap(0);
         btnLaboratorium.setName("btnLaboratorium"); // NOI18N
@@ -2698,7 +2705,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTarifRadiologi);
 
-        btnPeriksaRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Print.png"))); // NOI18N
+        btnPeriksaRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Radiologi.png"))); // NOI18N
         btnPeriksaRadiologi.setText("Periksa Radiologi");
         btnPeriksaRadiologi.setIconTextGap(0);
         btnPeriksaRadiologi.setName("btnPeriksaRadiologi"); // NOI18N
@@ -6942,7 +6949,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/03/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/03/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -15876,9 +15883,95 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         KeuanganPenagihanPiutangPasien form=new KeuanganPenagihanPiutangPasien(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnAkunPenagihanPiutangActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAkunPenagihanPiutang form=new DlgAkunPenagihanPiutang(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnStokOpnameTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoInputStok opname=new TokoInputStok(this,false);
+        opname.tampil();
+        opname.isCek();
+        opname.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        opname.setLocationRelativeTo(PanelUtama);
+        opname.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnRiwayatBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoRiwayatBarang sirkulasi=new TokoRiwayatBarang(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnSuratPemesananTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoSuratPemesanan form=new TokoSuratPemesanan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPengajuanBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPengajuanBarang form=new TokoPengajuanBarang(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenerimaanBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPemesanan pembelian=new TokoPemesanan(this,false);
+        pembelian.isCek();
+        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setLocationRelativeTo(PanelUtama);
+        pembelian.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPengadaanBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPembelian pembelian=new TokoPembelian(this,false);
+        pembelian.isCek();
+        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setLocationRelativeTo(PanelUtama);
+        pembelian.setVisible(true);
+        DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
     
@@ -16475,7 +16568,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMappingTindakanLaboratInhealth,btnMappingTindakanOperasiInhealth,btnHibahObatBHP,btnAsalHibah,btnAsuhanGizi,btnKirimTagihanInheath,
             btnSirkulasiObat4,btnSirkulasiObat5,btnSirkulasiNonMedis2,btnMonitoringAsuhanGizi,btnGrafikPenerimaanObatPerBulan,btnRekapKunjungan,
             btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah,
-            btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien;
+            btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
+            btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko;
     
     public void isWall(){
         try{            
@@ -18013,6 +18107,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnAkunPiutang);  
                 jmlmenu++;
             }
+            
+            if(akses.getakun_penagihan_piutang()==true){
+                Panelmenu.add(btnAkunPenagihanPiutang);  
+                jmlmenu++;
+            }
 
             if(akses.getpengaturan_rekening()==true){
                 Panelmenu.add(btnPengaturanRekening);   
@@ -19420,6 +19519,36 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_barang()==true){
                 Panelmenu.add(btnBarangToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.getstok_opname_toko()==true){
+                Panelmenu.add(btnStokOpnameToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_riwayat_barang()==true){
+                Panelmenu.add(btnRiwayatBarangToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_pengajuan_barang()==true){
+                Panelmenu.add(btnPengajuanBarangToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_surat_pemesanan()==true){
+                Panelmenu.add(btnSuratPemesananToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_penerimaan_barang()==true){
+                Panelmenu.add(btnPenerimaanBarangToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_pengadaan_barang()==true){
+                Panelmenu.add(btnPengadaanBarangToko); 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==17){   
@@ -20977,6 +21106,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnAkunPiutang);  
             jmlmenu++;
         }
+        
+        if(akses.getakun_penagihan_piutang()==true){
+            Panelmenu.add(btnAkunPenagihanPiutang);  
+            jmlmenu++;
+        }
 
         if(akses.getpengaturan_rekening()==true){
             Panelmenu.add(btnPengaturanRekening);   
@@ -22372,6 +22506,36 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettoko_barang()==true){
             Panelmenu.add(btnBarangToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.getstok_opname_toko()==true){
+            Panelmenu.add(btnStokOpnameToko); 
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_riwayat_barang()==true){
+            Panelmenu.add(btnRiwayatBarangToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_pengajuan_barang()==true){
+            Panelmenu.add(btnPengajuanBarangToko); 
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_surat_pemesanan()==true){
+            Panelmenu.add(btnSuratPemesananToko); 
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_penerimaan_barang()==true){
+            Panelmenu.add(btnPenerimaanBarangToko); 
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_pengadaan_barang()==true){
+            Panelmenu.add(btnPengadaanBarangToko); 
             jmlmenu++;
         }
 
@@ -24498,6 +24662,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getakun_penagihan_piutang()==true){
+            if(btnAkunPenagihanPiutang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnAkunPenagihanPiutang);  
+                jmlmenu++;
+            }                
+        }
 
         if(akses.getpengaturan_rekening()==true){
             if(btnPengaturanRekening.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -26455,6 +26626,48 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getstok_opname_toko()==true){
+            if(btnStokOpnameToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnStokOpnameToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_riwayat_barang()==true){
+            if(btnRiwayatBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRiwayatBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_pengajuan_barang()==true){
+            if(btnPengajuanBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengajuanBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_surat_pemesanan()==true){
+            if(btnSuratPemesananToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratPemesananToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_penerimaan_barang()==true){
+            if(btnPenerimaanBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenerimaanBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_pengadaan_barang()==true){
+            if(btnPengadaanBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengadaanBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -28140,7 +28353,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnMasterMasalahKeperawatan = new widget.ButtonBig();
-        btnMasterMasalahKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Notebook_3387299.png"))); 
+        btnMasterMasalahKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_library-book-books-interface-education-read-reading_2914057.png"))); 
         btnMasterMasalahKeperawatan.setText("Master Masalah Keperawatan");
         btnMasterMasalahKeperawatan.setIconTextGap(0);
         btnMasterMasalahKeperawatan.setName("btnMasterMasalahKeperawatan"); 
@@ -28247,6 +28460,90 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
         });
 
+        btnAkunPenagihanPiutang = new widget.ButtonBig();
+        btnAkunPenagihanPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357487_Business.png"))); 
+        btnAkunPenagihanPiutang.setText("Akun Penagihan Piutang");
+        btnAkunPenagihanPiutang.setIconTextGap(0);
+        btnAkunPenagihanPiutang.setName("btnAkunPenagihanPiutang"); 
+        btnAkunPenagihanPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAkunPenagihanPiutang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAkunPenagihanPiutangActionPerformed(evt);
+            }
+        });
+        
+        btnStokOpnameToko = new widget.ButtonBig();
+        btnStokOpnameToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ark2.png"))); 
+        btnStokOpnameToko.setText("Stok Opname Toko");
+        btnStokOpnameToko.setIconTextGap(0);
+        btnStokOpnameToko.setName("btnStokOpnameToko"); 
+        btnStokOpnameToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnStokOpnameToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStokOpnameTokoActionPerformed(evt);
+            }
+        });
+        
+        btnRiwayatBarangToko = new widget.ButtonBig();
+        btnRiwayatBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ecommerce-21_4707177.png"))); 
+        btnRiwayatBarangToko.setText("Riwayat Barang Toko");
+        btnRiwayatBarangToko.setIconTextGap(0);
+        btnRiwayatBarangToko.setName("btnRiwayatBarangToko"); 
+        btnRiwayatBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatBarangTokoActionPerformed(evt);
+            }
+        });
+        
+        btnSuratPemesananToko = new widget.ButtonBig();
+        btnSuratPemesananToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_internet-mail_118808.png"))); 
+        btnSuratPemesananToko.setText("Surat Pemesanan Toko");
+        btnSuratPemesananToko.setIconTextGap(0);
+        btnSuratPemesananToko.setName("btnSuratPemesananToko"); 
+        btnSuratPemesananToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratPemesananToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratPemesananTokoActionPerformed(evt);
+            }
+        });
+        
+        btnPengajuanBarangToko = new widget.ButtonBig();
+        btnPengajuanBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-45-note-list_315263.png"))); 
+        btnPengajuanBarangToko.setText("Pengajuan Barang Toko");
+        btnPengajuanBarangToko.setIconTextGap(0);
+        btnPengajuanBarangToko.setName("btnPengajuanBarangToko"); 
+        btnPengajuanBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengajuanBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengajuanBarangTokoActionPerformed(evt);
+            }
+        });
+        
+        btnPenerimaanBarangToko = new widget.ButtonBig();
+        btnPenerimaanBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_gifts_sale_shop_4177581.png"))); 
+        btnPenerimaanBarangToko.setText("Penerimaan Barang Toko");
+        btnPenerimaanBarangToko.setIconTextGap(0);
+        btnPenerimaanBarangToko.setName("btnPenerimaanBarangToko"); 
+        btnPenerimaanBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenerimaanBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenerimaanBarangTokoActionPerformed(evt);
+            }
+        });
+        
+        
+        btnPengadaanBarangToko = new widget.ButtonBig();
+        btnPengadaanBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Notebook_3387299.png"))); 
+        btnPengadaanBarangToko.setText("Pengadaan Barang Toko");
+        btnPengadaanBarangToko.setIconTextGap(0);
+        btnPengadaanBarangToko.setName("btnPengadaanBarangToko"); 
+        btnPengadaanBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengadaanBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengadaanBarangTokoActionPerformed(evt);
+            }
+        });
     }
 
 }

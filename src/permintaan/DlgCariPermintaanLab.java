@@ -45,7 +45,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private int i,nilai_detik,permintaanbaru=0;
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2,rs3;
-    private final Properties prop = new Properties();
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
@@ -363,9 +362,8 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            alarm=prop.getProperty("ALARMLAB");
-            formalarm=prop.getProperty("FORMALARMLAB");
+            alarm=koneksiDB.ALARMLAB();
+            formalarm=koneksiDB.FORMALARMLAB();
         } catch (Exception ex) {
             alarm="no";
             formalarm="ralan + ranap";

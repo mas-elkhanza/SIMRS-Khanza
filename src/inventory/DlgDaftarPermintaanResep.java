@@ -45,7 +45,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private String bangsal="",aktifkanparsial="no",kamar="",alarm="",
             formalarm="",nol_detik,detik,NoResep="",TglPeresepan="",JamPeresepan="",
             NoRawat="",NoRM="",Pasien="",DokterPeresep="",Status="",KodeDokter="",Ruang="",KodeRuang="";
-    private final Properties prop = new Properties();
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
@@ -317,10 +316,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         });
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
-            alarm=prop.getProperty("ALARMAPOTEK");
-            formalarm=prop.getProperty("FORMALARMAPOTEK");
+            aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
+            alarm=koneksiDB.ALARMAPOTEK();
+            formalarm=koneksiDB.FORMALARMAPOTEK();
         } catch (Exception ex) {
             aktifkanparsial="no";
             alarm="no";
@@ -2174,7 +2172,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 detik = nol_detik + Integer.toString(nilai_detik);
                 if(detik.equals("05")){
                     resepbaru=0;
-                    if(formalarm.equals("ralan")){
+                    if(formalarm.contains("ralan")){
                         tampil();
                         for(i=0;i<tbResepRalan.getRowCount();i++){
                             if(tbResepRalan.getValueAt(i,7).toString().equals("Belum Terlayani")){
@@ -2183,7 +2181,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
 
-                    if(formalarm.equals("ranap")){
+                    if(formalarm.contains("ranap")){
                         tampil3();
                         for(i=0;i<tbResepRanap.getRowCount();i++){
                             if(tbResepRanap.getValueAt(i,7).toString().equals("Belum Terlayani")){

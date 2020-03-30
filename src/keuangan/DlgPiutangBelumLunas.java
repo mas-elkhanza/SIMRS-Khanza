@@ -273,11 +273,6 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
                 tbBangsalMouseClicked(evt);
             }
         });
-        tbBangsal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tbBangsalPropertyChange(evt);
-            }
-        });
         tbBangsal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbBangsalKeyPressed(evt);
@@ -594,14 +589,6 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
-        if(tabMode.getRowCount()!=0){
-            if(tbBangsal.getSelectedColumn()==0){
-                getdata();
-            }
-        }
-}//GEN-LAST:event_tbBangsalMouseClicked
-
     private void tbBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBangsalKeyPressed
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -769,9 +756,13 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         Valid.pindah(evt,kdpenjab,nama_bayar);
     }//GEN-LAST:event_TanggalKeyPressed
 
-    private void tbBangsalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbBangsalPropertyChange
-        
-    }//GEN-LAST:event_tbBangsalPropertyChange
+    private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
+        if(tabMode.getRowCount()!=0){
+            if(tbBangsal.getSelectedColumn()==0){
+                getdata();
+            }
+        }
+    }//GEN-LAST:event_tbBangsalMouseClicked
 
     /**
     * @param args the command line arguments
@@ -921,7 +912,9 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 
     private void getdata() {
         if(kdpenjab.getText().equals("")||nmpenjab.getText().equals("")){
-            tbBangsal.setValueAt(false,tbBangsal.getSelectedRow(),0);
+            if(tbBangsal.getSelectedRow()!= -1){
+                tbBangsal.setValueAt(false,tbBangsal.getSelectedRow(),0);
+            }
             JOptionPane.showMessageDialog(null,"Silahkan pilih cara bayar terlebih dahulu");
         }else{
             total=0;

@@ -2335,32 +2335,12 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                             switch (tbBilling.getValueAt(tbBilling.getSelectedRow(),i).toString()) {
                                 case "Tindakan":
                                     if(akses.gettindakan_ralan()==true){
-                                        kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-                                        nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                        DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
-                                        dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                                        //perawatan.setModal(true);
-                                        dlgrwjl.isCek();
-                                        dlgrwjl.tampil();
-                                        dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                        dlgrwjl.setLocationRelativeTo(internalFrame1);
-                                        dlgrwjl.setAlwaysOnTop(false);
-                                        dlgrwjl.setVisible(true);
+                                        MnInputTindakanActionPerformed(null);
                                     }                            
                                     break;
                                 case "Obat & BHP":
                                     if(akses.getberi_obat()==true){
-                                        DlgCariObat dlgobt=new DlgCariObat(null,false);
-                                        dlgobt.emptTeksobat();
-                                        //dlgobt.setModal(true);
-                                        dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
-                                                Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                        dlgobt.isCek();
-                                        dlgobt.tampilobat();
-                                        dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                        dlgobt.setLocationRelativeTo(internalFrame1);
-                                        dlgobt.setAlwaysOnTop(false);
-                                        dlgobt.setVisible(true);
+                                        MnInputObatActionPerformed(null);
                                     }                            
                                     //dispose();
                                     break;
@@ -2380,32 +2360,12 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                             switch (tbBilling.getValueAt(tbBilling.getSelectedRow(),i).toString()) {
                                 case "Tindakan":
                                     if(akses.gettindakan_ralan()==true){
-                                        kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-                                        nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                        DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
-                                        dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                                        //perawatan.setModal(true);
-                                        dlgrwjl.isCek();
-                                        dlgrwjl.tampil();
-                                        dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                        dlgrwjl.setLocationRelativeTo(internalFrame1);
-                                        dlgrwjl.setAlwaysOnTop(false);
-                                        dlgrwjl.setVisible(true);
+                                        MnInputTindakanActionPerformed(null);
                                     }                            
                                     break;
                                 case "Obat & BHP":
                                     if(akses.getberi_obat()==true){
-                                        DlgCariObat dlgobt=new DlgCariObat(null,false);
-                                        dlgobt.emptTeksobat();
-                                        //dlgobt.setModal(true);
-                                        dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
-                                                Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                        dlgobt.isCek();
-                                        dlgobt.tampilobat();
-                                        dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                        dlgobt.setLocationRelativeTo(internalFrame1);
-                                        dlgobt.setAlwaysOnTop(false);
-                                        dlgobt.setVisible(true);
+                                        MnInputObatActionPerformed(null);
                                     }                            
                                     //dispose();
                                     break;
@@ -2483,32 +2443,12 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             switch (tbBilling.getValueAt(tbBilling.getSelectedRow(), i).toString()) {
                                 case "Tindakan":
                                     if(akses.gettindakan_ralan()==true){
-                                        kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-                                        nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                        DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
-                                        dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                                        //perawatan.setModal(true);
-                                        dlgrwjl.isCek();
-                                        dlgrwjl.tampil();
-                                        dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                        dlgrwjl.setLocationRelativeTo(internalFrame1);
-                                        dlgrwjl.setAlwaysOnTop(false);
-                                        dlgrwjl.setVisible(true);
+                                        MnInputTindakanActionPerformed(null);
                                     }
                                     break;
                                 case "Obat & BHP":
                                     if(akses.getberi_obat()==true){
-                                        DlgCariObat dlgobt=new DlgCariObat(null,false);
-                                        dlgobt.emptTeksobat();
-                                        //dlgobt.setModal(true);
-                                        dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
-                                                Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                        dlgobt.isCek();
-                                        dlgobt.tampilobat();
-                                        dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                        dlgobt.setLocationRelativeTo(internalFrame1);
-                                        dlgobt.setAlwaysOnTop(false);
-                                        dlgobt.setVisible(true);
+                                        MnInputObatActionPerformed(null);
                                     }                            
                                     //dispose();
                                     break;
@@ -2528,32 +2468,12 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             switch (tbBilling.getValueAt(tbBilling.getSelectedRow(), i).toString()) {
                                 case "Tindakan":
                                     if(akses.gettindakan_ralan()==true){
-                                        kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-                                        nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                        DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
-                                        dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                                        //setModal(true);
-                                        dlgrwjl.isCek();
-                                        dlgrwjl.tampil();
-                                        dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                        dlgrwjl.setLocationRelativeTo(internalFrame1);
-                                        dlgrwjl.setAlwaysOnTop(false);
-                                        dlgrwjl.setVisible(true);
+                                        MnInputTindakanActionPerformed(null);
                                     }
                                     break;
                                 case "Obat & BHP":
                                     if(akses.getberi_obat()==true){
-                                        DlgCariObat dlgobt=new DlgCariObat(null,false);
-                                        dlgobt.emptTeksobat();
-                                        //dlgobt.setModal(true);
-                                        dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
-                                                Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                        dlgobt.isCek();
-                                        dlgobt.tampilobat();
-                                        dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                        dlgobt.setLocationRelativeTo(internalFrame1);
-                                        dlgobt.setAlwaysOnTop(false);
-                                        dlgobt.setVisible(true);
+                                        MnInputObatActionPerformed(null);
                                     }                            
                                     //dispose();
                                     break;
