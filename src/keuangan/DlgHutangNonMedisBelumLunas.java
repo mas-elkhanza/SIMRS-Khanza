@@ -41,7 +41,7 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
     private DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
-    private String koderekening="",tanggaldatang="",tanggaltempo="";
+    private String koderekening="",tanggaldatang="",tanggaltempo="",akunbayar=Sequel.cariIsi("select Bayar_Pemesanan_Non_Medis from set_akun");
     private double sisahutang=0,cicilan=0,bayar=0;
     private Jurnal jur=new Jurnal();
     private WarnaTable3 warna=new WarnaTable3();
@@ -924,7 +924,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             } 
                             Sequel.queryu("delete from tampjurnal");
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                Sequel.cariIsi("select Bayar_Pemesanan_Non_Medis from set_akun"),"HUTANG BARANG NON MEDIS",tabMode.getValueAt(i,10).toString(),"0"
+                                akunbayar,"HUTANG BARANG NON MEDIS",tabMode.getValueAt(i,10).toString(),"0"
                             });                     
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                 koderekening,nama_bayar.getSelectedItem().toString(),"0",tabMode.getValueAt(i,10).toString()

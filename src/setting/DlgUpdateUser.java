@@ -645,7 +645,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
                         "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
                         "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
-                        "toko_pengadaan_barang,toko_hutang from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1900,6 +1900,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[J]Hutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[J]Hutang Toko",rs.getBoolean("toko_hutang")});
+                    }
+                    
+                    if("[J]Bayar Pesan Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]Bayar Pesan Toko",rs.getBoolean("toko_bayar_pemesanan")});
                     }
                     
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4323,6 +4327,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[J]Hutang Toko".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","toko_hutang='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[J]Bayar Pesan Toko".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","toko_bayar_pemesanan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }
     }

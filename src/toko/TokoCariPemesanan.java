@@ -25,6 +25,7 @@ import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
 import keuangan.DlgBayarPemesananNonMedis;
+import keuangan.KeuanganBayarPesanToko;
 
 public class TokoCariPemesanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -954,7 +955,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"No.Faktur");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgBayarPemesananNonMedis bayarpesan=new DlgBayarPemesananNonMedis(null,false);
+            KeuanganBayarPesanToko bayarpesan=new KeuanganBayarPesanToko(null,false);
             bayarpesan.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
             bayarpesan.tampil();
             bayarpesan.isCek();
@@ -1217,13 +1218,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(akses.getpenerimaan_non_medis());
+        BtnPrint.setEnabled(akses.gettoko_penerimaan_barang());
         if(akses.getkode().equals("Admin Utama")){
             ppHapus.setEnabled(true);
         }else{
             ppHapus.setEnabled(false);
         }        
-        ppBayar.setEnabled(akses.getbayar_pesan_non_medis());
+        ppBayar.setEnabled(akses.gettoko_bayar_pemesanan());
     }
     
 }

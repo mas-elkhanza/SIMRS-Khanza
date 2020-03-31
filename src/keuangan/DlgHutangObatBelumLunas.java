@@ -36,12 +36,12 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2;
+    private PreparedStatement ps;
     private ResultSet rs;
     private DlgSuplier suplier=new DlgSuplier(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
-    private String koderekening="",tanggaldatang="",tanggaltempo="";
+    private String koderekening="",tanggaldatang="",tanggaltempo="",akunbayar=Sequel.cariIsi("select Bayar_Pemesanan_Obat from set_akun");
     private double sisahutang=0,cicilan=0,bayar=0;
     private Jurnal jur=new Jurnal();
     private WarnaTable3 warna=new WarnaTable3();
@@ -752,10 +752,10 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString()))+"','"+
                                 Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,10).toString()))+"','"+
                                 tabMode.getValueAt(i,13).toString()+"','"+
-                                tabMode.getValueAt(i,14).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Piutang Pasien"); 
+                                tabMode.getValueAt(i,14).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Hutang"); 
             }
-            Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-            Sequel.menyimpan("temporary","'0','','','TOTAL HUTANG :','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
+            Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Hutang"); 
+            Sequel.menyimpan("temporary","'0','','','','','','','TOTAL HUTANG :','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Hutang"); 
             
             
             Map<String, Object> param = new HashMap<>();                 
@@ -933,7 +933,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             } 
                             Sequel.queryu("delete from tampjurnal");
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                Sequel.cariIsi("select Bayar_Pemesanan_Obat from set_akun"),"HUTANG USAHA",tabMode.getValueAt(i,11).toString(),"0"
+                                akunbayar,"HUTANG USAHA",tabMode.getValueAt(i,11).toString(),"0"
                             });                     
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                 koderekening,nama_bayar.getSelectedItem().toString(),"0",tabMode.getValueAt(i,11).toString()

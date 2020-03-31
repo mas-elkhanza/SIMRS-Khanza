@@ -157,7 +157,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[L]Monitoring Asuhan Gizi","[N]Penerimaan Obat, Alkes & BHP Per Bulan","[I]Rekap Kunjungan","[O]Surat Keterangan Sakit","[L]Penilaian Awal Keperawatan Ralan",
                     "[A]Permintaan Diet","[L]Master Masalah Keperawatan","[C]Pengajuan Cuti","[I]Kedatangan Pasien Per Jam","[M]Data Pendonor","[Q]Suplier Toko",
                     "[Q]Jenis Barang Toko","[R]Set Harga Toko","[Q]Barang Toko","[J]Penagihan Piutang Pasien","[J]Akun Penagihan Piutang","[Q]Stok Opname Toko",
-                    "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko","[J]Hutang Toko"
+                    "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko","[J]Hutang Toko",
+                    "[J]Bayar Pesan Toko"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -335,7 +336,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 603;i++) {
+        for (i = 0; i < 604;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1177,6 +1178,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(140);
             }else if(i==602){
                 column.setPreferredWidth(81);
+            }else if(i==603){
+                column.setPreferredWidth(105);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1671,7 +1674,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false'","User")==true){
+                    "'false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2316,7 +2319,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "toko_pengajuan_barang='"+tbUser.getValueAt(i,599).toString()+"',"+
                     "toko_penerimaan_barang='"+tbUser.getValueAt(i,600).toString()+"',"+
                     "toko_pengadaan_barang='"+tbUser.getValueAt(i,601).toString()+"',"+
-                    "toko_hutang='"+tbUser.getValueAt(i,602).toString()+"'");
+                    "toko_hutang='"+tbUser.getValueAt(i,602).toString()+"',"+
+                    "toko_bayar_pemesanan='"+tbUser.getValueAt(i,603).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3000,7 +3004,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "toko_pengajuan_barang='"+tbUser.getValueAt(barisdicopy,599).toString()+"',"+
                                     "toko_penerimaan_barang='"+tbUser.getValueAt(barisdicopy,600).toString()+"',"+
                                     "toko_pengadaan_barang='"+tbUser.getValueAt(barisdicopy,601).toString()+"',"+
-                                    "toko_hutang='"+tbUser.getValueAt(barisdicopy,602).toString()+"'");
+                                    "toko_hutang='"+tbUser.getValueAt(barisdicopy,602).toString()+"',"+
+                                    "toko_bayar_pemesanan='"+tbUser.getValueAt(barisdicopy,603).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3310,7 +3315,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
                         "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
                         "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
-                        "toko_pengadaan_barang,toko_hutang from user order by AES_DECRYPT(id_user,'nur')");
+                        "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3925,7 +3930,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("toko_pengajuan_barang"),
                                rs.getBoolean("toko_penerimaan_barang"),
                                rs.getBoolean("toko_pengadaan_barang"),
-                               rs.getBoolean("toko_hutang")
+                               rs.getBoolean("toko_hutang"),
+                               rs.getBoolean("toko_bayar_pemesanan")
                             });
                         }   
                     } catch (Exception e) {
@@ -4529,7 +4535,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("toko_pengajuan_barang"),
                            rs.getBoolean("toko_penerimaan_barang"),
                            rs.getBoolean("toko_pengadaan_barang"),
-                           rs.getBoolean("toko_hutang")
+                           rs.getBoolean("toko_hutang"),
+                           rs.getBoolean("toko_bayar_pemesanan")
                         });
                     }                                             
                  }
