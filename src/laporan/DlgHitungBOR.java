@@ -47,6 +47,7 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0,kamar=0,jumlahhari=0;
     private double hari;
+    private String kd_bangsal = "";
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -136,6 +137,7 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
                 if(akses.getform().equals("DlgKamarInap")){
                     if(dlgKamar.bangsal.getTable().getSelectedRow()!= -1){                   
                         BangsalCari.setText(dlgKamar.bangsal.getTable().getValueAt(dlgKamar.bangsal.getTable().getSelectedRow(),1).toString());
+                        kd_bangsal = dlgKamar.bangsal.getTable().getValueAt(dlgKamar.bangsal.getTable().getSelectedRow(),0).toString();
                     }     
                     BangsalCari.requestFocus();
                 }
@@ -631,7 +633,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     i++;
                 }
                 if(hari>0){
-                    kamar=Sequel.cariInteger("select count(*) from kamar where statusdata='1'");
+                    if(BangsalCari.getText().equals("")){
+                        kamar=Sequel.cariInteger("select count(*) from kamar where statusdata='1'");
+                    } else{
+                        kamar=Sequel.cariInteger("select count(*) from kamar where statusdata='1' and kd_bangsal='"+ kd_bangsal + "'");
+                    }
+                    
                     jumlahhari=Sequel.cariInteger("select (to_days('"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"')-to_days('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"'))");
                     tabMode.addRow(new Object[]{"","","","Jumlah Hari Perawatan",":","","",hari,""});
                     tabMode.addRow(new Object[]{"","","","Jumlah Kamar",":","","",kamar,""});
