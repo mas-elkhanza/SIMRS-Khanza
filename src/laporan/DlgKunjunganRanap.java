@@ -1336,8 +1336,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ps2.close();
                         }
                     }
+                    String dpjp_cetak = "";
+                    dpjp_cetak = rs.getString("nm_dokter") == null ? "-" : rs.getString("nm_dokter");
+                    
                     tabMode.addRow(new Object[]{
-                        i,setlama,setbaru,rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),kddiagnosa,diagnosa,rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),rs.getString("stts_pulang"),rs.getString("tgl_masuk"),rs.getString("nm_dokter")
+                        i,setlama,setbaru,rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),
+                        kddiagnosa,diagnosa,rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),
+                        rs.getString("stts_pulang"),rs.getString("tgl_masuk"),dpjp_cetak
                     });                
                     i++;
                 }
