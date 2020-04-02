@@ -594,6 +594,7 @@ import surat.SuratStatus;
 import toko.TokoBarang;
 import toko.TokoInputStok;
 import toko.TokoJenis;
+import toko.TokoMember;
 import toko.TokoPembelian;
 import toko.TokoPemesanan;
 import toko.TokoPengajuanBarang;
@@ -16001,6 +16002,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMemberTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoMember form=new TokoMember(null,false);
+        form.emptTeks();
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16596,7 +16610,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah,
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
-            btnBayarPesanToko;
+            btnBayarPesanToko,btnMemberToko;
     
     public void isWall(){
         try{            
@@ -19586,6 +19600,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_pengadaan_barang()==true){
                 Panelmenu.add(btnPengadaanBarangToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_member()==true){
+                Panelmenu.add(btnMemberToko); 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==17){   
@@ -22583,6 +22602,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.gettoko_pengadaan_barang()==true){
             Panelmenu.add(btnPengadaanBarangToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_member()==true){
+            Panelmenu.add(btnMemberToko); 
             jmlmenu++;
         }
 
@@ -26729,6 +26753,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_member()==true){
+            if(btnMemberToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMemberToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -28627,6 +28658,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBayarPesanToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBayarPesanTokoActionPerformed(evt);
+            }
+        });
+        
+        btnMemberToko = new widget.ButtonBig();
+        btnMemberToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_meeting_45536.png"))); 
+        btnMemberToko.setText("Member Toko");
+        btnMemberToko.setIconTextGap(0);
+        btnMemberToko.setName("btnMemberToko"); 
+        btnMemberToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMemberToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMemberTokoActionPerformed(evt);
             }
         });
     }

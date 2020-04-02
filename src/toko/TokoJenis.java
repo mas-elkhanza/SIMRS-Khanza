@@ -544,11 +544,13 @@ public final class TokoJenis extends javax.swing.JDialog {
         }else if(Nm.getText().trim().equals("")){
             Valid.textKosong(Nm,"Nama Jenis Barang");
         }else{
-            Valid.editTable(tabMode,"tokojenisbarang","kd_jenis","?","nm_jenis=?,kd_jenis=?",3,new String[]{
-                Nm.getText(),Kd.getText(),tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()
-            });
-            if(tabMode.getRowCount()!=0){BtnCariActionPerformed(evt);}
-            emptTeks();
+            if(tbKamar.getSelectedRow()> -1){
+                Valid.editTable(tabMode,"tokojenisbarang","kd_jenis","?","nm_jenis=?,kd_jenis=?",3,new String[]{
+                    Nm.getText(),Kd.getText(),tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()
+                });
+                if(tabMode.getRowCount()!=0){BtnCariActionPerformed(evt);}
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 

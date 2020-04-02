@@ -843,7 +843,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select logo from setting"));   
-            Valid.MyReportqry("rptBayarPemesanan.jasper","report","::[ Bayar Pemesanan ]::",
+            Valid.MyReportqry("rptBayarPemesananToko.jasper","report","::[ Bayar Pemesanan ]::",
                     "select toko_bayar_pemesanan.tgl_bayar,tokopemesanan.tgl_faktur,tokopemesanan.tgl_pesan,"+
                     "tokopemesanan.tgl_tempo, toko_bayar_pemesanan.no_faktur,"+
                     "tokosuplier.nama_suplier,toko_bayar_pemesanan.nama_bayar,toko_bayar_pemesanan.no_bukti,"+
@@ -1232,7 +1232,6 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             nip.setEditable(false);
             BtnPetugas.setEnabled(false);
             nip.setText(akses.getkode());
-            BtnSimpan.setEnabled(akses.gettoko_bayar_pemesanan());
             Sequel.cariIsi("select nama from petugas where nip=?", nama_petugas,nip.getText());
         }else if(akses.getjml1()>=1){
             nip.setEditable(true);

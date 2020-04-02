@@ -24,7 +24,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
-import keuangan.DlgBayarPemesananNonMedis;
 import keuangan.KeuanganBayarPesanToko;
 
 public class TokoCariPemesanan extends javax.swing.JDialog {
@@ -912,38 +911,39 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_nmjenisKeyPressed
 
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
-  if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().trim().equals("")){
-      Valid.textKosong(TCari,"No.Faktur");
-  }else{
-     try {
-         pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-         rs=pscaripesan.executeQuery();
-         while(rs.next()){
-             pstoko_detail_pesan.setString(1,rs.getString(1));
-             rs2=pstoko_detail_pesan.executeQuery();
-             while(rs2.next()){
-                 Trackbarang.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah"),"Penerimaan", akses.getkode(),"Hapus");
-                 Sequel.mengedit("tokobarang","kode_brng=?","stok=stok-?",2,new String[]{
-                        rs2.getString("jumlah"),rs2.getString("kode_brng")
-                 });
-             }
-             Sequel.queryu("delete from tampjurnal");
-             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select Penerimaan_Toko from set_akun"),"PERSEDIAAN BARANG TOKO","0",rs.getString("tagihan")
-             });    
-             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun"),"HUTANG BARANG TOKO",rs.getString("tagihan"),"0"
-             }); 
-             jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN TOKO"+", OLEH "+akses.getkode());
-         }          
-         Sequel.queryu2("delete from tokopemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-         
-         tampil();
-     } catch (SQLException ex) {
-         System.out.println(ex);
-     }      
-  }       
-    
+    if(tbDokter.getSelectedRow()> -1){
+        if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().trim().equals("")){
+            Valid.textKosong(TCari,"No.Faktur");
+        }else{
+          try {
+             pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+             rs=pscaripesan.executeQuery();
+             while(rs.next()){
+                 pstoko_detail_pesan.setString(1,rs.getString(1));
+                 rs2=pstoko_detail_pesan.executeQuery();
+                 while(rs2.next()){
+                     Trackbarang.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah"),"Penerimaan", akses.getkode(),"Hapus");
+                     Sequel.mengedit("tokobarang","kode_brng=?","stok=stok-?",2,new String[]{
+                            rs2.getString("jumlah"),rs2.getString("kode_brng")
+                     });
+                 }
+                 Sequel.queryu("delete from tampjurnal");
+                 Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                     Sequel.cariIsi("select Penerimaan_Toko from set_akun"),"PERSEDIAAN BARANG TOKO","0",rs.getString("tagihan")
+                 });    
+                 Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                     Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun"),"HUTANG BARANG TOKO",rs.getString("tagihan"),"0"
+                 }); 
+                 jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN TOKO"+", OLEH "+akses.getkode());
+             }          
+             Sequel.queryu2("delete from tokopemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
+
+             tampil();
+          } catch (SQLException ex) {
+             System.out.println(ex);
+          }    
+        }   
+    }
 }//GEN-LAST:event_ppHapusActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -951,19 +951,21 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_formWindowOpened
 
     private void ppBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBayarActionPerformed
-        if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().trim().equals("")){
-            Valid.textKosong(TCari,"No.Faktur");
-        }else{
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            KeuanganBayarPesanToko bayarpesan=new KeuanganBayarPesanToko(null,false);
-            bayarpesan.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            bayarpesan.tampil();
-            bayarpesan.isCek();
-            bayarpesan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            bayarpesan.setLocationRelativeTo(internalFrame1);
-            bayarpesan.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());
-        }   
+        if(tbDokter.getSelectedRow()> -1){
+            if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().trim().equals("")){
+                Valid.textKosong(TCari,"No.Faktur");
+            }else{
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                KeuanganBayarPesanToko bayarpesan=new KeuanganBayarPesanToko(null,false);
+                bayarpesan.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                bayarpesan.tampil();
+                bayarpesan.isCek();
+                bayarpesan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                bayarpesan.setLocationRelativeTo(internalFrame1);
+                bayarpesan.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }   
+        }
     }//GEN-LAST:event_ppBayarActionPerformed
 
     /**
