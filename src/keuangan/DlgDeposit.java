@@ -421,7 +421,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -435,7 +435,7 @@ public class DlgDeposit extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -547,7 +547,7 @@ public class DlgDeposit extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -653,9 +653,19 @@ public class DlgDeposit extends javax.swing.JDialog {
         FormInput.add(ChkJln);
         ChkJln.setBounds(375, 42, 23, 23);
 
-        tipeBayar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Uang Muka Perawatan", "Uang Muka Obat RI" }));
+        tipeBayar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Uang Muka Perawatan", "Uang Muka Obat RI", "Selisih Rawat Inap" }));
         tipeBayar.setName("tipeBayar"); // NOI18N
         tipeBayar.setPreferredSize(new java.awt.Dimension(130, 23));
+        tipeBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipeBayarActionPerformed(evt);
+            }
+        });
+        tipeBayar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tipeBayarPropertyChange(evt);
+            }
+        });
         FormInput.add(tipeBayar);
         tipeBayar.setBounds(580, 72, 130, 23);
 
@@ -973,6 +983,16 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void filterTipeBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filterTipeBayarKeyPressed
         Valid.pindah(evt, TCari,BtnKeluar);
     }//GEN-LAST:event_filterTipeBayarKeyPressed
+
+    private void tipeBayarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tipeBayarPropertyChange
+        keteranganDeposit.setText("");
+        keteranganDeposit.setText(tipeBayar.getSelectedItem().toString());
+    }//GEN-LAST:event_tipeBayarPropertyChange
+
+    private void tipeBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipeBayarActionPerformed
+        keteranganDeposit.setText("");
+        keteranganDeposit.setText(tipeBayar.getSelectedItem().toString());
+    }//GEN-LAST:event_tipeBayarActionPerformed
 
     /**
     * @param args the command line arguments

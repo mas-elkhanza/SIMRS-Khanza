@@ -322,7 +322,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-03-2020"/>
+                        <StringItem index="0" value="02-04-2020"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -350,7 +350,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-03-2020"/>
+                        <StringItem index="0" value="02-04-2020"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -546,7 +546,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-03-2020"/>
+                        <StringItem index="0" value="02-04-2020"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -878,9 +878,10 @@
                 <Component class="widget.ComboBox" name="tipeBayar">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Uang Muka Perawatan"/>
                         <StringItem index="1" value="Uang Muka Obat RI"/>
+                        <StringItem index="2" value="Selisih Rawat Inap"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="tipeBayar" noResource="true"/>
@@ -888,6 +889,10 @@
                       <Dimension value="[130, 23]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipeBayarActionPerformed"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tipeBayarPropertyChange"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="580" y="72" width="-1" height="-1"/>
