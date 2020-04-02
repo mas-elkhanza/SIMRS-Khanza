@@ -107,7 +107,7 @@ public final class TokoBarang extends javax.swing.JDialog {
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
-        kode_brng.setDocument(new batasInput((byte)15).getKata(kode_brng));
+        kode_brng.setDocument(new batasInput((byte)10).getKata(kode_brng));
         nama_brng.setDocument(new batasInput((byte)80).getKata(nama_brng));
         kode_sat.setDocument(new batasInput((byte)4).getKata(kode_sat));
         stok.setDocument(new batasInput((byte)10).getKata(stok));

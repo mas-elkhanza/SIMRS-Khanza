@@ -158,7 +158,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[A]Permintaan Diet","[L]Master Masalah Keperawatan","[C]Pengajuan Cuti","[I]Kedatangan Pasien Per Jam","[M]Data Pendonor","[Q]Suplier Toko",
                     "[Q]Jenis Barang Toko","[R]Set Harga Toko","[Q]Barang Toko","[J]Penagihan Piutang Pasien","[J]Akun Penagihan Piutang","[Q]Stok Opname Toko",
                     "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko","[J]Hutang Toko",
-                    "[J]Bayar Pesan Toko","[Q]Member Toko"
+                    "[J]Bayar Pesan Toko","[Q]Member Toko","[Q]Penjualan Toko"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -336,7 +336,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 605;i++) {
+        for (i = 0; i < 606;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1182,6 +1182,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(105);
             }else if(i==604){
                 column.setPreferredWidth(88);
+            }else if(i==605){
+                column.setPreferredWidth(97);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1676,7 +1678,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2323,7 +2325,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "toko_pengadaan_barang='"+tbUser.getValueAt(i,601).toString()+"',"+
                     "toko_hutang='"+tbUser.getValueAt(i,602).toString()+"',"+
                     "toko_bayar_pemesanan='"+tbUser.getValueAt(i,603).toString()+"',"+
-                    "toko_member='"+tbUser.getValueAt(i,604).toString()+"'");
+                    "toko_member='"+tbUser.getValueAt(i,604).toString()+"',"+
+                    "toko_penjualan='"+tbUser.getValueAt(i,605).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3009,7 +3012,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "toko_pengadaan_barang='"+tbUser.getValueAt(barisdicopy,601).toString()+"',"+
                                     "toko_hutang='"+tbUser.getValueAt(barisdicopy,602).toString()+"',"+
                                     "toko_bayar_pemesanan='"+tbUser.getValueAt(barisdicopy,603).toString()+"',"+
-                                    "toko_member='"+tbUser.getValueAt(barisdicopy,604).toString()+"'");
+                                    "toko_member='"+tbUser.getValueAt(barisdicopy,604).toString()+"',"+
+                                    "toko_penjualan='"+tbUser.getValueAt(barisdicopy,605).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3319,7 +3323,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
                         "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
                         "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
-                        "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member from user order by AES_DECRYPT(id_user,'nur')");
+                        "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3936,7 +3940,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("toko_pengadaan_barang"),
                                rs.getBoolean("toko_hutang"),
                                rs.getBoolean("toko_bayar_pemesanan"),
-                               rs.getBoolean("toko_member")
+                               rs.getBoolean("toko_member"),
+                               rs.getBoolean("toko_penjualan")
                             });
                         }   
                     } catch (Exception e) {
@@ -4542,7 +4547,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("toko_pengadaan_barang"),
                            rs.getBoolean("toko_hutang"),
                            rs.getBoolean("toko_bayar_pemesanan"),
-                           rs.getBoolean("toko_member")
+                           rs.getBoolean("toko_member"),
+                           rs.getBoolean("toko_penjualan")
                         });
                     }                                             
                  }

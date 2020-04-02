@@ -131,7 +131,7 @@ public final class akses {
             pengajuan_cuti=false,kedatangan_pasien=false,utd_pendonor=false,toko_suplier=false,toko_jenis=false,toko_set_harga=false,
             toko_barang=false,penagihan_piutang_pasien=false,akun_penagihan_piutang=false,stok_opname_toko=false,toko_riwayat_barang=false,
             toko_surat_pemesanan=false,toko_pengajuan_barang=false,toko_penerimaan_barang=false,toko_pengadaan_barang=false,toko_hutang=false,
-            toko_bayar_pemesanan=false,toko_member=false;
+            toko_bayar_pemesanan=false,toko_member=false,toko_penjualan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -756,6 +756,7 @@ public final class akses {
                         akses.toko_hutang=true;
                         akses.toko_bayar_pemesanan=true;
                         akses.toko_member=true;
+                        akses.toko_penjualan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1364,6 +1365,7 @@ public final class akses {
                         akses.toko_hutang=rs2.getBoolean("toko_hutang");
                         akses.toko_bayar_pemesanan=rs2.getBoolean("toko_bayar_pemesanan");
                         akses.toko_member=rs2.getBoolean("toko_member");
+                        akses.toko_penjualan=rs2.getBoolean("toko_penjualan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1970,6 +1972,7 @@ public final class akses {
                         akses.toko_hutang=false;
                         akses.toko_bayar_pemesanan=false;
                         akses.toko_member=false;
+                        akses.toko_penjualan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2630,4 +2633,5 @@ public final class akses {
     public static boolean gettoko_hutang(){return akses.toko_hutang;}
     public static boolean gettoko_bayar_pemesanan(){return akses.toko_bayar_pemesanan;}
     public static boolean gettoko_member(){return akses.toko_member;}
+    public static boolean gettoko_penjualan(){return akses.toko_penjualan;}
 }   
