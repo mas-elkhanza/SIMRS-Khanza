@@ -1028,13 +1028,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         akses.setform("TokoPemesanan");
-        TokoBarang barang=new TokoBarang(null,false);
-        barang.emptTeks();
-        barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.setLocationRelativeTo(internalFrame1);
-        barang.setAlwaysOnTop(false);
-        barang.setVisible(true);
+        form.barang.emptTeks();
+        form.barang.isCek();
+        form.barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.barang.setLocationRelativeTo(internalFrame1);
+        form.barang.setAlwaysOnTop(false);
+        form.barang.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahActionPerformed
 

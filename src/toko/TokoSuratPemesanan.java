@@ -476,7 +476,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
         panelisi3.add(Tanggal);
         Tanggal.setBounds(279, 10, 90, 23);
 
-        label13.setText("Pegawai :");
+        label13.setText("Petugas :");
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label13);

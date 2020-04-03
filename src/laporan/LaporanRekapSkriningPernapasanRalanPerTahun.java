@@ -35,7 +35,7 @@ import javax.swing.table.TableColumn;
  *
  * @author perpustakaan
  */
-public final class RekapSkriningPernapasanRalanPerTahun extends javax.swing.JDialog {
+public final class LaporanRekapSkriningPernapasanRalanPerTahun extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -48,7 +48,7 @@ public final class RekapSkriningPernapasanRalanPerTahun extends javax.swing.JDia
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
-    public RekapSkriningPernapasanRalanPerTahun(java.awt.Frame parent, boolean modal) {
+    public LaporanRekapSkriningPernapasanRalanPerTahun(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocation(8,1);
@@ -131,7 +131,7 @@ public final class RekapSkriningPernapasanRalanPerTahun extends javax.swing.JDia
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Skrining Ralan Pernapasan Per Tahun ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Skrining Ralan Pernapasan Per Tahun ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -352,7 +352,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            RekapSkriningPernapasanRalanPerTahun dialog = new RekapSkriningPernapasanRalanPerTahun(new javax.swing.JFrame(), true);
+            LaporanRekapSkriningPernapasanRalanPerTahun dialog = new LaporanRekapSkriningPernapasanRalanPerTahun(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {

@@ -11,7 +11,6 @@
 
 package laporan;
 import fungsi.WarnaTable;
-import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
@@ -21,9 +20,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -43,7 +39,7 @@ import simrskhanza.DlgPenanggungJawab;
  *
  * @author dosen
  */
-public class KedatanganPasienPerJam extends javax.swing.JDialog {
+public class LaporanKedatanganPasienPerJam extends javax.swing.JDialog {
     private DefaultTableModel tabMode;
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
@@ -59,7 +55,7 @@ public class KedatanganPasienPerJam extends javax.swing.JDialog {
     /** Creates new form DlgJadwal
      * @param parent
      * @param modal */
-    public KedatanganPasienPerJam(java.awt.Frame parent, boolean modal) {
+    public LaporanKedatanganPasienPerJam(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -640,7 +636,7 @@ public class KedatanganPasienPerJam extends javax.swing.JDialog {
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            KedatanganPasienPerJam dialog = new KedatanganPasienPerJam(new javax.swing.JFrame(), true);
+            LaporanKedatanganPasienPerJam dialog = new LaporanKedatanganPasienPerJam(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -1627,7 +1623,7 @@ public class KedatanganPasienPerJam extends javax.swing.JDialog {
         try {
             date = new SimpleDateFormat("yyyy-M-d").parse(dateString);
         } catch (Exception ex) {
-            Logger.getLogger(KedatanganPasienPerJam.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LaporanKedatanganPasienPerJam.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // Then get the day of week from the Date based on specific locale.

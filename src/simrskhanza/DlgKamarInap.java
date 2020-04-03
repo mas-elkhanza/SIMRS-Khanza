@@ -597,16 +597,24 @@ public class DlgKamarInap extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgKamarInap")){
-                    if(reg.getTable().getSelectedRow()!= -1){    
-                        norawat.setText(reg.getTable().getValueAt(reg.getTable().getSelectedRow(),1).toString());
-                        TNoRM.setText(reg.getTable().getValueAt(reg.getTable().getSelectedRow(),6).toString());
-                        TPasien.setText(reg.getTable().getValueAt(reg.getTable().getSelectedRow(),7).toString());
-                        if(Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "+
-                                "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat "+
-                                "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",TNoRM.getText())>0){
-                           JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
-                           TNoRM.requestFocus();
-                       }
+                    if(reg.getTable().getSelectedRow()!= -1){  
+                        if(Sequel.cariRegistrasi(reg.getTable().getValueAt(reg.getTable().getSelectedRow(),1).toString())>0){
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                            TCari.requestFocus();
+                        }else{
+                            norawat.setText(reg.getTable().getValueAt(reg.getTable().getSelectedRow(),1).toString());
+                            TNoRM.setText(reg.getTable().getValueAt(reg.getTable().getSelectedRow(),6).toString());
+                            TPasien.setText(reg.getTable().getValueAt(reg.getTable().getSelectedRow(),7).toString());
+                            if(Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "+
+                                    "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                                    "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",TNoRM.getText())>0){
+                               JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
+                               norawat.setText("");
+                               TNoRM.setText("");
+                               TPasien.setText("");
+                               TNoRM.requestFocus();
+                           }
+                        }
                     }                
                 }
             }
@@ -3777,7 +3785,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-04-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3800,7 +3808,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-04-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3827,7 +3835,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-04-2020" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -3850,7 +3858,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-04-2020" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -4123,21 +4131,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
                 key=kmr+" ";
                 if(!TCari.getText().equals("")){
-                    key= kmr+"and kamar_inap.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and kamar_inap.kd_kamar like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and kamar_inap.diagnosa_awal like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and kamar_inap.diagnosa_akhir like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and kamar_inap.trf_kamar like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and kamar_inap.tgl_masuk like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and kamar_inap.stts_pulang like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and kamar_inap.tgl_keluar like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
-                           kmr+"and kamar_inap.ttl_biaya like '%"+TCari.getText().trim()+"%' ";
+                    key= kmr+"and (kamar_inap.no_rawat like '%"+TCari.getText().trim()+"%' or reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                        " concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like '%"+TCari.getText().trim()+"%' or kamar_inap.kd_kamar like '%"+TCari.getText().trim()+"%' or "+
+                        "bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or kamar_inap.diagnosa_awal like '%"+TCari.getText().trim()+"%' or kamar_inap.diagnosa_akhir like '%"+TCari.getText().trim()+"%' or "+
+                        "kamar_inap.trf_kamar like '%"+TCari.getText().trim()+"%' or kamar_inap.tgl_masuk like '%"+TCari.getText().trim()+"%' or dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                        "kamar_inap.stts_pulang like '%"+TCari.getText().trim()+"%' or kamar_inap.tgl_keluar like '%"+TCari.getText().trim()+"%' or penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+                        "kamar_inap.ttl_biaya like '%"+TCari.getText().trim()+"%') ";
                 }
 
                 try{
@@ -4507,7 +4506,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     rs2=psanak.executeQuery();
                                     if(rs2.next()){
                                         if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
-                                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                             TCari.requestFocus();
                                         }else{
                                             akses.setform("DlgKamarInap");
@@ -4542,7 +4541,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             } 
                         }else{    
                             if(Sequel.cariRegistrasi(norawat.getText())>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                 TCari.requestFocus();
                             }else{
                                 akses.setform("DlgKamarInap");
@@ -4622,7 +4621,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         }
                                         
                                         if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
-                                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                             TCari.requestFocus();
                                         }else{
                                             panggilobat(rs2.getString("no_rawat2")); 
@@ -4658,7 +4657,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                             
                             if(Sequel.cariRegistrasi(norawat.getText())>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                 TCari.requestFocus();
                             }else{
                                 panggilobat(norawat.getText());
@@ -4720,7 +4719,7 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
                   try {
                       if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                             TCari.requestFocus();
                       }else{
                            psanak=koneksi.prepareStatement(
@@ -5157,7 +5156,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
                     try {
                         if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                             TCari.requestFocus();
                         }else{
                             psanak=koneksi.prepareStatement(
@@ -5222,7 +5221,7 @@ private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
                     try {
                         if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                             TCari.requestFocus();
                         }else{
                             psanak=koneksi.prepareStatement(
@@ -5702,7 +5701,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             if(tbKamIn.getSelectedRow()>-1){
                 if(!(norawat.getText().trim().equals(""))){
                     if(Sequel.cariRegistrasi(norawat.getText())>0){
-                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                         TCari.requestFocus();
                     }else{
                         i = JOptionPane.showConfirmDialog(rootPane,"Yakin data mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -6317,7 +6316,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             if(tbKamIn.getSelectedRow()>-1){
                 if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
                     if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
-                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                         TCari.requestFocus();
                     }else{
                         try {
@@ -6368,7 +6367,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }     
                 }else{
                     if(Sequel.cariRegistrasi(norawat.getText())>0){
-                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                         TCari.requestFocus();
                     }else{
                         bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",kdkamar.getText()));
@@ -6402,7 +6401,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
                     try {
                         if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                             TCari.requestFocus();
                         }else{
                             psanak=koneksi.prepareStatement(
@@ -6779,7 +6778,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else{
             if(tbKamIn.getSelectedRow()>-1){
                 if(Sequel.cariRegistrasi(norawat.getText())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                     TCari.requestFocus();
                 }else{
                     Sequel.mengedit("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'","stts_pulang='-',tgl_keluar='0000-00-00',jam_keluar='00:00:00'");
@@ -7002,7 +7001,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
                 }else{
                     if(Sequel.cariRegistrasi(norawat.getText())>0){
-                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                         TCari.requestFocus();
                     }else{
                         akses.setform("DlgKamarInap");
@@ -7559,7 +7558,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
                     try {
                         if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
-                              JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                              JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                               TCari.requestFocus();
                         }else{
                               psanak=koneksi.prepareStatement(
@@ -8749,7 +8748,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             TCari.requestFocus();
         }else if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
             if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
                 try {
@@ -8802,7 +8801,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                
         }else{
             if(Sequel.cariRegistrasi(norawat.getText())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9758,21 +9757,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         
         key=kmr+" ";
         if(!TCari.getText().equals("")){
-            key= kmr+"and kamar_inap.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and kamar_inap.kd_kamar like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and kamar_inap.diagnosa_awal like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and kamar_inap.diagnosa_akhir like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and kamar_inap.trf_kamar like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and kamar_inap.tgl_masuk like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and kamar_inap.stts_pulang like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and kamar_inap.tgl_keluar like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
-               kmr+"and kamar_inap.ttl_biaya like '%"+TCari.getText().trim()+"%' ";
+            key= kmr+"and (kamar_inap.no_rawat like '%"+TCari.getText().trim()+"%' or reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+               " concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like '%"+TCari.getText().trim()+"%' or kamar_inap.kd_kamar like '%"+TCari.getText().trim()+"%' or "+
+               "bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or kamar_inap.diagnosa_awal like '%"+TCari.getText().trim()+"%' or kamar_inap.diagnosa_akhir like '%"+TCari.getText().trim()+"%' or "+
+               "kamar_inap.trf_kamar like '%"+TCari.getText().trim()+"%' or kamar_inap.tgl_masuk like '%"+TCari.getText().trim()+"%' or dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+               "kamar_inap.stts_pulang like '%"+TCari.getText().trim()+"%' or kamar_inap.tgl_keluar like '%"+TCari.getText().trim()+"%' or penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+               "kamar_inap.ttl_biaya like '%"+TCari.getText().trim()+"%') ";
         }
         
         Valid.tabelKosong(tabMode);

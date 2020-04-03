@@ -543,9 +543,10 @@ import laporan.DlgKIPPasienRanap;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.DlgRekapPermintaanDiet;
-import laporan.KedatanganPasienPerJam;
-import laporan.RekapKunjunganRuangPerTahun;
-import laporan.RekapSkriningPernapasanRalanPerTahun;
+import laporan.LaporanKedatanganPasienPerJam;
+import laporan.LaporanRegistrasiPoliPerTanggal;
+import laporan.LaporanRekapKunjunganRuangPerTahun;
+import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
 import perpustakaan.PerpustakaanCariEbook;
@@ -598,6 +599,7 @@ import toko.TokoMember;
 import toko.TokoPembelian;
 import toko.TokoPemesanan;
 import toko.TokoPengajuanBarang;
+import toko.TokoPenjualan;
 import toko.TokoRiwayatBarang;
 import toko.TokoSuplier;
 import toko.TokoSuratPemesanan;
@@ -14886,7 +14888,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnSkriningRalanPernapasanPerTahunActionPerformed(java.awt.event.ActionEvent evt) { 
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        RekapSkriningPernapasanRalanPerTahun form=new RekapSkriningPernapasanRalanPerTahun(this,false);
+        LaporanRekapSkriningPernapasanRalanPerTahun form=new LaporanRekapSkriningPernapasanRalanPerTahun(this,false);
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -14955,7 +14957,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        RekapKunjunganRuangPerTahun aplikasi=new RekapKunjunganRuangPerTahun(this,true);
+        LaporanRekapKunjunganRuangPerTahun aplikasi=new LaporanRekapKunjunganRuangPerTahun(this,true);
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -15811,7 +15813,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnKedatanganPasienPerJamActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KedatanganPasienPerJam form=new KedatanganPasienPerJam(this,false);
+        LaporanKedatanganPasienPerJam form=new LaporanKedatanganPasienPerJam(this,false);
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -16015,8 +16017,27 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRegistrasiPoliPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LaporanRegistrasiPoliPerTanggal form=new LaporanRegistrasiPoliPerTanggal(null,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnPenjualanTokoActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPenjualan form=new TokoPenjualan(null,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
@@ -16614,7 +16635,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah,
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
-            btnBayarPesanToko,btnMemberToko,btnPenjualanToko;
+            btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal;
     
     public void isWall(){
         try{            
@@ -18090,6 +18111,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                     Panelmenu.add(btnDaftarPasienRanapTNI);                 
                     jmlmenu++;
                 }
+            }
+            
+            if(akses.getregistrasi_poli_per_tanggal()==true){  
+                Panelmenu.add(btnRegistrasiPoliPerTanggal);                 
+                jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
             jmlmenu=0;
@@ -21110,6 +21136,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnDaftarPasienRanapTNI);                 
                 jmlmenu++;
             }
+        }
+
+        if(akses.getregistrasi_poli_per_tanggal()==true){  
+            Panelmenu.add(btnRegistrasiPoliPerTanggal);                 
+            jmlmenu++;
         }
 
         if(akses.getkamar()==true){
@@ -24664,6 +24695,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
         }
 
+        if(akses.getregistrasi_poli_per_tanggal()==true){  
+            if(btnRegistrasiPoliPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRegistrasiPoliPerTanggal);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getkamar()==true){
             if(btnKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKamar);
@@ -28703,6 +28741,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenjualanToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPenjualanTokoActionPerformed(evt);
+            }
+        });
+        
+        btnRegistrasiPoliPerTanggal = new widget.ButtonBig();
+        btnRegistrasiPoliPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_News_728959.png"))); 
+        btnRegistrasiPoliPerTanggal.setText("Registrasi Poli Per Tanggal");
+        btnRegistrasiPoliPerTanggal.setIconTextGap(0);
+        btnRegistrasiPoliPerTanggal.setName("btnRegistrasiPoliPerTanggal"); 
+        btnRegistrasiPoliPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRegistrasiPoliPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrasiPoliPerTanggalActionPerformed(evt);
             }
         });
     }

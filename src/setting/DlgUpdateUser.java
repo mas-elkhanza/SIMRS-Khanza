@@ -645,7 +645,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
                         "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
                         "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
-                        "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1768,6 +1768,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[I]Kedatangan Pasien Per Jam".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[I]Kedatangan Pasien Per Jam",rs.getBoolean("kedatangan_pasien")});
+                    }
+                    
+                    if("[I]Registrasi Poli Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[I]Registrasi Poli Per Tanggal",rs.getBoolean("registrasi_poli_per_tanggal")});
                     }
                     
                     if("[J]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4203,6 +4207,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
             if("[I]Kedatangan Pasien Per Jam".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","kedatangan_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[I]Registrasi Poli Per Tanggal".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","registrasi_poli_per_tanggal='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[J]Deposit Pasien".equals(tbUser.getValueAt(i,1).toString())){
