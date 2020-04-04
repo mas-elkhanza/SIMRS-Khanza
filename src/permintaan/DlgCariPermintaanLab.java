@@ -16,7 +16,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +23,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -391,6 +389,8 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         MnAmbilLica = new javax.swing.JMenuItem();
         MnKirimSysmex = new javax.swing.JMenuItem();
         MnAmbilSysmex = new javax.swing.JMenuItem();
+        MnKirimLISELIMS = new javax.swing.JMenuItem();
+        MnAmbilLISELIMS = new javax.swing.JMenuItem();
         WindowAmbilSampel = new javax.swing.JDialog();
         internalFrame5 = new widget.InternalFrame();
         BtnCloseIn4 = new widget.Button();
@@ -544,6 +544,34 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnAmbilSysmex);
 
+        MnKirimLISELIMS.setBackground(new java.awt.Color(255, 255, 254));
+        MnKirimLISELIMS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKirimLISELIMS.setForeground(new java.awt.Color(50, 50, 50));
+        MnKirimLISELIMS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKirimLISELIMS.setText("Kirim Permintaan ke LIS ELIMS");
+        MnKirimLISELIMS.setName("MnKirimLISELIMS"); // NOI18N
+        MnKirimLISELIMS.setPreferredSize(new java.awt.Dimension(210, 28));
+        MnKirimLISELIMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKirimLISELIMSActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnKirimLISELIMS);
+
+        MnAmbilLISELIMS.setBackground(new java.awt.Color(255, 255, 254));
+        MnAmbilLISELIMS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnAmbilLISELIMS.setForeground(new java.awt.Color(50, 50, 50));
+        MnAmbilLISELIMS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnAmbilLISELIMS.setText("Ambil Hasil dari LIS ELIMS");
+        MnAmbilLISELIMS.setName("MnAmbilLISELIMS"); // NOI18N
+        MnAmbilLISELIMS.setPreferredSize(new java.awt.Dimension(210, 28));
+        MnAmbilLISELIMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnAmbilLISELIMSActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnAmbilLISELIMS);
+
         WindowAmbilSampel.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowAmbilSampel.setName("WindowAmbilSampel"); // NOI18N
         WindowAmbilSampel.setUndecorated(true);
@@ -584,7 +612,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-02-2020 14:42:16" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-04-2020 22:27:14" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -2470,6 +2498,14 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         } 
     }//GEN-LAST:event_MnAmbilSysmexActionPerformed
 
+    private void MnKirimLISELIMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKirimLISELIMSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnKirimLISELIMSActionPerformed
+
+    private void MnAmbilLISELIMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnAmbilLISELIMSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnAmbilLISELIMSActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2505,11 +2541,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.TextBox CrPoli;
     private widget.TextBox Kamar;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnAmbilLISELIMS;
     private javax.swing.JMenuItem MnAmbilLica;
     private javax.swing.JMenuItem MnAmbilSysmex;
     private javax.swing.JMenuItem MnBarcodePermintaan;
     private javax.swing.JMenuItem MnBarcodePermintaan1;
     private javax.swing.JMenuItem MnCetakHasilLab;
+    private javax.swing.JMenuItem MnKirimLISELIMS;
     private javax.swing.JMenuItem MnKirimLica;
     private javax.swing.JMenuItem MnKirimSysmex;
     private widget.TextBox TCari;

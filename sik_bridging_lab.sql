@@ -47,7 +47,7 @@ CREATE TABLE `LIS_ORDER` (
   `FLAG` enum('0','1') DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ONO` (`ONO`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,6 +58,50 @@ LOCK TABLES `LIS_ORDER` WRITE;
 /*!40000 ALTER TABLE `LIS_ORDER` DISABLE KEYS */;
 INSERT INTO `LIS_ORDER` VALUES (11,'2020-02-13 07:41:41','NW','0100100','MARYANA OLPAH','JL.DURIAN RT 02','-','-','-','OP','2016-02-04','1','PL201909020001','2019-09-02 08:56:53','INT^INT Poli Penyakit Dalam','D0000010^dr. ADHI MP PULUNGAN','INT','R','','2019/09/02/000001','2197~2196~2195~2194~487~486~473','0'),(12,'2020-02-13 07:41:46','NW','0100100','MARYANA OLPAH','JL.DURIAN RT 02','-','-','-','OP','2016-02-04','1','PL201909160002','2019-09-16 15:14:07','OBG^OBG Poli Obstetri/Gyn.','D0000052^dr. DEXA RIVANDI','OBG','R','','2019/09/16/000004','2197~2196~2195~2194~487~473','0'),(13,'2020-02-13 07:41:58','NW','222342','SANTRI LIRBOYO','','-','-','-','IN','2019-09-02','1','PL201909070001','2019-09-07 15:36:22','B0003^Kamar Bersalin','D0000044^dr. DWI KRISNAWATI','KB2','R','','2019/09/02/000003','2197~2196~2195~2194~473','0'),(15,'2020-02-13 07:43:38','NW','222342','SANTRI LIRBOYO','','-','-','-','IN','2019-09-02','1','PL201909080001','2019-09-08 11:52:05','B0003^Kamar Bersalin','D0000044^dr. DWI KRISNAWATI','KB2','R','','2019/09/02/000003','2197~2194~473','0'),(16,'2020-02-13 07:44:00','NW','222342','SANTRI LIRBOYO','','-','-','-','IN','2019-09-02','1','PL201910020002','2019-10-02 11:40:43','B0003^Kamar Bersalin','D0000044^dr. DWI KRISNAWATI','KB2','R','','2019/09/02/000003','2362~2197~2196~2195~2194~487~486~484~483~482~481~477~476~475~474~473','0'),(17,'2020-02-13 07:44:07','NW','231004','Candra Dewi','ALAMAT','-','-','-','IN','1988-01-28','2','PL201909270002','2019-09-27 08:48:10','B0006^Kamar Kelas I','D0000048^dr. HANY MUSLIHA','I A6','R','','2019/09/25/000005','2197~2196~2195~2194~487~486~484~483~482~481~477~476~475~473','0');
 /*!40000 ALTER TABLE `LIS_ORDER` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `LIS_ORDER_DETAIL`
+--
+
+DROP TABLE IF EXISTS `LIS_ORDER_DETAIL`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `LIS_ORDER_DETAIL` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `MESSAGE_DT` datetime DEFAULT NULL,
+  `ORDER_CONTROL` enum('NW','RP','CA') DEFAULT NULL,
+  `PID` varchar(15) DEFAULT NULL,
+  `PNAME` varchar(40) DEFAULT NULL,
+  `ADDRESS1` varchar(100) DEFAULT NULL,
+  `ADDRESS2` varchar(100) DEFAULT NULL,
+  `ADDRESS3` varchar(100) DEFAULT NULL,
+  `ADDRESS4` varchar(100) DEFAULT NULL,
+  `PTYPE` enum('IN','OP') DEFAULT NULL,
+  `BIRTH_DT` date DEFAULT NULL,
+  `SEX` enum('1','2') DEFAULT NULL,
+  `ONO` varchar(17) DEFAULT NULL,
+  `REQUEST_DT` datetime DEFAULT NULL,
+  `SOURCE` varchar(80) DEFAULT NULL,
+  `CLINICIAN` varchar(80) DEFAULT NULL,
+  `ROOM_NO` varchar(15) DEFAULT NULL,
+  `PRIORITY` enum('R','U') DEFAULT NULL,
+  `COMMENT` varchar(80) DEFAULT NULL,
+  `VISITNO` varchar(17) DEFAULT NULL,
+  `ORDER_TESTID` varchar(2000) DEFAULT NULL,
+  `FLAG` enum('0','1') DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `ONO` (`ONO`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `LIS_ORDER_DETAIL`
+--
+
+LOCK TABLES `LIS_ORDER_DETAIL` WRITE;
+/*!40000 ALTER TABLE `LIS_ORDER_DETAIL` DISABLE KEYS */;
+/*!40000 ALTER TABLE `LIS_ORDER_DETAIL` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -89,7 +133,7 @@ CREATE TABLE `RESDT` (
   `ITEM_PARENT` varchar(6) DEFAULT NULL,
   PRIMARY KEY (`ID`,`ONO`,`TEST_CD`),
   UNIQUE KEY `ONO` (`ONO`,`TEST_CD`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +169,7 @@ CREATE TABLE `RESHD` (
   `VISITNO` varchar(17) DEFAULT NULL,
   PRIMARY KEY (`ID`,`ONO`),
   UNIQUE KEY `ONO` (`ONO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,6 +179,98 @@ CREATE TABLE `RESHD` (
 LOCK TABLES `RESHD` WRITE;
 /*!40000 ALTER TABLE `RESHD` DISABLE KEYS */;
 /*!40000 ALTER TABLE `RESHD` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `detail_hasil_lab`
+--
+
+DROP TABLE IF EXISTS `detail_hasil_lab`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `detail_hasil_lab` (
+  `noorder` varchar(15) NOT NULL,
+  `kd_jenis_prw` varchar(15) NOT NULL,
+  `id_template` int(11) NOT NULL,
+  `nilai` varchar(60) NOT NULL,
+  `nilai_rujukan` varchar(30) NOT NULL,
+  `keterangan` varchar(60) NOT NULL,
+  PRIMARY KEY (`noorder`,`kd_jenis_prw`,`id_template`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `detail_hasil_lab`
+--
+
+LOCK TABLES `detail_hasil_lab` WRITE;
+/*!40000 ALTER TABLE `detail_hasil_lab` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detail_hasil_lab` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `detail_permintaan_lab`
+--
+
+DROP TABLE IF EXISTS `detail_permintaan_lab`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `detail_permintaan_lab` (
+  `noorder` varchar(15) NOT NULL,
+  `kd_jenis_prw` varchar(15) NOT NULL,
+  `id_template` int(11) NOT NULL,
+  PRIMARY KEY (`noorder`,`kd_jenis_prw`,`id_template`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `detail_permintaan_lab`
+--
+
+LOCK TABLES `detail_permintaan_lab` WRITE;
+/*!40000 ALTER TABLE `detail_permintaan_lab` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detail_permintaan_lab` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `permintaan_lab`
+--
+
+DROP TABLE IF EXISTS `permintaan_lab`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permintaan_lab` (
+  `noorder` varchar(15) NOT NULL,
+  `no_rawat` varchar(17) NOT NULL,
+  `no_rkm_medis` varchar(15) NOT NULL,
+  `nm_pasien` varchar(40) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `jk` enum('L','P') DEFAULT NULL,
+  `tmp_lahir` varchar(15) DEFAULT NULL,
+  `tgl_lahir` date DEFAULT NULL,
+  `alamat` varchar(200) DEFAULT NULL,
+  `tgl_permintaan` date NOT NULL,
+  `jam_permintaan` time NOT NULL,
+  `kode_dokter_perujuk` varchar(20) NOT NULL,
+  `dokter_perujuk` varchar(50) NOT NULL,
+  `status` enum('ralan','ranap') NOT NULL,
+  `kode_ruang` varchar(20) NOT NULL,
+  `nama_ruang` varchar(50) NOT NULL,
+  `kode_carabayar` varchar(20) NOT NULL,
+  `nama_carabayar` varchar(50) NOT NULL,
+  `informasi_tambahan` varchar(60) NOT NULL,
+  `diagnosa_klinis` varchar(80) NOT NULL,
+  PRIMARY KEY (`noorder`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permintaan_lab`
+--
+
+LOCK TABLES `permintaan_lab` WRITE;
+/*!40000 ALTER TABLE `permintaan_lab` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permintaan_lab` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -146,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-13  9:28:24
+-- Dump completed on 2020-04-04 23:35:49
