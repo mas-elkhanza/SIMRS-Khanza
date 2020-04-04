@@ -24,6 +24,6 @@ resumepasien
 nbproject/project.properties
 nbproject/private/private.xml
 .DS_Store
-src/.DS_Store
+*/.DS_Store
 setting/database.xml
 setting/database-online.xml
