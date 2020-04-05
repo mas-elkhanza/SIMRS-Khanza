@@ -82,7 +82,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Transaksi Penjualan Obat, Alkes &amp; BHP Medis ]::">
+            <TitledBorder title="::[ Transaksi Penjualan Barang Toko / Minimarket / Koperasis ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -696,6 +696,7 @@
                     <StringItem index="2" value="Retail"/>
                   </StringArray>
                 </Property>
+                <Property name="selectedIndex" type="int" value="2"/>
                 <Property name="name" type="java.lang.String" value="Jenisjual" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[40, 23]"/>
