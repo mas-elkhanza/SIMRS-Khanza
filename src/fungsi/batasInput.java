@@ -5,7 +5,6 @@
 
 package fungsi;
 
-import java.util.regex.Pattern;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
@@ -103,36 +102,6 @@ public class batasInput {
                 for(int i=0;i<upp.length;i++){
                     upp[i]=Character.toUpperCase(upp[i]);
                         boolean isOnlyAngka=Character.isDigit(upp[i]);
-                        if(isOnlyAngka==true){
-                            upp[c]=upp[i];
-                            c++;
-                        }
-                }
-                buf.append(upp,0,c);
-                int x=inputan.getText().length();
-                if(x<length){
-                    super.insertString(offs,new String(buf), a);
-                }
-            }
-        };return filter;
-    }
-    
-    public PlainDocument getOnlyAngka2(final JTextField inputan) {
-        filter=new PlainDocument(){
-            @Override
-            public void insertString(int offs, String str, AttributeSet a)throws BadLocationException{
-                StringBuffer buf=new StringBuffer();
-                int c=0;
-                char[] upp=str.toCharArray();
-                for(int i=0;i<upp.length;i++){
-                    
-                    if(upp[i] == '-'){
-                        upp[c]=upp[i];
-                        c++;
-                    }
-                    
-                    upp[i]=Character.toUpperCase(upp[i]);
-                        boolean isOnlyAngka=Character.isDigit(upp[i]); 
                         if(isOnlyAngka==true){
                             upp[c]=upp[i];
                             c++;
