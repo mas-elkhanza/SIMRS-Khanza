@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="561" leftMargin="17" rightMargin="17" topMargin="17" bottomMargin="17" uuid="eeb60c86-7702-4e97-933f-bc659d1bee0c">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="143"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[YXR1cmFuX3Bha2FpICwxNSw2OSw0M2M5NmI2ZS1jZDUwLTQxZmYtOTY5Yi02YjAzZThlYTY2Zjk7
+ZGF0YWJhcmFuZyAsMzQxLDk2LDkxZTI1ZGVlLTMyM2UtNDNkNi1iMTExLTkxNDk1ODkwYTg1NTtk
+ZXRhaWxfcGVtYmVyaWFuX29iYXQgLDE2NiwxNSw5ODEzZDA4Yy1lMDBkLTQwMTktOTZjYi0wZDNk
+MTk2MzFhNTU7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<parameter name="penanggung" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="emailrs" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="tanggal" class="java.lang.String"/>
+	<parameter name="jam" class="java.lang.String"/>
+	<parameter name="norawat" class="java.lang.String"/>
+	<parameter name="pasien" class="java.lang.String"/>
+	<parameter name="norm" class="java.lang.String"/>
+	<parameter name="peresep" class="java.lang.String"/>
+	<parameter name="noresep" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select databarang.kode_brng,databarang.nama_brng,detail_pemberian_obat.jml,detail_pemberian_obat.jam,
+detail_pemberian_obat.biaya_obat,detail_pemberian_obat.embalase,databarang.kode_sat,
+detail_pemberian_obat.tuslah,detail_pemberian_obat.total,aturan_pakai.aturan from
+detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng
+left join aturan_pakai on aturan_pakai.tgl_perawatan=detail_pemberian_obat.tgl_perawatan 
+and aturan_pakai.jam=detail_pemberian_obat.jam 
+and aturan_pakai.no_rawat=detail_pemberian_obat.no_rawat
+and aturan_pakai.kode_brng=detail_pemberian_obat.kode_brng
+where detail_pemberian_obat.tgl_perawatan=$P{tanggal} and detail_pemberian_obat.jam=$P{jam} and detail_pemberian_obat.no_rawat=$P{norawat}]]>
+	</queryString>
+	<field name="kode_brng" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_brng" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jml" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="biaya_obat" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="embalase" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kode_sat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tuslah" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aturan" class="java.lang.String"/>
+	<field name="jam" class="java.lang.String"/>
+	<variable name="no" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{kode_brng}]]></variableExpression>
+	</variable>
+	<variable name="total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="139" splitType="Stretch">
+			<textField>
+				<reportElement x="48" y="14" width="242" height="14" uuid="21999308-a9b7-4a06-a44d-232077eca403"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="42" width="242" height="14" uuid="e04f9d4a-c6cf-4e9b-9bec-aaca6861a505"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="28" width="242" height="14" uuid="6822fafe-a347-4216-b9f6-7441c3b478a3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="48" y="0" width="242" height="14" uuid="e5f69eb5-88ac-4c8a-84d4-6b628c20db68">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="0" y="4" width="48" height="45" uuid="cabacfb8-41c5-4ab0-94b1-8d9f20cbacae">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="57" width="560" height="1" uuid="168ccccd-3ba1-42df-a4bb-ea69f83883f3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="83" width="90" height="12" uuid="eec00af4-473d-41af-b416-74411e3a85c4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nama Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="95" width="90" height="12" uuid="1f51fa58-a42e-4976-ac9e-f19434d4ea22"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No. R.M.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="107" width="90" height="12" uuid="ab0c0620-812e-4e7b-8fbc-00e96a95dfc4"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Penanggung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="119" width="90" height="12" uuid="e69eee08-1d5d-42d1-b650-186dacc1d224"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Pemberi Resep]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="91" y="95" width="5" height="12" uuid="437e2834-ec68-43f1-8f66-3a89d0999eef"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="91" y="83" width="5" height="12" uuid="1d2cf0ed-89fa-4393-b555-71866e418054">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="91" y="119" width="5" height="12" uuid="2cb45e20-ff89-4911-8193-a0466d5693a7"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="91" y="108" width="5" height="12" uuid="d3fe4fb9-c75e-4b90-bb7e-0fe878f0c45c"/>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="96" y="83" width="194" height="12" uuid="4ff74457-9947-4ff8-915f-b0102264f08d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="96" y="95" width="194" height="12" uuid="978be72d-f2f5-4227-aafb-0f995660e0b9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{norm}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="96" y="107" width="194" height="12" uuid="948089cb-d920-422b-86e0-c40204c1d6ab">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{penanggung}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="96" y="119" width="194" height="12" uuid="490f770c-cdfa-484f-8d42-3ab17c238d0a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{peresep}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="147" y="64" width="143" height="12" uuid="08b21648-2a93-4464-bca8-ab33814c5ef2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kotars}+", "+$P{tanggal}+" "+$F{jam}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="16" y="0" width="144" height="12" uuid="50e9c382-8f9a-44c1-8334-27dfe86fb708"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_brng}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="0" y="0" width="16" height="12" uuid="995e89dc-36b2-48ed-97c3-4b683bee02d8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{no}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="Rp #,##0.00">
+				<reportElement mode="Transparent" x="207" y="0" width="83" height="12" uuid="0bf50cb4-dac3-4ef0-ba9e-f532d748e43a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="161" y="0" width="46" height="12" uuid="fc4776f5-448e-4a9e-b500-fe907d0d5c96"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jml}+" "+$F{kode_sat}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="16" y="11" width="144" height="12" uuid="d0495648-8e23-4e58-ab12-0859be0d5e70"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aturan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="323" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="145" y="215" width="15" height="10" backcolor="#02A32A" uuid="c5e1e8e3-620c-47a1-9f11-8bf00a231b3f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[T]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="Rp #,##0.00">
+				<reportElement mode="Transparent" x="207" y="0" width="83" height="12" uuid="08cdd412-e84b-4162-a608-9e449a483624"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="16" y="0" width="57" height="12" uuid="13b77721-99b3-4052-878f-1b90dd39105e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TOTAL :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="145" width="19" height="10" backcolor="#02A32A" uuid="68e9de91-c6dc-459d-8e9b-c1257c668bef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="20" y="145" width="108" height="10" backcolor="#02A32A" uuid="7eb89aeb-a5e1-4f62-bf55-ba574d38654e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TELAAH OBAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="128" y="145" width="15" height="10" backcolor="#02A32A" uuid="1c479484-2efa-4f76-b857-e60a52884689">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="156" width="18" height="10" uuid="7fe47f59-ca6c-4c29-8387-81188e48b130">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="156" width="125" height="10" uuid="26d90b0b-ef63-4762-8ea7-ee6ac8f5c620">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[BENAR PASIEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="167" width="125" height="10" uuid="d89e69f0-c5f8-4271-a8e6-f13604e1ab87">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[BENAR OBAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="167" width="18" height="10" uuid="1b522571-7778-4245-8b8b-c6716656a78d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="178" width="18" height="10" uuid="15b8e170-a50e-4fb6-b827-ace122067116">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="178" width="125" height="10" uuid="6d0c790a-d59e-4ff8-ab74-c2b1b717264d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[BENAR DOSIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="189" width="125" height="10" uuid="2eaa03bb-54d6-4d7c-a047-9d23aeee199a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[BENAR RUTE PEMBERIAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="200" width="18" height="10" uuid="514796c8-97cd-4805-9834-e1fb037eb9c3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="189" width="18" height="10" uuid="77edf6ab-9aa1-4df2-93d8-904631ff6758">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="200" width="125" height="10" uuid="bee35878-68f7-4ac2-8c5e-bcc198166770">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[BENAR WAKTU PEMBERIAN]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="145" width="1" height="65" uuid="ea5fedff-e623-4482-9fea-c184333f0fe7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="19" y="145" width="1" height="65" uuid="20fe4268-3292-49f3-8fb7-127af5c9d959"/>
+			</line>
+			<line>
+				<reportElement x="128" y="145" width="1" height="65" uuid="a28fa62e-f24a-42c5-b51b-9902c5a9801d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="143" y="145" width="1" height="65" uuid="79cdd3ac-6d20-4110-a01f-10797e6d4f91"/>
+			</line>
+			<line>
+				<reportElement x="0" y="144" width="160" height="1" uuid="e800a34f-51e2-4c20-bf48-2cfcc680ae82">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="155" width="160" height="1" uuid="9ac8ea57-d0f2-4ae7-b092-0f90bd0a7145"/>
+			</line>
+			<line>
+				<reportElement x="0" y="166" width="160" height="1" uuid="3e9fc353-295f-462a-9643-763f88621c8e"/>
+			</line>
+			<line>
+				<reportElement x="0" y="177" width="160" height="1" uuid="138a3895-6e3e-4d63-b429-6230daf268c3"/>
+			</line>
+			<line>
+				<reportElement x="0" y="188" width="160" height="1" uuid="eaf1c1c7-44ae-496e-b5f8-136ef732c25e"/>
+			</line>
+			<line>
+				<reportElement x="0" y="199" width="160" height="1" uuid="a7b50d62-610f-43b1-a892-069f18d66f7f"/>
+			</line>
+			<line>
+				<reportElement x="0" y="210" width="160" height="1" uuid="1a53d5a8-72b9-4df2-b82c-5cf3d36fe324"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="144" y="145" width="15" height="10" backcolor="#02A32A" uuid="2de12360-18ea-4767-a8b4-d7513175adcc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[T]]></text>
+			</staticText>
+			<line>
+				<reportElement x="159" y="145" width="1" height="65" uuid="cd77b261-9963-47dc-8e3c-50e0d5400f43"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="20" width="19" height="10" backcolor="#02A32A" uuid="0da6d198-4cdd-43e9-be18-3fc752064880">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="20" y="20" width="107" height="10" backcolor="#02A32A" uuid="ad3a61d2-5dfd-440e-bf82-2ca088ec45e1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TELAAH RESEP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="128" y="20" width="15" height="10" backcolor="#02A32A" uuid="d79ab389-fef9-427c-b9b1-aca53de8c928">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="31" width="18" height="10" uuid="8d616239-8e1b-4ee0-9a6d-5e3cd6c9d639">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="31" width="125" height="10" uuid="3adc4150-5b7b-45cb-a9e3-3547ee97c512">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[IDENTITAS PASIEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="42" width="125" height="10" uuid="9ce5af1e-4013-444d-999e-f761de81aef2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TEPAT OBAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="42" width="18" height="10" uuid="eba7df7f-1c2a-4353-9305-85fb4be1016d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="53" width="18" height="10" uuid="f6924737-92c5-4ac4-a62e-5d01061dadeb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="53" width="125" height="10" uuid="216229a7-738d-4b8b-9bf9-1bab52198dd8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TEPAT DOSIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="86" width="18" height="10" uuid="528618f8-cbde-400e-ae61-4b5bc2a98c70">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="64" width="125" height="10" uuid="81f55248-27c5-4478-91cb-0c06b55895e8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TEPAT RUTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="75" width="18" height="10" uuid="ca3e61e6-3a86-41ad-a345-6238ec4ec30d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="64" width="18" height="10" uuid="c6d36e29-4003-46c5-b782-2662fa74fcd6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="86" width="125" height="10" uuid="6a9ff0f0-7352-4697-970c-a6410eb5bed3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DUPLIKASI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="75" width="125" height="10" uuid="e82390aa-5a5c-4852-a95d-26f372d9155b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TEPAT WAKTU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="97" width="18" height="10" uuid="e15e26e7-68f1-4bfe-939a-0d6ada44b8d3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="119" width="125" height="10" uuid="55cb7ba3-1905-4156-9ff8-256f7c772b5a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[BERAT BADAN (PASIEN ANAK)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="97" width="125" height="10" uuid="e4d19ab9-cab2-467c-a589-a1f42686116d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ALERGI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="119" width="18" height="10" uuid="95621a53-1ec5-4330-ad45-950b0fa0250f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="108" width="125" height="10" uuid="405a90f2-ce25-4596-9ac9-25d55411db43">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[INTERAKSI OBAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="108" width="18" height="10" uuid="8579e4f4-08b6-4129-a6de-d9b0eb1c7eb6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[8]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="1" height="120" uuid="4c3a9e7a-219d-4151-bcba-655eeffdb825">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="19" y="20" width="1" height="120" uuid="9f4d0629-1514-4270-a7f8-bc0bd278cccc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="127" y="20" width="1" height="120" uuid="38696b08-304a-4f23-a169-5ee0a276b421">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="143" y="20" width="1" height="120" uuid="b4bdf2b4-18c3-4007-81c9-b8bbfcb763c3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="19" width="160" height="1" uuid="fca7de17-d1c3-4d8c-9340-932847fb2100">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="30" width="160" height="1" uuid="2465c0de-7c01-40bb-9067-be53869673ac"/>
+			</line>
+			<line>
+				<reportElement x="0" y="41" width="160" height="1" uuid="b15ea5d9-74a7-41d1-a43a-c9d7bf9b1d88"/>
+			</line>
+			<line>
+				<reportElement x="0" y="52" width="160" height="1" uuid="7d334992-5156-46c0-9101-4747b994b42d"/>
+			</line>
+			<line>
+				<reportElement x="0" y="63" width="160" height="1" uuid="3da3b3b0-4fef-459a-ad45-8f9401a7261e"/>
+			</line>
+			<line>
+				<reportElement x="0" y="74" width="160" height="1" uuid="d3fee342-bbc7-41ab-8595-dd6c8a0d1432"/>
+			</line>
+			<line>
+				<reportElement x="0" y="85" width="160" height="1" uuid="8669ab7f-5ba1-43c2-b2ce-00dcdf654b0a"/>
+			</line>
+			<line>
+				<reportElement x="0" y="96" width="160" height="1" uuid="25cc6ddd-ca99-497a-ab22-f1b83155ba3e"/>
+			</line>
+			<line>
+				<reportElement x="0" y="129" width="160" height="1" uuid="67b72a4f-bcec-497e-8f13-76e2471f41f6"/>
+			</line>
+			<line>
+				<reportElement x="0" y="118" width="160" height="1" uuid="70ceb96d-844e-42af-93d5-fa98db3d4998"/>
+			</line>
+			<line>
+				<reportElement x="0" y="107" width="160" height="1" uuid="5e5fb89f-e7fd-4bd6-b3a4-11150375fe72"/>
+			</line>
+			<staticText>
+				<reportElement x="22" y="130" width="125" height="10" uuid="b1a9c37d-193f-4f0c-ad3a-cf6babd264a1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[KONTRA INDIKASI LAINNYA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="130" width="18" height="10" uuid="758ce202-3e8c-4972-8ce1-625e213261bf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[10]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="140" width="160" height="1" uuid="d5dd5dbe-25cc-4936-b6a4-2bb09e7c120a"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="144" y="20" width="15" height="10" backcolor="#02A32A" uuid="cdd914ec-abf7-4a26-9387-bcaaf7d34702"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[T]]></text>
+			</staticText>
+			<line>
+				<reportElement x="159" y="20" width="1" height="120" uuid="9f939bdc-aa4a-4528-a3d3-8522cfbd9702">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="215" width="20" height="10" backcolor="#02A32A" uuid="728cff9b-1f26-4802-aeb7-764b9986d6f9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="19" y="215" width="110" height="10" backcolor="#02A32A" uuid="e81fab49-3962-4c78-bde5-66011ce85bf5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[YANG DIJELASKAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="129" y="215" width="15" height="10" backcolor="#02A32A" uuid="a4562676-13c1-4051-aa02-768f60840cd4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="225" width="18" height="10" uuid="9f2c3cb5-e102-467b-ba4c-46d4b6599555">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="225" width="90" height="10" uuid="b8f7ea7f-f3f5-4487-826d-69851c7db28c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[NAMA OBAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="236" width="90" height="10" uuid="46a3e000-f8d2-4570-af63-4abd1f9ae716">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[JUMLAH OBAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="236" width="18" height="10" uuid="ff5a8c25-0ac5-445a-b7ff-1be65211c8c3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="247" width="18" height="10" uuid="865f2aea-36bf-4dff-90a6-9aabcd8f75b9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="247" width="90" height="10" uuid="95e26991-fac3-461d-8d2c-1cf4c5ae61c1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[INDIKASI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="279" width="18" height="10" uuid="76f45893-9ddf-49bd-bd16-78578197745e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="258" width="90" height="10" uuid="cb3445aa-05fa-4733-8528-1e483e7b4f2a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ATURAN PAKAI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="269" width="18" height="10" uuid="92e1155b-31fa-4912-bffd-947291c3bbb2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="258" width="18" height="10" uuid="9dff1d2c-6ad6-4ad0-898e-84bde123aa94">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="279" width="90" height="10" uuid="b7f00612-d7db-416b-bd12-0924735de4a9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[CARA PEMAKAIAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="269" width="90" height="10" uuid="10d5dac4-1ec2-4a9b-b16d-498912503541">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[WAKTU MINUM OBAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="290" width="18" height="10" uuid="a2a9f926-cbf1-4724-80de-150307783929">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="312" width="90" height="10" uuid="2dfd6071-dca5-4b2a-91c2-245c4e572180">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[PENYIMPANAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="290" width="90" height="10" uuid="3af15572-2704-468b-9592-649303bd330a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[DURASI PEMBERIAN OBAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="312" width="18" height="10" uuid="d5d63c8f-af47-446c-b30c-012d4b25f660">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="301" width="90" height="10" uuid="b9cc4887-f8e0-42af-aa51-33f2e16472c9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[EFEK SAMPING]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="301" width="18" height="10" uuid="a8e5b60f-49c9-43c5-b95c-fba5054e2014">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[8]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="215" width="1" height="108" uuid="b157c918-333e-4f0d-90a0-8ced69691aa9"/>
+			</line>
+			<line>
+				<reportElement x="19" y="215" width="1" height="108" uuid="6f74b9ce-6fb5-4cc4-bbea-53d5ac99487f"/>
+			</line>
+			<line>
+				<reportElement x="128" y="215" width="1" height="108" uuid="558146f3-753f-4a9e-9d64-5524619abe21"/>
+			</line>
+			<line>
+				<reportElement x="144" y="215" width="1" height="108" uuid="f1c573c2-280b-4b34-b1f4-6c4d03b9a567">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="214" width="160" height="1" uuid="d765614a-97a2-41c4-86f5-dcce7d0b459c"/>
+			</line>
+			<line>
+				<reportElement x="0" y="235" width="160" height="1" uuid="1521b61a-000f-41df-9a3d-7e07c5b6e661">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="246" width="160" height="1" uuid="f397c848-96e9-4843-8acf-0c1779736724">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="257" width="160" height="1" uuid="5fb76a44-6efe-4753-b2d3-6d817b28c6a9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="268" width="160" height="1" uuid="69142ed6-280a-43bf-b624-785f766428df">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="278" width="160" height="1" uuid="032c172a-852b-4e23-981a-174dc8263453">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="289" width="160" height="1" uuid="681449db-1576-4824-b407-ffb04f61377b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="300" width="160" height="1" uuid="d5ddaefb-dcde-4871-b519-5ecedf56d2a4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="224" width="160" height="1" uuid="8764bd64-5c03-47db-9d88-ffcc63b79971">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="322" width="160" height="1" uuid="adc0347d-73f0-4de0-9386-770bb49d1d60">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="0" y="311" width="160" height="1" uuid="85ce04c7-6a6d-4df1-8fe6-e0ee94ab4acf"/>
+			</line>
+			<line>
+				<reportElement x="159" y="215" width="1" height="108" uuid="f54d3230-946f-4efe-967e-351e0023dda2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="223" y="89" width="12" height="12" uuid="ddaa6487-5ab6-4c22-9df0-3517443b4c9c"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="223" y="30" width="12" height="12" uuid="fd727d01-7c62-48b9-ab86-b82fce344593"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="170" y="120" width="52" height="12" uuid="7c3ef5f0-6ba5-4a7a-aa64-5edaaf51bf3e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[SERAH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="170" y="30" width="52" height="12" uuid="4f9933fd-15d3-400a-b26b-d882125ee51b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[INPUT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="170" y="59" width="52" height="12" uuid="86d7bc98-9750-4609-a099-0c137fdd9005">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[AMBIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="223" y="120" width="12" height="12" uuid="39aa9de8-d63d-481f-83fc-f0f12adff155"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="223" y="59" width="12" height="12" uuid="b8415b5a-7bfe-412c-b130-7a716c22caaf"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="170" y="89" width="52" height="12" uuid="7d2b8a6b-8a58-4ff8-95a4-92c85b17d050">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ETIKET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="171" y="150" width="52" height="12" uuid="30b50ddb-1fd5-4537-a82b-9858213de946">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[PENERIMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="224" y="150" width="12" height="12" uuid="2a0c9188-1f9d-49f3-a728-e0e414f66385"/>
+				<textElement textAlignment="Left" markup="none">
+					<font fontName="Times New Roman" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
