@@ -3926,7 +3926,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }
 
                 try{
-                    pilihancetak = (String)JOptionPane.showInputDialog(rootPane,"Silahkan pilih laporan yang mau dicetak!","Laporan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1", "Laporan 2","Lembar Bimbingan Rohani"},"Laporan 1");
+                    pilihancetak = (String)JOptionPane.showInputDialog(rootPane,"Silahkan pilih laporan yang mau dicetak!","Laporan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1", "Laporan 2","Laporan 3","Lembar Bimbingan Rohani"},"Laporan 1");
                     switch (pilihancetak) {
                         case "Laporan 1":
                                  Map<String, Object> param = new HashMap<>();    
@@ -3975,7 +3975,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",param2);
                                  this.setCursor(Cursor.getDefaultCursor());
                               break;
-                        case "Lembar Bimbingan Rohani":
+                              case "Laporan 3":
                                  Map<String, Object> param3 = new HashMap<>();    
                                  param3.put("namars",akses.getnamars());
                                  param3.put("alamatrs",akses.getalamatrs());
@@ -3984,6 +3984,30 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                  param3.put("kontakrs",akses.getkontakrs());
                                  param3.put("emailrs",akses.getemailrs());   
                                  param3.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                 param3.put("doktermasuk",Sequel.cariIsi("select dokter.nm_dokter from reg_periksa inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter where no_rawat =?", norawat.getText()));
+                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                 Valid.MyReportqry("rptKamarInap5.jasper","report","::[ Data Kamar Inap Pasien ]::","select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.agama,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"+
+                                    "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,dokter.nm_dokter,kamar_inap.asal_kiriman,suku_bangsa.nama_suku_bangsa," +
+                                    "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,"+
+                                    "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"+
+                                    "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,"+
+                                    "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "+
+                                    "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                    "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                                    "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                                    "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join suku_bangsa on pasien.suku_bangsa=suku_bangsa.id "+
+                                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",param3);
+                                 this.setCursor(Cursor.getDefaultCursor());
+                              break;
+                        case "Lembar Bimbingan Rohani":
+                                 Map<String, Object> param4 = new HashMap<>();    
+                                 param4.put("namars",akses.getnamars());
+                                 param4.put("alamatrs",akses.getalamatrs());
+                                 param4.put("kotars",akses.getkabupatenrs());
+                                 param4.put("propinsirs",akses.getpropinsirs());
+                                 param4.put("kontakrs",akses.getkontakrs());
+                                 param4.put("emailrs",akses.getemailrs());   
+                                 param4.put("logo",Sequel.cariGambar("select logo from setting")); 
                                  this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                  Valid.MyReportqry("rptKamarInap3.jasper","report","::[ Data Kamar Inap Pasien ]::","select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"+
                                     "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,pasien.agama," +
@@ -3995,7 +4019,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                                     "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                                     "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",param3);
+                                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",param4);
                                  this.setCursor(Cursor.getDefaultCursor());
                               break;
                     }

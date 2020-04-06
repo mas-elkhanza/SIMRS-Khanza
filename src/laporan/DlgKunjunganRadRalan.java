@@ -57,7 +57,7 @@ public final class DlgKunjunganRadRalan extends javax.swing.JDialog {
     private DlgKecamatan kecamatan=new DlgKecamatan(null,false);
     private DlgKelurahan kelurahan=new DlgKelurahan(null,false);
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
-    private int i=0,laki=0,per=0,jmldiagnosa=0,jmlnolab=0;   
+    private int i=0,laki=0,per=0,jmldiagnosa=0,jmlnolab=0,jmltindakan=0;   
     private String umurlk="",umurpr="",kddiangnosa="",diagnosa="",no_lab="",tindakan="";
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -1224,11 +1224,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps2=koneksi.prepareStatement(
                         "select trim(jns_perawatan_radiologi.nm_perawatan) from jns_perawatan_radiologi inner join periksa_radiologi "+
                         "on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "+
-                        "periksa_radiologi.status='Ralan' and periksa_radiologi.no_rawat=? and periksa_radiologi.tgl_periksa=? and periksa_radiologi.jam=? ");
+                        "periksa_radiologi.status='Ralan' and periksa_radiologi.no_rawat=? and periksa_radiologi.tgl_periksa=? and periksa_radiologi.jam=? and jns_perawatan_radiologi.nm_perawatan like ? ");
                     try {
                         ps2.setString(1,rs.getString("no_rawat"));
                         ps2.setString(2,rs.getString("tgl_periksa"));
                         ps2.setString(3,rs.getString("jam"));
+                        ps2.setString(4,"%"+TCari.getText().trim()+"%");
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
                             tindakan=rs2.getString(1)+","+tindakan;
@@ -1242,7 +1243,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         if(ps2!=null){
                             ps2.close();
                         }
-                    }    
+                    }
+                    if(!tindakan.equals("")){
+                        jmltindakan++;
+                    }
                     
                     if(tindakan.endsWith(",")){
                         tindakan = tindakan.substring(0,tindakan.length() - 1);
@@ -1257,7 +1261,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
                 if(i>1){
                     tabMode.addRow(new Object[]{
-                        ">>","Total : ",jmlnolab,(i-1),"",laki,per,"",jmldiagnosa,"","","",""
+                        ">>","Total : ",jmlnolab,(i-1),"",laki,per,"",jmldiagnosa,"",jmltindakan,"",""
                     });
                 }
             } catch (Exception e) {
