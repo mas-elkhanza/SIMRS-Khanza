@@ -1229,7 +1229,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     });
                     ttlppn=ttlppn+rs.getDouble("ppn");
                     ttlongkir=ttlongkir+rs.getDouble("ongkir");
-                    ttljual=ttljual+rs.getDouble("total");
                     ps2=koneksi.prepareStatement(
                         "select toko_detail_jual.kode_brng,tokobarang.nama_brng, toko_detail_jual.kode_sat,"+
                         " kodesatuan.satuan,toko_detail_jual.h_jual,toko_detail_jual.jumlah, "+
@@ -1257,6 +1256,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             subttltambahan=subttltambahan+rs2.getDouble("tambahan");
                             ttltambahan=ttltambahan+rs2.getDouble("tambahan");
                             subttljual=subttljual+rs2.getDouble("total");
+                            ttljual=ttljual+rs2.getDouble("total");
                             tabMode.addRow(new String[]{
                                 no+". "+rs2.getString("kode_brng"),rs2.getString("nama_brng"),rs2.getString("jumlah")+" "+rs2.getString("satuan")+" x "+df2.format(rs2.getDouble("h_jual")),
                                 df2.format(rs2.getDouble("subtotal")),"("+df2.format(rs2.getDouble("dis"))+" %) "+df2.format(rs2.getDouble("bsr_dis")),df2.format(rs2.getDouble("tambahan")),
@@ -1278,7 +1278,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             });
                         }   
                         tabMode.addRow(new String[]{
-                            "","Total+PPN+Ongkir",":","","","",df2.format(rs.getDouble("total"))
+                            "","Total+PPN+Ongkir",":","","","",df2.format(rs.getDouble("ppn")+rs.getDouble("ongkir")+subttljual)
                         });    
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -1301,7 +1301,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     ps.close();
                 }
             }            
-            LTotal.setText(df2.format(ttljual));
+            LTotal.setText(df2.format(ttljual+ttlppn+ttlongkir));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        
@@ -1368,7 +1368,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 while(rs.next()){ 
                     ttlppn=ttlppn+rs.getDouble("ppn");
                     ttlongkir=ttlongkir+rs.getDouble("ongkir");
-                    ttljual=ttljual+rs.getDouble("total");
                     htmlContent.append(
                         "<tr class='isi'>"+
                             "<td valign='top' align='center'>"+rs.getString("nota_jual")+"</td>"+
@@ -1423,6 +1422,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             subttltambahan=subttltambahan+rs2.getDouble("tambahan");
                             ttltambahan=ttltambahan+rs2.getDouble("tambahan");
                             subttljual=subttljual+rs2.getDouble("total");
+                            ttljual=ttljual+rs2.getDouble("total");
                             htmlContent.append(
                                 "<tr class='isi'>"+
                                     "<td valign='top' align='center'>"+no+"</td>"+
@@ -1452,12 +1452,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='top' align='right' colspan='6'>Total :</td>"+
+                            "<td valign='top' align='center' colspan='5'>PPN : "+df2.format(rs.getDouble("ppn"))+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ongkir : "+df2.format(rs.getDouble("ongkir"))+"</td>"+
+                            "<td valign='top' align='right'>Total :</td>"+
                             "<td valign='top' align='right'>"+df2.format(subttlall)+"</td>"+
                             "<td valign='top' align='right'></td>"+
                             "<td valign='top' align='right'>"+df2.format(subttldisc)+"</td>"+
                             "<td valign='top' align='right'>"+df2.format(subttltambahan)+"</td>"+
-                            "<td valign='top' align='right'>"+df2.format(subttljual)+"</td>"+
+                            "<td valign='top' align='right'>"+df2.format(subttljual+rs.getDouble("ppn")+rs.getDouble("ongkir"))+"</td>"+
                         "</tr>");
                     htmlContent.append(
                                 "</table>"+
@@ -1474,7 +1475,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     ps.close();
                 }
             }
-            LTotal.setText(df2.format(ttljual));
             if(ttljual>0){
                 totaljual=
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -1484,7 +1484,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                              "<td valign='top' align='right' width='16%'>Jml.Subtotal : "+df2.format(ttlsubttl)+"</td>"+
                              "<td valign='top' align='right' width='16%'>Jml.Diskon : "+df2.format(ttldisc)+"</td>"+
                              "<td valign='top' align='right' width='16%'>Jml.Tambahan : "+df2.format(ttltambahan)+"</td>"+
-                             "<td valign='top' align='right' width='16%'>Jml.Total : "+df2.format(ttljual)+"</td>"+
+                             "<td valign='top' align='right' width='16%'>Jml.Total : "+df2.format(ttljual+ttlongkir+ttlppn)+"</td>"+
                            "</tr>"+
                       "</table>";
             }
@@ -1494,6 +1494,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                        htmlContent.toString()+
                       "</table>"+totaljual+
                     "</html>");
+            LTotal.setText(df2.format(ttljual+ttlppn+ttlongkir));
         }catch (Exception e) {
             System.out.println("Notif : "+e);
         } 
