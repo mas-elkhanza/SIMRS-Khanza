@@ -16040,6 +16040,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPiutangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16635,7 +16639,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah,
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
-            btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal;
+            btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko;
     
     public void isWall(){
         try{            
@@ -19640,6 +19644,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_penjualan()==true){
                 Panelmenu.add(btnPenjualanToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_piutang()==true){
+                Panelmenu.add(btnPiutangToko); 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==17){   
@@ -22652,6 +22661,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettoko_penjualan()==true){
             Panelmenu.add(btnPenjualanToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_piutang()==true){
+            Panelmenu.add(btnPiutangToko); 
             jmlmenu++;
         }
 
@@ -26819,6 +26833,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_piutang()==true){
+            if(btnPiutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPiutangToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -28753,6 +28774,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRegistrasiPoliPerTanggal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrasiPoliPerTanggalActionPerformed(evt);
+            }
+        });
+        
+        btnPiutangToko = new widget.ButtonBig();
+        btnPiutangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357584_Calculator.png"))); 
+        btnPiutangToko.setText("Piutang Toko");
+        btnPiutangToko.setIconTextGap(0);
+        btnPiutangToko.setName("btnPiutangToko"); 
+        btnPiutangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiutangTokoActionPerformed(evt);
             }
         });
     }
