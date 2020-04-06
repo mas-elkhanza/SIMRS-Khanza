@@ -780,7 +780,65 @@ public class TokoPenjualan extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatMouseClicked
 
     private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
-        
+        if(tabMode.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                try {                                     
+                    getData();                     
+                    TCari.setText("");
+                    TCari.requestFocus();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+            
+            if(evt.getKeyCode()==KeyEvent.VK_DELETE){
+                try {
+                    switch (tbObat.getSelectedColumn()) {
+                        case 0:
+                            tbObat.setValueAt("", tbObat.getSelectedRow(),0);
+                            break;
+                        case 7:
+                            tbObat.setValueAt(0, tbObat.getSelectedRow(),7);
+                            break;
+                        case 8:
+                            tbObat.setValueAt(0, tbObat.getSelectedRow(),8);
+                            break;
+                        case 9:
+                            tbObat.setValueAt(0, tbObat.getSelectedRow(),9);
+                            break;
+                        default:
+                            break;
+                    }
+                } catch (Exception e) {
+                } 
+            }
+            
+            if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.setText("");
+                TCari.requestFocus();
+            }
+            
+            if(evt.getKeyCode()==KeyEvent.VK_BACK_SPACE){
+                try {
+                    switch (tbObat.getSelectedColumn()) {
+                        case 0:
+                            tbObat.setValueAt("", tbObat.getSelectedRow(),0);
+                            break;
+                        case 7:
+                            tbObat.setValueAt(0, tbObat.getSelectedRow(),7);
+                            break;
+                        case 8:
+                            tbObat.setValueAt(0, tbObat.getSelectedRow(),8);
+                            break;
+                        case 9:
+                            tbObat.setValueAt(0, tbObat.getSelectedRow(),9);
+                            break;
+                        default:
+                            break;
+                    }
+                } catch (Exception e) {
+                }     
+            }
+        }
 }//GEN-LAST:event_tbObatKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
@@ -831,16 +889,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;    
-                if(Sequel.menyimpantf2("tokopenjualan","?,?,?,?,?,?,?,?,?,?,?","No.Nota",11,new String[]{
+                if(Sequel.menyimpantf2("tokopenjualan","?,?,?,?,?,?,?,?,?,?,?,?","No.Nota",12,new String[]{
                         NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),kdptg.getText(),kdmem.getText(),nmmem.getText(),catatan.getText(),Jenisjual.getSelectedItem().toString(),
-                        ongkir+"",ppn+"",Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),tagihanppn+""
+                        ongkir+"",besarppn+"",Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),tagihanppn+"",CmbAkun.getSelectedItem().toString()
                     })==true){
                         isSimpan();
                 }else{
                     autoNomor();
-                    if(Sequel.menyimpantf2("tokopenjualan","?,?,?,?,?,?,?,?,?,?,?","No.Nota",11,new String[]{
+                    if(Sequel.menyimpantf2("tokopenjualan","?,?,?,?,?,?,?,?,?,?,?,?","No.Nota",12,new String[]{
                             NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),kdptg.getText(),kdmem.getText(),nmmem.getText(),catatan.getText(),Jenisjual.getSelectedItem().toString(),
-                            ongkir+"",ppn+"",Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),tagihanppn+""
+                            ongkir+"",besarppn+"",Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),tagihanppn+"",CmbAkun.getSelectedItem().toString()
                         })==true){
                             isSimpan();
                     }else{
@@ -951,7 +1009,7 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 }//GEN-LAST:event_TCariKeyPressed
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-    
+    tampil();
 }//GEN-LAST:event_BtnCari1ActionPerformed
 
 private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
@@ -1324,6 +1382,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         }
                     }
                 }
+            }else{
+                tabMode.setValueAt(0, row,6);
+                tabMode.setValueAt(0, row,7);
+                tabMode.setValueAt(0, row,8);
+                tabMode.setValueAt(0, row,9);
+                tabMode.setValueAt(0, row,10);
             }
         }
         ttl=0;
@@ -1380,6 +1444,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     public void isCek(){
         autoNomor();
+        Ongkir.setText("0");
         TCari.requestFocus();
         if(akses.getjml2()>=1){
             kdptg.setEditable(false);
