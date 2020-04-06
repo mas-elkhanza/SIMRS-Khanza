@@ -942,7 +942,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void tampil() {
         tanggal=" returpiutang.tgl_retur between '"+Valid.SetTgl(TglRetur1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglRetur2.getSelectedItem()+"")+"' ";
-        noret="";ptg="";sat="";bar="";nonot="";     
+        noret="";ptg="";sat="";bar="";     
         if(!NoRetur.getText().equals("")){
             noret=" and returpiutang.no_retur_piutang='"+NoNota.getText()+"' ";
         } 
@@ -954,9 +954,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
         if(!nmbar.getText().equals("")){
             bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
-        }
-        if(!NoNota.getText().equals("")){
-            nonot=" and detreturpiutang.nota_piutang='"+NoNota.getText()+"' ";
         }
         Valid.tabelKosong(tabMode);
         try{
@@ -990,6 +987,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),
                         rs.getString(5)+", "+rs.getString(6),"Retur Piutang Ke "+rs.getString(7),"","","","",""
                     });
+                    sat="";bar="";nonot="";
+                    if(!nmsat.getText().equals("")){
+                        sat=" and kodesatuan.satuan='"+nmsat.getText()+"' ";
+                    }    
+                    if(!nmbar.getText().equals("")){
+                        bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
+                    }
+                    if(!NoNota.getText().equals("")){
+                        nonot=" and detreturpiutang.nota_piutang='"+NoNota.getText()+"' ";
+                    }
                     ps2=koneksi.prepareStatement("select detreturpiutang.nota_piutang,detreturpiutang.kode_brng,databarang.nama_brng, "+
                             "detreturpiutang.kode_sat,kodesatuan.satuan,detreturpiutang.h_retur,detreturpiutang.jml_retur, "+
                             "detreturpiutang.subtotal,detreturpiutang.no_batch,detreturpiutang.no_faktur from detreturpiutang inner join databarang inner join kodesatuan "+

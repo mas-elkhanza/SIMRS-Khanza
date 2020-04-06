@@ -1,4 +1,5 @@
 package ipsrs;
+import inventory.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -7,6 +8,7 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -14,6 +16,7 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -21,19 +24,25 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import keuangan.DlgBayarPemesanan;
+import keuangan.Jurnal;
 import kepegawaian.DlgCariPegawai;
+import kepegawaian.DlgCariPetugas;
 
 public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
+    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public  DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     public  DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private double tagihan=0;
+    private Jurnal jur=new Jurnal();
     private DlgPemesananIPSRS aplikasi=new DlgPemesananIPSRS(null,false);
 
     /** Creates new form DlgProgramStudi

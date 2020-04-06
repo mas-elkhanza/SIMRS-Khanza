@@ -4184,7 +4184,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         petugas.dispose();
         dokter.dispose();
         pasien.dispose();
-        Sequel.mengedit("reg_periksa","no_rawat=?","stts=?",2,new String[]{"Sudah",TNoRw.getText()});
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -7172,14 +7171,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         dlgki.setLocationRelativeTo(internalFrame1);
         dlgki.emptTeks();
         dlgki.isCek();
-        dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());  
+        dlgki.setNoRm(TNoRw.getText());  
         dlgki.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
-    }
-    
-    public void emptTeks(){
-        BtnBatalActionPerformed(null);
-        TabRawat.setSelectedIndex(3);
     }
 
 }

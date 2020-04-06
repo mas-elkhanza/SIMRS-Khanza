@@ -23,6 +23,7 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -111,6 +112,13 @@ public final class DlgJenisIPSRS extends javax.swing.JDialog {
                 }
             });
         }  
+        try {
+            ps=koneksi.prepareStatement("select kd_jenis,nm_jenis  "+
+                " from ipsrsjenisbarang where  kd_jenis like ? or "+
+                " nm_jenis like ? order by nm_jenis ");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 
@@ -711,29 +719,15 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{            
-            ps=koneksi.prepareStatement("select kd_jenis,nm_jenis  "+
-                    " from ipsrsjenisbarang where  kd_jenis like ? or "+
-                    " nm_jenis like ? order by nm_jenis ");
-            try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        false,rs.getString(1),rs.getString(2)
-                    });
-                }
-            } catch (Exception e) {
-                System.out.println(e);
-            } finally{
-               if(rs!=null){
-                   rs.close();
-               }
-               if(ps!=null){
-                   ps.close();
-               } 
+            ps.setString(1,"%"+TCari.getText().trim()+"%");
+            ps.setString(2,"%"+TCari.getText().trim()+"%");
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Object[] data={false,rs.getString(1),
+                               rs.getString(2)};
+                tabMode.addRow(data);
             }
-        }catch(Exception e){
+        }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());

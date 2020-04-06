@@ -19,6 +19,7 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,14 +30,17 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import keuangan.Jurnal;
 
 public class DlgInputStokIPSRS extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private Jurnal jur=new Jurnal();
     private PreparedStatement pstampil;
     private ResultSet rstampil;
+    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private double ttl=0,y=0,kurang=0;
     private int jml=0,i=0,index=0;
     private String[] real,kodebarang,namabarang,kategori,satuan;
@@ -148,15 +152,15 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         panelisi1 = new widget.panelisi();
         BtnSimpan = new widget.Button();
-        label10 = new widget.Label();
-        LTotal = new widget.Label();
+        label13 = new widget.Label();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
         panelisi5 = new widget.panelisi();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
-        BtnTambah = new widget.Button();
+        label10 = new widget.Label();
+        LTotal = new widget.Label();
         panelisi3 = new widget.panelisi();
         label18 = new widget.Label();
         catatan = new widget.TextBox();
@@ -171,7 +175,7 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBersihkan.setForeground(new java.awt.Color(50,50,50));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -194,7 +198,7 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Barang Non Medis, Penunjang Lab & Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Barang Non Medis, Penunjang Lab & Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -239,7 +243,7 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(816, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(816, 102));
         jPanel1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelisi1.setName("panelisi1"); // NOI18N
@@ -264,16 +268,10 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
         });
         panelisi1.add(BtnSimpan);
 
-        label10.setText("Nominal Hilang :");
-        label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(120, 23));
-        panelisi1.add(label10);
-
-        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal.setText("0");
-        LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(205, 23));
-        panelisi1.add(LTotal);
+        label13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        label13.setName("label13"); // NOI18N
+        label13.setPreferredSize(new java.awt.Dimension(327, 26));
+        panelisi1.add(label13);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
@@ -314,7 +312,7 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
         jPanel1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
         panelisi5.setName("panelisi5"); // NOI18N
-        panelisi5.setPreferredSize(new java.awt.Dimension(100, 52));
+        panelisi5.setPreferredSize(new java.awt.Dimension(100, 54));
         panelisi5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         label9.setText("Key Word :");
@@ -323,7 +321,7 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
         panelisi5.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(470, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -348,17 +346,16 @@ public class DlgInputStokIPSRS extends javax.swing.JDialog {
         });
         panelisi5.add(BtnCari1);
 
-        BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
-        BtnTambah.setMnemonic('3');
-        BtnTambah.setToolTipText("Alt+3");
-        BtnTambah.setName("BtnTambah"); // NOI18N
-        BtnTambah.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnTambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTambahActionPerformed(evt);
-            }
-        });
-        panelisi5.add(BtnTambah);
+        label10.setText("Total :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelisi5.add(label10);
+
+        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal.setText("0");
+        LTotal.setName("LTotal"); // NOI18N
+        LTotal.setPreferredSize(new java.awt.Dimension(125, 23));
+        panelisi5.add(LTotal);
 
         jPanel1.add(panelisi5, java.awt.BorderLayout.CENTER);
 
@@ -596,18 +593,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }//GEN-LAST:event_tbDokterPropertyChange
 
-    private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
-        barang.emptTeks();
-        barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.setLocationRelativeTo(internalFrame1);
-        barang.setAlwaysOnTop(false);
-        barang.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnTambahActionPerformed
-
     /**
     * @param args the command line arguments
     */
@@ -629,7 +614,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
-    private widget.Button BtnTambah;
     private widget.TextBox Kd2;
     private widget.Label LTotal;
     private javax.swing.JPopupMenu Popup;
@@ -640,6 +624,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JPanel jPanel1;
     private widget.Label label10;
     private widget.Label label11;
+    private widget.Label label13;
     private widget.Label label18;
     private widget.Label label9;
     private widget.panelisi panelisi1;

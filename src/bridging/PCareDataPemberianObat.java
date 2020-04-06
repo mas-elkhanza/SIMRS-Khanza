@@ -582,9 +582,6 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString(),
                                 tbDokter.getValueAt(tbDokter.getSelectedRow(),17).toString()
                             });
-                            Trackobat.catatRiwayat(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString(),
-                                Valid.SetAngka(tbDokter.getValueAt(tbDokter.getSelectedRow(),11).toString()),
-                                0,"Pemberian Obat",akses.getkode(),tbDokter.getValueAt(tbDokter.getSelectedRow(),15).toString(),"Hapus",tbDokter.getValueAt(tbDokter.getSelectedRow(),16).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),17).toString());
                             Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString()+"',"+
                                 "'"+tbDokter.getValueAt(tbDokter.getSelectedRow(),15).toString()+"',"+
                                 "'"+tbDokter.getValueAt(tbDokter.getSelectedRow(),11).toString()+"',"+
@@ -595,10 +592,10 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 "kd_bangsal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),15).toString()+"' and "+
                                 "no_batch='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),16).toString()+"' and "+
                                 "no_faktur='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),17).toString()+"'"); 
-                        }else{
                             Trackobat.catatRiwayat(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString(),
                                 Valid.SetAngka(tbDokter.getValueAt(tbDokter.getSelectedRow(),11).toString()),
-                                0,"Pemberian Obat",akses.getkode(),tbDokter.getValueAt(tbDokter.getSelectedRow(),15).toString(),"Hapus","","");
+                                0,"Pemberian Obat",akses.getkode(),tbDokter.getValueAt(tbDokter.getSelectedRow(),15).toString(),"Hapus",tbDokter.getValueAt(tbDokter.getSelectedRow(),16).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),17).toString());
+                        }else{
                             Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString()+"',"+
                                 "'"+tbDokter.getValueAt(tbDokter.getSelectedRow(),15).toString()+"',"+
                                 "'"+tbDokter.getValueAt(tbDokter.getSelectedRow(),11).toString()+"',"+
@@ -607,6 +604,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 "kode_brng='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString()+"' and "+
                                 "kd_bangsal='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),15).toString()+"' and "+
                                 "no_batch='' and no_faktur=''"); 
+                            Trackobat.catatRiwayat(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString(),
+                                Valid.SetAngka(tbDokter.getValueAt(tbDokter.getSelectedRow(),11).toString()),
+                                0,"Pemberian Obat",akses.getkode(),tbDokter.getValueAt(tbDokter.getSelectedRow(),15).toString(),"Hapus","","");
                         }
                         Sequel.queryu2("delete from pcare_obat_diberikan where "+
                             "no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString()+"' "+

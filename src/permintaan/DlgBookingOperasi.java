@@ -40,7 +40,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String status="",kamar="",diagnosa="",order="",kelas="",penjab="",norawatibu="",posisi="",norm="";
+    private String status="",kamar="",diagnosa="",order="",kelas="",penjab="",norawatibu="",posisi="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariDaftarOperasi operasi=new DlgCariDaftarOperasi(null,false);
     
@@ -1241,8 +1241,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 kamarinap.setLocationRelativeTo(internalFrame1);
                 kamarinap.emptTeks();
                 kamarinap.isCek();
-                norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",TNoRw.getText());
-                kamarinap.setNoRm(TNoRw.getText(),norm,TPasien.getText());
+                kamarinap.setNoRm(TNoRw.getText());
                 kamarinap.setVisible(true);
             }
         }

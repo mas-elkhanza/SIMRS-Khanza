@@ -91,6 +91,13 @@ public final class DlgCariJenisIPSRS extends javax.swing.JDialog {
                 }
             });
         }
+        try {
+            ps=koneksi.prepareStatement("select kd_jenis,nm_jenis  "+
+                " from ipsrsjenisbarang where  kd_jenis like ? or "+
+                " nm_jenis like ? order by nm_jenis ");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }    
 
 
@@ -363,29 +370,14 @@ public final class DlgCariJenisIPSRS extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{            
-            ps=koneksi.prepareStatement("select kd_jenis,nm_jenis  "+
-                    " from ipsrsjenisbarang where  kd_jenis like ? or "+
-                    " nm_jenis like ? order by nm_jenis ");
-            try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2)
-                    });
-                }
-            } catch (Exception e) {
-                System.out.println(e);
-            } finally{
-               if(rs!=null){
-                   rs.close();
-               }
-               if(ps!=null){
-                   ps.close();
-               } 
+            ps.setString(1,"%"+TCari.getText().trim()+"%");
+            ps.setString(2,"%"+TCari.getText().trim()+"%");
+            rs=ps.executeQuery();
+            while(rs.next()){
+                tabMode.addRow(new String[]{rs.getString(1),
+                               rs.getString(2)});
             }
-        }catch(Exception e){
+        }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());

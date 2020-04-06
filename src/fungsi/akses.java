@@ -127,11 +127,7 @@ public final class akses {
             inhealth_mapping_tindakan_ranap=false,inhealth_mapping_tindakan_radiologi=false,inhealth_mapping_tindakan_laborat=false,
             inhealth_mapping_tindakan_operasi=false,hibah_obat_bhp=false,asal_hibah=false,asuhan_gizi=false,inhealth_kirim_tagihan=false,
             sirkulasi_obat4=false,sirkulasi_obat5=false,sirkulasi_non_medis2=false,monitoring_asuhan_gizi=false,penerimaan_obat_perbulan=false,
-            rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false,master_masalah_keperawatan=false,
-            pengajuan_cuti=false,kedatangan_pasien=false,utd_pendonor=false,toko_suplier=false,toko_jenis=false,toko_set_harga=false,
-            toko_barang=false,penagihan_piutang_pasien=false,akun_penagihan_piutang=false,stok_opname_toko=false,toko_riwayat_barang=false,
-            toko_surat_pemesanan=false,toko_pengajuan_barang=false,toko_penerimaan_barang=false,toko_pengadaan_barang=false,toko_hutang=false,
-            toko_bayar_pemesanan=false,toko_member=false,toko_penjualan=false,registrasi_poli_per_tanggal=false;
+            rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false,master_masalah_keperawatan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -1918,26 +1914,6 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_ralan=false;
                         akses.permintaan_diet=false;
                         akses.master_masalah_keperawatan=false;
-                        akses.pengajuan_cuti=false;
-                        akses.kedatangan_pasien=false;
-                        akses.utd_pendonor=false;
-                        akses.toko_suplier=false;
-                        akses.toko_jenis=false;
-                        akses.toko_set_harga=false;
-                        akses.toko_barang=false;
-                        akses.penagihan_piutang_pasien=false;
-                        akses.akun_penagihan_piutang=false;
-                        akses.stok_opname_toko=false;
-                        akses.toko_riwayat_barang=false;
-                        akses.toko_surat_pemesanan=false;
-                        akses.toko_pengajuan_barang=false;
-                        akses.toko_penerimaan_barang=false;
-                        akses.toko_pengadaan_barang=false;
-                        akses.toko_hutang=false;
-                        akses.toko_bayar_pemesanan=false;
-                        akses.toko_member=false;
-                        akses.toko_penjualan=false;
-                        akses.registrasi_poli_per_tanggal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2580,24 +2556,4 @@ public final class akses {
     public static boolean getpenilaian_awal_keperawatan_ralan(){return akses.penilaian_awal_keperawatan_ralan;}
     public static boolean getpermintaan_diet(){return akses.permintaan_diet;}
     public static boolean getmaster_masalah_keperawatan(){return akses.master_masalah_keperawatan;}
-    public static boolean getpengajuan_cuti(){return akses.pengajuan_cuti;}
-    public static boolean getkedatangan_pasien(){return akses.kedatangan_pasien;}
-    public static boolean getutd_pendonor(){return akses.utd_pendonor;}
-    public static boolean gettoko_suplier(){return akses.toko_suplier;}
-    public static boolean gettoko_jenis(){return akses.toko_jenis;}
-    public static boolean gettoko_set_harga(){return akses.toko_set_harga;}
-    public static boolean gettoko_barang(){return akses.toko_barang;}
-    public static boolean getpenagihan_piutang_pasien(){return akses.penagihan_piutang_pasien;}
-    public static boolean getakun_penagihan_piutang(){return akses.akun_penagihan_piutang;}
-    public static boolean getstok_opname_toko(){return akses.stok_opname_toko;}
-    public static boolean gettoko_riwayat_barang(){return akses.toko_riwayat_barang;}
-    public static boolean gettoko_surat_pemesanan(){return akses.toko_surat_pemesanan;}
-    public static boolean gettoko_pengajuan_barang(){return akses.toko_pengajuan_barang;}
-    public static boolean gettoko_penerimaan_barang(){return akses.toko_penerimaan_barang;}
-    public static boolean gettoko_pengadaan_barang(){return akses.toko_pengadaan_barang;}
-    public static boolean gettoko_hutang(){return akses.toko_hutang;}
-    public static boolean gettoko_bayar_pemesanan(){return akses.toko_bayar_pemesanan;}
-    public static boolean gettoko_member(){return akses.toko_member;}
-    public static boolean gettoko_penjualan(){return akses.toko_penjualan;}
-    public static boolean getregistrasi_poli_per_tanggal(){return akses.registrasi_poli_per_tanggal;}
 }   

@@ -452,7 +452,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnSimpan);
-        BtnSimpan.setBounds(10, 62, 100, 30);
+        BtnSimpan.setBounds(10, 70, 100, 30);
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N

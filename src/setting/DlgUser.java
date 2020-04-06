@@ -59,8 +59,8 @@ public class DlgUser extends javax.swing.JDialog {
         initComponents();
         
         Object[] row={"ID User","Nama User","Jabatan","Password","[I]ICD 10","[I]Obat Penyakit","[C]Dokter","[A]Jadwal Praktek","[C]Petugas","[L]Pasien","[A]Registrasi","[A]Tindakan Ralan",
-                    "[A]Rawat Inap","[A]Tindakan Ranap","[A]Operasi","[A]Rujukan Keluar","[A]Rujukan Masuk","[A]Beri Obat, Alkes & BHP","[A]Resep Pulang",
-                    "[L]Pasien Meninggal","[A]Diet Pasien","[L]Kelahiran Bayi","[A]Periksa Lab","[A]Periksa Radiologi","[A]Rawat Jalan",
+                    "[A]Kamar Inap","[A]Tindakan Ranap","[A]Operasi","[A]Rujukan Keluar","[A]Rujukan Masuk","[A]Beri Obat, Alkes & BHP","[A]Resep Pulang",
+                    "[L]Pasien Meninggal","[A]Diet Pasien","[L]Kelahiran Bayi","[A]Periksa Lab","[A]Periksa Radiologi","[A]Kasir Ralan",
                     "[J]Deposit Pasien","[J]Piutang Pasien","[L]Peminjaman Berkas RM","[C]Barcode Presensi","[C]Presensi Harian","[C]Presensi Bulanan",
                     "[C]Pegawai Admin","[C]Pegawai User","[D]Suplier Obat/Alkes/BHP","[D]Satuan Barang","[D]Konversi Satuan","[D]Jenis Obat/Alkes/BHP","[D]Obat, Alkes & BHP",
                     "[D]Stok Opname Apotek","[D]Stok Obat Pasien","[D]Pengadaan Obat, Alkes & BHP","[D]Penerimaan Obat, Alkes & BHP","[D]Penjualan Obat, Alkes & BHP","[D]Piutang Obat, Alkes & BHP",
@@ -74,15 +74,15 @@ public class DlgUser extends javax.swing.JDialog {
                     "[H]Bulanan Paramedis","[H]Pembayaran Ralan","[H]Pembayaran Ranap","[H]Rekap Pembayaran Ralan","[H]Rekap Pembayaran Ranap",
                     "[H]Tagihan Masuk","[H]Tambahan Biaya","[H]Potongan Biaya","[A]No.Resep","[L]Riwayat Perawatan","[I]Frekuensi Penyakit Ralan","[I]Frekuensi Penyakit Ranap",
                     "[J]Kamar","[J]Tarif Ralan","[J]Tarif Ranap","[J]Tarif Lab","[J]Tarif Radiologi","[J]Tarif Operasi","[J]Akun Rekening","[J]Rekening Tahun",
-                    "[J]Posting Jurnal","[J]Buku Besar","[J]Cash Flow","[J]Keuangan","[J]Pengeluaran Harian","[R]Set P.J. Unit Penunjang","[R]Set Oto Lokasi","[R]Set Kamar Inap",
-                    "[R]Set Embalase & Tuslah","[R]Tracer Login","[R]Display Antrian Registrasi & Poli","[R]Set Harga Obat","[R]Set Penggunaan Tarif","[R]Set Oto Ralan","[R]Biaya Harian Kamar",
-                    "[R]Biaya Masuk Sekali","[R]Set RM","[A]Billing Ralan","[A]Billing Ranap","[H]Detail JM Dokter","[A]IGD","[B]Barcode Ralan","[B]Barcode Ranap",
-                    "[R]Set Harga Obat Ralan","[R]Set Harga Obat Ranap","[I]Penyakit AFP & PD3I","[I]Surveilans AFP & PD3I","[I]Surveilans Ralan","[L]Diagnosa Pasien",
+                    "[J]Posting Jurnal","[J]Buku Besar","[J]Cash Flow","[J]Keuangan","[J]Pengeluaran Harian","[Q]Set P.J. Unit Penunjang","[Q]Set Oto Lokasi","[Q]Set Kamar Inap",
+                    "[Q]Set Embalase & Tuslah","[Q]Tracer Login","[Q]Display Antrian Registrasi & Poli","[Q]Set Harga Obat","[Q]Set Penggunaan Tarif","[Q]Set Oto Ralan","[Q]Biaya Harian Kamar",
+                    "[Q]Biaya Masuk Sekali","[Q]Set RM","[A]Billing Ralan","[A]Billing Ranap","[H]Detail JM Dokter","[A]IGD","[B]Barcode Ralan","[B]Barcode Ranap",
+                    "[Q]Set Harga Obat Ralan","[Q]Set Harga Obat Ranap","[I]Penyakit AFP & PD3I","[I]Surveilans AFP & PD3I","[I]Surveilans Ralan","[L]Diagnosa Pasien",
                     "[I]Surveilans Ranap","[I]Pny.Tdk Menular Ranap","[I]Pny.Tdk Menular Ralan","[I]Kunjungan Ralan","[I]RL 3.2 Rawat Darurat","[I]RL 3.3 Gigi dan Mulut","[I]RL 3.7 Radiologi","[I]RL 3.8 Laboratorium","[H]Harian Dokter Ralan",
-                    "[C]SMS Gateway","[C]Sidik Jari","[C]Jam Presensi","[C]Jadwal Pegawai","[G]Barcode Parkir","[R]Set Billing","[A]DPJP Ranap","[D]Mutasi Obat/Alkes/BHP","[I]RL 3.4 Kebidanan","[I]RL 3.6 Pembedahan",
+                    "[C]SMS Gateway","[C]Sidik Jari","[C]Jam Presensi","[C]Jadwal Pegawai","[G]Barcode Parkir","[Q]Set Billing","[A]DPJP Ranap","[D]Mutasi Obat/Alkes/BHP","[I]RL 3.4 Kebidanan","[I]RL 3.6 Pembedahan",
                     "[H]Fee Visit Dokter","[H]Fee Bacaan EKG","[H]Fee Rujukan Rontgen","[H]Fee Rujukan Ranap","[H]Fee Periksa Ralan","[J]Akun Bayar","[J]Bayar Pesan Obat",
-                    "[H]Obat Per Dokter Peresep","[E]Jenis Barang IPSRS","[J]Pemasukkan Lain-Lain","[J]Pengaturan Rekening","[R]Closing Kasir","[R]Set Keterlambatan Presensi",
-                    "[R]Set Harga Kamar","[H]Rekap Per Shift","[K]Cek NIK","[K]Cek No.Kartu","[K]Riwayat Rujukan PCare di VClaim","[H]Obat Per Cara Bayar","[I]Kunjungan Ranap",
+                    "[H]Obat Per Dokter Peresep","[E]Jenis Non Medis","[J]Pemasukkan Lain-Lain","[J]Pengaturan Rekening","[Q]Closing Kasir","[Q]Set Keterlambatan Presensi",
+                    "[Q]Set Harga Kamar","[H]Rekap Per Shift","[K]Cek NIK","[K]Cek No.Kartu","[K]Riwayat Rujukan PCare di VClaim","[H]Obat Per Cara Bayar","[I]Kunjungan Ranap",
                     "[J]Bayar Piutang","[H]Payment Point","[K]Cek No.Rujukan PCare di VClaim","[I]ICD 9","[D]Darurat Stok","[L]Retensi Data R.M.","[C]Temporary Presensi",
                     "[J]Jurnal Harian","[D]Sirkulasi Obat, Alkes & BHP 2","[A]Edit Registrasi","[K]Referensi Diagnosa VClaim","[K]Referensi Poli VClaim","[D]Industri Farmasi",
                     "[H]Harian J.S.","[H]Bulanan J.S.","[H]Harian BHP Medis/Paket Obat","[H]Bulanan BHP Medis/Paket Obat","[J]Piutang Belum Lunas","[K]Referensi Faskes VClaim",
@@ -94,15 +94,15 @@ public class DlgUser extends javax.swing.JDialog {
                     "[H]Harian Menejemen","[H]Bulanan Menejemen","[K]Cek Eligibilitas Inhealth","[K]Referensi Ruang Rawat Inhealth","[K]Referensi Poli Inhealth","[K]Referensi Faskes Inhealth",
                     "[K]Data Bridging SJP Inhealth","[H]Piutang Ralan","[H]Piutang Ranap","[J]Piutang Per Cara Bayar","[I]Lama Pelayanan Ralan","[L]Catatan Pasien","[I]RL 4B Sebab Morbiditas Ralan",
                     "[I]RL 4A Morbiditas Ralan","[I]RL 4B Morbiditas Ralan","[L]Data HAIs","[I]Harian HAIs","[I]Bulanan HAIs","[I]Hitung BOR","[L]Instansi/Perusahaan Pasien","[D]Resep Dokter",
-                    "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Registrasi Per Poli","[N]Registrasi Per Dokter",
-                    "[N]Registrasi Per Pekerjaan","[N]Registrasi Per Pendidikan","[N]Registrasi Per Tahun","[L]Berkas Digital Perawatan","[I]Pny Menular Ranap","[I]Pny Menular Ralan",
-                    "[N]Registrasi Per Bulan","[N]Registrasi Per Tanggal","[N]Demografi Registrasi","[N]Reg Lama Per Tahun","[N]Reg Baru Per Tahun","[N]Reg Lama Per Bulan","[N]Reg Baru Per Bulan",
+                    "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Kunjungan Reg Per Poli","[N]Kunjungan Reg Per Dokter",
+                    "[N]Kunjungan Reg Per Pekerjaan","[N]Kunjungan Reg Per Pendidikan","[N]Kunjungan Reg Per Tahun","[L]Berkas Digital Perawatan","[I]Pny Menular Ranap","[I]Pny Menular Ralan",
+                    "[N]Kunjungan Reg Per Bulan","[N]Kunjungan Reg Per Tanggal","[N]Demografi Registrasi","[N]Reg Lama Per Tahun","[N]Reg Baru Per Tahun","[N]Reg Lama Per Bulan","[N]Reg Baru Per Bulan",
                     "[N]Reg Lama Per Tanggal","[N]Reg Baru Per Tanggal","[N]Batal Periksa Per Tahun","[N]Batal Periksa Per Bulan","[K]Referensi Diagnosa Pcare","[N]Batal Periksa Per Tanggal",
                     "[D]Kategori Obat/Alkes/BHP","[D]Golongan Obat/Alkes/BHP","[D]Obat/Alkes/BHP Per Tanggal","[D]Penjualan Bebas Per Tanggal","[K]Referensi Kesadaran Pcare","[I]Pembatalan Periksa Per Dokter",
-                    "[H]Pembayaran Per Unit","[H]Rekap Pembayaran Per Unit","[N]Registrasi Per Cara Bayar","[E]Pengadaan Non Medis Per Tanggal","[E]Stok Keluar Non Medis Per Tanggal",
+                    "[H]Pembayaran Per Unit","[H]Rekap Pembayaran Per Unit","[N]Kunjungan Reg Per Cara Bayar","[E]Pengadaan Non Medis Per Tanggal","[E]Stok Keluar Non Medis Per Tanggal",
                     "[N]Kunjungan Ranap Per Tahun","[K]Cek Rujukan PCare","[N]Kunjungan Lab Ralan Per Tahun","[N]Kunjungan Rad Ralan Per Tahun","[I]Cek Entry Ralan","[K]Klaim Baru Manual INACBG 2",
                     "[D]Permintaan Obat & BHP","[D]Rekap Permintaan Obat & BHP","[D]Surat Pemesanan Obat & BHP","[E]Permintaan Barang Non Medis","[E]Rekap Permintaan Barang Non Medis",
-                    "[E]Surat Pemesanan Barang Non Medis","[N]Registrasi Per Perujuk","[K]Referensi Prosedur VClaim","[K]Referensi Kelas Rawat VClaim","[K]Referensi Dokter VClaim",
+                    "[E]Surat Pemesanan Barang Non Medis","[N]Kunjungan Per Perujuk","[K]Referensi Prosedur VClaim","[K]Referensi Kelas Rawat VClaim","[K]Referensi Dokter VClaim",
                     "[K]Referensi Spesialistik VClaim","[K]Referensi Ruang Rawat VClaim","[K]Referensi Cara Keluar VClaim","[K]Referensi Pasca Pulang VClaim","[H]Detail VK/OK","[A]Billing Parsial",
                     "[K]Cek No.Rujukan RS di VClaim","[K]Cek Rujukan Kartu PCare di VClaim","[K]Cek Rujukan Kartu RS di VClaim","[A]Akses Depo Obat/BHP","[K]Pembuatan Rujukan VClaim",
                     "[N]Kunjungan Lab Ralan Per Bulan","[D]Stok Keluar Medis","[N]Kunjungan Rad Ralan Per Bulan","[H]Detail JM Dokter 2","[L]Pengaduan/Chat","[N]Kunjungan Lab Ralan Per Tanggal",
@@ -110,9 +110,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "[C]Master Berkas Pegawai","[C]Berkas Kepegawaian","[C]Riwayat Jabatan","[C]Riwayat Pendidikan","[C]Riwayat Naik Gaji","[C]Kegiatan Ilmiah & Pelatihan","[C]Riwayat Penghargaan",
                     "[C]Riwayat Penelitian","[E]Penerimaan Barang Non Medis","[J]Bayar Pesan Non Medis","[J]Hutang Barang Non Medis","[E]Rekap Penerimaan Non Medis","[I]Insiden Keselamatan",
                     "[L]Insiden Keselamatan Pasien","[N]Kejadian IKP Per Tahun","[N]Kejadian IKP Per Bulan","[N]Kejadian IKP Per Tanggal","[D]Riwayat Batch","[N]Kejadian IKP Per Jenis",
-                    "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Registrasi Per Agama","[N]Registrasi Per Umur","[L]Suku/Bangsa Pasien","[L]Bahasa Pasien","[L]Golongan TNI",
-                    "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik","[N]Registrasi Per Suku/Bangsa",
-                    "[N]Registrasi Per Bahasa","[A]Jadwal Operasi","[K]Mapping Poli VClaim","[N]Registrasi Per Cacat Fisik","[F]Barang CSSD","[K]SKDP BPJS","[A]Booking Registrasi",
+                    "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Kunjungan Reg Per Agama","[N]Kunjungan Reg Per Umur","[L]Suku/Bangsa Pasien","[L]Bahasa Pasien","[L]Golongan TNI",
+                    "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik","[N]Kunjungan Reg Per Suku/Bangsa",
+                    "[N]Kunjungan Reg Per Bahasa","[A]Jadwal Operasi","[K]Mapping Poli VClaim","[N]Kunjungan Reg Per Cacat Fisik","[F]Barang CSSD","[K]SKDP BPJS","[A]Booking Registrasi",
                     "[K]Referensi Propinsi VClaim","[K]Referensi Kabupaten VClaim","[K]Referensi Kecamatan VClaim","[K]Referensi Dokter DPJP VClaim","[K]Riwayat Rujukan RS di VClaim",
                     "[K]Tanggal Rujukan di VClaim","[A]Permintaan Lab","[A]Permintaan Radiologi","[O]Indeks Surat","[O]Map Surat","[O]Almari Surat","[O]Rak Surat","[O]Ruang Surat",
                     "[O]Klasifikasi Surat","[O]Status Surat","[O]Sifat Surat","[O]Stts Balas Surat","[O]Surat Masuk","[K]Referensi Dokter PCare","[K]Referensi Poli PCare",
@@ -120,14 +120,14 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Referensi Khusus PCare","[K]Referensi Obat PCare","[K]Referensi Tindakan PCare","[K]Faskes Subspesialis PCare","[K]Faskes Alih Rawat PCare",
                     "[K]Faskes Thalasemia & Hemofili PCare","[K]Mapping Obat PCare","[K]Tarif Ralan RS & PCare","[K]Club Prolanis PCare","[K]Mapping Poli PCare",
                     "[K]Kegiatan Kelompok PCare","[K]Tarif Ranap RS & PCare","[K]Peserta Keg Kelompok PCare","[D]Sirkulasi Obat, Alkes & BHP 3","[K]Data Pendafataran PCare",
-                    "[K]Mapping Dokter PCare","[I]Ranap Per Ruang","[I]Penyakit Ranap Per Cara Bayar","[I]Anggota TNI Dirawat","[R]Set Input Parsial",
+                    "[K]Mapping Dokter PCare","[I]Ranap Per Ruang","[I]Penyakit Ranap Per Cara Bayar","[I]Anggota TNI Dirawat","[Q]Set Input Parsial",
                     "[I]Lama Pelayanan Radiologi","[I]Lama Pelayanan Lab","[K]Cek Nomor SEP","[A]Catatan Dokter","[O]Surat Keluar","[D]Kegiatan Farmasi",
                     "[E]Stok Opname Non Medis","[E]Sirkulasi Non Medis","[I]Rekap Lab Per Tahun","[I]Perujuk Lab Per Tahun","[I]Rekap Radiologi Per Tahun",
                     "[I]Perujuk Radiologi Per Tahun","[I]Rekap Bulanan Porsi Diet","[I]Rekap Bulanan Macam Diet","[H]Payment Point 2","[H]Pembayaran Per Akun Bayar 2",
-                    "[H]Hapus Nota Salah","[A]Asesmen Awal Rawat Inap","[L]HAIs Per Kamar/Bangsal","[D]PPN Obat","[J]Saldo Akun Per Bulan","[R]Display Antrian Apotek",
+                    "[H]Hapus Nota Salah","[A]Asesmen Awal Rawat Inap","[L]HAIs Per Kamar/Bangsal","[D]PPN Obat","[J]Saldo Akun Per Bulan","[Q]Display Antrian Apotek",
                     "[K]Referensi Faskes Sisrute","[K]Referensi Alasan Rujuk Sisrute","[K]Referensi Diagnosa Sisrute","[K]Rujukan Masuk Sisrute","[K]Rujukan Keluar Sisrute",
                     "[K]Cek SKDP VClaim","[D]Data Batch","[I]Kunjungan Lab Ralan","[I]Kunjungan Lab Ranap","[I]Kunjungan Radiologi Ralan","[I]Kunjungan Radiologi Ranap",
-                    "[K]Pemberian Obat PCare","[K]Pemberian Tindakan PCare","[H]Pembayaran Per Akun Bayar 3","[R]Password Asuransi","[I]Data TB","[K]Ketersediaan Kamar SIRANAP",
+                    "[K]Pemberian Obat PCare","[K]Pemberian Tindakan PCare","[H]Pembayaran Per Akun Bayar 3","[Q]Password Asuransi","[I]Data TB","[K]Ketersediaan Kamar SIRANAP",
                     "[N]Periode Laporan TB","[N]Rujukan TB","[N]Riwayat TB","[N]Tipe Diagnosis TB","[N]Status HIV TB","[N]Skoring Anak TB","[N]Konfirmasi Skoring 5 TB",
                     "[N]Konfirmasi Skoring 6 TB","[N]Sumber Obat TB","[N]Hasil Akhir Pengobatan TB","[N]Hasil Tes HIV TB","[D]Kadaluarsa Batch","[D]Sisa Stok",
                     "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis","[N]Pemakaian Air PDAM Per Tanggal","[N]Pemakaian Air PDAM Per Bulan",
@@ -155,10 +155,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Tarif Ranap Inhealth","[K]Tarif Radiologi Inhealth","[K]Tarif Laborat Inhealth","[K]Tarif Operasi Inhealth","[D]Hibah Obat & BHP","[F]Asal Hibah",
                     "[L]Asuhan Gizi","[K]Tagihan Inhealth","[D]Sirkulasi Obat, Alkes & BHP 4","[D]Sirkulasi Obat, Alkes & BHP 5","[E]Sirkulasi Non Medis 2",
                     "[L]Monitoring Asuhan Gizi","[N]Penerimaan Obat, Alkes & BHP Per Bulan","[I]Rekap Kunjungan","[O]Surat Keterangan Sakit","[L]Penilaian Awal Keperawatan Ralan",
-                    "[A]Permintaan Diet","[L]Master Masalah Keperawatan","[C]Pengajuan Cuti","[I]Kedatangan Pasien Per Jam","[M]Data Pendonor","[Q]Suplier Toko",
-                    "[Q]Jenis Barang Toko","[R]Set Harga Toko","[Q]Barang Toko","[J]Penagihan Piutang Pasien","[J]Akun Penagihan Piutang","[Q]Stok Opname Toko",
-                    "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko","[J]Hutang Toko",
-                    "[J]Bayar Pesan Toko","[Q]Member Toko","[Q]Penjualan Toko","[I]Registrasi Poli Per Tanggal"
+                    "[A]Permintaan Diet","[L]Master Masalah Keperawatan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -320,10 +317,6 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
-                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
-                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
-                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
-                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -337,7 +330,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 607;i++) {
+        for (i = 0; i < 587;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1147,46 +1140,6 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(101);
             }else if(i==586){
                 column.setPreferredWidth(163);
-            }else if(i==587){
-                column.setPreferredWidth(96);
-            }else if(i==588){
-                column.setPreferredWidth(154);
-            }else if(i==589){
-                column.setPreferredWidth(95);
-            }else if(i==590){
-                column.setPreferredWidth(83);
-            }else if(i==591){
-                column.setPreferredWidth(111);
-            }else if(i==592){
-                column.setPreferredWidth(96);
-            }else if(i==593){
-                column.setPreferredWidth(83);
-            }else if(i==594){
-                column.setPreferredWidth(146);
-            }else if(i==595){
-                column.setPreferredWidth(138);
-            }else if(i==596){
-                column.setPreferredWidth(114);
-            }else if(i==597){
-                column.setPreferredWidth(125);
-            }else if(i==598){
-                column.setPreferredWidth(134);
-            }else if(i==599){
-                column.setPreferredWidth(138);
-            }else if(i==600){
-                column.setPreferredWidth(144);
-            }else if(i==601){
-                column.setPreferredWidth(140);
-            }else if(i==602){
-                column.setPreferredWidth(81);
-            }else if(i==603){
-                column.setPreferredWidth(105);
-            }else if(i==604){
-                column.setPreferredWidth(88);
-            }else if(i==605){
-                column.setPreferredWidth(97);
-            }else if(i==606){
-                column.setPreferredWidth(149);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1328,7 +1281,7 @@ public class DlgUser extends javax.swing.JDialog {
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnCopyHakAkses.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCopyHakAkses.setForeground(new java.awt.Color(50, 50, 50));
+        MnCopyHakAkses.setForeground(new java.awt.Color(50,50,50));
         MnCopyHakAkses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCopyHakAkses.setText("Copy Hak Akses");
         MnCopyHakAkses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1343,7 +1296,7 @@ public class DlgUser extends javax.swing.JDialog {
         jPopupMenu1.add(MnCopyHakAkses);
 
         MnSetUser.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSetUser.setForeground(new java.awt.Color(50, 50, 50));
+        MnSetUser.setForeground(new java.awt.Color(50,50,50));
         MnSetUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSetUser.setText("Set Personal");
         MnSetUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1366,7 +1319,7 @@ public class DlgUser extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1397,7 +1350,7 @@ public class DlgUser extends javax.swing.JDialog {
         jLabel3.setText("Dokter/Petugas :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass5.add(jLabel3);
-        jLabel3.setBounds(5, 12, 94, 23);
+        jLabel3.setBounds(10, 12, 94, 23);
 
         jLabel4.setText("Password :");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -1412,7 +1365,7 @@ public class DlgUser extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(TKd);
-        TKd.setBounds(102, 12, 112, 23);
+        TKd.setBounds(107, 12, 107, 23);
 
         TPass.setName("TPass"); // NOI18N
         TPass.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1479,12 +1432,12 @@ public class DlgUser extends javax.swing.JDialog {
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
+        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         jLabel6.setRequestFocusEnabled(false);
         panelGlass7.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(355, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(350, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -1680,8 +1633,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2310,27 +2262,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "surat_sakit='"+tbUser.getValueAt(i,583).toString()+"',"+
                     "penilaian_awal_keperawatan_ralan='"+tbUser.getValueAt(i,584).toString()+"',"+
                     "permintaan_diet='"+tbUser.getValueAt(i,585).toString()+"',"+
-                    "master_masalah_keperawatan='"+tbUser.getValueAt(i,586).toString()+"',"+
-                    "pengajuan_cuti='"+tbUser.getValueAt(i,587).toString()+"',"+
-                    "kedatangan_pasien='"+tbUser.getValueAt(i,588).toString()+"',"+
-                    "utd_pendonor='"+tbUser.getValueAt(i,589).toString()+"',"+
-                    "toko_suplier='"+tbUser.getValueAt(i,590).toString()+"',"+
-                    "toko_jenis='"+tbUser.getValueAt(i,591).toString()+"',"+
-                    "toko_set_harga='"+tbUser.getValueAt(i,592).toString()+"',"+
-                    "toko_barang='"+tbUser.getValueAt(i,593).toString()+"',"+
-                    "penagihan_piutang_pasien='"+tbUser.getValueAt(i,594).toString()+"',"+
-                    "akun_penagihan_piutang='"+tbUser.getValueAt(i,595).toString()+"',"+
-                    "stok_opname_toko='"+tbUser.getValueAt(i,596).toString()+"',"+
-                    "toko_riwayat_barang='"+tbUser.getValueAt(i,597).toString()+"',"+
-                    "toko_surat_pemesanan='"+tbUser.getValueAt(i,598).toString()+"',"+
-                    "toko_pengajuan_barang='"+tbUser.getValueAt(i,599).toString()+"',"+
-                    "toko_penerimaan_barang='"+tbUser.getValueAt(i,600).toString()+"',"+
-                    "toko_pengadaan_barang='"+tbUser.getValueAt(i,601).toString()+"',"+
-                    "toko_hutang='"+tbUser.getValueAt(i,602).toString()+"',"+
-                    "toko_bayar_pemesanan='"+tbUser.getValueAt(i,603).toString()+"',"+
-                    "toko_member='"+tbUser.getValueAt(i,604).toString()+"',"+
-                    "toko_penjualan='"+tbUser.getValueAt(i,605).toString()+"',"+
-                    "registrasi_poli_per_tanggal='"+tbUser.getValueAt(i,606).toString()+"'");
+                    "master_masalah_keperawatan='"+tbUser.getValueAt(i,586).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -2998,27 +2930,7 @@ public class DlgUser extends javax.swing.JDialog {
                                     "surat_sakit='"+tbUser.getValueAt(barisdicopy,583).toString()+"',"+
                                     "penilaian_awal_keperawatan_ralan='"+tbUser.getValueAt(barisdicopy,584).toString()+"',"+
                                     "permintaan_diet='"+tbUser.getValueAt(barisdicopy,585).toString()+"',"+
-                                    "master_masalah_keperawatan='"+tbUser.getValueAt(barisdicopy,586).toString()+"',"+
-                                    "pengajuan_cuti='"+tbUser.getValueAt(barisdicopy,587).toString()+"',"+
-                                    "kedatangan_pasien='"+tbUser.getValueAt(barisdicopy,588).toString()+"',"+
-                                    "utd_pendonor='"+tbUser.getValueAt(barisdicopy,589).toString()+"',"+
-                                    "toko_suplier='"+tbUser.getValueAt(barisdicopy,590).toString()+"',"+
-                                    "toko_jenis='"+tbUser.getValueAt(barisdicopy,591).toString()+"',"+
-                                    "toko_set_harga='"+tbUser.getValueAt(barisdicopy,592).toString()+"',"+
-                                    "toko_barang='"+tbUser.getValueAt(barisdicopy,593).toString()+"',"+
-                                    "penagihan_piutang_pasien='"+tbUser.getValueAt(barisdicopy,594).toString()+"',"+
-                                    "akun_penagihan_piutang='"+tbUser.getValueAt(barisdicopy,595).toString()+"',"+
-                                    "stok_opname_toko='"+tbUser.getValueAt(barisdicopy,596).toString()+"',"+
-                                    "toko_riwayat_barang='"+tbUser.getValueAt(barisdicopy,597).toString()+"',"+
-                                    "toko_surat_pemesanan='"+tbUser.getValueAt(barisdicopy,598).toString()+"',"+
-                                    "toko_pengajuan_barang='"+tbUser.getValueAt(barisdicopy,599).toString()+"',"+
-                                    "toko_penerimaan_barang='"+tbUser.getValueAt(barisdicopy,600).toString()+"',"+
-                                    "toko_pengadaan_barang='"+tbUser.getValueAt(barisdicopy,601).toString()+"',"+
-                                    "toko_hutang='"+tbUser.getValueAt(barisdicopy,602).toString()+"',"+
-                                    "toko_bayar_pemesanan='"+tbUser.getValueAt(barisdicopy,603).toString()+"',"+
-                                    "toko_member='"+tbUser.getValueAt(barisdicopy,604).toString()+"',"+
-                                    "toko_penjualan='"+tbUser.getValueAt(barisdicopy,605).toString()+"',"+
-                                    "registrasi_poli_per_tanggal='"+tbUser.getValueAt(barisdicopy,606).toString()+"'");
+                                    "master_masalah_keperawatan='"+tbUser.getValueAt(barisdicopy,586).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3325,10 +3237,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_HAIs_laju_hap,inhealth_mapping_poli,inhealth_mapping_dokter,inhealth_mapping_tindakan_ralan,inhealth_mapping_tindakan_ranap,"+
                         "inhealth_mapping_tindakan_radiologi,inhealth_mapping_tindakan_laborat,inhealth_mapping_tindakan_operasi,hibah_obat_bhp,"+
                         "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis2,monitoring_asuhan_gizi,"+
-                        "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
-                        "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
-                        "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
-                        "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal from user order by AES_DECRYPT(id_user,'nur')");
+                        "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3927,27 +3836,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("surat_sakit"),
                                rs.getBoolean("penilaian_awal_keperawatan_ralan"),
                                rs.getBoolean("permintaan_diet"),
-                               rs.getBoolean("master_masalah_keperawatan"),
-                               rs.getBoolean("pengajuan_cuti"),
-                               rs.getBoolean("kedatangan_pasien"),
-                               rs.getBoolean("utd_pendonor"),
-                               rs.getBoolean("toko_suplier"),
-                               rs.getBoolean("toko_jenis"),
-                               rs.getBoolean("toko_set_harga"),
-                               rs.getBoolean("toko_barang"),
-                               rs.getBoolean("penagihan_piutang_pasien"),
-                               rs.getBoolean("akun_penagihan_piutang"),
-                               rs.getBoolean("stok_opname_toko"),
-                               rs.getBoolean("toko_riwayat_barang"),
-                               rs.getBoolean("toko_surat_pemesanan"),
-                               rs.getBoolean("toko_pengajuan_barang"),
-                               rs.getBoolean("toko_penerimaan_barang"),
-                               rs.getBoolean("toko_pengadaan_barang"),
-                               rs.getBoolean("toko_hutang"),
-                               rs.getBoolean("toko_bayar_pemesanan"),
-                               rs.getBoolean("toko_member"),
-                               rs.getBoolean("toko_penjualan"),
-                               rs.getBoolean("registrasi_poli_per_tanggal")
+                               rs.getBoolean("master_masalah_keperawatan")
                             });
                         }   
                     } catch (Exception e) {
@@ -4535,27 +4424,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("surat_sakit"),
                            rs.getBoolean("penilaian_awal_keperawatan_ralan"),
                            rs.getBoolean("permintaan_diet"),
-                           rs.getBoolean("master_masalah_keperawatan"),
-                           rs.getBoolean("pengajuan_cuti"),
-                           rs.getBoolean("kedatangan_pasien"),
-                           rs.getBoolean("utd_pendonor"),
-                           rs.getBoolean("toko_suplier"),
-                           rs.getBoolean("toko_jenis"),
-                           rs.getBoolean("toko_set_harga"),
-                           rs.getBoolean("toko_barang"),
-                           rs.getBoolean("penagihan_piutang_pasien"),
-                           rs.getBoolean("akun_penagihan_piutang"),
-                           rs.getBoolean("stok_opname_toko"),
-                           rs.getBoolean("toko_riwayat_barang"),
-                           rs.getBoolean("toko_surat_pemesanan"),
-                           rs.getBoolean("toko_pengajuan_barang"),
-                           rs.getBoolean("toko_penerimaan_barang"),
-                           rs.getBoolean("toko_pengadaan_barang"),
-                           rs.getBoolean("toko_hutang"),
-                           rs.getBoolean("toko_bayar_pemesanan"),
-                           rs.getBoolean("toko_member"),
-                           rs.getBoolean("toko_penjualan"),
-                           rs.getBoolean("registrasi_poli_per_tanggal")
+                           rs.getBoolean("master_masalah_keperawatan")
                         });
                     }                                             
                  }

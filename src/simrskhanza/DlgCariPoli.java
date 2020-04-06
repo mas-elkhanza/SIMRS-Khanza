@@ -14,6 +14,7 @@ package simrskhanza;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
+import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
@@ -34,6 +35,7 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariPoli extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
+    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
@@ -93,6 +95,7 @@ public final class DlgCariPoli extends javax.swing.JDialog {
             });
         }
     }
+    private DlgPoli poli=new DlgPoli(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -297,7 +300,6 @@ public final class DlgCariPoli extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPoli poli=new DlgPoli(null,false);
         poli.emptTeks();
         poli.isCek();
         poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
