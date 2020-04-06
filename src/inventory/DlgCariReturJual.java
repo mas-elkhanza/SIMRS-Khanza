@@ -997,20 +997,26 @@ public class DlgCariReturJual extends javax.swing.JDialog {
 
     private void tampil() {
         tanggal=" returjual.tgl_retur between '"+Valid.SetTgl(TglRetur1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglRetur2.getSelectedItem()+"")+"' ";
-        noret="";ptg="";sat="";bar="";     
+        noret="";ptg="";sat="";bar="";nonot="";     
         if(!NoRetur.getText().equals("")){
             noret=" and returjual.no_retur_jual='"+NoRetur.getText()+"' ";
         } 
+        
         if(!Nmptg.getText().equals("")){
             ptg=" and petugas.nama='"+Nmptg.getText()+"' ";
         }
+        
         if(!nmsat.getText().equals("")){
             sat=" and kodesatuan.satuan='"+nmsat.getText()+"' ";
         }
+        
         if(!nmbar.getText().equals("")){
             bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
         }
      
+        if(!NoNota.getText().equals("")){
+            nonot=" and detreturjual.nota_jual='"+NoNota.getText()+"' ";
+        }
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement("select returjual.no_retur_jual,returjual.tgl_retur, "+
@@ -1045,16 +1051,6 @@ public class DlgCariReturJual extends javax.swing.JDialog {
                                    rs.getString(6),
                                    "Retur Jual : di "+rs.getString(7),"","","","",""
                     });
-                    sat="";bar="";nonot="";
-                    if(!nmsat.getText().equals("")){
-                        sat=" and kodesatuan.satuan='"+nmsat.getText()+"' ";
-                    }    
-                    if(!nmbar.getText().equals("")){
-                        bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
-                    }
-                    if(!NoNota.getText().equals("")){
-                        nonot=" and detreturjual.nota_jual='"+NoNota.getText()+"' ";
-                    }
                     ps2=koneksi.prepareStatement("select detreturjual.nota_jual,detreturjual.kode_brng,databarang.nama_brng, "+
                             "detreturjual.kode_sat,kodesatuan.satuan,detreturjual.h_retur,detreturjual.jml_retur, "+
                             "detreturjual.subtotal,detreturjual.no_batch,detreturjual.no_faktur from detreturjual inner join databarang inner join kodesatuan inner join returjual"+

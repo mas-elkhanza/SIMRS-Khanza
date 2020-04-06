@@ -399,7 +399,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnCetakLab.setBackground(new java.awt.Color(250, 255, 245));
-        MnCetakLab.setForeground(new java.awt.Color(50,50,50));
+        MnCetakLab.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakLab.setText("Cetak Hasil Lab");
         MnCetakLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -410,7 +410,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab.setText("Model 1");
         MnCetakHasilLab.setName("MnCetakHasilLab"); // NOI18N
@@ -424,7 +424,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab1.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab1.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab1.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab1.setText("Model 2");
         MnCetakHasilLab1.setName("MnCetakHasilLab1"); // NOI18N
@@ -438,7 +438,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab2.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab2.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab2.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab2.setText("Model 3");
         MnCetakHasilLab2.setName("MnCetakHasilLab2"); // NOI18N
@@ -452,7 +452,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab3.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab3.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab3.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab3.setText("Model 4");
         MnCetakHasilLab3.setName("MnCetakHasilLab3"); // NOI18N
@@ -466,7 +466,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab4.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab4.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab4.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab4.setText("Model 5");
         MnCetakHasilLab4.setName("MnCetakHasilLab4"); // NOI18N
@@ -480,7 +480,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab5.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab5.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab5.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab5.setText("Model 6");
         MnCetakHasilLab5.setName("MnCetakHasilLab5"); // NOI18N
@@ -494,7 +494,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab6.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab6.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab6.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab6.setText("Model 7");
         MnCetakHasilLab6.setName("MnCetakHasilLab6"); // NOI18N
@@ -508,7 +508,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab7.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab7.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab7.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab7.setText("Model 8");
         MnCetakHasilLab7.setName("MnCetakHasilLab7"); // NOI18N
@@ -522,7 +522,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab8.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab8.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab8.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab8.setText("Model 9");
         MnCetakHasilLab8.setName("MnCetakHasilLab8"); // NOI18N
@@ -536,7 +536,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab9.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab9.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab9.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab9.setText("Model 10");
         MnCetakHasilLab9.setName("MnCetakHasilLab9"); // NOI18N
@@ -550,7 +550,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab10.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab10.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab10.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab10.setText("Model 11");
         MnCetakHasilLab10.setName("MnCetakHasilLab10"); // NOI18N
@@ -565,7 +565,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         jPopupMenu1.add(MnCetakLab);
 
         MnPDFLab.setBackground(new java.awt.Color(250, 255, 245));
-        MnPDFLab.setForeground(new java.awt.Color(50,50,50));
+        MnPDFLab.setForeground(new java.awt.Color(50, 50, 50));
         MnPDFLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPDFLab.setText("PDF Hasil Lab");
         MnPDFLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -576,7 +576,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab11.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab11.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab11.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab11.setText("Model 1");
         MnCetakHasilLab11.setName("MnCetakHasilLab11"); // NOI18N
@@ -590,7 +590,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab12.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab12.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab12.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab12.setText("Model 2");
         MnCetakHasilLab12.setName("MnCetakHasilLab12"); // NOI18N
@@ -604,7 +604,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab13.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab13.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab13.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab13.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab13.setText("Model 3");
         MnCetakHasilLab13.setName("MnCetakHasilLab13"); // NOI18N
@@ -618,7 +618,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab14.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab14.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab14.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab14.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab14.setText("Model 4");
         MnCetakHasilLab14.setName("MnCetakHasilLab14"); // NOI18N
@@ -632,7 +632,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab15.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab15.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab15.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab15.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab15.setText("Model 5");
         MnCetakHasilLab15.setName("MnCetakHasilLab15"); // NOI18N
@@ -646,7 +646,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab16.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab16.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab16.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab16.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab16.setText("Model 6");
         MnCetakHasilLab16.setName("MnCetakHasilLab16"); // NOI18N
@@ -660,7 +660,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab17.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab17.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab17.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab17.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab17.setText("Model 7");
         MnCetakHasilLab17.setName("MnCetakHasilLab17"); // NOI18N
@@ -674,7 +674,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab18.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab18.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab18.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab18.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab18.setText("Model 8");
         MnCetakHasilLab18.setName("MnCetakHasilLab18"); // NOI18N
@@ -688,7 +688,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab19.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab19.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab19.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab19.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab19.setText("Model 9");
         MnCetakHasilLab19.setName("MnCetakHasilLab19"); // NOI18N
@@ -702,7 +702,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab20.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab20.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab20.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab20.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab20.setText("Model 10");
         MnCetakHasilLab20.setName("MnCetakHasilLab20"); // NOI18N
@@ -716,7 +716,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab21.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakHasilLab21.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab21.setForeground(new java.awt.Color(50,50,50));
+        MnCetakHasilLab21.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakHasilLab21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab21.setText("Model 11");
         MnCetakHasilLab21.setName("MnCetakHasilLab21"); // NOI18N
@@ -732,7 +732,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakNota.setBackground(new java.awt.Color(255, 255, 254));
         MnCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakNota.setForeground(new java.awt.Color(50,50,50));
+        MnCetakNota.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakNota.setText("Cetak Nota Lab");
         MnCetakNota.setName("MnCetakNota"); // NOI18N
@@ -746,7 +746,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnUbah.setBackground(new java.awt.Color(255, 255, 254));
         MnUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUbah.setForeground(new java.awt.Color(50,50,50));
+        MnUbah.setForeground(new java.awt.Color(50, 50, 50));
         MnUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUbah.setText("Ubah Periksa Lab");
         MnUbah.setName("MnUbah"); // NOI18N
@@ -760,7 +760,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnUbah1.setBackground(new java.awt.Color(255, 255, 254));
         MnUbah1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUbah1.setForeground(new java.awt.Color(50,50,50));
+        MnUbah1.setForeground(new java.awt.Color(50, 50, 50));
         MnUbah1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUbah1.setText("Ubah Nilai Hasil");
         MnUbah1.setName("MnUbah1"); // NOI18N
@@ -774,7 +774,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnSaranKesan.setBackground(new java.awt.Color(255, 255, 254));
         MnSaranKesan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSaranKesan.setForeground(new java.awt.Color(50,50,50));
+        MnSaranKesan.setForeground(new java.awt.Color(50, 50, 50));
         MnSaranKesan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSaranKesan.setText("Kesan & Saran");
         MnSaranKesan.setName("MnSaranKesan"); // NOI18N
@@ -791,7 +791,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         WindowSaran.setUndecorated(true);
         WindowSaran.setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kesan & Saran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kesan & Saran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -838,7 +838,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
         jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)), "Kesan :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)), "Kesan :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
         Scroll4.setPreferredSize(new java.awt.Dimension(182, 183));
@@ -851,7 +851,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         jPanel3.add(Scroll4, java.awt.BorderLayout.PAGE_START);
 
-        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)), "Saran :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)), "Saran :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
@@ -876,7 +876,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1120,7 +1120,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -5426,12 +5426,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on periksa_lab.nip=petugas.nip "+
                     "inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter where "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and pasien.nm_pasien like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and petugas.nama like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and reg_periksa.no_rkm_medis like ? group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam) "+
+                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and (pasien.nm_pasien like ? or petugas.nama like ? or reg_periksa.no_rkm_medis like ?) group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam) "+
                     "order by periksa_lab.tgl_periksa desc,periksa_lab.jam desc");
             }
                 
@@ -5446,18 +5441,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps.setString(4,"%"+kdmem.getText()+"%");
                     ps.setString(5,"%"+kdptg.getText()+"%");
                     ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(9,"%"+NoRawat.getText()+"%");
-                    ps.setString(10,"%"+kdmem.getText()+"%");
-                    ps.setString(11,"%"+kdptg.getText()+"%");
-                    ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(15,"%"+NoRawat.getText()+"%");
-                    ps.setString(16,"%"+kdmem.getText()+"%");
-                    ps.setString(17,"%"+kdptg.getText()+"%");
-                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -5598,13 +5583,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "on detail_periksa_lab.id_template=template_laboratorium.id_template and periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.kd_dokter=dokter.kd_dokter and "+
                     "periksa_lab.no_rawat=detail_periksa_lab.no_rawat and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and "+
                     "periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa and periksa_lab.jam=detail_periksa_lab.jam and periksa_lab.nip=petugas.nip and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    "where periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and pasien.nm_pasien like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and petugas.nama like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and dokter.nm_dokter like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and template_laboratorium.Pemeriksaan like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and jns_perawatan_lab.nm_perawatan like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and detail_periksa_lab.keterangan like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis like ? "+
+                    "where periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and "+
+                    "(pasien.nm_pasien like ? or petugas.nama like ? or dokter.nm_dokter like ? or template_laboratorium.Pemeriksaan like ? or jns_perawatan_lab.nm_perawatan like ? or detail_periksa_lab.keterangan like ? or reg_periksa.no_rkm_medis like ?) "+
                     "order by periksa_lab.tgl_periksa desc,periksa_lab.jam desc,detail_periksa_lab.kd_jenis_prw,template_laboratorium.urut");
             }
                 
@@ -5619,42 +5599,12 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps.setString(4,"%"+kdmem.getText()+"%");
                     ps.setString(5,"%"+kdptg.getText()+"%");
                     ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(9,"%"+NoRawat.getText()+"%");
-                    ps.setString(10,"%"+kdmem.getText()+"%");
-                    ps.setString(11,"%"+kdptg.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
                     ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(15,"%"+NoRawat.getText()+"%");
-                    ps.setString(16,"%"+kdmem.getText()+"%");
-                    ps.setString(17,"%"+kdptg.getText()+"%");
-                    ps.setString(18,"%"+TCari.getText().trim()+"%");
-                    ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(21,"%"+NoRawat.getText()+"%");
-                    ps.setString(22,"%"+kdmem.getText()+"%");
-                    ps.setString(23,"%"+kdptg.getText()+"%");
-                    ps.setString(24,"%"+TCari.getText().trim()+"%");
-                    ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(27,"%"+NoRawat.getText()+"%");
-                    ps.setString(28,"%"+kdmem.getText()+"%");
-                    ps.setString(29,"%"+kdptg.getText()+"%");
-                    ps.setString(30,"%"+TCari.getText().trim()+"%");
-                    ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(33,"%"+NoRawat.getText()+"%");
-                    ps.setString(34,"%"+kdmem.getText()+"%");
-                    ps.setString(35,"%"+kdptg.getText()+"%");
-                    ps.setString(36,"%"+TCari.getText().trim()+"%");
-                    ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(39,"%"+NoRawat.getText()+"%");
-                    ps.setString(40,"%"+kdmem.getText()+"%");
-                    ps.setString(41,"%"+kdptg.getText()+"%");
-                    ps.setString(42,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -5719,12 +5669,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
                     "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
                     "inner join petugas on periksa_lab.nip=petugas.nip "+
-                    "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and pasien.no_rkm_medis like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and dokter.nm_dokter like ? group by pasien.no_rkm_medis order by tgl_registrasi desc");
+                    "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and "+
+                    "(pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or periksa_lab.no_rawat like ? or petugas.nama like ? or dokter.nm_dokter like ?) group by pasien.no_rkm_medis order by tgl_registrasi desc");
             }
                 
             try {
@@ -5738,36 +5684,11 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,"%"+NoRawat.getText()+"%");
-                    ps.setString(8,"%"+kdmem.getText()+"%");
-                    ps.setString(9,"%"+kdptg.getText()+"%");
-                    ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,"%"+NoRawat.getText()+"%");
-                    ps.setString(14,"%"+kdmem.getText()+"%");
-                    ps.setString(15,"%"+kdptg.getText()+"%");
-                    ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(18,"%"+TCari.getText().trim()+"%");
-                    ps.setString(19,"%"+NoRawat.getText()+"%");
-                    ps.setString(20,"%"+kdmem.getText()+"%");
-                    ps.setString(21,"%"+kdptg.getText()+"%");
-                    ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(24,"%"+TCari.getText().trim()+"%");
-                    ps.setString(25,"%"+NoRawat.getText()+"%");
-                    ps.setString(26,"%"+kdmem.getText()+"%");
-                    ps.setString(27,"%"+kdptg.getText()+"%");
-                    ps.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(30,"%"+TCari.getText().trim()+"%");
-                    ps.setString(31,"%"+NoRawat.getText()+"%");
-                    ps.setString(32,"%"+kdmem.getText()+"%");
-                    ps.setString(33,"%"+kdptg.getText()+"%");
-                    ps.setString(34,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(35,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(36,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -5790,80 +5711,31 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='8%'>Tanggal</td>"+
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='84%'>Pemeriksaan</td>"+
                                     "</tr>");
-                    if(NoRawat.getText().equals("")&&kdmem.getText().equals("")&&kdptg.getText().equals("")&&TCari.getText().equals("")){
-                        ps2=koneksi.prepareStatement(
-                            "select periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam,dokter.nm_dokter from "+
-                            "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
-                            "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
-                            "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
-                            "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
-                            "inner join petugas on periksa_lab.nip=petugas.nip "+
-                            "where periksa_lab.tgl_periksa between ? and ? group by periksa_lab.tgl_periksa,periksa_lab.jam order by tgl_registrasi");
-                    }else{
-                        ps2=koneksi.prepareStatement(
-                            "select periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam,dokter.nm_dokter from "+
-                            "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
-                            "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
-                            "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
-                            "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
-                            "inner join petugas on periksa_lab.nip=petugas.nip "+
-                            "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and pasien.no_rkm_medis like ? or "+
-                            "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
-                            "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
-                            "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? or "+
-                            "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
-                            "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and dokter.nm_dokter like ? "+
-                            "group by periksa_lab.tgl_periksa,periksa_lab.jam order by tgl_registrasi");
-                    }
+                    
+                    ps2=koneksi.prepareStatement(
+                        "select periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam,dokter.nm_dokter from "+
+                        "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                        "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
+                        "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
+                        "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                        "inner join petugas on periksa_lab.nip=petugas.nip "+
+                        "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and "+
+                        "(pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or periksa_lab.no_rawat like ? or petugas.nama like ? or dokter.nm_dokter like ? )"+
+                        "group by periksa_lab.tgl_periksa,periksa_lab.jam order by tgl_registrasi");
                         
                     try {
-                        if(NoRawat.getText().equals("")&&kdmem.getText().equals("")&&kdptg.getText().equals("")){
-                            ps2.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            ps2.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                        }else{
-                            ps2.setString(1,"%"+NoRawat.getText()+"%");
-                            ps2.setString(2,"%"+kdmem.getText()+"%");
-                            ps2.setString(3,"%"+kdptg.getText()+"%");
-                            ps2.setString(4,rs.getString("no_rkm_medis"));
-                            ps2.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            ps2.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            ps2.setString(7,"%"+TCari.getText().trim()+"%");
-                            ps2.setString(8,"%"+NoRawat.getText()+"%");
-                            ps2.setString(9,"%"+kdmem.getText()+"%");
-                            ps2.setString(10,"%"+kdptg.getText()+"%");
-                            ps2.setString(11,rs.getString("no_rkm_medis"));
-                            ps2.setString(12,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            ps2.setString(13,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            ps2.setString(14,"%"+TCari.getText().trim()+"%");
-                            ps2.setString(15,"%"+NoRawat.getText()+"%");
-                            ps2.setString(16,"%"+kdmem.getText()+"%");
-                            ps2.setString(17,"%"+kdptg.getText()+"%");
-                            ps2.setString(18,rs.getString("no_rkm_medis"));
-                            ps2.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            ps2.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            ps2.setString(21,"%"+TCari.getText().trim()+"%");
-                            ps2.setString(22,"%"+NoRawat.getText()+"%");
-                            ps2.setString(23,"%"+kdmem.getText()+"%");
-                            ps2.setString(24,"%"+kdptg.getText()+"%");
-                            ps2.setString(25,rs.getString("no_rkm_medis"));
-                            ps2.setString(26,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            ps2.setString(27,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            ps2.setString(28,"%"+TCari.getText().trim()+"%");    
-                            ps2.setString(29,"%"+NoRawat.getText()+"%");
-                            ps2.setString(30,"%"+kdmem.getText()+"%");
-                            ps2.setString(31,"%"+kdptg.getText()+"%");
-                            ps2.setString(32,rs.getString("no_rkm_medis"));
-                            ps2.setString(33,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            ps2.setString(34,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            ps2.setString(35,"%"+TCari.getText().trim()+"%");  
-                            ps2.setString(36,"%"+NoRawat.getText()+"%");
-                            ps2.setString(37,"%"+kdmem.getText()+"%");
-                            ps2.setString(38,"%"+kdptg.getText()+"%");
-                            ps2.setString(39,rs.getString("no_rkm_medis"));
-                            ps2.setString(40,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            ps2.setString(41,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            ps2.setString(42,"%"+TCari.getText().trim()+"%"); 
-                        }
+                        ps2.setString(1,"%"+NoRawat.getText()+"%");
+                        ps2.setString(2,"%"+kdmem.getText()+"%");
+                        ps2.setString(3,"%"+kdptg.getText()+"%");
+                        ps2.setString(4,rs.getString("no_rkm_medis"));
+                        ps2.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps2.setString(7,"%"+TCari.getText().trim()+"%");
+                        ps2.setString(8,"%"+TCari.getText().trim()+"%");
+                        ps2.setString(9,"%"+TCari.getText().trim()+"%");
+                        ps2.setString(10,"%"+TCari.getText().trim()+"%");   
+                        ps2.setString(11,"%"+TCari.getText().trim()+"%"); 
+                        ps2.setString(12,"%"+TCari.getText().trim()+"%"); 
                                
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
@@ -5879,98 +5751,34 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' bgcolor='#fdfff9' align='center' width='16%'>Petugas Lab</td>"+
                                                 "<td valign='top' bgcolor='#fdfff9' align='center' width='62%'>Detail Pemeriksaan</td>"+
                                             "</tr>");
-                            if(NoRawat.getText().equals("")&&kdmem.getText().equals("")&&kdptg.getText().equals("")){
-                                ps3=koneksi.prepareStatement(
-                                    "select periksa_lab.kd_dokter,dokter.nm_dokter,petugas.nama as nm_petugas,jns_perawatan_lab.nm_perawatan,periksa_lab.kd_jenis_prw from "+
-                                    "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
-                                    "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
-                                    "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
-                                    "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
-                                    "inner join petugas on periksa_lab.nip=petugas.nip "+
-                                    "where periksa_lab.tgl_periksa between ? and ? order by tgl_registrasi");
-                            }else{
-                                ps3=koneksi.prepareStatement(
-                                    "select periksa_lab.kd_dokter,dokter.nm_dokter,petugas.nama as nm_petugas,jns_perawatan_lab.nm_perawatan,periksa_lab.kd_jenis_prw from "+
-                                    "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
-                                    "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
-                                    "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
-                                    "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
-                                    "inner join petugas on periksa_lab.nip=petugas.nip "+
-                                    "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and pasien.no_rkm_medis like ? or "+
-                                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
-                                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
-                                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? or "+
-                                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
-                                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and dokter.nm_dokter like ? "+
-                                    "order by tgl_registrasi");
-                            }
+                            
+                            ps3=koneksi.prepareStatement(
+                                "select periksa_lab.kd_dokter,dokter.nm_dokter,petugas.nama as nm_petugas,jns_perawatan_lab.nm_perawatan,periksa_lab.kd_jenis_prw from "+
+                                "pasien inner join reg_periksa on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                                "inner join periksa_lab on reg_periksa.no_rawat=periksa_lab.no_rawat "+
+                                "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
+                                "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
+                                "inner join petugas on periksa_lab.nip=petugas.nip "+
+                                "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and "+
+                                "(pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or periksa_lab.no_rawat like ? or petugas.nama like ? or dokter.nm_dokter like ?)"+
+                                "order by tgl_registrasi");
                                 
                             try {
-                                if(NoRawat.getText().equals("")&&kdmem.getText().equals("")&&kdptg.getText().equals("")){
-                                    ps3.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    ps3.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                }else{
-                                    ps3.setString(1,"%"+NoRawat.getText()+"%");
-                                    ps3.setString(2,"%"+kdmem.getText()+"%");
-                                    ps3.setString(3,"%"+kdptg.getText()+"%");
-                                    ps3.setString(4,rs.getString("no_rkm_medis"));
-                                    ps3.setString(5,rs2.getString("no_rawat"));
-                                    ps3.setString(6,rs2.getString("tgl_periksa"));
-                                    ps3.setString(7,rs2.getString("jam"));
-                                    ps3.setString(8,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    ps3.setString(9,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    ps3.setString(10,"%"+TCari.getText().trim()+"%");
-                                    ps3.setString(11,"%"+NoRawat.getText()+"%");
-                                    ps3.setString(12,"%"+kdmem.getText()+"%");
-                                    ps3.setString(13,"%"+kdptg.getText()+"%");
-                                    ps3.setString(14,rs.getString("no_rkm_medis"));
-                                    ps3.setString(15,rs2.getString("no_rawat"));
-                                    ps3.setString(16,rs2.getString("tgl_periksa"));
-                                    ps3.setString(17,rs2.getString("jam"));
-                                    ps3.setString(18,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    ps3.setString(19,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    ps3.setString(20,"%"+TCari.getText().trim()+"%");
-                                    ps3.setString(21,"%"+NoRawat.getText()+"%");
-                                    ps3.setString(22,"%"+kdmem.getText()+"%");
-                                    ps3.setString(23,"%"+kdptg.getText()+"%");
-                                    ps3.setString(24,rs.getString("no_rkm_medis"));
-                                    ps3.setString(25,rs2.getString("no_rawat"));
-                                    ps3.setString(26,rs2.getString("tgl_periksa"));
-                                    ps3.setString(27,rs2.getString("jam"));
-                                    ps3.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    ps3.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    ps3.setString(30,"%"+TCari.getText().trim()+"%");
-                                    ps3.setString(31,"%"+NoRawat.getText()+"%");
-                                    ps3.setString(32,"%"+kdmem.getText()+"%");
-                                    ps3.setString(33,"%"+kdptg.getText()+"%");
-                                    ps3.setString(34,rs.getString("no_rkm_medis"));
-                                    ps3.setString(35,rs2.getString("no_rawat"));
-                                    ps3.setString(36,rs2.getString("tgl_periksa"));
-                                    ps3.setString(37,rs2.getString("jam"));
-                                    ps3.setString(38,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    ps3.setString(39,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    ps3.setString(40,"%"+TCari.getText().trim()+"%");
-                                    ps3.setString(41,"%"+NoRawat.getText()+"%");
-                                    ps3.setString(42,"%"+kdmem.getText()+"%");
-                                    ps3.setString(43,"%"+kdptg.getText()+"%");
-                                    ps3.setString(44,rs.getString("no_rkm_medis"));
-                                    ps3.setString(45,rs2.getString("no_rawat"));
-                                    ps3.setString(46,rs2.getString("tgl_periksa"));
-                                    ps3.setString(47,rs2.getString("jam"));
-                                    ps3.setString(48,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    ps3.setString(49,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    ps3.setString(50,"%"+TCari.getText().trim()+"%");
-                                    ps3.setString(51,"%"+NoRawat.getText()+"%");
-                                    ps3.setString(52,"%"+kdmem.getText()+"%");
-                                    ps3.setString(53,"%"+kdptg.getText()+"%");
-                                    ps3.setString(54,rs.getString("no_rkm_medis"));
-                                    ps3.setString(55,rs2.getString("no_rawat"));
-                                    ps3.setString(56,rs2.getString("tgl_periksa"));
-                                    ps3.setString(57,rs2.getString("jam"));
-                                    ps3.setString(58,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    ps3.setString(59,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    ps3.setString(60,"%"+TCari.getText().trim()+"%");
-                                }
+                                ps3.setString(1,"%"+NoRawat.getText()+"%");
+                                ps3.setString(2,"%"+kdmem.getText()+"%");
+                                ps3.setString(3,"%"+kdptg.getText()+"%");
+                                ps3.setString(4,rs.getString("no_rkm_medis"));
+                                ps3.setString(5,rs2.getString("no_rawat"));
+                                ps3.setString(6,rs2.getString("tgl_periksa"));
+                                ps3.setString(7,rs2.getString("jam"));
+                                ps3.setString(8,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                                ps3.setString(9,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                ps3.setString(10,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(11,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(12,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(13,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(14,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(15,"%"+TCari.getText().trim()+"%");
                                     
                                 rs3=ps3.executeQuery();
                                 while(rs3.next()){
@@ -6111,7 +5919,6 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         Kd2.setText("");
         if(tbDokter.getSelectedRow()!= -1){
             Kd2.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            NoRawat.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
         }
     }
     

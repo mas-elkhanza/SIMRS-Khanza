@@ -610,7 +610,6 @@ public class DlgCariPermintaanNonMedis extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        aplikasi.dispose();
         pegawai.dispose();
         barang.dispose();
         barang.jenis.dispose();
@@ -805,6 +804,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             Sequel.queryu("update permintaan_non_medis set status='Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgPengeluaranIPSRS aplikasi=new DlgPengeluaranIPSRS(null,false);
             aplikasi.tampilkanpermintaan=false;
             aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             aplikasi.isCek();

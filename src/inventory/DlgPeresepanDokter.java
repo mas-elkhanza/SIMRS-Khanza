@@ -13,11 +13,11 @@
 package inventory;
 
 import fungsi.WarnaTable2;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -1037,6 +1037,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.textKosong(KdDokter,"Dokter");
         }else if(NoResep.getText().trim().equals("")){
             Valid.textKosong(NoResep,"No.Resep");
+        }else if(ttl<=0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan terlebih dahulu obat yang mau diberikan...!!!");
+            TCari.requestFocus();
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {                 
@@ -1045,6 +1048,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 sukses=true;
                 if(ubah==false){
                     emptTeksobat();
+                    System.out.println("No Resep di simpan ="+NoResep.getText());
                     if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
                         NoResep.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                         cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
@@ -1136,7 +1140,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(ubah==false){
             emptTeksobat();
         }
-            
+        System.out.println("Kode Login ="+akses.getkode());
+        if(akses.getkode().equals("Admin Utama")){
+            ChkRM.setVisible(true);
+            NoResep.setEditable(true);
+        }else{
+            ChkRM.setVisible(false);
+            NoResep.setEditable(false);
+        }
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -1475,7 +1486,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }                  
                 namajenis[z]=tbResep.getValueAt(i,7).toString();
                 aturan[z]=tbResep.getValueAt(i,8).toString();
-                industri[z]=tbResep.getValueAt(i,8).toString();
+                industri[z]=tbResep.getValueAt(i,9).toString();
                 try {
                     beli[z]=Double.parseDouble(tbResep.getValueAt(i,10).toString());
                 } catch (Exception e) {
@@ -3113,7 +3124,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
         } catch (Exception e) {
             System.out.println("Notif : "+e);
-        } 
+        } finally {
+            
+                    System.out.println("No Resep di method simpanData ="+NoResep.getText());
+        }
     }
     
     public void MatikanJam(){

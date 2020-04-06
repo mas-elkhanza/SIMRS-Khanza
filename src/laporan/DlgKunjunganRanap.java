@@ -49,10 +49,10 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2,ps3;
+    private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private int i=0,lama=0,baru=0,laki=0,per=0;  
-    private String setbaru="",setlama="",umurlk="",umurpr="",kddiagnosa="",diagnosa="";
+    private String setbaru="",setlama="",umurlk="",umurpr="",kddiagnosa="",diagnosa="",dokterdpjp="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgKabupaten kabupaten=new DlgKabupaten(null,false);
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
@@ -106,7 +106,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(75);
             }else if(i==12){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(250);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1292,49 +1292,80 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 i=1;   
                 lama=0;baru=0;laki=0;per=0;
                 while(rs.next()){
-                    setbaru="";
-                    setlama="";
-                    if(rs.getString("tgl_registrasi").equals(rs.getString("tgl_daftar"))){
-                        setbaru=rs.getString("no_rkm_medis");
-                        baru++;
-                    }else if(!rs.getString("tgl_registrasi").equals(rs.getString("tgl_daftar"))){
-                        setlama=rs.getString("no_rkm_medis");
-                        lama++;
+                    dokterdpjp=rs.getString("nm_dokter");
+                    try{
+                        ps2=koneksi.prepareStatement("select dokter.nm_dokter from dpjp_ranap inner join dokter "+
+                            "on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=? ");
+                        try {
+                            ps2.setString(1,rs.getString("no_rawat"));
+                            rs2=ps2.executeQuery();                    
+                            while(rs2.next()){
+                                dokterdpjp=rs2.getString("nm_dokter")+", "+dokterdpjp;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                    } catch(Exception e){
+                        System.out.println("Notifikasi : "+e);
                     }
-                    umurlk="";
-                    umurpr="";
-                    switch (rs.getString("jk")) {
-                        case "L":
-                            umurlk=rs.getString("umur");
-                            laki++;
-                            break;
-                        case "P":
-                            umurpr=rs.getString("umur");
-                            per++;
-                            break;
-                    }
-                    diagnosa="";
-                    kddiagnosa="";
-                    ps2=koneksi.prepareStatement(
-                            "select penyakit.kd_penyakit,penyakit.nm_penyakit from penyakit inner join diagnosa_pasien " +
-                            "on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit " +
-                            "where diagnosa_pasien.no_rawat=? order by prioritas asc limit 1");
-                    try {                                    
-                        ps2.setString(1,rs.getString("no_rawat"));
-                        rs2=ps2.executeQuery();
-                        if(rs2.next()){
-                            kddiagnosa=rs2.getString(1);
-                            diagnosa=rs2.getString(2);
+                    
+                    if(dokterdpjp.toLowerCase().contains(nmdokter.getText().toLowerCase())){
+                        setbaru="";
+                        setlama="";
+                        if(rs.getString("tgl_registrasi").equals(rs.getString("tgl_daftar"))){
+                            setbaru=rs.getString("no_rkm_medis");
+                            baru++;
+                        }else if(!rs.getString("tgl_registrasi").equals(rs.getString("tgl_daftar"))){
+                            setlama=rs.getString("no_rkm_medis");
+                            lama++;
                         }
-                    } catch (Exception e) {
-                        System.out.println(e);
-                    } finally{
-                        if(rs2!=null){
-                            rs2.close();
+                        umurlk="";
+                        umurpr="";
+                        switch (rs.getString("jk")) {
+                            case "L":
+                                umurlk=rs.getString("umur");
+                                laki++;
+                                break;
+                            case "P":
+                                umurpr=rs.getString("umur");
+                                per++;
+                                break;
                         }
-                        if(ps2!=null){
-                            ps2.close();
+                        diagnosa="";
+                        kddiagnosa="";
+                        ps2=koneksi.prepareStatement(
+                                "select penyakit.kd_penyakit,penyakit.nm_penyakit from penyakit inner join diagnosa_pasien " +
+                                "on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit " +
+                                "where diagnosa_pasien.no_rawat=? order by prioritas asc limit 1");
+                        try {                                    
+                            ps2.setString(1,rs.getString("no_rawat"));
+                            rs2=ps2.executeQuery();
+                            if(rs2.next()){
+                                kddiagnosa=rs2.getString(1);
+                                diagnosa=rs2.getString(2);
+                            }
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
                         }
+                        
+                        tabMode.addRow(new Object[]{
+                            i,setlama,setbaru,rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),kddiagnosa,diagnosa,rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),rs.getString("stts_pulang"),rs.getString("tgl_masuk"),dokterdpjp
+                        });                
+                        i++;
                     }
                     String dpjp_cetak = "";
                     dpjp_cetak = rs.getString("nm_dokter") == null ? "-" : rs.getString("nm_dokter");
@@ -1371,7 +1402,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode2);   
-            ps3=koneksi.prepareStatement(
+            ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.tgl_daftar,"+
                     "kamar_inap.kd_kamar,bangsal.nm_bangsal,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab)as almt_pj,kamar_inap.stts_pulang,kamar_inap.tgl_keluar, dokter.nm_dokter "+
                     "from reg_periksa "
@@ -1436,54 +1467,79 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 i=1;   
                 lama=0;baru=0;laki=0;per=0;
                 while(rs.next()){
-                    setbaru="";
-                    setlama="";
-                    if(rs.getString("tgl_registrasi").equals(rs.getString("tgl_daftar"))){
-                        setbaru=rs.getString("no_rkm_medis");
-                        baru++;
-                    }else if(!rs.getString("tgl_registrasi").equals(rs.getString("tgl_daftar"))){
-                        setlama=rs.getString("no_rkm_medis");
-                        lama++;
-                    }
-                    umurlk="";
-                    umurpr="";
-                    switch (rs.getString("jk")) {
-                        case "L":
-                            umurlk=rs.getString("umur");
-                            laki++;
-                            break;
-                        case "P":
-                            umurpr=rs.getString("umur");
-                            per++;
-                            break;
-                    }
-                    diagnosa="";
-                    kddiagnosa="";
-                    ps2=koneksi.prepareStatement(
-                            "select penyakit.kd_penyakit,penyakit.nm_penyakit from penyakit inner join diagnosa_pasien " +
-                            "on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit " +
-                            "where diagnosa_pasien.no_rawat=? order by prioritas asc limit 1");
-                    try {                                    
-                        ps2.setString(1,rs.getString("no_rawat"));
-                        rs2=ps2.executeQuery();
-                        if(rs2.next()){
-                            kddiagnosa=rs2.getString(1);
-                            diagnosa=rs2.getString(2);
+                    dokterdpjp=rs.getString("nm_dokter");
+                    try{
+                        ps2=koneksi.prepareStatement("select dokter.nm_dokter from dpjp_ranap inner join dokter "+
+                            "on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=? ");
+                        try {
+                            ps2.setString(1,rs.getString("no_rawat"));
+                            rs2=ps2.executeQuery();                    
+                            while(rs2.next()){
+                                dokterdpjp=rs2.getString("nm_dokter")+", "+dokterdpjp;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
                         }
-                    } catch (Exception e) {
-                        System.out.println(e);
-                    } finally{
-                        if(rs2!=null){
-                            rs2.close();
-                        }
-                        if(ps2!=null){
-                            ps2.close();
-                        }
+                    } catch(Exception e){
+                        System.out.println("Notifikasi : "+e);
                     }
-                    tabMode2.addRow(new Object[]{
-                        i,setlama,setbaru,rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),kddiagnosa,diagnosa,rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),rs.getString("stts_pulang"),rs.getString("tgl_keluar"),rs.getString("nm_dokter")
-                    });                
-                    i++;
+                    if(dokterdpjp.toLowerCase().contains(nmdokter.getText().toLowerCase())){
+                        setbaru="";
+                        setlama="";
+                        if(rs.getString("tgl_registrasi").equals(rs.getString("tgl_daftar"))){
+                            setbaru=rs.getString("no_rkm_medis");
+                            baru++;
+                        }else if(!rs.getString("tgl_registrasi").equals(rs.getString("tgl_daftar"))){
+                            setlama=rs.getString("no_rkm_medis");
+                            lama++;
+                        }
+                        umurlk="";
+                        umurpr="";
+                        switch (rs.getString("jk")) {
+                            case "L":
+                                umurlk=rs.getString("umur");
+                                laki++;
+                                break;
+                            case "P":
+                                umurpr=rs.getString("umur");
+                                per++;
+                                break;
+                        }
+                        diagnosa="";
+                        kddiagnosa="";
+                        ps2=koneksi.prepareStatement(
+                                "select penyakit.kd_penyakit,penyakit.nm_penyakit from penyakit inner join diagnosa_pasien " +
+                                "on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit " +
+                                "where diagnosa_pasien.no_rawat=? order by prioritas asc limit 1");
+                        try {                                    
+                            ps2.setString(1,rs.getString("no_rawat"));
+                            rs2=ps2.executeQuery();
+                            if(rs2.next()){
+                                kddiagnosa=rs2.getString(1);
+                                diagnosa=rs2.getString(2);
+                            }
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        } finally{
+                            if(rs2!=null){
+                                rs2.close();
+                            }
+                            if(ps2!=null){
+                                ps2.close();
+                            }
+                        }
+                        tabMode2.addRow(new Object[]{
+                            i,setlama,setbaru,rs.getString("nm_pasien"),umurlk,umurpr,rs.getString("almt_pj"),kddiagnosa,diagnosa,rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),rs.getString("stts_pulang"),rs.getString("tgl_keluar"),dokterdpjp
+                        });                
+                        i++;
+                    }
                 }
                 if(i>=2){
                     tabMode2.addRow(new Object[]{
@@ -1496,8 +1552,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(rs!=null){
                     rs.close();
                 }
-                if(ps3!=null){
-                    ps3.close();
+                if(ps!=null){
+                    ps.close();
                 }
             }    
             this.setCursor(Cursor.getDefaultCursor());

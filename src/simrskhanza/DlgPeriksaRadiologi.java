@@ -20,7 +20,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import fungsi.koneksiDBRadiologi;
+import bridging.koneksiDBFUJI;
 import ipsrs.DlgBarangIPSRS;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -55,6 +55,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private Connection koneksiradiologi;
     private Jurnal jur=new Jurnal();
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
@@ -2024,9 +2025,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }
     
-    public void tampilbridging(String order) {         
+    public void tampilFuji(String order) {         
         try{
-            Connection koneksiradiologi=koneksiDBRadiologi.condb();
+            koneksiradiologi=koneksiDBFUJI.condb();
             pspemeriksaan=koneksi.prepareStatement(
                     "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
                     "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
@@ -2043,16 +2044,16 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             "select proyeksi, kV, mAS, FFD, BSF, inak, jml_penyinaran, dosis from order_out where kode_tindakan=? and no_rontgen=?");
                     try {
                         pspemeriksaan2.setString(1,rs.getString("kd_jenis_prw"));
-                        pspemeriksaan2.setString(2,order);
+                        pspemeriksaan2.setString(2,order.replaceAll("PR",""));
                         rs2=pspemeriksaan2.executeQuery();
-                        while(rs2.next()){
+                        if(rs2.next()){
                             tabMode.addRow(new Object[]{
                                 true,rs.getString(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),
                                 rs.getDouble(7),rs.getDouble(8),rs.getDouble(9),rs.getDouble(10),rs2.getString("proyeksi"),rs2.getString("kV"),
                                 rs2.getString("mAS"),rs2.getString("FFD"),rs2.getString("BSF"),rs2.getString("inak"),rs2.getString("jml_penyinaran"),
                                 rs2.getString("dosis")
                             });
-                            koneksiradiologi.prepareStatement("update order_out set statusupdate='1' where kode_tindakan='"+rs.getString("kd_jenis_prw")+"' and no_rontgen='"+order+"'").executeUpdate();
+                            koneksiradiologi.prepareStatement("update order_out set statusupdate='1' where kode_tindakan='"+rs.getString("kd_jenis_prw")+"' and no_rontgen='"+order.replaceAll("PR","")+"'").executeUpdate();
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -2069,7 +2070,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 pspemeriksaan2=koneksiradiologi.prepareStatement(
                         "select expertise_finding, expertise_conclusion, expertise_bookmark from order_out where no_rontgen=?");
                 try {
-                    pspemeriksaan2.setString(1,order);
+                    pspemeriksaan2.setString(1,order.replaceAll("PR",""));
                     rs2=pspemeriksaan2.executeQuery();
                     if(rs2.next()){
                         HasilPeriksa.setText("Finding : "+rs2.getString("expertise_finding")+", Konklusi : "+rs2.getString("expertise_conclusion")+", Bookmark : "+rs2.getString("expertise_bookmark"));
@@ -2093,9 +2094,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 }
                 if(pspemeriksaan!=null){
                     pspemeriksaan.close();
-                }
-                if(koneksiradiologi!=null){
-                    koneksiradiologi.close();
                 }
             }
         }catch(Exception e){
@@ -2133,7 +2131,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         tampil(order);
     }
     
-    public void setOrderBridging(String order,String norawat,String posisi){
+    public void setOrderFuji(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
@@ -2160,7 +2158,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             System.out.println(e);
         }
         isPsien();
-        tampilbridging(order);
+        tampilFuji(order);
     }
 
     private void simpan() {

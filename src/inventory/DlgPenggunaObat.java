@@ -33,7 +33,7 @@ public class DlgPenggunaObat extends javax.swing.JDialog {
     private ResultSet rsbarang,rspasien,rsresep; 
     private int i=0,a=0;
     private double jmlobat=0;
-    private String noresep="",dokter="";
+    private String noresep="",dokter="",sqlsub="";
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private DlgCariJenis jenis = new DlgCariJenis(null, false);
     private DlgCariKategori kategori = new DlgCariKategori(null, false);
@@ -906,7 +906,42 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "databarang.status='1' and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? and concat(databarang.kode_golongan,golongan_barang.nama) like ? and nama_brng like ? "+
                     "order by nama_brng");
             }
-                
+               
+            if(Status.getSelectedItem().toString().equals("Semua")&&nmpenjab.getText().equals("")&nmasal.getText().equals("")){
+                sqlsub="select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
+                        "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                        "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
+                        "detail_pemberian_obat.jml,detail_pemberian_obat.status,bangsal.nm_bangsal "+
+                        "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+                        "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                        "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                        "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+                        "inner join bangsal on detail_pemberian_obat.kd_bangsal=bangsal.kd_bangsal "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                        "where detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+                        "and detail_pemberian_obat.kode_brng=? order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam";
+            }else{
+                sqlsub="select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
+                        "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                        "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
+                        "detail_pemberian_obat.jml,detail_pemberian_obat.status,bangsal.nm_bangsal "+
+                        "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+                        "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                        "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                        "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+                        "inner join bangsal on detail_pemberian_obat.kd_bangsal=bangsal.kd_bangsal "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                        "where detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and detail_pemberian_obat.kode_brng=? "+
+                        "and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+kdpenjab.getText()+nmpenjab.getText()+"%' and concat(detail_pemberian_obat.kd_bangsal,bangsal.nm_bangsal) like '%"+kdasal.getText()+nmasal.getText()+"%' "+
+                        "and detail_pemberian_obat.status like '%"+Status.getSelectedItem().toString().replaceAll("Semua","")+"%' order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam";
+            }
+            
             try {
                 if(nmjns.getText().equals("")&&nmkategori.getText().equals("")&&nmgolongan.getText().equals("")&&TCari.getText().equals("")){}else{
                     psbarang.setString(1,"%"+kdjenis.getText()+nmjns.getText()+"%");
@@ -922,56 +957,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 i=1;
                 while(rsbarang.next()){
                     tabMode.addRow(new Object[]{rsbarang.getString("kode_brng"),rsbarang.getString("nama_brng"),rsbarang.getString("kode_sat"),"","","","",""});
-                    if(Status.getSelectedItem().toString().equals("Semua")&&nmpenjab.getText().equals("")&nmasal.getText().equals("")){
-                        pspasien=koneksi.prepareStatement(
-                            "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
-                            "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                            "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
-                            "detail_pemberian_obat.jml,detail_pemberian_obat.status,bangsal.nm_bangsal "+
-                            "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
-                            "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
-                            "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
-                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
-                            "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                            "inner join bangsal on detail_pemberian_obat.kd_bangsal=bangsal.kd_bangsal "+
-                            "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                            "where detail_pemberian_obat.tgl_perawatan between ? and ? and detail_pemberian_obat.kode_brng=? order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
-                    }else{
-                        pspasien=koneksi.prepareStatement(
-                            "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
-                            "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                            "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"+
-                            "detail_pemberian_obat.jml,detail_pemberian_obat.status,bangsal.nm_bangsal "+
-                            "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
-                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
-                            "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
-                            "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
-                            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
-                            "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                            "inner join bangsal on detail_pemberian_obat.kd_bangsal=bangsal.kd_bangsal "+
-                            "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                            "where detail_pemberian_obat.tgl_perawatan between ? and ? and detail_pemberian_obat.kode_brng=? "+
-                            "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and concat(detail_pemberian_obat.kd_bangsal,bangsal.nm_bangsal) like ? "+
-                            "and detail_pemberian_obat.status like ? order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");
-                    }
-                        
+                    pspasien=koneksi.prepareStatement(sqlsub);
                     try {
-                        if(Status.getSelectedItem().toString().equals("Semua")&&nmpenjab.getText().equals("")&nmasal.getText().equals("")){
-                            pspasien.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasien.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasien.setString(3,rsbarang.getString("kode_brng"));
-                        }else{
-                            pspasien.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasien.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasien.setString(3,rsbarang.getString("kode_brng"));
-                            pspasien.setString(4,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
-                            pspasien.setString(5,"%"+kdasal.getText()+nmasal.getText()+"%");
-                            pspasien.setString(6,"%"+Status.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                        }
-                            
+                        pspasien.setString(1,rsbarang.getString("kode_brng"));
                         rspasien=pspasien.executeQuery();
                         i=1;
                         jmlobat=0;

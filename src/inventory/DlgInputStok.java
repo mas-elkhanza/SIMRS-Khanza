@@ -197,17 +197,17 @@ public class DlgInputStok extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         panelisi1 = new widget.panelisi();
         BtnSimpan = new widget.Button();
-        label13 = new widget.Label();
+        label10 = new widget.Label();
+        LTotal = new widget.Label();
+        label12 = new widget.Label();
+        LTotal1 = new widget.Label();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
         panelisi5 = new widget.panelisi();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
-        label10 = new widget.Label();
-        LTotal = new widget.Label();
-        label12 = new widget.Label();
-        LTotal1 = new widget.Label();
+        BtnTambah = new widget.Button();
         panelisi3 = new widget.panelisi();
         label18 = new widget.Label();
         catatan = new widget.TextBox();
@@ -348,7 +348,7 @@ public class DlgInputStok extends javax.swing.JDialog {
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(816, 102));
+        jPanel1.setPreferredSize(new java.awt.Dimension(816, 100));
         jPanel1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelisi1.setName("panelisi1"); // NOI18N
@@ -373,10 +373,27 @@ public class DlgInputStok extends javax.swing.JDialog {
         });
         panelisi1.add(BtnSimpan);
 
-        label13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        label13.setName("label13"); // NOI18N
-        label13.setPreferredSize(new java.awt.Dimension(327, 26));
-        panelisi1.add(label13);
+        label10.setText("Hilang :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelisi1.add(label10);
+
+        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal.setText("0");
+        LTotal.setName("LTotal"); // NOI18N
+        LTotal.setPreferredSize(new java.awt.Dimension(110, 23));
+        panelisi1.add(LTotal);
+
+        label12.setText("Lebih :");
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelisi1.add(label12);
+
+        LTotal1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal1.setText("0");
+        LTotal1.setName("LTotal1"); // NOI18N
+        LTotal1.setPreferredSize(new java.awt.Dimension(110, 23));
+        panelisi1.add(LTotal1);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
@@ -426,7 +443,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         panelisi5.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(230, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(480, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -451,27 +468,17 @@ public class DlgInputStok extends javax.swing.JDialog {
         });
         panelisi5.add(BtnCari1);
 
-        label10.setText("Hilang :");
-        label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelisi5.add(label10);
-
-        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal.setText("0");
-        LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelisi5.add(LTotal);
-
-        label12.setText("Lebih :");
-        label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelisi5.add(label12);
-
-        LTotal1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal1.setText("0");
-        LTotal1.setName("LTotal1"); // NOI18N
-        LTotal1.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelisi5.add(LTotal1);
+        BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
+        BtnTambah.setMnemonic('3');
+        BtnTambah.setToolTipText("Alt+3");
+        BtnTambah.setName("BtnTambah"); // NOI18N
+        BtnTambah.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTambahActionPerformed(evt);
+            }
+        });
+        panelisi5.add(BtnTambah);
 
         jPanel1.add(panelisi5, java.awt.BorderLayout.CENTER);
 
@@ -950,6 +957,18 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }//GEN-LAST:event_ppSudahOpnameActionPerformed
 
+    private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBarang barang=new DlgBarang(null,false);
+        barang.emptTeks();
+        barang.isCek();
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        barang.setLocationRelativeTo(internalFrame1);
+        barang.setAlwaysOnTop(false);
+        barang.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnTambahActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -972,6 +991,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Button BtnGudang;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
+    private widget.Button BtnTambah;
     private widget.TextBox Kd2;
     private widget.Label LTotal;
     private widget.Label LTotal1;
@@ -985,7 +1005,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label12;
-    private widget.Label label13;
     private widget.Label label18;
     private widget.Label label21;
     private widget.Label label9;

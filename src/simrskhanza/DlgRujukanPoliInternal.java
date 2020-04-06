@@ -14,7 +14,6 @@ package simrskhanza;
 
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariDokter2;
-import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
@@ -22,7 +21,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Properties;
@@ -32,7 +30,6 @@ import java.util.Properties;
  * @author perpustakaan
  */
 public class DlgRujukanPoliInternal extends javax.swing.JDialog {
-    private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private PreparedStatement ps;
@@ -50,8 +47,6 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     public DlgRujukanPoliInternal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(755,156);
-        
         dokter.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {;}
@@ -150,6 +145,8 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
         } catch (Exception ex) {
             aktifjadwal="";            
         }
+        
+        setSize(755,156);
     }
 
     //private DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
@@ -406,7 +403,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 dokter.isCek();
                 dokter.TCari.requestFocus();
-                dokter.setSize(lebar-40,tinggi-40);
+                dokter.setSize(lebar-20,tinggi-20);
                 dokter.setLocationRelativeTo(internalFrame1);
                 dokter.setVisible(true);
             }else{
@@ -414,14 +411,14 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
                 dokter2.isCek();
                 dokter2.tampil();
                 dokter2.TCari.requestFocus();
-                dokter2.setSize(lebar-40,tinggi-40);
+                dokter2.setSize(lebar-20,tinggi-20);
                 dokter2.setLocationRelativeTo(internalFrame1);
                 dokter2.setVisible(true);
             }
         }else{
             dokter.isCek();
             dokter.TCari.requestFocus();
-            dokter.setSize(lebar-40,tinggi-40);
+            dokter.setSize(lebar-20,tinggi-20);
             dokter.setLocationRelativeTo(internalFrame1);
             dokter.setVisible(true);
         }
@@ -431,19 +428,19 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
         if(aktifjadwal.equals("aktif")){
             if(akses.getkode().equals("Admin Utama")){
                 poli.isCek();
-                poli.setSize(lebar-40,tinggi-40);
+                poli.setSize(lebar-20,tinggi-20);
                 poli.setLocationRelativeTo(internalFrame1);
                 poli.setVisible(true);
             }else{
                 poli2.isCek();
                 poli2.tampil();
-                poli2.setSize(lebar-40,tinggi-40);
+                poli2.setSize(lebar-20,tinggi-20);
                 poli2.setLocationRelativeTo(internalFrame1);
                 poli2.setVisible(true);
             }
         }else{
             poli.isCek();
-            poli.setSize(lebar-40,tinggi-40);
+            poli.setSize(lebar-20,tinggi-20);
             poli.setLocationRelativeTo(internalFrame1);
             poli.setVisible(true);
         }

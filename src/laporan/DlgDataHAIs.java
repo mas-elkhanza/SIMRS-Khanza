@@ -588,7 +588,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(0, 70, 71, 23);
 
-        Deku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IYA", "TIDAK" }));
+        Deku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TIDAK", "IYA" }));
         Deku.setName("Deku"); // NOI18N
         Deku.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

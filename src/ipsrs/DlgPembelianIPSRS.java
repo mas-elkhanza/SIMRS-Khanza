@@ -39,7 +39,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
     private WarnaTable2 warna=new WarnaTable2();
     private boolean sukses=true;
-
+    private String akunbayar,akunpembelian=Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun");
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -552,7 +552,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
         panelisi3.setName("panelisi3"); // NOI18N
-        panelisi3.setPreferredSize(new java.awt.Dimension(100, 103));
+        panelisi3.setPreferredSize(new java.awt.Dimension(100, 73));
         panelisi3.setLayout(null);
 
         label15.setText("No.Faktur :");
@@ -575,7 +575,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
-        label11.setBounds(0, 40, 75, 23);
+        label11.setBounds(192, 10, 50, 23);
 
         TglBeli.setDisplayFormat("dd-MM-yyyy");
         TglBeli.setName("TglBeli"); // NOI18N
@@ -585,13 +585,13 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglBeli);
-        TglBeli.setBounds(79, 40, 110, 23);
+        TglBeli.setBounds(246, 10, 90, 23);
 
         label13.setText("Petugas :");
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label13);
-        label13.setBounds(305, 40, 100, 23);
+        label13.setBounds(335, 40, 70, 23);
 
         kdsup.setName("kdsup"); // NOI18N
         kdsup.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -607,7 +607,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label16);
-        label16.setBounds(305, 10, 100, 23);
+        label16.setBounds(335, 10, 70, 23);
 
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -659,12 +659,12 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
 
         CmbAkun.setName("CmbAkun"); // NOI18N
         panelisi3.add(CmbAkun);
-        CmbAkun.setBounds(79, 70, 210, 23);
+        CmbAkun.setBounds(79, 40, 257, 23);
 
         jLabel10.setText("Akun Bayar :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelisi3.add(jLabel10);
-        jLabel10.setBounds(0, 70, 75, 23);
+        jLabel10.setBounds(0, 40, 75, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -719,9 +719,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
+                akunbayar=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString());
                 if(Sequel.menyimpantf2("ipsrspembelian","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
-                        NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),""+sbttl,""+ttldisk,""+ttl,
-                        ""+ppn,""+meterai,""+(ttl+ppn+meterai),Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())
+                        NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),
+                        ""+sbttl,""+ttldisk,""+ttl,""+ppn,""+meterai,""+(ttl+ppn+meterai),akunbayar
                 })==true){
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){  
@@ -746,8 +747,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun"),"PEMBELIAN",""+(ttl+ppn+meterai),"0"});
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl+ppn+meterai)}); 
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunpembelian,"PEMBELIAN",""+(ttl+ppn+meterai),"0"});
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunbayar,"KAS KELUAR","0",""+(ttl+ppn+meterai)}); 
                     sukses=jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","PEMBELIAN BARANG NON MEDIS DAN PENUNJANG(LAB & RAD) "+", OLEH "+akses.getkode());
                 }
                 if(sukses==true){

@@ -375,7 +375,7 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
                     "select detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan, detail_periksa_lab.nilai,template_laboratorium.satuan,detail_periksa_lab.nilai_rujukan,"+
                     "detail_periksa_lab.keterangan,detail_periksa_lab.kd_jenis_prw "+
                     "from detail_periksa_lab inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template "+
-                    "where detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=?");
+                    "where detail_periksa_lab.no_rawat=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=? order by template_laboratorium.urut");
             try {
                 ps.setString(1,TNoRw.getText());
                 ps.setString(2,tanggal);
@@ -384,7 +384,7 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                          "   "+rs.getString("Pemeriksaan"),rs.getString("nilai"),rs.getString("satuan"),
-                        rs.getString("nilai_rujukan"),"",rs.getString("id_template"),rs.getString("kd_jenis_prw")
+                        rs.getString("nilai_rujukan"),rs.getString("keterangan"),rs.getString("id_template"),rs.getString("kd_jenis_prw")
                     });
                 } 
             } catch (Exception e) {
