@@ -600,6 +600,7 @@ import toko.TokoPembelian;
 import toko.TokoPemesanan;
 import toko.TokoPengajuanBarang;
 import toko.TokoPenjualan;
+import toko.TokoPiutang;
 import toko.TokoRiwayatBarang;
 import toko.TokoSuplier;
 import toko.TokoSuratPemesanan;
@@ -16041,7 +16042,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnPiutangTokoActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPiutang form=new TokoPiutang(null,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**

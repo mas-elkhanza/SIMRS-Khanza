@@ -980,7 +980,7 @@ public class DlgPiutang extends javax.swing.JDialog {
         panelisi3.add(NoNota);
         NoNota.setBounds(74, 10, 110, 23);
 
-        label11.setText("Tgl.Jual :");
+        label11.setText("Tgl.Piutang :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
