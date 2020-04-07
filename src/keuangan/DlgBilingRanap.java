@@ -136,7 +136,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "(sum(rawat_jl_drpr.material)+sum(rawat_jl_drpr.menejemen)+sum(rawat_jl_drpr.kso)) as totalmaterial,"+
                     "rawat_jl_drpr.tarif_tindakandr, "+
                     "sum(rawat_jl_drpr.tarif_tindakanpr) as totaltarif_tindakanpr,"+
-                    "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr, dokter.nm_dokter "+
+                    "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr ,dokter.nm_dokter, rawat_jl_drpr.kd_dokter "+
                     "from rawat_jl_drpr inner join jns_perawatan inner join kategori_perawatan inner join dokter "+
                     "on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
                     "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori and dokter.kd_dokter=rawat_jl_drpr.kd_dokter where "+
