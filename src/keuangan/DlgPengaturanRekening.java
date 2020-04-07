@@ -71,7 +71,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Kontra_Stok_Keluar_Medis,HPP_Obat_Jual_Bebas,Persediaan_Obat_Jual_Bebas,
             Penerimaan_NonMedis,Kontra_Penerimaan_NonMedis,Bayar_Pemesanan_Non_Medis,
             Penerimaan_Toko,Kontra_Penerimaan_Toko,Pengadaan_Toko,Bayar_Pemesanan_Toko,
-            Penjualan_Toko,HPP_Barang_Toko,Persediaan_Barang_Toko,
+            Penjualan_Toko,HPP_Barang_Toko,Persediaan_Barang_Toko,Piutang_Toko,Kontra_Piutang_Toko,
             kode_pendapatan_tindakan,nama_pendapatan_tindakan,kode_beban_jasa_dokter,nama_beban_jasa_dokter, kode_utang_jasa_dokter,
             nama_utang_jasa_dokter,kode_beban_jasa_paramedis,nama_beban_jasa_paramedis,kode_utang_jasa_paramedis,nama_utang_jasa_paramedis, 
             kode_beban_kso,nama_beban_kso,kode_utang_kso,nama_utang_kso,kode_hpp_persediaan,nama_hpp_persediaan,kode_persediaan_bhp,
@@ -721,6 +721,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Penjualan_Toko=tbPengaturan.getValueAt(123,1).toString();
             HPP_Barang_Toko=tbPengaturan.getValueAt(124,1).toString();
             Persediaan_Barang_Toko=tbPengaturan.getValueAt(125,1).toString();
+            Piutang_Toko=tbPengaturan.getValueAt(126,1).toString();
+            Kontra_Piutang_Toko=tbPengaturan.getValueAt(127,1).toString();
 
             if(Tindakan_Ralan.equals("")||Laborat_Ralan.equals("")||Radiologi_Ralan.equals("")||Obat_Ralan.equals("")||
                 Registrasi_Ralan.equals("")||Tambahan_Ralan.equals("")||Potongan_Ralan.equals("")||Tindakan_Ranap.equals("")||
@@ -766,7 +768,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Persediaan_Obat_Jual_Bebas.equals("")||Penerimaan_NonMedis.equals("")||Kontra_Penerimaan_NonMedis.equals("")||
                 Bayar_Pemesanan_Non_Medis.equals("")||Hibah_Obat.equals("")||Kontra_Hibah_Obat.equals("")||Penerimaan_Toko.equals("")||
                 Kontra_Penerimaan_Toko.equals("")||Pengadaan_Toko.equals("")||Bayar_Pemesanan_Toko.equals("")||Penjualan_Toko.equals("")||
-                HPP_Barang_Toko.equals("")||Persediaan_Barang_Toko.equals("")){
+                HPP_Barang_Toko.equals("")||Persediaan_Barang_Toko.equals("")||Piutang_Toko.equals("")||Kontra_Piutang_Toko.equals("")){
                     JOptionPane.showMessageDialog(null,"Silahkan lengkapi seluruh data Akun...!!!!");
                     tbPengaturan.requestFocus();
             }else{
@@ -810,7 +812,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Harian_Ranap, Uang_Muka_Ranap, Piutang_Pasien_Ranap
                 });
                 Sequel.queryu("delete from set_akun");
-                Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+                Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",40,new String[]{
                     Pengadaan_Obat,
                     Pemesanan_Obat,Kontra_Pemesanan_Obat,Bayar_Pemesanan_Obat,Penjualan_Obat,Piutang_Obat,
                     Kontra_Piutang_Obat,Retur_Ke_Suplayer,Kontra_Retur_Ke_Suplayer,Retur_Dari_pembeli,
@@ -820,7 +822,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Penyerahan_Darah,Stok_Keluar_Medis,Kontra_Stok_Keluar_Medis,HPP_Obat_Jual_Bebas,
                     Persediaan_Obat_Jual_Bebas,Penerimaan_NonMedis,Kontra_Penerimaan_NonMedis,
                     Bayar_Pemesanan_Non_Medis,Hibah_Obat,Kontra_Hibah_Obat,Penerimaan_Toko,Kontra_Penerimaan_Toko,
-                    Pengadaan_Toko,Bayar_Pemesanan_Toko,Penjualan_Toko,HPP_Barang_Toko,Persediaan_Barang_Toko
+                    Pengadaan_Toko,Bayar_Pemesanan_Toko,Penjualan_Toko,HPP_Barang_Toko,Persediaan_Barang_Toko,
+                    Piutang_Toko,Kontra_Piutang_Toko,
                 });
                 JOptionPane.showMessageDialog(null,"Proses selesai...!!!!");
                 tampil();
@@ -1219,6 +1222,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Penjualan_Toko="";
             HPP_Barang_Toko="";
             Persediaan_Barang_Toko="";
+            Piutang_Toko="";
+            Kontra_Piutang_Toko="";
             
             ps=koneksi.prepareStatement("select * from set_akun_ralan");
             try {
@@ -1382,6 +1387,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Penjualan_Toko=rs.getString("Penjualan_Toko");
                     HPP_Barang_Toko=rs.getString("HPP_Barang_Toko");
                     Persediaan_Barang_Toko=rs.getString("Persediaan_Barang_Toko");
+                    Piutang_Toko=rs.getString("Piutang_Toko");
+                    Kontra_Piutang_Toko=rs.getString("Kontra_Piutang_Toko");
                 }               
             } catch (Exception e) {
                 System.out.println("Notif Set Akun :"+e);
@@ -2025,6 +2032,16 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Persediaan_Barang_Toko),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Persediaan_Barang_Toko),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Persediaan_Barang_Toko)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Piutang Toko pada menu Piutang Toko",Piutang_Toko,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Piutang_Toko),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Piutang_Toko),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Piutang_Toko)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Kontra Akun Piutang Toko pada menu Piutang Toko",Kontra_Piutang_Toko,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Kontra_Piutang_Toko),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kontra_Piutang_Toko),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Kontra_Piutang_Toko)
             });
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
