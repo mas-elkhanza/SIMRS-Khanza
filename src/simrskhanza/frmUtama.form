@@ -4295,7 +4295,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582015_11.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Poli"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Poli"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPoli" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4311,7 +4311,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582080_6.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Dokter"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Dokter"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerDokter" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4327,7 +4327,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582015_11.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Pekerjaan"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Pekerjaan"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerPekerjaan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4343,7 +4343,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582080_6.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Pendidikan"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Pendidikan"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerPendidikan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4359,7 +4359,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582015_11.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Tahun"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Tahun"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerTahun" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4423,7 +4423,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582080_6.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Bulan"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Bulan"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerBulan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4439,7 +4439,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582015_11.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Tanggal"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Tanggal"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerTanggal" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4759,7 +4759,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582080_6.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Cara Bayar"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Cara Bayar"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerCarabayar" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4999,7 +4999,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582080_6.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Per Perujuk"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Perujuk"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikPerPerujuk" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -5735,7 +5735,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582080_6.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Agama"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Agama"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerAgama" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -5751,7 +5751,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582015_11.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Umur"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Umur"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerUmur" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -5943,7 +5943,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582080_6.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Suku/Bangsa"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Suku/Bangsa"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerSuku" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -5959,7 +5959,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582015_11.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Bahasa"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Bahasa"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerBahasa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -6007,7 +6007,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1491582080_6.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Kunjungan Reg Per Cacat Fisik"/>
+                        <Property name="text" type="java.lang.String" value="Registrasi Per Cacat Fisik"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnGrafikKunjunganPerCacat" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -7730,7 +7730,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="29/03/2020"/>
+            <StringItem index="0" value="02/04/2020"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

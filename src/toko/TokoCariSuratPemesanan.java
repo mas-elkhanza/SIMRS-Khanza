@@ -918,13 +918,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_nmsatKeyPressed
 
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
-  if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-      Valid.textKosong(TCari,"No.Pemesanan");
-  }else{
-     Sequel.queryu2("delete from toko_surat_pemesanan where no_pemesanan=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-     tampil();    
-  }       
-    
+  if(tbDokter.getSelectedRow()> -1){
+    if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+        Valid.textKosong(TCari,"No.Pemesanan");
+    }else{
+       Sequel.queryu2("delete from toko_surat_pemesanan where no_pemesanan=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
+       tampil();    
+    }     
+  }
 }//GEN-LAST:event_ppHapusActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -932,34 +933,40 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_formWindowOpened
 
     private void ppDatangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDatangActionPerformed
-        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-            Valid.textKosong(TCari,"pilihan data");
-        }else{
-            if(Sequel.cariIsi("select status from toko_surat_pemesanan where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()).equals("Sudah Datang")){
-                JOptionPane.showMessageDialog(null,"Data pemesanan sudah tervalidasi..!!");
+        if(tbDokter.getSelectedRow()> -1){
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                Valid.textKosong(TCari,"pilihan data");
             }else{
-                Sequel.queryu("update toko_surat_pemesanan set status='Sudah Datang' where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                TokoPemesanan aplikasi=new TokoPemesanan(null,false);
-                aplikasi.tampikan=false;
-                aplikasi.isCek();
-                aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
-                aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                aplikasi.setLocationRelativeTo(internalFrame1);
-                aplikasi.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
-                tampil();
-            }                
+                if(Sequel.cariIsi("select status from toko_surat_pemesanan where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()).equals("Sudah Datang")){
+                    JOptionPane.showMessageDialog(null,"Data pemesanan sudah tervalidasi..!!");
+                }else{
+                    Sequel.queryu("update toko_surat_pemesanan set status='Sudah Datang' where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    TokoPemesanan aplikasi=new TokoPemesanan(null,false);
+                    aplikasi.tampikan=false;
+                    aplikasi.isCek();
+                    aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+                    aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    aplikasi.setLocationRelativeTo(internalFrame1);
+                    aplikasi.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                    tampil();
+                }                
+            }
         }
+            
     }//GEN-LAST:event_ppDatangActionPerformed
 
     private void ppProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppProsesActionPerformed
-        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-            Valid.textKosong(TCari,"pilihan data");
-        }else{
-            Sequel.queryu("update toko_surat_pemesanan set status='Proses Pesan' where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
-            tampil();
+        if(tbDokter.getSelectedRow()> -1){
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                Valid.textKosong(TCari,"pilihan data");
+            }else{
+                Sequel.queryu("update toko_surat_pemesanan set status='Proses Pesan' where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+                tampil();
+            }
         }
+            
     }//GEN-LAST:event_ppProsesActionPerformed
 
     /**

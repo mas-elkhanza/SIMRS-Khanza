@@ -271,7 +271,7 @@ public class KeunganCariPenagihanPiutangPasien extends javax.swing.JDialog {
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(50, 50, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppHapus.setText("Hapus Permintaan Barang");
+        ppHapus.setText("Hapus Penagihan Piutang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppHapus.setName("ppHapus"); // NOI18N
@@ -287,7 +287,7 @@ public class KeunganCariPenagihanPiutangPasien extends javax.swing.JDialog {
         ppDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppDisetujui.setForeground(new java.awt.Color(50, 50, 50));
         ppDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppDisetujui.setText("Disetujui ( Mutasi )");
+        ppDisetujui.setText("Sudah Dibayar");
         ppDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppDisetujui.setName("ppDisetujui"); // NOI18N
@@ -303,7 +303,7 @@ public class KeunganCariPenagihanPiutangPasien extends javax.swing.JDialog {
         ppTidakDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTidakDisetujui.setForeground(new java.awt.Color(50, 50, 50));
         ppTidakDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppTidakDisetujui.setText("Tidak Disetujui");
+        ppTidakDisetujui.setText("Proses Penagihan");
         ppTidakDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTidakDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppTidakDisetujui.setName("ppTidakDisetujui"); // NOI18N
@@ -813,12 +813,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintKeyPressed
 
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
-    if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-        Valid.textKosong(TCari,"pilihan data");
-    }else{
-        Sequel.queryu("delete from permintaan_medis where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-        tampil();
-    }    
+    if(tbDokter.getSelectedRow()> -1){
+        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+            Valid.textKosong(TCari,"pilihan data");
+        }else{
+            Sequel.queryu("delete from penagihan_piutang where no_tagihan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
+            tampil();
+        }  
+    }  
 }//GEN-LAST:event_ppHapusActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -826,29 +828,34 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_formWindowOpened
 
     private void ppDisetujuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDisetujuiActionPerformed
-        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-            Valid.textKosong(TCari,"pilihan data");
-        }else{
-            Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-            /*this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            aplikasi.tampilkanpermintaan=false;
-            aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-            aplikasi.isCek();
-            aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            aplikasi.setLocationRelativeTo(internalFrame1);
-            aplikasi.setVisible(true);*/
-            this.setCursor(Cursor.getDefaultCursor());
-            tampil();
+        if(tbDokter.getSelectedRow()> -1){
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                Valid.textKosong(TCari,"pilihan data");
+            }else{
+                Sequel.queryu("update penagihan_piutang set status='Sudah Dibayar' where no_tagihan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
+                /*this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                aplikasi.tampilkanpermintaan=false;
+                aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                aplikasi.isCek();
+                aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                aplikasi.setLocationRelativeTo(internalFrame1);
+                aplikasi.setVisible(true);*/
+                this.setCursor(Cursor.getDefaultCursor());
+                tampil();
+            }
         }
+            
     }//GEN-LAST:event_ppDisetujuiActionPerformed
 
     private void ppTidakDisetujuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTidakDisetujuiActionPerformed
-        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-            Valid.textKosong(TCari,"pilihan data");
-        }else{
-            Sequel.queryu("update permintaan_medis set status='Tidak Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-            tampil();
-        } 
+        if(tbDokter.getSelectedRow()> -1){
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                Valid.textKosong(TCari,"pilihan data");
+            }else{
+                Sequel.queryu("update penagihan_piutang set status='Proses Penagihan' where no_tagihan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString().trim());
+                tampil();
+            }
+        }
     }//GEN-LAST:event_ppTidakDisetujuiActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed

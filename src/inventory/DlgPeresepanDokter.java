@@ -1495,7 +1495,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }                  
                 namajenis[z]=tbResep.getValueAt(i,7).toString();
                 aturan[z]=tbResep.getValueAt(i,8).toString();
-                industri[z]=tbResep.getValueAt(i,8).toString();
+                industri[z]=tbResep.getValueAt(i,9).toString();
                 try {
                     beli[z]=Double.parseDouble(tbResep.getValueAt(i,10).toString());
                 } catch (Exception e) {

@@ -775,12 +775,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintKeyPressed
 
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
-    if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
-            Valid.textKosong(TCari,"pilihan data");
-    }else{
-        Sequel.queryu("delete from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-        tampil();
-    }    
+    if(tbDokter.getSelectedRow()> -1){
+        if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
+                Valid.textKosong(TCari,"pilihan data");
+        }else{
+            Sequel.queryu("delete from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+            tampil();
+        }  
+    }  
 }//GEN-LAST:event_ppHapusActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -807,42 +809,48 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_btnJenisActionPerformed
 
     private void ppProsesPengajuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppProsesPengajuanActionPerformed
-        if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
-            Valid.textKosong(TCari,"pilihan data");
-        }else{
-            Sequel.queryu("update toko_pengajuan_barang set status='Proses Pengajuan' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-            tampil();
+        if(tbDokter.getSelectedRow()> -1){
+            if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
+                Valid.textKosong(TCari,"pilihan data");
+            }else{
+                Sequel.queryu("update toko_pengajuan_barang set status='Proses Pengajuan' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                tampil();
+            }
         }
     }//GEN-LAST:event_ppProsesPengajuanActionPerformed
 
     private void ppDisetujuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDisetujuiActionPerformed
-        if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
-            Valid.textKosong(TCari,"pilihan data");
-        }else{
-            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString().equals("Disetujui")){
-                JOptionPane.showMessageDialog(null,"Data pengajuan sudah tervalidasi..!!");
+        if(tbDokter.getSelectedRow()> -1){
+            if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
+                Valid.textKosong(TCari,"pilihan data");
             }else{
-                Sequel.queryu("update toko_pengajuan_barang set status='Disetujui' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                TokoSuratPemesanan aplikasi=new TokoSuratPemesanan(null,false);
-                aplikasi.tampilkan=false;
-                aplikasi.isCek();
-                aplikasi.panggilgetData(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-                aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                aplikasi.setLocationRelativeTo(internalFrame1);
-                aplikasi.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
-                tampil();
+                if(tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString().equals("Disetujui")){
+                    JOptionPane.showMessageDialog(null,"Data pengajuan sudah tervalidasi..!!");
+                }else{
+                    Sequel.queryu("update toko_pengajuan_barang set status='Disetujui' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    TokoSuratPemesanan aplikasi=new TokoSuratPemesanan(null,false);
+                    aplikasi.tampilkan=false;
+                    aplikasi.isCek();
+                    aplikasi.panggilgetData(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                    aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    aplikasi.setLocationRelativeTo(internalFrame1);
+                    aplikasi.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                    tampil();
+                }
             }
         }
     }//GEN-LAST:event_ppDisetujuiActionPerformed
 
     private void ppDitolakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDitolakActionPerformed
-        if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
-            Valid.textKosong(TCari,"pilihan data");
-        }else{
-            Sequel.queryu("update toko_pengajuan_barang set status='Ditolak' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-            tampil();
+        if(tbDokter.getSelectedRow()> -1){
+            if(Sequel.cariInteger("select count(no_pengajuan) from toko_pengajuan_barang where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim())==0){
+                Valid.textKosong(TCari,"pilihan data");
+            }else{
+                Sequel.queryu("update toko_pengajuan_barang set status='Ditolak' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                tampil();
+            }
         }
     }//GEN-LAST:event_ppDitolakActionPerformed
 

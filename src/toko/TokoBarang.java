@@ -107,7 +107,7 @@ public final class TokoBarang extends javax.swing.JDialog {
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
-        kode_brng.setDocument(new batasInput((byte)15).getKata(kode_brng));
+        kode_brng.setDocument(new batasInput((byte)10).getKata(kode_brng));
         nama_brng.setDocument(new batasInput((byte)80).getKata(nama_brng));
         kode_sat.setDocument(new batasInput((byte)4).getKata(kode_sat));
         stok.setDocument(new batasInput((byte)10).getKata(stok));
@@ -800,9 +800,11 @@ public final class TokoBarang extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.mengedit("tokobarang","kode_brng='"+kode_brng.getText()+"'","status='0'");
-        BtnCariActionPerformed(evt);
-        emptTeks();
+        if(tbJnsPerawatan.getSelectedRow()> -1){
+            Sequel.mengedit("tokobarang","kode_brng='"+kode_brng.getText()+"'","status='0'");
+            BtnCariActionPerformed(evt);
+            emptTeks();
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -833,11 +835,13 @@ public final class TokoBarang extends javax.swing.JDialog {
         }else if(kdjenis.getText().trim().equals("")||nmjenis.getText().trim().equals("")){
             Valid.textKosong(kdjenis,"Jenis Barang");
         }else {
-            if(Sequel.mengedittf("tokobarang","kode_brng=?","kode_brng=?,nama_brng=?,kode_sat=?,jenis=?,stok=?,dasar=?,h_beli=?,distributor=?,grosir=?,retail=?",11,new String[]{
-                kode_brng.getText(),nama_brng.getText(), kode_sat.getText(), kdjenis.getText(),stok.getText(),dasar.getText(),beli.getText(),distributor.getText(),grosir.getText(),retail.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
-            })==true){
-                tampil();
-                emptTeks();
+            if(tbJnsPerawatan.getSelectedRow()> -1){
+                if(Sequel.mengedittf("tokobarang","kode_brng=?","kode_brng=?,nama_brng=?,kode_sat=?,jenis=?,stok=?,dasar=?,h_beli=?,distributor=?,grosir=?,retail=?",11,new String[]{
+                    kode_brng.getText(),nama_brng.getText(), kode_sat.getText(), kdjenis.getText(),stok.getText(),dasar.getText(),beli.getText(),distributor.getText(),grosir.getText(),retail.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
+                })==true){
+                    tampil();
+                    emptTeks();
+                }
             }
         }
 }//GEN-LAST:event_BtnEditActionPerformed

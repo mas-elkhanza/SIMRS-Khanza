@@ -5426,12 +5426,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on periksa_lab.nip=petugas.nip "+
                     "inner join dokter on periksa_lab.kd_dokter=dokter.kd_dokter where "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and pasien.nm_pasien like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and petugas.nama like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and reg_periksa.no_rkm_medis like ? group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam) "+
+                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and (pasien.nm_pasien like ? or petugas.nama like ? or reg_periksa.no_rkm_medis like ?) group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam) "+
                     "order by periksa_lab.tgl_periksa desc,periksa_lab.jam desc");
             }
                 
@@ -5446,18 +5441,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps.setString(4,"%"+kdmem.getText()+"%");
                     ps.setString(5,"%"+kdptg.getText()+"%");
                     ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(9,"%"+NoRawat.getText()+"%");
-                    ps.setString(10,"%"+kdmem.getText()+"%");
-                    ps.setString(11,"%"+kdptg.getText()+"%");
-                    ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(15,"%"+NoRawat.getText()+"%");
-                    ps.setString(16,"%"+kdmem.getText()+"%");
-                    ps.setString(17,"%"+kdptg.getText()+"%");
-                    ps.setString(18,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -5598,13 +5583,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "on detail_periksa_lab.id_template=template_laboratorium.id_template and periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.kd_dokter=dokter.kd_dokter and "+
                     "periksa_lab.no_rawat=detail_periksa_lab.no_rawat and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and "+
                     "periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa and periksa_lab.jam=detail_periksa_lab.jam and periksa_lab.nip=petugas.nip and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    "where periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and pasien.nm_pasien like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and petugas.nama like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and dokter.nm_dokter like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and template_laboratorium.Pemeriksaan like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and jns_perawatan_lab.nm_perawatan like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and detail_periksa_lab.keterangan like ? or "+
-                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis like ? "+
+                    "where periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and "+
+                    "(pasien.nm_pasien like ? or petugas.nama like ? or dokter.nm_dokter like ? or template_laboratorium.Pemeriksaan like ? or jns_perawatan_lab.nm_perawatan like ? or detail_periksa_lab.keterangan like ? or reg_periksa.no_rkm_medis like ?) "+
                     "order by periksa_lab.tgl_periksa desc,periksa_lab.jam desc,detail_periksa_lab.kd_jenis_prw,template_laboratorium.urut");
             }
                 
@@ -5619,42 +5599,12 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps.setString(4,"%"+kdmem.getText()+"%");
                     ps.setString(5,"%"+kdptg.getText()+"%");
                     ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(9,"%"+NoRawat.getText()+"%");
-                    ps.setString(10,"%"+kdmem.getText()+"%");
-                    ps.setString(11,"%"+kdptg.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
                     ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(15,"%"+NoRawat.getText()+"%");
-                    ps.setString(16,"%"+kdmem.getText()+"%");
-                    ps.setString(17,"%"+kdptg.getText()+"%");
-                    ps.setString(18,"%"+TCari.getText().trim()+"%");
-                    ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(21,"%"+NoRawat.getText()+"%");
-                    ps.setString(22,"%"+kdmem.getText()+"%");
-                    ps.setString(23,"%"+kdptg.getText()+"%");
-                    ps.setString(24,"%"+TCari.getText().trim()+"%");
-                    ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(27,"%"+NoRawat.getText()+"%");
-                    ps.setString(28,"%"+kdmem.getText()+"%");
-                    ps.setString(29,"%"+kdptg.getText()+"%");
-                    ps.setString(30,"%"+TCari.getText().trim()+"%");
-                    ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(33,"%"+NoRawat.getText()+"%");
-                    ps.setString(34,"%"+kdmem.getText()+"%");
-                    ps.setString(35,"%"+kdptg.getText()+"%");
-                    ps.setString(36,"%"+TCari.getText().trim()+"%");
-                    ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(39,"%"+NoRawat.getText()+"%");
-                    ps.setString(40,"%"+kdmem.getText()+"%");
-                    ps.setString(41,"%"+kdptg.getText()+"%");
-                    ps.setString(42,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -5719,12 +5669,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
                     "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
                     "inner join petugas on periksa_lab.nip=petugas.nip "+
-                    "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and pasien.no_rkm_medis like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
-                    "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and dokter.nm_dokter like ? group by pasien.no_rkm_medis order by tgl_registrasi desc");
+                    "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and periksa_lab.tgl_periksa between ? and ? and "+
+                    "(pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or periksa_lab.no_rawat like ? or petugas.nama like ? or dokter.nm_dokter like ?) group by pasien.no_rkm_medis order by tgl_registrasi desc");
             }
                 
             try {
@@ -5738,36 +5684,11 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                     ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,"%"+NoRawat.getText()+"%");
-                    ps.setString(8,"%"+kdmem.getText()+"%");
-                    ps.setString(9,"%"+kdptg.getText()+"%");
-                    ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,"%"+NoRawat.getText()+"%");
-                    ps.setString(14,"%"+kdmem.getText()+"%");
-                    ps.setString(15,"%"+kdptg.getText()+"%");
-                    ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(18,"%"+TCari.getText().trim()+"%");
-                    ps.setString(19,"%"+NoRawat.getText()+"%");
-                    ps.setString(20,"%"+kdmem.getText()+"%");
-                    ps.setString(21,"%"+kdptg.getText()+"%");
-                    ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(24,"%"+TCari.getText().trim()+"%");
-                    ps.setString(25,"%"+NoRawat.getText()+"%");
-                    ps.setString(26,"%"+kdmem.getText()+"%");
-                    ps.setString(27,"%"+kdptg.getText()+"%");
-                    ps.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(30,"%"+TCari.getText().trim()+"%");
-                    ps.setString(31,"%"+NoRawat.getText()+"%");
-                    ps.setString(32,"%"+kdmem.getText()+"%");
-                    ps.setString(33,"%"+kdptg.getText()+"%");
-                    ps.setString(34,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(35,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(36,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
                 }
                     
                 rs=ps.executeQuery();
@@ -5798,12 +5719,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
                         "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
                         "inner join petugas on periksa_lab.nip=petugas.nip "+
-                        "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and pasien.no_rkm_medis like ? or "+
-                        "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
-                        "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
-                        "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? or "+
-                        "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
-                        "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and dokter.nm_dokter like ? "+
+                        "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.tgl_periksa between ? and ? and "+
+                        "(pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or periksa_lab.no_rawat like ? or petugas.nama like ? or dokter.nm_dokter like ? )"+
                         "group by periksa_lab.tgl_periksa,periksa_lab.jam order by tgl_registrasi");
                         
                     try {
@@ -5814,41 +5731,11 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         ps2.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                         ps2.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(7,"%"+TCari.getText().trim()+"%");
-                        ps2.setString(8,"%"+NoRawat.getText()+"%");
-                        ps2.setString(9,"%"+kdmem.getText()+"%");
-                        ps2.setString(10,"%"+kdptg.getText()+"%");
-                        ps2.setString(11,rs.getString("no_rkm_medis"));
-                        ps2.setString(12,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                        ps2.setString(13,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                        ps2.setString(14,"%"+TCari.getText().trim()+"%");
-                        ps2.setString(15,"%"+NoRawat.getText()+"%");
-                        ps2.setString(16,"%"+kdmem.getText()+"%");
-                        ps2.setString(17,"%"+kdptg.getText()+"%");
-                        ps2.setString(18,rs.getString("no_rkm_medis"));
-                        ps2.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                        ps2.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                        ps2.setString(21,"%"+TCari.getText().trim()+"%");
-                        ps2.setString(22,"%"+NoRawat.getText()+"%");
-                        ps2.setString(23,"%"+kdmem.getText()+"%");
-                        ps2.setString(24,"%"+kdptg.getText()+"%");
-                        ps2.setString(25,rs.getString("no_rkm_medis"));
-                        ps2.setString(26,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                        ps2.setString(27,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                        ps2.setString(28,"%"+TCari.getText().trim()+"%");    
-                        ps2.setString(29,"%"+NoRawat.getText()+"%");
-                        ps2.setString(30,"%"+kdmem.getText()+"%");
-                        ps2.setString(31,"%"+kdptg.getText()+"%");
-                        ps2.setString(32,rs.getString("no_rkm_medis"));
-                        ps2.setString(33,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                        ps2.setString(34,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                        ps2.setString(35,"%"+TCari.getText().trim()+"%");  
-                        ps2.setString(36,"%"+NoRawat.getText()+"%");
-                        ps2.setString(37,"%"+kdmem.getText()+"%");
-                        ps2.setString(38,"%"+kdptg.getText()+"%");
-                        ps2.setString(39,rs.getString("no_rkm_medis"));
-                        ps2.setString(40,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                        ps2.setString(41,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                        ps2.setString(42,"%"+TCari.getText().trim()+"%"); 
+                        ps2.setString(8,"%"+TCari.getText().trim()+"%");
+                        ps2.setString(9,"%"+TCari.getText().trim()+"%");
+                        ps2.setString(10,"%"+TCari.getText().trim()+"%");   
+                        ps2.setString(11,"%"+TCari.getText().trim()+"%"); 
+                        ps2.setString(12,"%"+TCari.getText().trim()+"%"); 
                                
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
@@ -5872,12 +5759,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 "inner join dokter on periksa_lab.dokter_perujuk=dokter.kd_dokter "+
                                 "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw "+
                                 "inner join petugas on periksa_lab.nip=petugas.nip "+
-                                "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and pasien.no_rkm_medis like ? or "+
-                                "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
-                                "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
-                                "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? or "+
-                                "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
-                                "periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and dokter.nm_dokter like ? "+
+                                "where periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? and petugas.nip like ? and reg_periksa.no_rkm_medis=? and periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.tgl_periksa between ? and ? and "+
+                                "(pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or periksa_lab.no_rawat like ? or petugas.nama like ? or dokter.nm_dokter like ?)"+
                                 "order by tgl_registrasi");
                                 
                             try {
@@ -5891,56 +5774,11 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 ps3.setString(8,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                                 ps3.setString(9,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                                 ps3.setString(10,"%"+TCari.getText().trim()+"%");
-                                ps3.setString(11,"%"+NoRawat.getText()+"%");
-                                ps3.setString(12,"%"+kdmem.getText()+"%");
-                                ps3.setString(13,"%"+kdptg.getText()+"%");
-                                ps3.setString(14,rs.getString("no_rkm_medis"));
-                                ps3.setString(15,rs2.getString("no_rawat"));
-                                ps3.setString(16,rs2.getString("tgl_periksa"));
-                                ps3.setString(17,rs2.getString("jam"));
-                                ps3.setString(18,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                ps3.setString(19,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                ps3.setString(20,"%"+TCari.getText().trim()+"%");
-                                ps3.setString(21,"%"+NoRawat.getText()+"%");
-                                ps3.setString(22,"%"+kdmem.getText()+"%");
-                                ps3.setString(23,"%"+kdptg.getText()+"%");
-                                ps3.setString(24,rs.getString("no_rkm_medis"));
-                                ps3.setString(25,rs2.getString("no_rawat"));
-                                ps3.setString(26,rs2.getString("tgl_periksa"));
-                                ps3.setString(27,rs2.getString("jam"));
-                                ps3.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                ps3.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                ps3.setString(30,"%"+TCari.getText().trim()+"%");
-                                ps3.setString(31,"%"+NoRawat.getText()+"%");
-                                ps3.setString(32,"%"+kdmem.getText()+"%");
-                                ps3.setString(33,"%"+kdptg.getText()+"%");
-                                ps3.setString(34,rs.getString("no_rkm_medis"));
-                                ps3.setString(35,rs2.getString("no_rawat"));
-                                ps3.setString(36,rs2.getString("tgl_periksa"));
-                                ps3.setString(37,rs2.getString("jam"));
-                                ps3.setString(38,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                ps3.setString(39,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                ps3.setString(40,"%"+TCari.getText().trim()+"%");
-                                ps3.setString(41,"%"+NoRawat.getText()+"%");
-                                ps3.setString(42,"%"+kdmem.getText()+"%");
-                                ps3.setString(43,"%"+kdptg.getText()+"%");
-                                ps3.setString(44,rs.getString("no_rkm_medis"));
-                                ps3.setString(45,rs2.getString("no_rawat"));
-                                ps3.setString(46,rs2.getString("tgl_periksa"));
-                                ps3.setString(47,rs2.getString("jam"));
-                                ps3.setString(48,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                ps3.setString(49,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                ps3.setString(50,"%"+TCari.getText().trim()+"%");
-                                ps3.setString(51,"%"+NoRawat.getText()+"%");
-                                ps3.setString(52,"%"+kdmem.getText()+"%");
-                                ps3.setString(53,"%"+kdptg.getText()+"%");
-                                ps3.setString(54,rs.getString("no_rkm_medis"));
-                                ps3.setString(55,rs2.getString("no_rawat"));
-                                ps3.setString(56,rs2.getString("tgl_periksa"));
-                                ps3.setString(57,rs2.getString("jam"));
-                                ps3.setString(58,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                ps3.setString(59,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                ps3.setString(60,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(11,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(12,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(13,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(14,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(15,"%"+TCari.getText().trim()+"%");
                                     
                                 rs3=ps3.executeQuery();
                                 while(rs3.next()){
