@@ -6,10 +6,10 @@
 package rekammedis;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -427,7 +427,6 @@ public class PanelRiwayat extends widget.panelisi {
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         TabRawat.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TabRawatMouseClicked(evt);
@@ -3444,8 +3443,8 @@ public class PanelRiwayat extends widget.panelisi {
                             //Resep Pulang
                             try{
                                 rs3=koneksi.prepareStatement(
-                                    "select resep_pulang.kode_brng,databarang.nama_brng,resep_pulang.dosis,resep_pulang.jml_barang, "+
-                                    "databarang.kode_sat,resep_pulang.dosis,resep_pulang.total from resep_pulang inner join databarang "+
+                                    "select resep_pulang.kode_brng,databarang.nama_brng,resep_pulang.aturan_pakai,resep_pulang.jml_barang, "+
+                                    "databarang.kode_sat,resep_pulang.aturan_pakai,resep_pulang.total from resep_pulang inner join databarang "+
                                     "on resep_pulang.kode_brng=databarang.kode_brng where "+
                                     "resep_pulang.no_rawat='"+rs2.getString("no_rawat")+"' order by databarang.nama_brng").executeQuery();
                                 if(rs3.next()){                                    
@@ -6460,8 +6459,8 @@ public class PanelRiwayat extends widget.panelisi {
                             //Resep Pulang
                             try{
                                 rs3=koneksi.prepareStatement(
-                                    "select resep_pulang.kode_brng,databarang.nama_brng,resep_pulang.dosis,resep_pulang.jml_barang, "+
-                                    "databarang.kode_sat,resep_pulang.dosis,resep_pulang.total from resep_pulang inner join databarang "+
+                                    "select resep_pulang.kode_brng,databarang.nama_brng,resep_pulang.aturan_pakai,resep_pulang.jml_barang, "+
+                                    "databarang.kode_sat,resep_pulang.aturan_pakai,resep_pulang.total from resep_pulang inner join databarang "+
                                     "on resep_pulang.kode_brng=databarang.kode_brng where "+
                                     "resep_pulang.no_rawat='"+rs2.getString("no_rawat")+"' order by databarang.nama_brng").executeQuery();
                                 if(rs3.next()){                                    
@@ -9783,8 +9782,8 @@ public class PanelRiwayat extends widget.panelisi {
                             //Resep Pulang
                             try{
                                 rs3=koneksi.prepareStatement(
-                                    "select resep_pulang.kode_brng,databarang.nama_brng,resep_pulang.dosis,resep_pulang.jml_barang, "+
-                                    "databarang.kode_sat,resep_pulang.dosis,resep_pulang.total from resep_pulang inner join databarang "+
+                                    "select resep_pulang.kode_brng,databarang.nama_brng,resep_pulang.aturan_pakai,resep_pulang.jml_barang, "+
+                                    "databarang.kode_sat,resep_pulang.aturan_pakai,resep_pulang.total from resep_pulang inner join databarang "+
                                     "on resep_pulang.kode_brng=databarang.kode_brng where "+
                                     "resep_pulang.no_rawat='"+rs2.getString("no_rawat")+"' order by databarang.nama_brng").executeQuery();
                                 if(rs3.next()){                                    
