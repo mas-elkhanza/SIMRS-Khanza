@@ -36,8 +36,8 @@ public class TokoCariPenjualan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2,ps3,pscarijual,pstoko_detail_jual;
-    private ResultSet rs,rs2,rs3;
+    private PreparedStatement ps,ps2,pscarijual,pstoko_detail_jual;
+    private ResultSet rs,rs2;
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private riwayattoko Trackbarang=new riwayattoko();
@@ -60,7 +60,7 @@ public class TokoCariPenjualan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        Object[] row={"Tanggal","No.Nota","Petugas","Member","Keterangan","Jns.Jual","Cara Bayar"};
+        Object[] row={"Tanggal","No.Nota","Petugas","Member","Catatan","Jns.Jual","Cara Bayar"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -1336,7 +1336,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "<td valign='top' bgcolor='#FFFAF8' align='center' width='26%'>Petugas</td>"+
                     "<td valign='top' bgcolor='#FFFAF8' align='center' width='26%'>Member</td>"+
                     "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>Jenis Jual</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='10%'>Keterangan</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='10%'>Catatan</td>"+
                     "<td valign='top' bgcolor='#FFFAF8' align='center' width='18%'>Cara Bayar</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(

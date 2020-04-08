@@ -243,7 +243,7 @@
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Keterangan]]></text>
+				<text><![CDATA[Catatan]]></text>
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="422" y="0" width="50" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="90366c80-3ca9-423c-9b75-f157968c967d">

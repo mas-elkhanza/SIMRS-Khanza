@@ -54,7 +54,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "No.R.M","Nama Pasien","No.SIM/KTP","Umur","J.K.","Tmp.Lahir","Tgl.Lahir","Nama Ibu","Alamat"
+                "No.R.M","Nama Pasien","No.SIM/KTP","Umur","J.K.","Tmp.Lahir","Tgl.Lahir","Nama Ibu","Alamat","No.Telp"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -64,7 +64,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
@@ -73,7 +73,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(120);
             }else if(i==3){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(65);
             }else if(i==4){
                 column.setPreferredWidth(25);
             }else if(i==5){
@@ -83,7 +83,9 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(160);
             }else if(i==8){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(210);
+            }else if(i==9){
+                column.setPreferredWidth(110);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -526,7 +528,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
             try{     
                 ps=koneksi.prepareStatement(
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp,pasien.umur, pasien.jk,pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, "+
-                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat "+
+                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,pasien.no_tlp "+
                     "from pasien inner join kelurahan inner join kecamatan inner join kabupaten inner join propinsi on pasien.kd_kel=kelurahan.kd_kel "+
                     "and pasien.kd_prop=propinsi.kd_prop and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
                     "where concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ? or "+
@@ -546,7 +548,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                             rs.getString("no_ktp"),rs.getString("umur"),
                             rs.getString("jk"),rs.getString("tmp_lahir"),
                             rs.getString("tgl_lahir"),rs.getString("nm_ibu"),
-                            rs.getString("alamat")
+                            rs.getString("alamat"),rs.getString("no_tlp")
                         });
                     }
                 } catch (Exception e) {
