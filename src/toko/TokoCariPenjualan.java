@@ -999,9 +999,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString().trim().equals("")){
                 Valid.textKosong(TCari,"No.Nota");
-            }else if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-                kdbar.requestFocus();
             }else {
                 Valid.panggilUrl("billing/NotaToko2.php?nonota="+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());          
             }

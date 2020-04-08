@@ -341,7 +341,7 @@ public class TokoCariPiutang extends javax.swing.JDialog {
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(50, 50, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppHapus.setText("Hapus Penjualan");
+        ppHapus.setText("Hapus Piutang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppHapus.setName("ppHapus"); // NOI18N
@@ -914,7 +914,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
                     }
                     Sequel.menyimpan("temporary_toko","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
-                    Sequel.menyimpan("temporary_toko","'0','','Total PPN : "+df2.format(ttluangmuka)+"','Total Ongkir : "+df2.format(ttlongkir)+"','','','Jumlah Total :','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
+                    Sequel.menyimpan("temporary_toko","'0','','','Total Ongkir : "+df2.format(ttlongkir)+"','Total Uang Muka : "+df2.format(ttluangmuka)+"','','Jumlah Total :','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
                    
                     Map<String, Object> param = new HashMap<>();    
                     param.put("namars",akses.getnamars());
@@ -924,7 +924,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     param.put("kontakrs",akses.getkontakrs());
                     param.put("emailrs",akses.getemailrs());   
                     param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                    Valid.MyReport("rptPenjualanToko.jasper","report","::[ Transaksi Penjualan Barang Toko ]::",param);
+                    Valid.MyReport("rptPiutangToko.jasper","report","::[ Transaksi Piutang Barang Toko ]::",param);
                 }  break;
             case 1:
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -952,7 +952,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>Data Penjualan Barang Toko / Minimarket / Koperasi Periode "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>Data Piutang Barang Toko / Minimarket / Koperasi Periode "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -996,13 +996,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString().trim().equals("")){
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
                 Valid.textKosong(TCari,"No.Nota");
-            }else if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-                kdbar.requestFocus();
             }else {
-                Valid.panggilUrl("billing/NotaToko2.php?nonota="+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());          
+                Valid.panggilUrl("billing/NotaToko4.php?nonota="+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());          
             }
             this.setCursor(Cursor.getDefaultCursor());
         }            
@@ -1015,16 +1012,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }else if(tbDokter.getSelectedRow()<= -1){
         JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
     }else{
-        if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString().trim().equals("")){
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
             Valid.textKosong(TCari,"No.Nota");
-        }else if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-            kdbar.requestFocus();
         }else {
            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
            try {
                pscarijual=koneksi.prepareStatement(
-                       "select nota_piutang,kd_rek,sisapiutang from tokopiutang where nota_piutang=?");
+                       "select nota_piutang,sisapiutang from tokopiutang where nota_piutang=?");
                try {
                   pscarijual.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
                   rs=pscarijual.executeQuery();
@@ -1037,7 +1032,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                           pstoko_detail_piutang.setString(1,rs.getString(1));                
                           rs2=pstoko_detail_piutang.executeQuery();
                           while(rs2.next()){
-                              Trackbarang.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Penjualan", akses.getkode(),"Hapus");
+                              Trackbarang.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Piutang", akses.getkode(),"Hapus");
                               Sequel.mengedit("tokobarang","kode_brng=?","stok=stok+?",2,new String[]{
                                    rs2.getString("jumlah"),rs2.getString("kode_brng")
                               });
@@ -1057,9 +1052,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       if(sukses=true){
                             ttlpiutang=rs.getDouble("sisapiutang");
                             Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan("tampjurnal","'"+Piutang_Toko+"','PENJUALAN','"+ttlpiutang+"','0'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Piutang_Toko+"','PIUTANG','0','"+ttlpiutang+"'","Rekening");    
                             Sequel.menyimpan("tampjurnal","'"+Kontra_Piutang_Toko+"','Persediaan Barang Toko','"+ttlpiutang+"','0'","Rekening");                              
-                            sukses=jur.simpanJurnal(rs.getString("nota_piutang"),Sequel.cariIsi("select current_date()"),"U","BATAL PENJUALAN BARANG TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());
+                            sukses=jur.simpanJurnal(rs.getString("nota_piutang"),Sequel.cariIsi("select current_date()"),"U","BATAL PIUTANG BARANG TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());
                       } 
                       
                       if(sukses==true){
@@ -1326,11 +1321,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "<td valign='top' bgcolor='#FFFAF8' align='center' width='26%'>Petugas</td>"+
                     "<td valign='top' bgcolor='#FFFAF8' align='center' width='26%'>Member</td>"+
                     "<td valign='top' bgcolor='#FFFAF8' align='center' width='7%'>Jenis Jual</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='10%'>Keterangan</td>"+
-                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='18%'>Cara Bayar</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='13%'>Catatan</td>"+
+                    "<td valign='top' bgcolor='#FFFAF8' align='center' width='15%'>Tanggal Tempo</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(
-                    "select tokopiutang.nota_piutang, tokopiutang.tgl_piutang,tokopiutang.kd_rek, "+
+                    "select tokopiutang.nota_piutang, tokopiutang.tgl_piutang, "+
                     "tokopiutang.nip,petugas.nama,tokopiutang.ongkir,tokopiutang.sisapiutang, "+
                     "tokopiutang.no_member,tokopiutang.nm_member,tokopiutang.catatan, "+
                     "tokopiutang.jns_jual, tokopiutang.uangmuka,tokopiutang.tgltempo "+
@@ -1378,7 +1373,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='4%'>Jml</td>"+
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='5%'>Satuan</td>"+
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='9%'>Harga(Rp)</td>"+
-                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='10%'>Subsisapiutang(Rp)</td>"+    
+                                        "<td valign='top' bgcolor='#fdfff9' align='center' width='10%'>Sub Total(Rp)</td>"+    
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='3%'>Ptg(%)</td>"+    
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='10%'>Potongan(Rp)</td>"+      
                                         "<td valign='top' bgcolor='#fdfff9' align='center' width='13%'>Total(Rp)</td>"+                                      
@@ -1387,7 +1382,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         "select toko_detail_piutang.kode_brng,tokobarang.nama_brng, toko_detail_piutang.kode_sat,"+
                         " kodesatuan.satuan,toko_detail_piutang.h_jual,toko_detail_piutang.jumlah, "+
                         " toko_detail_piutang.subtotal,toko_detail_piutang.dis,toko_detail_piutang.bsr_dis,"+
-                        " toko_detail_piutang.tambahan,toko_detail_piutang.total from "+
+                        " toko_detail_piutang.total from "+
                         " toko_detail_piutang inner join tokobarang on toko_detail_piutang.kode_brng=tokobarang.kode_brng "+
                         " inner join kodesatuan on toko_detail_piutang.kode_sat=kodesatuan.kode_sat "+
                         " inner join tokojenisbarang on tokobarang.jenis=tokojenisbarang.kd_jenis "+
@@ -1406,8 +1401,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ttlsubttl=ttlsubttl+rs2.getDouble("subtotal");
                             subttldisc=subttldisc+rs2.getDouble("bsr_dis");
                             ttldisc=ttldisc+rs2.getDouble("bsr_dis");
-                            subttlpiutang=subttlpiutang+rs2.getDouble("sisapiutang");
-                            ttlpiutang=ttlpiutang+rs2.getDouble("sisapiutang");
+                            subttlpiutang=subttlpiutang+rs2.getDouble("total");
+                            ttlpiutang=ttlpiutang+rs2.getDouble("total");
                             htmlContent.append(
                                 "<tr class='isi'>"+
                                     "<td valign='top' align='center'>"+no+"</td>"+
@@ -1419,7 +1414,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("subtotal"))+"</td>"+
                                     "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("dis"))+"</td>"+
                                     "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("bsr_dis"))+"</td>"+
-                                    "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("sisapiutang"))+"</td>"+
+                                    "<td valign='top' align='right'>"+Valid.SetAngka(rs2.getDouble("total"))+"</td>"+
                                 "</tr>");
                             no++;
                         }
@@ -1436,12 +1431,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='top' align='center' colspan='5'>PPN : "+df2.format(rs.getDouble("uangmuka"))+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ongkir : "+df2.format(rs.getDouble("ongkir"))+"</td>"+
+                            "<td valign='top' align='center' colspan='5'>Ongkir : "+df2.format(rs.getDouble("ongkir"))+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uang Muka : "+df2.format(rs.getDouble("uangmuka"))+"</td>"+
                             "<td valign='top' align='right'>Total :</td>"+
                             "<td valign='top' align='right'>"+df2.format(subttlall)+"</td>"+
                             "<td valign='top' align='right'></td>"+
                             "<td valign='top' align='right'>"+df2.format(subttldisc)+"</td>"+
-                            "<td valign='top' align='right'>"+df2.format(subttlpiutang+rs.getDouble("uangmuka")+rs.getDouble("ongkir"))+"</td>"+
+                            "<td valign='top' align='right'>"+df2.format(subttlpiutang+rs.getDouble("ongkir")-rs.getDouble("uangmuka"))+"</td>"+
                         "</tr>");
                     htmlContent.append(
                                 "</table>"+
@@ -1463,10 +1458,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                           "<tr class='isi'>"+
                              "<td valign='top' align='right' width='16%'>Jml.Ongkir : "+df2.format(ttlongkir)+"</td>"+
-                             "<td valign='top' align='right' width='16%'>Jml.PPN : "+df2.format(ttluangmuka)+"</td>"+
-                             "<td valign='top' align='right' width='16%'>Jml.Subsisapiutang : "+df2.format(ttlsubttl)+"</td>"+
+                             "<td valign='top' align='right' width='16%'>Jml.Uang Muka : "+df2.format(ttluangmuka)+"</td>"+
+                             "<td valign='top' align='right' width='16%'>Jml.Subtotal : "+df2.format(ttlsubttl)+"</td>"+
                              "<td valign='top' align='right' width='16%'>Jml.Diskon : "+df2.format(ttldisc)+"</td>"+
-                             "<td valign='top' align='right' width='16%'>Jml.Total : "+df2.format(ttlpiutang+ttlongkir+ttluangmuka)+"</td>"+
+                             "<td valign='top' align='right' width='16%'>Jml.Total : "+df2.format(ttlpiutang+ttlongkir-ttluangmuka)+"</td>"+
                            "</tr>"+
                       "</table>";
             }
@@ -1476,7 +1471,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                        htmlContent.toString()+
                       "</table>"+sisapiutangjual+
                     "</html>");
-            LTotal.setText(df2.format(ttlpiutang+ttluangmuka+ttlongkir));
+            LTotal.setText(df2.format(ttlpiutang-ttluangmuka+ttlongkir));
         }catch (Exception e) {
             System.out.println("Notif : "+e);
         } 
