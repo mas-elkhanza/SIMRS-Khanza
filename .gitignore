@@ -1,19 +1,8 @@
 alarm
-ApkRegistrasiOnline
 build
 dist
-DocumenPengembangan
 driverFlexCode
 k-base
-KhanzaAntrianApotek
-KhanzaAntrianLoket
-KhanzaAntrianPoli
-KhanzaHMSAnjungan
-KhanzaHMSAnjunganFingerPrint
-KhanzaHMSAutoVerify
-KhanzaHMSResume
-KhanzaHMSServiceAplicare
-KhanzaHMSServiceSIRSYankes
 KhanzaPengenkripsiTeks
 KhanzaSecurity16bit
 KhanzaUpdater
@@ -27,3 +16,5 @@ nbproject/private/private.xml
 */.DS_Store
 setting/database.xml
 setting/database-online.xml
+nbproject/genfiles.properties
+nbproject/example-project.properties

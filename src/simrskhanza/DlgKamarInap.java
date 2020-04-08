@@ -11,27 +11,22 @@
  */
 
 package simrskhanza;
-import rekammedis.RMRiwayatPerawatan;
-import permintaan.DlgBookingOperasi;
-import inventory.DlgResepObat;
-import laporan.DlgDataHAIs;
 import bridging.BPJSDataSEP;
 import bridging.BPJSNik;
 import bridging.BPJSPeserta;
 import bridging.DlgDataTB;
 import bridging.DlgSKDPBPJS;
 import bridging.SisruteRujukanKeluar;
-import laporan.DlgDiagnosaPenyakit;
-import informasi.InformasiAnalisaKamin;
-import keuangan.DlgKamar;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
+import informasi.InformasiAnalisaKamin;
 import inventory.DlgInputStokPasien;
 import inventory.DlgPeresepanDokter;
+import inventory.DlgResepObat;
 import inventory.DlgReturJual;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -40,7 +35,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,22 +45,27 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBilingRanap;
+import keuangan.DlgKamar;
 import keuangan.DlgLhtPiutang;
 import keuangan.DlgPerkiraanBiayaRanap;
 import laporan.DlgBerkasRawat;
+import laporan.DlgDataHAIs;
 import laporan.DlgDataInsidenKeselamatan;
-import rekammedis.RMDataResumePasien;
+import laporan.DlgDiagnosaPenyakit;
+import permintaan.DlgBookingOperasi;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
+import rekammedis.RMDataResumePasien;
+import rekammedis.RMDetailRawat;
+import rekammedis.RMRiwayatPerawatan;
 
 /**
  *
@@ -694,6 +693,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         ppResume = new javax.swing.JMenuItem();
         MnDiagnosa = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
+        detailRawat = new javax.swing.JMenuItem();
         MnPermintaan = new javax.swing.JMenu();
         MnJadwalOperasi = new javax.swing.JMenuItem();
         MnSKDPBPJS = new javax.swing.JMenuItem();
@@ -1425,6 +1425,19 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MnDataRM.add(ppRiwayat);
+
+        detailRawat.setBackground(new java.awt.Color(255, 255, 254));
+        detailRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        detailRawat.setForeground(new java.awt.Color(50, 50, 50));
+        detailRawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        detailRawat.setText("Detail Rawat");
+        detailRawat.setName("detailRawat"); // NOI18N
+        detailRawat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detailRawatActionPerformed(evt);
+            }
+        });
+        MnDataRM.add(detailRawat);
 
         jPopupMenu1.add(MnDataRM);
 
@@ -3325,11 +3338,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -3559,7 +3572,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3582,7 +3595,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3609,7 +3622,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2020" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -3632,7 +3645,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-02-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2020" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -9126,6 +9139,25 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     }//GEN-LAST:event_MnSuratPernyataanActionPerformed
 
+    private void detailRawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailRawatActionPerformed
+        // TODO add your handling code here:
+                if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(tbKamIn.getSelectedRow()== -1){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data kamar inap pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDetailRawat resume=new RMDetailRawat(null,true);
+            resume.setNoRm(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),1).toString(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),2).toString());
+            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            resume.setLocationRelativeTo(internalFrame1);
+            resume.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_detailRawatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9321,6 +9353,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.ComboBox cmbMntpindah;
     private widget.ComboBox cmbStatus;
     private widget.ComboBox cmbStatusBayar;
+    private javax.swing.JMenuItem detailRawat;
     private widget.TextBox diagnosaakhir;
     private widget.TextBox diagnosaawal;
     private widget.InternalFrame internalFrame1;
