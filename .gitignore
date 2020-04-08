@@ -23,6 +23,7 @@ presensi
 resumepasien
 nbproject/project.properties
 nbproject/private/private.xml
+nbproject/genfiles.properties
 .DS_Store
 */.DS_Store
 setting/database.xml
