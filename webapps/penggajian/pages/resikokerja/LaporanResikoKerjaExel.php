@@ -13,6 +13,7 @@
     <body>
    <?php
         $keyword=$_GET['keyword'];
+        $keyword= validTeks($keyword);
         $_sql = "SELECT kode_resiko,nama_resiko,indek FROM resiko_kerja where kode_resiko like '%".$keyword."%' or nama_resiko like '%".$keyword."%' ORDER BY indek desc";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);

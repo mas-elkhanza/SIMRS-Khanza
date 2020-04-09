@@ -34,15 +34,15 @@
                 $hasil=bukaquery($_sql);
                 $baris = mysqli_fetch_row($hasil);
 
-                $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' and pegawai.jbtn like '%dokter spesialis%' order by id asc limit 1";
+                $_sqlnext                   = "SELECT id FROM pegawai WHERE id>'$id' and pegawai.jbtn like '%dokter spesialis%' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
                     $barisnext        	= mysqli_fetch_row($hasilnext);
-                    $next               = $barisnext[0];
+                    $next                   = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' and pegawai.jbtn like '%dokter spesialis%' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
                     $barisprev        	= mysqli_fetch_row($hasilprev);
-                    $prev               = $barisprev[0];
+                    $prev                   = $barisprev[0];
                     
                     if(empty($next)){
                         $next=$prev;
@@ -64,7 +64,7 @@
                     <td width="31%" >NIP</td><td width="">:</td>
                     <td width="67%"><?php echo $baris[0];?></td>
                 </tr>
-				<tr class="head">
+                <tr class="head">
                     <td width="31%">Nama</td><td width="">:</td>
                     <td width="67%"><?php echo $baris[1];?></td>
                 </tr>                
@@ -104,18 +104,22 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id                 =trim(isset($_POST['id']))?trim($_POST['id']):NULL;
-                    $tgl                =$tahun."-".$bulan."-01 00:00:00";
-                    $tnd                =trim(isset($_POST['tnd']))?trim($_POST['tnd']):NULL;
-                    $_sql = "SELECT jm FROM master_tindakan where id='$tnd'";
-                    $hasil=bukaquery($_sql);
-                    $baris = mysqli_fetch_array($hasil);
-                    $jm                 =$baris[0];
-                    $nm_pasien          =trim(isset($_POST['nm_pasien']))?trim($_POST['nm_pasien']):NULL;
-                    $kamar              =trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
-                    $diagnosa           =trim(isset($_POST['diagnosa']))?trim($_POST['diagnosa']):NULL;
-                    $jmlh               =trim(isset($_POST['jmlh']))?trim($_POST['jmlh']):NULL;
-                    $ttljm              =$jm*$jmlh;
+                    $id                 = trim(isset($_POST['id']))?trim($_POST['id']):NULL;
+                    $tgl                = $tahun."-".$bulan."-01 00:00:00";
+                    $tnd                = trim(isset($_POST['tnd']))?trim($_POST['tnd']):NULL;
+                    $_sql               = "SELECT jm FROM master_tindakan where id='$tnd'";
+                    $hasil              = bukaquery($_sql);
+                    $baris              = mysqli_fetch_array($hasil);
+                    $jm                 = $baris[0];
+                    $nm_pasien          = trim(isset($_POST['nm_pasien']))?trim($_POST['nm_pasien']):NULL;
+                    $nm_pasien          = validTeks($nm_pasien);
+                    $kamar              = trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
+                    $kamar              = validTeks($kamar);
+                    $diagnosa           = trim(isset($_POST['diagnosa']))?trim($_POST['diagnosa']):NULL;
+                    $diagnosa           = validTeks($diagnosa);
+                    $jmlh               = trim(isset($_POST['jmlh']))?trim($_POST['jmlh']):NULL;
+                    $jmlh               = validTeks($jmlh);
+                    $ttljm              = $jm*$jmlh;
                     if ((!empty($id))&&(!empty($tgl))&&(!empty($tnd))) {
                         switch($action) {
                             case "TAMBAH":

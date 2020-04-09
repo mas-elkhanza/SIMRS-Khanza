@@ -766,8 +766,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             ps=koneksi.prepareStatement(
                 "select ipsrsbarang.kode_brng,ipsrsbarang.nama_brng,ipsrsbarang.kode_sat,ipsrsjenisbarang.nm_jenis "+
                 " from ipsrsbarang inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                " where ipsrsbarang.kode_brng like ? or ipsrsbarang.nama_brng like ? or "+
-                " ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.nama_brng");
+                " where ipsrsbarang.status='1' and ipsrsbarang.kode_brng like ? or ipsrsbarang.status='1' and ipsrsbarang.nama_brng like ? or "+
+                " ipsrsbarang.status='1' and ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.nama_brng");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

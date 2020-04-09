@@ -806,8 +806,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         try{
             ps=koneksi.prepareStatement(
                 "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsbarang.harga,ipsrsbarang.kode_sat,ipsrsbarang.stok "+
-                " from ipsrsbarang where ipsrsbarang.kode_brng like ? or "+
-                " ipsrsbarang.nama_brng like ? order by ipsrsbarang.nama_brng");
+                " from ipsrsbarang where ipsrsbarang.status='1' and  ipsrsbarang.kode_brng like ? or "+
+                " ipsrsbarang.status='1' and ipsrsbarang.nama_brng like ? order by ipsrsbarang.nama_brng");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

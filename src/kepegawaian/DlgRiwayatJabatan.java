@@ -67,11 +67,6 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
     private final JProgressBar progressBar = new JProgressBar();
     private final Properties prop = new Properties(); 
     private final validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private final validasi validasi=new validasi();
-    private final Connection koneksi=koneksiDB.condb();
-    private final DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     
     public DlgRiwayatJabatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

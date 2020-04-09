@@ -51,8 +51,10 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $kode_evaluasi    = trim($_POST['kode_evaluasi']);
+                    $kode_evaluasi    = validTeks($kode_evaluasi);
                     $nama_evaluasi    = trim($_POST['nama_evaluasi']);
-                    $indek   = trim($_POST['indek']);
+                    $nama_evaluasi    = validTeks($nama_evaluasi);
+                    $indek            = validTeks(trim($_POST['indek']));
                     if ((!empty($kode_evaluasi))&&(!empty($nama_evaluasi))&&(!empty($indek))) {
                         switch($action) {
                             case "TAMBAH":

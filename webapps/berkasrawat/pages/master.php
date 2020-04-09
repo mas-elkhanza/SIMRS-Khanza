@@ -32,8 +32,10 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $kode   =trim($_POST['kode']);
-                    $nama   =trim($_POST['nama']);
+                    $kode   = trim($_POST['kode']);
+                    $nama   = trim($_POST['nama']);
+                    $kode   = validTeks($kode);
+                    $nama   = validTeks($nama);
                     
                     
                     if ((!empty($kode))&&(!empty($nama))) {

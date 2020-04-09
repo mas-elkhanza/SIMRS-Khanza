@@ -5,10 +5,8 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import inventory.DlgSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -16,7 +14,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -32,7 +29,6 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public  DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
@@ -40,6 +36,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
+    private String akunpengadaan=Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun");
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -246,43 +243,6 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        try {
-            ps=koneksi.prepareStatement("select ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur, "+
-                    "ipsrspembelian.kode_suplier,ipsrssuplier.nama_suplier, "+
-                    "ipsrspembelian.nip,petugas.nama,ipsrspembelian.subtotal,ipsrspembelian.potongan,ipsrspembelian.total, "+
-                    "ipsrspembelian.ppn,ipsrspembelian.tagihan,ipsrspembelian.meterai from ipsrspembelian inner join ipsrssuplier inner join petugas inner join kodesatuan  "+
-                    " inner join ipsrsdetailbeli inner join ipsrsbarang "+
-                    " on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
-                    " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
-                    " and ipsrspembelian.no_faktur=ipsrsdetailbeli.no_faktur "+
-                    " and ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+
-                    " and ipsrspembelian.nip=petugas.nip"+
-                    " where ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspembelian.no_faktur like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspembelian.kode_suplier like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrssuplier.nama_suplier like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspembelian.nip like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and petugas.nama like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailbeli.kode_brng like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailbeli.kode_sat like ? or "+
-                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and kodesatuan.satuan like ? "+
-                    " group by ipsrspembelian.no_faktur order by ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur ");
-            ps2=koneksi.prepareStatement("select ipsrsdetailbeli.kode_brng,ipsrsbarang.nama_brng, "+
-                        "ipsrsdetailbeli.kode_sat,kodesatuan.satuan,ipsrsdetailbeli.jumlah,ipsrsdetailbeli.harga, "+
-                        "ipsrsdetailbeli.subtotal,ipsrsdetailbeli.dis,ipsrsdetailbeli.besardis,ipsrsdetailbeli.total "+
-                        "from ipsrsdetailbeli inner join ipsrsbarang inner join kodesatuan "+
-                        " on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
-                        " and ipsrsdetailbeli.kode_sat=kodesatuan.kode_sat where "+
-                        " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsdetailbeli.kode_brng like ? or "+
-                        " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? or "+
-                        " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsdetailbeli.kode_sat like ? or "+
-                        " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.jenis like ? order by ipsrsdetailbeli.kode_brng  ");
-            pscaribeli=koneksi.prepareStatement("select no_faktur, tagihan,tgl_beli from ipsrspembelian where no_faktur=?");
-            psipsrsdetailbeli=koneksi.prepareStatement("select kode_brng,jumlah from ipsrsdetailbeli where no_faktur=? ");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
 
     /** This method is called from within the constructor to
@@ -849,7 +809,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
                 Sequel.menyimpan("temporary","'0','"+
@@ -875,7 +835,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPembelian.jasper","report","::[ Transaksi Pembelian Barang ]::",param);
+            Valid.MyReport("rptPembelian.jasper","report","::[ Transaksi Pembelian Barang Non Medis dan Penunjang ( Lab & RO ) ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -893,30 +853,53 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       Valid.textKosong(TCari,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
   }else{
      try {
-         
-         pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
-         rs=pscaribeli.executeQuery();
-         while(rs.next()){
-             psipsrsdetailbeli.setString(1,rs.getString(1));
-             rs2=psipsrsdetailbeli.executeQuery();
-             while(rs2.next()){
-                 Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok-?",2,new String[]{
-                        rs2.getString("jumlah"),rs2.getString("kode_brng")
-                 });
+         pscaribeli=koneksi.prepareStatement("select no_faktur, tagihan,tgl_beli from ipsrspembelian where no_faktur=?");
+         try {
+            pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
+            rs=pscaribeli.executeQuery();
+            if(rs.next()){
+                psipsrsdetailbeli=koneksi.prepareStatement("select kode_brng,jumlah from ipsrsdetailbeli where no_faktur=? ");
+                try {
+                    psipsrsdetailbeli.setString(1,rs.getString(1));
+                    rs2=psipsrsdetailbeli.executeQuery();
+                    while(rs2.next()){
+                        Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok-?",2,new String[]{
+                               rs2.getString("jumlah"),rs2.getString("kode_brng")
+                        });
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                    if(psipsrsdetailbeli!=null){
+                        psipsrsdetailbeli.close();
+                    }
+                }
+                    
+                Sequel.queryu("delete from tampjurnal");
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    akunpengadaan,"PEMBELIAN","0",rs.getString("tagihan")
+                });    
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    Sequel.cariIsi("select kd_rek from ipsrspembelian where no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("tagihan"),"0"
+                }); 
+                jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGADAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
+                Sequel.queryu2("delete from ipsrspembelian where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
+            }   
+         } catch (Exception e) {
+             System.out.println("Notif : "+e);
+         } finally{
+             if(rs!=null){
+                 rs.close();
              }
-             Sequel.queryu("delete from tampjurnal");
-             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun"),"PEMBELIAN","0",rs.getString("tagihan")
-             });    
-             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select kd_rek from ipsrspembelian where no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("tagihan"),"0"
-             }); 
-             jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGGUNAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
-         }          
-         Sequel.queryu2("delete from ipsrspembelian where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
-         
+             if(pscaribeli!=null){
+                 pscaribeli.close();
+             }
+         }
          tampil();
-     } catch (SQLException ex) {
+     } catch (Exception ex) {
          System.out.println(ex);
      }      
   }        
@@ -1007,125 +990,178 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{            
-            ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(3,"%"+NoFaktur.getText()+"%");
-            ps.setString(4,"%"+nmsup.getText()+"%");
-            ps.setString(5,"%"+nmptg.getText()+"%");
-            ps.setString(6,"%"+kdjenis.getText()+"%");
-            ps.setString(7,"%"+nmbar.getText()+"%");
-            ps.setString(8,"%"+TCari.getText()+"%");
-            ps.setString(9,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(10,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(11,"%"+NoFaktur.getText()+"%");
-            ps.setString(12,"%"+nmsup.getText()+"%");
-            ps.setString(13,"%"+nmptg.getText()+"%");
-            ps.setString(14,"%"+kdjenis.getText()+"%");
-            ps.setString(15,"%"+nmbar.getText()+"%");
-            ps.setString(16,"%"+TCari.getText()+"%");
-            ps.setString(17,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(18,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(19,"%"+NoFaktur.getText()+"%");
-            ps.setString(20,"%"+nmsup.getText()+"%");
-            ps.setString(21,"%"+nmptg.getText()+"%");
-            ps.setString(22,"%"+kdjenis.getText()+"%");
-            ps.setString(23,"%"+nmbar.getText()+"%");
-            ps.setString(24,"%"+TCari.getText()+"%");
-            ps.setString(25,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(26,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(27,"%"+NoFaktur.getText()+"%");
-            ps.setString(28,"%"+nmsup.getText()+"%");
-            ps.setString(29,"%"+nmptg.getText()+"%");
-            ps.setString(30,"%"+kdjenis.getText()+"%");
-            ps.setString(31,"%"+nmbar.getText()+"%");
-            ps.setString(32,"%"+TCari.getText()+"%");
-            ps.setString(33,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(34,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(35,"%"+NoFaktur.getText()+"%");
-            ps.setString(36,"%"+nmsup.getText()+"%");
-            ps.setString(37,"%"+nmptg.getText()+"%");
-            ps.setString(38,"%"+kdjenis.getText()+"%");
-            ps.setString(39,"%"+nmbar.getText()+"%");
-            ps.setString(40,"%"+TCari.getText()+"%");
-            ps.setString(41,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(42,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(43,"%"+NoFaktur.getText()+"%");
-            ps.setString(44,"%"+nmsup.getText()+"%");
-            ps.setString(45,"%"+nmptg.getText()+"%");
-            ps.setString(46,"%"+kdjenis.getText()+"%");
-            ps.setString(47,"%"+nmbar.getText()+"%");
-            ps.setString(48,"%"+TCari.getText()+"%");
-            ps.setString(49,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(50,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(51,"%"+NoFaktur.getText()+"%");
-            ps.setString(52,"%"+nmsup.getText()+"%");
-            ps.setString(53,"%"+nmptg.getText()+"%");
-            ps.setString(54,"%"+kdjenis.getText()+"%");
-            ps.setString(55,"%"+nmbar.getText()+"%");
-            ps.setString(56,"%"+TCari.getText()+"%");
-            ps.setString(57,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(58,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(59,"%"+NoFaktur.getText()+"%");
-            ps.setString(60,"%"+nmsup.getText()+"%");
-            ps.setString(61,"%"+nmptg.getText()+"%");
-            ps.setString(62,"%"+kdjenis.getText()+"%");
-            ps.setString(63,"%"+nmbar.getText()+"%");
-            ps.setString(64,"%"+TCari.getText()+"%");
-            ps.setString(65,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(66,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(67,"%"+NoFaktur.getText()+"%");
-            ps.setString(68,"%"+nmsup.getText()+"%");
-            ps.setString(69,"%"+nmptg.getText()+"%");
-            ps.setString(70,"%"+kdjenis.getText()+"%");
-            ps.setString(71,"%"+nmbar.getText()+"%");
-            ps.setString(72,"%"+TCari.getText()+"%");
-            ps.setString(73,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
-            ps.setString(74,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
-            ps.setString(75,"%"+NoFaktur.getText()+"%");
-            ps.setString(76,"%"+nmsup.getText()+"%");
-            ps.setString(77,"%"+nmptg.getText()+"%");
-            ps.setString(78,"%"+kdjenis.getText()+"%");
-            ps.setString(79,"%"+nmbar.getText()+"%");
-            ps.setString(80,"%"+TCari.getText()+"%");
-            rs=ps.executeQuery();
-            tagihan=0;
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),
-                      rs.getString(5)+", "+rs.getString(6),"Pembelian :","","","","","","",""
-                });                
-                ps2.setString(1,rs.getString(2));
-                ps2.setString(2,"%"+nmbar.getText()+"%");
-                ps2.setString(3,"%"+kdjenis.getText()+"%");
-                ps2.setString(4,"%"+TCari.getText()+"%");
-                ps2.setString(5,rs.getString(2));
-                ps2.setString(6,"%"+nmbar.getText()+"%");
-                ps2.setString(7,"%"+kdjenis.getText()+"%");
-                ps2.setString(8,"%"+TCari.getText()+"%");
-                ps2.setString(9,rs.getString(2));
-                ps2.setString(10,"%"+nmbar.getText()+"%");
-                ps2.setString(11,"%"+kdjenis.getText()+"%");
-                ps2.setString(12,"%"+TCari.getText()+"%");
-                ps2.setString(13,rs.getString(2));
-                ps2.setString(14,"%"+nmbar.getText()+"%");
-                ps2.setString(15,"%"+kdjenis.getText()+"%");
-                ps2.setString(16,"%"+TCari.getText()+"%");
-                rs2=ps2.executeQuery();
-                int no=1;
-                while(rs2.next()){
-                    tabMode.addRow(new Object[]{"","","","",no+". "+rs2.getString(1)+", "+rs2.getString(2),
-                                    rs2.getString(3)+", "+rs2.getString(4),
-                                    rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7)),
-                                    Valid.SetAngka(rs2.getDouble(8)),Valid.SetAngka(rs2.getDouble(9)),Valid.SetAngka(rs2.getDouble(10))});
-                    no++;
+            ps=koneksi.prepareStatement("select ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur, "+
+                    "ipsrspembelian.kode_suplier,ipsrssuplier.nama_suplier, "+
+                    "ipsrspembelian.nip,petugas.nama,ipsrspembelian.subtotal,ipsrspembelian.potongan,ipsrspembelian.total, "+
+                    "ipsrspembelian.ppn,ipsrspembelian.tagihan,ipsrspembelian.meterai from ipsrspembelian inner join ipsrssuplier inner join petugas inner join kodesatuan  "+
+                    " inner join ipsrsdetailbeli inner join ipsrsbarang "+
+                    " on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
+                    " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
+                    " and ipsrspembelian.no_faktur=ipsrsdetailbeli.no_faktur "+
+                    " and ipsrspembelian.kode_suplier=ipsrssuplier.kode_suplier "+
+                    " and ipsrspembelian.nip=petugas.nip"+
+                    " where ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspembelian.no_faktur like ? or "+
+                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspembelian.kode_suplier like ? or "+
+                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrssuplier.nama_suplier like ? or "+
+                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrspembelian.nip like ? or "+
+                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and petugas.nama like ? or "+
+                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? or "+
+                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailbeli.kode_brng like ? or "+
+                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
+                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and ipsrsdetailbeli.kode_sat like ? or "+
+                    " ipsrspembelian.tgl_beli between ? and ? and ipsrspembelian.no_faktur like ? and ipsrssuplier.nama_suplier like ? and petugas.nama like ?  and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? and kodesatuan.satuan like ? "+
+                    " group by ipsrspembelian.no_faktur order by ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur ");
+            try {
+                ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(3,"%"+NoFaktur.getText()+"%");
+                ps.setString(4,"%"+nmsup.getText()+"%");
+                ps.setString(5,"%"+nmptg.getText()+"%");
+                ps.setString(6,"%"+kdjenis.getText()+"%");
+                ps.setString(7,"%"+nmbar.getText()+"%");
+                ps.setString(8,"%"+TCari.getText()+"%");
+                ps.setString(9,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(10,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(11,"%"+NoFaktur.getText()+"%");
+                ps.setString(12,"%"+nmsup.getText()+"%");
+                ps.setString(13,"%"+nmptg.getText()+"%");
+                ps.setString(14,"%"+kdjenis.getText()+"%");
+                ps.setString(15,"%"+nmbar.getText()+"%");
+                ps.setString(16,"%"+TCari.getText()+"%");
+                ps.setString(17,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(18,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(19,"%"+NoFaktur.getText()+"%");
+                ps.setString(20,"%"+nmsup.getText()+"%");
+                ps.setString(21,"%"+nmptg.getText()+"%");
+                ps.setString(22,"%"+kdjenis.getText()+"%");
+                ps.setString(23,"%"+nmbar.getText()+"%");
+                ps.setString(24,"%"+TCari.getText()+"%");
+                ps.setString(25,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(26,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(27,"%"+NoFaktur.getText()+"%");
+                ps.setString(28,"%"+nmsup.getText()+"%");
+                ps.setString(29,"%"+nmptg.getText()+"%");
+                ps.setString(30,"%"+kdjenis.getText()+"%");
+                ps.setString(31,"%"+nmbar.getText()+"%");
+                ps.setString(32,"%"+TCari.getText()+"%");
+                ps.setString(33,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(34,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(35,"%"+NoFaktur.getText()+"%");
+                ps.setString(36,"%"+nmsup.getText()+"%");
+                ps.setString(37,"%"+nmptg.getText()+"%");
+                ps.setString(38,"%"+kdjenis.getText()+"%");
+                ps.setString(39,"%"+nmbar.getText()+"%");
+                ps.setString(40,"%"+TCari.getText()+"%");
+                ps.setString(41,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(42,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(43,"%"+NoFaktur.getText()+"%");
+                ps.setString(44,"%"+nmsup.getText()+"%");
+                ps.setString(45,"%"+nmptg.getText()+"%");
+                ps.setString(46,"%"+kdjenis.getText()+"%");
+                ps.setString(47,"%"+nmbar.getText()+"%");
+                ps.setString(48,"%"+TCari.getText()+"%");
+                ps.setString(49,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(50,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(51,"%"+NoFaktur.getText()+"%");
+                ps.setString(52,"%"+nmsup.getText()+"%");
+                ps.setString(53,"%"+nmptg.getText()+"%");
+                ps.setString(54,"%"+kdjenis.getText()+"%");
+                ps.setString(55,"%"+nmbar.getText()+"%");
+                ps.setString(56,"%"+TCari.getText()+"%");
+                ps.setString(57,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(58,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(59,"%"+NoFaktur.getText()+"%");
+                ps.setString(60,"%"+nmsup.getText()+"%");
+                ps.setString(61,"%"+nmptg.getText()+"%");
+                ps.setString(62,"%"+kdjenis.getText()+"%");
+                ps.setString(63,"%"+nmbar.getText()+"%");
+                ps.setString(64,"%"+TCari.getText()+"%");
+                ps.setString(65,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(66,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(67,"%"+NoFaktur.getText()+"%");
+                ps.setString(68,"%"+nmsup.getText()+"%");
+                ps.setString(69,"%"+nmptg.getText()+"%");
+                ps.setString(70,"%"+kdjenis.getText()+"%");
+                ps.setString(71,"%"+nmbar.getText()+"%");
+                ps.setString(72,"%"+TCari.getText()+"%");
+                ps.setString(73,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(74,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(75,"%"+NoFaktur.getText()+"%");
+                ps.setString(76,"%"+nmsup.getText()+"%");
+                ps.setString(77,"%"+nmptg.getText()+"%");
+                ps.setString(78,"%"+kdjenis.getText()+"%");
+                ps.setString(79,"%"+nmbar.getText()+"%");
+                ps.setString(80,"%"+TCari.getText()+"%");
+                rs=ps.executeQuery();
+                tagihan=0;
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),
+                          rs.getString(5)+", "+rs.getString(6),"Pembelian :","","","","","","",""
+                    });      
+                    ps2=koneksi.prepareStatement("select ipsrsdetailbeli.kode_brng,ipsrsbarang.nama_brng, "+
+                        "ipsrsdetailbeli.kode_sat,kodesatuan.satuan,ipsrsdetailbeli.jumlah,ipsrsdetailbeli.harga, "+
+                        "ipsrsdetailbeli.subtotal,ipsrsdetailbeli.dis,ipsrsdetailbeli.besardis,ipsrsdetailbeli.total "+
+                        "from ipsrsdetailbeli inner join ipsrsbarang inner join kodesatuan "+
+                        " on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
+                        " and ipsrsdetailbeli.kode_sat=kodesatuan.kode_sat where "+
+                        " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsdetailbeli.kode_brng like ? or "+
+                        " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? or "+
+                        " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsdetailbeli.kode_sat like ? or "+
+                        " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.jenis like ? order by ipsrsdetailbeli.kode_brng  ");
+                    try {
+                        ps2.setString(1,rs.getString(2));
+                        ps2.setString(2,"%"+nmbar.getText()+"%");
+                        ps2.setString(3,"%"+kdjenis.getText()+"%");
+                        ps2.setString(4,"%"+TCari.getText()+"%");
+                        ps2.setString(5,rs.getString(2));
+                        ps2.setString(6,"%"+nmbar.getText()+"%");
+                        ps2.setString(7,"%"+kdjenis.getText()+"%");
+                        ps2.setString(8,"%"+TCari.getText()+"%");
+                        ps2.setString(9,rs.getString(2));
+                        ps2.setString(10,"%"+nmbar.getText()+"%");
+                        ps2.setString(11,"%"+kdjenis.getText()+"%");
+                        ps2.setString(12,"%"+TCari.getText()+"%");
+                        ps2.setString(13,rs.getString(2));
+                        ps2.setString(14,"%"+nmbar.getText()+"%");
+                        ps2.setString(15,"%"+kdjenis.getText()+"%");
+                        ps2.setString(16,"%"+TCari.getText()+"%");
+                        rs2=ps2.executeQuery();
+                        int no=1;
+                        while(rs2.next()){
+                            tabMode.addRow(new Object[]{"","","","",no+". "+rs2.getString(1)+", "+rs2.getString(2),
+                                            rs2.getString(3)+", "+rs2.getString(4),
+                                            rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7)),
+                                            Valid.SetAngka(rs2.getDouble(8)),Valid.SetAngka(rs2.getDouble(9)),Valid.SetAngka(rs2.getDouble(10))});
+                            no++;
+                        }
+                        tabMode.addRow(new Object[]{"","","","","","Total",":","",Valid.SetAngka(rs.getDouble("subtotal")),"",Valid.SetAngka(rs.getDouble("potongan")),Valid.SetAngka(rs.getDouble("total"))});
+                        tabMode.addRow(new Object[]{"","","","","","PPN",":","","","","",Valid.SetAngka(rs.getDouble("ppn"))});
+                        tabMode.addRow(new Object[]{"","","","","","Meterai",":","","","","",Valid.SetAngka(rs.getDouble("meterai"))});
+                        tabMode.addRow(new Object[]{"","","","","","Tagihan",":","","","","",Valid.SetAngka(rs.getDouble("tagihan"))});
+                        tagihan=tagihan+rs.getDouble("total");
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }   
+                }                
+                LTotal.setText(Valid.SetAngka(tagihan));
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
                 }
-                tabMode.addRow(new Object[]{"","","","","","Total",":","",Valid.SetAngka(rs.getDouble("subtotal")),"",Valid.SetAngka(rs.getDouble("potongan")),Valid.SetAngka(rs.getDouble("total"))});
-                tabMode.addRow(new Object[]{"","","","","","PPN",":","","","","",Valid.SetAngka(rs.getDouble("ppn"))});
-                tabMode.addRow(new Object[]{"","","","","","Meterai",":","","","","",Valid.SetAngka(rs.getDouble("meterai"))});
-                tabMode.addRow(new Object[]{"","","","","","Tagihan",":","","","","",Valid.SetAngka(rs.getDouble("tagihan"))});
-                tagihan=tagihan+rs.getDouble("total");
-            }                
-            LTotal.setText(Valid.SetAngka(tagihan));
-        }catch(SQLException e){
+                if(ps!=null){
+                    ps.close();
+                }
+            }   
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        
     }

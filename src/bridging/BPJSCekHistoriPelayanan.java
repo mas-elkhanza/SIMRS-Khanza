@@ -30,7 +30,6 @@ import java.awt.event.WindowListener;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -54,7 +53,6 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private String pilihan;
         
     /** Creates new form DlgKamar
      * @param parent

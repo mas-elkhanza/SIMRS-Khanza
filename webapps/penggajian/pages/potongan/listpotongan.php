@@ -80,36 +80,37 @@
         }
 
 
-	$keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
+        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;  
+        $keyword= validTeks($keyword);
 
         $_sql = "SELECT pegawai.id, 
-		        pegawai.nik,
-				pegawai.nama,
-				pegawai.departemen,
-				keanggotaan.koperasi, 
-				keanggotaan.jamsostek, 				 
-				keanggotaan.bpjs,
-				potongan.bpjs, 
-				potongan.jamsostek, 
-				potongan.dansos, 
-				potongan.simwajib, 
-				potongan.angkop, 
-				potongan.angla, 
-				potongan.telpri, 
-				potongan.pajak, 
-				potongan.pribadi, 
-				potongan.lain, 
-				potongan.ktg
-				FROM keanggotaan, potongan
-				RIGHT OUTER JOIN pegawai ON potongan.id = pegawai.id
-				AND tahun like '%".$tahun."%'  and bulan like '%".$bulan."%' 
-				WHERE pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and pegawai.nik like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and pegawai.nama like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and pegawai.departemen like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.koperasi like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.bpjs like '%".$keyword."%' or
-				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.jamsostek like '%".$keyword."%'
-				order by pegawai.id ASC ";
+                    pegawai.nik,
+                    pegawai.nama,
+                    pegawai.departemen,
+                    keanggotaan.koperasi, 
+                    keanggotaan.jamsostek, 				 
+                    keanggotaan.bpjs,
+                    potongan.bpjs, 
+                    potongan.jamsostek, 
+                    potongan.dansos, 
+                    potongan.simwajib, 
+                    potongan.angkop, 
+                    potongan.angla, 
+                    potongan.telpri, 
+                    potongan.pajak, 
+                    potongan.pribadi, 
+                    potongan.lain, 
+                    potongan.ktg
+                    FROM keanggotaan, potongan
+                    RIGHT OUTER JOIN pegawai ON potongan.id = pegawai.id
+                    AND tahun like '%".$tahun."%'  and bulan like '%".$bulan."%' 
+                    WHERE pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and pegawai.nik like '%".$keyword."%' or
+                    pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and pegawai.nama like '%".$keyword."%' or
+                    pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and pegawai.departemen like '%".$keyword."%' or
+                    pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.koperasi like '%".$keyword."%' or
+                    pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.bpjs like '%".$keyword."%' or
+                    pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.jamsostek like '%".$keyword."%'
+                    order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
         $jml=0;

@@ -95,7 +95,7 @@
                     $tahun              =$tahun;
                     $bulan              =$bulan;
                     $kode_evaluasi      =trim($_POST['kode_evaluasi']);
-                    $keterangan         =trim($_POST['keterangan']);
+                    $keterangan         = validTeks(trim($_POST['keterangan']));
                     if ((!empty($id))&&(!empty($kode_evaluasi))) {
                         switch($action) {
                             case "TAMBAH":

@@ -1,6 +1,7 @@
 <?php
     $action      =isset($_GET['action'])?$_GET['action']:NULL;
     $keyword      = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
+    $keyword= validTeks($keyword);
     echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
 ?>
 <div style="width: 100%; height: 99%; overflow: auto;">

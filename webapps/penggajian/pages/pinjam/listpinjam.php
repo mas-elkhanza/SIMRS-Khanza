@@ -37,7 +37,8 @@
     <div style="width: 100%; height: 78%; overflow: auto;">
 	
     <?php
-	$keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+        $keyword= validTeks($keyword);
         $say=" pegawai.id=keanggotaan.id and keanggotaan.koperasi='Y'  ";
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama
                 FROM pegawai,keanggotaan 
@@ -59,7 +60,7 @@
                     while($baris = mysqli_fetch_array($hasil)) {
                         $_sql2="select status from peminjaman_koperasi where
                                status='Belum Lunas' and id='$baris[0]' ";
-			$hasil2=bukaquery($_sql2);
+		      $hasil2=bukaquery($_sql2);
                         $jumlah2=mysqli_num_rows($hasil2);
                         $status="Tidak Ada Pinjaman";
                         if($jumlah2!=0){
@@ -70,7 +71,7 @@
                                     <center>
                                         <a href=?act=DetailPinjam&action=TAMBAH&id=$baris[0]>[Detail]</a>&nbsp;
                                     </center>
-                               </td>
+                                </td>
                                 <td>$baris[1]</td>
                                 <td>$baris[2]</td>
                                 <td>$status</td>

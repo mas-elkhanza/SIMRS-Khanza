@@ -8,8 +8,7 @@
                 $tanggal    =$_GET['tanggal'];
                 $id         =$_GET['id'];
 
-                $_sql2  	= "SELECT id, banyak_angsur, pinjaman, pokok, 
-								jasa, tanggal, status  FROM peminjaman_koperasi where id='$id' and tanggal='$tanggal'";
+                $_sql2  	= "SELECT id, banyak_angsur, pinjaman, pokok,jasa, tanggal, status  FROM peminjaman_koperasi where id='$id' and tanggal='$tanggal'";
                 $hasil2 	=bukaquery($_sql2);
                 $baris2 	= mysqli_fetch_row($hasil2);
                 $id         = $baris2[0];
@@ -38,10 +37,10 @@
                       <input type=hidden name=pinjaman value=$pinjaman>
                       <input type=hidden name=action value=$action>";
 
-                    echo "<div align='center' class='link'>                          
-                          <a href=?act=DetailPinjam&action=TAMBAH&id=$id>| List History Pinjam |</a>
-                          <a href=?act=HomeAdmin>| Menu Utama |</a>
-                          </div>";
+                echo "<div align='center' class='link'>                          
+                      <a href=?act=DetailPinjam&action=TAMBAH&id=$id>| List History Pinjam |</a>
+                      <a href=?act=HomeAdmin>| Menu Utama |</a>
+                      </div>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
@@ -97,12 +96,12 @@
             </table>     
             </div>      
         <form onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
-			<?php 
-			  echo "<input type=hidden name=id value=$id>
+                <?php 
+                  echo "<input type=hidden name=id value=$id>
                       <input type=hidden name=tanggal value=$tanggal>
                       <input type=hidden name=pokok value=$pokok>
                       <input type=hidden name=jasa value=$jasa>";
-			?>
+                ?>
 	    <table width="100%" align="center">		
                 <tr class="head">
                     <td width="31%" >No.Angsuran Terakhir</td><td width="">:</td>
@@ -112,31 +111,31 @@
                 </tr>
             </table> 
 	</form>
-		<?php
+        <?php
              $BtnGenerate=isset($_POST['BtnGenerate'])?$_POST['BtnGenerate']:NULL;
              if (isset($BtnGenerate)) {
-				    $id                 =trim($_POST['id']);
-				    $tanggal            =trim($_POST['tanggal']);
-				    $pokok              =trim($_POST['pokok']);
-				    $jasa               =trim($_POST['jasa']);
-				    $banyak_angsur      =trim($_POST['banyak_angsur']);
-				    
-				    $_sql         = "SELECT * FROM set_tahun";
-				    $hasil        = bukaquery($_sql);
-				    $baris        = mysqli_fetch_row($hasil);
-				    $tahun        = $baris[0];
-				    $bulan        = $baris[1];
-				    if(strlen($bulan)==1){
-						$bulan="0".($bulan+1);
-					}
-				    
-				    for($interval=1; $interval<=$banyak_angsur; $interval++){
-						InsertData(" angsuran_koperasi ","'$id','$tanggal',DATE_SUB('$tahun-$bulan-05',INTERVAL $interval MONTH),'$pokok','$jasa'");
-					}
-					
-					echo "<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=BayarPinjam&action=TAMBAH&id=$id&tanggal=$tanggal'></head><body></body></html>";
-			 }
-	    ?>
+                $id                 = trim($_POST['id']);
+                $tanggal            = trim($_POST['tanggal']);
+                $pokok              = validangka(trim($_POST['pokok']));
+                $jasa               = validangka(trim($_POST['jasa']));
+                $banyak_angsur      = validangka(trim($_POST['banyak_angsur']));
+
+                $_sql         = "SELECT * FROM set_tahun";
+                $hasil        = bukaquery($_sql);
+                $baris        = mysqli_fetch_row($hasil);
+                $tahun        = $baris[0];
+                $bulan        = $baris[1];
+                if(strlen($bulan)==1){
+                    $bulan="0".($bulan+1);
+                }
+
+                for($interval=1; $interval<=$banyak_angsur; $interval++){
+                    InsertData(" angsuran_koperasi ","'$id','$tanggal',DATE_SUB('$tahun-$bulan-05',INTERVAL $interval MONTH),'$pokok','$jasa'");
+                }
+
+                    echo "<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=BayarPinjam&action=TAMBAH&id=$id&tanggal=$tanggal'></head><body></body></html>";
+             }
+        ?>
 		
         <div style="width: 100%; height: 29%; overflow: auto;">  
             <?php
@@ -180,11 +179,11 @@
                 HapusAll(" angsuran_koperasi where id ='".$_GET["id"]."' and tanggal_angsur='".$_GET["tanggal_angsur"]."' ");	
                 EditData(" potongan "," angkop='0' WHERE id='".$_GET["id"]."' and tahun=year('".$_GET["tanggal_angsur"]."') and bulan=(MONTH('".$_GET["tanggal_angsur"]."')-1) ");	
                 if($_GET["pinjaman"]<=getOne("select sum(pokok) from angsuran_koperasi where id ='".$_GET["id"]."' and tanggal_pinjam='".$_GET["tanggal_pinjam"]."'  group by id")){
-					Ubah(" peminjaman_koperasi "," status='Lunas' WHERE id ='".$_GET["id"]."' and tanggal='".$_GET["tanggal_pinjam"]."' ", " Potongan ");
-			    }else{
-					Ubah(" peminjaman_koperasi "," status='Belum Lunas' WHERE id ='".$_GET["id"]."' and tanggal='".$_GET["tanggal_pinjam"]."' ", " Potongan ");
-				}
-				echo "<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=BayarPinjam&action=TAMBAH&id=".$_GET["id"]."&tanggal=".$_GET["tanggal_pinjam"]."'></head><body></body></html>";
+                    Ubah(" peminjaman_koperasi "," status='Lunas' WHERE id ='".$_GET["id"]."' and tanggal='".$_GET["tanggal_pinjam"]."' ", " Potongan ");
+                }else{
+                    Ubah(" peminjaman_koperasi "," status='Belum Lunas' WHERE id ='".$_GET["id"]."' and tanggal='".$_GET["tanggal_pinjam"]."' ", " Potongan ");
+                }
+                echo "<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=BayarPinjam&action=TAMBAH&id=".$_GET["id"]."&tanggal=".$_GET["tanggal_pinjam"]."'></head><body></body></html>";
             }
 
         if(mysqli_num_rows($hasil)!=0) {

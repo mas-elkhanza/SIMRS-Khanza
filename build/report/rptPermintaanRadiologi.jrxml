@@ -25,6 +25,8 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<parameter name="finger" class="java.lang.String"/>
+	<parameter name="informasitambahan" class="java.lang.String"/>
+	<parameter name="diagnosa" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15, temp16 from temporary_permintaan_radiologi order by no asc]]>
 	</queryString>
@@ -83,7 +85,8 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="221" splitType="Stretch">
+		<band height="242" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="14" width="520" height="25" forecolor="#000000" backcolor="#00FF00" uuid="d59d1e25-b000-4b76-990e-43d1f762778a"/>
 				<textElement textAlignment="Center">
@@ -125,7 +128,7 @@
 				<text><![CDATA[PERMINTAAN PEMERIKSAAN RADIOLOGI]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="159" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="24686917-d446-42e7-b8a1-80f1075d71e5"/>
+				<reportElement mode="Transparent" x="0" y="159" width="99" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="24686917-d446-42e7-b8a1-80f1075d71e5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -133,7 +136,7 @@
 				<text><![CDATA[Alamat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="89" y="159" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="525b5482-53c8-44f7-9743-3a3c55cf0a5b"/>
+				<reportElement mode="Transparent" x="101" y="159" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="525b5482-53c8-44f7-9743-3a3c55cf0a5b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -141,7 +144,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="99" y="159" width="175" height="15" uuid="bc4b4e24-35c0-4a73-8283-cb20bcc60a5b"/>
+				<reportElement x="111" y="159" width="171" height="15" uuid="bc4b4e24-35c0-4a73-8283-cb20bcc60a5b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -149,7 +152,7 @@
 				<textFieldExpression><![CDATA[$P{alamat}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="99" y="114" width="175" height="15" uuid="bde84a18-c6dc-4464-8221-a145fc8a0939"/>
+				<reportElement x="111" y="114" width="171" height="15" uuid="bde84a18-c6dc-4464-8221-a145fc8a0939"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -157,7 +160,7 @@
 				<textFieldExpression><![CDATA[$P{norm}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="89" y="114" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="dfac4572-f111-4a50-8286-f1647dc306a3"/>
+				<reportElement mode="Transparent" x="101" y="114" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="dfac4572-f111-4a50-8286-f1647dc306a3"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -165,7 +168,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="114" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="c87c9892-493a-4bd1-aab8-657a2496b214"/>
+				<reportElement mode="Transparent" x="0" y="114" width="99" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="c87c9892-493a-4bd1-aab8-657a2496b214"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -173,7 +176,7 @@
 				<text><![CDATA[No.RM]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="99" y="129" width="175" height="15" uuid="782d0356-a80f-4a4e-8e03-05bf0721f453"/>
+				<reportElement x="111" y="129" width="171" height="15" uuid="782d0356-a80f-4a4e-8e03-05bf0721f453"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -181,7 +184,7 @@
 				<textFieldExpression><![CDATA[$P{namapasien}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="89" y="129" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="014cf2ff-df4c-43f4-8c61-b96fda855194"/>
+				<reportElement mode="Transparent" x="101" y="129" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="014cf2ff-df4c-43f4-8c61-b96fda855194"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -189,7 +192,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="129" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="f7144474-bd72-4a14-80e5-1c6a1ed791e5"/>
+				<reportElement mode="Transparent" x="0" y="129" width="99" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="f7144474-bd72-4a14-80e5-1c6a1ed791e5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -197,7 +200,7 @@
 				<text><![CDATA[Nama Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="89" y="144" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="fc3dde99-7659-4ae3-a320-8675315d7f69"/>
+				<reportElement mode="Transparent" x="101" y="144" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="fc3dde99-7659-4ae3-a320-8675315d7f69"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -205,7 +208,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="144" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="9119dcd7-e2ef-4244-8e53-0c212ab56b22"/>
+				<reportElement mode="Transparent" x="0" y="144" width="99" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="9119dcd7-e2ef-4244-8e53-0c212ab56b22"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -213,7 +216,7 @@
 				<text><![CDATA[JK/Umur]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="99" y="144" width="35" height="15" uuid="d7c165d1-c948-4b08-b758-470f544d1206"/>
+				<reportElement x="111" y="144" width="31" height="15" uuid="d7c165d1-c948-4b08-b758-470f544d1206"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -269,7 +272,7 @@
 				<textFieldExpression><![CDATA[$P{tanggal}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="134" y="144" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="b21f1e9d-fb56-410d-964b-509ed8ce9df2"/>
+				<reportElement mode="Transparent" x="146" y="144" width="6" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="b21f1e9d-fb56-410d-964b-509ed8ce9df2"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -277,7 +280,7 @@
 				<text><![CDATA[/]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="144" y="144" width="83" height="15" uuid="e1a3d1f0-9e7c-42da-ad29-60e113ae29aa"/>
+				<reportElement x="156" y="144" width="79" height="15" uuid="e1a3d1f0-9e7c-42da-ad29-60e113ae29aa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -309,7 +312,7 @@
 				<text><![CDATA[Jam Permintaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="89" y="174" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="19322d5f-d029-4050-90ca-14b02a7d8918"/>
+				<reportElement mode="Transparent" x="101" y="174" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="19322d5f-d029-4050-90ca-14b02a7d8918"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -317,7 +320,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="99" y="174" width="175" height="15" uuid="ab2b28c3-91ff-45d8-82de-a7e9113ad335"/>
+				<reportElement x="111" y="174" width="171" height="15" uuid="ab2b28c3-91ff-45d8-82de-a7e9113ad335"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -325,7 +328,7 @@
 				<textFieldExpression><![CDATA[$P{noperiksa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="174" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="37d907ed-ede6-4c65-b00e-bcf7a6eb0ead"/>
+				<reportElement mode="Transparent" x="0" y="174" width="99" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="37d907ed-ede6-4c65-b00e-bcf7a6eb0ead"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -367,7 +370,7 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="203" width="520" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="9768aed1-1ee4-42e8-8e62-798f258967d8"/>
+				<reportElement mode="Transparent" x="1" y="224" width="520" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="9768aed1-1ee4-42e8-8e62-798f258967d8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -375,29 +378,77 @@
 				<text><![CDATA[Pemeriksaan]]></text>
 			</staticText>
 			<line>
-				<reportElement x="1" y="203" width="520" height="1" uuid="ff2c7a83-44f6-47a3-a786-d485897c71f7"/>
+				<reportElement x="1" y="224" width="520" height="1" uuid="ff2c7a83-44f6-47a3-a786-d485897c71f7"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="1" y="220" width="520" height="1" uuid="ac54c0e1-5d52-4aa6-8254-b32afefb17ec"/>
+				<reportElement x="1" y="241" width="520" height="1" uuid="ac54c0e1-5d52-4aa6-8254-b32afefb17ec"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="204" width="1" height="16" uuid="69d565da-9641-412b-ab5b-a504d440404f"/>
+				<reportElement x="0" y="225" width="1" height="16" uuid="69d565da-9641-412b-ab5b-a504d440404f"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="521" y="204" width="1" height="16" uuid="a9a8c0cf-a06f-4a40-a227-50f57616e727"/>
+				<reportElement x="521" y="225" width="1" height="16" uuid="a9a8c0cf-a06f-4a40-a227-50f57616e727"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="101" y="189" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="9d2c3776-00ad-4ba8-8eb8-ddfbbb4abe5e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="111" y="189" width="410" height="15" uuid="324b2eef-f052-46d9-afd1-3401a43b6fb6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{informasitambahan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="189" width="99" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="1d090a31-b7be-4564-b84f-54ec3b4f8437"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Informasi Tambahan]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="111" y="204" width="410" height="15" uuid="1c7000bd-8e3e-4b2f-9237-1242576c61d8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{diagnosa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="101" y="204" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="96913a46-196c-442b-b937-1ef3add9ec0c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="204" width="99" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="0746036f-7301-44ac-a867-a397cb4e9d3a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Diagnosis Klinis]]></text>
+			</staticText>
 		</band>
 	</title>
 	<detail>

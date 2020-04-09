@@ -39,7 +39,7 @@
         $awal=$_GET['awal'];
 	$keyword=trim($_POST['keyword']);
         if (empty($awal)) $awal=0;
-        echo  $keyword;
+        $keyword= validTeks($keyword);
 
 
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,count(presensi.id) 

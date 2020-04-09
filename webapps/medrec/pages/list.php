@@ -25,7 +25,8 @@
     <div style="width: 100%; height: 91%; overflow: auto;">
     <?php
         
-	$keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
+        $keyword= trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;   
+        $keyword= validTeks($keyword);
 
         $_sql = "SELECT no_rkm_medis, nm_pasien, jk, tgl_lahir, nm_ibu from pasien where no_rkm_medis like '%".$keyword."%' or 
 		       nm_pasien like '%".$keyword."%' or tgl_lahir like '%".$keyword."%' or nm_ibu like '%".$keyword."%' order by no_rkm_medis DESC limit 1000";

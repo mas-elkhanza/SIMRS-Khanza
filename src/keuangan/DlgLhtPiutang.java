@@ -40,6 +40,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private String status="";
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -217,7 +218,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         MnDetailPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDetailPiutang.setText("Detail Piutang");
         MnDetailPiutang.setName("MnDetailPiutang"); // NOI18N
-        MnDetailPiutang.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnDetailPiutang.setPreferredSize(new java.awt.Dimension(160, 28));
         MnDetailPiutang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDetailPiutangActionPerformed(evt);
@@ -231,7 +232,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         MnDetailCicilan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDetailCicilan.setText("Detail Cicilan");
         MnDetailCicilan.setName("MnDetailCicilan"); // NOI18N
-        MnDetailCicilan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnDetailCicilan.setPreferredSize(new java.awt.Dimension(160, 28));
         MnDetailCicilan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDetailCicilanActionPerformed(evt);
@@ -248,7 +249,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Tagihan Piutang Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Tagihan Piutang Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -325,7 +326,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         panelGlass5.add(BtnAll);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(50,50,50));
+        jLabel10.setForeground(new java.awt.Color(50, 50, 50));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Belum Dibayar :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -333,7 +334,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         panelGlass5.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount.setForeground(new java.awt.Color(50,50,50));
+        LCount.setForeground(new java.awt.Color(50, 50, 50));
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
@@ -382,7 +383,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label11.setText("Tgl.Tagihan :");
+        label11.setText("Tgl.Piutang :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi4.add(label11);
@@ -453,7 +454,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -534,19 +535,10 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                         bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
                         bayarpiutang.setLocationRelativeTo(this);
                         bayarpiutang.setVisible(true);
-                        this.setCursor(Cursor.getDefaultCursor());
                     }                        
-                }else if(kolom==0){
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    DlgBilingPiutang rincianpiutang=new DlgBilingPiutang(null,false);
-                    rincianpiutang.isRawat(
-                            tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),
-                            Sequel.cariIsiAngka("select uangmuka from piutang_pasien where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString())
-                    );                    
-                    rincianpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
-                    rincianpiutang.setLocationRelativeTo(this);
-                    rincianpiutang.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
+                }else if(kolom==0){
+                    MnDetailPiutangActionPerformed(null);
                 }
             }
         }
@@ -571,16 +563,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                         this.setCursor(Cursor.getDefaultCursor());
                     }                        
                 }else if(kolom==0){
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    DlgBilingPiutang rincianpiutang=new DlgBilingPiutang(null,false);
-                    rincianpiutang.isRawat(
-                            tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),
-                            Sequel.cariIsiAngka("select uangmuka from piutang_pasien where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString())
-                    );                    
-                    rincianpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
-                    rincianpiutang.setLocationRelativeTo(this);
-                    rincianpiutang.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());
+                    MnDetailPiutangActionPerformed(null);
                 }               
             }
         }
@@ -609,22 +592,38 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 }//GEN-LAST:event_BtnCariKeyPressed
 
 private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDetailPiutangActionPerformed
-     if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            TCari.requestFocus();
-        }else{
+    if(tabMode.getRowCount()==0){
+        JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+        TCari.requestFocus();
+    }else{
+         if(tbBangsal.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    DlgBilingPiutang rincianpiutang=new DlgBilingPiutang(null,true);
-                    rincianpiutang.isRawat(
-                            tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),
-                            Sequel.cariIsiAngka("select uangmuka from piutang_pasien where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString())
-                    );                    
-                    rincianpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
-                    rincianpiutang.setLocationRelativeTo(this);
-                    rincianpiutang.setAlwaysOnTop(false);
-                    rincianpiutang.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());                     
-        } 
+            status=Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());   
+            if(status.equals("Ralan")){
+                DlgBilingRalan billing=new DlgBilingRalan(null,false);
+                billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
+                billing.isCek();
+                billing.isRawat();
+                if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
+                    billing.setPiutang();
+                }
+                billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                billing.setLocationRelativeTo(internalFrame1);
+                billing.setVisible(true); 
+            }else if(status.equals("Ranap")){
+                DlgBilingRanap billing=new DlgBilingRanap(null,false);
+                billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());            
+                billing.isCek();
+                billing.isRawat();
+                billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                billing.setLocationRelativeTo(internalFrame1);
+                billing.setVisible(true); 
+            }
+            this.setCursor(Cursor.getDefaultCursor());
+         }else{
+             JOptionPane.showMessageDialog(null,"Silahkan pilih data terlebih dahulu...!!");
+         }                   
+    } 
 }//GEN-LAST:event_MnDetailPiutangActionPerformed
 
 private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDetailCicilanActionPerformed
@@ -633,17 +632,18 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,true);
-                    bayarpiutang.emptTeks();
-                    String norm=Sequel.cariIsi("select no_rkm_medis from piutang_pasien where no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+"'");
-                    String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'"); 
-                    bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);                   
-                    bayarpiutang.tampil();  
-                    bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
-                    bayarpiutang.setLocationRelativeTo(this);
-                    bayarpiutang.setAlwaysOnTop(false);
-                    bayarpiutang.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());                    
+            DlgBayarPiutang bayarpiutang=new DlgBayarPiutang(null,true);
+            bayarpiutang.emptTeks();
+            String norm=Sequel.cariIsi("select no_rkm_medis from piutang_pasien where no_rawat='"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+"'");
+            String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'"); 
+            bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);                   
+            bayarpiutang.tampil(); 
+            bayarpiutang.isCek();
+            bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
+            bayarpiutang.setLocationRelativeTo(this);
+            bayarpiutang.setAlwaysOnTop(false);
+            bayarpiutang.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());                    
         } 
 }//GEN-LAST:event_MnDetailCicilanActionPerformed
 
@@ -731,24 +731,24 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "piutang_pasien.no_rkm_medis=pasien.no_rkm_medis and "+
                        "piutang_pasien.no_rawat=reg_periksa.no_rawat and "+
                        "reg_periksa.kd_pj=penjab.kd_pj where "+
-                       "penjab.png_jawab like ? and piutang_pasien.no_rawat like ? and piutang_pasien.tgl_piutang between ? and ? or "+
-                       "penjab.png_jawab like ? and piutang_pasien.no_rkm_medis like ? and piutang_pasien.tgl_piutang between ? and ? or "+
-                       "penjab.png_jawab like ? and pasien.nm_pasien like ? and piutang_pasien.tgl_piutang between ? and ? or "+
-                       "penjab.png_jawab like ? and piutang_pasien.status like ? and piutang_pasien.tgl_piutang between ? and ? order by piutang_pasien.tgl_piutang");
+                       "concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rawat like ? and piutang_pasien.tgl_piutang between ? and ? or "+
+                       "concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and piutang_pasien.no_rkm_medis like ? and piutang_pasien.tgl_piutang between ? and ? or "+
+                       "concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and pasien.nm_pasien like ? and piutang_pasien.tgl_piutang between ? and ? or "+
+                       "concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and piutang_pasien.status like ? and piutang_pasien.tgl_piutang between ? and ? order by piutang_pasien.tgl_piutang");
             try {
-                ps.setString(1,"%"+nmpenjab.getText()+"%");
+                ps.setString(1,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                 ps.setString(2,"%"+TCari.getText()+"%");
                 ps.setString(3, Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(4, Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(5,"%"+nmpenjab.getText()+"%");
+                ps.setString(5,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                 ps.setString(6,"%"+TCari.getText()+"%");
                 ps.setString(7, Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(8, Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+nmpenjab.getText()+"%");
+                ps.setString(9,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                 ps.setString(10,"%"+TCari.getText()+"%");
                 ps.setString(11, Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(12, Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(13,"%"+nmpenjab.getText()+"%");
+                ps.setString(13,"%"+kdpenjab.getText()+nmpenjab.getText()+"%");
                 ps.setString(14,"%"+TCari.getText()+"%");
                 ps.setString(15, Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(16, Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -790,4 +790,8 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
     }
     
 
+    public void isCek(){
+        TCari.requestFocus();
+        MnDetailCicilan.setEnabled(akses.getbayar_piutang());
+    }
 }

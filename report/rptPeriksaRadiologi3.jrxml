@@ -38,7 +38,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="234" splitType="Stretch">
+		<band height="254" splitType="Stretch">
 			<textField>
 				<reportElement x="2" y="14" width="520" height="25" forecolor="#000000" backcolor="#00FF00" uuid="b654a498-896c-44d7-b6c7-894efe0e8316"/>
 				<textElement textAlignment="Center">
@@ -346,13 +346,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="1" y="233" width="520" height="1" uuid="ce78deec-0d32-4cf9-a1f9-f01f6bdadde6"/>
+				<reportElement x="1" y="253" width="520" height="1" uuid="5c895935-c73f-4665-b04e-08d1026cfb5e"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="189" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="bd626d6c-63f1-4c37-90b3-8f5b0d32694e"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="189" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="4ace4d73-e376-47ea-880d-0cde0b1316c0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -360,15 +360,15 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="99" y="189" width="175" height="15" uuid="542421e2-dc58-425d-965b-578d64035833"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="99" y="191" width="422" height="44" uuid="a4a0bb11-0226-4e0c-a3a7-0ae4c972e65d"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{pemeriksaan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="189" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="9be9c0a0-3ea2-405e-afc6-7c459d551b14"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="189" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="fa7b99d0-dc29-41b3-823e-b1b8d5c8519d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -376,7 +376,7 @@
 				<text><![CDATA[Pemeriksaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="217" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="e7eeb4d3-abd3-4edd-a2d9-3019c970f9eb"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="237" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="638620d1-5323-4df7-a1a4-e79dad6fe1b9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -384,7 +384,7 @@
 				<text><![CDATA[Hasil Pemeriksaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="217" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="7f0b4a4a-5547-408d-93b1-681b12712b34"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="237" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="f948e243-5632-4e6a-ba7c-789ef274ecfe"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>

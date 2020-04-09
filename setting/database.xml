@@ -21,8 +21,8 @@
     <entry key="ALARMRSISRUTE">yes</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">https://new-api.bpjs-kesehatan.go.id:8080/new-vclaim-rest</entry>
-    <entry key="SECRETKEYAPIBPJS">4NNwqTdoTqRShdDlorgE5A==</entry>
-    <entry key="CONSIDAPIBPJS">xpAVcYWj1J/dXthnAj4TZQ==</entry>
+    <entry key="SECRETKEYAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="CONSIDAPIBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="URLAPIAPLICARE">https://new-api.bpjs-kesehatan.go.id/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">4NNwqTdoTqRShdDlorgE5A==</entry>
     <entry key="CONSIDAPIAPLICARE">xpAVcYWj1J/dXthnAj4TZQ==</entry>
@@ -39,8 +39,8 @@
     <entry key="URLAPISIRS">http://sirs.yankes.kemkes.go.id/sirsservice</entry>
     <entry key="IDSIRS">EXbXbvGwMp9CpQ1s9K748A==</entry>
     <entry key="PASSSIRS">gILNCSeqFSr4Hvjwkpqrow==</entry>
-    <entry key="URLAPISITT">http://sitt.kemkes.go.id/webapisimrs/insert_simrs.php</entry>
-    <entry key="IDSITT">EXbXbvGwMp9CpQ1s9K748A==</entry>
+    <entry key="URLAPISITT">http://sirs.yankes.kemkes.go.id/sirsservice/sitb/sitb/senddata</entry>
+    <entry key="IDSITT">e+txvupo3MKf+ksCxp06Sw==</entry>
     <entry key="PASSSITT">gILNCSeqFSr4Hvjwkpqrow==</entry>
     <entry key="KABUPATENSITT">12345</entry>
     <entry key="KAMARAKTIFRANAP"></entry>
@@ -51,12 +51,12 @@
     <entry key="URUTNOREG">dokter</entry>
     <entry key="JADWALDOKTERDIREGISTRASI">nonaktif</entry>    
     <entry key="IPPRINTERTRACER">10.50.150.57/label2</entry>
-    <entry key="URLAPIINHEALTH">http://dummy.inhealth.co.id/pelkesws2</entry>
-    <entry key="TOKENINHEALTH">WhTCrcPRDrv5d1JZAFEBrw==</entry>
+    <entry key="URLAPIINHEALTH">http://development.inhealth.co.id/pelkesws2</entry>
+    <entry key="TOKENINHEALTH">inh_2de79bedbd97e8e440e0583a5794ebb1</entry>
     <entry key="PEMBULATANHARGAOBAT">no</entry>
     <entry key="AKTIFKANBATCHOBAT">no</entry>
     <entry key="CETAKRINCIANOBAT">no</entry>
-    <entry key="AKTIFKANBILLINGPARSIAL">no</entry>
+    <entry key="AKTIFKANBILLINGPARSIAL">yes</entry>
     <entry key="URLDUKCAPILJAKARTA">http://kependudukan.jakarta.go.id/wsrs/xml.jsp</entry>
     <entry key="USERDUKCAPILJAKARTA">eYTbZ3SMrmsvkl4t8u0zrA==</entry>
     <entry key="PASSDUKCAPILJAKARTA">iDrX7PhhkIwMup7YcS2RFg==</entry>
@@ -67,4 +67,21 @@
     <entry key="PASSDUKCAPIL">7kuCYBm26cREHaUoGVyXUA==</entry>
     <entry key="IPUSERDUKCAPIL">10.160.57.2</entry>
     <entry key="AKTIFKANTRACKSQL">no</entry>
+    <entry key="HOSTWSLICA">http://localhost/bridging-lica/public</entry>
+    <entry key="KEYWSLICA">yLT3/8b0KAb5QK1ueFkW7g==</entry>
+    <entry key="HOSTFUJI">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="DATABASEFUJI">278SCM7uDvhfdwppyMpg5OAy0jN9F3pCdgukirLsgKA=</entry>
+    <entry key="PORTFUJI">nioxtijcpDaKSUiUiP5FAg==</entry>
+    <entry key="USERFUJI">kMR3WfAwUK6MbhCyydxa0g==</entry>
+    <entry key="PASFUJI">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="HOSTSYSMEX">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="DATABASESYSMEX">o4cUZDSdQxLPdcZer/pr1PnCrQNrd08+Hrx8Y/fi7Os=</entry>
+    <entry key="PORTSYSMEX">nioxtijcpDaKSUiUiP5FAg==</entry>
+    <entry key="USERSYSMEX">kMR3WfAwUK6MbhCyydxa0g==</entry>
+    <entry key="PASSYSMEX">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="HOSTELIMS">5k7+C7EnUw9nUv2Nix+DBA==</entry>
+    <entry key="DATABASEELIMS">o4cUZDSdQxLPdcZer/pr1PnCrQNrd08+Hrx8Y/fi7Os=</entry>
+    <entry key="PORTELIMS">nioxtijcpDaKSUiUiP5FAg==</entry>
+    <entry key="USERELIMS">kMR3WfAwUK6MbhCyydxa0g==</entry>
+    <entry key="PASELIMS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
 </properties>

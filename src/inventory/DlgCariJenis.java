@@ -14,7 +14,6 @@ package inventory;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
@@ -35,9 +34,7 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariJenis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    public DlgJenis jenis=new DlgJenis(null,false);
     private PreparedStatement ps;
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
@@ -316,6 +313,7 @@ public final class DlgCariJenis extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgJenis jenis=new DlgJenis(null,false);
         jenis.emptTeks();
         jenis.isCek();
         jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

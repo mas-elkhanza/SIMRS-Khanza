@@ -524,7 +524,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>UC</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>VAP</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>IAD</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>PLEB</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pleb</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>ISK</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>ILO</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>HAP</td>"+
@@ -548,7 +548,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 ps.setString(4,"%"+NmPenjab.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    pasien=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal inner join penjab on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_pj=penjab.kd_pj where data_HAIs.tanggal=? and bangsal.nm_bangsal like ? and penjab.png_jawab like ?",rs.getString("tanggal"),"%"+NmKamar.getText().trim()+"%","%"+NmPenjab.getText().trim()+"%");
+                    pasien=Sequel.cariInteger("select count(data_HAIs.no_rawat) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal inner join penjab on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_pj=penjab.kd_pj where data_HAIs.tanggal=? and bangsal.nm_bangsal like ? and penjab.png_jawab like ? group by data_HAIs.no_rawat",rs.getString("tanggal"),"%"+NmKamar.getText().trim()+"%","%"+NmPenjab.getText().trim()+"%");
                     jmlpasien=jmlpasien+pasien;
                     ETT=Sequel.cariInteger("select sum(data_HAIs.ETT) from data_HAIs inner join reg_periksa inner join kamar inner join bangsal inner join penjab on data_HAIs.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and data_HAIs.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_pj=penjab.kd_pj where data_HAIs.tanggal=? and bangsal.nm_bangsal like ? and penjab.png_jawab like ?",rs.getString("tanggal"),"%"+NmKamar.getText().trim()+"%","%"+NmPenjab.getText().trim()+"%");
                     jmlETT=jmlETT+ETT;

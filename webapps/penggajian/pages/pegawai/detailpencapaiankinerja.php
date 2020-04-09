@@ -94,8 +94,8 @@
                     $id                 =trim($_POST['id']);
                     $tahun              =$tahun;
                     $bulan              =$bulan;
-                    $kode_pencapaian      =trim($_POST['kode_pencapaian']);
-                    $keterangan         =trim($_POST['keterangan']);
+                    $kode_pencapaian    =trim($_POST['kode_pencapaian']);
+                    $keterangan         = validTeks(trim($_POST['keterangan']));
                     if ((!empty($id))&&(!empty($kode_pencapaian))) {
                         switch($action) {
                             case "TAMBAH":

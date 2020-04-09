@@ -23,10 +23,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import javax.swing.event.DocumentEvent;
-import simrskhanza.DlgPasien;
 
 /**
  *
@@ -34,7 +31,6 @@ import simrskhanza.DlgPasien;
  */
 public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     private validasi Valid=new validasi();
-    private DlgPasien pasien=new DlgPasien(null,false);
     private sekuel Sequel=new sekuel();
 
     /** Creates new form DlgPemberianObat
@@ -47,8 +43,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         setSize(885,674);
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari));     
-        TCariPasien.setDocument(new batasInput((byte)20).getKata(TCariPasien));     
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));       
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -77,73 +72,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 }
             });
         } 
-        
-        pasien.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pasien.getTable().getSelectedRow()!= -1){                   
-                    TCariPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                } 
-                if(pasien.getTable2().getSelectedRow()!= -1){                   
-                    TCariPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
-                }
-                if(pasien.getTable3().getSelectedRow()!= -1){                   
-                    TCariPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
-                } 
-                TCariPasien.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        pasien.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });  
-        
-        pasien.getTable2().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
-        
-        pasien.getTable3().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
         
         panelDiagnosa1.tbDiagnosaPasien.addMouseListener(new MouseListener() {
             @Override
@@ -244,9 +172,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         DTPCari1 = new widget.Tanggal();
         jLabel19 = new widget.Label();
         DTPCari2 = new widget.Tanggal();
-        jLabel16 = new widget.Label();
-        TCariPasien = new widget.TextBox();
-        BtnSeek4 = new widget.Button();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
@@ -264,15 +189,15 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -415,7 +340,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         jLabel14.setPreferredSize(new java.awt.Dimension(63, 23));
         panelGlass9.add(jLabel14);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -427,43 +352,12 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(18, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass9.add(DTPCari2);
-
-        jLabel16.setText("No.RM :");
-        jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass9.add(jLabel16);
-
-        TCariPasien.setName("TCariPasien"); // NOI18N
-        TCariPasien.setPreferredSize(new java.awt.Dimension(130, 23));
-        TCariPasien.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TCariPasienKeyPressed(evt);
-            }
-        });
-        panelGlass9.add(TCariPasien);
-
-        BtnSeek4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnSeek4.setMnemonic('5');
-        BtnSeek4.setToolTipText("Alt+5");
-        BtnSeek4.setName("BtnSeek4"); // NOI18N
-        BtnSeek4.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnSeek4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSeek4ActionPerformed(evt);
-            }
-        });
-        BtnSeek4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSeek4KeyPressed(evt);
-            }
-        });
-        panelGlass9.add(BtnSeek4);
 
         jSeparator5.setBackground(new java.awt.Color(220, 225, 215));
         jSeparator5.setForeground(new java.awt.Color(220, 225, 215));
@@ -475,11 +369,11 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
+        jLabel6.setPreferredSize(new java.awt.Dimension(87, 23));
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(190, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(367, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -574,7 +468,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+        panelDiagnosa1.setRM(TNoRw.getText(),"",Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
         panelDiagnosa1.pilihTab();
         LCount.setText(panelDiagnosa1.getRecord()+"");
 }//GEN-LAST:event_BtnCariActionPerformed
@@ -659,8 +553,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        TCariPasien.setText("");
-        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+        panelDiagnosa1.setRM(TNoRw.getText(),"",Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
         panelDiagnosa1.pilihTab();
         LCount.setText(panelDiagnosa1.getRecord()+"");
 }//GEN-LAST:event_BtnAllActionPerformed
@@ -672,30 +565,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
             Valid.pindah(evt, BtnPrint, BtnKeluar);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
-
-    private void TCariPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariPasienKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
-            panelDiagnosa1.pilihTab();
-            LCount.setText(panelDiagnosa1.getRecord()+"");
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            BtnSeek4.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            DTPCari2.requestFocus();
-        }
-    }//GEN-LAST:event_TCariPasienKeyPressed
-
-    private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek4ActionPerformed
-        pasien.emptTeks();    
-        pasien.isCek();
-        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        pasien.setLocationRelativeTo(internalFrame1);
-        pasien.setVisible(true);
-    }//GEN-LAST:event_BtnSeek4ActionPerformed
-
-    private void BtnSeek4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek4KeyPressed
-        Valid.pindah(evt,TCariPasien,DTPCari1);
-    }//GEN-LAST:event_BtnSeek4KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
@@ -747,7 +616,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private widget.Button BtnSeek4;
     private widget.Button BtnSimpan;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
@@ -755,14 +623,12 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.ComboBox Status;
     private widget.TextBox TCari;
-    private widget.TextBox TCariPasien;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel14;
-    private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel19;
     private widget.Label jLabel3;

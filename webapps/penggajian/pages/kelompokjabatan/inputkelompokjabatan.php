@@ -50,9 +50,9 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $kode_kelompok    = trim($_POST['kode_kelompok']);
-                    $nama_kelompok    = trim($_POST['nama_kelompok']);
-                    $indek   = trim($_POST['indek']);
+                    $kode_kelompok    = validTeks(trim($_POST['kode_kelompok']));
+                    $nama_kelompok    = validTeks(trim($_POST['nama_kelompok']));
+                    $indek            = validTeks(trim($_POST['indek']));
                     if ((!empty($kode_kelompok))&&(!empty($nama_kelompok))&&(!empty($indek))) {
                         switch($action) {
                             case "TAMBAH":

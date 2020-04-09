@@ -39,11 +39,12 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private DlgCariBangsal bangsal = new DlgCariBangsal(null, false); 
     private double jumlahjual=0,jumlahbeli=0,jumlahpesan=0,jumlahpiutang=0,jumlahutd=0,jumlahkeluar=0,jumlahmutasikeluar=0,
-                   jumlahmutasimasuk=0,jumlahretbeli=0,jumlahretjual=0,jumlahretpiut=0,jumlahpasin=0,jumlahrespulang=0,stok=0,stokawal=0;
+                   jumlahmutasimasuk=0,jumlahretbeli=0,jumlahretjual=0,jumlahretpiut=0,jumlahpasin=0,jumlahrespulang=0,
+                   jumlahhibah=0,stok=0,stokawal=0,stokakhir=0;
     private DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private String lokasi="";
+    private String lokasi="",tglopname="";
 
     /** 
      * @param parent
@@ -53,9 +54,9 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-              "Kode Barang","Nama Barang","Satuan","Stok Awal","Pengadaan","Pemesanan","Penjualan",
+              "Kode Barang","Nama Barang","Satuan","Tgl.Opname","Stok Awal","Pengadaan","Pemesanan","Penjualan",
               "Ke Pasien","Piutang Jual","Retur Beli","Retur Jual","Retur Piutang","Pengambilan UTD",
-              "Stok Keluar Medis","Resep Pulang","Mutasi Masuk","Mutasi Keluar","Stok Akhir"
+              "Stok Keluar Medis","Resep Pulang","Mutasi Masuk","Mutasi Keluar","Hibah","Stok Akhir"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -64,12 +65,14 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 20; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
                 column.setPreferredWidth(200);
+            }else if(i==3){
+                column.setPreferredWidth(67);
             }else{
                 column.setPreferredWidth(80);
             }
@@ -221,7 +224,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikJualBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikJualBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikJualBanyak.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikJualBanyak.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikJualBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikJualBanyak.setText("Grafik 10 Barang Penjualan Terbanyak");
         ppGrafikJualBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -237,7 +240,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikJualDikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikJualDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikJualDikit.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikJualDikit.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikJualDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikJualDikit.setText("Grafik 10 Barang Penjualan Tersedikit");
         ppGrafikJualDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -253,7 +256,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikbeliBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikbeliBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikbeliBanyak.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikbeliBanyak.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikbeliBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikbeliBanyak.setText("Grafik 10 Barang Pembelian Terbanyak");
         ppGrafikbeliBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -269,7 +272,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikbelidikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikbelidikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikbelidikit.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikbelidikit.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikbelidikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikbelidikit.setText("Grafik 10 Barang Pembelian Tersedikit");
         ppGrafikbelidikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -285,7 +288,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikPiutangBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPiutangBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPiutangBanyak.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikPiutangBanyak.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikPiutangBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPiutangBanyak.setText("Grafik 10 Barang Piutang Terbanyak");
         ppGrafikPiutangBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -301,7 +304,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikPiutangDikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikPiutangDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPiutangDikit.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikPiutangDikit.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikPiutangDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPiutangDikit.setText("Grafik 10 Barang Piutang Tersedikit");
         ppGrafikPiutangDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -317,7 +320,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikResepPaliingBanyak.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikResepPaliingBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikResepPaliingBanyak.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikResepPaliingBanyak.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikResepPaliingBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikResepPaliingBanyak.setText("Grafik 10 Barang Resep Ke Pasien Terbanyak");
         ppGrafikResepPaliingBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -333,7 +336,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppGrafikResepPaliingSedikit.setBackground(new java.awt.Color(255, 255, 254));
         ppGrafikResepPaliingSedikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikResepPaliingSedikit.setForeground(new java.awt.Color(50,50,50));
+        ppGrafikResepPaliingSedikit.setForeground(new java.awt.Color(50, 50, 50));
         ppGrafikResepPaliingSedikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikResepPaliingSedikit.setText("Grafik 10 Barang Resep Ke Pasien Tersedikit");
         ppGrafikResepPaliingSedikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -349,7 +352,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         ppLokasi.setBackground(new java.awt.Color(255, 255, 254));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppLokasi.setForeground(new java.awt.Color(50,50,50));
+        ppLokasi.setForeground(new java.awt.Color(50, 50, 50));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppLokasi.setText("Tampilkan Per Lokasi");
         ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -372,10 +375,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        scrollPane1.setToolTipText("<html>Stok Awal mengambil data dari Stok Opname pada tanggal terdekat pencarian di tanggal pertama. <br>\nJika Stok Opname pada tanggal tersebut tidak ditemukan maka Stok Awal dihitung dari <br>\nStok Akhir ditambah dan dikurangi dengan transaksi yang telah terjadi.</html>");
         scrollPane1.setComponentPopupMenu(jPopupMenu1);
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
@@ -391,7 +395,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("<html>Stok Awal mengambil data dari Stok Opname pada tanggal pencarian di tanggal pertama.\n<br>Jika Stok Opname pada tanggal tersebut tidak ditemukan maka Stok Awal dihitung dari\n<br>Stok Akhir ditambah dan dikurangi dengan transaksi yang telah terjadi.</html>");
+        tbDokter.setToolTipText("<html>Stok Awal mengambil data dari Stok Opname pada tanggal terdekat pencarian di tanggal pertama. <br>Jika Stok Opname pada tanggal tersebut tidak ditemukan maka Stok Awal dihitung dari <br>Stok Akhir ditambah dan dikurangi dengan transaksi yang telah terjadi.</html>");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
@@ -568,16 +572,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','',''",18,new String[]{
+                Sequel.menyimpan("temporary","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','',''",20,new String[]{
                     tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
                     tabMode.getValueAt(i,3).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
                     tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,7).toString(),tabMode.getValueAt(i,8).toString(),
                     tabMode.getValueAt(i,9).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString(),
                     tabMode.getValueAt(i,12).toString(),tabMode.getValueAt(i,13).toString(),tabMode.getValueAt(i,14).toString(),
-                    tabMode.getValueAt(i,15).toString(),tabMode.getValueAt(i,16).toString(),tabMode.getValueAt(i,17).toString()
+                    tabMode.getValueAt(i,15).toString(),tabMode.getValueAt(i,16).toString(),tabMode.getValueAt(i,17).toString(),
+                    tabMode.getValueAt(i,18).toString(),tabMode.getValueAt(i,19).toString()
                 }); 
             }
             
@@ -840,8 +845,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 while(rs.next()){
                     jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;jumlahpesan=0;jumlahretbeli=0;jumlahretjual=0;
                     jumlahretpiut=0;jumlahpasin=0;stok=0;stokawal=0;jumlahutd=0;jumlahkeluar=0;jumlahrespulang=0;
-                    jumlahmutasikeluar=0;jumlahmutasimasuk=0;
+                    jumlahmutasikeluar=0;jumlahmutasimasuk=0;jumlahhibah=0;stokakhir=0;tglopname="0000-00-00";
+                    tglopname=Sequel.cariIsi("select tanggal from opname where kode_brng='"+rs.getString(1)+"' and tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by tanggal asc limit 1");
 
+                    if(tglopname.equals("")){
+                        tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"");
+                    }
+                    
                     ps2=koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=?");
                     try {
                         ps2.setString(1,rs.getString(1));
@@ -868,7 +878,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " between ? and ? ");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -893,7 +903,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " between ? and ? ");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -918,7 +928,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " penjualan.tgl_jual  between ? and ? ");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -944,7 +954,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " piutang.tgl_piutang between ? and ? ");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -959,8 +969,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(ps2!=null){
                             ps2.close();
                         }
-                    }
-                        
+                    }   
 
                     //returbeli
                     ps2=koneksi.prepareStatement("select sum(detreturbeli.jml_retur2) "+
@@ -970,7 +979,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " returbeli.tgl_retur between ? and ? ");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -987,7 +996,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                         
-
                     //returjual
                     ps2=koneksi.prepareStatement("select sum(detreturjual.jml_retur) "+
                         " from returjual inner join detreturjual "+
@@ -996,7 +1004,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " returjual.tgl_retur between ? and ? ");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1020,7 +1028,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " returpiutang.tgl_retur between ? and ?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1042,7 +1050,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " detail_pemberian_obat.tgl_perawatan between ? and ?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1064,7 +1072,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " utd_pengambilan_medis.tanggal between ? and ?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1088,7 +1096,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " between ? and ? ");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1110,7 +1118,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " resep_pulang.tanggal between ? and ?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1126,11 +1134,80 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             ps2.close();
                         }
                     }
+                    
+                    ps2=koneksi.prepareStatement("select sum(jml), sum(jml*harga) "+
+                        " from mutasibarang where kode_brng=? and "+
+                        " tanggal between ? and ?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,tglopname+" 00:00:00");
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahmutasimasuk=rs2.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas Mutasi Masuk : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement("select sum(jml), sum(jml*harga) "+
+                        " from mutasibarang where kode_brng=? and "+
+                        " tanggal between ? and ?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,tglopname+" 00:00:00");
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahmutasikeluar=rs2.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas Mutasi Keluar : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    //hibah 
+                    ps2=koneksi.prepareStatement("select sum(detailhibah_obat_bhp.jumlah2) "+
+                        " from hibah_obat_bhp inner join detailhibah_obat_bhp "+
+                        " on hibah_obat_bhp.no_hibah=detailhibah_obat_bhp.no_hibah "+
+                        " where detailhibah_obat_bhp.kode_brng=? and hibah_obat_bhp.tgl_hibah "+
+                        " between ? and ? ");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,tglopname);
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahhibah=rs2.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Note : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
 
                     ps2=koneksi.prepareStatement("select sum(opname.real) from opname where kode_brng=? and tanggal=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         rs2=ps2.executeQuery();
                         if(rs2.next()){
                             stokawal=rs2.getDouble(1);
@@ -1146,18 +1223,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }                        
 
-                    if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
+                    if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||(jumlahhibah>0)||
                             (jumlahutd>0)||(jumlahkeluar>0)||(jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(stok>0)||(jumlahrespulang>0)){
                         if(stokawal<=0){
-                            stokawal=stok-jumlahbeli-jumlahpesan+jumlahjual+jumlahpasin+jumlahpiutang+jumlahretbeli-jumlahretjual-jumlahretpiut-jumlahutd-jumlahkeluar-jumlahrespulang;
+                            stokawal=stok-jumlahbeli-jumlahpesan-jumlahmutasimasuk+jumlahmutasikeluar+jumlahjual+jumlahpasin+jumlahpiutang-jumlahhibah+jumlahretbeli-jumlahretjual-jumlahretpiut+jumlahutd+jumlahkeluar+jumlahrespulang;
+                            stokakhir=stok;
+                        }else{
+                            stokakhir=stokawal+jumlahbeli+jumlahpesan+jumlahmutasimasuk-jumlahmutasikeluar-jumlahjual-jumlahpasin-jumlahpiutang+jumlahhibah-jumlahretbeli+jumlahretjual+jumlahretpiut-jumlahutd-jumlahkeluar-jumlahrespulang;
                         }
                         tabMode.addRow(new Object[]{
-                            rs.getString(1),rs.getString(2),rs.getString(3),Valid.SetAngka(stokawal),
+                            rs.getString(1),rs.getString(2),rs.getString(3),tglopname,Valid.SetAngka(stokawal),
                             Valid.SetAngka(jumlahbeli),Valid.SetAngka(jumlahpesan),Valid.SetAngka(jumlahjual),
                             Valid.SetAngka(jumlahpasin),Valid.SetAngka(jumlahpiutang),Valid.SetAngka(jumlahretbeli),
                             Valid.SetAngka(jumlahretjual),Valid.SetAngka(jumlahretpiut),Valid.SetAngka(jumlahutd),
                             Valid.SetAngka(jumlahkeluar),Valid.SetAngka(jumlahrespulang),Valid.SetAngka(jumlahmutasimasuk),
-                            Valid.SetAngka(jumlahmutasikeluar),Valid.SetAngka(stok)
+                            Valid.SetAngka(jumlahmutasikeluar),Valid.SetAngka(jumlahhibah),Valid.SetAngka(stokakhir)
                         }); 
                     }
 
@@ -1201,6 +1281,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;jumlahpesan=0;jumlahretbeli=0;
                     jumlahretjual=0;jumlahretpiut=0;jumlahpasin=0;stok=0;stokawal=0;jumlahutd=0;
                     jumlahkeluar=0;jumlahrespulang=0;jumlahmutasimasuk=0;jumlahmutasikeluar=0;
+                    jumlahhibah=0;tglopname="0000-00-00";
+                    tglopname=Sequel.cariIsi("select tanggal from opname where tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and kode_brng='"+rs.getString(1)+"' and kd_bangsal='"+lokasi+"'  order by tanggal asc limit 1");
+
+                    if(tglopname.equals("")){
+                        tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"");
+                    }
 
                     ps2=koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=?");
                     try {
@@ -1229,7 +1315,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " between ? and ? and pembelian.kd_bangsal=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1255,7 +1341,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " between ? and ? and pemesanan.kd_bangsal=?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1281,7 +1367,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " penjualan.tgl_jual  between ? and ? and penjualan.kd_bangsal=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1307,7 +1393,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " piutang.tgl_piutang between ? and ? and piutang.kd_bangsal=?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1333,7 +1419,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " returbeli.tgl_retur between ? and ? and returbeli.kd_bangsal=?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1360,7 +1446,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " returjual.tgl_retur between ? and ? and returjual.kd_bangsal=?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1385,7 +1471,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " returpiutang.tgl_retur between ? and ? and returpiutang.kd_bangsal=?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1408,7 +1494,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " detail_pemberian_obat.tgl_perawatan between ? and ? and detail_pemberian_obat.kd_bangsal=?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1431,7 +1517,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.kd_bangsal_dr=?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1456,7 +1542,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " between ? and ? and pengeluaran_obat_bhp.kd_bangsal=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1479,7 +1565,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " resep_pulang.tanggal between ? and ? and resep_pulang.kd_bangsal=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1502,7 +1588,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " tanggal between ? and ? and kd_bangsalke=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                        ps2.setString(2,tglopname+" 00:00:00");
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1525,7 +1611,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " tanggal between ? and ? and kd_bangsaldari=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                        ps2.setString(2,tglopname+" 00:00:00");
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1543,10 +1629,36 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                     
-                    ps2=koneksi.prepareStatement("select sum(opname.real) from opname where kode_brng=? and tanggal=? and kd_bangsal=?");
+                    //hibah
+                    ps2=koneksi.prepareStatement("select sum(detailhibah_obat_bhp.jumlah2) "+
+                        " from hibah_obat_bhp inner join detailhibah_obat_bhp "+
+                        " on hibah_obat_bhp.no_hibah=detailhibah_obat_bhp.no_hibah "+
+                        " where detailhibah_obat_bhp.kode_brng=? and hibah_obat_bhp.tgl_hibah "+
+                        " between ? and ? and hibah_obat_bhp.kd_bangsal=?");
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps2.setString(4,lokasi);
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahhibah=rs2.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Note : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement("select sum(opname.real) from opname where kode_brng=? and tanggal=? and kd_bangsal=?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,tglopname);
                         ps2.setString(3,lokasi);
                         rs2=ps2.executeQuery();
                         if(rs2.next()){
@@ -1563,29 +1675,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }                        
 
-                    if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
-                            (jumlahutd>0)||(jumlahkeluar>0)||(jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(stok>0)||
-                            (jumlahrespulang>0||(jumlahmutasimasuk>0)||(jumlahmutasikeluar>0))){
+                    if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||(jumlahhibah>0)||(jumlahmutasimasuk>0)||(jumlahmutasikeluar>0)||
+                            (jumlahutd>0)||(jumlahkeluar>0)||(jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(stok>0)||(jumlahrespulang>0)){
                         if(stokawal<=0){
-                            stokawal=stok-jumlahbeli-jumlahpesan-jumlahmutasikeluar+jumlahmutasimasuk+jumlahjual+jumlahpasin+jumlahpiutang+jumlahretbeli-jumlahretjual-jumlahretpiut-jumlahutd-jumlahkeluar-jumlahrespulang;
+                            stokawal=stok-jumlahbeli-jumlahpesan-jumlahmutasimasuk+jumlahmutasikeluar+jumlahjual+jumlahpasin+jumlahpiutang-jumlahhibah+jumlahretbeli-jumlahretjual-jumlahretpiut+jumlahutd+jumlahkeluar+jumlahrespulang;
+                            stokakhir=stok;
+                        }else{
+                            stokakhir=stokawal+jumlahbeli+jumlahpesan+jumlahmutasimasuk-jumlahmutasikeluar-jumlahjual-jumlahpasin-jumlahpiutang+jumlahhibah-jumlahretbeli+jumlahretjual+jumlahretpiut-jumlahutd-jumlahkeluar-jumlahrespulang;
                         }
                         tabMode.addRow(new Object[]{
-                            rs.getString(1),rs.getString(2),
-                            rs.getString(3),Valid.SetAngka(stokawal),
-                            Valid.SetAngka(jumlahbeli),
-                            Valid.SetAngka(jumlahpesan),
-                            Valid.SetAngka(jumlahjual),
-                            Valid.SetAngka(jumlahpasin),
-                            Valid.SetAngka(jumlahpiutang),
-                            Valid.SetAngka(jumlahretbeli),
-                            Valid.SetAngka(jumlahretjual),
-                            Valid.SetAngka(jumlahretpiut),
-                            Valid.SetAngka(jumlahutd),
-                            Valid.SetAngka(jumlahkeluar),
-                            Valid.SetAngka(jumlahrespulang),
-                            Valid.SetAngka(jumlahmutasimasuk),
-                            Valid.SetAngka(jumlahmutasikeluar),
-                            Valid.SetAngka(stok)
+                            rs.getString(1),rs.getString(2),rs.getString(3),tglopname,Valid.SetAngka(stokawal),
+                            Valid.SetAngka(jumlahbeli),Valid.SetAngka(jumlahpesan),Valid.SetAngka(jumlahjual),
+                            Valid.SetAngka(jumlahpasin),Valid.SetAngka(jumlahpiutang),Valid.SetAngka(jumlahretbeli),
+                            Valid.SetAngka(jumlahretjual),Valid.SetAngka(jumlahretpiut),Valid.SetAngka(jumlahutd),
+                            Valid.SetAngka(jumlahkeluar),Valid.SetAngka(jumlahrespulang),Valid.SetAngka(jumlahmutasimasuk),
+                            Valid.SetAngka(jumlahmutasikeluar),Valid.SetAngka(jumlahhibah),Valid.SetAngka(stokakhir)
                         }); 
                     }
 

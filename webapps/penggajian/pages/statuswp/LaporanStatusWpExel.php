@@ -13,6 +13,7 @@
     <body>
    <?php
         $keyword=$_GET['keyword'];
+        $keyword= validTeks($keyword);
         $_sql = "SELECT stts,ktg FROM stts_wp where stts like '%".$keyword."%' or ktg like '%".$keyword."%'  ORDER BY stts ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);

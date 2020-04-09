@@ -788,9 +788,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
         try{
             ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),ipsrsbarang.kode_sat,stok, "+
-                    " ipsrsbarang.harga from ipsrsbarang where ipsrsbarang.kode_brng like ? or "+
-                    " ipsrsbarang.nama_brng like ? or "+
-                    " ipsrsbarang.jenis like ? order by ipsrsbarang.nama_brng");
+                    " ipsrsbarang.harga from ipsrsbarang where ipsrsbarang.status='1' and ipsrsbarang.kode_brng like ? or "+
+                    " ipsrsbarang.status='1' and ipsrsbarang.nama_brng like ? or "+
+                    " ipsrsbarang.status='1' and ipsrsbarang.jenis like ? order by ipsrsbarang.nama_brng");
             
             try{  
                 ps.setString(1,"%"+TCari.getText().trim()+"%");

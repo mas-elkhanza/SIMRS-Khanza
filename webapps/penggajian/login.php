@@ -1,4 +1,5 @@
 <?php
+    require_once('../conf/conf.php');
 	include_once "conf/command.php";
         echo "User : ".$_GET['usere']."Password ".$_GET['passwordte'];
   	if (@$_GET['act']=="login"){

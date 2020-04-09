@@ -48,7 +48,6 @@ import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.event.DocumentEvent;
@@ -157,7 +156,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }else if(z==3){
                 column.setPreferredWidth(100);
             }else if(z==4){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(25);
             }else if(z==5){
                 column.setPreferredWidth(100);
             }else if(z==6){
@@ -167,7 +166,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }else if(z==8){
                 column.setPreferredWidth(190);
             }else if(z==9){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(30);
             }else if(z==10){
                 column.setPreferredWidth(100);
             }else if(z==11){
@@ -4472,7 +4471,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             emptTeks(); 
                         }else{
                             autoNomor();
-                            if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
+                            if(Sequel.menyimpantf("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
                                     TNo.getText(),TNm.getText(),TKtp.getText(),CmbJk.getSelectedItem().toString().substring(0,1),TTmp.getText(),
                                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),NmIbu.getText(),
                                     Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
@@ -4675,7 +4674,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                kdprop=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText().replaceAll("PROPINSI","-"));
             }
             
-            Sequel.mengedit("pasien","no_rkm_medis=?","no_rkm_medis=?,nm_pasien=?,no_ktp=?,jk=?,tmp_lahir=?,"+
+            if(Sequel.mengedittf("pasien","no_rkm_medis=?","no_rkm_medis=?,nm_pasien=?,no_ktp=?,jk=?,tmp_lahir=?,"+
                 "tgl_lahir=?,alamat=?,gol_darah=?,pekerjaan=?,stts_nikah=?,agama=?,tgl_daftar=?,no_tlp=?,umur=?"+
                 ",pnd=?,keluarga=?,namakeluarga=?,kd_pj=?,no_peserta=?,kd_kel=?,kd_kec=?,kd_kab=?,nm_ibu=?,pekerjaanpj=?,"+
                 "alamatpj=?,kelurahanpj=?,kecamatanpj=?,kabupatenpj=?,perusahaan_pasien=?,suku_bangsa=?,bahasa_pasien=?,"+
@@ -4692,27 +4691,30 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     KabupatenPj.getText(),kdperusahaan.getText(),kdsuku.getText(),kdbahasa.getText(),kdcacat.getText(),EMail.getText(),NIP.getText(),
                     Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",Propinsi.getText()),
                     PropinsiPj.getText(),Kd2.getText()
-            });
-            if(chkTNI.isSelected()==true){
-                Sequel.meghapus("pasien_tni","no_rkm_medis",TNo.getText());
-                Sequel.menyimpan2("pasien_tni","?,?,?,?,?","Data",5,new String[]{
-                    TNo.getText(),kdgolongantni.getText(),kdpangkattni.getText(),
-                    kdsatuantni.getText(),kdjabatantni.getText()
-                });
-            }else if(chkTNI.isSelected()==false){
-                Sequel.meghapus("pasien_tni","no_rkm_medis",TNo.getText());
-            }  
-            if(chkPolri.isSelected()==true){
-                Sequel.meghapus("pasien_polri","no_rkm_medis",TNo.getText());
-                Sequel.menyimpan2("pasien_polri","?,?,?,?,?","Data",5,new String[]{
-                    TNo.getText(),kdgolonganpolri.getText(),kdpangkatpolri.getText(),
-                    kdsatuanpolri.getText(),kdjabatanpolri.getText()
-                });
-            }else if(chkPolri.isSelected()==false){
-                Sequel.meghapus("pasien_polri","no_rkm_medis",TNo.getText());
+            })==true){
+                if(chkTNI.isSelected()==true){
+                    Sequel.meghapus("pasien_tni","no_rkm_medis",TNo.getText());
+                    Sequel.menyimpan2("pasien_tni","?,?,?,?,?","Data",5,new String[]{
+                        TNo.getText(),kdgolongantni.getText(),kdpangkattni.getText(),
+                        kdsatuantni.getText(),kdjabatantni.getText()
+                    });
+                }else if(chkTNI.isSelected()==false){
+                    Sequel.meghapus("pasien_tni","no_rkm_medis",TNo.getText());
+                }  
+                if(chkPolri.isSelected()==true){
+                    Sequel.meghapus("pasien_polri","no_rkm_medis",TNo.getText());
+                    Sequel.menyimpan2("pasien_polri","?,?,?,?,?","Data",5,new String[]{
+                        TNo.getText(),kdgolonganpolri.getText(),kdpangkatpolri.getText(),
+                        kdsatuanpolri.getText(),kdjabatanpolri.getText()
+                    });
+                }else if(chkPolri.isSelected()==false){
+                    Sequel.meghapus("pasien_polri","no_rkm_medis",TNo.getText());
+                }
+
+                emptTeks();
+                TabRawat.setSelectedIndex(1);
+                tampil();
             }
-            
-            emptTeks();
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -6290,7 +6292,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void ChkRMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkRMItemStateChanged
         if(ChkRM.isSelected()==true){
             TNo.setEditable(false);
-            TNo.setBackground(new Color(245,250,240));            
+            TNo.setBackground(new Color(245,250,240));  
+            autoNomor();
         }else if(ChkRM.isSelected()==false){
             TNo.setEditable(true);
             TNo.setBackground(new Color(250,255,245));
@@ -8040,7 +8043,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.Table tbPasien3;
     // End of variables declaration//GEN-END:variables
     
-    private void tampil() {     
+    private void tampil() {    
         Valid.tabelKosong(tabMode);
         try{
             if(cmbHlm.getSelectedItem().toString().equals("Semua")){

@@ -40,9 +40,7 @@ import org.springframework.http.MediaType;
  */
 public final class BPJSCekReferensiKelasRawat extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
-    private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApi api=new BPJSApi();
     private String URL="",link="";
@@ -109,8 +107,7 @@ public final class BPJSCekReferensiKelasRawat extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
+            link=koneksiDB.URLAPIBPJS();
             URL = link+"/referensi/kelasrawat";	
         } catch (Exception e) {
             System.out.println("E : "+e);

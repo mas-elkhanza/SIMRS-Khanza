@@ -10,7 +10,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -25,28 +24,23 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 import kepegawaian.DlgCariPegawai;
 
 public class DlgSuratPemesananNonMedis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
-    private DlgCariSuratPemesananNonMedis form=new DlgCariSuratPemesananNonMedis(null,false);
     private double meterai=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0;
     private int jml=0,i=0,row=0,index=0,pilihan=1;
     private String[] kodebarang,namabarang,satuanbeli;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
     public boolean tampilkan=true;
-    private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
     private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi
@@ -907,6 +901,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgCariSuratPemesananNonMedis form=new DlgCariSuratPemesananNonMedis(null,false);
         form.emptTeks();
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -928,7 +923,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         DlgCetak.dispose();
         pegawai.dispose();
         suplier.dispose();
-        barang.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -940,6 +934,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1183,7 +1178,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             tbDokter.requestFocus();
         }else if(tbDokter.getRowCount()!=0){
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
@@ -1374,9 +1369,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         try{
             ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,ipsrsbarang.kode_sat, "+
                 " ipsrsbarang.harga from ipsrsbarang inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                " where ipsrsbarang.kode_brng like ? or "+
-                " ipsrsbarang.nama_brng like ? or "+
-                " ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.nama_brng");
+                " where ipsrsbarang.status='1' and ipsrsbarang.kode_brng like ? or "+
+                " ipsrsbarang.status='1' and ipsrsbarang.nama_brng like ? or "+
+                " ipsrsbarang.status='1' and ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.nama_brng");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -1474,7 +1469,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             btnPetugas.setEnabled(false);
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getsurat_pemesanan_non_medis());
-            BtnTambah.setEnabled(akses.getobat());
+            BtnTambah.setEnabled(akses.getipsrs_barang());
             Sequel.cariIsi("select nama from pegawai where nik=?", nmptg,kdptg.getText());
             Sequel.cariIsi("select departemen from pegawai where nik=?",Departemen,kdptg.getText());
         }        
@@ -1482,7 +1477,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_pemesanan,3),signed)),0) from surat_pemesanan_non_medis where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "SPM"+Tanggal.getSelectedItem().toString().substring(8,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPemesanan); 
+                "SPM"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPemesanan); 
     }
 
     public DefaultTableModel tabMode(){
