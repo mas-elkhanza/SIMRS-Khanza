@@ -241,7 +241,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(50,50,50));
+        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -264,7 +264,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -304,6 +304,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -489,7 +490,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         label1.setText("Kode Barang :");
         label1.setName("label1"); // NOI18N
         FormInput.add(label1);
-        label1.setBounds(0, 10, 90, 23);
+        label1.setBounds(0, 10, 89, 23);
 
         kode_brng.setName("kode_brng"); // NOI18N
         kode_brng.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -512,18 +513,18 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         label7.setText("Jenis :");
         label7.setName("label7"); // NOI18N
         FormInput.add(label7);
-        label7.setBounds(355, 70, 40, 23);
+        label7.setBounds(386, 70, 40, 23);
 
         label10.setText("Nama Barang :");
         label10.setName("label10"); // NOI18N
         FormInput.add(label10);
-        label10.setBounds(0, 40, 90, 23);
+        label10.setBounds(0, 40, 89, 23);
 
         label19.setText("Satuan :");
         label19.setName("label19"); // NOI18N
         label19.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label19);
-        label19.setBounds(0, 70, 90, 23);
+        label19.setBounds(0, 70, 89, 23);
 
         kode_sat.setName("kode_sat"); // NOI18N
         kode_sat.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -558,7 +559,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label20);
-        label20.setBounds(560, 40, 70, 23);
+        label20.setBounds(589, 40, 70, 23);
 
         stok.setEditable(false);
         stok.setText("0");
@@ -570,7 +571,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(stok);
-        stok.setBounds(633, 40, 60, 23);
+        stok.setBounds(663, 40, 60, 23);
 
         harga.setName("harga"); // NOI18N
         harga.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -579,12 +580,12 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(harga);
-        harga.setBounds(543, 10, 150, 23);
+        harga.setBounds(573, 10, 150, 23);
 
         label2.setText("Harga : Rp.");
         label2.setName("label2"); // NOI18N
         FormInput.add(label2);
-        label2.setBounds(450, 10, 90, 23);
+        label2.setBounds(479, 10, 90, 23);
 
         kdjenis.setName("kdjenis"); // NOI18N
         kdjenis.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -594,13 +595,13 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(kdjenis);
-        kdjenis.setBounds(400, 70, 61, 23);
+        kdjenis.setBounds(430, 70, 61, 23);
 
         nmjenis.setEditable(false);
         nmjenis.setName("nmjenis"); // NOI18N
         nmjenis.setPreferredSize(new java.awt.Dimension(207, 23));
         FormInput.add(nmjenis);
-        nmjenis.setBounds(463, 70, 203, 23);
+        nmjenis.setBounds(493, 70, 203, 23);
 
         btnJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnJenis.setMnemonic('1');
@@ -613,7 +614,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnJenis);
-        btnJenis.setBounds(668, 70, 25, 23);
+        btnJenis.setBounds(698, 70, 25, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 

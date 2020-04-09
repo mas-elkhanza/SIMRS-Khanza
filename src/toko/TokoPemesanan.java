@@ -42,6 +42,7 @@ public class TokoPemesanan extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampikan=true;
     private boolean sukses=true;
+    private String Penerimaan_Toko=Sequel.cariIsi("select Penerimaan_Toko from set_akun"),Kontra_Penerimaan_Toko=Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun");
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -681,7 +682,7 @@ public class TokoPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(TglPesan);
-        TglPesan.setBounds(78, 40, 95, 23);
+        TglPesan.setBounds(79, 40, 95, 23);
 
         label22.setText("Tgl.Faktur :");
         label22.setName("label22"); // NOI18N
@@ -723,7 +724,7 @@ public class TokoPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoOrder);
-        NoOrder.setBounds(78, 70, 95, 23);
+        NoOrder.setBounds(79, 70, 95, 23);
 
         label23.setText("SP/Order :");
         label23.setName("label23"); // NOI18N
@@ -820,8 +821,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                    
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Penerimaan_Toko from set_akun"),"PERSEDIAAN BARANG TOKO",""+(ttl+ppn+meterai),"0"});
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun"),"HUTANG BARANG TOKO","0",""+(ttl+ppn+meterai)}); 
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Penerimaan_Toko,"PERSEDIAAN BARANG TOKO",""+(ttl+ppn+meterai),"0"});
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Kontra_Penerimaan_Toko,"HUTANG BARANG TOKO","0",""+(ttl+ppn+meterai)}); 
                     sukses=jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),"U","PENERIMAAN BARANG TOKO"+", OLEH "+akses.getkode());
                 }
                 
@@ -973,12 +974,12 @@ private void NoFakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());           
+            Sequel.cariIsi("select nama_suplier from tokosuplier where kode_suplier=?", nmsup,kdsup.getText());           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select nama_suplier from tokosuplier where kode_suplier=?", nmsup,kdsup.getText());
             NoFaktur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select nama_suplier from tokosuplier where kode_suplier=?", nmsup,kdsup.getText());
             kdptg.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);
@@ -1234,7 +1235,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         if(row!= -1){
             if(!tbDokter.getValueAt(row,0).toString().equals("")){
                 try {
-                    if(Double.parseDouble(tbDokter.getValueAt(row,0).toString())>0){
+                    if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){
                         tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,5).toString()), row,6);                
                         tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,6).toString())-Double.parseDouble(tbDokter.getValueAt(row,8).toString()), row,9);           
                     }
@@ -1308,28 +1309,27 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     public void tampil(String noorder) {
         NoOrder.setText(noorder);
-        kdsup.setText(Sequel.cariIsi("select kode_suplier from surat_pemesanan_non_medis where no_pemesanan=?",noorder));
-        nmsup.setText(Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?",kdsup.getText()));
-        meterai=Sequel.cariIsiAngka("select meterai from surat_pemesanan_non_medis where no_pemesanan=?",noorder);
-        ppn=Sequel.cariIsiAngka("select ppn from surat_pemesanan_non_medis where no_pemesanan=?",noorder);
+        kdsup.setText(Sequel.cariIsi("select kode_suplier from toko_surat_pemesanan where no_pemesanan=?",noorder));
+        nmsup.setText(Sequel.cariIsi("select nama_suplier from tokosuplier where kode_suplier=?",kdsup.getText()));
+        meterai=Sequel.cariIsiAngka("select meterai from toko_surat_pemesanan where no_pemesanan=?",noorder);
+        ppn=Sequel.cariIsiAngka("select ppn from toko_surat_pemesanan where no_pemesanan=?",noorder);
         Meterai.setText(Valid.SetAngka2(meterai));
         try{
             Valid.tabelKosong(tabMode);
             ps=koneksi.prepareStatement(
-                "select detail_surat_pemesanan_non_medis.kode_brng,tokobarang.nama_brng, "+
-                "detail_surat_pemesanan_non_medis.kode_sat,detail_surat_pemesanan_non_medis.jumlah,detail_surat_pemesanan_non_medis.h_pesan, "+
-                "detail_surat_pemesanan_non_medis.subtotal,detail_surat_pemesanan_non_medis.dis,detail_surat_pemesanan_non_medis.besardis,detail_surat_pemesanan_non_medis.total "+
-                "from detail_surat_pemesanan_non_medis inner join tokobarang "+
-                " on detail_surat_pemesanan_non_medis.kode_brng=tokobarang.kode_brng "+
-                " where detail_surat_pemesanan_non_medis.no_pemesanan=? order by tokobarang.nama_brng");
+                "select toko_detail_surat_pemesanan.kode_brng,tokobarang.nama_brng,(toko_detail_surat_pemesanan.total/toko_detail_surat_pemesanan.jumlah) as dasar, "+
+                "toko_detail_surat_pemesanan.kode_sat,toko_detail_surat_pemesanan.jumlah,toko_detail_surat_pemesanan.h_pesan, "+
+                "toko_detail_surat_pemesanan.subtotal,toko_detail_surat_pemesanan.dis,toko_detail_surat_pemesanan.besardis,toko_detail_surat_pemesanan.total "+
+                "from toko_detail_surat_pemesanan inner join tokobarang "+
+                " on toko_detail_surat_pemesanan.kode_brng=tokobarang.kode_brng "+
+                " where toko_detail_surat_pemesanan.no_pemesanan=? order by tokobarang.nama_brng");
             try {
                 ps.setString(1,noorder);
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("jumlah"),rs.getString("kode_brng"),rs.getString("nama_brng"),
-                        rs.getString("kode_sat"),rs.getDouble("h_pesan"),rs.getDouble("subtotal"),
-                        rs.getDouble("dis"),rs.getDouble("besardis"),rs.getDouble("total"),
+                        rs.getString("jumlah"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("kode_sat"),true,rs.getDouble("h_pesan"),
+                        rs.getDouble("subtotal"),rs.getDouble("dis"),rs.getDouble("besardis"),rs.getDouble("total"),rs.getString("dasar"),0,0,0
                     });
                 } 
                 getData();

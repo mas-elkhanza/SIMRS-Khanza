@@ -443,7 +443,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(label15);
-        label15.setBounds(0, 10, 92, 23);
+        label15.setBounds(0, 10, 91, 23);
 
         NoPemesanan.setName("NoPemesanan"); // NOI18N
         NoPemesanan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -480,7 +480,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label13);
-        label13.setBounds(385, 10, 75, 23);
+        label13.setBounds(385, 10, 74, 23);
 
         kdsup.setName("kdsup"); // NOI18N
         kdsup.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -496,7 +496,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label16);
-        label16.setBounds(0, 40, 92, 23);
+        label16.setBounds(0, 40, 91, 23);
 
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -550,7 +550,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label14);
-        label14.setBounds(385, 40, 75, 23);
+        label14.setBounds(385, 40, 74, 23);
 
         Departemen.setEditable(false);
         Departemen.setName("Departemen"); // NOI18N
