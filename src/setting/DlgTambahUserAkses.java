@@ -16,13 +16,13 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -30,7 +30,7 @@ import javax.swing.table.TableColumn;
  *
  * @author perpustakaan
  */
-public class DlgUpdateUser extends javax.swing.JDialog {
+public class DlgTambahUserAkses extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode;
     private Connection koneksi = koneksiDB.condb();
@@ -42,7 +42,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
     private boolean[] akses;
     private String[] menu;
     private boolean[] pilih;
-    private DlgTambahUserAkses personal = new DlgTambahUserAkses(null, false);
 
     /**
      * Creates new form DlgUser
@@ -50,7 +49,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public DlgUpdateUser(java.awt.Frame parent, boolean modal) {
+    public DlgTambahUserAkses(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -76,7 +75,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         tbUser.setModel(tabMode);
         //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbUser.setPreferredScrollableViewportSize(new Dimension(660, 500));
-        //tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 3; i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
@@ -89,9 +88,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             }
         }
         tbUser.setDefaultRenderer(Object.class, new WarnaTable());
-        TPass.setDocument(new batasInput((byte) 50).getKata(TPass));
         TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
-
+        kategori();
     }
 
     /**
@@ -114,13 +112,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         tbUser = new widget.Table();
         panelGlass5 = new widget.panelisi();
         jLabel3 = new widget.Label();
-        jLabel4 = new widget.Label();
-        TPass = new widget.TextBox();
         TNmUser = new widget.TextBox();
-        CmbAkses = new widget.ComboBox();
-        jLabel5 = new widget.Label();
-        btnTambahKat = new javax.swing.JButton();
-        btnUpdateKat = new javax.swing.JButton();
         panelGlass8 = new widget.panelisi();
         jLabel8 = new widget.Label();
         TCari = new widget.TextBox();
@@ -211,15 +203,15 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         Popup.add(ppSemua1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(650, 513));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Hak Akses User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tambah Kategori User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -237,51 +229,13 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         panelGlass5.setName("panelGlass5"); // NOI18N
         panelGlass5.setPreferredSize(new java.awt.Dimension(55, 44));
 
-        jLabel3.setText("User :");
+        jLabel3.setText("Kategori :");
         jLabel3.setName("jLabel3"); // NOI18N
 
-        jLabel4.setText("Akses :");
-        jLabel4.setName("jLabel4"); // NOI18N
-
-        TPass.setName("TPass"); // NOI18N
-        TPass.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TPassKeyPressed(evt);
-            }
-        });
-
-        TNmUser.setEditable(false);
         TNmUser.setName("TNmUser"); // NOI18N
         TNmUser.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TNmUserKeyPressed(evt);
-            }
-        });
-
-        CmbAkses.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Perawat", "Kasir", "Pendaftaran", "Laboratorium", "Radiologi", "Apotik", "Gudang", "Kebidanan", "Operasi", "BPJS", "Dokter" }));
-        CmbAkses.setName("CmbAkses"); // NOI18N
-        CmbAkses.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbAksesItemStateChanged(evt);
-            }
-        });
-
-        jLabel5.setText("Password :");
-        jLabel5.setName("jLabel5"); // NOI18N
-
-        btnTambahKat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
-        btnTambahKat.setName("btnTambahKat"); // NOI18N
-        btnTambahKat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTambahKatActionPerformed(evt);
-            }
-        });
-
-        btnUpdateKat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/EDIT2.png"))); // NOI18N
-        btnUpdateKat.setName("btnUpdateKat"); // NOI18N
-        btnUpdateKat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateKatActionPerformed(evt);
             }
         });
 
@@ -291,37 +245,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelGlass5Layout.createSequentialGroup()
                 .addGap(3, 3, 3)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TNmUser, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TPass, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CmbAkses, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTambahKat, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUpdateKat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(431, Short.MAX_VALUE))
         );
         panelGlass5Layout.setVerticalGroup(
             panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelGlass5Layout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUpdateKat)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(TNmUser, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(TPass, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CmbAkses, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnTambahKat))
+                    .addComponent(TNmUser, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -433,12 +368,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TKdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKeyPressed
-        Valid.pindah(evt, BtnSimpan, TPass);
-}//GEN-LAST:event_TKdKeyPressed
 
-    private void TPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPassKeyPressed
-        Valid.pindah(evt, TKd, BtnSimpan);
-}//GEN-LAST:event_TPassKeyPressed
+}//GEN-LAST:event_TKdKeyPressed
 
     private void TNmUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNmUserKeyPressed
         // TODO add your handling code here:
@@ -484,11 +415,27 @@ public class DlgUpdateUser extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if (TKd.getText().trim().equals("") || TNmUser.getText().trim().equals("")) {
             Valid.textKosong(TNmUser, "User");
-        } else if (TPass.getText().trim().equals("")) {
-            Valid.textKosong(TPass, "Password");
         } else {
-            Simpan();
-            Simpan2();
+            if(Sequel.menyimpantf("user_akses","NULL,'"+TNmUser.getText()+"','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+             }  
+//            Simpan();
+//            Simpan2();
+            updateKategori1();
+            updateKategori2();
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -536,44 +483,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_ppBersihkan1ActionPerformed
 
-    private void CmbAksesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbAksesItemStateChanged
-        // TODO add your handling code here: 
-        if (CmbAkses.getSelectedItem().equals("-")) {
-            tampil(TKd.getText());
-        } else {
-            kategori();
-        }
-    }//GEN-LAST:event_CmbAksesItemStateChanged
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
 
         // Valid.loadCombo(CmbAkses,"user_akses","kategori");
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnTambahKatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahKatActionPerformed
-        // TODO add your handling code here:
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        personal.isUser(TKd.getText(), TNmUser.getText(), TPass.getText());
-        personal.setSize(800, this.getHeight() - 50);
-        personal.setLocationRelativeTo(internalFrame1);
-        personal.setAlwaysOnTop(false);
-        personal.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_btnTambahKatActionPerformed
-
-    private void btnUpdateKatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateKatActionPerformed
-        // TODO add your handling code here:
-        updateKategori1();
-        updateKategori2();
-    }//GEN-LAST:event_btnUpdateKatActionPerformed
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgUpdateUser dialog = new DlgUpdateUser(new javax.swing.JFrame(), true);
+            DlgTambahUserAkses dialog = new DlgTambahUserAkses(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -589,20 +510,14 @@ public class DlgUpdateUser extends javax.swing.JDialog {
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
-    private widget.ComboBox CmbAkses;
     private widget.Label LCount;
     private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
     private widget.TextBox TNmUser;
-    private widget.TextBox TPass;
-    private javax.swing.JButton btnTambahKat;
-    private javax.swing.JButton btnUpdateKat;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel3;
-    private widget.Label jLabel4;
-    private widget.Label jLabel5;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private widget.panelisi panelGlass5;
@@ -751,7 +666,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     + "grafik_HAIs_laju_hap,inhealth_mapping_poli,inhealth_mapping_dokter,inhealth_mapping_tindakan_ralan,inhealth_mapping_tindakan_ranap,"
                     + "inhealth_mapping_tindakan_radiologi,inhealth_mapping_tindakan_laborat,inhealth_mapping_tindakan_operasi,hibah_obat_bhp,"
                     + "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis,monitoring_asuhan_gizi,"
-                    + "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan from user where id_user=AES_ENCRYPT(?,'nur')");
+                    + "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan from user_akses where kategori=?");
             try {
                 ps.setString(1, user);
                 rs = ps.executeQuery();
@@ -3141,7 +3056,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
             ps = koneksi.prepareStatement("select * from user_akses where kategori=?");
             try {
-                ps.setString(1, CmbAkses.getSelectedItem().toString());
+                ps.setString(1, "-- Kosongkan --");
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     if ("[A]Jadwal Praktek".toLowerCase().contains(TCari.getText().toLowerCase())) {
@@ -5495,9 +5410,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
     public void isUser(String User, String Nama, String Password) {
         TKd.setText(User);
-        TNmUser.setText(Nama);
-        TPass.setText(Password);
-        tampil(User);
+        //TNmUser.setText(Nama);
+        //tampil(User);
         TCari.requestFocus();
     }
 
@@ -7845,1235 +7759,1235 @@ public class DlgUpdateUser extends javax.swing.JDialog {
     private void updateKategori1() {
         for (i = 0; i < tbUser.getRowCount(); i++) {
             if ("[A]Jadwal Praktek".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jadwal_praktek='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jadwal_praktek='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Registrasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "registrasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "registrasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Tindakan Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tindakan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tindakan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Kamar Inap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kamar_inap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kamar_inap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Tindakan Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tindakan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tindakan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Operasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "operasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "operasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Rujukan Keluar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rujukan_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rujukan_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Rujukan Masuk".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rujukan_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rujukan_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Beri Obat, Alkes & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "beri_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "beri_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Resep Pulang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "resep_pulang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "resep_pulang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Diet Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "diet_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "diet_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Periksa Lab".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "periksa_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "periksa_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Periksa Radiologi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "periksa_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "periksa_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Kasir Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kasir_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kasir_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Informasi Kamar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "informasi_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "informasi_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]No.Resep".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "resep_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "resep_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Billing Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "billing_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "billing_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Billing Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "billing_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "billing_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]IGD".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "igd='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "igd='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]DPJP Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "dpjp_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "dpjp_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Edit Registrasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "edit_registrasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "edit_registrasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Rujukan Poli Internal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rujukan_poli_internal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rujukan_poli_internal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Billing Parsial".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "billing_parsial='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "billing_parsial='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Akses Depo Obat/BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "akses_depo_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "akses_depo_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Jadwal Operasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "booking_operasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "booking_operasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Booking Registrasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "booking_registrasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "booking_registrasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Permintaan Lab".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "permintaan_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "permintaan_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Permintaan Radiologi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "permintaan_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "permintaan_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Catatan Dokter".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "catatan_perawatan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "catatan_perawatan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Asesmen Awal Rawat Inap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengkajian_askep='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengkajian_askep='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Skrining Rawat Jalan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sekrining_rawat_jalan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sekrining_rawat_jalan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Perkiraan Biaya Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "perkiraan_biaya_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "perkiraan_biaya_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[A]Permintaan Diet".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "permintaan_diet='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "permintaan_diet='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[B]Barcode Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "barcoderalan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "barcoderalan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[B]Barcode Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "barcoderanap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "barcoderanap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Dokter".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Petugas".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "petugas='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "petugas='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Barcode Presensi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "barcode='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "barcode='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Presensi Harian".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "presensi_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "presensi_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Presensi Bulanan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "presensi_bulanan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "presensi_bulanan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Pegawai Admin".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pegawai_admin='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pegawai_admin='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Pegawai User".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pegawai_user='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pegawai_user='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]SMS Gateway".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sms='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sms='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Sidik Jari".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sidikjari='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sidikjari='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Jam Presensi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jam_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jam_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Jadwal Pegawai".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jadwal_pegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jadwal_pegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Temporary Presensi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "temporary_presensi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "temporary_presensi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Master Berkas Pegawai".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "master_berkas_pegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "master_berkas_pegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Berkas Kepegawaian".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "berkas_kepegawaian='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "berkas_kepegawaian='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Riwayat Jabatan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "riwayat_jabatan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "riwayat_jabatan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Riwayat Pendidikan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "riwayat_pendidikan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "riwayat_pendidikan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Riwayat Naik Gaji".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "riwayat_naik_gaji='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "riwayat_naik_gaji='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Kegiatan Ilmiah & Pelatihan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kegiatan_ilmiah='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kegiatan_ilmiah='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Riwayat Penghargaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "riwayat_penghargaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "riwayat_penghargaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Riwayat Penelitian".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "riwayat_penelitian='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "riwayat_penelitian='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Jenis Cidera K3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jenis_cidera_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jenis_cidera_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Penyebab Kecelakaan K3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penyebab_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penyebab_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Jenis Luka K3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jenis_luka_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jenis_luka_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Lokasi Kejadian K3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "lokasi_kejadian_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "lokasi_kejadian_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Dampak Cidera K3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "dampak_cidera_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "dampak_cidera_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Jenis Pekerjaan K3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jenis_pekerjaan_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jenis_pekerjaan_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Bagian Tubuh K3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bagian_tubuh_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bagian_tubuh_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Peristiwa K3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "peristiwa_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "peristiwa_k3rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Jenis Cidera K3 Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jenis_cidera_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jenis_cidera_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Penyebab Kecelakaan K3 Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penyebab_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penyebab_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Jenis Luka K3 Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jenis_luka_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jenis_luka_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Lokasi Kejadian K3 Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "lokasi_kejadian_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "lokasi_kejadian_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Dampak Cidera K3 Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "dampak_cidera_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "dampak_cidera_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Jenis Pekerjaan K3 Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jenis_pekerjaan_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jenis_pekerjaan_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[C]Bagian Tubuh K3 Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bagian_tubuh_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bagian_tubuh_k3rstahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Suplier Obat/Alkes/BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "suplier='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "suplier='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Satuan Barang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "satuan_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "satuan_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Konversi Satuan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "konversi_satuan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "konversi_satuan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Jenis Obat/Alkes/BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jenis_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jenis_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Obat, Alkes & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Stok Opname Apotek".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "stok_opname_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "stok_opname_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Stok Obat Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "stok_obat_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "stok_obat_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Pengadaan Obat, Alkes & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengadaan_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengadaan_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Penerimaan Obat, Alkes & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pemesanan_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pemesanan_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Penjualan Obat, Alkes & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penjualan_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penjualan_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Piutang Obat, Alkes & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "piutang_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "piutang_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Retur Ke Suplier".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "retur_ke_suplier='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "retur_ke_suplier='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Retur Dari Pembeli".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "retur_dari_pembeli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "retur_dari_pembeli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Retur Obat, Alkes & BHP Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "retur_obat_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "retur_obat_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Retur Piutang Pembeli".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "retur_piutang_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "retur_piutang_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Keuntungan Penjualan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "keuntungan_penjualan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "keuntungan_penjualan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Keuntungan Beri Obat, Alkes & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "keuntungan_beri_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "keuntungan_beri_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Sirkulasi Obat, Alkes & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sirkulasi_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sirkulasi_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Mutasi Obat/Alkes/BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "mutasi_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "mutasi_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Darurat Stok".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "darurat_stok='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "darurat_stok='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Sirkulasi Obat, Alkes & BHP 2".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sirkulasi_obat2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sirkulasi_obat2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Industri Farmasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "industrifarmasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "industrifarmasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Pengambilan BHP UTD".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengambilan_utd='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengambilan_utd='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Keuntungan Beri Obat, Alkes & BHP 2".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "keuntungan_beri_obat_nonpiutang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "keuntungan_beri_obat_nonpiutang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Riwayat Obat, Alkes & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "riwayat_obat_alkes_bhp='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "riwayat_obat_alkes_bhp='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Resep Dokter".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "resep_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "resep_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Kategori Obat/Alkes/BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kategori_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kategori_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Golongan Obat/Alkes/BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "golongan_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "golongan_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Obat/Alkes/BHP Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pemberian_obat_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pemberian_obat_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Penjualan Bebas Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penjualan_obat_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penjualan_obat_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Permintaan Obat & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "permintaan_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "permintaan_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Rekap Permintaan Obat & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_permintaan_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_permintaan_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Surat Pemesanan Obat & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_pemesanan_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_pemesanan_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Stok Keluar Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengeluaran_stok_apotek='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengeluaran_stok_apotek='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Metode Racik".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "metode_racik='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "metode_racik='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Pengguna Obat/Alkes/BHP Resep".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengguna_obat_resep='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengguna_obat_resep='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Rekap Penerimaan Obat & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_pemesanan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_pemesanan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Riwayat Batch".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "riwayat_data_batch='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "riwayat_data_batch='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Kegiatan Farmasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kegiatan_farmasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kegiatan_farmasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Sirkulasi Obat, Alkes & BHP 3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sirkulasi_obat3='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sirkulasi_obat3='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]PPN Obat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ppn_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ppn_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Data Batch".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "data_batch='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "data_batch='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Kadaluarsa Batch".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kadaluarsa_batch='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kadaluarsa_batch='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Sisa Stok".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sisa_stok='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sisa_stok='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Obat Per Resep".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "obat_per_resep='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "obat_per_resep='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Pengajuan Obat & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengajuan_barang_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengajuan_barang_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]10 Obat Terbanyak Poli".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "10_obat_terbanyak_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "10_obat_terbanyak_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Rekap Obat Per Poli".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_obat_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_obat_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Rekap Obat Per Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_obat_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_obat_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Hibah Obat & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "hibah_obat_bhp='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "hibah_obat_bhp='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Sirkulasi Obat, Alkes & BHP 4".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sirkulasi_obat4='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sirkulasi_obat4='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[D]Sirkulasi Obat, Alkes & BHP 5".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sirkulasi_obat5='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sirkulasi_obat5='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Barang Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ipsrs_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ipsrs_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Pengadaan Barang Nonmedis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ipsrs_pengadaan_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ipsrs_pengadaan_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Stok Keluar Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ipsrs_stok_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ipsrs_stok_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Rekap Pengadaan Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ipsrs_rekap_pengadaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ipsrs_rekap_pengadaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Rekap Stok Keluar Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ipsrs_rekap_stok_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ipsrs_rekap_stok_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Biaya Pengadaan Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ipsrs_pengeluaran_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ipsrs_pengeluaran_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Jenis Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ipsrs_jenis_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ipsrs_jenis_barang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Pengambilan UTD".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengambilan_penunjang_utd='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengambilan_penunjang_utd='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Suplier Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "suplier_penunjang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "suplier_penunjang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Pengadaan Non Medis Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ipsrs_pengadaan_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ipsrs_pengadaan_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Stok Keluar Non Medis Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ipsrs_stokkeluar_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ipsrs_stokkeluar_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Permintaan Barang Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "permintaan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "permintaan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Rekap Permintaan Barang Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_permintaan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_permintaan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Surat Pemesanan Barang Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_pemesanan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_pemesanan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Penerimaan Barang Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penerimaan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penerimaan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Rekap Penerimaan Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_pemesanan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_pemesanan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Stok Opname Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "stok_opname_logistik='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "stok_opname_logistik='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Sirkulasi Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sirkulasi_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sirkulasi_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Pengajuan Barang Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengajuan_barang_nonmedis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengajuan_barang_nonmedis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[E]Sirkulasi Non Medis 2".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sirkulasi_non_medis2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sirkulasi_non_medis2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Jenis Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inventaris_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inventaris_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Kategori Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inventaris_kategori='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inventaris_kategori='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Merk Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inventaris_merk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inventaris_merk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Ruang Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inventaris_ruang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inventaris_ruang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Produsen Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inventaris_produsen='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inventaris_produsen='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Koleksi Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inventaris_koleksi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inventaris_koleksi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inventaris_inventaris='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inventaris_inventaris='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Sirkulasi Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inventaris_sirkulasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inventaris_sirkulasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Barang CSSD".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "barang_cssd='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "barang_cssd='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Pemakaian Air PDAM".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pemakaian_air_pdam='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pemakaian_air_pdam='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Limbah Padat B3 Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "limbah_b3_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "limbah_b3_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Limbah Padat Domestik".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "limbah_domestik='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "limbah_domestik='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Mutu Air Limbah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "mutu_air_limbah='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "mutu_air_limbah='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Pest Control".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pest_control='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pest_control='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Pengajuan Aset/Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengajuan_asetinventaris='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengajuan_asetinventaris='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Rekap Pengajuan Aset Departemen".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_pengajuan_aset_departemen='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_pengajuan_aset_departemen='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Permintaan Perbaikan Inventaris".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "permintaan_perbaikan_inventaris='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "permintaan_perbaikan_inventaris='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[F]Asal Hibah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "asal_hibah='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "asal_hibah='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[G]Jenis Parkir".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "parkir_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "parkir_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[G]Parkir Masuk".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "parkir_in='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "parkir_in='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[G]Parkir Keluar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "parkir_out='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "parkir_out='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[G]Rekap Parkir Harian".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "parkir_rekap_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "parkir_rekap_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[G]Rekap Parkir Bulanan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "parkir_rekap_bulanan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "parkir_rekap_bulanan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[G]Barcode Parkir".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "parkir_barcode='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "parkir_barcode='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Harian Dokter Poli".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_tindakan_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_tindakan_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Obat Per Poli".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "obat_per_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "obat_per_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Obat Per Kamar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "obat_per_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "obat_per_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Obat Per Dokter Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "obat_per_dokter_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "obat_per_dokter_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Obat Per Dokter Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "obat_per_dokter_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "obat_per_dokter_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Harian Dokter".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Bulanan Dokter".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bulanan_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bulanan_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Harian Paramedis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_paramedis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_paramedis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Bulanan Paramedis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bulanan_paramedis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bulanan_paramedis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Pembayaran Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pembayaran_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pembayaran_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Pembayaran Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pembayaran_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pembayaran_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Rekap Pembayaran Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_pembayaran_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_pembayaran_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Rekap Pembayaran Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_pembayaran_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_pembayaran_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Tagihan Masuk".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tagihan_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tagihan_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Tambahan Biaya".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tambahan_biaya='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tambahan_biaya='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Potongan Biaya".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "potongan_biaya='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "potongan_biaya='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Detail JM Dokter".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jm_ranap_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jm_ranap_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Harian Dokter Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_tindakan_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_tindakan_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Fee Visit Dokter".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "fee_visit_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "fee_visit_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Fee Bacaan EKG".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "fee_bacaan_ekg='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "fee_bacaan_ekg='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Fee Rujukan Rontgen".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "fee_rujukan_rontgen='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "fee_rujukan_rontgen='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Fee Rujukan Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "fee_rujukan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "fee_rujukan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Fee Periksa Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "fee_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "fee_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Obat Per Dokter Peresep".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "obat_per_dokter_peresep='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "obat_per_dokter_peresep='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Rekap Per Shift".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_per_shift='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_per_shift='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Obat Per Cara Bayar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "obat_per_cara_bayar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "obat_per_cara_bayar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Payment Point".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "payment_point='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "payment_point='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Harian J.S.".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_js='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_js='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Bulanan J.S.".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bulanan_js='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bulanan_js='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Harian BHP Medis/Paket Obat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_paket_bhp='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_paket_bhp='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Bulanan BHP Medis/Paket Obat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bulanan_paket_bhp='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bulanan_paket_bhp='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Harian Kamar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Harian KSO".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_kso='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_kso='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Bulanan KSO".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bulanan_kso='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bulanan_kso='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Harian Menejemen".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_menejemen='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_menejemen='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Bulanan Menejemen".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bulanan_menejemen='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bulanan_menejemen='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Piutang Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "piutang_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "piutang_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Piutang Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "piutang_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "piutang_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Detail Tindakan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "detail_tindakan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "detail_tindakan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Rekap Poli Anak".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_poli_anak='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_poli_anak='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Pembayaran Per Unit".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pembayaran_per_unit='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pembayaran_per_unit='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Rekap Pembayaran Per Unit".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_pembayaran_per_unit='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_pembayaran_per_unit='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Detail VK/OK".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "detail_tindakan_okvk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "detail_tindakan_okvk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Detail JM Dokter 2".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "detailjmdokter2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "detailjmdokter2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Pembayaran Per Akun Bayar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pembayaran_akun_bayar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pembayaran_akun_bayar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Piutang Per Akun Piutang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "piutang_akun_piutang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "piutang_akun_piutang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Payment Point 2".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "payment_point2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "payment_point2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Pembayaran Per Akun Bayar 2".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pembayaran_akun_bayar2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pembayaran_akun_bayar2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Hapus Nota Salah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "hapus_nota_salah='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "hapus_nota_salah='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[H]Pembayaran Per Akun Bayar 3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pembayaran_akun_bayar3='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pembayaran_akun_bayar3='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]ICD 10".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penyakit='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penyakit='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Obat Penyakit".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "obat_penyakit='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "obat_penyakit='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Frekuensi Penyakit Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penyakit_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penyakit_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Frekuensi Penyakit Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penyakit_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penyakit_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Penyakit AFP & PD3I".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penyakit_pd3i='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penyakit_pd3i='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Surveilans AFP & PD3I".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surveilans_pd3i='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surveilans_pd3i='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Surveilans Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surveilans_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surveilans_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Surveilans Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surveilans_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surveilans_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Pny.Tdk Menular Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pny_takmenular_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pny_takmenular_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Pny.Tdk Menular Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pny_takmenular_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pny_takmenular_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Kunjungan Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kunjungan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kunjungan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 3.2 Rawat Darurat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl32='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl32='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 3.3 Gigi dan Mulut".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl33='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl33='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 3.7 Radiologi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl37='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl37='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 3.8 Laboratorium".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl38='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl38='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 3.4 Kebidanan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl34='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl34='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 3.6 Pembedahan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl36='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl36='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Kunjungan Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kunjungan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kunjungan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]ICD 9".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "icd9='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "icd9='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Sensus Harian Poli".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sensus_harian_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sensus_harian_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 4A Sebab Morbiditas Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl4a='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl4a='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 4B Sebab Morbiditas Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl4b='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl4b='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 4A Morbiditas Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl4asebab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl4asebab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]RL 4B Morbiditas Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rl4bsebab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rl4bsebab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Lama Pelayanan Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "lama_pelayanan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "lama_pelayanan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Harian HAIs".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_HAIs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_HAIs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Bulanan HAIs".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bulanan_HAIs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bulanan_HAIs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Hitung BOR".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "hitung_bor='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "hitung_bor='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Lama Pelayanan Apotek".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "lama_pelayanan_apotek='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "lama_pelayanan_apotek='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Hitung ALOS".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "hitung_alos='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "hitung_alos='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Pny Menular Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penyakit_menular_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penyakit_menular_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Pny Menular Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penyakit_menular_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penyakit_menular_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Pembatalan Periksa Per Dokter".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pembatalan_periksa_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pembatalan_periksa_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Cek Entry Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "cek_entry_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "cek_entry_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Sensus Harian Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sensus_harian_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sensus_harian_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Insiden Keselamatan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "insiden_keselamatan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "insiden_keselamatan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Ranap Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ranap_per_ruang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ranap_per_ruang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Penyakit Ranap Per Cara Bayar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penyakit_ranap_cara_bayar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penyakit_ranap_cara_bayar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Anggota TNI Dirawat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "anggota_militer_dirawat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "anggota_militer_dirawat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Lama Pelayanan Radiologi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "lama_pelayanan_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "lama_pelayanan_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Lama Pelayanan Lab".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "lama_pelayanan_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "lama_pelayanan_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Rekap Lab Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_lab_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_lab_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Perujuk Lab Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "perujuk_lab_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "perujuk_lab_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Rekap Radiologi Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_radiologi_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_radiologi_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Perujuk Radiologi Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "perujuk_radiologi_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "perujuk_radiologi_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Rekap Bulanan Porsi Diet".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jumlah_porsi_diet='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jumlah_porsi_diet='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Rekap Bulanan Macam Diet".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jumlah_macam_diet='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jumlah_macam_diet='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Kunjungan Lab Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kunjungan_permintaan_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kunjungan_permintaan_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Kunjungan Lab Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kunjungan_permintaan_lab2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kunjungan_permintaan_lab2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Kunjungan Radiologi Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kunjungan_permintaan_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kunjungan_permintaan_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Kunjungan Radiologi Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kunjungan_permintaan_radiologi2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kunjungan_permintaan_radiologi2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Data TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kemenkes_sitt='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kemenkes_sitt='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Rekap Mutasi Berkas".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_mutasi_berkas='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_mutasi_berkas='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Skrining Pernapasan Ralan Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "skrining_ralan_pernapasan_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "skrining_ralan_pernapasan_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Masuk Ruang Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kunjungan_bangsal_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kunjungan_bangsal_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]KIP Pasien Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kip_pasien_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kip_pasien_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]KIP Pasien Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kip_pasien_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kip_pasien_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Rekap Permintaan Diet".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_permintaan_diet='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_permintaan_diet='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Daftar Pasien Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "daftar_pasien_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "daftar_pasien_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Daftar Pasien Ranap TNI".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "daftar_pasien_ranaptni='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "daftar_pasien_ranaptni='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Harian HAIs 2".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "harian_HAIs2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "harian_HAIs2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[I]Rekap Kunjungan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekap_kunjungan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekap_kunjungan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Deposit Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "deposit_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "deposit_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Piutang Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "piutang_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "piutang_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Kamar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Tarif Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tarif_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tarif_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Tarif Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tarif_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tarif_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Tarif Lab".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tarif_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tarif_lab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Tarif Radiologi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tarif_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tarif_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Tarif Operasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tarif_operasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tarif_operasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Akun Rekening".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "akun_rekening='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "akun_rekening='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Rekening Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rekening_tahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rekening_tahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Posting Jurnal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "posting_jurnal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "posting_jurnal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Buku Besar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "buku_besar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "buku_besar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Cash Flow".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "cashflow='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "cashflow='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Keuangan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "keuangan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "keuangan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Pengeluaran Harian".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengeluaran='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengeluaran='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Akun Bayar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "akun_bayar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "akun_bayar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Bayar Pesan Obat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bayar_pemesanan_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bayar_pemesanan_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Pemasukkan Lain-Lain".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pemasukan_lain='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pemasukan_lain='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Pengaturan Rekening".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengaturan_rekening='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengaturan_rekening='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Bayar Piutang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bayar_piutang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bayar_piutang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Jurnal Harian".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jurnal_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jurnal_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Piutang Belum Lunas".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "piutang_pasien2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "piutang_pasien2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Tarif UTD".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tarif_utd='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tarif_utd='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Rincian Piutang Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "rincian_piutang_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "rincian_piutang_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Hutang Obat & BHP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "hutang_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "hutang_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Akun Piutang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "akun_piutang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "akun_piutang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Piutang Per Cara Bayar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "detail_piutang_penjab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "detail_piutang_penjab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Bayar Pesan Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bayar_pesan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bayar_pesan_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Hutang Barang Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "hutang_barang_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "hutang_barang_non_medis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[J]Saldo Akun Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "saldo_akun_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "saldo_akun_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
         }
     }
@@ -9081,1105 +8995,1105 @@ public class DlgUpdateUser extends javax.swing.JDialog {
     private void updateKategori2() {
         for (i = 0; i < tbUser.getRowCount(); i++) {
             if ("[K]Cek NIK".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_nik='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_nik='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Cek No.Kartu".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_kartu='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_kartu='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Riwayat Rujukan PCare di VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_riwayat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_riwayat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Cek No.Rujukan PCare di VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_nomor_rujukan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_nomor_rujukan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Diagnosa VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_referensi_diagnosa='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_referensi_diagnosa='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Poli VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_referensi_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_referensi_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Faskes VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_referensi_faskes='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_referensi_faskes='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Data Bridging SEP VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_sep='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_sep='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Monitoring Verifikasi Klaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_monitoring_klaim='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_monitoring_klaim='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Reklasifikasi Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "reklasifikasi_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "reklasifikasi_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Reklasifikasi Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "reklasifikasi_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "reklasifikasi_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Kamar Aplicare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "aplicare_referensi_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "aplicare_referensi_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Ketersediaan Kamar Aplicare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "aplicare_ketersediaan_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "aplicare_ketersediaan_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Klaim Baru Otomatis INACBG".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inacbg_klaim_baru_otomatis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inacbg_klaim_baru_otomatis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Klaim Baru Manual INACBG".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inacbg_klaim_baru_manual='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inacbg_klaim_baru_manual='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Coder NIK INACBG".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inacbg_coder_nik='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inacbg_coder_nik='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Cek Eligibilitas Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_cek_eligibilitas='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_cek_eligibilitas='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Ruang Rawat Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_referensi_jenpel_ruang_rawat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_referensi_jenpel_ruang_rawat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Poli Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_referensi_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_referensi_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Faskes Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_referensi_faskes='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_referensi_faskes='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Data Bridging SJP Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_sjp='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_sjp='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Diagnosa Pcare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_penyakit='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_penyakit='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Kesadaran Pcare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_kesadaran='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_kesadaran='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Cek Rujukan PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_rujukan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_rujukan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Klaim Baru Manual INACBG 2".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inacbg_klaim_baru_manual2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inacbg_klaim_baru_manual2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Prosedur VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_prosedur='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_prosedur='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Kelas Rawat VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_kelas_rawat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_kelas_rawat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Dokter VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Spesialistik VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_spesialistik='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_spesialistik='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Ruang Rawat VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_ruangrawat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_ruangrawat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Cara Keluar VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_carakeluar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_carakeluar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Pasca Pulang VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_pasca_pulang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_pasca_pulang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Cek No.Rujukan RS di VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_nomor_rujukan_rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_nomor_rujukan_rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Cek Rujukan Kartu PCare di VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_rujukan_kartu_pcare='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_rujukan_kartu_pcare='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Cek Rujukan Kartu RS di VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_rujukan_kartu_rs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_rujukan_kartu_rs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Pembuatan Rujukan VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_rujukan_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_rujukan_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Mapping Poli VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "mapping_poli_bpjs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "mapping_poli_bpjs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]SKDP BPJS".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "skdp_bpjs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "skdp_bpjs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Propinsi VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_propinsi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_propinsi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Kabupaten VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_kabupaten='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_kabupaten='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Kecamatan VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_kecamatan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_kecamatan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Dokter DPJP VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_dokterdpjp='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_dokterdpjp='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Riwayat Rujukan RS di VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_riwayat_rujukanrs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_riwayat_rujukanrs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Tanggal Rujukan di VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_tanggal_rujukan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_tanggal_rujukan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Histori Pelayanan BPJS".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_histori_pelayanan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_histori_pelayanan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Dokter PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Poli PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Provider PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_provider='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_provider='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Stts Pulang PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_statuspulang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_statuspulang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Spesialis PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_spesialis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_spesialis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Subspesialis PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_subspesialis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_subspesialis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Sarana PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_sarana='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_sarana='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Khusus PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_khusus='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_khusus='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Obat PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Tindakan PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_tindakan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_tindakan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Faskes Subspesialis PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_faskessubspesialis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_faskessubspesialis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Faskes Alih Rawat PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_faskesalihrawat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_faskesalihrawat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Faskes Thalasemia & Hemofili PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_cek_faskesthalasemia='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_cek_faskesthalasemia='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Mapping Obat PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_mapping_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_mapping_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Tarif Ralan RS & PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_mapping_tindakan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_mapping_tindakan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Club Prolanis PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_club_prolanis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_club_prolanis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Mapping Poli PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_mapping_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_mapping_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Kegiatan Kelompok PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_kegiatan_kelompok='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_kegiatan_kelompok='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Tarif Ranap RS & PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_mapping_tindakan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_mapping_tindakan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Peserta Keg Kelompok PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_peserta_kegiatan_kelompok='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_peserta_kegiatan_kelompok='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Data Pendafataran PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bridging_pcare_daftar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bridging_pcare_daftar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Mapping Dokter PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_mapping_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_mapping_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Cek Nomor SEP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_sep='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_sep='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Faskes Sisrute".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sisrute_referensi_faskes='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sisrute_referensi_faskes='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Alasan Rujuk Sisrute".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sisrute_referensi_alasanrujuk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sisrute_referensi_alasanrujuk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Referensi Diagnosa Sisrute".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sisrute_referensi_diagnosa='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sisrute_referensi_diagnosa='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Rujukan Masuk Sisrute".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sisrute_rujukan_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sisrute_rujukan_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Rujukan Keluar Sisrute".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "sisrute_rujukan_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "sisrute_rujukan_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Cek SKDP VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_cek_skdp='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_cek_skdp='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Pemberian Obat PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_pemberian_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_pemberian_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Pemberian Tindakan PCare".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pcare_pemberian_tindakan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pcare_pemberian_tindakan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Ketersediaan Kamar SIRANAP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "siranap_ketersediaan_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "siranap_ketersediaan_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Mapping Dokter DPJP VClaim".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bpjs_mapping_dokterdpjp='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bpjs_mapping_dokterdpjp='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Mapping Poli Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_mapping_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_mapping_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Mapping Dokter Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_mapping_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_mapping_dokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Tarif Ralan Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_mapping_tindakan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_mapping_tindakan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Tarif Ranap Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_mapping_tindakan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_mapping_tindakan_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Tarif Radiologi Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_mapping_tindakan_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_mapping_tindakan_radiologi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Tarif Laborat Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_mapping_tindakan_laborat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_mapping_tindakan_laborat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Tarif Operasi Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_mapping_tindakan_operasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_mapping_tindakan_operasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[K]Tagihan Inhealth".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inhealth_kirim_tagihan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inhealth_kirim_tagihan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Pasien Meninggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pasien_meninggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pasien_meninggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Kelahiran Bayi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kelahiran_bayi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kelahiran_bayi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Peminjaman Berkas RM".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "peminjaman_berkas='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "peminjaman_berkas='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Riwayat Perawatan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "resume_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "resume_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Diagnosa Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "diagnosa_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "diagnosa_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Retensi Data R.M.".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "retensi_rm='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "retensi_rm='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Mutasi Berkas RM".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "mutasi_berkas='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "mutasi_berkas='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Catatan Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "catatan_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "catatan_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Data HAIs".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "data_HAIs='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "data_HAIs='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Instansi/Perusahaan Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "perusahaan_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "perusahaan_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Berkas Digital Perawatan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "berkas_digital_perawatan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "berkas_digital_perawatan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Pengaduan/Chat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengaduan_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengaduan_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Insiden Keselamatan Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "insiden_keselamatan_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "insiden_keselamatan_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Suku/Bangsa Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "suku_bangsa='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "suku_bangsa='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Bahasa Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bahasa_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bahasa_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Golongan TNI".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "golongan_tni='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "golongan_tni='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Satuan TNI".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "satuan_tni='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "satuan_tni='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Jabatan TNI".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jabatan_tni='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jabatan_tni='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Pangkat TNI".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pangkat_tni='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pangkat_tni='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Golongan POLRI".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "golongan_polri='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "golongan_polri='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Satuan POLRI".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "satuan_polri='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "satuan_polri='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Jabatan POLRI".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jabatan_polri='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jabatan_polri='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Pangkat POLRI".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pangkat_polri='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pangkat_polri='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Cacat Fisik".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "cacat_fisik='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "cacat_fisik='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]HAIs Per Kamar/Bangsal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "hais_perbangsal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "hais_perbangsal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Data Triase".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "data_triase_igd='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "data_triase_igd='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Master Triase Skala 1".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "master_triase_skala1='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "master_triase_skala1='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Master Triase Skala 2".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "master_triase_skala2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "master_triase_skala2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Master Triase Skala 3".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "master_triase_skala3='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "master_triase_skala3='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Master Triase Skala 4".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "master_triase_skala4='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "master_triase_skala4='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Master Triase Skala 5".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "master_triase_skala5='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "master_triase_skala5='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Master Triase Pemeriksaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "master_triase_pemeriksaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "master_triase_pemeriksaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Master Triase Macam Kasus".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "master_triase_macamkasus='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "master_triase_macamkasus='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Resume Pasien".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "data_resume_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "data_resume_pasien='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Asuhan Gizi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "asuhan_gizi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "asuhan_gizi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Monitoring Asuhan Gizi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "monitoring_asuhan_gizi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "monitoring_asuhan_gizi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Penilaian Awal Keperawatan Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penilaian_awal_keperawatan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penilaian_awal_keperawatan_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[L]Master Masalah Keperawatan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "master_masalah_keperawatan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "master_masalah_keperawatan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengambilan_utd2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengambilan_utd2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]BHP Medis Rusak".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "utd_medis_rusak='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "utd_medis_rusak='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]Pengambilan BHP Non Medis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengambilan_penunjang_utd2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengambilan_penunjang_utd2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]BHP Non Medis Rusak".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "utd_penunjang_rusak='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "utd_penunjang_rusak='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]Donor Darah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "utd_donor='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "utd_donor='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]Cekal Darah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "utd_cekal_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "utd_cekal_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]Komponen Darah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "utd_komponen_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "utd_komponen_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]Stok Darah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "utd_stok_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "utd_stok_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]Pemisahan Darah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "utd_pemisahan_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "utd_pemisahan_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[M]Penyerahan Darah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "utd_penyerahan_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "utd_penyerahan_darah='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Poli".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_poli='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Dokter".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_perdokter='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_perdokter='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Pekerjaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_perpekerjaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_perpekerjaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Pendidikan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_perpendidikan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_perpendidikan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Demografi Registrasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_demografi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_demografi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Reg Lama Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_statusdaftartahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_statusdaftartahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Reg Baru Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_statusdaftartahun2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_statusdaftartahun2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Reg Lama Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_statusdaftarbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_statusdaftarbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Reg Baru Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_statusdaftarbulan2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_statusdaftarbulan2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Reg Lama Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_statusdaftartanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_statusdaftartanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Reg Baru Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_statusdaftartanggal2='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_statusdaftartanggal2='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Batal Periksa Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_statusbataltahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_statusbataltahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Batal Periksa Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_statusbatalbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_statusbatalbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Batal Periksa Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_statusbataltanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_statusbataltanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Cara Bayar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_percarabayar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_percarabayar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Ranap Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_ranaptahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_ranaptahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Lab Ralan Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_lab_ralantahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_lab_ralantahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Rad Ralan Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_rad_ralantahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_rad_ralantahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Per Perujuk".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_per_perujuk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_per_perujuk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Lab Ralan Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_lab_ralanbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_lab_ralanbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Rad Ralan Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_rad_ralanbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_rad_ralanbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Lab Ralan Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_lab_ralanhari='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_lab_ralanhari='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Rad Ralan Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_rad_ralanhari='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_rad_ralanhari='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kejadian IKP Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_ikp_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_ikp_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kejadian IKP Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_ikp_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_ikp_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kejadian IKP Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_ikp_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_ikp_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kejadian IKP Per Jenis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_ikp_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_ikp_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kejadian IKP Per Dampak".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_ikp_dampak='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_ikp_dampak='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Agama".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_per_agama='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_per_agama='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Umur".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_per_umur='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_per_umur='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Suku/Bangsa".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_suku='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_suku='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Bahasa".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_bahasa='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_bahasa='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Reg Per Cacat Fisik".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_per_cacat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_per_cacat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Periode Laporan TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_periodelaporan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_periodelaporan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Rujukan TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_rujukan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_rujukan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Riwayat TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_riwayat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_riwayat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Tipe Diagnosis TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_tipediagnosis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_tipediagnosis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Status HIV TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_statushiv='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_statushiv='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Skoring Anak TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_skoringanak='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_skoringanak='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Konfirmasi Skoring 5 TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_konfirmasiskoring5='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_konfirmasiskoring5='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Konfirmasi Skoring 6 TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_konfirmasiskoring6='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_konfirmasiskoring6='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Sumber Obat TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_sumberobat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_sumberobat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Hasil Akhir Pengobatan TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_hasilakhirpengobatan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_hasilakhirpengobatan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Hasil Tes HIV TB".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_tb_hasilteshiv='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_tb_hasilteshiv='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pemakaian Air PDAM Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_air_pdam_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_air_pdam_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pemakaian Air PDAM Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_air_pdam_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_air_pdam_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Limbah B3 Medis Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_limbahb3_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_limbahb3_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Limbah B3 Medis Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_limbahb3_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_limbahb3_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Limbah Padat Domestik Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_limbahdomestik_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_limbahdomestik_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Limbah Padat Domestik Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_limbahdomestik_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_limbahdomestik_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Tahun".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_pertahun='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_pertanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Jenis Cidera".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_perjeniscidera='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_perjeniscidera='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Penyebab Kecelakaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_perpenyebab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_perpenyebab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Jenis Luka".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_perjenisluka='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_perjenisluka='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Lokasi Kejadian".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_lokasikejadian='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_lokasikejadian='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Dampak Cidera".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_dampakcidera='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_dampakcidera='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Jenis Pekerjaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_perjenispekerjaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_perjenispekerjaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]K3 Per Bagian Tubuh".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_k3_perbagiantubuh='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_k3_perbagiantubuh='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Ranap Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_ranapbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_ranapbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Ranap Per Tanggal".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_ranaptanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_ranaptanggal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Kunjungan Ranap Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kunjungan_ranap_peruang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kunjungan_ranap_peruang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pegawai Per Jenjang Jabatan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_jenjang_jabatanpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_jenjang_jabatanpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pegawai Per Bidang/Bagian".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_bidangpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_bidangpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pegawai Per Departemen".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_departemenpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_departemenpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pegawai Per Pendidikan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_pendidikanpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_pendidikanpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pegawai Per Status WP".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_sttswppegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_sttswppegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pegawai Per Status Kerja".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_sttskerjapegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_sttskerjapegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Status Pulang Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_sttspulangranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_sttspulangranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Item Apotek Per Jenis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "item_apotek_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "item_apotek_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Item Apotek Per Kategori".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "item_apotek_kategori='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "item_apotek_kategori='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Item Apotek Per Golongan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "item_apotek_golongan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "item_apotek_golongan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Item Apotek Per Industri Farmasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "item_apotek_industrifarmasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "item_apotek_industrifarmasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pengajuan Aset Per Urgensi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_pengajuan_aset_urgensi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_pengajuan_aset_urgensi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pengajuan Aset Per Status".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_pengajuan_aset_status='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_pengajuan_aset_status='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pengajuan Aset Per Departemen".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_pengajuan_aset_departemen='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_pengajuan_aset_departemen='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pegawai Per Kelompok Jabatan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_kelompok_jabatanpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_kelompok_jabatanpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pegawai Per Resiko Kerja".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_resiko_kerjapegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_resiko_kerjapegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pegawai Per Emergency Index".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_emergency_indexpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_emergency_indexpegawai='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Jumlah Inventaris Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_inventaris_ruang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_inventaris_ruang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Jumlah Inventaris Per Jenis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_inventaris_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_inventaris_jenis='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pasien HAIs Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_HAIs_pasienbangsal='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_HAIs_pasienbangsal='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Pasien HAIs Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_HAIs_pasienbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_HAIs_pasienbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Laju HAIs VAP Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_HAIs_laju_vap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_HAIs_laju_vap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Laju HAIs IAD Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_HAIs_laju_iad='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_HAIs_laju_iad='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Laju HAIs Plebitis Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_HAIs_laju_pleb='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_HAIs_laju_pleb='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Laju HAIs ISK Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_HAIs_laju_isk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_HAIs_laju_isk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Laju HAIs ILO Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_HAIs_laju_ilo='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_HAIs_laju_ilo='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Laju HAIs HAP Per Ruang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "grafik_HAIs_laju_hap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "grafik_HAIs_laju_hap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[N]Penerimaan Obat, Alkes & BHP Per Bulan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penerimaan_obat_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penerimaan_obat_perbulan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Indeks Surat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_indeks='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_indeks='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Map Surat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_map='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_map='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Almari Surat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_almari='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_almari='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Rak Surat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_rak='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_rak='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Ruang Surat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_ruang='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_ruang='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Klasifikasi Surat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_klasifikasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_klasifikasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Status Surat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_status='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_status='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Sifat Surat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_sifat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_sifat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Stts Balas Surat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_balas='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_balas='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Surat Masuk".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_masuk='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Surat Keluar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_keluar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[O]Surat Keterangan Sakit".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "surat_sakit='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "surat_sakit='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Ruang Perpustakaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ruang_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ruang_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Kategori Koleksi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "kategori_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "kategori_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Jenis Koleksi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "jenis_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "jenis_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Pengarang/Penulis".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "pengarang_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "pengarang_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Penerbit Koleksi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "penerbit_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "penerbit_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Koleksi Perpustakaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "koleksi_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "koleksi_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Inventaris Perpustakaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "inventaris_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "inventaris_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Pengaturan Peminjaman".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_peminjaman_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_peminjaman_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Denda Perpustakaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "denda_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "denda_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Anggota Perpustakaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "anggota_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "anggota_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Peminjaman Koleksi Perpustakaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "peminjaman_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "peminjaman_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Bayar Denda Perpustakaan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "bayar_denda_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "bayar_denda_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[P]Data Koleksi Ebook".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "ebook_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "ebook_perpustakaan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set P.J. Unit Penunjang".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "setup_pjlab='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "setup_pjlab='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Oto Lokasi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "setup_otolokasi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "setup_otolokasi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Kamar Inap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "setup_jam_kamin='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "setup_jam_kamin='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Embalase & Tuslah".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "setup_embalase='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "setup_embalase='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Tracer Login".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "tracer_login='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "tracer_login='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Display Antrian Registrasi & Poli".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "display='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "display='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Harga Obat".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_harga_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_harga_obat='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Penggunaan Tarif".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_penggunaan_tarif='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_penggunaan_tarif='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Oto Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_oto_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_oto_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Biaya Harian Kamar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "biaya_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "biaya_harian='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Biaya Masuk Sekali".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "biaya_masuk_sekali='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "biaya_masuk_sekali='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set RM".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_no_rm='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_no_rm='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Harga Obat Ralan".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_harga_obat_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_harga_obat_ralan='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Harga Obat Ranap".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_harga_obat_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_harga_obat_ranap='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Billing".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_nota='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_nota='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Closing Kasir".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "closing_kasir='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "closing_kasir='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Keterlambatan Presensi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "keterlambatan_presensi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "keterlambatan_presensi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Harga Kamar".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_harga_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_harga_kamar='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Set Input Parsial".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "set_input_parsial='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "set_input_parsial='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Display Antrian Apotek".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "display_apotek='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "display_apotek='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
 
             if ("[Q]Password Asuransi".equals(tbUser.getValueAt(i, 1).toString())) {
-                Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "password_asuransi='" + tbUser.getValueAt(i, 2).toString() + "'");
+                Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "password_asuransi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
         }
-        JOptionPane.showMessageDialog(null, "Proses update User akses " + CmbAkses.getSelectedItem() + " selesai..!!");
+        JOptionPane.showMessageDialog(null, "Proses update User akses " + TNmUser.getText() + " selesai..!!");
     }
 }
