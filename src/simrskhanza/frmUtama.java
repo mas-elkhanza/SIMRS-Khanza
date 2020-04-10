@@ -16066,6 +16066,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnReturBarangNonMedisActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
+    private void btnRiwayatBarangNonMedisActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
     /**
     * @param args the command line arguments
     */
@@ -16661,7 +16668,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratSakit,btnPenilaianAwalKeperawatanRalan,btnMasterMasalahKeperawatan,btnPengajuanCuti,btnKedatanganPasienPerJam,btnPendonorDarah,
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
-            btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko;
+            btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
+            btnRiwayatBarangNonMedis;
     
     public void isWall(){
         try{            
@@ -17404,6 +17412,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.getipsrs_stok_keluar()==true){
                 Panelmenu.add(btnPengeluaranIpsrs); 
+                jmlmenu++;
+            }
+            
+            if(akses.getipsrs_returbeli()==true){
+                Panelmenu.add(btnReturBarangNonMedis); 
+                jmlmenu++;
+            }
+            
+            if(akses.getipsrs_riwayat_barang()==true){
+                Panelmenu.add(btnRiwayatBarangNonMedis); 
                 jmlmenu++;
             }
 
@@ -20449,6 +20467,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getipsrs_stok_keluar()==true){
             Panelmenu.add(btnPengeluaranIpsrs); 
+            jmlmenu++;
+        }
+        
+        if(akses.getipsrs_returbeli()==true){
+            Panelmenu.add(btnReturBarangNonMedis); 
+            jmlmenu++;
+        }
+
+        if(akses.getipsrs_riwayat_barang()==true){
+            Panelmenu.add(btnRiwayatBarangNonMedis); 
             jmlmenu++;
         }
 
@@ -23727,6 +23755,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getipsrs_stok_keluar()==true){
             if(btnPengeluaranIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengeluaranIpsrs); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getipsrs_returbeli()==true){
+            if(btnReturBarangNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnReturBarangNonMedis); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getipsrs_riwayat_barang()==true){
+            if(btnRiwayatBarangNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRiwayatBarangNonMedis); 
                 jmlmenu++;
             }                
         }
@@ -28837,6 +28879,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnReturKeSuplierToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReturKeSuplierTokoActionPerformed(evt);
+            }
+        });
+        
+        btnReturBarangNonMedis= new widget.ButtonBig();
+        btnReturBarangNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_carton_box_return_3440901.png"))); 
+        btnReturBarangNonMedis.setText("Retur Ke Suplier Non Medis");
+        btnReturBarangNonMedis.setIconTextGap(0);
+        btnReturBarangNonMedis.setName("btnReturBarangNonMedis"); 
+        btnReturBarangNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReturBarangNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturBarangNonMedisActionPerformed(evt);
+            }
+        });
+        
+        btnRiwayatBarangNonMedis= new widget.ButtonBig();
+        btnRiwayatBarangNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_accessories-text-editor_23663.png"))); 
+        btnRiwayatBarangNonMedis.setText("Riwayat Barang Non Medis");
+        btnRiwayatBarangNonMedis.setIconTextGap(0);
+        btnRiwayatBarangNonMedis.setName("btnRiwayatBarangNonMedis"); 
+        btnRiwayatBarangNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatBarangNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatBarangNonMedisActionPerformed(evt);
             }
         });
     }

@@ -646,7 +646,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
                         "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
                         "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal,"+
-                        "toko_piutang,toko_retur_beli from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1221,6 +1221,14 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[E]Sirkulasi Non Medis 2".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[E]Sirkulasi Non Medis 2",rs.getBoolean("sirkulasi_non_medis")});
+                    }
+                    
+                    if("[E]Retur Ke Suplier Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[E]Retur Ke Suplier Non Medis",rs.getBoolean("ipsrs_returbeli")});
+                    }
+                    
+                    if("[E]Riwayat Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[E]Riwayat Barang Non Medis",rs.getBoolean("ipsrs_riwayat_barang")});
                     }
                     
                     if("[F]Jenis Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -3668,6 +3676,14 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[E]Sirkulasi Non Medis 2".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","sirkulasi_non_medis2='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[E]Retur Ke Suplier Non Medis".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ipsrs_returbeli='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[E]Riwayat Barang Non Medis".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ipsrs_riwayat_barang='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[F]Jenis Inventaris".equals(tbUser.getValueAt(i,1).toString())){
