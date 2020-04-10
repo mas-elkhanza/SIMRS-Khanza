@@ -1178,11 +1178,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             tbDokter.requestFocus();
         }else if(tbDokter.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("truncate table temporary_toko");
             row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary_toko","'0','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
@@ -1491,10 +1491,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void panggilgetData(String nopengajuan){
         try{
             ps=koneksi.prepareStatement(
-                "select tokobarang.kode_brng, tokobarang.nama_brng,tokobarang.kode_sat,detail_pengajuan_barang_toko.jumlah,detail_pengajuan_barang_toko.total,"+
-                " detail_pengajuan_barang_toko.h_pengajuan from tokobarang inner join tokojenisbarang inner join detail_pengajuan_barang_toko "+
-                " on tokobarang.jenis=tokojenisbarang.kd_jenis and tokobarang.kode_brng=detail_pengajuan_barang_toko.kode_brng "+
-                " where detail_pengajuan_barang_toko.no_pengajuan=?");
+                "select tokobarang.kode_brng, tokobarang.nama_brng,tokobarang.kode_sat,toko_detail_pengajuan_barang.jumlah,toko_detail_pengajuan_barang.total,"+
+                " toko_detail_pengajuan_barang.h_pengajuan from tokobarang inner join tokojenisbarang inner join toko_detail_pengajuan_barang "+
+                " on tokobarang.jenis=tokojenisbarang.kd_jenis and tokobarang.kode_brng=toko_detail_pengajuan_barang.kode_brng "+
+                " where toko_detail_pengajuan_barang.no_pengajuan=?");
             try {
                 ps.setString(1,nopengajuan);
                 rs=ps.executeQuery();
