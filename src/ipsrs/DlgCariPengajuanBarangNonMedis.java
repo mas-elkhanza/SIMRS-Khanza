@@ -824,7 +824,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }else{
                 Sequel.queryu("update pengajuan_barang_nonmedis set status='Disetujui' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                DlgSuratPemesananNonMedis aplikasi=new DlgSuratPemesananNonMedis(null,false);
+                IPSRSSuratPemesanan aplikasi=new IPSRSSuratPemesanan(null,false);
                 aplikasi.tampilkan=false;
                 aplikasi.isCek();
                 aplikasi.panggilgetData(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());

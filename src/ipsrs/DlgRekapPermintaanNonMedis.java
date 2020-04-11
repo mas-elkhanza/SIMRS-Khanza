@@ -34,7 +34,7 @@ public class DlgRekapPermintaanNonMedis extends javax.swing.JDialog {
     private boolean[] pilihan;
     private String[] kodebarang,namabarang,satuan,jenis,jumlah,kodesat;
     private double harga=0,jml=0;
-    private DlgSuratPemesananNonMedis form=new DlgSuratPemesananNonMedis(null,false);    
+    private IPSRSSuratPemesanan form=new IPSRSSuratPemesanan(null,false);    
     
     /** Creates new form DlgProgramStudi
      * @param parent

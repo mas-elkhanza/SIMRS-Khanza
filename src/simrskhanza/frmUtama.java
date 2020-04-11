@@ -162,14 +162,14 @@ import inventory.DlgSirkulasiBarang2;
 import inventory.DlgStokPasien;
 import ipsrs.IPSRSBarang;
 import ipsrs.IPSRSCariPengambilanPenunjangUTD;
-import ipsrs.DlgJenisIPSRS;
+import ipsrs.IPSRSJenis;
 import ipsrs.IPSRSPembelian;
 import ipsrs.IPSRSPengambilanPenunjangUTD;
 import ipsrs.IPSRSPengeluaran;
 import ipsrs.DlgRBiayaHarianIPSRS;
 import ipsrs.DlgRHPembelianIPSRS;
 import ipsrs.DlgRHPengeluaranIPSRS;
-import ipsrs.DlgSuplierIPSRS;
+import ipsrs.IPSRSSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -302,12 +302,12 @@ import inventory.DlgSuratPemesanan;
 import ipsrs.IPSRSInputStok;
 import ipsrs.IPSRSPemesanan;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
-import ipsrs.DlgPermintaanNonMedis;
+import ipsrs.IPSRSPermintaan;
 import ipsrs.DlgRekapPenerimaanNonMedis;
 import ipsrs.DlgRekapPermintaanNonMedis;
 import ipsrs.DlgSirkulasiNonMedis;
 import ipsrs.DlgStokKeluarIPSRSPerTanggal;
-import ipsrs.DlgSuratPemesananNonMedis;
+import ipsrs.IPSRSSuratPemesanan;
 import java.awt.event.KeyListener;
 import javax.swing.event.DocumentEvent;
 import keuangan.DlgAkunPiutang;
@@ -508,6 +508,7 @@ import inventory.DlgSisaStok;
 import inventory.HibahObatBHP;
 import ipsrs.DlgPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
+import ipsrs.IPSRSReturBeli;
 import ipsrs.IPSRSRiwayatBarang;
 import java.net.InetAddress;
 import kepegawaian.DlgDokter;
@@ -10460,7 +10461,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgJenisIPSRS aplikasi=new DlgJenisIPSRS(this,false);
+        IPSRSJenis aplikasi=new IPSRSJenis(this,false);
         aplikasi.isCek();
         aplikasi.emptTeks();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
@@ -11008,7 +11009,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnSuplierIPSRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierIPSRSActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(this,false);
+        IPSRSSuplier suplier=new IPSRSSuplier(this,false);
         suplier.isCek();
         suplier.emptTeks();
         suplier.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
@@ -12222,7 +12223,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnPermintaanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPermintaanNonMedisActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPermintaanNonMedis form=new DlgPermintaanNonMedis(this,false);
+        IPSRSPermintaan form=new IPSRSPermintaan(this,false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
@@ -12245,7 +12246,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnSuratPemesananNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuratPemesananNonMedisActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSuratPemesananNonMedis form=new DlgSuratPemesananNonMedis(this,false);
+        IPSRSSuratPemesanan form=new IPSRSSuratPemesanan(this,false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
@@ -16068,7 +16069,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnReturBarangNonMedisActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        IPSRSReturBeli form=new IPSRSReturBeli(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     private void btnRiwayatBarangNonMedisActionPerformed(java.awt.event.ActionEvent evt) {

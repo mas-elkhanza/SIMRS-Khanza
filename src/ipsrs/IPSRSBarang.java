@@ -47,7 +47,7 @@ public final class IPSRSBarang extends javax.swing.JDialog {
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
     public DlgCariSatuan satuan=new DlgCariSatuan(null,false); 
-    public DlgCariJenisIPSRS jenis=new DlgCariJenisIPSRS(null,false);
+    public IPSRSCariJenis jenis=new IPSRSCariJenis(null,false);
 
     /** Creates new form DlgJnsPerawatan
      * @param parent

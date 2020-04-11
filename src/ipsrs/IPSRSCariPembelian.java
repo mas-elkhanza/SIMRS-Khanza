@@ -29,7 +29,7 @@ public class IPSRSCariPembelian extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
+    public  IPSRSSuplier suplier=new IPSRSSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps,ps2,pscaribeli,psipsrsdetailbeli;
