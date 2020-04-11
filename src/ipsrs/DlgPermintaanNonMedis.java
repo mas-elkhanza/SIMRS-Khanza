@@ -39,7 +39,7 @@ public class DlgPermintaanNonMedis extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private DlgCariPermintaanNonMedis form=new DlgCariPermintaanNonMedis(null,false);
-    private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    private IPSRSBarang barang=new IPSRSBarang(null,false);
     private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi

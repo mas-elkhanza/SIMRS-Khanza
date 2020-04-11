@@ -21,7 +21,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import bridging.koneksiDBFUJI;
-import ipsrs.DlgBarangIPSRS;
+import ipsrs.IPSRSBarang;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -1209,7 +1209,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
     private void BtnTambahBhpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahBhpActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBarangIPSRS produsen=new DlgBarangIPSRS(null,false);
+        IPSRSBarang produsen=new IPSRSBarang(null,false);
         produsen.isCek();
         produsen.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         produsen.setLocationRelativeTo(internalFrame1);

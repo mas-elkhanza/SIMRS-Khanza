@@ -32,7 +32,7 @@ public class DlgCariPengeluaranIpsrs extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    public  DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    public  IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps,ps2,psdetailpengeluaran;
     private Jurnal jur=new Jurnal();
     private ResultSet rs,rs2;

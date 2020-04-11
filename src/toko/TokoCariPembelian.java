@@ -33,6 +33,7 @@ public class TokoCariPembelian extends javax.swing.JDialog {
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  TokoBarang barang=new TokoBarang(null,false);
     private PreparedStatement ps,ps2,pscaribeli,pstoko_detail_beli;
+    private riwayattoko Trackbarang=new riwayattoko();
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
@@ -861,6 +862,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                           pstoko_detail_beli.setString(1,rs.getString(1));
                           rs2=pstoko_detail_beli.executeQuery();
                           while(rs2.next()){
+                              Trackbarang.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah"),"Pengadaan", akses.getkode(),"Hapus");
                               Sequel.mengedit("tokobarang","kode_brng=?","stok=stok-?",2,new String[]{
                                      rs2.getString("jumlah"),rs2.getString("kode_brng")
                               });

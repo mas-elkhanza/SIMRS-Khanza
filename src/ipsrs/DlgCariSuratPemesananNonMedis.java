@@ -30,11 +30,11 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     public  DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
-    public  DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    public  IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private double tagihan=0;
-    private DlgPemesananIPSRS aplikasi=new DlgPemesananIPSRS(null,false);
+    private IPSRSPemesanan aplikasi=new IPSRSPemesanan(null,false);
 
     /** Creates new form DlgProgramStudi
      * @param parent

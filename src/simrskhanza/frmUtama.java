@@ -160,10 +160,10 @@ import inventory.DlgReturPiutang;
 import inventory.DlgSirkulasiBarang;
 import inventory.DlgSirkulasiBarang2;
 import inventory.DlgStokPasien;
-import ipsrs.DlgBarangIPSRS;
+import ipsrs.IPSRSBarang;
 import ipsrs.DlgCariPengambilanPenunjangUTD;
 import ipsrs.DlgJenisIPSRS;
-import ipsrs.DlgPembelianIPSRS;
+import ipsrs.IPSRSPembelian;
 import ipsrs.DlgPengambilanPenunjangUTD;
 import ipsrs.DlgPengeluaranIPSRS;
 import ipsrs.DlgRBiayaHarianIPSRS;
@@ -300,7 +300,7 @@ import inventory.DlgRiwayatBatch;
 import inventory.DlgSirkulasiBarang3;
 import inventory.DlgSuratPemesanan;
 import ipsrs.DlgInputStokIPSRS;
-import ipsrs.DlgPemesananIPSRS;
+import ipsrs.IPSRSPemesanan;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
 import ipsrs.DlgPermintaanNonMedis;
 import ipsrs.DlgRekapPenerimaanNonMedis;
@@ -508,6 +508,7 @@ import inventory.DlgSisaStok;
 import inventory.HibahObatBHP;
 import ipsrs.DlgPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
+import ipsrs.IPSRSRiwayatBarang;
 import java.net.InetAddress;
 import kepegawaian.DlgDokter;
 import kepegawaian.DlgPetugas;
@@ -9751,7 +9752,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBarangIPSRS ipsrs=new DlgBarangIPSRS(this,false);
+        IPSRSBarang ipsrs=new IPSRSBarang(this,false);
         ipsrs.emptTeks();
         ipsrs.onCari();
         ipsrs.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
@@ -9763,7 +9764,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnPembelianIpsrsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPembelianIpsrsActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPembelianIPSRS pembelian=new DlgPembelianIPSRS(this,false);
+        IPSRSPembelian pembelian=new IPSRSPembelian(this,false);
         pembelian.isCek();
         pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         pembelian.setLocationRelativeTo(PanelUtama);
@@ -12679,7 +12680,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnPenerimaanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaanNonMedisActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPemesananIPSRS pembelian=new DlgPemesananIPSRS(this,false);
+        IPSRSPemesanan pembelian=new IPSRSPemesanan(this,false);
         pembelian.isCek();
         pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         pembelian.setLocationRelativeTo(PanelUtama);
@@ -16071,7 +16072,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnRiwayatBarangNonMedisActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        IPSRSRiwayatBarang sirkulasi=new IPSRSRiwayatBarang(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     /**
     * @param args the command line arguments
