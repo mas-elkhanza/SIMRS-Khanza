@@ -107,6 +107,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 return types[columnIndex];
             }
         };
+        
+        
         tbRawatDr.setModel(tabModeDr);
         //tampilDr();
 
@@ -1925,7 +1927,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }
         });
         panelGlass11.add(btnTindakan6);
-        btnTindakan6.setBounds(818, 70, 28, 23);
+        btnTindakan6.setBounds(818, 70, 28, 20);
 
         btnTindakan7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnTindakan7.setMnemonic('3');
@@ -6051,8 +6053,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         + "rawat_inap_drpr.tarif_tindakandr,"
                         + "rawat_inap_drpr.tarif_tindakanpr,"
                         + "rawat_inap_drpr.kso "
+                        
                         + "from pasien "
-                        + "inner join reg_periksa inner join jns_perawatan_inap inner join dokter inner join rawat_inap_drpr inner join petugas "
+                        + "inner join reg_periksa "
+                        + "inner join jns_perawatan_inap "
+                        + "inner join dokter "
+                        + "inner join rawat_inap_drpr "
+                        + "inner join petugas "
+                        
                         + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
                         + "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "and rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw"
@@ -6077,11 +6085,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         + "rawat_inap_drpr.tarif_tindakandr,"
                         + "rawat_inap_drpr.tarif_tindakanpr,"
                         + "rawat_inap_drpr.kso "
-                        + "from pasien inner join reg_periksa "
+                        
+                        + "from pasien "
+                        + "inner join reg_periksa "
                         + "inner join jns_perawatan_inap "
                         + "inner join dokter "
                         + "inner join rawat_inap_drpr "
                         + "inner join petugas "
+                        
                         + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
                         + "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "and rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "

@@ -18,6 +18,8 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -91,7 +93,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         tbUser.setDefaultRenderer(Object.class, new WarnaTable());
         TPass.setDocument(new batasInput((byte) 50).getKata(TPass));
         TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
-
+        
     }
 
     /**
@@ -214,6 +216,9 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(650, 513));
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -501,6 +506,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        CmbAkses.setSelectedIndex(0);
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -538,17 +544,30 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
     private void CmbAksesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbAksesItemStateChanged
         // TODO add your handling code here: 
-        if (CmbAkses.getSelectedItem().equals("-")) {
-            tampil(TKd.getText());
-        } else {
-            kategori();
-        }
+//        if(CmbAkses.getSelectedItem().equals("")){
+//            
+//        }else
+//        if (CmbAkses.getSelectedItem().equals("-")) {
+//            tampil(TKd.getText());
+//        } else {
+//            kategori();
+//        }
     }//GEN-LAST:event_CmbAksesItemStateChanged
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-
-        // Valid.loadCombo(CmbAkses,"user_akses","kategori");
+        Valid.loadCombo(CmbAkses,"kategori","user_akses");
+        
+        CmbAkses.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                 if (CmbAkses.getSelectedItem().equals("-")) {
+                    tampil(TKd.getText());
+                } else {
+                    kategori();
+                }
+            }
+        });
     }//GEN-LAST:event_formWindowOpened
 
     private void btnTambahKatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahKatActionPerformed
@@ -567,6 +586,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         updateKategori1();
         updateKategori2();
     }//GEN-LAST:event_btnUpdateKatActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -10180,6 +10203,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user_akses", "kategori='" + CmbAkses.getSelectedItem() + "'", "password_asuransi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
         }
-        JOptionPane.showMessageDialog(null, "Proses update User akses " + CmbAkses.getSelectedItem() + " selesai..!!");
+        JOptionPane.showMessageDialog(rootPane, "Proses update User akses " + CmbAkses.getSelectedItem() + " selesai..!!");
     }
 }

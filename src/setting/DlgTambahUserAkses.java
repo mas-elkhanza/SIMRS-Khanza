@@ -10094,6 +10094,6 @@ public class DlgTambahUserAkses extends javax.swing.JDialog {
                 Sequel.mengedit("user_akses", "kategori='" + TNmUser.getText() + "'", "password_asuransi='" + tbUser.getValueAt(i, 2).toString() + "'");
             }
         }
-        JOptionPane.showMessageDialog(null, "Proses update User akses " + TNmUser.getText() + " selesai..!!");
+        JOptionPane.showMessageDialog(rootPane, "Proses update User akses " + TNmUser.getText() + " selesai..!!");
     }
 }
