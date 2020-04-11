@@ -161,11 +161,11 @@ import inventory.DlgSirkulasiBarang;
 import inventory.DlgSirkulasiBarang2;
 import inventory.DlgStokPasien;
 import ipsrs.IPSRSBarang;
-import ipsrs.DlgCariPengambilanPenunjangUTD;
+import ipsrs.IPSRSCariPengambilanPenunjangUTD;
 import ipsrs.DlgJenisIPSRS;
 import ipsrs.IPSRSPembelian;
-import ipsrs.DlgPengambilanPenunjangUTD;
-import ipsrs.DlgPengeluaranIPSRS;
+import ipsrs.IPSRSPengambilanPenunjangUTD;
+import ipsrs.IPSRSPengeluaran;
 import ipsrs.DlgRBiayaHarianIPSRS;
 import ipsrs.DlgRHPembelianIPSRS;
 import ipsrs.DlgRHPengeluaranIPSRS;
@@ -299,7 +299,7 @@ import inventory.DlgRiwayatBarangMedis;
 import inventory.DlgRiwayatBatch;
 import inventory.DlgSirkulasiBarang3;
 import inventory.DlgSuratPemesanan;
-import ipsrs.DlgInputStokIPSRS;
+import ipsrs.IPSRSInputStok;
 import ipsrs.IPSRSPemesanan;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
 import ipsrs.DlgPermintaanNonMedis;
@@ -9776,7 +9776,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnPengeluaranIpsrsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPengeluaranIpsrsActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPengeluaranIPSRS pengeluaran=new DlgPengeluaranIPSRS(this,false);
+        IPSRSPengeluaran pengeluaran=new IPSRSPengeluaran(this,false);
         pengeluaran.isCek();
         pengeluaran.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         pengeluaran.setLocationRelativeTo(PanelUtama);
@@ -10972,7 +10972,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPengambilanPenunjangUTD form=new DlgPengambilanPenunjangUTD(this,false);
+        IPSRSPengambilanPenunjangUTD form=new IPSRSPengambilanPenunjangUTD(this,false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
@@ -10984,7 +10984,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgCariPengambilanPenunjangUTD form=new DlgCariPengambilanPenunjangUTD(this,false);
+        IPSRSCariPengambilanPenunjangUTD form=new IPSRSCariPengambilanPenunjangUTD(this,false);
         form.setHapus();
         form.tampil();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
@@ -13654,7 +13654,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnOpnameIPSRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpnameIPSRSActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgInputStokIPSRS opname=new DlgInputStokIPSRS(this,false);
+        IPSRSInputStok opname=new IPSRSInputStok(this,false);
         opname.tampil();
         opname.isCek();
         opname.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());

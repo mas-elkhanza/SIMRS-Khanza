@@ -797,7 +797,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             Sequel.queryu("update permintaan_non_medis set status='Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgPengeluaranIPSRS aplikasi=new DlgPengeluaranIPSRS(null,false);
+            IPSRSPengeluaran aplikasi=new IPSRSPengeluaran(null,false);
             aplikasi.tampilkanpermintaan=false;
             aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             aplikasi.isCek();

@@ -382,28 +382,28 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             if(nmbar.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptRiwayatBarangIPSRS.jasper","report","::[ Riwayat Barang Non Medis dan Penunjang ( Lab & RO ) ]::",
-                    "select iprs_riwayat_barang.kode_brng,ipsrsbarang.nama_brng,"+
-                    "iprs_riwayat_barang.stok_awal,iprs_riwayat_barang.masuk,"+
-                    "iprs_riwayat_barang.keluar,iprs_riwayat_barang.stok_akhir,"+
-                    "iprs_riwayat_barang.posisi,iprs_riwayat_barang.tanggal,"+
-                    "iprs_riwayat_barang.jam,iprs_riwayat_barang.petugas,"+
-                    "iprs_riwayat_barang.status from iprs_riwayat_barang "+
-                    "inner join ipsrsbarang on iprs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
-                    "iprs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by iprs_riwayat_barang.tanggal,iprs_riwayat_barang.jam ",param);
+                    "select ipsrs_riwayat_barang.kode_brng,ipsrsbarang.nama_brng,"+
+                    "ipsrs_riwayat_barang.stok_awal,ipsrs_riwayat_barang.masuk,"+
+                    "ipsrs_riwayat_barang.keluar,ipsrs_riwayat_barang.stok_akhir,"+
+                    "ipsrs_riwayat_barang.posisi,ipsrs_riwayat_barang.tanggal,"+
+                    "ipsrs_riwayat_barang.jam,ipsrs_riwayat_barang.petugas,"+
+                    "ipsrs_riwayat_barang.status from ipsrs_riwayat_barang "+
+                    "inner join ipsrsbarang on ipsrs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
+                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' order by ipsrs_riwayat_barang.tanggal,ipsrs_riwayat_barang.jam ",param);
             }else{
                 Valid.MyReportqry("rptRiwayatBarangIPSRS.jasper","report","::[ Riwayat Barang Non Medis dan Penunjang ( Lab & RO ) ]::",
-                    "select iprs_riwayat_barang.kode_brng,ipsrsbarang.nama_brng,"+
-                    "iprs_riwayat_barang.stok_awal,iprs_riwayat_barang.masuk,"+
-                    "iprs_riwayat_barang.keluar,iprs_riwayat_barang.stok_akhir,"+
-                    "iprs_riwayat_barang.posisi,iprs_riwayat_barang.tanggal,"+
-                    "iprs_riwayat_barang.jam,iprs_riwayat_barang.petugas,"+
-                    "iprs_riwayat_barang.status from iprs_riwayat_barang "+
-                    "inner join ipsrsbarang on iprs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
-                    "iprs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and iprs_riwayat_barang.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "iprs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "iprs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and iprs_riwayat_barang.petugas like '%"+TCari.getText().trim()+"%' or "+
-                    "iprs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and iprs_riwayat_barang.status like '%"+TCari.getText().trim()+"%' "+
-                    "order by iprs_riwayat_barang.tanggal,iprs_riwayat_barang.jam ",param);
+                    "select ipsrs_riwayat_barang.kode_brng,ipsrsbarang.nama_brng,"+
+                    "ipsrs_riwayat_barang.stok_awal,ipsrs_riwayat_barang.masuk,"+
+                    "ipsrs_riwayat_barang.keluar,ipsrs_riwayat_barang.stok_akhir,"+
+                    "ipsrs_riwayat_barang.posisi,ipsrs_riwayat_barang.tanggal,"+
+                    "ipsrs_riwayat_barang.jam,ipsrs_riwayat_barang.petugas,"+
+                    "ipsrs_riwayat_barang.status from ipsrs_riwayat_barang "+
+                    "inner join ipsrsbarang on ipsrs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
+                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrs_riwayat_barang.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
+                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrs_riwayat_barang.petugas like '%"+TCari.getText().trim()+"%' or "+
+                    "ipsrs_riwayat_barang.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and ipsrsbarang.nama_brng like '%"+nmbar.getText()+"%' and ipsrs_riwayat_barang.status like '%"+TCari.getText().trim()+"%' "+
+                    "order by ipsrs_riwayat_barang.tanggal,ipsrs_riwayat_barang.jam ",param);
             }
                 
             this.setCursor(Cursor.getDefaultCursor());
@@ -542,27 +542,27 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
        try{   
             if(nmbar.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select iprs_riwayat_barang.kode_brng,ipsrsbarang.nama_brng,"+
-                    "iprs_riwayat_barang.stok_awal,iprs_riwayat_barang.masuk,"+
-                    "iprs_riwayat_barang.keluar,iprs_riwayat_barang.stok_akhir,"+
-                    "iprs_riwayat_barang.posisi,iprs_riwayat_barang.tanggal,"+
-                    "iprs_riwayat_barang.jam,iprs_riwayat_barang.petugas,"+
-                    "iprs_riwayat_barang.status from iprs_riwayat_barang "+
-                    "inner join ipsrsbarang on iprs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
-                    "iprs_riwayat_barang.tanggal between ? and ? order by iprs_riwayat_barang.tanggal,iprs_riwayat_barang.jam ");
+                    "select ipsrs_riwayat_barang.kode_brng,ipsrsbarang.nama_brng,"+
+                    "ipsrs_riwayat_barang.stok_awal,ipsrs_riwayat_barang.masuk,"+
+                    "ipsrs_riwayat_barang.keluar,ipsrs_riwayat_barang.stok_akhir,"+
+                    "ipsrs_riwayat_barang.posisi,ipsrs_riwayat_barang.tanggal,"+
+                    "ipsrs_riwayat_barang.jam,ipsrs_riwayat_barang.petugas,"+
+                    "ipsrs_riwayat_barang.status from ipsrs_riwayat_barang "+
+                    "inner join ipsrsbarang on ipsrs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
+                    "ipsrs_riwayat_barang.tanggal between ? and ? order by ipsrs_riwayat_barang.tanggal,ipsrs_riwayat_barang.jam ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select iprs_riwayat_barang.kode_brng,ipsrsbarang.nama_brng,"+
-                    "iprs_riwayat_barang.stok_awal,iprs_riwayat_barang.masuk,"+
-                    "iprs_riwayat_barang.keluar,iprs_riwayat_barang.stok_akhir,"+
-                    "iprs_riwayat_barang.posisi,iprs_riwayat_barang.tanggal,"+
-                    "iprs_riwayat_barang.jam,iprs_riwayat_barang.petugas,"+
-                    "iprs_riwayat_barang.status from iprs_riwayat_barang "+
-                    "inner join ipsrsbarang on iprs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
-                    "iprs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and iprs_riwayat_barang.kode_brng like ? or "+
-                    "iprs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                    "iprs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and iprs_riwayat_barang.petugas like ? or "+
-                    "iprs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and iprs_riwayat_barang.status like ? order by iprs_riwayat_barang.tanggal,iprs_riwayat_barang.jam ");
+                    "select ipsrs_riwayat_barang.kode_brng,ipsrsbarang.nama_brng,"+
+                    "ipsrs_riwayat_barang.stok_awal,ipsrs_riwayat_barang.masuk,"+
+                    "ipsrs_riwayat_barang.keluar,ipsrs_riwayat_barang.stok_akhir,"+
+                    "ipsrs_riwayat_barang.posisi,ipsrs_riwayat_barang.tanggal,"+
+                    "ipsrs_riwayat_barang.jam,ipsrs_riwayat_barang.petugas,"+
+                    "ipsrs_riwayat_barang.status from ipsrs_riwayat_barang "+
+                    "inner join ipsrsbarang on ipsrs_riwayat_barang.kode_brng=ipsrsbarang.kode_brng where "+
+                    "ipsrs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and ipsrs_riwayat_barang.kode_brng like ? or "+
+                    "ipsrs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
+                    "ipsrs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and ipsrs_riwayat_barang.petugas like ? or "+
+                    "ipsrs_riwayat_barang.tanggal between ? and ? and ipsrsbarang.nama_brng like ? and ipsrs_riwayat_barang.status like ? order by ipsrs_riwayat_barang.tanggal,ipsrs_riwayat_barang.jam ");
             }
                 
             try {

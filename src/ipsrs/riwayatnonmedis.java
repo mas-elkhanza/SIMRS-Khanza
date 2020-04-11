@@ -44,7 +44,7 @@ public class riwayatnonmedis {
                 }
             }
                      
-            ps=koneksi.prepareStatement("insert into iprs_riwayat_barang values(?,?,?,?,?,?,current_date(),current_time(),?,?)");
+            ps=koneksi.prepareStatement("insert into ipsrs_riwayat_barang values(?,?,?,?,?,?,current_date(),current_time(),?,?)");
             try {
                 if(posisi.equals("Opname")){
                     ps.setString(1,kodebarang);
