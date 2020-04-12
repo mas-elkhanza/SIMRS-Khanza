@@ -426,6 +426,7 @@ import bridging.InhealthTindakanOperasi;
 import bridging.InhealthTindakanRadiologi;
 import bridging.InhealthTindakanRalan;
 import bridging.InhealthTindakanRanap;
+import bridging.CoronaPasien;
 import grafikanalisa.GrafikInventarisPerJenis;
 import grafikanalisa.GrafikInventarisPerRuang;
 import grafikanalisa.GrafikItemApotekPerGolongan;
@@ -16091,6 +16092,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnPasienCoronaActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        CoronaPasien form=new CoronaPasien(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -16687,7 +16700,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
-            btnRiwayatBarangNonMedis;
+            btnRiwayatBarangNonMedis,btnPasienCorona;
     
     public void isWall(){
         try{            
@@ -18782,6 +18795,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSiranapKetersediaanKamar);
                 jmlmenu++;
             }
+            
+            if(akses.getpasien_corona()==true){
+                Panelmenu.add(btnPasienCorona);
+                jmlmenu++;
+            } 
         }else if(cmbMenu.getSelectedIndex()==11){ 
             jmlmenu=0;
             if(akses.getperusahaan_pasien()==true){
@@ -18979,7 +18997,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(akses.getpenilaian_awal_keperawatan_ralan()==true){
                 Panelmenu.add(btnPenilaianAwalKeperawatanRalan);
                 jmlmenu++;
-            } 
+            }
         }else if(cmbMenu.getSelectedIndex()==12){  
             jmlmenu=0;
             if(akses.getpengambilan_utd2()==true){
@@ -21825,6 +21843,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnSiranapKetersediaanKamar);
             jmlmenu++;
         }
+        
+        if(akses.getpasien_corona()==true){
+            Panelmenu.add(btnPasienCorona);
+            jmlmenu++;
+        } 
 
         if(akses.getperusahaan_pasien()==true){
             Panelmenu.add(btnPerusahaan);
@@ -22022,7 +22045,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnPenilaianAwalKeperawatanRalan);
             jmlmenu++;
         } 
-
+        
         if(akses.getpengambilan_utd2()==true){
             Panelmenu.add(btnPengambilanUTD2); 
             jmlmenu++;
@@ -25647,6 +25670,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getpasien_corona()==true){
+            if(btnPasienCorona.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPasienCorona);
+                jmlmenu++;
+            }                
+        }
 
         if(akses.getperusahaan_pasien()==true){
             if(btnPerusahaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -25922,7 +25952,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
-
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -28921,6 +28951,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRiwayatBarangNonMedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRiwayatBarangNonMedisActionPerformed(evt);
+            }
+        });
+        
+        btnPasienCorona= new widget.ButtonBig();
+        btnPasienCorona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_fever-illness-sick-temperature-thermomete_5994873.png"))); 
+        btnPasienCorona.setText("Pasien Corona");
+        btnPasienCorona.setIconTextGap(0);
+        btnPasienCorona.setName("btnPasienCorona"); 
+        btnPasienCorona.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPasienCorona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasienCoronaActionPerformed(evt);
             }
         });
     }

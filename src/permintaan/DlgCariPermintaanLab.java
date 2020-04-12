@@ -1,6 +1,6 @@
 package permintaan;
-import bridging.LICAApi;
-import bridging.LICAApi2;
+import bridging.ApiLICA;
+import bridging.ApiLICA2;
 import bridging.koneksiDBELIMS;
 import bridging.koneksiDBSysmex;
 import fungsi.BackgroundMusic;
@@ -51,8 +51,8 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private BackgroundMusic music;
     private Date now;
     private boolean aktif=false,semua;
-    private LICAApi lica=new LICAApi();
-    private LICAApi2 lica2=new LICAApi2();
+    private ApiLICA lica=new ApiLICA();
+    private ApiLICA2 lica2=new ApiLICA2();
     private String pilihan="",alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",la="",ld="",pa="",pd="",InformasiTambahan,DiagnosaKlinis,
                     NoPermintaan="",NoRawat="",Pasien="",Permintaan="",JamPermintaan="",Sampel="",JamSampel="",Hasil="",JamHasil="",KodeDokter="",DokterPerujuk="",Ruang="";
     

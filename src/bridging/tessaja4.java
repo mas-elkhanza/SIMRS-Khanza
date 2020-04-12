@@ -18,7 +18,7 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class tessaja4 {
     private static Properties prop = new Properties();
-    public static PcareApi api=new PcareApi();
+    public static ApiPcare api=new ApiPcare();
     public static void tessaja() throws FileNotFoundException, IOException{
         prop.loadFromXML(new FileInputStream("setting/database.xml"));
         System.out.println("X-cons-id:"+koneksiDB.IDSISRUTE());

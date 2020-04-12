@@ -132,7 +132,7 @@ public final class akses {
             toko_barang=false,penagihan_piutang_pasien=false,akun_penagihan_piutang=false,stok_opname_toko=false,toko_riwayat_barang=false,
             toko_surat_pemesanan=false,toko_pengajuan_barang=false,toko_penerimaan_barang=false,toko_pengadaan_barang=false,toko_hutang=false,
             toko_bayar_pemesanan=false,toko_member=false,toko_penjualan=false,registrasi_poli_per_tanggal=false,toko_piutang=false,toko_retur_beli=false,
-            ipsrs_returbeli=false,ipsrs_riwayat_barang=false;
+            ipsrs_returbeli=false,ipsrs_riwayat_barang=false,pasien_corona=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -763,6 +763,7 @@ public final class akses {
                         akses.toko_retur_beli=true;
                         akses.ipsrs_returbeli=true;
                         akses.ipsrs_riwayat_barang=true;
+                        akses.pasien_corona=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1377,6 +1378,7 @@ public final class akses {
                         akses.toko_retur_beli=rs2.getBoolean("toko_retur_beli");
                         akses.ipsrs_returbeli=rs2.getBoolean("ipsrs_returbeli");
                         akses.ipsrs_riwayat_barang=rs2.getBoolean("ipsrs_riwayat_barang");
+                        akses.pasien_corona=rs2.getBoolean("pasien_corona");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1989,6 +1991,7 @@ public final class akses {
                         akses.toko_retur_beli=false;
                         akses.ipsrs_returbeli=false;
                         akses.ipsrs_riwayat_barang=false;
+                        akses.pasien_corona=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2655,4 +2658,5 @@ public final class akses {
     public static boolean gettoko_retur_beli(){return akses.toko_retur_beli;}
     public static boolean getipsrs_returbeli(){return akses.ipsrs_returbeli;}
     public static boolean getipsrs_riwayat_barang(){return akses.ipsrs_riwayat_barang;}
+    public static boolean getpasien_corona(){return akses.pasien_corona;}
 }   

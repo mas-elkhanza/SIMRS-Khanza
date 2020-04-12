@@ -421,6 +421,36 @@ public class koneksiDB {
         return var;
     }
     
+    public static String URLAPICORONA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAPICORONA");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String IDCORONA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("IDCORONA"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+    public static String PASSCORONA(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PASSCORONA"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
     public static String URLAPISITT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));

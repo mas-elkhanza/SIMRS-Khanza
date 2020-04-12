@@ -89,7 +89,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
     private DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
             
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     public  DlgPropinsi propin=new DlgPropinsi(null,false);
     public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
     public  DlgBahasa bahasa=new DlgBahasa(null,false);

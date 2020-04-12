@@ -46,7 +46,7 @@ public final class BPJSHistoriPelayanan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private int i=0;
     private DlgPasien pasien=new DlgPasien(null,false);
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private String URL="",link="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
