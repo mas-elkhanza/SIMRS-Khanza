@@ -15,22 +15,14 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
-import fungsi.batasInput;
 import fungsi.koneksiDB;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
-import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
-import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -42,7 +34,6 @@ import org.springframework.http.HttpMethod;
 public final class CoronaReferensiJK extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
-    private sekuel Sequel=new sekuel();
     private int i=0;
     private ApiKemenkesCorona api=new ApiKemenkesCorona();
     private String link="",idrs="";
@@ -50,7 +41,6 @@ public final class CoronaReferensiJK extends javax.swing.JDialog {
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
-    private JsonNode nameNode;
     private JsonNode response;
 
     /** Creates new form DlgKamar
@@ -72,7 +62,7 @@ public final class CoronaReferensiJK extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 2; i++) {
+        for (i = 0; i < 2; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(40);
