@@ -2186,9 +2186,10 @@ public void pilihTab() {
                             try{
                                 rs3=koneksi.prepareStatement(
                                         "select rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.kd_jenis_prw,"+
-                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat "+
+                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat,rawat_inap_drpr.kd_kamar,kamar.kelas "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter inner join petugas on rawat_inap_drpr.nip=petugas.nip "+
+                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter "
+                                                + "inner join petugas on rawat_inap_drpr.nip=petugas.nip inner join kamar on rawat_inap_drpr.kd_kamar=kamar.kd_kamar "+
                                         "where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
@@ -2198,9 +2199,10 @@ public void pilihTab() {
                                           "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='14%' bgcolor='#FFFAF8'>Kamar</td>"+
+                                          "<td valign='top' width='12%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='14%' bgcolor='#FFFAF8'>Paramedis</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
@@ -2212,6 +2214,7 @@ public void pilihTab() {
                                                 "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kd_kamar")+" ("+rs3.getString("kelas")+")</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya_rawat"))+"</td>"+
@@ -2243,7 +2246,7 @@ public void pilihTab() {
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal Masuk</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggak Keluar</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal Keluar</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Lama Inap</td>"+
                                           "<td valign='top' width='35%' bgcolor='#FFFAF8'>Kamar</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Status</td>"+
@@ -5391,9 +5394,10 @@ public void pilihTab() {
                             try{
                                 rs3=koneksi.prepareStatement(
                                         "select rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.kd_jenis_prw,"+
-                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat "+
+                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat,rawat_inap_drpr.kd_kamar,kamar.kelas "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter inner join petugas on rawat_inap_drpr.nip=petugas.nip "+
+                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter "
+                                                + "inner join petugas on rawat_inap_drpr.nip=petugas.nip inner join kamar on rawat_inap_drpr.kd_kamar=kamar.kd_kamar "+
                                         "where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
@@ -5403,9 +5407,10 @@ public void pilihTab() {
                                           "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#FFFAF8'>Paramedis</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#FFFAF8'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='14%' bgcolor='#FFFAF8'>Kamar</td>"+
+                                          "<td valign='top' width='12%' bgcolor='#FFFAF8'>Dokter</td>"+
+                                          "<td valign='top' width='14%' bgcolor='#FFFAF8'>Paramedis</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
@@ -5417,6 +5422,7 @@ public void pilihTab() {
                                                 "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kd_kamar")+" ("+rs3.getString("kelas")+")</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya_rawat"))+"</td>"+
@@ -5448,7 +5454,7 @@ public void pilihTab() {
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal Masuk</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggak Keluar</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal Keluar</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Lama Inap</td>"+
                                           "<td valign='top' width='35%' bgcolor='#FFFAF8'>Kamar</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Status</td>"+
