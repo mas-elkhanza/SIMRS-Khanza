@@ -124,6 +124,7 @@ public final class CoronaReferensiStatusKeluar extends javax.swing.JDialog {
         jLabel16 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
         jLabel17 = new widget.Label();
         BtnKeluar = new widget.Button();
 
@@ -161,7 +162,7 @@ public final class CoronaReferensiStatusKeluar extends javax.swing.JDialog {
         panelGlass6.add(jLabel16);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(220, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(190, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -185,6 +186,18 @@ public final class CoronaReferensiStatusKeluar extends javax.swing.JDialog {
             }
         });
         panelGlass6.add(BtnCari);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('2');
+        BtnAll.setToolTipText("Alt+2");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        panelGlass6.add(BtnAll);
 
         jLabel17.setName("jLabel17"); // NOI18N
         jLabel17.setPreferredSize(new java.awt.Dimension(30, 23));
@@ -257,6 +270,11 @@ public final class CoronaReferensiStatusKeluar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbKamarKeyPressed
 
+    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        TCari.setText("");
+        tampil();
+    }//GEN-LAST:event_BtnAllActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -274,6 +292,7 @@ public final class CoronaReferensiStatusKeluar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.ScrollPane Scroll;

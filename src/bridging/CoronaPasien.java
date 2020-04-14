@@ -58,8 +58,10 @@ public class CoronaPasien extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "Tgl.Skrining","Jam Skrining","No.R.M.","Nama Pasien","Tgl.Lahir","Ibu Kandung","J.K.","Geriatri",
-                "Kesadaran","Pernafasan","Nyeri Dada","Skala Nyeri","Keputusan","NIP","Nama Petugas"
+                "No.KTP/Paspor","No.RM","Nama Pasien","Inisial","Kode JK","Jenis Kelamin","Tgl.Lahir","E-mail","No.Telp",
+                "Tgl.Lapor","Tgl.Masuk","Tgl.Keluar","Kode Kw","Kewarganegaraan","Kode Sumber","Sumber Penularan","Kode Kel",
+                "Kelurahan","Kode Kec","Kecamatan","Kode Kab","Kabupaten","Kode Prop","Propinsi","Kode Stts Keluar","Status Keluar",
+                "Kode Status Rawat","Status Rawat","Kode isolasi","Status Isolasi","Sebab Kematian"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -69,37 +71,79 @@ public class CoronaPasien extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 31; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(70);
-            }else if(i==2){
-                column.setPreferredWidth(70);
-            }else if(i==3){
-                column.setPreferredWidth(150);
-            }else if(i==4){
                 column.setPreferredWidth(60);
+            }else if(i==2){
+                column.setPreferredWidth(170);
+            }else if(i==3){
+                column.setPreferredWidth(100);
+            }else if(i==4){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==5){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(65);
             }else if(i==7){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(140);
             }else if(i==8){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(110);
             }else if(i==9){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(120);
             }else if(i==10){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(65);
             }else if(i==11){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(65);
             }else if(i==12){
-                column.setPreferredWidth(80);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==13){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(110);
             }else if(i==14){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==15){
+                column.setPreferredWidth(130);
+            }else if(i==16){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==17){
+                column.setPreferredWidth(100);
+            }else if(i==18){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==19){
+                column.setPreferredWidth(100);
+            }else if(i==20){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==21){
+                column.setPreferredWidth(100);
+            }else if(i==22){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==23){
+                column.setPreferredWidth(100);
+            }else if(i==24){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==25){
+                column.setPreferredWidth(120);
+            }else if(i==26){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==27){
+                column.setPreferredWidth(150);
+            }else if(i==28){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==29){
+                column.setPreferredWidth(200);
+            }else if(i==30){
                 column.setPreferredWidth(150);
             }
         }
@@ -373,8 +417,8 @@ public class CoronaPasien extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(kelurahan.getTable().getSelectedRow()!= -1){                   
-                    KodeKelurahan.setText(kelurahan.getTable().getValueAt(kelurahan.getTable().getSelectedRow(),0).toString());
-                    NamaKelurahan.setText(kelurahan.getTable().getValueAt(kelurahan.getTable().getSelectedRow(),1).toString());
+                    KodeKelurahan.setText(kelurahan.getTable().getValueAt(kelurahan.getTable().getSelectedRow(),1).toString());
+                    NamaKelurahan.setText(kelurahan.getTable().getValueAt(kelurahan.getTable().getSelectedRow(),0).toString());
                     BtnKelurahan.requestFocus();
                 }                  
             }
@@ -1014,7 +1058,7 @@ public class CoronaPasien extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(217, 100, 70, 23);
 
-        TglLapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-04-2020 14:56:14" }));
+        TglLapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-04-2020 19:35:16" }));
         TglLapor.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglLapor.setName("TglLapor"); // NOI18N
         TglLapor.setOpaque(false);
@@ -1135,13 +1179,13 @@ public class CoronaPasien extends javax.swing.JDialog {
         KodeKelurahan.setHighlighter(null);
         KodeKelurahan.setName("KodeKelurahan"); // NOI18N
         FormInput.add(KodeKelurahan);
-        KodeKelurahan.setBounds(528, 10, 70, 23);
+        KodeKelurahan.setBounds(528, 10, 80, 23);
 
         NamaKelurahan.setEditable(false);
         NamaKelurahan.setHighlighter(null);
         NamaKelurahan.setName("NamaKelurahan"); // NOI18N
         FormInput.add(NamaKelurahan);
-        NamaKelurahan.setBounds(600, 10, 190, 23);
+        NamaKelurahan.setBounds(610, 10, 180, 23);
 
         BtnKelurahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKelurahan.setMnemonic('X');
@@ -1271,7 +1315,17 @@ public class CoronaPasien extends javax.swing.JDialog {
         }else if(SebabKematian.getText().trim().equals("")){
             Valid.textKosong(SebabKematian,"Sebab Kematian");
         }else{
-            
+            if(Sequel.menyimpantf("pasien_corona","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Pasien",31,new String[]{
+                NoKTP.getText(),NoRM.getText(),Inisial.getText(),NamaPasien.getText(),Valid.SetTgl(TglMasuk.getSelectedItem()+""),KodeJK.getText(), NamaJK.getText(), 
+                Valid.SetTgl(TglLahir.getText()+""),KodeKewarganegaraan.getText(),NamaKewarganegaraan.getText(),KodePenularan.getText(),NamaPenularan.getText(), 
+                KodeKelurahan.getText(),NamaKelurahan.getText(),KodeKecamatan.getText(),NamaKecamatan.getText(),KodeKabupaten.getText(),NamaKabupaten.getText(), 
+                KodePropinsi.getText(),NamaPropinsi.getText(),Valid.SetTgl(TglKeluar.getSelectedItem()+""),KodeStatusKeluar.getText(),NamaStatusKeluar.getText(),
+                Valid.SetTgl(TglLapor.getSelectedItem()+"")+" "+TglLapor.getSelectedItem().toString().substring(11,19),KodeStatusRawat.getText(),NamaStatusRawat.getText(), 
+                KodeStatusIsolasi.getText(),NamaStatusIsolasi.getText(),Email.getText(),NoTelp.getText(),SebabKematian.getText()
+            })==true){
+                tampil();
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1706,57 +1760,44 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {     
-        try {
-            Valid.tabelKosong(tabMode);
+        Valid.tabelKosong(tabMode);
+        try{    
             ps=koneksi.prepareStatement(
-                    "select skrining_rawat_jalan.tanggal,skrining_rawat_jalan.jam,skrining_rawat_jalan.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"+
-                    "pasien.nm_ibu,pasien.jk,skrining_rawat_jalan.geriatri,skrining_rawat_jalan.kesadaran,skrining_rawat_jalan.pernapasan,"+
-                    "skrining_rawat_jalan.nyeri_dada,skrining_rawat_jalan.skala_nyeri,skrining_rawat_jalan.keputusan,skrining_rawat_jalan.nip,petugas.nama "+
-                    "from skrining_rawat_jalan inner join pasien inner join petugas on skrining_rawat_jalan.no_rkm_medis=pasien.no_rkm_medis and "+
-                    "skrining_rawat_jalan.nip=petugas.nip where "+
-                    "skrining_rawat_jalan.tanggal between ? and ? and skrining_rawat_jalan.no_rkm_medis like ? or "+
-                    "skrining_rawat_jalan.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                    "skrining_rawat_jalan.tanggal between ? and ? and pasien.nm_ibu like ? or "+
-                    "skrining_rawat_jalan.tanggal between ? and ? and skrining_rawat_jalan.kesadaran like ? or "+
-                    "skrining_rawat_jalan.tanggal between ? and ? and skrining_rawat_jalan.pernapasan like ? or "+
-                    "skrining_rawat_jalan.tanggal between ? and ? and skrining_rawat_jalan.nyeri_dada like ? or "+
-                    "skrining_rawat_jalan.tanggal between ? and ? and skrining_rawat_jalan.keputusan like ? or "+
-                    "skrining_rawat_jalan.tanggal between ? and ? and skrining_rawat_jalan.nip like ? or "+
-                    "skrining_rawat_jalan.tanggal between ? and ? and petugas.nama like ? order by skrining_rawat_jalan.tanggal desc");
+                    "select no_pengenal,no_rkm_medis,inisial,nama_lengkap,tgl_masuk,kode_jk,nama_jk,tgl_lahir,kode_kewarganegaraan,"+
+                    "nama_kewarganegaraan,kode_penularan,sumber_penularan,kd_kelurahan,nm_kelurahan,kd_kecamatan,nm_kecamatan,kd_kabupaten,"+
+                    "nm_kabupaten,kd_propinsi,nm_propinsi,tgl_keluar,kode_statuskeluar,nama_statuskeluar,tgl_lapor,kode_statusrawat,"+
+                    "nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kematian from pasien_corona "+
+                    "where tgl_masuk between ? and ? "+
+                    (TCari.getText().trim().equals("")?"":"and (no_pengenal like ? or no_rkm_medis like ? or nama_kewarganegaraan like ? or "+
+                    "sumber_penularan like ? or nm_kelurahan like ? or nm_kecamatan like ? or nm_kabupaten like ? or nm_propinsi like ? or "+
+                    "nama_statuskeluar like ? or nama_statusrawat like ? or nama_statusisolasi like ? or sebab_kematian like ?) ")+
+                    "order by tgl_masuk");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(21,"%"+TCari.getText().trim()+"%");
-                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(24,"%"+TCari.getText().trim()+"%");
-                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(27,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                    ps.setString(9,"%"+TCari.getText().trim()+"%");
+                    ps.setString(10,"%"+TCari.getText().trim()+"%");
+                    ps.setString(11,"%"+TCari.getText().trim()+"%");
+                    ps.setString(12,"%"+TCari.getText().trim()+"%");
+                    ps.setString(13,"%"+TCari.getText().trim()+"%");
+                    ps.setString(14,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
-                while(rs.next()){
+                while(rs.next()){    
                     tabMode.addRow(new String[]{
-                        rs.getString("tanggal"),rs.getString("jam"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),
-                        rs.getString("nm_ibu"),rs.getString("jk"),rs.getString("geriatri"),rs.getString("kesadaran"),rs.getString("pernapasan"),
-                        rs.getString("nyeri_dada"),rs.getString("skala_nyeri"),rs.getString("keputusan"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("no_pengenal"),rs.getString("no_rkm_medis"),rs.getString("nama_lengkap"),rs.getString("inisial"),rs.getString("kode_jk"),rs.getString("nama_jk"),
+                        rs.getString("tgl_lahir"),rs.getString("email"),rs.getString("notelp"),rs.getString("tgl_lapor"),rs.getString("tgl_masuk"),rs.getString("tgl_keluar"),
+                        rs.getString("kode_kewarganegaraan"),rs.getString("nama_kewarganegaraan"),rs.getString("kode_penularan"),rs.getString("sumber_penularan"),rs.getString("kd_kelurahan"),
+                        rs.getString("nm_kelurahan"),rs.getString("kd_kecamatan"),rs.getString("nm_kecamatan"),rs.getString("kd_kabupaten"),rs.getString("nm_kabupaten"),
+                        rs.getString("kd_propinsi"),rs.getString("nm_propinsi"),rs.getString("kode_statuskeluar"),rs.getString("nama_statuskeluar"),rs.getString("kode_statusrawat"),
+                        rs.getString("nama_statusrawat"),rs.getString("kode_statusisolasi"),rs.getString("nama_statusisolasi"),rs.getString("sebab_kematian")
                     });
                 }
             } catch (Exception e) {
@@ -1769,9 +1810,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     ps.close();
                 }
             }
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
         }
+        LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {
