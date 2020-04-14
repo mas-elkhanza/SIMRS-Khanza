@@ -14,6 +14,7 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -764,11 +765,6 @@ public class CoronaPasien extends javax.swing.JDialog {
         NoRM.setEditable(false);
         NoRM.setHighlighter(null);
         NoRM.setName("NoRM"); // NOI18N
-        NoRM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRMKeyPressed(evt);
-            }
-        });
         FormInput.add(NoRM);
         NoRM.setBounds(114, 40, 90, 23);
 
@@ -780,6 +776,11 @@ public class CoronaPasien extends javax.swing.JDialog {
 
         Inisial.setHighlighter(null);
         Inisial.setName("Inisial"); // NOI18N
+        Inisial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                InisialKeyPressed(evt);
+            }
+        });
         FormInput.add(Inisial);
         Inisial.setBounds(114, 70, 95, 23);
 
@@ -830,11 +831,6 @@ public class CoronaPasien extends javax.swing.JDialog {
         NoKTP.setEditable(false);
         NoKTP.setHighlighter(null);
         NoKTP.setName("NoKTP"); // NOI18N
-        NoKTP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoKTPKeyPressed(evt);
-            }
-        });
         FormInput.add(NoKTP);
         NoKTP.setBounds(114, 10, 170, 23);
 
@@ -847,6 +843,11 @@ public class CoronaPasien extends javax.swing.JDialog {
         TglMasuk.setDisplayFormat("dd-MM-yyyy");
         TglMasuk.setName("TglMasuk"); // NOI18N
         TglMasuk.setOpaque(false);
+        TglMasuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TglMasukKeyPressed(evt);
+            }
+        });
         FormInput.add(TglMasuk);
         TglMasuk.setBounds(114, 130, 90, 23);
 
@@ -966,6 +967,11 @@ public class CoronaPasien extends javax.swing.JDialog {
         TglKeluar.setDisplayFormat("dd-MM-yyyy");
         TglKeluar.setName("TglKeluar"); // NOI18N
         TglKeluar.setOpaque(false);
+        TglKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TglKeluarKeyPressed(evt);
+            }
+        });
         FormInput.add(TglKeluar);
         TglKeluar.setBounds(336, 130, 90, 23);
 
@@ -1012,6 +1018,11 @@ public class CoronaPasien extends javax.swing.JDialog {
         TglLapor.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglLapor.setName("TglLapor"); // NOI18N
         TglLapor.setOpaque(false);
+        TglLapor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TglLaporKeyPressed(evt);
+            }
+        });
         FormInput.add(TglLapor);
         TglLapor.setBounds(291, 100, 135, 23);
 
@@ -1232,21 +1243,33 @@ public class CoronaPasien extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            TCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        }
-        
-}//GEN-LAST:event_NoRMKeyPressed
-
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoRM.getText().trim().equals("")||NamaPasien.getText().trim().equals("")){
             Valid.textKosong(NoRM,"Pasien");
+        }else if(Inisial.getText().trim().equals("")){
+            Valid.textKosong(Inisial,"Inisial");
         }else if(KodeJK.getText().trim().equals("")||NamaJK.getText().trim().equals("")){
-            Valid.textKosong(BtnJK,"Petugas");
+            Valid.textKosong(BtnJK,"Jenis Kelamin");
+        }else if(KodeKewarganegaraan.getText().trim().equals("")||NamaKewarganegaraan.getText().trim().equals("")){
+            Valid.textKosong(BtnKewarganegaraan,"Kewarganegaraan");
+        }else if(KodePenularan.getText().trim().equals("")||NamaPenularan.getText().trim().equals("")){
+            Valid.textKosong(BtnSumberPenularan,"Sumber Penularan");
+        }else if(KodeKelurahan.getText().trim().equals("")||NamaKelurahan.getText().trim().equals("")){
+            Valid.textKosong(BtnKelurahan,"Kelurahan");
+        }else if(KodeKecamatan.getText().trim().equals("")||NamaKecamatan.getText().trim().equals("")){
+            Valid.textKosong(BtnKecamatan,"Kecamatan");
+        }else if(KodeKabupaten.getText().trim().equals("")||NamaKabupaten.getText().trim().equals("")){
+            Valid.textKosong(BtnKabupaten,"Kabupaten");
+        }else if(KodePropinsi.getText().trim().equals("")||NamaPropinsi.getText().trim().equals("")){
+            Valid.textKosong(BtnPropinsi,"Propinsi");
+        }else if(KodeStatusKeluar.getText().trim().equals("")||NamaStatusKeluar.getText().trim().equals("")){
+            Valid.textKosong(BtnStatusKeluar,"Status Keluar");
+        }else if(KodeStatusRawat.getText().trim().equals("")||NamaStatusRawat.getText().trim().equals("")){
+            Valid.textKosong(BtnStatusRawat,"Status Rawat");
+        }else if(KodeStatusIsolasi.getText().trim().equals("")||NamaStatusIsolasi.getText().trim().equals("")){
+            Valid.textKosong(BtnStatusIsolasi,"Status Isolasi");
+        }else if(SebabKematian.getText().trim().equals("")){
+            Valid.textKosong(SebabKematian,"Sebab Kematian");
         }else{
             
         }
@@ -1413,11 +1436,39 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnJKActionPerformed
 
     private void BtnJKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnJKKeyPressed
-        //Valid.pindah(evt,Keputusan,BtnSimpan);
+        Valid.pindah(evt,Inisial,TglLapor);
     }//GEN-LAST:event_BtnJKKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        
+        if(NoRM.getText().trim().equals("")||NamaPasien.getText().trim().equals("")){
+            Valid.textKosong(NoRM,"Pasien");
+        }else if(Inisial.getText().trim().equals("")){
+            Valid.textKosong(Inisial,"Inisial");
+        }else if(KodeJK.getText().trim().equals("")||NamaJK.getText().trim().equals("")){
+            Valid.textKosong(BtnJK,"Jenis Kelamin");
+        }else if(KodeKewarganegaraan.getText().trim().equals("")||NamaKewarganegaraan.getText().trim().equals("")){
+            Valid.textKosong(BtnKewarganegaraan,"Kewarganegaraan");
+        }else if(KodePenularan.getText().trim().equals("")||NamaPenularan.getText().trim().equals("")){
+            Valid.textKosong(BtnSumberPenularan,"Sumber Penularan");
+        }else if(KodeKelurahan.getText().trim().equals("")||NamaKelurahan.getText().trim().equals("")){
+            Valid.textKosong(BtnKelurahan,"Kelurahan");
+        }else if(KodeKecamatan.getText().trim().equals("")||NamaKecamatan.getText().trim().equals("")){
+            Valid.textKosong(BtnKecamatan,"Kecamatan");
+        }else if(KodeKabupaten.getText().trim().equals("")||NamaKabupaten.getText().trim().equals("")){
+            Valid.textKosong(BtnKabupaten,"Kabupaten");
+        }else if(KodePropinsi.getText().trim().equals("")||NamaPropinsi.getText().trim().equals("")){
+            Valid.textKosong(BtnPropinsi,"Propinsi");
+        }else if(KodeStatusKeluar.getText().trim().equals("")||NamaStatusKeluar.getText().trim().equals("")){
+            Valid.textKosong(BtnStatusKeluar,"Status Keluar");
+        }else if(KodeStatusRawat.getText().trim().equals("")||NamaStatusRawat.getText().trim().equals("")){
+            Valid.textKosong(BtnStatusRawat,"Status Rawat");
+        }else if(KodeStatusIsolasi.getText().trim().equals("")||NamaStatusIsolasi.getText().trim().equals("")){
+            Valid.textKosong(BtnStatusIsolasi,"Status Isolasi");
+        }else if(SebabKematian.getText().trim().equals("")){
+            Valid.textKosong(SebabKematian,"Sebab Kematian");
+        }else{
+            
+        }
     }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1428,10 +1479,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_BtnEditKeyPressed
 
-    private void NoKTPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKTPKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoKTPKeyPressed
-
     private void BtnKewarganegaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKewarganegaraanActionPerformed
         kewarganegaraan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kewarganegaraan.setLocationRelativeTo(internalFrame1);
@@ -1439,7 +1486,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnKewarganegaraanActionPerformed
 
     private void BtnKewarganegaraanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKewarganegaraanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, TglKeluar,BtnSumberPenularan);
     }//GEN-LAST:event_BtnKewarganegaraanKeyPressed
 
     private void BtnSumberPenularanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSumberPenularanActionPerformed
@@ -1449,7 +1496,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnSumberPenularanActionPerformed
 
     private void BtnSumberPenularanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSumberPenularanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BtnKewarganegaraan,BtnKelurahan);
     }//GEN-LAST:event_BtnSumberPenularanKeyPressed
 
     private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
@@ -1466,7 +1513,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnKecamatanActionPerformed
 
     private void BtnKecamatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKecamatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BtnKelurahan,BtnKabupaten);
     }//GEN-LAST:event_BtnKecamatanKeyPressed
 
     private void BtnStatusKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnStatusKeluarActionPerformed
@@ -1476,7 +1523,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnStatusKeluarActionPerformed
 
     private void BtnStatusKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnStatusKeluarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BtnPropinsi,BtnStatusRawat);
     }//GEN-LAST:event_BtnStatusKeluarKeyPressed
 
     private void BtnStatusRawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnStatusRawatActionPerformed
@@ -1486,7 +1533,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnStatusRawatActionPerformed
 
     private void BtnStatusRawatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnStatusRawatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, BtnStatusKeluar,BtnStatusIsolasi);
     }//GEN-LAST:event_BtnStatusRawatKeyPressed
 
     private void BtnStatusIsolasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnStatusIsolasiActionPerformed
@@ -1496,7 +1543,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnStatusIsolasiActionPerformed
 
     private void BtnStatusIsolasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnStatusIsolasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BtnStatusRawat,SebabKematian);
     }//GEN-LAST:event_BtnStatusIsolasiKeyPressed
 
     private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
@@ -1506,7 +1553,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnKelurahanActionPerformed
 
     private void BtnKelurahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKelurahanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, BtnSumberPenularan,BtnKecamatan);
     }//GEN-LAST:event_BtnKelurahanKeyPressed
 
     private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
@@ -1523,7 +1570,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnKabupatenActionPerformed
 
     private void BtnKabupatenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKabupatenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, BtnKecamatan,BtnPropinsi);
     }//GEN-LAST:event_BtnKabupatenKeyPressed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
@@ -1534,8 +1581,24 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_BtnPropinsiActionPerformed
 
     private void BtnPropinsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPropinsiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BtnKabupaten,BtnStatusKeluar);
     }//GEN-LAST:event_BtnPropinsiKeyPressed
+
+    private void InisialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InisialKeyPressed
+        Valid.pindah(evt, TCari, BtnJK);
+    }//GEN-LAST:event_InisialKeyPressed
+
+    private void TglLaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglLaporKeyPressed
+        Valid.pindah(evt, BtnJK,TglMasuk);
+    }//GEN-LAST:event_TglLaporKeyPressed
+
+    private void TglMasukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglMasukKeyPressed
+        Valid.pindah(evt, TglLapor,TglKeluar);
+    }//GEN-LAST:event_TglMasukKeyPressed
+
+    private void TglKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglKeluarKeyPressed
+        Valid.pindah(evt, TglMasuk,BtnKewarganegaraan);
+    }//GEN-LAST:event_TglKeluarKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1714,8 +1777,36 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void emptTeks() {
         NoRM.setText("");
         NamaPasien.setText("");
+        NoKTP.setText("");
         Inisial.setText("");
-        NoRM.requestFocus();
+        KodeJK.setText("");
+        NamaJK.setText("");
+        TglLahir.setText("");
+        TglLapor.setDate(new Date());
+        TglMasuk.setDate(new Date());
+        TglKeluar.setDate(new Date());
+        Email.setText("");
+        NoTelp.setText("");
+        KodeKewarganegaraan.setText("");
+        NamaKewarganegaraan.setText("");
+        KodePenularan.setText("");
+        NamaPenularan.setText("");
+        KodeKelurahan.setText("");
+        NamaKelurahan.setText("");
+        KodeKecamatan.setText("");
+        NamaKecamatan.setText("");
+        KodeKabupaten.setText("");
+        NamaKabupaten.setText("");
+        KodePropinsi.setText("");
+        NamaPropinsi.setText("");
+        KodeStatusKeluar.setText("");
+        NamaStatusKeluar.setText("");
+        KodeStatusRawat.setText("");
+        NamaStatusRawat.setText("");
+        KodeStatusIsolasi.setText("");
+        NamaStatusIsolasi.setText("");
+        SebabKematian.setText("");
+        Inisial.requestFocus();
     }
 
     private void getData() {
