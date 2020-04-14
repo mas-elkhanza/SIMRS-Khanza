@@ -4689,9 +4689,11 @@ public class PanelRiwayat extends widget.panelisi {
                             try{
                                 rs3=koneksi.prepareStatement(
                                         "select rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.kd_jenis_prw,"+
-                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat "+
+                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat,kamar.kd_bangsal,kamar.kelas,bangsal.nm_bangsal  "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter inner join petugas on rawat_inap_drpr.nip=petugas.nip "+
+                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter inner join petugas on rawat_inap_drpr.nip=petugas.nip "
+                                        + "INNER JOIN kamar ON rawat_inap_drpr.kd_kamar=kamar.kd_kamar "
+                                        + "INNER JOIN bangsal ON kamar.kd_bangsal = bangsal.kd_bangsal "+
                                         "where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
@@ -6483,7 +6485,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kode_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama_brng")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("dosis")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("aturan_pakai")+"</td>"+
                                                 "<td valign='top'>"+rs3.getDouble("jml_barang")+" "+rs3.getString("kode_sat")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
                                              "</tr>"); 
@@ -9165,10 +9167,12 @@ public class PanelRiwayat extends widget.panelisi {
                             //tindakan paramedis dan dokter ranap
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.kd_jenis_prw,"+
-                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat "+
+                                       "select rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.kd_jenis_prw,"+
+                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat,kamar.kd_bangsal,kamar.kelas,bangsal.nm_bangsal  "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter inner join petugas on rawat_inap_drpr.nip=petugas.nip "+
+                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter inner join petugas on rawat_inap_drpr.nip=petugas.nip "
+                                        + "INNER JOIN kamar ON rawat_inap_drpr.kd_kamar=kamar.kd_kamar "
+                                        + "INNER JOIN bangsal ON kamar.kd_bangsal = bangsal.kd_bangsal "+
                                         "where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
