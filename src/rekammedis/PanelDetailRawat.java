@@ -2186,10 +2186,11 @@ public void pilihTab() {
                             try{
                                 rs3=koneksi.prepareStatement(
                                         "select rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.kd_jenis_prw,"+
-                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat,rawat_inap_drpr.kd_kamar,kamar.kelas "+
+                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat,kamar.kd_bangsal,kamar.kelas,bangsal.nm_bangsal  "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter "
-                                                + "inner join petugas on rawat_inap_drpr.nip=petugas.nip inner join kamar on rawat_inap_drpr.kd_kamar=kamar.kd_kamar "+
+                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter inner join petugas on rawat_inap_drpr.nip=petugas.nip "
+                                        + "INNER JOIN kamar ON rawat_inap_drpr.kd_kamar=kamar.kd_kamar "
+                                        + "INNER JOIN bangsal ON kamar.kd_bangsal = bangsal.kd_bangsal "+
                                         "where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
@@ -2214,7 +2215,7 @@ public void pilihTab() {
                                                 "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("kd_kamar")+" ("+rs3.getString("kelas")+")</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_bangsal")+" ("+rs3.getString("kelas")+")</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya_rawat"))+"</td>"+
@@ -5394,10 +5395,11 @@ public void pilihTab() {
                             try{
                                 rs3=koneksi.prepareStatement(
                                         "select rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.kd_jenis_prw,"+
-                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat,rawat_inap_drpr.kd_kamar,kamar.kelas "+
+                                        "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat,kamar.kd_bangsal,kamar.kelas,bangsal.nm_bangsal  "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter "
-                                                + "inner join petugas on rawat_inap_drpr.nip=petugas.nip inner join kamar on rawat_inap_drpr.kd_kamar=kamar.kd_kamar "+
+                                        "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter inner join petugas on rawat_inap_drpr.nip=petugas.nip "
+                                        + "INNER JOIN kamar ON rawat_inap_drpr.kd_kamar=kamar.kd_kamar "
+                                        + "INNER JOIN bangsal ON kamar.kd_bangsal = bangsal.kd_bangsal "+
                                         "where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
@@ -5422,7 +5424,7 @@ public void pilihTab() {
                                                 "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("kd_kamar")+" ("+rs3.getString("kelas")+")</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_bangsal")+" ("+rs3.getString("kelas")+")</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("biaya_rawat"))+"</td>"+
