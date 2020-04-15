@@ -225,6 +225,8 @@ public final class CoronaReferensiJK extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane,"Tidak ditemukan....!");
             }else if(ex.toString().contains("500")){
                 JOptionPane.showMessageDialog(rootPane,"Server internal error....!");
+            }else if(ex.toString().contains("502")){
+                JOptionPane.showMessageDialog(rootPane,"Server kemenkes lelah broo....!");
             }
         }
     }    
