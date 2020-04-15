@@ -9165,7 +9165,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
     private void detailRawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailRawatActionPerformed
         // TODO add your handling code here:
-                if(tabMode.getRowCount()==0){
+        if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
             TCari.requestFocus();
         }else if(tbKamIn.getSelectedRow()== -1){

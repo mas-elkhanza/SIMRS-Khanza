@@ -34,7 +34,8 @@ public class RMDetailRawat extends javax.swing.JDialog {
     private ResultSet rs, rs2, rs3, rs4, rs5;
     private boolean caritanggal = false;
     private int i = 0, y = 0, w = 0, urut;
-    private String tanggal = "", jam = "", dpjp = "", kddpjp = "", tanggal1 = "", tanggal2 = "", norm = "", keputusan = "", dokterrujukan = "", polirujukan = "";
+    private String tanggal = "", jam = "", dpjp = "", kddpjp = "", tanggal1 = "", 
+            tanggal2 = "", norm = "", keputusan = "", dokterrujukan = "", polirujukan = "";
 
     /**
      * Creates new form RMDetailRawat
@@ -183,7 +184,7 @@ public class RMDetailRawat extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(462, 612));
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Detail Riwayat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Detail Riwayat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(50, 50, 50))); // NOI18N
 
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));

@@ -176,7 +176,7 @@ public class PanelDetailRawat extends widget.panelisi {
         );
         internalFrame1Layout.setVerticalGroup(
             internalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
         );
 
         tabDetailRawat.addTab("Penanganan", internalFrame1);
@@ -191,7 +191,7 @@ public class PanelDetailRawat extends widget.panelisi {
         );
         internalFrame2Layout.setVerticalGroup(
             internalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
         );
 
         tabDetailRawat.addTab("Laboratorium", internalFrame2);
@@ -206,7 +206,7 @@ public class PanelDetailRawat extends widget.panelisi {
         );
         internalFrame3Layout.setVerticalGroup(
             internalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
         );
 
         tabDetailRawat.addTab("Radiologi", internalFrame3);
@@ -221,7 +221,7 @@ public class PanelDetailRawat extends widget.panelisi {
         );
         internalFrame4Layout.setVerticalGroup(
             internalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
         );
 
         tabDetailRawat.addTab("Pemberian Obat", internalFrame4);
@@ -236,7 +236,7 @@ public class PanelDetailRawat extends widget.panelisi {
         );
         internalFrame5Layout.setVerticalGroup(
             internalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
         );
 
         tabDetailRawat.addTab("Semua", internalFrame5);
@@ -3287,8 +3287,8 @@ public void pilihTab() {
                             //Resep Pulang
                             try{
                                 rs3=koneksi.prepareStatement(
-                                    "select resep_pulang.kode_brng,databarang.nama_brng,resep_pulang.aturan_pakai,resep_pulang.jml_barang, "+
-                                    "databarang.kode_sat,resep_pulang.aturan_pakai,resep_pulang.total from resep_pulang inner join databarang "+
+                                    "select resep_pulang.kode_brng, databarang.nama_brng, resep_pulang.aturan_pakai, resep_pulang.jml_barang, "+
+                                    "databarang.kode_sat, resep_pulang.aturan_pakai, resep_pulang.total from resep_pulang inner join databarang "+
                                     "on resep_pulang.kode_brng=databarang.kode_brng where "+
                                     "resep_pulang.no_rawat='"+rs2.getString("no_rawat")+"' order by databarang.nama_brng").executeQuery();
                                 if(rs3.next()){                                    
@@ -3299,7 +3299,7 @@ public void pilihTab() {
                                           "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
                                           "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Dosis</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Aturan Pakai</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
@@ -3311,7 +3311,7 @@ public void pilihTab() {
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kode_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama_brng")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("dosis")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("aturan_pakai")+"</td>"+
                                                 "<td valign='top'>"+rs3.getDouble("jml_barang")+" "+rs3.getString("kode_sat")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
                                              "</tr>"); 
@@ -3331,10 +3331,11 @@ public void pilihTab() {
                             //Retur Obat
                             try{
                                 rs3=koneksi.prepareStatement(
-                                    "select databarang.kode_brng,databarang.nama_brng,detreturjual.kode_sat,detreturjual.h_retur, "+
-				 "(detreturjual.jml_retur * -1) as jumlah,(detreturjual.subtotal * -1) as total from detreturjual "+
-				 "inner join databarang on detreturjual.kode_brng=databarang.kode_brng  "+
-                                    "inner join returjual on returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual='"+rs2.getString("no_rawat")+"' order by databarang.nama_brng").executeQuery();
+                                    "select databarang.kode_brng, databarang.nama_brng, detreturjual.kode_sat, detreturjual.h_retur, "+
+                                    "(detreturjual.jml_retur * -1) as jumlah,(detreturjual.subtotal * -1) as total from detreturjual "+
+                                    "inner join databarang on detreturjual.kode_brng=databarang.kode_brng  "+
+                                    "inner join returjual on returjual.no_retur_jual = detreturjual.no_retur_jual "+
+                                    "where returjual.no_retur_jual like '"+rs2.getString("no_rawat")+"%' order by databarang.nama_brng").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -6027,7 +6028,7 @@ public void pilihTab() {
                                           "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kode</td>"+
                                           "<td valign='top' width='50%' bgcolor='#FFFAF8'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Dosis</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#FFFAF8'>Aturan Pakai</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
                                           "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                         "</tr>");
@@ -6039,7 +6040,7 @@ public void pilihTab() {
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kode_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama_brng")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("dosis")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("aturan_pakai")+"</td>"+
                                                 "<td valign='top'>"+rs3.getDouble("jml_barang")+" "+rs3.getString("kode_sat")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
                                              "</tr>"); 
@@ -6059,10 +6060,11 @@ public void pilihTab() {
                             //Retur Obat
                             try{
                                 rs3=koneksi.prepareStatement(
-                                    "select databarang.kode_brng,databarang.nama_brng,detreturjual.kode_sat,detreturjual.h_retur, "+
+                                  "select databarang.kode_brng,databarang.nama_brng,detreturjual.kode_sat,detreturjual.h_retur, "+
 				 "(detreturjual.jml_retur * -1) as jumlah,(detreturjual.subtotal * -1) as total from detreturjual "+
 				 "inner join databarang on detreturjual.kode_brng=databarang.kode_brng  "+
-                                    "inner join returjual on returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual='"+rs2.getString("no_rawat")+"' order by databarang.nama_brng").executeQuery();
+                                  "inner join returjual on returjual.no_retur_jual=detreturjual.no_retur_jual "+
+                                  "where returjual.no_retur_jual like '"+rs2.getString("no_rawat")+"%' order by databarang.nama_brng").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
