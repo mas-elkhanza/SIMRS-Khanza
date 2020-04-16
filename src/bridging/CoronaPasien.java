@@ -1657,7 +1657,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             "\"sebab_kematian\": \""+SebabKematian.getText()+"\"" +
                           "}";
                     requestEntity = new HttpEntity(body,headers);
-                    System.out.println(api.getRest().exchange(link+"/Pasien", HttpMethod.PUT, requestEntity, String.class).getBody());
                     root = mapper.readTree(api.getRest().exchange(link+"/Pasien", HttpMethod.PUT, requestEntity, String.class).getBody());
                     response = root.path("pasien");
                     if(response.isArray()){
@@ -2076,12 +2075,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnSimpan.setEnabled(akses.getpasien_corona());
         BtnHapus.setEnabled(akses.getpasien_corona());
         BtnEdit.setEnabled(akses.getpasien_corona());
-        if(akses.getjml2()>=1){
-            KodeJK.setEditable(false);
-            BtnJK.setEnabled(false);
-            KodeJK.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", NamaJK,KodeJK.getText());
-        }   
     }
     
     public void setPasien(String nomr){
