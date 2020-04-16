@@ -601,6 +601,7 @@ import toko.TokoJenis;
 import toko.TokoMember;
 import toko.TokoPembelian;
 import toko.TokoPemesanan;
+import toko.TokoPendapatanHarian;
 import toko.TokoPengajuanBarang;
 import toko.TokoPenjualan;
 import toko.TokoPiutang;
@@ -16104,6 +16105,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnPendapatanHarianTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPendapatanHarian form=new TokoPendapatanHarian(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -16700,7 +16712,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
-            btnRiwayatBarangNonMedis,btnPasienCorona;
+            btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko;
     
     public void isWall(){
         try{            
@@ -19730,6 +19742,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_retur_beli()==true){
                 Panelmenu.add(btnReturKeSuplierToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_pendapatan_harian()==true){
+                Panelmenu.add(btnPendapatanHarianToko); 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==17){   
@@ -22767,6 +22784,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettoko_retur_beli()==true){
             Panelmenu.add(btnReturKeSuplierToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_pendapatan_harian()==true){
+            Panelmenu.add(btnPendapatanHarianToko); 
             jmlmenu++;
         }
 
@@ -26969,6 +26991,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_pendapatan_harian()==true){
+            if(btnPendapatanHarianToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPendapatanHarianToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -28963,6 +28992,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPasienCorona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPasienCoronaActionPerformed(evt);
+            }
+        });
+        
+        btnPendapatanHarianToko= new widget.ButtonBig();
+        btnPendapatanHarianToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_calculator_3440925.png"))); 
+        btnPendapatanHarianToko.setText("Pendapatan Harian Toko");
+        btnPendapatanHarianToko.setIconTextGap(0);
+        btnPendapatanHarianToko.setName("btnPendapatanHarianToko"); 
+        btnPendapatanHarianToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPendapatanHarianToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPendapatanHarianTokoActionPerformed(evt);
             }
         });
     }

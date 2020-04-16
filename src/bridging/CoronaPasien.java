@@ -1437,8 +1437,13 @@ public class CoronaPasien extends javax.swing.JDialog {
                 headers.add("X-rs-id",idrs);
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                 headers.add("X-pass",api.getHmac()); 
+                //System.out.println("X-rs-id:"+idrs); 
+                //System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString())); 
+                //System.out.println("X-pass:"+api.getHmac()); 
                 body ="{\"nomr\":\""+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"\"}";  
+                //System.out.println(body);
                 requestEntity = new HttpEntity(body,headers);
+                //System.out.println(api.getRest().exchange(link+"/Pasien", HttpMethod.DELETE,requestEntity, String.class).getBody());
                 root = mapper.readTree(api.getRest().exchange(link+"/Pasien", HttpMethod.DELETE,requestEntity, String.class).getBody());
                 response = root.path("pasien");
                 if(response.isArray()){
