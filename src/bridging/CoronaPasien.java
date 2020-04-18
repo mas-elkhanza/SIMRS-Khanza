@@ -13,35 +13,21 @@ import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.net.URI;
-import java.security.SecureRandom;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.web.client.RestTemplate;
 import simrskhanza.DlgKelurahan;
 
 /**
@@ -100,7 +86,7 @@ public class CoronaPasien extends javax.swing.JDialog {
         for (i = 0; i < 31; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==1){
                 column.setPreferredWidth(60);
             }else if(i==2){
@@ -1345,8 +1331,6 @@ public class CoronaPasien extends javax.swing.JDialog {
             Valid.textKosong(BtnStatusRawat,"Status Rawat");
         }else if(KodeStatusIsolasi.getText().trim().equals("")||NamaStatusIsolasi.getText().trim().equals("")){
             Valid.textKosong(BtnStatusIsolasi,"Status Isolasi");
-        }else if(SebabKematian.getText().trim().equals("")){
-            Valid.textKosong(SebabKematian,"Sebab Kematian");
         }else{
             try {
                 headers = new HttpHeaders();
@@ -1437,13 +1421,8 @@ public class CoronaPasien extends javax.swing.JDialog {
                 headers.add("X-rs-id",idrs);
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                 headers.add("X-pass",api.getHmac()); 
-                //System.out.println("X-rs-id:"+idrs); 
-                //System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString())); 
-                //System.out.println("X-pass:"+api.getHmac()); 
-                body ="{\"nomr\":\""+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"\"}";  
-                //System.out.println(body);
-                requestEntity = new HttpEntity(body,headers);
-                //System.out.println(api.getRest().exchange(link+"/Pasien", HttpMethod.DELETE,requestEntity, String.class).getBody());
+                headers.add("nomr",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()); 
+                requestEntity = new HttpEntity(headers);
                 root = mapper.readTree(api.getRest().exchange(link+"/Pasien", HttpMethod.DELETE,requestEntity, String.class).getBody());
                 response = root.path("pasien");
                 if(response.isArray()){
@@ -1632,8 +1611,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Valid.textKosong(BtnStatusRawat,"Status Rawat");
         }else if(KodeStatusIsolasi.getText().trim().equals("")||NamaStatusIsolasi.getText().trim().equals("")){
             Valid.textKosong(BtnStatusIsolasi,"Status Isolasi");
-        }else if(SebabKematian.getText().trim().equals("")){
-            Valid.textKosong(SebabKematian,"Sebab Kematian");
         }else{
             if(tbObat.getSelectedRow()!= -1){
                 try {
