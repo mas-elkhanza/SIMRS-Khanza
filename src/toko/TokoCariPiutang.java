@@ -996,11 +996,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-                Valid.textKosong(TCari,"No.Nota");
-            }else {
-                Valid.panggilUrl("billing/NotaToko4.php?nonota="+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());          
-            }
+            Valid.panggilUrl("billing/NotaToko4.php?nonota="+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());      
             this.setCursor(Cursor.getDefaultCursor());
         }            
     }//GEN-LAST:event_ppCetakNotaActionPerformed
@@ -1012,80 +1008,75 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }else if(tbDokter.getSelectedRow()<= -1){
         JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
     }else{
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-            Valid.textKosong(TCari,"No.Nota");
-        }else {
-           this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+       this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+       try {
+           pscarijual=koneksi.prepareStatement(
+                   "select nota_piutang,sisapiutang from tokopiutang where nota_piutang=?");
            try {
-               pscarijual=koneksi.prepareStatement(
-                       "select nota_piutang,sisapiutang from tokopiutang where nota_piutang=?");
-               try {
-                  pscarijual.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
-                  rs=pscarijual.executeQuery();
-                  if(rs.next()){
-                      Sequel.AutoComitFalse();
-                      sukses=true;
-                      pstoko_detail_piutang=koneksi.prepareStatement(
-                           "select kode_brng,jumlah from toko_detail_piutang where nota_piutang=? ");
-                      try {
-                          pstoko_detail_piutang.setString(1,rs.getString(1));                
-                          rs2=pstoko_detail_piutang.executeQuery();
-                          while(rs2.next()){
-                              Trackbarang.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Piutang", akses.getkode(),"Hapus");
-                              Sequel.mengedit("tokobarang","kode_brng=?","stok=stok+?",2,new String[]{
-                                   rs2.getString("jumlah"),rs2.getString("kode_brng")
-                              });
-                          }
-                      } catch (Exception e) {
-                          sukses=false;
-                          System.out.println("Notifikasi : "+e);
-                      } finally{
-                          if(rs2!=null){
-                              rs2.close();
-                          }
-                          if(pstoko_detail_piutang!=null){
-                              pstoko_detail_piutang.close();
-                          }
+              pscarijual.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+              rs=pscarijual.executeQuery();
+              if(rs.next()){
+                  Sequel.AutoComitFalse();
+                  sukses=true;
+                  pstoko_detail_piutang=koneksi.prepareStatement(
+                       "select kode_brng,jumlah from toko_detail_piutang where nota_piutang=? ");
+                  try {
+                      pstoko_detail_piutang.setString(1,rs.getString(1));                
+                      rs2=pstoko_detail_piutang.executeQuery();
+                      while(rs2.next()){
+                          Trackbarang.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Piutang", akses.getkode(),"Hapus");
+                          Sequel.mengedit("tokobarang","kode_brng=?","stok=stok+?",2,new String[]{
+                               rs2.getString("jumlah"),rs2.getString("kode_brng")
+                          });
                       }
-
-                      if(sukses=true){
-                            ttlpiutang=rs.getDouble("sisapiutang");
-                            Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan("tampjurnal","'"+Piutang_Toko+"','PIUTANG','0','"+ttlpiutang+"'","Rekening");    
-                            Sequel.menyimpan("tampjurnal","'"+Kontra_Piutang_Toko+"','Persediaan Barang Toko','"+ttlpiutang+"','0'","Rekening");                              
-                            sukses=jur.simpanJurnal(rs.getString("nota_piutang"),Sequel.cariIsi("select current_date()"),"U","BATAL PIUTANG BARANG TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());
-                      } 
-                      
-                      if(sukses==true){
-                          Sequel.queryu("delete from tokopiutang where nota_piutang='"+rs.getString("nota_piutang")+"'");     
-                          Sequel.Commit();
-                      }else{
-                          sukses=false;
-                          JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                          Sequel.RollBack();
+                  } catch (Exception e) {
+                      sukses=false;
+                      System.out.println("Notifikasi : "+e);
+                  } finally{
+                      if(rs2!=null){
+                          rs2.close();
                       }
+                      if(pstoko_detail_piutang!=null){
+                          pstoko_detail_piutang.close();
+                      }
+                  }
 
-                      Sequel.AutoComitTrue();
-                      if(sukses==true){
-                          tampil();
-                      } 
-                  }         
-               } catch (Exception e) {
-                   System.out.println("Notifikasi : "+e);
-               } finally{
-                   if(rs!=null){
-                       rs.close();
-                   }
-                   if(pscarijual!=null){
-                       pscarijual.close();
-                   }
-               }            
-           } catch (Exception ex) {
-               System.out.println(ex);
-           }  
-           this.setCursor(Cursor.getDefaultCursor());
-        }
+                  if(sukses=true){
+                        ttlpiutang=rs.getDouble("sisapiutang");
+                        Sequel.queryu("delete from tampjurnal");
+                        Sequel.menyimpan("tampjurnal","'"+Piutang_Toko+"','PIUTANG','0','"+ttlpiutang+"'","Rekening");    
+                        Sequel.menyimpan("tampjurnal","'"+Kontra_Piutang_Toko+"','Persediaan Barang Toko','"+ttlpiutang+"','0'","Rekening");                              
+                        sukses=jur.simpanJurnal(rs.getString("nota_piutang"),Sequel.cariIsi("select current_date()"),"U","BATAL PIUTANG BARANG TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());
+                  } 
+
+                  if(sukses==true){
+                      Sequel.queryu("delete from tokopiutang where nota_piutang='"+rs.getString("nota_piutang")+"'");     
+                      Sequel.Commit();
+                  }else{
+                      sukses=false;
+                      JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                      Sequel.RollBack();
+                  }
+
+                  Sequel.AutoComitTrue();
+                  if(sukses==true){
+                      tampil();
+                  } 
+              }         
+           } catch (Exception e) {
+               System.out.println("Notifikasi : "+e);
+           } finally{
+               if(rs!=null){
+                   rs.close();
+               }
+               if(pscarijual!=null){
+                   pscarijual.close();
+               }
+           }            
+       } catch (Exception ex) {
+           System.out.println(ex);
+       }  
+       this.setCursor(Cursor.getDefaultCursor());
     }           
 }//GEN-LAST:event_ppHapusActionPerformed
 

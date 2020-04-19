@@ -86,7 +86,7 @@ public class CoronaPasien extends javax.swing.JDialog {
         for (i = 0; i < 31; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(125);
             }else if(i==1){
                 column.setPreferredWidth(60);
             }else if(i==2){
@@ -461,6 +461,8 @@ public class CoronaPasien extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Popup = new javax.swing.JPopupMenu();
+        ppDiagnosaPasien = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -548,6 +550,24 @@ public class CoronaPasien extends javax.swing.JDialog {
         BtnPropinsi = new widget.Button();
         TglLahir = new widget.TextBox();
 
+        Popup.setName("Popup"); // NOI18N
+
+        ppDiagnosaPasien.setBackground(new java.awt.Color(255, 255, 254));
+        ppDiagnosaPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDiagnosaPasien.setForeground(new java.awt.Color(50, 50, 50));
+        ppDiagnosaPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDiagnosaPasien.setText("Diagnosa Pasien");
+        ppDiagnosaPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDiagnosaPasien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDiagnosaPasien.setName("ppDiagnosaPasien"); // NOI18N
+        ppDiagnosaPasien.setPreferredSize(new java.awt.Dimension(145, 25));
+        ppDiagnosaPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDiagnosaPasienBtnPrintActionPerformed(evt);
+            }
+        });
+        Popup.add(ppDiagnosaPasien);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -565,6 +585,7 @@ public class CoronaPasien extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObat.setAutoCreateRowSorter(true);
+        tbObat.setComponentPopupMenu(Popup);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -719,7 +740,7 @@ public class CoronaPasien extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(63, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-04-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -732,7 +753,7 @@ public class CoronaPasien extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-04-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -902,7 +923,7 @@ public class CoronaPasien extends javax.swing.JDialog {
         FormInput.add(jLabel11);
         jLabel11.setBounds(0, 130, 110, 23);
 
-        TglMasuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-04-2020" }));
+        TglMasuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2020" }));
         TglMasuk.setDisplayFormat("dd-MM-yyyy");
         TglMasuk.setName("TglMasuk"); // NOI18N
         TglMasuk.setOpaque(false);
@@ -1026,7 +1047,7 @@ public class CoronaPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(237, 130, 95, 23);
 
-        TglKeluar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-04-2020" }));
+        TglKeluar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2020" }));
         TglKeluar.setDisplayFormat("dd-MM-yyyy");
         TglKeluar.setName("TglKeluar"); // NOI18N
         TglKeluar.setOpaque(false);
@@ -1077,7 +1098,7 @@ public class CoronaPasien extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(217, 100, 70, 23);
 
-        TglLapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-04-2020 05:36:04" }));
+        TglLapor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2020 22:53:42" }));
         TglLapor.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglLapor.setName("TglLapor"); // NOI18N
         TglLapor.setOpaque(false);
@@ -1806,6 +1827,23 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.pindah(evt, TglMasuk,BtnKewarganegaraan);
     }//GEN-LAST:event_TglKeluarKeyPressed
 
+    private void ppDiagnosaPasienBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDiagnosaPasienBtnPrintActionPerformed
+        if(tbObat.getSelectedRow()!= -1){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            CoronaDiagnosa form=new CoronaDiagnosa(null,false);
+            form.SetPasien(NoRM.getText(),NamaPasien.getText());
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data pasien...!!!!");
+            BtnBatal.requestFocus();
+        } 
+            
+    }//GEN-LAST:event_ppDiagnosaPasienBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1873,6 +1911,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox NoRM;
     private widget.TextBox NoTelp;
     private javax.swing.JPanel PanelInput;
+    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox SebabKematian;
     private widget.TextBox TCari;
@@ -1908,6 +1947,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
+    private javax.swing.JMenuItem ppDiagnosaPasien;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
@@ -2057,6 +2097,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnSimpan.setEnabled(akses.getpasien_corona());
         BtnHapus.setEnabled(akses.getpasien_corona());
         BtnEdit.setEnabled(akses.getpasien_corona());
+        ppDiagnosaPasien.setEnabled(akses.getdiagnosa_pasien_corona());
     }
     
     public void setPasien(String nomr){
@@ -2101,6 +2142,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    public JTable getTable(){
+        return tbObat;
     }
 
 }
