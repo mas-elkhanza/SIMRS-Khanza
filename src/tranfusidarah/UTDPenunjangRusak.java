@@ -924,9 +924,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tabMode.getRowCount()==0){
+        if(tabMode2.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-            TCari.requestFocus();
+            TCari2.requestFocus();
         }else if(tbKamar.getSelectedRow()<= -1){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
@@ -955,7 +955,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCetakActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
+        if(tabMode2.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             BtnKeluar.requestFocus();
         }else {
@@ -972,11 +972,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     "utd_penunjang_rusak.total,utd_penunjang_rusak.nip,petugas.nama,utd_penunjang_rusak.tanggal,"+
                     "utd_penunjang_rusak.keterangan,ipsrsbarang.kode_sat from utd_penunjang_rusak inner join ipsrsbarang inner join petugas "+
                     "on utd_penunjang_rusak.kode_brng=ipsrsbarang.kode_brng and utd_penunjang_rusak.nip=petugas.nip "+
-                    "where utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_penunjang_rusak.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_penunjang_rusak.nip like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_penunjang_rusak.keterangan like '%"+TCari.getText().trim()+"%' order by utd_penunjang_rusak.tanggal",param);
+                    "where utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_penunjang_rusak.kode_brng like '%"+TCari2.getText().trim()+"%' or "+
+                    "utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and ipsrsbarang.nama_brng like '%"+TCari2.getText().trim()+"%' or "+
+                    "utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_penunjang_rusak.nip like '%"+TCari2.getText().trim()+"%' or "+
+                    "utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari2.getText().trim()+"%' or "+
+                    "utd_penunjang_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_penunjang_rusak.keterangan like '%"+TCari2.getText().trim()+"%' order by utd_penunjang_rusak.tanggal",param);
 
         }
         this.setCursor(Cursor.getDefaultCursor());

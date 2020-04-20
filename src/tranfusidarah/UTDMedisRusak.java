@@ -924,9 +924,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tabMode.getRowCount()==0){
+        if(tabMode2.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-            TCari.requestFocus();
+            TCari2.requestFocus();
         }else if(tbKamar.getSelectedRow()<= -1){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
@@ -955,7 +955,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void BtnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCetakActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
+        if(tabMode2.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             BtnKeluar.requestFocus();
         }else {
@@ -972,11 +972,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     "utd_medis_rusak.total,utd_medis_rusak.nip,petugas.nama,utd_medis_rusak.tanggal,"+
                     "utd_medis_rusak.keterangan,databarang.kode_sat from utd_medis_rusak inner join databarang inner join petugas "+
                     "on utd_medis_rusak.kode_brng=databarang.kode_brng and utd_medis_rusak.nip=petugas.nip "+
-                    "where utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_medis_rusak.kode_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and databarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_medis_rusak.nip like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                    "utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_medis_rusak.keterangan like '%"+TCari.getText().trim()+"%' order by utd_medis_rusak.tanggal",param);
+                    "where utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_medis_rusak.kode_brng like '%"+TCari2.getText().trim()+"%' or "+
+                    "utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and databarang.nama_brng like '%"+TCari2.getText().trim()+"%' or "+
+                    "utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_medis_rusak.nip like '%"+TCari2.getText().trim()+"%' or "+
+                    "utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari2.getText().trim()+"%' or "+
+                    "utd_medis_rusak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and utd_medis_rusak.keterangan like '%"+TCari2.getText().trim()+"%' order by utd_medis_rusak.tanggal",param);
 
         }
         this.setCursor(Cursor.getDefaultCursor());
