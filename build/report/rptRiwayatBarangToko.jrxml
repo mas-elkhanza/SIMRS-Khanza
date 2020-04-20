@@ -16,17 +16,17 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select riwayat_barang_toko.kode_brng,tokobarang.nama_brng,
-riwayat_barang_toko.stok_awal,riwayat_barang_toko.masuk,
-riwayat_barang_toko.keluar,riwayat_barang_toko.stok_akhir,
-riwayat_barang_toko.posisi,riwayat_barang_toko.tanggal,
-riwayat_barang_toko.jam,riwayat_barang_toko.petugas,
-riwayat_barang_toko.status from riwayat_barang_toko
-inner join tokobarang on riwayat_barang_toko.kode_brng=tokobarang.kode_brng]]>
+		<![CDATA[select toko_riwayat_barang.kode_brng,tokobarang.nama_brng,
+toko_riwayat_barang.stok_awal,toko_riwayat_barang.masuk,
+toko_riwayat_barang.keluar,toko_riwayat_barang.stok_akhir,
+toko_riwayat_barang.posisi,toko_riwayat_barang.tanggal,
+toko_riwayat_barang.jam,toko_riwayat_barang.petugas,
+toko_riwayat_barang.status from toko_riwayat_barang
+inner join tokobarang on toko_riwayat_barang.kode_brng=tokobarang.kode_brng]]>
 	</queryString>
 	<field name="kode_brng" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="kode_brng"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_brng" class="java.lang.String">
@@ -36,47 +36,47 @@ inner join tokobarang on riwayat_barang_toko.kode_brng=tokobarang.kode_brng]]>
 	</field>
 	<field name="stok_awal" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="stok_awal"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="masuk" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="masuk"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="keluar" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="keluar"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="stok_akhir" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="stok_akhir"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="posisi" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="posisi"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tanggal" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jam" class="java.sql.Time">
 		<property name="com.jaspersoft.studio.field.label" value="jam"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="petugas" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="petugas"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="status" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="status"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="riwayat_barang_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko_riwayat_barang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>

@@ -4,6 +4,8 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -12,51 +14,81 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc]]>
+		<![CDATA[select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_toko order by no asc]]>
 	</queryString>
 	<field name="no" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp3"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp4"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp5"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp6"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp7"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp8" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp8"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp9" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp9"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp10"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp11" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp11"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp12"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp13" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp13"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="temp14" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="temp14"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="temporary_toko"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -208,9 +240,9 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="11" splitType="Stretch">
+		<band height="12" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="1" y="1" width="74" height="10" uuid="9cf3788a-5467-4f55-8d71-d7c594be4498"/>
+				<reportElement positionType="Float" x="1" y="1" width="74" height="10" uuid="9cf3788a-5467-4f55-8d71-d7c594be4498"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -218,7 +250,7 @@
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="76" y="1" width="191" height="10" uuid="43b0d953-8153-450a-84a7-a5db7907fc0d"/>
+				<reportElement positionType="Float" x="76" y="1" width="191" height="10" uuid="43b0d953-8153-450a-84a7-a5db7907fc0d"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -226,7 +258,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="267" y="1" width="138" height="10" uuid="ee231c30-9f50-4bab-af3b-4f5c77a6ca92"/>
+				<reportElement positionType="Float" x="267" y="1" width="138" height="10" uuid="ee231c30-9f50-4bab-af3b-4f5c77a6ca92"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -234,7 +266,7 @@
 				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="405" y="1" width="33" height="10" uuid="f3f006e9-1785-4209-8616-60e4bbf9503d"/>
+				<reportElement positionType="Float" x="405" y="1" width="33" height="10" uuid="f3f006e9-1785-4209-8616-60e4bbf9503d"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -242,7 +274,7 @@
 				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="438" y="1" width="68" height="10" uuid="53f8e7a0-2469-423e-95a7-bfdb5b3560eb"/>
+				<reportElement positionType="Float" x="438" y="1" width="68" height="10" uuid="53f8e7a0-2469-423e-95a7-bfdb5b3560eb"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -250,7 +282,7 @@
 				<textFieldExpression><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="506" y="1" width="85" height="10" uuid="ed820600-510f-4290-a4e0-dc2d2a2c3b4a"/>
+				<reportElement positionType="Float" x="506" y="1" width="85" height="10" uuid="ed820600-510f-4290-a4e0-dc2d2a2c3b4a"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -258,7 +290,7 @@
 				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="591" y="1" width="35" height="10" uuid="e1156d37-bc3b-4a31-95ee-3ab087552609"/>
+				<reportElement positionType="Float" x="591" y="1" width="35" height="10" uuid="e1156d37-bc3b-4a31-95ee-3ab087552609"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -266,7 +298,7 @@
 				<textFieldExpression><![CDATA[$F{temp7}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="626" y="1" width="73" height="10" uuid="4dfc2807-47f3-4d37-b9c4-4f1629870c18"/>
+				<reportElement positionType="Float" x="626" y="1" width="73" height="10" uuid="4dfc2807-47f3-4d37-b9c4-4f1629870c18"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -274,13 +306,21 @@
 				<textFieldExpression><![CDATA[$F{temp8}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="699" y="1" width="103" height="10" uuid="e55e0807-3689-4fea-b02c-7a2a7e2d3c68"/>
+				<reportElement positionType="Float" x="699" y="1" width="103" height="10" uuid="e55e0807-3689-4fea-b02c-7a2a7e2d3c68"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp9}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="11" width="802" height="1" uuid="50f5c0d4-3e49-4de3-9f1e-58b3afcc5e85">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

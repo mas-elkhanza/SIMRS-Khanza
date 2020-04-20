@@ -47,7 +47,7 @@ public final class PCareCekReferensiProvider extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private PcareApi api=new PcareApi();
+    private ApiPcare api=new ApiPcare();
     private String URL="",link="",otorisasi;
     private HttpHeaders headers;
     private HttpEntity requestEntity;

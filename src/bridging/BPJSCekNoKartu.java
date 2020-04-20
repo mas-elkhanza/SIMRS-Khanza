@@ -31,7 +31,7 @@ public class BPJSCekNoKartu {
             tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="";
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private String URL="";
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();

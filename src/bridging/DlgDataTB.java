@@ -10,7 +10,7 @@
  */
 
 package bridging;
-import bridging.SittApi;
+import bridging.ApiKemenkesSITT;
 import bridging.YaskiReferensiKabupaten;
 import bridging.YaskiReferensiKecamatan;
 import bridging.YaskiReferensiKelurahan;
@@ -68,7 +68,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private SittApi api=new SittApi();
+    private ApiKemenkesSITT api=new ApiKemenkesSITT();
     private YaskiReferensiPropinsi propinsi=new YaskiReferensiPropinsi(null,false);
     private YaskiReferensiKabupaten kabupaten=new YaskiReferensiKabupaten(null,false);
     private YaskiReferensiKecamatan kecamatan=new YaskiReferensiKecamatan(null,false);

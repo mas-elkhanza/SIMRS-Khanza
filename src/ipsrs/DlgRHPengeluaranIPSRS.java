@@ -28,7 +28,7 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    private IPSRSBarang barang=new IPSRSBarang(null,false);
     private int i=0;
     private double jumlah,total,totalkeluar,jumlah2;
 

@@ -43,7 +43,7 @@ public final class PCareNIK extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
-    private PcareApi api=new PcareApi();
+    private ApiPcare api=new ApiPcare();
     private String URL = "",otorisasi;
     private HttpHeaders headers;
     private HttpEntity requestEntity;

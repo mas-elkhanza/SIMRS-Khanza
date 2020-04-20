@@ -629,7 +629,7 @@
                     <Component class="widget.ButtonBig" name="btnRalan">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/48x48/folder.png"/>
+                          <Image iconType="3" name="/48x48/Icon-Tindakan-Rajal.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Tindakan Ralan"/>
                         <Property name="iconTextGap" type="int" value="0"/>
@@ -661,7 +661,7 @@
                     <Component class="widget.ButtonBig" name="btnRanap">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/48x48/bedroom.png"/>
+                          <Image iconType="3" name="/48x48/tindakanranap.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Tindakan Ranap"/>
                         <Property name="iconTextGap" type="int" value="0"/>
@@ -7730,7 +7730,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="02/04/2020"/>
+            <StringItem index="0" value="19/04/2020"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

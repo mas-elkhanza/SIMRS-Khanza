@@ -47,7 +47,7 @@ public class TokoPengajuanBarang extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,judul){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                boolean a = false;
-               if ((colIndex==0)||(colIndex==7)) {
+               if ((colIndex==0)||(colIndex==5)) {
                    a=true;
                }
                return a;
@@ -382,7 +382,7 @@ public class TokoPengajuanBarang extends javax.swing.JDialog {
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(label15);
-        label15.setBounds(0, 10, 92, 23);
+        label15.setBounds(0, 10, 91, 23);
 
         NoPengajuan.setName("NoPengajuan"); // NOI18N
         NoPengajuan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -419,13 +419,13 @@ public class TokoPengajuanBarang extends javax.swing.JDialog {
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label13);
-        label13.setBounds(415, 10, 75, 23);
+        label13.setBounds(414, 10, 75, 23);
 
         label16.setText("Keterangan :");
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label16);
-        label16.setBounds(0, 40, 92, 23);
+        label16.setBounds(0, 40, 91, 23);
 
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -460,7 +460,7 @@ public class TokoPengajuanBarang extends javax.swing.JDialog {
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label14);
-        label14.setBounds(415, 40, 75, 23);
+        label14.setBounds(414, 40, 75, 23);
 
         Departemen.setEditable(false);
         Departemen.setName("Departemen"); // NOI18N
@@ -618,7 +618,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
             for(i=0;i<tbDokter.getRowCount();i++){ 
                 tbDokter.setValueAt("",i,0);
-                tbDokter.setValueAt("",i,7);
+                tbDokter.setValueAt("",i,6);
             }
 }//GEN-LAST:event_ppBersihkanActionPerformed
 

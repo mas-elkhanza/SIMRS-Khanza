@@ -65,7 +65,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private PcareApi api=new PcareApi();
+    private ApiPcare api=new ApiPcare();
     private DlgPasien pasien=new DlgPasien(null,false);
     private double total=0;
     

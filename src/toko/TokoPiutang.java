@@ -310,7 +310,7 @@ public class TokoPiutang extends javax.swing.JDialog {
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(816, 132));
+        jPanel1.setPreferredSize(new java.awt.Dimension(55, 100));
         jPanel1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelisi1.setName("panelisi1"); // NOI18N
@@ -442,11 +442,11 @@ public class TokoPiutang extends javax.swing.JDialog {
         panelisi5.setPreferredSize(new java.awt.Dimension(100, 54));
         panelisi5.setLayout(null);
 
-        label10.setText("Jumlah Total :");
+        label10.setText("Jml.Total :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(85, 23));
+        label10.setPreferredSize(new java.awt.Dimension(55, 23));
         panelisi5.add(label10);
-        label10.setBounds(0, 10, 90, 23);
+        label10.setBounds(0, 10, 61, 23);
 
         LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotal.setText("0");
@@ -454,26 +454,26 @@ public class TokoPiutang extends javax.swing.JDialog {
         LTotal.setName("LTotal"); // NOI18N
         LTotal.setPreferredSize(new java.awt.Dimension(200, 23));
         panelisi5.add(LTotal);
-        LTotal.setBounds(94, 10, 160, 23);
+        LTotal.setBounds(65, 10, 131, 23);
 
         label19.setText("Uang Muka :");
         label19.setName("label19"); // NOI18N
         label19.setPreferredSize(new java.awt.Dimension(50, 23));
         panelisi5.add(label19);
-        label19.setBounds(256, 40, 80, 23);
+        label19.setBounds(360, 10, 80, 23);
 
         UangMuka.setText("0");
         UangMuka.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         UangMuka.setName("UangMuka"); // NOI18N
         UangMuka.setPreferredSize(new java.awt.Dimension(150, 23));
         panelisi5.add(UangMuka);
-        UangMuka.setBounds(340, 40, 200, 23);
+        UangMuka.setBounds(444, 10, 130, 23);
 
         label20.setText("Sisa Piutang :");
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(130, 23));
         panelisi5.add(label20);
-        label20.setBounds(556, 40, 80, 23);
+        label20.setBounds(590, 10, 80, 23);
 
         SisaPiutang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         SisaPiutang.setText("0");
@@ -481,13 +481,13 @@ public class TokoPiutang extends javax.swing.JDialog {
         SisaPiutang.setName("SisaPiutang"); // NOI18N
         SisaPiutang.setPreferredSize(new java.awt.Dimension(120, 23));
         panelisi5.add(SisaPiutang);
-        SisaPiutang.setBounds(640, 40, 170, 23);
+        SisaPiutang.setBounds(674, 10, 131, 23);
 
         label21.setText("Ongkir :");
         label21.setName("label21"); // NOI18N
         label21.setPreferredSize(new java.awt.Dimension(50, 23));
         panelisi5.add(label21);
-        label21.setBounds(260, 10, 80, 23);
+        label21.setBounds(200, 10, 50, 23);
 
         Ongkir.setText("0");
         Ongkir.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -499,7 +499,7 @@ public class TokoPiutang extends javax.swing.JDialog {
             }
         });
         panelisi5.add(Ongkir);
-        Ongkir.setBounds(340, 10, 157, 23);
+        Ongkir.setBounds(254, 10, 103, 23);
 
         jPanel1.add(panelisi5, java.awt.BorderLayout.CENTER);
 
@@ -806,8 +806,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoNota.getText().trim().equals("")){
             Valid.textKosong(NoNota,"No.Nota");
-        }else if(nmmem.getText().trim().equals("")||kdmem.getText().trim().equals("")){
-            Valid.textKosong(kdmem,"Member");
+        }else if(kdptg.getText().trim().equals("")||nmptg.getText().trim().equals("")){
+            Valid.textKosong(kdptg,"Petugas");
         }else if(nmmem.getText().trim().equals("")||kdmem.getText().trim().equals("")){
             Valid.textKosong(kdmem,"Member");
         }else if(UangMuka.getText().trim().equals("")){
@@ -882,8 +882,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNotaActionPerformed
         if(NoNota.getText().trim().equals("")){
             Valid.textKosong(NoNota,"No.Nota");
-        }else if(nmmem.getText().trim().equals("")||kdmem.getText().trim().equals("")){
-            Valid.textKosong(kdmem,"Member");
+        }else if(kdptg.getText().trim().equals("")||nmptg.getText().trim().equals("")){
+            Valid.textKosong(kdptg,"Petugas");
         }else if(nmmem.getText().trim().equals("")||kdmem.getText().trim().equals("")){
             Valid.textKosong(kdmem,"Member");
         }else if(UangMuka.getText().trim().equals("")){
@@ -917,7 +917,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }                
             }
             this.setCursor(Cursor.getDefaultCursor());
-            Valid.panggilUrl("billing/NotaApotek3.php?nonota="+NoNota.getText()+"&kdptg="+kdptg.getText()+"&muka="+UangMuka.getText()+"&ongkir="+Ongkir.getText()+"&tanggal="+Valid.SetTgl(Tgl.getSelectedItem()+"")+"&nm_member="+nmmem.getText().replaceAll(" ","_")+"&tgltempo="+Valid.SetTgl(TglTempo.getSelectedItem()+"")+"&catatan="+catatan.getText().replaceAll(" ","_"));    
+            Valid.panggilUrl("billing/NotaToko3.php?nonota="+NoNota.getText().replaceAll(" ","_")+"&petugas="+nmptg.getText().replaceAll(" ","_")+"&muka="+UangMuka.getText()+"&ongkir="+Ongkir.getText()+"&tanggal="+Tgl.getSelectedItem()+"&member="+nmmem.getText().replaceAll(" ","_")+"&nomember="+kdmem.getText().replaceAll(" ","_")+"&tgltempo="+TglTempo.getSelectedItem()+"&catatan="+catatan.getText().replaceAll(" ","_"));    
         }
     }//GEN-LAST:event_BtnNotaActionPerformed
 
@@ -1039,11 +1039,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 tabMode.setValueAt(0,r,7);
                 tabMode.setValueAt(0,r,8);
                 tabMode.setValueAt(0,r,9);
-                tabMode.setValueAt(0,r,10);
-                tabMode.setValueAt(0,r,11);
-                tabMode.setValueAt(0,r,12);
-                tabMode.setValueAt(0,r,13);
-                tabMode.setValueAt(0,r,14);
             }
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
@@ -1254,7 +1249,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             if(!tbObat.getValueAt(row,0).toString().equals("")){
                 kolom=tbObat.getSelectedColumn();
                 if(Double.parseDouble(tabMode.getValueAt(row,0).toString())>0){
-                    stokbarang=Double.parseDouble(tabMode.getValueAt(row,11).toString());
+                    stokbarang=Double.parseDouble(tabMode.getValueAt(row,10).toString());
                     y=Valid.SetAngka(tbObat.getValueAt(row,0).toString());
                     if(stokbarang<y){
                         tabMode.setValueAt("",row,0);
@@ -1335,6 +1330,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     public void isCek(){
         autoNomor();
         Ongkir.setText("0");
+        UangMuka.setText("0");
         TCari.requestFocus();
         if(akses.getjml2()>=1){
             kdptg.setEditable(false);
@@ -1364,8 +1360,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         for(i=0;i<tabMode.getRowCount();i++){  
             if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
                 if(Sequel.menyimpantf2("toko_detail_piutang","?,?,?,?,?,?,?,?,?,?","Barang",10,new String[]{
-                        NoNota.getText(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(), 
-                        tabMode.getValueAt(i,12).toString(),tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,6).toString(),
+                        NoNota.getText(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
+                        tabMode.getValueAt(i,11).toString(),tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,6).toString(),
                         tabMode.getValueAt(i,7).toString(),tabMode.getValueAt(i,8).toString(),tabMode.getValueAt(i,9).toString()
                     })==true){
                     Trackbarang.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Piutang", akses.getkode(),"Simpan");
@@ -1379,8 +1375,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
         if(sukses==true){
             Sequel.queryu("delete from tampjurnal");                    
-            Sequel.menyimpan2("tampjurnal","'"+Piutang_Toko+"','PIUTANG TOKO','0','"+tagihan+"'","Rekening");     
-            Sequel.menyimpan2("tampjurnal","'"+Kontra_Piutang_Toko+"','Persediaan Barang Toko','0','"+tagihan+"'","Rekening");                              
+            Sequel.menyimpan2("tampjurnal","'"+Piutang_Toko+"','PIUTANG TOKO','"+(tagihan-uangmuka)+"','0'","Rekening");     
+            Sequel.menyimpan2("tampjurnal","'"+Kontra_Piutang_Toko+"','Persediaan Barang Toko','0','"+(tagihan-uangmuka)+"'","Rekening");                              
             sukses=jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PIUTANG TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());     
          }
     }

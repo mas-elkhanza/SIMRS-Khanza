@@ -30,7 +30,7 @@ public class DlgSirkulasiNonMedis2 extends javax.swing.JDialog {
     private double ttltotalbeli=0,totalbeli=0,stok=0,totalstok=0,jumlahbeli=0,ttltotalpesan=0,totalpesan=0,jumlahpesan=0,
             jumlahkeluar,totalkeluar,ttltotalkeluar,ttltotalstokawal=0,ttltotalstokakhir=0,stokakhir=0,totalstokawal=0,
             totalstokakhir=0,stokawal=0,jumlahutd=0,totalutd=0,ttltotalutd=0;
-    private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    private IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private String tglopname="";

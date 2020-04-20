@@ -46,7 +46,7 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private BPJSCekReferensiKabupaten kabupaten=new BPJSCekReferensiKabupaten(null,false);
     private int i=0;
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private String URL="",link="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
