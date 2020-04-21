@@ -16130,6 +16130,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPerawatanPasienCoronaActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16726,7 +16730,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
-            btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona;
+            btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona;
     
     public void isWall(){
         try{            
@@ -18829,6 +18833,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdiagnosa_pasien_corona()==true){
                 Panelmenu.add(btnDiagnosaPasienCorona);
+                jmlmenu++;
+            }
+            
+            if(akses.getperawatan_pasien_corona()==true){
+                Panelmenu.add(btnPerawatanPasienCorona);
                 jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==11){ 
@@ -21887,6 +21896,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdiagnosa_pasien_corona()==true){
             Panelmenu.add(btnDiagnosaPasienCorona);
+            jmlmenu++;
+        }
+
+        if(akses.getperawatan_pasien_corona()==true){
+            Panelmenu.add(btnPerawatanPasienCorona);
             jmlmenu++;
         }
 
@@ -25730,6 +25744,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getperawatan_pasien_corona()==true){
+            if(btnPerawatanPasienCorona.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPerawatanPasienCorona);
+                jmlmenu++;
+            }                
+        }
 
         if(akses.getperusahaan_pasien()==true){
             if(btnPerusahaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -29047,6 +29068,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDiagnosaPasienCorona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiagnosaPasienCoronaActionPerformed(evt);
+            }
+        });
+        
+        btnPerawatanPasienCorona = new widget.ButtonBig();
+        btnPerawatanPasienCorona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Night-sleep-sleeping-health_5994844.png"))); 
+        btnPerawatanPasienCorona.setText("Perawatan Pasien Corona");
+        btnPerawatanPasienCorona.setIconTextGap(0);
+        btnPerawatanPasienCorona.setName("btnPerawatanPasienCorona"); 
+        btnPerawatanPasienCorona.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPerawatanPasienCorona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerawatanPasienCoronaActionPerformed(evt);
             }
         });
     }
