@@ -28,10 +28,10 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.sql.Blob;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Connection;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -552,7 +552,6 @@ public final class sekuel {
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
-            
     }
     
     public void menyimpan(String table,String value,String sama,JTextField AlmGb,JTextField AlmPhoto){
@@ -583,7 +582,7 @@ public final class sekuel {
                 ps.setString(1,nilai_field);
                 ps.executeUpdate(); 
              }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
+                System.out.println("Notifikasi Hapus : "+e);
                 JOptionPane.showMessageDialog(null,"Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
              }finally{
                 if(ps != null){
@@ -592,7 +591,7 @@ public final class sekuel {
             }
             SimpanTrack("delete from "+table+" where "+field+"='"+nilai_field+"'");
         } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
+            System.out.println("Notifikasi Hapus : "+e);
         }
     }
     

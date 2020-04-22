@@ -12,15 +12,15 @@
 
 package kepegawaian;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
@@ -30,6 +30,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -39,6 +40,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import restore.DlgRestoreDokter;
 import simrskhanza.DlgCariSpesialis;
+import simrskhanza.DlgTtdDokter;
 
 
 /**
@@ -207,6 +209,7 @@ public class DlgDokter extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
+        MnTtdDokter = new javax.swing.JMenuItem();
         MnRestore = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -263,13 +266,32 @@ public class DlgDokter extends javax.swing.JDialog {
         KdSps = new widget.TextBox();
         btnSpesial = new widget.Button();
         BtnCariPegawai = new widget.Button();
+        scrollPane1 = new widget.ScrollPane();
+        lblTtd = new javax.swing.JLabel();
         ChkInput = new widget.CekBox();
 
         Popup.setName("Popup"); // NOI18N
 
+        MnTtdDokter.setBackground(new java.awt.Color(255, 255, 254));
+        MnTtdDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnTtdDokter.setForeground(new java.awt.Color(50, 50, 50));
+        MnTtdDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnTtdDokter.setText("Set Tanda Tangan");
+        MnTtdDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnTtdDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnTtdDokter.setIconTextGap(5);
+        MnTtdDokter.setName("MnTtdDokter"); // NOI18N
+        MnTtdDokter.setPreferredSize(new java.awt.Dimension(200, 28));
+        MnTtdDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnTtdDokterActionPerformed(evt);
+            }
+        });
+        Popup.add(MnTtdDokter);
+
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(50,50,50));
+        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -293,7 +315,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -653,7 +675,7 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel13.setBounds(2, 102, 105, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2019" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2020" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -809,6 +831,16 @@ public class DlgDokter extends javax.swing.JDialog {
         });
         FormInput.add(BtnCariPegawai);
         BtnCariPegawai.setBounds(253, 12, 28, 23);
+
+        scrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(":: TTD ::"));
+        scrollPane1.setName("scrollPane1"); // NOI18N
+
+        lblTtd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTtd.setName("lblTtd"); // NOI18N
+        scrollPane1.setViewportView(lblTtd);
+
+        FormInput.add(scrollPane1);
+        scrollPane1.setBounds(880, 10, 220, 150);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1197,6 +1229,15 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_tbDokterKeyReleased
 
+    private void MnTtdDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTtdDokterActionPerformed
+        // TODO add your handling code here:
+        DlgTtdDokter restore=new DlgTtdDokter(null,true);
+        restore.setSize(600,internalFrame1.getHeight()-20);
+        restore.setLocationRelativeTo(internalFrame1);
+        restore.setDokter(TKd.getText());
+        restore.setVisible(true);
+    }//GEN-LAST:event_MnTtdDokterActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1234,6 +1275,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox KdSps;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnRestore;
+    private javax.swing.JMenuItem MnTtdDokter;
     private javax.swing.JPanel PanelInput;
     private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
@@ -1269,8 +1311,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel lblTtd;
     private widget.panelisi panelGlass6;
     private widget.panelisi panelGlass8;
+    private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
@@ -1418,6 +1462,15 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
             
             Valid.SetTgl(DTPLahir,tbDokter.getValueAt(row,4).toString());
+            String ttd = Sequel.cariIsi("select ttd from ttd_dokter where kd_dokter ='"+tbDokter.getValueAt(row,0).toString()+"'");
+            ImageIcon icon = new ImageIcon("./setting/"+ttd);
+            Image image = icon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(180, 120, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        icon = new ImageIcon(newimg);
+            lblTtd.setIcon(icon);
+            if(icon.equals("")){
+                lblTtd.setIcon(null);
+            }
         }
     }
 
