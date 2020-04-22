@@ -1513,7 +1513,7 @@ public class CoronaPasien extends javax.swing.JDialog {
                     "nama_kewarganegaraan,kode_penularan,sumber_penularan,kd_kelurahan,nm_kelurahan,kd_kecamatan,nm_kecamatan,kd_kabupaten,"+
                     "nm_kabupaten,kd_propinsi,nm_propinsi,tgl_keluar,kode_statuskeluar,nama_statuskeluar,tgl_lapor,kode_statusrawat,"+
                     "nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kematian from pasien_corona "+
-                    "where tgl_masuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' "+
+                    "where tgl_masuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
                     (TCari.getText().trim().equals("")?"":"and (no_pengenal like '"+TCari.getText().trim()+"' or no_rkm_medis like '"+TCari.getText().trim()+"' or "+
                     "nama_kewarganegaraan like '"+TCari.getText().trim()+"' or sumber_penularan like '"+TCari.getText().trim()+"' or "+
                     "nm_kelurahan like '"+TCari.getText().trim()+"' or nm_kecamatan like '"+TCari.getText().trim()+"' or nm_kabupaten like '"+TCari.getText().trim()+"' or "+
@@ -1831,7 +1831,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(tbObat.getSelectedRow()!= -1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             CoronaDiagnosa form=new CoronaDiagnosa(null,false);
-            form.SetPasien(NoRM.getText(),NamaPasien.getText());
+            form.SetPasien(NoRM.getText(),NamaPasien.getText(),DTPCari1.getDate(),DTPCari2.getDate());
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
