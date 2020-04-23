@@ -47,6 +47,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fileGambar = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         canvas1 = new widget.Canvas();
@@ -58,6 +59,8 @@ public class DlgTtdDokter extends javax.swing.JDialog {
         buttonBig5 = new widget.ButtonBig();
         buttonBig6 = new widget.ButtonBig();
         buttonBig7 = new widget.ButtonBig();
+
+        fileGambar.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -108,7 +111,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
         });
 
         buttonBig5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/edit_f2.png"))); // NOI18N
-        buttonBig5.setText("Ubah");
+        buttonBig5.setText("Ganti");
         buttonBig5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBig5ActionPerformed(evt);
@@ -219,8 +222,10 @@ public class DlgTtdDokter extends javax.swing.JDialog {
     private void buttonBig4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBig4ActionPerformed
         // TODO add your handling code here:
         file = new File("./setting/" + dokter + ".png");
-        if (Sequel.menyimpantf("ttd_dokter", "'" + dokter + "','" + dokter + ".png'", "TTD Dokter") == true) {
-            canvas1.save(file);
+        fileGambar.setText("./setting/" + dokter + ".png");
+        canvas1.save(file);
+        if (Sequel.menyimpantf("ttd_dokter", "'" + dokter + "'", "TTD", fileGambar) == true) {
+            JOptionPane.showMessageDialog(rootPane, "Simpan TTD Berhasil.");
         }
         canvas1.setThickness(3);
     }//GEN-LAST:event_buttonBig4ActionPerformed
@@ -228,8 +233,12 @@ public class DlgTtdDokter extends javax.swing.JDialog {
     private void buttonBig5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBig5ActionPerformed
         // TODO add your handling code here:
         file = new File("./setting/" + dokter + ".png");
-        if (Sequel.mengedittf("ttd_dokter", "kd_dokter='" + dokter + "'", "kd_dokter='" + dokter + ".png'") == true) {
+        fileGambar.setText("./setting/" + dokter + ".png");
+        canvas1.save(file);
+        if (Sequel.mengedittf("ttd_dokter", "kd_dokter='" + dokter + "'", "ttd=?", fileGambar) == true) {
             canvas1.save(file);
+            JOptionPane.showMessageDialog(rootPane, "Ganti TTD Berhasil.");
+            canvas1.load(file);
         }
         canvas1.setThickness(3);
     }//GEN-LAST:event_buttonBig5ActionPerformed
@@ -250,7 +259,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
                 file = new File("./setting/" + dokter + ".png");
                 file.delete();
                 JOptionPane.showMessageDialog(null, "Proses Hapus TTD berhasil.");
-
+                canvas1.clear();
             } catch (Exception e) {
                 System.out.println("Notifikasi Hapus : " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
@@ -279,7 +288,6 @@ public class DlgTtdDokter extends javax.swing.JDialog {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        
         file = new File("./setting/" + dokter + ".png");
         canvas1.load(file);
         canvas1.setThickness(3);
@@ -334,6 +342,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
     private widget.ButtonBig buttonBig6;
     private widget.ButtonBig buttonBig7;
     private widget.Canvas canvas1;
+    private javax.swing.JTextField fileGambar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
