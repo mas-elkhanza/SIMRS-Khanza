@@ -354,7 +354,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -875,7 +875,6 @@ public class DlgDokter extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
 
         lblTtd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTtd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/blank.png"))); // NOI18N
         lblTtd.setName("lblTtd"); // NOI18N
         scrollPane1.setViewportView(lblTtd);
 
