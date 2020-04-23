@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1608" pageHeight="612" orientation="Landscape" columnWidth="1568" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46caac93-e3ce-4643-9fcf-b00762f3bc1d">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1708" pageHeight="612" orientation="Landscape" columnWidth="1668" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46caac93-e3ce-4643-9fcf-b00762f3bc1d">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -8,15 +8,6 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -28,7 +19,7 @@
 		<![CDATA[select no_pengenal,no_rkm_medis,inisial,nama_lengkap,tgl_masuk,kode_jk,nama_jk,tgl_lahir,kode_kewarganegaraan,
 nama_kewarganegaraan,kode_penularan,sumber_penularan,kd_kelurahan,nm_kelurahan,kd_kecamatan,nm_kecamatan,kd_kabupaten,
 nm_kabupaten,kd_propinsi,nm_propinsi,tgl_keluar,kode_statuskeluar,nama_statuskeluar,tgl_lapor,kode_statusrawat,
-nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kematian from pasien_corona]]>
+nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kematian,kode_jenis_pasien,nama_jenis_pasien from pasien_corona]]>
 	</queryString>
 	<field name="no_pengenal" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="no_pengenal"/>
@@ -157,13 +148,21 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 		<property name="com.jaspersoft.studio.field.label" value="sebab_kematian"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_corona"/>
 	</field>
+	<field name="kode_jenis_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kode_jenis_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_corona"/>
+	</field>
+	<field name="nama_jenis_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nama_jenis_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien_corona"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="84" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="52" width="1568" height="23" uuid="965c4580-e9a8-48c5-a4ac-59551171d49e">
+				<reportElement x="0" y="52" width="1668" height="23" uuid="965c4580-e9a8-48c5-a4ac-59551171d49e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -173,7 +172,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				<text><![CDATA[DATA BRIDGING KEMENKES PASIEN TERIDENTIFIKASI CORONA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="60" y="0" width="1508" height="17" uuid="7f0daedd-9fe6-4742-a1be-45d6bc9a33ee">
+				<reportElement x="60" y="0" width="1608" height="17" uuid="7f0daedd-9fe6-4742-a1be-45d6bc9a33ee">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -183,7 +182,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="60" y="25" width="1508" height="14" uuid="f13da290-9ece-4155-812c-919aa40152ad">
+				<reportElement x="60" y="25" width="1608" height="14" uuid="f13da290-9ece-4155-812c-919aa40152ad">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -193,7 +192,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="60" y="14" width="1508" height="14" uuid="b5f9ce8f-f791-48b2-8d99-54f12ca73cda">
+				<reportElement x="60" y="14" width="1608" height="14" uuid="b5f9ce8f-f791-48b2-8d99-54f12ca73cda">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -203,7 +202,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="49" width="1568" height="1" uuid="9310d812-cc62-448a-b2a6-4eda56e33384">
+				<reportElement x="0" y="49" width="1668" height="1" uuid="9310d812-cc62-448a-b2a6-4eda56e33384">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -211,7 +210,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="60" y="35" width="1508" height="14" uuid="c1fbbb6f-cd14-4f5f-88d5-8442e22290c1">
+				<reportElement x="60" y="35" width="1608" height="14" uuid="c1fbbb6f-cd14-4f5f-88d5-8442e22290c1">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -230,7 +229,15 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="17" splitType="Stretch">
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1568" y="1" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="32dd8dc5-e2a1-4bc3-967a-27859536ca97"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Jenis Pasien]]></text>
+			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="803" y="0" width="70" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="4cb1951e-265b-459d-a3d7-f588a6c42d7d"/>
 				<textElement verticalAlignment="Middle">
@@ -406,7 +413,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				<text><![CDATA[Sumber Penularan]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="16" width="1568" height="1" uuid="9880f3a7-93ed-4998-a0be-9ddc1216b494">
+				<reportElement x="0" y="16" width="1668" height="1" uuid="9880f3a7-93ed-4998-a0be-9ddc1216b494">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -414,7 +421,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="0" width="1568" height="1" uuid="5257f78f-0f56-4d8b-a188-9c8f37912656">
+				<reportElement x="0" y="0" width="1668" height="1" uuid="5257f78f-0f56-4d8b-a188-9c8f37912656">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -600,7 +607,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				<textFieldExpression><![CDATA[$F{sebab_kematian}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="0" y="11" width="1568" height="1" uuid="cb01f320-c47d-495b-a82c-e7e8cd60cdb2">
+				<reportElement positionType="Float" x="0" y="11" width="1668" height="1" uuid="cb01f320-c47d-495b-a82c-e7e8cd60cdb2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
@@ -608,6 +615,14 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="1568" y="0" width="100" height="10" uuid="5a9d70aa-f651-47d1-a957-2349ef4fbd82"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_jenis_pasien}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
@@ -658,7 +673,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="0" width="1568" height="1" uuid="b53ea197-9838-4d51-bd6a-b7da1fdd2c8c">
+				<reportElement x="0" y="0" width="1668" height="1" uuid="b53ea197-9838-4d51-bd6a-b7da1fdd2c8c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -666,7 +681,7 @@ nama_statusrawat,kode_statusisolasi,nama_statusisolasi,email,notelp,sebab_kemati
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="23" width="1568" height="1" uuid="dd90ecc5-4a04-4008-b3c5-23508617b435">
+				<reportElement x="0" y="23" width="1668" height="1" uuid="dd90ecc5-4a04-4008-b3c5-23508617b435">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
