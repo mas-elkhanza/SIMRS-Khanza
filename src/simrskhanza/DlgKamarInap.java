@@ -9521,6 +9521,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             INACBGPerawatanCorona form=new INACBGPerawatanCorona(null,false);
             form.emptTeks();
             form.setPasien(TNoRw1.getText(),TNoRM1.getText(),TPasien1.getText());
+            form.tampil();
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
