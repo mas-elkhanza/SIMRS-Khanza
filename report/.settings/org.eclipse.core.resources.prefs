@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding/rptBarcodeRM6.jrxml=UTF-8
+encoding/rptDeposit.jrxml=UTF-8
+encoding/rptDetailTindakanRanapDokterParamedis.jrxml=UTF-8
 encoding/rptFormulirPenerimaanPasien2.jrxml=UTF-8
 encoding/rptFormulirPenerimaanPasien3.jrxml=UTF-8
 encoding/rptItemResep.jrxml=UTF-8
@@ -12,3 +14,4 @@ encoding/rptLembarObat2.jrxml=UTF-8
 encoding/rptLembarSuratPernyataan.jrxml=UTF-8
 encoding/rptLembarSuratPernyataan2.jrxml=UTF-8
 encoding/rptPerkiraanBiayaRanap.jrxml=UTF-8
+encoding/rptResepPulang.jrxml=UTF-8

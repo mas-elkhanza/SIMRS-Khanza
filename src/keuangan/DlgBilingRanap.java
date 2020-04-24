@@ -134,9 +134,13 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "sum(rawat_jl_drpr.biaya_rawat) as biaya,"+
                     "sum(rawat_jl_drpr.bhp) as totalbhp,"+
                     "(sum(rawat_jl_drpr.material)+sum(rawat_jl_drpr.menejemen)+sum(rawat_jl_drpr.kso)) as totalmaterial,"+
-                    "rawat_jl_drpr.tarif_tindakandr,"+
+                    "rawat_jl_drpr.tarif_tindakandr, "+
                     "sum(rawat_jl_drpr.tarif_tindakanpr) as totaltarif_tindakanpr,"+
+<<<<<<< HEAD
                     "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr ,dokter.nm_dokter, rawat_jl_drpr.kd_dokter "+
+=======
+                    "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr, dokter.nm_dokter "+
+>>>>>>> master
                     "from rawat_jl_drpr inner join jns_perawatan inner join kategori_perawatan inner join dokter "+
                     "on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
                     "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori and dokter.kd_dokter=rawat_jl_drpr.kd_dokter where "+
@@ -5132,7 +5136,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                             rsralandrpr.getString("nm_perawatan") + " (" + rsralandrpr.getString("nm_dokter") + ")" : rsralandrpr.getString("nm_perawatan");
                                     
                                     tabModeRwJlDr.addRow(new Object[]{true,"                           ",namaTindakan,":",
+<<<<<<< HEAD
                                                        rsralandrpr.getDouble("total_byrdr"),rsralandrpr.getDouble("jml"),tamkur,(tamkur+rsralandrpr.getDouble("biaya")),"Ranap Dokter Paramedis"});
+=======
+                                                rsralandrpr.getDouble("total_byrdr"),rsralandrpr.getDouble("jml"),tamkur,(tamkur+rsralandrpr.getDouble("biaya")),"Ralan Dokter Paramedis"});
+>>>>>>> master
                                     subttl=subttl+rsralandrpr.getDouble("biaya")+tamkur;
                                 }                        
                             }

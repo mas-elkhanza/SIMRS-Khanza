@@ -58,7 +58,7 @@
 
     An example of overriding the target for project execution could look like this:
 
-        <target name="run" depends="KhanzaHMS-impl.jar">
+        <target name="run" depends="SIMRSKhanza-impl.jar">
             <exec dir="bin" executable="launcher.exe">
                 <arg file="${dist.jar}"/>
             </exec>
@@ -70,33 +70,4 @@
     nbproject/build-impl.xml file. 
 
     -->
-    <target name="-post-compile">
-        <mkdir dir="${build.dir}/report" />        
-        <mkdir dir="${build.dir}/setting" />       
-        <mkdir dir="${build.dir}/suara" />      
-        <copy todir="${build.dir}/report">
-            <fileset dir="report/" includes="**/*.jrxml, **/*.jasper" />
-        </copy>                
-        <copy todir="${build.dir}/setting">
-            <fileset dir="setting/" includes="**/*.xml, **/*.png, **/*.jpg" />
-        </copy>
-        <copy todir="${build.dir}/suara">
-            <fileset dir="suara/" includes="**/*.mp3" />
-        </copy>
-    </target>
-
-    <target name="-post-jar">
-        <mkdir dir="${dist.dir}/report" />        
-        <mkdir dir="${dist.dir}/setting" />       
-        <mkdir dir="${dist.dir}/suara" />       
-        <copy todir="${dist.dir}/report">
-            <fileset dir="report/" includes="**/*.jrxml, **/*.jasper" />
-        </copy>               
-        <copy todir="${dist.dir}/setting">
-            <fileset dir="setting/" includes="**/*.xml, **/*.png, **/*.jpg" />
-        </copy> 
-        <copy todir="${dist.dir}/suara">
-            <fileset dir="suara/" includes="**/*.mp3" />
-        </copy> 
-    </target>
 </project>

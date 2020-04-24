@@ -39,11 +39,12 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
     private int i=0,no=1;
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+    public DlgCariBangsal bangsal2=new DlgCariBangsal(null,false);
     public DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public DlgBarang barang=new DlgBarang(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
     private double ttl=0,subttl=0;
-    private String nokeluar="",bang="",ptg="",jen="",bar="",tanggal="";
+    private String nokeluar="",bang="",ptg="",jen="",bar="",tanggal="",asal="";
     private String aktifkanbatch="no";
     private boolean sukses=true;
     
@@ -130,6 +131,31 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
                         nmgudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
                     } 
                     kdgudang.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        bangsal2.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgCariPengeluaranApotek")){
+                    if(bangsal2.getTable().getSelectedRow()!= -1){                   
+                        kdBangsal.setText(bangsal2.getTable().getValueAt(bangsal2.getTable().getSelectedRow(),0).toString());
+                        nmBangsal.setText(bangsal2.getTable().getValueAt(bangsal2.getTable().getSelectedRow(),1).toString());
+                    } 
+                    kdBangsal.requestFocus();
                 }
             }
             @Override
@@ -288,12 +314,16 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
+        label19 = new widget.Label();
+        kdBangsal = new widget.TextBox();
+        nmBangsal = new widget.TextBox();
+        btnPasien1 = new widget.Button();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 254));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(50,50,50));
+        ppHapus.setForeground(new java.awt.Color(50, 50, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Stok Keluar");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -316,7 +346,7 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -567,7 +597,7 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
         panelisi3.add(Tgl1);
         Tgl1.setBounds(74, 40, 100, 23);
 
-        label16.setText("Bangsal :");
+        label16.setText("Lokasi :");
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label16);
@@ -652,6 +682,40 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
         });
         panelisi3.add(Tgl2);
         Tgl2.setBounds(200, 40, 100, 23);
+
+        label19.setText("Asal :");
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelisi3.add(label19);
+        label19.setBounds(810, 10, 60, 23);
+
+        kdBangsal.setName("kdBangsal"); // NOI18N
+        kdBangsal.setPreferredSize(new java.awt.Dimension(80, 23));
+        kdBangsal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdBangsalKeyPressed(evt);
+            }
+        });
+        panelisi3.add(kdBangsal);
+        kdBangsal.setBounds(880, 10, 80, 23);
+
+        nmBangsal.setName("nmBangsal"); // NOI18N
+        nmBangsal.setPreferredSize(new java.awt.Dimension(207, 23));
+        panelisi3.add(nmBangsal);
+        nmBangsal.setBounds(960, 10, 240, 23);
+
+        btnPasien1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPasien1.setMnemonic('1');
+        btnPasien1.setToolTipText("Alt+1");
+        btnPasien1.setName("btnPasien1"); // NOI18N
+        btnPasien1.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnPasien1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasien1ActionPerformed(evt);
+            }
+        });
+        panelisi3.add(btnPasien1);
+        btnPasien1.setBounds(1200, 10, 28, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -812,6 +876,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmgudang.setText("");
         kdptg.setText("");
         nmptg.setText("");
+        kdBangsal.setText("");
+        nmBangsal.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -968,6 +1034,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
+    private void kdBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdBangsalKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdBangsalKeyPressed
+
+    private void btnPasien1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasien1ActionPerformed
+        akses.setform("DlgCariPengeluaranApotek");
+        bangsal2.emptTeks();
+        bangsal2.isCek();
+        bangsal2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        bangsal2.setLocationRelativeTo(internalFrame1);
+        bangsal2.setAlwaysOnTop(false);
+        bangsal2.setVisible(true);
+    }//GEN-LAST:event_btnPasien1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -996,11 +1076,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Tanggal Tgl2;
     private widget.Button btnBarang;
     private widget.Button btnPasien;
+    private widget.Button btnPasien1;
     private widget.Button btnPetugas;
     private widget.Button btnSatuan;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.TextBox kdBangsal;
     private widget.TextBox kdbar;
     private widget.TextBox kdgudang;
     private widget.TextBox kdjenis;
@@ -1012,8 +1094,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label16;
     private widget.Label label17;
     private widget.Label label18;
+    private widget.Label label19;
     private widget.Label label24;
     private widget.Label label9;
+    private widget.TextBox nmBangsal;
     private widget.TextBox nmbar;
     private widget.TextBox nmgudang;
     private widget.TextBox nmjenis;
@@ -1028,7 +1112,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void tampil() {
         tanggal="  pengeluaran_obat_bhp.tanggal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ";
-        nokeluar="";bang="";ptg="";jen="";bar="";
+        nokeluar="";bang="";ptg="";jen="";bar="";asal="";
         if(!NoNota.getText().equals("")){
             nokeluar=" and pengeluaran_obat_bhp.no_keluar='"+NoNota.getText()+"' ";
         }        
@@ -1044,6 +1128,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(!nmbar.getText().equals("")){
             bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
         }
+        if(!nmBangsal.getText().equals("")){
+            asal = " and pengeluaran_obat_bhp.keterangan like '%" + nmBangsal.getText() + "%' ";
+        }
 
         Valid.tabelKosong(tabMode);
         try{
@@ -1058,16 +1145,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     " and pengeluaran_obat_bhp.kd_bangsal=bangsal.kd_bangsal "+
                     " and pengeluaran_obat_bhp.no_keluar=detail_pengeluaran_obat_bhp.no_keluar "+
                     " and pengeluaran_obat_bhp.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
-                    " where "+tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.no_keluar like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.kd_bangsal like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.nip like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and petugas.nama like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and pengeluaran_obat_bhp.keterangan like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and detail_pengeluaran_obat_bhp.no_batch like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and detail_pengeluaran_obat_bhp.kode_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and bangsal.nm_bangsal like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nokeluar+bang+ptg+jen+bar+" and jenis.nama like '%"+TCari.getText()+"%' "+
+                    " where "+tanggal+nokeluar+bang+ptg+jen+bar+asal+" and pengeluaran_obat_bhp.no_keluar like '%"+TCari.getText()+"%' or "+
+                    tanggal+nokeluar+bang+ptg+jen+bar+asal+" and pengeluaran_obat_bhp.kd_bangsal like '%"+TCari.getText()+"%' or "+
+                    tanggal+nokeluar+bang+ptg+jen+bar+asal+" and pengeluaran_obat_bhp.nip like '%"+TCari.getText()+"%' or "+
+                    tanggal+nokeluar+bang+ptg+jen+bar+asal+" and petugas.nama like '%"+TCari.getText()+"%' or "+
+                    tanggal+nokeluar+bang+ptg+jen+bar+asal+" and pengeluaran_obat_bhp.keterangan like '%"+TCari.getText()+"%' or "+
+                    tanggal+nokeluar+bang+ptg+jen+bar+asal+" and detail_pengeluaran_obat_bhp.no_batch like '%"+TCari.getText()+"%' or "+
+                    tanggal+nokeluar+bang+ptg+jen+bar+asal+" and detail_pengeluaran_obat_bhp.kode_brng like '%"+TCari.getText()+"%' or "+
+                    tanggal+nokeluar+bang+ptg+jen+bar+asal+" and bangsal.nm_bangsal like '%"+TCari.getText()+"%' or "+
+                    tanggal+nokeluar+bang+ptg+jen+bar+asal+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                    tanggal+nokeluar+bang+ptg+jen+bar+asal+" and jenis.nama like '%"+TCari.getText()+"%' "+
                     " group by pengeluaran_obat_bhp.no_keluar order by pengeluaran_obat_bhp.tanggal,pengeluaran_obat_bhp.no_keluar ");
             try {
                 rs=ps.executeQuery();
