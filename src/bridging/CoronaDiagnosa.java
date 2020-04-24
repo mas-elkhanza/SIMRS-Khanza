@@ -18,6 +18,7 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -1067,10 +1068,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         LCount.setText(""+tabMode2.getRowCount());
     }
 
-    public void SetPasien(String norm,String nmpasien){
+    public void SetPasien(String norm,String nmpasien,Date tglmasuk,Date tglkeluar){
         this.norm.setText(norm);
         this.nmpasien.setText(nmpasien);
         TCari2.setText(norm);
+        DTPCari1.setDate(tglmasuk);
+        DTPCari2.setDate(tglkeluar);
     }
  
 }
