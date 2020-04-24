@@ -5133,7 +5133,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     
                                     tabModeRwJlDr.addRow(new Object[]{true,"                           ",namaTindakan,":",
                                                 rsralandrpr.getDouble("total_byrdr"),rsralandrpr.getDouble("jml"),tamkur,(tamkur+rsralandrpr.getDouble("biaya")),"Ralan Dokter Paramedis"});
-                                                rsralandrpr.getDouble("total_byrdr"),rsralandrpr.getDouble("jml"),tamkur,(tamkur+rsralandrpr.getDouble("biaya")),"Ralan Dokter Paramedis"});
+                                                
                                     subttl=subttl+rsralandrpr.getDouble("biaya")+tamkur;
                                 }                        
                             }

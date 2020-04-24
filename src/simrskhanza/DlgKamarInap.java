@@ -4192,7 +4192,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                         "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                         "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join suku_bangsa on pasien.suku_bangsa=suku_bangsa.id "+
-                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",param3);
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+key+" and order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",param3);
                         this.setCursor(Cursor.getDefaultCursor());
                     break;
                     case "Lembar Bimbingan Rohani":
