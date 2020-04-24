@@ -11,7 +11,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.lang.ref.WeakReference;
 import javax.swing.BorderFactory;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
 /**
@@ -29,6 +31,8 @@ public class MenuBar extends JMenuBar {
     private final Color black = new Color(235,0,107);
     private final Color warna = new Color(235,0,107);
 
+    private WeakReference<JMenu> helpMenu = null;
+    
     public MenuBar() {
         super();
         setBorder(BorderFactory.createEmptyBorder(5, 6,6, 6));
@@ -44,6 +48,35 @@ public class MenuBar extends JMenuBar {
             g.drawImage(ligthImage, 0, 0, getWidth(), getHeight() / 2, null);
         }
     }
+    
+    @Override
+    public void setHelpMenu(JMenu menu) {
+        if(helpMenu != null){
+            JMenu old = helpMenu.get();
+            if(old != null && old.getParent() == this)
+		remove(old);
+            helpMenu = null;
+        }
+
+        if(menu != null){
+            helpMenu = new WeakReference(menu);
+            add(menu);
+        }
+     }
+    
+    @Override
+    public JMenu getHelpMenu() {
+        JMenu help = null;
+        if(helpMenu != null){
+            JMenu tmphelp = helpMenu.get();
+            if(tmphelp != null && tmphelp.getParent() == this)
+		help = tmphelp;
+        }
+
+        if(helpMenu != null && help == null)
+            helpMenu = null;
+	return help;
+     }
 
     private void setUpGradientImage() {
         gradientImage = new BufferedImage(1, getHeight(), BufferedImage.TYPE_INT_ARGB);
