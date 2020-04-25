@@ -10144,7 +10144,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }
             Sequel.mengedit("temp_spri", 
                     "id='"+txtIdSpri.getText()+"'", 
-                    "norm='"+TNoRM.getText()+"'");
+                    "norm='"+TNoRM.getText()+"', nama='"+TPasien.getText()+"'");
             emptTeks(); 
             if(TabRawat.getSelectedIndex()==0){
                 tampil();
