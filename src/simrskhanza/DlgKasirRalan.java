@@ -7982,6 +7982,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             INACBGPerawatanCorona form=new INACBGPerawatanCorona(null,false);
             form.emptTeks();
             form.setPasien(TNoRw1.getText(),TNoRM.getText(),TPasien.getText());
+            form.tampil();
             form.isCek();
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
