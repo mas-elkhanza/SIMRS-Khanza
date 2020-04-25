@@ -570,6 +570,7 @@ import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
 import perpustakaan.PerpustakaanSirkulasi;
 import rekammedis.MasterMasalahKeperawatan;
+import rekammedis.MasterMasalahKeperawatanGigi;
 import rekammedis.RMTriaseIGD;
 import rekammedis.MasterTriaseMacamKasus;
 import rekammedis.MasterTriasePemeriksaan;
@@ -16144,6 +16145,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterMasalahKeperawatanGigiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterMasalahKeperawatanGigi form=new MasterMasalahKeperawatanGigi(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenilaianAwalKeperawatanGigiActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16740,7 +16757,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuplierToko,btnJenisToko,btnSetHargaToko,btnBarangToko,btnPenagihanPiutangPasien,btnAkunPenagihanPiutang,btnStokOpnameToko,
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
-            btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona;
+            btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
+            btnMasterMasalahKeperawatanGigi;
     
     public void isWall(){
         try{            
@@ -19042,10 +19060,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(akses.getmaster_masalah_keperawatan()==true){
                 Panelmenu.add(btnMasterMasalahKeperawatan);
                 jmlmenu++;
-            } 
+            }
+            
+            if(akses.getmaster_masalah_keperawatan_gigi()==true){
+                Panelmenu.add(btnMasterMasalahKeperawatanGigi);
+                jmlmenu++;
+            }
             
             if(akses.getpenilaian_awal_keperawatan_ralan()==true){
                 Panelmenu.add(btnPenilaianAwalKeperawatanRalan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_keperawatan_gigi()==true){
+                Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==12){  
@@ -22106,10 +22134,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         } 
         
+        if(akses.getmaster_masalah_keperawatan_gigi()==true){
+            Panelmenu.add(btnMasterMasalahKeperawatanGigi);
+            jmlmenu++;
+        }
+        
         if(akses.getpenilaian_awal_keperawatan_ralan()==true){
             Panelmenu.add(btnPenilaianAwalKeperawatanRalan);
             jmlmenu++;
         } 
+        
+        if(akses.getpenilaian_awal_keperawatan_gigi()==true){
+            Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
+            jmlmenu++;
+        }
         
         if(akses.getpengambilan_utd2()==true){
             Panelmenu.add(btnPengambilanUTD2); 
@@ -26030,9 +26068,23 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getmaster_masalah_keperawatan_gigi()==true){
+            if(btnMasterMasalahKeperawatanGigi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterMasalahKeperawatanGigi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_awal_keperawatan_ralan()==true){
             if(btnPenilaianAwalKeperawatanRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalKeperawatanRalan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_awal_keperawatan_gigi()==true){
+            if(btnPenilaianAwalKeperawatanGigi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
                 jmlmenu++;
             }                
         }
@@ -28733,7 +28785,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnPenilaianAwalKeperawatanRalan= new widget.ButtonBig();
-        btnPenilaianAwalKeperawatanRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_basket_8726.png"))); 
+        btnPenilaianAwalKeperawatanRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_report-clipboard-medical-checklist-healthcare_5859123.png"))); 
         btnPenilaianAwalKeperawatanRalan.setText("Penilaian Awal Keperawatan Ralan");
         btnPenilaianAwalKeperawatanRalan.setIconTextGap(0);
         btnPenilaianAwalKeperawatanRalan.setName("btnPenilaianAwalKeperawatanRalan"); 
@@ -28745,7 +28797,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
         
         btnMasterMasalahKeperawatan = new widget.ButtonBig();
-        btnMasterMasalahKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_library-book-books-interface-education-read-reading_2914057.png"))); 
+        btnMasterMasalahKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Hospital_5947112.png"))); 
         btnMasterMasalahKeperawatan.setText("Master Masalah Keperawatan");
         btnMasterMasalahKeperawatan.setIconTextGap(0);
         btnMasterMasalahKeperawatan.setName("btnMasterMasalahKeperawatan"); 
@@ -29090,6 +29142,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPerawatanPasienCorona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPerawatanPasienCoronaActionPerformed(evt);
+            }
+        });
+        
+        btnPenilaianAwalKeperawatanGigi = new widget.ButtonBig();
+        btnPenilaianAwalKeperawatanGigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_09-report_5980350.png"))); 
+        btnPenilaianAwalKeperawatanGigi.setText("Penilaian Awal Keperawatan Gigi");
+        btnPenilaianAwalKeperawatanGigi.setIconTextGap(0);
+        btnPenilaianAwalKeperawatanGigi.setName("btnPenilaianAwalKeperawatanGigi"); 
+        btnPenilaianAwalKeperawatanGigi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianAwalKeperawatanGigi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenilaianAwalKeperawatanGigiActionPerformed(evt);
+            }
+        });
+        
+        btnMasterMasalahKeperawatanGigi = new widget.ButtonBig();
+        btnMasterMasalahKeperawatanGigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_healthcare_and_medical-hygienic-tooth_paste-toothpaste-toothbrush-health_care_4394831.png"))); 
+        btnMasterMasalahKeperawatanGigi.setText("Master Masalah Keperawatan Gigi");
+        btnMasterMasalahKeperawatanGigi.setIconTextGap(0);
+        btnMasterMasalahKeperawatanGigi.setName("btnMasterMasalahKeperawatanGigi"); 
+        btnMasterMasalahKeperawatanGigi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterMasalahKeperawatanGigi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterMasalahKeperawatanGigiActionPerformed(evt);
             }
         });
     }

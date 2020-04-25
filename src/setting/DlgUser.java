@@ -160,7 +160,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko","[J]Hutang Toko",
                     "[J]Bayar Pesan Toko","[Q]Member Toko","[Q]Penjualan Toko","[I]Registrasi Poli Per Tanggal","[Q]Piutang Toko","[Q]Retur Ke Suplier Toko",
                     "[E]Retur Ke Suplier Non Medis","[E]Riwayat Barang Non Medis","[K]Pasien Corona","[Q]Pendapatan Harian Toko","[K]Diagnosa Pasien Corona",
-                    "[K]Perawatan Pasien Corona"
+                    "[K]Perawatan Pasien Corona","[L]Penilaian Awal Keperawatan Gigi","[L]Master Masalah Keperawatan Gigi"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -342,7 +342,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 615;i++) {
+        for (i = 0; i < 617;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1207,7 +1207,11 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==613){
                 column.setPreferredWidth(139);
             }else if(i==614){
-                column.setPreferredWidth(145);
+                column.setPreferredWidth(146);
+            }else if(i==615){
+                column.setPreferredWidth(181);
+            }else if(i==616){
+                column.setPreferredWidth(185);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1702,7 +1706,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2359,7 +2363,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "pasien_corona='"+tbUser.getValueAt(i,611).toString()+"',"+
                     "toko_pendapatan_harian='"+tbUser.getValueAt(i,612).toString()+"',"+
                     "diagnosa_pasien_corona='"+tbUser.getValueAt(i,613).toString()+"',"+
-                    "perawatan_pasien_corona='"+tbUser.getValueAt(i,614).toString()+"'");
+                    "perawatan_pasien_corona='"+tbUser.getValueAt(i,614).toString()+"',"+
+                    "penilaian_awal_keperawatan_gigi='"+tbUser.getValueAt(i,615).toString()+"',"+
+                    "master_masalah_keperawatan_gigi='"+tbUser.getValueAt(i,616).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3055,7 +3061,9 @@ public class DlgUser extends javax.swing.JDialog {
                                     "pasien_corona='"+tbUser.getValueAt(barisdicopy,611).toString()+"',"+
                                     "toko_pendapatan_harian='"+tbUser.getValueAt(barisdicopy,612).toString()+"',"+
                                     "diagnosa_pasien_corona='"+tbUser.getValueAt(barisdicopy,613).toString()+"',"+
-                                    "perawatan_pasien_corona='"+tbUser.getValueAt(barisdicopy,614).toString()+"'");
+                                    "perawatan_pasien_corona='"+tbUser.getValueAt(barisdicopy,614).toString()+"',"+
+                                    "penilaian_awal_keperawatan_gigi='"+tbUser.getValueAt(barisdicopy,615).toString()+"',"+
+                                    "master_masalah_keperawatan_gigi='"+tbUser.getValueAt(barisdicopy,616).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3367,7 +3375,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
                         "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal,"+
                         "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang,pasien_corona,toko_pendapatan_harian,"+
-                        "diagnosa_pasien_corona,perawatan_pasien_corona from user order by AES_DECRYPT(id_user,'nur')");
+                        "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -3994,7 +4002,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("pasien_corona"),
                                rs.getBoolean("toko_pendapatan_harian"),
                                rs.getBoolean("diagnosa_pasien_corona"),
-                               rs.getBoolean("perawatan_pasien_corona")
+                               rs.getBoolean("perawatan_pasien_corona"),
+                               rs.getBoolean("penilaian_awal_keperawatan_gigi"),
+                               rs.getBoolean("master_masalah_keperawatan_gigi")
                             });
                         }   
                     } catch (Exception e) {
@@ -4610,7 +4620,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("pasien_corona"),
                            rs.getBoolean("toko_pendapatan_harian"),
                            rs.getBoolean("diagnosa_pasien_corona"),
-                           rs.getBoolean("perawatan_pasien_corona")
+                           rs.getBoolean("perawatan_pasien_corona"),
+                           rs.getBoolean("penilaian_awal_keperawatan_gigi"),
+                           rs.getBoolean("master_masalah_keperawatan_gigi")
                         });
                     }                                             
                  }
