@@ -2262,7 +2262,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Obat2an,BtnBatal);
+            Valid.pindah(evt,Rencana,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -3442,7 +3442,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        System.out.println("Notip ");
         Valid.tabelKosong(tabMode);
         try{
             if(TCari.getText().equals("")){
@@ -3599,6 +3598,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
             tabModeMasalah.setValueAt(false,i,0);
         }
+        TabRawat.setSelectedIndex(0);
         Informasi.requestFocus();
     } 
 
