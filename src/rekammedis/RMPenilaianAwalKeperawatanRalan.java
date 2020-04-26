@@ -290,6 +290,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         Alergi.setDocument(new batasInput((int)25).getKata(Alergi));
         KetBantu.setDocument(new batasInput((int)50).getKata(KetBantu));
         KetProthesa.setDocument(new batasInput((int)50).getKata(KetProthesa));
+        KetBudaya.setDocument(new batasInput((int)50).getKata(KetBudaya));
         KetPsiko.setDocument(new batasInput((int)70).getKata(KetPsiko));
         KetTinggal.setDocument(new batasInput((int)40).getKata(KetTinggal));
         KetEdukasi.setDocument(new batasInput((int)50).getKata(KetEdukasi));
