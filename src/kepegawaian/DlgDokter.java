@@ -1277,7 +1277,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void MnTtdDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTtdDokterActionPerformed
         // TODO add your handling code here:
         DlgTtdDokter restore = new DlgTtdDokter(null, true);
-        restore.setSize(600, internalFrame1.getHeight() - 20);
+        restore.setSize(800, internalFrame1.getHeight() - 20);
         restore.setLocationRelativeTo(internalFrame1);
         restore.setDokter(TKd.getText());
         restore.setVisible(true);
