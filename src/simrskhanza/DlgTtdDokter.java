@@ -64,6 +64,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 466));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -74,6 +75,8 @@ public class DlgTtdDokter extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new java.awt.BorderLayout());
+
+        canvas1.setBackground(new java.awt.Color(240, 255, 255));
         jPanel1.add(canvas1, java.awt.BorderLayout.CENTER);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -153,7 +156,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
                 .addComponent(buttonBig6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonBig7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +219,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
     private void buttonBig3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBig3ActionPerformed
         // TODO add your handling code here:
         canvas1.clear();
-        canvas1.setThickness(3);
+        canvas1.setThickness(5);
     }//GEN-LAST:event_buttonBig3ActionPerformed
 
     private void buttonBig4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBig4ActionPerformed
@@ -227,7 +230,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
         if (Sequel.menyimpantf("ttd_dokter", "'" + dokter + "'", "TTD", fileGambar) == true) {
             JOptionPane.showMessageDialog(rootPane, "Simpan TTD Berhasil.");
         }
-        canvas1.setThickness(3);
+        canvas1.setThickness(5);
     }//GEN-LAST:event_buttonBig4ActionPerformed
 
     private void buttonBig5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBig5ActionPerformed
@@ -240,7 +243,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Ganti TTD Berhasil.");
             canvas1.load(file);
         }
-        canvas1.setThickness(3);
+        canvas1.setThickness(5);
     }//GEN-LAST:event_buttonBig5ActionPerformed
 
     private void buttonBig7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBig7ActionPerformed
@@ -271,26 +274,26 @@ public class DlgTtdDokter extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notifikasi Hapus : " + e);
         }
-        canvas1.setThickness(3);
+        canvas1.setThickness(5);
     }//GEN-LAST:event_buttonBig6ActionPerformed
 
     private void buttonBig1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBig1ActionPerformed
         // TODO add your handling code here:
         canvas1.undo();
-        canvas1.setThickness(3);
+        canvas1.setThickness(5);
     }//GEN-LAST:event_buttonBig1ActionPerformed
 
     private void buttonBig2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBig2ActionPerformed
         // TODO add your handling code here:
         canvas1.redo();
-        canvas1.setThickness(3);
+        canvas1.setThickness(5);
     }//GEN-LAST:event_buttonBig2ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         file = new File("./setting/" + dokter + ".png");
         canvas1.load(file);
-        canvas1.setThickness(3);
+        canvas1.setThickness(5);
     }//GEN-LAST:event_formWindowActivated
 
     /**

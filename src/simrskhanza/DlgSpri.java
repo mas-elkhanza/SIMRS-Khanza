@@ -722,7 +722,7 @@ public class DlgSpri extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-04-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -881,7 +881,7 @@ public class DlgSpri extends javax.swing.JDialog {
         panelBiasa1.add(BtnSeek3);
         BtnSeek3.setBounds(920, 70, 28, 23);
 
-        cmbUpf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebidanan", "PD (Kemuning)", "Kesehatan Anak", "Bedah", "Isolasi", "HCU", "ICU", "ICCU", "PICU", "NICU", "Perinatologi" }));
+        cmbUpf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebidanan", "PD", "PD (Kemuning)", "Kesehatan Anak", "Bedah", "Isolasi", "Sakura", "HCU", "ICU", "ICCU", "PICU", "NICU", "Perinatologi" }));
         cmbUpf.setName("cmbUpf"); // NOI18N
         cmbUpf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -988,6 +988,7 @@ public class DlgSpri extends javax.swing.JDialog {
             Valid.hapusTable(tabMode, TNoRM, "temp_spri", "temp_spri.norm");
         }
         emptTeks();
+        TCari.setText("");
         tampil();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1280,31 +1281,6 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
 
     private void btnGantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGantiActionPerformed
         // TODO add your handling code here:
-//        try {
-//            ps = connect.prepareStatement("update temp_spri set "
-//                    + "tanggal='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "',"
-//                    + "jam='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
-//                    + "norm='" + TNoRM.getText() + "',"
-//                    + "diagnosa='" + txtKdPenyakit.getText() + "',"
-//                    + "rencana_perawatan='" + txtRencanaPerawatan.getText() + "',"
-//                    + "upf='" + cmbUpf.getSelectedItem().toString() + "',"
-//                    + "kd_dokter='" + txtKdDokter.getText() + "',"
-//                    + "nama='" + TPasien.getText() + "',"
-//                    + "keluhan='" + txtNmPenyakit.getText() + "' where id='" + id + "'");
-//            try {
-//                ps.executeUpdate();
-//            } catch (Exception e) {
-//                System.out.println("Notifikasi Ganti Data : " + e);
-//                JOptionPane.showMessageDialog(null, "Maaf, Gagal Mengedit. Mungkin kode sudah digunakan sebelumnya...!!!!");
-//            } finally {
-//                if (ps != null) {
-//                    ps.close();
-//                }
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Notifikasi : " + e);
-//        }
-
         Sequel.mengedit("temp_spri", "id='" + id + "'", "tanggal='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "',"
                 + "jam='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
                 + "norm='" + TNoRM.getText() + "',"

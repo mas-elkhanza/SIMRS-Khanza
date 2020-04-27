@@ -2726,6 +2726,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         ppSpri.setBackground(new java.awt.Color(255, 255, 254));
         ppSpri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppSpri.setForeground(new java.awt.Color(50, 50, 50));
+        ppSpri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSpri.setText("SPRI");
         ppSpri.setName("ppSpri"); // NOI18N
         ppSpri.addActionListener(new java.awt.event.ActionListener() {
@@ -2738,6 +2739,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         ppSuratKematian.setBackground(new java.awt.Color(255, 255, 254));
         ppSuratKematian.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppSuratKematian.setForeground(new java.awt.Color(50, 50, 50));
+        ppSuratKematian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSuratKematian.setText("Surat Kematian");
         ppSuratKematian.setName("ppSuratKematian"); // NOI18N
         ppSuratKematian.addActionListener(new java.awt.event.ActionListener() {
