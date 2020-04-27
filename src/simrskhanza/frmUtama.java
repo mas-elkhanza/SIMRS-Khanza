@@ -8061,6 +8061,7 @@ public class frmUtama extends javax.swing.JFrame {
                 BtnToolKamnap.setEnabled(false);
                 BtnToolKasir.setEnabled(false);
                 btnToolIGD.setEnabled(false);
+                btnSpri.setEnabled(false);
                 MnGantiPassword.setEnabled(false);
                 btnToolBcdRalan.setEnabled(false);
                 btnToolBcdRanap.setEnabled(false);                
@@ -8175,7 +8176,8 @@ public class frmUtama extends javax.swing.JFrame {
                         btnPermintaanLab.setEnabled(akses.getpermintaan_lab());
                     }
                         
-                    btnToolIGD.setEnabled(akses.getigd());                    
+                    btnToolIGD.setEnabled(akses.getigd());
+                    btnSpri.setEnabled(akses.getigd());                     
                     btnToolBcdRalan.setEnabled(akses.getbarcoderalan());
                     btnToolBcdRanap.setEnabled(akses.getbarcoderanap()); 
                     btnLaboratorium.setEnabled(akses.getperiksa_lab());
@@ -8195,6 +8197,7 @@ public class frmUtama extends javax.swing.JFrame {
                     BtnToolKasir.setEnabled(false);
                     MnGantiPassword.setEnabled(false);  
                     btnToolIGD.setEnabled(false);
+                    btnSpri.setEnabled(false);
                     btnToolBcdRalan.setEnabled(false);
                     btnToolBcdRanap.setEnabled(false); 
                     btnPermintaanLab.setEnabled(false);
