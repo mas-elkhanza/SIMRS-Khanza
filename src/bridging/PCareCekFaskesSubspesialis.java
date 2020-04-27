@@ -50,7 +50,7 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
     private PCareCekReferensiSubspesialis spesialis=new PCareCekReferensiSubspesialis(null,false);
     private PCareCekReferensiSarana sarana=new PCareCekReferensiSarana(null,false);
     private int i=0;
-    private PcareApi api=new PcareApi();
+    private ApiPcare api=new ApiPcare();
     private String URL="",link="",otorisasi;
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -410,7 +410,7 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){
                 Sequel.menyimpan("temporary","'0','"+

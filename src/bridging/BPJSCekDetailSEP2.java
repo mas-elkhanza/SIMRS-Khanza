@@ -42,10 +42,9 @@ import org.springframework.http.MediaType;
  */
 public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private String URL="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -87,8 +86,7 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable()); 
         SEP.setDocument(new batasInput((byte)60).getKata(SEP));
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/";
+            URL = koneksiDB.URLAPIBPJS()+"/SEP/";
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -235,7 +233,7 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+

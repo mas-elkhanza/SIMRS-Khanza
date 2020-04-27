@@ -17,7 +17,7 @@ import org.apache.commons.codec.binary.Base64;
  * @author khanzasoft
  */
 public class tessaja5 {
-    public static SisruteApi api=new SisruteApi();
+    public static ApiKemenkesSisrute api=new ApiKemenkesSisrute();
     private static Properties prop = new Properties();
     public static void tessaja() throws FileNotFoundException, IOException{
         prop.loadFromXML(new FileInputStream("setting/database.xml"));

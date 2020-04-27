@@ -8,6 +8,7 @@
     <body>
    <?php
         $keyword=$_GET['keyword'];
+        $keyword= validTeks($keyword);
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,
                 keanggotaan.koperasi, keanggotaan.jamsostek
                 from keanggotaan right OUTER JOIN pegawai

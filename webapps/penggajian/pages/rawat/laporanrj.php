@@ -8,26 +8,27 @@
     <body>
    <?php
         $_sql         = "SELECT * FROM set_tahun";
-		$hasil        = bukaquery($_sql);
-		$baris        = mysqli_fetch_row($hasil);
-		$tahun         = $baris[0];
-		$bln_leng=strlen($baris[1]);
-		$bulan="0";
-		if ($bln_leng==1){
-			$bulan="0".$baris[1];
-		}else{
-			$bulan=$baris[1];
-		}
+        $hasil        = bukaquery($_sql);
+        $baris        = mysqli_fetch_row($hasil);
+        $tahun         = $baris[0];
+        $bln_leng=strlen($baris[1]);
+        $bulan="0";
+        if ($bln_leng==1){
+                $bulan="0".$baris[1];
+        }else{
+                $bulan=$baris[1];
+        }
 		
         $keyword=isset($_GET['keyword'])?$_GET['keyword']:NULL;
+        $keyword= validTeks($keyword);
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama,
-		        pegawai.departemen,sum(rawatjalan.jmlh),sum(rawatjalan.jm)
+                pegawai.departemen,sum(rawatjalan.jmlh),sum(rawatjalan.jm)
                 FROM rawatjalan right OUTER JOIN pegawai
-				ON rawatjalan.id=pegawai.id and tgl like '%".$tahun."-".$bulan."%'
-				where pegawai.nik like '%".$keyword."%'  and pegawai.stts_aktif<>'KELUAR'  and pegawai.jbtn like '%dokter spesialis%' or
-				pegawai.nama like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR'  and pegawai.jbtn like '%dokter spesialis%' or
-				pegawai.departemen like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR'  and pegawai.jbtn like '%dokter spesialis%'
-				group by pegawai.id order by pegawai.id ASC ";
+                ON rawatjalan.id=pegawai.id and tgl like '%".$tahun."-".$bulan."%'
+                where pegawai.nik like '%".$keyword."%'  and pegawai.stts_aktif<>'KELUAR'  and pegawai.jbtn like '%dokter spesialis%' or
+                pegawai.nama like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR'  and pegawai.jbtn like '%dokter spesialis%' or
+                pegawai.departemen like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR'  and pegawai.jbtn like '%dokter spesialis%'
+                group by pegawai.id order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
 		$ttljm=0;
@@ -42,7 +43,7 @@
                         <td width='150px'><div align='center'>Ttl.JM Tindakan</div></td>
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
-					    $ttljm=$ttljm+$baris[5];
+                        $ttljm=$ttljm+$baris[5];
                         echo "<tr class='isi'>
                                 <td>$baris[1]&nbsp;</td>
                                 <td>$baris[2]&nbsp;</td>

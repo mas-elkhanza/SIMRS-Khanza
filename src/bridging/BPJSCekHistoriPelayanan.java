@@ -30,7 +30,6 @@ import java.awt.event.WindowListener;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -46,7 +45,7 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private int i=0;
     private DlgPasien pasien=new DlgPasien(null,false);
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private String URL="",link="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
@@ -54,7 +53,6 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private String pilihan;
         
     /** Creates new form DlgKamar
      * @param parent

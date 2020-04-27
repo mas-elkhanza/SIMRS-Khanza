@@ -94,11 +94,11 @@
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
                 $id                 =trim($_POST['id']);
-                $jenis              =trim($_POST['jenis']);
-                $nama_penghargaan   =trim($_POST['nama_penghargaan']);
+                $jenis              =validTeks(trim($_POST['jenis']));
+                $nama_penghargaan   =validTeks(trim($_POST['nama_penghargaan']));
                 $tanggal            =trim($_POST['ThnPenghargaan'])."-".trim($_POST['BlnPenghargaan'])."-".trim($_POST['TglPenghargaan']);
-                $instansi           =trim($_POST['instansi']);
-                $pejabat_pemberi    =trim($_POST['pejabat_pemberi']);
+                $instansi           =validTeks(trim($_POST['instansi']));
+                $pejabat_pemberi    =validTeks(trim($_POST['pejabat_pemberi']));
                 $dokumen            = str_replace(" ","_","pages/riwayatpenghargaan/berkas/".$_FILES['dokumen']['name']);
                 if ((!empty($id))&&(!empty($jenis))&&(!empty($nama_penghargaan))) {
                     switch($action) {

@@ -49,9 +49,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb(); 
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
-    public DlgCariPoli poli=new DlgCariPoli(null,false);    
-    public DlgCariObat dlgobt=new DlgCariObat(null,false);
-    public DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
+    public DlgCariPoli poli=new DlgCariPoli(null,false);   
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private double ttl=0,y=0,subttl=0,ralanparamedis=0,piutang=0,itembayar=0,itempiutang=0, 
                    bayar=0,total=0,tamkur=0,detailjs=0,detailbhp=0,ppn=0,besarppn=0,tagihanppn=0,
@@ -447,47 +445,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     }  
                     kdpoli.requestFocus();
                 }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        dlgrwjl.perawatan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgBilingRalan")){
-                    isRawat();isKembali();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-
-        
-        dlgobt.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgBilingRalan")){isRawat();isKembali();}
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -2348,7 +2305,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                 }else if(i==2){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgLhtPiutang billing=new DlgLhtPiutang(null,false);
-                    billing.tampil();        
+                    billing.tampil();   
+                    billing.isCek();
                     billing.setSize(this.getWidth(),this.getHeight());
                     billing.setLocationRelativeTo(this);
                     billing.setAlwaysOnTop(false);
@@ -2368,238 +2326,170 @@ public class DlgBilingRalan extends javax.swing.JDialog {
 
 private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBillingMouseClicked
        if(tabModeRwJlDr.getRowCount()!=0){      
-            if(evt.getClickCount()==1){
-                i=tbBilling.getSelectedColumn();
-                if(i==1){
-                    try {
-                        akses.setform("DlgBilingRalan");
-                        switch (tbBilling.getValueAt(tbBilling.getSelectedRow(),i).toString()) {
-                            case "Tindakan":
-                                if(akses.gettindakan_ralan()==true){
-                                    kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-                                    nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                    dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                                    //perawatan.setModal(true);
-                                    dlgrwjl.isCek();
-                                    dlgrwjl.tampil();
-                                    dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgrwjl.setLocationRelativeTo(internalFrame1);
-                                    dlgrwjl.setAlwaysOnTop(false);
-                                    dlgrwjl.setVisible(true);
-                                }                            
-                                break;
-                            case "Obat & BHP":
-                                if(akses.getberi_obat()==true){
-                                    dlgobt.emptTeksobat();
-                                    //dlgobt.setModal(true);
-                                    dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
-                                            Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                    dlgobt.isCek();
-                                    dlgobt.tampilobat();
-                                    dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgobt.setLocationRelativeTo(internalFrame1);
-                                    dlgobt.setAlwaysOnTop(false);
-                                    dlgobt.setVisible(true);
-                                }                            
-                                //dispose();
-                                break;
-                            case "Tambahan Biaya":
-                                if(akses.gettambahan_biaya()==true){
-                                    MnTambahanActionPerformed(null);
-                                }                            
-                                break;
-                            case "Potongan Biaya":
-                                if(akses.getpotongan_biaya()==true){
-                                    MnPotonganActionPerformed(null);
-                                }
-                                break;
-                        }                     
-                    } catch (Exception e) {
-                        akses.setform("DlgBilingRalan");
-                        switch (tbBilling.getValueAt(tbBilling.getSelectedRow(),i).toString()) {
-                            case "Tindakan":
-                                if(akses.gettindakan_ralan()==true){
-                                    kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-                                    nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                    dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                                    //perawatan.setModal(true);
-                                    dlgrwjl.isCek();
-                                    dlgrwjl.tampil();
-                                    dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgrwjl.setLocationRelativeTo(internalFrame1);
-                                    dlgrwjl.setAlwaysOnTop(false);
-                                    dlgrwjl.setVisible(true);
-                                }                            
-                                break;
-                            case "Obat & BHP":
-                                if(akses.getberi_obat()==true){
-                                    dlgobt.emptTeksobat();
-                                    //dlgobt.setModal(true);
-                                    dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
-                                            Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                    dlgobt.isCek();
-                                    dlgobt.tampilobat();
-                                    dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgobt.setLocationRelativeTo(internalFrame1);
-                                    dlgobt.setAlwaysOnTop(false);
-                                    dlgobt.setVisible(true);
-                                }                            
-                                //dispose();
-                                break;
-                            case "Tambahan Biaya":
-                                if(akses.gettambahan_biaya()==true){
-                                    MnTambahanActionPerformed(null);
-                                }                            
-                                break;
-                            case "Potongan Biaya":
-                                if(akses.getpotongan_biaya()==true){
-                                    MnPotonganActionPerformed(null);
-                                }
-                                break;
-                        }                     
-                    }                        
+           if(tbBilling.getSelectedRow()>-1){
+               if(evt.getClickCount()==1){
+                    i=tbBilling.getSelectedColumn();
+                    if(i==1){
+                        try {
+                            akses.setform("DlgBilingRalan");
+                            switch (tbBilling.getValueAt(tbBilling.getSelectedRow(),i).toString()) {
+                                case "Tindakan":
+                                    if(akses.gettindakan_ralan()==true){
+                                        MnInputTindakanActionPerformed(null);
+                                    }                            
+                                    break;
+                                case "Obat & BHP":
+                                    if(akses.getberi_obat()==true){
+                                        MnInputObatActionPerformed(null);
+                                    }                            
+                                    //dispose();
+                                    break;
+                                case "Tambahan Biaya":
+                                    if(akses.gettambahan_biaya()==true){
+                                        MnTambahanActionPerformed(null);
+                                    }                            
+                                    break;
+                                case "Potongan Biaya":
+                                    if(akses.getpotongan_biaya()==true){
+                                        MnPotonganActionPerformed(null);
+                                    }
+                                    break;
+                            }                     
+                        } catch (Exception e) {
+                            akses.setform("DlgBilingRalan");
+                            switch (tbBilling.getValueAt(tbBilling.getSelectedRow(),i).toString()) {
+                                case "Tindakan":
+                                    if(akses.gettindakan_ralan()==true){
+                                        MnInputTindakanActionPerformed(null);
+                                    }                            
+                                    break;
+                                case "Obat & BHP":
+                                    if(akses.getberi_obat()==true){
+                                        MnInputObatActionPerformed(null);
+                                    }                            
+                                    //dispose();
+                                    break;
+                                case "Tambahan Biaya":
+                                    if(akses.gettambahan_biaya()==true){
+                                        MnTambahanActionPerformed(null);
+                                    }                            
+                                    break;
+                                case "Potongan Biaya":
+                                    if(akses.getpotongan_biaya()==true){
+                                        MnPotonganActionPerformed(null);
+                                    }
+                                    break;
+                            }                     
+                        }                        
+                    }
                 }
-            }
+           }
         }
 }//GEN-LAST:event_tbBillingMouseClicked
 
 private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbBillingKeyPressed
         if(tbBilling.getRowCount()!=0){
-            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                i=tbBilling.getSelectedColumn();
-                if(i==6){  
-                    if(akses.getbilling_ralan()==true){
-                        try {
-                            switch (tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()) {
-                                case "Laborat":
-                                    JOptionPane.showMessageDialog(rootPane,"Maaf, untuk tambahan/potongan laborat gunakan pada Tambahan/Potongan Biaya");
-                                    isRawat();
-                                    break;
-                                case "Obat":
-                                    JOptionPane.showMessageDialog(rootPane,"Maaf, untuk tambahan potongan obat hanya bisa diisi embalase.\nGunakan Tambahan Biaya jika ingin tambahan lain");
-                                    isRawat();
-                                    break;
-                                default:
-                                    try{
-                                        if(Double.parseDouble(tbBilling.getValueAt(tbBilling.getSelectedRow(),6).toString())!=0){
-                                            Sequel.queryu2("delete from temporary_tambahan_potongan where no_rawat=? and nama_tambahan=? and status=?",3,new String[]{
-                                                TNoRw.getText(),tbBilling.getValueAt(tbBilling.getSelectedRow(),2).toString(),tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()
-                                            });
-                                            Sequel.menyimpan("temporary_tambahan_potongan","?,?,?,?",4,new String[]{
-                                                TNoRw.getText(),tbBilling.getValueAt(tbBilling.getSelectedRow(),2).toString(),tbBilling.getValueAt(tbBilling.getSelectedRow(),6).toString(),
-                                                tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()
-                                            });
-                                        }else{
+            if(tbBilling.getSelectedRow()>-1){
+                if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                    i=tbBilling.getSelectedColumn();
+                    if(i==6){  
+                        if(akses.getbilling_ralan()==true){
+                            try {
+                                switch (tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()) {
+                                    case "Laborat":
+                                        JOptionPane.showMessageDialog(rootPane,"Maaf, untuk tambahan/potongan laborat gunakan pada Tambahan/Potongan Biaya");
+                                        isRawat();
+                                        break;
+                                    case "Obat":
+                                        JOptionPane.showMessageDialog(rootPane,"Maaf, untuk tambahan potongan obat hanya bisa diisi embalase.\nGunakan Tambahan Biaya jika ingin tambahan lain");
+                                        isRawat();
+                                        break;
+                                    default:
+                                        try{
+                                            if(Double.parseDouble(tbBilling.getValueAt(tbBilling.getSelectedRow(),6).toString())!=0){
+                                                Sequel.queryu2("delete from temporary_tambahan_potongan where no_rawat=? and nama_tambahan=? and status=?",3,new String[]{
+                                                    TNoRw.getText(),tbBilling.getValueAt(tbBilling.getSelectedRow(),2).toString(),tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()
+                                                });
+                                                Sequel.menyimpan("temporary_tambahan_potongan","?,?,?,?",4,new String[]{
+                                                    TNoRw.getText(),tbBilling.getValueAt(tbBilling.getSelectedRow(),2).toString(),tbBilling.getValueAt(tbBilling.getSelectedRow(),6).toString(),
+                                                    tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()
+                                                });
+                                            }else{
+                                                Sequel.queryu2("delete from temporary_tambahan_potongan where no_rawat=? and nama_tambahan=? and status=?",3,new String[]{
+                                                    TNoRw.getText(),tbBilling.getValueAt(tbBilling.getSelectedRow(),2).toString(),tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()
+                                                });
+                                                tbBilling.setValueAt(0,tbBilling.getSelectedRow(),0);
+                                            }                                    
+                                        }catch(Exception e){
                                             Sequel.queryu2("delete from temporary_tambahan_potongan where no_rawat=? and nama_tambahan=? and status=?",3,new String[]{
                                                 TNoRw.getText(),tbBilling.getValueAt(tbBilling.getSelectedRow(),2).toString(),tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()
                                             });
                                             tbBilling.setValueAt(0,tbBilling.getSelectedRow(),0);
-                                        }                                    
-                                    }catch(Exception e){
-                                        Sequel.queryu2("delete from temporary_tambahan_potongan where no_rawat=? and nama_tambahan=? and status=?",3,new String[]{
-                                            TNoRw.getText(),tbBilling.getValueAt(tbBilling.getSelectedRow(),2).toString(),tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()
-                                        });
-                                        tbBilling.setValueAt(0,tbBilling.getSelectedRow(),0);
-                                    }     
+                                        }     
 
-                                    isRawat();
+                                        isRawat();
+                                        break;
+                                }
+                            } catch (Exception e) {
+                                isRawat();
+                            }                            
+                        }                        
+                    }                    
+                }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                    i=tbBilling.getSelectedColumn();
+                    if(i==1){
+                        try {
+                            akses.setform("DlgBilingRalan");
+                            switch (tbBilling.getValueAt(tbBilling.getSelectedRow(), i).toString()) {
+                                case "Tindakan":
+                                    if(akses.gettindakan_ralan()==true){
+                                        MnInputTindakanActionPerformed(null);
+                                    }
+                                    break;
+                                case "Obat & BHP":
+                                    if(akses.getberi_obat()==true){
+                                        MnInputObatActionPerformed(null);
+                                    }                            
+                                    //dispose();
+                                    break;
+                                case "Tambahan Biaya":
+                                    if(akses.gettambahan_biaya()==true){
+                                        MnTambahanActionPerformed(null);
+                                    }                            
+                                    break;
+                                case "Potongan Biaya":
+                                    if(akses.getpotongan_biaya()==true){
+                                        MnPotonganActionPerformed(null);
+                                    }
                                     break;
                             }
                         } catch (Exception e) {
-                            isRawat();
-                        }                            
-                    }                        
-                }                    
-            }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                i=tbBilling.getSelectedColumn();
-                if(i==1){
-                    try {
-                        akses.setform("DlgBilingRalan");
-                        switch (tbBilling.getValueAt(tbBilling.getSelectedRow(), i).toString()) {
-                            case "Tindakan":
-                                if(akses.gettindakan_ralan()==true){
-                                    kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-                                    nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                    dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                                    //perawatan.setModal(true);
-                                    dlgrwjl.isCek();
-                                    dlgrwjl.tampil();
-                                    dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgrwjl.setLocationRelativeTo(internalFrame1);
-                                    dlgrwjl.setAlwaysOnTop(false);
-                                    dlgrwjl.setVisible(true);
-                                }
-                                break;
-                            case "Obat & BHP":
-                                if(akses.getberi_obat()==true){
-                                    dlgobt.emptTeksobat();
-                                    //dlgobt.setModal(true);
-                                    dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
-                                            Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                    dlgobt.isCek();
-                                    dlgobt.tampilobat();
-                                    dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgobt.setLocationRelativeTo(internalFrame1);
-                                    dlgobt.setAlwaysOnTop(false);
-                                    dlgobt.setVisible(true);
-                                }                            
-                                //dispose();
-                                break;
-                            case "Tambahan Biaya":
-                                if(akses.gettambahan_biaya()==true){
-                                    MnTambahanActionPerformed(null);
-                                }                            
-                                break;
-                            case "Potongan Biaya":
-                                if(akses.getpotongan_biaya()==true){
-                                    MnPotonganActionPerformed(null);
-                                }
-                                break;
-                        }
-                    } catch (Exception e) {
-                        akses.setform("DlgBilingRalan");
-                        switch (tbBilling.getValueAt(tbBilling.getSelectedRow(), i).toString()) {
-                            case "Tindakan":
-                                if(akses.gettindakan_ralan()==true){
-                                    kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-                                    nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                    dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                                    //setModal(true);
-                                    dlgrwjl.isCek();
-                                    dlgrwjl.tampil();
-                                    dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgrwjl.setLocationRelativeTo(internalFrame1);
-                                    dlgrwjl.setAlwaysOnTop(false);
-                                    dlgrwjl.setVisible(true);
-                                }
-                                break;
-                            case "Obat & BHP":
-                                if(akses.getberi_obat()==true){
-                                    dlgobt.emptTeksobat();
-                                    //dlgobt.setModal(true);
-                                    dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
-                                            Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                    dlgobt.isCek();
-                                    dlgobt.tampilobat();
-                                    dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgobt.setLocationRelativeTo(internalFrame1);
-                                    dlgobt.setAlwaysOnTop(false);
-                                    dlgobt.setVisible(true);
-                                }                            
-                                //dispose();
-                                break;
-                            case "Tambahan Biaya":
-                                if(akses.gettambahan_biaya()==true){
-                                    MnTambahanActionPerformed(null);
-                                }                            
-                                break;
-                            case "Potongan Biaya":
-                                if(akses.getpotongan_biaya()==true){
-                                    MnPotonganActionPerformed(null);
-                                }
-                                break;
-                        }
-                    }                        
+                            akses.setform("DlgBilingRalan");
+                            switch (tbBilling.getValueAt(tbBilling.getSelectedRow(), i).toString()) {
+                                case "Tindakan":
+                                    if(akses.gettindakan_ralan()==true){
+                                        MnInputTindakanActionPerformed(null);
+                                    }
+                                    break;
+                                case "Obat & BHP":
+                                    if(akses.getberi_obat()==true){
+                                        MnInputObatActionPerformed(null);
+                                    }                            
+                                    //dispose();
+                                    break;
+                                case "Tambahan Biaya":
+                                    if(akses.gettambahan_biaya()==true){
+                                        MnTambahanActionPerformed(null);
+                                    }                            
+                                    break;
+                                case "Potongan Biaya":
+                                    if(akses.getpotongan_biaya()==true){
+                                        MnPotonganActionPerformed(null);
+                                    }
+                                    break;
+                            }
+                        }                        
+                    }
                 }
             }
         }
@@ -3256,6 +3146,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{ 
+                DlgCariObat dlgobt=new DlgCariObat(null,false);
                 dlgobt.emptTeksobat();
                 dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
@@ -3280,6 +3171,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 akses.setform("DlgBilingRalan");
                 kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                 nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
+                DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
                 dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
                 dlgrwjl.isCek();
                 dlgrwjl.tampil();
@@ -5407,14 +5299,14 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 if(piutang>0){
                     jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PIUTANG PASIEN RAWAT JALAN, DIPOSTING OLEH "+akses.getkode());
                     if(bayar>0){
-                        Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText()+"','"+alamat+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
+                        Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText().replaceAll("'","")+"','"+alamat.replaceAll("'","")+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
                                 "',' ',CURTIME()),'Uang Muka','"+total+"','"+bayar+"','Belum','"+akses.getkode()+"'","No.Rawat");
                     }
                     Sequel.queryu2("insert into piutang_pasien values ('"+TNoRw.getText()+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"','"+
                             TNoRM.getText()+"','Belum Lunas','"+total+"','"+bayar+"','"+piutang+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"')");
                 }else if(piutang<=0){
                     jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBAYARAN PASIEN RAWAT JALAN, DIPOSTING OLEH "+akses.getkode());
-                    Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText()+"','"+alamat+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
+                    Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText().replaceAll("'","")+"','"+alamat.replaceAll("'","")+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
                                 "',' ',CURTIME()),'Pelunasan','"+total+"','"+total+"','Sudah','"+akses.getkode()+"'","No.Rawat");
                 }
 

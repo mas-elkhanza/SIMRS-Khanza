@@ -71,9 +71,12 @@
 
                 if (isset($BtnSimpan)) {
                     $pendapatan_tuslah    = trim($_POST['pendapatan_tuslah']);
+                    $pendapatan_tuslah      = validTeks($pendapatan_tuslah);
                     $persen_rs          = trim($_POST['persen_rs']);
+                    $persen_rs              = validangka($persen_rs);
 		    $bagian_rs          =($persen_rs/100)*$pendapatan_tuslah;
                     $persen_kry         = trim($_POST['persen_kry']);
+                    $persen_kry         = validangka($persen_kry);
 		    $bagian_kry         =($persen_kry/100)*$pendapatan_tuslah;
                     if (!empty($pendapatan_tuslah)) {
                         switch($action) {

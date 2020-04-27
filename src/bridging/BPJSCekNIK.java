@@ -5,15 +5,12 @@
  */
 package bridging;
 
-import AESsecurity.EnkripsiAES;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.koneksiDB;
-import java.io.FileInputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -32,10 +29,9 @@ public class BPJSCekNIK {
             provUmumkdProvider="",provUmumnmProvider="",sex="",statusPesertaketerangan="",
             statusPesertakode="",tglCetakKartu="",tglLahir="",tglTAT="",
             tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="",URL="",link="";
-    private final Properties prop = new Properties();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();   
@@ -46,8 +42,7 @@ public class BPJSCekNIK {
     public BPJSCekNIK(){
         super();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            link=prop.getProperty("URLAPIBPJS");   
+            link=koneksiDB.URLAPIBPJS();  
         } catch (Exception e) {
             System.out.println("E : "+e);
         }

@@ -11,7 +11,6 @@
 
 package keuangan;
 import kepegawaian.DlgCariPetugas;
-import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -53,6 +52,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgKategoriPengeluaran kategori=new DlgKategoriPengeluaran(null,false);
     private double total=0;
+    private boolean sukses=true;
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -195,23 +195,6 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         });
         
         ChkInput.setSelected(false);
-        try {
-            ps=koneksi.prepareStatement(
-                    "select pengeluaran_harian.tanggal, pengeluaran_harian.keterangan, pengeluaran_harian.biaya, pengeluaran_harian.nip, "+
-                    "petugas.nama,pengeluaran_harian.kode_kategori,kategori_pengeluaran_harian.nama_kategori "+
-                    "from pengeluaran_harian inner join petugas inner join kategori_pengeluaran_harian on pengeluaran_harian.nip=petugas.nip "+
-                    "and pengeluaran_harian.kode_kategori=kategori_pengeluaran_harian.kode_kategori where "+
-                    "pengeluaran_harian.tanggal between ? and ? and pengeluaran_harian.keterangan like ? or "+
-                    "pengeluaran_harian.tanggal between ? and ? and pengeluaran_harian.nip like ? or "+
-                    "pengeluaran_harian.tanggal between ? and ? and petugas.nama like ? or "+
-                    "pengeluaran_harian.tanggal between ? and ? and pengeluaran_harian.kode_kategori like ? or "+
-                    "pengeluaran_harian.tanggal between ? and ? and kategori_pengeluaran_harian.nama_kategori like ? order by pengeluaran_harian.tanggal");
-            psakun=koneksi.prepareStatement(
-                    "select kd_rek,'Akun',"+
-                    "kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kode_kategori=?");
-        } catch (Exception e){
-            System.out.println(e);
-        }
     }
 
     /** This method is called from within the constructor to
@@ -271,7 +254,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengeluaran Harian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengeluaran Harian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -435,7 +418,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -449,7 +432,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -592,7 +575,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         btnKategori.setBounds(409, 12, 28, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-12-2018 22:07:55" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2020 09:54:57" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -624,7 +607,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
             }
         });
         FormInput.add(Pengeluaran);
-        Pengeluaran.setBounds(560, 40, 139, 23);
+        Pengeluaran.setBounds(565, 40, 134, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -666,26 +649,57 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         }else if(Pengeluaran.getText().trim().equals("")||Pengeluaran.getText().trim().equals("0")){
             Valid.textKosong(Pengeluaran,"Pengeluaran");
         }else{
-                        
-            try {
-                Sequel.menyimpan("pengeluaran_harian","?,?,?,?,?","Pengeluaran",5,new String[]{
-                    Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    KdKategori.getText(),Pengeluaran.getText(),KdPtg.getText(),Keterangan.getText()
-                });
-                Sequel.queryu("delete from tampjurnal");
-                psakun.setString(1,KdKategori.getText());
-                rs=psakun.executeQuery();
-                if(rs.next()){
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),Pengeluaran.getText(),"0"});
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",Pengeluaran.getText()}); 
-                    jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
-                }                    
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            }            
+            Sequel.AutoComitFalse();
+            sukses=true;    
+            if(Sequel.menyimpantf2("pengeluaran_harian","?,?,?,?,?","Pengeluaran",5,new String[]{
+                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+                KdKategori.getText(),Pengeluaran.getText(),KdPtg.getText(),Keterangan.getText()
+            })==true){
+                try {
+                    Sequel.queryu("delete from tampjurnal");
+                    psakun=koneksi.prepareStatement(
+                        "select kd_rek,'Akun',"+
+                        "kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kode_kategori=?");
+                    try {
+                        psakun.setString(1,KdKategori.getText());
+                        rs=psakun.executeQuery();
+                        if(rs.next()){
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),Pengeluaran.getText(),"0"});
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",Pengeluaran.getText()}); 
+                            sukses=jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
+                        } 
+                    } catch (Exception e) {
+                        sukses=false;
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(psakun!=null){
+                            psakun.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    sukses=false;
+                    System.out.println("Notif : "+e);
+                }
+            }else{
+                sukses=false;
+            }   
             
-            tampil();
-            emptTeks();
+            if(sukses==true){
+                Sequel.Commit();
+            }else{
+                sukses=false;
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                Sequel.RollBack();
+            }
+            
+            Sequel.AutoComitTrue();
+            if(sukses==true){
+                tampil();
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -717,25 +731,57 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(Keterangan.getText().trim().equals(""))){
             if(tbResep.getSelectedRow()>-1){
-                                
-                try {
-                    Sequel.queryu2("delete from pengeluaran_harian where tanggal=? and keterangan=?",2,new String[]{
-                        tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),Keterangan.getText()
-                    });
-                    Sequel.queryu("delete from tampjurnal");
-                    psakun.setString(1,KdKategori.getText());
-                    rs=psakun.executeQuery();
-                    if(rs.next()){
-                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",Pengeluaran.getText()});
-                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),Pengeluaran.getText(),"0"}); 
-                        jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
-                    }                    
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                }
+                Sequel.AutoComitFalse();
+                sukses=true;     
                 
-                tampil();
-                emptTeks();
+                if(Sequel.queryu2tf("delete from pengeluaran_harian where tanggal=? and keterangan=?",2,new String[]{
+                    tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),Keterangan.getText()
+                })==true){
+                    try {
+                        Sequel.queryu("delete from tampjurnal");
+                        psakun=koneksi.prepareStatement(
+                            "select kd_rek,'Akun',"+
+                            "kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kode_kategori=?");
+                        try {
+                            psakun.setString(1,KdKategori.getText());
+                            rs=psakun.executeQuery();
+                            if(rs.next()){
+                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",Pengeluaran.getText()});
+                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),Pengeluaran.getText(),"0"}); 
+                                sukses=jur.simpanJurnal("-",Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","PEMBATALAN PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
+                            } 
+                        } catch (Exception e) {
+                            sukses=false;
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(psakun!=null){
+                                psakun.close();
+                            }
+                        } 
+                    } catch (Exception e) {
+                        sukses=false;
+                        System.out.println("Notifikasi : "+e);
+                    }
+                }else{
+                    sukses=false;
+                }               
+                
+                if(sukses==true){
+                    Sequel.Commit();
+                }else{
+                    sukses=false;
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+
+                Sequel.AutoComitTrue();
+                if(sukses==true){
+                    tampil();
+                    emptTeks();
+                }
             }                
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -976,31 +1022,52 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(6,"%"+TCari.getText().trim()+"%");
-            ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(9,"%"+TCari.getText().trim()+"%");
-            ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(12,"%"+TCari.getText().trim()+"%");
-            ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-            ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-            ps.setString(15,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
+        try{     
             total=0;
-            while(rs.next()){                
-                tabMode.addRow(new Object[]{
-                    rs.getString("tanggal"),rs.getString("kode_kategori")+" "+rs.getString("nama_kategori"),
-                    rs.getString("nip")+" "+rs.getString("nama"),rs.getDouble("biaya"),rs.getString("keterangan"),
-                    rs.getString("kode_kategori"),rs.getString("nip")
-                });
-                total=total+rs.getDouble("biaya");
+            ps=koneksi.prepareStatement(
+                    "select pengeluaran_harian.tanggal, pengeluaran_harian.keterangan, pengeluaran_harian.biaya, pengeluaran_harian.nip, "+
+                    "petugas.nama,pengeluaran_harian.kode_kategori,kategori_pengeluaran_harian.nama_kategori "+
+                    "from pengeluaran_harian inner join petugas inner join kategori_pengeluaran_harian on pengeluaran_harian.nip=petugas.nip "+
+                    "and pengeluaran_harian.kode_kategori=kategori_pengeluaran_harian.kode_kategori where "+
+                    "pengeluaran_harian.tanggal between ? and ? and pengeluaran_harian.keterangan like ? or "+
+                    "pengeluaran_harian.tanggal between ? and ? and pengeluaran_harian.nip like ? or "+
+                    "pengeluaran_harian.tanggal between ? and ? and petugas.nama like ? or "+
+                    "pengeluaran_harian.tanggal between ? and ? and pengeluaran_harian.kode_kategori like ? or "+
+                    "pengeluaran_harian.tanggal between ? and ? and kategori_pengeluaran_harian.nama_kategori like ? order by pengeluaran_harian.tanggal");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){                
+                    tabMode.addRow(new Object[]{
+                        rs.getString("tanggal"),rs.getString("kode_kategori")+" "+rs.getString("nama_kategori"),
+                        rs.getString("nip")+" "+rs.getString("nama"),rs.getDouble("biaya"),rs.getString("keterangan"),
+                        rs.getString("kode_kategori"),rs.getString("nip")
+                    });
+                    total=total+rs.getDouble("biaya");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
             if(total>0){
                 tabMode.addRow(new Object[]{">>","Jumlah Total Pengeluaran :","",total,"","",""}); 

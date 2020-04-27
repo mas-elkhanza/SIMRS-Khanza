@@ -8,6 +8,7 @@
     <body>
    <?php
         $keyword=isset($_GET['keyword'])?$_GET['keyword']:NULL;
+        $keyword= validTeks($keyword);
         $_sql         = "SELECT * FROM set_tahun";
         $hasil        = bukaquery($_sql);
         $baris        = mysqli_fetch_row($hasil);

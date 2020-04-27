@@ -31,6 +31,7 @@
                 echo "";
                 $action      =isset($_GET['action'])?$_GET['action']:NULL;
                 $keyword=isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                $keyword= validTeks($keyword);
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
             <table width="100%" align="center">
@@ -46,6 +47,7 @@
         <?php
             $awal=isset($_GET['awal'])?$_GET['awal']:NULL;
             $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
+            $keyword= validTeks($keyword);
             if (empty($awal)) $awal=0;
             $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jk,pegawai.jbtn,jnj_jabatan.nama as jnj_jabatan,kelompok_jabatan.nama_kelompok,
                     resiko_kerja.nama_resiko,departemen.nama as departemen,pegawai.bidang,emergency_index.nama_emergency,stts_wp.ktg as stts_wp,

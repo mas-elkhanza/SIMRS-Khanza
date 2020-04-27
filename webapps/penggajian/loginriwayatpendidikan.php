@@ -1,5 +1,6 @@
 <?php
 	include_once "conf/command.php";
+	require_once('../conf/conf.php');
   	if ($_GET['act']=="login"){
             if(($_GET['usere']=="admin")&&($_GET['passwordte']=="akusayangsamakamu")) {
                 session_start();

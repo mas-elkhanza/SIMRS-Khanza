@@ -51,7 +51,6 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
-import simrskhanza.DlgPilihanCetakDokumen;
 
 /**
  *
@@ -67,11 +66,6 @@ public class DlgRiwayatPenghargaan extends javax.swing.JDialog {
     private final JProgressBar progressBar = new JProgressBar();
     private final Properties prop = new Properties(); 
     private final validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private final validasi validasi=new validasi();
-    private final Connection koneksi=koneksiDB.condb();
-    private final DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     
     public DlgRiwayatPenghargaan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

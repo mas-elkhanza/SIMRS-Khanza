@@ -46,7 +46,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private BPJSApiAplicare api=new BPJSApiAplicare();
+    private ApiBPJSAplicare api=new ApiBPJSAplicare();
     private String URL="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -253,7 +253,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+

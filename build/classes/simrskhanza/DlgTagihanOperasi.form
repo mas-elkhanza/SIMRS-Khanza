@@ -126,7 +126,7 @@
                     <TitledBorder title=" Tindakan ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
+                          <Color PropertyName="color" blue="ea" green="f4" red="ef" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -282,7 +282,7 @@
                     <TitledBorder title=" Obat &amp; BHP ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
+                          <Color PropertyName="color" blue="ea" green="f4" red="ef" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1510,7 +1510,7 @@
                             <StringItem index="2" value="Besar"/>
                             <StringItem index="3" value="Sedang"/>
                             <StringItem index="4" value="Kecil"/>
-                            <StringItem index="5" value="Efektive"/>
+                            <StringItem index="5" value="Elektive"/>
                             <StringItem index="6" value="Emergency"/>
                           </StringArray>
                         </Property>

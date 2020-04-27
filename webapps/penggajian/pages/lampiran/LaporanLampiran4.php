@@ -34,7 +34,7 @@
      $semuanya=0;
      while($barisbid = mysqli_fetch_array($hasilcaribid)) {
         $keyword=$_GET['keyword'];
-        
+        $keyword = validTeks($keyword);
         $_sql = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.jbtn,pegawai.pendidikan,pegawai.mulai_kerja,pegawai.wajibmasuk,departemen.nama as departemen,
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,jnj_jabatan.nama as jnj_jabatan,
                 jnj_jabatan.indek as indekjabatan,pegawai.indexins,CONCAT(FLOOR(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'),
@@ -165,8 +165,8 @@
                             and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);
                             $baris6   = mysqli_fetch_row($hasil6);
-                            $ttlc     = $baris6[0];
-                            if(empty ($baris6[0])){
+                            $ttlc     = $baris6[0]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
+                            if(empty ($ttlc)){
                                 $ttlc=0;
                             }
 
@@ -377,8 +377,8 @@
                             and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);
                             $baris6   = mysqli_fetch_row($hasil6);
-                            $ttlc     = $baris6[0];
-                            if(empty ($baris6[0])){
+                            $ttlc     = $baris6[0]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
+                            if(empty ($ttlc)){
                                 $ttlc=0;
                             }
 

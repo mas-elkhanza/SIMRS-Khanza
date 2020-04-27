@@ -26,7 +26,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +33,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -60,7 +58,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int pilih=0,i=0;
-    private final Properties prop = new Properties();
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private String no_peserta="", requestJson,URL="",jkel="",duplikat="",user="",kelas="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
@@ -327,10 +324,9 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(kamar.getTable().getSelectedRow()!= -1){   
                     if(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),7).toString().equals("KOSONG")){
-                        KdPoli.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),0).toString());  
-                        NmPoli.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),2).toString());  
+                        KdKamar.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),0).toString());  
+                        NmBangsal.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),2).toString());  
                         KdJenpel.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),3).toString());  
-                        NmJenpel.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),4).toString());
                         KdPoli.requestFocus();
                     }else{
                         JOptionPane.showMessageDialog(null,"Maaf, status kamar isi. Silahkan cari yang kosong..!!");
@@ -374,9 +370,11 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             user=akses.getkode();
         }
         
-        LabelJenpel.setVisible(false);
         KdJenpel.setVisible(false);
-        NmJenpel.setVisible(false);
+        KdKamar.setVisible(false);
+        NmBangsal.setVisible(false);
+        btnKamar.setVisible(false);
+        LabelJenpel.setVisible(false);
     }
 
 
@@ -393,7 +391,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         ppSEP = new javax.swing.JMenuItem();
         ppPulang = new javax.swing.JMenuItem();
         ppMapping = new javax.swing.JMenuItem();
-        ppDetailSEPPeserta = new javax.swing.JMenuItem();
         WindowUpdatePulang = new javax.swing.JDialog();
         internalFrame5 = new widget.InternalFrame();
         BtnCloseIn4 = new widget.Button();
@@ -457,10 +454,8 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         NmPenyakit2 = new widget.TextBox();
         KdPenyakit2 = new widget.TextBox();
         jLabel39 = new widget.Label();
-        LabelJenpel = new widget.Label();
         LabelPoli = new widget.Label();
         KdPoli = new widget.TextBox();
-        KdJenpel = new widget.TextBox();
         jLabel32 = new widget.Label();
         Kelas = new widget.ComboBox();
         Catatan = new widget.TextBox();
@@ -473,13 +468,17 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         JenisPelayanan = new widget.ComboBox();
         NmPoli = new widget.TextBox();
         btnPoli = new widget.Button();
-        NmJenpel = new widget.TextBox();
+        KdJenpel = new widget.TextBox();
+        KdKamar = new widget.TextBox();
+        NmBangsal = new widget.TextBox();
+        btnKamar = new widget.Button();
+        LabelJenpel = new widget.Label();
 
         Popup.setName("Popup"); // NOI18N
 
         ppSEP.setBackground(new java.awt.Color(255, 255, 254));
         ppSEP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP.setForeground(new java.awt.Color(50,50,50));
+        ppSEP.setForeground(new java.awt.Color(50, 50, 50));
         ppSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP.setText("Print SJP");
         ppSEP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -496,7 +495,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppPulang.setBackground(new java.awt.Color(255, 255, 254));
         ppPulang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPulang.setForeground(new java.awt.Color(50,50,50));
+        ppPulang.setForeground(new java.awt.Color(50, 50, 50));
         ppPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPulang.setText("Update Tanggal Pulang");
         ppPulang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -513,7 +512,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppMapping.setBackground(new java.awt.Color(255, 255, 254));
         ppMapping.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppMapping.setForeground(new java.awt.Color(50,50,50));
+        ppMapping.setForeground(new java.awt.Color(50, 50, 50));
         ppMapping.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppMapping.setText("Mapping Transaksi SJP");
         ppMapping.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -528,23 +527,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         });
         Popup.add(ppMapping);
 
-        ppDetailSEPPeserta.setBackground(new java.awt.Color(255, 255, 254));
-        ppDetailSEPPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDetailSEPPeserta.setForeground(new java.awt.Color(50,50,50));
-        ppDetailSEPPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppDetailSEPPeserta.setText("Detail SJP Peserta");
-        ppDetailSEPPeserta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppDetailSEPPeserta.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppDetailSEPPeserta.setIconTextGap(8);
-        ppDetailSEPPeserta.setName("ppDetailSEPPeserta"); // NOI18N
-        ppDetailSEPPeserta.setPreferredSize(new java.awt.Dimension(200, 25));
-        ppDetailSEPPeserta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppDetailSEPPesertaBtnPrintActionPerformed(evt);
-            }
-        });
-        Popup.add(ppDetailSEPPeserta);
-
         WindowUpdatePulang.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowUpdatePulang.setName("WindowUpdatePulang"); // NOI18N
         WindowUpdatePulang.setUndecorated(true);
@@ -552,7 +534,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Tanggal Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
-        internalFrame5.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame5.setLayout(null);
 
         BtnCloseIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -587,7 +568,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel26.setBounds(6, 32, 100, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019 23:18:54" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2019 17:09:22" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -609,7 +590,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SJP Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SJP Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -782,7 +763,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2019" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -796,7 +777,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2019" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -922,7 +903,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel20.setBounds(509, 72, 70, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019 23:18:54" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2019 17:09:21" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -942,7 +923,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel22.setBounds(0, 70, 87, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2019 23:18:54" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2019 17:09:21" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1134,11 +1115,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         FormInput.add(jLabel39);
         jLabel39.setBounds(0, 192, 87, 23);
 
-        LabelJenpel.setText("Ruang :");
-        LabelJenpel.setName("LabelJenpel"); // NOI18N
-        FormInput.add(LabelJenpel);
-        LabelJenpel.setBounds(345, 222, 65, 23);
-
         LabelPoli.setText("Poli :");
         LabelPoli.setName("LabelPoli"); // NOI18N
         FormInput.add(LabelPoli);
@@ -1154,16 +1130,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         });
         FormInput.add(KdPoli);
         KdPoli.setBounds(413, 192, 80, 23);
-
-        KdJenpel.setHighlighter(null);
-        KdJenpel.setName("KdJenpel"); // NOI18N
-        KdJenpel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdJenpelKeyPressed(evt);
-            }
-        });
-        FormInput.add(KdJenpel);
-        KdJenpel.setBounds(413, 222, 120, 23);
 
         jLabel32.setText("Kelas :");
         jLabel32.setName("jLabel32"); // NOI18N
@@ -1269,10 +1235,47 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         FormInput.add(btnPoli);
         btnPoli.setBounds(701, 192, 28, 23);
 
-        NmJenpel.setEditable(false);
-        NmJenpel.setName("NmJenpel"); // NOI18N
-        FormInput.add(NmJenpel);
-        NmJenpel.setBounds(535, 222, 194, 23);
+        KdJenpel.setHighlighter(null);
+        KdJenpel.setName("KdJenpel"); // NOI18N
+        KdJenpel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdJenpelKeyPressed(evt);
+            }
+        });
+        FormInput.add(KdJenpel);
+        KdJenpel.setBounds(413, 222, 100, 23);
+
+        KdKamar.setEditable(false);
+        KdKamar.setName("KdKamar"); // NOI18N
+        FormInput.add(KdKamar);
+        KdKamar.setBounds(515, 222, 68, 23);
+
+        NmBangsal.setEditable(false);
+        NmBangsal.setName("NmBangsal"); // NOI18N
+        FormInput.add(NmBangsal);
+        NmBangsal.setBounds(585, 222, 114, 23);
+
+        btnKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnKamar.setMnemonic('X');
+        btnKamar.setToolTipText("Alt+X");
+        btnKamar.setName("btnKamar"); // NOI18N
+        btnKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKamarActionPerformed(evt);
+            }
+        });
+        btnKamar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnKamarKeyPressed(evt);
+            }
+        });
+        FormInput.add(btnKamar);
+        btnKamar.setBounds(701, 222, 28, 23);
+
+        LabelJenpel.setText("Ruang Rawat :");
+        LabelJenpel.setName("LabelJenpel"); // NOI18N
+        FormInput.add(LabelJenpel);
+        LabelJenpel.setBounds(330, 222, 80, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1356,7 +1359,11 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }else if (Catatan.getText().trim().equals("")) {
                 Valid.textKosong(Catatan, "Catatan");
             }else{
-                
+                if(tbObat.getSelectedRow()!= -1){
+                    UpdateSEP();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
+                } 
             }
         }else{
             JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau diganti..!!");
@@ -1457,8 +1464,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                     ppSEPBtnPrintActionPerformed(null);
                 }else if(i==1){
                     ppPulangBtnPrintActionPerformed(null);
-                }else if(i==2){
-                    ppDetailSEPPesertaBtnPrintActionPerformed(null);
                 }
             }
         }
@@ -1481,8 +1486,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                     ppSEPBtnPrintActionPerformed(null);
                 }else if(i==1){
                     ppPulangBtnPrintActionPerformed(null);
-                }else if(i==2){
-                    ppDetailSEPPesertaBtnPrintActionPerformed(null);
                 }
             }
                 
@@ -1502,11 +1505,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                 dispose();
             }else{
                 try {
-                    prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                    String URL = prop.getProperty("URLAPIINHEALTH")+"/api/EligibilitasPeserta";	
+                    String URL = koneksiDB.URLAPIINHEALTH()+"/api/EligibilitasPeserta";	
                     HttpHeaders headers = new HttpHeaders();            
                     headers.add("Content-Type","application/json");
-                    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
+                    requestJson ="{ \"token\": \""+koneksiDB.TOKENINHEALTH()+"\"," +
                                     "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
                                     "\"nokainhealth\": \""+no_peserta+"\"," +
                                     "\"tglpelayanan\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
@@ -1621,21 +1623,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppMappingBtnPrintActionPerformed
 
-    private void ppDetailSEPPesertaBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDetailSEPPesertaBtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-        if(tbObat.getSelectedRow()!= -1){
-            BPJSCekDetailSEP detail=new BPJSCekDetailSEP(null,true);
-            detail.tampil(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            detail.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            detail.setLocationRelativeTo(internalFrame1);
-            detail.setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP ...!!!!");
-            BtnBatal.requestFocus();
-        }
-        this.setCursor(Cursor.getDefaultCursor());            
-    }//GEN-LAST:event_ppDetailSEPPesertaBtnPrintActionPerformed
-
     private void btnPPKRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukanActionPerformed
         faskes.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         faskes.setLocationRelativeTo(internalFrame1);
@@ -1710,10 +1697,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_KdPoliKeyPressed
 
-    private void KdJenpelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdJenpelKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdJenpelKeyPressed
-
     private void KelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelasKeyPressed
         Valid.pindah(evt,LokasiLaka,JenisPelayanan);
     }//GEN-LAST:event_KelasKeyPressed
@@ -1732,15 +1715,17 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
     private void JenisPelayananItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JenisPelayananItemStateChanged
         if((JenisPelayanan.getSelectedIndex()==0)||(JenisPelayanan.getSelectedIndex()==2)){
-            LabelPoli.setText("Poli :");
-            LabelJenpel.setVisible(false);
             KdJenpel.setVisible(false);
-            NmJenpel.setVisible(false);
+            KdKamar.setVisible(false);
+            NmBangsal.setVisible(false);
+            btnKamar.setVisible(false);
+            LabelJenpel.setVisible(false);
         }else if((JenisPelayanan.getSelectedIndex()==1)||(JenisPelayanan.getSelectedIndex()==3)){
-            LabelPoli.setText("Kamar :");
-            LabelJenpel.setVisible(true);
             KdJenpel.setVisible(true);
-            NmJenpel.setVisible(true);
+            KdKamar.setVisible(true);
+            NmBangsal.setVisible(true);
+            btnKamar.setVisible(true);
+            LabelJenpel.setVisible(true);
         }
         KdPoli.setText("");
         NmPoli.setText("");
@@ -1751,22 +1736,31 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     }//GEN-LAST:event_JenisPelayananKeyPressed
 
     private void btnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliActionPerformed
-        if((JenisPelayanan.getSelectedIndex()==1)||(JenisPelayanan.getSelectedIndex()==3)){
-            kamar.isCek();
-            kamar.emptTeks();
-            kamar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            kamar.setLocationRelativeTo(internalFrame1);
-            kamar.setVisible(true);
-        }else{
+        
             poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             poli.setLocationRelativeTo(internalFrame1);
             poli.setVisible(true);
-        }
     }//GEN-LAST:event_btnPoliActionPerformed
 
     private void btnPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliKeyPressed
         Valid.pindah(evt,btnDiagnosa,LakaLantas);
     }//GEN-LAST:event_btnPoliKeyPressed
+
+    private void KdJenpelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdJenpelKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KdJenpelKeyPressed
+
+    private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarActionPerformed
+        kamar.isCek();
+        kamar.emptTeks();
+        kamar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kamar.setLocationRelativeTo(internalFrame1);
+        kamar.setVisible(true);
+    }//GEN-LAST:event_btnKamarActionPerformed
+
+    private void btnKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKamarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKamarKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1803,6 +1797,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private widget.TextBox JK;
     private widget.ComboBox JenisPelayanan;
     private widget.TextBox KdJenpel;
+    private widget.TextBox KdKamar;
     private widget.TextBox KdPPK;
     private widget.TextBox KdPenyakit;
     private widget.TextBox KdPenyakit2;
@@ -1815,7 +1810,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private widget.Label LabelPoli;
     private widget.ComboBox LakaLantas;
     private widget.TextBox LokasiLaka;
-    private widget.TextBox NmJenpel;
+    private widget.TextBox NmBangsal;
     private widget.TextBox NmPPK;
     private widget.TextBox NmPenyakit;
     private widget.TextBox NmPenyakit2;
@@ -1838,6 +1833,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private javax.swing.JDialog WindowUpdatePulang;
     private widget.Button btnDiagnosa;
     private widget.Button btnDiagnosa1;
+    private widget.Button btnKamar;
     private widget.Button btnPPKRujukan;
     private widget.Button btnPoli;
     private widget.InternalFrame internalFrame1;
@@ -1865,7 +1861,6 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
-    private javax.swing.JMenuItem ppDetailSEPPeserta;
     private javax.swing.JMenuItem ppMapping;
     private javax.swing.JMenuItem ppPulang;
     private javax.swing.JMenuItem ppSEP;
@@ -1967,6 +1962,8 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         Catatan.setText("");
         KdPenyakit.setText("");
         NmPenyakit.setText("");
+        KdPenyakit2.setText("");
+        NmPenyakit2.setText("");
         KdPoli.setText("");
         NmPoli.setText("");
         Kelas.setSelectedIndex(0);
@@ -2040,11 +2037,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
     private void insertSEP(){
         try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/SimpanSJP";	
+            String URL = koneksiDB.URLAPIINHEALTH()+"/api/SimpanSJP";	
 	    HttpHeaders headers = new HttpHeaders();            
             headers.add("Content-Type","application/json");
-	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
+	    requestJson ="{ \"token\": \""+koneksiDB.TOKENINHEALTH()+"\"," +
                             "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
                             "\"tanggalpelayanan\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\","+
                             "\"jenispelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"\","+
@@ -2098,14 +2094,56 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }
         }
     }
+    
+    private void UpdateSEP(){
+        try{
+            String URL = koneksiDB.URLAPIINHEALTH()+"/api/UpdateSJP";	
+	    HttpHeaders headers = new HttpHeaders();            
+            headers.add("Content-Type","application/json");
+	    requestJson ="{ \"token\": \""+koneksiDB.TOKENINHEALTH()+"\"," +
+                            "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
+                            "\"nosjp\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"," +
+                            "\"nomormedicalreport\": \""+TNoRM.getText()+"\","+
+                            "\"nomorasalrujukan\": \""+NoRujukan.getText()+"\","+
+                            "\"kodeproviderasalrujukan\": \""+KdPpkRujukan.getText()+"\","+
+                            "\"tanggalasalrujukan\": \""+Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+"\","+
+                            "\"kodediagnosautama\": \""+KdPenyakit.getText()+"\","+
+                            "\"poli\": \""+KdPoli.getText()+"\","+
+                            "\"username\": \""+user+"\","+
+                            "\"informasitambahan\": \""+Catatan.getText()+"\","+
+                            "\"kodediagnosatambahan\": \""+KdPenyakit2.getText()+"\","+
+                            "\"kecelakaankerja\": \""+LakaLantas.getSelectedItem().toString().substring(0,1)+"\""+
+                         "}";
+            HttpEntity requestEntity = new HttpEntity(requestJson,headers);
+            RestTemplate rest = new RestTemplate();
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            if(root.path("ERRORCODE").asText().equals("00")){
+                if(Sequel.mengedittf("bridging_inhealth","no_sjp=?","kdppkrujukan=?,nmppkrujukan=?,no_rawat=?,nomr=?,nama_pasien=?,no_rujukan=?,tglrujukan=?,diagawal=?,nmdiagnosaawal=?,kdpolitujuan=?,nmpolitujuan=?,user=?,catatan=?,diagawal2=?,nmdiagnosaawal2=?,lakalantas=?", 17,new String[]{
+                    KdPpkRujukan.getText(), NmPpkRujukan.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),NoRujukan.getText(),Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+" "+TanggalRujuk.getSelectedItem().toString().substring(11,19),
+                    KdPenyakit.getText(),NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(),user,Catatan.getText(),KdPenyakit2.getText(),NmPenyakit2.getText(),LakaLantas.getSelectedItem().toString().substring(0,1),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                })==true){
+                    emptTeks();
+                    tampil();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,root.path("ERRORDESC").asText());
+                NoKartu.requestFocus();
+            }
+        }catch (Exception ex) {
+            System.out.println("Notifikasi Bridging : "+ex);
+            if(ex.toString().contains("UnknownHostException")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server Inhealth terputus...!");
+            }
+        }
+    }
 
     private void deleteSJP(){
         try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/HapusSJP";	
+            String URL = koneksiDB.URLAPIINHEALTH()+"/api/HapusSJP";	
 	    HttpHeaders headers = new HttpHeaders();            
             headers.add("Content-Type","application/json");
-	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
+	    requestJson ="{ \"token\": \""+koneksiDB.TOKENINHEALTH()+"\"," +
                             "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
                             "\"nosjp\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"," +
                             "\"alasanhapus\": \""+"kesalahan-input"+"\"," +

@@ -28,7 +28,6 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 
 public class DlgCekStok extends javax.swing.JDialog {
@@ -400,7 +399,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         try{  
             Valid.tabelKosong(tabMode);
             pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+
-                "databarang.h_beli from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                "databarang.dasar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                 " where databarang.status='1' and databarang.kode_brng like ? or "+
                 " databarang.status='1' and databarang.nama_brng like ? or "+
                 " databarang.status='1' and databarang.kode_sat like ? or "+
@@ -414,7 +413,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 while(rstampil.next()){     
                     stokbarang=0;   
                     if(!nmgudang.getText().equals("")){
-                        psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
+                        psstok=koneksi.prepareStatement("select ifnull(sum(stok),'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
                         try{
                             psstok.setString(1,kdgudang.getText());
                             psstok.setString(2,rstampil.getString("kode_brng"));
@@ -437,7 +436,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     tabMode.addRow(new Object[]{
                         rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),
                         rstampil.getString("nama"),rstampil.getString("kode_sat"),
-                        rstampil.getDouble("h_beli"),stokbarang
+                        rstampil.getDouble("dasar"),stokbarang
                     });
                 }  
             } catch (Exception e) {

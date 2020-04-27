@@ -54,8 +54,8 @@
             <?php
                 @$BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    @$tnj                =trim($_POST['tnj']);
-                    @$tnj2               =trim($_POST['tnj2']);
+                    @$tnj                = validTeks(trim($_POST['tnj']));
+                    @$tnj2               = validTeks(trim($_POST['tnj2']));
                     if ((!empty($tnj))&&(!empty($tnj2))) {
                         switch($action) {
                             case "TAMBAH":

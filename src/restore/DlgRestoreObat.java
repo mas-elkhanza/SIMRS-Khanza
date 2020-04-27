@@ -46,7 +46,7 @@ public final class DlgRestoreObat extends javax.swing.JDialog {
         initComponents();
         
         Object[] row = {
-            "P", "Kode Barang", "Nama Barang", "Kode Satuan", "Nama Satuan", "Letak Barang",
+            "P", "Kode Barang", "Nama Barang", "Kode Satuan", "Nama Satuan", "Kandungan",
             "Hrg.Beli(Rp)", "Ralan(Rp)", "Ranap K1(Rp)", "Ranap K2(Rp)", "Ranap K3(Rp)",
             "Kelas Utama/BPJS(Rp)", "Ranap VIP(Rp)", "Ranap VVIP(Rp)", "Beli Luar(Rp)",
             "Jual Bebas(Rp)", "Karyawan(Rp)", "Stok Minimal", "Kode Jenis", "Nama Jenis", "Kapasitas",

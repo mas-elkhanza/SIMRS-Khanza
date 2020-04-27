@@ -5640,10 +5640,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 if(jmlradiologi>0){
                     noorderradiologi=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_radiologi where tgl_permintaan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"' ","PR"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").replaceAll("-",""),4);
                     if((!KdDokPerujukRad.getText().equals(""))&&(!TDokterPerujukRad.getText().equals(""))){
-                        Sequel.menyimpan("permintaan_radiologi","?,?,?,?,?,?,?,?,?,'ralan'","No.Permintaan",9,new String[]{
+                        Sequel.menyimpan("permintaan_radiologi","?,?,?,?,?,?,?,?,?,'ralan',?,?","No.Permintaan",11,new String[]{
                             noorderradiologi,TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                             DTPTgl.getSelectedItem().toString().substring(11,19), 
-                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukRad.getText()
+                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukRad.getText(),"",""
                         });
                     }                        
                 }
@@ -5672,10 +5672,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 if(jmllaborat>0){
                     noorderlaborat=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_lab where tgl_permintaan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"' ","PR"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").replaceAll("-",""),4);
                     if((!KdDokPerujukLab.getText().equals(""))&&(!TDokterPerujukLab.getText().equals(""))){
-                        Sequel.menyimpan("permintaan_lab","?,?,?,?,?,?,?,?,?,'ralan'","No.Permintaan",9,new String[]{
+                        Sequel.menyimpan("permintaan_lab","?,?,?,?,?,?,?,?,?,'ralan',?,?","No.Permintaan",11,new String[]{
                             noorderlaborat,TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                             DTPTgl.getSelectedItem().toString().substring(11,19), 
-                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukLab.getText()
+                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukLab.getText(),"",""
                         });
                     }                        
                 }
@@ -5925,7 +5925,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 }
 
                 jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBAYARAN PASIEN RAWAT JALAN, DIPOSTING OLEH "+akses.getkode());
-                Sequel.menyimpan("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText()+"','"+alamat+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
+                Sequel.menyimpan("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText().replaceAll("'","")+"','"+alamat.replaceAll("'","")+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
                                 "',' ',CURTIME()),'Pelunasan','"+total+"','"+total+"','Sudah','"+akses.getkode()+"'","jumlah_tagihan=jumlah_tagihan+'"+total+"',jumlah_bayar=jumlah_bayar+'"+total+"'","no_nota='"+TNoRw.getText()+"'");
                 Valid.editTable(tabModeBilling,"reg_periksa","no_rawat",TNoRw,"status_bayar='Sudah Bayar'");
                 koneksi.setAutoCommit(true);

@@ -70,10 +70,10 @@
 		$bulan        = $baris[1];
 
                 if (isset($BtnSimpan)) {
-                    $pendapatan_warung  = trim($_POST['pendapatan_warung']);
-                    $persen_rs          = trim($_POST['persen_rs']);
+                    $pendapatan_warung  = validangka(trim($_POST['pendapatan_warung']));
+                    $persen_rs          = validangka(trim($_POST['persen_rs']));
 		    $bagian_rs          =($persen_rs/100)*$pendapatan_warung;
-                    $persen_kry         = trim($_POST['persen_kry']);
+                    $persen_kry         = validangka(trim($_POST['persen_kry']));
 		    $bagian_kry         =($persen_kry/100)*$pendapatan_warung;
                     if ((!empty($pendapatan_warung))&&(!empty($persen_rs))&&(!empty($persen_kry))) {
                         switch($action) {

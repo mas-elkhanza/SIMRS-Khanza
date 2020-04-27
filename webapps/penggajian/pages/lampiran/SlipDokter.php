@@ -163,8 +163,8 @@
                             and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);
                             $baris6   = mysqli_fetch_row($hasil6);
-                            $ttlc     = $baris6[0];
-                            if(empty ($baris6[0])){
+                            $ttlc     = $baris6[0]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
+                            if(empty ($ttlc)){
                                 $ttlc=0;
                             }
 
@@ -372,8 +372,8 @@
                             and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);
                             $baris6   = mysqli_fetch_row($hasil6);
-                            $ttlc     = $baris6[0];
-                            if(empty ($baris6[0])){
+                            $ttlc     = $baris6[0]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
+                            if(empty ($ttlc)){
                                 $ttlc=0;
                             }
 

@@ -1086,7 +1086,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             for(int i=0;i<tabMode.getRowCount();i++){  
                 Sequel.menyimpan("temporary","'0','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+

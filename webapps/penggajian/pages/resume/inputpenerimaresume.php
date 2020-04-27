@@ -75,7 +75,7 @@
 
                 if (isset($BtnSimpan)) {
                     $id          = trim($_POST['id']);
-                    $persen      = trim($_POST['persen']);
+                    $persen      = validangka(trim($_POST['persen']));
                     if ((!empty($id))&&(!empty($persen))) {
                         switch($action) {
                             case "TAMBAH":

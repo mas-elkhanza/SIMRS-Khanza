@@ -57,7 +57,6 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
     private int jml=0,i=0,index=0;
     public  DlgCariDokter dokter=new DlgCariDokter(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    public  DlgJnsPerawatanRanap perawatan=new DlgJnsPerawatanRanap(null,false);
     private double ttljmdokter=0,ttljmperawat=0,ttlkso=0,ttlpendapatan=0,
             hapusttljmdokter=0,hapusttljmperawat=0,hapusttlkso=0,hapusttlpendapatan=0;
     private Jurnal jur=new Jurnal();
@@ -866,8 +865,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        
-        //perawatan.setModal(true);
+        DlgJnsPerawatanRanap perawatan=new DlgJnsPerawatanRanap(null,false);
         perawatan.emptTeks();
         perawatan.isCek();
         perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

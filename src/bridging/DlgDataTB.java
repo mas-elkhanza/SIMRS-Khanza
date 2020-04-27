@@ -10,7 +10,7 @@
  */
 
 package bridging;
-import bridging.SittApi;
+import bridging.ApiKemenkesSITT;
 import bridging.YaskiReferensiKabupaten;
 import bridging.YaskiReferensiKecamatan;
 import bridging.YaskiReferensiKelurahan;
@@ -68,15 +68,14 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private SittApi api=new SittApi();
+    private ApiKemenkesSITT api=new ApiKemenkesSITT();
     private YaskiReferensiPropinsi propinsi=new YaskiReferensiPropinsi(null,false);
     private YaskiReferensiKabupaten kabupaten=new YaskiReferensiKabupaten(null,false);
     private YaskiReferensiKecamatan kecamatan=new YaskiReferensiKecamatan(null,false);
     private YaskiReferensiKelurahan kelurahan=new YaskiReferensiKelurahan(null,false);
     private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
     private String id_tb_03="",kdwasor="",idrs="",URL="",requestJson="";
-    private final Properties prop = new Properties();
-
+    
     /** Creates new form DlgJnsPerawatan
      * @param parent
      * @param modal */
@@ -433,10 +432,9 @@ public final class DlgDataTB extends javax.swing.JDialog {
         });
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            kdwasor = prop.getProperty("KABUPATENSITT");
+            kdwasor = koneksiDB.KABUPATENSITT();
             idrs=koneksiDB.IDSITT();
-            URL = prop.getProperty("URLAPISITT");
+            URL = koneksiDB.URLAPISITT();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -1945,7 +1943,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
             try {
                 headers = new HttpHeaders();
                 headers.add("X-rs-id",idrs);
-                headers.add("TimeStamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                 headers.add("X-pass",api.getHmac()); 
                 headers.add("Content-Type","application/json");
                 requestJson ="{" +
@@ -2007,7 +2005,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
                     "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                     "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                     "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
-                    "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
+                    "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
+                    "\"asal_poli\":\""+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()))+"\"" +
                 "}";
                 System.out.println(requestJson);
                 requestEntity = new HttpEntity(requestJson,headers);
@@ -2062,9 +2061,11 @@ public final class DlgDataTB extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.meghapus("data_tb","no_rawat",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
-        emptTeks();
-        tampil();
+        if(tbJnsPerawatan.getSelectedRow()>-1){
+            Sequel.meghapus("data_tb","no_rawat",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+            emptTeks();
+            tampil();
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -2110,7 +2111,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 try {
                     headers = new HttpHeaders();
                     headers.add("X-rs-id",idrs);
-                    headers.add("TimeStamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
                     headers.add("X-pass",api.getHmac()); 
                     headers.add("Content-Type","application/json");
                     if(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),59).toString().equals("")){
@@ -2173,7 +2174,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
-                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
+                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
+                            "\"asal_poli\":\""+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()))+"\"" +
                         "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers);
@@ -2241,7 +2243,8 @@ public final class DlgDataTB extends javax.swing.JDialog {
                             "\"nourut_pasien\":\""+TNoRM.getText()+"\"," +
                             "\"no_bpjs\":\""+NoKartu.getText()+"\"," +
                             "\"tgl_lahir\":\""+Tanggal.getText()+"\"," +
-                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"" +
+                            "\"kode_icd_x\":\""+kdpenyakit.getText()+"\"," +
+                            "\"asal_poli\":\""+Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()))+"\"" +
                         "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers);

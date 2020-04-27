@@ -140,7 +140,7 @@
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PEMBAYARAN PASIEN RANAP]]></text>
+				<text><![CDATA[DATA PEMBAYARAN PASIEN RANAP PER TANGGAL PULANG]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="2" y="25" width="966" height="14" uuid="c36e0dba-c81e-4887-8828-f0ff9235d67d"/>
