@@ -64,12 +64,12 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","TD","Nadi","RR","Suhu",
-            "GCS","BB","TB","BMI","Keluhan Utama","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga","Riwayat Pengobatan",
-            "Alergi","Alat Bantu","Ket. Alat Bantu","Prothesa","Ket. Prothesa","ADL","Stts Psikologi","Ket. Psikologi","Hubungan Keluarga","Tinggal Dengan",
-            "Ket. Tinggal","Ekonomi","Budaya","Ket. Budaya","Edukasi","Ket. Edukasi","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C",
-            "Hasil","Lapor Dokter","Ket. Lapor","Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Tingkat Nyeri","Provokes",
-            "Ket. Provokes","Kualitas","Ket. Kualitas","Lokasi","Menyebar","Skala Nyeri","Durasi","Nyeri Hilang","Ket. Hilang Nyeri","Lapor Ke Dokter",
-            "Jam Lapor","Rencana","NIP","Nama Petugas"
+            "BB","TB","BMI","Keluhan Utama","Riwayat Penyakit","Keterangan Riwayat Penyakit","Riwayat Alergi","Perawatan Gigi","Keterangan Perawatan Gigi",
+            "Kebiasaan Sikat Gigi","Kebiasaan Lain","Keterangan Kebiasaan Lain","Obat Yang Diminum Saat Ini","Alat Bantu","Keterangan Alat Bantu","Prothesa",
+            "Keterangan Prothesa","Status Psikologis","Keterangan Status Psikologis","Hubungan Keluarga","Tinggal Dengan","Keterangan Tinggal","Ekonomi","Budaya",
+            "Keterangan Budaya","Edukasi","Keterangan Edukasi","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Penilaian Resiko Jatuh","Lapor Dokter",
+            "Jam Lapor","Tingkat Nyeri","Lokasi","Skala Nyeri","Durasi","Frekuensi","Nyeri Hilang Bila","Keterangan Hilang Nyeri","Diberitahunkan Dokter",
+            "Jam Diberitahukan","Kebersihan Mulut","Mukosa Mulut","Karies","Karang Gigi","Gingiva","Palatum","Rencana","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -100,7 +100,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(120);
             }else if(i==9){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(82);
             }else if(i==10){
                 column.setPreferredWidth(35);
             }else if(i==11){
@@ -114,101 +114,101 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             }else if(i==15){
                 column.setPreferredWidth(35);
             }else if(i==16){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(40);
             }else if(i==17){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(200);
             }else if(i==18){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(91);
             }else if(i==19){
                 column.setPreferredWidth(150);
             }else if(i==20){
                 column.setPreferredWidth(150);
             }else if(i==21){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(82);
             }else if(i==22){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(150);
             }else if(i==23){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(106);
             }else if(i==24){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(126);
             }else if(i==25){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(150);
             }else if(i==26){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(150);
             }else if(i==27){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(59);
             }else if(i==28){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(150);
             }else if(i==29){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(51);
             }else if(i==30){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(150);
             }else if(i==31){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(90);
             }else if(i==32){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(150);
             }else if(i==33){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(103);
             }else if(i==34){
-                column.setPreferredWidth(58);
+                column.setPreferredWidth(84);
             }else if(i==35){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(150);
             }else if(i==36){
-                column.setPreferredWidth(60);
-            }else if(i==37){
-                column.setPreferredWidth(90);
-            }else if(i==38){
-                column.setPreferredWidth(87);
-            }else if(i==39){
-                column.setPreferredWidth(87);
-            }else if(i==40){
-                column.setPreferredWidth(87);
-            }else if(i==41){
-                column.setPreferredWidth(206);
-            }else if(i==42){
-                column.setPreferredWidth(75);
-            }else if(i==43){
-                column.setPreferredWidth(90);
-            }else if(i==44){
-                column.setPreferredWidth(80);
-            }else if(i==45){
-                column.setPreferredWidth(40);
-            }else if(i==46){
-                column.setPreferredWidth(80);
-            }else if(i==47){
-                column.setPreferredWidth(40);
-            }else if(i==48){
-                column.setPreferredWidth(60);
-            }else if(i==49){
-                column.setPreferredWidth(87);
-            }else if(i==50){
-                column.setPreferredWidth(87);
-            }else if(i==51){
-                column.setPreferredWidth(87);
-            }else if(i==52){
-                column.setPreferredWidth(90);
-            }else if(i==53){
-                column.setPreferredWidth(90);
-            }else if(i==54){
-                column.setPreferredWidth(110);
-            }else if(i==55){
-                column.setPreferredWidth(56);
-            }else if(i==56){
-                column.setPreferredWidth(60);
-            }else if(i==57){
                 column.setPreferredWidth(50);
-            }else if(i==58){
-                column.setPreferredWidth(90);
-            }else if(i==59){
-                column.setPreferredWidth(90);
-            }else if(i==60){
-                column.setPreferredWidth(90);
-            }else if(i==61){
+            }else if(i==37){
+                column.setPreferredWidth(53);
+            }else if(i==38){
+                column.setPreferredWidth(150);
+            }else if(i==39){
+                column.setPreferredWidth(49);
+            }else if(i==40){
+                column.setPreferredWidth(150);
+            }else if(i==41){
+                column.setPreferredWidth(84);
+            }else if(i==42){
+                column.setPreferredWidth(84);
+            }else if(i==43){
+                column.setPreferredWidth(84);
+            }else if(i==44){
+                column.setPreferredWidth(210);
+            }else if(i==45){
                 column.setPreferredWidth(70);
+            }else if(i==46){
+                column.setPreferredWidth(60);
+            }else if(i==47){
+                column.setPreferredWidth(82);
+            }else if(i==48){
+                column.setPreferredWidth(100);
+            }else if(i==49){
+                column.setPreferredWidth(62);
+            }else if(i==50){
+                column.setPreferredWidth(50);
+            }else if(i==51){
+                column.setPreferredWidth(60);
+            }else if(i==52){
+                column.setPreferredWidth(88);
+            }else if(i==53){
+                column.setPreferredWidth(150);
+            }else if(i==54){
+                column.setPreferredWidth(118);
+            }else if(i==55){
+                column.setPreferredWidth(100);
+            }else if(i==56){
+                column.setPreferredWidth(92);
+            }else if(i==57){
+                column.setPreferredWidth(74);
+            }else if(i==58){
+                column.setPreferredWidth(45);
+            }else if(i==59){
+                column.setPreferredWidth(64);
+            }else if(i==60){
+                column.setPreferredWidth(50);
+            }else if(i==61){
+                column.setPreferredWidth(50);
             }else if(i==62){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(250);
             }else if(i==63){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(90);
             }else if(i==64){
                 column.setPreferredWidth(150);
             }
@@ -549,6 +549,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         Palatum = new widget.ComboBox();
         Gingiva = new widget.ComboBox();
         jLabel103 = new widget.Label();
+        jSeparator7 = new javax.swing.JSeparator();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1428,7 +1429,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         scrollPane5.setBounds(453, 930, 400, 143);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2020 10:59:37" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2020 20:27:20" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1906,6 +1907,13 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         FormInput.add(jLabel103);
         jLabel103.setBounds(653, 840, 93, 23);
 
+        jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator7.setName("jSeparator7"); // NOI18N
+        FormInput.add(jSeparator7);
+        jSeparator7.setBounds(0, 680, 880, 1);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1947,7 +1955,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1961,7 +1969,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3307,6 +3315,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private widget.Label label11;
@@ -3329,15 +3338,18 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             if(TCari.getText().equals("")){
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_gigi.tanggal,"+
-                        "penilaian_awal_keperawatan_gigi.informasi,penilaian_awal_keperawatan_gigi.td,penilaian_awal_keperawatan_gigi.nadi,penilaian_awal_keperawatan_gigi.rr,penilaian_awal_keperawatan_gigi.suhu,penilaian_awal_keperawatan_gigi.bb,penilaian_awal_keperawatan_gigi.tb,"+
-                        "penilaian_awal_keperawatan_gigi.nadi,penilaian_awal_keperawatan_gigi.rr,penilaian_awal_keperawatan_gigi.suhu,penilaian_awal_keperawatan_gigi.gcs,penilaian_awal_keperawatan_gigi.bb,penilaian_awal_keperawatan_gigi.tb,penilaian_awal_keperawatan_gigi.bmi,penilaian_awal_keperawatan_gigi.keluhan_utama,"+
-                        "penilaian_awal_keperawatan_gigi.rpd,penilaian_awal_keperawatan_gigi.rpk,penilaian_awal_keperawatan_gigi.rpo,penilaian_awal_keperawatan_gigi.alergi,penilaian_awal_keperawatan_gigi.alat_bantu,penilaian_awal_keperawatan_gigi.ket_bantu,penilaian_awal_keperawatan_gigi.prothesa,"+
-                        "penilaian_awal_keperawatan_gigi.ket_pro,penilaian_awal_keperawatan_gigi.adl,penilaian_awal_keperawatan_gigi.status_psiko,penilaian_awal_keperawatan_gigi.ket_psiko,penilaian_awal_keperawatan_gigi.hub_keluarga,penilaian_awal_keperawatan_gigi.tinggal_dengan,"+
-                        "penilaian_awal_keperawatan_gigi.ket_tinggal,penilaian_awal_keperawatan_gigi.ekonomi,penilaian_awal_keperawatan_gigi.edukasi,penilaian_awal_keperawatan_gigi.ket_edukasi,penilaian_awal_keperawatan_gigi.berjalan_a,penilaian_awal_keperawatan_gigi.berjalan_b,"+
-                        "penilaian_awal_keperawatan_gigi.berjalan_c,penilaian_awal_keperawatan_gigi.hasil,penilaian_awal_keperawatan_gigi.lapor,penilaian_awal_keperawatan_gigi.ket_lapor,penilaian_awal_keperawatan_gigi.sg1,penilaian_awal_keperawatan_gigi.nilai1,penilaian_awal_keperawatan_gigi.sg2,penilaian_awal_keperawatan_gigi.nilai2,"+
-                        "penilaian_awal_keperawatan_gigi.total_hasil,penilaian_awal_keperawatan_gigi.nyeri,penilaian_awal_keperawatan_gigi.provokes,penilaian_awal_keperawatan_gigi.ket_provokes,penilaian_awal_keperawatan_gigi.quality,penilaian_awal_keperawatan_gigi.ket_quality,penilaian_awal_keperawatan_gigi.lokasi,penilaian_awal_keperawatan_gigi.menyebar,"+
-                        "penilaian_awal_keperawatan_gigi.skala_nyeri,penilaian_awal_keperawatan_gigi.durasi,penilaian_awal_keperawatan_gigi.nyeri_hilang,penilaian_awal_keperawatan_gigi.ket_nyeri,penilaian_awal_keperawatan_gigi.pada_dokter,penilaian_awal_keperawatan_gigi.ket_dokter,penilaian_awal_keperawatan_gigi.rencana,"+
-                        "penilaian_awal_keperawatan_gigi.nip,petugas.nama,penilaian_awal_keperawatan_gigi.budaya,penilaian_awal_keperawatan_gigi.ket_budaya "+
+                        "penilaian_awal_keperawatan_gigi.informasi,penilaian_awal_keperawatan_gigi.td,penilaian_awal_keperawatan_gigi.nadi,penilaian_awal_keperawatan_gigi.rr,penilaian_awal_keperawatan_gigi.suhu,penilaian_awal_keperawatan_gigi.bb,"+
+                        "penilaian_awal_keperawatan_gigi.tb,penilaian_awal_keperawatan_gigi.bmi,penilaian_awal_keperawatan_gigi.keluhan_utama,penilaian_awal_keperawatan_gigi.riwayat_penyakit,penilaian_awal_keperawatan_gigi.ket_riwayat_penyakit,"+
+                        "penilaian_awal_keperawatan_gigi.alergi,penilaian_awal_keperawatan_gigi.riwayat_perawatan_gigi,penilaian_awal_keperawatan_gigi.ket_riwayat_perawatan_gigi,penilaian_awal_keperawatan_gigi.kebiasaan_sikat_gigi,"+
+                        "penilaian_awal_keperawatan_gigi.kebiasaan_lain,penilaian_awal_keperawatan_gigi.ket_kebiasaan_lain,penilaian_awal_keperawatan_gigi.obat_yang_diminum_saatini,penilaian_awal_keperawatan_gigi.alat_bantu,"+
+                        "penilaian_awal_keperawatan_gigi.ket_alat_bantu,penilaian_awal_keperawatan_gigi.prothesa,penilaian_awal_keperawatan_gigi.ket_pro,penilaian_awal_keperawatan_gigi.status_psiko,penilaian_awal_keperawatan_gigi.ket_psiko,"+
+                        "penilaian_awal_keperawatan_gigi.hub_keluarga,penilaian_awal_keperawatan_gigi.tinggal_dengan,penilaian_awal_keperawatan_gigi.ket_tinggal,penilaian_awal_keperawatan_gigi.ekonomi,penilaian_awal_keperawatan_gigi.budaya,"+
+                        "penilaian_awal_keperawatan_gigi.ket_budaya,penilaian_awal_keperawatan_gigi.edukasi,penilaian_awal_keperawatan_gigi.ket_edukasi,penilaian_awal_keperawatan_gigi.berjalan_a,penilaian_awal_keperawatan_gigi.berjalan_b,"+
+                        "penilaian_awal_keperawatan_gigi.berjalan_c,penilaian_awal_keperawatan_gigi.hasil,penilaian_awal_keperawatan_gigi.lapor,penilaian_awal_keperawatan_gigi.ket_lapor,penilaian_awal_keperawatan_gigi.nyeri,"+
+                        "penilaian_awal_keperawatan_gigi.lokasi,penilaian_awal_keperawatan_gigi.skala_nyeri,penilaian_awal_keperawatan_gigi.durasi,penilaian_awal_keperawatan_gigi.frekuensi,penilaian_awal_keperawatan_gigi.nyeri_hilang,"+
+                        "penilaian_awal_keperawatan_gigi.ket_nyeri,penilaian_awal_keperawatan_gigi.pada_dokter,penilaian_awal_keperawatan_gigi.ket_dokter,penilaian_awal_keperawatan_gigi.kebersihan_mulut,penilaian_awal_keperawatan_gigi.mukosa_mulut,"+
+                        "penilaian_awal_keperawatan_gigi.karies,penilaian_awal_keperawatan_gigi.karang_gigi,penilaian_awal_keperawatan_gigi.gingiva,penilaian_awal_keperawatan_gigi.palatum,penilaian_awal_keperawatan_gigi.rencana,"+
+                        "penilaian_awal_keperawatan_gigi.nip,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_awal_keperawatan_gigi on reg_periksa.no_rawat=penilaian_awal_keperawatan_gigi.no_rawat "+
                         "inner join petugas on penilaian_awal_keperawatan_gigi.nip=petugas.nip "+
@@ -3347,15 +3359,18 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             }else{
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_gigi.tanggal,"+
-                        "penilaian_awal_keperawatan_gigi.informasi,penilaian_awal_keperawatan_gigi.td,penilaian_awal_keperawatan_gigi.nadi,penilaian_awal_keperawatan_gigi.rr,penilaian_awal_keperawatan_gigi.suhu,penilaian_awal_keperawatan_gigi.bb,penilaian_awal_keperawatan_gigi.tb,"+
-                        "penilaian_awal_keperawatan_gigi.nadi,penilaian_awal_keperawatan_gigi.rr,penilaian_awal_keperawatan_gigi.suhu,penilaian_awal_keperawatan_gigi.gcs,penilaian_awal_keperawatan_gigi.bb,penilaian_awal_keperawatan_gigi.tb,penilaian_awal_keperawatan_gigi.bmi,penilaian_awal_keperawatan_gigi.keluhan_utama,"+
-                        "penilaian_awal_keperawatan_gigi.rpd,penilaian_awal_keperawatan_gigi.rpk,penilaian_awal_keperawatan_gigi.rpo,penilaian_awal_keperawatan_gigi.alergi,penilaian_awal_keperawatan_gigi.alat_bantu,penilaian_awal_keperawatan_gigi.ket_bantu,penilaian_awal_keperawatan_gigi.prothesa,"+
-                        "penilaian_awal_keperawatan_gigi.ket_pro,penilaian_awal_keperawatan_gigi.adl,penilaian_awal_keperawatan_gigi.status_psiko,penilaian_awal_keperawatan_gigi.ket_psiko,penilaian_awal_keperawatan_gigi.hub_keluarga,penilaian_awal_keperawatan_gigi.tinggal_dengan,"+
-                        "penilaian_awal_keperawatan_gigi.ket_tinggal,penilaian_awal_keperawatan_gigi.ekonomi,penilaian_awal_keperawatan_gigi.edukasi,penilaian_awal_keperawatan_gigi.ket_edukasi,penilaian_awal_keperawatan_gigi.berjalan_a,penilaian_awal_keperawatan_gigi.berjalan_b,"+
-                        "penilaian_awal_keperawatan_gigi.berjalan_c,penilaian_awal_keperawatan_gigi.hasil,penilaian_awal_keperawatan_gigi.lapor,penilaian_awal_keperawatan_gigi.ket_lapor,penilaian_awal_keperawatan_gigi.sg1,penilaian_awal_keperawatan_gigi.nilai1,penilaian_awal_keperawatan_gigi.sg2,penilaian_awal_keperawatan_gigi.nilai2,"+
-                        "penilaian_awal_keperawatan_gigi.total_hasil,penilaian_awal_keperawatan_gigi.nyeri,penilaian_awal_keperawatan_gigi.provokes,penilaian_awal_keperawatan_gigi.ket_provokes,penilaian_awal_keperawatan_gigi.quality,penilaian_awal_keperawatan_gigi.ket_quality,penilaian_awal_keperawatan_gigi.lokasi,penilaian_awal_keperawatan_gigi.menyebar,"+
-                        "penilaian_awal_keperawatan_gigi.skala_nyeri,penilaian_awal_keperawatan_gigi.durasi,penilaian_awal_keperawatan_gigi.nyeri_hilang,penilaian_awal_keperawatan_gigi.ket_nyeri,penilaian_awal_keperawatan_gigi.pada_dokter,penilaian_awal_keperawatan_gigi.ket_dokter,penilaian_awal_keperawatan_gigi.rencana,"+
-                        "penilaian_awal_keperawatan_gigi.nip,petugas.nama,penilaian_awal_keperawatan_gigi.budaya,penilaian_awal_keperawatan_gigi.ket_budaya "+
+                        "penilaian_awal_keperawatan_gigi.informasi,penilaian_awal_keperawatan_gigi.td,penilaian_awal_keperawatan_gigi.nadi,penilaian_awal_keperawatan_gigi.rr,penilaian_awal_keperawatan_gigi.suhu,penilaian_awal_keperawatan_gigi.bb,"+
+                        "penilaian_awal_keperawatan_gigi.tb,penilaian_awal_keperawatan_gigi.bmi,penilaian_awal_keperawatan_gigi.keluhan_utama,penilaian_awal_keperawatan_gigi.riwayat_penyakit,penilaian_awal_keperawatan_gigi.ket_riwayat_penyakit,"+
+                        "penilaian_awal_keperawatan_gigi.alergi,penilaian_awal_keperawatan_gigi.riwayat_perawatan_gigi,penilaian_awal_keperawatan_gigi.ket_riwayat_perawatan_gigi,penilaian_awal_keperawatan_gigi.kebiasaan_sikat_gigi,"+
+                        "penilaian_awal_keperawatan_gigi.kebiasaan_lain,penilaian_awal_keperawatan_gigi.ket_kebiasaan_lain,penilaian_awal_keperawatan_gigi.obat_yang_diminum_saatini,penilaian_awal_keperawatan_gigi.alat_bantu,"+
+                        "penilaian_awal_keperawatan_gigi.ket_alat_bantu,penilaian_awal_keperawatan_gigi.prothesa,penilaian_awal_keperawatan_gigi.ket_pro,penilaian_awal_keperawatan_gigi.status_psiko,penilaian_awal_keperawatan_gigi.ket_psiko,"+
+                        "penilaian_awal_keperawatan_gigi.hub_keluarga,penilaian_awal_keperawatan_gigi.tinggal_dengan,penilaian_awal_keperawatan_gigi.ket_tinggal,penilaian_awal_keperawatan_gigi.ekonomi,penilaian_awal_keperawatan_gigi.budaya,"+
+                        "penilaian_awal_keperawatan_gigi.ket_budaya,penilaian_awal_keperawatan_gigi.edukasi,penilaian_awal_keperawatan_gigi.ket_edukasi,penilaian_awal_keperawatan_gigi.berjalan_a,penilaian_awal_keperawatan_gigi.berjalan_b,"+
+                        "penilaian_awal_keperawatan_gigi.berjalan_c,penilaian_awal_keperawatan_gigi.hasil,penilaian_awal_keperawatan_gigi.lapor,penilaian_awal_keperawatan_gigi.ket_lapor,penilaian_awal_keperawatan_gigi.nyeri,"+
+                        "penilaian_awal_keperawatan_gigi.lokasi,penilaian_awal_keperawatan_gigi.skala_nyeri,penilaian_awal_keperawatan_gigi.durasi,penilaian_awal_keperawatan_gigi.frekuensi,penilaian_awal_keperawatan_gigi.nyeri_hilang,"+
+                        "penilaian_awal_keperawatan_gigi.ket_nyeri,penilaian_awal_keperawatan_gigi.pada_dokter,penilaian_awal_keperawatan_gigi.ket_dokter,penilaian_awal_keperawatan_gigi.kebersihan_mulut,penilaian_awal_keperawatan_gigi.mukosa_mulut,"+
+                        "penilaian_awal_keperawatan_gigi.karies,penilaian_awal_keperawatan_gigi.karang_gigi,penilaian_awal_keperawatan_gigi.gingiva,penilaian_awal_keperawatan_gigi.palatum,penilaian_awal_keperawatan_gigi.rencana,"+
+                        "penilaian_awal_keperawatan_gigi.nip,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_awal_keperawatan_gigi on reg_periksa.no_rawat=penilaian_awal_keperawatan_gigi.no_rawat "+
                         "inner join petugas on penilaian_awal_keperawatan_gigi.nip=petugas.nip "+
@@ -3393,15 +3408,15 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("agama"),rs.getString("nama_bahasa"),rs.getString("nama_cacat"),
-                        rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),
-                        rs.getString("gcs"),rs.getString("bb"),rs.getString("tb"),rs.getString("bmi"),rs.getString("keluhan_utama"),rs.getString("rpd"),rs.getString("rpk"),rs.getString("rpo"),
-                        rs.getString("alergi"),rs.getString("alat_bantu"),rs.getString("ket_bantu"),rs.getString("prothesa"),rs.getString("ket_pro"),rs.getString("adl"),rs.getString("status_psiko"),
-                        rs.getString("ket_psiko"),rs.getString("hub_keluarga"),rs.getString("tinggal_dengan"),rs.getString("ket_tinggal"),rs.getString("ekonomi"),rs.getString("budaya"),
-                        rs.getString("ket_budaya"),rs.getString("edukasi"),rs.getString("ket_edukasi"),rs.getString("berjalan_a"),rs.getString("berjalan_b"),rs.getString("berjalan_c"),
-                        rs.getString("hasil"),rs.getString("lapor"),rs.getString("ket_lapor"),rs.getString("sg1"),rs.getString("nilai1"),rs.getString("sg2"),rs.getString("nilai2"),
-                        rs.getString("total_hasil"),rs.getString("nyeri"),rs.getString("provokes"),rs.getString("ket_provokes"),rs.getString("quality"),rs.getString("ket_quality"),
-                        rs.getString("lokasi"),rs.getString("menyebar"),rs.getString("skala_nyeri"),rs.getString("durasi"),rs.getString("nyeri_hilang"),rs.getString("ket_nyeri"),
-                        rs.getString("pada_dokter"),rs.getString("ket_dokter"),rs.getString("rencana"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),rs.getString("bb"),
+                        rs.getString("tb"),rs.getString("bmi"),rs.getString("keluhan_utama"),rs.getString("riwayat_penyakit"),rs.getString("ket_riwayat_penyakit"),rs.getString("alergi"),
+                        rs.getString("riwayat_perawatan_gigi"),rs.getString("ket_riwayat_perawatan_gigi"),rs.getString("kebiasaan_sikat_gigi"),rs.getString("kebiasaan_lain"),rs.getString("ket_kebiasaan_lain"),
+                        rs.getString("obat_yang_diminum_saatini"),rs.getString("alat_bantu"),rs.getString("ket_alat_bantu"),rs.getString("prothesa"),rs.getString("ket_pro"),rs.getString("status_psiko"),
+                        rs.getString("ket_psiko"),rs.getString("hub_keluarga"),rs.getString("tinggal_dengan"),rs.getString("ket_tinggal"),rs.getString("ekonomi"),rs.getString("budaya"),rs.getString("ket_budaya"),
+                        rs.getString("edukasi"),rs.getString("ket_edukasi"),rs.getString("berjalan_a"),rs.getString("berjalan_b"),rs.getString("berjalan_c"),rs.getString("hasil"),rs.getString("lapor"),
+                        rs.getString("ket_lapor"),rs.getString("nyeri"),rs.getString("lokasi"),rs.getString("skala_nyeri"),rs.getString("durasi"),rs.getString("frekuensi"),rs.getString("nyeri_hilang"),
+                        rs.getString("ket_nyeri"),rs.getString("pada_dokter"),rs.getString("ket_dokter"),rs.getString("kebersihan_mulut"),rs.getString("mukosa_mulut"),rs.getString("karies"),
+                        rs.getString("karang_gigi"),rs.getString("gingiva"),rs.getString("palatum"),rs.getString("rencana"),rs.getString("nip"),rs.getString("petugas.nama")
                     });
                 }
             } catch (Exception e) {
@@ -3499,39 +3514,54 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            BMI.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            KeluhanUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            AlatBantu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            KetBantu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            Prothesa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            KetProthesa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            StatusPsiko.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
-            KetPsiko.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
-            HubunganKeluarga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
-            TinggalDengan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            KetTinggal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
-            Ekonomi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            StatusBudaya.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
-            KetBudaya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
-            Edukasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
-            KetEdukasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
-            ATS.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
-            BJM.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
-            MSA.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
-            Hasil.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
-            Lapor.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
-            KetLapor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
-            Nyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString());
-            Lokasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),54).toString());
-            SkalaNyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),56).toString());
-            Durasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),57).toString());
-            NyeriHilang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),58).toString());
-            KetNyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),59).toString());
-            PadaDokter.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
-            KetLapor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
+            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            BMI.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            KeluhanUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            RiwayatPenyakit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            KetRiwayatPenyakit.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            RiwayatPerawatan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            KetRiwayatPerawatan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            KebiasaanSikatGigi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            KebiasaanLain.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            KetKebiasaanLain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            ObatDiminum.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            AlatBantu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            KetBantu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            Prothesa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            KetProthesa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            StatusPsiko.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            KetPsiko.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            HubunganKeluarga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            TinggalDengan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            KetTinggal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            Ekonomi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            StatusBudaya.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            KetBudaya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+            Edukasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
+            KetEdukasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
+            ATS.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
+            BJM.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            MSA.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
+            Hasil.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
+            Lapor.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            KetLapor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
+            Nyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
+            Lokasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString());
+            SkalaNyeri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString());
+            Durasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString());
+            Frekuensi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString());
+            NyeriHilang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),52).toString());
+            KetNyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),53).toString());
+            PadaDokter.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),54).toString());
+            KetDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),55).toString());
+            KebersihanMulut.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),56).toString());
+            Mukosa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),57).toString());
+            Karies.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),58).toString());
+            KarangGigi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),59).toString());
+            Gingiva.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
+            Palatum.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
             Rencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
             KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
             NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString());

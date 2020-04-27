@@ -436,6 +436,11 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
 
         Tgl.setDisplayFormat("dd-MM-yyyy");
         Tgl.setName("Tgl"); // NOI18N
+        Tgl.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TglItemStateChanged(evt);
+            }
+        });
         Tgl.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglKeyPressed(evt);
@@ -940,6 +945,13 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         ceksetok.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppStok1ActionPerformed
+
+    private void TglItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TglItemStateChanged
+        try {
+            autoNomor();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_TglItemStateChanged
 
     /**
     * @param args the command line arguments

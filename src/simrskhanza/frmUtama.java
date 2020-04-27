@@ -646,7 +646,7 @@ public class frmUtama extends javax.swing.JFrame {
     private PreparedStatement ps;
     private ResultSet rs;
     private final Properties prop = new Properties();  
-    private int jmlmenu=0,grid=0,tinggi=0,i=0;
+    private int jmlmenu=0,grid=0,tinggi=0,i=0,menuawal=0;
     private String coder_nik="",pilihpage="",judulform="",tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri"),
             AKTIFKANTRACKSQL=koneksiDB.AKTIFKANTRACKSQL();
     /** Creates new form frmUtama */
@@ -786,6 +786,11 @@ public class frmUtama extends javax.swing.JFrame {
         ChkInput = new widget.CekBox();
         scrollPane2 = new widget.ScrollPane();
         Panelmenu = new widget.panelGlass();
+        tanggal = new widget.Tanggal();
+        btnDataPenjualan = new widget.ButtonBig();
+        btnInputPenjualan = new widget.ButtonBig();
+        btnDataPenyerahanDarah = new widget.ButtonBig();
+        btnResepObatDepan = new widget.ButtonBig();
         btnBarcode = new widget.ButtonBig();
         btnICD = new widget.ButtonBig();
         btnObat = new widget.ButtonBig();
@@ -1239,11 +1244,6 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikLimbahB3MedisPerBulan = new widget.ButtonBig();
         btnLimbahDomestik = new widget.ButtonBig();
         btnGrafikLimbahDomestikPerTanggal = new widget.ButtonBig();
-        tanggal = new widget.Tanggal();
-        btnDataPenjualan = new widget.ButtonBig();
-        btnInputPenjualan = new widget.ButtonBig();
-        btnDataPenyerahanDarah = new widget.ButtonBig();
-        btnResepObatDepan = new widget.ButtonBig();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
         jSeparator4 = new javax.swing.JSeparator();
@@ -1519,5443 +1519,6 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.setMinimumSize(new java.awt.Dimension(1975, 2826));
         Panelmenu.setName("Panelmenu"); // NOI18N
         Panelmenu.setLayout(new java.awt.GridLayout(0, 12));
-
-        btnBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
-        btnBarcode.setText("Barcode Presensi");
-        btnBarcode.setIconTextGap(0);
-        btnBarcode.setName("btnBarcode"); // NOI18N
-        btnBarcode.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBarcode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBarcodeActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBarcode);
-
-        btnICD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnICD.setText("ICD 10");
-        btnICD.setIconTextGap(0);
-        btnICD.setName("btnICD"); // NOI18N
-        btnICD.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnICD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnICDActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnICD);
-
-        btnObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnObat.setText("Obat, Alkes & BHP");
-        btnObat.setIconTextGap(0);
-        btnObat.setName("btnObat"); // NOI18N
-        btnObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnObat);
-
-        btnObatPenyakit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484848_applications-science.png"))); // NOI18N
-        btnObatPenyakit.setText("Obat Penyakit");
-        btnObatPenyakit.setIconTextGap(0);
-        btnObatPenyakit.setName("btnObatPenyakit"); // NOI18N
-        btnObatPenyakit.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnObatPenyakit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObatPenyakitActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnObatPenyakit);
-
-        btnKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
-        btnKamar.setText("Kamar");
-        btnKamar.setIconTextGap(0);
-        btnKamar.setName("btnKamar"); // NOI18N
-        btnKamar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKamar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKamarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKamar);
-
-        btnTindakanRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png"))); // NOI18N
-        btnTindakanRalan.setText("Tarif Ralan");
-        btnTindakanRalan.setIconTextGap(0);
-        btnTindakanRalan.setName("btnTindakanRalan"); // NOI18N
-        btnTindakanRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTindakanRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTindakanRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTindakanRalan);
-
-        btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
-        btnDokter.setText("Dokter");
-        btnDokter.setIconTextGap(0);
-        btnDokter.setName("btnDokter"); // NOI18N
-        btnDokter.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDokterActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDokter);
-
-        btnPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
-        btnPegawai.setText("Petugas");
-        btnPegawai.setIconTextGap(0);
-        btnPegawai.setName("btnPegawai"); // NOI18N
-        btnPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPegawai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPegawaiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPegawai);
-
-        btnPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/patient.png"))); // NOI18N
-        btnPasien.setText("Pasien");
-        btnPasien.setIconTextGap(0);
-        btnPasien.setName("btnPasien"); // NOI18N
-        btnPasien.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPasienActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPasien);
-
-        btnRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnRegistrasi.setText("Registrasi");
-        btnRegistrasi.setIconTextGap(0);
-        btnRegistrasi.setName("btnRegistrasi"); // NOI18N
-        btnRegistrasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRegistrasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRegistrasi);
-
-        btnRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Tindakan-Rajal.png"))); // NOI18N
-        btnRalan.setText("Tindakan Ralan");
-        btnRalan.setIconTextGap(0);
-        btnRalan.setName("btnRalan"); // NOI18N
-        btnRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRalan);
-
-        btnKamarInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Home.png"))); // NOI18N
-        btnKamarInap.setText("Rawat Inap");
-        btnKamarInap.setIconTextGap(0);
-        btnKamarInap.setName("btnKamarInap"); // NOI18N
-        btnKamarInap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKamarInap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKamarInapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKamarInap);
-
-        btnRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/tindakanranap.png"))); // NOI18N
-        btnRanap.setText("Tindakan Ranap");
-        btnRanap.setIconTextGap(0);
-        btnRanap.setName("btnRanap"); // NOI18N
-        btnRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRanap);
-
-        btnResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stock_task.png"))); // NOI18N
-        btnResepObat.setText("No. Resep");
-        btnResepObat.setIconTextGap(0);
-        btnResepObat.setName("btnResepObat"); // NOI18N
-        btnResepObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnResepObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResepObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnResepObat);
-
-        btnRujukPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
-        btnRujukPasien.setText("Rujukan Keluar");
-        btnRujukPasien.setIconTextGap(0);
-        btnRujukPasien.setName("btnRujukPasien"); // NOI18N
-        btnRujukPasien.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRujukPasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRujukPasienActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRujukPasien);
-
-        btnBeriObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/first_aid_kit.png"))); // NOI18N
-        btnBeriObat.setText("Beri Obat/BHP");
-        btnBeriObat.setIconTextGap(0);
-        btnBeriObat.setName("btnBeriObat"); // NOI18N
-        btnBeriObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBeriObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBeriObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBeriObat);
-
-        btnPasienMati.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Ambulance.png"))); // NOI18N
-        btnPasienMati.setText("Pasien Meninggal");
-        btnPasienMati.setIconTextGap(0);
-        btnPasienMati.setName("btnPasienMati"); // NOI18N
-        btnPasienMati.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPasienMati.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPasienMatiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPasienMati);
-
-        btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/preferences-desktop-cryptography.png"))); // NOI18N
-        btnAdmin.setText("Set Admin");
-        btnAdmin.setIconTextGap(0);
-        btnAdmin.setName("btnAdmin"); // NOI18N
-        btnAdmin.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdminActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnAdmin);
-
-        btnVakum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486615_remove-from-database.png"))); // NOI18N
-        btnVakum.setText("Vakum Table");
-        btnVakum.setIconTextGap(0);
-        btnVakum.setName("btnVakum"); // NOI18N
-        btnVakum.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnVakum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVakumActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnVakum);
-
-        btnDisplay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/find.png"))); // NOI18N
-        btnDisplay.setText("Display Antrian Registrasi & Poli");
-        btnDisplay.setIconTextGap(0);
-        btnDisplay.setName("btnDisplay"); // NOI18N
-        btnDisplay.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDisplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDisplayActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDisplay);
-
-        btnSetupHarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
-        btnSetupHarga.setText("Set Harga Obat");
-        btnSetupHarga.setIconTextGap(0);
-        btnSetupHarga.setName("btnSetupHarga"); // NOI18N
-        btnSetupHarga.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetupHarga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetupHargaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetupHarga);
-
-        btnSuplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357959_truck.png"))); // NOI18N
-        btnSuplier.setText("Suplier Obat/Alkes/BHP");
-        btnSuplier.setIconTextGap(0);
-        btnSuplier.setName("btnSuplier"); // NOI18N
-        btnSuplier.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuplier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuplierActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuplier);
-
-        btnJnsBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Card_file.png"))); // NOI18N
-        btnJnsBarang.setText("Jenis Obat, Alkes & BHP");
-        btnJnsBarang.setIconTextGap(0);
-        btnJnsBarang.setName("btnJnsBarang"); // NOI18N
-        btnJnsBarang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJnsBarang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJnsBarangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJnsBarang);
-
-        btnKonversi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ark2.png"))); // NOI18N
-        btnKonversi.setText("Konversi Satuan");
-        btnKonversi.setIconTextGap(0);
-        btnKonversi.setName("btnKonversi"); // NOI18N
-        btnKonversi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKonversi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKonversiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKonversi);
-
-        btnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bag1.png"))); // NOI18N
-        btnSatuan.setText("Satuan Barang");
-        btnSatuan.setIconTextGap(0);
-        btnSatuan.setName("btnSatuan"); // NOI18N
-        btnSatuan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSatuan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSatuanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSatuan);
-
-        btnCashFlow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
-        btnCashFlow.setText("Cash Flow");
-        btnCashFlow.setIconTextGap(0);
-        btnCashFlow.setName("btnCashFlow"); // NOI18N
-        btnCashFlow.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCashFlow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCashFlowActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCashFlow);
-
-        btnBubes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/applications-office.png"))); // NOI18N
-        btnBubes.setText("Buku Besar");
-        btnBubes.setIconTextGap(0);
-        btnBubes.setName("btnBubes"); // NOI18N
-        btnBubes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBubes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBubesActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBubes);
-
-        btnPostingJurnal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
-        btnPostingJurnal.setText("Posting Jurnal");
-        btnPostingJurnal.setIconTextGap(0);
-        btnPostingJurnal.setName("btnPostingJurnal"); // NOI18N
-        btnPostingJurnal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPostingJurnal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPostingJurnalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPostingJurnal);
-
-        btnRekeningTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/money_bag.png"))); // NOI18N
-        btnRekeningTahun.setText("Rekening Tahun");
-        btnRekeningTahun.setIconTextGap(0);
-        btnRekeningTahun.setName("btnRekeningTahun"); // NOI18N
-        btnRekeningTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekeningTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekeningTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekeningTahun);
-
-        btnRekening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
-        btnRekening.setText("Akun Rekening");
-        btnRekening.setIconTextGap(0);
-        btnRekening.setName("btnRekening"); // NOI18N
-        btnRekening.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekening.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekeningActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekening);
-
-        btnPembelian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
-        btnPembelian.setText("Pengadaan Obat & BHP");
-        btnPembelian.setIconTextGap(0);
-        btnPembelian.setName("btnPembelian"); // NOI18N
-        btnPembelian.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPembelian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPembelianActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPembelian);
-
-        btnPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
-        btnPenjualan.setText("Penjualan Obat & BHP");
-        btnPenjualan.setIconTextGap(0);
-        btnPenjualan.setName("btnPenjualan"); // NOI18N
-        btnPenjualan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenjualan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenjualanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPenjualan);
-
-        btnPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnPiutang.setText("Piutang Obat & BHP");
-        btnPiutang.setIconTextGap(0);
-        btnPiutang.setName("btnPiutang"); // NOI18N
-        btnPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPiutang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPiutangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPiutang);
-
-        btnBayarPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
-        btnBayarPiutang.setText("Bayar Piutang");
-        btnBayarPiutang.setIconTextGap(0);
-        btnBayarPiutang.setName("btnBayarPiutang"); // NOI18N
-        btnBayarPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBayarPiutang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBayarPiutangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBayarPiutang);
-
-        btnOpname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
-        btnOpname.setText("Stok Opname Obat & BHP");
-        btnOpname.setIconTextGap(0);
-        btnOpname.setName("btnOpname"); // NOI18N
-        btnOpname.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnOpname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpnameActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnOpname);
-
-        btnReturBeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816189_arrow_down.png"))); // NOI18N
-        btnReturBeli.setText("Retur Ke Suplier");
-        btnReturBeli.setIconTextGap(0);
-        btnReturBeli.setName("btnReturBeli"); // NOI18N
-        btnReturBeli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnReturBeli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReturBeliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnReturBeli);
-
-        btnReturJual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486142_shopping_cart.png"))); // NOI18N
-        btnReturJual.setText("Retur Dari Pembeli");
-        btnReturJual.setIconTextGap(0);
-        btnReturJual.setName("btnReturJual"); // NOI18N
-        btnReturJual.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnReturJual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReturJualActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnReturJual);
-
-        btnSirkulasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
-        btnSirkulasi.setText("Sirkulasi Obat, Alkes & BHP");
-        btnSirkulasi.setIconTextGap(0);
-        btnSirkulasi.setName("btnSirkulasi"); // NOI18N
-        btnSirkulasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSirkulasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSirkulasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSirkulasi);
-
-        btnKeuntungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
-        btnKeuntungan.setText("Keuntungan Penjualan");
-        btnKeuntungan.setIconTextGap(0);
-        btnKeuntungan.setName("btnKeuntungan"); // NOI18N
-        btnKeuntungan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKeuntungan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKeuntunganActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKeuntungan);
-
-        btnLabaRugi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486822_20.png"))); // NOI18N
-        btnLabaRugi.setText("Keuangan");
-        btnLabaRugi.setIconTextGap(0);
-        btnLabaRugi.setName("btnLabaRugi"); // NOI18N
-        btnLabaRugi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLabaRugi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLabaRugiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLabaRugi);
-
-        btnReturPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
-        btnReturPiutang.setText("Retur Piutang Pembeli");
-        btnReturPiutang.setIconTextGap(0);
-        btnReturPiutang.setName("btnReturPiutang"); // NOI18N
-        btnReturPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnReturPiutang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReturPiutangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnReturPiutang);
-
-        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/InformasiKamar.png"))); // NOI18N
-        btnAnalisaKamar.setText("Informasi Kamar");
-        btnAnalisaKamar.setIconTextGap(0);
-        btnAnalisaKamar.setName("btnAnalisaKamar"); // NOI18N
-        btnAnalisaKamar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAnalisaKamar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnalisaKamarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnAnalisaKamar);
-
-        btnRHDOkter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnRHDOkter.setText("Harian Dokter");
-        btnRHDOkter.setIconTextGap(0);
-        btnRHDOkter.setName("btnRHDOkter"); // NOI18N
-        btnRHDOkter.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRHDOkter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRHDOkterActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRHDOkter);
-
-        btnRBDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnRBDokter.setText("Bulanan Dokter");
-        btnRBDokter.setIconTextGap(0);
-        btnRBDokter.setName("btnRBDokter"); // NOI18N
-        btnRBDokter.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRBDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRBDokterActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRBDokter);
-
-        btnTagihanMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046800_Cash_register.png"))); // NOI18N
-        btnTagihanMasuk.setText("Tagihan Masuk");
-        btnTagihanMasuk.setIconTextGap(0);
-        btnTagihanMasuk.setName("btnTagihanMasuk"); // NOI18N
-        btnTagihanMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTagihanMasuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTagihanMasukActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTagihanMasuk);
-
-        btnResume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
-        btnResume.setText("Riwayat Perawatan");
-        btnResume.setIconTextGap(0);
-        btnResume.setName("btnResume"); // NOI18N
-        btnResume.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnResume.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResumeActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnResume);
-
-        btnDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486936_pie-chart.png"))); // NOI18N
-        btnDiet.setText("Diet Pasien");
-        btnDiet.setIconTextGap(0);
-        btnDiet.setName("btnDiet"); // NOI18N
-        btnDiet.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDiet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDietActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDiet);
-
-        btnRHParamedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
-        btnRHParamedis.setText("Harian Paramedis");
-        btnRHParamedis.setIconTextGap(0);
-        btnRHParamedis.setName("btnRHParamedis"); // NOI18N
-        btnRHParamedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRHParamedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRHParamedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRHParamedis);
-
-        btnRBParamedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
-        btnRBParamedis.setText("Bulanan Paramedis");
-        btnRBParamedis.setIconTextGap(0);
-        btnRBParamedis.setName("btnRBParamedis"); // NOI18N
-        btnRBParamedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRBParamedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRBParamedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRBParamedis);
-
-        btnKasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
-        btnKasir.setText("Rawat Jalan");
-        btnKasir.setIconTextGap(0);
-        btnKasir.setName("btnKasir"); // NOI18N
-        btnKasir.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKasir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKasirActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKasir);
-
-        btnLahir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/baby-girl.png"))); // NOI18N
-        btnLahir.setText("Kelahiran Bayi");
-        btnLahir.setIconTextGap(0);
-        btnLahir.setName("btnLahir"); // NOI18N
-        btnLahir.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLahir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLahirActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLahir);
-
-        btnSetBiayaHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
-        btnSetBiayaHarian.setText("Biaya Harian");
-        btnSetBiayaHarian.setIconTextGap(0);
-        btnSetBiayaHarian.setName("btnSetBiayaHarian"); // NOI18N
-        btnSetBiayaHarian.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetBiayaHarian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetBiayaHarianActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetBiayaHarian);
-
-        btnJenisInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cabinet.png"))); // NOI18N
-        btnJenisInventaris.setText("Jenis Inventaris");
-        btnJenisInventaris.setIconTextGap(0);
-        btnJenisInventaris.setName("btnJenisInventaris"); // NOI18N
-        btnJenisInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJenisInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJenisInventarisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJenisInventaris);
-
-        btnKategoriInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
-        btnKategoriInventaris.setText("Kategori Inventaris");
-        btnKategoriInventaris.setIconTextGap(0);
-        btnKategoriInventaris.setName("btnKategoriInventaris"); // NOI18N
-        btnKategoriInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKategoriInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKategoriInventarisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKategoriInventaris);
-
-        btnLihatPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
-        btnLihatPiutang.setText("Piutang Pasien");
-        btnLihatPiutang.setIconTextGap(0);
-        btnLihatPiutang.setName("btnLihatPiutang"); // NOI18N
-        btnLihatPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLihatPiutang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLihatPiutangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLihatPiutang);
-
-        btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laboratory.png"))); // NOI18N
-        btnLaboratorium.setText("Periksa Lab");
-        btnLaboratorium.setIconTextGap(0);
-        btnLaboratorium.setName("btnLaboratorium"); // NOI18N
-        btnLaboratorium.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLaboratorium.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLaboratoriumActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLaboratorium);
-
-        btnRalanMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
-        btnRalanMasuk.setText("Pembayaran Ralan");
-        btnRalanMasuk.setIconTextGap(0);
-        btnRalanMasuk.setName("btnRalanMasuk"); // NOI18N
-        btnRalanMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRalanMasuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRalanMasukActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRalanMasuk);
-
-        btnSetupAplikasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/local_network.png"))); // NOI18N
-        btnSetupAplikasi.setText("Set Aplikasi");
-        btnSetupAplikasi.setIconTextGap(0);
-        btnSetupAplikasi.setName("btnSetupAplikasi"); // NOI18N
-        btnSetupAplikasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetupAplikasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetupAplikasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetupAplikasi);
-
-        btnSetOtoRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stethoscope (1).png"))); // NOI18N
-        btnSetOtoRalan.setText("Set Oto Ralan");
-        btnSetOtoRalan.setIconTextGap(0);
-        btnSetOtoRalan.setName("btnSetOtoRalan"); // NOI18N
-        btnSetOtoRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetOtoRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetOtoRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetOtoRalan);
-
-        btnRanapMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
-        btnRanapMasuk.setText("Pembayaran Ranap");
-        btnRanapMasuk.setIconTextGap(0);
-        btnRanapMasuk.setName("btnRanapMasuk"); // NOI18N
-        btnRanapMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRanapMasuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRanapMasukActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRanapMasuk);
-
-        btnProdusenInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
-        btnProdusenInventaris.setText("Produsen Inventaris");
-        btnProdusenInventaris.setIconTextGap(0);
-        btnProdusenInventaris.setName("btnProdusenInventaris"); // NOI18N
-        btnProdusenInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnProdusenInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProdusenInventarisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnProdusenInventaris);
-
-        btnSetBiayaMasukSekali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
-        btnSetBiayaMasukSekali.setText("Biaya Masuk Sekali");
-        btnSetBiayaMasukSekali.setIconTextGap(0);
-        btnSetBiayaMasukSekali.setName("btnSetBiayaMasukSekali"); // NOI18N
-        btnSetBiayaMasukSekali.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetBiayaMasukSekali.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetBiayaMasukSekaliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetBiayaMasukSekali);
-
-        btnPaketOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487111_stock_paste.png"))); // NOI18N
-        btnPaketOperasi.setText("Tarif Operasi/VK");
-        btnPaketOperasi.setIconTextGap(0);
-        btnPaketOperasi.setName("btnPaketOperasi"); // NOI18N
-        btnPaketOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPaketOperasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPaketOperasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPaketOperasi);
-
-        btnTagihanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/surgeon.png"))); // NOI18N
-        btnTagihanOperasi.setText("Operasi/VK");
-        btnTagihanOperasi.setIconTextGap(0);
-        btnTagihanOperasi.setName("btnTagihanOperasi"); // NOI18N
-        btnTagihanOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTagihanOperasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTagihanOperasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTagihanOperasi);
-
-        BtnJadwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
-        BtnJadwal.setText("Jadwal Praktek");
-        BtnJadwal.setIconTextGap(0);
-        BtnJadwal.setName("BtnJadwal"); // NOI18N
-        BtnJadwal.setPreferredSize(new java.awt.Dimension(200, 90));
-        BtnJadwal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnJadwalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(BtnJadwal);
-
-        btnMerkInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bag1.png"))); // NOI18N
-        btnMerkInventaris.setText("Merk Inventaris");
-        btnMerkInventaris.setIconTextGap(0);
-        btnMerkInventaris.setName("btnMerkInventaris"); // NOI18N
-        btnMerkInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMerkInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMerkInventarisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnMerkInventaris);
-
-        btnRuangInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
-        btnRuangInventaris.setText("Ruang Inventaris");
-        btnRuangInventaris.setIconTextGap(0);
-        btnRuangInventaris.setName("btnRuangInventaris"); // NOI18N
-        btnRuangInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRuangInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRuangInventarisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRuangInventaris);
-
-        btnBarangInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fax.png"))); // NOI18N
-        btnBarangInventaris.setText("Koleksi Inventaris");
-        btnBarangInventaris.setIconTextGap(0);
-        btnBarangInventaris.setName("btnBarangInventaris"); // NOI18N
-        btnBarangInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBarangInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBarangInventarisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBarangInventaris);
-
-        btnInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486921_bar-code.png"))); // NOI18N
-        btnInventaris.setText("Data Inventaris");
-        btnInventaris.setIconTextGap(0);
-        btnInventaris.setName("btnInventaris"); // NOI18N
-        btnInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInventarisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnInventaris);
-
-        btnSirkulasiInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
-        btnSirkulasiInventaris.setText("Sirkulasi Inventaris");
-        btnSirkulasiInventaris.setIconTextGap(0);
-        btnSirkulasiInventaris.setName("btnSirkulasiInventaris"); // NOI18N
-        btnSirkulasiInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSirkulasiInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSirkulasiInventarisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSirkulasiInventaris);
-
-        btnFrekuensiRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnFrekuensiRalan.setText("Frekuensi Penyakit Ralan");
-        btnFrekuensiRalan.setIconTextGap(0);
-        btnFrekuensiRalan.setName("btnFrekuensiRalan"); // NOI18N
-        btnFrekuensiRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnFrekuensiRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFrekuensiRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnFrekuensiRalan);
-
-        btnFrekuensiRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/applications-office.png"))); // NOI18N
-        btnFrekuensiRanap.setText("Frekuensi Penyakit Ranap");
-        btnFrekuensiRanap.setIconTextGap(0);
-        btnFrekuensiRanap.setName("btnFrekuensiRanap"); // NOI18N
-        btnFrekuensiRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnFrekuensiRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFrekuensiRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnFrekuensiRanap);
-
-        btnSetupOtoLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/our_process_2.png"))); // NOI18N
-        btnSetupOtoLokasi.setText("Set Oto Lokasi");
-        btnSetupOtoLokasi.setIconTextGap(0);
-        btnSetupOtoLokasi.setName("btnSetupOtoLokasi"); // NOI18N
-        btnSetupOtoLokasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetupOtoLokasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetupOtoLokasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetupOtoLokasi);
-
-        btnTagihanPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
-        btnTagihanPoli.setText("Harian Dokter Poli");
-        btnTagihanPoli.setIconTextGap(0);
-        btnTagihanPoli.setName("btnTagihanPoli"); // NOI18N
-        btnTagihanPoli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTagihanPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTagihanPoliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTagihanPoli);
-
-        btnRujukMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_vector_65_13_473800.png"))); // NOI18N
-        btnRujukMasuk.setText("Rujukan Masuk");
-        btnRujukMasuk.setIconTextGap(0);
-        btnRujukMasuk.setName("btnRujukMasuk"); // NOI18N
-        btnRujukMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRujukMasuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRujukMasukActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRujukMasuk);
-
-        btnTracker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
-        btnTracker.setText("Tracker Login");
-        btnTracker.setIconTextGap(0);
-        btnTracker.setName("btnTracker"); // NOI18N
-        btnTracker.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTracker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTrackerActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTracker);
-
-        btnTindakanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png"))); // NOI18N
-        btnTindakanRanap.setText("Tarif Ranap");
-        btnTindakanRanap.setIconTextGap(0);
-        btnTindakanRanap.setName("btnTindakanRanap"); // NOI18N
-        btnTindakanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTindakanRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTindakanRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTindakanRanap);
-
-        btnSetupJamInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Time.png"))); // NOI18N
-        btnSetupJamInap.setText("Set Kamar Inap");
-        btnSetupJamInap.setIconTextGap(0);
-        btnSetupJamInap.setName("btnSetupJamInap"); // NOI18N
-        btnSetupJamInap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetupJamInap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetupJamInapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetupJamInap);
-
-        btnStokObatPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
-        btnStokObatPasien.setText("Stok Obat Pasien");
-        btnStokObatPasien.setIconTextGap(0);
-        btnStokObatPasien.setName("btnStokObatPasien"); // NOI18N
-        btnStokObatPasien.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnStokObatPasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStokObatPasienActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnStokObatPasien);
-
-        btnTarifLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnTarifLab.setText("Tarif Lab");
-        btnTarifLab.setIconTextGap(0);
-        btnTarifLab.setName("btnTarifLab"); // NOI18N
-        btnTarifLab.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTarifLab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTarifLabActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTarifLab);
-
-        btnSetPenjab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/user3.png"))); // NOI18N
-        btnSetPenjab.setText("Set P.J. Unit Penunjang");
-        btnSetPenjab.setIconTextGap(0);
-        btnSetPenjab.setName("btnSetPenjab"); // NOI18N
-        btnSetPenjab.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetPenjab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetPenjabActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetPenjab);
-
-        btnTagihanObatPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnTagihanObatPoli.setText("Obat Per Poli");
-        btnTagihanObatPoli.setIconTextGap(0);
-        btnTagihanObatPoli.setName("btnTagihanObatPoli"); // NOI18N
-        btnTagihanObatPoli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTagihanObatPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTagihanObatPoliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTagihanObatPoli);
-
-        btnTagihanObatBangsal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnTagihanObatBangsal.setText("Obat Per Kamar");
-        btnTagihanObatBangsal.setIconTextGap(0);
-        btnTagihanObatBangsal.setName("btnTagihanObatBangsal"); // NOI18N
-        btnTagihanObatBangsal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTagihanObatBangsal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTagihanObatBangsalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTagihanObatBangsal);
-
-        btnReturPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815295_medical_case.png"))); // NOI18N
-        btnReturPasien.setText("Retur Obat Ranap");
-        btnReturPasien.setIconTextGap(0);
-        btnReturPasien.setName("btnReturPasien"); // NOI18N
-        btnReturPasien.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnReturPasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReturPasienActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnReturPasien);
-
-        btnKeuntunganObatRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
-        btnKeuntunganObatRanap.setText("Keuntungan Beri Obat ");
-        btnKeuntunganObatRanap.setIconTextGap(0);
-        btnKeuntunganObatRanap.setName("btnKeuntunganObatRanap"); // NOI18N
-        btnKeuntunganObatRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKeuntunganObatRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKeuntunganObatRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKeuntunganObatRanap);
-
-        btnPenggajian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046603_wallet.png"))); // NOI18N
-        btnPenggajian.setText("Kepegawaian & Gaji");
-        btnPenggajian.setIconTextGap(0);
-        btnPenggajian.setName("btnPenggajian"); // NOI18N
-        btnPenggajian.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenggajian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenggajianActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPenggajian);
-
-        btnRekapPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/sign-up.png"))); // NOI18N
-        btnRekapPresensi.setText("Rekap Kehadiran");
-        btnRekapPresensi.setIconTextGap(0);
-        btnRekapPresensi.setName("btnRekapPresensi"); // NOI18N
-        btnRekapPresensi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapPresensi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapPresensiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapPresensi);
-
-        btnRekapHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/rekap.png"))); // NOI18N
-        btnRekapHarian.setText("Presensi Harian");
-        btnRekapHarian.setIconTextGap(0);
-        btnRekapHarian.setName("btnRekapHarian"); // NOI18N
-        btnRekapHarian.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapHarian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapHarianActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapHarian);
-
-        btnRekapBulanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486898_project-plan.png"))); // NOI18N
-        btnRekapBulanan.setText("Presensi Bulanan");
-        btnRekapBulanan.setIconTextGap(0);
-        btnRekapBulanan.setName("btnRekapBulanan"); // NOI18N
-        btnRekapBulanan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapBulanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapBulananActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapBulanan);
-
-        btnDeposit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Money.png"))); // NOI18N
-        btnDeposit.setText("Deposit Pasien");
-        btnDeposit.setIconTextGap(0);
-        btnDeposit.setName("btnDeposit"); // NOI18N
-        btnDeposit.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDeposit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDeposit);
-
-        btnSetupRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/patient (1).png"))); // NOI18N
-        btnSetupRM.setText("Set RM");
-        btnSetupRM.setIconTextGap(0);
-        btnSetupRM.setName("btnSetupRM"); // NOI18N
-        btnSetupRM.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetupRM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetupRMActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetupRM);
-
-        btnResepPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
-        btnResepPulang.setText("Resep Pulang");
-        btnResepPulang.setIconTextGap(0);
-        btnResepPulang.setName("btnResepPulang"); // NOI18N
-        btnResepPulang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnResepPulang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResepPulangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnResepPulang);
-
-        btnSetupTarif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/x-office-address-book.png"))); // NOI18N
-        btnSetupTarif.setText("Set Penggunaan Tarif");
-        btnSetupTarif.setIconTextGap(0);
-        btnSetupTarif.setName("btnSetupTarif"); // NOI18N
-        btnSetupTarif.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetupTarif.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetupTarifActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetupTarif);
-
-        btnBarangIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
-        btnBarangIpsrs.setText("Barang Non Medis");
-        btnBarangIpsrs.setIconTextGap(0);
-        btnBarangIpsrs.setName("btnBarangIpsrs"); // NOI18N
-        btnBarangIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBarangIpsrs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBarangIpsrsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBarangIpsrs);
-
-        btnPembelianIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/inventory-maintenance.png"))); // NOI18N
-        btnPembelianIpsrs.setText("Pengadaan Barang Non Medis");
-        btnPembelianIpsrs.setIconTextGap(0);
-        btnPembelianIpsrs.setName("btnPembelianIpsrs"); // NOI18N
-        btnPembelianIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPembelianIpsrs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPembelianIpsrsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPembelianIpsrs);
-
-        btnPengeluaranIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/shopping-basket-full.png"))); // NOI18N
-        btnPengeluaranIpsrs.setText("Stok Keluar Non Medis");
-        btnPengeluaranIpsrs.setIconTextGap(0);
-        btnPengeluaranIpsrs.setName("btnPengeluaranIpsrs"); // NOI18N
-        btnPengeluaranIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengeluaranIpsrs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengeluaranIpsrsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPengeluaranIpsrs);
-
-        btnRHMasukIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/shopping_cart.png"))); // NOI18N
-        btnRHMasukIpsrs.setText("Rekap Pengadaan Non Medis");
-        btnRHMasukIpsrs.setIconTextGap(0);
-        btnRHMasukIpsrs.setName("btnRHMasukIpsrs"); // NOI18N
-        btnRHMasukIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRHMasukIpsrs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRHMasukIpsrsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRHMasukIpsrs);
-
-        btnRHKeluarIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
-        btnRHKeluarIpsrs.setText("Rekap Stok Keluar Non Medis");
-        btnRHKeluarIpsrs.setIconTextGap(0);
-        btnRHKeluarIpsrs.setName("btnRHKeluarIpsrs"); // NOI18N
-        btnRHKeluarIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRHKeluarIpsrs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRHKeluarIpsrsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRHKeluarIpsrs);
-
-        btnRBiayaIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
-        btnRBiayaIpsrs.setText("Biaya Pengadaan Non Medis");
-        btnRBiayaIpsrs.setIconTextGap(0);
-        btnRBiayaIpsrs.setName("btnRBiayaIpsrs"); // NOI18N
-        btnRBiayaIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRBiayaIpsrs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRBiayaIpsrsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRBiayaIpsrs);
-
-        btnTarifRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1410153940_radiology.png"))); // NOI18N
-        btnTarifRadiologi.setText("Tarif Radiologi");
-        btnTarifRadiologi.setIconTextGap(0);
-        btnTarifRadiologi.setName("btnTarifRadiologi"); // NOI18N
-        btnTarifRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTarifRadiologi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTarifRadiologiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTarifRadiologi);
-
-        btnPeriksaRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Radiologi.png"))); // NOI18N
-        btnPeriksaRadiologi.setText("Periksa Radiologi");
-        btnPeriksaRadiologi.setIconTextGap(0);
-        btnPeriksaRadiologi.setName("btnPeriksaRadiologi"); // NOI18N
-        btnPeriksaRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPeriksaRadiologi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPeriksaRadiologiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPeriksaRadiologi);
-
-        btnTagihanRalanPerhari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnTagihanRalanPerhari.setText("Rekap Pembayaran Ralan");
-        btnTagihanRalanPerhari.setIconTextGap(0);
-        btnTagihanRalanPerhari.setName("btnTagihanRalanPerhari"); // NOI18N
-        btnTagihanRalanPerhari.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTagihanRalanPerhari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTagihanRalanPerhariActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTagihanRalanPerhari);
-
-        btnTagihanRanapPerhari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnTagihanRanapPerhari.setText("Rekap Pembayaran Ranap");
-        btnTagihanRanapPerhari.setIconTextGap(0);
-        btnTagihanRanapPerhari.setName("btnTagihanRanapPerhari"); // NOI18N
-        btnTagihanRanapPerhari.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTagihanRanapPerhari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTagihanRanapPerhariActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTagihanRanapPerhari);
-
-        btnSetupEmbalase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Money.png"))); // NOI18N
-        btnSetupEmbalase.setText("Set Embalase & Tuslah");
-        btnSetupEmbalase.setIconTextGap(0);
-        btnSetupEmbalase.setName("btnSetupEmbalase"); // NOI18N
-        btnSetupEmbalase.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetupEmbalase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetupEmbalaseActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetupEmbalase);
-
-        btnSirkulasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/data_management.png"))); // NOI18N
-        btnSirkulasiBerkas.setText("Peminjaman Berkas RM");
-        btnSirkulasiBerkas.setIconTextGap(0);
-        btnSirkulasiBerkas.setName("btnSirkulasiBerkas"); // NOI18N
-        btnSirkulasiBerkas.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSirkulasiBerkas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSirkulasiBerkasActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSirkulasiBerkas);
-
-        btnObatPasienRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnObatPasienRalan.setText("Obat Per Dokter Ralan");
-        btnObatPasienRalan.setIconTextGap(0);
-        btnObatPasienRalan.setName("btnObatPasienRalan"); // NOI18N
-        btnObatPasienRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnObatPasienRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObatPasienRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnObatPasienRalan);
-
-        btnObatPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnObatPasienRanap.setText("Obat Per Dokter Ranap");
-        btnObatPasienRanap.setIconTextGap(0);
-        btnObatPasienRanap.setName("btnObatPasienRanap"); // NOI18N
-        btnObatPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnObatPasienRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObatPasienRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnObatPasienRanap);
-
-        btnPemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
-        btnPemesanan.setText("Penerimaan Obat & BHP");
-        btnPemesanan.setIconTextGap(0);
-        btnPemesanan.setName("btnPemesanan"); // NOI18N
-        btnPemesanan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPemesanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPemesananActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPemesanan);
-
-        btnPengeluaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
-        btnPengeluaran.setText("Pengeluaran Harian");
-        btnPengeluaran.setIconTextGap(0);
-        btnPengeluaran.setName("btnPengeluaran"); // NOI18N
-        btnPengeluaran.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengeluaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengeluaranActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPengeluaran);
-
-        btnTambahanBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046786_Money.png"))); // NOI18N
-        btnTambahanBiaya.setText("Tambahan Biaya Pasien");
-        btnTambahanBiaya.setIconTextGap(0);
-        btnTambahanBiaya.setName("btnTambahanBiaya"); // NOI18N
-        btnTambahanBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTambahanBiaya.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTambahanBiayaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTambahanBiaya);
-
-        btnPotonganBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046786_Money.png"))); // NOI18N
-        btnPotonganBiaya.setText("Potongan Biaya Pasien");
-        btnPotonganBiaya.setIconTextGap(0);
-        btnPotonganBiaya.setName("btnPotonganBiaya"); // NOI18N
-        btnPotonganBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPotonganBiaya.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPotonganBiayaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPotonganBiaya);
-
-        btnJMDetailDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnJMDetailDokter.setText("Detail JM Dokter");
-        btnJMDetailDokter.setIconTextGap(0);
-        btnJMDetailDokter.setName("btnJMDetailDokter"); // NOI18N
-        btnJMDetailDokter.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJMDetailDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJMDetailDokterActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJMDetailDokter);
-
-        btnIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnIGD.setText("IGD/UGD");
-        btnIGD.setIconTextGap(0);
-        btnIGD.setName("btnIGD"); // NOI18N
-        btnIGD.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnIGD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIGDActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnIGD);
-
-        btnBarcodeRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
-        btnBarcodeRalan.setText("Rawat Jalan");
-        btnBarcodeRalan.setIconTextGap(0);
-        btnBarcodeRalan.setName("btnBarcodeRalan"); // NOI18N
-        btnBarcodeRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBarcodeRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBarcodeRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBarcodeRalan);
-
-        btnBarcodeRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
-        btnBarcodeRanap.setText("Rawat Inap");
-        btnBarcodeRanap.setIconTextGap(0);
-        btnBarcodeRanap.setName("btnBarcodeRanap"); // NOI18N
-        btnBarcodeRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBarcodeRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBarcodeRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBarcodeRanap);
-
-        btnSetObatRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
-        btnSetObatRalan.setText("Set Obat Ralan");
-        btnSetObatRalan.setIconTextGap(0);
-        btnSetObatRalan.setName("btnSetObatRalan"); // NOI18N
-        btnSetObatRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetObatRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetObatRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetObatRalan);
-
-        btnSetObatRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
-        btnSetObatRanap.setText("Set Obat Ranap");
-        btnSetObatRanap.setIconTextGap(0);
-        btnSetObatRanap.setName("btnSetObatRanap"); // NOI18N
-        btnSetObatRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetObatRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetObatRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetObatRanap);
-
-        btnPenyakitPD3I.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnPenyakitPD3I.setText("Penyakit AFP & PD3I");
-        btnPenyakitPD3I.setIconTextGap(0);
-        btnPenyakitPD3I.setName("btnPenyakitPD3I"); // NOI18N
-        btnPenyakitPD3I.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenyakitPD3I.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenyakitPD3IActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPenyakitPD3I);
-
-        btnSurveilansPD3I.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnSurveilansPD3I.setText("Surveilans AFP & PD3I");
-        btnSurveilansPD3I.setIconTextGap(0);
-        btnSurveilansPD3I.setName("btnSurveilansPD3I"); // NOI18N
-        btnSurveilansPD3I.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSurveilansPD3I.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSurveilansPD3IActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSurveilansPD3I);
-
-        btnSurveilansRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnSurveilansRalan.setText("Surveilans Ralan");
-        btnSurveilansRalan.setIconTextGap(0);
-        btnSurveilansRalan.setName("btnSurveilansRalan"); // NOI18N
-        btnSurveilansRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSurveilansRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSurveilansRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSurveilansRalan);
-
-        btnDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/health.png"))); // NOI18N
-        btnDiagnosa.setText("Diagnosa Pasien");
-        btnDiagnosa.setIconTextGap(0);
-        btnDiagnosa.setName("btnDiagnosa"); // NOI18N
-        btnDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDiagnosa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDiagnosaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDiagnosa);
-
-        btnSurveilansRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnSurveilansRanap.setText("Surveilans Ranap");
-        btnSurveilansRanap.setIconTextGap(0);
-        btnSurveilansRanap.setName("btnSurveilansRanap"); // NOI18N
-        btnSurveilansRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSurveilansRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSurveilansRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSurveilansRanap);
-
-        btnPnyTakMenularRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnPnyTakMenularRanap.setText("Pny Tdk Menular Ranap");
-        btnPnyTakMenularRanap.setIconTextGap(0);
-        btnPnyTakMenularRanap.setName("btnPnyTakMenularRanap"); // NOI18N
-        btnPnyTakMenularRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPnyTakMenularRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPnyTakMenularRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPnyTakMenularRanap);
-
-        btnPnyTakMenularRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnPnyTakMenularRalan.setText("Pny Tdk Menular Ralan");
-        btnPnyTakMenularRalan.setIconTextGap(0);
-        btnPnyTakMenularRalan.setName("btnPnyTakMenularRalan"); // NOI18N
-        btnPnyTakMenularRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPnyTakMenularRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPnyTakMenularRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPnyTakMenularRalan);
-
-        btnKunjunganRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnKunjunganRalan.setText("Kunjungan Ralan");
-        btnKunjunganRalan.setIconTextGap(0);
-        btnKunjunganRalan.setName("btnKunjunganRalan"); // NOI18N
-        btnKunjunganRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKunjunganRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKunjunganRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKunjunganRalan);
-
-        btnRl32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnRl32.setText("RL 3.2 Rawat Darurat");
-        btnRl32.setIconTextGap(0);
-        btnRl32.setName("btnRl32"); // NOI18N
-        btnRl32.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl32ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl32);
-
-        btnRl33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnRl33.setText("RL 3.3 Gigi dan Mulut");
-        btnRl33.setIconTextGap(0);
-        btnRl33.setName("btnRl33"); // NOI18N
-        btnRl33.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl33.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl33ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl33);
-
-        btnRl37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnRl37.setText("RL 3.7 Radiologi");
-        btnRl37.setIconTextGap(0);
-        btnRl37.setName("btnRl37"); // NOI18N
-        btnRl37.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl37.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl37ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl37);
-
-        btnRl38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnRl38.setText("RL 3.8 Laboratorium");
-        btnRl38.setIconTextGap(0);
-        btnRl38.setName("btnRl38"); // NOI18N
-        btnRl38.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl38.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl38ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl38);
-
-        btnTagihanDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
-        btnTagihanDokter.setText("Harian Dokter Ralan");
-        btnTagihanDokter.setIconTextGap(0);
-        btnTagihanDokter.setName("btnTagihanDokter"); // NOI18N
-        btnTagihanDokter.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTagihanDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTagihanDokterActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTagihanDokter);
-
-        btnSMS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485538_recieve-mail.png"))); // NOI18N
-        btnSMS.setText("SMS Gateway");
-        btnSMS.setIconTextGap(0);
-        btnSMS.setName("btnSMS"); // NOI18N
-        btnSMS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSMS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSMSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSMS);
-
-        btnSidikJari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/finger.png"))); // NOI18N
-        btnSidikJari.setText("Sidik Jari");
-        btnSidikJari.setIconTextGap(0);
-        btnSidikJari.setName("btnSidikJari"); // NOI18N
-        btnSidikJari.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSidikJari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSidikJariActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSidikJari);
-
-        btnJamPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Time.png"))); // NOI18N
-        btnJamPresensi.setText("Jam Presensi");
-        btnJamPresensi.setIconTextGap(0);
-        btnJamPresensi.setName("btnJamPresensi"); // NOI18N
-        btnJamPresensi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJamPresensi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJamPresensiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJamPresensi);
-
-        btnJadwalPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnJadwalPegawai.setText("Jadwal Pegawai");
-        btnJadwalPegawai.setIconTextGap(0);
-        btnJadwalPegawai.setName("btnJadwalPegawai"); // NOI18N
-        btnJadwalPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJadwalPegawai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJadwalPegawaiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJadwalPegawai);
-
-        btnJenisParkir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/parkirjenis.png"))); // NOI18N
-        btnJenisParkir.setText("Jenis Parkir");
-        btnJenisParkir.setIconTextGap(0);
-        btnJenisParkir.setName("btnJenisParkir"); // NOI18N
-        btnJenisParkir.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJenisParkir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJenisParkirActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJenisParkir);
-
-        btnBarcodeParkir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
-        btnBarcodeParkir.setText("Barcode Parkir");
-        btnBarcodeParkir.setIconTextGap(0);
-        btnBarcodeParkir.setName("btnBarcodeParkir"); // NOI18N
-        btnBarcodeParkir.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBarcodeParkir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBarcodeParkirActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBarcodeParkir);
-
-        btnParkirMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/parkirmasuk.png"))); // NOI18N
-        btnParkirMasuk.setText("Parkir Masuk");
-        btnParkirMasuk.setIconTextGap(0);
-        btnParkirMasuk.setName("btnParkirMasuk"); // NOI18N
-        btnParkirMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnParkirMasuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnParkirMasukActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnParkirMasuk);
-
-        btnSetupNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
-        btnSetupNota.setText("Set Billing");
-        btnSetupNota.setIconTextGap(0);
-        btnSetupNota.setName("btnSetupNota"); // NOI18N
-        btnSetupNota.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetupNota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetupNotaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetupNota);
-
-        BtnDpjp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
-        BtnDpjp.setText("DPJP Ranap");
-        BtnDpjp.setIconTextGap(0);
-        BtnDpjp.setName("BtnDpjp"); // NOI18N
-        BtnDpjp.setPreferredSize(new java.awt.Dimension(200, 90));
-        BtnDpjp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDpjpActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(BtnDpjp);
-
-        btnMutasiBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
-        btnMutasiBarang.setText("Mutasi Obat & BHP");
-        btnMutasiBarang.setIconTextGap(0);
-        btnMutasiBarang.setName("btnMutasiBarang"); // NOI18N
-        btnMutasiBarang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMutasiBarang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMutasiBarangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnMutasiBarang);
-
-        btnRl34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnRl34.setText("RL 3.4 Kebidanan");
-        btnRl34.setIconTextGap(0);
-        btnRl34.setName("btnRl34"); // NOI18N
-        btnRl34.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl34.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl34ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl34);
-
-        btnRl36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnRl36.setText("RL 3.6 Pembedahan");
-        btnRl36.setIconTextGap(0);
-        btnRl36.setName("btnRl36"); // NOI18N
-        btnRl36.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl36.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl36ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl36);
-
-        btnfee_bacaan_ekg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnfee_bacaan_ekg.setText("Fee Bacaan EKG");
-        btnfee_bacaan_ekg.setIconTextGap(0);
-        btnfee_bacaan_ekg.setName("btnfee_bacaan_ekg"); // NOI18N
-        btnfee_bacaan_ekg.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnfee_bacaan_ekg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnfee_bacaan_ekgActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnfee_bacaan_ekg);
-
-        btnfee_rujukan_rontgen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnfee_rujukan_rontgen.setText("Fee Rujukan Rontgen");
-        btnfee_rujukan_rontgen.setIconTextGap(0);
-        btnfee_rujukan_rontgen.setName("btnfee_rujukan_rontgen"); // NOI18N
-        btnfee_rujukan_rontgen.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnfee_rujukan_rontgen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnfee_rujukan_rontgenActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnfee_rujukan_rontgen);
-
-        btnfee_rujukan_ranap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnfee_rujukan_ranap.setText("Fee Rujukan Ranap");
-        btnfee_rujukan_ranap.setIconTextGap(0);
-        btnfee_rujukan_ranap.setName("btnfee_rujukan_ranap"); // NOI18N
-        btnfee_rujukan_ranap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnfee_rujukan_ranap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnfee_rujukan_ranapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnfee_rujukan_ranap);
-
-        btnfee_ralan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnfee_ralan.setText("Fee Periksa Ralan");
-        btnfee_ralan.setIconTextGap(0);
-        btnfee_ralan.setName("btnfee_ralan"); // NOI18N
-        btnfee_ralan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnfee_ralan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnfee_ralanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnfee_ralan);
-
-        btnakun_bayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnakun_bayar.setText("Akun Bayar");
-        btnakun_bayar.setIconTextGap(0);
-        btnakun_bayar.setName("btnakun_bayar"); // NOI18N
-        btnakun_bayar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnakun_bayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnakun_bayarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnakun_bayar);
-
-        btnbayar_pemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
-        btnbayar_pemesanan.setText("Bayar Pesan Obat/BHP");
-        btnbayar_pemesanan.setIconTextGap(0);
-        btnbayar_pemesanan.setName("btnbayar_pemesanan"); // NOI18N
-        btnbayar_pemesanan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnbayar_pemesanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbayar_pemesananActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnbayar_pemesanan);
-
-        btnObatPasienPeresep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnObatPasienPeresep.setText("Obat Per Dokter Peresep");
-        btnObatPasienPeresep.setIconTextGap(0);
-        btnObatPasienPeresep.setName("btnObatPasienPeresep"); // NOI18N
-        btnObatPasienPeresep.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnObatPasienPeresep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObatPasienPeresepActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnObatPasienPeresep);
-
-        btnJenisIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cabinet.png"))); // NOI18N
-        btnJenisIpsrs.setText("Jenis Barang IPSRS");
-        btnJenisIpsrs.setIconTextGap(0);
-        btnJenisIpsrs.setName("btnJenisIpsrs"); // NOI18N
-        btnJenisIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJenisIpsrs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJenisIpsrsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJenisIpsrs);
-
-        btnPemasukanLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
-        btnPemasukanLain.setText("Pemasukan Lain-Lain");
-        btnPemasukanLain.setIconTextGap(0);
-        btnPemasukanLain.setName("btnPemasukanLain"); // NOI18N
-        btnPemasukanLain.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPemasukanLain.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPemasukanLainActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPemasukanLain);
-
-        btnPengaturanRekening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/gtk-stock-book.png"))); // NOI18N
-        btnPengaturanRekening.setText("Pengaturan Rekening");
-        btnPengaturanRekening.setIconTextGap(0);
-        btnPengaturanRekening.setName("btnPengaturanRekening"); // NOI18N
-        btnPengaturanRekening.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengaturanRekening.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengaturanRekeningActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPengaturanRekening);
-
-        btnJadwalTambahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnJadwalTambahan.setText("Jadwal Tambahan");
-        btnJadwalTambahan.setIconTextGap(0);
-        btnJadwalTambahan.setName("btnJadwalTambahan"); // NOI18N
-        btnJadwalTambahan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJadwalTambahan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJadwalTambahanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJadwalTambahan);
-
-        btnClosingKasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnClosingKasir.setText("Closing Kasir");
-        btnClosingKasir.setIconTextGap(0);
-        btnClosingKasir.setName("btnClosingKasir"); // NOI18N
-        btnClosingKasir.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnClosingKasir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClosingKasirActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnClosingKasir);
-
-        btnKeterlambatanPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Time.png"))); // NOI18N
-        btnKeterlambatanPresensi.setText("Set Keterlambatan Presensi");
-        btnKeterlambatanPresensi.setIconTextGap(0);
-        btnKeterlambatanPresensi.setName("btnKeterlambatanPresensi"); // NOI18N
-        btnKeterlambatanPresensi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKeterlambatanPresensi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKeterlambatanPresensiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKeterlambatanPresensi);
-
-        btnSetHargaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
-        btnSetHargaKamar.setText("Set Harga Kamar");
-        btnSetHargaKamar.setIconTextGap(0);
-        btnSetHargaKamar.setName("btnSetHargaKamar"); // NOI18N
-        btnSetHargaKamar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetHargaKamar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetHargaKamarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetHargaKamar);
-
-        btnRekapPershift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnRekapPershift.setText("Rekap Uang Pershift");
-        btnRekapPershift.setIconTextGap(0);
-        btnRekapPershift.setName("btnRekapPershift"); // NOI18N
-        btnRekapPershift.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapPershift.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapPershiftActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapPershift);
-
-        btnCekBPJSNik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/family.png"))); // NOI18N
-        btnCekBPJSNik.setText("Cek NIK VClaim");
-        btnCekBPJSNik.setIconTextGap(0);
-        btnCekBPJSNik.setName("btnCekBPJSNik"); // NOI18N
-        btnCekBPJSNik.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSNik.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSNikActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSNik);
-
-        btnCekBPJSKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/administrator.png"))); // NOI18N
-        btnCekBPJSKartu.setText("Cek No.Kartu VClaim");
-        btnCekBPJSKartu.setIconTextGap(0);
-        btnCekBPJSKartu.setName("btnCekBPJSKartu"); // NOI18N
-        btnCekBPJSKartu.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSKartu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSKartuActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSKartu);
-
-        btnCekBPJSRiwayatRujukanPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
-        btnCekBPJSRiwayatRujukanPCare.setText("Riwayat Rujukan PCare di VClaim");
-        btnCekBPJSRiwayatRujukanPCare.setIconTextGap(0);
-        btnCekBPJSRiwayatRujukanPCare.setName("btnCekBPJSRiwayatRujukanPCare"); // NOI18N
-        btnCekBPJSRiwayatRujukanPCare.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSRiwayatRujukanPCare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSRiwayatRujukanPCareActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSRiwayatRujukanPCare);
-
-        btnRekapPresensi2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/sign-up.png"))); // NOI18N
-        btnRekapPresensi2.setText("Rekap Kehadiran 2");
-        btnRekapPresensi2.setIconTextGap(0);
-        btnRekapPresensi2.setName("btnRekapPresensi2"); // NOI18N
-        btnRekapPresensi2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapPresensi2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapPresensi2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapPresensi2);
-
-        btnObatPerCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnObatPerCaraBayar.setText("Obat Per Cara Bayar");
-        btnObatPerCaraBayar.setIconTextGap(0);
-        btnObatPerCaraBayar.setName("btnObatPerCaraBayar"); // NOI18N
-        btnObatPerCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnObatPerCaraBayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObatPerCaraBayarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnObatPerCaraBayar);
-
-        btnKunjunganRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnKunjunganRanap.setText("Kunjungan Ranap");
-        btnKunjunganRanap.setIconTextGap(0);
-        btnKunjunganRanap.setName("btnKunjunganRanap"); // NOI18N
-        btnKunjunganRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKunjunganRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKunjunganRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKunjunganRanap);
-
-        btnPaymentPoint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
-        btnPaymentPoint.setText("Payment Point");
-        btnPaymentPoint.setIconTextGap(0);
-        btnPaymentPoint.setName("btnPaymentPoint"); // NOI18N
-        btnPaymentPoint.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPaymentPoint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPaymentPointActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPaymentPoint);
-
-        btnCekBPJSNomorRujukanPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnCekBPJSNomorRujukanPCare.setText("Cek No.Rujukan PCare di VClaim");
-        btnCekBPJSNomorRujukanPCare.setIconTextGap(0);
-        btnCekBPJSNomorRujukanPCare.setName("btnCekBPJSNomorRujukanPCare"); // NOI18N
-        btnCekBPJSNomorRujukanPCare.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSNomorRujukanPCare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSNomorRujukanPCareActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSNomorRujukanPCare);
-
-        btnICD9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnICD9.setText("ICD 9");
-        btnICD9.setIconTextGap(0);
-        btnICD9.setName("btnICD9"); // NOI18N
-        btnICD9.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnICD9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnICD9ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnICD9);
-
-        btnDaruratStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
-        btnDaruratStok.setText("Darurat Stok");
-        btnDaruratStok.setIconTextGap(0);
-        btnDaruratStok.setName("btnDaruratStok"); // NOI18N
-        btnDaruratStok.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDaruratStok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDaruratStokActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDaruratStok);
-
-        btnRetensiRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reportorium.png"))); // NOI18N
-        btnRetensiRM.setText("Retensi Berkas R.M.");
-        btnRetensiRM.setIconTextGap(0);
-        btnRetensiRM.setName("btnRetensiRM"); // NOI18N
-        btnRetensiRM.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRetensiRM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRetensiRMActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRetensiRM);
-
-        btnTemporaryPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047834_application-vnd.ms-excel.png"))); // NOI18N
-        btnTemporaryPresensi.setText("Temporary Presensi");
-        btnTemporaryPresensi.setIconTextGap(0);
-        btnTemporaryPresensi.setName("btnTemporaryPresensi"); // NOI18N
-        btnTemporaryPresensi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTemporaryPresensi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTemporaryPresensiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTemporaryPresensi);
-
-        btnJurnalHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnJurnalHarian.setText("Jurnal Harian");
-        btnJurnalHarian.setIconTextGap(0);
-        btnJurnalHarian.setName("btnJurnalHarian"); // NOI18N
-        btnJurnalHarian.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJurnalHarian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJurnalHarianActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJurnalHarian);
-
-        btnSirkulasi2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
-        btnSirkulasi2.setText("Sirkulasi Obat, Alkes & BHP 2");
-        btnSirkulasi2.setIconTextGap(0);
-        btnSirkulasi2.setName("btnSirkulasi2"); // NOI18N
-        btnSirkulasi2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSirkulasi2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSirkulasi2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSirkulasi2);
-
-        btnCekBPJSDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnCekBPJSDiagnosa.setText("Referensi Diagnosa VClaim");
-        btnCekBPJSDiagnosa.setIconTextGap(0);
-        btnCekBPJSDiagnosa.setName("btnCekBPJSDiagnosa"); // NOI18N
-        btnCekBPJSDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSDiagnosa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSDiagnosaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSDiagnosa);
-
-        btnCekBPJSPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logout.png"))); // NOI18N
-        btnCekBPJSPoli.setText("Referensi Poli VClaim");
-        btnCekBPJSPoli.setIconTextGap(0);
-        btnCekBPJSPoli.setName("btnCekBPJSPoli"); // NOI18N
-        btnCekBPJSPoli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSPoliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSPoli);
-
-        btnIndustriFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486910_company.png"))); // NOI18N
-        btnIndustriFarmasi.setText("Industri Farmasi");
-        btnIndustriFarmasi.setIconTextGap(0);
-        btnIndustriFarmasi.setName("btnIndustriFarmasi"); // NOI18N
-        btnIndustriFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnIndustriFarmasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIndustriFarmasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnIndustriFarmasi);
-
-        btnRHJasaSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnRHJasaSarana.setText("Harian Jasa Sarana");
-        btnRHJasaSarana.setIconTextGap(0);
-        btnRHJasaSarana.setName("btnRHJasaSarana"); // NOI18N
-        btnRHJasaSarana.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRHJasaSarana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRHJasaSaranaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRHJasaSarana);
-
-        btnRBJasaSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnRBJasaSarana.setText("Bulanan Jasa Sarana");
-        btnRBJasaSarana.setIconTextGap(0);
-        btnRBJasaSarana.setName("btnRBJasaSarana"); // NOI18N
-        btnRBJasaSarana.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRBJasaSarana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRBJasaSaranaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRBJasaSarana);
-
-        btnRHPaketBHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnRHPaketBHP.setText("Harian BHP Medis/Paket Obat");
-        btnRHPaketBHP.setIconTextGap(0);
-        btnRHPaketBHP.setName("btnRHPaketBHP"); // NOI18N
-        btnRHPaketBHP.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRHPaketBHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRHPaketBHPActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRHPaketBHP);
-
-        btnRBPaketBHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnRBPaketBHP.setText("Bulanan BHP Medis/Paket Obat");
-        btnRBPaketBHP.setIconTextGap(0);
-        btnRBPaketBHP.setName("btnRBPaketBHP"); // NOI18N
-        btnRBPaketBHP.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRBPaketBHP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRBPaketBHPActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRBPaketBHP);
-
-        btnPiutangBelumLunas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
-        btnPiutangBelumLunas.setText("Piutang Belum Lunas");
-        btnPiutangBelumLunas.setIconTextGap(0);
-        btnPiutangBelumLunas.setName("btnPiutangBelumLunas"); // NOI18N
-        btnPiutangBelumLunas.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPiutangBelumLunas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPiutangBelumLunasActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPiutangBelumLunas);
-
-        btnCekBPJSFaskes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
-        btnCekBPJSFaskes.setText("Referensi Faskes VClaim");
-        btnCekBPJSFaskes.setIconTextGap(0);
-        btnCekBPJSFaskes.setName("btnCekBPJSFaskes"); // NOI18N
-        btnCekBPJSFaskes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSFaskes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSFaskesActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSFaskes);
-
-        btnBPJSSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
-        btnBPJSSEP.setText("Data Bridging SEP VClaim");
-        btnBPJSSEP.setIconTextGap(0);
-        btnBPJSSEP.setName("btnBPJSSEP"); // NOI18N
-        btnBPJSSEP.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBPJSSEP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBPJSSEPActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBPJSSEP);
-
-        btnPengambilanUTD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
-        btnPengambilanUTD.setText("Pengambilan BHP UTD");
-        btnPengambilanUTD.setIconTextGap(0);
-        btnPengambilanUTD.setName("btnPengambilanUTD"); // NOI18N
-        btnPengambilanUTD.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengambilanUTD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengambilanUTDActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPengambilanUTD);
-
-        btnTarifUtd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001686_injection_blood.png"))); // NOI18N
-        btnTarifUtd.setText("Tarif UTD");
-        btnTarifUtd.setIconTextGap(0);
-        btnTarifUtd.setName("btnTarifUtd"); // NOI18N
-        btnTarifUtd.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnTarifUtd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTarifUtdActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnTarifUtd);
-
-        btnPengambilanUTD2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
-        btnPengambilanUTD2.setText("Pengambilan BHP Medis");
-        btnPengambilanUTD2.setIconTextGap(0);
-        btnPengambilanUTD2.setName("btnPengambilanUTD2"); // NOI18N
-        btnPengambilanUTD2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengambilanUTD2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengambilanUTD2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPengambilanUTD2);
-
-        btnUTDMedisRusak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486858_stock-market.png"))); // NOI18N
-        btnUTDMedisRusak.setText("BHP Medis Rusak");
-        btnUTDMedisRusak.setIconTextGap(0);
-        btnUTDMedisRusak.setName("btnUTDMedisRusak"); // NOI18N
-        btnUTDMedisRusak.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnUTDMedisRusak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUTDMedisRusakActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnUTDMedisRusak);
-
-        btnPengambilanPenunjangUTD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002155_skills.png"))); // NOI18N
-        btnPengambilanPenunjangUTD.setText("Pengambilan UTD");
-        btnPengambilanPenunjangUTD.setIconTextGap(0);
-        btnPengambilanPenunjangUTD.setName("btnPengambilanPenunjangUTD"); // NOI18N
-        btnPengambilanPenunjangUTD.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengambilanPenunjangUTD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengambilanPenunjangUTDActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPengambilanPenunjangUTD);
-
-        btnPengambilanPenunjangUTD2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002155_skills.png"))); // NOI18N
-        btnPengambilanPenunjangUTD2.setText("Pengambilan BHP Non Medis");
-        btnPengambilanPenunjangUTD2.setIconTextGap(0);
-        btnPengambilanPenunjangUTD2.setName("btnPengambilanPenunjangUTD2"); // NOI18N
-        btnPengambilanPenunjangUTD2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengambilanPenunjangUTD2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengambilanPenunjangUTD2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPengambilanPenunjangUTD2);
-
-        btnUTDPenunjangRusak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/inventory-maintenance.png"))); // NOI18N
-        btnUTDPenunjangRusak.setText("BHP Non Medis Rusak");
-        btnUTDPenunjangRusak.setIconTextGap(0);
-        btnUTDPenunjangRusak.setName("btnUTDPenunjangRusak"); // NOI18N
-        btnUTDPenunjangRusak.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnUTDPenunjangRusak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUTDPenunjangRusakActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnUTDPenunjangRusak);
-
-        btnSuplierIPSRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002123_wheelchair.png"))); // NOI18N
-        btnSuplierIPSRS.setText("Suplier Non Medis");
-        btnSuplierIPSRS.setIconTextGap(0);
-        btnSuplierIPSRS.setName("btnSuplierIPSRS"); // NOI18N
-        btnSuplierIPSRS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuplierIPSRS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuplierIPSRSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuplierIPSRS);
-
-        btnUTDDonorDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001706_heart_beat.png"))); // NOI18N
-        btnUTDDonorDarah.setText("Donor Darah");
-        btnUTDDonorDarah.setIconTextGap(0);
-        btnUTDDonorDarah.setName("btnUTDDonorDarah"); // NOI18N
-        btnUTDDonorDarah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnUTDDonorDarah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUTDDonorDarahActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnUTDDonorDarah);
-
-        btnMonitoringKlaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
-        btnMonitoringKlaim.setText("Monitoring Verifikasi Klaim BPJS");
-        btnMonitoringKlaim.setIconTextGap(0);
-        btnMonitoringKlaim.setName("btnMonitoringKlaim"); // NOI18N
-        btnMonitoringKlaim.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMonitoringKlaim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMonitoringKlaimActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnMonitoringKlaim);
-
-        btnUTDCekalDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
-        btnUTDCekalDarah.setText("Pencekalan Darah");
-        btnUTDCekalDarah.setIconTextGap(0);
-        btnUTDCekalDarah.setName("btnUTDCekalDarah"); // NOI18N
-        btnUTDCekalDarah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnUTDCekalDarah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUTDCekalDarahActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnUTDCekalDarah);
-
-        btnUTDKomponenDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001686_injection_blood.png"))); // NOI18N
-        btnUTDKomponenDarah.setText("Komponen Darah");
-        btnUTDKomponenDarah.setIconTextGap(0);
-        btnUTDKomponenDarah.setName("btnUTDKomponenDarah"); // NOI18N
-        btnUTDKomponenDarah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnUTDKomponenDarah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUTDKomponenDarahActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnUTDKomponenDarah);
-
-        btnUTDStokDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001585_blood_drop.png"))); // NOI18N
-        btnUTDStokDarah.setText("Stok Darah");
-        btnUTDStokDarah.setIconTextGap(0);
-        btnUTDStokDarah.setName("btnUTDStokDarah"); // NOI18N
-        btnUTDStokDarah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnUTDStokDarah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUTDStokDarahActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnUTDStokDarah);
-
-        btnUTDPemisahanDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
-        btnUTDPemisahanDarah.setText("Pemisahan Darah");
-        btnUTDPemisahanDarah.setIconTextGap(0);
-        btnUTDPemisahanDarah.setName("btnUTDPemisahanDarah"); // NOI18N
-        btnUTDPemisahanDarah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnUTDPemisahanDarah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUTDPemisahanDarahActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnUTDPemisahanDarah);
-
-        btnHarianKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
-        btnHarianKamar.setText("Harian Kamar");
-        btnHarianKamar.setIconTextGap(0);
-        btnHarianKamar.setName("btnHarianKamar"); // NOI18N
-        btnHarianKamar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnHarianKamar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHarianKamarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnHarianKamar);
-
-        btnRincianPiutangPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
-        btnRincianPiutangPasien.setText("Rincian Piutang Pasien");
-        btnRincianPiutangPasien.setIconTextGap(0);
-        btnRincianPiutangPasien.setName("btnRincianPiutangPasien"); // NOI18N
-        btnRincianPiutangPasien.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRincianPiutangPasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRincianPiutangPasienActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRincianPiutangPasien);
-
-        btnKeuntunganObat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
-        btnKeuntunganObat2.setText("Keuntungan Beri Obat 2");
-        btnKeuntunganObat2.setIconTextGap(0);
-        btnKeuntunganObat2.setName("btnKeuntunganObat2"); // NOI18N
-        btnKeuntunganObat2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKeuntunganObat2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKeuntunganObat2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKeuntunganObat2);
-
-        btnReklasifikasiRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
-        btnReklasifikasiRalan.setText("Reklasifikasi Ralan");
-        btnReklasifikasiRalan.setIconTextGap(0);
-        btnReklasifikasiRalan.setName("btnReklasifikasiRalan"); // NOI18N
-        btnReklasifikasiRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnReklasifikasiRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReklasifikasiRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnReklasifikasiRalan);
-
-        btnReklasifikasiRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
-        btnReklasifikasiRanap.setText("Reklasifikasi Ranap");
-        btnReklasifikasiRanap.setIconTextGap(0);
-        btnReklasifikasiRanap.setName("btnReklasifikasiRanap"); // NOI18N
-        btnReklasifikasiRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnReklasifikasiRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReklasifikasiRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnReklasifikasiRanap);
-
-        btnUTDPenyerahanDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/health.png"))); // NOI18N
-        btnUTDPenyerahanDarah.setText("Penyerahan Darah");
-        btnUTDPenyerahanDarah.setIconTextGap(0);
-        btnUTDPenyerahanDarah.setName("btnUTDPenyerahanDarah"); // NOI18N
-        btnUTDPenyerahanDarah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnUTDPenyerahanDarah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUTDPenyerahanDarahActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnUTDPenyerahanDarah);
-
-        btnHutangObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
-        btnHutangObat.setText("Hutang Obat & BHP");
-        btnHutangObat.setIconTextGap(0);
-        btnHutangObat.setName("btnHutangObat"); // NOI18N
-        btnHutangObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnHutangObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHutangObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnHutangObat);
-
-        btnRiwayatBarangMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/gnome-searchtool.png"))); // NOI18N
-        btnRiwayatBarangMedis.setText("Riwayat Obat, Alkes & BHP");
-        btnRiwayatBarangMedis.setIconTextGap(0);
-        btnRiwayatBarangMedis.setName("btnRiwayatBarangMedis"); // NOI18N
-        btnRiwayatBarangMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRiwayatBarangMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRiwayatBarangMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRiwayatBarangMedis);
-
-        btnSensusHarianPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
-        btnSensusHarianPoli.setText("Sensus Harian Poli");
-        btnSensusHarianPoli.setIconTextGap(0);
-        btnSensusHarianPoli.setName("btnSensusHarianPoli"); // NOI18N
-        btnSensusHarianPoli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSensusHarianPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSensusHarianPoliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSensusHarianPoli);
-
-        btnRl4a.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
-        btnRl4a.setText("RL 4A Morbiditas Ranap");
-        btnRl4a.setIconTextGap(0);
-        btnRl4a.setName("btnRl4a"); // NOI18N
-        btnRl4a.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl4a.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl4aActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl4a);
-
-        btnAplicareReferensiKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
-        btnAplicareReferensiKamar.setText("Referensi Kamar Aplicare");
-        btnAplicareReferensiKamar.setIconTextGap(0);
-        btnAplicareReferensiKamar.setName("btnAplicareReferensiKamar"); // NOI18N
-        btnAplicareReferensiKamar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAplicareReferensiKamar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAplicareReferensiKamarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnAplicareReferensiKamar);
-
-        btnAplicareKetersediaanKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
-        btnAplicareKetersediaanKamar.setText("Ketersediaan Kamar Aplicare");
-        btnAplicareKetersediaanKamar.setIconTextGap(0);
-        btnAplicareKetersediaanKamar.setName("btnAplicareKetersediaanKamar"); // NOI18N
-        btnAplicareKetersediaanKamar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAplicareKetersediaanKamar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAplicareKetersediaanKamarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnAplicareKetersediaanKamar);
-
-        btnInaCBGKlaimBaruOtomatis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358050_receptionist.png"))); // NOI18N
-        btnInaCBGKlaimBaruOtomatis.setText("Klaim Baru Otomatis INACBG");
-        btnInaCBGKlaimBaruOtomatis.setIconTextGap(0);
-        btnInaCBGKlaimBaruOtomatis.setName("btnInaCBGKlaimBaruOtomatis"); // NOI18N
-        btnInaCBGKlaimBaruOtomatis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnInaCBGKlaimBaruOtomatis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInaCBGKlaimBaruOtomatisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnInaCBGKlaimBaruOtomatis);
-
-        btnInaCBGKlaimBaruManual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358050_receptionist.png"))); // NOI18N
-        btnInaCBGKlaimBaruManual.setText("Klaim Baru Manual INACBG");
-        btnInaCBGKlaimBaruManual.setIconTextGap(0);
-        btnInaCBGKlaimBaruManual.setName("btnInaCBGKlaimBaruManual"); // NOI18N
-        btnInaCBGKlaimBaruManual.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnInaCBGKlaimBaruManual.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInaCBGKlaimBaruManualActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnInaCBGKlaimBaruManual);
-
-        btnInaCBGCoderNIK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002113_guard.png"))); // NOI18N
-        btnInaCBGCoderNIK.setText("Coder NIK INACBG");
-        btnInaCBGCoderNIK.setIconTextGap(0);
-        btnInaCBGCoderNIK.setName("btnInaCBGCoderNIK"); // NOI18N
-        btnInaCBGCoderNIK.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnInaCBGCoderNIK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInaCBGCoderNIKActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnInaCBGCoderNIK);
-
-        btnMutasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
-        btnMutasiBerkas.setText("Mutasi Berkas RM");
-        btnMutasiBerkas.setIconTextGap(0);
-        btnMutasiBerkas.setName("btnMutasiBerkas"); // NOI18N
-        btnMutasiBerkas.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMutasiBerkas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMutasiBerkasActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnMutasiBerkas);
-
-        btnAkunPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046603_wallet.png"))); // NOI18N
-        btnAkunPiutang.setText("Akun Piutang");
-        btnAkunPiutang.setIconTextGap(0);
-        btnAkunPiutang.setName("btnAkunPiutang"); // NOI18N
-        btnAkunPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAkunPiutang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAkunPiutangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnAkunPiutang);
-
-        btnRHKSO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnRHKSO.setText("Harian KSO");
-        btnRHKSO.setIconTextGap(0);
-        btnRHKSO.setName("btnRHKSO"); // NOI18N
-        btnRHKSO.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRHKSO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRHKSOActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRHKSO);
-
-        btnRBKSO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnRBKSO.setText("Bulanan KSO");
-        btnRBKSO.setIconTextGap(0);
-        btnRBKSO.setName("btnRBKSO"); // NOI18N
-        btnRBKSO.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRBKSO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRBKSOActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRBKSO);
-
-        btnRHMenejemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnRHMenejemen.setText("Harian Menejemen");
-        btnRHMenejemen.setIconTextGap(0);
-        btnRHMenejemen.setName("btnRHMenejemen"); // NOI18N
-        btnRHMenejemen.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRHMenejemen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRHMenejemenActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRHMenejemen);
-
-        btnRBMenejemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnRBMenejemen.setText("Bulanan Menejemen");
-        btnRBMenejemen.setIconTextGap(0);
-        btnRBMenejemen.setName("btnRBMenejemen"); // NOI18N
-        btnRBMenejemen.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRBMenejemen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRBMenejemenActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRBMenejemen);
-
-        btnCekEligibilitasInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
-        btnCekEligibilitasInhealth.setText("Cek Eligibilitas Inhealth");
-        btnCekEligibilitasInhealth.setIconTextGap(0);
-        btnCekEligibilitasInhealth.setName("btnCekEligibilitasInhealth"); // NOI18N
-        btnCekEligibilitasInhealth.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekEligibilitasInhealth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekEligibilitasInhealthActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekEligibilitasInhealth);
-
-        btnReferensiKamarInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Home.png"))); // NOI18N
-        btnReferensiKamarInhealth.setText("Referensi Ruang Rawat Inhealth");
-        btnReferensiKamarInhealth.setIconTextGap(0);
-        btnReferensiKamarInhealth.setName("btnReferensiKamarInhealth"); // NOI18N
-        btnReferensiKamarInhealth.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnReferensiKamarInhealth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReferensiKamarInhealthActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnReferensiKamarInhealth);
-
-        btnCekInhealthPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logout.png"))); // NOI18N
-        btnCekInhealthPoli.setText("Referensi Poli Inhealth");
-        btnCekInhealthPoli.setIconTextGap(0);
-        btnCekInhealthPoli.setName("btnCekInhealthPoli"); // NOI18N
-        btnCekInhealthPoli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekInhealthPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekInhealthPoliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekInhealthPoli);
-
-        btnCekInhealthFaskes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
-        btnCekInhealthFaskes.setText("Referensi Faskes Inhealth");
-        btnCekInhealthFaskes.setIconTextGap(0);
-        btnCekInhealthFaskes.setName("btnCekInhealthFaskes"); // NOI18N
-        btnCekInhealthFaskes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekInhealthFaskes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekInhealthFaskesActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekInhealthFaskes);
-
-        btnInhealthSJP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
-        btnInhealthSJP.setText("Data Bridging SJP Inhealth");
-        btnInhealthSJP.setIconTextGap(0);
-        btnInhealthSJP.setName("btnInhealthSJP"); // NOI18N
-        btnInhealthSJP.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnInhealthSJP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInhealthSJPActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnInhealthSJP);
-
-        btnPiutangRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
-        btnPiutangRalan.setText("Piutang Ralan");
-        btnPiutangRalan.setIconTextGap(0);
-        btnPiutangRalan.setName("btnPiutangRalan"); // NOI18N
-        btnPiutangRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPiutangRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPiutangRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPiutangRalan);
-
-        btnPiutangRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
-        btnPiutangRanap.setText("Piutang Ranap");
-        btnPiutangRanap.setIconTextGap(0);
-        btnPiutangRanap.setName("btnPiutangRanap"); // NOI18N
-        btnPiutangRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPiutangRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPiutangRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPiutangRanap);
-
-        btnPiutangPerCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
-        btnPiutangPerCaraBayar.setText("Piutang Per Cara Bayar");
-        btnPiutangPerCaraBayar.setIconTextGap(0);
-        btnPiutangPerCaraBayar.setName("btnPiutangPerCaraBayar"); // NOI18N
-        btnPiutangPerCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPiutangPerCaraBayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPiutangPerCaraBayarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPiutangPerCaraBayar);
-
-        btnLamaPelayananRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnLamaPelayananRalan.setText("Lama Pelayanan Ralan");
-        btnLamaPelayananRalan.setIconTextGap(0);
-        btnLamaPelayananRalan.setName("btnLamaPelayananRalan"); // NOI18N
-        btnLamaPelayananRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLamaPelayananRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamaPelayananRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLamaPelayananRalan);
-
-        btnCatatanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
-        btnCatatanPasien.setText("Catatan Pasien");
-        btnCatatanPasien.setIconTextGap(0);
-        btnCatatanPasien.setName("btnCatatanPasien"); // NOI18N
-        btnCatatanPasien.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCatatanPasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCatatanPasienActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCatatanPasien);
-
-        btnRl4b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
-        btnRl4b.setText("RL 4B Morbiditas Ralan");
-        btnRl4b.setIconTextGap(0);
-        btnRl4b.setName("btnRl4b"); // NOI18N
-        btnRl4b.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl4b.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl4bActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl4b);
-
-        btnRl4asebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
-        btnRl4asebab.setText("RL 4A Sebab Morbiditas Ranap");
-        btnRl4asebab.setIconTextGap(0);
-        btnRl4asebab.setName("btnRl4asebab"); // NOI18N
-        btnRl4asebab.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl4asebab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl4asebabActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl4asebab);
-
-        btnRl4bsebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
-        btnRl4bsebab.setText("RL 4B Sebab Morbiditas Ralan");
-        btnRl4bsebab.setIconTextGap(0);
-        btnRl4bsebab.setName("btnRl4bsebab"); // NOI18N
-        btnRl4bsebab.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRl4bsebab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRl4bsebabActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRl4bsebab);
-
-        btnDataHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
-        btnDataHAIs.setText("Data HAIs");
-        btnDataHAIs.setIconTextGap(0);
-        btnDataHAIs.setName("btnDataHAIs"); // NOI18N
-        btnDataHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDataHAIs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDataHAIsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDataHAIs);
-
-        btnHarianHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
-        btnHarianHAIs.setText("Harian HAIs");
-        btnHarianHAIs.setIconTextGap(0);
-        btnHarianHAIs.setName("btnHarianHAIs"); // NOI18N
-        btnHarianHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnHarianHAIs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHarianHAIsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnHarianHAIs);
-
-        btnBulananHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
-        btnBulananHAIs.setText("Bulanan HAIs");
-        btnBulananHAIs.setIconTextGap(0);
-        btnBulananHAIs.setName("btnBulananHAIs"); // NOI18N
-        btnBulananHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBulananHAIs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBulananHAIsActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBulananHAIs);
-
-        btnHitungBor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
-        btnHitungBor.setText("Hitung BOR");
-        btnHitungBor.setIconTextGap(0);
-        btnHitungBor.setName("btnHitungBor"); // NOI18N
-        btnHitungBor.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnHitungBor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHitungBorActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnHitungBor);
-
-        btnPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
-        btnPerusahaan.setText("Instansi/Perusahaan Pasien");
-        btnPerusahaan.setIconTextGap(0);
-        btnPerusahaan.setName("btnPerusahaan"); // NOI18N
-        btnPerusahaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPerusahaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerusahaanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPerusahaan);
-
-        btnDaftarPermintaanResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
-        btnDaftarPermintaanResep.setText("Daftar Resep Dokter");
-        btnDaftarPermintaanResep.setIconTextGap(0);
-        btnDaftarPermintaanResep.setName("btnDaftarPermintaanResep"); // NOI18N
-        btnDaftarPermintaanResep.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDaftarPermintaanResep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDaftarPermintaanResepActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDaftarPermintaanResep);
-
-        btnLamaPelayananApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnLamaPelayananApotek.setText("Lama Pelayanan Apotek");
-        btnLamaPelayananApotek.setIconTextGap(0);
-        btnLamaPelayananApotek.setName("btnLamaPelayananApotek"); // NOI18N
-        btnLamaPelayananApotek.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLamaPelayananApotek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamaPelayananApotekActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLamaPelayananApotek);
-
-        btnHitungAlos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
-        btnHitungAlos.setText("Hitung ALOS");
-        btnHitungAlos.setIconTextGap(0);
-        btnHitungAlos.setName("btnHitungAlos"); // NOI18N
-        btnHitungAlos.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnHitungAlos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHitungAlosActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnHitungAlos);
-
-        btnDetailTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnDetailTindakan.setText("Detail Tindakan");
-        btnDetailTindakan.setIconTextGap(0);
-        btnDetailTindakan.setName("btnDetailTindakan"); // NOI18N
-        btnDetailTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDetailTindakan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetailTindakanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDetailTindakan);
-
-        btnRekapPoliAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnRekapPoliAnak.setText("Rekap Poli Anak");
-        btnRekapPoliAnak.setIconTextGap(0);
-        btnRekapPoliAnak.setName("btnRekapPoliAnak"); // NOI18N
-        btnRekapPoliAnak.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapPoliAnak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapPoliAnakActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapPoliAnak);
-
-        btnGrafikKunjunganPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKunjunganPoli.setText("Registrasi Per Poli");
-        btnGrafikKunjunganPoli.setIconTextGap(0);
-        btnGrafikKunjunganPoli.setName("btnGrafikKunjunganPoli"); // NOI18N
-        btnGrafikKunjunganPoli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPoliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPoli);
-
-        btnGrafikKunjunganPerDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikKunjunganPerDokter.setText("Registrasi Per Dokter");
-        btnGrafikKunjunganPerDokter.setIconTextGap(0);
-        btnGrafikKunjunganPerDokter.setName("btnGrafikKunjunganPerDokter"); // NOI18N
-        btnGrafikKunjunganPerDokter.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerDokterActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerDokter);
-
-        btnGrafikKunjunganPerPekerjaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKunjunganPerPekerjaan.setText("Registrasi Per Pekerjaan");
-        btnGrafikKunjunganPerPekerjaan.setIconTextGap(0);
-        btnGrafikKunjunganPerPekerjaan.setName("btnGrafikKunjunganPerPekerjaan"); // NOI18N
-        btnGrafikKunjunganPerPekerjaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerPekerjaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerPekerjaanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerPekerjaan);
-
-        btnGrafikKunjunganPerPendidikan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikKunjunganPerPendidikan.setText("Registrasi Per Pendidikan");
-        btnGrafikKunjunganPerPendidikan.setIconTextGap(0);
-        btnGrafikKunjunganPerPendidikan.setName("btnGrafikKunjunganPerPendidikan"); // NOI18N
-        btnGrafikKunjunganPerPendidikan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerPendidikan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerPendidikanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerPendidikan);
-
-        btnGrafikKunjunganPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKunjunganPerTahun.setText("Registrasi Per Tahun");
-        btnGrafikKunjunganPerTahun.setIconTextGap(0);
-        btnGrafikKunjunganPerTahun.setName("btnGrafikKunjunganPerTahun"); // NOI18N
-        btnGrafikKunjunganPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerTahun);
-
-        btnBerkasDigitalPerawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_folder_images_61610.png"))); // NOI18N
-        btnBerkasDigitalPerawatan.setText("Berkas Digital Perawatan");
-        btnBerkasDigitalPerawatan.setIconTextGap(0);
-        btnBerkasDigitalPerawatan.setName("btnBerkasDigitalPerawatan"); // NOI18N
-        btnBerkasDigitalPerawatan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBerkasDigitalPerawatan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBerkasDigitalPerawatanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBerkasDigitalPerawatan);
-
-        btnPnyMenularRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnPnyMenularRanap.setText("Pny Menular Ranap");
-        btnPnyMenularRanap.setIconTextGap(0);
-        btnPnyMenularRanap.setName("btnPnyMenularRanap"); // NOI18N
-        btnPnyMenularRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPnyMenularRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPnyMenularRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPnyMenularRanap);
-
-        btnPnyMenularRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnPnyMenularRalan.setText("Pny Menular Ralan");
-        btnPnyMenularRalan.setIconTextGap(0);
-        btnPnyMenularRalan.setName("btnPnyMenularRalan"); // NOI18N
-        btnPnyMenularRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPnyMenularRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPnyMenularRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPnyMenularRalan);
-
-        btnGrafikKunjunganPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikKunjunganPerBulan.setText("Registrasi Per Bulan");
-        btnGrafikKunjunganPerBulan.setIconTextGap(0);
-        btnGrafikKunjunganPerBulan.setName("btnGrafikKunjunganPerBulan"); // NOI18N
-        btnGrafikKunjunganPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerBulanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerBulan);
-
-        btnGrafikKunjunganPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKunjunganPerTanggal.setText("Registrasi Per Tanggal");
-        btnGrafikKunjunganPerTanggal.setIconTextGap(0);
-        btnGrafikKunjunganPerTanggal.setName("btnGrafikKunjunganPerTanggal"); // NOI18N
-        btnGrafikKunjunganPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerTanggal);
-
-        btnGrafikDemografiRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikDemografiRegistrasi.setText("Demografi Registrasi");
-        btnGrafikDemografiRegistrasi.setIconTextGap(0);
-        btnGrafikDemografiRegistrasi.setName("btnGrafikDemografiRegistrasi"); // NOI18N
-        btnGrafikDemografiRegistrasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikDemografiRegistrasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikDemografiRegistrasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikDemografiRegistrasi);
-
-        btnGrafikStatusRegPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikStatusRegPerTahun.setText("Registrasi Lama Per Tahun");
-        btnGrafikStatusRegPerTahun.setIconTextGap(0);
-        btnGrafikStatusRegPerTahun.setName("btnGrafikStatusRegPerTahun"); // NOI18N
-        btnGrafikStatusRegPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikStatusRegPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikStatusRegPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikStatusRegPerTahun);
-
-        btnGrafikStatusRegPerTahun2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikStatusRegPerTahun2.setText("Registrasi Baru Per Tahun");
-        btnGrafikStatusRegPerTahun2.setIconTextGap(0);
-        btnGrafikStatusRegPerTahun2.setName("btnGrafikStatusRegPerTahun2"); // NOI18N
-        btnGrafikStatusRegPerTahun2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikStatusRegPerTahun2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikStatusRegPerTahun2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikStatusRegPerTahun2);
-
-        btnGrafikStatusRegPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikStatusRegPerBulan.setText("Registrasi Lama Per Bulan");
-        btnGrafikStatusRegPerBulan.setIconTextGap(0);
-        btnGrafikStatusRegPerBulan.setName("btnGrafikStatusRegPerBulan"); // NOI18N
-        btnGrafikStatusRegPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikStatusRegPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikStatusRegPerBulanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikStatusRegPerBulan);
-
-        btnGrafikStatusRegPerBulan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikStatusRegPerBulan2.setText("Registrasi Baru Per Bulan");
-        btnGrafikStatusRegPerBulan2.setIconTextGap(0);
-        btnGrafikStatusRegPerBulan2.setName("btnGrafikStatusRegPerBulan2"); // NOI18N
-        btnGrafikStatusRegPerBulan2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikStatusRegPerBulan2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikStatusRegPerBulan2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikStatusRegPerBulan2);
-
-        btnGrafikStatusRegPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikStatusRegPerTanggal.setText("Registrasi Lama Per Tanggal");
-        btnGrafikStatusRegPerTanggal.setIconTextGap(0);
-        btnGrafikStatusRegPerTanggal.setName("btnGrafikStatusRegPerTanggal"); // NOI18N
-        btnGrafikStatusRegPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikStatusRegPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikStatusRegPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikStatusRegPerTanggal);
-
-        btnGrafikStatusRegPerTanggal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikStatusRegPerTanggal2.setText("Registrasi Baru Per Tanggal");
-        btnGrafikStatusRegPerTanggal2.setIconTextGap(0);
-        btnGrafikStatusRegPerTanggal2.setName("btnGrafikStatusRegPerTanggal2"); // NOI18N
-        btnGrafikStatusRegPerTanggal2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikStatusRegPerTanggal2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikStatusRegPerTanggal2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikStatusRegPerTanggal2);
-
-        btnGrafikStatusRegBatalPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikStatusRegBatalPerTahun.setText("Batal Periksa Per Tahun");
-        btnGrafikStatusRegBatalPerTahun.setIconTextGap(0);
-        btnGrafikStatusRegBatalPerTahun.setName("btnGrafikStatusRegBatalPerTahun"); // NOI18N
-        btnGrafikStatusRegBatalPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikStatusRegBatalPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikStatusRegBatalPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikStatusRegBatalPerTahun);
-
-        btnGrafikStatusRegBatalPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikStatusRegBatalPerBulan.setText("Batal Periksa Per Bulan");
-        btnGrafikStatusRegBatalPerBulan.setIconTextGap(0);
-        btnGrafikStatusRegBatalPerBulan.setName("btnGrafikStatusRegBatalPerBulan"); // NOI18N
-        btnGrafikStatusRegBatalPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikStatusRegBatalPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikStatusRegBatalPerBulanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikStatusRegBatalPerBulan);
-
-        btnCekPCareDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnCekPCareDiagnosa.setText("Referensi Diagnosa PCare");
-        btnCekPCareDiagnosa.setIconTextGap(0);
-        btnCekPCareDiagnosa.setName("btnCekPCareDiagnosa"); // NOI18N
-        btnCekPCareDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekPCareDiagnosa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekPCareDiagnosaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekPCareDiagnosa);
-
-        btnGrafikStatusRegBatalPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikStatusRegBatalPerTanggal.setText("Batal Periksa Per Tanggal");
-        btnGrafikStatusRegBatalPerTanggal.setIconTextGap(0);
-        btnGrafikStatusRegBatalPerTanggal.setName("btnGrafikStatusRegBatalPerTanggal"); // NOI18N
-        btnGrafikStatusRegBatalPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikStatusRegBatalPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikStatusRegBatalPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikStatusRegBatalPerTanggal);
-
-        btnKategoriBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnKategoriBarang.setText("Kategori Obat, Alkes & BHP");
-        btnKategoriBarang.setIconTextGap(0);
-        btnKategoriBarang.setName("btnKategoriBarang"); // NOI18N
-        btnKategoriBarang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKategoriBarang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKategoriBarangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKategoriBarang);
-
-        btnGolonganBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
-        btnGolonganBarang.setText("Golongan Obat, Alkes & BHP");
-        btnGolonganBarang.setIconTextGap(0);
-        btnGolonganBarang.setName("btnGolonganBarang"); // NOI18N
-        btnGolonganBarang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGolonganBarang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGolonganBarangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGolonganBarang);
-
-        btnObatPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnObatPerTanggal.setText("Obat/Alkes/BHP Per Tanggal");
-        btnObatPerTanggal.setIconTextGap(0);
-        btnObatPerTanggal.setName("btnObatPerTanggal"); // NOI18N
-        btnObatPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnObatPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObatPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnObatPerTanggal);
-
-        btnPenjualanPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnPenjualanPerTanggal.setText("Penjualan Bebas Per Tanggal");
-        btnPenjualanPerTanggal.setIconTextGap(0);
-        btnPenjualanPerTanggal.setName("btnPenjualanPerTanggal"); // NOI18N
-        btnPenjualanPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenjualanPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenjualanPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPenjualanPerTanggal);
-
-        btnCekPCareKesadaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
-        btnCekPCareKesadaran.setText("Referensi Kesadaran PCare");
-        btnCekPCareKesadaran.setIconTextGap(0);
-        btnCekPCareKesadaran.setName("btnCekPCareKesadaran"); // NOI18N
-        btnCekPCareKesadaran.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekPCareKesadaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekPCareKesadaranActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekPCareKesadaran);
-
-        btnPembatalanPeriksaDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnPembatalanPeriksaDokter.setText("Pembatalan Periksa Per Dokter");
-        btnPembatalanPeriksaDokter.setIconTextGap(0);
-        btnPembatalanPeriksaDokter.setName("btnPembatalanPeriksaDokter"); // NOI18N
-        btnPembatalanPeriksaDokter.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPembatalanPeriksaDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPembatalanPeriksaDokterActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPembatalanPeriksaDokter);
-
-        btnPembayaranPerUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
-        btnPembayaranPerUnit.setText("Pembayaran Per Unit");
-        btnPembayaranPerUnit.setIconTextGap(0);
-        btnPembayaranPerUnit.setName("btnPembayaranPerUnit"); // NOI18N
-        btnPembayaranPerUnit.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPembayaranPerUnit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPembayaranPerUnitActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPembayaranPerUnit);
-
-        btnRekapPembayaranPerUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kde-document-open_23426.png"))); // NOI18N
-        btnRekapPembayaranPerUnit.setText("Rekap Pembayaran Per Unit");
-        btnRekapPembayaranPerUnit.setIconTextGap(0);
-        btnRekapPembayaranPerUnit.setName("btnRekapPembayaranPerUnit"); // NOI18N
-        btnRekapPembayaranPerUnit.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapPembayaranPerUnit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapPembayaranPerUnitActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapPembayaranPerUnit);
-
-        btnGrafikKunjunganPerCarabayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikKunjunganPerCarabayar.setText("Registrasi Per Cara Bayar");
-        btnGrafikKunjunganPerCarabayar.setIconTextGap(0);
-        btnGrafikKunjunganPerCarabayar.setName("btnGrafikKunjunganPerCarabayar"); // NOI18N
-        btnGrafikKunjunganPerCarabayar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerCarabayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerCarabayarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerCarabayar);
-
-        btnPengadaanIPSRSPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-new_23212.png"))); // NOI18N
-        btnPengadaanIPSRSPerTanggal.setText("Pengadaan Non Medis Per Tanggal");
-        btnPengadaanIPSRSPerTanggal.setIconTextGap(0);
-        btnPengadaanIPSRSPerTanggal.setName("btnPengadaanIPSRSPerTanggal"); // NOI18N
-        btnPengadaanIPSRSPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengadaanIPSRSPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengadaanIPSRSPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPengadaanIPSRSPerTanggal);
-
-        btnStokKeluarIPSRSPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-open_23214.png"))); // NOI18N
-        btnStokKeluarIPSRSPerTanggal.setText("Stok Keluar Non Medis Per Tanggal");
-        btnStokKeluarIPSRSPerTanggal.setIconTextGap(0);
-        btnStokKeluarIPSRSPerTanggal.setName("btnStokKeluarIPSRSPerTanggal"); // NOI18N
-        btnStokKeluarIPSRSPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnStokKeluarIPSRSPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStokKeluarIPSRSPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
-
-        btnGrafikKunjunganRanapPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKunjunganRanapPerTahun.setText("Kunjungan Ranap Per Tahun");
-        btnGrafikKunjunganRanapPerTahun.setIconTextGap(0);
-        btnGrafikKunjunganRanapPerTahun.setName("btnGrafikKunjunganRanapPerTahun"); // NOI18N
-        btnGrafikKunjunganRanapPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganRanapPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganRanapPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganRanapPerTahun);
-
-        btnCekPCareRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-preview_23216.png"))); // NOI18N
-        btnCekPCareRujukan.setText("Cek Rujukan PCare");
-        btnCekPCareRujukan.setIconTextGap(0);
-        btnCekPCareRujukan.setName("btnCekPCareRujukan"); // NOI18N
-        btnCekPCareRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekPCareRujukan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekPCareRujukanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekPCareRujukan);
-
-        btnGrafikLabRalanPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikLabRalanPerTahun.setText("Kunjungan Lab Ralan Per Tahun");
-        btnGrafikLabRalanPerTahun.setIconTextGap(0);
-        btnGrafikLabRalanPerTahun.setName("btnGrafikLabRalanPerTahun"); // NOI18N
-        btnGrafikLabRalanPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikLabRalanPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikLabRalanPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikLabRalanPerTahun);
-
-        btnGrafikRadRalanPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikRadRalanPerTahun.setText("Kunjungan Rad Ralan Per Tahun");
-        btnGrafikRadRalanPerTahun.setIconTextGap(0);
-        btnGrafikRadRalanPerTahun.setName("btnGrafikRadRalanPerTahun"); // NOI18N
-        btnGrafikRadRalanPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikRadRalanPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikRadRalanPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikRadRalanPerTahun);
-
-        btnCekEntryRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
-        btnCekEntryRalan.setText("Cek Entry Ralan");
-        btnCekEntryRalan.setIconTextGap(0);
-        btnCekEntryRalan.setName("btnCekEntryRalan"); // NOI18N
-        btnCekEntryRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekEntryRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekEntryRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekEntryRalan);
-
-        btnInaCBGKlaimBaruManual2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358050_receptionist.png"))); // NOI18N
-        btnInaCBGKlaimBaruManual2.setText("Klaim Baru Manual INACBG 2");
-        btnInaCBGKlaimBaruManual2.setIconTextGap(0);
-        btnInaCBGKlaimBaruManual2.setName("btnInaCBGKlaimBaruManual2"); // NOI18N
-        btnInaCBGKlaimBaruManual2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnInaCBGKlaimBaruManual2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInaCBGKlaimBaruManual2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnInaCBGKlaimBaruManual2);
-
-        btnPermintaanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_packing_49602.png"))); // NOI18N
-        btnPermintaanMedis.setText("Permintaan Obat & BHP");
-        btnPermintaanMedis.setIconTextGap(0);
-        btnPermintaanMedis.setName("btnPermintaanMedis"); // NOI18N
-        btnPermintaanMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPermintaanMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPermintaanMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPermintaanMedis);
-
-        btnRekapPermintaanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
-        btnRekapPermintaanMedis.setText("Rekap Permintaan Obat & BHP");
-        btnRekapPermintaanMedis.setIconTextGap(0);
-        btnRekapPermintaanMedis.setName("btnRekapPermintaanMedis"); // NOI18N
-        btnRekapPermintaanMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapPermintaanMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapPermintaanMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapPermintaanMedis);
-
-        btnSuratPemesananMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Select-Language_49621.png"))); // NOI18N
-        btnSuratPemesananMedis.setText("Surat Pemesanan Obat & BHP");
-        btnSuratPemesananMedis.setIconTextGap(0);
-        btnSuratPemesananMedis.setName("btnSuratPemesananMedis"); // NOI18N
-        btnSuratPemesananMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratPemesananMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratPemesananMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratPemesananMedis);
-
-        btnPermintaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_packing_49602.png"))); // NOI18N
-        btnPermintaanNonMedis.setText("Permintaan Barang Non Medis");
-        btnPermintaanNonMedis.setIconTextGap(0);
-        btnPermintaanNonMedis.setName("btnPermintaanNonMedis"); // NOI18N
-        btnPermintaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPermintaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPermintaanNonMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPermintaanNonMedis);
-
-        btnRekapPermintaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
-        btnRekapPermintaanNonMedis.setText("Rekap Permintaan Barang Non Medis");
-        btnRekapPermintaanNonMedis.setIconTextGap(0);
-        btnRekapPermintaanNonMedis.setName("btnRekapPermintaanNonMedis"); // NOI18N
-        btnRekapPermintaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapPermintaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapPermintaanNonMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapPermintaanNonMedis);
-
-        btnSuratPemesananNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Select-Language_49621.png"))); // NOI18N
-        btnSuratPemesananNonMedis.setText("Surat Pemesanan Barang Non Medis");
-        btnSuratPemesananNonMedis.setIconTextGap(0);
-        btnSuratPemesananNonMedis.setName("btnSuratPemesananNonMedis"); // NOI18N
-        btnSuratPemesananNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratPemesananNonMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratPemesananNonMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratPemesananNonMedis);
-
-        btnGrafikPerPerujuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikPerPerujuk.setText("Registrasi Per Perujuk");
-        btnGrafikPerPerujuk.setIconTextGap(0);
-        btnGrafikPerPerujuk.setName("btnGrafikPerPerujuk"); // NOI18N
-        btnGrafikPerPerujuk.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikPerPerujuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikPerPerujukActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikPerPerujuk);
-
-        btnCekReferensiProsedurBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stethoscope (1).png"))); // NOI18N
-        btnCekReferensiProsedurBPJS.setText("Referensi Prosedur VClaim");
-        btnCekReferensiProsedurBPJS.setIconTextGap(0);
-        btnCekReferensiProsedurBPJS.setName("btnCekReferensiProsedurBPJS"); // NOI18N
-        btnCekReferensiProsedurBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiProsedurBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiProsedurBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiProsedurBPJS);
-
-        btnCekReferensiKelasRawatBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/applications-office.png"))); // NOI18N
-        btnCekReferensiKelasRawatBPJS.setText("Referensi Kelas Rawat VClaim");
-        btnCekReferensiKelasRawatBPJS.setIconTextGap(0);
-        btnCekReferensiKelasRawatBPJS.setName("btnCekReferensiKelasRawatBPJS"); // NOI18N
-        btnCekReferensiKelasRawatBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiKelasRawatBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiKelasRawatBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiKelasRawatBPJS);
-
-        btnCekReferensiDokterBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/user3.png"))); // NOI18N
-        btnCekReferensiDokterBPJS.setText("Referensi Dokter VClaim");
-        btnCekReferensiDokterBPJS.setIconTextGap(0);
-        btnCekReferensiDokterBPJS.setName("btnCekReferensiDokterBPJS"); // NOI18N
-        btnCekReferensiDokterBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiDokterBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiDokterBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiDokterBPJS);
-
-        btnCekReferensiSpesialistikBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/teacher.png"))); // NOI18N
-        btnCekReferensiSpesialistikBPJS.setText("Referensi Spesialistik VClaim");
-        btnCekReferensiSpesialistikBPJS.setIconTextGap(0);
-        btnCekReferensiSpesialistikBPJS.setName("btnCekReferensiSpesialistikBPJS"); // NOI18N
-        btnCekReferensiSpesialistikBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiSpesialistikBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiSpesialistikBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiSpesialistikBPJS);
-
-        btnCekReferensiRuangRawatBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357890_hospital.png"))); // NOI18N
-        btnCekReferensiRuangRawatBPJS.setText("Referensi Ruang Rawat VClaim");
-        btnCekReferensiRuangRawatBPJS.setIconTextGap(0);
-        btnCekReferensiRuangRawatBPJS.setName("btnCekReferensiRuangRawatBPJS"); // NOI18N
-        btnCekReferensiRuangRawatBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiRuangRawatBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiRuangRawatBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiRuangRawatBPJS);
-
-        btnCekReferensiCaraKeluarBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
-        btnCekReferensiCaraKeluarBPJS.setText("Referensi Cara Keluar VClaim");
-        btnCekReferensiCaraKeluarBPJS.setIconTextGap(0);
-        btnCekReferensiCaraKeluarBPJS.setName("btnCekReferensiCaraKeluarBPJS"); // NOI18N
-        btnCekReferensiCaraKeluarBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiCaraKeluarBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiCaraKeluarBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiCaraKeluarBPJS);
-
-        btnCekReferensiPascaPulangBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/health.png"))); // NOI18N
-        btnCekReferensiPascaPulangBPJS.setText("Referensi Pasca Pulang VClaim");
-        btnCekReferensiPascaPulangBPJS.setIconTextGap(0);
-        btnCekReferensiPascaPulangBPJS.setName("btnCekReferensiPascaPulangBPJS"); // NOI18N
-        btnCekReferensiPascaPulangBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiPascaPulangBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiPascaPulangBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiPascaPulangBPJS);
-
-        btnDetailVKOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnDetailVKOK.setText("Detail VK & OK");
-        btnDetailVKOK.setIconTextGap(0);
-        btnDetailVKOK.setName("btnDetailVKOK"); // NOI18N
-        btnDetailVKOK.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDetailVKOK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetailVKOKActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDetailVKOK);
-
-        btnCekBPJSNomorRujukanRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnCekBPJSNomorRujukanRS.setText("Cek No.Rujukan RS di VClaim");
-        btnCekBPJSNomorRujukanRS.setIconTextGap(0);
-        btnCekBPJSNomorRujukanRS.setName("btnCekBPJSNomorRujukanRS"); // NOI18N
-        btnCekBPJSNomorRujukanRS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSNomorRujukanRS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSNomorRujukanRSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSNomorRujukanRS);
-
-        btnCekBPJSRujukanKartuPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnCekBPJSRujukanKartuPCare.setText("Cek Rujukan Kartu PCare di VClaim");
-        btnCekBPJSRujukanKartuPCare.setIconTextGap(0);
-        btnCekBPJSRujukanKartuPCare.setName("btnCekBPJSRujukanKartuPCare"); // NOI18N
-        btnCekBPJSRujukanKartuPCare.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSRujukanKartuPCare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSRujukanKartuPCareActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSRujukanKartuPCare);
-
-        btnCekBPJSRujukanKartuRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnCekBPJSRujukanKartuRS.setText("Cek Rujukan Kartu RS di VClaim");
-        btnCekBPJSRujukanKartuRS.setIconTextGap(0);
-        btnCekBPJSRujukanKartuRS.setName("btnCekBPJSRujukanKartuRS"); // NOI18N
-        btnCekBPJSRujukanKartuRS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSRujukanKartuRS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSRujukanKartuRSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSRujukanKartuRS);
-
-        btnRujukanKeluarBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
-        btnRujukanKeluarBPJS.setText("Data Rujukan Keluar VClaim");
-        btnRujukanKeluarBPJS.setIconTextGap(0);
-        btnRujukanKeluarBPJS.setName("btnRujukanKeluarBPJS"); // NOI18N
-        btnRujukanKeluarBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRujukanKeluarBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRujukanKeluarBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRujukanKeluarBPJS);
-
-        btnGrafikLabRalanPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikLabRalanPerBulan.setText("Kunjungan Lab Ralan Per Bulan");
-        btnGrafikLabRalanPerBulan.setIconTextGap(0);
-        btnGrafikLabRalanPerBulan.setName("btnGrafikLabRalanPerBulan"); // NOI18N
-        btnGrafikLabRalanPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikLabRalanPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikLabRalanPerBulanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikLabRalanPerBulan);
-
-        btnStokKeluarMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/shopping-basket-full.png"))); // NOI18N
-        btnStokKeluarMedis.setText("Stok Keluar Medis");
-        btnStokKeluarMedis.setIconTextGap(0);
-        btnStokKeluarMedis.setName("btnStokKeluarMedis"); // NOI18N
-        btnStokKeluarMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnStokKeluarMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStokKeluarMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnStokKeluarMedis);
-
-        btnGrafikRadRalanPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikRadRalanPerBulan.setText("Kunjungan Rad Ralan Per Bulan");
-        btnGrafikRadRalanPerBulan.setIconTextGap(0);
-        btnGrafikRadRalanPerBulan.setName("btnGrafikRadRalanPerBulan"); // NOI18N
-        btnGrafikRadRalanPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikRadRalanPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikRadRalanPerBulanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikRadRalanPerBulan);
-
-        btnJMDetailDokter2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
-        btnJMDetailDokter2.setText("Detail JM Dokter 2");
-        btnJMDetailDokter2.setIconTextGap(0);
-        btnJMDetailDokter2.setName("btnJMDetailDokter2"); // NOI18N
-        btnJMDetailDokter2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJMDetailDokter2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJMDetailDokter2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJMDetailDokter2);
-
-        btnPengaduan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_message_add_17398.png"))); // NOI18N
-        btnPengaduan.setText("Pengaduan/Chat");
-        btnPengaduan.setIconTextGap(0);
-        btnPengaduan.setName("btnPengaduan"); // NOI18N
-        btnPengaduan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengaduan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengaduanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPengaduan);
-
-        btnGrafikLabRalanPerHari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikLabRalanPerHari.setText("Kunjungan Lab Ralan Per Tanggal");
-        btnGrafikLabRalanPerHari.setIconTextGap(0);
-        btnGrafikLabRalanPerHari.setName("btnGrafikLabRalanPerHari"); // NOI18N
-        btnGrafikLabRalanPerHari.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikLabRalanPerHari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikLabRalanPerHariActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikLabRalanPerHari);
-
-        btnGrafikRadRalanPerHari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikRadRalanPerHari.setText("Kunjungan Rad Ralan Per Tanggal");
-        btnGrafikRadRalanPerHari.setIconTextGap(0);
-        btnGrafikRadRalanPerHari.setName("btnGrafikRadRalanPerHari"); // NOI18N
-        btnGrafikRadRalanPerHari.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikRadRalanPerHari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikRadRalanPerHariActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikRadRalanPerHari);
-
-        btnSensusHarianRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
-        btnSensusHarianRalan.setText("Sensus Harian Ralan");
-        btnSensusHarianRalan.setIconTextGap(0);
-        btnSensusHarianRalan.setName("btnSensusHarianRalan"); // NOI18N
-        btnSensusHarianRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSensusHarianRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSensusHarianRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSensusHarianRalan);
-
-        btnMetodeRacik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-new_23212.png"))); // NOI18N
-        btnMetodeRacik.setText("Metode Racik");
-        btnMetodeRacik.setIconTextGap(0);
-        btnMetodeRacik.setName("btnMetodeRacik"); // NOI18N
-        btnMetodeRacik.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMetodeRacik.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMetodeRacikActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnMetodeRacik);
-
-        btnPembayaranAkunBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
-        btnPembayaranAkunBayar.setText("Pembayaran Per Akun Bayar");
-        btnPembayaranAkunBayar.setIconTextGap(0);
-        btnPembayaranAkunBayar.setName("btnPembayaranAkunBayar"); // NOI18N
-        btnPembayaranAkunBayar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPembayaranAkunBayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPembayaranAkunBayarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPembayaranAkunBayar);
-
-        btnPenggunaObatResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/family.png"))); // NOI18N
-        btnPenggunaObatResep.setText("Pengguna Obat/Alkes/BHP Resep");
-        btnPenggunaObatResep.setIconTextGap(0);
-        btnPenggunaObatResep.setName("btnPenggunaObatResep"); // NOI18N
-        btnPenggunaObatResep.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenggunaObatResep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenggunaObatResepActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPenggunaObatResep);
-
-        btnRekapPenerimaanObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
-        btnRekapPenerimaanObat.setText("Rekap Penerimaan Obat & BHP");
-        btnRekapPenerimaanObat.setIconTextGap(0);
-        btnRekapPenerimaanObat.setName("btnRekapPenerimaanObat"); // NOI18N
-        btnRekapPenerimaanObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapPenerimaanObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapPenerimaanObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapPenerimaanObat);
-
-        btnMasterBerkasPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/folder.png"))); // NOI18N
-        btnMasterBerkasPegawai.setText("Master Berkas Pegawai");
-        btnMasterBerkasPegawai.setIconTextGap(0);
-        btnMasterBerkasPegawai.setName("btnMasterBerkasPegawai"); // NOI18N
-        btnMasterBerkasPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMasterBerkasPegawai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMasterBerkasPegawaiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnMasterBerkasPegawai);
-
-        btnBerkasPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002437_partners.png"))); // NOI18N
-        btnBerkasPegawai.setText("Berkas Kepegawaian");
-        btnBerkasPegawai.setIconTextGap(0);
-        btnBerkasPegawai.setName("btnBerkasPegawai"); // NOI18N
-        btnBerkasPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBerkasPegawai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBerkasPegawaiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBerkasPegawai);
-
-        btnRiwayatJabatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
-        btnRiwayatJabatan.setText("Riwayat Jabatan");
-        btnRiwayatJabatan.setIconTextGap(0);
-        btnRiwayatJabatan.setName("btnRiwayatJabatan"); // NOI18N
-        btnRiwayatJabatan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRiwayatJabatan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRiwayatJabatanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRiwayatJabatan);
-
-        btnRiwayatPendidikan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
-        btnRiwayatPendidikan.setText("Riwayat Pendidikan");
-        btnRiwayatPendidikan.setIconTextGap(0);
-        btnRiwayatPendidikan.setName("btnRiwayatPendidikan"); // NOI18N
-        btnRiwayatPendidikan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRiwayatPendidikan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRiwayatPendidikanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRiwayatPendidikan);
-
-        btnRiwayatNaikGaji.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
-        btnRiwayatNaikGaji.setText("Riwayat Naik Gaji");
-        btnRiwayatNaikGaji.setIconTextGap(0);
-        btnRiwayatNaikGaji.setName("btnRiwayatNaikGaji"); // NOI18N
-        btnRiwayatNaikGaji.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRiwayatNaikGaji.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRiwayatNaikGajiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRiwayatNaikGaji);
-
-        btnKegiatanIlmiah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_gtk-find-and-replace_39047.png"))); // NOI18N
-        btnKegiatanIlmiah.setText("Kegiatan Ilmiah & Pelatihan");
-        btnKegiatanIlmiah.setIconTextGap(0);
-        btnKegiatanIlmiah.setName("btnKegiatanIlmiah"); // NOI18N
-        btnKegiatanIlmiah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKegiatanIlmiah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKegiatanIlmiahActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKegiatanIlmiah);
-
-        btnRiwayatPenghargaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_folder_images_61610.png"))); // NOI18N
-        btnRiwayatPenghargaan.setText("Riwayat Penghargaan");
-        btnRiwayatPenghargaan.setIconTextGap(0);
-        btnRiwayatPenghargaan.setName("btnRiwayatPenghargaan"); // NOI18N
-        btnRiwayatPenghargaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRiwayatPenghargaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRiwayatPenghargaanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRiwayatPenghargaan);
-
-        btnRiwayatPenelitian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_research_87460.png"))); // NOI18N
-        btnRiwayatPenelitian.setText("Riwayat Penelitian");
-        btnRiwayatPenelitian.setIconTextGap(0);
-        btnRiwayatPenelitian.setName("btnRiwayatPenelitian"); // NOI18N
-        btnRiwayatPenelitian.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRiwayatPenelitian.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRiwayatPenelitianActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRiwayatPenelitian);
-
-        btnPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038192_market.png"))); // NOI18N
-        btnPenerimaanNonMedis.setText("Penerimaan Barang Non Medis");
-        btnPenerimaanNonMedis.setIconTextGap(0);
-        btnPenerimaanNonMedis.setName("btnPenerimaanNonMedis"); // NOI18N
-        btnPenerimaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenerimaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenerimaanNonMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPenerimaanNonMedis);
-
-        btnBayarPesanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
-        btnBayarPesanNonMedis.setText("Bayar Pesan Non Medis");
-        btnBayarPesanNonMedis.setIconTextGap(0);
-        btnBayarPesanNonMedis.setName("btnBayarPesanNonMedis"); // NOI18N
-        btnBayarPesanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBayarPesanNonMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBayarPesanNonMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBayarPesanNonMedis);
-
-        btnHutangNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
-        btnHutangNonMedis.setText("Hutang Non Medis");
-        btnHutangNonMedis.setIconTextGap(0);
-        btnHutangNonMedis.setName("btnHutangNonMedis"); // NOI18N
-        btnHutangNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnHutangNonMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHutangNonMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnHutangNonMedis);
-
-        btnRekapPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
-        btnRekapPenerimaanNonMedis.setText("Rekap Penerimaan Non Medis");
-        btnRekapPenerimaanNonMedis.setIconTextGap(0);
-        btnRekapPenerimaanNonMedis.setName("btnRekapPenerimaanNonMedis"); // NOI18N
-        btnRekapPenerimaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapPenerimaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapPenerimaanNonMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapPenerimaanNonMedis);
-
-        btnInsidenKeselamatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002123_wheelchair.png"))); // NOI18N
-        btnInsidenKeselamatan.setText("Insiden Keselamatan");
-        btnInsidenKeselamatan.setIconTextGap(0);
-        btnInsidenKeselamatan.setName("btnInsidenKeselamatan"); // NOI18N
-        btnInsidenKeselamatan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnInsidenKeselamatan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsidenKeselamatanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnInsidenKeselamatan);
-
-        btnInsidenKeselamatanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
-        btnInsidenKeselamatanPasien.setText("Data Insiden Keselamatan");
-        btnInsidenKeselamatanPasien.setIconTextGap(0);
-        btnInsidenKeselamatanPasien.setName("btnInsidenKeselamatanPasien"); // NOI18N
-        btnInsidenKeselamatanPasien.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnInsidenKeselamatanPasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsidenKeselamatanPasienActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnInsidenKeselamatanPasien);
-
-        btnGrafikKejadianIKPPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKejadianIKPPerTahun.setText("Kejadian IKP Per Tahun");
-        btnGrafikKejadianIKPPerTahun.setIconTextGap(0);
-        btnGrafikKejadianIKPPerTahun.setName("btnGrafikKejadianIKPPerTahun"); // NOI18N
-        btnGrafikKejadianIKPPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKejadianIKPPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKejadianIKPPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKejadianIKPPerTahun);
-
-        btnGrafikKejadianIKPPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikKejadianIKPPerBulan.setText("Kejadian IKP Per Bulan");
-        btnGrafikKejadianIKPPerBulan.setIconTextGap(0);
-        btnGrafikKejadianIKPPerBulan.setName("btnGrafikKejadianIKPPerBulan"); // NOI18N
-        btnGrafikKejadianIKPPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKejadianIKPPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKejadianIKPPerBulanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKejadianIKPPerBulan);
-
-        btnGrafikKejadianIKPPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKejadianIKPPerTanggal.setText("Kejadian IKP Per Tanggal");
-        btnGrafikKejadianIKPPerTanggal.setIconTextGap(0);
-        btnGrafikKejadianIKPPerTanggal.setName("btnGrafikKejadianIKPPerTanggal"); // NOI18N
-        btnGrafikKejadianIKPPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKejadianIKPPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKejadianIKPPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKejadianIKPPerTanggal);
-
-        btnRiwayatBatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
-        btnRiwayatBatch.setText("Riwayat Batch");
-        btnRiwayatBatch.setIconTextGap(0);
-        btnRiwayatBatch.setName("btnRiwayatBatch"); // NOI18N
-        btnRiwayatBatch.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRiwayatBatch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRiwayatBatchActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRiwayatBatch);
-
-        btnGrafikKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikKejadianIKPPerJenis.setText("Kejadian IKP Per Jenis");
-        btnGrafikKejadianIKPPerJenis.setIconTextGap(0);
-        btnGrafikKejadianIKPPerJenis.setName("btnGrafikKejadianIKPPerJenis"); // NOI18N
-        btnGrafikKejadianIKPPerJenis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKejadianIKPPerJenis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKejadianIKPPerJenisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKejadianIKPPerJenis);
-
-        btnGrafikKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKejadianIKPPerDampak.setText("Kejadian IKP Per Dampak");
-        btnGrafikKejadianIKPPerDampak.setIconTextGap(0);
-        btnGrafikKejadianIKPPerDampak.setName("btnGrafikKejadianIKPPerDampak"); // NOI18N
-        btnGrafikKejadianIKPPerDampak.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKejadianIKPPerDampak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKejadianIKPPerDampakActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKejadianIKPPerDampak);
-
-        btnPiutangPerAkunPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stock_task.png"))); // NOI18N
-        btnPiutangPerAkunPiutang.setText("Piutang Per Akun Piutang");
-        btnPiutangPerAkunPiutang.setIconTextGap(0);
-        btnPiutangPerAkunPiutang.setName("btnPiutangPerAkunPiutang"); // NOI18N
-        btnPiutangPerAkunPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPiutangPerAkunPiutang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPiutangPerAkunPiutangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPiutangPerAkunPiutang);
-
-        btnGrafikKunjunganPerAgama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikKunjunganPerAgama.setText("Registrasi Per Agama");
-        btnGrafikKunjunganPerAgama.setIconTextGap(0);
-        btnGrafikKunjunganPerAgama.setName("btnGrafikKunjunganPerAgama"); // NOI18N
-        btnGrafikKunjunganPerAgama.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerAgama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerAgamaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerAgama);
-
-        btnGrafikKunjunganPerUmur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKunjunganPerUmur.setText("Registrasi Per Umur");
-        btnGrafikKunjunganPerUmur.setIconTextGap(0);
-        btnGrafikKunjunganPerUmur.setName("btnGrafikKunjunganPerUmur"); // NOI18N
-        btnGrafikKunjunganPerUmur.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerUmur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerUmurActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerUmur);
-
-        btnSuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Login Manager_3503.png"))); // NOI18N
-        btnSuku.setText("Suku/Bangsa Pasien");
-        btnSuku.setIconTextGap(0);
-        btnSuku.setName("btnSuku"); // NOI18N
-        btnSuku.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuku.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSukuActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuku);
-
-        btnBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Orange forum_54521.png"))); // NOI18N
-        btnBahasa.setText("Bahasa Pasien");
-        btnBahasa.setIconTextGap(0);
-        btnBahasa.setName("btnBahasa"); // NOI18N
-        btnBahasa.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBahasa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBahasaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBahasa);
-
-        btnGolonganTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_advantage_teamwork_1034367.png"))); // NOI18N
-        btnGolonganTNI.setText("Golongan TNI");
-        btnGolonganTNI.setIconTextGap(0);
-        btnGolonganTNI.setName("btnGolonganTNI"); // NOI18N
-        btnGolonganTNI.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGolonganTNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGolonganTNIActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGolonganTNI);
-
-        btnSatuanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_17_2959846.png"))); // NOI18N
-        btnSatuanTNI.setText("Satuan TNI");
-        btnSatuanTNI.setIconTextGap(0);
-        btnSatuanTNI.setName("btnSatuanTNI"); // NOI18N
-        btnSatuanTNI.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSatuanTNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSatuanTNIActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSatuanTNI);
-
-        btnJabatanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_kitchen_table_1378836.png"))); // NOI18N
-        btnJabatanTNI.setText("Jabatan TNI");
-        btnJabatanTNI.setIconTextGap(0);
-        btnJabatanTNI.setName("btnJabatanTNI"); // NOI18N
-        btnJabatanTNI.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJabatanTNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJabatanTNIActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJabatanTNI);
-
-        btnPangkatTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_23_Page_Rank_Badge_1688850.png"))); // NOI18N
-        btnPangkatTNI.setText("Pangkat TNI");
-        btnPangkatTNI.setIconTextGap(0);
-        btnPangkatTNI.setName("btnPangkatTNI"); // NOI18N
-        btnPangkatTNI.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPangkatTNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPangkatTNIActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPangkatTNI);
-
-        btnGolonganPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_advantage_teamwork_1034367.png"))); // NOI18N
-        btnGolonganPolri.setText("Golongan POLRI");
-        btnGolonganPolri.setIconTextGap(0);
-        btnGolonganPolri.setName("btnGolonganPolri"); // NOI18N
-        btnGolonganPolri.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGolonganPolri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGolonganPolriActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGolonganPolri);
-
-        btnSatuanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_17_2959846.png"))); // NOI18N
-        btnSatuanPolri.setText("Satuan POLRI");
-        btnSatuanPolri.setIconTextGap(0);
-        btnSatuanPolri.setName("btnSatuanPolri"); // NOI18N
-        btnSatuanPolri.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSatuanPolri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSatuanPolriActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSatuanPolri);
-
-        btnJabatanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_kitchen_table_1378836.png"))); // NOI18N
-        btnJabatanPolri.setText("Jabatan POLRI");
-        btnJabatanPolri.setIconTextGap(0);
-        btnJabatanPolri.setName("btnJabatanPolri"); // NOI18N
-        btnJabatanPolri.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJabatanPolri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJabatanPolriActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJabatanPolri);
-
-        btnPangkatPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_23_Page_Rank_Badge_1688850.png"))); // NOI18N
-        btnPangkatPolri.setText("Pangkat POLRI");
-        btnPangkatPolri.setIconTextGap(0);
-        btnPangkatPolri.setName("btnPangkatPolri"); // NOI18N
-        btnPangkatPolri.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPangkatPolri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPangkatPolriActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPangkatPolri);
-
-        btnCacatFisik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png"))); // NOI18N
-        btnCacatFisik.setText("Cacat Fisik");
-        btnCacatFisik.setIconTextGap(0);
-        btnCacatFisik.setName("btnCacatFisik"); // NOI18N
-        btnCacatFisik.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCacatFisik.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCacatFisikActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCacatFisik);
-
-        btnGrafikKunjunganPerSuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikKunjunganPerSuku.setText("Registrasi Per Suku/Bangsa");
-        btnGrafikKunjunganPerSuku.setIconTextGap(0);
-        btnGrafikKunjunganPerSuku.setName("btnGrafikKunjunganPerSuku"); // NOI18N
-        btnGrafikKunjunganPerSuku.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerSuku.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerSukuActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerSuku);
-
-        btnGrafikKunjunganPerBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKunjunganPerBahasa.setText("Registrasi Per Bahasa");
-        btnGrafikKunjunganPerBahasa.setIconTextGap(0);
-        btnGrafikKunjunganPerBahasa.setName("btnGrafikKunjunganPerBahasa"); // NOI18N
-        btnGrafikKunjunganPerBahasa.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerBahasa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerBahasaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerBahasa);
-
-        btnJadwalOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Alarm_132148.png"))); // NOI18N
-        btnJadwalOperasi.setText("Jadwal Operasi");
-        btnJadwalOperasi.setIconTextGap(0);
-        btnJadwalOperasi.setName("btnJadwalOperasi"); // NOI18N
-        btnJadwalOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJadwalOperasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJadwalOperasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJadwalOperasi);
-
-        btnMapingPoliBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Pink_Time_Machine_B_66659.png"))); // NOI18N
-        btnMapingPoliBPJS.setText("Mapping Poli VClaim");
-        btnMapingPoliBPJS.setIconTextGap(0);
-        btnMapingPoliBPJS.setName("btnMapingPoliBPJS"); // NOI18N
-        btnMapingPoliBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMapingPoliBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMapingPoliBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnMapingPoliBPJS);
-
-        btnGrafikKunjunganPerCacat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikKunjunganPerCacat.setText("Registrasi Per Cacat Fisik");
-        btnGrafikKunjunganPerCacat.setIconTextGap(0);
-        btnGrafikKunjunganPerCacat.setName("btnGrafikKunjunganPerCacat"); // NOI18N
-        btnGrafikKunjunganPerCacat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikKunjunganPerCacat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikKunjunganPerCacatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikKunjunganPerCacat);
-
-        btnBarangCSSD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_order-history_49596.png"))); // NOI18N
-        btnBarangCSSD.setText("Barang CSSD");
-        btnBarangCSSD.setIconTextGap(0);
-        btnBarangCSSD.setName("btnBarangCSSD"); // NOI18N
-        btnBarangCSSD.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBarangCSSD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBarangCSSDActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBarangCSSD);
-
-        btnSKDPBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kde-document-open_23426.png"))); // NOI18N
-        btnSKDPBPJS.setText("SKDP BPJS");
-        btnSKDPBPJS.setIconTextGap(0);
-        btnSKDPBPJS.setName("btnSKDPBPJS"); // NOI18N
-        btnSKDPBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSKDPBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSKDPBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSKDPBPJS);
-
-        btnBookingRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Address Book_32590.png"))); // NOI18N
-        btnBookingRegistrasi.setText("Booking Registrasi");
-        btnBookingRegistrasi.setIconTextGap(0);
-        btnBookingRegistrasi.setName("btnBookingRegistrasi"); // NOI18N
-        btnBookingRegistrasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBookingRegistrasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBookingRegistrasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBookingRegistrasi);
-
-        btnCekReferensiPropinsiBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_map_299050.png"))); // NOI18N
-        btnCekReferensiPropinsiBPJS.setText("Referensi Propinsi VClaim");
-        btnCekReferensiPropinsiBPJS.setIconTextGap(0);
-        btnCekReferensiPropinsiBPJS.setName("btnCekReferensiPropinsiBPJS"); // NOI18N
-        btnCekReferensiPropinsiBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiPropinsiBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiPropinsiBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiPropinsiBPJS);
-
-        btnCekReferensiKabupatenBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_map_285662.png"))); // NOI18N
-        btnCekReferensiKabupatenBPJS.setText("Referensi Kabupaten VClaim");
-        btnCekReferensiKabupatenBPJS.setIconTextGap(0);
-        btnCekReferensiKabupatenBPJS.setName("btnCekReferensiKabupatenBPJS"); // NOI18N
-        btnCekReferensiKabupatenBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiKabupatenBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiKabupatenBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiKabupatenBPJS);
-
-        btnCekReferensiKecamatanBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_advantage_nearby_1034361.png"))); // NOI18N
-        btnCekReferensiKecamatanBPJS.setText("Referensi Kecamatan VClaim");
-        btnCekReferensiKecamatanBPJS.setIconTextGap(0);
-        btnCekReferensiKecamatanBPJS.setName("btnCekReferensiKecamatanBPJS"); // NOI18N
-        btnCekReferensiKecamatanBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiKecamatanBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiKecamatanBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiKecamatanBPJS);
-
-        btnCekReferensiDokterDPJPBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor_assistant.png"))); // NOI18N
-        btnCekReferensiDokterDPJPBPJS.setText("Referensi Dokter DPJP VClaim");
-        btnCekReferensiDokterDPJPBPJS.setIconTextGap(0);
-        btnCekReferensiDokterDPJPBPJS.setName("btnCekReferensiDokterDPJPBPJS"); // NOI18N
-        btnCekReferensiDokterDPJPBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekReferensiDokterDPJPBPJS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekReferensiDokterDPJPBPJSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
-
-        btnCekBPJSRiwayatRujukanRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
-        btnCekBPJSRiwayatRujukanRS.setText("Riwayat Rujukan RS di VClaim");
-        btnCekBPJSRiwayatRujukanRS.setIconTextGap(0);
-        btnCekBPJSRiwayatRujukanRS.setName("btnCekBPJSRiwayatRujukanRS"); // NOI18N
-        btnCekBPJSRiwayatRujukanRS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSRiwayatRujukanRS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSRiwayatRujukanRSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSRiwayatRujukanRS);
-
-        btnCekBPJSTanggalRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
-        btnCekBPJSTanggalRujukan.setText("Tanggal Rujukan di VClaim");
-        btnCekBPJSTanggalRujukan.setIconTextGap(0);
-        btnCekBPJSTanggalRujukan.setName("btnCekBPJSTanggalRujukan"); // NOI18N
-        btnCekBPJSTanggalRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSTanggalRujukan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSTanggalRujukanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSTanggalRujukan);
-
-        btnPermintaanLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); // NOI18N
-        btnPermintaanLab.setText("Permintaan Lab");
-        btnPermintaanLab.setIconTextGap(0);
-        btnPermintaanLab.setName("btnPermintaanLab"); // NOI18N
-        btnPermintaanLab.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPermintaanLab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPermintaanLabActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPermintaanLab);
-
-        btnPermintaanRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Thorax_X-Ray_Black_63791.png"))); // NOI18N
-        btnPermintaanRadiologi.setText("Permintaan Radiologi");
-        btnPermintaanRadiologi.setIconTextGap(0);
-        btnPermintaanRadiologi.setName("btnPermintaanRadiologi"); // NOI18N
-        btnPermintaanRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPermintaanRadiologi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPermintaanRadiologiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPermintaanRadiologi);
-
-        btnSuratIndeks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_open-email_264844.png"))); // NOI18N
-        btnSuratIndeks.setText("Indeks Surat");
-        btnSuratIndeks.setIconTextGap(0);
-        btnSuratIndeks.setName("btnSuratIndeks"); // NOI18N
-        btnSuratIndeks.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratIndeks.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratIndeksActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratIndeks);
-
-        btnSuratMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_orange-folder-mail_25242.png"))); // NOI18N
-        btnSuratMap.setText("Map Surat");
-        btnSuratMap.setIconTextGap(0);
-        btnSuratMap.setName("btnSuratMap"); // NOI18N
-        btnSuratMap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratMap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratMapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratMap);
-
-        btnSuratAlmari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_cabinet_49336.png"))); // NOI18N
-        btnSuratAlmari.setText("Almari Surat");
-        btnSuratAlmari.setIconTextGap(0);
-        btnSuratAlmari.setName("btnSuratAlmari"); // NOI18N
-        btnSuratAlmari.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratAlmari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratAlmariActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratAlmari);
-
-        btnSuratRak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_shelf_104409.png"))); // NOI18N
-        btnSuratRak.setText("Rak Surat");
-        btnSuratRak.setIconTextGap(0);
-        btnSuratRak.setName("btnSuratRak"); // NOI18N
-        btnSuratRak.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratRak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratRakActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratRak);
-
-        btnSuratRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kfm_home_18010.png"))); // NOI18N
-        btnSuratRuang.setText("Ruang Surat");
-        btnSuratRuang.setIconTextGap(0);
-        btnSuratRuang.setName("btnSuratRuang"); // NOI18N
-        btnSuratRuang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratRuang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratRuangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratRuang);
-
-        btnSuratKlasifikasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kontact_8762.png"))); // NOI18N
-        btnSuratKlasifikasi.setText("Klasifikasi Surat");
-        btnSuratKlasifikasi.setIconTextGap(0);
-        btnSuratKlasifikasi.setName("btnSuratKlasifikasi"); // NOI18N
-        btnSuratKlasifikasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratKlasifikasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratKlasifikasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratKlasifikasi);
-
-        btnSuratStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_26-Mail_34317.png"))); // NOI18N
-        btnSuratStatus.setText("Status Surat");
-        btnSuratStatus.setIconTextGap(0);
-        btnSuratStatus.setName("btnSuratStatus"); // NOI18N
-        btnSuratStatus.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratStatusActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratStatus);
-
-        btnSuratSifat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_private_mail_44691.png"))); // NOI18N
-        btnSuratSifat.setText("Sifat Surat");
-        btnSuratSifat.setIconTextGap(0);
-        btnSuratSifat.setName("btnSuratSifat"); // NOI18N
-        btnSuratSifat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratSifat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratSifatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratSifat);
-
-        btnSuratBalas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_mail-reply-all_118782.png"))); // NOI18N
-        btnSuratBalas.setText("Stts Balas Surat");
-        btnSuratBalas.setIconTextGap(0);
-        btnSuratBalas.setName("btnSuratBalas"); // NOI18N
-        btnSuratBalas.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratBalas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratBalasActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratBalas);
-
-        btnSuratMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_e-mail2 _36619.png"))); // NOI18N
-        btnSuratMasuk.setText("Surat Masuk");
-        btnSuratMasuk.setIconTextGap(0);
-        btnSuratMasuk.setName("btnSuratMasuk"); // NOI18N
-        btnSuratMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratMasuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratMasukActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratMasuk);
-
-        btnPCareReferensiDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png"))); // NOI18N
-        btnPCareReferensiDokter.setText("Referensi Dokter PCare");
-        btnPCareReferensiDokter.setIconTextGap(0);
-        btnPCareReferensiDokter.setName("btnPCareReferensiDokter"); // NOI18N
-        btnPCareReferensiDokter.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiDokterActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiDokter);
-
-        btnPCareReferensiPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_home_61629.png"))); // NOI18N
-        btnPCareReferensiPoli.setText("Referensi Poli PCare");
-        btnPCareReferensiPoli.setIconTextGap(0);
-        btnPCareReferensiPoli.setName("btnPCareReferensiPoli"); // NOI18N
-        btnPCareReferensiPoli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiPoliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiPoli);
-
-        btnPCareReferensiProvider.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358067_administrator.png"))); // NOI18N
-        btnPCareReferensiProvider.setText("Referensi Provider PCare");
-        btnPCareReferensiProvider.setIconTextGap(0);
-        btnPCareReferensiProvider.setName("btnPCareReferensiProvider"); // NOI18N
-        btnPCareReferensiProvider.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiProvider.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiProviderActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiProvider);
-
-        btnPCareReferensiStatusPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/edit-female-user.png"))); // NOI18N
-        btnPCareReferensiStatusPulang.setText("Referensi Stts Pulang PCare");
-        btnPCareReferensiStatusPulang.setIconTextGap(0);
-        btnPCareReferensiStatusPulang.setName("btnPCareReferensiStatusPulang"); // NOI18N
-        btnPCareReferensiStatusPulang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiStatusPulang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiStatusPulangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiStatusPulang);
-
-        btnPCareReferensiSpesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_surgeon_63160.png"))); // NOI18N
-        btnPCareReferensiSpesialis.setText("Referensi Spesialis PCare");
-        btnPCareReferensiSpesialis.setIconTextGap(0);
-        btnPCareReferensiSpesialis.setName("btnPCareReferensiSpesialis"); // NOI18N
-        btnPCareReferensiSpesialis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiSpesialis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiSpesialisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiSpesialis);
-
-        btnPCareReferensiSubspesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Users_131982.png"))); // NOI18N
-        btnPCareReferensiSubspesialis.setText("Referensi Subspesialis PCare");
-        btnPCareReferensiSubspesialis.setIconTextGap(0);
-        btnPCareReferensiSubspesialis.setName("btnPCareReferensiSubspesialis"); // NOI18N
-        btnPCareReferensiSubspesialis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiSubspesialis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiSubspesialisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiSubspesialis);
-
-        btnPCareReferensiSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Workstation_by_Artdesigner_60887.png"))); // NOI18N
-        btnPCareReferensiSarana.setText("Referensi Sarana PCare");
-        btnPCareReferensiSarana.setIconTextGap(0);
-        btnPCareReferensiSarana.setName("btnPCareReferensiSarana"); // NOI18N
-        btnPCareReferensiSarana.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiSarana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiSaranaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiSarana);
-
-        btnPCareReferensiKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_status_63159.png"))); // NOI18N
-        btnPCareReferensiKhusus.setText("Referensi Khusus PCare");
-        btnPCareReferensiKhusus.setIconTextGap(0);
-        btnPCareReferensiKhusus.setName("btnPCareReferensiKhusus"); // NOI18N
-        btnPCareReferensiKhusus.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiKhusus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiKhususActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiKhusus);
-
-        btnPCareReferensiObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815676_pill.png"))); // NOI18N
-        btnPCareReferensiObat.setText("Referensi Obat PCare");
-        btnPCareReferensiObat.setIconTextGap(0);
-        btnPCareReferensiObat.setName("btnPCareReferensiObat"); // NOI18N
-        btnPCareReferensiObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiObat);
-
-        btnPCareReferensiTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Documents_Black_63760.png"))); // NOI18N
-        btnPCareReferensiTindakan.setText("Referensi Tindakan PCare");
-        btnPCareReferensiTindakan.setIconTextGap(0);
-        btnPCareReferensiTindakan.setName("btnPCareReferensiTindakan"); // NOI18N
-        btnPCareReferensiTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareReferensiTindakan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareReferensiTindakanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareReferensiTindakan);
-
-        btnPCareFaskesSubspesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Office-Building_88869.png"))); // NOI18N
-        btnPCareFaskesSubspesialis.setText("Faskes Subspesialis PCare");
-        btnPCareFaskesSubspesialis.setIconTextGap(0);
-        btnPCareFaskesSubspesialis.setName("btnPCareFaskesSubspesialis"); // NOI18N
-        btnPCareFaskesSubspesialis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareFaskesSubspesialis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareFaskesSubspesialisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareFaskesSubspesialis);
-
-        btnPCareFaskesAlihRawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Two-storied_house_SH_131526.png"))); // NOI18N
-        btnPCareFaskesAlihRawat.setText("Faskes Alih Rawat PCare");
-        btnPCareFaskesAlihRawat.setIconTextGap(0);
-        btnPCareFaskesAlihRawat.setName("btnPCareFaskesAlihRawat"); // NOI18N
-        btnPCareFaskesAlihRawat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareFaskesAlihRawat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareFaskesAlihRawatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareFaskesAlihRawat);
-
-        btnPCareFaskesThalasemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Home_131971.png"))); // NOI18N
-        btnPCareFaskesThalasemia.setText("Faskes Thalasemia & Hemofili PCare");
-        btnPCareFaskesThalasemia.setIconTextGap(0);
-        btnPCareFaskesThalasemia.setName("btnPCareFaskesThalasemia"); // NOI18N
-        btnPCareFaskesThalasemia.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareFaskesThalasemia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareFaskesThalasemiaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareFaskesThalasemia);
-
-        btnPCareMapingObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815295_medical_case.png"))); // NOI18N
-        btnPCareMapingObat.setText("Mapping Obat PCare");
-        btnPCareMapingObat.setIconTextGap(0);
-        btnPCareMapingObat.setName("btnPCareMapingObat"); // NOI18N
-        btnPCareMapingObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareMapingObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareMapingObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareMapingObat);
-
-        btnPCareMapingTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_address-book_111220.png"))); // NOI18N
-        btnPCareMapingTindakan.setText("Tarif Ralan PCare");
-        btnPCareMapingTindakan.setIconTextGap(0);
-        btnPCareMapingTindakan.setName("btnPCareMapingTindakan"); // NOI18N
-        btnPCareMapingTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareMapingTindakan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareMapingTindakanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareMapingTindakan);
-
-        btnPCareClubProlanis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Teachers-24_103847.png"))); // NOI18N
-        btnPCareClubProlanis.setText("Club Prolanis PCare");
-        btnPCareClubProlanis.setIconTextGap(0);
-        btnPCareClubProlanis.setName("btnPCareClubProlanis"); // NOI18N
-        btnPCareClubProlanis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareClubProlanis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareClubProlanisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareClubProlanis);
-
-        btnPCareMapingPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_home_61629.png"))); // NOI18N
-        btnPCareMapingPoli.setText("Mapping Poli PCare");
-        btnPCareMapingPoli.setIconTextGap(0);
-        btnPCareMapingPoli.setName("btnPCareMapingPoli"); // NOI18N
-        btnPCareMapingPoli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareMapingPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareMapingPoliActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareMapingPoli);
-
-        btnPCareKegiatanKelompok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Group_Meeting_Light_80844.png"))); // NOI18N
-        btnPCareKegiatanKelompok.setText("Kegiatan Kelompok PCare");
-        btnPCareKegiatanKelompok.setIconTextGap(0);
-        btnPCareKegiatanKelompok.setName("btnPCareKegiatanKelompok"); // NOI18N
-        btnPCareKegiatanKelompok.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareKegiatanKelompok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareKegiatanKelompokActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareKegiatanKelompok);
-
-        btnPCareMapingTindakanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_book_285636.png"))); // NOI18N
-        btnPCareMapingTindakanRanap.setText("Tarif Ranap PCare");
-        btnPCareMapingTindakanRanap.setIconTextGap(0);
-        btnPCareMapingTindakanRanap.setName("btnPCareMapingTindakanRanap"); // NOI18N
-        btnPCareMapingTindakanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareMapingTindakanRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareMapingTindakanRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareMapingTindakanRanap);
-
-        btnPCarePesertaKegiatanKelompok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Edit-Male-User.png"))); // NOI18N
-        btnPCarePesertaKegiatanKelompok.setText("Peserta Keg Kelompok PCare");
-        btnPCarePesertaKegiatanKelompok.setIconTextGap(0);
-        btnPCarePesertaKegiatanKelompok.setName("btnPCarePesertaKegiatanKelompok"); // NOI18N
-        btnPCarePesertaKegiatanKelompok.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCarePesertaKegiatanKelompok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCarePesertaKegiatanKelompokActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCarePesertaKegiatanKelompok);
-
-        btnSirkulasi3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
-        btnSirkulasi3.setText("Sirkulasi Obat, Alkes & BHP 3");
-        btnSirkulasi3.setIconTextGap(0);
-        btnSirkulasi3.setName("btnSirkulasi3"); // NOI18N
-        btnSirkulasi3.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSirkulasi3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSirkulasi3ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSirkulasi3);
-
-        btnPCarePendaftaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_todo_list_add_17451.png"))); // NOI18N
-        btnPCarePendaftaran.setText("Data Pendaftaran PCare");
-        btnPCarePendaftaran.setIconTextGap(0);
-        btnPCarePendaftaran.setName("btnPCarePendaftaran"); // NOI18N
-        btnPCarePendaftaran.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCarePendaftaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCarePendaftaranActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCarePendaftaran);
-
-        btnPCareMapingDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_surgeon_45573.png"))); // NOI18N
-        btnPCareMapingDokter.setText("Mapping Dokter PCare");
-        btnPCareMapingDokter.setIconTextGap(0);
-        btnPCareMapingDokter.setName("btnPCareMapingDokter"); // NOI18N
-        btnPCareMapingDokter.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareMapingDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareMapingDokterActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareMapingDokter);
-
-        btnRanapPerRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_House_132045.png"))); // NOI18N
-        btnRanapPerRuang.setText("Ranap Per Ruang");
-        btnRanapPerRuang.setIconTextGap(0);
-        btnRanapPerRuang.setName("btnRanapPerRuang"); // NOI18N
-        btnRanapPerRuang.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRanapPerRuang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRanapPerRuangActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRanapPerRuang);
-
-        btnPenyakitRanapCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_24_DNA_2064499.png"))); // NOI18N
-        btnPenyakitRanapCaraBayar.setText("Penyakit Ranap Per Cara Bayar");
-        btnPenyakitRanapCaraBayar.setIconTextGap(0);
-        btnPenyakitRanapCaraBayar.setName("btnPenyakitRanapCaraBayar"); // NOI18N
-        btnPenyakitRanapCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenyakitRanapCaraBayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenyakitRanapCaraBayarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPenyakitRanapCaraBayar);
-
-        btnAnggotaMiliterDirawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Soldier-3_379419.png"))); // NOI18N
-        btnAnggotaMiliterDirawat.setText("Anggota TNI Dirawat");
-        btnAnggotaMiliterDirawat.setIconTextGap(0);
-        btnAnggotaMiliterDirawat.setName("btnAnggotaMiliterDirawat"); // NOI18N
-        btnAnggotaMiliterDirawat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAnggotaMiliterDirawat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnggotaMiliterDirawatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnAnggotaMiliterDirawat);
-
-        btnSetInputParsial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Finance_loan_money_1889199.png"))); // NOI18N
-        btnSetInputParsial.setText("Set Input Parsial");
-        btnSetInputParsial.setIconTextGap(0);
-        btnSetInputParsial.setName("btnSetInputParsial"); // NOI18N
-        btnSetInputParsial.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSetInputParsial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSetInputParsialActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSetInputParsial);
-
-        btnLamaPelayananRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnLamaPelayananRadiologi.setText("Lama Pelayanan Radiologi");
-        btnLamaPelayananRadiologi.setIconTextGap(0);
-        btnLamaPelayananRadiologi.setName("btnLamaPelayananRadiologi"); // NOI18N
-        btnLamaPelayananRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLamaPelayananRadiologi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamaPelayananRadiologiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLamaPelayananRadiologi);
-
-        btnLamaPelayananLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnLamaPelayananLab.setText("Lama Pelayanan Lab");
-        btnLamaPelayananLab.setIconTextGap(0);
-        btnLamaPelayananLab.setName("btnLamaPelayananLab"); // NOI18N
-        btnLamaPelayananLab.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLamaPelayananLab.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamaPelayananLabActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLamaPelayananLab);
-
-        btnCekSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_folder_search_48770.png"))); // NOI18N
-        btnCekSEP.setText("Cek Nomor SEP");
-        btnCekSEP.setIconTextGap(0);
-        btnCekSEP.setName("btnCekSEP"); // NOI18N
-        btnCekSEP.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekSEP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekSEPActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekSEP);
-
-        btnSuratKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_email_3327.png"))); // NOI18N
-        btnSuratKeluar.setText("Surat Keluar");
-        btnSuratKeluar.setIconTextGap(0);
-        btnSuratKeluar.setName("btnSuratKeluar"); // NOI18N
-        btnSuratKeluar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratKeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratKeluarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSuratKeluar);
-
-        btnKegiatanFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_website_-_address_book_3440827.png"))); // NOI18N
-        btnKegiatanFarmasi.setText("Kegiatan Farmasi");
-        btnKegiatanFarmasi.setIconTextGap(0);
-        btnKegiatanFarmasi.setName("btnKegiatanFarmasi"); // NOI18N
-        btnKegiatanFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKegiatanFarmasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKegiatanFarmasiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKegiatanFarmasi);
-
-        btnOpnameIPSRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ark2.png"))); // NOI18N
-        btnOpnameIPSRS.setText("Stok Opname Non Medis");
-        btnOpnameIPSRS.setIconTextGap(0);
-        btnOpnameIPSRS.setName("btnOpnameIPSRS"); // NOI18N
-        btnOpnameIPSRS.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnOpnameIPSRS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpnameIPSRSActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnOpnameIPSRS);
-
-        btnSirkulasiNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
-        btnSirkulasiNonMedis.setText("Sirkulasi Non Medis");
-        btnSirkulasiNonMedis.setIconTextGap(0);
-        btnSirkulasiNonMedis.setName("btnSirkulasiNonMedis"); // NOI18N
-        btnSirkulasiNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSirkulasiNonMedis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSirkulasiNonMedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSirkulasiNonMedis);
-
-        btnRekapLabPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_projects_63140.png"))); // NOI18N
-        btnRekapLabPerTahun.setText("Rekap Lab Per Tahun");
-        btnRekapLabPerTahun.setIconTextGap(0);
-        btnRekapLabPerTahun.setName("btnRekapLabPerTahun"); // NOI18N
-        btnRekapLabPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapLabPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapLabPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapLabPerTahun);
-
-        btnPerujukLabPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
-        btnPerujukLabPerTahun.setText("Perujuk Lab Per Tahun");
-        btnPerujukLabPerTahun.setIconTextGap(0);
-        btnPerujukLabPerTahun.setName("btnPerujukLabPerTahun"); // NOI18N
-        btnPerujukLabPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPerujukLabPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerujukLabPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPerujukLabPerTahun);
-
-        btnRekapRadiologiPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Thorax_X-Ray_Black_63791.png"))); // NOI18N
-        btnRekapRadiologiPerTahun.setText("Rekap Radiologi Per Tahun");
-        btnRekapRadiologiPerTahun.setIconTextGap(0);
-        btnRekapRadiologiPerTahun.setName("btnRekapRadiologiPerTahun"); // NOI18N
-        btnRekapRadiologiPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRekapRadiologiPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRekapRadiologiPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRekapRadiologiPerTahun);
-
-        btnPerujukRadiologiPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor_assistant.png"))); // NOI18N
-        btnPerujukRadiologiPerTahun.setText("Perujuk Radiologi Per Tahun");
-        btnPerujukRadiologiPerTahun.setIconTextGap(0);
-        btnPerujukRadiologiPerTahun.setName("btnPerujukRadiologiPerTahun"); // NOI18N
-        btnPerujukRadiologiPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPerujukRadiologiPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerujukRadiologiPerTahunActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPerujukRadiologiPerTahun);
-
-        btnJumlahPorsiDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_bibimbub_3377053.png"))); // NOI18N
-        btnJumlahPorsiDiet.setText("Rekap Bulanan Porsi Diet");
-        btnJumlahPorsiDiet.setIconTextGap(0);
-        btnJumlahPorsiDiet.setName("btnJumlahPorsiDiet"); // NOI18N
-        btnJumlahPorsiDiet.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJumlahPorsiDiet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJumlahPorsiDietActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJumlahPorsiDiet);
-
-        btnJumlahMacamDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ramen_3377055.png"))); // NOI18N
-        btnJumlahMacamDiet.setText("Rekap Bulanan Macam Diet");
-        btnJumlahMacamDiet.setIconTextGap(0);
-        btnJumlahMacamDiet.setName("btnJumlahMacamDiet"); // NOI18N
-        btnJumlahMacamDiet.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJumlahMacamDiet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJumlahMacamDietActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnJumlahMacamDiet);
-
-        btnPaymentPoint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
-        btnPaymentPoint2.setText("Payment Point 2");
-        btnPaymentPoint2.setIconTextGap(0);
-        btnPaymentPoint2.setName("btnPaymentPoint2"); // NOI18N
-        btnPaymentPoint2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPaymentPoint2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPaymentPoint2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPaymentPoint2);
-
-        btnPembayaranAkunBayar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
-        btnPembayaranAkunBayar2.setText("Pembayaran Per Akun Bayar 2");
-        btnPembayaranAkunBayar2.setIconTextGap(0);
-        btnPembayaranAkunBayar2.setName("btnPembayaranAkunBayar2"); // NOI18N
-        btnPembayaranAkunBayar2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPembayaranAkunBayar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPembayaranAkunBayar2ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPembayaranAkunBayar2);
-
-        btnHAIsBangsal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
-        btnHAIsBangsal.setText("HAIs Per Kamar/Bangsal");
-        btnHAIsBangsal.setIconTextGap(0);
-        btnHAIsBangsal.setName("btnHAIsBangsal"); // NOI18N
-        btnHAIsBangsal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnHAIsBangsal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHAIsBangsalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnHAIsBangsal);
-
-        btnPPNObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_money_299107.png"))); // NOI18N
-        btnPPNObat.setText("PPN Obat");
-        btnPPNObat.setIconTextGap(0);
-        btnPPNObat.setName("btnPPNObat"); // NOI18N
-        btnPPNObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPPNObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPPNObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPPNObat);
-
-        btnSaldoAkunPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icons-05_799761.png"))); // NOI18N
-        btnSaldoAkunPerBulan.setText("Saldo Akun Per Bulan");
-        btnSaldoAkunPerBulan.setIconTextGap(0);
-        btnSaldoAkunPerBulan.setName("btnSaldoAkunPerBulan"); // NOI18N
-        btnSaldoAkunPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSaldoAkunPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaldoAkunPerBulanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSaldoAkunPerBulan);
-
-        btnDisplayApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/find.png"))); // NOI18N
-        btnDisplayApotek.setText("Display Antrian Apotek");
-        btnDisplayApotek.setIconTextGap(0);
-        btnDisplayApotek.setName("btnDisplayApotek"); // NOI18N
-        btnDisplayApotek.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDisplayApotek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDisplayApotekActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDisplayApotek);
-
-        btnCekSisruteFaskes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
-        btnCekSisruteFaskes.setText("Referensi Faskes Sisrute");
-        btnCekSisruteFaskes.setIconTextGap(0);
-        btnCekSisruteFaskes.setName("btnCekSisruteFaskes"); // NOI18N
-        btnCekSisruteFaskes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekSisruteFaskes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekSisruteFaskesActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekSisruteFaskes);
-
-        btnCekSisruteAlasanRujuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_todo_list_add_17451.png"))); // NOI18N
-        btnCekSisruteAlasanRujuk.setText("Referensi Alasan Rujuk Sisrute");
-        btnCekSisruteAlasanRujuk.setIconTextGap(0);
-        btnCekSisruteAlasanRujuk.setName("btnCekSisruteAlasanRujuk"); // NOI18N
-        btnCekSisruteAlasanRujuk.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekSisruteAlasanRujuk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekSisruteAlasanRujukActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekSisruteAlasanRujuk);
-
-        btnCekSisruteDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnCekSisruteDiagnosa.setText("Referensi Diagnosa Sisrute");
-        btnCekSisruteDiagnosa.setIconTextGap(0);
-        btnCekSisruteDiagnosa.setName("btnCekSisruteDiagnosa"); // NOI18N
-        btnCekSisruteDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekSisruteDiagnosa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekSisruteDiagnosaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekSisruteDiagnosa);
-
-        btnRujukanMasukSisrute.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_analysis_60159.png"))); // NOI18N
-        btnRujukanMasukSisrute.setText("Rujukan Masuk Sisrute");
-        btnRujukanMasukSisrute.setIconTextGap(0);
-        btnRujukanMasukSisrute.setName("btnRujukanMasukSisrute"); // NOI18N
-        btnRujukanMasukSisrute.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRujukanMasukSisrute.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRujukanMasukSisruteActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRujukanMasukSisrute);
-
-        btnRujukanKeluarSisrute.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
-        btnRujukanKeluarSisrute.setText("Rujukan Keluar Sisrute");
-        btnRujukanKeluarSisrute.setIconTextGap(0);
-        btnRujukanKeluarSisrute.setName("btnRujukanKeluarSisrute"); // NOI18N
-        btnRujukanKeluarSisrute.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRujukanKeluarSisrute.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRujukanKeluarSisruteActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnRujukanKeluarSisrute);
-
-        btnCekBPJSSKDP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-preview_23216.png"))); // NOI18N
-        btnCekBPJSSKDP.setText("Cek SKDP VClaim");
-        btnCekBPJSSKDP.setIconTextGap(0);
-        btnCekBPJSSKDP.setName("btnCekBPJSSKDP"); // NOI18N
-        btnCekBPJSSKDP.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSSKDP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSSKDPActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnCekBPJSSKDP);
-
-        btnDataBatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
-        btnDataBatch.setText("Data Batch");
-        btnDataBatch.setIconTextGap(0);
-        btnDataBatch.setName("btnDataBatch"); // NOI18N
-        btnDataBatch.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDataBatch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDataBatchActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDataBatch);
-
-        btnKunjunganLabRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnKunjunganLabRalan.setText("Kunjungan Lab Ralan");
-        btnKunjunganLabRalan.setIconTextGap(0);
-        btnKunjunganLabRalan.setName("btnKunjunganLabRalan"); // NOI18N
-        btnKunjunganLabRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKunjunganLabRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKunjunganLabRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKunjunganLabRalan);
-
-        btnKunjunganLabRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnKunjunganLabRanap.setText("Kunjungan Lab Ranap");
-        btnKunjunganLabRanap.setIconTextGap(0);
-        btnKunjunganLabRanap.setName("btnKunjunganLabRanap"); // NOI18N
-        btnKunjunganLabRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKunjunganLabRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKunjunganLabRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKunjunganLabRanap);
-
-        btnKunjunganRadRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnKunjunganRadRalan.setText("Kunjungan Radiologi Ralan");
-        btnKunjunganRadRalan.setIconTextGap(0);
-        btnKunjunganRadRalan.setName("btnKunjunganRadRalan"); // NOI18N
-        btnKunjunganRadRalan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKunjunganRadRalan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKunjunganRadRalanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKunjunganRadRalan);
-
-        btnKunjunganRadRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnKunjunganRadRanap.setText("Kunjungan Radiologi Ranap");
-        btnKunjunganRadRanap.setIconTextGap(0);
-        btnKunjunganRadRanap.setName("btnKunjunganRadRanap"); // NOI18N
-        btnKunjunganRadRanap.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKunjunganRadRanap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKunjunganRadRanapActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKunjunganRadRanap);
-
-        btnPCareBeriObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/first_aid_kit.png"))); // NOI18N
-        btnPCareBeriObat.setText("Pemberian Obat PCare");
-        btnPCareBeriObat.setIconTextGap(0);
-        btnPCareBeriObat.setName("btnPCareBeriObat"); // NOI18N
-        btnPCareBeriObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareBeriObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareBeriObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareBeriObat);
-
-        btnPCareBeriTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png"))); // NOI18N
-        btnPCareBeriTindakan.setText("Pemberian Tindakan PCare");
-        btnPCareBeriTindakan.setIconTextGap(0);
-        btnPCareBeriTindakan.setName("btnPCareBeriTindakan"); // NOI18N
-        btnPCareBeriTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareBeriTindakan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareBeriTindakanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPCareBeriTindakan);
-
-        btnPembayaranAkunBayar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
-        btnPembayaranAkunBayar3.setText("Pembayaran Per Akun Bayar 3");
-        btnPembayaranAkunBayar3.setIconTextGap(0);
-        btnPembayaranAkunBayar3.setName("btnPembayaranAkunBayar3"); // NOI18N
-        btnPembayaranAkunBayar3.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPembayaranAkunBayar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPembayaranAkunBayar3ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPembayaranAkunBayar3);
-
-        btnPasswordAsuransi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002113_guard.png"))); // NOI18N
-        btnPasswordAsuransi.setText("Password Asuransi");
-        btnPasswordAsuransi.setIconTextGap(0);
-        btnPasswordAsuransi.setName("btnPasswordAsuransi"); // NOI18N
-        btnPasswordAsuransi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPasswordAsuransi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPasswordAsuransiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPasswordAsuransi);
-
-        btnDataSITT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnDataSITT.setText("Data TB");
-        btnDataSITT.setIconTextGap(0);
-        btnDataSITT.setName("btnDataSITT"); // NOI18N
-        btnDataSITT.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDataSITT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDataSITTActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnDataSITT);
-
-        btnSiranapKetersediaanKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
-        btnSiranapKetersediaanKamar.setText("Ketersediaan Kamar SIRANAP");
-        btnSiranapKetersediaanKamar.setIconTextGap(0);
-        btnSiranapKetersediaanKamar.setName("btnSiranapKetersediaanKamar"); // NOI18N
-        btnSiranapKetersediaanKamar.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSiranapKetersediaanKamar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiranapKetersediaanKamarActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSiranapKetersediaanKamar);
-
-        btnGrafikTBLaporanPeriode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikTBLaporanPeriode.setText("Periode Laporan TB");
-        btnGrafikTBLaporanPeriode.setIconTextGap(0);
-        btnGrafikTBLaporanPeriode.setName("btnGrafikTBLaporanPeriode"); // NOI18N
-        btnGrafikTBLaporanPeriode.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBLaporanPeriode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBLaporanPeriodeActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBLaporanPeriode);
-
-        btnGrafikTBRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikTBRujukan.setText("Rujukan TB");
-        btnGrafikTBRujukan.setIconTextGap(0);
-        btnGrafikTBRujukan.setName("btnGrafikTBRujukan"); // NOI18N
-        btnGrafikTBRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBRujukan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBRujukanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBRujukan);
-
-        btnGrafikTBRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikTBRiwayat.setText("Riwayat TB");
-        btnGrafikTBRiwayat.setIconTextGap(0);
-        btnGrafikTBRiwayat.setName("btnGrafikTBRiwayat"); // NOI18N
-        btnGrafikTBRiwayat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBRiwayat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBRiwayatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBRiwayat);
-
-        btnGrafikTBTipeDiagnosis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikTBTipeDiagnosis.setText("Tipe Diagnosis TB");
-        btnGrafikTBTipeDiagnosis.setIconTextGap(0);
-        btnGrafikTBTipeDiagnosis.setName("btnGrafikTBTipeDiagnosis"); // NOI18N
-        btnGrafikTBTipeDiagnosis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBTipeDiagnosis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBTipeDiagnosisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBTipeDiagnosis);
-
-        btnGrafikTBSTatusHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikTBSTatusHIV.setText("Status HIV TB");
-        btnGrafikTBSTatusHIV.setIconTextGap(0);
-        btnGrafikTBSTatusHIV.setName("btnGrafikTBSTatusHIV"); // NOI18N
-        btnGrafikTBSTatusHIV.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBSTatusHIV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBSTatusHIVActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBSTatusHIV);
-
-        btnGrafikTBSkoringAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikTBSkoringAnak.setText("Skoring Anak TB");
-        btnGrafikTBSkoringAnak.setIconTextGap(0);
-        btnGrafikTBSkoringAnak.setName("btnGrafikTBSkoringAnak"); // NOI18N
-        btnGrafikTBSkoringAnak.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBSkoringAnak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBSkoringAnakActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBSkoringAnak);
-
-        btnGrafikTBKonfirmasiSkoring5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikTBKonfirmasiSkoring5.setText("Konfirmasi Skoring 5 TB");
-        btnGrafikTBKonfirmasiSkoring5.setIconTextGap(0);
-        btnGrafikTBKonfirmasiSkoring5.setName("btnGrafikTBKonfirmasiSkoring5"); // NOI18N
-        btnGrafikTBKonfirmasiSkoring5.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBKonfirmasiSkoring5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBKonfirmasiSkoring5ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBKonfirmasiSkoring5);
-
-        btnGrafikTBKonfirmasiSkoring6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikTBKonfirmasiSkoring6.setText("Konfirmasi Skoring 6 TB");
-        btnGrafikTBKonfirmasiSkoring6.setIconTextGap(0);
-        btnGrafikTBKonfirmasiSkoring6.setName("btnGrafikTBKonfirmasiSkoring6"); // NOI18N
-        btnGrafikTBKonfirmasiSkoring6.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBKonfirmasiSkoring6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBKonfirmasiSkoring6ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBKonfirmasiSkoring6);
-
-        btnGrafikTBSumberObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikTBSumberObat.setText("Sumber Obat TB");
-        btnGrafikTBSumberObat.setIconTextGap(0);
-        btnGrafikTBSumberObat.setName("btnGrafikTBSumberObat"); // NOI18N
-        btnGrafikTBSumberObat.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBSumberObat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBSumberObatActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBSumberObat);
-
-        btnGrafikTBHasilAkhirPengobatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikTBHasilAkhirPengobatan.setText("Hasil Akhir Pengobatan TB");
-        btnGrafikTBHasilAkhirPengobatan.setIconTextGap(0);
-        btnGrafikTBHasilAkhirPengobatan.setName("btnGrafikTBHasilAkhirPengobatan"); // NOI18N
-        btnGrafikTBHasilAkhirPengobatan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBHasilAkhirPengobatan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBHasilAkhirPengobatanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBHasilAkhirPengobatan);
-
-        btnGrafikTBHasilTesHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikTBHasilTesHIV.setText("Hasil Tes HIV TB");
-        btnGrafikTBHasilTesHIV.setIconTextGap(0);
-        btnGrafikTBHasilTesHIV.setName("btnGrafikTBHasilTesHIV"); // NOI18N
-        btnGrafikTBHasilTesHIV.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikTBHasilTesHIV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikTBHasilTesHIVActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikTBHasilTesHIV);
-
-        btnKadaluarsaBatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_diagram-11_35581.png"))); // NOI18N
-        btnKadaluarsaBatch.setText("Kadaluarsa Batch");
-        btnKadaluarsaBatch.setIconTextGap(0);
-        btnKadaluarsaBatch.setName("btnKadaluarsaBatch"); // NOI18N
-        btnKadaluarsaBatch.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKadaluarsaBatch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKadaluarsaBatchActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnKadaluarsaBatch);
-
-        btnSisaStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-62-document-table_314903.png"))); // NOI18N
-        btnSisaStok.setText("Sisa Stok");
-        btnSisaStok.setIconTextGap(0);
-        btnSisaStok.setName("btnSisaStok"); // NOI18N
-        btnSisaStok.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSisaStok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSisaStokActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnSisaStok);
-
-        btnObatPerResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_receipt_3440909.png"))); // NOI18N
-        btnObatPerResep.setText("Obat Per Resep");
-        btnObatPerResep.setIconTextGap(0);
-        btnObatPerResep.setName("btnObatPerResep"); // NOI18N
-        btnObatPerResep.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnObatPerResep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObatPerResepActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnObatPerResep);
-
-        btnPemakaianAirPDAM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Energy_Energy_Oil_Water_Drop_Fuel_3911250.png"))); // NOI18N
-        btnPemakaianAirPDAM.setText("Pemakaian Air PDAM");
-        btnPemakaianAirPDAM.setIconTextGap(0);
-        btnPemakaianAirPDAM.setName("btnPemakaianAirPDAM"); // NOI18N
-        btnPemakaianAirPDAM.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPemakaianAirPDAM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPemakaianAirPDAMActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnPemakaianAirPDAM);
-
-        btnLimbahB3Medis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_trash red_10554.png"))); // NOI18N
-        btnLimbahB3Medis.setText("Limbah Padat B3 Medis");
-        btnLimbahB3Medis.setIconTextGap(0);
-        btnLimbahB3Medis.setName("btnLimbahB3Medis"); // NOI18N
-        btnLimbahB3Medis.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLimbahB3Medis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimbahB3MedisActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLimbahB3Medis);
-
-        btnGrafikPemakaianAirPDAMPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikPemakaianAirPDAMPerTanggal.setText("Pemakaian Air PDAM Per Tanggal");
-        btnGrafikPemakaianAirPDAMPerTanggal.setIconTextGap(0);
-        btnGrafikPemakaianAirPDAMPerTanggal.setName("btnGrafikPemakaianAirPDAMPerTanggal"); // NOI18N
-        btnGrafikPemakaianAirPDAMPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikPemakaianAirPDAMPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikPemakaianAirPDAMPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikPemakaianAirPDAMPerTanggal);
-
-        btnGrafikPemakaianAirPDAMPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikPemakaianAirPDAMPerBulan.setText("Pemakaian Air PDAM Per Bulan");
-        btnGrafikPemakaianAirPDAMPerBulan.setIconTextGap(0);
-        btnGrafikPemakaianAirPDAMPerBulan.setName("btnGrafikPemakaianAirPDAMPerBulan"); // NOI18N
-        btnGrafikPemakaianAirPDAMPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikPemakaianAirPDAMPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikPemakaianAirPDAMPerBulanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikPemakaianAirPDAMPerBulan);
-
-        btnGrafikLimbahB3MedisPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikLimbahB3MedisPerTanggal.setText("Limbah B3 Medis Per Tanggal");
-        btnGrafikLimbahB3MedisPerTanggal.setIconTextGap(0);
-        btnGrafikLimbahB3MedisPerTanggal.setName("btnGrafikLimbahB3MedisPerTanggal"); // NOI18N
-        btnGrafikLimbahB3MedisPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikLimbahB3MedisPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikLimbahB3MedisPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikLimbahB3MedisPerTanggal);
-
-        btnGrafikLimbahB3MedisPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikLimbahB3MedisPerBulan.setText("Limbah B3 Medis Per Bulan");
-        btnGrafikLimbahB3MedisPerBulan.setIconTextGap(0);
-        btnGrafikLimbahB3MedisPerBulan.setName("btnGrafikLimbahB3MedisPerBulan"); // NOI18N
-        btnGrafikLimbahB3MedisPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikLimbahB3MedisPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikLimbahB3MedisPerBulanActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikLimbahB3MedisPerBulan);
-
-        btnLimbahDomestik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Bin_ecology_recyclewaste_2992453.png"))); // NOI18N
-        btnLimbahDomestik.setText("Limbah Padat Domestik");
-        btnLimbahDomestik.setIconTextGap(0);
-        btnLimbahDomestik.setName("btnLimbahDomestik"); // NOI18N
-        btnLimbahDomestik.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLimbahDomestik.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimbahDomestikActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnLimbahDomestik);
-
-        btnGrafikLimbahDomestikPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
-        btnGrafikLimbahDomestikPerTanggal.setText("Limbah Padat Domestik Per Tanggal");
-        btnGrafikLimbahDomestikPerTanggal.setIconTextGap(0);
-        btnGrafikLimbahDomestikPerTanggal.setName("btnGrafikLimbahDomestikPerTanggal"); // NOI18N
-        btnGrafikLimbahDomestikPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikLimbahDomestikPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikLimbahDomestikPerTanggalActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnGrafikLimbahDomestikPerTanggal);
-
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6964,7 +1527,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21/04/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/04/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7010,6 +1573,4989 @@ public class frmUtama extends javax.swing.JFrame {
         btnResepObatDepan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResepObatDepanActionPerformed(evt);
+            }
+        });
+
+        btnBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
+        btnBarcode.setText("Barcode Presensi");
+        btnBarcode.setIconTextGap(0);
+        btnBarcode.setName("btnBarcode"); // NOI18N
+        btnBarcode.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBarcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarcodeActionPerformed(evt);
+            }
+        });
+
+        btnICD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnICD.setText("ICD 10");
+        btnICD.setIconTextGap(0);
+        btnICD.setName("btnICD"); // NOI18N
+        btnICD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnICD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnICDActionPerformed(evt);
+            }
+        });
+
+        btnObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnObat.setText("Obat, Alkes & BHP");
+        btnObat.setIconTextGap(0);
+        btnObat.setName("btnObat"); // NOI18N
+        btnObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatActionPerformed(evt);
+            }
+        });
+
+        btnObatPenyakit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484848_applications-science.png"))); // NOI18N
+        btnObatPenyakit.setText("Obat Penyakit");
+        btnObatPenyakit.setIconTextGap(0);
+        btnObatPenyakit.setName("btnObatPenyakit"); // NOI18N
+        btnObatPenyakit.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatPenyakit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatPenyakitActionPerformed(evt);
+            }
+        });
+
+        btnKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
+        btnKamar.setText("Kamar");
+        btnKamar.setIconTextGap(0);
+        btnKamar.setName("btnKamar"); // NOI18N
+        btnKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKamarActionPerformed(evt);
+            }
+        });
+
+        btnTindakanRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png"))); // NOI18N
+        btnTindakanRalan.setText("Tarif Ralan");
+        btnTindakanRalan.setIconTextGap(0);
+        btnTindakanRalan.setName("btnTindakanRalan"); // NOI18N
+        btnTindakanRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTindakanRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTindakanRalanActionPerformed(evt);
+            }
+        });
+
+        btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
+        btnDokter.setText("Dokter");
+        btnDokter.setIconTextGap(0);
+        btnDokter.setName("btnDokter"); // NOI18N
+        btnDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDokterActionPerformed(evt);
+            }
+        });
+
+        btnPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
+        btnPegawai.setText("Petugas");
+        btnPegawai.setIconTextGap(0);
+        btnPegawai.setName("btnPegawai"); // NOI18N
+        btnPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPegawaiActionPerformed(evt);
+            }
+        });
+
+        btnPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/patient.png"))); // NOI18N
+        btnPasien.setText("Pasien");
+        btnPasien.setIconTextGap(0);
+        btnPasien.setName("btnPasien"); // NOI18N
+        btnPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasienActionPerformed(evt);
+            }
+        });
+
+        btnRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnRegistrasi.setText("Registrasi");
+        btnRegistrasi.setIconTextGap(0);
+        btnRegistrasi.setName("btnRegistrasi"); // NOI18N
+        btnRegistrasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRegistrasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrasiActionPerformed(evt);
+            }
+        });
+
+        btnRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Tindakan-Rajal.png"))); // NOI18N
+        btnRalan.setText("Tindakan Ralan");
+        btnRalan.setIconTextGap(0);
+        btnRalan.setName("btnRalan"); // NOI18N
+        btnRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRalanActionPerformed(evt);
+            }
+        });
+
+        btnKamarInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Home.png"))); // NOI18N
+        btnKamarInap.setText("Rawat Inap");
+        btnKamarInap.setIconTextGap(0);
+        btnKamarInap.setName("btnKamarInap"); // NOI18N
+        btnKamarInap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKamarInap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKamarInapActionPerformed(evt);
+            }
+        });
+
+        btnRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/tindakanranap.png"))); // NOI18N
+        btnRanap.setText("Tindakan Ranap");
+        btnRanap.setIconTextGap(0);
+        btnRanap.setName("btnRanap"); // NOI18N
+        btnRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRanapActionPerformed(evt);
+            }
+        });
+
+        btnResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stock_task.png"))); // NOI18N
+        btnResepObat.setText("No. Resep");
+        btnResepObat.setIconTextGap(0);
+        btnResepObat.setName("btnResepObat"); // NOI18N
+        btnResepObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnResepObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResepObatActionPerformed(evt);
+            }
+        });
+
+        btnRujukPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
+        btnRujukPasien.setText("Rujukan Keluar");
+        btnRujukPasien.setIconTextGap(0);
+        btnRujukPasien.setName("btnRujukPasien"); // NOI18N
+        btnRujukPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRujukPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRujukPasienActionPerformed(evt);
+            }
+        });
+
+        btnBeriObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/first_aid_kit.png"))); // NOI18N
+        btnBeriObat.setText("Beri Obat/BHP");
+        btnBeriObat.setIconTextGap(0);
+        btnBeriObat.setName("btnBeriObat"); // NOI18N
+        btnBeriObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBeriObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBeriObatActionPerformed(evt);
+            }
+        });
+
+        btnPasienMati.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Ambulance.png"))); // NOI18N
+        btnPasienMati.setText("Pasien Meninggal");
+        btnPasienMati.setIconTextGap(0);
+        btnPasienMati.setName("btnPasienMati"); // NOI18N
+        btnPasienMati.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPasienMati.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasienMatiActionPerformed(evt);
+            }
+        });
+
+        btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/preferences-desktop-cryptography.png"))); // NOI18N
+        btnAdmin.setText("Set Admin");
+        btnAdmin.setIconTextGap(0);
+        btnAdmin.setName("btnAdmin"); // NOI18N
+        btnAdmin.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminActionPerformed(evt);
+            }
+        });
+
+        btnVakum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486615_remove-from-database.png"))); // NOI18N
+        btnVakum.setText("Vakum Table");
+        btnVakum.setIconTextGap(0);
+        btnVakum.setName("btnVakum"); // NOI18N
+        btnVakum.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnVakum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVakumActionPerformed(evt);
+            }
+        });
+
+        btnDisplay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/find.png"))); // NOI18N
+        btnDisplay.setText("Display Antrian Registrasi & Poli");
+        btnDisplay.setIconTextGap(0);
+        btnDisplay.setName("btnDisplay"); // NOI18N
+        btnDisplay.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisplayActionPerformed(evt);
+            }
+        });
+
+        btnSetupHarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
+        btnSetupHarga.setText("Set Harga Obat");
+        btnSetupHarga.setIconTextGap(0);
+        btnSetupHarga.setName("btnSetupHarga"); // NOI18N
+        btnSetupHarga.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetupHarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetupHargaActionPerformed(evt);
+            }
+        });
+
+        btnSuplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357959_truck.png"))); // NOI18N
+        btnSuplier.setText("Suplier Obat/Alkes/BHP");
+        btnSuplier.setIconTextGap(0);
+        btnSuplier.setName("btnSuplier"); // NOI18N
+        btnSuplier.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuplierActionPerformed(evt);
+            }
+        });
+
+        btnJnsBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Card_file.png"))); // NOI18N
+        btnJnsBarang.setText("Jenis Obat, Alkes & BHP");
+        btnJnsBarang.setIconTextGap(0);
+        btnJnsBarang.setName("btnJnsBarang"); // NOI18N
+        btnJnsBarang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJnsBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJnsBarangActionPerformed(evt);
+            }
+        });
+
+        btnKonversi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ark2.png"))); // NOI18N
+        btnKonversi.setText("Konversi Satuan");
+        btnKonversi.setIconTextGap(0);
+        btnKonversi.setName("btnKonversi"); // NOI18N
+        btnKonversi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKonversi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKonversiActionPerformed(evt);
+            }
+        });
+
+        btnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bag1.png"))); // NOI18N
+        btnSatuan.setText("Satuan Barang");
+        btnSatuan.setIconTextGap(0);
+        btnSatuan.setName("btnSatuan"); // NOI18N
+        btnSatuan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSatuan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSatuanActionPerformed(evt);
+            }
+        });
+
+        btnCashFlow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
+        btnCashFlow.setText("Cash Flow");
+        btnCashFlow.setIconTextGap(0);
+        btnCashFlow.setName("btnCashFlow"); // NOI18N
+        btnCashFlow.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCashFlow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCashFlowActionPerformed(evt);
+            }
+        });
+
+        btnBubes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/applications-office.png"))); // NOI18N
+        btnBubes.setText("Buku Besar");
+        btnBubes.setIconTextGap(0);
+        btnBubes.setName("btnBubes"); // NOI18N
+        btnBubes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBubes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBubesActionPerformed(evt);
+            }
+        });
+
+        btnPostingJurnal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
+        btnPostingJurnal.setText("Posting Jurnal");
+        btnPostingJurnal.setIconTextGap(0);
+        btnPostingJurnal.setName("btnPostingJurnal"); // NOI18N
+        btnPostingJurnal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPostingJurnal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPostingJurnalActionPerformed(evt);
+            }
+        });
+
+        btnRekeningTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/money_bag.png"))); // NOI18N
+        btnRekeningTahun.setText("Rekening Tahun");
+        btnRekeningTahun.setIconTextGap(0);
+        btnRekeningTahun.setName("btnRekeningTahun"); // NOI18N
+        btnRekeningTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekeningTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekeningTahunActionPerformed(evt);
+            }
+        });
+
+        btnRekening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
+        btnRekening.setText("Akun Rekening");
+        btnRekening.setIconTextGap(0);
+        btnRekening.setName("btnRekening"); // NOI18N
+        btnRekening.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekening.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekeningActionPerformed(evt);
+            }
+        });
+
+        btnPembelian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
+        btnPembelian.setText("Pengadaan Obat & BHP");
+        btnPembelian.setIconTextGap(0);
+        btnPembelian.setName("btnPembelian"); // NOI18N
+        btnPembelian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembelian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembelianActionPerformed(evt);
+            }
+        });
+
+        btnPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
+        btnPenjualan.setText("Penjualan Obat & BHP");
+        btnPenjualan.setIconTextGap(0);
+        btnPenjualan.setName("btnPenjualan"); // NOI18N
+        btnPenjualan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenjualan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenjualanActionPerformed(evt);
+            }
+        });
+
+        btnPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnPiutang.setText("Piutang Obat & BHP");
+        btnPiutang.setIconTextGap(0);
+        btnPiutang.setName("btnPiutang"); // NOI18N
+        btnPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiutangActionPerformed(evt);
+            }
+        });
+
+        btnBayarPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
+        btnBayarPiutang.setText("Bayar Piutang");
+        btnBayarPiutang.setIconTextGap(0);
+        btnBayarPiutang.setName("btnBayarPiutang"); // NOI18N
+        btnBayarPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBayarPiutang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBayarPiutangActionPerformed(evt);
+            }
+        });
+
+        btnOpname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
+        btnOpname.setText("Stok Opname Obat & BHP");
+        btnOpname.setIconTextGap(0);
+        btnOpname.setName("btnOpname"); // NOI18N
+        btnOpname.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnOpname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpnameActionPerformed(evt);
+            }
+        });
+
+        btnReturBeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816189_arrow_down.png"))); // NOI18N
+        btnReturBeli.setText("Retur Ke Suplier");
+        btnReturBeli.setIconTextGap(0);
+        btnReturBeli.setName("btnReturBeli"); // NOI18N
+        btnReturBeli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReturBeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturBeliActionPerformed(evt);
+            }
+        });
+
+        btnReturJual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486142_shopping_cart.png"))); // NOI18N
+        btnReturJual.setText("Retur Dari Pembeli");
+        btnReturJual.setIconTextGap(0);
+        btnReturJual.setName("btnReturJual"); // NOI18N
+        btnReturJual.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReturJual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturJualActionPerformed(evt);
+            }
+        });
+
+        btnSirkulasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasi.setText("Sirkulasi Obat, Alkes & BHP");
+        btnSirkulasi.setIconTextGap(0);
+        btnSirkulasi.setName("btnSirkulasi"); // NOI18N
+        btnSirkulasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasiActionPerformed(evt);
+            }
+        });
+
+        btnKeuntungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
+        btnKeuntungan.setText("Keuntungan Penjualan");
+        btnKeuntungan.setIconTextGap(0);
+        btnKeuntungan.setName("btnKeuntungan"); // NOI18N
+        btnKeuntungan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKeuntungan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeuntunganActionPerformed(evt);
+            }
+        });
+
+        btnLabaRugi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486822_20.png"))); // NOI18N
+        btnLabaRugi.setText("Keuangan");
+        btnLabaRugi.setIconTextGap(0);
+        btnLabaRugi.setName("btnLabaRugi"); // NOI18N
+        btnLabaRugi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLabaRugi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLabaRugiActionPerformed(evt);
+            }
+        });
+
+        btnReturPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
+        btnReturPiutang.setText("Retur Piutang Pembeli");
+        btnReturPiutang.setIconTextGap(0);
+        btnReturPiutang.setName("btnReturPiutang"); // NOI18N
+        btnReturPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReturPiutang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturPiutangActionPerformed(evt);
+            }
+        });
+
+        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/InformasiKamar.png"))); // NOI18N
+        btnAnalisaKamar.setText("Informasi Kamar");
+        btnAnalisaKamar.setIconTextGap(0);
+        btnAnalisaKamar.setName("btnAnalisaKamar"); // NOI18N
+        btnAnalisaKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAnalisaKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalisaKamarActionPerformed(evt);
+            }
+        });
+
+        btnRHDOkter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRHDOkter.setText("Harian Dokter");
+        btnRHDOkter.setIconTextGap(0);
+        btnRHDOkter.setName("btnRHDOkter"); // NOI18N
+        btnRHDOkter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRHDOkter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRHDOkterActionPerformed(evt);
+            }
+        });
+
+        btnRBDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRBDokter.setText("Bulanan Dokter");
+        btnRBDokter.setIconTextGap(0);
+        btnRBDokter.setName("btnRBDokter"); // NOI18N
+        btnRBDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRBDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRBDokterActionPerformed(evt);
+            }
+        });
+
+        btnTagihanMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046800_Cash_register.png"))); // NOI18N
+        btnTagihanMasuk.setText("Tagihan Masuk");
+        btnTagihanMasuk.setIconTextGap(0);
+        btnTagihanMasuk.setName("btnTagihanMasuk"); // NOI18N
+        btnTagihanMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTagihanMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTagihanMasukActionPerformed(evt);
+            }
+        });
+
+        btnResume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
+        btnResume.setText("Riwayat Perawatan");
+        btnResume.setIconTextGap(0);
+        btnResume.setName("btnResume"); // NOI18N
+        btnResume.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnResume.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResumeActionPerformed(evt);
+            }
+        });
+
+        btnDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486936_pie-chart.png"))); // NOI18N
+        btnDiet.setText("Diet Pasien");
+        btnDiet.setIconTextGap(0);
+        btnDiet.setName("btnDiet"); // NOI18N
+        btnDiet.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDietActionPerformed(evt);
+            }
+        });
+
+        btnRHParamedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
+        btnRHParamedis.setText("Harian Paramedis");
+        btnRHParamedis.setIconTextGap(0);
+        btnRHParamedis.setName("btnRHParamedis"); // NOI18N
+        btnRHParamedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRHParamedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRHParamedisActionPerformed(evt);
+            }
+        });
+
+        btnRBParamedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
+        btnRBParamedis.setText("Bulanan Paramedis");
+        btnRBParamedis.setIconTextGap(0);
+        btnRBParamedis.setName("btnRBParamedis"); // NOI18N
+        btnRBParamedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRBParamedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRBParamedisActionPerformed(evt);
+            }
+        });
+
+        btnKasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
+        btnKasir.setText("Rawat Jalan");
+        btnKasir.setIconTextGap(0);
+        btnKasir.setName("btnKasir"); // NOI18N
+        btnKasir.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKasir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKasirActionPerformed(evt);
+            }
+        });
+
+        btnLahir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/baby-girl.png"))); // NOI18N
+        btnLahir.setText("Kelahiran Bayi");
+        btnLahir.setIconTextGap(0);
+        btnLahir.setName("btnLahir"); // NOI18N
+        btnLahir.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLahir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLahirActionPerformed(evt);
+            }
+        });
+
+        btnSetBiayaHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
+        btnSetBiayaHarian.setText("Biaya Harian");
+        btnSetBiayaHarian.setIconTextGap(0);
+        btnSetBiayaHarian.setName("btnSetBiayaHarian"); // NOI18N
+        btnSetBiayaHarian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetBiayaHarian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetBiayaHarianActionPerformed(evt);
+            }
+        });
+
+        btnJenisInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cabinet.png"))); // NOI18N
+        btnJenisInventaris.setText("Jenis Inventaris");
+        btnJenisInventaris.setIconTextGap(0);
+        btnJenisInventaris.setName("btnJenisInventaris"); // NOI18N
+        btnJenisInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJenisInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJenisInventarisActionPerformed(evt);
+            }
+        });
+
+        btnKategoriInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
+        btnKategoriInventaris.setText("Kategori Inventaris");
+        btnKategoriInventaris.setIconTextGap(0);
+        btnKategoriInventaris.setName("btnKategoriInventaris"); // NOI18N
+        btnKategoriInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKategoriInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKategoriInventarisActionPerformed(evt);
+            }
+        });
+
+        btnLihatPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
+        btnLihatPiutang.setText("Piutang Pasien");
+        btnLihatPiutang.setIconTextGap(0);
+        btnLihatPiutang.setName("btnLihatPiutang"); // NOI18N
+        btnLihatPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLihatPiutang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLihatPiutangActionPerformed(evt);
+            }
+        });
+
+        btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laboratory.png"))); // NOI18N
+        btnLaboratorium.setText("Periksa Lab");
+        btnLaboratorium.setIconTextGap(0);
+        btnLaboratorium.setName("btnLaboratorium"); // NOI18N
+        btnLaboratorium.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaboratorium.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaboratoriumActionPerformed(evt);
+            }
+        });
+
+        btnRalanMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
+        btnRalanMasuk.setText("Pembayaran Ralan");
+        btnRalanMasuk.setIconTextGap(0);
+        btnRalanMasuk.setName("btnRalanMasuk"); // NOI18N
+        btnRalanMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRalanMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRalanMasukActionPerformed(evt);
+            }
+        });
+
+        btnSetupAplikasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/local_network.png"))); // NOI18N
+        btnSetupAplikasi.setText("Set Aplikasi");
+        btnSetupAplikasi.setIconTextGap(0);
+        btnSetupAplikasi.setName("btnSetupAplikasi"); // NOI18N
+        btnSetupAplikasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetupAplikasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetupAplikasiActionPerformed(evt);
+            }
+        });
+
+        btnSetOtoRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stethoscope (1).png"))); // NOI18N
+        btnSetOtoRalan.setText("Set Oto Ralan");
+        btnSetOtoRalan.setIconTextGap(0);
+        btnSetOtoRalan.setName("btnSetOtoRalan"); // NOI18N
+        btnSetOtoRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetOtoRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetOtoRalanActionPerformed(evt);
+            }
+        });
+
+        btnRanapMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
+        btnRanapMasuk.setText("Pembayaran Ranap");
+        btnRanapMasuk.setIconTextGap(0);
+        btnRanapMasuk.setName("btnRanapMasuk"); // NOI18N
+        btnRanapMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRanapMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRanapMasukActionPerformed(evt);
+            }
+        });
+
+        btnProdusenInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
+        btnProdusenInventaris.setText("Produsen Inventaris");
+        btnProdusenInventaris.setIconTextGap(0);
+        btnProdusenInventaris.setName("btnProdusenInventaris"); // NOI18N
+        btnProdusenInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnProdusenInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProdusenInventarisActionPerformed(evt);
+            }
+        });
+
+        btnSetBiayaMasukSekali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
+        btnSetBiayaMasukSekali.setText("Biaya Masuk Sekali");
+        btnSetBiayaMasukSekali.setIconTextGap(0);
+        btnSetBiayaMasukSekali.setName("btnSetBiayaMasukSekali"); // NOI18N
+        btnSetBiayaMasukSekali.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetBiayaMasukSekali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetBiayaMasukSekaliActionPerformed(evt);
+            }
+        });
+
+        btnPaketOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487111_stock_paste.png"))); // NOI18N
+        btnPaketOperasi.setText("Tarif Operasi/VK");
+        btnPaketOperasi.setIconTextGap(0);
+        btnPaketOperasi.setName("btnPaketOperasi"); // NOI18N
+        btnPaketOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPaketOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaketOperasiActionPerformed(evt);
+            }
+        });
+
+        btnTagihanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/surgeon.png"))); // NOI18N
+        btnTagihanOperasi.setText("Operasi/VK");
+        btnTagihanOperasi.setIconTextGap(0);
+        btnTagihanOperasi.setName("btnTagihanOperasi"); // NOI18N
+        btnTagihanOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTagihanOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTagihanOperasiActionPerformed(evt);
+            }
+        });
+
+        BtnJadwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
+        BtnJadwal.setText("Jadwal Praktek");
+        BtnJadwal.setIconTextGap(0);
+        BtnJadwal.setName("BtnJadwal"); // NOI18N
+        BtnJadwal.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnJadwal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnJadwalActionPerformed(evt);
+            }
+        });
+
+        btnMerkInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bag1.png"))); // NOI18N
+        btnMerkInventaris.setText("Merk Inventaris");
+        btnMerkInventaris.setIconTextGap(0);
+        btnMerkInventaris.setName("btnMerkInventaris"); // NOI18N
+        btnMerkInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMerkInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMerkInventarisActionPerformed(evt);
+            }
+        });
+
+        btnRuangInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
+        btnRuangInventaris.setText("Ruang Inventaris");
+        btnRuangInventaris.setIconTextGap(0);
+        btnRuangInventaris.setName("btnRuangInventaris"); // NOI18N
+        btnRuangInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRuangInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRuangInventarisActionPerformed(evt);
+            }
+        });
+
+        btnBarangInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fax.png"))); // NOI18N
+        btnBarangInventaris.setText("Koleksi Inventaris");
+        btnBarangInventaris.setIconTextGap(0);
+        btnBarangInventaris.setName("btnBarangInventaris"); // NOI18N
+        btnBarangInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBarangInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarangInventarisActionPerformed(evt);
+            }
+        });
+
+        btnInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486921_bar-code.png"))); // NOI18N
+        btnInventaris.setText("Data Inventaris");
+        btnInventaris.setIconTextGap(0);
+        btnInventaris.setName("btnInventaris"); // NOI18N
+        btnInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarisActionPerformed(evt);
+            }
+        });
+
+        btnSirkulasiInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasiInventaris.setText("Sirkulasi Inventaris");
+        btnSirkulasiInventaris.setIconTextGap(0);
+        btnSirkulasiInventaris.setName("btnSirkulasiInventaris"); // NOI18N
+        btnSirkulasiInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasiInventarisActionPerformed(evt);
+            }
+        });
+
+        btnFrekuensiRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnFrekuensiRalan.setText("Frekuensi Penyakit Ralan");
+        btnFrekuensiRalan.setIconTextGap(0);
+        btnFrekuensiRalan.setName("btnFrekuensiRalan"); // NOI18N
+        btnFrekuensiRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnFrekuensiRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFrekuensiRalanActionPerformed(evt);
+            }
+        });
+
+        btnFrekuensiRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/applications-office.png"))); // NOI18N
+        btnFrekuensiRanap.setText("Frekuensi Penyakit Ranap");
+        btnFrekuensiRanap.setIconTextGap(0);
+        btnFrekuensiRanap.setName("btnFrekuensiRanap"); // NOI18N
+        btnFrekuensiRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnFrekuensiRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFrekuensiRanapActionPerformed(evt);
+            }
+        });
+
+        btnSetupOtoLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/our_process_2.png"))); // NOI18N
+        btnSetupOtoLokasi.setText("Set Oto Lokasi");
+        btnSetupOtoLokasi.setIconTextGap(0);
+        btnSetupOtoLokasi.setName("btnSetupOtoLokasi"); // NOI18N
+        btnSetupOtoLokasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetupOtoLokasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetupOtoLokasiActionPerformed(evt);
+            }
+        });
+
+        btnTagihanPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
+        btnTagihanPoli.setText("Harian Dokter Poli");
+        btnTagihanPoli.setIconTextGap(0);
+        btnTagihanPoli.setName("btnTagihanPoli"); // NOI18N
+        btnTagihanPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTagihanPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTagihanPoliActionPerformed(evt);
+            }
+        });
+
+        btnRujukMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_vector_65_13_473800.png"))); // NOI18N
+        btnRujukMasuk.setText("Rujukan Masuk");
+        btnRujukMasuk.setIconTextGap(0);
+        btnRujukMasuk.setName("btnRujukMasuk"); // NOI18N
+        btnRujukMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRujukMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRujukMasukActionPerformed(evt);
+            }
+        });
+
+        btnTracker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
+        btnTracker.setText("Tracker Login");
+        btnTracker.setIconTextGap(0);
+        btnTracker.setName("btnTracker"); // NOI18N
+        btnTracker.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTracker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrackerActionPerformed(evt);
+            }
+        });
+
+        btnTindakanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png"))); // NOI18N
+        btnTindakanRanap.setText("Tarif Ranap");
+        btnTindakanRanap.setIconTextGap(0);
+        btnTindakanRanap.setName("btnTindakanRanap"); // NOI18N
+        btnTindakanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTindakanRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTindakanRanapActionPerformed(evt);
+            }
+        });
+
+        btnSetupJamInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Time.png"))); // NOI18N
+        btnSetupJamInap.setText("Set Kamar Inap");
+        btnSetupJamInap.setIconTextGap(0);
+        btnSetupJamInap.setName("btnSetupJamInap"); // NOI18N
+        btnSetupJamInap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetupJamInap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetupJamInapActionPerformed(evt);
+            }
+        });
+
+        btnStokObatPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
+        btnStokObatPasien.setText("Stok Obat Pasien");
+        btnStokObatPasien.setIconTextGap(0);
+        btnStokObatPasien.setName("btnStokObatPasien"); // NOI18N
+        btnStokObatPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnStokObatPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStokObatPasienActionPerformed(evt);
+            }
+        });
+
+        btnTarifLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnTarifLab.setText("Tarif Lab");
+        btnTarifLab.setIconTextGap(0);
+        btnTarifLab.setName("btnTarifLab"); // NOI18N
+        btnTarifLab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTarifLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTarifLabActionPerformed(evt);
+            }
+        });
+
+        btnSetPenjab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/user3.png"))); // NOI18N
+        btnSetPenjab.setText("Set P.J. Unit Penunjang");
+        btnSetPenjab.setIconTextGap(0);
+        btnSetPenjab.setName("btnSetPenjab"); // NOI18N
+        btnSetPenjab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetPenjab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetPenjabActionPerformed(evt);
+            }
+        });
+
+        btnTagihanObatPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnTagihanObatPoli.setText("Obat Per Poli");
+        btnTagihanObatPoli.setIconTextGap(0);
+        btnTagihanObatPoli.setName("btnTagihanObatPoli"); // NOI18N
+        btnTagihanObatPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTagihanObatPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTagihanObatPoliActionPerformed(evt);
+            }
+        });
+
+        btnTagihanObatBangsal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnTagihanObatBangsal.setText("Obat Per Kamar");
+        btnTagihanObatBangsal.setIconTextGap(0);
+        btnTagihanObatBangsal.setName("btnTagihanObatBangsal"); // NOI18N
+        btnTagihanObatBangsal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTagihanObatBangsal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTagihanObatBangsalActionPerformed(evt);
+            }
+        });
+
+        btnReturPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815295_medical_case.png"))); // NOI18N
+        btnReturPasien.setText("Retur Obat Ranap");
+        btnReturPasien.setIconTextGap(0);
+        btnReturPasien.setName("btnReturPasien"); // NOI18N
+        btnReturPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReturPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturPasienActionPerformed(evt);
+            }
+        });
+
+        btnKeuntunganObatRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
+        btnKeuntunganObatRanap.setText("Keuntungan Beri Obat ");
+        btnKeuntunganObatRanap.setIconTextGap(0);
+        btnKeuntunganObatRanap.setName("btnKeuntunganObatRanap"); // NOI18N
+        btnKeuntunganObatRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKeuntunganObatRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeuntunganObatRanapActionPerformed(evt);
+            }
+        });
+
+        btnPenggajian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046603_wallet.png"))); // NOI18N
+        btnPenggajian.setText("Kepegawaian & Gaji");
+        btnPenggajian.setIconTextGap(0);
+        btnPenggajian.setName("btnPenggajian"); // NOI18N
+        btnPenggajian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenggajian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenggajianActionPerformed(evt);
+            }
+        });
+
+        btnRekapPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/sign-up.png"))); // NOI18N
+        btnRekapPresensi.setText("Rekap Kehadiran");
+        btnRekapPresensi.setIconTextGap(0);
+        btnRekapPresensi.setName("btnRekapPresensi"); // NOI18N
+        btnRekapPresensi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPresensi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPresensiActionPerformed(evt);
+            }
+        });
+
+        btnRekapHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/rekap.png"))); // NOI18N
+        btnRekapHarian.setText("Presensi Harian");
+        btnRekapHarian.setIconTextGap(0);
+        btnRekapHarian.setName("btnRekapHarian"); // NOI18N
+        btnRekapHarian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapHarian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapHarianActionPerformed(evt);
+            }
+        });
+
+        btnRekapBulanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486898_project-plan.png"))); // NOI18N
+        btnRekapBulanan.setText("Presensi Bulanan");
+        btnRekapBulanan.setIconTextGap(0);
+        btnRekapBulanan.setName("btnRekapBulanan"); // NOI18N
+        btnRekapBulanan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapBulanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapBulananActionPerformed(evt);
+            }
+        });
+
+        btnDeposit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Money.png"))); // NOI18N
+        btnDeposit.setText("Deposit Pasien");
+        btnDeposit.setIconTextGap(0);
+        btnDeposit.setName("btnDeposit"); // NOI18N
+        btnDeposit.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositActionPerformed(evt);
+            }
+        });
+
+        btnSetupRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/patient (1).png"))); // NOI18N
+        btnSetupRM.setText("Set RM");
+        btnSetupRM.setIconTextGap(0);
+        btnSetupRM.setName("btnSetupRM"); // NOI18N
+        btnSetupRM.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetupRM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetupRMActionPerformed(evt);
+            }
+        });
+
+        btnResepPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
+        btnResepPulang.setText("Resep Pulang");
+        btnResepPulang.setIconTextGap(0);
+        btnResepPulang.setName("btnResepPulang"); // NOI18N
+        btnResepPulang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnResepPulang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResepPulangActionPerformed(evt);
+            }
+        });
+
+        btnSetupTarif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/x-office-address-book.png"))); // NOI18N
+        btnSetupTarif.setText("Set Penggunaan Tarif");
+        btnSetupTarif.setIconTextGap(0);
+        btnSetupTarif.setName("btnSetupTarif"); // NOI18N
+        btnSetupTarif.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetupTarif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetupTarifActionPerformed(evt);
+            }
+        });
+
+        btnBarangIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
+        btnBarangIpsrs.setText("Barang Non Medis");
+        btnBarangIpsrs.setIconTextGap(0);
+        btnBarangIpsrs.setName("btnBarangIpsrs"); // NOI18N
+        btnBarangIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBarangIpsrs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarangIpsrsActionPerformed(evt);
+            }
+        });
+
+        btnPembelianIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/inventory-maintenance.png"))); // NOI18N
+        btnPembelianIpsrs.setText("Pengadaan Barang Non Medis");
+        btnPembelianIpsrs.setIconTextGap(0);
+        btnPembelianIpsrs.setName("btnPembelianIpsrs"); // NOI18N
+        btnPembelianIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembelianIpsrs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembelianIpsrsActionPerformed(evt);
+            }
+        });
+
+        btnPengeluaranIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/shopping-basket-full.png"))); // NOI18N
+        btnPengeluaranIpsrs.setText("Stok Keluar Non Medis");
+        btnPengeluaranIpsrs.setIconTextGap(0);
+        btnPengeluaranIpsrs.setName("btnPengeluaranIpsrs"); // NOI18N
+        btnPengeluaranIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengeluaranIpsrs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengeluaranIpsrsActionPerformed(evt);
+            }
+        });
+
+        btnRHMasukIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/shopping_cart.png"))); // NOI18N
+        btnRHMasukIpsrs.setText("Rekap Pengadaan Non Medis");
+        btnRHMasukIpsrs.setIconTextGap(0);
+        btnRHMasukIpsrs.setName("btnRHMasukIpsrs"); // NOI18N
+        btnRHMasukIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRHMasukIpsrs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRHMasukIpsrsActionPerformed(evt);
+            }
+        });
+
+        btnRHKeluarIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
+        btnRHKeluarIpsrs.setText("Rekap Stok Keluar Non Medis");
+        btnRHKeluarIpsrs.setIconTextGap(0);
+        btnRHKeluarIpsrs.setName("btnRHKeluarIpsrs"); // NOI18N
+        btnRHKeluarIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRHKeluarIpsrs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRHKeluarIpsrsActionPerformed(evt);
+            }
+        });
+
+        btnRBiayaIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
+        btnRBiayaIpsrs.setText("Biaya Pengadaan Non Medis");
+        btnRBiayaIpsrs.setIconTextGap(0);
+        btnRBiayaIpsrs.setName("btnRBiayaIpsrs"); // NOI18N
+        btnRBiayaIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRBiayaIpsrs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRBiayaIpsrsActionPerformed(evt);
+            }
+        });
+
+        btnTarifRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1410153940_radiology.png"))); // NOI18N
+        btnTarifRadiologi.setText("Tarif Radiologi");
+        btnTarifRadiologi.setIconTextGap(0);
+        btnTarifRadiologi.setName("btnTarifRadiologi"); // NOI18N
+        btnTarifRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTarifRadiologi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTarifRadiologiActionPerformed(evt);
+            }
+        });
+
+        btnPeriksaRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Radiologi.png"))); // NOI18N
+        btnPeriksaRadiologi.setText("Periksa Radiologi");
+        btnPeriksaRadiologi.setIconTextGap(0);
+        btnPeriksaRadiologi.setName("btnPeriksaRadiologi"); // NOI18N
+        btnPeriksaRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPeriksaRadiologi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPeriksaRadiologiActionPerformed(evt);
+            }
+        });
+
+        btnTagihanRalanPerhari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnTagihanRalanPerhari.setText("Rekap Pembayaran Ralan");
+        btnTagihanRalanPerhari.setIconTextGap(0);
+        btnTagihanRalanPerhari.setName("btnTagihanRalanPerhari"); // NOI18N
+        btnTagihanRalanPerhari.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTagihanRalanPerhari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTagihanRalanPerhariActionPerformed(evt);
+            }
+        });
+
+        btnTagihanRanapPerhari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnTagihanRanapPerhari.setText("Rekap Pembayaran Ranap");
+        btnTagihanRanapPerhari.setIconTextGap(0);
+        btnTagihanRanapPerhari.setName("btnTagihanRanapPerhari"); // NOI18N
+        btnTagihanRanapPerhari.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTagihanRanapPerhari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTagihanRanapPerhariActionPerformed(evt);
+            }
+        });
+
+        btnSetupEmbalase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Money.png"))); // NOI18N
+        btnSetupEmbalase.setText("Set Embalase & Tuslah");
+        btnSetupEmbalase.setIconTextGap(0);
+        btnSetupEmbalase.setName("btnSetupEmbalase"); // NOI18N
+        btnSetupEmbalase.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetupEmbalase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetupEmbalaseActionPerformed(evt);
+            }
+        });
+
+        btnSirkulasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/data_management.png"))); // NOI18N
+        btnSirkulasiBerkas.setText("Peminjaman Berkas RM");
+        btnSirkulasiBerkas.setIconTextGap(0);
+        btnSirkulasiBerkas.setName("btnSirkulasiBerkas"); // NOI18N
+        btnSirkulasiBerkas.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiBerkas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasiBerkasActionPerformed(evt);
+            }
+        });
+
+        btnObatPasienRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnObatPasienRalan.setText("Obat Per Dokter Ralan");
+        btnObatPasienRalan.setIconTextGap(0);
+        btnObatPasienRalan.setName("btnObatPasienRalan"); // NOI18N
+        btnObatPasienRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatPasienRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatPasienRalanActionPerformed(evt);
+            }
+        });
+
+        btnObatPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnObatPasienRanap.setText("Obat Per Dokter Ranap");
+        btnObatPasienRanap.setIconTextGap(0);
+        btnObatPasienRanap.setName("btnObatPasienRanap"); // NOI18N
+        btnObatPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatPasienRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatPasienRanapActionPerformed(evt);
+            }
+        });
+
+        btnPemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
+        btnPemesanan.setText("Penerimaan Obat & BHP");
+        btnPemesanan.setIconTextGap(0);
+        btnPemesanan.setName("btnPemesanan"); // NOI18N
+        btnPemesanan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemesanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPemesananActionPerformed(evt);
+            }
+        });
+
+        btnPengeluaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
+        btnPengeluaran.setText("Pengeluaran Harian");
+        btnPengeluaran.setIconTextGap(0);
+        btnPengeluaran.setName("btnPengeluaran"); // NOI18N
+        btnPengeluaran.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengeluaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengeluaranActionPerformed(evt);
+            }
+        });
+
+        btnTambahanBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046786_Money.png"))); // NOI18N
+        btnTambahanBiaya.setText("Tambahan Biaya Pasien");
+        btnTambahanBiaya.setIconTextGap(0);
+        btnTambahanBiaya.setName("btnTambahanBiaya"); // NOI18N
+        btnTambahanBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTambahanBiaya.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahanBiayaActionPerformed(evt);
+            }
+        });
+
+        btnPotonganBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046786_Money.png"))); // NOI18N
+        btnPotonganBiaya.setText("Potongan Biaya Pasien");
+        btnPotonganBiaya.setIconTextGap(0);
+        btnPotonganBiaya.setName("btnPotonganBiaya"); // NOI18N
+        btnPotonganBiaya.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPotonganBiaya.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPotonganBiayaActionPerformed(evt);
+            }
+        });
+
+        btnJMDetailDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnJMDetailDokter.setText("Detail JM Dokter");
+        btnJMDetailDokter.setIconTextGap(0);
+        btnJMDetailDokter.setName("btnJMDetailDokter"); // NOI18N
+        btnJMDetailDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJMDetailDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJMDetailDokterActionPerformed(evt);
+            }
+        });
+
+        btnIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnIGD.setText("IGD/UGD");
+        btnIGD.setIconTextGap(0);
+        btnIGD.setName("btnIGD"); // NOI18N
+        btnIGD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnIGD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIGDActionPerformed(evt);
+            }
+        });
+
+        btnBarcodeRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
+        btnBarcodeRalan.setText("Rawat Jalan");
+        btnBarcodeRalan.setIconTextGap(0);
+        btnBarcodeRalan.setName("btnBarcodeRalan"); // NOI18N
+        btnBarcodeRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBarcodeRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarcodeRalanActionPerformed(evt);
+            }
+        });
+
+        btnBarcodeRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
+        btnBarcodeRanap.setText("Rawat Inap");
+        btnBarcodeRanap.setIconTextGap(0);
+        btnBarcodeRanap.setName("btnBarcodeRanap"); // NOI18N
+        btnBarcodeRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBarcodeRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarcodeRanapActionPerformed(evt);
+            }
+        });
+
+        btnSetObatRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
+        btnSetObatRalan.setText("Set Obat Ralan");
+        btnSetObatRalan.setIconTextGap(0);
+        btnSetObatRalan.setName("btnSetObatRalan"); // NOI18N
+        btnSetObatRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetObatRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetObatRalanActionPerformed(evt);
+            }
+        });
+
+        btnSetObatRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
+        btnSetObatRanap.setText("Set Obat Ranap");
+        btnSetObatRanap.setIconTextGap(0);
+        btnSetObatRanap.setName("btnSetObatRanap"); // NOI18N
+        btnSetObatRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetObatRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetObatRanapActionPerformed(evt);
+            }
+        });
+
+        btnPenyakitPD3I.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnPenyakitPD3I.setText("Penyakit AFP & PD3I");
+        btnPenyakitPD3I.setIconTextGap(0);
+        btnPenyakitPD3I.setName("btnPenyakitPD3I"); // NOI18N
+        btnPenyakitPD3I.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenyakitPD3I.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenyakitPD3IActionPerformed(evt);
+            }
+        });
+
+        btnSurveilansPD3I.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnSurveilansPD3I.setText("Surveilans AFP & PD3I");
+        btnSurveilansPD3I.setIconTextGap(0);
+        btnSurveilansPD3I.setName("btnSurveilansPD3I"); // NOI18N
+        btnSurveilansPD3I.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSurveilansPD3I.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSurveilansPD3IActionPerformed(evt);
+            }
+        });
+
+        btnSurveilansRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnSurveilansRalan.setText("Surveilans Ralan");
+        btnSurveilansRalan.setIconTextGap(0);
+        btnSurveilansRalan.setName("btnSurveilansRalan"); // NOI18N
+        btnSurveilansRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSurveilansRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSurveilansRalanActionPerformed(evt);
+            }
+        });
+
+        btnDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/health.png"))); // NOI18N
+        btnDiagnosa.setText("Diagnosa Pasien");
+        btnDiagnosa.setIconTextGap(0);
+        btnDiagnosa.setName("btnDiagnosa"); // NOI18N
+        btnDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDiagnosa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiagnosaActionPerformed(evt);
+            }
+        });
+
+        btnSurveilansRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnSurveilansRanap.setText("Surveilans Ranap");
+        btnSurveilansRanap.setIconTextGap(0);
+        btnSurveilansRanap.setName("btnSurveilansRanap"); // NOI18N
+        btnSurveilansRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSurveilansRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSurveilansRanapActionPerformed(evt);
+            }
+        });
+
+        btnPnyTakMenularRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnPnyTakMenularRanap.setText("Pny Tdk Menular Ranap");
+        btnPnyTakMenularRanap.setIconTextGap(0);
+        btnPnyTakMenularRanap.setName("btnPnyTakMenularRanap"); // NOI18N
+        btnPnyTakMenularRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPnyTakMenularRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPnyTakMenularRanapActionPerformed(evt);
+            }
+        });
+
+        btnPnyTakMenularRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnPnyTakMenularRalan.setText("Pny Tdk Menular Ralan");
+        btnPnyTakMenularRalan.setIconTextGap(0);
+        btnPnyTakMenularRalan.setName("btnPnyTakMenularRalan"); // NOI18N
+        btnPnyTakMenularRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPnyTakMenularRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPnyTakMenularRalanActionPerformed(evt);
+            }
+        });
+
+        btnKunjunganRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnKunjunganRalan.setText("Kunjungan Ralan");
+        btnKunjunganRalan.setIconTextGap(0);
+        btnKunjunganRalan.setName("btnKunjunganRalan"); // NOI18N
+        btnKunjunganRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKunjunganRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKunjunganRalanActionPerformed(evt);
+            }
+        });
+
+        btnRl32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnRl32.setText("RL 3.2 Rawat Darurat");
+        btnRl32.setIconTextGap(0);
+        btnRl32.setName("btnRl32"); // NOI18N
+        btnRl32.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl32ActionPerformed(evt);
+            }
+        });
+
+        btnRl33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnRl33.setText("RL 3.3 Gigi dan Mulut");
+        btnRl33.setIconTextGap(0);
+        btnRl33.setName("btnRl33"); // NOI18N
+        btnRl33.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl33ActionPerformed(evt);
+            }
+        });
+
+        btnRl37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnRl37.setText("RL 3.7 Radiologi");
+        btnRl37.setIconTextGap(0);
+        btnRl37.setName("btnRl37"); // NOI18N
+        btnRl37.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl37ActionPerformed(evt);
+            }
+        });
+
+        btnRl38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnRl38.setText("RL 3.8 Laboratorium");
+        btnRl38.setIconTextGap(0);
+        btnRl38.setName("btnRl38"); // NOI18N
+        btnRl38.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl38ActionPerformed(evt);
+            }
+        });
+
+        btnTagihanDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
+        btnTagihanDokter.setText("Harian Dokter Ralan");
+        btnTagihanDokter.setIconTextGap(0);
+        btnTagihanDokter.setName("btnTagihanDokter"); // NOI18N
+        btnTagihanDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTagihanDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTagihanDokterActionPerformed(evt);
+            }
+        });
+
+        btnSMS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485538_recieve-mail.png"))); // NOI18N
+        btnSMS.setText("SMS Gateway");
+        btnSMS.setIconTextGap(0);
+        btnSMS.setName("btnSMS"); // NOI18N
+        btnSMS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMSActionPerformed(evt);
+            }
+        });
+
+        btnSidikJari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/finger.png"))); // NOI18N
+        btnSidikJari.setText("Sidik Jari");
+        btnSidikJari.setIconTextGap(0);
+        btnSidikJari.setName("btnSidikJari"); // NOI18N
+        btnSidikJari.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSidikJari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSidikJariActionPerformed(evt);
+            }
+        });
+
+        btnJamPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Time.png"))); // NOI18N
+        btnJamPresensi.setText("Jam Presensi");
+        btnJamPresensi.setIconTextGap(0);
+        btnJamPresensi.setName("btnJamPresensi"); // NOI18N
+        btnJamPresensi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJamPresensi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJamPresensiActionPerformed(evt);
+            }
+        });
+
+        btnJadwalPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnJadwalPegawai.setText("Jadwal Pegawai");
+        btnJadwalPegawai.setIconTextGap(0);
+        btnJadwalPegawai.setName("btnJadwalPegawai"); // NOI18N
+        btnJadwalPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJadwalPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJadwalPegawaiActionPerformed(evt);
+            }
+        });
+
+        btnJenisParkir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/parkirjenis.png"))); // NOI18N
+        btnJenisParkir.setText("Jenis Parkir");
+        btnJenisParkir.setIconTextGap(0);
+        btnJenisParkir.setName("btnJenisParkir"); // NOI18N
+        btnJenisParkir.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJenisParkir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJenisParkirActionPerformed(evt);
+            }
+        });
+
+        btnBarcodeParkir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
+        btnBarcodeParkir.setText("Barcode Parkir");
+        btnBarcodeParkir.setIconTextGap(0);
+        btnBarcodeParkir.setName("btnBarcodeParkir"); // NOI18N
+        btnBarcodeParkir.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBarcodeParkir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarcodeParkirActionPerformed(evt);
+            }
+        });
+
+        btnParkirMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/parkirmasuk.png"))); // NOI18N
+        btnParkirMasuk.setText("Parkir Masuk");
+        btnParkirMasuk.setIconTextGap(0);
+        btnParkirMasuk.setName("btnParkirMasuk"); // NOI18N
+        btnParkirMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnParkirMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnParkirMasukActionPerformed(evt);
+            }
+        });
+
+        btnSetupNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
+        btnSetupNota.setText("Set Billing");
+        btnSetupNota.setIconTextGap(0);
+        btnSetupNota.setName("btnSetupNota"); // NOI18N
+        btnSetupNota.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetupNota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetupNotaActionPerformed(evt);
+            }
+        });
+
+        BtnDpjp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
+        BtnDpjp.setText("DPJP Ranap");
+        BtnDpjp.setIconTextGap(0);
+        BtnDpjp.setName("BtnDpjp"); // NOI18N
+        BtnDpjp.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnDpjp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDpjpActionPerformed(evt);
+            }
+        });
+
+        btnMutasiBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
+        btnMutasiBarang.setText("Mutasi Obat & BHP");
+        btnMutasiBarang.setIconTextGap(0);
+        btnMutasiBarang.setName("btnMutasiBarang"); // NOI18N
+        btnMutasiBarang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMutasiBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMutasiBarangActionPerformed(evt);
+            }
+        });
+
+        btnRl34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnRl34.setText("RL 3.4 Kebidanan");
+        btnRl34.setIconTextGap(0);
+        btnRl34.setName("btnRl34"); // NOI18N
+        btnRl34.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl34ActionPerformed(evt);
+            }
+        });
+
+        btnRl36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnRl36.setText("RL 3.6 Pembedahan");
+        btnRl36.setIconTextGap(0);
+        btnRl36.setName("btnRl36"); // NOI18N
+        btnRl36.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl36ActionPerformed(evt);
+            }
+        });
+
+        btnfee_bacaan_ekg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnfee_bacaan_ekg.setText("Fee Bacaan EKG");
+        btnfee_bacaan_ekg.setIconTextGap(0);
+        btnfee_bacaan_ekg.setName("btnfee_bacaan_ekg"); // NOI18N
+        btnfee_bacaan_ekg.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnfee_bacaan_ekg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfee_bacaan_ekgActionPerformed(evt);
+            }
+        });
+
+        btnfee_rujukan_rontgen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnfee_rujukan_rontgen.setText("Fee Rujukan Rontgen");
+        btnfee_rujukan_rontgen.setIconTextGap(0);
+        btnfee_rujukan_rontgen.setName("btnfee_rujukan_rontgen"); // NOI18N
+        btnfee_rujukan_rontgen.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnfee_rujukan_rontgen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfee_rujukan_rontgenActionPerformed(evt);
+            }
+        });
+
+        btnfee_rujukan_ranap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnfee_rujukan_ranap.setText("Fee Rujukan Ranap");
+        btnfee_rujukan_ranap.setIconTextGap(0);
+        btnfee_rujukan_ranap.setName("btnfee_rujukan_ranap"); // NOI18N
+        btnfee_rujukan_ranap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnfee_rujukan_ranap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfee_rujukan_ranapActionPerformed(evt);
+            }
+        });
+
+        btnfee_ralan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnfee_ralan.setText("Fee Periksa Ralan");
+        btnfee_ralan.setIconTextGap(0);
+        btnfee_ralan.setName("btnfee_ralan"); // NOI18N
+        btnfee_ralan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnfee_ralan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfee_ralanActionPerformed(evt);
+            }
+        });
+
+        btnakun_bayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnakun_bayar.setText("Akun Bayar");
+        btnakun_bayar.setIconTextGap(0);
+        btnakun_bayar.setName("btnakun_bayar"); // NOI18N
+        btnakun_bayar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnakun_bayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnakun_bayarActionPerformed(evt);
+            }
+        });
+
+        btnbayar_pemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
+        btnbayar_pemesanan.setText("Bayar Pesan Obat/BHP");
+        btnbayar_pemesanan.setIconTextGap(0);
+        btnbayar_pemesanan.setName("btnbayar_pemesanan"); // NOI18N
+        btnbayar_pemesanan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnbayar_pemesanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbayar_pemesananActionPerformed(evt);
+            }
+        });
+
+        btnObatPasienPeresep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnObatPasienPeresep.setText("Obat Per Dokter Peresep");
+        btnObatPasienPeresep.setIconTextGap(0);
+        btnObatPasienPeresep.setName("btnObatPasienPeresep"); // NOI18N
+        btnObatPasienPeresep.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatPasienPeresep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatPasienPeresepActionPerformed(evt);
+            }
+        });
+
+        btnJenisIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cabinet.png"))); // NOI18N
+        btnJenisIpsrs.setText("Jenis Barang IPSRS");
+        btnJenisIpsrs.setIconTextGap(0);
+        btnJenisIpsrs.setName("btnJenisIpsrs"); // NOI18N
+        btnJenisIpsrs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJenisIpsrs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJenisIpsrsActionPerformed(evt);
+            }
+        });
+
+        btnPemasukanLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
+        btnPemasukanLain.setText("Pemasukan Lain-Lain");
+        btnPemasukanLain.setIconTextGap(0);
+        btnPemasukanLain.setName("btnPemasukanLain"); // NOI18N
+        btnPemasukanLain.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemasukanLain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPemasukanLainActionPerformed(evt);
+            }
+        });
+
+        btnPengaturanRekening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/gtk-stock-book.png"))); // NOI18N
+        btnPengaturanRekening.setText("Pengaturan Rekening");
+        btnPengaturanRekening.setIconTextGap(0);
+        btnPengaturanRekening.setName("btnPengaturanRekening"); // NOI18N
+        btnPengaturanRekening.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengaturanRekening.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengaturanRekeningActionPerformed(evt);
+            }
+        });
+
+        btnJadwalTambahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnJadwalTambahan.setText("Jadwal Tambahan");
+        btnJadwalTambahan.setIconTextGap(0);
+        btnJadwalTambahan.setName("btnJadwalTambahan"); // NOI18N
+        btnJadwalTambahan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJadwalTambahan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJadwalTambahanActionPerformed(evt);
+            }
+        });
+
+        btnClosingKasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnClosingKasir.setText("Closing Kasir");
+        btnClosingKasir.setIconTextGap(0);
+        btnClosingKasir.setName("btnClosingKasir"); // NOI18N
+        btnClosingKasir.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnClosingKasir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClosingKasirActionPerformed(evt);
+            }
+        });
+
+        btnKeterlambatanPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Time.png"))); // NOI18N
+        btnKeterlambatanPresensi.setText("Set Keterlambatan Presensi");
+        btnKeterlambatanPresensi.setIconTextGap(0);
+        btnKeterlambatanPresensi.setName("btnKeterlambatanPresensi"); // NOI18N
+        btnKeterlambatanPresensi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKeterlambatanPresensi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeterlambatanPresensiActionPerformed(evt);
+            }
+        });
+
+        btnSetHargaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
+        btnSetHargaKamar.setText("Set Harga Kamar");
+        btnSetHargaKamar.setIconTextGap(0);
+        btnSetHargaKamar.setName("btnSetHargaKamar"); // NOI18N
+        btnSetHargaKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetHargaKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetHargaKamarActionPerformed(evt);
+            }
+        });
+
+        btnRekapPershift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnRekapPershift.setText("Rekap Uang Pershift");
+        btnRekapPershift.setIconTextGap(0);
+        btnRekapPershift.setName("btnRekapPershift"); // NOI18N
+        btnRekapPershift.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPershift.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPershiftActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSNik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/family.png"))); // NOI18N
+        btnCekBPJSNik.setText("Cek NIK VClaim");
+        btnCekBPJSNik.setIconTextGap(0);
+        btnCekBPJSNik.setName("btnCekBPJSNik"); // NOI18N
+        btnCekBPJSNik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSNik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSNikActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/administrator.png"))); // NOI18N
+        btnCekBPJSKartu.setText("Cek No.Kartu VClaim");
+        btnCekBPJSKartu.setIconTextGap(0);
+        btnCekBPJSKartu.setName("btnCekBPJSKartu"); // NOI18N
+        btnCekBPJSKartu.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSKartu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSKartuActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSRiwayatRujukanPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
+        btnCekBPJSRiwayatRujukanPCare.setText("Riwayat Rujukan PCare di VClaim");
+        btnCekBPJSRiwayatRujukanPCare.setIconTextGap(0);
+        btnCekBPJSRiwayatRujukanPCare.setName("btnCekBPJSRiwayatRujukanPCare"); // NOI18N
+        btnCekBPJSRiwayatRujukanPCare.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSRiwayatRujukanPCare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSRiwayatRujukanPCareActionPerformed(evt);
+            }
+        });
+
+        btnRekapPresensi2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/sign-up.png"))); // NOI18N
+        btnRekapPresensi2.setText("Rekap Kehadiran 2");
+        btnRekapPresensi2.setIconTextGap(0);
+        btnRekapPresensi2.setName("btnRekapPresensi2"); // NOI18N
+        btnRekapPresensi2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPresensi2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPresensi2ActionPerformed(evt);
+            }
+        });
+
+        btnObatPerCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnObatPerCaraBayar.setText("Obat Per Cara Bayar");
+        btnObatPerCaraBayar.setIconTextGap(0);
+        btnObatPerCaraBayar.setName("btnObatPerCaraBayar"); // NOI18N
+        btnObatPerCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatPerCaraBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatPerCaraBayarActionPerformed(evt);
+            }
+        });
+
+        btnKunjunganRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnKunjunganRanap.setText("Kunjungan Ranap");
+        btnKunjunganRanap.setIconTextGap(0);
+        btnKunjunganRanap.setName("btnKunjunganRanap"); // NOI18N
+        btnKunjunganRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKunjunganRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKunjunganRanapActionPerformed(evt);
+            }
+        });
+
+        btnPaymentPoint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
+        btnPaymentPoint.setText("Payment Point");
+        btnPaymentPoint.setIconTextGap(0);
+        btnPaymentPoint.setName("btnPaymentPoint"); // NOI18N
+        btnPaymentPoint.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPaymentPoint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaymentPointActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSNomorRujukanPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnCekBPJSNomorRujukanPCare.setText("Cek No.Rujukan PCare di VClaim");
+        btnCekBPJSNomorRujukanPCare.setIconTextGap(0);
+        btnCekBPJSNomorRujukanPCare.setName("btnCekBPJSNomorRujukanPCare"); // NOI18N
+        btnCekBPJSNomorRujukanPCare.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSNomorRujukanPCare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSNomorRujukanPCareActionPerformed(evt);
+            }
+        });
+
+        btnICD9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnICD9.setText("ICD 9");
+        btnICD9.setIconTextGap(0);
+        btnICD9.setName("btnICD9"); // NOI18N
+        btnICD9.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnICD9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnICD9ActionPerformed(evt);
+            }
+        });
+
+        btnDaruratStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
+        btnDaruratStok.setText("Darurat Stok");
+        btnDaruratStok.setIconTextGap(0);
+        btnDaruratStok.setName("btnDaruratStok"); // NOI18N
+        btnDaruratStok.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDaruratStok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaruratStokActionPerformed(evt);
+            }
+        });
+
+        btnRetensiRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reportorium.png"))); // NOI18N
+        btnRetensiRM.setText("Retensi Berkas R.M.");
+        btnRetensiRM.setIconTextGap(0);
+        btnRetensiRM.setName("btnRetensiRM"); // NOI18N
+        btnRetensiRM.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRetensiRM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetensiRMActionPerformed(evt);
+            }
+        });
+
+        btnTemporaryPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047834_application-vnd.ms-excel.png"))); // NOI18N
+        btnTemporaryPresensi.setText("Temporary Presensi");
+        btnTemporaryPresensi.setIconTextGap(0);
+        btnTemporaryPresensi.setName("btnTemporaryPresensi"); // NOI18N
+        btnTemporaryPresensi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTemporaryPresensi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTemporaryPresensiActionPerformed(evt);
+            }
+        });
+
+        btnJurnalHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnJurnalHarian.setText("Jurnal Harian");
+        btnJurnalHarian.setIconTextGap(0);
+        btnJurnalHarian.setName("btnJurnalHarian"); // NOI18N
+        btnJurnalHarian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJurnalHarian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJurnalHarianActionPerformed(evt);
+            }
+        });
+
+        btnSirkulasi2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasi2.setText("Sirkulasi Obat, Alkes & BHP 2");
+        btnSirkulasi2.setIconTextGap(0);
+        btnSirkulasi2.setName("btnSirkulasi2"); // NOI18N
+        btnSirkulasi2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasi2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasi2ActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnCekBPJSDiagnosa.setText("Referensi Diagnosa VClaim");
+        btnCekBPJSDiagnosa.setIconTextGap(0);
+        btnCekBPJSDiagnosa.setName("btnCekBPJSDiagnosa"); // NOI18N
+        btnCekBPJSDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSDiagnosa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSDiagnosaActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logout.png"))); // NOI18N
+        btnCekBPJSPoli.setText("Referensi Poli VClaim");
+        btnCekBPJSPoli.setIconTextGap(0);
+        btnCekBPJSPoli.setName("btnCekBPJSPoli"); // NOI18N
+        btnCekBPJSPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSPoliActionPerformed(evt);
+            }
+        });
+
+        btnIndustriFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486910_company.png"))); // NOI18N
+        btnIndustriFarmasi.setText("Industri Farmasi");
+        btnIndustriFarmasi.setIconTextGap(0);
+        btnIndustriFarmasi.setName("btnIndustriFarmasi"); // NOI18N
+        btnIndustriFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnIndustriFarmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIndustriFarmasiActionPerformed(evt);
+            }
+        });
+
+        btnRHJasaSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRHJasaSarana.setText("Harian Jasa Sarana");
+        btnRHJasaSarana.setIconTextGap(0);
+        btnRHJasaSarana.setName("btnRHJasaSarana"); // NOI18N
+        btnRHJasaSarana.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRHJasaSarana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRHJasaSaranaActionPerformed(evt);
+            }
+        });
+
+        btnRBJasaSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRBJasaSarana.setText("Bulanan Jasa Sarana");
+        btnRBJasaSarana.setIconTextGap(0);
+        btnRBJasaSarana.setName("btnRBJasaSarana"); // NOI18N
+        btnRBJasaSarana.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRBJasaSarana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRBJasaSaranaActionPerformed(evt);
+            }
+        });
+
+        btnRHPaketBHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnRHPaketBHP.setText("Harian BHP Medis/Paket Obat");
+        btnRHPaketBHP.setIconTextGap(0);
+        btnRHPaketBHP.setName("btnRHPaketBHP"); // NOI18N
+        btnRHPaketBHP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRHPaketBHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRHPaketBHPActionPerformed(evt);
+            }
+        });
+
+        btnRBPaketBHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnRBPaketBHP.setText("Bulanan BHP Medis/Paket Obat");
+        btnRBPaketBHP.setIconTextGap(0);
+        btnRBPaketBHP.setName("btnRBPaketBHP"); // NOI18N
+        btnRBPaketBHP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRBPaketBHP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRBPaketBHPActionPerformed(evt);
+            }
+        });
+
+        btnPiutangBelumLunas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
+        btnPiutangBelumLunas.setText("Piutang Belum Lunas");
+        btnPiutangBelumLunas.setIconTextGap(0);
+        btnPiutangBelumLunas.setName("btnPiutangBelumLunas"); // NOI18N
+        btnPiutangBelumLunas.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangBelumLunas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiutangBelumLunasActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSFaskes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
+        btnCekBPJSFaskes.setText("Referensi Faskes VClaim");
+        btnCekBPJSFaskes.setIconTextGap(0);
+        btnCekBPJSFaskes.setName("btnCekBPJSFaskes"); // NOI18N
+        btnCekBPJSFaskes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSFaskes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSFaskesActionPerformed(evt);
+            }
+        });
+
+        btnBPJSSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
+        btnBPJSSEP.setText("Data Bridging SEP VClaim");
+        btnBPJSSEP.setIconTextGap(0);
+        btnBPJSSEP.setName("btnBPJSSEP"); // NOI18N
+        btnBPJSSEP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBPJSSEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBPJSSEPActionPerformed(evt);
+            }
+        });
+
+        btnPengambilanUTD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
+        btnPengambilanUTD.setText("Pengambilan BHP UTD");
+        btnPengambilanUTD.setIconTextGap(0);
+        btnPengambilanUTD.setName("btnPengambilanUTD"); // NOI18N
+        btnPengambilanUTD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengambilanUTD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengambilanUTDActionPerformed(evt);
+            }
+        });
+
+        btnTarifUtd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001686_injection_blood.png"))); // NOI18N
+        btnTarifUtd.setText("Tarif UTD");
+        btnTarifUtd.setIconTextGap(0);
+        btnTarifUtd.setName("btnTarifUtd"); // NOI18N
+        btnTarifUtd.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTarifUtd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTarifUtdActionPerformed(evt);
+            }
+        });
+
+        btnPengambilanUTD2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
+        btnPengambilanUTD2.setText("Pengambilan BHP Medis");
+        btnPengambilanUTD2.setIconTextGap(0);
+        btnPengambilanUTD2.setName("btnPengambilanUTD2"); // NOI18N
+        btnPengambilanUTD2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengambilanUTD2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengambilanUTD2ActionPerformed(evt);
+            }
+        });
+
+        btnUTDMedisRusak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486858_stock-market.png"))); // NOI18N
+        btnUTDMedisRusak.setText("BHP Medis Rusak");
+        btnUTDMedisRusak.setIconTextGap(0);
+        btnUTDMedisRusak.setName("btnUTDMedisRusak"); // NOI18N
+        btnUTDMedisRusak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDMedisRusak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDMedisRusakActionPerformed(evt);
+            }
+        });
+
+        btnPengambilanPenunjangUTD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002155_skills.png"))); // NOI18N
+        btnPengambilanPenunjangUTD.setText("Pengambilan UTD");
+        btnPengambilanPenunjangUTD.setIconTextGap(0);
+        btnPengambilanPenunjangUTD.setName("btnPengambilanPenunjangUTD"); // NOI18N
+        btnPengambilanPenunjangUTD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengambilanPenunjangUTD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengambilanPenunjangUTDActionPerformed(evt);
+            }
+        });
+
+        btnPengambilanPenunjangUTD2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002155_skills.png"))); // NOI18N
+        btnPengambilanPenunjangUTD2.setText("Pengambilan BHP Non Medis");
+        btnPengambilanPenunjangUTD2.setIconTextGap(0);
+        btnPengambilanPenunjangUTD2.setName("btnPengambilanPenunjangUTD2"); // NOI18N
+        btnPengambilanPenunjangUTD2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengambilanPenunjangUTD2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengambilanPenunjangUTD2ActionPerformed(evt);
+            }
+        });
+
+        btnUTDPenunjangRusak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/inventory-maintenance.png"))); // NOI18N
+        btnUTDPenunjangRusak.setText("BHP Non Medis Rusak");
+        btnUTDPenunjangRusak.setIconTextGap(0);
+        btnUTDPenunjangRusak.setName("btnUTDPenunjangRusak"); // NOI18N
+        btnUTDPenunjangRusak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDPenunjangRusak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDPenunjangRusakActionPerformed(evt);
+            }
+        });
+
+        btnSuplierIPSRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002123_wheelchair.png"))); // NOI18N
+        btnSuplierIPSRS.setText("Suplier Non Medis");
+        btnSuplierIPSRS.setIconTextGap(0);
+        btnSuplierIPSRS.setName("btnSuplierIPSRS"); // NOI18N
+        btnSuplierIPSRS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuplierIPSRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuplierIPSRSActionPerformed(evt);
+            }
+        });
+
+        btnUTDDonorDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001706_heart_beat.png"))); // NOI18N
+        btnUTDDonorDarah.setText("Donor Darah");
+        btnUTDDonorDarah.setIconTextGap(0);
+        btnUTDDonorDarah.setName("btnUTDDonorDarah"); // NOI18N
+        btnUTDDonorDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDDonorDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDDonorDarahActionPerformed(evt);
+            }
+        });
+
+        btnMonitoringKlaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
+        btnMonitoringKlaim.setText("Monitoring Verifikasi Klaim BPJS");
+        btnMonitoringKlaim.setIconTextGap(0);
+        btnMonitoringKlaim.setName("btnMonitoringKlaim"); // NOI18N
+        btnMonitoringKlaim.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMonitoringKlaim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMonitoringKlaimActionPerformed(evt);
+            }
+        });
+
+        btnUTDCekalDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
+        btnUTDCekalDarah.setText("Pencekalan Darah");
+        btnUTDCekalDarah.setIconTextGap(0);
+        btnUTDCekalDarah.setName("btnUTDCekalDarah"); // NOI18N
+        btnUTDCekalDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDCekalDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDCekalDarahActionPerformed(evt);
+            }
+        });
+
+        btnUTDKomponenDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001686_injection_blood.png"))); // NOI18N
+        btnUTDKomponenDarah.setText("Komponen Darah");
+        btnUTDKomponenDarah.setIconTextGap(0);
+        btnUTDKomponenDarah.setName("btnUTDKomponenDarah"); // NOI18N
+        btnUTDKomponenDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDKomponenDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDKomponenDarahActionPerformed(evt);
+            }
+        });
+
+        btnUTDStokDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001585_blood_drop.png"))); // NOI18N
+        btnUTDStokDarah.setText("Stok Darah");
+        btnUTDStokDarah.setIconTextGap(0);
+        btnUTDStokDarah.setName("btnUTDStokDarah"); // NOI18N
+        btnUTDStokDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDStokDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDStokDarahActionPerformed(evt);
+            }
+        });
+
+        btnUTDPemisahanDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnUTDPemisahanDarah.setText("Pemisahan Darah");
+        btnUTDPemisahanDarah.setIconTextGap(0);
+        btnUTDPemisahanDarah.setName("btnUTDPemisahanDarah"); // NOI18N
+        btnUTDPemisahanDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDPemisahanDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDPemisahanDarahActionPerformed(evt);
+            }
+        });
+
+        btnHarianKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
+        btnHarianKamar.setText("Harian Kamar");
+        btnHarianKamar.setIconTextGap(0);
+        btnHarianKamar.setName("btnHarianKamar"); // NOI18N
+        btnHarianKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHarianKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHarianKamarActionPerformed(evt);
+            }
+        });
+
+        btnRincianPiutangPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
+        btnRincianPiutangPasien.setText("Rincian Piutang Pasien");
+        btnRincianPiutangPasien.setIconTextGap(0);
+        btnRincianPiutangPasien.setName("btnRincianPiutangPasien"); // NOI18N
+        btnRincianPiutangPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRincianPiutangPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRincianPiutangPasienActionPerformed(evt);
+            }
+        });
+
+        btnKeuntunganObat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
+        btnKeuntunganObat2.setText("Keuntungan Beri Obat 2");
+        btnKeuntunganObat2.setIconTextGap(0);
+        btnKeuntunganObat2.setName("btnKeuntunganObat2"); // NOI18N
+        btnKeuntunganObat2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKeuntunganObat2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeuntunganObat2ActionPerformed(evt);
+            }
+        });
+
+        btnReklasifikasiRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
+        btnReklasifikasiRalan.setText("Reklasifikasi Ralan");
+        btnReklasifikasiRalan.setIconTextGap(0);
+        btnReklasifikasiRalan.setName("btnReklasifikasiRalan"); // NOI18N
+        btnReklasifikasiRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReklasifikasiRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReklasifikasiRalanActionPerformed(evt);
+            }
+        });
+
+        btnReklasifikasiRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
+        btnReklasifikasiRanap.setText("Reklasifikasi Ranap");
+        btnReklasifikasiRanap.setIconTextGap(0);
+        btnReklasifikasiRanap.setName("btnReklasifikasiRanap"); // NOI18N
+        btnReklasifikasiRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReklasifikasiRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReklasifikasiRanapActionPerformed(evt);
+            }
+        });
+
+        btnUTDPenyerahanDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/health.png"))); // NOI18N
+        btnUTDPenyerahanDarah.setText("Penyerahan Darah");
+        btnUTDPenyerahanDarah.setIconTextGap(0);
+        btnUTDPenyerahanDarah.setName("btnUTDPenyerahanDarah"); // NOI18N
+        btnUTDPenyerahanDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDPenyerahanDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDPenyerahanDarahActionPerformed(evt);
+            }
+        });
+
+        btnHutangObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
+        btnHutangObat.setText("Hutang Obat & BHP");
+        btnHutangObat.setIconTextGap(0);
+        btnHutangObat.setName("btnHutangObat"); // NOI18N
+        btnHutangObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHutangObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHutangObatActionPerformed(evt);
+            }
+        });
+
+        btnRiwayatBarangMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/gnome-searchtool.png"))); // NOI18N
+        btnRiwayatBarangMedis.setText("Riwayat Obat, Alkes & BHP");
+        btnRiwayatBarangMedis.setIconTextGap(0);
+        btnRiwayatBarangMedis.setName("btnRiwayatBarangMedis"); // NOI18N
+        btnRiwayatBarangMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatBarangMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatBarangMedisActionPerformed(evt);
+            }
+        });
+
+        btnSensusHarianPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
+        btnSensusHarianPoli.setText("Sensus Harian Poli");
+        btnSensusHarianPoli.setIconTextGap(0);
+        btnSensusHarianPoli.setName("btnSensusHarianPoli"); // NOI18N
+        btnSensusHarianPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSensusHarianPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSensusHarianPoliActionPerformed(evt);
+            }
+        });
+
+        btnRl4a.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
+        btnRl4a.setText("RL 4A Morbiditas Ranap");
+        btnRl4a.setIconTextGap(0);
+        btnRl4a.setName("btnRl4a"); // NOI18N
+        btnRl4a.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl4a.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl4aActionPerformed(evt);
+            }
+        });
+
+        btnAplicareReferensiKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
+        btnAplicareReferensiKamar.setText("Referensi Kamar Aplicare");
+        btnAplicareReferensiKamar.setIconTextGap(0);
+        btnAplicareReferensiKamar.setName("btnAplicareReferensiKamar"); // NOI18N
+        btnAplicareReferensiKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAplicareReferensiKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicareReferensiKamarActionPerformed(evt);
+            }
+        });
+
+        btnAplicareKetersediaanKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
+        btnAplicareKetersediaanKamar.setText("Ketersediaan Kamar Aplicare");
+        btnAplicareKetersediaanKamar.setIconTextGap(0);
+        btnAplicareKetersediaanKamar.setName("btnAplicareKetersediaanKamar"); // NOI18N
+        btnAplicareKetersediaanKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAplicareKetersediaanKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicareKetersediaanKamarActionPerformed(evt);
+            }
+        });
+
+        btnInaCBGKlaimBaruOtomatis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358050_receptionist.png"))); // NOI18N
+        btnInaCBGKlaimBaruOtomatis.setText("Klaim Baru Otomatis INACBG");
+        btnInaCBGKlaimBaruOtomatis.setIconTextGap(0);
+        btnInaCBGKlaimBaruOtomatis.setName("btnInaCBGKlaimBaruOtomatis"); // NOI18N
+        btnInaCBGKlaimBaruOtomatis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInaCBGKlaimBaruOtomatis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInaCBGKlaimBaruOtomatisActionPerformed(evt);
+            }
+        });
+
+        btnInaCBGKlaimBaruManual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358050_receptionist.png"))); // NOI18N
+        btnInaCBGKlaimBaruManual.setText("Klaim Baru Manual INACBG");
+        btnInaCBGKlaimBaruManual.setIconTextGap(0);
+        btnInaCBGKlaimBaruManual.setName("btnInaCBGKlaimBaruManual"); // NOI18N
+        btnInaCBGKlaimBaruManual.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInaCBGKlaimBaruManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInaCBGKlaimBaruManualActionPerformed(evt);
+            }
+        });
+
+        btnInaCBGCoderNIK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002113_guard.png"))); // NOI18N
+        btnInaCBGCoderNIK.setText("Coder NIK INACBG");
+        btnInaCBGCoderNIK.setIconTextGap(0);
+        btnInaCBGCoderNIK.setName("btnInaCBGCoderNIK"); // NOI18N
+        btnInaCBGCoderNIK.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInaCBGCoderNIK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInaCBGCoderNIKActionPerformed(evt);
+            }
+        });
+
+        btnMutasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
+        btnMutasiBerkas.setText("Mutasi Berkas RM");
+        btnMutasiBerkas.setIconTextGap(0);
+        btnMutasiBerkas.setName("btnMutasiBerkas"); // NOI18N
+        btnMutasiBerkas.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMutasiBerkas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMutasiBerkasActionPerformed(evt);
+            }
+        });
+
+        btnAkunPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046603_wallet.png"))); // NOI18N
+        btnAkunPiutang.setText("Akun Piutang");
+        btnAkunPiutang.setIconTextGap(0);
+        btnAkunPiutang.setName("btnAkunPiutang"); // NOI18N
+        btnAkunPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAkunPiutang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAkunPiutangActionPerformed(evt);
+            }
+        });
+
+        btnRHKSO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRHKSO.setText("Harian KSO");
+        btnRHKSO.setIconTextGap(0);
+        btnRHKSO.setName("btnRHKSO"); // NOI18N
+        btnRHKSO.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRHKSO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRHKSOActionPerformed(evt);
+            }
+        });
+
+        btnRBKSO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRBKSO.setText("Bulanan KSO");
+        btnRBKSO.setIconTextGap(0);
+        btnRBKSO.setName("btnRBKSO"); // NOI18N
+        btnRBKSO.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRBKSO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRBKSOActionPerformed(evt);
+            }
+        });
+
+        btnRHMenejemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRHMenejemen.setText("Harian Menejemen");
+        btnRHMenejemen.setIconTextGap(0);
+        btnRHMenejemen.setName("btnRHMenejemen"); // NOI18N
+        btnRHMenejemen.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRHMenejemen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRHMenejemenActionPerformed(evt);
+            }
+        });
+
+        btnRBMenejemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRBMenejemen.setText("Bulanan Menejemen");
+        btnRBMenejemen.setIconTextGap(0);
+        btnRBMenejemen.setName("btnRBMenejemen"); // NOI18N
+        btnRBMenejemen.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRBMenejemen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRBMenejemenActionPerformed(evt);
+            }
+        });
+
+        btnCekEligibilitasInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
+        btnCekEligibilitasInhealth.setText("Cek Eligibilitas Inhealth");
+        btnCekEligibilitasInhealth.setIconTextGap(0);
+        btnCekEligibilitasInhealth.setName("btnCekEligibilitasInhealth"); // NOI18N
+        btnCekEligibilitasInhealth.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekEligibilitasInhealth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekEligibilitasInhealthActionPerformed(evt);
+            }
+        });
+
+        btnReferensiKamarInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Home.png"))); // NOI18N
+        btnReferensiKamarInhealth.setText("Referensi Ruang Rawat Inhealth");
+        btnReferensiKamarInhealth.setIconTextGap(0);
+        btnReferensiKamarInhealth.setName("btnReferensiKamarInhealth"); // NOI18N
+        btnReferensiKamarInhealth.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReferensiKamarInhealth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReferensiKamarInhealthActionPerformed(evt);
+            }
+        });
+
+        btnCekInhealthPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logout.png"))); // NOI18N
+        btnCekInhealthPoli.setText("Referensi Poli Inhealth");
+        btnCekInhealthPoli.setIconTextGap(0);
+        btnCekInhealthPoli.setName("btnCekInhealthPoli"); // NOI18N
+        btnCekInhealthPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekInhealthPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekInhealthPoliActionPerformed(evt);
+            }
+        });
+
+        btnCekInhealthFaskes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
+        btnCekInhealthFaskes.setText("Referensi Faskes Inhealth");
+        btnCekInhealthFaskes.setIconTextGap(0);
+        btnCekInhealthFaskes.setName("btnCekInhealthFaskes"); // NOI18N
+        btnCekInhealthFaskes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekInhealthFaskes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekInhealthFaskesActionPerformed(evt);
+            }
+        });
+
+        btnInhealthSJP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
+        btnInhealthSJP.setText("Data Bridging SJP Inhealth");
+        btnInhealthSJP.setIconTextGap(0);
+        btnInhealthSJP.setName("btnInhealthSJP"); // NOI18N
+        btnInhealthSJP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInhealthSJP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInhealthSJPActionPerformed(evt);
+            }
+        });
+
+        btnPiutangRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
+        btnPiutangRalan.setText("Piutang Ralan");
+        btnPiutangRalan.setIconTextGap(0);
+        btnPiutangRalan.setName("btnPiutangRalan"); // NOI18N
+        btnPiutangRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiutangRalanActionPerformed(evt);
+            }
+        });
+
+        btnPiutangRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
+        btnPiutangRanap.setText("Piutang Ranap");
+        btnPiutangRanap.setIconTextGap(0);
+        btnPiutangRanap.setName("btnPiutangRanap"); // NOI18N
+        btnPiutangRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiutangRanapActionPerformed(evt);
+            }
+        });
+
+        btnPiutangPerCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
+        btnPiutangPerCaraBayar.setText("Piutang Per Cara Bayar");
+        btnPiutangPerCaraBayar.setIconTextGap(0);
+        btnPiutangPerCaraBayar.setName("btnPiutangPerCaraBayar"); // NOI18N
+        btnPiutangPerCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangPerCaraBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiutangPerCaraBayarActionPerformed(evt);
+            }
+        });
+
+        btnLamaPelayananRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananRalan.setText("Lama Pelayanan Ralan");
+        btnLamaPelayananRalan.setIconTextGap(0);
+        btnLamaPelayananRalan.setName("btnLamaPelayananRalan"); // NOI18N
+        btnLamaPelayananRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamaPelayananRalanActionPerformed(evt);
+            }
+        });
+
+        btnCatatanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
+        btnCatatanPasien.setText("Catatan Pasien");
+        btnCatatanPasien.setIconTextGap(0);
+        btnCatatanPasien.setName("btnCatatanPasien"); // NOI18N
+        btnCatatanPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCatatanPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCatatanPasienActionPerformed(evt);
+            }
+        });
+
+        btnRl4b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
+        btnRl4b.setText("RL 4B Morbiditas Ralan");
+        btnRl4b.setIconTextGap(0);
+        btnRl4b.setName("btnRl4b"); // NOI18N
+        btnRl4b.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl4b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl4bActionPerformed(evt);
+            }
+        });
+
+        btnRl4asebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
+        btnRl4asebab.setText("RL 4A Sebab Morbiditas Ranap");
+        btnRl4asebab.setIconTextGap(0);
+        btnRl4asebab.setName("btnRl4asebab"); // NOI18N
+        btnRl4asebab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl4asebab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl4asebabActionPerformed(evt);
+            }
+        });
+
+        btnRl4bsebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
+        btnRl4bsebab.setText("RL 4B Sebab Morbiditas Ralan");
+        btnRl4bsebab.setIconTextGap(0);
+        btnRl4bsebab.setName("btnRl4bsebab"); // NOI18N
+        btnRl4bsebab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl4bsebab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl4bsebabActionPerformed(evt);
+            }
+        });
+
+        btnDataHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
+        btnDataHAIs.setText("Data HAIs");
+        btnDataHAIs.setIconTextGap(0);
+        btnDataHAIs.setName("btnDataHAIs"); // NOI18N
+        btnDataHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataHAIsActionPerformed(evt);
+            }
+        });
+
+        btnHarianHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
+        btnHarianHAIs.setText("Harian HAIs");
+        btnHarianHAIs.setIconTextGap(0);
+        btnHarianHAIs.setName("btnHarianHAIs"); // NOI18N
+        btnHarianHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHarianHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHarianHAIsActionPerformed(evt);
+            }
+        });
+
+        btnBulananHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
+        btnBulananHAIs.setText("Bulanan HAIs");
+        btnBulananHAIs.setIconTextGap(0);
+        btnBulananHAIs.setName("btnBulananHAIs"); // NOI18N
+        btnBulananHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBulananHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBulananHAIsActionPerformed(evt);
+            }
+        });
+
+        btnHitungBor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
+        btnHitungBor.setText("Hitung BOR");
+        btnHitungBor.setIconTextGap(0);
+        btnHitungBor.setName("btnHitungBor"); // NOI18N
+        btnHitungBor.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHitungBor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHitungBorActionPerformed(evt);
+            }
+        });
+
+        btnPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
+        btnPerusahaan.setText("Instansi/Perusahaan Pasien");
+        btnPerusahaan.setIconTextGap(0);
+        btnPerusahaan.setName("btnPerusahaan"); // NOI18N
+        btnPerusahaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPerusahaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerusahaanActionPerformed(evt);
+            }
+        });
+
+        btnDaftarPermintaanResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
+        btnDaftarPermintaanResep.setText("Daftar Resep Dokter");
+        btnDaftarPermintaanResep.setIconTextGap(0);
+        btnDaftarPermintaanResep.setName("btnDaftarPermintaanResep"); // NOI18N
+        btnDaftarPermintaanResep.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDaftarPermintaanResep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarPermintaanResepActionPerformed(evt);
+            }
+        });
+
+        btnLamaPelayananApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananApotek.setText("Lama Pelayanan Apotek");
+        btnLamaPelayananApotek.setIconTextGap(0);
+        btnLamaPelayananApotek.setName("btnLamaPelayananApotek"); // NOI18N
+        btnLamaPelayananApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananApotek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamaPelayananApotekActionPerformed(evt);
+            }
+        });
+
+        btnHitungAlos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
+        btnHitungAlos.setText("Hitung ALOS");
+        btnHitungAlos.setIconTextGap(0);
+        btnHitungAlos.setName("btnHitungAlos"); // NOI18N
+        btnHitungAlos.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHitungAlos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHitungAlosActionPerformed(evt);
+            }
+        });
+
+        btnDetailTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnDetailTindakan.setText("Detail Tindakan");
+        btnDetailTindakan.setIconTextGap(0);
+        btnDetailTindakan.setName("btnDetailTindakan"); // NOI18N
+        btnDetailTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDetailTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailTindakanActionPerformed(evt);
+            }
+        });
+
+        btnRekapPoliAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRekapPoliAnak.setText("Rekap Poli Anak");
+        btnRekapPoliAnak.setIconTextGap(0);
+        btnRekapPoliAnak.setName("btnRekapPoliAnak"); // NOI18N
+        btnRekapPoliAnak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPoliAnak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPoliAnakActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKunjunganPoli.setText("Registrasi Per Poli");
+        btnGrafikKunjunganPoli.setIconTextGap(0);
+        btnGrafikKunjunganPoli.setName("btnGrafikKunjunganPoli"); // NOI18N
+        btnGrafikKunjunganPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPoliActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKunjunganPerDokter.setText("Registrasi Per Dokter");
+        btnGrafikKunjunganPerDokter.setIconTextGap(0);
+        btnGrafikKunjunganPerDokter.setName("btnGrafikKunjunganPerDokter"); // NOI18N
+        btnGrafikKunjunganPerDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerDokterActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerPekerjaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKunjunganPerPekerjaan.setText("Registrasi Per Pekerjaan");
+        btnGrafikKunjunganPerPekerjaan.setIconTextGap(0);
+        btnGrafikKunjunganPerPekerjaan.setName("btnGrafikKunjunganPerPekerjaan"); // NOI18N
+        btnGrafikKunjunganPerPekerjaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerPekerjaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerPekerjaanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerPendidikan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKunjunganPerPendidikan.setText("Registrasi Per Pendidikan");
+        btnGrafikKunjunganPerPendidikan.setIconTextGap(0);
+        btnGrafikKunjunganPerPendidikan.setName("btnGrafikKunjunganPerPendidikan"); // NOI18N
+        btnGrafikKunjunganPerPendidikan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerPendidikan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerPendidikanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKunjunganPerTahun.setText("Registrasi Per Tahun");
+        btnGrafikKunjunganPerTahun.setIconTextGap(0);
+        btnGrafikKunjunganPerTahun.setName("btnGrafikKunjunganPerTahun"); // NOI18N
+        btnGrafikKunjunganPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnBerkasDigitalPerawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_folder_images_61610.png"))); // NOI18N
+        btnBerkasDigitalPerawatan.setText("Berkas Digital Perawatan");
+        btnBerkasDigitalPerawatan.setIconTextGap(0);
+        btnBerkasDigitalPerawatan.setName("btnBerkasDigitalPerawatan"); // NOI18N
+        btnBerkasDigitalPerawatan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBerkasDigitalPerawatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBerkasDigitalPerawatanActionPerformed(evt);
+            }
+        });
+
+        btnPnyMenularRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnPnyMenularRanap.setText("Pny Menular Ranap");
+        btnPnyMenularRanap.setIconTextGap(0);
+        btnPnyMenularRanap.setName("btnPnyMenularRanap"); // NOI18N
+        btnPnyMenularRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPnyMenularRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPnyMenularRanapActionPerformed(evt);
+            }
+        });
+
+        btnPnyMenularRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnPnyMenularRalan.setText("Pny Menular Ralan");
+        btnPnyMenularRalan.setIconTextGap(0);
+        btnPnyMenularRalan.setName("btnPnyMenularRalan"); // NOI18N
+        btnPnyMenularRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPnyMenularRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPnyMenularRalanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKunjunganPerBulan.setText("Registrasi Per Bulan");
+        btnGrafikKunjunganPerBulan.setIconTextGap(0);
+        btnGrafikKunjunganPerBulan.setName("btnGrafikKunjunganPerBulan"); // NOI18N
+        btnGrafikKunjunganPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerBulanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKunjunganPerTanggal.setText("Registrasi Per Tanggal");
+        btnGrafikKunjunganPerTanggal.setIconTextGap(0);
+        btnGrafikKunjunganPerTanggal.setName("btnGrafikKunjunganPerTanggal"); // NOI18N
+        btnGrafikKunjunganPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnGrafikDemografiRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikDemografiRegistrasi.setText("Demografi Registrasi");
+        btnGrafikDemografiRegistrasi.setIconTextGap(0);
+        btnGrafikDemografiRegistrasi.setName("btnGrafikDemografiRegistrasi"); // NOI18N
+        btnGrafikDemografiRegistrasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikDemografiRegistrasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikDemografiRegistrasiActionPerformed(evt);
+            }
+        });
+
+        btnGrafikStatusRegPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikStatusRegPerTahun.setText("Registrasi Lama Per Tahun");
+        btnGrafikStatusRegPerTahun.setIconTextGap(0);
+        btnGrafikStatusRegPerTahun.setName("btnGrafikStatusRegPerTahun"); // NOI18N
+        btnGrafikStatusRegPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusRegPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusRegPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnGrafikStatusRegPerTahun2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikStatusRegPerTahun2.setText("Registrasi Baru Per Tahun");
+        btnGrafikStatusRegPerTahun2.setIconTextGap(0);
+        btnGrafikStatusRegPerTahun2.setName("btnGrafikStatusRegPerTahun2"); // NOI18N
+        btnGrafikStatusRegPerTahun2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusRegPerTahun2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusRegPerTahun2ActionPerformed(evt);
+            }
+        });
+
+        btnGrafikStatusRegPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikStatusRegPerBulan.setText("Registrasi Lama Per Bulan");
+        btnGrafikStatusRegPerBulan.setIconTextGap(0);
+        btnGrafikStatusRegPerBulan.setName("btnGrafikStatusRegPerBulan"); // NOI18N
+        btnGrafikStatusRegPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusRegPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusRegPerBulanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikStatusRegPerBulan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikStatusRegPerBulan2.setText("Registrasi Baru Per Bulan");
+        btnGrafikStatusRegPerBulan2.setIconTextGap(0);
+        btnGrafikStatusRegPerBulan2.setName("btnGrafikStatusRegPerBulan2"); // NOI18N
+        btnGrafikStatusRegPerBulan2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusRegPerBulan2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusRegPerBulan2ActionPerformed(evt);
+            }
+        });
+
+        btnGrafikStatusRegPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikStatusRegPerTanggal.setText("Registrasi Lama Per Tanggal");
+        btnGrafikStatusRegPerTanggal.setIconTextGap(0);
+        btnGrafikStatusRegPerTanggal.setName("btnGrafikStatusRegPerTanggal"); // NOI18N
+        btnGrafikStatusRegPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusRegPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusRegPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnGrafikStatusRegPerTanggal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikStatusRegPerTanggal2.setText("Registrasi Baru Per Tanggal");
+        btnGrafikStatusRegPerTanggal2.setIconTextGap(0);
+        btnGrafikStatusRegPerTanggal2.setName("btnGrafikStatusRegPerTanggal2"); // NOI18N
+        btnGrafikStatusRegPerTanggal2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusRegPerTanggal2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusRegPerTanggal2ActionPerformed(evt);
+            }
+        });
+
+        btnGrafikStatusRegBatalPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikStatusRegBatalPerTahun.setText("Batal Periksa Per Tahun");
+        btnGrafikStatusRegBatalPerTahun.setIconTextGap(0);
+        btnGrafikStatusRegBatalPerTahun.setName("btnGrafikStatusRegBatalPerTahun"); // NOI18N
+        btnGrafikStatusRegBatalPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusRegBatalPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusRegBatalPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnGrafikStatusRegBatalPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikStatusRegBatalPerBulan.setText("Batal Periksa Per Bulan");
+        btnGrafikStatusRegBatalPerBulan.setIconTextGap(0);
+        btnGrafikStatusRegBatalPerBulan.setName("btnGrafikStatusRegBatalPerBulan"); // NOI18N
+        btnGrafikStatusRegBatalPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusRegBatalPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusRegBatalPerBulanActionPerformed(evt);
+            }
+        });
+
+        btnCekPCareDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnCekPCareDiagnosa.setText("Referensi Diagnosa PCare");
+        btnCekPCareDiagnosa.setIconTextGap(0);
+        btnCekPCareDiagnosa.setName("btnCekPCareDiagnosa"); // NOI18N
+        btnCekPCareDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekPCareDiagnosa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekPCareDiagnosaActionPerformed(evt);
+            }
+        });
+
+        btnGrafikStatusRegBatalPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikStatusRegBatalPerTanggal.setText("Batal Periksa Per Tanggal");
+        btnGrafikStatusRegBatalPerTanggal.setIconTextGap(0);
+        btnGrafikStatusRegBatalPerTanggal.setName("btnGrafikStatusRegBatalPerTanggal"); // NOI18N
+        btnGrafikStatusRegBatalPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikStatusRegBatalPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikStatusRegBatalPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnKategoriBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnKategoriBarang.setText("Kategori Obat, Alkes & BHP");
+        btnKategoriBarang.setIconTextGap(0);
+        btnKategoriBarang.setName("btnKategoriBarang"); // NOI18N
+        btnKategoriBarang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKategoriBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKategoriBarangActionPerformed(evt);
+            }
+        });
+
+        btnGolonganBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
+        btnGolonganBarang.setText("Golongan Obat, Alkes & BHP");
+        btnGolonganBarang.setIconTextGap(0);
+        btnGolonganBarang.setName("btnGolonganBarang"); // NOI18N
+        btnGolonganBarang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGolonganBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGolonganBarangActionPerformed(evt);
+            }
+        });
+
+        btnObatPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnObatPerTanggal.setText("Obat/Alkes/BHP Per Tanggal");
+        btnObatPerTanggal.setIconTextGap(0);
+        btnObatPerTanggal.setName("btnObatPerTanggal"); // NOI18N
+        btnObatPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnPenjualanPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnPenjualanPerTanggal.setText("Penjualan Bebas Per Tanggal");
+        btnPenjualanPerTanggal.setIconTextGap(0);
+        btnPenjualanPerTanggal.setName("btnPenjualanPerTanggal"); // NOI18N
+        btnPenjualanPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenjualanPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenjualanPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnCekPCareKesadaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
+        btnCekPCareKesadaran.setText("Referensi Kesadaran PCare");
+        btnCekPCareKesadaran.setIconTextGap(0);
+        btnCekPCareKesadaran.setName("btnCekPCareKesadaran"); // NOI18N
+        btnCekPCareKesadaran.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekPCareKesadaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekPCareKesadaranActionPerformed(evt);
+            }
+        });
+
+        btnPembatalanPeriksaDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnPembatalanPeriksaDokter.setText("Pembatalan Periksa Per Dokter");
+        btnPembatalanPeriksaDokter.setIconTextGap(0);
+        btnPembatalanPeriksaDokter.setName("btnPembatalanPeriksaDokter"); // NOI18N
+        btnPembatalanPeriksaDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembatalanPeriksaDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembatalanPeriksaDokterActionPerformed(evt);
+            }
+        });
+
+        btnPembayaranPerUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
+        btnPembayaranPerUnit.setText("Pembayaran Per Unit");
+        btnPembayaranPerUnit.setIconTextGap(0);
+        btnPembayaranPerUnit.setName("btnPembayaranPerUnit"); // NOI18N
+        btnPembayaranPerUnit.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranPerUnit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembayaranPerUnitActionPerformed(evt);
+            }
+        });
+
+        btnRekapPembayaranPerUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kde-document-open_23426.png"))); // NOI18N
+        btnRekapPembayaranPerUnit.setText("Rekap Pembayaran Per Unit");
+        btnRekapPembayaranPerUnit.setIconTextGap(0);
+        btnRekapPembayaranPerUnit.setName("btnRekapPembayaranPerUnit"); // NOI18N
+        btnRekapPembayaranPerUnit.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPembayaranPerUnit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPembayaranPerUnitActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerCarabayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKunjunganPerCarabayar.setText("Registrasi Per Cara Bayar");
+        btnGrafikKunjunganPerCarabayar.setIconTextGap(0);
+        btnGrafikKunjunganPerCarabayar.setName("btnGrafikKunjunganPerCarabayar"); // NOI18N
+        btnGrafikKunjunganPerCarabayar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerCarabayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerCarabayarActionPerformed(evt);
+            }
+        });
+
+        btnPengadaanIPSRSPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-new_23212.png"))); // NOI18N
+        btnPengadaanIPSRSPerTanggal.setText("Pengadaan Non Medis Per Tanggal");
+        btnPengadaanIPSRSPerTanggal.setIconTextGap(0);
+        btnPengadaanIPSRSPerTanggal.setName("btnPengadaanIPSRSPerTanggal"); // NOI18N
+        btnPengadaanIPSRSPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengadaanIPSRSPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengadaanIPSRSPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnStokKeluarIPSRSPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-open_23214.png"))); // NOI18N
+        btnStokKeluarIPSRSPerTanggal.setText("Stok Keluar Non Medis Per Tanggal");
+        btnStokKeluarIPSRSPerTanggal.setIconTextGap(0);
+        btnStokKeluarIPSRSPerTanggal.setName("btnStokKeluarIPSRSPerTanggal"); // NOI18N
+        btnStokKeluarIPSRSPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnStokKeluarIPSRSPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStokKeluarIPSRSPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganRanapPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKunjunganRanapPerTahun.setText("Kunjungan Ranap Per Tahun");
+        btnGrafikKunjunganRanapPerTahun.setIconTextGap(0);
+        btnGrafikKunjunganRanapPerTahun.setName("btnGrafikKunjunganRanapPerTahun"); // NOI18N
+        btnGrafikKunjunganRanapPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganRanapPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganRanapPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnCekPCareRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-preview_23216.png"))); // NOI18N
+        btnCekPCareRujukan.setText("Cek Rujukan PCare");
+        btnCekPCareRujukan.setIconTextGap(0);
+        btnCekPCareRujukan.setName("btnCekPCareRujukan"); // NOI18N
+        btnCekPCareRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekPCareRujukan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekPCareRujukanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikLabRalanPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikLabRalanPerTahun.setText("Kunjungan Lab Ralan Per Tahun");
+        btnGrafikLabRalanPerTahun.setIconTextGap(0);
+        btnGrafikLabRalanPerTahun.setName("btnGrafikLabRalanPerTahun"); // NOI18N
+        btnGrafikLabRalanPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLabRalanPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLabRalanPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnGrafikRadRalanPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikRadRalanPerTahun.setText("Kunjungan Rad Ralan Per Tahun");
+        btnGrafikRadRalanPerTahun.setIconTextGap(0);
+        btnGrafikRadRalanPerTahun.setName("btnGrafikRadRalanPerTahun"); // NOI18N
+        btnGrafikRadRalanPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikRadRalanPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikRadRalanPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnCekEntryRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
+        btnCekEntryRalan.setText("Cek Entry Ralan");
+        btnCekEntryRalan.setIconTextGap(0);
+        btnCekEntryRalan.setName("btnCekEntryRalan"); // NOI18N
+        btnCekEntryRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekEntryRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekEntryRalanActionPerformed(evt);
+            }
+        });
+
+        btnInaCBGKlaimBaruManual2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358050_receptionist.png"))); // NOI18N
+        btnInaCBGKlaimBaruManual2.setText("Klaim Baru Manual INACBG 2");
+        btnInaCBGKlaimBaruManual2.setIconTextGap(0);
+        btnInaCBGKlaimBaruManual2.setName("btnInaCBGKlaimBaruManual2"); // NOI18N
+        btnInaCBGKlaimBaruManual2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInaCBGKlaimBaruManual2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInaCBGKlaimBaruManual2ActionPerformed(evt);
+            }
+        });
+
+        btnPermintaanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_packing_49602.png"))); // NOI18N
+        btnPermintaanMedis.setText("Permintaan Obat & BHP");
+        btnPermintaanMedis.setIconTextGap(0);
+        btnPermintaanMedis.setName("btnPermintaanMedis"); // NOI18N
+        btnPermintaanMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPermintaanMedisActionPerformed(evt);
+            }
+        });
+
+        btnRekapPermintaanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRekapPermintaanMedis.setText("Rekap Permintaan Obat & BHP");
+        btnRekapPermintaanMedis.setIconTextGap(0);
+        btnRekapPermintaanMedis.setName("btnRekapPermintaanMedis"); // NOI18N
+        btnRekapPermintaanMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPermintaanMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPermintaanMedisActionPerformed(evt);
+            }
+        });
+
+        btnSuratPemesananMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Select-Language_49621.png"))); // NOI18N
+        btnSuratPemesananMedis.setText("Surat Pemesanan Obat & BHP");
+        btnSuratPemesananMedis.setIconTextGap(0);
+        btnSuratPemesananMedis.setName("btnSuratPemesananMedis"); // NOI18N
+        btnSuratPemesananMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratPemesananMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratPemesananMedisActionPerformed(evt);
+            }
+        });
+
+        btnPermintaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_packing_49602.png"))); // NOI18N
+        btnPermintaanNonMedis.setText("Permintaan Barang Non Medis");
+        btnPermintaanNonMedis.setIconTextGap(0);
+        btnPermintaanNonMedis.setName("btnPermintaanNonMedis"); // NOI18N
+        btnPermintaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPermintaanNonMedisActionPerformed(evt);
+            }
+        });
+
+        btnRekapPermintaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRekapPermintaanNonMedis.setText("Rekap Permintaan Barang Non Medis");
+        btnRekapPermintaanNonMedis.setIconTextGap(0);
+        btnRekapPermintaanNonMedis.setName("btnRekapPermintaanNonMedis"); // NOI18N
+        btnRekapPermintaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPermintaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPermintaanNonMedisActionPerformed(evt);
+            }
+        });
+
+        btnSuratPemesananNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Select-Language_49621.png"))); // NOI18N
+        btnSuratPemesananNonMedis.setText("Surat Pemesanan Barang Non Medis");
+        btnSuratPemesananNonMedis.setIconTextGap(0);
+        btnSuratPemesananNonMedis.setName("btnSuratPemesananNonMedis"); // NOI18N
+        btnSuratPemesananNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratPemesananNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratPemesananNonMedisActionPerformed(evt);
+            }
+        });
+
+        btnGrafikPerPerujuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikPerPerujuk.setText("Registrasi Per Perujuk");
+        btnGrafikPerPerujuk.setIconTextGap(0);
+        btnGrafikPerPerujuk.setName("btnGrafikPerPerujuk"); // NOI18N
+        btnGrafikPerPerujuk.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPerPerujuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikPerPerujukActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiProsedurBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stethoscope (1).png"))); // NOI18N
+        btnCekReferensiProsedurBPJS.setText("Referensi Prosedur VClaim");
+        btnCekReferensiProsedurBPJS.setIconTextGap(0);
+        btnCekReferensiProsedurBPJS.setName("btnCekReferensiProsedurBPJS"); // NOI18N
+        btnCekReferensiProsedurBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiProsedurBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiProsedurBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiKelasRawatBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/applications-office.png"))); // NOI18N
+        btnCekReferensiKelasRawatBPJS.setText("Referensi Kelas Rawat VClaim");
+        btnCekReferensiKelasRawatBPJS.setIconTextGap(0);
+        btnCekReferensiKelasRawatBPJS.setName("btnCekReferensiKelasRawatBPJS"); // NOI18N
+        btnCekReferensiKelasRawatBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiKelasRawatBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiKelasRawatBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiDokterBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/user3.png"))); // NOI18N
+        btnCekReferensiDokterBPJS.setText("Referensi Dokter VClaim");
+        btnCekReferensiDokterBPJS.setIconTextGap(0);
+        btnCekReferensiDokterBPJS.setName("btnCekReferensiDokterBPJS"); // NOI18N
+        btnCekReferensiDokterBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiDokterBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiDokterBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiSpesialistikBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/teacher.png"))); // NOI18N
+        btnCekReferensiSpesialistikBPJS.setText("Referensi Spesialistik VClaim");
+        btnCekReferensiSpesialistikBPJS.setIconTextGap(0);
+        btnCekReferensiSpesialistikBPJS.setName("btnCekReferensiSpesialistikBPJS"); // NOI18N
+        btnCekReferensiSpesialistikBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiSpesialistikBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiSpesialistikBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiRuangRawatBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357890_hospital.png"))); // NOI18N
+        btnCekReferensiRuangRawatBPJS.setText("Referensi Ruang Rawat VClaim");
+        btnCekReferensiRuangRawatBPJS.setIconTextGap(0);
+        btnCekReferensiRuangRawatBPJS.setName("btnCekReferensiRuangRawatBPJS"); // NOI18N
+        btnCekReferensiRuangRawatBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiRuangRawatBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiRuangRawatBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiCaraKeluarBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
+        btnCekReferensiCaraKeluarBPJS.setText("Referensi Cara Keluar VClaim");
+        btnCekReferensiCaraKeluarBPJS.setIconTextGap(0);
+        btnCekReferensiCaraKeluarBPJS.setName("btnCekReferensiCaraKeluarBPJS"); // NOI18N
+        btnCekReferensiCaraKeluarBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiCaraKeluarBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiCaraKeluarBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiPascaPulangBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/health.png"))); // NOI18N
+        btnCekReferensiPascaPulangBPJS.setText("Referensi Pasca Pulang VClaim");
+        btnCekReferensiPascaPulangBPJS.setIconTextGap(0);
+        btnCekReferensiPascaPulangBPJS.setName("btnCekReferensiPascaPulangBPJS"); // NOI18N
+        btnCekReferensiPascaPulangBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiPascaPulangBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiPascaPulangBPJSActionPerformed(evt);
+            }
+        });
+
+        btnDetailVKOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnDetailVKOK.setText("Detail VK & OK");
+        btnDetailVKOK.setIconTextGap(0);
+        btnDetailVKOK.setName("btnDetailVKOK"); // NOI18N
+        btnDetailVKOK.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDetailVKOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailVKOKActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSNomorRujukanRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnCekBPJSNomorRujukanRS.setText("Cek No.Rujukan RS di VClaim");
+        btnCekBPJSNomorRujukanRS.setIconTextGap(0);
+        btnCekBPJSNomorRujukanRS.setName("btnCekBPJSNomorRujukanRS"); // NOI18N
+        btnCekBPJSNomorRujukanRS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSNomorRujukanRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSNomorRujukanRSActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSRujukanKartuPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnCekBPJSRujukanKartuPCare.setText("Cek Rujukan Kartu PCare di VClaim");
+        btnCekBPJSRujukanKartuPCare.setIconTextGap(0);
+        btnCekBPJSRujukanKartuPCare.setName("btnCekBPJSRujukanKartuPCare"); // NOI18N
+        btnCekBPJSRujukanKartuPCare.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSRujukanKartuPCare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSRujukanKartuPCareActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSRujukanKartuRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnCekBPJSRujukanKartuRS.setText("Cek Rujukan Kartu RS di VClaim");
+        btnCekBPJSRujukanKartuRS.setIconTextGap(0);
+        btnCekBPJSRujukanKartuRS.setName("btnCekBPJSRujukanKartuRS"); // NOI18N
+        btnCekBPJSRujukanKartuRS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSRujukanKartuRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSRujukanKartuRSActionPerformed(evt);
+            }
+        });
+
+        btnRujukanKeluarBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
+        btnRujukanKeluarBPJS.setText("Data Rujukan Keluar VClaim");
+        btnRujukanKeluarBPJS.setIconTextGap(0);
+        btnRujukanKeluarBPJS.setName("btnRujukanKeluarBPJS"); // NOI18N
+        btnRujukanKeluarBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRujukanKeluarBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRujukanKeluarBPJSActionPerformed(evt);
+            }
+        });
+
+        btnGrafikLabRalanPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikLabRalanPerBulan.setText("Kunjungan Lab Ralan Per Bulan");
+        btnGrafikLabRalanPerBulan.setIconTextGap(0);
+        btnGrafikLabRalanPerBulan.setName("btnGrafikLabRalanPerBulan"); // NOI18N
+        btnGrafikLabRalanPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLabRalanPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLabRalanPerBulanActionPerformed(evt);
+            }
+        });
+
+        btnStokKeluarMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/shopping-basket-full.png"))); // NOI18N
+        btnStokKeluarMedis.setText("Stok Keluar Medis");
+        btnStokKeluarMedis.setIconTextGap(0);
+        btnStokKeluarMedis.setName("btnStokKeluarMedis"); // NOI18N
+        btnStokKeluarMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnStokKeluarMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStokKeluarMedisActionPerformed(evt);
+            }
+        });
+
+        btnGrafikRadRalanPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikRadRalanPerBulan.setText("Kunjungan Rad Ralan Per Bulan");
+        btnGrafikRadRalanPerBulan.setIconTextGap(0);
+        btnGrafikRadRalanPerBulan.setName("btnGrafikRadRalanPerBulan"); // NOI18N
+        btnGrafikRadRalanPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikRadRalanPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikRadRalanPerBulanActionPerformed(evt);
+            }
+        });
+
+        btnJMDetailDokter2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnJMDetailDokter2.setText("Detail JM Dokter 2");
+        btnJMDetailDokter2.setIconTextGap(0);
+        btnJMDetailDokter2.setName("btnJMDetailDokter2"); // NOI18N
+        btnJMDetailDokter2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJMDetailDokter2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJMDetailDokter2ActionPerformed(evt);
+            }
+        });
+
+        btnPengaduan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_message_add_17398.png"))); // NOI18N
+        btnPengaduan.setText("Pengaduan/Chat");
+        btnPengaduan.setIconTextGap(0);
+        btnPengaduan.setName("btnPengaduan"); // NOI18N
+        btnPengaduan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengaduan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengaduanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikLabRalanPerHari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikLabRalanPerHari.setText("Kunjungan Lab Ralan Per Tanggal");
+        btnGrafikLabRalanPerHari.setIconTextGap(0);
+        btnGrafikLabRalanPerHari.setName("btnGrafikLabRalanPerHari"); // NOI18N
+        btnGrafikLabRalanPerHari.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLabRalanPerHari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLabRalanPerHariActionPerformed(evt);
+            }
+        });
+
+        btnGrafikRadRalanPerHari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikRadRalanPerHari.setText("Kunjungan Rad Ralan Per Tanggal");
+        btnGrafikRadRalanPerHari.setIconTextGap(0);
+        btnGrafikRadRalanPerHari.setName("btnGrafikRadRalanPerHari"); // NOI18N
+        btnGrafikRadRalanPerHari.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikRadRalanPerHari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikRadRalanPerHariActionPerformed(evt);
+            }
+        });
+
+        btnSensusHarianRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
+        btnSensusHarianRalan.setText("Sensus Harian Ralan");
+        btnSensusHarianRalan.setIconTextGap(0);
+        btnSensusHarianRalan.setName("btnSensusHarianRalan"); // NOI18N
+        btnSensusHarianRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSensusHarianRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSensusHarianRalanActionPerformed(evt);
+            }
+        });
+
+        btnMetodeRacik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-new_23212.png"))); // NOI18N
+        btnMetodeRacik.setText("Metode Racik");
+        btnMetodeRacik.setIconTextGap(0);
+        btnMetodeRacik.setName("btnMetodeRacik"); // NOI18N
+        btnMetodeRacik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMetodeRacik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMetodeRacikActionPerformed(evt);
+            }
+        });
+
+        btnPembayaranAkunBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
+        btnPembayaranAkunBayar.setText("Pembayaran Per Akun Bayar");
+        btnPembayaranAkunBayar.setIconTextGap(0);
+        btnPembayaranAkunBayar.setName("btnPembayaranAkunBayar"); // NOI18N
+        btnPembayaranAkunBayar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranAkunBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembayaranAkunBayarActionPerformed(evt);
+            }
+        });
+
+        btnPenggunaObatResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/family.png"))); // NOI18N
+        btnPenggunaObatResep.setText("Pengguna Obat/Alkes/BHP Resep");
+        btnPenggunaObatResep.setIconTextGap(0);
+        btnPenggunaObatResep.setName("btnPenggunaObatResep"); // NOI18N
+        btnPenggunaObatResep.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenggunaObatResep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenggunaObatResepActionPerformed(evt);
+            }
+        });
+
+        btnRekapPenerimaanObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
+        btnRekapPenerimaanObat.setText("Rekap Penerimaan Obat & BHP");
+        btnRekapPenerimaanObat.setIconTextGap(0);
+        btnRekapPenerimaanObat.setName("btnRekapPenerimaanObat"); // NOI18N
+        btnRekapPenerimaanObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPenerimaanObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPenerimaanObatActionPerformed(evt);
+            }
+        });
+
+        btnMasterBerkasPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/folder.png"))); // NOI18N
+        btnMasterBerkasPegawai.setText("Master Berkas Pegawai");
+        btnMasterBerkasPegawai.setIconTextGap(0);
+        btnMasterBerkasPegawai.setName("btnMasterBerkasPegawai"); // NOI18N
+        btnMasterBerkasPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterBerkasPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterBerkasPegawaiActionPerformed(evt);
+            }
+        });
+
+        btnBerkasPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002437_partners.png"))); // NOI18N
+        btnBerkasPegawai.setText("Berkas Kepegawaian");
+        btnBerkasPegawai.setIconTextGap(0);
+        btnBerkasPegawai.setName("btnBerkasPegawai"); // NOI18N
+        btnBerkasPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBerkasPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBerkasPegawaiActionPerformed(evt);
+            }
+        });
+
+        btnRiwayatJabatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
+        btnRiwayatJabatan.setText("Riwayat Jabatan");
+        btnRiwayatJabatan.setIconTextGap(0);
+        btnRiwayatJabatan.setName("btnRiwayatJabatan"); // NOI18N
+        btnRiwayatJabatan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatJabatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatJabatanActionPerformed(evt);
+            }
+        });
+
+        btnRiwayatPendidikan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
+        btnRiwayatPendidikan.setText("Riwayat Pendidikan");
+        btnRiwayatPendidikan.setIconTextGap(0);
+        btnRiwayatPendidikan.setName("btnRiwayatPendidikan"); // NOI18N
+        btnRiwayatPendidikan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatPendidikan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatPendidikanActionPerformed(evt);
+            }
+        });
+
+        btnRiwayatNaikGaji.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
+        btnRiwayatNaikGaji.setText("Riwayat Naik Gaji");
+        btnRiwayatNaikGaji.setIconTextGap(0);
+        btnRiwayatNaikGaji.setName("btnRiwayatNaikGaji"); // NOI18N
+        btnRiwayatNaikGaji.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatNaikGaji.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatNaikGajiActionPerformed(evt);
+            }
+        });
+
+        btnKegiatanIlmiah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_gtk-find-and-replace_39047.png"))); // NOI18N
+        btnKegiatanIlmiah.setText("Kegiatan Ilmiah & Pelatihan");
+        btnKegiatanIlmiah.setIconTextGap(0);
+        btnKegiatanIlmiah.setName("btnKegiatanIlmiah"); // NOI18N
+        btnKegiatanIlmiah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKegiatanIlmiah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKegiatanIlmiahActionPerformed(evt);
+            }
+        });
+
+        btnRiwayatPenghargaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_folder_images_61610.png"))); // NOI18N
+        btnRiwayatPenghargaan.setText("Riwayat Penghargaan");
+        btnRiwayatPenghargaan.setIconTextGap(0);
+        btnRiwayatPenghargaan.setName("btnRiwayatPenghargaan"); // NOI18N
+        btnRiwayatPenghargaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatPenghargaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatPenghargaanActionPerformed(evt);
+            }
+        });
+
+        btnRiwayatPenelitian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_research_87460.png"))); // NOI18N
+        btnRiwayatPenelitian.setText("Riwayat Penelitian");
+        btnRiwayatPenelitian.setIconTextGap(0);
+        btnRiwayatPenelitian.setName("btnRiwayatPenelitian"); // NOI18N
+        btnRiwayatPenelitian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatPenelitian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatPenelitianActionPerformed(evt);
+            }
+        });
+
+        btnPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038192_market.png"))); // NOI18N
+        btnPenerimaanNonMedis.setText("Penerimaan Barang Non Medis");
+        btnPenerimaanNonMedis.setIconTextGap(0);
+        btnPenerimaanNonMedis.setName("btnPenerimaanNonMedis"); // NOI18N
+        btnPenerimaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenerimaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenerimaanNonMedisActionPerformed(evt);
+            }
+        });
+
+        btnBayarPesanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
+        btnBayarPesanNonMedis.setText("Bayar Pesan Non Medis");
+        btnBayarPesanNonMedis.setIconTextGap(0);
+        btnBayarPesanNonMedis.setName("btnBayarPesanNonMedis"); // NOI18N
+        btnBayarPesanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBayarPesanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBayarPesanNonMedisActionPerformed(evt);
+            }
+        });
+
+        btnHutangNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
+        btnHutangNonMedis.setText("Hutang Non Medis");
+        btnHutangNonMedis.setIconTextGap(0);
+        btnHutangNonMedis.setName("btnHutangNonMedis"); // NOI18N
+        btnHutangNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHutangNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHutangNonMedisActionPerformed(evt);
+            }
+        });
+
+        btnRekapPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
+        btnRekapPenerimaanNonMedis.setText("Rekap Penerimaan Non Medis");
+        btnRekapPenerimaanNonMedis.setIconTextGap(0);
+        btnRekapPenerimaanNonMedis.setName("btnRekapPenerimaanNonMedis"); // NOI18N
+        btnRekapPenerimaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPenerimaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPenerimaanNonMedisActionPerformed(evt);
+            }
+        });
+
+        btnInsidenKeselamatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002123_wheelchair.png"))); // NOI18N
+        btnInsidenKeselamatan.setText("Insiden Keselamatan");
+        btnInsidenKeselamatan.setIconTextGap(0);
+        btnInsidenKeselamatan.setName("btnInsidenKeselamatan"); // NOI18N
+        btnInsidenKeselamatan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInsidenKeselamatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsidenKeselamatanActionPerformed(evt);
+            }
+        });
+
+        btnInsidenKeselamatanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
+        btnInsidenKeselamatanPasien.setText("Data Insiden Keselamatan");
+        btnInsidenKeselamatanPasien.setIconTextGap(0);
+        btnInsidenKeselamatanPasien.setName("btnInsidenKeselamatanPasien"); // NOI18N
+        btnInsidenKeselamatanPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInsidenKeselamatanPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsidenKeselamatanPasienActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKejadianIKPPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKejadianIKPPerTahun.setText("Kejadian IKP Per Tahun");
+        btnGrafikKejadianIKPPerTahun.setIconTextGap(0);
+        btnGrafikKejadianIKPPerTahun.setName("btnGrafikKejadianIKPPerTahun"); // NOI18N
+        btnGrafikKejadianIKPPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKejadianIKPPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKejadianIKPPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKejadianIKPPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKejadianIKPPerBulan.setText("Kejadian IKP Per Bulan");
+        btnGrafikKejadianIKPPerBulan.setIconTextGap(0);
+        btnGrafikKejadianIKPPerBulan.setName("btnGrafikKejadianIKPPerBulan"); // NOI18N
+        btnGrafikKejadianIKPPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKejadianIKPPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKejadianIKPPerBulanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKejadianIKPPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKejadianIKPPerTanggal.setText("Kejadian IKP Per Tanggal");
+        btnGrafikKejadianIKPPerTanggal.setIconTextGap(0);
+        btnGrafikKejadianIKPPerTanggal.setName("btnGrafikKejadianIKPPerTanggal"); // NOI18N
+        btnGrafikKejadianIKPPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKejadianIKPPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKejadianIKPPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnRiwayatBatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
+        btnRiwayatBatch.setText("Riwayat Batch");
+        btnRiwayatBatch.setIconTextGap(0);
+        btnRiwayatBatch.setName("btnRiwayatBatch"); // NOI18N
+        btnRiwayatBatch.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatBatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatBatchActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKejadianIKPPerJenis.setText("Kejadian IKP Per Jenis");
+        btnGrafikKejadianIKPPerJenis.setIconTextGap(0);
+        btnGrafikKejadianIKPPerJenis.setName("btnGrafikKejadianIKPPerJenis"); // NOI18N
+        btnGrafikKejadianIKPPerJenis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKejadianIKPPerJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKejadianIKPPerJenisActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKejadianIKPPerDampak.setText("Kejadian IKP Per Dampak");
+        btnGrafikKejadianIKPPerDampak.setIconTextGap(0);
+        btnGrafikKejadianIKPPerDampak.setName("btnGrafikKejadianIKPPerDampak"); // NOI18N
+        btnGrafikKejadianIKPPerDampak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKejadianIKPPerDampak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKejadianIKPPerDampakActionPerformed(evt);
+            }
+        });
+
+        btnPiutangPerAkunPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stock_task.png"))); // NOI18N
+        btnPiutangPerAkunPiutang.setText("Piutang Per Akun Piutang");
+        btnPiutangPerAkunPiutang.setIconTextGap(0);
+        btnPiutangPerAkunPiutang.setName("btnPiutangPerAkunPiutang"); // NOI18N
+        btnPiutangPerAkunPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangPerAkunPiutang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiutangPerAkunPiutangActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerAgama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKunjunganPerAgama.setText("Registrasi Per Agama");
+        btnGrafikKunjunganPerAgama.setIconTextGap(0);
+        btnGrafikKunjunganPerAgama.setName("btnGrafikKunjunganPerAgama"); // NOI18N
+        btnGrafikKunjunganPerAgama.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerAgama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerAgamaActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerUmur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKunjunganPerUmur.setText("Registrasi Per Umur");
+        btnGrafikKunjunganPerUmur.setIconTextGap(0);
+        btnGrafikKunjunganPerUmur.setName("btnGrafikKunjunganPerUmur"); // NOI18N
+        btnGrafikKunjunganPerUmur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerUmur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerUmurActionPerformed(evt);
+            }
+        });
+
+        btnSuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Login Manager_3503.png"))); // NOI18N
+        btnSuku.setText("Suku/Bangsa Pasien");
+        btnSuku.setIconTextGap(0);
+        btnSuku.setName("btnSuku"); // NOI18N
+        btnSuku.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSukuActionPerformed(evt);
+            }
+        });
+
+        btnBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Orange forum_54521.png"))); // NOI18N
+        btnBahasa.setText("Bahasa Pasien");
+        btnBahasa.setIconTextGap(0);
+        btnBahasa.setName("btnBahasa"); // NOI18N
+        btnBahasa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBahasa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBahasaActionPerformed(evt);
+            }
+        });
+
+        btnGolonganTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_advantage_teamwork_1034367.png"))); // NOI18N
+        btnGolonganTNI.setText("Golongan TNI");
+        btnGolonganTNI.setIconTextGap(0);
+        btnGolonganTNI.setName("btnGolonganTNI"); // NOI18N
+        btnGolonganTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGolonganTNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGolonganTNIActionPerformed(evt);
+            }
+        });
+
+        btnSatuanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_17_2959846.png"))); // NOI18N
+        btnSatuanTNI.setText("Satuan TNI");
+        btnSatuanTNI.setIconTextGap(0);
+        btnSatuanTNI.setName("btnSatuanTNI"); // NOI18N
+        btnSatuanTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSatuanTNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSatuanTNIActionPerformed(evt);
+            }
+        });
+
+        btnJabatanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_kitchen_table_1378836.png"))); // NOI18N
+        btnJabatanTNI.setText("Jabatan TNI");
+        btnJabatanTNI.setIconTextGap(0);
+        btnJabatanTNI.setName("btnJabatanTNI"); // NOI18N
+        btnJabatanTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJabatanTNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJabatanTNIActionPerformed(evt);
+            }
+        });
+
+        btnPangkatTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_23_Page_Rank_Badge_1688850.png"))); // NOI18N
+        btnPangkatTNI.setText("Pangkat TNI");
+        btnPangkatTNI.setIconTextGap(0);
+        btnPangkatTNI.setName("btnPangkatTNI"); // NOI18N
+        btnPangkatTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPangkatTNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPangkatTNIActionPerformed(evt);
+            }
+        });
+
+        btnGolonganPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_advantage_teamwork_1034367.png"))); // NOI18N
+        btnGolonganPolri.setText("Golongan POLRI");
+        btnGolonganPolri.setIconTextGap(0);
+        btnGolonganPolri.setName("btnGolonganPolri"); // NOI18N
+        btnGolonganPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGolonganPolri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGolonganPolriActionPerformed(evt);
+            }
+        });
+
+        btnSatuanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_17_2959846.png"))); // NOI18N
+        btnSatuanPolri.setText("Satuan POLRI");
+        btnSatuanPolri.setIconTextGap(0);
+        btnSatuanPolri.setName("btnSatuanPolri"); // NOI18N
+        btnSatuanPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSatuanPolri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSatuanPolriActionPerformed(evt);
+            }
+        });
+
+        btnJabatanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_kitchen_table_1378836.png"))); // NOI18N
+        btnJabatanPolri.setText("Jabatan POLRI");
+        btnJabatanPolri.setIconTextGap(0);
+        btnJabatanPolri.setName("btnJabatanPolri"); // NOI18N
+        btnJabatanPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJabatanPolri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJabatanPolriActionPerformed(evt);
+            }
+        });
+
+        btnPangkatPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_23_Page_Rank_Badge_1688850.png"))); // NOI18N
+        btnPangkatPolri.setText("Pangkat POLRI");
+        btnPangkatPolri.setIconTextGap(0);
+        btnPangkatPolri.setName("btnPangkatPolri"); // NOI18N
+        btnPangkatPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPangkatPolri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPangkatPolriActionPerformed(evt);
+            }
+        });
+
+        btnCacatFisik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png"))); // NOI18N
+        btnCacatFisik.setText("Cacat Fisik");
+        btnCacatFisik.setIconTextGap(0);
+        btnCacatFisik.setName("btnCacatFisik"); // NOI18N
+        btnCacatFisik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCacatFisik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCacatFisikActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerSuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKunjunganPerSuku.setText("Registrasi Per Suku/Bangsa");
+        btnGrafikKunjunganPerSuku.setIconTextGap(0);
+        btnGrafikKunjunganPerSuku.setName("btnGrafikKunjunganPerSuku"); // NOI18N
+        btnGrafikKunjunganPerSuku.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerSuku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerSukuActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKunjunganPerBahasa.setText("Registrasi Per Bahasa");
+        btnGrafikKunjunganPerBahasa.setIconTextGap(0);
+        btnGrafikKunjunganPerBahasa.setName("btnGrafikKunjunganPerBahasa"); // NOI18N
+        btnGrafikKunjunganPerBahasa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerBahasa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerBahasaActionPerformed(evt);
+            }
+        });
+
+        btnJadwalOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Alarm_132148.png"))); // NOI18N
+        btnJadwalOperasi.setText("Jadwal Operasi");
+        btnJadwalOperasi.setIconTextGap(0);
+        btnJadwalOperasi.setName("btnJadwalOperasi"); // NOI18N
+        btnJadwalOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJadwalOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJadwalOperasiActionPerformed(evt);
+            }
+        });
+
+        btnMapingPoliBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Pink_Time_Machine_B_66659.png"))); // NOI18N
+        btnMapingPoliBPJS.setText("Mapping Poli VClaim");
+        btnMapingPoliBPJS.setIconTextGap(0);
+        btnMapingPoliBPJS.setName("btnMapingPoliBPJS"); // NOI18N
+        btnMapingPoliBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMapingPoliBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMapingPoliBPJSActionPerformed(evt);
+            }
+        });
+
+        btnGrafikKunjunganPerCacat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKunjunganPerCacat.setText("Registrasi Per Cacat Fisik");
+        btnGrafikKunjunganPerCacat.setIconTextGap(0);
+        btnGrafikKunjunganPerCacat.setName("btnGrafikKunjunganPerCacat"); // NOI18N
+        btnGrafikKunjunganPerCacat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerCacat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerCacatActionPerformed(evt);
+            }
+        });
+
+        btnBarangCSSD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_order-history_49596.png"))); // NOI18N
+        btnBarangCSSD.setText("Barang CSSD");
+        btnBarangCSSD.setIconTextGap(0);
+        btnBarangCSSD.setName("btnBarangCSSD"); // NOI18N
+        btnBarangCSSD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBarangCSSD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarangCSSDActionPerformed(evt);
+            }
+        });
+
+        btnSKDPBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kde-document-open_23426.png"))); // NOI18N
+        btnSKDPBPJS.setText("SKDP BPJS");
+        btnSKDPBPJS.setIconTextGap(0);
+        btnSKDPBPJS.setName("btnSKDPBPJS"); // NOI18N
+        btnSKDPBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSKDPBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSKDPBPJSActionPerformed(evt);
+            }
+        });
+
+        btnBookingRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Address Book_32590.png"))); // NOI18N
+        btnBookingRegistrasi.setText("Booking Registrasi");
+        btnBookingRegistrasi.setIconTextGap(0);
+        btnBookingRegistrasi.setName("btnBookingRegistrasi"); // NOI18N
+        btnBookingRegistrasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBookingRegistrasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookingRegistrasiActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiPropinsiBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_map_299050.png"))); // NOI18N
+        btnCekReferensiPropinsiBPJS.setText("Referensi Propinsi VClaim");
+        btnCekReferensiPropinsiBPJS.setIconTextGap(0);
+        btnCekReferensiPropinsiBPJS.setName("btnCekReferensiPropinsiBPJS"); // NOI18N
+        btnCekReferensiPropinsiBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiPropinsiBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiPropinsiBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiKabupatenBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_map_285662.png"))); // NOI18N
+        btnCekReferensiKabupatenBPJS.setText("Referensi Kabupaten VClaim");
+        btnCekReferensiKabupatenBPJS.setIconTextGap(0);
+        btnCekReferensiKabupatenBPJS.setName("btnCekReferensiKabupatenBPJS"); // NOI18N
+        btnCekReferensiKabupatenBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiKabupatenBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiKabupatenBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiKecamatanBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_advantage_nearby_1034361.png"))); // NOI18N
+        btnCekReferensiKecamatanBPJS.setText("Referensi Kecamatan VClaim");
+        btnCekReferensiKecamatanBPJS.setIconTextGap(0);
+        btnCekReferensiKecamatanBPJS.setName("btnCekReferensiKecamatanBPJS"); // NOI18N
+        btnCekReferensiKecamatanBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiKecamatanBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiKecamatanBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekReferensiDokterDPJPBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor_assistant.png"))); // NOI18N
+        btnCekReferensiDokterDPJPBPJS.setText("Referensi Dokter DPJP VClaim");
+        btnCekReferensiDokterDPJPBPJS.setIconTextGap(0);
+        btnCekReferensiDokterDPJPBPJS.setName("btnCekReferensiDokterDPJPBPJS"); // NOI18N
+        btnCekReferensiDokterDPJPBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiDokterDPJPBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiDokterDPJPBPJSActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSRiwayatRujukanRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
+        btnCekBPJSRiwayatRujukanRS.setText("Riwayat Rujukan RS di VClaim");
+        btnCekBPJSRiwayatRujukanRS.setIconTextGap(0);
+        btnCekBPJSRiwayatRujukanRS.setName("btnCekBPJSRiwayatRujukanRS"); // NOI18N
+        btnCekBPJSRiwayatRujukanRS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSRiwayatRujukanRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSRiwayatRujukanRSActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSTanggalRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnCekBPJSTanggalRujukan.setText("Tanggal Rujukan di VClaim");
+        btnCekBPJSTanggalRujukan.setIconTextGap(0);
+        btnCekBPJSTanggalRujukan.setName("btnCekBPJSTanggalRujukan"); // NOI18N
+        btnCekBPJSTanggalRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSTanggalRujukan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSTanggalRujukanActionPerformed(evt);
+            }
+        });
+
+        btnPermintaanLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); // NOI18N
+        btnPermintaanLab.setText("Permintaan Lab");
+        btnPermintaanLab.setIconTextGap(0);
+        btnPermintaanLab.setName("btnPermintaanLab"); // NOI18N
+        btnPermintaanLab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPermintaanLabActionPerformed(evt);
+            }
+        });
+
+        btnPermintaanRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Thorax_X-Ray_Black_63791.png"))); // NOI18N
+        btnPermintaanRadiologi.setText("Permintaan Radiologi");
+        btnPermintaanRadiologi.setIconTextGap(0);
+        btnPermintaanRadiologi.setName("btnPermintaanRadiologi"); // NOI18N
+        btnPermintaanRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanRadiologi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPermintaanRadiologiActionPerformed(evt);
+            }
+        });
+
+        btnSuratIndeks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_open-email_264844.png"))); // NOI18N
+        btnSuratIndeks.setText("Indeks Surat");
+        btnSuratIndeks.setIconTextGap(0);
+        btnSuratIndeks.setName("btnSuratIndeks"); // NOI18N
+        btnSuratIndeks.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratIndeks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratIndeksActionPerformed(evt);
+            }
+        });
+
+        btnSuratMap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_orange-folder-mail_25242.png"))); // NOI18N
+        btnSuratMap.setText("Map Surat");
+        btnSuratMap.setIconTextGap(0);
+        btnSuratMap.setName("btnSuratMap"); // NOI18N
+        btnSuratMap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratMap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratMapActionPerformed(evt);
+            }
+        });
+
+        btnSuratAlmari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_cabinet_49336.png"))); // NOI18N
+        btnSuratAlmari.setText("Almari Surat");
+        btnSuratAlmari.setIconTextGap(0);
+        btnSuratAlmari.setName("btnSuratAlmari"); // NOI18N
+        btnSuratAlmari.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratAlmari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratAlmariActionPerformed(evt);
+            }
+        });
+
+        btnSuratRak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_shelf_104409.png"))); // NOI18N
+        btnSuratRak.setText("Rak Surat");
+        btnSuratRak.setIconTextGap(0);
+        btnSuratRak.setName("btnSuratRak"); // NOI18N
+        btnSuratRak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratRak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratRakActionPerformed(evt);
+            }
+        });
+
+        btnSuratRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kfm_home_18010.png"))); // NOI18N
+        btnSuratRuang.setText("Ruang Surat");
+        btnSuratRuang.setIconTextGap(0);
+        btnSuratRuang.setName("btnSuratRuang"); // NOI18N
+        btnSuratRuang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratRuang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratRuangActionPerformed(evt);
+            }
+        });
+
+        btnSuratKlasifikasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kontact_8762.png"))); // NOI18N
+        btnSuratKlasifikasi.setText("Klasifikasi Surat");
+        btnSuratKlasifikasi.setIconTextGap(0);
+        btnSuratKlasifikasi.setName("btnSuratKlasifikasi"); // NOI18N
+        btnSuratKlasifikasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratKlasifikasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratKlasifikasiActionPerformed(evt);
+            }
+        });
+
+        btnSuratStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_26-Mail_34317.png"))); // NOI18N
+        btnSuratStatus.setText("Status Surat");
+        btnSuratStatus.setIconTextGap(0);
+        btnSuratStatus.setName("btnSuratStatus"); // NOI18N
+        btnSuratStatus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratStatusActionPerformed(evt);
+            }
+        });
+
+        btnSuratSifat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_private_mail_44691.png"))); // NOI18N
+        btnSuratSifat.setText("Sifat Surat");
+        btnSuratSifat.setIconTextGap(0);
+        btnSuratSifat.setName("btnSuratSifat"); // NOI18N
+        btnSuratSifat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratSifat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratSifatActionPerformed(evt);
+            }
+        });
+
+        btnSuratBalas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_mail-reply-all_118782.png"))); // NOI18N
+        btnSuratBalas.setText("Stts Balas Surat");
+        btnSuratBalas.setIconTextGap(0);
+        btnSuratBalas.setName("btnSuratBalas"); // NOI18N
+        btnSuratBalas.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratBalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratBalasActionPerformed(evt);
+            }
+        });
+
+        btnSuratMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_e-mail2 _36619.png"))); // NOI18N
+        btnSuratMasuk.setText("Surat Masuk");
+        btnSuratMasuk.setIconTextGap(0);
+        btnSuratMasuk.setName("btnSuratMasuk"); // NOI18N
+        btnSuratMasuk.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratMasukActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png"))); // NOI18N
+        btnPCareReferensiDokter.setText("Referensi Dokter PCare");
+        btnPCareReferensiDokter.setIconTextGap(0);
+        btnPCareReferensiDokter.setName("btnPCareReferensiDokter"); // NOI18N
+        btnPCareReferensiDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiDokterActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_home_61629.png"))); // NOI18N
+        btnPCareReferensiPoli.setText("Referensi Poli PCare");
+        btnPCareReferensiPoli.setIconTextGap(0);
+        btnPCareReferensiPoli.setName("btnPCareReferensiPoli"); // NOI18N
+        btnPCareReferensiPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiPoliActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiProvider.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358067_administrator.png"))); // NOI18N
+        btnPCareReferensiProvider.setText("Referensi Provider PCare");
+        btnPCareReferensiProvider.setIconTextGap(0);
+        btnPCareReferensiProvider.setName("btnPCareReferensiProvider"); // NOI18N
+        btnPCareReferensiProvider.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiProviderActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiStatusPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/edit-female-user.png"))); // NOI18N
+        btnPCareReferensiStatusPulang.setText("Referensi Stts Pulang PCare");
+        btnPCareReferensiStatusPulang.setIconTextGap(0);
+        btnPCareReferensiStatusPulang.setName("btnPCareReferensiStatusPulang"); // NOI18N
+        btnPCareReferensiStatusPulang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiStatusPulang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiStatusPulangActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiSpesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_surgeon_63160.png"))); // NOI18N
+        btnPCareReferensiSpesialis.setText("Referensi Spesialis PCare");
+        btnPCareReferensiSpesialis.setIconTextGap(0);
+        btnPCareReferensiSpesialis.setName("btnPCareReferensiSpesialis"); // NOI18N
+        btnPCareReferensiSpesialis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiSpesialis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiSpesialisActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiSubspesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Users_131982.png"))); // NOI18N
+        btnPCareReferensiSubspesialis.setText("Referensi Subspesialis PCare");
+        btnPCareReferensiSubspesialis.setIconTextGap(0);
+        btnPCareReferensiSubspesialis.setName("btnPCareReferensiSubspesialis"); // NOI18N
+        btnPCareReferensiSubspesialis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiSubspesialis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiSubspesialisActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Workstation_by_Artdesigner_60887.png"))); // NOI18N
+        btnPCareReferensiSarana.setText("Referensi Sarana PCare");
+        btnPCareReferensiSarana.setIconTextGap(0);
+        btnPCareReferensiSarana.setName("btnPCareReferensiSarana"); // NOI18N
+        btnPCareReferensiSarana.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiSarana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiSaranaActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_status_63159.png"))); // NOI18N
+        btnPCareReferensiKhusus.setText("Referensi Khusus PCare");
+        btnPCareReferensiKhusus.setIconTextGap(0);
+        btnPCareReferensiKhusus.setName("btnPCareReferensiKhusus"); // NOI18N
+        btnPCareReferensiKhusus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiKhusus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiKhususActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815676_pill.png"))); // NOI18N
+        btnPCareReferensiObat.setText("Referensi Obat PCare");
+        btnPCareReferensiObat.setIconTextGap(0);
+        btnPCareReferensiObat.setName("btnPCareReferensiObat"); // NOI18N
+        btnPCareReferensiObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiObatActionPerformed(evt);
+            }
+        });
+
+        btnPCareReferensiTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Documents_Black_63760.png"))); // NOI18N
+        btnPCareReferensiTindakan.setText("Referensi Tindakan PCare");
+        btnPCareReferensiTindakan.setIconTextGap(0);
+        btnPCareReferensiTindakan.setName("btnPCareReferensiTindakan"); // NOI18N
+        btnPCareReferensiTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiTindakanActionPerformed(evt);
+            }
+        });
+
+        btnPCareFaskesSubspesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Office-Building_88869.png"))); // NOI18N
+        btnPCareFaskesSubspesialis.setText("Faskes Subspesialis PCare");
+        btnPCareFaskesSubspesialis.setIconTextGap(0);
+        btnPCareFaskesSubspesialis.setName("btnPCareFaskesSubspesialis"); // NOI18N
+        btnPCareFaskesSubspesialis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareFaskesSubspesialis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareFaskesSubspesialisActionPerformed(evt);
+            }
+        });
+
+        btnPCareFaskesAlihRawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Two-storied_house_SH_131526.png"))); // NOI18N
+        btnPCareFaskesAlihRawat.setText("Faskes Alih Rawat PCare");
+        btnPCareFaskesAlihRawat.setIconTextGap(0);
+        btnPCareFaskesAlihRawat.setName("btnPCareFaskesAlihRawat"); // NOI18N
+        btnPCareFaskesAlihRawat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareFaskesAlihRawat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareFaskesAlihRawatActionPerformed(evt);
+            }
+        });
+
+        btnPCareFaskesThalasemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Home_131971.png"))); // NOI18N
+        btnPCareFaskesThalasemia.setText("Faskes Thalasemia & Hemofili PCare");
+        btnPCareFaskesThalasemia.setIconTextGap(0);
+        btnPCareFaskesThalasemia.setName("btnPCareFaskesThalasemia"); // NOI18N
+        btnPCareFaskesThalasemia.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareFaskesThalasemia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareFaskesThalasemiaActionPerformed(evt);
+            }
+        });
+
+        btnPCareMapingObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815295_medical_case.png"))); // NOI18N
+        btnPCareMapingObat.setText("Mapping Obat PCare");
+        btnPCareMapingObat.setIconTextGap(0);
+        btnPCareMapingObat.setName("btnPCareMapingObat"); // NOI18N
+        btnPCareMapingObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareMapingObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareMapingObatActionPerformed(evt);
+            }
+        });
+
+        btnPCareMapingTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_address-book_111220.png"))); // NOI18N
+        btnPCareMapingTindakan.setText("Tarif Ralan PCare");
+        btnPCareMapingTindakan.setIconTextGap(0);
+        btnPCareMapingTindakan.setName("btnPCareMapingTindakan"); // NOI18N
+        btnPCareMapingTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareMapingTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareMapingTindakanActionPerformed(evt);
+            }
+        });
+
+        btnPCareClubProlanis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Teachers-24_103847.png"))); // NOI18N
+        btnPCareClubProlanis.setText("Club Prolanis PCare");
+        btnPCareClubProlanis.setIconTextGap(0);
+        btnPCareClubProlanis.setName("btnPCareClubProlanis"); // NOI18N
+        btnPCareClubProlanis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareClubProlanis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareClubProlanisActionPerformed(evt);
+            }
+        });
+
+        btnPCareMapingPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_home_61629.png"))); // NOI18N
+        btnPCareMapingPoli.setText("Mapping Poli PCare");
+        btnPCareMapingPoli.setIconTextGap(0);
+        btnPCareMapingPoli.setName("btnPCareMapingPoli"); // NOI18N
+        btnPCareMapingPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareMapingPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareMapingPoliActionPerformed(evt);
+            }
+        });
+
+        btnPCareKegiatanKelompok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Group_Meeting_Light_80844.png"))); // NOI18N
+        btnPCareKegiatanKelompok.setText("Kegiatan Kelompok PCare");
+        btnPCareKegiatanKelompok.setIconTextGap(0);
+        btnPCareKegiatanKelompok.setName("btnPCareKegiatanKelompok"); // NOI18N
+        btnPCareKegiatanKelompok.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareKegiatanKelompok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareKegiatanKelompokActionPerformed(evt);
+            }
+        });
+
+        btnPCareMapingTindakanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_book_285636.png"))); // NOI18N
+        btnPCareMapingTindakanRanap.setText("Tarif Ranap PCare");
+        btnPCareMapingTindakanRanap.setIconTextGap(0);
+        btnPCareMapingTindakanRanap.setName("btnPCareMapingTindakanRanap"); // NOI18N
+        btnPCareMapingTindakanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareMapingTindakanRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareMapingTindakanRanapActionPerformed(evt);
+            }
+        });
+
+        btnPCarePesertaKegiatanKelompok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Edit-Male-User.png"))); // NOI18N
+        btnPCarePesertaKegiatanKelompok.setText("Peserta Keg Kelompok PCare");
+        btnPCarePesertaKegiatanKelompok.setIconTextGap(0);
+        btnPCarePesertaKegiatanKelompok.setName("btnPCarePesertaKegiatanKelompok"); // NOI18N
+        btnPCarePesertaKegiatanKelompok.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCarePesertaKegiatanKelompok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCarePesertaKegiatanKelompokActionPerformed(evt);
+            }
+        });
+
+        btnSirkulasi3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasi3.setText("Sirkulasi Obat, Alkes & BHP 3");
+        btnSirkulasi3.setIconTextGap(0);
+        btnSirkulasi3.setName("btnSirkulasi3"); // NOI18N
+        btnSirkulasi3.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasi3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasi3ActionPerformed(evt);
+            }
+        });
+
+        btnPCarePendaftaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_todo_list_add_17451.png"))); // NOI18N
+        btnPCarePendaftaran.setText("Data Pendaftaran PCare");
+        btnPCarePendaftaran.setIconTextGap(0);
+        btnPCarePendaftaran.setName("btnPCarePendaftaran"); // NOI18N
+        btnPCarePendaftaran.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCarePendaftaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCarePendaftaranActionPerformed(evt);
+            }
+        });
+
+        btnPCareMapingDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_surgeon_45573.png"))); // NOI18N
+        btnPCareMapingDokter.setText("Mapping Dokter PCare");
+        btnPCareMapingDokter.setIconTextGap(0);
+        btnPCareMapingDokter.setName("btnPCareMapingDokter"); // NOI18N
+        btnPCareMapingDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareMapingDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareMapingDokterActionPerformed(evt);
+            }
+        });
+
+        btnRanapPerRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_House_132045.png"))); // NOI18N
+        btnRanapPerRuang.setText("Ranap Per Ruang");
+        btnRanapPerRuang.setIconTextGap(0);
+        btnRanapPerRuang.setName("btnRanapPerRuang"); // NOI18N
+        btnRanapPerRuang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRanapPerRuang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRanapPerRuangActionPerformed(evt);
+            }
+        });
+
+        btnPenyakitRanapCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_24_DNA_2064499.png"))); // NOI18N
+        btnPenyakitRanapCaraBayar.setText("Penyakit Ranap Per Cara Bayar");
+        btnPenyakitRanapCaraBayar.setIconTextGap(0);
+        btnPenyakitRanapCaraBayar.setName("btnPenyakitRanapCaraBayar"); // NOI18N
+        btnPenyakitRanapCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenyakitRanapCaraBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenyakitRanapCaraBayarActionPerformed(evt);
+            }
+        });
+
+        btnAnggotaMiliterDirawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Soldier-3_379419.png"))); // NOI18N
+        btnAnggotaMiliterDirawat.setText("Anggota TNI Dirawat");
+        btnAnggotaMiliterDirawat.setIconTextGap(0);
+        btnAnggotaMiliterDirawat.setName("btnAnggotaMiliterDirawat"); // NOI18N
+        btnAnggotaMiliterDirawat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAnggotaMiliterDirawat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnggotaMiliterDirawatActionPerformed(evt);
+            }
+        });
+
+        btnSetInputParsial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Finance_loan_money_1889199.png"))); // NOI18N
+        btnSetInputParsial.setText("Set Input Parsial");
+        btnSetInputParsial.setIconTextGap(0);
+        btnSetInputParsial.setName("btnSetInputParsial"); // NOI18N
+        btnSetInputParsial.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetInputParsial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetInputParsialActionPerformed(evt);
+            }
+        });
+
+        btnLamaPelayananRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananRadiologi.setText("Lama Pelayanan Radiologi");
+        btnLamaPelayananRadiologi.setIconTextGap(0);
+        btnLamaPelayananRadiologi.setName("btnLamaPelayananRadiologi"); // NOI18N
+        btnLamaPelayananRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananRadiologi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamaPelayananRadiologiActionPerformed(evt);
+            }
+        });
+
+        btnLamaPelayananLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananLab.setText("Lama Pelayanan Lab");
+        btnLamaPelayananLab.setIconTextGap(0);
+        btnLamaPelayananLab.setName("btnLamaPelayananLab"); // NOI18N
+        btnLamaPelayananLab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamaPelayananLabActionPerformed(evt);
+            }
+        });
+
+        btnCekSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_folder_search_48770.png"))); // NOI18N
+        btnCekSEP.setText("Cek Nomor SEP");
+        btnCekSEP.setIconTextGap(0);
+        btnCekSEP.setName("btnCekSEP"); // NOI18N
+        btnCekSEP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekSEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekSEPActionPerformed(evt);
+            }
+        });
+
+        btnSuratKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_email_3327.png"))); // NOI18N
+        btnSuratKeluar.setText("Surat Keluar");
+        btnSuratKeluar.setIconTextGap(0);
+        btnSuratKeluar.setName("btnSuratKeluar"); // NOI18N
+        btnSuratKeluar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratKeluarActionPerformed(evt);
+            }
+        });
+
+        btnKegiatanFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_website_-_address_book_3440827.png"))); // NOI18N
+        btnKegiatanFarmasi.setText("Kegiatan Farmasi");
+        btnKegiatanFarmasi.setIconTextGap(0);
+        btnKegiatanFarmasi.setName("btnKegiatanFarmasi"); // NOI18N
+        btnKegiatanFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKegiatanFarmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKegiatanFarmasiActionPerformed(evt);
+            }
+        });
+
+        btnOpnameIPSRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ark2.png"))); // NOI18N
+        btnOpnameIPSRS.setText("Stok Opname Non Medis");
+        btnOpnameIPSRS.setIconTextGap(0);
+        btnOpnameIPSRS.setName("btnOpnameIPSRS"); // NOI18N
+        btnOpnameIPSRS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnOpnameIPSRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpnameIPSRSActionPerformed(evt);
+            }
+        });
+
+        btnSirkulasiNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasiNonMedis.setText("Sirkulasi Non Medis");
+        btnSirkulasiNonMedis.setIconTextGap(0);
+        btnSirkulasiNonMedis.setName("btnSirkulasiNonMedis"); // NOI18N
+        btnSirkulasiNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasiNonMedisActionPerformed(evt);
+            }
+        });
+
+        btnRekapLabPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_projects_63140.png"))); // NOI18N
+        btnRekapLabPerTahun.setText("Rekap Lab Per Tahun");
+        btnRekapLabPerTahun.setIconTextGap(0);
+        btnRekapLabPerTahun.setName("btnRekapLabPerTahun"); // NOI18N
+        btnRekapLabPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapLabPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapLabPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnPerujukLabPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
+        btnPerujukLabPerTahun.setText("Perujuk Lab Per Tahun");
+        btnPerujukLabPerTahun.setIconTextGap(0);
+        btnPerujukLabPerTahun.setName("btnPerujukLabPerTahun"); // NOI18N
+        btnPerujukLabPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPerujukLabPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerujukLabPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnRekapRadiologiPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Thorax_X-Ray_Black_63791.png"))); // NOI18N
+        btnRekapRadiologiPerTahun.setText("Rekap Radiologi Per Tahun");
+        btnRekapRadiologiPerTahun.setIconTextGap(0);
+        btnRekapRadiologiPerTahun.setName("btnRekapRadiologiPerTahun"); // NOI18N
+        btnRekapRadiologiPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapRadiologiPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapRadiologiPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnPerujukRadiologiPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor_assistant.png"))); // NOI18N
+        btnPerujukRadiologiPerTahun.setText("Perujuk Radiologi Per Tahun");
+        btnPerujukRadiologiPerTahun.setIconTextGap(0);
+        btnPerujukRadiologiPerTahun.setName("btnPerujukRadiologiPerTahun"); // NOI18N
+        btnPerujukRadiologiPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPerujukRadiologiPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerujukRadiologiPerTahunActionPerformed(evt);
+            }
+        });
+
+        btnJumlahPorsiDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_bibimbub_3377053.png"))); // NOI18N
+        btnJumlahPorsiDiet.setText("Rekap Bulanan Porsi Diet");
+        btnJumlahPorsiDiet.setIconTextGap(0);
+        btnJumlahPorsiDiet.setName("btnJumlahPorsiDiet"); // NOI18N
+        btnJumlahPorsiDiet.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJumlahPorsiDiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJumlahPorsiDietActionPerformed(evt);
+            }
+        });
+
+        btnJumlahMacamDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ramen_3377055.png"))); // NOI18N
+        btnJumlahMacamDiet.setText("Rekap Bulanan Macam Diet");
+        btnJumlahMacamDiet.setIconTextGap(0);
+        btnJumlahMacamDiet.setName("btnJumlahMacamDiet"); // NOI18N
+        btnJumlahMacamDiet.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJumlahMacamDiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJumlahMacamDietActionPerformed(evt);
+            }
+        });
+
+        btnPaymentPoint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
+        btnPaymentPoint2.setText("Payment Point 2");
+        btnPaymentPoint2.setIconTextGap(0);
+        btnPaymentPoint2.setName("btnPaymentPoint2"); // NOI18N
+        btnPaymentPoint2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPaymentPoint2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaymentPoint2ActionPerformed(evt);
+            }
+        });
+
+        btnPembayaranAkunBayar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
+        btnPembayaranAkunBayar2.setText("Pembayaran Per Akun Bayar 2");
+        btnPembayaranAkunBayar2.setIconTextGap(0);
+        btnPembayaranAkunBayar2.setName("btnPembayaranAkunBayar2"); // NOI18N
+        btnPembayaranAkunBayar2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranAkunBayar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembayaranAkunBayar2ActionPerformed(evt);
+            }
+        });
+
+        btnHAIsBangsal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
+        btnHAIsBangsal.setText("HAIs Per Kamar/Bangsal");
+        btnHAIsBangsal.setIconTextGap(0);
+        btnHAIsBangsal.setName("btnHAIsBangsal"); // NOI18N
+        btnHAIsBangsal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHAIsBangsal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHAIsBangsalActionPerformed(evt);
+            }
+        });
+
+        btnPPNObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_money_299107.png"))); // NOI18N
+        btnPPNObat.setText("PPN Obat");
+        btnPPNObat.setIconTextGap(0);
+        btnPPNObat.setName("btnPPNObat"); // NOI18N
+        btnPPNObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPPNObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPPNObatActionPerformed(evt);
+            }
+        });
+
+        btnSaldoAkunPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icons-05_799761.png"))); // NOI18N
+        btnSaldoAkunPerBulan.setText("Saldo Akun Per Bulan");
+        btnSaldoAkunPerBulan.setIconTextGap(0);
+        btnSaldoAkunPerBulan.setName("btnSaldoAkunPerBulan"); // NOI18N
+        btnSaldoAkunPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSaldoAkunPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaldoAkunPerBulanActionPerformed(evt);
+            }
+        });
+
+        btnDisplayApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/find.png"))); // NOI18N
+        btnDisplayApotek.setText("Display Antrian Apotek");
+        btnDisplayApotek.setIconTextGap(0);
+        btnDisplayApotek.setName("btnDisplayApotek"); // NOI18N
+        btnDisplayApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDisplayApotek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDisplayApotekActionPerformed(evt);
+            }
+        });
+
+        btnCekSisruteFaskes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
+        btnCekSisruteFaskes.setText("Referensi Faskes Sisrute");
+        btnCekSisruteFaskes.setIconTextGap(0);
+        btnCekSisruteFaskes.setName("btnCekSisruteFaskes"); // NOI18N
+        btnCekSisruteFaskes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekSisruteFaskes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekSisruteFaskesActionPerformed(evt);
+            }
+        });
+
+        btnCekSisruteAlasanRujuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_todo_list_add_17451.png"))); // NOI18N
+        btnCekSisruteAlasanRujuk.setText("Referensi Alasan Rujuk Sisrute");
+        btnCekSisruteAlasanRujuk.setIconTextGap(0);
+        btnCekSisruteAlasanRujuk.setName("btnCekSisruteAlasanRujuk"); // NOI18N
+        btnCekSisruteAlasanRujuk.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekSisruteAlasanRujuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekSisruteAlasanRujukActionPerformed(evt);
+            }
+        });
+
+        btnCekSisruteDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnCekSisruteDiagnosa.setText("Referensi Diagnosa Sisrute");
+        btnCekSisruteDiagnosa.setIconTextGap(0);
+        btnCekSisruteDiagnosa.setName("btnCekSisruteDiagnosa"); // NOI18N
+        btnCekSisruteDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekSisruteDiagnosa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekSisruteDiagnosaActionPerformed(evt);
+            }
+        });
+
+        btnRujukanMasukSisrute.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_analysis_60159.png"))); // NOI18N
+        btnRujukanMasukSisrute.setText("Rujukan Masuk Sisrute");
+        btnRujukanMasukSisrute.setIconTextGap(0);
+        btnRujukanMasukSisrute.setName("btnRujukanMasukSisrute"); // NOI18N
+        btnRujukanMasukSisrute.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRujukanMasukSisrute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRujukanMasukSisruteActionPerformed(evt);
+            }
+        });
+
+        btnRujukanKeluarSisrute.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
+        btnRujukanKeluarSisrute.setText("Rujukan Keluar Sisrute");
+        btnRujukanKeluarSisrute.setIconTextGap(0);
+        btnRujukanKeluarSisrute.setName("btnRujukanKeluarSisrute"); // NOI18N
+        btnRujukanKeluarSisrute.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRujukanKeluarSisrute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRujukanKeluarSisruteActionPerformed(evt);
+            }
+        });
+
+        btnCekBPJSSKDP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-preview_23216.png"))); // NOI18N
+        btnCekBPJSSKDP.setText("Cek SKDP VClaim");
+        btnCekBPJSSKDP.setIconTextGap(0);
+        btnCekBPJSSKDP.setName("btnCekBPJSSKDP"); // NOI18N
+        btnCekBPJSSKDP.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSSKDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSSKDPActionPerformed(evt);
+            }
+        });
+
+        btnDataBatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
+        btnDataBatch.setText("Data Batch");
+        btnDataBatch.setIconTextGap(0);
+        btnDataBatch.setName("btnDataBatch"); // NOI18N
+        btnDataBatch.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataBatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataBatchActionPerformed(evt);
+            }
+        });
+
+        btnKunjunganLabRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnKunjunganLabRalan.setText("Kunjungan Lab Ralan");
+        btnKunjunganLabRalan.setIconTextGap(0);
+        btnKunjunganLabRalan.setName("btnKunjunganLabRalan"); // NOI18N
+        btnKunjunganLabRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKunjunganLabRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKunjunganLabRalanActionPerformed(evt);
+            }
+        });
+
+        btnKunjunganLabRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnKunjunganLabRanap.setText("Kunjungan Lab Ranap");
+        btnKunjunganLabRanap.setIconTextGap(0);
+        btnKunjunganLabRanap.setName("btnKunjunganLabRanap"); // NOI18N
+        btnKunjunganLabRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKunjunganLabRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKunjunganLabRanapActionPerformed(evt);
+            }
+        });
+
+        btnKunjunganRadRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnKunjunganRadRalan.setText("Kunjungan Radiologi Ralan");
+        btnKunjunganRadRalan.setIconTextGap(0);
+        btnKunjunganRadRalan.setName("btnKunjunganRadRalan"); // NOI18N
+        btnKunjunganRadRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKunjunganRadRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKunjunganRadRalanActionPerformed(evt);
+            }
+        });
+
+        btnKunjunganRadRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnKunjunganRadRanap.setText("Kunjungan Radiologi Ranap");
+        btnKunjunganRadRanap.setIconTextGap(0);
+        btnKunjunganRadRanap.setName("btnKunjunganRadRanap"); // NOI18N
+        btnKunjunganRadRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKunjunganRadRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKunjunganRadRanapActionPerformed(evt);
+            }
+        });
+
+        btnPCareBeriObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/first_aid_kit.png"))); // NOI18N
+        btnPCareBeriObat.setText("Pemberian Obat PCare");
+        btnPCareBeriObat.setIconTextGap(0);
+        btnPCareBeriObat.setName("btnPCareBeriObat"); // NOI18N
+        btnPCareBeriObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareBeriObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareBeriObatActionPerformed(evt);
+            }
+        });
+
+        btnPCareBeriTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png"))); // NOI18N
+        btnPCareBeriTindakan.setText("Pemberian Tindakan PCare");
+        btnPCareBeriTindakan.setIconTextGap(0);
+        btnPCareBeriTindakan.setName("btnPCareBeriTindakan"); // NOI18N
+        btnPCareBeriTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareBeriTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareBeriTindakanActionPerformed(evt);
+            }
+        });
+
+        btnPembayaranAkunBayar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
+        btnPembayaranAkunBayar3.setText("Pembayaran Per Akun Bayar 3");
+        btnPembayaranAkunBayar3.setIconTextGap(0);
+        btnPembayaranAkunBayar3.setName("btnPembayaranAkunBayar3"); // NOI18N
+        btnPembayaranAkunBayar3.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranAkunBayar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembayaranAkunBayar3ActionPerformed(evt);
+            }
+        });
+
+        btnPasswordAsuransi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002113_guard.png"))); // NOI18N
+        btnPasswordAsuransi.setText("Password Asuransi");
+        btnPasswordAsuransi.setIconTextGap(0);
+        btnPasswordAsuransi.setName("btnPasswordAsuransi"); // NOI18N
+        btnPasswordAsuransi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPasswordAsuransi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasswordAsuransiActionPerformed(evt);
+            }
+        });
+
+        btnDataSITT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnDataSITT.setText("Data TB");
+        btnDataSITT.setIconTextGap(0);
+        btnDataSITT.setName("btnDataSITT"); // NOI18N
+        btnDataSITT.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataSITT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataSITTActionPerformed(evt);
+            }
+        });
+
+        btnSiranapKetersediaanKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
+        btnSiranapKetersediaanKamar.setText("Ketersediaan Kamar SIRANAP");
+        btnSiranapKetersediaanKamar.setIconTextGap(0);
+        btnSiranapKetersediaanKamar.setName("btnSiranapKetersediaanKamar"); // NOI18N
+        btnSiranapKetersediaanKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSiranapKetersediaanKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiranapKetersediaanKamarActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBLaporanPeriode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBLaporanPeriode.setText("Periode Laporan TB");
+        btnGrafikTBLaporanPeriode.setIconTextGap(0);
+        btnGrafikTBLaporanPeriode.setName("btnGrafikTBLaporanPeriode"); // NOI18N
+        btnGrafikTBLaporanPeriode.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBLaporanPeriode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBLaporanPeriodeActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBRujukan.setText("Rujukan TB");
+        btnGrafikTBRujukan.setIconTextGap(0);
+        btnGrafikTBRujukan.setName("btnGrafikTBRujukan"); // NOI18N
+        btnGrafikTBRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBRujukan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBRujukanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBRiwayat.setText("Riwayat TB");
+        btnGrafikTBRiwayat.setIconTextGap(0);
+        btnGrafikTBRiwayat.setName("btnGrafikTBRiwayat"); // NOI18N
+        btnGrafikTBRiwayat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBRiwayatActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBTipeDiagnosis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBTipeDiagnosis.setText("Tipe Diagnosis TB");
+        btnGrafikTBTipeDiagnosis.setIconTextGap(0);
+        btnGrafikTBTipeDiagnosis.setName("btnGrafikTBTipeDiagnosis"); // NOI18N
+        btnGrafikTBTipeDiagnosis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBTipeDiagnosis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBTipeDiagnosisActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBSTatusHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBSTatusHIV.setText("Status HIV TB");
+        btnGrafikTBSTatusHIV.setIconTextGap(0);
+        btnGrafikTBSTatusHIV.setName("btnGrafikTBSTatusHIV"); // NOI18N
+        btnGrafikTBSTatusHIV.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSTatusHIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSTatusHIVActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBSkoringAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBSkoringAnak.setText("Skoring Anak TB");
+        btnGrafikTBSkoringAnak.setIconTextGap(0);
+        btnGrafikTBSkoringAnak.setName("btnGrafikTBSkoringAnak"); // NOI18N
+        btnGrafikTBSkoringAnak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSkoringAnak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSkoringAnakActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBKonfirmasiSkoring5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBKonfirmasiSkoring5.setText("Konfirmasi Skoring 5 TB");
+        btnGrafikTBKonfirmasiSkoring5.setIconTextGap(0);
+        btnGrafikTBKonfirmasiSkoring5.setName("btnGrafikTBKonfirmasiSkoring5"); // NOI18N
+        btnGrafikTBKonfirmasiSkoring5.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBKonfirmasiSkoring5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBKonfirmasiSkoring5ActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBKonfirmasiSkoring6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBKonfirmasiSkoring6.setText("Konfirmasi Skoring 6 TB");
+        btnGrafikTBKonfirmasiSkoring6.setIconTextGap(0);
+        btnGrafikTBKonfirmasiSkoring6.setName("btnGrafikTBKonfirmasiSkoring6"); // NOI18N
+        btnGrafikTBKonfirmasiSkoring6.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBKonfirmasiSkoring6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBKonfirmasiSkoring6ActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBSumberObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBSumberObat.setText("Sumber Obat TB");
+        btnGrafikTBSumberObat.setIconTextGap(0);
+        btnGrafikTBSumberObat.setName("btnGrafikTBSumberObat"); // NOI18N
+        btnGrafikTBSumberObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBSumberObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBSumberObatActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBHasilAkhirPengobatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikTBHasilAkhirPengobatan.setText("Hasil Akhir Pengobatan TB");
+        btnGrafikTBHasilAkhirPengobatan.setIconTextGap(0);
+        btnGrafikTBHasilAkhirPengobatan.setName("btnGrafikTBHasilAkhirPengobatan"); // NOI18N
+        btnGrafikTBHasilAkhirPengobatan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBHasilAkhirPengobatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBHasilAkhirPengobatanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikTBHasilTesHIV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikTBHasilTesHIV.setText("Hasil Tes HIV TB");
+        btnGrafikTBHasilTesHIV.setIconTextGap(0);
+        btnGrafikTBHasilTesHIV.setName("btnGrafikTBHasilTesHIV"); // NOI18N
+        btnGrafikTBHasilTesHIV.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikTBHasilTesHIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikTBHasilTesHIVActionPerformed(evt);
+            }
+        });
+
+        btnKadaluarsaBatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_diagram-11_35581.png"))); // NOI18N
+        btnKadaluarsaBatch.setText("Kadaluarsa Batch");
+        btnKadaluarsaBatch.setIconTextGap(0);
+        btnKadaluarsaBatch.setName("btnKadaluarsaBatch"); // NOI18N
+        btnKadaluarsaBatch.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKadaluarsaBatch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKadaluarsaBatchActionPerformed(evt);
+            }
+        });
+
+        btnSisaStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-62-document-table_314903.png"))); // NOI18N
+        btnSisaStok.setText("Sisa Stok");
+        btnSisaStok.setIconTextGap(0);
+        btnSisaStok.setName("btnSisaStok"); // NOI18N
+        btnSisaStok.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSisaStok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSisaStokActionPerformed(evt);
+            }
+        });
+
+        btnObatPerResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_receipt_3440909.png"))); // NOI18N
+        btnObatPerResep.setText("Obat Per Resep");
+        btnObatPerResep.setIconTextGap(0);
+        btnObatPerResep.setName("btnObatPerResep"); // NOI18N
+        btnObatPerResep.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnObatPerResep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObatPerResepActionPerformed(evt);
+            }
+        });
+
+        btnPemakaianAirPDAM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Energy_Energy_Oil_Water_Drop_Fuel_3911250.png"))); // NOI18N
+        btnPemakaianAirPDAM.setText("Pemakaian Air PDAM");
+        btnPemakaianAirPDAM.setIconTextGap(0);
+        btnPemakaianAirPDAM.setName("btnPemakaianAirPDAM"); // NOI18N
+        btnPemakaianAirPDAM.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemakaianAirPDAM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPemakaianAirPDAMActionPerformed(evt);
+            }
+        });
+
+        btnLimbahB3Medis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_trash red_10554.png"))); // NOI18N
+        btnLimbahB3Medis.setText("Limbah Padat B3 Medis");
+        btnLimbahB3Medis.setIconTextGap(0);
+        btnLimbahB3Medis.setName("btnLimbahB3Medis"); // NOI18N
+        btnLimbahB3Medis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLimbahB3Medis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimbahB3MedisActionPerformed(evt);
+            }
+        });
+
+        btnGrafikPemakaianAirPDAMPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikPemakaianAirPDAMPerTanggal.setText("Pemakaian Air PDAM Per Tanggal");
+        btnGrafikPemakaianAirPDAMPerTanggal.setIconTextGap(0);
+        btnGrafikPemakaianAirPDAMPerTanggal.setName("btnGrafikPemakaianAirPDAMPerTanggal"); // NOI18N
+        btnGrafikPemakaianAirPDAMPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPemakaianAirPDAMPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikPemakaianAirPDAMPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnGrafikPemakaianAirPDAMPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikPemakaianAirPDAMPerBulan.setText("Pemakaian Air PDAM Per Bulan");
+        btnGrafikPemakaianAirPDAMPerBulan.setIconTextGap(0);
+        btnGrafikPemakaianAirPDAMPerBulan.setName("btnGrafikPemakaianAirPDAMPerBulan"); // NOI18N
+        btnGrafikPemakaianAirPDAMPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPemakaianAirPDAMPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikPemakaianAirPDAMPerBulanActionPerformed(evt);
+            }
+        });
+
+        btnGrafikLimbahB3MedisPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikLimbahB3MedisPerTanggal.setText("Limbah B3 Medis Per Tanggal");
+        btnGrafikLimbahB3MedisPerTanggal.setIconTextGap(0);
+        btnGrafikLimbahB3MedisPerTanggal.setName("btnGrafikLimbahB3MedisPerTanggal"); // NOI18N
+        btnGrafikLimbahB3MedisPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLimbahB3MedisPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLimbahB3MedisPerTanggalActionPerformed(evt);
+            }
+        });
+
+        btnGrafikLimbahB3MedisPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikLimbahB3MedisPerBulan.setText("Limbah B3 Medis Per Bulan");
+        btnGrafikLimbahB3MedisPerBulan.setIconTextGap(0);
+        btnGrafikLimbahB3MedisPerBulan.setName("btnGrafikLimbahB3MedisPerBulan"); // NOI18N
+        btnGrafikLimbahB3MedisPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLimbahB3MedisPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLimbahB3MedisPerBulanActionPerformed(evt);
+            }
+        });
+
+        btnLimbahDomestik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Bin_ecology_recyclewaste_2992453.png"))); // NOI18N
+        btnLimbahDomestik.setText("Limbah Padat Domestik");
+        btnLimbahDomestik.setIconTextGap(0);
+        btnLimbahDomestik.setName("btnLimbahDomestik"); // NOI18N
+        btnLimbahDomestik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLimbahDomestik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimbahDomestikActionPerformed(evt);
+            }
+        });
+
+        btnGrafikLimbahDomestikPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikLimbahDomestikPerTanggal.setText("Limbah Padat Domestik Per Tanggal");
+        btnGrafikLimbahDomestikPerTanggal.setIconTextGap(0);
+        btnGrafikLimbahDomestikPerTanggal.setName("btnGrafikLimbahDomestikPerTanggal"); // NOI18N
+        btnGrafikLimbahDomestikPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLimbahDomestikPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLimbahDomestikPerTanggalActionPerformed(evt);
             }
         });
 
@@ -8321,7 +7867,13 @@ private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     DlgHome.setSize(PanelUtama.getWidth()-20, PanelUtama.getHeight()-20);
     DlgHome.setLocationRelativeTo(PanelUtama);
     DlgHome.setVisible(true);
-    isTampil();
+    if(menuawal==0){
+        isCombo();
+        setLayout();
+        menuawal=1;
+    }else{
+        isTampil();
+    }
     this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnMenuActionPerformed
 
@@ -16842,6 +16394,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }    
         }
             
+        setLayout();              
+    }
+    
+    private void setLayout() {
         if(jmlmenu<=1){
             grid=1;
         }else if(jmlmenu<=4){
@@ -16871,7 +16427,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         Panelmenu.setLayout(new GridLayout(0,grid));
         Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,tinggi));
         Panelmenu.revalidate();
-        Panelmenu.repaint();               
+        Panelmenu.repaint(); 
     }
     
     
@@ -29181,4 +28737,5 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         });
     }
 
+    
 }
