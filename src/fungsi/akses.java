@@ -133,7 +133,7 @@ public final class akses {
             toko_surat_pemesanan=false,toko_pengajuan_barang=false,toko_penerimaan_barang=false,toko_pengadaan_barang=false,toko_hutang=false,
             toko_bayar_pemesanan=false,toko_member=false,toko_penjualan=false,registrasi_poli_per_tanggal=false,toko_piutang=false,toko_retur_beli=false,
             ipsrs_returbeli=false,ipsrs_riwayat_barang=false,pasien_corona=false,toko_pendapatan_harian=false,diagnosa_pasien_corona=false,
-            perawatan_pasien_corona=false;
+            perawatan_pasien_corona=false,penilaian_awal_keperawatan_gigi=false,master_masalah_keperawatan_gigi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -768,6 +768,8 @@ public final class akses {
                         akses.toko_pendapatan_harian=true;
                         akses.diagnosa_pasien_corona=true;
                         akses.perawatan_pasien_corona=true;
+                        akses.penilaian_awal_keperawatan_gigi=true;
+                        akses.master_masalah_keperawatan_gigi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1386,6 +1388,8 @@ public final class akses {
                         akses.toko_pendapatan_harian=rs2.getBoolean("toko_pendapatan_harian");
                         akses.diagnosa_pasien_corona=rs2.getBoolean("diagnosa_pasien_corona");
                         akses.perawatan_pasien_corona=rs2.getBoolean("perawatan_pasien_corona");
+                        akses.penilaian_awal_keperawatan_gigi=rs2.getBoolean("penilaian_awal_keperawatan_gigi");
+                        akses.master_masalah_keperawatan_gigi=rs2.getBoolean("master_masalah_keperawatan_gigi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2002,6 +2006,8 @@ public final class akses {
                         akses.toko_pendapatan_harian=false;
                         akses.diagnosa_pasien_corona=false;
                         akses.perawatan_pasien_corona=false;
+                        akses.penilaian_awal_keperawatan_gigi=false;
+                        akses.master_masalah_keperawatan_gigi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2672,4 +2678,6 @@ public final class akses {
     public static boolean gettoko_pendapatan_harian(){return akses.toko_pendapatan_harian;}
     public static boolean getdiagnosa_pasien_corona(){return akses.diagnosa_pasien_corona;}
     public static boolean getperawatan_pasien_corona(){return akses.perawatan_pasien_corona;}
+    public static boolean getpenilaian_awal_keperawatan_gigi(){return akses.penilaian_awal_keperawatan_gigi;}
+    public static boolean getmaster_masalah_keperawatan_gigi(){return akses.master_masalah_keperawatan_gigi;}
 }   

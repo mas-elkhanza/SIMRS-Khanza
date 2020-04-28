@@ -67,7 +67,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             "GCS","BB","TB","BMI","Keluhan Utama","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga","Riwayat Pengobatan",
             "Alergi","Alat Bantu","Ket. Alat Bantu","Prothesa","Ket. Prothesa","ADL","Stts Psikologi","Ket. Psikologi","Hubungan Keluarga","Tinggal Dengan",
             "Ket. Tinggal","Ekonomi","Budaya","Ket. Budaya","Edukasi","Ket. Edukasi","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C",
-            "Hasil","Lapor Dokter","Ket. Lapor","Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Tingkat Nyeri","Provokes",
+            "Hasil Penilaian Resiko Jatuh","Lapor Dokter","Ket. Lapor","Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Tingkat Nyeri","Provokes",
             "Ket. Provokes","Kualitas","Ket. Kualitas","Lokasi","Menyebar","Skala Nyeri","Durasi","Nyeri Hilang","Ket. Hilang Nyeri","Lapor Ke Dokter",
             "Jam Lapor","Rencana","NIP","Nama Petugas"
         }){
@@ -290,6 +290,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         Alergi.setDocument(new batasInput((int)25).getKata(Alergi));
         KetBantu.setDocument(new batasInput((int)50).getKata(KetBantu));
         KetProthesa.setDocument(new batasInput((int)50).getKata(KetProthesa));
+        KetBudaya.setDocument(new batasInput((int)50).getKata(KetBudaya));
         KetPsiko.setDocument(new batasInput((int)70).getKata(KetPsiko));
         KetTinggal.setDocument(new batasInput((int)40).getKata(KetTinggal));
         KetEdukasi.setDocument(new batasInput((int)50).getKata(KetEdukasi));
@@ -2262,7 +2263,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Obat2an,BtnBatal);
+            Valid.pindah(evt,Rencana,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -3442,7 +3443,6 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        System.out.println("Notip ");
         Valid.tabelKosong(tabMode);
         try{
             if(TCari.getText().equals("")){
@@ -3599,6 +3599,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
             tabModeMasalah.setValueAt(false,i,0);
         }
+        TabRawat.setSelectedIndex(0);
         Informasi.requestFocus();
     } 
 
