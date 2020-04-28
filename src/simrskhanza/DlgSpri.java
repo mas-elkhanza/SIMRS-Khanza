@@ -19,6 +19,8 @@ import fungsi.validasi;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
@@ -29,12 +31,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -345,6 +349,8 @@ public class DlgSpri extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {
             }
         });
+        
+        jam();
 //        
 //        Valid.setPlaceHolder(TPasien, "Nama Pasien");
 //        Valid.setPlaceHolder(TNoRM, "No. RM");
@@ -439,6 +445,7 @@ public class DlgSpri extends javax.swing.JDialog {
         BtnSeek3 = new widget.Button();
         cmbUpf = new widget.ComboBox();
         jLabel5 = new widget.Label();
+        ChkJln = new javax.swing.JCheckBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -896,6 +903,11 @@ public class DlgSpri extends javax.swing.JDialog {
         panelBiasa1.add(jLabel5);
         jLabel5.setBounds(0, 40, 115, 23);
 
+        ChkJln.setSelected(true);
+        ChkJln.setName("ChkJln"); // NOI18N
+        panelBiasa1.add(ChkJln);
+        ChkJln.setBounds(450, 10, 20, 21);
+
         internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -1326,6 +1338,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.Button BtnSeek1;
     private widget.Button BtnSeek3;
     private widget.Button BtnSimpan;
+    private javax.swing.JCheckBox ChkJln;
     private widget.Tanggal DTPTgl;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnAngkutJenazah;
@@ -1366,6 +1379,62 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
 //"Tanggal","Jam","No.R.Medik","Nama Pasien","J.K.","Tmp.Lahir",
 //                      "Tgl.Lahir","G.D.","Stts.Nikah","Agama","Rencana Perawatan","Ruangan",
 //                      "Dokter","Diagnosa"
+    private void jam() {
+        ActionListener taskPerformer = new ActionListener() {
+            private int nilai_jam;
+            private int nilai_menit;
+            private int nilai_detik;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nol_jam = "";
+                String nol_menit = "";
+                String nol_detik = "";
+                // Membuat Date
+                //Date dt = new Date();
+                Date now = Calendar.getInstance().getTime();
+
+                // Mengambil nilaj JAM, MENIT, dan DETIK Sekarang
+                if (ChkJln.isSelected() == true) {
+                    nilai_jam = now.getHours();
+                    nilai_menit = now.getMinutes();
+                    nilai_detik = now.getSeconds();
+                } else if (ChkJln.isSelected() == false) {
+                    nilai_jam = cmbJam.getSelectedIndex();
+                    nilai_menit = cmbMnt.getSelectedIndex();
+                    nilai_detik = cmbDtk.getSelectedIndex();
+                }
+
+                // Jika nilai JAM lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_jam <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_jam = "0";
+                }
+                // Jika nilai MENIT lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_menit <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_menit = "0";
+                }
+                // Jika nilai DETIK lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_detik <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_detik = "0";
+                }
+                // Membuat String JAM, MENIT, DETIK
+                String jam = nol_jam + Integer.toString(nilai_jam);
+                String menit = nol_menit + Integer.toString(nilai_menit);
+                String detik = nol_detik + Integer.toString(nilai_detik);
+                // Menampilkan pada Layar
+                //tampil_jam.setText("  " + jam + " : " + menit + " : " + detik + "  ");
+                cmbJam.setSelectedItem(jam);
+                cmbMnt.setSelectedItem(menit);
+                cmbDtk.setSelectedItem(detik);
+            }
+        };
+        // Timer
+        new Timer(1000, taskPerformer).start();
+    }
+    
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try {

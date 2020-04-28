@@ -179,6 +179,7 @@
                   <Image iconType="3" name="/picture/edittrash.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Bersih"/>
+                <Property name="toolTipText" type="java.lang.String" value="Membersihkan layar jika salah tanda tangan"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBig3ActionPerformed"/>
@@ -212,6 +213,7 @@
                   <Image iconType="3" name="/picture/save-16x16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Simpan"/>
+                <Property name="toolTipText" type="java.lang.String" value="Menyimpan ttd baru"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBig4ActionPerformed"/>
@@ -223,6 +225,7 @@
                   <Image iconType="3" name="/picture/edit_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ganti"/>
+                <Property name="toolTipText" type="java.lang.String" value="Memperbarui tanda tangan"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBig5ActionPerformed"/>
@@ -234,6 +237,7 @@
                   <Image iconType="3" name="/picture/stop_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hapus"/>
+                <Property name="toolTipText" type="java.lang.String" value="Menghapus tanda tangan dari database."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBig6ActionPerformed"/>
