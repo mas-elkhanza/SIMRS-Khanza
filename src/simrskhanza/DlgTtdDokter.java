@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class DlgTtdDokter extends javax.swing.JDialog {
 
     private File file;
-    String dokter;
+    String dokter, ttd;
     private sekuel Sequel = new sekuel();
     private final Connection connect = koneksiDB.condb();
     private PreparedStatement ps;
@@ -34,8 +34,15 @@ public class DlgTtdDokter extends javax.swing.JDialog {
         initComponents();
     }
 
-    public void setDokter(String dokter) {
+    public void setDokter(String dokter, String ttd) {
         this.dokter = dokter;
+        this.ttd = ttd;
+
+        if (!ttd.isBlank()) {
+            buttonBig4.setEnabled(false);
+        } else {
+            buttonBig4.setEnabled(true);
+        }
     }
 
     /**
@@ -83,6 +90,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
 
         buttonBig3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/edittrash.png"))); // NOI18N
         buttonBig3.setText("Bersih");
+        buttonBig3.setToolTipText("Membersihkan layar jika salah tanda tangan");
         buttonBig3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBig3ActionPerformed(evt);
@@ -107,6 +115,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
 
         buttonBig4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         buttonBig4.setText("Simpan");
+        buttonBig4.setToolTipText("Menyimpan ttd baru");
         buttonBig4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBig4ActionPerformed(evt);
@@ -115,6 +124,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
 
         buttonBig5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/edit_f2.png"))); // NOI18N
         buttonBig5.setText("Ganti");
+        buttonBig5.setToolTipText("Memperbarui tanda tangan");
         buttonBig5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBig5ActionPerformed(evt);
@@ -123,6 +133,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
 
         buttonBig6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         buttonBig6.setText("Hapus");
+        buttonBig6.setToolTipText("Menghapus tanda tangan dari database.");
         buttonBig6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBig6ActionPerformed(evt);
@@ -275,6 +286,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
             System.out.println("Notifikasi Hapus : " + e);
         }
         canvas1.setThickness(5);
+        buttonBig4.setEnabled(true);
     }//GEN-LAST:event_buttonBig6ActionPerformed
 
     private void buttonBig1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBig1ActionPerformed

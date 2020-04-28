@@ -902,6 +902,17 @@
                 </Constraint>
               </Constraints>
             </Component>
+            <Component class="javax.swing.JCheckBox" name="ChkJln">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="name" type="java.lang.String" value="ChkJln" noResource="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="450" y="10" width="20" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
