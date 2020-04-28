@@ -83,7 +83,6 @@
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
                 </LineBorder>
               </Border>
-              <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
               <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
@@ -234,13 +233,13 @@
                 <Property name="verticalGap" type="int" value="9"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JCheckBox" name="checkAll">
+                <Component class="widget.CekBox" name="checkAll">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Semua"/>
+                    <Property name="text" type="java.lang.String" value="Tandai Semua"/>
                     <Property name="name" type="java.lang.String" value="checkAll" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="checkAllMouseClicked"/>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="checkAllItemStateChanged"/>
                   </Events>
                 </Component>
                 <Component class="widget.Label" name="label19">
@@ -405,9 +404,6 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel10">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="11" style="0"/>
-                    </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="32" green="32" red="32" type="rgb"/>
                     </Property>
