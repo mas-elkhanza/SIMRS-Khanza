@@ -316,7 +316,7 @@ public final class CoronaReferensiKabupaten extends javax.swing.JDialog {
 	   requestEntity = new HttpEntity(body,headers);
             root = mapper.readTree(api.getRest().exchange(link+"/Referensi/Kabupaten", HttpMethod.POST, requestEntity, String.class).getBody());
             Valid.tabelKosong(tabMode);
-            response = root.path("kabupaten - "+kodeprop);
+            response = root.path("kabupaten");
             if(response.isArray()){
                 for(JsonNode list:response){
                     if(list.path("nama").asText().toLowerCase().contains(TCari.getText().toLowerCase())){

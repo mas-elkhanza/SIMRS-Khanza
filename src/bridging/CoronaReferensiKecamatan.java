@@ -316,7 +316,7 @@ public final class CoronaReferensiKecamatan extends javax.swing.JDialog {
 	   requestEntity = new HttpEntity(body,headers);
             root = mapper.readTree(api.getRest().exchange(link+"/Referensi/Kecamatan", HttpMethod.POST, requestEntity, String.class).getBody());
             Valid.tabelKosong(tabMode);
-            response = root.path("kecamatan - "+kodekab);
+            response = root.path("kecamatan");
             if(response.isArray()){
                 for(JsonNode list:response){
                     if(list.path("nama").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
