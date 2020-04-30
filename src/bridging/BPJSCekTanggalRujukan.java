@@ -48,7 +48,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
     private int i=0;
     private String URL="",link="",norm="",statussep="",statuspasien="";
     private final Properties prop = new Properties();
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();

@@ -1044,6 +1044,15 @@ public final class validasi {
         return s;
     }
     
+    public String SetTglJam(String original){
+        s = "";
+        try {
+            s=original.substring(6,10)+"-"+original.substring(3,5)+"-"+original.substring(0,2)+" "+original.substring(11,19);
+        }catch (Exception e) {
+        }   
+        return s;
+    }
+    
     public String SetTgl3(String original){
         s = "";
         try {

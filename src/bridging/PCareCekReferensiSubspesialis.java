@@ -51,7 +51,7 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private PCareCekReferensiSpesialis spesialis=new PCareCekReferensiSpesialis(null,false);
     private int i=0;
-    private PcareApi api=new PcareApi();
+    private ApiPcare api=new ApiPcare();
     private String URL="",link="",otorisasi;
     private HttpHeaders headers;
     private HttpEntity requestEntity;

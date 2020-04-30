@@ -28,7 +28,7 @@ public class DlgSirkulasiNonMedis extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private double ttltotalbeli=0,totalbeli=0,stok=0,aset=0,ttlaset=0,jumlahbeli=0,jumlahutd=0,totalutd=0,ttltotalutd=0,ttltotalpesan=0,totalpesan=0,jumlahpesan=0,jumlahkeluar,totalkeluar,ttltotalkeluar;
-    private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    private IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
 

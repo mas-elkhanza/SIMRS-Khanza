@@ -55,7 +55,7 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private int i=0,nilai_detik,rujukanbaru=0;
     private String pilihan="",alarm="",URL="",link="",norm="",statusreg="",statuspasien="",norujuk="",nol_detik,detik;
-    private SisruteApi api=new SisruteApi();
+    private ApiKemenkesSisrute api=new ApiKemenkesSisrute();
     private BackgroundMusic music;
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private HttpHeaders headers;

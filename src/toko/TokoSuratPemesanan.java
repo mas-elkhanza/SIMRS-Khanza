@@ -443,7 +443,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(label15);
-        label15.setBounds(0, 10, 92, 23);
+        label15.setBounds(0, 10, 91, 23);
 
         NoPemesanan.setName("NoPemesanan"); // NOI18N
         NoPemesanan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -480,7 +480,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label13);
-        label13.setBounds(385, 10, 75, 23);
+        label13.setBounds(385, 10, 74, 23);
 
         kdsup.setName("kdsup"); // NOI18N
         kdsup.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -496,7 +496,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label16);
-        label16.setBounds(0, 40, 92, 23);
+        label16.setBounds(0, 40, 91, 23);
 
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -550,7 +550,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label14);
-        label14.setBounds(385, 40, 75, 23);
+        label14.setBounds(385, 40, 74, 23);
 
         Departemen.setEditable(false);
         Departemen.setName("Departemen"); // NOI18N
@@ -1178,11 +1178,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             tbDokter.requestFocus();
         }else if(tbDokter.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("truncate table temporary_toko");
             row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                    Sequel.menyimpan("temporary","'0','"+
+                    Sequel.menyimpan("temporary_toko","'0','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','"+
@@ -1491,10 +1491,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void panggilgetData(String nopengajuan){
         try{
             ps=koneksi.prepareStatement(
-                "select tokobarang.kode_brng, tokobarang.nama_brng,tokobarang.kode_sat,detail_pengajuan_barang_toko.jumlah,detail_pengajuan_barang_toko.total,"+
-                " detail_pengajuan_barang_toko.h_pengajuan from tokobarang inner join tokojenisbarang inner join detail_pengajuan_barang_toko "+
-                " on tokobarang.jenis=tokojenisbarang.kd_jenis and tokobarang.kode_brng=detail_pengajuan_barang_toko.kode_brng "+
-                " where detail_pengajuan_barang_toko.no_pengajuan=?");
+                "select tokobarang.kode_brng, tokobarang.nama_brng,tokobarang.kode_sat,toko_detail_pengajuan_barang.jumlah,toko_detail_pengajuan_barang.total,"+
+                " toko_detail_pengajuan_barang.h_pengajuan from tokobarang inner join tokojenisbarang inner join toko_detail_pengajuan_barang "+
+                " on tokobarang.jenis=tokojenisbarang.kd_jenis and tokobarang.kode_brng=toko_detail_pengajuan_barang.kode_brng "+
+                " where toko_detail_pengajuan_barang.no_pengajuan=?");
             try {
                 ps.setString(1,nopengajuan);
                 rs=ps.executeQuery();

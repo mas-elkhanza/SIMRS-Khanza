@@ -268,9 +268,9 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="11" splitType="Stretch">
+		<band height="12" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="55" height="10" uuid="f64f2490-f13f-46ab-aab0-3d6766e184b6"/>
+				<reportElement positionType="Float" x="0" y="0" width="55" height="10" uuid="f64f2490-f13f-46ab-aab0-3d6766e184b6"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -278,7 +278,7 @@
 				<textFieldExpression><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="55" y="0" width="65" height="10" uuid="d9e97e3a-93e6-42a5-a11d-1f211564d216">
+				<reportElement positionType="Float" x="55" y="0" width="65" height="10" uuid="d9e97e3a-93e6-42a5-a11d-1f211564d216">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -288,7 +288,7 @@
 				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="120" y="0" width="115" height="10" uuid="e3d84d0e-cfa6-4252-84e3-588e6d8972f7"/>
+				<reportElement positionType="Float" x="120" y="0" width="115" height="10" uuid="e3d84d0e-cfa6-4252-84e3-588e6d8972f7"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -296,7 +296,7 @@
 				<textFieldExpression><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="235" y="0" width="111" height="10" uuid="82a973a7-fd8f-4701-89cc-4c75064e8059"/>
+				<reportElement positionType="Float" x="235" y="0" width="111" height="10" uuid="82a973a7-fd8f-4701-89cc-4c75064e8059"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
@@ -304,7 +304,7 @@
 				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="346" y="0" width="70" height="10" uuid="503af326-3ff4-4731-ad3a-90a03ccef221">
+				<reportElement positionType="Float" x="346" y="0" width="70" height="10" uuid="503af326-3ff4-4731-ad3a-90a03ccef221">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -314,7 +314,7 @@
 				<textFieldExpression><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="416" y="0" width="70" height="10" uuid="92de6cd8-9640-4132-958b-9334ef2266e7">
+				<reportElement positionType="Float" x="416" y="0" width="70" height="10" uuid="92de6cd8-9640-4132-958b-9334ef2266e7">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -324,13 +324,21 @@
 				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="486" y="0" width="68" height="10" uuid="974611c6-80c3-47fb-982a-b8b4acb0a274"/>
+				<reportElement positionType="Float" x="486" y="0" width="68" height="10" uuid="974611c6-80c3-47fb-982a-b8b4acb0a274"/>
 				<textElement>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{temp7}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="11" width="554" height="1" uuid="f34a5b12-0f9a-44ff-96b2-9eaa1cf3ae93">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

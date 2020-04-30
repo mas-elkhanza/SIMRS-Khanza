@@ -40,7 +40,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
     private PreparedStatement ps,pssep;
     private ResultSet rs,rssep;
     private final Properties prop = new Properties();
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private BPJSCekReferensiFaskes faskes=new BPJSCekReferensiFaskes(null,false);
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
     private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);

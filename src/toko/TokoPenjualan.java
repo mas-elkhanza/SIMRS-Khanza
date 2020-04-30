@@ -1111,10 +1111,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 tabMode.setValueAt(0,r,8);
                 tabMode.setValueAt(0,r,9);
                 tabMode.setValueAt(0,r,10);
-                tabMode.setValueAt(0,r,11);
-                tabMode.setValueAt(0,r,12);
-                tabMode.setValueAt(0,r,13);
-                tabMode.setValueAt(0,r,14);
             }
 }//GEN-LAST:event_ppBersihkanActionPerformed
 

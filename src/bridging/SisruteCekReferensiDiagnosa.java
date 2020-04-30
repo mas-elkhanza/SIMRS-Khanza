@@ -46,7 +46,7 @@ public final class SisruteCekReferensiDiagnosa extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private SisruteApi api=new SisruteApi();
+    private ApiKemenkesSisrute api=new ApiKemenkesSisrute();
     private String URL="",link="",idrs="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;

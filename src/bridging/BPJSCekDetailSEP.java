@@ -40,7 +40,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private String URL="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;

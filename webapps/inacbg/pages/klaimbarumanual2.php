@@ -77,10 +77,17 @@
                         <td width='10%'><div align='center'>Status</div></td>
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
+                        $statuscovid="Bukan Corona";
+                        $aksi="BukanCorona";
+                        if(getOne("select count(no_rawat) from perawatan_corona where no_rawat='".$baris["no_rawat"]."'")>0){
+                            $statuscovid="Pasien Corona";
+                            $aksi="PasienCorona";
+                        }
+                        
                         $carabayar =str_replace(" ","_",$carabayar)?str_replace(" ","_",$carabayar):NULL;
-                        $status="<a href='?act=DetailKirim&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>[Kirim]</a>";
+                        $status="<a href='?act=DetailKirim&corona=$aksi&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>[Kirim]</a>";
                         if(getOne("select count(no_rawat) from inacbg_klaim_baru2 where no_rawat='".$baris["no_rawat"]."'")>0){
-                            $status="Terkirim INACBG<br><a href='?act=DetailKirim&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>[Kirim Ulang]</a>";
+                            $status="<a href='?act=DetailKirim&corona=$aksi&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>[Kirim Ulang]</a>";
                         }
                         echo "<tr class='isi' title='".$baris["no_rawat"].", ".$baris["no_rkm_medis"].", ".$baris["nm_pasien"]."'>
                                 <td bgcolor='#FFFFFF' valign='top'>".$baris["no_rkm_medis"]." ".$baris["nm_pasien"]."<br>".$baris["almt_pj"]."<br>".$baris["jk"].", Usia ".$baris["umur"]."</td>
@@ -113,7 +120,11 @@
                                 } 
                                 echo $prosedur." ".$keyword;
                          echo  "</td>
-                                <td valign='center' align='center'><a href='?act=KlaimBaruManual2&action=InputDiagnosa&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword'>[Input Diagnosa]</a><br>".$status."</td>                                
+                                <td valign='center' align='center'>
+                                    <a href='?act=KlaimBaruManual2&action=InputCorona&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword'>[$statuscovid]</a><br>
+                                    <a href='?act=KlaimBaruManual2&action=InputDiagnosa&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword'>[Input Diagnosa]</a><br>
+                                    ".$status."
+                                </td>                                
                              </tr>";
                     }
             echo "</table>";           
@@ -130,6 +141,10 @@
         }         
         
         if($action=="InputDiagnosa") {
+            HapusAll("temppanggilnorawat");
+            InsertData2("temppanggilnorawat","'$norawat'");
+            echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&action=no&keyword=$keyword'>";
+        }else if($action=="InputCorona") {
             HapusAll("temppanggilnorawat");
             InsertData2("temppanggilnorawat","'$norawat'");
             echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&action=no&keyword=$keyword'>";
