@@ -9648,6 +9648,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         TNoRM.requestFocus();
         kdpnj.setText("");
         nmpnj.setText("");
+        txtIdSpri.setText("");
     }
 
     private void getData() {
@@ -10142,9 +10143,11 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(ChkTracker.isSelected()==true){
                 ctk();
             }
-            Sequel.mengedit("temp_spri", 
+            if(!txtIdSpri.getText().equals("")){
+                    Sequel.mengedit("temp_spri", 
                     "id='"+txtIdSpri.getText()+"'", 
                     "norm='"+TNoRM.getText()+"', nama='"+TPasien.getText()+"', status='Sudah'");
+            }
             emptTeks(); 
             if(TabRawat.getSelectedIndex()==0){
                 tampil();
