@@ -605,6 +605,7 @@ import toko.TokoJenis;
 import toko.TokoMember;
 import toko.TokoPembelian;
 import toko.TokoPemesanan;
+import toko.TokoPendapatanHarian;
 import toko.TokoPenjualanHarian;
 import toko.TokoPengajuanBarang;
 import toko.TokoPenjualan;
@@ -15666,7 +15667,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnPendapatanHarianTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoPenjualanHarian form=new TokoPenjualanHarian(this,false);
+        TokoPendapatanHarian form=new TokoPendapatanHarian(this,false);
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);

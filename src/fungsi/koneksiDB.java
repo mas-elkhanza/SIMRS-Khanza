@@ -9,7 +9,10 @@ import AESsecurity.EnkripsiAES;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.io.FileInputStream;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -55,7 +58,18 @@ public class koneksiDB {
                         "  Informasi dan panduan bisa dicek di halaman https://github.com/mas-elkhanza/SIMRS-Khanza/wiki \n"+
                         "                                                                           ");
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null,"Koneksi Putus : "+e);
+                System.out.println("Notif : "+e);
+                try {
+                    if(connection.isClosed()){
+                        prop.loadFromXML(new FileInputStream("setting/database.xml"));
+                        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
+                        dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
+                        dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
+                        connection=dataSource.getConnection();  
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,"Koneksi Putus : "+e);
+                }
             }
         }
         return connection;        
