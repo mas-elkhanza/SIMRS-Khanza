@@ -418,6 +418,10 @@ public class DlgSpri extends javax.swing.JDialog {
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
+        jLabel15 = new widget.Label();
+        DTPCari1 = new widget.Tanggal();
+        jLabel18 = new widget.Label();
+        DTPCari2 = new widget.Tanggal();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -641,13 +645,38 @@ public class DlgSpri extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        jLabel15.setText("Periode :");
+        jLabel15.setName("jLabel15"); // NOI18N
+        jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelGlass9.add(jLabel15);
+
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari1.setDisplayFormat("dd-MM-yyyy");
+        DTPCari1.setName("DTPCari1"); // NOI18N
+        DTPCari1.setOpaque(false);
+        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass9.add(DTPCari1);
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("s.d.");
+        jLabel18.setName("jLabel18"); // NOI18N
+        jLabel18.setPreferredSize(new java.awt.Dimension(24, 23));
+        panelGlass9.add(jLabel18);
+
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari2.setDisplayFormat("dd-MM-yyyy");
+        DTPCari2.setName("DTPCari2"); // NOI18N
+        DTPCari2.setOpaque(false);
+        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass9.add(DTPCari2);
+
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(500, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -729,7 +758,7 @@ public class DlgSpri extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-04-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -957,7 +986,7 @@ public class DlgSpri extends javax.swing.JDialog {
                         + txtKdPenyakit.getText() + "','"
                         + txtRencanaPerawatan.getText() + "','"
                         + cmbUpf.getSelectedItem() + "','"
-                        + txtKdDokter.getText() + "','" + TPasien.getText() + "','" + txtNmPenyakit.getText() + "'", "spri");
+                        + txtKdDokter.getText() + "','" + TPasien.getText() + "','" + txtNmPenyakit.getText() + "','Belum'", "spri");
             }
 //            else {
 //                Sequel.menyimpan("spri", "'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','"
@@ -1339,6 +1368,8 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.Button BtnSeek3;
     private widget.Button BtnSimpan;
     private javax.swing.JCheckBox ChkJln;
+    private widget.Tanggal DTPCari1;
+    private widget.Tanggal DTPCari2;
     private widget.Tanggal DTPTgl;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnAngkutJenazah;
@@ -1354,8 +1385,10 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.ComboBox cmbUpf;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
+    private widget.Label jLabel18;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -1448,7 +1481,8 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                         + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
                         + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
                         + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit"
-                        + " order by temp_spri.tanggal desc limit 10");
+                        + " where temp_spri.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem()+"") + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem()+"") + "' "
+                        + " order by temp_spri.tanggal desc limit 60");
             } else {
                 if (!TNoRM.getText().equals("")) {
                     ps = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
@@ -1484,7 +1518,6 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                             //                    + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
                             //                    + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
                             //                    + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " temp_spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
                             + " dokter.kd_dokter like '%" + txtKdDokter.getText().trim() + "%' "
                             + " order by temp_spri.tanggal ");
                 } else if (!txtKdPenyakit.getText().equals("")) {

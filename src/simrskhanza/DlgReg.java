@@ -9594,14 +9594,14 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private void tampil3(){
         Valid.tabelKosong(tabMode3);  
         try {
-         ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
+         ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
                         + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
                         + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
                         + "dokter.nm_dokter,penyakit.kd_penyakit,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
                         + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
                         + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
                         + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit"
-                        + " order by temp_spri.tanggal desc limit 10");
+                        + " where temp_spri.status='Belum' order by temp_spri.tanggal desc limit 10");
          try {
                 rs3 = ps2.executeQuery();
                 while (rs3.next()) {
@@ -10144,10 +10144,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }
             Sequel.mengedit("temp_spri", 
                     "id='"+txtIdSpri.getText()+"'", 
-                    "norm='"+TNoRM.getText()+"', nama='"+TPasien.getText()+"'");
+                    "norm='"+TNoRM.getText()+"', nama='"+TPasien.getText()+"', status='Sudah'");
             emptTeks(); 
             if(TabRawat.getSelectedIndex()==0){
                 tampil();
+            } else if(TabRawat.getSelectedIndex()==2){
+                tampil3();
             }                
         }  
     }
