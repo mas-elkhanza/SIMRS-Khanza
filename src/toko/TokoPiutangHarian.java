@@ -35,29 +35,29 @@ import javax.swing.table.TableColumn;
  *
  * @author perpustakaan
  */
-public final class TokoPendapatanHarian extends javax.swing.JDialog {
+public final class TokoPiutangHarian extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private double ttlppn,ttlongkir,ttlbayar;
+    private double ttluangmuka,ttlongkir,ttlbayar,ttlsisa;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
-    public TokoPendapatanHarian(java.awt.Frame parent, boolean modal) {
+    public TokoPiutangHarian(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         tabMode=new DefaultTableModel(null,new String[]{
-            "No.Nota","Tanggal","NIP","Petugas","No.Member","Nama Member","Ongkir","PPN","Total","Jenis Jual","Pembayaran","Keterangan"
+            "No.Nota","Tanggal","NIP","Petugas","No.Member","Nama Member","Ongkir","Uang Muka","Total","Jenis","Sisa Piutang","Catatan"
         }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
               Class[] types = new Class[] {
                   java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                   java.lang.String.class,java.lang.String.class,java.lang.Double.class,java.lang.Double.class,
-                  java.lang.Double.class,java.lang.String.class,java.lang.String.class,java.lang.String.class
+                  java.lang.Double.class,java.lang.String.class,java.lang.Double.class,java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -92,9 +92,9 @@ public final class TokoPendapatanHarian extends javax.swing.JDialog {
             }else if(i==9){
                 column.setPreferredWidth(60);
             }else if(i==10){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(95);
             }else if(i==11){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -161,7 +161,7 @@ public final class TokoPendapatanHarian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pendapatan Harian Toko ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Piutang Harian Toko ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -310,17 +310,17 @@ public final class TokoPendapatanHarian extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptPendapatanHarianToko.jasper","report","::[ Data Pendapatan Harian Toko ]::",
-                    "select tokopenjualan.nota_jual,tokopenjualan.tgl_jual, "+
-                    "tokopenjualan.nip,petugas.nama,tokopenjualan.ongkir,tokopenjualan.total, "+
-                    "tokopenjualan.no_member,tokopenjualan.nm_member,tokopenjualan.keterangan, "+
-                    "tokopenjualan.jns_jual,tokopenjualan.ppn,tokopenjualan.nama_bayar "+
-                    "from tokopenjualan inner join petugas on tokopenjualan.nip=petugas.nip "+
-                    "where tokopenjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
-                    (TCari.getText().equals("")?"":"and (tokopenjualan.nota_jual like '%"+TCari.getText()+"%' or tokopenjualan.nip like '%"+TCari.getText()+"%' or "+
-                    "petugas.nama like '%"+TCari.getText()+"%' or tokopenjualan.no_member like '%"+TCari.getText()+"%' or tokopenjualan.nm_member like '%"+TCari.getText()+"%' or "+
-                    "tokopenjualan.keterangan like '%"+TCari.getText()+"%' or tokopenjualan.jns_jual like '%"+TCari.getText()+"%' or tokopenjualan.nama_bayar like '%"+TCari.getText()+"%' )")+
-                    "order by tokopenjualan.tgl_jual",param);
+            Valid.MyReportqry("rptPiutangHarianToko.jasper","report","::[ Data Piutang Harian Toko ]::",
+                    "select tokopiutang.nota_piutang,tokopiutang.tgl_piutang,tokopiutang.nip,petugas.nama,"+
+                    "tokopiutang.ongkir,(tokopiutang.ongkir+tokopiutang.uangmuka+tokopiutang.sisapiutang) as total, "+
+                    "tokopiutang.no_member,tokopiutang.nm_member,tokopiutang.catatan, "+
+                    "tokopiutang.jns_jual,tokopiutang.uangmuka,tokopiutang.sisapiutang "+
+                    "from tokopiutang inner join petugas on tokopiutang.nip=petugas.nip "+
+                    "where tokopiutang.tgl_piutang between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+                    (TCari.getText().equals("")?"":"and (tokopiutang.nota_piutang like '%"+TCari.getText()+"%' or tokopiutang.nip like '%"+TCari.getText()+"%' or "+
+                    "petugas.nama like '%"+TCari.getText()+"%' or tokopiutang.no_member like '%"+TCari.getText()+"%' or tokopiutang.nm_member like '%"+TCari.getText()+"%' or "+
+                    "tokopiutang.catatan like '%"+TCari.getText()+"%' or tokopiutang.jns_jual like '%"+TCari.getText()+"%')")+
+                    "order by tokopiutang.tgl_piutang",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -391,7 +391,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            TokoPendapatanHarian dialog = new TokoPendapatanHarian(new javax.swing.JFrame(), true);
+            TokoPiutangHarian dialog = new TokoPiutangHarian(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -424,16 +424,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         Valid.tabelKosong(tabMode);
         try{      
-            ps=koneksi.prepareStatement("select tokopenjualan.nota_jual,tokopenjualan.tgl_jual, "+
-                "tokopenjualan.nip,petugas.nama,tokopenjualan.ongkir,tokopenjualan.total, "+
-                "tokopenjualan.no_member,tokopenjualan.nm_member,tokopenjualan.keterangan, "+
-                "tokopenjualan.jns_jual,tokopenjualan.ppn,tokopenjualan.nama_bayar "+
-                "from tokopenjualan inner join petugas on tokopenjualan.nip=petugas.nip "+
-                "where tokopenjualan.tgl_jual between ? and ? "+
-                (TCari.getText().equals("")?"":"and (tokopenjualan.nota_jual like ? or tokopenjualan.nip like ? or "+
-                "petugas.nama like ? or tokopenjualan.no_member like ? or tokopenjualan.nm_member like ? or "+
-                "tokopenjualan.keterangan like ? or tokopenjualan.jns_jual like ? or tokopenjualan.nama_bayar like ? )")+
-                "order by tokopenjualan.tgl_jual");
+            ps=koneksi.prepareStatement(
+                "select tokopiutang.nota_piutang,tokopiutang.tgl_piutang,tokopiutang.nip,petugas.nama,"+
+                "tokopiutang.ongkir,(tokopiutang.ongkir+tokopiutang.uangmuka+tokopiutang.sisapiutang) as total, "+
+                "tokopiutang.no_member,tokopiutang.nm_member,tokopiutang.catatan, "+
+                "tokopiutang.jns_jual,tokopiutang.uangmuka,tokopiutang.sisapiutang "+
+                "from tokopiutang inner join petugas on tokopiutang.nip=petugas.nip "+
+                "where tokopiutang.tgl_piutang between ? and ? "+
+                (TCari.getText().equals("")?"":"and (tokopiutang.nota_piutang like ? or tokopiutang.nip like ? or "+
+                "petugas.nama like ? or tokopiutang.no_member like ? or tokopiutang.nm_member like ? or "+
+                "tokopiutang.catatan like ? or tokopiutang.jns_jual like ? )")+
+                "order by tokopiutang.tgl_piutang");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -445,22 +446,22 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
-                    ps.setString(10,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
-                ttlppn=0;ttlbayar=0;ttlongkir=0;
+                ttluangmuka=0;ttlbayar=0;ttlongkir=0;ttlsisa=0;
                 while(rs.next()){
-                    ttlppn=ttlppn+rs.getDouble("ppn");
+                    ttluangmuka=ttluangmuka+rs.getDouble("uangmuka");
                     ttlbayar=ttlbayar+rs.getDouble("total");
                     ttlongkir=ttlongkir+rs.getDouble("ongkir");
+                    ttlsisa=ttlsisa+rs.getDouble("sisapiutang");
                     tabMode.addRow(new Object[]{
-                        rs.getString("nota_jual"),rs.getString("tgl_jual"),rs.getString("nip"),rs.getString("nama"),rs.getString("no_member"),rs.getString("nm_member"),
-                        rs.getDouble("ongkir"),rs.getDouble("ppn"),rs.getDouble("total"),rs.getString("jns_jual"),rs.getString("nama_bayar"),rs.getString("keterangan")
+                        rs.getString("nota_piutang"),rs.getString("tgl_piutang"),rs.getString("nip"),rs.getString("nama"),rs.getString("no_member"),rs.getString("nm_member"),
+                        rs.getDouble("ongkir"),rs.getDouble("uangmuka"),rs.getDouble("total"),rs.getString("jns_jual"),rs.getDouble("sisapiutang"),rs.getString("catatan")
                     });
                 }
                 if(ttlbayar>0){
                     tabMode.addRow(new Object[]{
-                        "","","","","","",ttlongkir,ttlppn,ttlbayar,"","",""
+                        "","","","","","",ttlongkir,ttluangmuka,ttlbayar,"",ttlsisa,""
                     });
                 }   
             } catch (Exception e) {
