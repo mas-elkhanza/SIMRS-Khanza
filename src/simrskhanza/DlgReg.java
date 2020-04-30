@@ -8996,7 +8996,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     //                    + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
                     //                    + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
                     //                    + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
-                    + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' "
+                    + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' and temp_spri.tanggal='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'"
                     + " order by temp_spri.tanggal ", param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -10146,7 +10146,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(!txtIdSpri.getText().equals("")){
                     Sequel.mengedit("temp_spri", 
                     "id='"+txtIdSpri.getText()+"'", 
-                    "norm='"+TNoRM.getText()+"', nama='"+TPasien.getText()+"', status='Sudah'");
+                    "norm='"+TNoRM.getText()+"', nama='"+TPasien.getText()+"', status='Sudah', tanggal='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'");
             }
             emptTeks(); 
             if(TabRawat.getSelectedIndex()==0){
