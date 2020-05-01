@@ -376,39 +376,26 @@ public final class TokoPendapatanHarian extends javax.swing.JDialog {
         if(TabRawat.getSelectedIndex()==0){
             if(tabMode.getRowCount()==0){
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                Valid.MyReportqry("rptPPNPembelian.jasper","report","::[ PPN Pengadaan Barang ]::",
-                    "select pembelian.tgl_beli,pembelian.no_faktur, "+
-                    " pembelian.kode_suplier,datasuplier.nama_suplier, "+
-                    " pembelian.nip,petugas.nama,pembelian.total1,"+
-                    " pembelian.potongan,pembelian.total2,pembelian.ppn,pembelian.tagihan "+
-                    " from pembelian inner join datasuplier inner join petugas on "+
-                    " pembelian.kode_suplier=datasuplier.kode_suplier and pembelian.nip=petugas.nip "+
-                    " where pembelian.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and pembelian.no_faktur like '%"+TCari.getText()+"%' or "+
-                    " pembelian.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and pembelian.kode_suplier like '%"+TCari.getText()+"%' or "+
-                    " pembelian.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and datasuplier.nama_suplier like '%"+TCari.getText()+"%' or "+
-                    " pembelian.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and pembelian.nip like '%"+TCari.getText()+"%' or "+
-                    " pembelian.tgl_beli between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and petugas.nama like '%"+TCari.getText()+"%' order by pembelian.tgl_beli,pembelian.no_faktur ",param);
+                Valid.MyReportqry("rptPendapatanHarian1Toko.jasper","report","::[ Penjualan Harian Toko ]::",
+                    "select tokopenjualan.tgl_jual,tokopenjualan.nip,petugas.nama,sum(tokopenjualan.ongkir)as ongkir,sum(tokopenjualan.total)as total,sum(tokopenjualan.ppn) as ppn "+
+                    "from tokopenjualan inner join petugas on tokopenjualan.nip=petugas.nip where tokopenjualan.tgl_jual between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+                    (TCari.getText().equals("")?"":"and (tokopenjualan.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%')")+
+                    "group by tokopenjualan.tgl_jual,tokopenjualan.nip order by tokopenjualan.tgl_jual,tokopenjualan.nip",param);
             }
                 
         }else if(TabRawat.getSelectedIndex()==1){
             if(tabMode2.getRowCount()==0){
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
             }else if(tabMode2.getRowCount()!=0){
-                Valid.MyReportqry("rptPPNPemesanan.jasper","report","::[ PPN Penerimaan Barang ]::",
-                    "select pemesanan.tgl_pesan,pemesanan.no_faktur, "+
-                    " pemesanan.kode_suplier,datasuplier.nama_suplier, "+
-                    " pemesanan.nip,petugas.nama,pemesanan.total1,"+
-                    " pemesanan.potongan,pemesanan.total2,pemesanan.ppn,pemesanan.tagihan "+
-                    " from pemesanan inner join datasuplier inner join petugas on "+
-                    " pemesanan.kode_suplier=datasuplier.kode_suplier and pemesanan.nip=petugas.nip "+
-                    " where pemesanan.tgl_pesan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and pemesanan.no_faktur like '%"+TCari.getText()+"%' or "+
-                    " pemesanan.tgl_pesan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and pemesanan.kode_suplier like '%"+TCari.getText()+"%' or "+
-                    " pemesanan.tgl_pesan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and datasuplier.nama_suplier like '%"+TCari.getText()+"%' or "+
-                    " pemesanan.tgl_pesan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and pemesanan.nip like '%"+TCari.getText()+"%' or "+
-                    " pemesanan.tgl_pesan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and petugas.nama like '%"+TCari.getText()+"%' order by pemesanan.tgl_pesan,pemesanan.no_faktur ",param);
+                Valid.MyReportqry("rptPendapatanHarian2Toko.jasper","report","::[ Piutang Harian Toko ]::",
+                    "select tokopiutang.tgl_piutang,tokopiutang.nip,petugas.nama,sum(tokopiutang.ongkir) as ongkir,"+
+                    "sum(tokopiutang.ongkir+tokopiutang.uangmuka+tokopiutang.sisapiutang) as total, "+
+                    "sum(tokopiutang.uangmuka) as uangmuka,sum(tokopiutang.sisapiutang) as sisapiutang "+
+                    "from tokopiutang inner join petugas on tokopiutang.nip=petugas.nip "+
+                    "where tokopiutang.tgl_piutang between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+                    (TCari.getText().equals("")?"":"and (tokopiutang.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%')")+
+                    "group by tokopiutang.tgl_piutang,tokopiutang.nip order by tokopiutang.tgl_piutang,tokopiutang.nip",param);
             }                
         }
         
