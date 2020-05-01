@@ -600,6 +600,7 @@ import surat.SuratSakit;
 import surat.SuratSifat;
 import surat.SuratStatus;
 import toko.TokoBarang;
+import toko.TokoBayarPiutang;
 import toko.TokoInputStok;
 import toko.TokoJenis;
 import toko.TokoMember;
@@ -15727,7 +15728,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnBayarPiutangTokoActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoBayarPiutang bayarpiutang=new TokoBayarPiutang(this,false);
+        bayarpiutang.tampil();
+        bayarpiutang.emptTeks();
+        bayarpiutang.isCek();
+        bayarpiutang.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        bayarpiutang.setLocationRelativeTo(PanelUtama);
+        bayarpiutang.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     private void btnPiutangHarianTokoActionPerformed(java.awt.event.ActionEvent evt) {
@@ -17982,16 +17993,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
 
-            if(akses.gettoko_hutang()==true){
-                Panelmenu.add(btnHutangToko);
-                jmlmenu++;
-            }
-            
-            if(akses.gettoko_bayar_pemesanan()==true){
-                Panelmenu.add(btnBayarPesanToko);
-                jmlmenu++;
-            }
-            
             if(akses.getposting_jurnal()==true){
                 Panelmenu.add(btnPostingJurnal); 
                 jmlmenu++;
@@ -19403,6 +19404,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_retur_beli()==true){
                 Panelmenu.add(btnReturKeSuplierToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_hutang()==true){
+                Panelmenu.add(btnHutangToko);
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_bayar_pemesanan()==true){
+                Panelmenu.add(btnBayarPesanToko);
                 jmlmenu++;
             }
             
@@ -21071,16 +21082,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
-        if(akses.gettoko_hutang()==true){
-            Panelmenu.add(btnHutangToko);
-            jmlmenu++;
-        }
-        
-        if(akses.gettoko_bayar_pemesanan()==true){
-            Panelmenu.add(btnBayarPesanToko);
-            jmlmenu++;
-        }
-        
         if(akses.getposting_jurnal()==true){
             Panelmenu.add(btnPostingJurnal); 
             jmlmenu++;
@@ -22480,6 +22481,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettoko_retur_beli()==true){
             Panelmenu.add(btnReturKeSuplierToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_hutang()==true){
+            Panelmenu.add(btnHutangToko);
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_bayar_pemesanan()==true){
+            Panelmenu.add(btnBayarPesanToko);
             jmlmenu++;
         }
         
@@ -24753,20 +24764,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
-        if(akses.gettoko_hutang()==true){
-            if(btnHutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnHutangToko);
-                jmlmenu++;
-            }                
-        }
-        
-        if(akses.gettoko_bayar_pemesanan()==true){
-            if(btnBayarPesanToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnBayarPesanToko);
-                jmlmenu++;
-            }                
-        }
-
         if(akses.getposting_jurnal()==true){
             if(btnPostingJurnal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPostingJurnal); 
@@ -26726,6 +26723,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gettoko_retur_beli()==true){
             if(btnReturKeSuplierToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReturKeSuplierToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_hutang()==true){
+            if(btnHutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHutangToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_bayar_pemesanan()==true){
+            if(btnBayarPesanToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBayarPesanToko);
                 jmlmenu++;
             }                
         }
