@@ -15763,6 +15763,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnDeteksiDiniCoronaActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16360,7 +16364,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
-            btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko;
+            btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona;
     
     public void isWall(){
         try{            
@@ -16571,6 +16575,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsekrining_rawat_jalan()==true){                          
                 Panelmenu.add(btnSkriningRawatJalan);
+                jmlmenu++;
+            }
+            
+            if(akses.getdeteksi_corona()==true){                          
+                Panelmenu.add(btnDeteksiDiniCorona);
                 jmlmenu++;
             } 
 
@@ -19669,6 +19678,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsekrining_rawat_jalan()==true){                          
             Panelmenu.add(btnSkriningRawatJalan);
+            jmlmenu++;
+        }
+
+        if(akses.getdeteksi_corona()==true){                          
+            Panelmenu.add(btnDeteksiDiniCorona);
             jmlmenu++;
         }
 
@@ -22783,6 +22797,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsekrining_rawat_jalan()==true){    
             if(btnSkriningRawatJalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSkriningRawatJalan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdeteksi_corona()==true){    
+            if(btnDeteksiDiniCorona.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDeteksiDiniCorona);
                 jmlmenu++;
             }                
         }
@@ -28859,6 +28880,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenjualanHarianToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPenjualanHarianTokoActionPerformed(evt);
+            }
+        });
+        
+        btnDeteksiDiniCorona = new widget.ButtonBig();
+        btnDeteksiDiniCorona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Medical_Result-Health-Document-Virus-Medical_5958965.png"))); 
+        btnDeteksiDiniCorona.setText("Deteksi Dini Corona");
+        btnDeteksiDiniCorona.setIconTextGap(0);
+        btnDeteksiDiniCorona.setName("btnDeteksiDiniCorona"); 
+        btnDeteksiDiniCorona.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDeteksiDiniCorona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeteksiDiniCoronaActionPerformed(evt);
             }
         });
     }
