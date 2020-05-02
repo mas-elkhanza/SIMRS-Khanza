@@ -4000,7 +4000,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                                 "rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,"+
                                 "rawat_inap_drpr.kso,rawat_inap_drpr.menejemen,rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama "+
                                 "from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
-                                " inner join kamar_inap on kamar_inap.reg_periksa=reg_periksa.no_rawat " +
+                                " inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat " +
                                 "inner join rawat_inap_drpr on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat " +
                                 "inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw " +
                                 "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter " +
