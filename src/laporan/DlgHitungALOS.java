@@ -24,6 +24,8 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -46,8 +48,12 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i = 0, pasien = 0;
-    private double hari;
+    private long hari;
     private String kd_bangsal = "";
+    SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+
+    Date tgl_masuk = null, tgl_pulang = null;
 
     /**
      * Creates new form DlgLhtBiaya
@@ -61,7 +67,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         this.setLocation(8, 1);
         setSize(885, 674);
 
-        tabMode = new DefaultTableModel(null, new String[]{"No", "No.Rawat", "Nomer RM", "Nama Pasien", "Kamar", "Tgl.Masuk", "Tgl.Keluar", "Lama", "Status"}) {
+        tabMode = new DefaultTableModel(null, new String[]{"No", "No.Rawat", "Nomer RM", "Nama Pasien", "Kamar", "Kelas", "Tgl.Masuk", "Tgl.Keluar", "Lama", "Status"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -73,7 +79,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         Tabel1.setPreferredScrollableViewportSize(new Dimension(500, 500));
         Tabel1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = Tabel1.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(35);
@@ -84,15 +90,17 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
             } else if (i == 3) {
                 column.setPreferredWidth(180);
             } else if (i == 4) {
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(190);
             } else if (i == 5) {
                 column.setPreferredWidth(75);
             } else if (i == 6) {
                 column.setPreferredWidth(75);
             } else if (i == 7) {
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(75);
             } else if (i == 8) {
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
+            } else if (i == 9) {
+                column.setPreferredWidth(110);
             }
         }
 
@@ -202,6 +210,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         BangsalCari = new widget.TextBox();
         btnBangsalCari = new widget.Button();
         BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
@@ -317,7 +326,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         panelGlass5.add(jLabel21);
 
         BangsalCari.setName("BangsalCari"); // NOI18N
-        BangsalCari.setPreferredSize(new java.awt.Dimension(230, 23));
+        BangsalCari.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass5.add(BangsalCari);
 
         btnBangsalCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -348,6 +357,18 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(BtnCari);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        panelGlass5.add(BtnAll);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -557,6 +578,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         dlgKamar.bangsal.setVisible(true);
     }//GEN-LAST:event_btnBangsalCariActionPerformed
 
+    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        kd_bangsal="";
+        BangsalCari.setText("");
+        if(TabRawat.getSelectedIndex()==0){
+            tampil();
+        }else if(TabRawat.getSelectedIndex()==1){
+            tampil2();
+        }
+    }//GEN-LAST:event_BtnAllActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -575,6 +606,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox BangsalCari;
+    private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
@@ -600,9 +632,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Valid.tabelKosong(tabMode);
+
             ps = koneksi.prepareStatement(
-                    "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar,"
-                    + "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,SUM(kamar_inap.lama) as lama,kamar_inap.stts_pulang "
+                    "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(kamar_inap.kd_kamar,' - ',bangsal.nm_bangsal) as kamar,"
+                    + "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',CURDATE(),kamar_inap.tgl_keluar) as tgl_keluar,lama,kamar_inap.stts_pulang,kamar.kelas "
                     + "from kamar_inap inner join reg_periksa "
                     + "inner join pasien "
                     + "inner join kamar "
@@ -611,25 +644,35 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     + "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                     + "and kamar_inap.kd_kamar=kamar.kd_kamar "
                     + "and kamar.kd_bangsal=bangsal.kd_bangsal "
-                    + "where kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal like ? group by kamar_inap.no_rawat, bangsal.kd_bangsal having count(kamar_inap.no_rawat)>0 order by kamar_inap.tgl_masuk");
+                    + "where kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal like ? and bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ? "
+                    + "group by kamar_inap.no_rawat having count(kamar_inap.no_rawat)>0 order by kamar_inap.tgl_masuk");
 
             try {
                 ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
                 ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
                 ps.setString(3, "%" + kd_bangsal + "%");
+                ps.setString(4, "%B0063%");//Baby
+                ps.setString(5, "%B0062%");//teratai
                 rs = ps.executeQuery();
                 i = 1;
                 hari = 0;
                 while (rs.next()) {
+                    tgl_masuk = format1.parse(rs.getString("tgl_masuk"));
+                    tgl_pulang = format1.parse(rs.getString("tgl_keluar"));
+                    long diff = tgl_pulang.getTime() - tgl_masuk.getTime();
+                    long diffDays = diff / (24 * 60 * 60 * 1000);
+                    if (diffDays == 0) {
+                        diffDays = 1;
+                    }
                     tabMode.addRow(new Object[]{
                         i, rs.getString("no_rawat"), rs.getString("no_rkm_medis"), rs.getString("nm_pasien"),
-                        rs.getString("kamar"), rs.getString("tgl_masuk"), rs.getString("tgl_keluar"),
-                        rs.getString("lama"), rs.getString("stts_pulang")
+                        rs.getString("kamar"),rs.getString("kelas"), rs.getString("tgl_masuk"), rs.getString("tgl_keluar"),
+                        diffDays, rs.getString("stts_pulang")
                     });
-                    hari = hari + rs.getDouble("lama");
+                    hari = hari + diffDays;//rs.getDouble("lama");
                     i++;
                 }
-                pasien =tabMode.getRowCount();
+                pasien = tabMode.getRowCount();
                 if (hari > 0) {
 //                    if (BangsalCari.getText().equals("")) {
 //                        pasien = Sequel.cariInteger("select count(kamar_inap.no_rawat) "
@@ -651,9 +694,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                + "and '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "'and kamar.kd_bangsal='" + kd_bangsal + "' group by kamar_inap.no_rawat having count(kamar_inap.no_rawat)>1  ");
 //                    }
 
-                    tabMode.addRow(new Object[]{"", "", "", "Jumlah Lama Dirawat", ":", "", "", hari, ""});
-                    tabMode.addRow(new Object[]{"", "", "", "Jumlah Pasien Keluar(Hidup+Mati)", ":", "", "",pasien, ""});
-                    tabMode.addRow(new Object[]{"", "", "", "Perhitungan ALOS ", ": " + hari + "/" + pasien, "", "", Valid.SetAngka4((hari / pasien)), ""});
+                    tabMode.addRow(new Object[]{"", "", "", "Jumlah Lama Dirawat", ":", "", "","", hari, ""});
+                    tabMode.addRow(new Object[]{"", "", "", "Jumlah Pasien Keluar(Hidup+Mati)", ":", "", "","", pasien, ""});
+                    tabMode.addRow(new Object[]{"", "", "", "Perhitungan ALOS ", ": " + hari + "/" + pasien, "", "","", Valid.SetAngka4((hari / pasien)), ""});
                 }
             } catch (Exception e) {
                 System.out.println("laporan.DlgHitungBOR.tampil() : " + e);
@@ -683,21 +726,29 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     + "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal "
                     + "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                     + "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal  "
-                    + "where kamar_inap.tgl_keluar between ? and ?  order by kamar_inap.tgl_keluar");
+                    + "where kamar_inap.tgl_keluar between ? and ? or bangsal.kd_bangsal like ? order by kamar_inap.tgl_keluar");
 
             try {
                 ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
                 ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                ps.setString(3, "%" + kd_bangsal + "%");
                 rs = ps.executeQuery();
                 i = 1;
                 hari = 0;
                 while (rs.next()) {
+                    tgl_masuk = format1.parse(rs.getString("tgl_masuk"));
+                    tgl_pulang = format1.parse(rs.getString("tgl_keluar"));
+                    long diff = tgl_pulang.getTime() - tgl_masuk.getTime();
+                    long diffDays = diff / (24 * 60 * 60 * 1000);
+                    if (diffDays == 0) {
+                        diffDays = 1;
+                    }
                     tabMode2.addRow(new Object[]{
                         i, rs.getString("no_rawat"), rs.getString("no_rkm_medis"), rs.getString("nm_pasien"),
                         rs.getString("kamar"), rs.getString("tgl_masuk"), rs.getString("tgl_keluar"),
-                        rs.getString("lama"), rs.getString("stts_pulang")
+                        diffDays, rs.getString("stts_pulang")
                     });
-                    hari = hari + rs.getDouble("lama");
+                    hari = hari + diffDays;//rs.getDouble("lama");
                     i++;
                 }
                 if (hari > 0) {
