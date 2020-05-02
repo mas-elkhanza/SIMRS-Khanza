@@ -157,10 +157,11 @@ public class DlgUser extends javax.swing.JDialog {
                     "[L]Monitoring Asuhan Gizi","[N]Penerimaan Obat, Alkes & BHP Per Bulan","[I]Rekap Kunjungan","[O]Surat Keterangan Sakit","[L]Penilaian Awal Keperawatan Ralan",
                     "[A]Permintaan Diet","[L]Master Masalah Keperawatan","[C]Pengajuan Cuti","[I]Kedatangan Pasien Per Jam","[M]Data Pendonor","[Q]Suplier Toko",
                     "[Q]Jenis Barang Toko","[R]Set Harga Toko","[Q]Barang Toko","[J]Penagihan Piutang Pasien","[J]Akun Penagihan Piutang","[Q]Stok Opname Toko",
-                    "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko","[J]Hutang Toko",
-                    "[J]Bayar Pesan Toko","[Q]Member Toko","[Q]Penjualan Toko","[I]Registrasi Poli Per Tanggal","[Q]Piutang Toko","[Q]Retur Ke Suplier Toko",
+                    "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko","[Q]Hutang Toko",
+                    "[Q]Bayar Pesan Toko","[Q]Member Toko","[Q]Penjualan Toko","[I]Registrasi Poli Per Tanggal","[Q]Piutang Toko","[Q]Retur Ke Suplier Toko",
                     "[E]Retur Ke Suplier Non Medis","[E]Riwayat Barang Non Medis","[K]Pasien Corona","[Q]Pendapatan Harian Toko","[K]Diagnosa Pasien Corona",
-                    "[K]Perawatan Pasien Corona","[L]Penilaian Awal Keperawatan Gigi","[L]Master Masalah Keperawatan Gigi","[Q]Bayar Piutang Toko","[Q]Piutang Harian Toko"
+                    "[K]Perawatan Pasien Corona","[L]Penilaian Awal Keperawatan Gigi","[L]Master Masalah Keperawatan Gigi","[Q]Bayar Piutang Toko","[Q]Piutang Harian Toko",
+                    "[Q]Penjualan Harian Toko"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -329,6 +330,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -342,7 +344,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 619;i++) {
+        for (i = 0; i < 620;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1216,6 +1218,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(116);
             }else if(i==618){
                 column.setPreferredWidth(121);
+            }else if(i==619){
+                column.setPreferredWidth(132);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1710,7 +1714,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2371,7 +2375,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "penilaian_awal_keperawatan_gigi='"+tbUser.getValueAt(i,615).toString()+"',"+
                     "master_masalah_keperawatan_gigi='"+tbUser.getValueAt(i,616).toString()+"',"+
                     "toko_bayar_piutang='"+tbUser.getValueAt(i,617).toString()+"',"+
-                    "toko_piutang_harian='"+tbUser.getValueAt(i,618).toString()+"'");
+                    "toko_piutang_harian='"+tbUser.getValueAt(i,618).toString()+"',"+
+                    "toko_penjualan_harian='"+tbUser.getValueAt(i,619).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3071,7 +3076,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "penilaian_awal_keperawatan_gigi='"+tbUser.getValueAt(barisdicopy,615).toString()+"',"+
                                     "master_masalah_keperawatan_gigi='"+tbUser.getValueAt(barisdicopy,616).toString()+"',"+
                                     "toko_bayar_piutang='"+tbUser.getValueAt(barisdicopy,617).toString()+"',"+
-                                    "toko_piutang_harian='"+tbUser.getValueAt(barisdicopy,618).toString()+"'");
+                                    "toko_piutang_harian='"+tbUser.getValueAt(barisdicopy,618).toString()+"',"+
+                                    "toko_penjualan_harian='"+tbUser.getValueAt(barisdicopy,619).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3384,7 +3390,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal,"+
                         "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang,pasien_corona,toko_pendapatan_harian,"+
                         "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi,"+
-                        "toko_bayar_piutang,toko_piutang_harian from user order by AES_DECRYPT(id_user,'nur')");
+                        "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4015,7 +4021,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penilaian_awal_keperawatan_gigi"),
                                rs.getBoolean("master_masalah_keperawatan_gigi"),
                                rs.getBoolean("toko_bayar_piutang"),
-                               rs.getBoolean("toko_piutang_harian")
+                               rs.getBoolean("toko_piutang_harian"),
+                               rs.getBoolean("toko_penjualan_harian")
                             });
                         }   
                     } catch (Exception e) {
@@ -4635,7 +4642,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penilaian_awal_keperawatan_gigi"),
                            rs.getBoolean("master_masalah_keperawatan_gigi"),
                            rs.getBoolean("toko_bayar_piutang"),
-                           rs.getBoolean("toko_piutang_harian")
+                           rs.getBoolean("toko_piutang_harian"),
+                           rs.getBoolean("toko_penjualan_harian")
                         });
                     }                                             
                  }

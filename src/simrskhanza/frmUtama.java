@@ -600,15 +600,18 @@ import surat.SuratSakit;
 import surat.SuratSifat;
 import surat.SuratStatus;
 import toko.TokoBarang;
+import toko.TokoBayarPiutang;
 import toko.TokoInputStok;
 import toko.TokoJenis;
 import toko.TokoMember;
 import toko.TokoPembelian;
 import toko.TokoPemesanan;
 import toko.TokoPendapatanHarian;
+import toko.TokoPenjualanHarian;
 import toko.TokoPengajuanBarang;
 import toko.TokoPenjualan;
 import toko.TokoPiutang;
+import toko.TokoPiutangHarian;
 import toko.TokoReturBeli;
 import toko.TokoRiwayatBarang;
 import toko.TokoSuplier;
@@ -1527,7 +1530,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/04/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29/04/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -2280,7 +2283,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        BtnJadwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
+        BtnJadwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/informasidokter.png"))); // NOI18N
         BtnJadwal.setText("Jadwal Praktek");
         BtnJadwal.setIconTextGap(0);
         BtnJadwal.setName("BtnJadwal"); // NOI18N
@@ -15725,11 +15728,39 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnBayarPiutangTokoActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoBayarPiutang bayarpiutang=new TokoBayarPiutang(this,false);
+        bayarpiutang.tampil();
+        bayarpiutang.emptTeks();
+        bayarpiutang.isCek();
+        bayarpiutang.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        bayarpiutang.setLocationRelativeTo(PanelUtama);
+        bayarpiutang.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     private void btnPiutangHarianTokoActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPiutangHarian form=new TokoPiutangHarian(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenjualanHarianTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoPenjualanHarian form=new TokoPenjualanHarian(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**
@@ -16329,7 +16360,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
-            btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko;
+            btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko;
     
     public void isWall(){
         try{            
@@ -17962,16 +17993,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
 
-            if(akses.gettoko_hutang()==true){
-                Panelmenu.add(btnHutangToko);
-                jmlmenu++;
-            }
-            
-            if(akses.gettoko_bayar_pemesanan()==true){
-                Panelmenu.add(btnBayarPesanToko);
-                jmlmenu++;
-            }
-            
             if(akses.getposting_jurnal()==true){
                 Panelmenu.add(btnPostingJurnal); 
                 jmlmenu++;
@@ -19386,8 +19407,23 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.gettoko_hutang()==true){
+                Panelmenu.add(btnHutangToko);
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_bayar_pemesanan()==true){
+                Panelmenu.add(btnBayarPesanToko);
+                jmlmenu++;
+            }
+            
             if(akses.gettoko_pendapatan_harian()==true){
                 Panelmenu.add(btnPendapatanHarianToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_penjualan_harian()==true){
+                Panelmenu.add(btnPenjualanHarianToko); 
                 jmlmenu++;
             }
             
@@ -21046,16 +21082,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
-        if(akses.gettoko_hutang()==true){
-            Panelmenu.add(btnHutangToko);
-            jmlmenu++;
-        }
-        
-        if(akses.gettoko_bayar_pemesanan()==true){
-            Panelmenu.add(btnBayarPesanToko);
-            jmlmenu++;
-        }
-        
         if(akses.getposting_jurnal()==true){
             Panelmenu.add(btnPostingJurnal); 
             jmlmenu++;
@@ -22458,11 +22484,26 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.gettoko_hutang()==true){
+            Panelmenu.add(btnHutangToko);
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_bayar_pemesanan()==true){
+            Panelmenu.add(btnBayarPesanToko);
+            jmlmenu++;
+        }
+        
         if(akses.gettoko_pendapatan_harian()==true){
             Panelmenu.add(btnPendapatanHarianToko); 
             jmlmenu++;
         }
         
+        if(akses.gettoko_penjualan_harian()==true){
+            Panelmenu.add(btnPenjualanHarianToko); 
+            jmlmenu++;
+        }
+
         if(akses.gettoko_piutang_harian()==true){
             Panelmenu.add(btnPiutangHarianToko); 
             jmlmenu++;
@@ -24723,20 +24764,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
-        if(akses.gettoko_hutang()==true){
-            if(btnHutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnHutangToko);
-                jmlmenu++;
-            }                
-        }
-        
-        if(akses.gettoko_bayar_pemesanan()==true){
-            if(btnBayarPesanToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnBayarPesanToko);
-                jmlmenu++;
-            }                
-        }
-
         if(akses.getposting_jurnal()==true){
             if(btnPostingJurnal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPostingJurnal); 
@@ -26700,9 +26727,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_hutang()==true){
+            if(btnHutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHutangToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_bayar_pemesanan()==true){
+            if(btnBayarPesanToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBayarPesanToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettoko_pendapatan_harian()==true){
             if(btnPendapatanHarianToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPendapatanHarianToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_penjualan_harian()==true){
+            if(btnPenjualanHarianToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenjualanHarianToko);
                 jmlmenu++;
             }                
         }
@@ -28799,6 +28847,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPiutangHarianToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPiutangHarianTokoActionPerformed(evt);
+            }
+        });
+        
+        btnPenjualanHarianToko = new widget.ButtonBig();
+        btnPenjualanHarianToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_edit-copy_118918.png"))); 
+        btnPenjualanHarianToko.setText("Penjualan Harian Toko");
+        btnPenjualanHarianToko.setIconTextGap(0);
+        btnPenjualanHarianToko.setName("btnPenjualanHarianToko"); 
+        btnPenjualanHarianToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenjualanHarianToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenjualanHarianTokoActionPerformed(evt);
             }
         });
     }

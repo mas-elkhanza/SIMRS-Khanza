@@ -46,8 +46,9 @@ public class TokoCariPiutang extends javax.swing.JDialog {
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  TokoBarang barang=new TokoBarang(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
-    private double ttlpiutang=0,ttluangmuka=0,ttlongkir=0,ttldisc=0,ttlsubttl=0,subttlpiutang=0,subttldisc=0,subttlall=0;
-    private String sisapiutangjual="",nofak="",mem="",ptg="",sat="",bar="",tanggal="",
+    private double ttlpiutang=0,ttluangmuka=0,ttlongkir=0,ttldisc=0,ttlsubttl=0,ttlcicilan=0,
+            sisapiutang=0,subttlpiutang=0,subttldisc=0,subttlall=0,cicilan=0,telat=0;
+    private String sisapiutangjual="",nofak="",mem="",ptg="",sat="",bar="",tanggal="",status="",
             Piutang_Toko=Sequel.cariIsi("select Piutang_Toko from set_akun"),
             Kontra_Piutang_Toko=Sequel.cariIsi("select Kontra_Piutang_Toko from set_akun");
     private StringBuilder htmlContent;
@@ -278,6 +279,7 @@ public class TokoCariPiutang extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppCetakNota = new javax.swing.JMenuItem();
         ppHapus = new javax.swing.JMenuItem();
+        MnDetailCicilan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
         panelisi4 = new widget.panelisi();
@@ -329,7 +331,7 @@ public class TokoCariPiutang extends javax.swing.JDialog {
         ppCetakNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppCetakNota.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppCetakNota.setName("ppCetakNota"); // NOI18N
-        ppCetakNota.setPreferredSize(new java.awt.Dimension(190, 25));
+        ppCetakNota.setPreferredSize(new java.awt.Dimension(150, 25));
         ppCetakNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppCetakNotaActionPerformed(evt);
@@ -345,13 +347,28 @@ public class TokoCariPiutang extends javax.swing.JDialog {
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppHapus.setName("ppHapus"); // NOI18N
-        ppHapus.setPreferredSize(new java.awt.Dimension(190, 25));
+        ppHapus.setPreferredSize(new java.awt.Dimension(150, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppHapusActionPerformed(evt);
             }
         });
         jPopupMenu1.add(ppHapus);
+
+        MnDetailCicilan.setBackground(new java.awt.Color(255, 255, 254));
+        MnDetailCicilan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnDetailCicilan.setForeground(new java.awt.Color(50, 50, 50));
+        MnDetailCicilan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnDetailCicilan.setText("Bayar Piutang");
+        MnDetailCicilan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        MnDetailCicilan.setName("MnDetailCicilan"); // NOI18N
+        MnDetailCicilan.setPreferredSize(new java.awt.Dimension(150, 25));
+        MnDetailCicilan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnDetailCicilanActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnDetailCicilan);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1050,11 +1067,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                   } 
 
                   if(sukses==true){
-                      Sequel.queryu("delete from tokopiutang where nota_piutang='"+rs.getString("nota_piutang")+"'");     
+                      sukses=Sequel.queryutf("delete from tokopiutang where nota_piutang='"+rs.getString("nota_piutang")+"'");    
+                  }
+                  
+                  if(sukses==true){
                       Sequel.Commit();
                   }else{
                       sukses=false;
-                      JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                      JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menghapus..!!");
                       Sequel.RollBack();
                   }
 
@@ -1092,6 +1112,28 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
+    private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDetailCicilanActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(tbDokter.getSelectedRow()<= -1){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            TokoBayarPiutang bayarpiutang=new TokoBayarPiutang(null,false);
+            bayarpiutang.emptTeks();
+            String norm=Sequel.cariIsi("select no_member from tokopiutang where nota_piutang='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()+"'");
+            String nama=Sequel.cariIsi("select nama from tokomember where no_member='"+norm+"'");
+            bayarpiutang.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),norm,nama);
+            bayarpiutang.tampil();
+            bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
+            bayarpiutang.setLocationRelativeTo(this);
+            bayarpiutang.setAlwaysOnTop(false);
+            bayarpiutang.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnDetailCicilanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1115,6 +1157,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button BtnPrint;
     private widget.Label LTotal;
     private widget.editorpane LoadHTML1;
+    private javax.swing.JMenuItem MnDetailCicilan;
     private widget.TextBox NoNota;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -1199,6 +1242,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ttluangmuka=0;
                 ttldisc=0;
                 ttlongkir=0;
+                ttlcicilan=0;
                 while(rs.next()){        
                     tabMode.addRow(new String[]{
                         rs.getString("tgl_piutang"),rs.getString("nota_piutang"),rs.getString("nip")+", "+rs.getString("nama"),
@@ -1209,6 +1253,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     });
                     ttluangmuka=ttluangmuka+rs.getDouble("uangmuka");
                     ttlongkir=ttlongkir+rs.getDouble("ongkir");
+                    subttlall=0;
+                    subttldisc=0;
+                    subttlpiutang=0;
                     ps2=koneksi.prepareStatement(
                         "select toko_detail_piutang.kode_brng,tokobarang.nama_brng, toko_detail_piutang.kode_sat,"+
                         " kodesatuan.satuan,toko_detail_piutang.h_jual,toko_detail_piutang.jumlah, "+
@@ -1223,9 +1270,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         " order by toko_detail_piutang.kode_brng");
                     try {
                         rs2=ps2.executeQuery();
-                        subttlall=0;
-                        subttldisc=0;
-                        subttlpiutang=0;
                         no=1;
                         while(rs2.next()){
                             subttlall=subttlall+rs2.getDouble("subtotal");
@@ -1240,22 +1284,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             });
                             no++;
                         }                        
-                        tabMode.addRow(new String[]{
-                            "","Total",":","",df2.format(subttlall),df2.format(subttldisc),df2.format(subttlpiutang)
-                        });
-                        if(rs.getDouble("ongkir")>0){
-                            tabMode.addRow(new String[]{
-                                "","Ongkir",":","","","",df2.format(rs.getDouble("ongkir"))
-                            });
-                        }   
-                        if(rs.getDouble("uangmuka")>0){
-                            tabMode.addRow(new String[]{
-                                "","Uang Muka",":","","","",df2.format(rs.getDouble("uangmuka"))
-                            });
-                        }
-                        tabMode.addRow(new String[]{
-                            "","Sisa Piutang",":","","","",df2.format(rs.getDouble("ongkir")+subttlpiutang-rs.getDouble("uangmuka"))
-                        });    
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
                     } finally{
@@ -1266,6 +1294,33 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ps2.close();
                         }
                     }
+                    tabMode.addRow(new String[]{
+                        "","Total",":","",df2.format(subttlall),df2.format(subttldisc),df2.format(subttlpiutang)
+                    });
+                    if(rs.getDouble("ongkir")>0){
+                        tabMode.addRow(new String[]{
+                            "","Ongkir",":","","","",df2.format(rs.getDouble("ongkir"))
+                        });
+                    }   
+                    if(rs.getDouble("uangmuka")>0){
+                        tabMode.addRow(new String[]{
+                            "","Uang Muka",":","","","",df2.format(rs.getDouble("uangmuka"))
+                        });
+                    }
+
+                    cicilan=Sequel.cariIsiAngka("select sum(besar_cicilan) from toko_bayar_piutang where nota_piutang='"+rs.getString("nota_piutang")+"' ");
+                    ttlcicilan=ttlcicilan+cicilan;
+                    sisapiutang=rs.getDouble("ongkir")+subttlpiutang-rs.getDouble("uangmuka")-cicilan;
+                    if(sisapiutang<1){
+                        status="Lunas";
+                    }else if(sisapiutang>1){
+                        telat=Sequel.cariIsiAngka("select TO_DAYS('"+rs.getString("tgltempo")+"')-TO_DAYS(current_date()) as day");                                                
+                        status="Belum Lunas"+Sequel.cariIsi("select if("+telat+" < 0,', Telat Bayar','')");
+                    }
+                    tabMode.addRow(new String[]{"","Status",": "+status,"","","Cicilan :",df2.format(cicilan)}); 
+                    tabMode.addRow(new String[]{
+                        "","Sisa Piutang",": ","","","",df2.format(sisapiutang)
+                    });    
                 }    
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -1277,7 +1332,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     ps.close();
                 }
             }            
-            LTotal.setText(df2.format(ttlpiutang+ttlongkir-ttluangmuka));
+            LTotal.setText(df2.format(ttlpiutang+ttlongkir-ttluangmuka-ttlcicilan));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        
@@ -1340,9 +1395,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ttluangmuka=0;
                 ttldisc=0;
                 ttlongkir=0;
+                ttlcicilan=0;
                 while(rs.next()){ 
                     ttluangmuka=ttluangmuka+rs.getDouble("uangmuka");
                     ttlongkir=ttlongkir+rs.getDouble("ongkir");
+                    subttlall=0;
+                    subttldisc=0;
+                    subttlpiutang=0;
                     htmlContent.append(
                         "<tr class='isi'>"+
                             "<td valign='top' align='center'>"+rs.getString("nota_piutang")+"</td>"+
@@ -1383,9 +1442,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         " order by toko_detail_piutang.kode_brng");
                     try {
                         rs2=ps2.executeQuery();
-                        subttlall=0;
-                        subttldisc=0;
-                        subttlpiutang=0;
                         no=1;
                         while(rs2.next()){
                             subttlall=subttlall+rs2.getDouble("subtotal");
@@ -1420,14 +1476,23 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         }
                     }
                     
+                    cicilan=Sequel.cariIsiAngka("select sum(besar_cicilan) from toko_bayar_piutang where nota_piutang='"+rs.getString("nota_piutang")+"' ");
+                    ttlcicilan=ttlcicilan+cicilan;
+                    sisapiutang=rs.getDouble("ongkir")+subttlpiutang-rs.getDouble("uangmuka")-cicilan;
+                    if(sisapiutang<1){
+                        status="Lunas";
+                    }else if(sisapiutang>1){
+                        telat=Sequel.cariIsiAngka("select TO_DAYS('"+rs.getString("tgltempo")+"')-TO_DAYS(current_date()) as day");                                                
+                        status="Belum Lunas"+Sequel.cariIsi("select if("+telat+" < 0,', Telat Bayar','')");
+                    }
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='top' align='center' colspan='5'>Ongkir : "+df2.format(rs.getDouble("ongkir"))+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uang Muka : "+df2.format(rs.getDouble("uangmuka"))+"</td>"+
+                            "<td valign='top' align='center' colspan='5'>Ongkir : "+df2.format(rs.getDouble("ongkir"))+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uang Muka : "+df2.format(rs.getDouble("uangmuka"))+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cicilan : "+df2.format(cicilan)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status : "+status+"</td>"+
                             "<td valign='top' align='right'>Total :</td>"+
                             "<td valign='top' align='right'>"+df2.format(subttlall)+"</td>"+
                             "<td valign='top' align='right'></td>"+
                             "<td valign='top' align='right'>"+df2.format(subttldisc)+"</td>"+
-                            "<td valign='top' align='right'>"+df2.format(subttlpiutang+rs.getDouble("ongkir")-rs.getDouble("uangmuka"))+"</td>"+
+                            "<td valign='top' align='right'>"+df2.format(sisapiutang)+"</td>"+
                         "</tr>");
                     htmlContent.append(
                                 "</table>"+
@@ -1452,7 +1517,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                              "<td valign='top' align='right' width='16%'>Jml.Uang Muka : "+df2.format(ttluangmuka)+"</td>"+
                              "<td valign='top' align='right' width='16%'>Jml.Subtotal : "+df2.format(ttlsubttl)+"</td>"+
                              "<td valign='top' align='right' width='16%'>Jml.Diskon : "+df2.format(ttldisc)+"</td>"+
-                             "<td valign='top' align='right' width='16%'>Jml.Total : "+df2.format(ttlpiutang+ttlongkir-ttluangmuka)+"</td>"+
+                             "<td valign='top' align='right' width='16%'>Jml.Total : "+df2.format(ttlpiutang+ttlongkir-ttluangmuka-ttlcicilan)+"</td>"+
                            "</tr>"+
                       "</table>";
             }
@@ -1478,6 +1543,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     
     public void isCek(){
         ppCetakNota.setEnabled(akses.gettoko_piutang());
+        MnDetailCicilan.setEnabled(akses.gettoko_bayar_piutang());
         if(akses.getkode().equals("Admin Utama")){
             ppHapus.setEnabled(true);
         }else{

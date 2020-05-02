@@ -103,7 +103,7 @@ from tokopenjualan inner join petugas on tokopenjualan.nip=petugas.nip]]>
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENDAPATAN HARIAN TOKO]]></text>
+				<text><![CDATA[PENJUALAN HARIAN TOKO]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="2" y="14" width="799" height="14" uuid="23dcb7a4-78a5-41af-a054-7ebc75df6245"/>

@@ -134,7 +134,7 @@ public final class akses {
             toko_bayar_pemesanan=false,toko_member=false,toko_penjualan=false,registrasi_poli_per_tanggal=false,toko_piutang=false,toko_retur_beli=false,
             ipsrs_returbeli=false,ipsrs_riwayat_barang=false,pasien_corona=false,toko_pendapatan_harian=false,diagnosa_pasien_corona=false,
             perawatan_pasien_corona=false,penilaian_awal_keperawatan_gigi=false,master_masalah_keperawatan_gigi=false,toko_bayar_piutang=false,
-            toko_piutang_harian=false;
+            toko_piutang_harian=false,toko_penjualan_harian=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -773,6 +773,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_gigi=true;
                         akses.toko_bayar_piutang=true;
                         akses.toko_piutang_harian=true;
+                        akses.toko_penjualan_harian=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1395,6 +1396,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_gigi=rs2.getBoolean("master_masalah_keperawatan_gigi");
                         akses.toko_bayar_piutang=rs2.getBoolean("toko_bayar_piutang");
                         akses.toko_piutang_harian=rs2.getBoolean("toko_piutang_harian");
+                        akses.toko_penjualan_harian=rs2.getBoolean("toko_penjualan_harian");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2015,6 +2017,7 @@ public final class akses {
                         akses.master_masalah_keperawatan_gigi=false;
                         akses.toko_bayar_piutang=false;
                         akses.toko_piutang_harian=false;
+                        akses.toko_penjualan_harian=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2689,4 +2692,5 @@ public final class akses {
     public static boolean getmaster_masalah_keperawatan_gigi(){return akses.master_masalah_keperawatan_gigi;}
     public static boolean gettoko_bayar_piutang(){return akses.toko_bayar_piutang;}
     public static boolean gettoko_piutang_harian(){return akses.toko_piutang_harian;}
+    public static boolean gettoko_penjualan_harian(){return akses.toko_penjualan_harian;}
 }   
