@@ -325,6 +325,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(jLabel21);
 
+        BangsalCari.setEditable(false);
         BangsalCari.setName("BangsalCari"); // NOI18N
         BangsalCari.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass5.add(BangsalCari);
@@ -346,6 +347,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         BtnCari.setToolTipText("Alt+2");
         BtnCari.setName("BtnCari"); // NOI18N
         BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/checked.png"))); // NOI18N
         BtnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCariActionPerformed(evt);
@@ -363,6 +365,7 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         BtnAll.setToolTipText("Alt+M");
         BtnAll.setName("BtnAll"); // NOI18N
         BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/search_page.png"))); // NOI18N
         BtnAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAllActionPerformed(evt);
