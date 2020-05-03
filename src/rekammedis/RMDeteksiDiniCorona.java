@@ -9,9 +9,12 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -19,6 +22,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import kepegawaian.DlgCariPetugas;
 
 /**
  *
@@ -32,6 +36,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
+    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     
 
     /** Creates new form DlgPemberianInfus
@@ -101,13 +106,9 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        NoJaminan.setDocument(new batasInput((byte)30).getKata(NoJaminan));
-        Episodes1.setDocument(new batasInput((byte)3).getOnlyAngka(Episodes1));
-        Episodes2.setDocument(new batasInput((byte)3).getOnlyAngka(Episodes2));
-        Episodes3.setDocument(new batasInput((byte)3).getOnlyAngka(Episodes3));
-        Episodes4.setDocument(new batasInput((byte)3).getOnlyAngka(Episodes4));
-        Episodes5.setDocument(new batasInput((byte)3).getOnlyAngka(Episodes5));
-        Episodes6.setDocument(new batasInput((byte)3).getOnlyAngka(Episodes6));
+        RiwayatSakitSebelumnya.setDocument(new batasInput((byte)50).getKata(RiwayatSakitSebelumnya));
+        RiwayatPeriksaSebelumnya.setDocument(new batasInput((byte)50).getKata(RiwayatPeriksaSebelumnya));
+        AsalDaerah.setDocument(new batasInput((byte)50).getKata(AsalDaerah));
 
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -131,6 +132,29 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
                 }
             });
         } 
+        
+        petugas.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(petugas.getTable().getSelectedRow()!= -1){                   
+                    kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                }  
+                kdptg.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         
         ChkInput.setSelected(false);
         isForm();
@@ -173,43 +197,77 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         PanelInput = new javax.swing.JPanel();
         ChkInput = new widget.CekBox();
+        scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
         NoRM = new widget.TextBox();
         NamaPasien = new widget.TextBox();
         jLabel7 = new widget.Label();
         NoRawat = new widget.TextBox();
-        PemulasaranJenazah = new widget.ComboBox();
+        A1 = new widget.ComboBox();
         jLabel12 = new widget.Label();
-        KantongJenazah = new widget.ComboBox();
-        jLabel13 = new widget.Label();
-        jLabel14 = new widget.Label();
-        PetiJenazah = new widget.ComboBox();
-        jLabel16 = new widget.Label();
-        PlastikErat = new widget.ComboBox();
-        jLabel18 = new widget.Label();
-        DesinfektanJenazah = new widget.ComboBox();
-        jLabel19 = new widget.Label();
-        MobilJenazah = new widget.ComboBox();
-        DesinFektanMobilJenazah = new widget.ComboBox();
-        jLabel20 = new widget.Label();
-        jLabel21 = new widget.Label();
-        StatusCovid = new widget.ComboBox();
         jLabel8 = new widget.Label();
-        NoJaminan = new widget.TextBox();
+        RiwayatSakitSebelumnya = new widget.TextBox();
         jLabel9 = new widget.Label();
-        Episodes1 = new widget.TextBox();
-        Episodes2 = new widget.TextBox();
+        NIK = new widget.TextBox();
         jLabel11 = new widget.Label();
-        Episodes3 = new widget.TextBox();
+        NoHP = new widget.TextBox();
+        jLabel13 = new widget.Label();
+        Pekerjaan = new widget.TextBox();
+        TglLahir = new widget.TextBox();
+        jLabel14 = new widget.Label();
+        jLabel16 = new widget.Label();
+        Alamat = new widget.TextBox();
+        jLabel18 = new widget.Label();
+        TglGejala = new widget.Tanggal();
+        jLabel19 = new widget.Label();
+        jLabel20 = new widget.Label();
+        A2 = new widget.ComboBox();
+        jLabel21 = new widget.Label();
+        A3 = new widget.ComboBox();
+        TglSkrining = new widget.Tanggal();
         jLabel22 = new widget.Label();
-        Episodes4 = new widget.TextBox();
         jLabel23 = new widget.Label();
-        Episodes5 = new widget.TextBox();
+        AsalDaerah = new widget.TextBox();
         jLabel24 = new widget.Label();
         jLabel25 = new widget.Label();
-        Episodes6 = new widget.TextBox();
         jLabel26 = new widget.Label();
-        Comorbid = new widget.ComboBox();
+        jLabel27 = new widget.Label();
+        jLabel28 = new widget.Label();
+        jLabel29 = new widget.Label();
+        jLabel30 = new widget.Label();
+        jLabel31 = new widget.Label();
+        jLabel32 = new widget.Label();
+        B1 = new widget.ComboBox();
+        jLabel33 = new widget.Label();
+        jLabel34 = new widget.Label();
+        RiwayatPeriksaSebelumnya = new widget.TextBox();
+        jLabel35 = new widget.Label();
+        TglKedatangan = new widget.Tanggal();
+        jLabel36 = new widget.Label();
+        jLabel37 = new widget.Label();
+        jLabel38 = new widget.Label();
+        jLabel39 = new widget.Label();
+        Kesimpulan = new widget.ComboBox();
+        jLabel40 = new widget.Label();
+        jLabel41 = new widget.Label();
+        B2b = new widget.ComboBox();
+        jLabel42 = new widget.Label();
+        jLabel43 = new widget.Label();
+        B2c = new widget.ComboBox();
+        jLabel45 = new widget.Label();
+        B2d = new widget.ComboBox();
+        jLabel46 = new widget.Label();
+        jLabel47 = new widget.Label();
+        jLabel48 = new widget.Label();
+        B2e = new widget.ComboBox();
+        jLabel49 = new widget.Label();
+        B2a = new widget.ComboBox();
+        TindakLanjut = new widget.ComboBox();
+        jLabel50 = new widget.Label();
+        jLabel51 = new widget.Label();
+        kdptg = new widget.TextBox();
+        nmptg = new widget.TextBox();
+        BtnPtg = new widget.Button();
 
         jPopupMenu2.setName("jPopupMenu2"); // NOI18N
 
@@ -407,7 +465,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(63, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-05-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -420,7 +478,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-05-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -504,8 +562,11 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         });
         PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
 
+        scrollInput.setName("scrollInput"); // NOI18N
+
+        FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(190, 107));
+        FormInput.setPreferredSize(new java.awt.Dimension(190, 597));
         FormInput.setLayout(null);
 
         NoRM.setEditable(false);
@@ -531,248 +592,483 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(NoRawat);
         NoRawat.setBounds(76, 10, 141, 23);
 
-        PemulasaranJenazah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PemulasaranJenazah.setName("PemulasaranJenazah"); // NOI18N
-        PemulasaranJenazah.addKeyListener(new java.awt.event.KeyAdapter() {
+        A1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        A1.setName("A1"); // NOI18N
+        A1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PemulasaranJenazahKeyPressed(evt);
+                A1KeyPressed(evt);
             }
         });
-        FormInput.add(PemulasaranJenazah);
-        PemulasaranJenazah.setBounds(229, 40, 85, 23);
+        FormInput.add(A1);
+        A1.setBounds(733, 120, 85, 23);
 
-        jLabel12.setText("Dilakukan Pemulasaran Jenazah ?");
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("B. FAKTOR RESIKO");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(0, 40, 225, 23);
+        jLabel12.setBounds(15, 290, 140, 23);
 
-        KantongJenazah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        KantongJenazah.setName("KantongJenazah"); // NOI18N
-        KantongJenazah.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KantongJenazahKeyPressed(evt);
-            }
-        });
-        FormInput.add(KantongJenazah);
-        KantongJenazah.setBounds(229, 70, 85, 23);
-
-        jLabel13.setText("Menggunakan Kantong Jenazah ?");
-        jLabel13.setName("jLabel13"); // NOI18N
-        FormInput.add(jLabel13);
-        jLabel13.setBounds(0, 70, 225, 23);
-
-        jLabel14.setText("Menggunakan Peti Jenazah ?");
-        jLabel14.setName("jLabel14"); // NOI18N
-        FormInput.add(jLabel14);
-        jLabel14.setBounds(0, 100, 225, 23);
-
-        PetiJenazah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PetiJenazah.setName("PetiJenazah"); // NOI18N
-        PetiJenazah.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PetiJenazahKeyPressed(evt);
-            }
-        });
-        FormInput.add(PetiJenazah);
-        PetiJenazah.setBounds(229, 100, 85, 23);
-
-        jLabel16.setText("Menggunakan Plastik Erat ?");
-        jLabel16.setName("jLabel16"); // NOI18N
-        FormInput.add(jLabel16);
-        jLabel16.setBounds(0, 130, 225, 23);
-
-        PlastikErat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PlastikErat.setName("PlastikErat"); // NOI18N
-        PlastikErat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PlastikEratKeyPressed(evt);
-            }
-        });
-        FormInput.add(PlastikErat);
-        PlastikErat.setBounds(229, 130, 85, 23);
-
-        jLabel18.setText("Menggunakan Desinfektan Jenazah ?");
-        jLabel18.setName("jLabel18"); // NOI18N
-        FormInput.add(jLabel18);
-        jLabel18.setBounds(0, 160, 225, 23);
-
-        DesinfektanJenazah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        DesinfektanJenazah.setName("DesinfektanJenazah"); // NOI18N
-        DesinfektanJenazah.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DesinfektanJenazahKeyPressed(evt);
-            }
-        });
-        FormInput.add(DesinfektanJenazah);
-        DesinfektanJenazah.setBounds(229, 160, 85, 23);
-
-        jLabel19.setText("Menggunakan Mobil Jenazah ?");
-        jLabel19.setName("jLabel19"); // NOI18N
-        FormInput.add(jLabel19);
-        jLabel19.setBounds(0, 190, 225, 23);
-
-        MobilJenazah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        MobilJenazah.setName("MobilJenazah"); // NOI18N
-        MobilJenazah.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MobilJenazahKeyPressed(evt);
-            }
-        });
-        FormInput.add(MobilJenazah);
-        MobilJenazah.setBounds(229, 190, 85, 23);
-
-        DesinFektanMobilJenazah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        DesinFektanMobilJenazah.setName("DesinFektanMobilJenazah"); // NOI18N
-        DesinFektanMobilJenazah.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DesinFektanMobilJenazahKeyPressed(evt);
-            }
-        });
-        FormInput.add(DesinFektanMobilJenazah);
-        DesinFektanMobilJenazah.setBounds(229, 220, 85, 23);
-
-        jLabel20.setText("Menggunakan Desinfektan Mobil Jenazah ?");
-        jLabel20.setName("jLabel20"); // NOI18N
-        FormInput.add(jLabel20);
-        jLabel20.setBounds(0, 220, 225, 23);
-
-        jLabel21.setText("Status Covid/Corona :");
-        jLabel21.setName("jLabel21"); // NOI18N
-        FormInput.add(jLabel21);
-        jLabel21.setBounds(0, 250, 225, 23);
-
-        StatusCovid.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ODP", "PDP", "Positif" }));
-        StatusCovid.setName("StatusCovid"); // NOI18N
-        StatusCovid.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                StatusCovidKeyPressed(evt);
-            }
-        });
-        FormInput.add(StatusCovid);
-        StatusCovid.setBounds(229, 250, 85, 23);
-
-        jLabel8.setText("No.Jaminan/NIK/KITAS/KITAP/PASPOR/JKN :");
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel8.setText("Riwayat sakit sebelumnya");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(320, 40, 309, 23);
+        jLabel8.setBounds(90, 230, 200, 23);
 
-        NoJaminan.setComponentPopupMenu(jPopupMenu2);
-        NoJaminan.setHighlighter(null);
-        NoJaminan.setName("NoJaminan"); // NOI18N
-        NoJaminan.addKeyListener(new java.awt.event.KeyAdapter() {
+        RiwayatSakitSebelumnya.setComponentPopupMenu(jPopupMenu2);
+        RiwayatSakitSebelumnya.setHighlighter(null);
+        RiwayatSakitSebelumnya.setName("RiwayatSakitSebelumnya"); // NOI18N
+        RiwayatSakitSebelumnya.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoJaminanKeyPressed(evt);
+                RiwayatSakitSebelumnyaKeyPressed(evt);
             }
         });
-        FormInput.add(NoJaminan);
-        NoJaminan.setBounds(633, 40, 185, 23);
+        FormInput.add(RiwayatSakitSebelumnya);
+        RiwayatSakitSebelumnya.setBounds(320, 230, 350, 23);
 
-        jLabel9.setText("Jumlah Hari Penggunaan Ruang ICU Dengan Ventilator :");
+        jLabel9.setText("NIK :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(320, 70, 409, 23);
+        jLabel9.setBounds(0, 40, 72, 23);
 
-        Episodes1.setHighlighter(null);
-        Episodes1.setName("Episodes1"); // NOI18N
-        Episodes1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Episodes1KeyPressed(evt);
-            }
-        });
-        FormInput.add(Episodes1);
-        Episodes1.setBounds(733, 70, 85, 23);
+        NIK.setEditable(false);
+        NIK.setHighlighter(null);
+        NIK.setName("NIK"); // NOI18N
+        FormInput.add(NIK);
+        NIK.setBounds(76, 40, 141, 23);
 
-        Episodes2.setHighlighter(null);
-        Episodes2.setName("Episodes2"); // NOI18N
-        Episodes2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Episodes2KeyPressed(evt);
-            }
-        });
-        FormInput.add(Episodes2);
-        Episodes2.setBounds(733, 100, 85, 23);
-
-        jLabel11.setText("Jumlah Hari Penggunaan Ruang ICU Tanpa Ventilator :");
+        jLabel11.setText("No.Telp/HP :");
         jLabel11.setName("jLabel11"); // NOI18N
         FormInput.add(jLabel11);
-        jLabel11.setBounds(320, 100, 409, 23);
+        jLabel11.setBounds(220, 40, 72, 23);
 
-        Episodes3.setHighlighter(null);
-        Episodes3.setName("Episodes3"); // NOI18N
-        Episodes3.addKeyListener(new java.awt.event.KeyAdapter() {
+        NoHP.setEditable(false);
+        NoHP.setHighlighter(null);
+        NoHP.setName("NoHP"); // NOI18N
+        FormInput.add(NoHP);
+        NoHP.setBounds(296, 40, 110, 23);
+
+        jLabel13.setText("Pekerjaan :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(408, 40, 70, 23);
+
+        Pekerjaan.setEditable(false);
+        Pekerjaan.setHighlighter(null);
+        Pekerjaan.setName("Pekerjaan"); // NOI18N
+        FormInput.add(Pekerjaan);
+        Pekerjaan.setBounds(482, 40, 151, 23);
+
+        TglLahir.setEditable(false);
+        TglLahir.setHighlighter(null);
+        TglLahir.setName("TglLahir"); // NOI18N
+        FormInput.add(TglLahir);
+        TglLahir.setBounds(728, 40, 90, 23);
+
+        jLabel14.setText("Tgl.Lahir :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        FormInput.add(jLabel14);
+        jLabel14.setBounds(644, 40, 80, 23);
+
+        jLabel16.setText("Alamat :");
+        jLabel16.setName("jLabel16"); // NOI18N
+        FormInput.add(jLabel16);
+        jLabel16.setBounds(0, 70, 72, 23);
+
+        Alamat.setEditable(false);
+        Alamat.setHighlighter(null);
+        Alamat.setName("Alamat"); // NOI18N
+        FormInput.add(Alamat);
+        Alamat.setBounds(76, 70, 557, 23);
+
+        jLabel18.setText("Tgl.Skrining :");
+        jLabel18.setName("jLabel18"); // NOI18N
+        FormInput.add(jLabel18);
+        jLabel18.setBounds(644, 70, 80, 23);
+
+        TglGejala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
+        TglGejala.setDisplayFormat("dd-MM-yyyy");
+        TglGejala.setName("TglGejala"); // NOI18N
+        TglGejala.setOpaque(false);
+        TglGejala.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Episodes3KeyPressed(evt);
+                TglGejalaKeyPressed(evt);
             }
         });
-        FormInput.add(Episodes3);
-        Episodes3.setBounds(733, 130, 85, 23);
+        FormInput.add(TglGejala);
+        TglGejala.setBounds(320, 200, 90, 23);
 
-        jLabel22.setText("Jumlah Hari Penggunaan Ruang Isolasi Tekanan Negatif Dengan Ventilator :");
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel19.setText("1. Demam > 37,5 / riwayat demam");
+        jLabel19.setName("jLabel19"); // NOI18N
+        FormInput.add(jLabel19);
+        jLabel19.setBounds(70, 120, 460, 23);
+
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel20.setText("2. Batuk / Pilek / Nyeri Tenggorokan");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(70, 150, 470, 23);
+
+        A2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        A2.setName("A2"); // NOI18N
+        A2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                A2KeyPressed(evt);
+            }
+        });
+        FormInput.add(A2);
+        A2.setBounds(733, 150, 85, 23);
+
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel21.setText("3. Sesak Napas,");
+        jLabel21.setName("jLabel21"); // NOI18N
+        FormInput.add(jLabel21);
+        jLabel21.setBounds(70, 180, 460, 23);
+
+        A3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        A3.setName("A3"); // NOI18N
+        A3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                A3KeyPressed(evt);
+            }
+        });
+        FormInput.add(A3);
+        A3.setBounds(733, 180, 85, 23);
+
+        TglSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
+        TglSkrining.setDisplayFormat("dd-MM-yyyy");
+        TglSkrining.setName("TglSkrining"); // NOI18N
+        TglSkrining.setOpaque(false);
+        TglSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TglSkriningKeyPressed(evt);
+            }
+        });
+        FormInput.add(TglSkrining);
+        TglSkrining.setBounds(728, 70, 90, 23);
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel22.setText("Tanggal pertama kali timbul gejala");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(320, 130, 409, 23);
+        jLabel22.setBounds(90, 200, 200, 23);
 
-        Episodes4.setHighlighter(null);
-        Episodes4.setName("Episodes4"); // NOI18N
-        Episodes4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Episodes4KeyPressed(evt);
-            }
-        });
-        FormInput.add(Episodes4);
-        Episodes4.setBounds(733, 160, 85, 23);
-
-        jLabel23.setText("Jumlah Hari Penggunaan Ruang Isolasi Tekanan Negatif Tanpa Ventilator :");
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel23.setText("Riwayat periksa sebelumnya");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(320, 160, 409, 23);
+        jLabel23.setBounds(90, 260, 200, 23);
 
-        Episodes5.setHighlighter(null);
-        Episodes5.setName("Episodes5"); // NOI18N
-        Episodes5.addKeyListener(new java.awt.event.KeyAdapter() {
+        AsalDaerah.setComponentPopupMenu(jPopupMenu2);
+        AsalDaerah.setHighlighter(null);
+        AsalDaerah.setName("AsalDaerah"); // NOI18N
+        AsalDaerah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Episodes5KeyPressed(evt);
+                AsalDaerahKeyPressed(evt);
             }
         });
-        FormInput.add(Episodes5);
-        Episodes5.setBounds(733, 190, 85, 23);
+        FormInput.add(AsalDaerah);
+        AsalDaerah.setBounds(320, 330, 350, 23);
 
-        jLabel24.setText("Jumlah Hari Penggunaan Ruang Isolasi Non Tekanan Negatif Dengan Ventilator :");
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel24.setText(":");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(320, 190, 409, 23);
+        jLabel24.setBounds(310, 260, 10, 23);
 
-        jLabel25.setText("Jumlah Hari Penggunaan Ruang Isolasi Non Tekanan Negatif Tanpa Ventilator :");
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel25.setText(":");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(320, 220, 409, 23);
+        jLabel25.setBounds(310, 200, 10, 23);
 
-        Episodes6.setHighlighter(null);
-        Episodes6.setName("Episodes6"); // NOI18N
-        Episodes6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Episodes6KeyPressed(evt);
-            }
-        });
-        FormInput.add(Episodes6);
-        Episodes6.setBounds(733, 220, 85, 23);
-
-        jLabel26.setText("Ada Comorbid/Complexity/Penyerta ?");
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText(":");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(320, 250, 309, 23);
+        jLabel26.setBounds(310, 230, 10, 23);
 
-        Comorbid.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Comorbid.setName("Comorbid"); // NOI18N
-        Comorbid.addKeyListener(new java.awt.event.KeyAdapter() {
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel27.setText("A. GEJALA ");
+        jLabel27.setName("jLabel27"); // NOI18N
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(15, 100, 120, 23);
+
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel28.setText(":");
+        jLabel28.setName("jLabel28"); // NOI18N
+        FormInput.add(jLabel28);
+        jLabel28.setBounds(722, 180, 10, 23);
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel29.setText(":");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(722, 120, 10, 23);
+
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel30.setText(":");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(722, 150, 10, 23);
+
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel31.setText("2. Memiliki riwayat paparan satu atau lebih :");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(70, 390, 585, 23);
+
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel32.setText(":");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(722, 310, 10, 23);
+
+        B1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        B1.setName("B1"); // NOI18N
+        B1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ComorbidKeyPressed(evt);
+                B1KeyPressed(evt);
             }
         });
-        FormInput.add(Comorbid);
-        Comorbid.setBounds(633, 250, 85, 23);
+        FormInput.add(B1);
+        B1.setBounds(733, 310, 85, 23);
 
-        PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel33.setText("Asal daerah terjangkit");
+        jLabel33.setName("jLabel33"); // NOI18N
+        FormInput.add(jLabel33);
+        jLabel33.setBounds(90, 330, 200, 23);
+
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel34.setText(":");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(310, 330, 10, 23);
+
+        RiwayatPeriksaSebelumnya.setComponentPopupMenu(jPopupMenu2);
+        RiwayatPeriksaSebelumnya.setHighlighter(null);
+        RiwayatPeriksaSebelumnya.setName("RiwayatPeriksaSebelumnya"); // NOI18N
+        RiwayatPeriksaSebelumnya.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RiwayatPeriksaSebelumnyaKeyPressed(evt);
+            }
+        });
+        FormInput.add(RiwayatPeriksaSebelumnya);
+        RiwayatPeriksaSebelumnya.setBounds(320, 260, 350, 23);
+
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel35.setText(":");
+        jLabel35.setName("jLabel35"); // NOI18N
+        FormInput.add(jLabel35);
+        jLabel35.setBounds(310, 360, 10, 23);
+
+        TglKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
+        TglKedatangan.setDisplayFormat("dd-MM-yyyy");
+        TglKedatangan.setName("TglKedatangan"); // NOI18N
+        TglKedatangan.setOpaque(false);
+        TglKedatangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TglKedatanganKeyPressed(evt);
+            }
+        });
+        FormInput.add(TglKedatangan);
+        TglKedatangan.setBounds(320, 360, 90, 23);
+
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel36.setText("Tanggal kedatangan di kota ini");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(90, 360, 200, 23);
+
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel37.setText("1. Riwayat perjalanan ke Luar Negeri atau kota-kota terjangkit di Indonesia dalam waktu 14 hari sebelum timbul gejala");
+        jLabel37.setName("jLabel37"); // NOI18N
+        FormInput.add(jLabel37);
+        jLabel37.setBounds(70, 310, 585, 23);
+
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel38.setText(":");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput.add(jLabel38);
+        jLabel38.setBounds(722, 410, 10, 23);
+
+        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel39.setText("a. Riwayat kontak erat dengan kasus konfirmasi COVID-19 ATAU");
+        jLabel39.setName("jLabel39"); // NOI18N
+        FormInput.add(jLabel39);
+        jLabel39.setBounds(90, 410, 560, 23);
+
+        Kesimpulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ODP", "PDP", "OTG", "Bukan ketiganya" }));
+        Kesimpulan.setName("Kesimpulan"); // NOI18N
+        Kesimpulan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KesimpulanKeyPressed(evt);
+            }
+        });
+        FormInput.add(Kesimpulan);
+        Kesimpulan.setBounds(81, 560, 130, 23);
+
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel40.setText("b. Riwayat kontak dengan pasien dalam pengawasan (PDP)");
+        jLabel40.setName("jLabel40"); // NOI18N
+        FormInput.add(jLabel40);
+        jLabel40.setBounds(90, 440, 560, 23);
+
+        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel41.setText(":");
+        jLabel41.setName("jLabel41"); // NOI18N
+        FormInput.add(jLabel41);
+        jLabel41.setBounds(722, 440, 10, 23);
+
+        B2b.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        B2b.setName("B2b"); // NOI18N
+        B2b.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                B2bKeyPressed(evt);
+            }
+        });
+        FormInput.add(B2b);
+        B2b.setBounds(733, 440, 85, 23);
+
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel42.setText("c. Bekerja atau mengunjungi fasilitas kesehatan yang berhubungan dengan pasien konfirmasi COVID-19 ATAU");
+        jLabel42.setName("jLabel42"); // NOI18N
+        FormInput.add(jLabel42);
+        jLabel42.setBounds(90, 470, 560, 23);
+
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel43.setText(":");
+        jLabel43.setName("jLabel43"); // NOI18N
+        FormInput.add(jLabel43);
+        jLabel43.setBounds(722, 470, 10, 23);
+
+        B2c.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        B2c.setName("B2c"); // NOI18N
+        B2c.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                B2cKeyPressed(evt);
+            }
+        });
+        FormInput.add(B2c);
+        B2c.setBounds(733, 470, 85, 23);
+
+        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel45.setText(":");
+        jLabel45.setName("jLabel45"); // NOI18N
+        FormInput.add(jLabel45);
+        jLabel45.setBounds(722, 500, 10, 23);
+
+        B2d.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        B2d.setName("B2d"); // NOI18N
+        B2d.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                B2dKeyPressed(evt);
+            }
+        });
+        FormInput.add(B2d);
+        B2d.setBounds(733, 500, 85, 23);
+
+        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel46.setText("d. Memiliki riwayat perjalanan ke luar negeri atau wilayah terjangkit yang telah mengkonfirmasi adanya kasus positif COVID-19");
+        jLabel46.setName("jLabel46"); // NOI18N
+        FormInput.add(jLabel46);
+        jLabel46.setBounds(90, 500, 630, 23);
+
+        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel47.setText("e. Dalam 14 hari terakhir berkunjung di pasar hewan");
+        jLabel47.setName("jLabel47"); // NOI18N
+        FormInput.add(jLabel47);
+        jLabel47.setBounds(90, 530, 560, 23);
+
+        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel48.setText(":");
+        jLabel48.setName("jLabel48"); // NOI18N
+        FormInput.add(jLabel48);
+        jLabel48.setBounds(722, 530, 10, 23);
+
+        B2e.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        B2e.setName("B2e"); // NOI18N
+        B2e.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                B2eKeyPressed(evt);
+            }
+        });
+        FormInput.add(B2e);
+        B2e.setBounds(733, 530, 85, 23);
+
+        jLabel49.setText("Kesimpulan :");
+        jLabel49.setName("jLabel49"); // NOI18N
+        FormInput.add(jLabel49);
+        jLabel49.setBounds(0, 560, 77, 23);
+
+        B2a.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        B2a.setName("B2a"); // NOI18N
+        B2a.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                B2aKeyPressed(evt);
+            }
+        });
+        FormInput.add(B2a);
+        B2a.setBounds(733, 410, 85, 23);
+
+        TindakLanjut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rujuk", "Rawat Inap", "Rawat Jalan" }));
+        TindakLanjut.setName("TindakLanjut"); // NOI18N
+        TindakLanjut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjutKeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut);
+        TindakLanjut.setBounds(307, 560, 110, 23);
+
+        jLabel50.setText("Tindak Lanjut :");
+        jLabel50.setName("jLabel50"); // NOI18N
+        FormInput.add(jLabel50);
+        jLabel50.setBounds(218, 560, 85, 23);
+
+        jLabel51.setText("Petugas :");
+        jLabel51.setName("jLabel51"); // NOI18N
+        FormInput.add(jLabel51);
+        jLabel51.setBounds(411, 560, 70, 23);
+
+        kdptg.setEditable(false);
+        kdptg.setHighlighter(null);
+        kdptg.setName("kdptg"); // NOI18N
+        kdptg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdptgKeyPressed(evt);
+            }
+        });
+        FormInput.add(kdptg);
+        kdptg.setBounds(485, 560, 110, 23);
+
+        nmptg.setEditable(false);
+        nmptg.setHighlighter(null);
+        nmptg.setName("nmptg"); // NOI18N
+        FormInput.add(nmptg);
+        nmptg.setBounds(597, 560, 190, 23);
+
+        BtnPtg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPtg.setMnemonic('X');
+        BtnPtg.setToolTipText("Alt+X");
+        BtnPtg.setName("BtnPtg"); // NOI18N
+        BtnPtg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPtgActionPerformed(evt);
+            }
+        });
+        BtnPtg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPtgKeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnPtg);
+        BtnPtg.setBounds(790, 560, 28, 23);
+
+        scrollInput.setViewportView(FormInput);
+
+        PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
@@ -784,30 +1080,8 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoRM.getText().trim().equals("")||NamaPasien.getText().trim().equals("")){
             Valid.textKosong(NoRM,"Pasien");
-        }else if(NoJaminan.getText().trim().equals("")){
-            Valid.textKosong(NoJaminan,"No.Jaminan");
-        }else if(Episodes1.getText().trim().equals("")){
-            Valid.textKosong(Episodes1,"Jumlah Hari");
-        }else if(Episodes2.getText().trim().equals("")){
-            Valid.textKosong(Episodes2,"Jumlah Hari");
-        }else if(Episodes3.getText().trim().equals("")){
-            Valid.textKosong(Episodes3,"Jumlah Hari");
-        }else if(Episodes4.getText().trim().equals("")){
-            Valid.textKosong(Episodes4,"Jumlah Hari");
-        }else if(Episodes5.getText().trim().equals("")){
-            Valid.textKosong(Episodes5,"Jumlah Hari");
-        }else if(Episodes6.getText().trim().equals("")){
-            Valid.textKosong(Episodes6,"Jumlah Hari");
-        }else{
-            if(Sequel.menyimpantf("perawatan_corona","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,new String[]{
-                NoRawat.getText(),PemulasaranJenazah.getSelectedItem().toString(),KantongJenazah.getSelectedItem().toString(),PetiJenazah.getSelectedItem().toString(), 
-                PlastikErat.getSelectedItem().toString(),DesinfektanJenazah.getSelectedItem().toString(),MobilJenazah.getSelectedItem().toString(),
-                DesinFektanMobilJenazah.getSelectedItem().toString(),StatusCovid.getSelectedItem().toString(),NoJaminan.getText(),Episodes1.getText(),
-                Episodes2.getText(),Episodes3.getText(),Episodes4.getText(),Episodes5.getText(),Episodes6.getText(),Comorbid.getSelectedItem().toString()
-            })==true){
-                emptTeks();
-                tampil();
-            }
+        }else if(RiwayatSakitSebelumnya.getText().trim().equals("")){
+            Valid.textKosong(RiwayatSakitSebelumnya,"No.Jaminan");
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -815,7 +1089,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-           Valid.pindah(evt,Comorbid,BtnBatal);
+           //Valid.pindah(evt,Comorbid,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -958,33 +1232,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(NoRM.getText().trim().equals("")||NamaPasien.getText().trim().equals("")){
             Valid.textKosong(NoRM,"Pasien");
-        }else if(NoJaminan.getText().trim().equals("")){
-            Valid.textKosong(NoJaminan,"No.Jaminan");
-        }else if(Episodes1.getText().trim().equals("")){
-            Valid.textKosong(Episodes1,"Jumlah Hari");
-        }else if(Episodes2.getText().trim().equals("")){
-            Valid.textKosong(Episodes2,"Jumlah Hari");
-        }else if(Episodes3.getText().trim().equals("")){
-            Valid.textKosong(Episodes3,"Jumlah Hari");
-        }else if(Episodes4.getText().trim().equals("")){
-            Valid.textKosong(Episodes4,"Jumlah Hari");
-        }else if(Episodes5.getText().trim().equals("")){
-            Valid.textKosong(Episodes5,"Jumlah Hari");
-        }else if(Episodes6.getText().trim().equals("")){
-            Valid.textKosong(Episodes6,"Jumlah Hari");
-        }else{
-            if(tbObat.getSelectedRow()> -1){ 
-                if(Sequel.mengedittf("perawatan_corona","no_rawat=?","no_rawat=?,pemulasaraan_jenazah=?,kantong_jenazah=?,peti_jenazah=?,plastik_erat=?,desinfektan_jenazah=?,mobil_jenazah=?,desinfektan_mobil_jenazah=?,covid19_status_cd=?,nomor_kartu_t=?,episodes1=?,episodes2=?,episodes3=?,episodes4=?,episodes5=?,episodes6=?,covid19_cc_ind=?",18,new String[]{
-                    NoRawat.getText(),PemulasaranJenazah.getSelectedItem().toString(),KantongJenazah.getSelectedItem().toString(),PetiJenazah.getSelectedItem().toString(), 
-                    PlastikErat.getSelectedItem().toString(),DesinfektanJenazah.getSelectedItem().toString(),MobilJenazah.getSelectedItem().toString(),
-                    DesinFektanMobilJenazah.getSelectedItem().toString(),StatusCovid.getSelectedItem().toString(),NoJaminan.getText(),Episodes1.getText(),
-                    Episodes2.getText(),Episodes3.getText(),Episodes4.getText(),Episodes5.getText(),Episodes6.getText(),Comorbid.getSelectedItem().toString(),
-                    tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                })==true){
-                    tampil();
-                    emptTeks();
-                }
-            }
+        }else if(RiwayatSakitSebelumnya.getText().trim().equals("")){
+            Valid.textKosong(RiwayatSakitSebelumnya,"No.Jaminan");
         }
     }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1000,7 +1249,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(NoRM.getText().trim().equals("")||NamaPasien.getText().trim().equals("")){
             Valid.textKosong(NoRM,"Pasien");
         }else{
-            Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",NoJaminan,NoRM.getText());
+            Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",RiwayatSakitSebelumnya,NoRM.getText());
         }
             
     }//GEN-LAST:event_MnNIKActionPerformed
@@ -1009,73 +1258,93 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(NoRM.getText().trim().equals("")||NamaPasien.getText().trim().equals("")){
             Valid.textKosong(NoRM,"Pasien");
         }else{
-            Sequel.cariIsi("select no_peserta from pasien where no_rkm_medis=?",NoJaminan,NoRM.getText());
+            Sequel.cariIsi("select no_peserta from pasien where no_rkm_medis=?",RiwayatSakitSebelumnya,NoRM.getText());
         }
     }//GEN-LAST:event_MnKartuActionPerformed
 
-    private void PemulasaranJenazahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemulasaranJenazahKeyPressed
-        Valid.pindah(evt,TCari,KantongJenazah);
-    }//GEN-LAST:event_PemulasaranJenazahKeyPressed
+    private void A1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_A1KeyPressed
+        //Valid.pindah(evt,TCari,KantongJenazah);
+    }//GEN-LAST:event_A1KeyPressed
 
-    private void KantongJenazahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KantongJenazahKeyPressed
-        Valid.pindah(evt,PemulasaranJenazah,PetiJenazah);
-    }//GEN-LAST:event_KantongJenazahKeyPressed
+    private void RiwayatSakitSebelumnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatSakitSebelumnyaKeyPressed
+        //Valid.pindah(evt,StatusCovid,Episodes1);
+    }//GEN-LAST:event_RiwayatSakitSebelumnyaKeyPressed
 
-    private void PetiJenazahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PetiJenazahKeyPressed
-        Valid.pindah(evt,KantongJenazah,PlastikErat);
-    }//GEN-LAST:event_PetiJenazahKeyPressed
+    private void TglGejalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglGejalaKeyPressed
+        //Valid.pindah(evt,TNoRM,CmbJam);
+    }//GEN-LAST:event_TglGejalaKeyPressed
 
-    private void PlastikEratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PlastikEratKeyPressed
-        Valid.pindah(evt,PetiJenazah,DesinfektanJenazah);
-    }//GEN-LAST:event_PlastikEratKeyPressed
+    private void A2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_A2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_A2KeyPressed
 
-    private void DesinfektanJenazahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DesinfektanJenazahKeyPressed
-        Valid.pindah(evt,PlastikErat,MobilJenazah);
-    }//GEN-LAST:event_DesinfektanJenazahKeyPressed
+    private void A3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_A3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_A3KeyPressed
 
-    private void MobilJenazahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MobilJenazahKeyPressed
-        Valid.pindah(evt,DesinfektanJenazah,DesinFektanMobilJenazah);
-    }//GEN-LAST:event_MobilJenazahKeyPressed
+    private void TglSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglSkriningKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TglSkriningKeyPressed
 
-    private void DesinFektanMobilJenazahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DesinFektanMobilJenazahKeyPressed
-        Valid.pindah(evt,MobilJenazah,StatusCovid);
-    }//GEN-LAST:event_DesinFektanMobilJenazahKeyPressed
+    private void AsalDaerahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsalDaerahKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AsalDaerahKeyPressed
 
-    private void StatusCovidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusCovidKeyPressed
-        Valid.pindah(evt,DesinFektanMobilJenazah,NoJaminan);
-    }//GEN-LAST:event_StatusCovidKeyPressed
+    private void B1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B1KeyPressed
 
-    private void NoJaminanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoJaminanKeyPressed
-        Valid.pindah(evt,StatusCovid,Episodes1);
-    }//GEN-LAST:event_NoJaminanKeyPressed
+    private void RiwayatPeriksaSebelumnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPeriksaSebelumnyaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RiwayatPeriksaSebelumnyaKeyPressed
 
-    private void Episodes1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Episodes1KeyPressed
-        Valid.pindah(evt,NoJaminan,Episodes2);
-    }//GEN-LAST:event_Episodes1KeyPressed
+    private void TglKedatanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglKedatanganKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TglKedatanganKeyPressed
 
-    private void Episodes2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Episodes2KeyPressed
-        Valid.pindah(evt,Episodes1,Episodes3);
-    }//GEN-LAST:event_Episodes2KeyPressed
+    private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KesimpulanKeyPressed
 
-    private void Episodes3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Episodes3KeyPressed
-        Valid.pindah(evt,Episodes2,Episodes4);
-    }//GEN-LAST:event_Episodes3KeyPressed
+    private void B2bKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B2bKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B2bKeyPressed
 
-    private void Episodes4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Episodes4KeyPressed
-        Valid.pindah(evt,Episodes3,Episodes5);
-    }//GEN-LAST:event_Episodes4KeyPressed
+    private void B2cKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B2cKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B2cKeyPressed
 
-    private void Episodes5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Episodes5KeyPressed
-        Valid.pindah(evt,Episodes4,Episodes6);
-    }//GEN-LAST:event_Episodes5KeyPressed
+    private void B2dKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B2dKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B2dKeyPressed
 
-    private void Episodes6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Episodes6KeyPressed
-        Valid.pindah(evt,Episodes5,Comorbid);
-    }//GEN-LAST:event_Episodes6KeyPressed
+    private void B2eKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B2eKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B2eKeyPressed
 
-    private void ComorbidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComorbidKeyPressed
-        Valid.pindah(evt,Episodes6,BtnSimpan);
-    }//GEN-LAST:event_ComorbidKeyPressed
+    private void B2aKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B2aKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_B2aKeyPressed
+
+    private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjutKeyPressed
+
+    private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdptgKeyPressed
+
+    private void BtnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPtgActionPerformed
+        petugas.emptTeks();
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setVisible(true);
+    }//GEN-LAST:event_BtnPtgActionPerformed
+
+    private void BtnPtgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPtgKeyPressed
+        //Valid.pindah(evt,Keputusan,BtnSimpan);
+    }//GEN-LAST:event_BtnPtgKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1094,6 +1363,17 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox A1;
+    private widget.ComboBox A2;
+    private widget.ComboBox A3;
+    private widget.TextBox Alamat;
+    private widget.TextBox AsalDaerah;
+    private widget.ComboBox B1;
+    private widget.ComboBox B2a;
+    private widget.ComboBox B2b;
+    private widget.ComboBox B2c;
+    private widget.ComboBox B2d;
+    private widget.ComboBox B2e;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1101,36 +1381,32 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.Button BtnPtg;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
-    private widget.ComboBox Comorbid;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
-    private widget.ComboBox DesinFektanMobilJenazah;
-    private widget.ComboBox DesinfektanJenazah;
-    private widget.TextBox Episodes1;
-    private widget.TextBox Episodes2;
-    private widget.TextBox Episodes3;
-    private widget.TextBox Episodes4;
-    private widget.TextBox Episodes5;
-    private widget.TextBox Episodes6;
     private widget.PanelBiasa FormInput;
-    private widget.ComboBox KantongJenazah;
+    private widget.ComboBox Kesimpulan;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnKartu;
     private javax.swing.JMenuItem MnNIK;
-    private widget.ComboBox MobilJenazah;
+    private widget.TextBox NIK;
     private widget.TextBox NamaPasien;
-    private widget.TextBox NoJaminan;
+    private widget.TextBox NoHP;
     private widget.TextBox NoRM;
     private widget.TextBox NoRawat;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox PemulasaranJenazah;
-    private widget.ComboBox PetiJenazah;
-    private widget.ComboBox PlastikErat;
+    private widget.TextBox Pekerjaan;
+    private widget.TextBox RiwayatPeriksaSebelumnya;
+    private widget.TextBox RiwayatSakitSebelumnya;
     private widget.ScrollPane Scroll;
-    private widget.ComboBox StatusCovid;
     private widget.TextBox TCari;
+    private widget.Tanggal TglGejala;
+    private widget.Tanggal TglKedatangan;
+    private widget.TextBox TglLahir;
+    private widget.Tanggal TglSkrining;
+    private widget.ComboBox TindakLanjut;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
@@ -1149,14 +1425,41 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel24;
     private widget.Label jLabel25;
     private widget.Label jLabel26;
+    private widget.Label jLabel27;
+    private widget.Label jLabel28;
+    private widget.Label jLabel29;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
+    private widget.Label jLabel32;
+    private widget.Label jLabel33;
+    private widget.Label jLabel34;
+    private widget.Label jLabel35;
+    private widget.Label jLabel36;
+    private widget.Label jLabel37;
+    private widget.Label jLabel38;
+    private widget.Label jLabel39;
+    private widget.Label jLabel40;
+    private widget.Label jLabel41;
+    private widget.Label jLabel42;
+    private widget.Label jLabel43;
+    private widget.Label jLabel45;
+    private widget.Label jLabel46;
+    private widget.Label jLabel47;
+    private widget.Label jLabel48;
+    private widget.Label jLabel49;
+    private widget.Label jLabel50;
+    private widget.Label jLabel51;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu2;
+    private widget.TextBox kdptg;
+    private widget.TextBox nmptg;
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
+    private widget.ScrollPane scrollInput;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
@@ -1213,23 +1516,29 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NoRM.setText("");
         NamaPasien.setText("");
         NoRawat.setText("");
-        PemulasaranJenazah.setSelectedIndex(0);
-        KantongJenazah.setSelectedIndex(0);
-        PetiJenazah.setSelectedIndex(0);
-        PlastikErat.setSelectedIndex(0);
-        DesinfektanJenazah.setSelectedIndex(0);
-        MobilJenazah.setSelectedIndex(0);
-        DesinFektanMobilJenazah.setSelectedIndex(0);
-        StatusCovid.setSelectedIndex(0);
-        NoJaminan.setText("");
-        Episodes1.setText("0");
-        Episodes2.setText("0");
-        Episodes3.setText("0");
-        Episodes4.setText("0");
-        Episodes5.setText("0");
-        Episodes6.setText("0");
-        Comorbid.setSelectedIndex(0);
-        PemulasaranJenazah.requestFocus();
+        NIK.setText("");
+        NoHP.setText("");
+        Pekerjaan.setText("");
+        TglLahir.setText("");
+        Alamat.setText("");
+        TglSkrining.setDate(new Date());
+        A1.setSelectedIndex(0);
+        A2.setSelectedIndex(0);
+        A3.setSelectedIndex(0);
+        TglGejala.setDate(new Date());
+        RiwayatPeriksaSebelumnya.setText("");
+        RiwayatSakitSebelumnya.setText("");
+        B1.setSelectedIndex(0);
+        AsalDaerah.setText("");
+        TglKedatangan.setDate(new Date());
+        B2a.setSelectedIndex(0);
+        B2b.setSelectedIndex(0);
+        B2c.setSelectedIndex(0);
+        B2d.setSelectedIndex(0);
+        B2e.setSelectedIndex(0);
+        Kesimpulan.setSelectedIndex(0);
+        TindakLanjut.setSelectedIndex(0);
+        TglSkrining.requestFocus();
     }
 
     private void getData() {
@@ -1237,29 +1546,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             NoRawat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             NoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             NamaPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            PemulasaranJenazah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            KantongJenazah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            PetiJenazah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            PlastikErat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            DesinfektanJenazah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            MobilJenazah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            DesinFektanMobilJenazah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            StatusCovid.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            NoJaminan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Episodes1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Episodes2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Episodes3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Episodes4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Episodes5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Episodes6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Comorbid.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            A1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
         }
     }
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,306));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,this.getHeight()-122));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1274,15 +1568,52 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnSimpan.setEnabled(akses.getdeteksi_corona());
         BtnHapus.setEnabled(akses.getdeteksi_corona());
         BtnEdit.setEnabled(akses.getdeteksi_corona());
+        if(akses.getjml2()>=1){
+            kdptg.setEditable(false);
+            BtnPtg.setEnabled(false);
+            kdptg.setText(akses.getkode());
+            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+        }
     }
     
-    public void setPasien(String norawat,String norm,String namapasien){
+    public void setNoRm(String norawat,Date tgl2){
         NoRawat.setText(norawat);
-        NoRM.setText(norm);
-        NamaPasien.setText(namapasien);
-        Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",NoJaminan,norm);
-        Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+norawat+"'", DTPCari1);
         TCari.setText(norawat);
+        try {
+            ps=koneksi.prepareStatement(
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"+
+                    "pasien.no_ktp,pasien.no_tlp,pasien.pekerjaan,pasien.tgl_lahir "+
+                    "from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                    "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                    "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                    "inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=?");
+            try {            
+                ps.setString(1,norawat);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    NoRM.setText(rs.getString("no_rkm_medis"));
+                    NamaPasien.setText(rs.getString("nm_pasien"));
+                    NIK.setText(rs.getString("no_ktp"));
+                    NoHP.setText(rs.getString("no_tlp"));
+                    Pekerjaan.setText(rs.getString("pekerjaan"));
+                    Alamat.setText(rs.getString("asal"));
+                    TglLahir.setText(rs.getString("tgl_lahir"));
+                }
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }finally{
+                if(rs != null ){
+                    rs.close();
+                }
+                
+                if(ps != null ){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        DTPCari2.setDate(tgl2);  
         ChkInput.setSelected(true);
         isForm(); 
     }
