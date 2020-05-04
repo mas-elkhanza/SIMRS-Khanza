@@ -367,13 +367,13 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
                         .addGap(5, 5, 5)
                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(BangsalCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(5, 5, 5)
+                        .addComponent(BangsalCari, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBangsalCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(KeywordCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(KeywordCari, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                         .addGap(5, 5, 5)
                         .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
@@ -739,7 +739,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             + "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
                             + "where kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ? and reg_periksa.no_rkm_medis like ? or "
                             + "kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ? and kamar_inap.no_rawat like ? or "
-                            + "kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ? and pasien.nm_pasien like ? "
+                            + "kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ? and pasien.nm_pasien like ? or "
+                            + "kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ? and kamar.kelas like ? "
                             + "order by kamar_inap.tgl_masuk");
                 } else if (!kd_bangsal.equals("") && !KeywordCari.getText().equals("")) {
                     ps = koneksi.prepareStatement(
@@ -750,7 +751,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             + "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
                             + "where kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal like ? and (bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ?) and reg_periksa.no_rkm_medis like ? or "
                             + "kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal like ? and (bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ?) and kamar_inap.no_rawat like ? or "
-                            + "kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal like ? and (bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ?) and pasien.nm_pasien like ? "
+                            + "kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal like ? and (bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ?) and pasien.nm_pasien like ? or "
+                            + "kamar_inap.tgl_masuk between ? and ? and bangsal.kd_bangsal like ? and (bangsal.kd_bangsal not like ? and bangsal.kd_bangsal not like ?) and kamar.kelas like ? "
                             + "order by kamar_inap.tgl_masuk");
                 }
             }
@@ -783,6 +785,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.setString(13, "B0063");//Baby
                         ps.setString(14, "B0062");//teratai
                         ps.setString(15, "%" + KeywordCari.getText() + "%");
+                        ps.setString(16, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                        ps.setString(17, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                        ps.setString(18, "B0063");//Baby
+                        ps.setString(19, "B0062");//teratai
+                        ps.setString(20, "%" + KeywordCari.getText() + "%");
                     } else if (!kd_bangsal.equals("") && !KeywordCari.getText().equals("")) {
                         ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
                         ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
@@ -802,6 +809,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         ps.setString(16, "B0063");//Baby
                         ps.setString(17, "B0062");//teratai
                         ps.setString(18, "%" + KeywordCari.getText() + "%");
+                        ps.setString(19, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                        ps.setString(20, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                        ps.setString(21, "B0063");//Baby
+                        ps.setString(22, "B0062");//teratai
+                        ps.setString(23, "%" + KeywordCari.getText() + "%");
                     }
                 }
                 rs = ps.executeQuery();
