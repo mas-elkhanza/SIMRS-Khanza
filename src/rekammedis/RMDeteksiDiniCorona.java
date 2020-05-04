@@ -23,6 +23,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
+import simrskhanza.DlgKamarInap;
+import simrskhanza.DlgRujuk;
 
 /**
  *
@@ -48,9 +50,9 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Rawat","No.R.M.","Nama Pasien","Alamat","No.KTP","No.Telp","Pekerjaan","Tgl.Lahir","Skrining","NIP","Nama Petugas",
-                "Demam","Batuk","Sesak Napas","Tombul Gejala","Riwayat Sakit Sebelumnya","Riwayat Periksa Sebelumnya","Perjalanan",
-                "Asal Daerah","Kedatangan","deteksi_dini_corona.faktor_paparan_kontakpositif,"+
-                    "deteksi_dini_corona.faktor_paparan_kontakpdp,deteksi_dini_corona.faktor_paparan_faskespositif,deteksi_dini_corona.faktor_paparan_perjalananln,deteksi_dini_corona.faktor_paparan_pasarhewan "
+                "Demam","Batuk","Sesak Napas","Timbul Gejala","Riwayat Sakit Sebelumnya","Riwayat Periksa Sebelumnya","Perjalanan LN",
+                "Asal Daerah","Kedatangan","Kontak Positif","Kontak PDP","Faskes Positif","Perjalanan LN","Pasar Hewan","Kesimpulan",
+                "Tindak Lanjut"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -60,48 +62,62 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 20; i++) {
+        for (i = 0; i < 27; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
             }else if(i==1){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(65);
             }else if(i==2){
                 column.setPreferredWidth(150);
             }else if(i==3){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(170);
             }else if(i==4){
-                column.setPreferredWidth(114);
+                column.setPreferredWidth(100);
             }else if(i==5){
-                column.setPreferredWidth(91);
+                column.setPreferredWidth(100);
             }else if(i==6){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(100);
             }else if(i==7){
-                column.setPreferredWidth(63);
+                column.setPreferredWidth(65);
             }else if(i==8){
-                column.setPreferredWidth(109);
+                column.setPreferredWidth(65);
             }else if(i==9){
-                column.setPreferredWidth(77);
+                column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(138);
+                column.setPreferredWidth(150);
             }else if(i==11){
-                column.setPreferredWidth(69);
+                column.setPreferredWidth(50);
             }else if(i==12){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(50);
             }else if(i==13){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(70);
             }else if(i==14){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(75);
             }else if(i==15){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(150);
             }else if(i==16){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(150);
             }else if(i==17){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(75);
             }else if(i==18){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(120);
             }else if(i==19){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(65);
+            }else if(i==20){
+                column.setPreferredWidth(75);
+            }else if(i==21){
+                column.setPreferredWidth(65);
+            }else if(i==22){
+                column.setPreferredWidth(75);
+            }else if(i==23){
+                column.setPreferredWidth(75);
+            }else if(i==24){
+                column.setPreferredWidth(73);
+            }else if(i==25){
+                column.setPreferredWidth(85);
+            }else if(i==26){
+                column.setPreferredWidth(80);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -171,9 +187,6 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu2 = new javax.swing.JPopupMenu();
-        MnNIK = new javax.swing.JMenuItem();
-        MnKartu = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -276,41 +289,11 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         HasilRadiologi = new widget.TextArea();
         jLabel52 = new widget.Label();
 
-        jPopupMenu2.setName("jPopupMenu2"); // NOI18N
-
-        MnNIK.setBackground(new java.awt.Color(255, 255, 254));
-        MnNIK.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnNIK.setForeground(new java.awt.Color(50, 50, 50));
-        MnNIK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnNIK.setText("Tampilkan NIK/No.KTP/No.Paspor");
-        MnNIK.setName("MnNIK"); // NOI18N
-        MnNIK.setPreferredSize(new java.awt.Dimension(270, 26));
-        MnNIK.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnNIKActionPerformed(evt);
-            }
-        });
-        jPopupMenu2.add(MnNIK);
-
-        MnKartu.setBackground(new java.awt.Color(255, 255, 254));
-        MnKartu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKartu.setForeground(new java.awt.Color(50, 50, 50));
-        MnKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKartu.setText("Tampilkan No.Penjamin/Asuransi/JKN");
-        MnKartu.setName("MnKartu"); // NOI18N
-        MnKartu.setPreferredSize(new java.awt.Dimension(270, 26));
-        MnKartu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnKartuActionPerformed(evt);
-            }
-        });
-        jPopupMenu2.add(MnKartu);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kebutuhan Perawatan Pasien Corona Untuk Penagihan INACBG ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Deteksi Dini Pasien Corona ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -472,7 +455,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(63, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -485,7 +468,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -626,7 +609,6 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel8);
         jLabel8.setBounds(90, 230, 200, 23);
 
-        RiwayatSakitSebelumnya.setComponentPopupMenu(jPopupMenu2);
         RiwayatSakitSebelumnya.setHighlighter(null);
         RiwayatSakitSebelumnya.setName("RiwayatSakitSebelumnya"); // NOI18N
         RiwayatSakitSebelumnya.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -697,7 +679,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(644, 70, 80, 23);
 
-        TglGejala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
+        TglGejala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
         TglGejala.setDisplayFormat("dd-MM-yyyy");
         TglGejala.setName("TglGejala"); // NOI18N
         TglGejala.setOpaque(false);
@@ -757,7 +739,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(A3);
         A3.setBounds(733, 180, 85, 23);
 
-        TglSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
+        TglSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
         TglSkrining.setDisplayFormat("dd-MM-yyyy");
         TglSkrining.setName("TglSkrining"); // NOI18N
         TglSkrining.setOpaque(false);
@@ -781,7 +763,6 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(90, 260, 200, 23);
 
-        AsalDaerah.setComponentPopupMenu(jPopupMenu2);
         AsalDaerah.setHighlighter(null);
         AsalDaerah.setName("AsalDaerah"); // NOI18N
         AsalDaerah.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -873,7 +854,6 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel34);
         jLabel34.setBounds(310, 330, 10, 23);
 
-        RiwayatPeriksaSebelumnya.setComponentPopupMenu(jPopupMenu2);
         RiwayatPeriksaSebelumnya.setHighlighter(null);
         RiwayatPeriksaSebelumnya.setName("RiwayatPeriksaSebelumnya"); // NOI18N
         RiwayatPeriksaSebelumnya.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -890,7 +870,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel35);
         jLabel35.setBounds(310, 360, 10, 23);
 
-        TglKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2020" }));
+        TglKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
         TglKedatangan.setDisplayFormat("dd-MM-yyyy");
         TglKedatangan.setName("TglKedatangan"); // NOI18N
         TglKedatangan.setOpaque(false);
@@ -1172,13 +1152,36 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         }else if(kdptg.getText().trim().equals("")||nmptg.getText().trim().equals("")){
             Valid.textKosong(BtnPtg,"Petugas");
         }else{
-            if(Sequel.menyimpantf("deteksi_dini_corona","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,new String[]{
+            if(Sequel.menyimpantf("deteksi_dini_corona","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,new String[]{
                     NoRawat.getText(),Valid.SetTgl(TglSkrining.getSelectedItem()+""),kdptg.getText(), A1.getSelectedItem().toString(),A2.getSelectedItem().toString(), 
                     A3.getSelectedItem().toString(),(A3.getSelectedIndex()==0?"0000-00-00":Valid.SetTgl(TglGejala.getSelectedItem()+"")),(A3.getSelectedIndex()==0?"":RiwayatSakitSebelumnya.getText()),
                     (A3.getSelectedIndex()==0?"":RiwayatPeriksaSebelumnya.getText()),B1.getSelectedItem().toString(),(B1.getSelectedIndex()==0?"":AsalDaerah.getText()),
                     (B1.getSelectedIndex()==0?"0000-00-00":Valid.SetTgl(TglKedatangan.getSelectedItem()+"")),B2a.getSelectedItem().toString(),B2b.getSelectedItem().toString(),
-                    B2c.getSelectedItem().toString(),B2d.getSelectedItem().toString(),B2e.getSelectedItem().toString()
+                    B2c.getSelectedItem().toString(),B2d.getSelectedItem().toString(),B2e.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),TindakLanjut.getSelectedItem().toString()
                 })==true){
+                if(TindakLanjut.getSelectedIndex()==0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    DlgRujuk dlgrjk=new DlgRujuk(null,false);
+                    dlgrjk.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    dlgrjk.setLocationRelativeTo(internalFrame1);
+                    dlgrjk.emptTeks();
+                    dlgrjk.isCek();
+                    dlgrjk.setNoRm(NoRawat.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+                    dlgrjk.tampil();
+                    dlgrjk.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }else if(TindakLanjut.getSelectedIndex()==0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    akses.setstatus(true);
+                    DlgKamarInap dlgki=new DlgKamarInap(null,false);
+                    dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    dlgki.setLocationRelativeTo(internalFrame1);
+                    dlgki.emptTeks();
+                    dlgki.isCek();
+                    dlgki.setNoRm(NoRawat.getText(),NoRM.getText(),NamaPasien.getText());   
+                    dlgki.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
                 emptTeks();
                 tampil();
             }
@@ -1207,7 +1210,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()> -1){ 
-            Sequel.meghapus("perawatan_corona","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Sequel.meghapus("deteksi_dini_corona","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             tampil();
         }else{
             JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
@@ -1246,17 +1249,23 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReportqry("rptPerawatanCorona.jasper","report","::[ Kebutuhan Perawatan Pasien Corona Untuk Penagihan INACBG ]::",
-                    "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.tgl_registrasi,perawatan_corona.pemulasaraan_jenazah,"+
-                    "perawatan_corona.kantong_jenazah,perawatan_corona.peti_jenazah,perawatan_corona.plastik_erat,perawatan_corona.desinfektan_jenazah,"+
-                    "perawatan_corona.mobil_jenazah,perawatan_corona.desinfektan_mobil_jenazah,perawatan_corona.covid19_status_cd,perawatan_corona.nomor_kartu_t,"+
-                    "perawatan_corona.episodes1,perawatan_corona.episodes2,perawatan_corona.episodes3,perawatan_corona.episodes4,perawatan_corona.episodes5,"+
-                    "perawatan_corona.episodes6,perawatan_corona.covid19_cc_ind from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join perawatan_corona on perawatan_corona.no_rawat=reg_periksa.no_rawat where "+
-                    "reg_periksa.tgl_registrasi between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
-                    (TCari.getText().trim().equals("")?"":"and (reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' "+
-                    "or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or perawatan_corona.covid19_status_cd like '%"+TCari.getText().trim()+"%' or "+
-                    "perawatan_corona.nomor_kartu_t like '%"+TCari.getText().trim()+"%') ")+"order by reg_periksa.tgl_registrasi",param);
+            Valid.MyReportqry("rptDeteksiDiniCorona.jasper","report","::[ Deteksi Dini Pasien Corona ]::",
+                    "select deteksi_dini_corona.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"+
+                    "pasien.no_ktp,pasien.no_tlp,pasien.pekerjaan,pasien.tgl_lahir,deteksi_dini_corona.tanggal,deteksi_dini_corona.nip,petugas.nama,deteksi_dini_corona.gejala_demam,deteksi_dini_corona.gejala_batuk,"+
+                    "deteksi_dini_corona.gejala_sesak,deteksi_dini_corona.gejala_tanggal_pertama,deteksi_dini_corona.gejala_riwayat_sakit,deteksi_dini_corona.gejala_riwayat_periksa,"+
+                    "deteksi_dini_corona.faktor_riwayat_perjalanan,deteksi_dini_corona.faktor_asal_daerah,deteksi_dini_corona.faktor_tanggal_kedatangan,deteksi_dini_corona.faktor_paparan_kontakpositif,"+
+                    "deteksi_dini_corona.faktor_paparan_kontakpdp,deteksi_dini_corona.faktor_paparan_faskespositif,deteksi_dini_corona.faktor_paparan_perjalananln,deteksi_dini_corona.faktor_paparan_pasarhewan,"+
+                    "deteksi_dini_corona.kesimpulan,deteksi_dini_corona.tindak_lanjut from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                    "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                    "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                    "inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join deteksi_dini_corona on deteksi_dini_corona.no_rawat=reg_periksa.no_rawat "+
+                    "inner join petugas on deteksi_dini_corona.nip=petugas.nip "+
+                    "where deteksi_dini_corona.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
+                    (TCari.getText().trim().equals("")?"":"and (deteksi_dini_corona.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                    "pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                    "pasien.no_tlp like '%"+TCari.getText().trim()+"%' or deteksi_dini_corona.kesimpulan like '%"+TCari.getText().trim()+"%' or "+
+                    "deteksi_dini_corona.tindak_lanjut like '%"+TCari.getText().trim()+"%')")+" order by deteksi_dini_corona.tanggal",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1335,7 +1344,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(kdptg.getText().trim().equals("")||nmptg.getText().trim().equals("")){
             Valid.textKosong(BtnPtg,"Petugas");
         }else{
-            
+            if(tbObat.getSelectedRow()> -1){ 
+                if(Sequel.mengedittf("deteksi_dini_corona","no_rawat=?","no_rawat=?,tanggal=?,nip=?,gejala_demam=?,gejala_batuk=?,gejala_sesak=?,gejala_tanggal_pertama=?,gejala_riwayat_sakit=?,gejala_riwayat_periksa=?,faktor_riwayat_perjalanan=?,faktor_asal_daerah=?,faktor_tanggal_kedatangan=?,faktor_paparan_kontakpositif=?,faktor_paparan_kontakpdp=?,faktor_paparan_faskespositif=?,faktor_paparan_perjalananln=?,faktor_paparan_pasarhewan=?,kesimpulan=?,tindak_lanjut=?",20,new String[]{
+                        NoRawat.getText(),Valid.SetTgl(TglSkrining.getSelectedItem()+""),kdptg.getText(), A1.getSelectedItem().toString(),A2.getSelectedItem().toString(), 
+                        A3.getSelectedItem().toString(),(A3.getSelectedIndex()==0?"0000-00-00":Valid.SetTgl(TglGejala.getSelectedItem()+"")),(A3.getSelectedIndex()==0?"":RiwayatSakitSebelumnya.getText()),
+                        (A3.getSelectedIndex()==0?"":RiwayatPeriksaSebelumnya.getText()),B1.getSelectedItem().toString(),(B1.getSelectedIndex()==0?"":AsalDaerah.getText()),
+                        (B1.getSelectedIndex()==0?"0000-00-00":Valid.SetTgl(TglKedatangan.getSelectedItem()+"")),B2a.getSelectedItem().toString(),B2b.getSelectedItem().toString(),
+                        B2c.getSelectedItem().toString(),B2d.getSelectedItem().toString(),B2e.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),TindakLanjut.getSelectedItem().toString(),
+                        tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                    })==true){
+                    emptTeks();
+                    tampil();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf silahkan pilih data terlebih dahulu..!!");
+            }
         }
     }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1346,23 +1369,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Valid.pindah(evt, BtnHapus, BtnKeluar);
         }
     }//GEN-LAST:event_BtnEditKeyPressed
-
-    private void MnNIKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnNIKActionPerformed
-        if(NoRM.getText().trim().equals("")||NamaPasien.getText().trim().equals("")){
-            Valid.textKosong(NoRM,"Pasien");
-        }else{
-            Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",RiwayatSakitSebelumnya,NoRM.getText());
-        }
-            
-    }//GEN-LAST:event_MnNIKActionPerformed
-
-    private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKartuActionPerformed
-        if(NoRM.getText().trim().equals("")||NamaPasien.getText().trim().equals("")){
-            Valid.textKosong(NoRM,"Pasien");
-        }else{
-            Sequel.cariIsi("select no_peserta from pasien where no_rkm_medis=?",RiwayatSakitSebelumnya,NoRM.getText());
-        }
-    }//GEN-LAST:event_MnKartuActionPerformed
 
     private void A1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_A1KeyPressed
         Valid.pindah(evt,TglSkrining,A2);
@@ -1529,8 +1535,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextArea HasilRadiologi;
     private widget.ComboBox Kesimpulan;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnKartu;
-    private javax.swing.JMenuItem MnNIK;
     private widget.TextBox NIK;
     private widget.TextBox NamaPasien;
     private widget.TextBox NoHP;
@@ -1596,7 +1600,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu2;
     private widget.TextBox kdptg;
     private widget.TextBox nmptg;
     private widget.panelisi panelGlass7;
@@ -1612,17 +1615,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         try{    
             ps=koneksi.prepareStatement(
                     "select deteksi_dini_corona.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"+
-                    "pasien.no_ktp,pasien.no_tlp,pasien.pekerjaan,pasien.tgl_lahir,deteksi_dini_corona.tanggal,deteksi_dini_corona.nip,deteksi_dini_corona.gejala_demam,deteksi_dini_corona.gejala_batuk,"+
+                    "pasien.no_ktp,pasien.no_tlp,pasien.pekerjaan,pasien.tgl_lahir,deteksi_dini_corona.tanggal,deteksi_dini_corona.nip,petugas.nama,deteksi_dini_corona.gejala_demam,deteksi_dini_corona.gejala_batuk,"+
                     "deteksi_dini_corona.gejala_sesak,deteksi_dini_corona.gejala_tanggal_pertama,deteksi_dini_corona.gejala_riwayat_sakit,deteksi_dini_corona.gejala_riwayat_periksa,"+
                     "deteksi_dini_corona.faktor_riwayat_perjalanan,deteksi_dini_corona.faktor_asal_daerah,deteksi_dini_corona.faktor_tanggal_kedatangan,deteksi_dini_corona.faktor_paparan_kontakpositif,"+
-                    "deteksi_dini_corona.faktor_paparan_kontakpdp,deteksi_dini_corona.faktor_paparan_faskespositif,deteksi_dini_corona.faktor_paparan_perjalananln,deteksi_dini_corona.faktor_paparan_pasarhewan "+
-                    "from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                    "deteksi_dini_corona.faktor_paparan_kontakpdp,deteksi_dini_corona.faktor_paparan_faskespositif,deteksi_dini_corona.faktor_paparan_perjalananln,deteksi_dini_corona.faktor_paparan_pasarhewan,"+
+                    "deteksi_dini_corona.kesimpulan,deteksi_dini_corona.tindak_lanjut from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
                     "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
                     "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
-                    "inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? "+
-                    "inner join deteksi_dini_corona on deteksi_dini_corona.no_rawat=reg_periksa.no_rawat ");
+                    "inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join deteksi_dini_corona on deteksi_dini_corona.no_rawat=reg_periksa.no_rawat "+
+                    "inner join petugas on deteksi_dini_corona.nip=petugas.nip "+
+                    "where deteksi_dini_corona.tanggal between ? and ? "+
+                    (TCari.getText().trim().equals("")?"":"and (deteksi_dini_corona.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or pasien.no_tlp like ? or "+
+                    "deteksi_dini_corona.kesimpulan like ? or deteksi_dini_corona.tindak_lanjut like ?)")+"order by deteksi_dini_corona.tanggal");
             try {
-                /*ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(3,"%"+TCari.getText().trim()+"%");
@@ -1630,15 +1637,17 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     ps.setString(5,"%"+TCari.getText().trim()+"%");
                     ps.setString(6,"%"+TCari.getText().trim()+"%");
                     ps.setString(7,"%"+TCari.getText().trim()+"%");
-                }*/
+                    ps.setString(8,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){    
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_registrasi"),rs.getString("pemulasaraan_jenazah"),
-                        rs.getString("kantong_jenazah"),rs.getString("peti_jenazah"),rs.getString("plastik_erat"),rs.getString("desinfektan_jenazah"),
-                        rs.getString("mobil_jenazah"),rs.getString("desinfektan_mobil_jenazah"),rs.getString("covid19_status_cd"),rs.getString("nomor_kartu_t"),
-                        rs.getString("episodes1"),rs.getString("episodes2"),rs.getString("episodes3"),rs.getString("episodes4"),rs.getString("episodes5"),
-                        rs.getString("episodes6"),rs.getString("covid19_cc_ind")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("asal"),rs.getString("no_ktp"),rs.getString("no_tlp"),
+                        rs.getString("pekerjaan"),rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("nip"),rs.getString("nama"),rs.getString("gejala_demam"),
+                        rs.getString("gejala_batuk"),rs.getString("gejala_sesak"),rs.getString("gejala_tanggal_pertama"),rs.getString("gejala_riwayat_sakit"),rs.getString("gejala_riwayat_periksa"),
+                        rs.getString("faktor_riwayat_perjalanan"),rs.getString("faktor_asal_daerah"),rs.getString("faktor_tanggal_kedatangan"),rs.getString("faktor_paparan_kontakpositif"),
+                        rs.getString("faktor_paparan_kontakpdp"),rs.getString("faktor_paparan_faskespositif"),rs.getString("faktor_paparan_perjalananln"),rs.getString("faktor_paparan_pasarhewan"),
+                        rs.getString("kesimpulan"),rs.getString("tindak_lanjut")
                     });
                 }
             } catch (Exception e) {
@@ -1695,7 +1704,31 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             NoRawat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             NoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             NamaPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            A1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            Alamat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            NIK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            NoHP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            Pekerjaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            kdptg.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            nmptg.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            A1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            A2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            A3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            RiwayatSakitSebelumnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            RiwayatPeriksaSebelumnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            B1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            AsalDaerah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            B2a.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            B2b.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            B2c.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            B2d.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            B2e.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            Kesimpulan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            TindakLanjut.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            isLabRad(NoRawat.getText());
+            Valid.SetTgl(TglSkrining,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Valid.SetTgl(TglGejala,tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Valid.SetTgl(TglKedatangan,tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
         }
     }
     
