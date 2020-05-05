@@ -15777,6 +15777,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianAwalKeperawatanKebidananActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16374,7 +16378,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRiwayatBarangToko,btnSuratPemesananToko,btnPengajuanBarangToko,btnPenerimaanBarangToko,btnPengadaanBarangToko,btnHutangToko,
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
-            btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona;
+            btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona,btnPenilaianAwalKeperawatanKebidanan;
     
     public void isWall(){
         try{            
@@ -18689,6 +18693,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_awal_keperawatan_gigi()==true){
                 Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_keperawatan_kebidanan()==true){
+                Panelmenu.add(btnPenilaianAwalKeperawatanKebidanan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==12){  
@@ -21781,6 +21790,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_awal_keperawatan_gigi()==true){
             Panelmenu.add(btnPenilaianAwalKeperawatanGigi);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_awal_keperawatan_kebidanan()==true){
+            Panelmenu.add(btnPenilaianAwalKeperawatanKebidanan);
             jmlmenu++;
         }
         
@@ -25742,6 +25756,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_awal_keperawatan_kebidanan()==true){
+            if(btnPenilaianAwalKeperawatanKebidanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalKeperawatanKebidanan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -28904,6 +28925,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 btnDeteksiDiniCoronaActionPerformed(evt);
             }
         });
+        
+        btnPenilaianAwalKeperawatanKebidanan = new widget.ButtonBig();
+        btnPenilaianAwalKeperawatanKebidanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_4_375262.png"))); 
+        btnPenilaianAwalKeperawatanKebidanan.setText("Penilaian Awal Keperawatan Kebidanan");
+        btnPenilaianAwalKeperawatanKebidanan.setIconTextGap(0);
+        btnPenilaianAwalKeperawatanKebidanan.setName("btnPenilaianAwalKeperawatanKebidanan"); 
+        btnPenilaianAwalKeperawatanKebidanan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianAwalKeperawatanKebidanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenilaianAwalKeperawatanKebidananActionPerformed(evt);
+            }
+        });
+                
     }
 
     
