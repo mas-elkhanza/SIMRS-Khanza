@@ -1052,7 +1052,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 } 
             }else{
                 ps=koneksi.prepareStatement(
-                    "select databarang.kode_brng, databarang.nama_brng,jenis.nama,databarang.kode_sat, databarang.ralan,gudangbarang.stok  "+
+                    "select databarang.kode_brng, databarang.nama_brng,jenis.nama,databarang.kode_sat, databarang.h_beli,gudangbarang.stok  "+
                     " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                     " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                     " where gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.stok>0 and databarang.status='1' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
@@ -1069,7 +1069,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
                             "",rs.getString("kode_brng"),"",rs.getString("nama_brng"),
-                            rs.getString("nama"),rs.getString("kode_sat"),rs.getDouble("ralan"),
+                            rs.getString("nama"),rs.getString("kode_sat"),rs.getDouble("h_beli"),
                             0,rs.getDouble("stok"),""
                         });
                     }
@@ -1242,7 +1242,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             
             ps=koneksi.prepareStatement(
                 "select databarang.kode_brng, databarang.nama_brng,"+
-                "detail_permintaan_medis.kode_sat,jenis.nama,databarang.ralan, "+
+                "detail_permintaan_medis.kode_sat,jenis.nama,databarang.h_beli, "+
                 "detail_permintaan_medis.jumlah from databarang inner join detail_permintaan_medis "+
                 "inner join jenis on databarang.kdjns=jenis.kdjns and detail_permintaan_medis.kode_brng=databarang.kode_brng "+
                 "where detail_permintaan_medis.no_permintaan=? order by databarang.nama_brng");
@@ -1253,8 +1253,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     tabMode.addRow(new Object[]{
                         rs.getString("jumlah"),rs.getString("kode_brng"),"",
                         rs.getString("nama_brng"),rs.getString("nama"),
-                        rs.getString("kode_sat"),rs.getDouble("ralan"),
-                        (rs.getDouble("jumlah")*rs.getDouble("ralan")),0,""
+                        rs.getString("kode_sat"),rs.getDouble("h_beli"),
+                        (rs.getDouble("jumlah")*rs.getDouble("h_beli")),0,""
                     });
                 } 
             } catch (Exception e) {
@@ -1286,7 +1286,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 tbDokter.setValueAt(rsstok.getDouble("h_beli"),i,6);
                                 tbDokter.setValueAt(rsstok.getString("no_batch"),i,2);
                                 tbDokter.setValueAt(rsstok.getString("no_faktur"),i,9);
-                                tbDokter.setValueAt((rsstok.getDouble("ralan")*Double.parseDouble(tbDokter.getValueAt(i,0).toString())),i,7);
+                                tbDokter.setValueAt((rsstok.getDouble("h_beli")*Double.parseDouble(tbDokter.getValueAt(i,0).toString())),i,7);
                             } 
                         } catch (Exception e) {
                             System.out.println("Note : "+e);
