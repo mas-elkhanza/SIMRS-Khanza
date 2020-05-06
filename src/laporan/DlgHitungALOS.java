@@ -638,7 +638,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             ps = koneksi.prepareStatement(
                     "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(kamar_inap.kd_kamar,' - ',bangsal.nm_bangsal) as kamar,"
-                    + "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',CURDATE(),kamar_inap.tgl_keluar) as tgl_keluar,lama,kamar_inap.stts_pulang,kamar.kelas "
+                    + "MIN(kamar_inap.tgl_masuk) as tgl_masuk,MAX(if(kamar_inap.tgl_keluar='0000-00-00',CURDATE(),kamar_inap.tgl_keluar)) as tgl_keluar,"
+                    + "SUM(TIMESTAMPDIFF(DAY,tgl_masuk,IF(kamar_inap.tgl_keluar='0000-00-00',CURDATE(),kamar_inap.tgl_keluar))) AS lama,"
+                    + "max(kamar_inap.stts_pulang)as stts_pulang,kamar.kelas "
                     + "from kamar_inap inner join reg_periksa "
                     + "inner join pasien "
                     + "inner join kamar "
@@ -660,19 +662,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 i = 1;
                 hari = 0;
                 while (rs.next()) {
-                    tgl_masuk = format1.parse(rs.getString("tgl_masuk"));
-                    tgl_pulang = format1.parse(rs.getString("tgl_keluar"));
-                    long diff = tgl_pulang.getTime() - tgl_masuk.getTime();
-                    long diffDays = diff / (24 * 60 * 60 * 1000);
-                    if (diffDays == 0) {
-                        diffDays = 1;
+                    int lama=0;
+                    if(rs.getInt("lama")==0){
+                        lama=1;
+                    }else{
+                        lama = rs.getInt("lama");
                     }
+                    
                     tabMode.addRow(new Object[]{
                         i, rs.getString("no_rawat"), rs.getString("no_rkm_medis"), rs.getString("nm_pasien"),
                         rs.getString("kamar"),rs.getString("kelas"), rs.getString("tgl_masuk"), rs.getString("tgl_keluar"),
-                        diffDays, rs.getString("stts_pulang")
+                        lama, rs.getString("stts_pulang")
                     });
-                    hari = hari + diffDays;//rs.getDouble("lama");
+                    hari = hari + rs.getInt("lama");//rs.getDouble("lama");
                     i++;
                 }
                 pasien = tabMode.getRowCount();
