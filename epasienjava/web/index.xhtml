@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core" lang="en">
 <head>
 
-     <title>Health - Medical Website Template</title>
+     <title>E-Pasien #{aplikasiSet.nama_instansi}</title>
 <!--
 
 Template 2098 Health
@@ -48,7 +48,7 @@ http://www.tooplate.com/view/2098-health
                <div class="row">
 
                     <div class="col-md-4 col-sm-5">
-                         <p>Selamat datang di Perawatan Kesehatan Profesional</p>
+                         <p>Selamat datang di #{aplikasiSet.nama_instansi}</p>
                     </div>
                          
                     <div class="col-md-8 col-sm-7 text-align-right">
@@ -74,7 +74,7 @@ http://www.tooplate.com/view/2098-health
                     </button>
 
                     <!-- lOGO TEXT HERE -->
-                    <a href="index.xhtml" class="navbar-brand"><i class="fa fa-h-square"></i>ealth Center, #{aplikasiSet.nama_instansi}</a>
+                    <a href="index.xhtml" class="navbar-brand"><i class="fa fa-h-square"></i>ealth Center</a>
                </div>
 
                <!-- MENU LINKS -->
@@ -84,7 +84,7 @@ http://www.tooplate.com/view/2098-health
                          <li><a href="#about" class="smoothScroll">Tentang Kami</a></li>
                          <li><a href="#team" class="smoothScroll">Dokter Kami</a></li>
                          <li><a href="#news" class="smoothScroll">Berita</a></li>
-                         <li><a href="#google-map" class="smoothScroll">Kontak</a></li>
+                         <li><a href="#member" class="smoothScroll">Login Pasien</a></li>
                          <li class="appointment-btn"><a href="#appointment">Buat Janji/Booking</a></li>
                     </ul>
                </div>
@@ -248,7 +248,7 @@ http://www.tooplate.com/view/2098-health
                     <div class="col-md-12 col-sm-12">
                          <!-- SECTION TITLE -->
                          <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
-                              <h2>Latest News</h2>
+                              <h2>Berita Terakhir</h2>
                          </div>
                     </div>
 
@@ -335,7 +335,7 @@ http://www.tooplate.com/view/2098-health
 
                               <!-- SECTION TITLE -->
                               <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-                                   <h2>Make an appointment</h2>
+                                   <h2>Buat Janji/Booking</h2>
                               </div>
 
                               <div class="wow fadeInUp" data-wow-delay="0.8s">
@@ -399,7 +399,7 @@ http://www.tooplate.com/view/2098-health
 
                     <div class="col-md-4 col-sm-4">
                          <div class="footer-thumb"> 
-                              <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h4>
+                              <h4 class="wow fadeInUp" data-wow-delay="0.4s">Informasi Kontak</h4>
                               <p>Fusce at libero iaculis, venenatis augue quis, pharetra lorem. Curabitur ut dolor eu elit consequat ultricies.</p>
 
                               <div class="contact-info">
@@ -437,10 +437,10 @@ http://www.tooplate.com/view/2098-health
                     <div class="col-md-4 col-sm-4"> 
                          <div class="footer-thumb">
                               <div class="opening-hours">
-                                   <h4 class="wow fadeInUp" data-wow-delay="0.4s">Opening Hours</h4>
-                                   <p>Monday - Friday <span>06:00 AM - 10:00 PM</span></p>
-                                   <p>Saturday <span>09:00 AM - 08:00 PM</span></p>
-                                   <p>Sunday <span>Closed</span></p>
+                                   <h4 class="wow fadeInUp" data-wow-delay="0.4s">Jam Buka</h4>
+                                   <p>Senin - Sabtu <span>06:00 - 22:00 </span></p>
+                                   <p>Minggu<span>Tutup</span></p>
+                                   <p>IGD<span>24 Jam</span></p>
                               </div> 
 
                               <ul class="social-icon">
@@ -454,9 +454,9 @@ http://www.tooplate.com/view/2098-health
                     <div class="col-md-12 col-sm-12 border-top">
                          <div class="col-md-4 col-sm-6">
                               <div class="copyright-text"> 
-                                   <p>Copyright &copy; 2018 Your Company 
+                                   <p>Copyright &copy; 2020 #{aplikasiSet.nama_instansi} 
                                    
-                                   | Design: Tooplate</p>
+                                   | Design: SIMKES Khanza</p>
                               </div>
                          </div>
                          <div class="col-md-6 col-sm-6">
