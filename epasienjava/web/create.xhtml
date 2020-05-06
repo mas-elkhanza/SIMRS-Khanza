@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>    
+        <title>User Registration Form</title>
+        <h:outputStylesheet name="/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        <h:form id="form" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <div  class="col-sm-4">
+                    <h2 style="text-align: center">Provide Following Details</h2>
+                </div>
+            </div>
+            <hr/>
+            <div class="form-group">
+                <h:outputLabel for="username" class="control-label col-sm-4">User Name</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="name-id" value="#{user.name}" class="form-control" validatorMessage="User name is required">
+                        <f:validateRequired />
+                    </h:inputText>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="email" class="control-label col-sm-4">Your Email</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputText id="email-id" value="#{user.email}" class="form-control" validatorMessage="Email Id is required">
+                        <f:validateRequired/>
+                    </h:inputText>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="password" class="control-label col-sm-4">Password</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputSecret id="password-id" value="#{user.password}" class="form-control" validatorMessage="Password is required">
+                        <f:validateRequired/>
+                    </h:inputSecret>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="gender" class="control-label col-sm-4">Gender</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:selectOneRadio value="#{user.gender}" validatorMessage="Gender is required">
+                        <f:selectItem itemValue="M" itemLabel="Male" />
+                        <f:selectItem itemValue="F" itemLabel="Female" />
+                        <f:validateRequired/>
+                    </h:selectOneRadio>
+                </div>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="address" class="control-label col-sm-4">Address</h:outputLabel>
+                <div class="col-sm-4">
+                    <h:inputTextarea value="#{user.address}" cols="50" rows="5" class="form-control" validatorMessage="Address is required">
+                        <f:validateRequired/>
+                    </h:inputTextarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="col-sm-2">
+                        <h:commandButton value="Save" action="#{user.save()}" class="btn btn-success" style="width: 80px;"></h:commandButton>
+                    </div>
+                    <div class="col-sm-1">
+                    </div>
+                    <div class="col-sm-2">
+                        <h:link outcome="index" value="View Users Record List" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>
