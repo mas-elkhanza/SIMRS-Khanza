@@ -346,7 +346,7 @@ public final class DlgReg extends javax.swing.JDialog {
         tabMode3=new DefaultTableModel(null,new Object[]{
             "Tanggal", "Jam", "No.R.Medik", "Nama Pasien", "J.K.", "Tmp.Lahir",
             "Tgl.Lahir", "G.D.", "Stts.Nikah", "Agama", "Rencana Perawatan", "Ruangan",
-            "Dokter", "Diagnosa", "kd_dokter", "kd_penyakit", "nama", "keluhan", "nm_penyakit", "id"
+            "Dokter", "Diagnosa", "kd_dokter",  "nama", "keluhan", "id"
         }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -375,7 +375,7 @@ public final class DlgReg extends javax.swing.JDialog {
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(JLabel.CENTER);
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 18; i++) {
             TableColumn column = tbSpri.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(75);//tanggal
@@ -419,13 +419,7 @@ public final class DlgReg extends javax.swing.JDialog {
             } else if (i == 17) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
-            } else if (i == 18) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 19) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }
+            } 
         }
 
         tbSpri.setDefaultRenderer(Object.class, new WarnaTable());
@@ -9596,10 +9590,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
          ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
                         + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
                         + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
-                        + "dokter.nm_dokter,penyakit.kd_penyakit,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
+                        + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
                         + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
                         + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                        + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit"
                         + " where temp_spri.status='Belum' order by temp_spri.tanggal desc ");
          try {
                 rs3 = ps2.executeQuery();
@@ -9609,8 +9602,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                             rs3.getString("pasien.jk"), rs3.getString("pasien.tmp_lahir"), rs3.getString("pasien.tgl_lahir"), rs3.getString("pasien.gol_darah"),
                             rs3.getString("pasien.stts_nikah"), rs3.getString("pasien.agama"), rs3.getString("temp_spri.rencana_perawatan"),
                             rs3.getString("temp_spri.upf"),
-                            rs3.getString("dokter.nm_dokter"), rs3.getString("keluhan"), rs3.getString("temp_spri.kd_dokter"), rs3.getString("penyakit.kd_penyakit"),
-                            rs3.getString("nama"), rs3.getString("keluhan"), rs3.getString("penyakit.nm_penyakit"), rs3.getString("temp_spri.id")
+                            rs3.getString("dokter.nm_dokter"), rs3.getString("keluhan"), rs3.getString("temp_spri.kd_dokter"),
+                            rs3.getString("nama"), rs3.getString("keluhan"), rs3.getString("temp_spri.id")
                         });
                 }
             } catch (Exception e) {
@@ -10212,7 +10205,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
     private void getDataSpri() {
         if(tbSpri.getSelectedRow()!= -1){
-            txtIdSpri.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),19).toString());
+            txtIdSpri.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),17).toString());
             TPasien.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),3).toString());
             TNoRM.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),2).toString());    
             kddokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),14).toString());    
