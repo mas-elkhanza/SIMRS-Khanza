@@ -83,6 +83,7 @@ public class TampilJadwal {
                 jadwal.setNm_poli(rs.getString("nm_poli"));
                 jadwalList.add(jadwal);
             }     
+            rs.close();
         }catch(Exception e){
             System.out.println(e);
         }

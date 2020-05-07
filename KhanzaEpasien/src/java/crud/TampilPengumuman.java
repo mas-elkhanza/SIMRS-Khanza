@@ -32,6 +32,7 @@ public final class TampilPengumuman {
                 setTanggal(rs.getString("tanggal"));
                 setPengumuman(rs.getString("pengumuman"));
             }     
+            rs.close();
         }catch(Exception e){
             System.out.println(e);
         }
