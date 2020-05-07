@@ -17,7 +17,7 @@ import javax.faces.bean.RequestScoped;
  *
  * @author windiartonugroho
  */
-public class SetAplikasi {
+public final class SetAplikasi {
     private String nama_instansi, alamat_instansi, kabupaten, propinsi, kontak, email, aktifkan, kode_ppk, kode_ppkinhealth, kode_ppkkemenkes;
     private Blob wallpaper,logo;
     private Connection koneksi=koneksiDB.condb();

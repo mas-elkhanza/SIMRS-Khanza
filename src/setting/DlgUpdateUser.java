@@ -648,7 +648,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal,"+
                         "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang,pasien_corona,toko_pendapatan_harian,"+
                         "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi,"+
-                        "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan,"+
+                        "pengumuman_epasien from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2445,8 +2446,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[L]Master Masalah Keperawatan Gigi",rs.getBoolean("master_masalah_keperawatan_gigi")});
                     }
                     
-                    if("[L]Penilaian Awal Keperawatan Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Keperawatan Kebidanan",rs.getBoolean("penilaian_awal_keperawatan_kebidanan")});
+                    if("[L]Penilaian Awal Ralan Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Ralan Kebidanan",rs.getBoolean("penilaian_awal_keperawatan_kebidanan")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -2915,6 +2916,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[O]Surat Keterangan Sakit".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[O]Surat Keterangan Sakit",rs.getBoolean("surat_sakit")});
+                    }
+                    
+                    if("[O]Pengumuman E-Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[O]Pengumuman E-Pasien",rs.getBoolean("pengumuman_epasien")});
                     }
                     
                     if("[P]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4948,7 +4953,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_masalah_keperawatan_gigi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[L]Penilaian Awal Keperawatan Kebidanan".equals(tbUser.getValueAt(i,1).toString())){
+            if("[L]Penilaian Awal Ralan Kebidanan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","penilaian_awal_keperawatan_kebidanan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
@@ -5418,6 +5423,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[O]Surat Keterangan Sakit".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","surat_sakit='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[O]Pengumuman E-Pasien".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pengumuman_epasien='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[P]Ruang Perpustakaan".equals(tbUser.getValueAt(i,1).toString())){
