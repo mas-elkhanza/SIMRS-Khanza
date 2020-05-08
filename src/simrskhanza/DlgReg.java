@@ -117,6 +117,9 @@ public final class DlgReg extends javax.swing.JDialog {
     private Date cal=new Date();
     public  DlgSpri spri=new DlgSpri( null,false);
     private boolean ceksukses=false;
+    private Calendar cal1 = Calendar.getInstance();
+    private int day = cal1.get(Calendar.DAY_OF_WEEK);
+    private String hari="";
     private String nosisrute="",aktifkanparsial="no",BASENOREG="",
             URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
             validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
@@ -4455,7 +4458,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4468,7 +4471,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4619,7 +4622,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2020" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -4811,6 +4814,11 @@ public final class DlgReg extends javax.swing.JDialog {
 
         kdpoli.setHighlighter(null);
         kdpoli.setName("kdpoli"); // NOI18N
+        kdpoli.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                kdpoliFocusLost(evt);
+            }
+        });
         kdpoli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 kdpoliKeyPressed(evt);
@@ -9006,6 +9014,16 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_tbSpriMouseClicked
 
+    private void kdpoliFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kdpoliFocusLost
+        // TODO add your handling code here:
+        if(kuota==0){
+        kuota = Sequel.cariInteger("Select jadwal.kuota from dokter INNER JOIN jadwal INNER JOIN poliklinik "+
+                "on dokter.kd_dokter=jadwal.kd_dokter and poliklinik.kd_poli=jadwal.kd_poli "+
+                "where jadwal.hari_kerja='"+hari+"' and poliklinik.kd_poli like '%"+kdpoli.getText()+"%' and dokter.status='1' and dokter.kd_dokter like '%"+kddokter.getText()+"%'");
+            System.out.println("Kouta "+kuota);
+        }
+    }//GEN-LAST:event_kdpoliFocusLost
+
     /**
     * @param args the command line arguments
     */
@@ -9593,8 +9611,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
                         + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
                         + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                        + " where temp_spri.status='Belum' order by temp_spri.tanggal desc ");
+                        + " where temp_spri.status='Belum' and temp_spri.norm like ? or"
+                        + " temp_spri.status='Belum' and temp_spri.nama like ? or"
+                        + " temp_spri.status='Belum' and dokter.nm_dokter like ? order by temp_spri.tanggal desc limit 30");
          try {
+             ps2.setString(1, "%"+TCari.getText().trim()+"%");
+             ps2.setString(2, "%"+TCari.getText().trim()+"%");
+             ps2.setString(3, "%"+TCari.getText().trim()+"%");
                 rs3 = ps2.executeQuery();
                 while (rs3.next()) {
                     tabMode3.addRow(new Object[]{
@@ -10209,7 +10232,26 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             TPasien.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),3).toString());
             TNoRM.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),2).toString());    
             kddokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),14).toString());    
-            TDokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),12).toString());   
+            TDokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),12).toString());  
+            if(day==1){
+                    hari="AKHAD";
+                }else if(day==2){
+                    hari="SENIN";
+                }else if(day==3){
+                    hari="SELASA";
+                }else if(day==4){
+                    hari="RABU";
+                }else if(day==5){
+                    hari="KAMIS";
+                }else if(day==6){
+                    hari="JUMAT";
+                }else if(day==7){
+                    hari="SABTU";
+                }
+            kuota = Sequel.cariInteger("Select jadwal.kuota from dokter INNER JOIN jadwal INNER JOIN poliklinik "+
+                "on dokter.kd_dokter=jadwal.kd_dokter and poliklinik.kd_poli=jadwal.kd_poli "+
+                "where jadwal.hari_kerja='"+hari+"' and poliklinik.kd_poli like '%"+kdpoli.getText()+"%' and dokter.status='1' and dokter.kd_dokter like '%"+kddokter.getText()+"%'");
+            System.out.println("Kouta "+kuota);
             isPas();
         }
        
