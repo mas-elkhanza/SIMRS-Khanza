@@ -1028,7 +1028,7 @@ public final class validasi {
     public void SetTgl(DefaultTableModel tabMode,JTable table,JDateTimePicker dtp,int i){
         j=table.getSelectedRow();
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tabMode.getValueAt(j,i).toString());
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tabMode.getValueAt(j,i).toString().replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1036,6 +1036,7 @@ public final class validasi {
     }
     
     public String SetTgl(String original){
+        original=original.replaceAll("'","");
         s = "";
         try {
             s=original.substring(6,10)+"-"+original.substring(3,5)+"-"+original.substring(0,2);
@@ -1045,6 +1046,7 @@ public final class validasi {
     }
     
     public String SetTglJam(String original){
+        original=original.replaceAll("'","");
         s = "";
         try {
             s=original.substring(6,10)+"-"+original.substring(3,5)+"-"+original.substring(0,2)+" "+original.substring(11,19);
@@ -1054,6 +1056,7 @@ public final class validasi {
     }
     
     public String SetTgl3(String original){
+        original=original.replaceAll("'","");
         s = "";
         try {
             s=original.substring(8,10)+"-"+original.substring(5,7)+"-"+original.substring(0,4);
@@ -1073,7 +1076,7 @@ public final class validasi {
     
     public void SetTgl(JDateTimePicker dtp,String tgl){            
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1082,7 +1085,7 @@ public final class validasi {
     
     public void SetTgl2(JDateTimePicker dtp,String tgl){            
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl.replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1091,7 +1094,7 @@ public final class validasi {
     
     public Date SetTgl2(String tgl){
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'",""));
            return dtpa;
         } catch (ParseException ex) {
            return new Date();
