@@ -347,9 +347,9 @@ public final class DlgReg extends javax.swing.JDialog {
         tbPetugas2.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode3=new DefaultTableModel(null,new Object[]{
-            "Tanggal", "Jam", "No.R.Medik", "Nama Pasien", "J.K.", "Tmp.Lahir",
-            "Tgl.Lahir", "G.D.", "Stts.Nikah", "Agama", "Rencana Perawatan", "Ruangan",
-            "Dokter", "Diagnosa", "kd_dokter",  "nama", "keluhan", "id"
+            "Tanggal", "Jam", "No.R.Medik", "Nama Pasien",
+            "Rencana Perawatan", "Ruangan","Dokter", "Diagnosa", 
+            "kd_dokter",  "nama", "keluhan", "id"
         }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -374,11 +374,11 @@ public final class DlgReg extends javax.swing.JDialog {
 
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbSpri.setPreferredScrollableViewportSize(new Dimension(500, 500));
-        tbSpri.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //tbSpri.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(JLabel.CENTER);
 
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 12; i++) {
             TableColumn column = tbSpri.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(75);//tanggal
@@ -387,39 +387,39 @@ public final class DlgReg extends javax.swing.JDialog {
             } else if (i == 2) {
                 column.setPreferredWidth(80);//norm
             } else if (i == 3) {
-                column.setPreferredWidth(150);//nama
+                column.setPreferredWidth(190);//nama
+//            } else if (i == 4) {
+//                column.setPreferredWidth(30);//jk
+//            } else if (i == 5) {
+//                column.setPreferredWidth(120);//ttl
+//            } else if (i == 6) {
+//                column.setPreferredWidth(75);//tgllahir
+//            } else if (i == 7) {
+//                column.setPreferredWidth(30);//gd
+//            } else if (i == 8) {
+//                column.setPreferredWidth(90);//stt nikah
+//            } else if (i == 9) {
+//                column.setPreferredWidth(90);//agama
             } else if (i == 4) {
-                column.setPreferredWidth(30);//jk
+                column.setPreferredWidth(150);//rencana perawatan
             } else if (i == 5) {
-                column.setPreferredWidth(120);//ttl
+                column.setPreferredWidth(120);//ruangan
             } else if (i == 6) {
-                column.setPreferredWidth(75);//tgllahir
+                column.setPreferredWidth(120);//dokter
             } else if (i == 7) {
-                column.setPreferredWidth(30);//gd
+                column.setPreferredWidth(220);//diagnosa
             } else if (i == 8) {
-                column.setPreferredWidth(90);//stt nikah
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             } else if (i == 9) {
-                column.setPreferredWidth(90);//agama
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+
             } else if (i == 10) {
-                column.setPreferredWidth(120);//rencana perawatan
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+
             } else if (i == 11) {
-                column.setPreferredWidth(100);//ruangan
-            } else if (i == 12) {
-                column.setPreferredWidth(100);//dokter
-            } else if (i == 13) {
-                column.setPreferredWidth(200);//diagnosa
-            } else if (i == 14) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 15) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-
-            } else if (i == 16) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-
-            } else if (i == 17) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             } 
@@ -9606,14 +9606,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         Valid.tabelKosong(tabMode3);  
         try {
          ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
-                        + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                        + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
+                        + "temp_spri.rencana_perawatan,temp_spri.upf,"
                         + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
-                        + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                        + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
+                        + " FROM temp_spri left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
                         + " where temp_spri.status='Belum' and temp_spri.norm like ? or"
                         + " temp_spri.status='Belum' and temp_spri.nama like ? or"
-                        + " temp_spri.status='Belum' and dokter.nm_dokter like ? order by temp_spri.tanggal desc limit 30");
+                        + " temp_spri.status='Belum' and dokter.nm_dokter like ? order by temp_spri.tanggal desc");
          try {
              ps2.setString(1, "%"+TCari.getText().trim()+"%");
              ps2.setString(2, "%"+TCari.getText().trim()+"%");
@@ -9622,11 +9620,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 while (rs3.next()) {
                     tabMode3.addRow(new Object[]{
                         rs3.getString("tanggal"), rs3.getString("jam"), rs3.getString("norm"), rs3.getString("temp_spri.nama"),
-                            rs3.getString("pasien.jk"), rs3.getString("pasien.tmp_lahir"), rs3.getString("pasien.tgl_lahir"), rs3.getString("pasien.gol_darah"),
-                            rs3.getString("pasien.stts_nikah"), rs3.getString("pasien.agama"), rs3.getString("temp_spri.rencana_perawatan"),
-                            rs3.getString("temp_spri.upf"),
-                            rs3.getString("dokter.nm_dokter"), rs3.getString("keluhan"), rs3.getString("temp_spri.kd_dokter"),
-                            rs3.getString("nama"), rs3.getString("keluhan"), rs3.getString("temp_spri.id")
+                            rs3.getString("temp_spri.rencana_perawatan"),rs3.getString("temp_spri.upf"),rs3.getString("dokter.nm_dokter"), rs3.getString("keluhan"), 
+                            rs3.getString("temp_spri.kd_dokter"),rs3.getString("nama"), rs3.getString("keluhan"), rs3.getString("temp_spri.id")
                         });
                 }
             } catch (Exception e) {
@@ -10228,11 +10223,11 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
     private void getDataSpri() {
         if(tbSpri.getSelectedRow()!= -1){
-            txtIdSpri.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),17).toString());
+            txtIdSpri.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),11).toString());
             TPasien.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),3).toString());
             TNoRM.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),2).toString());    
-            kddokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),14).toString());    
-            TDokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),12).toString());  
+            kddokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),8).toString());    
+            TDokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),6).toString());  
             if(day==1){
                     hari="AKHAD";
                 }else if(day==2){
