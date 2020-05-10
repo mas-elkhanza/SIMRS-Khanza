@@ -187,6 +187,8 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnCetakDeteksiDini = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -289,6 +291,21 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         HasilRadiologi = new widget.TextArea();
         jLabel52 = new widget.Label();
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnCetakDeteksiDini.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakDeteksiDini.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakDeteksiDini.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakDeteksiDini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakDeteksiDini.setText("Cetak Form Deteksi Dini");
+        MnCetakDeteksiDini.setName("MnCetakDeteksiDini"); // NOI18N
+        MnCetakDeteksiDini.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakDeteksiDiniActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCetakDeteksiDini);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -301,6 +318,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbObat.setAutoCreateRowSorter(true);
+        tbObat.setComponentPopupMenu(jPopupMenu1);
         tbObat.setName("tbObat"); // NOI18N
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -455,7 +473,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(63, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -468,7 +486,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -679,7 +697,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(644, 70, 80, 23);
 
-        TglGejala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
+        TglGejala.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         TglGejala.setDisplayFormat("dd-MM-yyyy");
         TglGejala.setName("TglGejala"); // NOI18N
         TglGejala.setOpaque(false);
@@ -739,7 +757,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(A3);
         A3.setBounds(733, 180, 85, 23);
 
-        TglSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
+        TglSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         TglSkrining.setDisplayFormat("dd-MM-yyyy");
         TglSkrining.setName("TglSkrining"); // NOI18N
         TglSkrining.setOpaque(false);
@@ -870,7 +888,7 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
         FormInput.add(jLabel35);
         jLabel35.setBounds(310, 360, 10, 23);
 
-        TglKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-05-2020" }));
+        TglKedatangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-05-2020" }));
         TglKedatangan.setDisplayFormat("dd-MM-yyyy");
         TglKedatangan.setName("TglKedatangan"); // NOI18N
         TglKedatangan.setOpaque(false);
@@ -1490,6 +1508,37 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         isHitung();
     }//GEN-LAST:event_B2eItemStateChanged
 
+    private void MnCetakDeteksiDiniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakDeteksiDiniActionPerformed
+        if(NamaPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",kdptg.getText()));
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReportqry("rptDeteksiCorona.jasper","report","::[ Form Deteksi Dini Corona ]::",
+                "select deteksi_dini_corona.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,pasien.umur,pasien.agama,"+
+                "pasien.no_ktp,pasien.no_tlp,pasien.pekerjaan,date_format(pasien.tgl_lahir,'%d/%m/%Y')as tgl_lahir,date_format(deteksi_dini_corona.tanggal,'%d/%m/%Y')as tanggal,deteksi_dini_corona.nip,petugas.nama,deteksi_dini_corona.gejala_demam,deteksi_dini_corona.gejala_batuk,"+
+                "deteksi_dini_corona.gejala_sesak,deteksi_dini_corona.gejala_tanggal_pertama,deteksi_dini_corona.gejala_riwayat_sakit,deteksi_dini_corona.gejala_riwayat_periksa,pasien.jk,pasien.stts_nikah,"+
+                "deteksi_dini_corona.faktor_riwayat_perjalanan,deteksi_dini_corona.faktor_asal_daerah,deteksi_dini_corona.faktor_tanggal_kedatangan,deteksi_dini_corona.faktor_paparan_kontakpositif,"+
+                "deteksi_dini_corona.faktor_paparan_kontakpdp,deteksi_dini_corona.faktor_paparan_faskespositif,deteksi_dini_corona.faktor_paparan_perjalananln,deteksi_dini_corona.faktor_paparan_pasarhewan,"+
+                "deteksi_dini_corona.kesimpulan,deteksi_dini_corona.tindak_lanjut from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
+                "inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "inner join deteksi_dini_corona on deteksi_dini_corona.no_rawat=reg_periksa.no_rawat "+
+                "inner join petugas on deteksi_dini_corona.nip=petugas.nip "+
+                "where deteksi_dini_corona.no_rawat='"+NoRawat.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnCetakDeteksiDiniActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1535,6 +1584,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextArea HasilRadiologi;
     private widget.ComboBox Kesimpulan;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnCetakDeteksiDini;
     private widget.TextBox NIK;
     private widget.TextBox NamaPasien;
     private widget.TextBox NoHP;
@@ -1600,6 +1650,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdptg;
     private widget.TextBox nmptg;
     private widget.panelisi panelGlass7;
