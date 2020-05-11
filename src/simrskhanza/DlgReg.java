@@ -9605,17 +9605,44 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private void tampil3(){
         Valid.tabelKosong(tabMode3);  
         try {
-         ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
+            if(!TCari.getText().equals("")){
+                ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
                         + "temp_spri.rencana_perawatan,temp_spri.upf,"
                         + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
                         + " FROM temp_spri left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                        + " where temp_spri.status='Belum' and temp_spri.norm like ? or"
-                        + " temp_spri.status='Belum' and temp_spri.nama like ? or"
-                        + " temp_spri.status='Belum' and dokter.nm_dokter like ? order by temp_spri.tanggal desc");
+                        + " where temp_spri.status='Belum' and temp_spri.norm like ? and temp_spri.tanggal between ? and ? or"
+                        + " temp_spri.status='Belum' and temp_spri.nama like ? and temp_spri.tanggal between ? and ?  or"
+                        + " temp_spri.status='Belum' and dokter.nm_dokter like ? and temp_spri.tanggal between ? and ? "
+                        + " order by temp_spri.tanggal desc");
+            }else{
+                ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
+                        + "temp_spri.rencana_perawatan,temp_spri.upf,"
+                        + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
+                        + " FROM temp_spri left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
+                        + " where temp_spri.status='Belum' and temp_spri.tanggal between ? and ? or"
+                        + " temp_spri.status='Belum' and temp_spri.tanggal between ? and ?  or"
+                        + " temp_spri.status='Belum' and temp_spri.tanggal between ? and ? "
+                        + " order by temp_spri.tanggal desc");                
+            }
          try {
+             if(!TCari.getText().equals("")){
              ps2.setString(1, "%"+TCari.getText().trim()+"%");
-             ps2.setString(2, "%"+TCari.getText().trim()+"%");
-             ps2.setString(3, "%"+TCari.getText().trim()+"%");
+             ps2.setString(2,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(3,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             ps2.setString(4, "%"+TCari.getText().trim()+"%");
+             ps2.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             ps2.setString(7, "%"+TCari.getText().trim()+"%");
+             ps2.setString(8,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(9,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             }else{
+             ps2.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             ps2.setString(3,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(4,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             ps2.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));                
+             }
                 rs3 = ps2.executeQuery();
                 while (rs3.next()) {
                     tabMode3.addRow(new Object[]{
