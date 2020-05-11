@@ -487,6 +487,13 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel48 = new widget.Label();
         TerapiTindakan = new widget.TextBox();
         BtnCari1 = new widget.Button();
+        jLabel12 = new widget.Label();
+        jLabel49 = new widget.Label();
+        NoRujukanBPJS = new widget.TextBox();
+        jLabel30 = new widget.Label();
+        KdPelayanan = new widget.TextBox();
+        NmPelayanan = new widget.TextBox();
+        BtnPetugas1 = new widget.Button();
         internalFrame4 = new widget.InternalFrame();
         panelGlass9 = new widget.panelisi();
         jLabel19 = new widget.Label();
@@ -516,7 +523,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         MnSuratRujukan.setBackground(new java.awt.Color(255, 255, 254));
         MnSuratRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSuratRujukan.setForeground(new java.awt.Color(50,50,50));
+        MnSuratRujukan.setForeground(new java.awt.Color(50, 50, 50));
         MnSuratRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSuratRujukan.setText("Surat Rujukan");
         MnSuratRujukan.setName("MnSuratRujukan"); // NOI18N
@@ -530,7 +537,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
 
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppRiwayat.setForeground(new java.awt.Color(50,50,50));
+        ppRiwayat.setForeground(new java.awt.Color(50, 50, 50));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRiwayat.setText("Riwayat Perawatan");
         ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -548,21 +555,21 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Keluar Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Keluar Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -622,7 +629,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         jLabel22.setBounds(380, 150, 90, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019 16:51:00" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2020 16:31:03" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1176,6 +1183,64 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         FormInput.add(BtnCari1);
         BtnCari1.setBounds(711, 10, 28, 23);
 
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("Data Pendukung :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        FormInput.add(jLabel12);
+        jLabel12.setBounds(12, 518, 120, 23);
+
+        jLabel49.setText("Nomor Rujukan BPJS :");
+        jLabel49.setName("jLabel49"); // NOI18N
+        FormInput.add(jLabel49);
+        jLabel49.setBounds(10, 540, 165, 23);
+
+        NoRujukanBPJS.setBackground(new java.awt.Color(245, 250, 240));
+        NoRujukanBPJS.setHighlighter(null);
+        NoRujukanBPJS.setName("NoRujukanBPJS"); // NOI18N
+        NoRujukanBPJS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoRujukanBPJSKeyPressed(evt);
+            }
+        });
+        FormInput.add(NoRujukanBPJS);
+        NoRujukanBPJS.setBounds(179, 540, 180, 23);
+
+        jLabel30.setText("Pelayanan :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(380, 540, 90, 23);
+
+        KdPelayanan.setEditable(false);
+        KdPelayanan.setBackground(new java.awt.Color(245, 250, 240));
+        KdPelayanan.setHighlighter(null);
+        KdPelayanan.setName("KdPelayanan"); // NOI18N
+        FormInput.add(KdPelayanan);
+        KdPelayanan.setBounds(474, 540, 65, 23);
+
+        NmPelayanan.setEditable(false);
+        NmPelayanan.setBackground(new java.awt.Color(245, 250, 240));
+        NmPelayanan.setHighlighter(null);
+        NmPelayanan.setName("NmPelayanan"); // NOI18N
+        FormInput.add(NmPelayanan);
+        NmPelayanan.setBounds(541, 540, 170, 23);
+
+        BtnPetugas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPetugas1.setMnemonic('X');
+        BtnPetugas1.setToolTipText("Alt+X");
+        BtnPetugas1.setName("BtnPetugas1"); // NOI18N
+        BtnPetugas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPetugas1ActionPerformed(evt);
+            }
+        });
+        BtnPetugas1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPetugas1KeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnPetugas1);
+        BtnPetugas1.setBounds(712, 540, 28, 23);
+
         Scroll1.setViewportView(FormInput);
 
         internalFrame2.add(Scroll1, java.awt.BorderLayout.CENTER);
@@ -1197,7 +1262,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1211,7 +1276,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1263,7 +1328,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
         TabRujukan.setBackground(new java.awt.Color(255, 255, 254));
-        TabRujukan.setForeground(new java.awt.Color(50,50,50));
+        TabRujukan.setForeground(new java.awt.Color(50, 50, 50));
         TabRujukan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRujukan.setName("TabRujukan"); // NOI18N
         TabRujukan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1517,6 +1582,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                                 "}," +
                                 "\"RUJUKAN\": {" +
                                     "\"JENIS_RUJUKAN\": \""+JenisRujukan.getSelectedItem().toString().substring(0,1)+"\"," +
+                                    "\"NOMOR_RUJUKAN_BPJS\": \"\"," +
                                     "\"TANGGAL\": \""+Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+" "+TanggalRujuk.getSelectedItem().toString().substring(11,19)+"\"," +
                                     "\"FASKES_TUJUAN\": \""+KdFaskes.getText()+"\"," +
                                     "\"ALASAN\": \""+KdAlasan.getText()+"\"," +
@@ -1934,12 +2000,12 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(this.getHeight()<650){   
+        if(this.getHeight()<680){   
             Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,525));
+            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,555));
             if(this.getWidth()<785){
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                FormInput.setPreferredSize(new Dimension(770,525));
+                FormInput.setPreferredSize(new Dimension(770,555));
             }else{
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
             }
@@ -2209,6 +2275,18 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnCari1ActionPerformed
 
+    private void NoRujukanBPJSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRujukanBPJSKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoRujukanBPJSKeyPressed
+
+    private void BtnPetugas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnPetugas1ActionPerformed
+
+    private void BtnPetugas1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugas1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnPetugas1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2242,6 +2320,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPetugas;
+    private widget.Button BtnPetugas1;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.Tanggal DTPCari1;
@@ -2256,6 +2335,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.TextBox KdDiagnosa;
     private widget.TextBox KdDokter;
     private widget.TextBox KdFaskes;
+    private widget.TextBox KdPelayanan;
     private widget.TextBox KdPetugas;
     private widget.TextBox KeadaanUmum;
     private widget.TextBox Kontak;
@@ -2265,8 +2345,10 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.TextBox NmAlasan;
     private widget.TextBox NmDiagnosa;
     private widget.TextBox NmFaskes;
+    private widget.TextBox NmPelayanan;
     private widget.TextBox NoKTP;
     private widget.TextBox NoKartu;
+    private widget.TextBox NoRujukanBPJS;
     private widget.TextBox PetugasEntry;
     private widget.TextBox Radiologi;
     private widget.TextBox Respirasi;
@@ -2291,6 +2373,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame4;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
+    private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
@@ -2307,6 +2390,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.Label jLabel27;
     private widget.Label jLabel28;
     private widget.Label jLabel29;
+    private widget.Label jLabel30;
     private widget.Label jLabel36;
     private widget.Label jLabel37;
     private widget.Label jLabel38;
@@ -2320,6 +2404,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
     private widget.Label jLabel46;
     private widget.Label jLabel47;
     private widget.Label jLabel48;
+    private widget.Label jLabel49;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;

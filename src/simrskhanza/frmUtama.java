@@ -1534,7 +1534,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/05/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/05/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -2034,7 +2034,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/InformasiKamar.png"))); // NOI18N
+        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Informasi-Kamar.png"))); // NOI18N
         btnAnalisaKamar.setText("Informasi Kamar");
         btnAnalisaKamar.setIconTextGap(0);
         btnAnalisaKamar.setName("btnAnalisaKamar"); // NOI18N
@@ -5422,7 +5422,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnBookingRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Address Book_32590.png"))); // NOI18N
+        btnBookingRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Booking.png"))); // NOI18N
         btnBookingRegistrasi.setText("Booking Registrasi");
         btnBookingRegistrasi.setIconTextGap(0);
         btnBookingRegistrasi.setName("btnBookingRegistrasi"); // NOI18N
