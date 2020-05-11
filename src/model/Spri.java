@@ -7,18 +7,26 @@ package model;
 
 import java.util.Date;
 
-/**
- *
- * @author Administrator
- */
 public class Spri {
+    private int id;
     private Date tanggal;
     private String jam;
     private String norm;
     private String diagnosa;
     private String rencana_perawatan;
-    private String kd_kamar;
+    private String upf;
+    private String nama;
     private String kd_dokter;
+    private String keluhan;
+    private String status;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Date getTanggal() {
         return tanggal;
@@ -60,14 +68,38 @@ public class Spri {
         this.rencana_perawatan = rencana_perawatan;
     }
 
-    public String getKd_kamar() {
-        return kd_kamar;
+    public String getUpf() {
+        return upf;
     }
 
-    public void setKd_kamar(String kd_kamar) {
-        this.kd_kamar = kd_kamar;
+    public void setUpf(String upf) {
+        this.upf = upf;
     }
 
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getKeluhan() {
+        return keluhan;
+    }
+
+    public void setKeluhan(String keluhan) {
+        this.keluhan = keluhan;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+   
     public String getKd_dokter() {
         return kd_dokter;
     }

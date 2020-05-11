@@ -71,7 +71,7 @@ public final class akses {
             bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false,detail_tindakan_okvk=false,
             billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false,bpjs_cek_rujukan_kartu_pcare=false,bpjs_cek_rujukan_kartu_rs=false,akses_depo_obat=false,
             bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false,pengeluaran_stok_apotek=false,grafik_rad_ralanbulan=false,detailjmdokter2=false,
-            pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,metode_racik=false,pembayaran_akun_bayar=false,
+            pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,sensus_harian_ranap=false,metode_racik=false,pembayaran_akun_bayar=false,
             pengguna_obat_resep=false,rekap_pemesanan=false,master_berkas_pegawai=false,berkas_kepegawaian=false,riwayat_jabatan=false,riwayat_pendidikan=false,
             riwayat_naik_gaji=false,kegiatan_ilmiah=false,riwayat_penghargaan=false,riwayat_penelitian=false,penerimaan_non_medis=false,bayar_pesan_non_medis=false,
             hutang_barang_non_medis=false,rekap_pemesanan_non_medis=false,insiden_keselamatan=false,insiden_keselamatan_pasien=false,grafik_ikp_pertahun=false,
@@ -461,6 +461,7 @@ public final class akses {
                         akses.grafik_lab_ralanhari=true;
                         akses.grafik_rad_ralanhari=true;
                         akses.sensus_harian_ralan=true;
+                        akses.sensus_harian_ranap=true;
                         akses.metode_racik=true;
                         akses.pembayaran_akun_bayar=true;
                         akses.pengguna_obat_resep=true;
@@ -1052,6 +1053,7 @@ public final class akses {
                         akses.grafik_lab_ralanhari=rs2.getBoolean("grafik_lab_ralanhari");
                         akses.grafik_rad_ralanhari=rs2.getBoolean("grafik_rad_ralanhari");
                         akses.sensus_harian_ralan=rs2.getBoolean("sensus_harian_ralan");
+                        akses.sensus_harian_ranap=rs2.getBoolean("sensus_harian_ranap");
                         akses.metode_racik=rs2.getBoolean("metode_racik");
                         akses.pembayaran_akun_bayar=rs2.getBoolean("pembayaran_akun_bayar");
                         akses.pengguna_obat_resep=rs2.getBoolean("pengguna_obat_resep");
@@ -1641,6 +1643,7 @@ public final class akses {
                         akses.grafik_lab_ralanhari=false;
                         akses.grafik_rad_ralanhari=false;
                         akses.sensus_harian_ralan=false;
+                        akses.sensus_harian_ranap=false;
                         akses.metode_racik=false;
                         akses.pembayaran_akun_bayar=false;
                         akses.pengguna_obat_resep=false;
@@ -2276,6 +2279,7 @@ public final class akses {
     public static boolean getgrafik_lab_ralanhari(){return akses.grafik_lab_ralanhari;}
     public static boolean getgrafik_rad_ralanhari(){return akses.grafik_rad_ralanhari;}
     public static boolean getsensus_harian_ralan(){return akses.sensus_harian_ralan;}
+    public static boolean getsensus_harian_ranap(){return akses.sensus_harian_ranap;}
     public static boolean getmetode_racik(){return akses.metode_racik;}
     public static boolean getpembayaran_akun_bayar(){return akses.pembayaran_akun_bayar;}
     public static boolean getpengguna_obat_resep(){return akses.pengguna_obat_resep;}
