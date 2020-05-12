@@ -19,6 +19,8 @@ import fungsi.validasi;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
@@ -29,12 +31,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -345,6 +349,8 @@ public class DlgSpri extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {
             }
         });
+        
+        jam();
 //        
 //        Valid.setPlaceHolder(TPasien, "Nama Pasien");
 //        Valid.setPlaceHolder(TNoRM, "No. RM");
@@ -412,6 +418,10 @@ public class DlgSpri extends javax.swing.JDialog {
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
+        jLabel15 = new widget.Label();
+        DTPCari1 = new widget.Tanggal();
+        jLabel18 = new widget.Label();
+        DTPCari2 = new widget.Tanggal();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -439,6 +449,7 @@ public class DlgSpri extends javax.swing.JDialog {
         BtnSeek3 = new widget.Button();
         cmbUpf = new widget.ComboBox();
         jLabel5 = new widget.Label();
+        ChkJln = new javax.swing.JCheckBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -634,13 +645,38 @@ public class DlgSpri extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        jLabel15.setText("Periode :");
+        jLabel15.setName("jLabel15"); // NOI18N
+        jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelGlass9.add(jLabel15);
+
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari1.setDisplayFormat("dd-MM-yyyy");
+        DTPCari1.setName("DTPCari1"); // NOI18N
+        DTPCari1.setOpaque(false);
+        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass9.add(DTPCari1);
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("s.d.");
+        jLabel18.setName("jLabel18"); // NOI18N
+        jLabel18.setPreferredSize(new java.awt.Dimension(24, 23));
+        panelGlass9.add(jLabel18);
+
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari2.setDisplayFormat("dd-MM-yyyy");
+        DTPCari2.setName("DTPCari2"); // NOI18N
+        DTPCari2.setOpaque(false);
+        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass9.add(DTPCari2);
+
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(500, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -722,7 +758,7 @@ public class DlgSpri extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-04-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -881,7 +917,7 @@ public class DlgSpri extends javax.swing.JDialog {
         panelBiasa1.add(BtnSeek3);
         BtnSeek3.setBounds(920, 70, 28, 23);
 
-        cmbUpf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebidanan", "PD (Kemuning)", "Kesehatan Anak", "Bedah", "Isolasi", "HCU", "ICU", "ICCU", "PICU", "NICU", "Perinatologi" }));
+        cmbUpf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebidanan", "PD", "PD (Kemuning)", "Kesehatan Anak", "Bedah", "Isolasi", "Sakura", "HCU", "ICU", "ICCU", "PICU", "NICU", "Perinatologi" }));
         cmbUpf.setName("cmbUpf"); // NOI18N
         cmbUpf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -895,6 +931,11 @@ public class DlgSpri extends javax.swing.JDialog {
         jLabel5.setName("jLabel5"); // NOI18N
         panelBiasa1.add(jLabel5);
         jLabel5.setBounds(0, 40, 115, 23);
+
+        ChkJln.setSelected(true);
+        ChkJln.setName("ChkJln"); // NOI18N
+        panelBiasa1.add(ChkJln);
+        ChkJln.setBounds(450, 10, 20, 21);
 
         internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
 
@@ -945,7 +986,7 @@ public class DlgSpri extends javax.swing.JDialog {
                         + txtKdPenyakit.getText() + "','"
                         + txtRencanaPerawatan.getText() + "','"
                         + cmbUpf.getSelectedItem() + "','"
-                        + txtKdDokter.getText() + "','" + TPasien.getText() + "','" + txtNmPenyakit.getText() + "'", "spri");
+                        + txtKdDokter.getText() + "','" + TPasien.getText() + "','" + txtNmPenyakit.getText() + "','Belum'", "spri");
             }
 //            else {
 //                Sequel.menyimpan("spri", "'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','"
@@ -988,6 +1029,7 @@ public class DlgSpri extends javax.swing.JDialog {
             Valid.hapusTable(tabMode, TNoRM, "temp_spri", "temp_spri.norm");
         }
         emptTeks();
+        TCari.setText("");
         tampil();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1280,31 +1322,6 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
 
     private void btnGantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGantiActionPerformed
         // TODO add your handling code here:
-//        try {
-//            ps = connect.prepareStatement("update temp_spri set "
-//                    + "tanggal='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "',"
-//                    + "jam='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
-//                    + "norm='" + TNoRM.getText() + "',"
-//                    + "diagnosa='" + txtKdPenyakit.getText() + "',"
-//                    + "rencana_perawatan='" + txtRencanaPerawatan.getText() + "',"
-//                    + "upf='" + cmbUpf.getSelectedItem().toString() + "',"
-//                    + "kd_dokter='" + txtKdDokter.getText() + "',"
-//                    + "nama='" + TPasien.getText() + "',"
-//                    + "keluhan='" + txtNmPenyakit.getText() + "' where id='" + id + "'");
-//            try {
-//                ps.executeUpdate();
-//            } catch (Exception e) {
-//                System.out.println("Notifikasi Ganti Data : " + e);
-//                JOptionPane.showMessageDialog(null, "Maaf, Gagal Mengedit. Mungkin kode sudah digunakan sebelumnya...!!!!");
-//            } finally {
-//                if (ps != null) {
-//                    ps.close();
-//                }
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Notifikasi : " + e);
-//        }
-
         Sequel.mengedit("temp_spri", "id='" + id + "'", "tanggal='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "',"
                 + "jam='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
                 + "norm='" + TNoRM.getText() + "',"
@@ -1350,6 +1367,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.Button BtnSeek1;
     private widget.Button BtnSeek3;
     private widget.Button BtnSimpan;
+    private javax.swing.JCheckBox ChkJln;
+    private widget.Tanggal DTPCari1;
+    private widget.Tanggal DTPCari2;
     private widget.Tanggal DTPTgl;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnAngkutJenazah;
@@ -1365,8 +1385,10 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.ComboBox cmbUpf;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
+    private widget.Label jLabel18;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -1390,6 +1412,62 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
 //"Tanggal","Jam","No.R.Medik","Nama Pasien","J.K.","Tmp.Lahir",
 //                      "Tgl.Lahir","G.D.","Stts.Nikah","Agama","Rencana Perawatan","Ruangan",
 //                      "Dokter","Diagnosa"
+    private void jam() {
+        ActionListener taskPerformer = new ActionListener() {
+            private int nilai_jam;
+            private int nilai_menit;
+            private int nilai_detik;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nol_jam = "";
+                String nol_menit = "";
+                String nol_detik = "";
+                // Membuat Date
+                //Date dt = new Date();
+                Date now = Calendar.getInstance().getTime();
+
+                // Mengambil nilaj JAM, MENIT, dan DETIK Sekarang
+                if (ChkJln.isSelected() == true) {
+                    nilai_jam = now.getHours();
+                    nilai_menit = now.getMinutes();
+                    nilai_detik = now.getSeconds();
+                } else if (ChkJln.isSelected() == false) {
+                    nilai_jam = cmbJam.getSelectedIndex();
+                    nilai_menit = cmbMnt.getSelectedIndex();
+                    nilai_detik = cmbDtk.getSelectedIndex();
+                }
+
+                // Jika nilai JAM lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_jam <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_jam = "0";
+                }
+                // Jika nilai MENIT lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_menit <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_menit = "0";
+                }
+                // Jika nilai DETIK lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_detik <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_detik = "0";
+                }
+                // Membuat String JAM, MENIT, DETIK
+                String jam = nol_jam + Integer.toString(nilai_jam);
+                String menit = nol_menit + Integer.toString(nilai_menit);
+                String detik = nol_detik + Integer.toString(nilai_detik);
+                // Menampilkan pada Layar
+                //tampil_jam.setText("  " + jam + " : " + menit + " : " + detik + "  ");
+                cmbJam.setSelectedItem(jam);
+                cmbMnt.setSelectedItem(menit);
+                cmbDtk.setSelectedItem(detik);
+            }
+        };
+        // Timer
+        new Timer(1000, taskPerformer).start();
+    }
+    
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try {
@@ -1403,7 +1481,8 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                         + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
                         + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
                         + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit"
-                        + " order by temp_spri.tanggal desc limit 10");
+                        + " where temp_spri.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem()+"") + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem()+"") + "' "
+                        + " order by temp_spri.tanggal desc limit 60");
             } else {
                 if (!TNoRM.getText().equals("")) {
                     ps = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
@@ -1439,7 +1518,6 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                             //                    + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
                             //                    + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
                             //                    + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " temp_spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
                             + " dokter.kd_dokter like '%" + txtKdDokter.getText().trim() + "%' "
                             + " order by temp_spri.tanggal ");
                 } else if (!txtKdPenyakit.getText().equals("")) {

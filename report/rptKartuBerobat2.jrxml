@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="268" pageHeight="210" orientation="Landscape" columnWidth="258" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5">
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="268" pageHeight="300" orientation="Landscape" columnWidth="258" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="1" uuid="29b742ec-6991-461b-a74c-489df17523cd">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<queryString>
 		<![CDATA[select * from pasien order by no_rkm_medis]]>
 	</queryString>
@@ -61,24 +71,20 @@
 		<band/>
 	</background>
 	<detail>
-		<band height="190">
+		<band height="294">
 			<textField>
-				<reportElement x="34" y="116" width="196" height="27" forecolor="#002800"/>
-				<textElement textAlignment="Right" lineSpacing="Single">
-					<font fontName="Tahoma" size="10" isBold="true"/>
+				<reportElement x="127" y="284" width="81" height="9" forecolor="#050505" uuid="fe8a194b-3e52-4f1c-92b0-01011d7b6f71"/>
+				<textElement textAlignment="Right">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_pasien}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="34" y="143" width="196" height="17" forecolor="#002800"/>
-				<textElement textAlignment="Right" lineSpacing="Single">
-					<font fontName="Tahoma" size="10" isBold="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="118" y="160" width="112" height="30"/>
-				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barHeight="65">
+				<reportElement x="145" y="266" width="112" height="19" uuid="a84abd0d-1b2b-427a-b740-c845ba3b741f">
+					<property name="com.jaspersoft.studio.unit.barHeight" value="px"/>
+				</reportElement>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barHeight="45">
 					<jr:codeExpression><![CDATA[$F{no_rkm_medis}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>

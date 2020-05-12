@@ -4290,7 +4290,6 @@ public final class DlgReg extends javax.swing.JDialog {
 
         DlgCatatan.getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
 
-        txtIdSpri.setText("jTextField1");
         txtIdSpri.setName("txtIdSpri"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -4462,7 +4461,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-04-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4475,7 +4474,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-04-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4626,7 +4625,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-04-2020" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -8996,7 +8995,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     //                    + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
                     //                    + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
                     //                    + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
-                    + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' "
+                    + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' and temp_spri.tanggal='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'"
                     + " order by temp_spri.tanggal ", param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -9594,14 +9593,14 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private void tampil3(){
         Valid.tabelKosong(tabMode3);  
         try {
-         ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
+         ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
                         + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
                         + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
                         + "dokter.nm_dokter,penyakit.kd_penyakit,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
                         + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
                         + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
                         + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit"
-                        + " order by temp_spri.tanggal desc limit 10");
+                        + " where temp_spri.status='Belum' order by temp_spri.tanggal desc ");
          try {
                 rs3 = ps2.executeQuery();
                 while (rs3.next()) {
@@ -9648,6 +9647,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         TNoRM.requestFocus();
         kdpnj.setText("");
         nmpnj.setText("");
+        txtIdSpri.setText("");
     }
 
     private void getData() {
@@ -10142,12 +10142,16 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(ChkTracker.isSelected()==true){
                 ctk();
             }
-            Sequel.mengedit("temp_spri", 
+            if(!txtIdSpri.getText().equals("")){
+                    Sequel.mengedit("temp_spri", 
                     "id='"+txtIdSpri.getText()+"'", 
-                    "norm='"+TNoRM.getText()+"'");
+                    "norm='"+TNoRM.getText()+"', nama='"+TPasien.getText()+"', status='Sudah', tanggal='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'");
+            }
             emptTeks(); 
             if(TabRawat.getSelectedIndex()==0){
                 tampil();
+            } else if(TabRawat.getSelectedIndex()==2){
+                tampil3();
             }                
         }  
     }

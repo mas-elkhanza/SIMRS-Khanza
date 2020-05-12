@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1100" pageHeight="595" orientation="Landscape" columnWidth="1060" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6dda2138-b9d6-40dc-8d72-4356eee50cf0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1150" pageHeight="595" orientation="Landscape" columnWidth="1110" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6dda2138-b9d6-40dc-8d72-4356eee50cf0">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -119,7 +128,7 @@ ORDER BY
 	<title>
 		<band height="75" splitType="Stretch">
 			<textField>
-				<reportElement x="2" y="35" width="1058" height="14" uuid="cbb4cfa3-5633-45cf-a40f-ce14e0818429"/>
+				<reportElement x="2" y="35" width="1088" height="14" uuid="cbb4cfa3-5633-45cf-a40f-ce14e0818429"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -127,7 +136,7 @@ ORDER BY
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="25" width="1058" height="14" uuid="ec26df7b-1cb0-4391-b315-08b0764b2e68"/>
+				<reportElement x="2" y="25" width="1088" height="14" uuid="ec26df7b-1cb0-4391-b315-08b0764b2e68"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -135,7 +144,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="14" width="1058" height="14" uuid="aea21ba3-cced-49b2-8eb4-0f3835b5bc50"/>
+				<reportElement x="2" y="14" width="1088" height="14" uuid="aea21ba3-cced-49b2-8eb4-0f3835b5bc50"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -143,7 +152,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="0" width="1058" height="17" uuid="124210d4-e861-4170-b14f-707758f946ad"/>
+				<reportElement x="2" y="0" width="1088" height="17" uuid="124210d4-e861-4170-b14f-707758f946ad"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -163,7 +172,7 @@ ORDER BY
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<line>
-				<reportElement x="0" y="47" width="1060" height="1" uuid="1de03b77-ea3f-432e-943d-6901c5cb568c"/>
+				<reportElement x="0" y="47" width="1090" height="1" uuid="1de03b77-ea3f-432e-943d-6901c5cb568c"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Double"/>
 				</graphicElement>
@@ -295,6 +304,16 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[Suku Bangsa]]></text>
 			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1021" y="0" width="69" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="74e49677-9f42-469e-a296-1bd561f47022">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -413,13 +432,21 @@ ORDER BY
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_suku_bangsa}]]></textFieldExpression>
 			</textField>
+			<textField pattern="">
+				<reportElement x="1020" y="0" width="70" height="10" uuid="783293e1-3406-4eb0-b29f-1b32af23cdbe"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stts_pulang}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="27" splitType="Stretch">
+		<band height="28" splitType="Stretch">
 			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" x="936" y="6" width="36" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="70140aaa-3230-4694-bb55-e07ae2ce78fb"/>
 				<box>
@@ -463,7 +490,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="26" width="1060" height="1" uuid="e9e5ac4a-7663-47dd-8c4a-c0b08e2a3f61"/>
+				<reportElement x="0" y="27" width="1090" height="1" uuid="e9e5ac4a-7663-47dd-8c4a-c0b08e2a3f61"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

@@ -89,7 +89,7 @@
 	<detail>
 		<band height="87" splitType="Stretch">
 			<textField>
-				<reportElement x="6" y="64" width="85" height="11" uuid="b83f33b2-1e7c-4a34-885b-c2fcb04a415c"/>
+				<reportElement x="4" y="40" width="66" height="11" uuid="b83f33b2-1e7c-4a34-885b-c2fcb04a415c"/>
 				<textElement>
 					<font fontName="Tahoma" size="6"/>
 					<paragraph lineSpacing="Single"/>
@@ -97,7 +97,7 @@
 				<textFieldExpression><![CDATA[$F{nama_ruang}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="75" width="54" height="11" uuid="7be3bef7-83dc-4fc9-86ef-e628ea69a373"/>
+				<reportElement x="81" y="41" width="54" height="11" uuid="7be3bef7-83dc-4fc9-86ef-e628ea69a373"/>
 				<textElement>
 					<font fontName="Tahoma" size="6"/>
 					<paragraph lineSpacing="Single"/>
@@ -105,25 +105,21 @@
 				<textFieldExpression><![CDATA[$F{nama_jenis}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="1" y="30" width="128" height="23" uuid="4874a351-72d0-4a18-9ced-e57e6554b3f4"/>
+				<reportElement x="1" y="2" width="128" height="23" uuid="4874a351-72d0-4a18-9ced-e57e6554b3f4"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false" barWidth="1" barHeight="0">
 					<jr:codeExpression><![CDATA[$F{no_inventaris}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<line>
-				<reportElement x="1" y="0" width="129" height="1" forecolor="#006666" uuid="2197e2b8-ed34-4890-83d2-1657b0df57ee"/>
-				<graphicElement>
-					<pen lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="1" y="27" width="129" height="1" forecolor="#006666" uuid="2927c6bd-f536-481b-83b0-0031b9e13615"/>
+				<reportElement x="1" y="0" width="140" height="1" forecolor="#006666" uuid="2197e2b8-ed34-4890-83d2-1657b0df57ee">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="6" y="53" width="115" height="11" uuid="52a2e7ee-6c47-4999-955e-9676fc352569"/>
+				<reportElement x="6" y="28" width="115" height="11" uuid="52a2e7ee-6c47-4999-955e-9676fc352569"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="6"/>
 					<paragraph lineSpacing="Single"/>
@@ -131,49 +127,31 @@
 				<textFieldExpression><![CDATA[$F{nama_barang}]]></textFieldExpression>
 			</textField>
 			<line direction="BottomUp">
-				<reportElement x="0" y="0" width="1" height="87" forecolor="#006666" uuid="7fb69a1f-a596-46af-9f80-ef9178b15092"/>
+				<reportElement x="0" y="0" width="1" height="54" forecolor="#006666" uuid="7fb69a1f-a596-46af-9f80-ef9178b15092">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="1" y="86" width="129" height="1" forecolor="#006666" uuid="96765408-4091-4961-87f1-03f65f3c2f5d"/>
+				<reportElement x="1" y="53" width="140" height="1" forecolor="#006666" uuid="96765408-4091-4961-87f1-03f65f3c2f5d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line direction="BottomUp">
-				<reportElement x="130" y="0" width="1" height="87" forecolor="#006666" uuid="749464a6-5199-44b0-baf7-334f0088f420"/>
+				<reportElement x="141" y="0" width="1" height="54" forecolor="#006666" uuid="749464a6-5199-44b0-baf7-334f0088f420">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<graphicElement>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="1" y="18" width="129" height="8" uuid="ae20ffbd-6e5c-4b02-a9c9-a6ce9158f50a"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="6"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="1" y="10" width="129" height="8" uuid="1b958011-4588-4f29-ad0e-e310d76e58c2"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="6"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="1" y="2" width="130" height="8" uuid="3d25b65f-e13a-40ee-8eb5-54a76f88c242"/>
-				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="6"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="70" y="32" width="51" height="21" uuid="0cb0c1b2-fc34-43f8-83f2-a9ab002d93bc"/>
+				<reportElement x="78" y="3" width="51" height="21" uuid="0cb0c1b2-fc34-43f8-83f2-a9ab002d93bc"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>

@@ -342,7 +342,6 @@ public class DlgDokter extends javax.swing.JDialog {
         });
         Popup.add(MnRestore);
 
-        txtTtd.setText("jTextField1");
         txtTtd.setName("txtTtd"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -354,7 +353,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -714,7 +713,7 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel13.setBounds(2, 102, 105, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2020" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2020" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1277,9 +1276,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void MnTtdDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTtdDokterActionPerformed
         // TODO add your handling code here:
         DlgTtdDokter restore = new DlgTtdDokter(null, true);
-        restore.setSize(600, internalFrame1.getHeight() - 20);
+        restore.setSize(800, internalFrame1.getHeight() - 20);
         restore.setLocationRelativeTo(internalFrame1);
-        restore.setDokter(TKd.getText());
+        restore.setDokter(TKd.getText(),txtTtd.getText());
         restore.setVisible(true);
     }//GEN-LAST:event_MnTtdDokterActionPerformed
 
@@ -1514,8 +1513,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             try {
                 if (ttd != null) {
                     bufImg = ImageIO.read(ttd);
+                    txtTtd.setText(bufImg.toString());
                 } else {
                     bufImg = new BufferedImage(2, 2, 2);
+                    txtTtd.setText("");
                 }
                 Image image = bufImg;
                 Image newimg = image.getScaledInstance(100, 120, java.awt.Image.SCALE_SMOOTH);
