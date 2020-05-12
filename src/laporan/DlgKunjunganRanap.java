@@ -914,7 +914,8 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,9).toString()+"','"+
                                     tabMode.getValueAt(r,10).toString()+"','"+
                                     tabMode.getValueAt(r,11).toString()+"','"+
-                                    tabMode.getValueAt(r,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    tabMode.getValueAt(r,12).toString()+"','"+
+                                    tabMode.getValueAt(r,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
                  
