@@ -16670,6 +16670,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnRekapPresensi2);
             jmlmenu++;
             jmlmenu++;
+            Panelmenu.add(btnSensusRanap);  
+            jmlmenu++;
 
             if((akses.getpegawai_admin()==true)||(akses.getpegawai_user()==true)){                
                 Panelmenu.add(btnPenggajian); 
@@ -19605,6 +19607,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         Panelmenu.add(btnRekapPresensi);
         Panelmenu.add(btnRekapPresensi2);
         jmlmenu++;
+        jmlmenu++;
+        Panelmenu.add(btnSensusRanap);  
         jmlmenu++;
 
         if((akses.getpegawai_admin()==true)||(akses.getpegawai_user()==true)){                
@@ -22595,6 +22599,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(btnRekapPresensi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
             jmlmenu++;
             Panelmenu.add(btnRekapPresensi);
+        }
+        
+        if(btnSensusRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+            jmlmenu++;
+            Panelmenu.add(btnSensusRanap);
         }
                 
         if(btnRekapPresensi2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
