@@ -50,16 +50,20 @@ public class SensusHarianRanapDao implements SensusHarianRanapIntf<KamarInap> {
                                     + "GROUP BY kamar.kd_bangsal, kamar_inap.tgl_masuk ");
             rs = ps.executeQuery();
             while (rs.next()) {
-                KamarInap kamarInap = new KamarInap();
-                kamarInap.setNm_kamar(rs.getString("nm_bangsal"));
-                kamarInap.setTgl_masuk(rs.getDate("tgl_masuk"));
-                kamarInap.setIsi(rs.getInt("isi"));
-                kis.add(kamarInap);
+                setNilaiList(kis);
             }
         } catch (SQLException ex) {
             Logger.getLogger(SensusHarianRanapDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return kis;
+    }
+
+    private void setNilaiList(List<KamarInap> kis) throws SQLException {
+        KamarInap kamarInap = new KamarInap();
+        kamarInap.setNm_kamar(rs.getString("nm_bangsal"));
+        kamarInap.setTgl_masuk(rs.getDate("tgl_masuk"));
+        kamarInap.setIsi(rs.getInt("isi"));
+        kis.add(kamarInap);
     }
 
     @Override
@@ -78,11 +82,7 @@ public class SensusHarianRanapDao implements SensusHarianRanapIntf<KamarInap> {
 
             rs = ps.executeQuery();
             while (rs.next()) {
-                KamarInap kamarInap = new KamarInap();
-                kamarInap.setNm_kamar(rs.getString("nm_bangsal"));
-                kamarInap.setTgl_masuk(rs.getDate("tgl_masuk"));
-                kamarInap.setIsi(rs.getInt("isi"));
-                kis.add(kamarInap);
+                setNilaiList(kis);
             }
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
