@@ -29,7 +29,6 @@ import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
@@ -40,9 +39,8 @@ import org.springframework.http.HttpMethod;
  *
  * @author dosen
  */
-public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
+public final class SisruteCekReferensiPelayanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
@@ -58,19 +56,18 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
-    public SisruteCekReferensiFaskes(java.awt.Frame parent, boolean modal) {
+    public SisruteCekReferensiPelayanan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
         this.setLocation(10,2);
         setSize(628,674);
 
-        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Faskes","Nama Faskes"}){
+        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Pelayanan","Nama Pelayanan"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
 
-        //tbKamar.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamar.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -85,33 +82,32 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-        diagnosa.setDocument(new batasInput((byte)100).getKata(diagnosa));
+        Pelayanan.setDocument(new batasInput((byte)100).getKata(Pelayanan));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
-            diagnosa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            Pelayanan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    if(diagnosa.getText().length()>2){
-                        tampil(diagnosa.getText());
+                    if(Pelayanan.getText().length()>2){
+                        tampil(Pelayanan.getText());
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    if(diagnosa.getText().length()>2){
-                        tampil(diagnosa.getText());
+                    if(Pelayanan.getText().length()>2){
+                        tampil(Pelayanan.getText());
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    if(diagnosa.getText().length()>2){
-                        tampil(diagnosa.getText());
+                    if(Pelayanan.getText().length()>2){
+                        tampil(Pelayanan.getText());
                     }
                 }
             });
         }   
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPISISRUTE");
+            link=koneksiDB.URLAPISISRUTE();
             idrs=koneksiDB.IDSISRUTE();
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -134,7 +130,7 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
         tbKamar = new widget.Table();
         panelGlass6 = new widget.panelisi();
         jLabel16 = new widget.Label();
-        diagnosa = new widget.TextBox();
+        Pelayanan = new widget.TextBox();
         BtnCari = new widget.Button();
         jLabel17 = new widget.Label();
         BtnPrint = new widget.Button();
@@ -146,7 +142,7 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Faskes Sisrute ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Pelayanan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -163,19 +159,19 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel16.setText("Kode/Nama Faskes :");
+        jLabel16.setText("Kode/Nama Pelayanan :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(105, 23));
+        jLabel16.setPreferredSize(new java.awt.Dimension(125, 23));
         panelGlass6.add(jLabel16);
 
-        diagnosa.setName("diagnosa"); // NOI18N
-        diagnosa.setPreferredSize(new java.awt.Dimension(250, 23));
-        diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
+        Pelayanan.setName("Pelayanan"); // NOI18N
+        Pelayanan.setPreferredSize(new java.awt.Dimension(230, 23));
+        Pelayanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                diagnosaKeyPressed(evt);
+                PelayananKeyPressed(evt);
             }
         });
-        panelGlass6.add(diagnosa);
+        panelGlass6.add(Pelayanan);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('6');
@@ -271,27 +267,27 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariSisruteReferensiFaskes.jasper","report","[ Pencarian Referensi Faskes ]",param);
+            Valid.MyReport("rptCariSisruteReferensiPelayanan.jasper","report","[ Pencarian Referensi Pelayanan ]",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
 
-    private void diagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_diagnosaKeyPressed
+    private void PelayananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PelayananKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil(diagnosa.getText());
+            tampil(Pelayanan.getText());
             BtnPrint.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            tampil(diagnosa.getText());
+            tampil(Pelayanan.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnCariActionPerformed(null);
         }
-    }//GEN-LAST:event_diagnosaKeyPressed
+    }//GEN-LAST:event_PelayananKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(diagnosa.getText());
+        tampil(Pelayanan.getText());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -299,7 +295,7 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnCariActionPerformed(null);
         }else{
-            Valid.pindah(evt,diagnosa,BtnPrint);
+            Valid.pindah(evt,Pelayanan,BtnPrint);
         }
     }//GEN-LAST:event_BtnCariKeyPressed
 
@@ -308,7 +304,7 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            SisruteCekReferensiFaskes dialog = new SisruteCekReferensiFaskes(new javax.swing.JFrame(), true);
+            SisruteCekReferensiPelayanan dialog = new SisruteCekReferensiPelayanan(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -323,8 +319,8 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.TextBox Pelayanan;
     private widget.ScrollPane Scroll;
-    private widget.TextBox diagnosa;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
@@ -334,20 +330,14 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
 
     public void tampil(String faskes) {
         try {
-            Valid.tabelKosong(tabMode);
-            if(faskes.equals("")){
-                URL = link+"/referensi/faskes";
-            }else{
-                URL = link+"/referensi/faskes?query="+faskes;
-            }    	
-                    
+            URL = link+"/rsonline/referensi/pelayanan?start=0&limit=5000";
             headers = new HttpHeaders();
-	    headers.add("X-cons-id",idrs);
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-	    headers.add("X-signature",api.getHmac()); 
-	    headers.add("Content-type","application/json");             
-	    headers.add("Content-length",null); 
-	    requestEntity = new HttpEntity(headers);
+	   headers.add("X-cons-id",idrs);
+	   headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+	   headers.add("X-signature",api.getHmac()); 
+	   headers.add("Content-type","application/json");             
+	   headers.add("Content-length",null); 
+	   requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("status");
             System.out.println("Result : "+root.path("status").asText());
@@ -357,10 +347,13 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
-                        tabMode.addRow(new Object[]{
-                            i+".",list.path("KODE").asText(),list.path("NAMA").asText()
-                        });                        
-                        i++;
+                        if(list.path("kode").asText().toLowerCase().contains(faskes.toLowerCase())||
+                                list.path("pelayanan").asText().toLowerCase().contains(faskes.toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                i+".",list.path("kode").asText(),list.path("pelayanan").asText()
+                            });                        
+                            i++;
+                        }
                     }
                 }
             }else {

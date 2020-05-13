@@ -993,11 +993,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.tabelKosong(tabMode);
             URL = link+"/rujukan?tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"");
             headers = new HttpHeaders();
-	    headers.add("X-cons-id",idrs);
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-	    headers.add("X-signature",api.getHmac()); 
-	    headers.add("Content-type","application/json");             
-	    headers.add("Content-length",null); 
+	   headers.add("X-cons-id",idrs);
+	   headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+	   headers.add("X-signature",api.getHmac()); 
+	   headers.add("Content-type","application/json");             
+	   headers.add("Content-length",null); 
             requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("status");
