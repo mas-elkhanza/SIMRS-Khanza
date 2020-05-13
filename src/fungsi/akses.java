@@ -461,7 +461,7 @@ public final class akses {
                         akses.grafik_lab_ralanhari=true;
                         akses.grafik_rad_ralanhari=true;
                         akses.sensus_harian_ralan=true;
-                        akses.sensus_harian_ranap=true;
+//                        akses.sensus_harian_ranap=true;
                         akses.metode_racik=true;
                         akses.pembayaran_akun_bayar=true;
                         akses.pengguna_obat_resep=true;
@@ -1053,7 +1053,7 @@ public final class akses {
                         akses.grafik_lab_ralanhari=rs2.getBoolean("grafik_lab_ralanhari");
                         akses.grafik_rad_ralanhari=rs2.getBoolean("grafik_rad_ralanhari");
                         akses.sensus_harian_ralan=rs2.getBoolean("sensus_harian_ralan");
-                        akses.sensus_harian_ranap=rs2.getBoolean("sensus_harian_ranap");
+//                        akses.sensus_harian_ranap=rs2.getBoolean("sensus_harian_ranap");
                         akses.metode_racik=rs2.getBoolean("metode_racik");
                         akses.pembayaran_akun_bayar=rs2.getBoolean("pembayaran_akun_bayar");
                         akses.pengguna_obat_resep=rs2.getBoolean("pengguna_obat_resep");
@@ -1643,7 +1643,7 @@ public final class akses {
                         akses.grafik_lab_ralanhari=false;
                         akses.grafik_rad_ralanhari=false;
                         akses.sensus_harian_ralan=false;
-                        akses.sensus_harian_ranap=false;
+//                        akses.sensus_harian_ranap=false;
                         akses.metode_racik=false;
                         akses.pembayaran_akun_bayar=false;
                         akses.pengguna_obat_resep=false;
@@ -2279,7 +2279,7 @@ public final class akses {
     public static boolean getgrafik_lab_ralanhari(){return akses.grafik_lab_ralanhari;}
     public static boolean getgrafik_rad_ralanhari(){return akses.grafik_rad_ralanhari;}
     public static boolean getsensus_harian_ralan(){return akses.sensus_harian_ralan;}
-    public static boolean getsensus_harian_ranap(){return akses.sensus_harian_ranap;}
+//    public static boolean getsensus_harian_ranap(){return akses.sensus_harian_ranap;}
     public static boolean getmetode_racik(){return akses.metode_racik;}
     public static boolean getpembayaran_akun_bayar(){return akses.pembayaran_akun_bayar;}
     public static boolean getpengguna_obat_resep(){return akses.pengguna_obat_resep;}

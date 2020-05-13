@@ -17637,11 +17637,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSensusHarianRalan);  
                 jmlmenu++;
             }
-            
-            if(akses.getsensus_harian_ranap()==true){  
-                Panelmenu.add(btnSensusRanap);  
-                jmlmenu++;
-            }
+           
+//            if(akses.getsensus_harian_ranap()==true){  
+//                Panelmenu.add(btnSensusRanap);  
+//                jmlmenu++;
+//            }
             
             if(akses.getrl32()==true){  
                 Panelmenu.add(btnRl32);   
@@ -20561,10 +20561,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnSensusHarianRalan);  
             jmlmenu++;
         }
-        if(akses.getsensus_harian_ranap()==true){  
-            Panelmenu.add(btnSensusRanap);  
-            jmlmenu++;
-        }
+//        if(akses.getsensus_harian_ranap()==true){  
+//            Panelmenu.add(btnSensusRanap);  
+//            jmlmenu++;
+//        }
 
         if(akses.getrl32()==true){  
             Panelmenu.add(btnRl32);   
@@ -23939,12 +23939,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
 
-        if(akses.getsensus_harian_ranap()==true){  
-            if(btnSensusRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnSensusRanap);  
-                jmlmenu++;
-            }                
-        }
+//        if(akses.getsensus_harian_ranap()==true){  
+//            if(btnSensusRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+//                Panelmenu.add(btnSensusRanap);  
+//                jmlmenu++;
+//            }                
+//        }
         
         if(akses.getrl32()==true){  
             if(btnRl32.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
