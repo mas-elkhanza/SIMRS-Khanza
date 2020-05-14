@@ -5,20 +5,25 @@
  */
 package model;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Spri {
     private int id;
-    private Date tanggal;
+    private String tanggal;
     private String jam;
     private String norm;
     private String diagnosa;
     private String rencana_perawatan;
     private String upf;
     private String nama;
-    private String kd_dokter;
     private String keluhan;
     private String status;
+    
+    private Pasien pasien;
+    private Dokter dokter;
+    private List<Pasien>pasiens = new ArrayList<>();
+    private List<Dokter>dokters = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -28,11 +33,11 @@ public class Spri {
         this.id = id;
     }
 
-    public Date getTanggal() {
+    public String getTanggal() {
         return tanggal;
     }
 
-    public void setTanggal(Date tanggal) {
+    public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
     }
 
@@ -99,14 +104,37 @@ public class Spri {
     public void setStatus(String status) {
         this.status = status;
     }
-   
-    public String getKd_dokter() {
-        return kd_dokter;
+
+    public Dokter getDokter() {
+        return dokter;
     }
 
-    public void setKd_dokter(String kd_dokter) {
-        this.kd_dokter = kd_dokter;
+    public void setDokter(Dokter dokter) {
+        this.dokter = dokter;
     }
-    
+
+    public Pasien getPasien() {
+        return pasien;
+    }
+
+    public void setPasien(Pasien pasien) {
+        this.pasien = pasien;
+    }
+
+    public List<Pasien> getPasiens() {
+        return pasiens;
+    }
+
+    public void setPasiens(List<Pasien> pasiens) {
+        this.pasiens = pasiens;
+    }
+
+    public List<Dokter> getDokters() {
+        return dokters;
+    }
+
+    public void setDokters(List<Dokter> dokters) {
+        this.dokters = dokters;
+    }
     
 }
