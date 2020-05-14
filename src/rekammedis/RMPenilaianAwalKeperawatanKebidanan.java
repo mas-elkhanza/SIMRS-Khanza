@@ -254,7 +254,18 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         BMI.setDocument(new batasInput((byte)5).getKata(BMI));
         TFU.setDocument(new batasInput((byte)10).getKata(TFU));
         TBJ.setDocument(new batasInput((byte)10).getKata(TBJ));
-        
+        Letak.setDocument(new batasInput((byte)10).getKata(Letak));
+        Presentasi.setDocument(new batasInput((byte)10).getKata(Presentasi));
+        Penurunan.setDocument(new batasInput((byte)10).getKata(Penurunan));
+        Kontraksi.setDocument(new batasInput((byte)10).getKata(Kontraksi));
+        Kekuatan.setDocument(new batasInput((byte)10).getKata(Kekuatan));
+        Lamanya.setDocument(new batasInput((byte)10).getKata(Lamanya));
+        BJJ.setDocument(new batasInput((byte)10).getKata(BJJ));
+        Portio.setDocument(new batasInput((byte)10).getKata(Portio));
+        PembukaanServiks.setDocument(new batasInput((byte)10).getKata(PembukaanServiks));
+        Ketuban.setDocument(new batasInput((byte)10).getKata(Ketuban));
+        Hodge.setDocument(new batasInput((byte)10).getKata(Hodge));
+        KeteranganInspekulo.setDocument(new batasInput((byte)10).getKata(KeteranganInspekulo));
         
         TempatPersalinan.setDocument(new batasInput((byte)30).getKata(TempatPersalinan));
         UsiaHamil.setDocument(new batasInput((byte)20).getKata(UsiaHamil));
