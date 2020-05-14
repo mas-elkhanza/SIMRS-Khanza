@@ -84,8 +84,8 @@ public class SensusHarianRanapDao implements SensusHarianRanapIntf<KamarInap> {
             while (rs.next()) {
                 setNilaiList(kis);
             }
-        } catch (SQLException e) {
-            System.out.println("Notifikasi : " + e);
+        } catch (SQLException ex) {
+            Logger.getLogger(SensusHarianRanapDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return kis;
     }
