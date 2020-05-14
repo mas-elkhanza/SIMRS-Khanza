@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="162" pageHeight="60" columnWidth="158" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="c37ee618-fbb0-4eea-9c8f-bfd73892db43">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
@@ -59,14 +59,20 @@
 	</background>
 	<detail>
 		<band height="56" splitType="Stretch">
+			<componentElement>
+				<reportElement x="6" y="2" width="128" height="23" uuid="274f7b5e-5250-4905-be0e-44fe5fc72f6d"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false" barWidth="1" barHeight="0">
+					<jr:codeExpression><![CDATA[$F{no_inventaris}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
 			<line>
-				<reportElement x="4" y="0" width="150" height="1" forecolor="#000000" uuid="634f24f2-3d43-43ec-a858-b77a1bf2c0a7"/>
+				<reportElement x="4" y="0" width="140" height="1" forecolor="#000000" uuid="634f24f2-3d43-43ec-a858-b77a1bf2c0a7"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="4" y="55" width="150" height="1" forecolor="#000000" uuid="baf50f1d-712f-4fbf-b963-1e1da0bf6612"/>
+				<reportElement x="4" y="55" width="140" height="1" forecolor="#000000" uuid="baf50f1d-712f-4fbf-b963-1e1da0bf6612"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
@@ -78,7 +84,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="154" y="1" width="1" height="54" forecolor="#000000" uuid="262aeca2-4205-478d-84f0-74ccc69b32ff">
+				<reportElement x="144" y="1" width="1" height="54" forecolor="#000000" uuid="262aeca2-4205-478d-84f0-74ccc69b32ff">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -93,7 +99,7 @@
 				<textFieldExpression><![CDATA[$F{thn_produksi}.substring($F{thn_produksi}.length()-10,4)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="88" y="41" width="63" height="11" uuid="2ecaf1e5-6dce-45bc-8755-70a8618310f1"/>
+				<reportElement x="81" y="41" width="63" height="11" uuid="2ecaf1e5-6dce-45bc-8755-70a8618310f1"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -101,7 +107,7 @@
 				<textFieldExpression><![CDATA[$F{nama_jenis}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="40" width="64" height="11" uuid="87e9a1cd-c5ec-43c6-aefd-486747156ca8"/>
+				<reportElement x="6" y="40" width="66" height="11" uuid="87e9a1cd-c5ec-43c6-aefd-486747156ca8"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -116,12 +122,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_barang}]]></textFieldExpression>
 			</textField>
-			<componentElement>
-				<reportElement x="6" y="2" width="128" height="23" uuid="274f7b5e-5250-4905-be0e-44fe5fc72f6d"/>
-				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false" barWidth="1" barHeight="0">
-					<jr:codeExpression><![CDATA[$F{no_inventaris}]]></jr:codeExpression>
-				</jr:barbecue>
-			</componentElement>
 		</band>
 	</detail>
 </jasperReport>

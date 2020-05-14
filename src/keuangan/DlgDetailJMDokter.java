@@ -28,6 +28,7 @@ import simrskhanza.DlgPenanggungJawab;
 
 public class DlgDetailJMDokter extends javax.swing.JDialog {
 
+    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(DlgDetailJMDokter.class.getName());  
     private final DefaultTableModel tabMode;
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
@@ -1096,7 +1097,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                        a++;
 //                                    }
 //                                } catch (Exception e) {
-//                                    System.out.println("Notifikasi Tindakan Rawat Jalan : " + e);
+//                                    log.error("Notifikasi Tindakan Rawat Jalan : " + e);
 //                                } finally {
 //                                    if (rstindakan != null) {
 //                                        rstindakan.close();
@@ -1107,7 +1108,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                }
 //                            }
 //                        } catch (Exception e) {
-//                            System.out.println("Notifikasi Pasien Ralan : " + e);
+//                            log.error("Notifikasi Pasien Ralan : " + e);
 //                        } finally {
 //                            if (rspasien != null) {
 //                                rspasien.close();
@@ -1165,7 +1166,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan ralan drpr : " + e);
+                                    log.error("Rawat jl DRPR >>>"+e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1176,7 +1177,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi tidakan ralan drpr : " + e);
+                            log.error("Rawat jl DRPR >>>"+e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1215,13 +1216,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "sum(periksa_radiologi.tarif_tindakan_dokter)as tarif_tindakan_dokter,"
                                         + "sum(periksa_radiologi.biaya) as total  "
                                         + "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
-                                        + "periksa_radiologi.tarif_tindakan_dokter>0 and periksa_radiologi.kd_dokter=? and periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat=? "
+                                        + "periksa_radiologi.tarif_tindakan_dokter>0 and periksa_radiologi.kd_dokter=? "
+//                                        + "and periksa_radiologi.tgl_periksa between ? and ? and "
+                                        + "periksa_radiologi.no_rawat=? "
                                         + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
                                 try {
                                     pstindakanradiologi.setString(1, rs.getString("kd_dokter"));
-                                    pstindakanradiologi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
-                                    pstindakanradiologi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
-                                    pstindakanradiologi.setString(4, rspasien.getString("no_rawat"));
+//                                    pstindakanradiologi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                    pstindakanradiologi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanradiologi.setString(2, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakanradiologi.executeQuery();
                                     while (rstindakan.next()) {
                                         ttljml = ttljml + rstindakan.getDouble("jml");
@@ -1238,7 +1241,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan radiologi : " + e);
+                                    log.error("Notifikasi tindakan radiologi : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1249,7 +1252,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi radiologi : " + e);
+                            log.error("Notifikasi radiologi : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1287,13 +1290,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "sum(periksa_radiologi.tarif_perujuk)as tarif_perujuk,"
                                         + "0 as total  "
                                         + "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
-                                        + "periksa_radiologi.tarif_perujuk>0 and periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat=? "
+                                        + "periksa_radiologi.tarif_perujuk>0 and periksa_radiologi.dokter_perujuk=? "
+//                                        + "and periksa_radiologi.tgl_periksa between ? and ? and "
+                                        + "periksa_radiologi.no_rawat=? "
                                         + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
                                 try {
                                     pstindakanradiologi2.setString(1, rs.getString("kd_dokter"));
-                                    pstindakanradiologi2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
-                                    pstindakanradiologi2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
-                                    pstindakanradiologi2.setString(4, rspasien.getString("no_rawat"));
+//                                    pstindakanradiologi2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                    pstindakanradiologi2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanradiologi2.setString(2, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakanradiologi2.executeQuery();
                                     while (rstindakan.next()) {
                                         ttljml = ttljml + rstindakan.getDouble("jml");
@@ -1310,7 +1315,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan radiologi : " + e);
+                                    log.error("Notifikasi tindakan radiologi : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1321,7 +1326,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi pasien radiologi : " + e);
+                            log.error("Notifikasi pasien radiologi : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1342,7 +1347,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 + "and reg_periksa.kd_pj=penjab.kd_pj "
                                 + "and reg_periksa.no_rawat=nota_inap.no_rawat "
                                 + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
-                                + "where periksa_lab.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
+                                + "where periksa_lab.kd_dokter=? and nota_inap.tanggal between ? and ? and "
+                                + "reg_periksa.kd_pj like ? "
                                 + "group by periksa_lab.no_rawat");
                         try {
                             pspasienlab.setString(1, rs.getString("kd_dokter"));
@@ -1361,13 +1367,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "sum(periksa_lab.tarif_tindakan_dokter)as tarif_tindakan_dokter,"
                                         + "sum(periksa_lab.biaya) as total  "
                                         + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
-                                        + "periksa_lab.kd_dokter=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat=? "
+                                        + "periksa_lab.kd_dokter=? and "
+//                                        + "periksa_lab.tgl_periksa between ? and ? and "
+                                        + "periksa_lab.no_rawat=? "
                                         + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
                                 try {
                                     pstindakanlab.setString(1, rs.getString("kd_dokter"));
-                                    pstindakanlab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
-                                    pstindakanlab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
-                                    pstindakanlab.setString(4, rspasien.getString("no_rawat"));
+//                                    pstindakanlab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                    pstindakanlab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanlab.setString(2, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakanlab.executeQuery();
                                     while (rstindakan.next()) {
                                         detailjm = 0;
@@ -1383,13 +1391,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 + "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "
                                                 + "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "
                                                 + "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "
-                                                + "and periksa_lab.kd_dokter=? and detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
+                                                + "and periksa_lab.kd_dokter=? and "
+//                                                + "detail_periksa_lab.tgl_periksa between ? and ? and "
+                                                + "detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
                                         try {
                                             psdetaillab.setString(1, rs.getString("kd_dokter"));
-                                            psdetaillab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
-                                            psdetaillab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
-                                            psdetaillab.setString(4, rstindakan.getString("kd_jenis_prw"));
-                                            psdetaillab.setString(5, rspasien.getString("no_rawat"));
+//                                            psdetaillab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                            psdetaillab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                            psdetaillab.setString(2, rstindakan.getString("kd_jenis_prw"));
+                                            psdetaillab.setString(3, rspasien.getString("no_rawat"));
                                             rsdetaillab = psdetaillab.executeQuery();
                                             while (rsdetaillab.next()) {
                                                 detailjm = rsdetaillab.getDouble("totaldokter");
@@ -1411,7 +1421,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             }
                                             a++;
                                         } catch (Exception e) {
-                                            System.out.println("Notifikasi detail lab : " + e);
+                                            log.error("Notifikasi detail lab : " + e);
                                         } finally {
                                             if (rsdetaillab != null) {
                                                 rsdetaillab.close();
@@ -1422,7 +1432,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         }
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan lab : " + e);
+                                    log.error("Notifikasi tindakan lab : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1433,7 +1443,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi pasien lab : " + e);
+                            log.error("Notifikasi pasien lab : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1471,12 +1481,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "sum(periksa_lab.tarif_perujuk)as tarif_perujuk,"
                                         + "0 as total  "
                                         + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
-                                        + "periksa_lab.dokter_perujuk=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat=? "
+                                        + "periksa_lab.dokter_perujuk=? and "
+//                                        + "periksa_lab.tgl_periksa between ? and ? and "
+                                        + "periksa_lab.no_rawat=? "
                                         + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
                                 try {
                                     pstindakanlab2.setString(1, rs.getString("kd_dokter"));
-                                    pstindakanlab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
-                                    pstindakanlab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+//                                    pstindakanlab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                    pstindakanlab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
                                     pstindakanlab2.setString(4, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakanlab2.executeQuery();
                                     while (rstindakan.next()) {
@@ -1493,13 +1505,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 + "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "
                                                 + "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "
                                                 + "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "
-                                                + "and periksa_lab.dokter_perujuk=? and detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
+                                                + "and periksa_lab.dokter_perujuk=? and "
+//                                                + "detail_periksa_lab.tgl_periksa between ? and ? and "
+                                                + "detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
                                         try {
                                             psdetaillab2.setString(1, rs.getString("kd_dokter"));
-                                            psdetaillab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
-                                            psdetaillab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
-                                            psdetaillab2.setString(4, rstindakan.getString("kd_jenis_prw"));
-                                            psdetaillab2.setString(5, rspasien.getString("no_rawat"));
+//                                            psdetaillab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                            psdetaillab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                            psdetaillab2.setString(2, rstindakan.getString("kd_jenis_prw"));
+                                            psdetaillab2.setString(3, rspasien.getString("no_rawat"));
                                             rsdetaillab = psdetaillab2.executeQuery();
                                             while (rsdetaillab.next()) {
                                                 detailjm = rsdetaillab.getDouble("totaldokter");
@@ -1521,7 +1535,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             }
                                             a++;
                                         } catch (Exception e) {
-                                            System.out.println("Notif detail rujukan : " + e);
+                                            log.error("Notif detail rujukan : " + e);
                                         } finally {
                                             if (rsdetaillab != null) {
                                                 rsdetaillab.close();
@@ -1532,7 +1546,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         }
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan perujuk : " + e);
+                                    log.error("Notifikasi tindakan perujuk : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1543,7 +1557,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi pasien perujuk : " + e);
+                            log.error("Notifikasi pasien perujuk : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1594,13 +1608,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+"
                                         + "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras)) as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
-                                        + "operasi.biayaoperator1>0 and operasi.operator1=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "operasi.biayaoperator1>0 and operasi.operator1=? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
+                                        + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
                                     pstindakanoperator1.setString(1, rs.getString("kd_dokter"));
-                                    pstindakanoperator1.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
-                                    pstindakanoperator1.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
-                                    pstindakanoperator1.setString(4, rspasien.getString("no_rawat"));
+//                                    pstindakanoperator1.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakanoperator1.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakanoperator1.setString(2, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakanoperator1.executeQuery();
                                     while (rstindakan.next()) {
                                         ttljml = ttljml + rstindakan.getDouble("jml");
@@ -1616,7 +1632,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan operasi : " + e);
+                                    log.error("Notif tindakan operasi : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1627,7 +1643,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien operasi : " + e);
+                            log.error("Notif pasien operasi : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1664,13 +1680,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "(count(operasi.kode_paket)*operasi.biayaoperator2)as biayaoperator2,"
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
-                                        + "operasi.biayaoperator2>0 and operasi.operator2=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "operasi.biayaoperator2>0 and operasi.operator2=? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
+                                        + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
                                     pstindakanoperator2.setString(1, rs.getString("kd_dokter"));
-                                    pstindakanoperator2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
-                                    pstindakanoperator2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
-                                    pstindakanoperator2.setString(4, rspasien.getString("no_rawat"));
+//                                    pstindakanoperator2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakanoperator2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakanoperator2.setString(2, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakanoperator2.executeQuery();
                                     while (rstindakan.next()) {
                                         ttljml = ttljml + rstindakan.getDouble("jml");
@@ -1686,7 +1704,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan operator 2 : " + e);
+                                    log.error("Notif tindakan operator 2 : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1697,7 +1715,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien operator 2 : " + e);
+                            log.error("Notif pasien operator 2 : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1734,13 +1752,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "(count(operasi.kode_paket)*operasi.biayaoperator3)as biayaoperator3,"
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
-                                        + "operasi.biayaoperator3>0 and operasi.operator3=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "operasi.biayaoperator3>0 and operasi.operator3=? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
+                                        + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
                                     pstindakanoperator3.setString(1, rs.getString("kd_dokter"));
-                                    pstindakanoperator3.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
-                                    pstindakanoperator3.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
-                                    pstindakanoperator3.setString(4, rspasien.getString("no_rawat"));
+//                                    pstindakanoperator3.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakanoperator3.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakanoperator3.setString(2, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakanoperator3.executeQuery();
                                     while (rstindakan.next()) {
                                         ttljml = ttljml + rstindakan.getDouble("jml");
@@ -1756,7 +1776,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan operator 3");
+                                    log.error("Notif tindakan operator 3");
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1767,7 +1787,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif operator 3 : " + e);
+                            log.error("Notif operator 3 : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1804,13 +1824,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "(count(operasi.kode_paket)*operasi.biayadokter_anak)as biayadokter_anak,"
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
-                                        + "operasi.biayadokter_anak>0 and operasi.dokter_anak=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "operasi.biayadokter_anak>0 and operasi.dokter_anak=? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
+                                        + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
                                     pstindakandokter_anak.setString(1, rs.getString("kd_dokter"));
-                                    pstindakandokter_anak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
-                                    pstindakandokter_anak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
-                                    pstindakandokter_anak.setString(4, rspasien.getString("no_rawat"));
+//                                    pstindakandokter_anak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakandokter_anak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_anak.setString(2, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakandokter_anak.executeQuery();
                                     while (rstindakan.next()) {
                                         ttljml = ttljml + rstindakan.getDouble("jml");
@@ -1826,7 +1848,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter anak : " + e);
+                                    log.error("Notif tindakan dokter anak : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1837,7 +1859,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif dokter anak : " + e);
+                            log.error("Notif dokter anak : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1874,13 +1896,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "(count(operasi.kode_paket)*operasi.biayadokter_anestesi)as biayadokter_anestesi,"
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
-                                        + "operasi.biayadokter_anestesi>0 and operasi.dokter_anestesi=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "operasi.biayadokter_anestesi>0 and operasi.dokter_anestesi=? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
+                                        + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
                                     pstindakandokter_anestesi.setString(1, rs.getString("kd_dokter"));
-                                    pstindakandokter_anestesi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
-                                    pstindakandokter_anestesi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
-                                    pstindakandokter_anestesi.setString(4, rspasien.getString("no_rawat"));
+//                                    pstindakandokter_anestesi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakandokter_anestesi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_anestesi.setString(2, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakandokter_anestesi.executeQuery();
                                     while (rstindakan.next()) {
                                         ttljml = ttljml + rstindakan.getDouble("jml");
@@ -1896,7 +1920,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan anastesi : " + e);
+                                    log.error("Notifikasi tindakan anastesi : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1907,7 +1931,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien anastesi : " + e);
+                            log.error("Notif pasien anastesi : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1944,12 +1968,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "(count(operasi.kode_paket)*operasi.biaya_dokter_pjanak)as biaya_dokter_pjanak,"
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
-                                        + "operasi.biaya_dokter_pjanak>0 and operasi.dokter_pjanak=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "operasi.biaya_dokter_pjanak>0 and operasi.dokter_pjanak=? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
+                                        + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
                                     pstindakandokter_pjanak.setString(1, rs.getString("kd_dokter"));
-                                    pstindakandokter_pjanak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
-                                    pstindakandokter_pjanak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+//                                    pstindakandokter_pjanak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakandokter_pjanak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
                                     pstindakandokter_pjanak.setString(4, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakandokter_pjanak.executeQuery();
                                     while (rstindakan.next()) {
@@ -1966,7 +1992,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter pj umum : " + e);
+                                    log.error("Notif tindakan dokter pj umum : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1977,7 +2003,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien pj anak : " + e);
+                            log.error("Notif pasien pj anak : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -2014,13 +2040,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "(count(operasi.kode_paket)*operasi.biaya_dokter_umum)as biaya_dokter_umum,"
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
-                                        + "operasi.biaya_dokter_umum>0 and operasi.dokter_umum=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "operasi.biaya_dokter_umum>0 and operasi.dokter_umum=? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
+                                        + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
                                     pstindakandokter_umum.setString(1, rs.getString("kd_dokter"));
-                                    pstindakandokter_umum.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
-                                    pstindakandokter_umum.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
-                                    pstindakandokter_umum.setString(4, rspasien.getString("no_rawat"));
+//                                    pstindakandokter_umum.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakandokter_umum.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_umum.setString(2, rspasien.getString("no_rawat"));
                                     rstindakan = pstindakandokter_umum.executeQuery();
                                     while (rstindakan.next()) {
                                         ttljml = ttljml + rstindakan.getDouble("jml");
@@ -2036,7 +2064,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter umum : " + e);
+                                    log.error("Notif tindakan dokter umum : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -2047,7 +2075,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien dokter umum : " + e);
+                            log.error("Notif pasien dokter umum : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -2129,7 +2157,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                                            penjab = rskamar2.getString("png_jawab");
 //                                                        }
 //                                                    } catch (Exception e) {
-//                                                        System.out.println("Notif kamar2 : " + e);
+//                                                        log.error("Notif kamar2 : " + e);
 //                                                    } finally {
 //                                                        if (rskamar2 != null) {
 //                                                            rskamar2.close();
@@ -2140,7 +2168,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                                    }
 //                                                }
 //                                            } catch (Exception e) {
-//                                                System.out.println("Notif pasien anak : " + e);
+//                                                log.error("Notif pasien anak : " + e);
 //                                            } finally {
 //                                                if (rsanak != null) {
 //                                                    rsanak.close();
@@ -2151,7 +2179,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                            }
 //                                        }
 //                                    } catch (Exception e) {
-//                                        System.out.println("Notif kamar : " + e);
+//                                        log.error("Notif kamar : " + e);
 //                                    } finally {
 //                                        if (rskamar != null) {
 //                                            rskamar.close();
@@ -2194,7 +2222,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                            a++;
 //                                        }
 //                                    } catch (Exception e) {
-//                                        System.out.println("Notif tindakan ranap : " + e);
+//                                        log.error("Notif tindakan ranap : " + e);
 //                                    } finally {
 //                                        if (rstindakan != null) {
 //                                            rstindakan.close();
@@ -2205,7 +2233,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                    }
 //                                }
 //                            } catch (Exception e) {
-//                                System.out.println("Notif pasien ranap : " + e);
+//                                log.error("Notif pasien ranap : " + e);
 //                            } finally {
 //                                if (rspasien != null) {
 //                                    rspasien.close();
@@ -2282,7 +2310,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                             penjab = rskamar2.getString("png_jawab");
                                                         }
                                                     } catch (Exception e) {
-                                                        System.out.println("Notif kamar bayi : " + e);
+                                                        log.error("Notif kamar bayi : " + e);
                                                     } finally {
                                                         if (rskamar2 != null) {
                                                             rskamar2.close();
@@ -2293,7 +2321,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     }
                                                 }
                                             } catch (Exception e) {
-                                                System.out.println("Notif Pasien anak : " + e);
+                                                log.error("Notif Pasien anak : " + e);
                                             } finally {
                                                 if (rsanak != null) {
                                                     rsanak.close();
@@ -2304,7 +2332,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             }
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif Kamar : " + e);
+                                        log.error("Notif Kamar : " + e);
                                     } finally {
                                         if (rskamar != null) {
                                             rskamar.close();
@@ -2349,7 +2377,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             a++;
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif tindakan dokter pj umum : " + e);
+                                        log.error("Notif tindakan dokter pj umum : " + e);
                                     } finally {
                                         if (rstindakan != null) {
                                             rstindakan.close();
@@ -2360,7 +2388,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     }
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notif pasien dokter umum : " + e);
+                                log.error("Notif pasien dokter umum : " + e);
                             } finally {
                                 if (rspasien != null) {
                                     rspasien.close();
@@ -2405,7 +2433,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                            pasien = rskamar.getString("nm_pasien");
 //                                        }
 //                                    } catch (Exception e) {
-//                                        System.out.println("Notif kamar : " + e);
+//                                        log.error("Notif kamar : " + e);
 //                                    } finally {
 //                                        if (rskamar != null) {
 //                                            rskamar.close();
@@ -2448,7 +2476,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                            a++;
 //                                        }
 //                                    } catch (Exception e) {
-//                                        System.out.println("Notif tindakan ranap : " + e);
+//                                        log.error("Notif tindakan ranap : " + e);
 //                                    } finally {
 //                                        if (rstindakan != null) {
 //                                            rstindakan.close();
@@ -2498,7 +2526,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                                a++;
 //                                            }
 //                                        } catch (Exception e) {
-//                                            System.out.println("Notif tindakan ranap : " + e);
+//                                            log.error("Notif tindakan ranap : " + e);
 //                                        } finally {
 //                                            if (rstindakan != null) {
 //                                                rstindakan.close();
@@ -2512,7 +2540,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //
 //                                }
 //                            } catch (Exception e) {
-//                                System.out.println("Notif pasien ranap : " + e);
+//                                log.error("Notif pasien ranap : " + e);
 //                            } finally {
 //                                if (rspasien != null) {
 //                                    rspasien.close();
@@ -2561,7 +2589,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             pasien = rskamar.getString("nm_pasien");
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif Kamar : " + e);
+                                        log.error("Notif Kamar : " + e);
                                     } finally {
                                         if (rskamar != null) {
                                             rskamar.close();
@@ -2606,7 +2634,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             a++;
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif tindakan dokter pj umum : " + e);
+                                        log.error("Notif tindakan dokter pj umum : " + e);
                                     } finally {
                                         if (rstindakan != null) {
                                             rstindakan.close();
@@ -2657,7 +2685,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 a++;
                                             }
                                         } catch (Exception e) {
-                                            System.out.println("Notif tindakan dokter pj umum : " + e);
+                                            log.error("Notif tindakan dokter pj umum : " + e);
                                         } finally {
                                             if (rstindakan != null) {
                                                 rstindakan.close();
@@ -2669,7 +2697,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     }
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notif pasien dokter umum : " + e);
+                                log.error("Notif pasien dokter umum : " + e);
                             } finally {
                                 if (rspasien != null) {
                                     rspasien.close();
@@ -2687,7 +2715,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     tabMode.addRow(new Object[]{">>", "Jumlah :", "", "", "", "", null, ttljml, ttlbiaya, ttlbhp, ttljm, ttluangrs});
                 }
             } catch (Exception e) {
-                System.out.println("Notifikasi ps : " + e);
+                log.error("Notifikasi ps : " + e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -2697,7 +2725,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Catatan  " + e);
+            log.error("Catatan  " + e);
         }
 
     }
@@ -2769,7 +2797,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                        a++;
 //                                    }
 //                                } catch (Exception e) {
-//                                    System.out.println("Notifikasi Tindakan Rawat Jalan : " + e);
+//                                    log.error("Notifikasi Tindakan Rawat Jalan : " + e);
 //                                } finally {
 //                                    if (rstindakan != null) {
 //                                        rstindakan.close();
@@ -2780,7 +2808,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                }
 //                            }
 //                        } catch (Exception e) {
-//                            System.out.println("Notifikasi Pasien Ralan : " + e);
+//                            log.error("Notifikasi Pasien Ralan : " + e);
 //                        } finally {
 //                            if (rspasien != null) {
 //                                rspasien.close();
@@ -2837,7 +2865,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan ralan drpr : " + e);
+                                    log.error("Notifikasi tindakan ralan drpr : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -2848,7 +2876,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi tidakan ralan drpr : " + e);
+                            log.error("Notifikasi tidakan ralan drpr : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -2913,7 +2941,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan radiologi : " + e);
+                                    log.error("Notifikasi tindakan radiologi : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -2924,7 +2952,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi radiologi : " + e);
+                            log.error("Notifikasi radiologi : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -2986,7 +3014,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan radiologi : " + e);
+                                    log.error("Notifikasi tindakan radiologi : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -2997,7 +3025,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi pasien radiologi : " + e);
+                            log.error("Notifikasi pasien radiologi : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3088,7 +3116,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             }
                                             a++;
                                         } catch (Exception e) {
-                                            System.out.println("Notifikasi detail lab : " + e);
+                                            log.error("Notifikasi detail lab : " + e);
                                         } finally {
                                             if (rsdetaillab != null) {
                                                 rsdetaillab.close();
@@ -3099,7 +3127,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         }
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan lab : " + e);
+                                    log.error("Notifikasi tindakan lab : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -3110,7 +3138,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi pasien lab : " + e);
+                            log.error("Notifikasi pasien lab : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3201,7 +3229,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             }
                                             a++;
                                         } catch (Exception e) {
-                                            System.out.println("Notif detail rujukan : " + e);
+                                            log.error("Notif detail rujukan : " + e);
                                         } finally {
                                             if (rsdetaillab != null) {
                                                 rsdetaillab.close();
@@ -3212,7 +3240,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         }
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan perujuk : " + e);
+                                    log.error("Notifikasi tindakan perujuk : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -3223,7 +3251,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi pasien perujuk : " + e);
+                            log.error("Notifikasi pasien perujuk : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3297,7 +3325,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan operasi : " + e);
+                                    log.error("Notif tindakan operasi : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -3308,7 +3336,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien operasi : " + e);
+                            log.error("Notif pasien operasi : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3368,7 +3396,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan operator 2 : " + e);
+                                    log.error("Notif tindakan operator 2 : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -3379,7 +3407,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien operator 2 : " + e);
+                            log.error("Notif pasien operator 2 : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3439,7 +3467,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan operator 3");
+                                    log.error("Notif tindakan operator 3");
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -3450,7 +3478,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif operator 3 : " + e);
+                            log.error("Notif operator 3 : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3510,7 +3538,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter anak : " + e);
+                                    log.error("Notif tindakan dokter anak : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -3521,7 +3549,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif dokter anak : " + e);
+                            log.error("Notif dokter anak : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3581,7 +3609,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan anastesi : " + e);
+                                    log.error("Notifikasi tindakan anastesi : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -3592,7 +3620,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien anastesi : " + e);
+                            log.error("Notif pasien anastesi : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3652,7 +3680,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter pj umum : " + e);
+                                    log.error("Notif tindakan dokter pj umum : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -3663,7 +3691,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien pj anak : " + e);
+                            log.error("Notif pasien pj anak : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3723,7 +3751,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter umum : " + e);
+                                    log.error("Notif tindakan dokter umum : " + e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -3734,7 +3762,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien dokter umum : " + e);
+                            log.error("Notif pasien dokter umum : " + e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -3814,7 +3842,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                                            penjab = rskamar2.getString("png_jawab");
 //                                                        }
 //                                                    } catch (Exception e) {
-//                                                        System.out.println("Notif kamar2 : " + e);
+//                                                        log.error("Notif kamar2 : " + e);
 //                                                    } finally {
 //                                                        if (rskamar2 != null) {
 //                                                            rskamar2.close();
@@ -3825,7 +3853,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                                    }
 //                                                }
 //                                            } catch (Exception e) {
-//                                                System.out.println("Notif pasien anak : " + e);
+//                                                log.error("Notif pasien anak : " + e);
 //                                            } finally {
 //                                                if (rsanak != null) {
 //                                                    rsanak.close();
@@ -3836,7 +3864,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                            }
 //                                        }
 //                                    } catch (Exception e) {
-//                                        System.out.println("Notif kamar : " + e);
+//                                        log.error("Notif kamar : " + e);
 //                                    } finally {
 //                                        if (rskamar != null) {
 //                                            rskamar.close();
@@ -3879,7 +3907,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                            a++;
 //                                        }
 //                                    } catch (Exception e) {
-//                                        System.out.println("Notif tindakan ranap : " + e);
+//                                        log.error("Notif tindakan ranap : " + e);
 //                                    } finally {
 //                                        if (rstindakan != null) {
 //                                            rstindakan.close();
@@ -3890,7 +3918,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                    }
 //                                }
 //                            } catch (Exception e) {
-//                                System.out.println("Notif pasien ranap : " + e);
+//                                log.error("Notif pasien ranap : " + e);
 //                            } finally {
 //                                if (rspasien != null) {
 //                                    rspasien.close();
@@ -3967,7 +3995,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                             penjab = rskamar2.getString("png_jawab");
                                                         }
                                                     } catch (Exception e) {
-                                                        System.out.println("Notif kamar bayi : " + e);
+                                                        log.error("Notif kamar bayi : " + e);
                                                     } finally {
                                                         if (rskamar2 != null) {
                                                             rskamar2.close();
@@ -3978,7 +4006,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     }
                                                 }
                                             } catch (Exception e) {
-                                                System.out.println("Notif Pasien anak : " + e);
+                                                log.error("Notif Pasien anak : " + e);
                                             } finally {
                                                 if (rsanak != null) {
                                                     rsanak.close();
@@ -3989,7 +4017,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             }
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif Kamar : " + e);
+                                        log.error("Notif Kamar : " + e);
                                     } finally {
                                         if (rskamar != null) {
                                             rskamar.close();
@@ -4035,7 +4063,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             a++;
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif tindakan dokter pj umum : " + e);
+                                        log.error("Notif tindakan dokter pj umum : " + e);
                                     } finally {
                                         if (rstindakan != null) {
                                             rstindakan.close();
@@ -4046,7 +4074,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     }
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notif pasien dokter umum : " + e);
+                                log.error("Notif pasien dokter umum : " + e);
                             } finally {
                                 if (rspasien != null) {
                                     rspasien.close();
@@ -4091,7 +4119,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                            pasien = rskamar.getString("nm_pasien");
 //                                        }
 //                                    } catch (Exception e) {
-//                                        System.out.println("Notif kamar : " + e);
+//                                        log.error("Notif kamar : " + e);
 //                                    } finally {
 //                                        if (rskamar != null) {
 //                                            rskamar.close();
@@ -4134,7 +4162,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                            a++;
 //                                        }
 //                                    } catch (Exception e) {
-//                                        System.out.println("Notif tindakan ranap : " + e);
+//                                        log.error("Notif tindakan ranap : " + e);
 //                                    } finally {
 //                                        if (rstindakan != null) {
 //                                            rstindakan.close();
@@ -4184,7 +4212,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                                a++;
 //                                            }
 //                                        } catch (Exception e) {
-//                                            System.out.println("Notif tindakan ranap : " + e);
+//                                            log.error("Notif tindakan ranap : " + e);
 //                                        } finally {
 //                                            if (rstindakan != null) {
 //                                                rstindakan.close();
@@ -4198,7 +4226,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //
 //                                }
 //                            } catch (Exception e) {
-//                                System.out.println("Notif pasien ranap : " + e);
+//                                log.error("Notif pasien ranap : " + e);
 //                            } finally {
 //                                if (rspasien != null) {
 //                                    rspasien.close();
@@ -4247,7 +4275,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             pasien = rskamar.getString("nm_pasien");
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif Kamar : " + e);
+                                        log.error("Notif Kamar : " + e);
                                     } finally {
                                         if (rskamar != null) {
                                             rskamar.close();
@@ -4291,7 +4319,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             a++;
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif tindakan dokter pj umum : " + e);
+                                        log.error("Notif tindakan dokter pj umum : " + e);
                                     } finally {
                                         if (rstindakan != null) {
                                             rstindakan.close();
@@ -4340,7 +4368,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 a++;
                                             }
                                         } catch (Exception e) {
-                                            System.out.println("Notif tindakan dokter pj umum : " + e);
+                                            log.error("Notif tindakan dokter pj umum : " + e);
                                         } finally {
                                             if (rstindakan != null) {
                                                 rstindakan.close();
@@ -4352,7 +4380,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     }
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notif pasien dokter umum : " + e);
+                                log.error("Notif pasien dokter umum : " + e);
                             } finally {
                                 if (rspasien != null) {
                                     rspasien.close();
@@ -4370,7 +4398,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     tabMode.addRow(new Object[]{">>", "Jumlah :", "", "", "", "", null, ttljml, ttlbiaya, ttlbhp, ttljm, ttluangrs});
                 }
             } catch (Exception e) {
-                System.out.println("Notifikasi ps : " + e);
+                log.error("Notifikasi ps : " + e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -4380,7 +4408,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Catatan  " + e);
+            log.error("Catatan  " + e);
         }
 
     }
