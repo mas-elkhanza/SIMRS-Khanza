@@ -117,6 +117,9 @@ public final class DlgReg extends javax.swing.JDialog {
     private Date cal=new Date();
     public  DlgSpri spri=new DlgSpri( null,false);
     private boolean ceksukses=false;
+    private Calendar cal1 = Calendar.getInstance();
+    private int day = cal1.get(Calendar.DAY_OF_WEEK);
+    private String hari="";
     private String nosisrute="",aktifkanparsial="no",BASENOREG="",
             URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
             validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
@@ -344,9 +347,9 @@ public final class DlgReg extends javax.swing.JDialog {
         tbPetugas2.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode3=new DefaultTableModel(null,new Object[]{
-            "Tanggal", "Jam", "No.R.Medik", "Nama Pasien", "J.K.", "Tmp.Lahir",
-            "Tgl.Lahir", "G.D.", "Stts.Nikah", "Agama", "Rencana Perawatan", "Ruangan",
-            "Dokter", "Diagnosa", "kd_dokter", "kd_penyakit", "nama", "keluhan", "nm_penyakit", "id"
+            "Tanggal", "Jam", "No.R.Medik", "Nama Pasien",
+            "Rencana Perawatan", "Ruangan","Dokter", "Diagnosa", 
+            "kd_dokter",  "nama", "keluhan", "id"
         }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -371,11 +374,11 @@ public final class DlgReg extends javax.swing.JDialog {
 
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbSpri.setPreferredScrollableViewportSize(new Dimension(500, 500));
-        tbSpri.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //tbSpri.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(JLabel.CENTER);
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 12; i++) {
             TableColumn column = tbSpri.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(75);//tanggal
@@ -384,48 +387,42 @@ public final class DlgReg extends javax.swing.JDialog {
             } else if (i == 2) {
                 column.setPreferredWidth(80);//norm
             } else if (i == 3) {
-                column.setPreferredWidth(150);//nama
+                column.setPreferredWidth(190);//nama
+//            } else if (i == 4) {
+//                column.setPreferredWidth(30);//jk
+//            } else if (i == 5) {
+//                column.setPreferredWidth(120);//ttl
+//            } else if (i == 6) {
+//                column.setPreferredWidth(75);//tgllahir
+//            } else if (i == 7) {
+//                column.setPreferredWidth(30);//gd
+//            } else if (i == 8) {
+//                column.setPreferredWidth(90);//stt nikah
+//            } else if (i == 9) {
+//                column.setPreferredWidth(90);//agama
             } else if (i == 4) {
-                column.setPreferredWidth(30);//jk
+                column.setPreferredWidth(150);//rencana perawatan
             } else if (i == 5) {
-                column.setPreferredWidth(120);//ttl
+                column.setPreferredWidth(120);//ruangan
             } else if (i == 6) {
-                column.setPreferredWidth(75);//tgllahir
+                column.setPreferredWidth(120);//dokter
             } else if (i == 7) {
-                column.setPreferredWidth(30);//gd
+                column.setPreferredWidth(220);//diagnosa
             } else if (i == 8) {
-                column.setPreferredWidth(90);//stt nikah
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             } else if (i == 9) {
-                column.setPreferredWidth(90);//agama
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+
             } else if (i == 10) {
-                column.setPreferredWidth(120);//rencana perawatan
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+
             } else if (i == 11) {
-                column.setPreferredWidth(100);//ruangan
-            } else if (i == 12) {
-                column.setPreferredWidth(100);//dokter
-            } else if (i == 13) {
-                column.setPreferredWidth(200);//diagnosa
-            } else if (i == 14) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
-            } else if (i == 15) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-
-            } else if (i == 16) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-
-            } else if (i == 17) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 18) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 19) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            }
+            } 
         }
 
         tbSpri.setDefaultRenderer(Object.class, new WarnaTable());
@@ -4461,7 +4458,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4474,7 +4471,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4625,7 +4622,7 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(165, 72, 36, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2020" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -4817,6 +4814,11 @@ public final class DlgReg extends javax.swing.JDialog {
 
         kdpoli.setHighlighter(null);
         kdpoli.setName("kdpoli"); // NOI18N
+        kdpoli.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                kdpoliFocusLost(evt);
+            }
+        });
         kdpoli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 kdpoliKeyPressed(evt);
@@ -9012,6 +9014,16 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_tbSpriMouseClicked
 
+    private void kdpoliFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kdpoliFocusLost
+        // TODO add your handling code here:
+        if(kuota==0){
+        kuota = Sequel.cariInteger("Select jadwal.kuota from dokter INNER JOIN jadwal INNER JOIN poliklinik "+
+                "on dokter.kd_dokter=jadwal.kd_dokter and poliklinik.kd_poli=jadwal.kd_poli "+
+                "where jadwal.hari_kerja='"+hari+"' and poliklinik.kd_poli like '%"+kdpoli.getText()+"%' and dokter.status='1' and dokter.kd_dokter like '%"+kddokter.getText()+"%'");
+            System.out.println("Kouta "+kuota);
+        }
+    }//GEN-LAST:event_kdpoliFocusLost
+
     /**
     * @param args the command line arguments
     */
@@ -9593,24 +9605,50 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private void tampil3(){
         Valid.tabelKosong(tabMode3);  
         try {
-         ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
-                        + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                        + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
-                        + "dokter.nm_dokter,penyakit.kd_penyakit,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
-                        + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                        + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                        + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit"
-                        + " where temp_spri.status='Belum' order by temp_spri.tanggal desc ");
+            if(!TCari.getText().equals("")){
+                ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
+                        + "temp_spri.rencana_perawatan,temp_spri.upf,"
+                        + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
+                        + " FROM temp_spri left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
+                        + " where temp_spri.status='Belum' and temp_spri.norm like ? and temp_spri.tanggal between ? and ? or"
+                        + " temp_spri.status='Belum' and temp_spri.nama like ? and temp_spri.tanggal between ? and ?  or"
+                        + " temp_spri.status='Belum' and dokter.nm_dokter like ? and temp_spri.tanggal between ? and ? "
+                        + " order by temp_spri.tanggal desc");
+            }else{
+                ps2 = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,temp_spri.status,"
+                        + "temp_spri.rencana_perawatan,temp_spri.upf,"
+                        + "dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
+                        + " FROM temp_spri left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
+                        + " where temp_spri.status='Belum' and temp_spri.tanggal between ? and ? or"
+                        + " temp_spri.status='Belum' and temp_spri.tanggal between ? and ?  or"
+                        + " temp_spri.status='Belum' and temp_spri.tanggal between ? and ? "
+                        + " order by temp_spri.tanggal desc");                
+            }
          try {
+             if(!TCari.getText().equals("")){
+             ps2.setString(1, "%"+TCari.getText().trim()+"%");
+             ps2.setString(2,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(3,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             ps2.setString(4, "%"+TCari.getText().trim()+"%");
+             ps2.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             ps2.setString(7, "%"+TCari.getText().trim()+"%");
+             ps2.setString(8,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(9,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             }else{
+             ps2.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             ps2.setString(3,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(4,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+             ps2.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+             ps2.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));                
+             }
                 rs3 = ps2.executeQuery();
                 while (rs3.next()) {
                     tabMode3.addRow(new Object[]{
                         rs3.getString("tanggal"), rs3.getString("jam"), rs3.getString("norm"), rs3.getString("temp_spri.nama"),
-                            rs3.getString("pasien.jk"), rs3.getString("pasien.tmp_lahir"), rs3.getString("pasien.tgl_lahir"), rs3.getString("pasien.gol_darah"),
-                            rs3.getString("pasien.stts_nikah"), rs3.getString("pasien.agama"), rs3.getString("temp_spri.rencana_perawatan"),
-                            rs3.getString("temp_spri.upf"),
-                            rs3.getString("dokter.nm_dokter"), rs3.getString("keluhan"), rs3.getString("temp_spri.kd_dokter"), rs3.getString("penyakit.kd_penyakit"),
-                            rs3.getString("nama"), rs3.getString("keluhan"), rs3.getString("penyakit.nm_penyakit"), rs3.getString("temp_spri.id")
+                            rs3.getString("temp_spri.rencana_perawatan"),rs3.getString("temp_spri.upf"),rs3.getString("dokter.nm_dokter"), rs3.getString("keluhan"), 
+                            rs3.getString("temp_spri.kd_dokter"),rs3.getString("nama"), rs3.getString("keluhan"), rs3.getString("temp_spri.id")
                         });
                 }
             } catch (Exception e) {
@@ -10212,11 +10250,30 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
     private void getDataSpri() {
         if(tbSpri.getSelectedRow()!= -1){
-            txtIdSpri.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),19).toString());
+            txtIdSpri.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),11).toString());
             TPasien.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),3).toString());
             TNoRM.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),2).toString());    
-            kddokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),14).toString());    
-            TDokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),12).toString());   
+            kddokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),8).toString());    
+            TDokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(),6).toString());  
+            if(day==1){
+                    hari="AKHAD";
+                }else if(day==2){
+                    hari="SENIN";
+                }else if(day==3){
+                    hari="SELASA";
+                }else if(day==4){
+                    hari="RABU";
+                }else if(day==5){
+                    hari="KAMIS";
+                }else if(day==6){
+                    hari="JUMAT";
+                }else if(day==7){
+                    hari="SABTU";
+                }
+            kuota = Sequel.cariInteger("Select jadwal.kuota from dokter INNER JOIN jadwal INNER JOIN poliklinik "+
+                "on dokter.kd_dokter=jadwal.kd_dokter and poliklinik.kd_poli=jadwal.kd_poli "+
+                "where jadwal.hari_kerja='"+hari+"' and poliklinik.kd_poli like '%"+kdpoli.getText()+"%' and dokter.status='1' and dokter.kd_dokter like '%"+kddokter.getText()+"%'");
+            System.out.println("Kouta "+kuota);
             isPas();
         }
        
