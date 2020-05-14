@@ -15,7 +15,7 @@
                                   <td width="15%" align="right"><label for="radiologi">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
                                   <td width="69%"><input name="radiologi" id="radiologi" class="form-control" value="" size="65" maxlength="250" /></td>
-                                  <td width="15%" align="left">&nbsp;<input name="BtnKamar" type=submit class="btn btn-warning" value="Cari"></td>
+                                  <td width="15%" align="left">&nbsp;<input name="BtnRadiologi" type=submit class="btn btn-warning" value="Cari"></td>
                                </tr>
                            </table>
                          </form>
@@ -35,7 +35,7 @@
                                    echo "<tr>
                                            <td align='left'>".$rsqueryradiologi["nm_perawatan"]."</td>
                                            <td align='center'>".$rsqueryradiologi["kelas"]."</td>
-                                           <td align='center'>".$rsqueryradiologi["total_byr"]."</td>
+                                           <td align='center'>".formatDuit($rsqueryradiologi["total_byr"])."</td>
                                          </tr>";
                                }
                            ?>

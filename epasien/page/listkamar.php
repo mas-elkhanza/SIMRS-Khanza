@@ -38,7 +38,7 @@
                                            <td align='center'>".$rsquerykamar["kd_kamar"]."</td>
                                            <td align='left'>".$rsquerykamar["nm_bangsal"]."</td>
                                            <td align='center'>".$rsquerykamar["kelas"]."</td>
-                                           <td align='center'>".$rsquerykamar["trf_kamar"]."</td>
+                                           <td align='center'>".formatDuit($rsquerykamar["trf_kamar"])."</td>
                                            <td align='center'>".$rsquerykamar["status"]."</td>
                                          </tr>";
                                }

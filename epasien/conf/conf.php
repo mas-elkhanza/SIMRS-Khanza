@@ -201,41 +201,37 @@
         return $bulan;
     }
 
-    function konversiTanggal($tanggal)
-	{
-		list($thn,$bln,$tgl)=explode('-',$tanggal);
-		$tmp = $tgl." ".konversiBulan($bln)." ".$thn;
-		return $tmp;
-	}
+    function konversiTanggal($tanggal){
+        list($thn,$bln,$tgl)=explode('-',$tanggal);
+        $tmp = $tgl." ".konversiBulan($bln)." ".$thn;
+        return $tmp;
+    }
 
-    function formatDuit($duit)
-	{
-		return "Rp. ".number_format($duit,0,",",".").",-";
-	}
-        
-    function formatDuit2($duit){
-		return @number_format($duit,0,",",".")."";
+    function formatDuit($duit){
+         return "Rp. ".number_format($duit,0,",",".").",-";
     }
         
-    function formatDec($duit)
-	{
-		return round($duit);
-	}
+    function formatDuit2($duit){
+        return @number_format($duit,0,",",".")."";
+    }
         
-    function formatRound($duit)
-	{
-		return str_replace(".",",",round($duit,5));
-	}
+    function formatDec($duit){
+        return round($duit);
+    }
+        
+    function formatRound($duit){
+        return str_replace(".",",",round($duit,5));
+    }
 
     function JumlahBaris($result) {
-  		return mysqli_num_rows($result);
-	}
+        return mysqli_num_rows($result);
+    }
 
-     function getOne($sql) {
+    function getOne($sql) {
         $hasil=bukaquery($sql);
         list($result) =mysqli_fetch_array($hasil);
         return $result;
-     }
+    }
 
     function cekKosong($sql) {
         $jum = mysqli_num_rows($sql);
