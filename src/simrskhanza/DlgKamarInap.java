@@ -74,7 +74,8 @@ import rekammedis.RMRiwayatPerawatan;
  * @author perpustakaan
  */
 public class DlgKamarInap extends javax.swing.JDialog {
-
+    
+    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(DlgKamarInap.class.getName()); 
     private final DefaultTableModel tabMode;
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
@@ -211,10 +212,10 @@ try {
                     DlgCatatan.setOpacity(0.90f);
                 }
             } catch (Exception e) {
-                System.out.println("Notif Tansparant : "+e);
+                log.error("Notif Tansparant : "+e);
             }
         } catch (Exception ex) {
-            System.out.println("Notif Load XML : "+ex);
+            log.error("Notif Load XML : "+ex);
         }
 
         TJmlHari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
@@ -516,7 +517,7 @@ try {
                                 key = rs.getString(1) + ", " + key;
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs != null) {
                                 rs.close();
@@ -526,7 +527,7 @@ try {
                             }
                         }
                     } catch (Exception ex) {
-                        System.out.println(ex);
+                        log.error(ex);
                     }
 
                     if (WindowInputKamar.isVisible() == true) {
@@ -756,7 +757,7 @@ try {
                     aktifkan_hapus_data_salah = rssetjam.getString("aktifkan_hapus_data_salah");
                 }
             } catch (Exception e) {
-                System.out.println("Set Kamar Inap : " + e);
+                log.error("Set Kamar Inap : " + e);
             } finally {
                 if (rssetjam != null) {
                     rssetjam.close();
@@ -766,7 +767,7 @@ try {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Set Kamar Inap : " + e);
+            log.error("Set Kamar Inap : " + e);
         }
 
         try {
@@ -777,6 +778,7 @@ try {
             }
         } catch (Exception e) {
             diagnosaakhir.setEditable(false);
+            log.error(e);
         }
     }
 
@@ -4279,7 +4281,7 @@ try {
                     break;
                 }
             }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
+                log.error("Notifikasi : "+e);
             }      
         }
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -4530,6 +4532,7 @@ try {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
+                log.error(e);
             }
 
             if (evt.getClickCount() == 1) {
@@ -4625,7 +4628,7 @@ try {
                                         tbKamIn.requestFocus();
                                     }
                                 } catch (Exception ex) {
-                                    System.out.println("Notifikasi : " + ex);
+                                    log.error("Notifikasi : " + ex);
                                 } finally {
                                     if (rs2 != null) {
                                         rs2.close();
@@ -4635,7 +4638,7 @@ try {
                                     }
                                 }
                             } catch (Exception e) {
-                                System.out.println(e);
+                                log.error(e);
                             }
                         } else {
                             if (Sequel.cariRegistrasi(norawat.getText()) > 0) {
@@ -4680,6 +4683,7 @@ try {
                 try {
                     getData();
                 } catch (java.lang.NullPointerException e) {
+                    log.error(e);
                 }
             }
 
@@ -4729,7 +4733,7 @@ try {
                                         tbKamIn.requestFocus();
                                     }
                                 } catch (Exception ex) {
-                                    System.out.println("Notifikasi : " + ex);
+                                    log.error("Notifikasi : " + ex);
                                 } finally {
                                     if (rs2 != null) {
                                         rs2.close();
@@ -4739,7 +4743,7 @@ try {
                                     }
                                 }
                             } catch (Exception e) {
-                                System.out.println(e);
+                                log.error(e);
                             }
                         } else {
                             akses.setform("DlgKamarInap");
@@ -4850,7 +4854,7 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -4861,7 +4865,7 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 akses.setform("DlgKamarInap");
@@ -4924,7 +4928,7 @@ private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -4934,7 +4938,7 @@ private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 akses.setform("DlgKamarInap");
@@ -4990,7 +4994,7 @@ private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -5000,7 +5004,7 @@ private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 DlgRujuk dlgrjk = new DlgRujuk(null, false);
@@ -5057,7 +5061,7 @@ private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//G
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -5067,7 +5071,7 @@ private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//G
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 akses.setform("DlgKamarInap");
@@ -5158,7 +5162,7 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             billing.setVisible(true);
                         }
                     } catch (Exception e) {
-                        System.out.println("Notifikasi : " + e);
+                        log.error("Notifikasi : " + e);
                     } finally {
                         if (rs != null) {
                             rs.close();
@@ -5168,7 +5172,7 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             }
         }
@@ -5205,7 +5209,7 @@ private void MnDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -5215,7 +5219,7 @@ private void MnDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 DlgPemberianDiet rawatinap = new DlgPemberianDiet(null, false);
@@ -5278,7 +5282,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5289,7 +5293,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 akses.setform("DlgKamarInap");
@@ -5339,7 +5343,7 @@ private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5350,7 +5354,7 @@ private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 DlgTagihanOperasi dlgro = new DlgTagihanOperasi(null, false);
@@ -5393,7 +5397,7 @@ private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -5403,7 +5407,7 @@ private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 if (Sequel.cariRegistrasi(norawat.getText().trim()) > 0) {
@@ -5449,7 +5453,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -5459,7 +5463,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 if (Sequel.cariRegistrasi(norawat.getText().trim()) > 0) {
@@ -5506,7 +5510,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -5516,7 +5520,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             } else {
                 akses.setform("DlgKamarInap");
@@ -5850,7 +5854,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5860,7 +5864,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     DlgInputStokPasien dlgrjk = new DlgInputStokPasien(null, false);
@@ -6083,7 +6087,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6093,7 +6097,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     billing.deposit.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -6136,7 +6140,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6146,7 +6150,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     DlgResepObat resep = new DlgResepObat(null, false);
@@ -6239,7 +6243,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6249,7 +6253,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     Map<String, Object> param = new HashMap<>();
@@ -6364,7 +6368,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                System.out.println("Notifikasi : " + ex);
+                                log.error("Notifikasi : " + ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -6374,7 +6378,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println(e);
+                            log.error(e);
                         }
                     }
                 } else {
@@ -6437,7 +6441,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                System.out.println("Notifikasi : " + ex);
+                                log.error("Notifikasi : " + ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -6448,7 +6452,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     billing.periksarad.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -6510,7 +6514,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6520,7 +6524,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     Map<String, Object> param = new HashMap<>();
@@ -6597,7 +6601,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6607,7 +6611,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -6695,7 +6699,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi Umur : " + e);
+                            log.error("Notifikasi Umur : " + e);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6715,7 +6719,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         }
                     }
                 } catch (Exception ex) {
-                    System.out.println("Notifikasi : " + ex);
+                    log.error("Notifikasi : " + ex);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -6727,7 +6731,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
                 tampil();
             } catch (Exception e) {
-                System.out.println(e);
+                log.error(e);
             }
             NoRawatGabung.setText("");
             NoRmBayi.setText("");
@@ -6833,7 +6837,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6843,7 +6847,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     akses.setform("DlgKamarInap");
@@ -6908,7 +6912,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6918,7 +6922,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     DlgDpjp dpjp = new DlgDpjp(null, false);
@@ -6994,7 +6998,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                System.out.println("Notifikasi : " + ex);
+                                log.error("Notifikasi : " + ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -7004,7 +7008,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println(e);
+                            log.error(e);
                         }
                     }
                 } else {
@@ -7134,7 +7138,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7144,7 +7148,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7218,7 +7222,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         dokterranap = rs.getString("nm_dokter") + ", " + dokterranap;
                     }
                 } catch (Exception e) {
-                    System.out.println("Notifikasi : " + e);
+                    log.error("Notifikasi : " + e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -7229,7 +7233,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
                 tbKamIn.setValueAt(dokterranap, i, 18);
             } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
+                log.error("Notifikasi : " + e);
             }
         }
     }//GEN-LAST:event_MnDPJPRanapActionPerformed
@@ -7265,7 +7269,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7275,7 +7279,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7358,7 +7362,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7368,7 +7372,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     DlgDataHAIs hais = new DlgDataHAIs(null, false);
@@ -7435,7 +7439,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7445,7 +7449,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7513,7 +7517,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 try {
                                     berkas.loadURL("http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/" + koneksiDB.HYBRIDWEB() + "/" + "berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat=" + rs2.getString("no_rawat2"));
                                 } catch (Exception ex) {
-                                    System.out.println("Notifikasi : " + ex);
+                                    log.error("Notifikasi : " + ex);
                                 }
 
                                 berkas.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -7525,7 +7529,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7535,7 +7539,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7544,7 +7548,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     try {
                         berkas.loadURL("http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/" + koneksiDB.HYBRIDWEB() + "/" + "berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat=" + norawat.getText());
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     }
 
                     berkas.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -7590,7 +7594,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                System.out.println("Notifikasi : " + ex);
+                                log.error("Notifikasi : " + ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -7602,7 +7606,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         }
 
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     DlgRawatJalan dlgrwjl = new DlgRawatJalan(null, false);
@@ -7763,7 +7767,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7773,7 +7777,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7833,7 +7837,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7843,7 +7847,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7888,7 +7892,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7898,7 +7902,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     DlgBookingOperasi form = new DlgBookingOperasi(null, false);
@@ -7946,7 +7950,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7956,7 +7960,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8010,7 +8014,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8020,7 +8024,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8079,7 +8083,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8089,7 +8093,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8153,7 +8157,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8163,7 +8167,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8225,7 +8229,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         tbKamIn.requestFocus();
                     }
                 } catch (Exception ex) {
-                    System.out.println("Notifikasi : " + ex);
+                    log.error("Notifikasi : " + ex);
                 } finally {
                     if (rs2 != null) {
                         rs2.close();
@@ -8235,7 +8239,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                log.error(e);
             }
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8295,7 +8299,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8305,7 +8309,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8613,7 +8617,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8623,7 +8627,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     DlgSKDPBPJS form = new DlgSKDPBPJS(null, false);
@@ -8669,7 +8673,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8679,7 +8683,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8727,7 +8731,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8737,7 +8741,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8797,7 +8801,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -8807,7 +8811,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    log.error(e);
                 }
             }
 
@@ -8871,7 +8875,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8881,7 +8885,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8940,7 +8944,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8950,7 +8954,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9053,7 +9057,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9063,7 +9067,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9123,7 +9127,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9133,7 +9137,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9203,7 +9207,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9213,7 +9217,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9262,7 +9266,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9272,7 +9276,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9367,7 +9371,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9377,7 +9381,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9477,7 +9481,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9487,7 +9491,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     pasienMeninggal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -9529,7 +9533,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            System.out.println("Notifikasi : " + ex);
+                            log.error("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9539,7 +9543,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        log.error(e);
                     }
                 } else {
                     spri.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -9967,7 +9971,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             });
                         }
                     } catch (Exception ex) {
-                        System.out.println("Notifikasi : " + ex);
+                        log.error("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -9978,7 +9982,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
                 }
             } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
+                log.error("Notifikasi : " + e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -9988,7 +9992,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+            log.error("Notifikasi : " + e);
         }
         LCount.setText("" + tabMode.getRowCount());
     }
@@ -10067,7 +10071,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         Sequel.cariIsi("select trf_kamar from kamar where kd_kamar=? ", TTarif, kdkamar.getText());
                     }
                 } catch (Exception e) {
-                    System.out.println("Notifikasi : " + e);
+                    log.error("Notifikasi : " + e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -10077,7 +10081,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
                 }
             } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
+                log.error("Notifikasi : " + e);
             }
         } else {
             kd_pj = Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?", norawatpindah.getText());
@@ -10097,7 +10101,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         Sequel.cariIsi("select trf_kamar from kamar where kd_kamar=? ", TTarifpindah, kdkamar.getText());
                     }
                 } catch (Exception e) {
-                    System.out.println("Notifikasi : " + e);
+                    log.error("Notifikasi : " + e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -10107,7 +10111,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
                 }
             } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
+                log.error("Notifikasi : " + e);
             }
         }
     }
@@ -10187,7 +10191,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     CmbTgl.setSelectedItem(now.substring(8, 10));
                 }
             } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
+                log.error("Notifikasi : " + e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -10203,7 +10207,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             }
             CmbTahunItemStateChanged(null);
         } catch (SQLException e) {
-            System.out.println(e);
+            log.error(e);
         }
     }
 
