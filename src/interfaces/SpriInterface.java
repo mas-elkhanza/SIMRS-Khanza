@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -12,8 +13,9 @@ import java.util.List;
  * @author Administrator
  */
 public interface SpriInterface<T> {
-    void saveOrUpdate(T domain);
-    void delete(T domain);
-    List<T> findBy(Object domain);
-    List<T> search(Object domain);
+    void save(T domain)throws SQLException;
+    void update(T domain)throws SQLException;
+    void delete(T domain)throws SQLException;
+    List<T> findByDate(String tgl_awal, String tgl_ahir)throws SQLException;
+    List<T> search(String domain)throws SQLException;
 }

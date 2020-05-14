@@ -11,7 +11,6 @@
  */
 package fungsi;
 
-import interfaces.SpriDao;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -50,7 +49,7 @@ import uz.ncipro.calendar.JDateTimePicker;
  */
 public final class sekuel {
 
-    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(SpriDao.class.getName());  
+    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(sekuel.class.getName());  
     private javax.swing.ImageIcon icon = null;
     private javax.swing.ImageIcon iconThumbnail = null;
     private String folder, AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();

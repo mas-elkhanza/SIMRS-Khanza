@@ -16,6 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import interfaces.SpriDao;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -30,10 +31,11 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -43,13 +45,16 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgCariPerawatanRanap;
+import model.Dokter;
+import model.Spri;
+
 
 /**
  *
  * @author dosen3
  */
 public class DlgSpri extends javax.swing.JDialog {
-
+    
     private final DefaultTableModel tabMode;
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
@@ -63,6 +68,11 @@ public class DlgSpri extends javax.swing.JDialog {
     private String status = "";
     private String id = "";
     private final Connection connect = koneksiDB.condb();
+    List<Spri> spris = new ArrayList<>();
+    Dokter d = new Dokter();
+
+    private SpriDao spriDao = new SpriDao();
+    private Spri spri = new Spri();
 
     /**
      * Creates new form DlgPasienMati
@@ -349,17 +359,17 @@ public class DlgSpri extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {
             }
         });
-        
+
         jam();
 //        
-//        Valid.setPlaceHolder(TPasien, "Nama Pasien");
-//        Valid.setPlaceHolder(TNoRM, "No. RM");
+        Valid.setPlaceHolder(TPasien, "Nama Pasien");
+        Valid.setPlaceHolder(TNoRM, "No. RM");
 //        Valid.setPlaceHolder(txtKdKamar, "Kode Kamar");
-//        Valid.setPlaceHolder(txtNmKamar, "Nama Kamar");
-//        Valid.setPlaceHolder(txtKdDokter, "Kode Dokter");
-//        Valid.setPlaceHolder(txtNmDokter, "Nama Dokter");
-//        Valid.setPlaceHolder(txtKdPenyakit, "Kode Penyakit");
-//        Valid.setPlaceHolder(txtNmPenyakit, "Nama Penyakit");
+        Valid.setPlaceHolder(txtRencanaPerawatan, "Rencana Perawatan");
+        Valid.setPlaceHolder(txtKdDokter, "Kode Dokter");
+        Valid.setPlaceHolder(txtNmDokter, "Nama Dokter");
+        Valid.setPlaceHolder(txtKdPenyakit, "Kode Penyakit");
+        Valid.setPlaceHolder(txtNmPenyakit, "Nama Penyakit");
     }
 
     public void setForm(String status) {
@@ -450,6 +460,11 @@ public class DlgSpri extends javax.swing.JDialog {
         cmbUpf = new widget.ComboBox();
         jLabel5 = new widget.Label();
         ChkJln = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -650,7 +665,7 @@ public class DlgSpri extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -663,7 +678,7 @@ public class DlgSpri extends javax.swing.JDialog {
         jLabel18.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel18);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -743,22 +758,38 @@ public class DlgSpri extends javax.swing.JDialog {
 
         txtRencanaPerawatan.setHighlighter(null);
         txtRencanaPerawatan.setName("txtRencanaPerawatan"); // NOI18N
+        txtRencanaPerawatan.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtRencanaPerawatanFocusGained(evt);
+            }
+        });
         txtRencanaPerawatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtRencanaPerawatanKeyPressed(evt);
             }
         });
         panelBiasa1.add(txtRencanaPerawatan);
-        txtRencanaPerawatan.setBounds(120, 100, 590, 23);
+        txtRencanaPerawatan.setBounds(120, 100, 430, 23);
 
+        TPasien.setToolTipText("");
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
+        TPasien.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TPasienFocusGained(evt);
+            }
+        });
+        TPasien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TPasienKeyPressed(evt);
+            }
+        });
         panelBiasa1.add(TPasien);
         TPasien.setBounds(240, 40, 210, 23);
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-04-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-05-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -772,6 +803,11 @@ public class DlgSpri extends javax.swing.JDialog {
 
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
+        TNoRM.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TNoRMFocusGained(evt);
+            }
+        });
         TNoRM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TNoRMKeyPressed(evt);
@@ -795,7 +831,7 @@ public class DlgSpri extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnSeek);
-        BtnSeek.setBounds(450, 40, 28, 23);
+        BtnSeek.setBounds(460, 40, 28, 23);
 
         cmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam.setName("cmbJam"); // NOI18N
@@ -839,16 +875,26 @@ public class DlgSpri extends javax.swing.JDialog {
 
         txtNmPenyakit.setHighlighter(null);
         txtNmPenyakit.setName("txtNmPenyakit"); // NOI18N
+        txtNmPenyakit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNmPenyakitFocusGained(evt);
+            }
+        });
         txtNmPenyakit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNmPenyakitKeyPressed(evt);
             }
         });
         panelBiasa1.add(txtNmPenyakit);
-        txtNmPenyakit.setBounds(710, 40, 210, 23);
+        txtNmPenyakit.setBounds(720, 40, 200, 23);
 
         txtKdPenyakit.setHighlighter(null);
         txtKdPenyakit.setName("txtKdPenyakit"); // NOI18N
+        txtKdPenyakit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtKdPenyakitFocusGained(evt);
+            }
+        });
         txtKdPenyakit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtKdPenyakitKeyPressed(evt);
@@ -872,7 +918,7 @@ public class DlgSpri extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnSeek1);
-        BtnSeek1.setBounds(920, 40, 28, 23);
+        BtnSeek1.setBounds(930, 40, 28, 23);
 
         jLabel17.setText("Diagnosa :");
         jLabel17.setName("jLabel17"); // NOI18N
@@ -881,6 +927,11 @@ public class DlgSpri extends javax.swing.JDialog {
 
         txtKdDokter.setHighlighter(null);
         txtKdDokter.setName("txtKdDokter"); // NOI18N
+        txtKdDokter.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtKdDokterFocusGained(evt);
+            }
+        });
         txtKdDokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtKdDokterKeyPressed(evt);
@@ -892,13 +943,18 @@ public class DlgSpri extends javax.swing.JDialog {
         txtNmDokter.setEditable(false);
         txtNmDokter.setHighlighter(null);
         txtNmDokter.setName("txtNmDokter"); // NOI18N
+        txtNmDokter.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNmDokterFocusGained(evt);
+            }
+        });
         txtNmDokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNmDokterKeyPressed(evt);
             }
         });
         panelBiasa1.add(txtNmDokter);
-        txtNmDokter.setBounds(710, 70, 210, 23);
+        txtNmDokter.setBounds(720, 70, 200, 23);
 
         BtnSeek3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek3.setMnemonic('1');
@@ -915,7 +971,7 @@ public class DlgSpri extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnSeek3);
-        BtnSeek3.setBounds(920, 70, 28, 23);
+        BtnSeek3.setBounds(930, 70, 28, 23);
 
         cmbUpf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebidanan", "PD", "PD (Kemuning)", "Kesehatan Anak", "Bedah", "Isolasi", "Sakura", "HCU", "ICU", "ICCU", "PICU", "NICU", "Perinatologi" }));
         cmbUpf.setName("cmbUpf"); // NOI18N
@@ -936,6 +992,36 @@ public class DlgSpri extends javax.swing.JDialog {
         ChkJln.setName("ChkJln"); // NOI18N
         panelBiasa1.add(ChkJln);
         ChkJln.setBounds(450, 10, 20, 21);
+
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("*");
+        jLabel2.setName("jLabel2"); // NOI18N
+        panelBiasa1.add(jLabel2);
+        jLabel2.setBounds(450, 40, 10, 14);
+
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setText("*");
+        jLabel3.setName("jLabel3"); // NOI18N
+        panelBiasa1.add(jLabel3);
+        jLabel3.setBounds(710, 70, 10, 14);
+
+        jLabel11.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel11.setText("*");
+        jLabel11.setName("jLabel11"); // NOI18N
+        panelBiasa1.add(jLabel11);
+        jLabel11.setBounds(920, 40, 10, 14);
+
+        jLabel12.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel12.setText("*");
+        jLabel12.setName("jLabel12"); // NOI18N
+        panelBiasa1.add(jLabel12);
+        jLabel12.setBounds(920, 70, 10, 14);
+
+        jLabel13.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel13.setText("*");
+        jLabel13.setName("jLabel13"); // NOI18N
+        panelBiasa1.add(jLabel13);
+        jLabel13.setBounds(550, 100, 10, 14);
 
         internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
 
@@ -974,29 +1060,45 @@ public class DlgSpri extends javax.swing.JDialog {
 }//GEN-LAST:event_cmbDtkKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if (TPasien.getText().trim().equals("")) {
-            Valid.textKosong(TNoRM, "pasien");
-        } else if (txtRencanaPerawatan.getText().trim().equals("")) {
+        if (TPasien.getText().equals("Nama Pasien")) {
+            Valid.textKosong(TPasien, "Nama Pasien");
+        } else if (txtNmPenyakit.getText().equals("Nama Penyakit")) {
+            Valid.textKosong(txtNmPenyakit, "Nama Penyakit");
+        } else if (txtKdDokter.getText().equals("Kode Dokter")) {
+            Valid.textKosong(txtKdDokter, "Kode Dokter");
+        } else if (txtNmDokter.getText().equals("Nama Dokter")) {
+            Valid.textKosong(txtNmDokter, "Nama Dokter");
+        } else if (txtRencanaPerawatan.getText().equals("Rencana Perawatan")) {
             Valid.textKosong(txtRencanaPerawatan, "Rencana Perawatan");
         } else {
-            if (status.equals("spriIgd")) {
-                Sequel.menyimpan("temp_spri", "" + null + ",'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','"
-                        + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "','"
-                        + TNoRM.getText() + "','"
-                        + txtKdPenyakit.getText() + "','"
-                        + txtRencanaPerawatan.getText() + "','"
-                        + cmbUpf.getSelectedItem() + "','"
-                        + txtKdDokter.getText() + "','" + TPasien.getText() + "','" + txtNmPenyakit.getText() + "','Belum'", "spri");
+            if (TNoRM.getText().equals("No. RM")) {
+                TNoRM.setText("");
             }
-//            else {
-//                Sequel.menyimpan("spri", "'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','"
-//                        + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "','"
-//                        + TNoRM.getText() + "','"
-//                        + txtKdPenyakit.getText() + "','"
-//                        + txtRencanaPerawatan.getText() + "','"
-//                        + txtKdKamar.getText() + "','"
-//                        + txtKdDokter.getText() + "'", "spri");
-//            }
+            if (txtKdPenyakit.getText().equals("Kode Penyakit")) {
+                txtKdPenyakit.setText("");
+            }
+            d = new Dokter();
+            System.out.println("date ");
+            spri.setTanggal(Valid.SetTgl(DTPTgl.getSelectedItem()+""));
+            spri.setJam(cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem());
+            spri.setNorm(TNoRM.getText());
+            spri.setDiagnosa(txtKdPenyakit.getText());
+            spri.setRencana_perawatan(txtRencanaPerawatan.getText().toUpperCase());
+            spri.setUpf(cmbUpf.getSelectedItem().toString());
+            d.setKd_dokter(txtKdDokter.getText());
+            spri.setDokter(d);
+            spri.setNama(TPasien.getText().toUpperCase());
+            spri.setKeluhan(txtNmPenyakit.getText().toUpperCase());
+            spri.setStatus("Belum");
+            spriDao.save(spri);
+
+//            Sequel.menyimpan("temp_spri", "" + null + ",'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','"
+//                    + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "','"
+//                    + TNoRM.getText() + "','"
+//                    + txtKdPenyakit.getText() + "','"
+//                    + txtRencanaPerawatan.getText().toUpperCase() + "','"
+//                    + cmbUpf.getSelectedItem() + "','"
+//                    + txtKdDokter.getText() + "','" + TPasien.getText().toUpperCase() + "','" + txtNmPenyakit.getText().toUpperCase() + "','Belum'", "spri");
             emptTeks();
             tampil();
         }
@@ -1072,7 +1174,7 @@ public class DlgSpri extends javax.swing.JDialog {
                 param.put("emailrs", akses.getemailrs());
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + txtKdDokter.getText() + "'"));
-                System.out.println("ttd = "+Sequel.cariGambar("select logo from setting"));
+                System.out.println("ttd = " + Sequel.cariGambar("select logo from setting"));
                 //param.put("ttd", "./setting/" + Sequel.cariIsi("select ttd from ttd_dokter where kd_dokter='" + txtKdDokter.getText() + "'"));
                 Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
                         "SELECT temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
@@ -1103,7 +1205,7 @@ public class DlgSpri extends javax.swing.JDialog {
                 param.put("emailrs", akses.getemailrs());
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + txtKdDokter.getText() + "'"));
-                System.out.println("ttd = "+Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + txtKdDokter.getText() + "'"));
+                System.out.println("ttd = " + Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + txtKdDokter.getText() + "'"));
 //                param.put("ttd", "./setting/" + Sequel.cariIsi("select ttd from ttd_dokter where kd_dokter='" + txtKdDokter.getText() + "'"));
                 Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
                         "SELECT temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
@@ -1340,6 +1442,46 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbUpfKeyPressed
 
+    private void TNoRMFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TNoRMFocusGained
+        // TODO add your handling code here:
+        TNoRM.setForeground(Color.black);
+    }//GEN-LAST:event_TNoRMFocusGained
+
+    private void TPasienFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TPasienFocusGained
+        // TODO add your handling code here:
+        TPasien.setForeground(Color.black);
+    }//GEN-LAST:event_TPasienFocusGained
+
+    private void txtKdPenyakitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtKdPenyakitFocusGained
+        // TODO add your handling code here:
+        txtKdPenyakit.setForeground(Color.black);
+    }//GEN-LAST:event_txtKdPenyakitFocusGained
+
+    private void txtNmPenyakitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNmPenyakitFocusGained
+        // TODO add your handling code here:
+        txtNmPenyakit.setForeground(Color.black);
+    }//GEN-LAST:event_txtNmPenyakitFocusGained
+
+    private void txtKdDokterFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtKdDokterFocusGained
+        // TODO add your handling code here:
+        txtKdDokter.setForeground(Color.black);
+    }//GEN-LAST:event_txtKdDokterFocusGained
+
+    private void txtNmDokterFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNmDokterFocusGained
+        // TODO add your handling code here:
+        txtNmDokter.setForeground(Color.black);
+    }//GEN-LAST:event_txtNmDokterFocusGained
+
+    private void txtRencanaPerawatanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRencanaPerawatanFocusGained
+        // TODO add your handling code here:
+        txtRencanaPerawatan.setForeground(Color.black);
+    }//GEN-LAST:event_txtRencanaPerawatanFocusGained
+
+    private void TPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPasienKeyPressed
+        // TODO add your handling code here:
+        Valid.pindah(evt, TPasien, cmbUpf);
+    }//GEN-LAST:event_TPasienKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1385,10 +1527,15 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.ComboBox cmbUpf;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -1467,151 +1614,63 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         // Timer
         new Timer(1000, taskPerformer).start();
     }
-    
+
     public void tampil() {
         Valid.tabelKosong(tabMode);
-        try {
-            if (TNoRM.getText().equals("")
-                    && TCari.getText().equals("")
-                    && TPasien.getText().equals("")) {
-                ps = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
-                        + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                        + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
-                        + "dokter.nm_dokter,penyakit.kd_penyakit,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
-                        + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                        + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                        + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit"
-                        + " where temp_spri.tanggal between '" + Valid.SetTgl(DTPCari1.getSelectedItem()+"") + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem()+"") + "' "
-                        + " order by temp_spri.tanggal desc limit 60");
-            } else {
-                if (!TNoRM.getText().equals("")) {
-                    ps = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
-                            + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                            + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.kd_penyakit,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
-                            + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                            + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                            + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit where"
-                            //                    + " temp_spri.tanggal like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " temp_spri.norm like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.jk like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.tmp_lahir like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " temp_spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
-                            + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' "
-                            + " order by temp_spri.tanggal ");
-                } else if (!txtKdDokter.getText().equals("")) {
-                    ps = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
-                            + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                            + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.kd_penyakit,"
-                            + "penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
-                            + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                            + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                            + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit where"
-                            //                    + " temp_spri.tanggal like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " temp_spri.norm like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.jk like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.tmp_lahir like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
-                            + " dokter.kd_dokter like '%" + txtKdDokter.getText().trim() + "%' "
-                            + " order by temp_spri.tanggal ");
-                } else if (!txtKdPenyakit.getText().equals("")) {
-                    ps = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
-                            + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                            + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.kd_penyakit,"
-                            + "penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
-                            + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                            + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                            + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit where"
-                            //                    + " temp_spri.tanggal like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " temp_spri.norm like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.jk like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.tmp_lahir like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " temp_spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
-                            + " temp_spri.diagnosa like '%" + txtKdPenyakit.getText().trim() + "%' "
-                            + " order by temp_spri.tanggal ");
-                } else if (!TCari.getText().trim().equals("")) {
-                    ps = koneksi.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
-                            + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                            + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
-                            + "dokter.nm_dokter,penyakit.kd_penyakit,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
-                            + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                            + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                            + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit where"
-                            //                    + " temp_spri.tanggal like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " temp_spri.norm like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.jk like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.tmp_lahir like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
-                            //                    + " temp_spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
-                            + " temp_spri.norm like '%" + TCari.getText().trim() + "%' "
-                            + " order by temp_spri.tanggal ");
-                }
+        spris = new ArrayList<>();
+        if (TNoRM.getText().equals("No. RM")
+                && TCari.getText().equals("")
+                && TPasien.getText().equals("Nama Pasien")) {
+            spris = spriDao.findByDate(Valid.SetTgl(DTPCari1.getSelectedItem() + ""), Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+        } else {
+            if (!TNoRM.getText().equals("No. RM")) {
+                spris = spriDao.search(TNoRM.getText());
+            } else if (!txtKdDokter.getText().equals("Kode Dokter")) {
+                spris = spriDao.search(txtKdDokter.getText());
+            } else if (!txtKdPenyakit.getText().equals("Kode Penyakit")) {
+                spris = spriDao.search(txtKdPenyakit.getText());
+            } else if (!TCari.getText().trim().equals("")) {
+                spris = spriDao.search(TCari.getText());
             }
-
-            try {
-                rs = ps.executeQuery();
-                while (rs.next()) {
-                    if (rs.getString("temp_spri.diagnosa").equals("")) {
-                        tabMode.addRow(new Object[]{
-                            rs.getString("tanggal"), rs.getString("jam"), rs.getString("norm"), rs.getString("temp_spri.nama"),
-                            rs.getString("pasien.jk"), rs.getString("pasien.tmp_lahir"), rs.getString("pasien.tgl_lahir"), rs.getString("pasien.gol_darah"),
-                            rs.getString("pasien.stts_nikah"), rs.getString("pasien.agama"), rs.getString("temp_spri.rencana_perawatan"),
-                            rs.getString("temp_spri.upf"),
-                            rs.getString("dokter.nm_dokter"), rs.getString("keluhan"), rs.getString("temp_spri.kd_dokter"), rs.getString("penyakit.kd_penyakit"),
-                            rs.getString("nama"), rs.getString("keluhan"), rs.getString("penyakit.nm_penyakit"), rs.getString("temp_spri.id")
-                        });
-                    } else if (!rs.getString("temp_spri.diagnosa").equals("")) {
-                        tabMode.addRow(new Object[]{
-                            rs.getString("tanggal"), rs.getString("jam"), rs.getString("norm"), rs.getString("temp_spri.nama"),
-                            rs.getString("pasien.jk"), rs.getString("pasien.tmp_lahir"), rs.getString("pasien.tgl_lahir"), rs.getString("pasien.gol_darah"),
-                            rs.getString("pasien.stts_nikah"), rs.getString("pasien.agama"), rs.getString("temp_spri.rencana_perawatan"),
-                            rs.getString("temp_spri.upf"),
-                            rs.getString("dokter.nm_dokter"), rs.getString("temp_spri.diagnosa"), rs.getString("temp_spri.kd_dokter"), rs.getString("penyakit.kd_penyakit"),
-                            rs.getString("nama"), rs.getString("keluhan"), rs.getString("penyakit.nm_penyakit"), rs.getString("temp_spri.id")
-                        });
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("simrskhanza.DlgSpri.tampil() : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
+        }
+        System.out.println("SPRI = "+spris);
+        for (Spri s : spris) {
+            if (s.getDiagnosa().equals("")) {
+                tabMode.addRow(new Object[]{
+                    s.getTanggal(), s.getJam(), s.getNorm(), s.getNama(),
+                    s.getPasien().getJk(), s.getPasien().getTmp_lahir(), s.getPasien().getTgl_lahir(), s.getPasien().getGol_darah(),
+                    s.getPasien().getStts_nikah(), s.getPasien().getAgama(), s.getRencana_perawatan(), s.getUpf(),
+                    s.getDokter().getNm_dokter(), s.getKeluhan(), s.getDokter().getKd_dokter(), s.getKeluhan(), s.getNama(), s.getKeluhan(), s.getKeluhan(), s.getId()
+                });
+            } else if (!s.getDiagnosa().equals("")) {
+//                "Tanggal", "Jam", "No.R.Medik", "Nama Pasien", "J.K.", "Tmp.Lahir",
+//            "Tgl.Lahir", "G.D.", "Stts.Nikah", "Agama", "Rencana Perawatan", "Ruangan",
+//            "Dokter", "Diagnosa", "kd_dokter", "kd_penyakit", "nama", "keluhan", "nm_penyakit", "id"
+                tabMode.addRow(new Object[]{
+                    s.getTanggal(), s.getJam(), s.getNorm(), s.getNama(),
+                    s.getPasien().getJk(), s.getPasien().getTmp_lahir(), s.getPasien().getTgl_lahir(), s.getPasien().getGol_darah(),
+                    s.getPasien().getStts_nikah(), s.getPasien().getAgama(), s.getRencana_perawatan(), s.getUpf(),
+                    s.getDokter().getNm_dokter(), s.getDiagnosa(), s.getDokter().getKd_dokter(), s.getDiagnosa(), s.getNama(), s.getKeluhan(), s.getKeluhan(), s.getId()
+                });
             }
-        } catch (SQLException e) {
-            System.out.println("Notifikasi : " + e);
         }
         int b = tabMode.getRowCount();
         LCount.setText("" + b);
     }
 
     public void emptTeks() {
-        TNoRM.setText("");
-        TPasien.setText("");
-        txtRencanaPerawatan.setText("");
+        Valid.setPlaceHolder(TPasien, "Nama Pasien");
+        Valid.setPlaceHolder(TNoRM, "No. RM");
+//        Valid.setPlaceHolder(txtKdKamar, "Kode Kamar");
+        Valid.setPlaceHolder(txtRencanaPerawatan, "Rencana Perawatan");
+        Valid.setPlaceHolder(txtKdDokter, "Kode Dokter");
+        Valid.setPlaceHolder(txtNmDokter, "Nama Dokter");
+        Valid.setPlaceHolder(txtKdPenyakit, "Kode Penyakit");
+        Valid.setPlaceHolder(txtNmPenyakit, "Nama Penyakit");
         cmbUpf.setSelectedIndex(0);
-        txtNmPenyakit.setText("");
-        txtKdPenyakit.setText("");
-        txtKdDokter.setText("");
-        txtNmDokter.setText("");
         DTPTgl.setDate(new Date());
         DTPTgl.requestFocus();
+
     }
 
     private void getData() {
