@@ -28,7 +28,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement pspenjab,psresep,psresep2, psdepo;
+    private PreparedStatement pspenjab,psresep,psresep2, psdepo, psstatus;
     private ResultSet rspenjab,rsresep; 
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private int i=0,a=0;
@@ -135,7 +135,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
                      "databarang.kode_brng, bangsal.nm_bangsal from reg_periksa inner join pasien inner join "+
                      "detail_pemberian_obat inner join databarang inner join bangsal "+
                      "on detail_pemberian_obat.kode_brng=databarang.kode_brng and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat and "+
-                     "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and bangsal.kd_bangsal=detail_pemberian_obat.kd_bangsal where reg_periksa.kd_pj=? and detail_pemberian_obat.tgl_perawatan between ? and ? and bangsal.nm_bangsal like ? order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");             
+                     "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and bangsal.kd_bangsal=detail_pemberian_obat.kd_bangsal where reg_periksa.kd_pj=? and detail_pemberian_obat.tgl_perawatan between ? and ? and bangsal.nm_bangsal like ? and detail_pemberian_obat.status like ? order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");             
              psresep2=koneksi.prepareStatement(
                      "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
                      "detail_pemberian_obat.no_rawat,pasien.nm_pasien,reg_periksa.kd_pj,databarang.nama_brng,"+
@@ -171,6 +171,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
         }
+        
      
     }
     
@@ -188,6 +189,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnUrut1 = new javax.swing.JMenuItem();
         MnUrut2 = new javax.swing.JMenuItem();
+        label20 = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -203,6 +205,8 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         label19 = new widget.Label();
         depo = new javax.swing.JComboBox<>();
+        sttts = new widget.Label();
+        status = new javax.swing.JComboBox<>();
         panelisi1 = new widget.panelisi();
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
@@ -246,6 +250,12 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnUrut2);
+
+        label20.setText("Apotek :");
+        label20.setMaximumSize(new java.awt.Dimension(80, 14));
+        label20.setMinimumSize(new java.awt.Dimension(80, 14));
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(80, 23));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -294,6 +304,11 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
+        Tgl1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tgl1ActionPerformed(evt);
+            }
+        });
         Tgl1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Tgl1KeyPressed(evt);
@@ -310,6 +325,11 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
+        Tgl2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tgl2ActionPerformed(evt);
+            }
+        });
         Tgl2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Tgl2KeyPressed(evt);
@@ -402,6 +422,40 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
             }
         });
         panelisi4.add(depo);
+
+        sttts.setText("Status:");
+        sttts.setMaximumSize(new java.awt.Dimension(80, 14));
+        sttts.setMinimumSize(new java.awt.Dimension(80, 14));
+        sttts.setName("sttts"); // NOI18N
+        sttts.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelisi4.add(sttts);
+
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Ralan", "Ranap" }));
+        status.setName("status"); // NOI18N
+        status.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                statusInputMethodTextChanged(evt);
+            }
+        });
+        status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusActionPerformed(evt);
+            }
+        });
+        status.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                statusKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                statusKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                statusKeyTyped(evt);
+            }
+        });
+        panelisi4.add(status);
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
@@ -644,6 +698,34 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         // TODO add your handling code here:
     }//GEN-LAST:event_depoInputMethodTextChanged
 
+    private void Tgl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tgl1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tgl1ActionPerformed
+
+    private void Tgl2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tgl2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tgl2ActionPerformed
+
+    private void statusInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_statusInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusInputMethodTextChanged
+
+    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusActionPerformed
+
+    private void statusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusKeyPressed
+
+    private void statusKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusKeyReleased
+
+    private void statusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusKeyTyped
+
     /**
     * @param args the command line arguments
     */
@@ -679,11 +761,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label label17;
     private widget.Label label18;
     private widget.Label label19;
+    private widget.Label label20;
     private widget.Label label9;
     private widget.TextBox nmpenjab;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
     private widget.ScrollPane scrollPane1;
+    private javax.swing.JComboBox<String> status;
+    private widget.Label sttts;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
@@ -698,11 +783,20 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
            ttlembalase=0;
            ttltuslah=0;
            while(rspenjab.next()){
+               String status_val = "";
+               if(status.getSelectedItem().toString().contains("Ralan")){
+                   status_val = "Ralan";
+               }
+                else if(status.getSelectedItem().toString().contains("Ranap")){
+                   status_val = "Ranap";
+               }
+
                tabMode.addRow(new Object[]{i+". ",rspenjab.getString("png_jawab"),"","",null,null,null});
                psresep.setString(1,rspenjab.getString("kd_pj"));
                psresep.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                psresep.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                psresep.setString(4,"%" + depo.getSelectedItem().toString() +"%");
+               psresep.setString(5,"%" + status_val +"%");
                a=1;
                rsresep=psresep.executeQuery();               
                subtotal=0;

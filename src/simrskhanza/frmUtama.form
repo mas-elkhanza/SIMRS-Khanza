@@ -7847,6 +7847,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="name" type="java.lang.String" value="jMenu1" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 26]"/>
             </Property>
@@ -7971,6 +7972,7 @@
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="iconTextGap" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="jMenu5" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[126, 26]"/>
             </Property>
@@ -8120,6 +8122,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="name" type="java.lang.String" value="jMenu6" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[88, 26]"/>
             </Property>
@@ -8668,6 +8671,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="name" type="java.lang.String" value="jMenu7" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[137, 26]"/>
             </Property>
@@ -8859,6 +8863,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="name" type="java.lang.String" value="jMenu4" noResource="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[121, 26]"/>
             </Property>

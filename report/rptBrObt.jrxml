@@ -317,7 +317,7 @@ ORDER BY
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="20" splitType="Stretch">
+		<band height="18" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Transparent" x="2" y="0" width="93" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="5328501c-dec5-4073-ae8e-dec28b52b439"/>
 				<textElement verticalAlignment="Middle">

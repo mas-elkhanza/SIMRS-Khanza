@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="612" pageHeight="935" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6853e84f-6eb5-43b2-affc-87ff01fd007e">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -138,7 +138,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</rectangle>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="120" y="116" width="154" height="11" uuid="8f598552-0037-41c7-badb-78649c10bbc3"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -169,7 +169,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</reportElement>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="174" y="89" width="219" height="14" uuid="9e758339-b876-4f63-8e5e-3902d2171aab"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
@@ -177,7 +177,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="174" y="75" width="219" height="14" uuid="d3aecef0-f12b-4c26-b7d2-8a299394d326"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
@@ -185,7 +185,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="174" y="27" width="219" height="17" uuid="8902427c-d70d-4507-84e2-24c41a75f740"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="14"/>
@@ -193,7 +193,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA["RUMAH SAKIT UMUM ISLAM"]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="174" y="61" width="219" height="14" uuid="67c2b0b2-07b3-435a-81b3-86fc1a7a8f2a"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
@@ -209,13 +209,13 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="411" y="4" width="140" height="13" uuid="7905dc00-3608-44a9-a21d-a25b67df7c6f"/>
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["(RM 1)"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["(RM 1B)"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="114" y="116" width="5" height="11" uuid="390ad742-b920-44e0-9c3e-bf8e6d39517b"/>
@@ -241,7 +241,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[No. RM]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="120" y="129" width="154" height="11" uuid="e0251a4d-44ac-4823-abc8-0b166d684181"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -249,7 +249,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="120" y="142" width="153" height="11" uuid="a0340d04-b989-4262-9462-a66c28e4a31b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -273,7 +273,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Tgl. Lahir]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="121" y="167" width="153" height="24" uuid="54ef497d-854a-4d69-ac72-ccfca6242c8a"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -313,7 +313,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Keluarga Terdekat / Penanggung Jawab Pembayaran]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="118" y="236" width="350" height="13" uuid="15d0bceb-89bd-47bb-8e6e-86ff79be8a43"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
@@ -329,7 +329,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Nama]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="118" y="250" width="400" height="13" uuid="eac29f3d-3d87-45d6-8283-738556cd0ed8"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
@@ -361,7 +361,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Telepon / HP]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="118" y="262" width="400" height="13" uuid="d71f70a6-9fc3-4693-b1a6-269b8bd016c5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
@@ -377,7 +377,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="118" y="276" width="400" height="13" uuid="8d75e20a-e9b6-4a03-a9ef-ff016922bfa8"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
@@ -409,7 +409,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Pekerjaan]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="118" y="290" width="400" height="13" uuid="796e8b47-0820-4a7d-adb0-c3a4e8c3e843"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
@@ -645,7 +645,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Jenis Kelamin]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="120" y="154" width="153" height="11" uuid="71fffc97-6e88-4d42-911a-ee651c3927dd"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -669,7 +669,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="384" y="116" width="162" height="11" uuid="fd0b6ecc-f36a-44be-be33-6268160211d6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -701,7 +701,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Pendidikan]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="120" y="193" width="153" height="11" uuid="cb96a3a4-bb6f-433b-bca0-1fcc9f86109c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -725,7 +725,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Pekerjaan]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="384" y="129" width="162" height="11" uuid="b72c5f35-2a3c-41f0-8d08-f13c1b7dc026"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -749,7 +749,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Suku Bangsa]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="384" y="142" width="162" height="11" uuid="6e3e50e3-3ccc-40ee-8471-c78b2cb71471"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -773,7 +773,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Agama/Kepercayaan]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="384" y="155" width="162" height="11" uuid="f67d893b-7ca6-4fda-8080-c8fac82bba90"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -797,7 +797,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Kiriman dari]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="384" y="168" width="162" height="11" uuid="eb2a5b5d-b30e-4ef6-a6d2-2635407ee6a4"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -821,7 +821,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Status Pembayaran]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="384" y="181" width="162" height="11" uuid="f3c3b66d-2311-4de4-9191-03c3084604f0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -829,7 +829,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{png_jawab}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="174" y="44" width="219" height="17" uuid="0667009e-410b-4a1c-88dc-71411e2ed0a5"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="14"/>
@@ -1461,7 +1461,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="98" y="370" width="110" height="11" uuid="f214950f-2c79-46e3-918e-1379cec1282c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -1469,7 +1469,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{upf} == null ? "-": $P{upf}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="387" y="475" width="144" height="11" uuid="fdb1563c-c571-4cdd-b595-20d4ff3613d9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -1477,7 +1477,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{doktermasuk}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="81" y="343" width="110" height="11" uuid="d4ecd0df-712c-4aed-a0a3-386c3abe651e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -1485,7 +1485,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tgl_masuk}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="81" y="356" width="110" height="11" uuid="42e0522e-cb16-452e-a50c-3ef17af37ee7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -1493,7 +1493,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jam_masuk}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="81" y="400" width="110" height="11" uuid="7eafe02f-fe89-4abf-85aa-0c0fda200fa5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -1501,7 +1501,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{kelas}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy">
+			<textField pattern="dd/MM/yyyy">
 				<reportElement mode="Transparent" x="98" y="385" width="110" height="11" uuid="5de521b1-d28f-4583-83c5-0ad06bae6590"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -1589,7 +1589,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Dirawat ke]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="384" y="194" width="162" height="11" uuid="53c0095a-9dbf-4389-920d-0e2e31732d71"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
@@ -1605,7 +1605,7 @@ inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal]]>
 				</textElement>
 				<text><![CDATA[Cara pengiriman melalui :]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement mode="Transparent" x="92" y="426" width="106" height="11" uuid="a1e25464-97b6-456b-a7af-f9c083c01708"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>

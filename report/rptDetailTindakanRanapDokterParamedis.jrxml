@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1440" pageHeight="792" orientation="Landscape" columnWidth="1400" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cc6d21c2-7f24-4be1-a588-dc0508d3cfd1">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="10"/>
@@ -20,11 +20,12 @@
 		<![CDATA[select rawat_inap_drpr.no_rawat,reg_periksa.no_rkm_medis,
 pasien.nm_pasien,rawat_inap_drpr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,
 rawat_inap_drpr.kd_dokter,dokter.nm_dokter,rawat_inap_drpr.nip,petugas.nama,rawat_inap_drpr.tgl_perawatan,
-rawat_inap_drpr.jam_rawat,penjab.png_jawab, nm_bangsal, kelas, 
+rawat_inap_drpr.jam_rawat, kamar_inap.tgl_keluar, penjab.png_jawab, nm_bangsal, kelas, 
 rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,
 rawat_inap_drpr.kso,rawat_inap_drpr.menejemen,rawat_inap_drpr.biaya_rawat, dokter_pertama.nm_dokter as dokter_pertama
 from pasien 
 inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat
 inner join rawat_inap_drpr on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat 
 inner join jns_perawatan_inap on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw 
 inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter 
@@ -32,15 +33,15 @@ inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli
 inner join penjab on reg_periksa.kd_pj=penjab.kd_pj 
 inner join petugas on rawat_inap_drpr.nip=petugas.nip 
 inner join dokter as dokter_pertama on dokter_pertama.kd_dokter = reg_periksa.kd_dokter
-where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and rawat_inap_drpr.no_rawat like $P{cari} or 
- rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and reg_periksa.no_rkm_medis like $P{cari} or 
- rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and pasien.nm_pasien like $P{cari} or 
- rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and jns_perawatan_inap.nm_perawatan like $P{cari} or 
- rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and rawat_inap_drpr.kd_dokter like $P{cari} or 
- rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{cari} or 
- rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and rawat_inap_drpr.nip like $P{cari} or 
- rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and petugas.nama like $P{cari} or 
- rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and penjab.png_jawab like $P{cari}  
+where kamar_inap.tgl_keluar between $P{tanggal1} and $P{tanggal2} and rawat_inap_drpr.no_rawat like $P{cari} or 
+ kamar_inap.tgl_keluar between $P{tanggal1} and $P{tanggal2} and reg_periksa.no_rkm_medis like $P{cari} or 
+ kamar_inap.tgl_keluar between $P{tanggal1} and $P{tanggal2} and pasien.nm_pasien like $P{cari} or 
+ kamar_inap.tgl_keluar between $P{tanggal1} and $P{tanggal2} and jns_perawatan_inap.nm_perawatan like $P{cari} or 
+ kamar_inap.tgl_keluar between $P{tanggal1} and $P{tanggal2} and rawat_inap_drpr.kd_dokter like $P{cari} or 
+ kamar_inap.tgl_keluar between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{cari} or 
+ kamar_inap.tgl_keluar between $P{tanggal1} and $P{tanggal2} and rawat_inap_drpr.nip like $P{cari} or 
+ kamar_inap.tgl_keluar between $P{tanggal1} and $P{tanggal2} and petugas.nama like $P{cari} or 
+ kamar_inap.tgl_keluar  between $P{tanggal1} and $P{tanggal2} and penjab.png_jawab like $P{cari}  
  order by rawat_inap_drpr.no_rawat desc]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
@@ -105,6 +106,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 	</field>
 	<field name="dokter_pertama" class="java.lang.String"/>
 	<field name="kelas" class="java.lang.String"/>
+	<field name="tgl_keluar" class="java.lang.String"/>
 	<variable name="no" class="java.lang.Integer" calculation="Count">
 		<variableExpression><![CDATA[$F{no_rawat}]]></variableExpression>
 	</variable>
@@ -142,7 +144,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 				</textElement>
 				<text><![CDATA[Detail Tindakan Ranap Dokter & Paramedis]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="3" y="14" width="1397" height="14" uuid="b8b0bde5-cd30-4437-90a7-5b56cb87a214"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
@@ -150,7 +152,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 				</textElement>
 				<textFieldExpression><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="3" y="0" width="1397" height="17" uuid="bbd2b3e5-7f23-4785-a0b7-f5fb4bf20d0a"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
@@ -164,7 +166,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 					<pen lineWidth="2.0" lineStyle="Double"/>
 				</graphicElement>
 			</line>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="3" y="35" width="1397" height="14" uuid="a33564e3-0b45-4c53-a064-93074fca46b0"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
@@ -176,7 +178,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 				<reportElement x="1" y="2" width="48" height="45" uuid="5588f8e1-84ca-49dd-8ead-a062dfa1b70d"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
-			<textField textAdjust="StretchHeight">
+			<textField>
 				<reportElement x="3" y="25" width="1397" height="14" uuid="a55ab3f8-1beb-4ee1-b2c2-b28a5e379ddf"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="9"/>
@@ -266,7 +268,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="859" y="0" width="115" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="5441e93f-df80-4f6b-a052-53ef29b5cfb5">
+				<reportElement mode="Opaque" x="870" y="0" width="104" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="5441e93f-df80-4f6b-a052-53ef29b5cfb5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -286,12 +288,12 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 				<text><![CDATA[Cara Bayar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="822" y="0" width="37" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ae298a28-a318-4fee-a09f-60c09bf87cc3"/>
+				<reportElement mode="Opaque" x="822" y="0" width="48" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ae298a28-a318-4fee-a09f-60c09bf87cc3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Jam]]></text>
+				<text><![CDATA[Tgl Pulang]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="445" y="0" width="111" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="17fc0123-a1f5-482c-9087-593e018b67a9"/>
@@ -307,7 +309,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Tanggal]]></text>
+				<text><![CDATA[Tanggal Tind]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="270" y="0" width="175" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="c48f90e9-23fd-492e-a30b-57a963801e0c">
@@ -430,12 +432,12 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 				<textFieldExpression><![CDATA[$F{tgl_perawatan}]]></textFieldExpression>
 			</textField>
 			<textField pattern="HH:mm:ss" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="822" y="0" width="36" height="10" uuid="53d47604-69aa-4999-ad93-e9f5237d1098"/>
+				<reportElement stretchType="RelativeToBandHeight" x="822" y="0" width="48" height="10" uuid="53d47604-69aa-4999-ad93-e9f5237d1098"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{jam_rawat}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tgl_keluar}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="974" y="0" width="68" height="10" uuid="7cd2a9df-aa0d-44a8-a202-04697b73749b">
@@ -448,7 +450,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 				<textFieldExpression><![CDATA[$F{png_jawab}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="859" y="0" width="113" height="10" uuid="100e93b7-ea74-40b1-8dc0-c7a5d49bd2c9">
+				<reportElement stretchType="RelativeToBandHeight" x="870" y="0" width="102" height="10" uuid="100e93b7-ea74-40b1-8dc0-c7a5d49bd2c9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -544,7 +546,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 	</columnFooter>
 	<pageFooter>
 		<band height="26" splitType="Stretch">
-			<textField textAdjust="StretchHeight" evaluationTime="Report" pattern="" isBlankWhenNull="false">
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" x="742" y="6" width="36" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="97bb322a-46e4-4e7b-bb83-aa35ca498435"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -558,7 +560,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 				</textElement>
 				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="" isBlankWhenNull="false">
+			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" x="507" y="6" width="170" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="c66489a4-4c74-4c17-b55a-19d2292da2b8"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -572,7 +574,7 @@ where rawat_inap_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and ra
 				</textElement>
 				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="" isBlankWhenNull="false">
+			<textField pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" x="5" y="6" width="209" height="11" forecolor="#000000" backcolor="#FFFFFF" uuid="a00e1949-33b6-43b2-aa34-7b4ec13cca7b"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
