@@ -495,6 +495,7 @@ import laporan.DlgRl37;
 import laporan.DlgRl38;
 import laporan.DlgSensusHarianPoli;
 import laporan.DlgSensusHarianRalan;
+import laporan.DlgSensusHarianRanap;
 import laporan.DlgSirkulasiBerkas;
 import laporan.RekapKunjunganRuangPerTahun;
 import laporan.RekapSkriningPernapasanRalanPerTahun;
@@ -748,6 +749,7 @@ public class frmUtama extends javax.swing.JFrame {
         scrollPane2 = new widget.ScrollPane();
         Panelmenu = new widget.panelGlass();
         btnBarcode = new widget.ButtonBig();
+        btnSensusRanap = new widget.ButtonBig();
         btnICD = new widget.ButtonBig();
         btnObat = new widget.ButtonBig();
         btnObatPenyakit = new widget.ButtonBig();
@@ -1490,6 +1492,16 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnBarcode);
+
+        btnSensusRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
+        btnSensusRanap.setText("Sensus Harian Rawat Inap");
+        btnSensusRanap.setName("btnSensusRanap"); // NOI18N
+        btnSensusRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSensusRanapActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSensusRanap);
 
         btnICD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnICD.setText("ICD 10");
@@ -6923,7 +6935,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/04/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/05/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -14271,6 +14283,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSpriActionPerformed
 
+    private void btnSensusRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSensusRanapActionPerformed
+        // TODO add your handling code here:
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSensusHarianRanap ranap=new DlgSensusHarianRanap(this,false);
+        ranap.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        ranap.setLocationRelativeTo(PanelUtama);
+        ranap.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSensusRanapActionPerformed
+
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -16200,6 +16224,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private widget.ButtonBig btnSatuanTNI;
     private widget.ButtonBig btnSensusHarianPoli;
     private widget.ButtonBig btnSensusHarianRalan;
+    private widget.ButtonBig btnSensusRanap;
     private widget.ButtonBig btnSetBiayaHarian;
     private widget.ButtonBig btnSetBiayaMasukSekali;
     private widget.ButtonBig btnSetHargaKamar;
@@ -16649,6 +16674,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnRekapPresensi);
             Panelmenu.add(btnRekapPresensi2);
             jmlmenu++;
+            jmlmenu++;
+            Panelmenu.add(btnSensusRanap);  
             jmlmenu++;
 
             if((akses.getpegawai_admin()==true)||(akses.getpegawai_user()==true)){                
@@ -17617,7 +17644,12 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSensusHarianRalan);  
                 jmlmenu++;
             }
-
+           
+//            if(akses.getsensus_harian_ranap()==true){  
+//                Panelmenu.add(btnSensusRanap);  
+//                jmlmenu++;
+//            }
+            
             if(akses.getrl32()==true){  
                 Panelmenu.add(btnRl32);   
                 jmlmenu++;
@@ -19581,6 +19613,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         Panelmenu.add(btnRekapPresensi2);
         jmlmenu++;
         jmlmenu++;
+        Panelmenu.add(btnSensusRanap);  
+        jmlmenu++;
 
         if((akses.getpegawai_admin()==true)||(akses.getpegawai_user()==true)){                
             Panelmenu.add(btnPenggajian); 
@@ -20536,6 +20570,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnSensusHarianRalan);  
             jmlmenu++;
         }
+//        if(akses.getsensus_harian_ranap()==true){  
+//            Panelmenu.add(btnSensusRanap);  
+//            jmlmenu++;
+//        }
 
         if(akses.getrl32()==true){  
             Panelmenu.add(btnRl32);   
@@ -22345,7 +22383,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             if(btnKamarInap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKamarInap);
                 jmlmenu++;
-            }                
+            } 
         }
         
         if(akses.getbooking_operasi()==true){
@@ -22566,6 +22604,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(btnRekapPresensi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
             jmlmenu++;
             Panelmenu.add(btnRekapPresensi);
+        }
+        
+        if(btnSensusRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+            jmlmenu++;
+            Panelmenu.add(btnSensusRanap);
         }
                 
         if(btnRekapPresensi2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -23910,6 +23953,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
 
+//        if(akses.getsensus_harian_ranap()==true){  
+//            if(btnSensusRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+//                Panelmenu.add(btnSensusRanap);  
+//                jmlmenu++;
+//            }                
+//        }
+        
         if(akses.getrl32()==true){  
             if(btnRl32.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl32);   

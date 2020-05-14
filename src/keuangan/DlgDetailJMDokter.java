@@ -1,4 +1,5 @@
 package keuangan;
+
 import fungsi.WarnaTable;
 import fungsi.akses;
 import fungsi.batasInput;
@@ -26,157 +27,195 @@ import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgPenanggungJawab;
 
 public class DlgDetailJMDokter extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
-    private Connection koneksi=koneksiDB.condb();
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
-    private int i=0,a=0,c=0;
-    private double ttljml=0,ttlbhp=0,ttlbiaya=0,ttljm=0,ttluangrs=0,detailjm=0,detailbhp=0,detailrs=0,detailtotal=0,biayaitem=0;
-    private PreparedStatement ps,pspasienranap,pskamar,pstindakanranap,pspasienradiologi,pspasienralan,pstindakanralan,pstindakanradiologi,
-            pspasienradiologi2,pstindakanradiologi2,pspasienlab,pstindakanlab,psdetaillab,pspasienlab2,pstindakanlab2,psdetaillab2,
-            pspasienoperator1,pstindakanoperator1,pspasienoperator2,pstindakanoperator2,pspasienoperator3,pstindakanoperator3,
-            pspasiendokter_anak,pstindakandokter_anak,pspasiendokter_anestesi,pstindakandokter_anestesi,pstindakanranapdrpr,
-            pspasienranapdrpr,pspasienralandrpr,pstindakanralandrpr,psanak,pskamar2,pstindakandokter_pjanak,pspasiendokter_pjanak,pstindakandokter_umum,pspasiendokter_umum;
-    private ResultSet rs,rspasien,rskamar,rstindakan,rsdetaillab,rsanak,rskamar2/*,rsperiksa_radiologi,rsperiksa_radiologiperujuk,rsperiksa_lab,
-            rsperiksa_labperujuk,rsdetaillab*/;
-    private String jml="",biaya="",jm="",uangrs="",bhp="",tarif="",tanggal="",kamar="",penjab="",pasien="",pilihancarabayar="",norawatbayi="";
-    private boolean kelas=false,ranapgabung=false;
 
-    /** Creates new form DlgProgramStudi
+    private final DefaultTableModel tabMode;
+    private sekuel Sequel = new sekuel();
+    private validasi Valid = new validasi();
+    private Jurnal jur = new Jurnal();
+    private Connection koneksi = koneksiDB.condb();
+    private Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+    private DlgCariDokter dokter = new DlgCariDokter(null, false);
+    private DlgPenanggungJawab carabayar = new DlgPenanggungJawab(null, false);
+    private int i = 0, a = 0, c = 0;
+    private double ttljml = 0, ttlbhp = 0, ttlbiaya = 0, ttljm = 0, ttluangrs = 0, detailjm = 0, detailbhp = 0, detailrs = 0, detailtotal = 0, biayaitem = 0;
+    private PreparedStatement ps, pspasienranap, pskamar, pstindakanranap, pspasienradiologi, pspasienralan, pstindakanralan, pstindakanradiologi,
+            pspasienradiologi2, pstindakanradiologi2, pspasienlab, pstindakanlab, psdetaillab, pspasienlab2, pstindakanlab2, psdetaillab2,
+            pspasienoperator1, pstindakanoperator1, pspasienoperator2, pstindakanoperator2, pspasienoperator3, pstindakanoperator3,
+            pspasiendokter_anak, pstindakandokter_anak, pspasiendokter_anestesi, pstindakandokter_anestesi, pstindakanranapdrpr,
+            pspasienranapdrpr, pspasienralandrpr, pstindakanralandrpr, psanak, pskamar2, pstindakandokter_pjanak, pspasiendokter_pjanak, pstindakandokter_umum, pspasiendokter_umum;
+    private ResultSet rs, rspasien, rskamar, rstindakan, rsdetaillab, rsanak, rskamar2/*,rsperiksa_radiologi,rsperiksa_radiologiperujuk,rsperiksa_lab,
+            rsperiksa_labperujuk,rsdetaillab*/;
+    private String jml = "", biaya = "", jm = "", uangrs = "", bhp = "", tarif = "", tanggal = "", kamar = "", penjab = "", pasien = "", pilihancarabayar = "", norawatbayi = "";
+    private boolean kelas = false, ranapgabung = false;
+
+    /**
+     * Creates new form DlgProgramStudi
+     *
      * @param parent
-     * @param modal */
+     * @param modal
+     */
     public DlgDetailJMDokter(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"No.","Nama Dokter","Nama Pasien","Ruang","Jenis Bayar","Nama Tindakan","Tarif","Jml","Biaya","Paket BHP/Obat","J.M.Dokter","J.S.Rmh Skt"};
-        tabMode=new DefaultTableModel(null,row){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
-             Class[] types = new Class[] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, 
+        Object[] row = {"No.", "Nama Dokter", "Nama Pasien", "Ruang", "Jenis Bayar", "Nama Tindakan", "Tarif", "Jml", "Biaya", "Paket BHP/Obat", "J.M.Dokter", "J.S.Rmh Skt"};
+        tabMode = new DefaultTableModel(null, row) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
-             };
-             @Override
-             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-             }
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
         };
         tbDokter.setModel(tabMode);
 
-        tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
+        tbDokter.setPreferredScrollableViewportSize(new Dimension(800, 800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
         for (i = 0; i < 12; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
-            if(i==0){
+            if (i == 0) {
                 column.setPreferredWidth(35);
-            }else if(i==1){
+            } else if (i == 1) {
                 column.setPreferredWidth(150);
-            }else if(i==2){
+            } else if (i == 2) {
                 column.setPreferredWidth(150);
-            }else if(i==3){
+            } else if (i == 3) {
                 column.setPreferredWidth(120);
-            }else if(i==4){
+            } else if (i == 4) {
                 column.setPreferredWidth(80);
-            }else if(i==5){
+            } else if (i == 5) {
                 column.setPreferredWidth(280);
-            }else if(i==6){
+            } else if (i == 6) {
                 column.setPreferredWidth(80);
-            }else if(i==7){
+            } else if (i == 7) {
                 column.setPreferredWidth(25);
-            }else if(i==8){
+            } else if (i == 8) {
                 column.setPreferredWidth(85);
-            }else if(i==9){
+            } else if (i == 9) {
                 column.setPreferredWidth(85);
-            }else if(i==10){
+            } else if (i == 10) {
                 column.setPreferredWidth(85);
-            }else if(i==11){
+            } else if (i == 11) {
                 column.setPreferredWidth(85);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
-        
-        kddokter.setDocument(new batasInput((byte)10).getKata(kddokter));
-                
+        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+
+        kddokter.setDocument(new batasInput((byte) 10).getKata(kddokter));
+
         dokter.addWindowListener(new WindowListener() {
             @Override
-            public void windowOpened(WindowEvent e) {}
+            public void windowOpened(WindowEvent e) {
+            }
+
             @Override
-            public void windowClosing(WindowEvent e) {}
+            public void windowClosing(WindowEvent e) {
+            }
+
             @Override
             public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){
-                    kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    kelas=false;
-                    ranapgabung=false;
-                    if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
-            cariPiutang();
-        }
-                }   
+                if (dokter.getTable().getSelectedRow() != -1) {
+                    kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString());
+                    nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
+//                    kelas=false;
+//                    ranapgabung=false;
+//                    if(cmbStat.getSelectedItem().equals("Lunas")){
+//           prosesCari(); 
+//        }else if(cmbStat.getSelectedItem().equals("Piutang")){
+//            cariPiutang();
+//        }
+                }
                 kddokter.requestFocus();
             }
+
             @Override
-            public void windowIconified(WindowEvent e) {}
+            public void windowIconified(WindowEvent e) {
+            }
+
             @Override
-            public void windowDeiconified(WindowEvent e) {}
+            public void windowDeiconified(WindowEvent e) {
+            }
+
             @Override
-            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
+            public void windowActivated(WindowEvent e) {
+                dokter.emptTeks();
+            }
+
             @Override
-            public void windowDeactivated(WindowEvent e) {}
+            public void windowDeactivated(WindowEvent e) {
+            }
         });
-        
+
         carabayar.addWindowListener(new WindowListener() {
             @Override
-            public void windowOpened(WindowEvent e) {}
+            public void windowOpened(WindowEvent e) {
+            }
+
             @Override
-            public void windowClosing(WindowEvent e) {}
+            public void windowClosing(WindowEvent e) {
+            }
+
             @Override
             public void windowClosed(WindowEvent e) {
-                if(carabayar.getTable().getSelectedRow()!= -1){
-                    pilihancarabayar=carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(),1).toString();
-                }     
-                if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
-            cariPiutang();
-        }
+                if (carabayar.getTable().getSelectedRow() != -1) {
+                    pilihancarabayar = carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(), 1).toString();
+                }
+                if (cmbStat.getSelectedItem().equals("Lunas")) {
+                    prosesCari();
+                } else if (cmbStat.getSelectedItem().equals("Piutang")) {
+                    cariPiutang();
+                }
             }
+
             @Override
-            public void windowIconified(WindowEvent e) {}
+            public void windowIconified(WindowEvent e) {
+            }
+
             @Override
-            public void windowDeiconified(WindowEvent e) {}
+            public void windowDeiconified(WindowEvent e) {
+            }
+
             @Override
-            public void windowActivated(WindowEvent e) {carabayar.onCari();}
+            public void windowActivated(WindowEvent e) {
+                carabayar.onCari();
+            }
+
             @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+
         carabayar.getTable().addKeyListener(new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+            }
+
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     carabayar.dispose();
                 }
             }
+
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+            }
         });
     }
 
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -550,76 +589,76 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            
+        } else if (tabMode.getRowCount() != 0) {
+
             Sequel.queryu("delete from temporary");
-            for(i=0;i<tabMode.getRowCount();i++){  
+            for (i = 0; i < tabMode.getRowCount(); i++) {
                 try {
-                    uangrs=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()));
+                    uangrs = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 11).toString()));
                 } catch (Exception e) {
-                    uangrs="";
+                    uangrs = "";
                 }
                 try {
-                    jm=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,10).toString()));
+                    jm = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 10).toString()));
                 } catch (Exception e) {
-                    jm="";
+                    jm = "";
                 }
                 try {
-                    bhp=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString()));
+                    bhp = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 9).toString()));
                 } catch (Exception e) {
-                    bhp="";
+                    bhp = "";
                 }
                 try {
-                    biaya=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()));
+                    biaya = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 8).toString()));
                 } catch (Exception e) {
-                    biaya="";
+                    biaya = "";
                 }
                 try {
-                    jml=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString()));
+                    jml = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 7).toString()));
                 } catch (Exception e) {
-                    jml="";
+                    jml = "";
                 }
                 try {
-                    tarif=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString()));
+                    tarif = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 6).toString()));
                 } catch (Exception e) {
-                    tarif="";
+                    tarif = "";
                 }
-                Sequel.menyimpan("temporary","'0','"+
-                                tabMode.getValueAt(i,0).toString().replaceAll("'","`") +"','"+
-                                tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(i,4).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"','"+
-                                tarif+"','"+
-                                jml+"','"+
-                                biaya+"','"+
-                                bhp+"','"+
-                                jm+"','"+
-                                uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
+                Sequel.menyimpan("temporary", "'0','"
+                        + tabMode.getValueAt(i, 0).toString().replaceAll("'", "`") + "','"
+                        + tabMode.getValueAt(i, 1).toString().replaceAll("'", "`") + "','"
+                        + tabMode.getValueAt(i, 2).toString().replaceAll("'", "`") + "','"
+                        + tabMode.getValueAt(i, 3).toString().replaceAll("'", "`") + "','"
+                        + tabMode.getValueAt(i, 4).toString().replaceAll("'", "`") + "','"
+                        + tabMode.getValueAt(i, 5).toString().replaceAll("'", "`") + "','"
+                        + tarif + "','"
+                        + jml + "','"
+                        + biaya + "','"
+                        + bhp + "','"
+                        + jm + "','"
+                        + uangrs + "','','','','','','','','','','','','','','','','','','','','','','','','',''", "JM Dokter");
             }
-            
-            Map<String, Object> param = new HashMap<>();   
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptJMRanapDokter.jasper","report","[ Detail J.M. Dokter  ]",param);
+
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("logo", Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptJMRanapDokter.jasper", "report", "[ Detail J.M. Dokter  ]", param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnPrintActionPerformed(null);
-        }else{
-            Valid.pindah(evt,BtnAll,BtnKeluar);
+        } else {
+            Valid.pindah(evt, BtnAll, BtnKeluar);
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
@@ -628,21 +667,23 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             dispose();
-        }else{Valid.pindah(evt,BtnPrint,Tgl1);}
+        } else {
+            Valid.pindah(evt, BtnPrint, Tgl1);
+        }
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter,kddokter.getText()); 
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter,kddokter.getText()); 
+        if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
+            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter, kddokter.getText());
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
+            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter, kddokter.getText());
             Tgl2.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter,kddokter.getText()); 
+        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", nmdokter, kddokter.getText());
             BtnAll.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+        } else if (evt.getKeyCode() == KeyEvent.VK_UP) {
             BtnSeek2ActionPerformed(null);
         }
     }//GEN-LAST:event_kddokterKeyPressed
@@ -650,273 +691,273 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         kddokter.setText("");
         nmdokter.setText("");
-        kelas=false;
-        ranapgabung=false;
-        pilihancarabayar="";
-        if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
+        kelas = false;
+        ranapgabung = false;
+        pilihancarabayar = "";
+        if (cmbStat.getSelectedItem().equals("Lunas")) {
+            prosesCari();
+        } else if (cmbStat.getSelectedItem().equals("Piutang")) {
             cariPiutang();
         }
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnAllActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, kddokter, BtnPrint);
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
-        dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setAlwaysOnTop(false);
-        dokter.setVisible(true);
+    dokter.isCek();
+    dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+    dokter.setLocationRelativeTo(internalFrame1);
+    dokter.setAlwaysOnTop(false);
+    dokter.setVisible(true);
 }//GEN-LAST:event_BtnSeek2ActionPerformed
 
 private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek2KeyPressed
-   //Valid.pindah(evt,DTPCari2,TCari);
+    //Valid.pindah(evt,DTPCari2,TCari);
 }//GEN-LAST:event_BtnSeek2KeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        kelas=false;
-        ranapgabung=false;
-        if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
-            cariPiutang();
-        }
-        
+    kelas = false;
+    ranapgabung = false;
+    if (cmbStat.getSelectedItem().equals("Lunas")) {
+        prosesCari();
+    } else if (cmbStat.getSelectedItem().equals("Piutang")) {
+        cariPiutang();
+    }
+
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnCariActionPerformed(null);
-        }else{
-            Valid.pindah(evt, kddokter, BtnGaji);
-        }
+    if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+        BtnCariActionPerformed(null);
+    } else {
+        Valid.pindah(evt, kddokter, BtnGaji);
+    }
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void Tgl1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl1KeyPressed
-        Valid.pindah(evt, BtnKeluar,Tgl2);
+        Valid.pindah(evt, BtnKeluar, Tgl2);
     }//GEN-LAST:event_Tgl1KeyPressed
 
     private void Tgl2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl2KeyPressed
-        Valid.pindah(evt, Tgl1,kddokter);
+        Valid.pindah(evt, Tgl1, kddokter);
     }//GEN-LAST:event_Tgl2KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         Tgl1.requestFocus();
-        kelas=false;
-        ranapgabung=false;
-        pilihancarabayar="";
+        kelas = false;
+        ranapgabung = false;
+        pilihancarabayar = "";
     }//GEN-LAST:event_formWindowOpened
 
     private void chkRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRalanActionPerformed
-        kelas=false;
-        ranapgabung=false;
-        if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
-            cariPiutang();
-        }
+//        kelas=false;
+//        ranapgabung=false;
+//        if(cmbStat.getSelectedItem().equals("Lunas")){
+//           prosesCari(); 
+//        }else if(cmbStat.getSelectedItem().equals("Piutang")){
+//            cariPiutang();
+//        }
     }//GEN-LAST:event_chkRalanActionPerformed
 
     private void chkRadiologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRadiologiActionPerformed
-        kelas=false;
-        ranapgabung=false;
-        if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
-            cariPiutang();
-        }
+//        kelas=false;
+//        ranapgabung=false;
+//        if(cmbStat.getSelectedItem().equals("Lunas")){
+//           prosesCari(); 
+//        }else if(cmbStat.getSelectedItem().equals("Piutang")){
+//            cariPiutang();
+//        }
     }//GEN-LAST:event_chkRadiologiActionPerformed
 
     private void chkLaboratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLaboratActionPerformed
-        kelas=false;
-        ranapgabung=false;
-        if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
-            cariPiutang();
-        }
+//        kelas=false;
+//        ranapgabung=false;
+//        if(cmbStat.getSelectedItem().equals("Lunas")){
+//           prosesCari(); 
+//        }else if(cmbStat.getSelectedItem().equals("Piutang")){
+//            cariPiutang();
+//        }
     }//GEN-LAST:event_chkLaboratActionPerformed
 
     private void chkOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOperasiActionPerformed
-        kelas=false;
-        ranapgabung=false;
-        if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
-            cariPiutang();
-        }
+//        kelas=false;
+//        ranapgabung=false;
+//        if(cmbStat.getSelectedItem().equals("Lunas")){
+//           prosesCari(); 
+//        }else if(cmbStat.getSelectedItem().equals("Piutang")){
+//            cariPiutang();
+//        }
     }//GEN-LAST:event_chkOperasiActionPerformed
 
     private void chkRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRanapActionPerformed
-        kelas=false;
-        ranapgabung=false;
-        if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
-            cariPiutang();
-        }
+//        kelas=false;
+//        ranapgabung=false;
+//        if(cmbStat.getSelectedItem().equals("Lunas")){
+//           prosesCari(); 
+//        }else if(cmbStat.getSelectedItem().equals("Piutang")){
+//            cariPiutang();
+//        }
     }//GEN-LAST:event_chkRanapActionPerformed
 
     private void BtnGajiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGajiActionPerformed
-        if(kddokter.getText().trim().equals("")||nmdokter.getText().trim().equals("")){
-            Valid.textKosong(kddokter,"Dokter");
-        }else{
+        if (kddokter.getText().trim().equals("") || nmdokter.getText().trim().equals("")) {
+            Valid.textKosong(kddokter, "Dokter");
+        } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            if (tabMode.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
-            }else if(tabMode.getRowCount()!=0){
-                
+            } else if (tabMode.getRowCount() != 0) {
+
                 Sequel.queryu("delete from temporary");
-                for(i=1;i<tabMode.getRowCount();i++){  
+                for (i = 1; i < tabMode.getRowCount(); i++) {
                     try {
-                        uangrs=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()));
+                        uangrs = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 11).toString()));
                     } catch (Exception e) {
-                        uangrs="";
+                        uangrs = "";
                     }
                     try {
-                        jm=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,10).toString()));
+                        jm = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 10).toString()));
                     } catch (Exception e) {
-                        jm="";
+                        jm = "";
                     }
                     try {
-                        bhp=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString()));
+                        bhp = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 9).toString()));
                     } catch (Exception e) {
-                        bhp="";
+                        bhp = "";
                     }
                     try {
-                        biaya=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()));
+                        biaya = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 8).toString()));
                     } catch (Exception e) {
-                        biaya="";
+                        biaya = "";
                     }
                     try {
-                        jml=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString()));
+                        jml = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 7).toString()));
                     } catch (Exception e) {
-                        jml="";
+                        jml = "";
                     }
                     try {
-                        tarif=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString()));
+                        tarif = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 6).toString()));
                     } catch (Exception e) {
-                        tarif="";
+                        tarif = "";
                     }
-                    Sequel.menyimpan("temporary","'0','"+
-                                    tabMode.getValueAt(i,0).toString().replaceAll("'","`") +"','"+
-                                    tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(i,4).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"','"+
-                                    tarif+"','"+
-                                    jml+"','"+
-                                    biaya+"','"+
-                                    bhp+"','"+
-                                    jm+"','"+
-                                    uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
+                    Sequel.menyimpan("temporary", "'0','"
+                            + tabMode.getValueAt(i, 0).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 1).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 2).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 3).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 4).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 5).toString().replaceAll("'", "`") + "','"
+                            + tarif + "','"
+                            + jml + "','"
+                            + biaya + "','"
+                            + bhp + "','"
+                            + jm + "','"
+                            + uangrs + "','','','','','','','','','','','','','','','','','','','','','','','','',''", "JM Dokter");
                 }
-                
-                Map<String, Object> param = new HashMap<>();   
-                    param.put("namars",akses.getnamars());
-                    param.put("alamatrs",akses.getalamatrs());
-                    param.put("kotars",akses.getkabupatenrs());
-                    param.put("propinsirs",akses.getpropinsirs());
-                    param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("dokter",nmdokter.getText());   
-                    param.put("bulan",Tgl1.getSelectedItem().toString().substring(3,10));   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]",param);
+
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars", akses.getnamars());
+                param.put("alamatrs", akses.getalamatrs());
+                param.put("kotars", akses.getkabupatenrs());
+                param.put("propinsirs", akses.getpropinsirs());
+                param.put("kontakrs", akses.getkontakrs());
+                param.put("emailrs", akses.getemailrs());
+                param.put("dokter", nmdokter.getText());
+                param.put("bulan", Tgl1.getSelectedItem().toString().substring(3, 10));
+                param.put("logo", Sequel.cariGambar("select logo from setting"));
+                Valid.MyReport("rptSlipJMDokter.jasper", "report", "[ Slip J.M. Dokter  ]", param);
             }
-            this.setCursor(Cursor.getDefaultCursor());            
+            this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnGajiActionPerformed
 
     private void BtnGajiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnGajiKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnGajiActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnCari, BtnAll);
         }
     }//GEN-LAST:event_BtnGajiKeyPressed
 
     private void BtnGaji1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGaji1ActionPerformed
-        if(kddokter.getText().trim().equals("")||nmdokter.getText().trim().equals("")){
-            Valid.textKosong(kddokter,"Dokter");
-        }else{
+        if (kddokter.getText().trim().equals("") || nmdokter.getText().trim().equals("")) {
+            Valid.textKosong(kddokter, "Dokter");
+        } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            kelas=true;
+            kelas = true;
             prosesCari();
-            if(tabMode.getRowCount()==0){
-                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            if (tabMode.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
-            }else if(tabMode.getRowCount()!=0){                
-                
+            } else if (tabMode.getRowCount() != 0) {
+
                 Sequel.queryu("delete from temporary");
-                for(i=1;i<tabMode.getRowCount();i++){  
+                for (i = 1; i < tabMode.getRowCount(); i++) {
                     try {
-                        uangrs=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()));
+                        uangrs = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 11).toString()));
                     } catch (Exception e) {
-                        uangrs="";
+                        uangrs = "";
                     }
                     try {
-                        jm=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,10).toString()));
+                        jm = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 10).toString()));
                     } catch (Exception e) {
-                        jm="";
+                        jm = "";
                     }
                     try {
-                        bhp=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString()));
+                        bhp = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 9).toString()));
                     } catch (Exception e) {
-                        bhp="";
+                        bhp = "";
                     }
                     try {
-                        biaya=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()));
+                        biaya = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 8).toString()));
                     } catch (Exception e) {
-                        biaya="";
+                        biaya = "";
                     }
                     try {
-                        jml=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString()));
+                        jml = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 7).toString()));
                     } catch (Exception e) {
-                        jml="";
+                        jml = "";
                     }
                     try {
-                        tarif=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString()));
+                        tarif = Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i, 6).toString()));
                     } catch (Exception e) {
-                        tarif="";
+                        tarif = "";
                     }
-                    Sequel.menyimpan("temporary","'0','"+
-                                    tabMode.getValueAt(i,0).toString().replaceAll("'","`") +"','"+
-                                    tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(i,4).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"','"+
-                                    tarif+"','"+
-                                    jml+"','"+
-                                    biaya+"','"+
-                                    bhp+"','"+
-                                    jm+"','"+
-                                    uangrs+"','','','','','','','','','','','','','','','','','','','','','','','','',''","JM Dokter"); 
+                    Sequel.menyimpan("temporary", "'0','"
+                            + tabMode.getValueAt(i, 0).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 1).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 2).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 3).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 4).toString().replaceAll("'", "`") + "','"
+                            + tabMode.getValueAt(i, 5).toString().replaceAll("'", "`") + "','"
+                            + tarif + "','"
+                            + jml + "','"
+                            + biaya + "','"
+                            + bhp + "','"
+                            + jm + "','"
+                            + uangrs + "','','','','','','','','','','','','','','','','','','','','','','','','',''", "JM Dokter");
                 }
-                
-                Map<String, Object> param = new HashMap<>();   
-                    param.put("namars",akses.getnamars());
-                    param.put("alamatrs",akses.getalamatrs());
-                    param.put("kotars",akses.getkabupatenrs());
-                    param.put("propinsirs",akses.getpropinsirs());
-                    param.put("kontakrs",akses.getkontakrs());
-                    param.put("emailrs",akses.getemailrs());   
-                    param.put("dokter",nmdokter.getText());   
-                    param.put("bulan",Tgl1.getSelectedItem().toString().substring(3,10));   
-                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptSlipJMDokter.jasper","report","[ Slip J.M. Dokter  ]",param);
+
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars", akses.getnamars());
+                param.put("alamatrs", akses.getalamatrs());
+                param.put("kotars", akses.getkabupatenrs());
+                param.put("propinsirs", akses.getpropinsirs());
+                param.put("kontakrs", akses.getkontakrs());
+                param.put("emailrs", akses.getemailrs());
+                param.put("dokter", nmdokter.getText());
+                param.put("bulan", Tgl1.getSelectedItem().toString().substring(3, 10));
+                param.put("logo", Sequel.cariGambar("select logo from setting"));
+                Valid.MyReport("rptSlipJMDokter.jasper", "report", "[ Slip J.M. Dokter  ]", param);
             }
-            this.setCursor(Cursor.getDefaultCursor());            
+            this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnGaji1ActionPerformed
 
@@ -926,23 +967,23 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void ppTampilkanSeleksiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanSeleksiBtnPrintActionPerformed
         carabayar.isCek();
-        carabayar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        carabayar.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         carabayar.setLocationRelativeTo(internalFrame1);
         carabayar.setVisible(true);
     }//GEN-LAST:event_ppTampilkanSeleksiBtnPrintActionPerformed
 
     private void ppTampilkanRanapGabungBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanRanapGabungBtnPrintActionPerformed
-        ranapgabung=true;
-        if(cmbStat.getSelectedItem().equals("Lunas")){
-           prosesCari(); 
-        }else if(cmbStat.getSelectedItem().equals("Piutang")){
+        ranapgabung = true;
+        if (cmbStat.getSelectedItem().equals("Lunas")) {
+            prosesCari();
+        } else if (cmbStat.getSelectedItem().equals("Piutang")) {
             cariPiutang();
         }
     }//GEN-LAST:event_ppTampilkanRanapGabungBtnPrintActionPerformed
 
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             DlgDetailJMDokter dialog = new DlgDetailJMDokter(new javax.swing.JFrame(), true);
@@ -990,3330 +1031,3356 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     //UMUM atawa Cash
     private void prosesCari() {
-       Valid.tabelKosong(tabMode);      
-       try{
-           ps=koneksi.prepareStatement("select kd_dokter,nm_dokter from dokter where status='1' and kd_dokter like ? order by nm_dokter");
-           try {
-                ps.setString(1,"%"+kddokter.getText()+"%");
-                rs=ps.executeQuery();
-                i=1;
-                ttlbiaya=0;
-                ttljm=0;
-                ttljml=0;
-                ttlbhp=0;
-                ttluangrs=0;
-                while(rs.next()){
-                   tabMode.addRow(new Object[]{i+".",rs.getString("nm_dokter"),"","","","",null,null,null,null,null,null});                 
-                   c=1;
-                   //jmralan
-                   if(chkRalan.isSelected()==true){
-                        pspasienralan=koneksi.prepareStatement(
-                            "select rawat_jl_dr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "+
-                            "from rawat_jl_dr inner join reg_periksa inner join pasien inner join poliklinik inner join penjab "
-                          + "inner join nota_inap inner join detail_nota_inap "+
-                            "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "
-                          + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where rawat_jl_dr.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "                            
-                                    + "group by rawat_jl_dr.no_rawat");
+        Valid.tabelKosong(tabMode);
+        try {
+            ps = koneksi.prepareStatement("select kd_dokter,nm_dokter from dokter where status='1' and kd_dokter like ? order by nm_dokter");
+            try {
+                ps.setString(1, "%" + kddokter.getText() + "%");
+                rs = ps.executeQuery();
+                i = 1;
+                ttlbiaya = 0;
+                ttljm = 0;
+                ttljml = 0;
+                ttlbhp = 0;
+                ttluangrs = 0;
+                while (rs.next()) {
+                    tabMode.addRow(new Object[]{i + ".", rs.getString("nm_dokter"), "", "", "", "", null, null, null, null, null, null});
+                    c = 1;
+                    //jmralan
+                    if (chkRalan.isSelected() == true) {
+                        pspasienralan = koneksi.prepareStatement(
+                                "select rawat_jl_dr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "
+                                + "from rawat_jl_dr inner join reg_periksa inner join pasien inner join poliklinik inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where rawat_jl_dr.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
+                                + "group by rawat_jl_dr.no_rawat");
                         try {
-                            pspasienralan.setString(1,rs.getString("kd_dokter"));
-                            pspasienralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienralan.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienralan.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienralan.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;    
-                                pstindakanralan=koneksi.prepareStatement("select rawat_jl_dr.kd_jenis_prw,"+
-                                    "count(rawat_jl_dr.kd_jenis_prw) as jml,"+
-                                    "jns_perawatan.nm_perawatan,sum(rawat_jl_dr.bhp)as bhp,sum(rawat_jl_dr.material)as material,"+
-                                    "rawat_jl_dr.biaya_rawat as total_byrdr,sum(rawat_jl_dr.tarif_tindakandr)as tarif_tindakandr,"+
-                                    "sum(rawat_jl_dr.biaya_rawat) as total "+
-                                    "from rawat_jl_dr inner join jns_perawatan inner join reg_periksa on "+
-                                    "jns_perawatan.kd_jenis_prw=rawat_jl_dr.kd_jenis_prw and rawat_jl_dr.no_rawat=reg_periksa.no_rawat where "+
-                                    "rawat_jl_dr.tarif_tindakandr>0 and rawat_jl_dr.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ? and rawat_jl_dr.no_rawat=? "+
-                                    "group by rawat_jl_dr.kd_jenis_prw order by jns_perawatan.nm_perawatan");   
+                            pspasienralan.setString(1, rs.getString("kd_dokter"));
+                            pspasienralan.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienralan.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienralan.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienralan.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanralan = koneksi.prepareStatement("select rawat_jl_dr.kd_jenis_prw,"
+                                        + "count(rawat_jl_dr.kd_jenis_prw) as jml,"
+                                        + "jns_perawatan.nm_perawatan,sum(rawat_jl_dr.bhp)as bhp,sum(rawat_jl_dr.material)as material,"
+                                        + "rawat_jl_dr.biaya_rawat as total_byrdr,sum(rawat_jl_dr.tarif_tindakandr)as tarif_tindakandr,"
+                                        + "sum(rawat_jl_dr.biaya_rawat) as total "
+                                        + "from rawat_jl_dr inner join jns_perawatan inner join reg_periksa on "
+                                        + "jns_perawatan.kd_jenis_prw=rawat_jl_dr.kd_jenis_prw and rawat_jl_dr.no_rawat=reg_periksa.no_rawat where "
+                                        + "rawat_jl_dr.tarif_tindakandr>0 and rawat_jl_dr.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ? and rawat_jl_dr.no_rawat=? "
+                                        + "group by rawat_jl_dr.kd_jenis_prw order by jns_perawatan.nm_perawatan");
                                 try {
-                                    pstindakanralan.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanralan.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanralan.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanralan.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                        ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_registrasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
+                                    pstindakanralan.setString(1, rs.getString("kd_dokter"));
+                                    pstindakanralan.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                    pstindakanralan.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanralan.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanralan.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                        ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_registrasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi Tindakan Rawat Jalan : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notifikasi Tindakan Rawat Jalan : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakanralan!=null){
+                                    if (pstindakanralan != null) {
                                         pstindakanralan.close();
                                     }
-                                }                                        
+                                }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi Pasien Ralan : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notifikasi Pasien Ralan : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasienralan!=null){
+                            if (pspasienralan != null) {
                                 pspasienralan.close();
                             }
                         }
 
-                        pspasienralandrpr=koneksi.prepareStatement(
-                            "select rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "+
-                            "from rawat_jl_drpr inner join reg_periksa inner join pasien inner join poliklinik inner join penjab "+
-                            "inner join nota_jalan inner join detail_nota_jalan "+
-                            "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                            "and reg_periksa.no_rawat=nota_jalan.no_rawat "
-                          + "and nota_jalan.no_rawat=detail_nota_jalan.no_rawat "+
-                            "where rawat_jl_drpr.kd_dokter=? and nota_jalan.tanggal between ? and ? and reg_periksa.kd_pj like ? "
-                                    + "group by rawat_jl_drpr.no_rawat");
+                        pspasienralandrpr = koneksi.prepareStatement(
+                                "select rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "
+                                + "from rawat_jl_drpr inner join reg_periksa inner join pasien inner join poliklinik inner join penjab "
+                                + "inner join nota_jalan inner join detail_nota_jalan "
+                                + "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "
+                                + "and reg_periksa.no_rawat=nota_jalan.no_rawat "
+                                + "and nota_jalan.no_rawat=detail_nota_jalan.no_rawat "
+                                + "where rawat_jl_drpr.kd_dokter=? and nota_jalan.tanggal between ? and ? and reg_periksa.kd_pj like ? "
+                                + "group by rawat_jl_drpr.no_rawat");
                         try {
-                            pspasienralandrpr.setString(1,rs.getString("kd_dokter"));
-                            pspasienralandrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienralandrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienralandrpr.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienralandrpr.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1; 
-                                pstindakanralandrpr=koneksi.prepareStatement("select rawat_jl_drpr.kd_jenis_prw,"+
-                                        "count(rawat_jl_drpr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan.nm_perawatan,sum(rawat_jl_drpr.bhp)as bhp,sum(rawat_jl_drpr.material)as material,"+
-                                        "rawat_jl_drpr.biaya_rawat as total_byrdr,sum(rawat_jl_drpr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_jl_drpr.biaya_rawat) as total "+
-                                        "from rawat_jl_drpr inner join jns_perawatan inner join reg_periksa on "+
-                                        "jns_perawatan.kd_jenis_prw=rawat_jl_drpr.kd_jenis_prw and rawat_jl_drpr.no_rawat=reg_periksa.no_rawat where "+
-                                        "rawat_jl_drpr.tarif_tindakandr>0 and rawat_jl_drpr.kd_dokter=? and rawat_jl_drpr.no_rawat=? "+
-                                        "group by rawat_jl_drpr.kd_jenis_prw order by jns_perawatan.nm_perawatan");   
+                            pspasienralandrpr.setString(1, rs.getString("kd_dokter"));
+                            pspasienralandrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienralandrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienralandrpr.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienralandrpr.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanralandrpr = koneksi.prepareStatement("select rawat_jl_drpr.kd_jenis_prw,"
+                                        + "count(rawat_jl_drpr.kd_jenis_prw) as jml,"
+                                        + "jns_perawatan.nm_perawatan,sum(rawat_jl_drpr.bhp)as bhp,sum(rawat_jl_drpr.material)as material,"
+                                        + "rawat_jl_drpr.biaya_rawat as total_byrdr,sum(rawat_jl_drpr.tarif_tindakandr)as tarif_tindakandr,"
+                                        + "sum(rawat_jl_drpr.biaya_rawat) as total "
+                                        + "from rawat_jl_drpr inner join jns_perawatan inner join reg_periksa on "
+                                        + "jns_perawatan.kd_jenis_prw=rawat_jl_drpr.kd_jenis_prw and rawat_jl_drpr.no_rawat=reg_periksa.no_rawat where "
+                                        + "rawat_jl_drpr.tarif_tindakandr>0 and rawat_jl_drpr.kd_dokter=? and rawat_jl_drpr.no_rawat=? "
+                                        + "group by rawat_jl_drpr.kd_jenis_prw order by jns_perawatan.nm_perawatan");
                                 try {
-                                    pstindakanralandrpr.setString(1,rs.getString("kd_dokter"));
+                                    pstindakanralandrpr.setString(1, rs.getString("kd_dokter"));
                                     //pstindakanralandrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                                     //pstindakanralandrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanralandrpr.setString(2,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanralandrpr.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                        ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_registrasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
+                                    pstindakanralandrpr.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanralandrpr.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                        ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_registrasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan ralan drpr : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notifikasi tindakan ralan drpr : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakanralandrpr!=null){
+                                    if (pstindakanralandrpr != null) {
                                         pstindakanralandrpr.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi tidakan ralan drpr : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notifikasi tidakan ralan drpr : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasienralandrpr!=null){
+                            if (pspasienralandrpr != null) {
                                 pspasienralandrpr.close();
                             }
-                        }                            
-                   }
+                        }
+                    }
 
-                   //jmradiologi
-                   if(chkRadiologi.isSelected()==true){
-                        pspasienradiologi=koneksi.prepareStatement("select periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Radiolgi' as nm_poli "+
-                            "from periksa_radiologi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on periksa_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where periksa_radiologi.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? group by periksa_radiologi.no_rawat");
+                    //jmradiologi
+                    if (chkRadiologi.isSelected() == true) {
+                        pspasienradiologi = koneksi.prepareStatement("select periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Radiolgi' as nm_poli "
+                                + "from periksa_radiologi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on periksa_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where periksa_radiologi.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? group by periksa_radiologi.no_rawat");
                         try {
-                            pspasienradiologi.setString(1,rs.getString("kd_dokter"));
-                            pspasienradiologi.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienradiologi.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienradiologi.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienradiologi.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;   
-                                pstindakanradiologi=koneksi.prepareStatement("select periksa_radiologi.kd_jenis_prw,"+
-                                        "count(periksa_radiologi.kd_jenis_prw) as jml, "+
-                                        "jns_perawatan_radiologi.nm_perawatan,"+
-                                        "sum(periksa_radiologi.bhp) as bhp,"+
-                                        "sum(periksa_radiologi.bagian_rs) as bagian_rs,"+
-                                        "periksa_radiologi.biaya as total_byr,"+
-                                        "sum(periksa_radiologi.tarif_tindakan_dokter)as tarif_tindakan_dokter,"+
-                                        "sum(periksa_radiologi.biaya) as total  "+
-                                        "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "+
-                                        "periksa_radiologi.tarif_tindakan_dokter>0 and periksa_radiologi.kd_dokter=? and periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat=? "+
-                                        "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
+                            pspasienradiologi.setString(1, rs.getString("kd_dokter"));
+                            pspasienradiologi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienradiologi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienradiologi.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienradiologi.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanradiologi = koneksi.prepareStatement("select periksa_radiologi.kd_jenis_prw,"
+                                        + "count(periksa_radiologi.kd_jenis_prw) as jml, "
+                                        + "jns_perawatan_radiologi.nm_perawatan,"
+                                        + "sum(periksa_radiologi.bhp) as bhp,"
+                                        + "sum(periksa_radiologi.bagian_rs) as bagian_rs,"
+                                        + "periksa_radiologi.biaya as total_byr,"
+                                        + "sum(periksa_radiologi.tarif_tindakan_dokter)as tarif_tindakan_dokter,"
+                                        + "sum(periksa_radiologi.biaya) as total  "
+                                        + "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
+                                        + "periksa_radiologi.tarif_tindakan_dokter>0 and periksa_radiologi.kd_dokter=? and periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat=? "
+                                        + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
                                 try {
-                                    pstindakanradiologi.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanradiologi.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanradiologi.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanradiologi.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanradiologi.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("tarif_tindakan_dokter");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_periksa"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (P.J. Rad)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakan_dokter"),rstindakan.getDouble("bagian_rs")}); 
+                                    pstindakanradiologi.setString(1, rs.getString("kd_dokter"));
+                                    pstindakanradiologi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                    pstindakanradiologi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanradiologi.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanradiologi.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("tarif_tindakan_dokter");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakan_dokter"), rstindakan.getDouble("bagian_rs")});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (P.J. Rad)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakan_dokter"),rstindakan.getDouble("bagian_rs")}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (P.J. Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakan_dokter"), rstindakan.getDouble("bagian_rs")});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan radiologi : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notifikasi tindakan radiologi : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakanradiologi!=null){
+                                    if (pstindakanradiologi != null) {
                                         pstindakanradiologi.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi radiologi : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notifikasi radiologi : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasienradiologi!=null){
+                            if (pspasienradiologi != null) {
                                 pspasienradiologi.close();
                             }
                         }
 
                         //jmradiologiperujuk
-                        pspasienradiologi2=koneksi.prepareStatement("select periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Radiolgi' as nm_poli "+
-                            "from periksa_radiologi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on periksa_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where periksa_radiologi.dokter_perujuk=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "+
-                            "group by periksa_radiologi.no_rawat");
-                        try {
-                            pspasienradiologi2.setString(1,rs.getString("kd_dokter"));
-                            pspasienradiologi2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienradiologi2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienradiologi2.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienradiologi2.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;     
-                                pstindakanradiologi2=koneksi.prepareStatement("select periksa_radiologi.kd_jenis_prw,"+
-                                        "count(periksa_radiologi.kd_jenis_prw) as jml, "+
-                                        "jns_perawatan_radiologi.nm_perawatan,"+
-                                        "0 as bhp,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "sum(periksa_radiologi.tarif_perujuk)as tarif_perujuk,"+
-                                        "0 as total  "+
-                                        "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "+
-                                        "periksa_radiologi.tarif_perujuk>0 and periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat=? "+
-                                        "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
-                                try {
-                                    pstindakanradiologi2.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanradiologi2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanradiologi2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanradiologi2.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanradiologi2.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("tarif_perujuk");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_periksa"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Perujuk Rad)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_perujuk"),0}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Perujuk Rad)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_perujuk"),0}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan radiologi : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakanradiologi2!=null){
-                                        pstindakanradiologi2.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi pasien radiologi : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasienradiologi2!=null){
-                                pspasienradiologi2.close();
-                            }
-                        }
-                   }                 
-
-                   //jm laborat
-                   if(chkLaborat.isSelected()==true){
-                        pspasienlab=koneksi.prepareStatement("select periksa_lab.no_rawat,periksa_lab.tgl_periksa,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Laborat' as nm_poli "+
-                            "from periksa_lab inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where periksa_lab.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "+
-                            "group by periksa_lab.no_rawat");                    
-                        try {
-                            pspasienlab.setString(1,rs.getString("kd_dokter"));
-                            pspasienlab.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienlab.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienlab.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienlab.executeQuery();
-                            while(rspasien.next()){                        
-                                a=1;   
-                                pstindakanlab=koneksi.prepareStatement("select periksa_lab.kd_jenis_prw,"+
-                                        "count(periksa_lab.kd_jenis_prw) as jml, "+
-                                        "jns_perawatan_lab.nm_perawatan,"+
-                                        "sum(periksa_lab.bhp) as bhp,"+
-                                        "sum(periksa_lab.bagian_rs) as bagian_rs,"+
-                                        "periksa_lab.biaya as total_byr,"+
-                                        "sum(periksa_lab.tarif_tindakan_dokter)as tarif_tindakan_dokter,"+
-                                        "sum(periksa_lab.biaya) as total  "+
-                                        "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "+
-                                        "periksa_lab.kd_dokter=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat=? "+
-                                        "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
-                                try {
-                                    pstindakanlab.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanlab.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanlab.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanlab.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanlab.executeQuery();
-                                    while(rstindakan.next()){
-                                        detailjm=0;
-                                        detailrs=0;
-                                        detailtotal=0;
-                                        detailbhp=0;
-                                        biayaitem=0;
-                                        psdetaillab=koneksi.prepareStatement("select sum(detail_periksa_lab.bagian_dokter) as totaldokter,"+
-                                            "sum(detail_periksa_lab.bagian_rs) as totalrs,"+
-                                            "sum(detail_periksa_lab.bhp) as bhp, "+
-                                            "sum(detail_periksa_lab.biaya_item) as biaya_item,"+
-                                            "sum(detail_periksa_lab.biaya_item) as totalbayar from detail_periksa_lab inner join jns_perawatan_lab inner join "+
-                                            "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
-                                            "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "+
-                                            "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
-                                            "and periksa_lab.kd_dokter=? and detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
-                                        try {
-                                            psdetaillab.setString(1,rs.getString("kd_dokter"));
-                                            psdetaillab.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                            psdetaillab.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                            psdetaillab.setString(4,rstindakan.getString("kd_jenis_prw"));
-                                            psdetaillab.setString(5,rspasien.getString("no_rawat"));
-                                            rsdetaillab=psdetaillab.executeQuery();
-                                            while(rsdetaillab.next()){
-                                                 detailjm=rsdetaillab.getDouble("totaldokter");
-                                                 detailrs=rsdetaillab.getDouble("totalrs");
-                                                 detailtotal=rsdetaillab.getDouble("totalbayar");
-                                                 biayaitem=rsdetaillab.getDouble("biaya_item");
-                                                 detailbhp=rsdetaillab.getDouble("bhp");
-                                            }
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total")+detailtotal;
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakan_dokter")+detailjm;
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs")+detailrs;
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_periksa"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (P.J. Lab)",(rstindakan.getDouble("total_byr")+biayaitem),rstindakan.getDouble("jml"),(rstindakan.getDouble("total")+detailtotal),(rstindakan.getDouble("bhp")+detailbhp),(rstindakan.getDouble("tarif_tindakan_dokter")+detailjm),(rstindakan.getDouble("bagian_rs")+detailrs)}); 
-                                                c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (P.J. Lab)",(rstindakan.getDouble("total_byr")+biayaitem),rstindakan.getDouble("jml"),(rstindakan.getDouble("total")+detailtotal),(rstindakan.getDouble("bhp")+detailbhp),(rstindakan.getDouble("tarif_tindakan_dokter")+detailjm),(rstindakan.getDouble("bagian_rs")+detailrs)}); 
-                                            }                           
-                                            a++;
-                                        } catch (Exception e) {
-                                            System.out.println("Notifikasi detail lab : "+e);
-                                        } finally{
-                                            if(rsdetaillab!=null){
-                                                rsdetaillab.close();
-                                            }
-                                            if(psdetaillab!=null){
-                                                psdetaillab.close();
-                                            }
-                                        }
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan lab : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakanlab!=null){
-                                        pstindakanlab.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi pasien lab : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasienlab!=null){
-                                pspasienlab.close();
-                            }
-                        }
-                            
-                        //jm perujuk
-                        pspasienlab2=koneksi.prepareStatement("select periksa_lab.no_rawat,periksa_lab.tgl_periksa,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Laborat' as nm_poli "+
-                            "from periksa_lab inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where periksa_lab.dokter_perujuk=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
-                                + "group by periksa_lab.no_rawat");                    
-                        try {
-                            pspasienlab2.setString(1,rs.getString("kd_dokter"));
-                            pspasienlab2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienlab2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienlab2.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienlab2.executeQuery();
-                            while(rspasien.next()){                        
-                                a=1;  
-                                pstindakanlab2=koneksi.prepareStatement("select periksa_lab.kd_jenis_prw,"+
-                                        "count(periksa_lab.kd_jenis_prw) as jml, "+
-                                        "jns_perawatan_lab.nm_perawatan,"+
-                                        "0 as bhp,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "sum(periksa_lab.tarif_perujuk)as tarif_perujuk,"+
-                                        "0 as total  "+
-                                        "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "+
-                                        "periksa_lab.dokter_perujuk=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat=? "+
-                                        "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
-                                try {
-                                    pstindakanlab2.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanlab2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanlab2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanlab2.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanlab2.executeQuery();
-                                    while(rstindakan.next()){
-                                        detailjm=0;
-                                        detailrs=0;
-                                        detailtotal=0;
-                                        biayaitem=0;
-                                        detailbhp=0;
-                                        psdetaillab2=koneksi.prepareStatement("select sum(detail_periksa_lab.bagian_perujuk) as totaldokter,"+
-                                            "0 as bhp, "+
-                                            "0 as totalrs, "+
-                                            "0 as biaya_item,"+
-                                            "0 as totalbayar from detail_periksa_lab inner join jns_perawatan_lab inner join "+
-                                            "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
-                                            "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "+
-                                            "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
-                                            "and periksa_lab.dokter_perujuk=? and detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
-                                        try {
-                                            psdetaillab2.setString(1,rs.getString("kd_dokter"));
-                                            psdetaillab2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                            psdetaillab2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                            psdetaillab2.setString(4,rstindakan.getString("kd_jenis_prw"));
-                                            psdetaillab2.setString(5,rspasien.getString("no_rawat"));
-                                            rsdetaillab=psdetaillab2.executeQuery();
-                                            while(rsdetaillab.next()){
-                                                 detailjm=rsdetaillab.getDouble("totaldokter");
-                                                 detailrs=rsdetaillab.getDouble("totalrs");
-                                                 detailtotal=rsdetaillab.getDouble("totalbayar");
-                                                 biayaitem=rsdetaillab.getDouble("biaya_item");
-                                                 detailbhp=rsdetaillab.getDouble("bhp");
-                                            }
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total")+detailtotal;
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_perujuk")+detailjm;
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs")+detailrs;
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_periksa"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Perujuk Lab)",(rstindakan.getDouble("total_byr")+biayaitem),rstindakan.getDouble("jml"),(rstindakan.getDouble("total")+detailtotal),(rstindakan.getDouble("bhp")+detailbhp),(rstindakan.getDouble("tarif_perujuk")+detailjm),0}); 
-                                                c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Perujuk Lab)",(rstindakan.getDouble("total_byr")+biayaitem),rstindakan.getDouble("jml"),(rstindakan.getDouble("total")+detailtotal),(rstindakan.getDouble("bhp")+detailbhp),(rstindakan.getDouble("tarif_perujuk")+detailjm),0}); 
-                                            }                           
-                                            a++;
-                                        } catch (Exception e) {
-                                            System.out.println("Notif detail rujukan : "+e);
-                                        } finally{
-                                            if(rsdetaillab!=null){
-                                                rsdetaillab.close();
-                                            }
-                                            if(psdetaillab2!=null){
-                                                psdetaillab2.close();
-                                            }
-                                        }
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan perujuk : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakanlab2!=null){
-                                        pstindakanlab2.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi pasien perujuk : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasienlab2!=null){
-                                pspasienlab2.close();
-                            }
-                        }                   
-                   }
-
-                   if(chkOperasi.isSelected()==true){
-                        //jmoperator1
-                        pspasienoperator1=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where operasi.operator1=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
-                                + " group by operasi.no_rawat");
-                        try {
-                            pspasienoperator1.setString(1,rs.getString("kd_dokter"));
-                            pspasienoperator1.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasienoperator1.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasienoperator1.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienoperator1.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;    
-                                pstindakanoperator1=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "(count(operasi.kode_paket)*(operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biayasarpras)) as bagian_rs,"+
-                                        "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
-                                        "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"+
-                                        "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
-                                        "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+"+
-                                        "operasi.biayaperawat_luar+operasi.biayaalat+"+
-                                        "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+"+
-                                        "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras) as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayaoperator1)as biayaoperator1,"+
-                                        "(count(operasi.kode_paket)*(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
-                                        "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"+
-                                        "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
-                                        "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+"+
-                                        "operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"+
-                                        "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+"+
-                                        "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras)) as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayaoperator1>0 and operasi.operator1=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
-                                try {
-                                    pstindakanoperator1.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanoperator1.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakanoperator1.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakanoperator1.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanoperator1.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayaoperator1");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Operator 1)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator1"),rstindakan.getDouble("bagian_rs")}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Operator 1)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator1"),rstindakan.getDouble("bagian_rs")}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notif tindakan operasi : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakanoperator1!=null){
-                                        pstindakanoperator1.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif pasien operasi : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasienoperator1!=null){
-                                pspasienoperator1.close();
-                            }
-                        }
-
-                        //jmoperator2
-                        pspasienoperator2=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where operasi.operator2=? and operasi.tgl_operasi between ? and ? and reg_periksa.kd_pj like ? "
-                                + "group by operasi.no_rawat");
-                        try {
-                            pspasienoperator2.setString(1,rs.getString("kd_dokter"));
-                            pspasienoperator2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasienoperator2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasienoperator2.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienoperator2.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;  
-                                pstindakanoperator2=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayaoperator2)as biayaoperator2,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayaoperator2>0 and operasi.operator2=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
-                                try {
-                                    pstindakanoperator2.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanoperator2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakanoperator2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakanoperator2.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanoperator2.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayaoperator2");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Operator 2)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator2"),0}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Operator 2)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator2"),0}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notif tindakan operator 2 : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakanoperator2!=null){
-                                        pstindakanoperator2.close();
-                                    }
-                                }   
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif pasien operator 2 : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasienoperator2!=null){
-                                pspasienoperator2.close();
-                            }
-                        }
-
-                        //jmoperator3
-                        pspasienoperator3=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where operasi.operator3=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
-                                + "group by operasi.no_rawat");
-                        try {
-                            pspasienoperator3.setString(1,rs.getString("kd_dokter"));
-                            pspasienoperator3.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasienoperator3.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasienoperator3.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienoperator3.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;      
-                                pstindakanoperator3=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayaoperator3)as biayaoperator3,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayaoperator3>0 and operasi.operator3=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
-                                try {
-                                    pstindakanoperator3.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanoperator3.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakanoperator3.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakanoperator3.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanoperator3.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayaoperator3");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Operator 3)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator3"),0}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Operator 3)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator3"),0}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notif tindakan operator 3");
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakanoperator3!=null){
-                                        pstindakanoperator3.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif operator 3 : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasienoperator3!=null){
-                                pspasienoperator3.close();
-                            }
-                        }
-
-                        //jmdokter_anak
-                        pspasiendokter_anak=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where operasi.dokter_anak=? and operasi.tgl_operasi between ? and ? and reg_periksa.kd_pj like ? "
-                                + "group by operasi.no_rawat");
-                        try {
-                            pspasiendokter_anak.setString(1,rs.getString("kd_dokter"));
-                            pspasiendokter_anak.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasiendokter_anak.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasiendokter_anak.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasiendokter_anak.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;   
-                                pstindakandokter_anak=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayadokter_anak)as biayadokter_anak,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayadokter_anak>0 and operasi.dokter_anak=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
-                                try {
-                                    pstindakandokter_anak.setString(1,rs.getString("kd_dokter"));
-                                    pstindakandokter_anak.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakandokter_anak.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakandokter_anak.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakandokter_anak.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayadokter_anak");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Dokter Anak)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayadokter_anak"),0}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Dokter Anak)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayadokter_anak"),0}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter anak : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakandokter_anak!=null){
-                                        pstindakandokter_anak.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif dokter anak : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasiendokter_anak!=null){
-                                pspasiendokter_anak.close();
-                            }
-                        }
-
-                        //jmdokter_anestesi
-                        pspasiendokter_anestesi=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where operasi.dokter_anestesi=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
-                                + "group by operasi.no_rawat");
-                        try {
-                            pspasiendokter_anestesi.setString(1,rs.getString("kd_dokter"));
-                            pspasiendokter_anestesi.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasiendokter_anestesi.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasiendokter_anestesi.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasiendokter_anestesi.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;  
-                                pstindakandokter_anestesi=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayadokter_anestesi)as biayadokter_anestesi,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayadokter_anestesi>0 and operasi.dokter_anestesi=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
-                                try {
-                                    pstindakandokter_anestesi.setString(1,rs.getString("kd_dokter"));
-                                    pstindakandokter_anestesi.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakandokter_anestesi.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakandokter_anestesi.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakandokter_anestesi.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayadokter_anestesi");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayadokter_anestesi"),0}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayadokter_anestesi"),0}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan anastesi : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakandokter_anestesi!=null){
-                                        pstindakandokter_anestesi.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif pasien anastesi : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasiendokter_anestesi!=null){
-                                pspasiendokter_anestesi.close();
-                            }
-                        }
-
-                        //jmdokter_pjanak
-                        pspasiendokter_pjanak=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where operasi.dokter_pjanak=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
-                                + "group by operasi.no_rawat");
-                        try {
-                            pspasiendokter_pjanak.setString(1,rs.getString("kd_dokter"));
-                            pspasiendokter_pjanak.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasiendokter_pjanak.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasiendokter_pjanak.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasiendokter_pjanak.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;    
-                                pstindakandokter_pjanak=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biaya_dokter_pjanak)as biaya_dokter_pjanak,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biaya_dokter_pjanak>0 and operasi.dokter_pjanak=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
-                                try {
-                                    pstindakandokter_pjanak.setString(1,rs.getString("kd_dokter"));
-                                    pstindakandokter_pjanak.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakandokter_pjanak.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakandokter_pjanak.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakandokter_pjanak.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biaya_dokter_pjanak");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biaya_dokter_pjanak"),0}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biaya_dokter_pjanak"),0}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter pj umum : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakandokter_pjanak!=null){
-                                        pstindakandokter_pjanak.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif pasien pj anak : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasiendokter_pjanak!=null){
-                                pspasiendokter_pjanak.close();
-                            }
-                        }
-
-                        //jmdokter_umum
-                        pspasiendokter_umum=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join nota_inap inner join detail_nota_inap "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "+
-                            "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where operasi.dokter_umum=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
-                                + "group by operasi.no_rawat");
-                        pspasiendokter_umum.setString(1,rs.getString("kd_dokter"));
-                        pspasiendokter_umum.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                        pspasiendokter_umum.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                        pspasiendokter_umum.setString(4,"%"+pilihancarabayar+"%");
-                        rspasien=pspasiendokter_umum.executeQuery();
-                        try {
-                            while(rspasien.next()){ 
-                                a=1;   
-                                pstindakandokter_umum=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biaya_dokter_umum)as biaya_dokter_umum,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biaya_dokter_umum>0 and operasi.dokter_umum=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
-                                try {
-                                    pstindakandokter_umum.setString(1,rs.getString("kd_dokter"));
-                                    pstindakandokter_umum.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakandokter_umum.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakandokter_umum.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakandokter_umum.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biaya_dokter_umum");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Dokter Umum)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biaya_dokter_umum"),0}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Dokter Umum)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biaya_dokter_umum"),0}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter umum : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakandokter_umum!=null){
-                                        pstindakandokter_umum.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif pasien dokter umum : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasiendokter_umum!=null){
-                                pspasiendokter_umum.close();
-                            }
-                        }
-                   }                    
-
-                   //jmranap
-                   if(chkRanap.isSelected()==true){
-                        if(ranapgabung==false){
-                            pspasienranap=koneksi.prepareStatement(
-                                    "select rawat_inap_dr.no_rawat from rawat_inap_dr inner join reg_periksa "
-                                            + "inner join nota_inap inner join detail_nota_inap "
-                                            + "on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+                            
-                                            "and reg_periksa.no_rawat=nota_inap.no_rawat "
-                                            + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                                    "where rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.kd_pj like ? "+
-                                            
-                                    " group by rawat_inap_dr.no_rawat");
-                            try {
-                                pspasienranap.setString(1,rs.getString("kd_dokter"));
-                                pspasienranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                pspasienranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                pspasienranap.setString(4,"%"+pilihancarabayar+"%");
-                                rspasien=pspasienranap.executeQuery();
-                                while(rspasien.next()){  
-                                    pskamar=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                        "where kamar_inap.no_rawat=? "+
-                                    "and reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') "
-                                            + "group by kamar_inap.no_rawat");
-                                    try {
-                                        pskamar.setString(1,rspasien.getString("no_rawat"));
-                                        rskamar=pskamar.executeQuery();
-                                        tanggal="";
-                                        kamar="";
-                                        penjab="";
-                                        pasien="";
-                                        if(rskamar.next()){  
-                                            tanggal=rskamar.getString("tgl_masuk")+" "+rskamar.getString("tgl_keluar");
-                                            if(kelas==false){
-                                                kamar=rskamar.getString("kd_kamar")+" "+rskamar.getString("nm_bangsal");
-                                            }else if(kelas==true){
-                                                kamar=rskamar.getString("kelas");
-                                            }                                            
-                                            penjab=rskamar.getString("png_jawab");
-                                            pasien=rskamar.getString("nm_pasien");
-                                        }else{
-                                            psanak=koneksi.prepareStatement(
-                                                "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "+
-                                                "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
-                                                "from reg_periksa inner join pasien inner join ranap_gabung on "+
-                                                "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=? "+
-                                                "and reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') ");                        
-                                            try {
-                                                psanak.setString(1,rspasien.getString("no_rawat"));
-                                                rsanak=psanak.executeQuery();
-                                                if(rsanak.next()){
-                                                    pasien=rsanak.getString("nm_pasien");  
-                                                    pskamar2=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                                        "where kamar_inap.no_rawat=? "+
-                                                        "and reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') "
-                                                            + "group by kamar_inap.no_rawat");
-                                                    try {
-                                                        pskamar2.setString(1,rsanak.getString("no_rawat"));
-                                                        rskamar2=pskamar2.executeQuery();
-                                                        if(rskamar2.next()){
-                                                            tanggal=rskamar2.getString("tgl_masuk")+" "+rskamar2.getString("tgl_keluar");
-                                                            if(kelas==false){
-                                                                kamar=rskamar2.getString("kd_kamar")+" "+rskamar2.getString("nm_bangsal");
-                                                            }else if(kelas==true){
-                                                                kamar=rskamar2.getString("kelas");
-                                                            }                                                            
-                                                            penjab=rskamar2.getString("png_jawab");
-                                                        }
-                                                    } catch (Exception e) {
-                                                        System.out.println("Notif kamar2 : "+e);
-                                                    } finally{
-                                                        if(rskamar2!=null){
-                                                            rskamar2.close();
-                                                        }
-                                                        if(pskamar2!=null){
-                                                            pskamar2.close();
-                                                        }
-                                                    }
-                                                }
-                                            } catch (Exception e) {
-                                                System.out.println("Notif pasien anak : "+e);
-                                            } finally{
-                                                if(rsanak!=null){
-                                                    rsanak.close();
-                                                }
-                                                if(psanak!=null){
-                                                    psanak.close();
-                                                }
-                                            }
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("Notif kamar : "+e);
-                                    } finally{
-                                        if(rskamar!=null){
-                                            rskamar.close();
-                                        }
-                                        if(pskamar!=null){
-                                            pskamar.close();
-                                        }
-                                    }  
-
-                                    a=1;        
-                                    pstindakanranap=koneksi.prepareStatement("select rawat_inap_dr.kd_jenis_prw,"+
-                                        "count(rawat_inap_dr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan_inap.nm_perawatan,"+
-                                        "sum(rawat_inap_dr.bhp)as bhp,"+
-                                        "sum(rawat_inap_dr.material)as material,"+
-                                        "rawat_inap_dr.biaya_rawat as total_byrdr,"+
-                                        "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_inap_dr.biaya_rawat) as total  "+
-                                        "from rawat_inap_dr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "+
-                                        "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "+
-                                        "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
-                                    try {
-                                        pstindakanranap.setString(1,rs.getString("kd_dokter"));
-                                        pstindakanranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                        pstindakanranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                        pstindakanranap.setString(4,rspasien.getString("no_rawat"));
-                                        rstindakan=pstindakanranap.executeQuery();
-                                        while(rstindakan.next()){
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                                c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                            }                           
-                                            a++;
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("Notif tindakan ranap : "+e);
-                                    } finally{
-                                        if(rstindakan!=null){
-                                            rstindakan.close();
-                                        }
-                                        if(pstindakanranap!=null){
-                                            pstindakanranap.close();
-                                        }
-                                    }
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Notif pasien ranap : "+e);
-                            } finally{
-                                if(rspasien!=null){
-                                    rspasien.close();
-                                }
-                                if(pspasienranap!=null){
-                                    pspasienranap.close();
-                                }
-                            }
-
-                            pspasienranapdrpr=koneksi.prepareStatement(
-                                    "select rawat_inap_drpr.no_rawat "
-                                            + "from rawat_inap_drpr inner join reg_periksa "
-                                            + "inner join nota_inap inner join detail_nota_inap "
-                                            + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
-                                            + "and rawat_inap_drpr.no_rawat=nota_inap.no_rawat "
-                                            + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                                    "where rawat_inap_drpr.kd_dokter=? and "
-                                            + "nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
-                                            + "group by rawat_inap_drpr.no_rawat");            
-                            try {
-                                pspasienranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                pspasienranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                pspasienranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                pspasienranapdrpr.setString(4,"%"+pilihancarabayar+"%");
-                                rspasien=pspasienranapdrpr.executeQuery();
-                                while(rspasien.next()){   
-                                    pskamar=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                        "where kamar_inap.no_rawat=? "
-                                            + "group by kamar_inap.no_rawat");
-                                    try {
-                                        pskamar.setString(1,rspasien.getString("no_rawat"));
-                                        rskamar=pskamar.executeQuery();
-                                        tanggal="";
-                                        kamar="";
-                                        penjab="";
-                                        pasien="";
-                                        if(rskamar.next()){  
-                                            tanggal=rskamar.getString("tgl_masuk")+" "+rskamar.getString("tgl_keluar");
-                                            if(kelas==false){
-                                                kamar=rskamar.getString("kd_kamar")+" "+rskamar.getString("nm_bangsal");
-                                            }else if(kelas==true){
-                                                kamar=rskamar.getString("kelas");
-                                            }                                            
-                                            penjab=rskamar.getString("png_jawab");
-                                            pasien=rskamar.getString("nm_pasien");
-                                        }else{
-                                            psanak=koneksi.prepareStatement(
-                                                "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "+
-                                                "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
-                                                "from reg_periksa inner join pasien inner join ranap_gabung on "+
-                                                "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=? ");                        
-                                            try {
-                                                psanak.setString(1,rspasien.getString("no_rawat"));
-                                                rsanak=psanak.executeQuery();
-                                                if(rsanak.next()){
-                                                    pasien=rsanak.getString("nm_pasien");   
-                                                    pskamar2=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                                        "where kamar_inap.no_rawat=? "
-                                                            + "group by kamar_inap.no_rawat");
-                                                    try {
-                                                        pskamar2.setString(1,rsanak.getString("no_rawat"));
-                                                        rskamar2=pskamar2.executeQuery();
-                                                        if(rskamar2.next()){
-                                                            tanggal=rskamar2.getString("tgl_masuk")+" "+rskamar2.getString("tgl_keluar");
-                                                            if(kelas==false){
-                                                                kamar=rskamar2.getString("kd_kamar")+" "+rskamar2.getString("nm_bangsal");
-                                                            }else if(kelas==true){
-                                                                kamar=rskamar2.getString("kelas");
-                                                            }                                                            
-                                                            penjab=rskamar2.getString("png_jawab");
-                                                        }
-                                                    } catch (Exception e) {
-                                                        System.out.println("Notif kamar bayi : "+e);
-                                                    } finally{
-                                                        if(rskamar2!=null){
-                                                            rskamar2.close();
-                                                        }
-                                                        if(pskamar2!=null){
-                                                            pskamar2.close();
-                                                        }
-                                                    }
-                                                }
-                                            } catch (Exception e) {
-                                                System.out.println("Notif Pasien anak : "+e);
-                                            } finally{
-                                                if(rsanak!=null){
-                                                    rsanak.close();
-                                                }
-                                                if(psanak!=null){
-                                                    psanak.close();
-                                                }
-                                            }
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("Notif Kamar : "+e);
-                                    } finally{
-                                        if(rskamar!=null){
-                                            rskamar.close();
-                                        }
-                                        if(pskamar!=null){
-                                            pskamar.close();
-                                        }
-                                    }  
-
-                                    a=1;   
-                                    pstindakanranapdrpr=koneksi.prepareStatement("select rawat_inap_drpr.kd_jenis_prw,"+
-                                        "count(rawat_inap_drpr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan_inap.nm_perawatan,"+
-                                        "sum(rawat_inap_drpr.bhp)as bhp,"+
-                                        "sum(rawat_inap_drpr.material)as material,"+
-                                        "rawat_inap_drpr.biaya_rawat as total_byrdr,"+
-                                        "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_inap_drpr.biaya_rawat) as total  "+
-                                        "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "+
-                                        "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "+
-                                        "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
-                                    try {
-                                        pstindakanranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                        pstindakanranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                        pstindakanranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                        pstindakanranapdrpr.setString(4,rspasien.getString("no_rawat"));
-                                        rstindakan=pstindakanranapdrpr.executeQuery();
-                                        while(rstindakan.next()){
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                                c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                            }                           
-                                            a++;
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("Notif tindakan dokter pj umum : "+e);
-                                    } finally{
-                                        if(rstindakan!=null){
-                                            rstindakan.close();
-                                        }
-                                        if(pstindakanranapdrpr!=null){
-                                            pstindakanranapdrpr.close();
-                                        }
-                                    }                   
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Notif pasien dokter umum : "+e);
-                            } finally{
-                                if(rspasien!=null){
-                                    rspasien.close();
-                                }
-                                if(pspasienranapdrpr!=null){
-                                    pspasienranapdrpr.close();
-                                }
-                            }
-                        }else if(ranapgabung==true){
-                            pspasienranap=koneksi.prepareStatement(
-                                    "select rawat_inap_dr.no_rawat from rawat_inap_dr inner join reg_periksa on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
-                                    "where rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.kd_pj like ? "+
-                                    "and rawat_inap_dr.no_rawat not in (select no_rawat2 from ranap_gabung) "
-                                           + "group by rawat_inap_dr.no_rawat");
-                            try {
-                                pspasienranap.setString(1,rs.getString("kd_dokter"));
-                                pspasienranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                pspasienranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                pspasienranap.setString(4,"%"+pilihancarabayar+"%");
-                                rspasien=pspasienranap.executeQuery();
-                                while(rspasien.next()){  
-                                    norawatbayi="";
-                                    pskamar=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                        "where kamar_inap.no_rawat=? group by kamar_inap.no_rawat");
-                                    try {
-                                        pskamar.setString(1,rspasien.getString("no_rawat"));
-                                        rskamar=pskamar.executeQuery();
-                                        tanggal="";
-                                        kamar="";
-                                        penjab="";
-                                        pasien="";
-                                        if(rskamar.next()){  
-                                            tanggal=rskamar.getString("tgl_masuk")+" "+rskamar.getString("tgl_keluar");
-                                            if(kelas==false){
-                                                kamar=rskamar.getString("kd_kamar")+" "+rskamar.getString("nm_bangsal");
-                                            }else if(kelas==true){
-                                                kamar=rskamar.getString("kelas");
-                                            }                                            
-                                            penjab=rskamar.getString("png_jawab");
-                                            pasien=rskamar.getString("nm_pasien");
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("Notif kamar : "+e);
-                                    } finally{
-                                        if(rskamar!=null){
-                                            rskamar.close();
-                                        }
-                                        if(pskamar!=null){
-                                            pskamar.close();
-                                        }
-                                    }  
-
-                                    a=1;        
-                                    pstindakanranap=koneksi.prepareStatement("select rawat_inap_dr.kd_jenis_prw,"+
-                                        "count(rawat_inap_dr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan_inap.nm_perawatan,"+
-                                        "sum(rawat_inap_dr.bhp)as bhp,"+
-                                        "sum(rawat_inap_dr.material)as material,"+
-                                        "rawat_inap_dr.biaya_rawat as total_byrdr,"+
-                                        "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_inap_dr.biaya_rawat) as total  "+
-                                        "from rawat_inap_dr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "+
-                                        "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "+
-                                        "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
-                                    try {
-                                        pstindakanranap.setString(1,rs.getString("kd_dokter"));
-                                        pstindakanranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                        pstindakanranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                        pstindakanranap.setString(4,rspasien.getString("no_rawat"));
-                                        rstindakan=pstindakanranap.executeQuery();
-                                        while(rstindakan.next()){
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                                c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                            }                           
-                                            a++;
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("Notif tindakan ranap : "+e);
-                                    } finally{
-                                        if(rstindakan!=null){
-                                            rstindakan.close();
-                                        }
-                                        if(pstindakanranap!=null){
-                                            pstindakanranap.close();
-                                        }
-                                    }
-                                    
-                                    norawatbayi=Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",rspasien.getString("no_rawat"));
-                                    if(!norawatbayi.equals("")){
-                                        pasien=Sequel.cariIsi(
-                                            "select pasien.nm_pasien from reg_periksa inner join pasien on "+
-                                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? "
-                                           + "",norawatbayi);
-                                        a=1;        
-                                        pstindakanranap=koneksi.prepareStatement(
-                                            "select rawat_inap_dr.kd_jenis_prw,"+
-                                            "count(rawat_inap_dr.kd_jenis_prw) as jml,"+
-                                            "jns_perawatan_inap.nm_perawatan,"+
-                                            "sum(rawat_inap_dr.bhp)as bhp,"+
-                                            "sum(rawat_inap_dr.material)as material,"+
-                                            "rawat_inap_dr.biaya_rawat as total_byrdr,"+
-                                            "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"+
-                                            "sum(rawat_inap_dr.biaya_rawat) as total  "+
-                                            "from rawat_inap_dr inner join jns_perawatan_inap on jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "+
-                                            "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "+
-                                            "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
-                                        try {
-                                            pstindakanranap.setString(1,rs.getString("kd_dokter"));
-                                            pstindakanranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                            pstindakanranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                            pstindakanranap.setString(4,norawatbayi);
-                                            rstindakan=pstindakanranap.executeQuery();
-                                            while(rstindakan.next()){
-                                                ttljml=ttljml+rstindakan.getDouble("jml");
-                                                ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                                ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                                ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                                ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                                if(a==1){
-                                                    tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                                    c++;
-                                                }else{
-                                                    tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                                }                           
-                                                a++;
-                                            }
-                                        } catch (Exception e) {
-                                                System.out.println("Notif tindakan ranap : "+e);
-                                        } finally{
-                                            if(rstindakan!=null){
-                                                rstindakan.close();
-                                            }
-                                            if(pstindakanranap!=null){
-                                                pstindakanranap.close();
-                                            }
-                                        }
-
-                                    }
-                                    
-                                    
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Notif pasien ranap : "+e);
-                            } finally{
-                                if(rspasien!=null){
-                                    rspasien.close();
-                                }
-                                if(pspasienranap!=null){
-                                    pspasienranap.close();
-                                }
-                            }
-
-                            pspasienranapdrpr=koneksi.prepareStatement(
-                                    "select rawat_inap_drpr.no_rawat from rawat_inap_drpr inner join reg_periksa "
-                                            + "inner join nota_inap inner join detail_nota_inap "
-                                            + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "+                          
-                                            "and reg_periksa.no_rawat=nota_inap.no_rawat "
-                                            + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                                    "where rawat_inap_drpr.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "+
-                                    "and rawat_inap_drpr.no_rawat not in (select no_rawat2 from ranap_gabung) "
-                                            + "group by rawat_inap_drpr.no_rawat");            
-                            try {
-                                pspasienranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                pspasienranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                pspasienranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                pspasienranapdrpr.setString(4,"%"+pilihancarabayar+"%");
-                                rspasien=pspasienranapdrpr.executeQuery();
-                                while(rspasien.next()){   
-				    norawatbayi="";
-                                    pskamar=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                        "where kamar_inap.no_rawat=? group by kamar_inap.no_rawat");
-                                    try {
-                                        pskamar.setString(1,rspasien.getString("no_rawat"));
-                                        rskamar=pskamar.executeQuery();
-                                        tanggal="";
-                                        kamar="";
-                                        penjab="";
-                                        pasien="";
-                                        if(rskamar.next()){  
-                                            tanggal=rskamar.getString("tgl_masuk")+" "+rskamar.getString("tgl_keluar");
-                                            if(kelas==false){
-                                                kamar=rskamar.getString("kd_kamar")+" "+rskamar.getString("nm_bangsal");
-                                            }else if(kelas==true){
-                                                kamar=rskamar.getString("kelas");
-                                            }                                            
-                                            penjab=rskamar.getString("png_jawab");
-                                            pasien=rskamar.getString("nm_pasien");
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("Notif Kamar : "+e);
-                                    } finally{
-                                        if(rskamar!=null){
-                                            rskamar.close();
-                                        }
-                                        if(pskamar!=null){
-                                            pskamar.close();
-                                        }
-                                    }  
-
-                                    a=1;   
-                                    pstindakanranapdrpr=koneksi.prepareStatement("select rawat_inap_drpr.kd_jenis_prw,"+
-                                        "count(rawat_inap_drpr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan_inap.nm_perawatan,"+
-                                        "sum(rawat_inap_drpr.bhp)as bhp,"+
-                                        "sum(rawat_inap_drpr.material)as material,"+
-                                        "rawat_inap_drpr.biaya_rawat as total_byrdr,"+
-                                        "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_inap_drpr.biaya_rawat) as total  "+
-                                        "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "+
-                                        "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "+
-                                        "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
-                                    try {
-                                        pstindakanranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                        pstindakanranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                        pstindakanranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                        pstindakanranapdrpr.setString(4,rspasien.getString("no_rawat"));
-                                        rstindakan=pstindakanranapdrpr.executeQuery();
-                                        while(rstindakan.next()){
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                                c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                            }                           
-                                            a++;
-                                        }
-                                    } catch (Exception e) {
-                                        System.out.println("Notif tindakan dokter pj umum : "+e);
-                                    } finally{
-                                        if(rstindakan!=null){
-                                            rstindakan.close();
-                                        }
-                                        if(pstindakanranapdrpr!=null){
-                                            pstindakanranapdrpr.close();
-                                        }
-                                    }  
-                                    
-                                    norawatbayi=Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",rspasien.getString("no_rawat"));
-                                    if(!norawatbayi.equals("")){
-                                        pasien=Sequel.cariIsi(
-                                            "select pasien.nm_pasien from reg_periksa inner join pasien on "+
-                                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? ",norawatbayi);
-                                        a=1;                                           
-                                        pstindakanranapdrpr=koneksi.prepareStatement(
-                                            "select rawat_inap_drpr.kd_jenis_prw,"+
-                                            "count(rawat_inap_drpr.kd_jenis_prw) as jml,"+
-                                            "jns_perawatan_inap.nm_perawatan,"+
-                                            "sum(rawat_inap_drpr.bhp)as bhp,"+
-                                            "sum(rawat_inap_drpr.material)as material,"+
-                                            "rawat_inap_drpr.biaya_rawat as total_byrdr,"+
-                                            "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"+
-                                            "sum(rawat_inap_drpr.biaya_rawat) as total  "+
-                                            "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "+
-                                            "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "+
-                                            "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
-                                        try {
-                                            pstindakanranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                            pstindakanranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                            pstindakanranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                            pstindakanranapdrpr.setString(4,norawatbayi);
-                                            rstindakan=pstindakanranapdrpr.executeQuery();
-                                            while(rstindakan.next()){
-                                                ttljml=ttljml+rstindakan.getDouble("jml");
-                                                ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                                ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                                ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                                ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                                if(a==1){
-                                                    tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                                    c++;
-                                                }else{
-                                                    tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                                }                           
-                                                a++;
-                                            }
-                                        } catch (Exception e) {
-                                            System.out.println("Notif tindakan dokter pj umum : "+e);
-                                        } finally{
-                                            if(rstindakan!=null){
-                                                rstindakan.close();
-                                            }
-                                            if(pstindakanranapdrpr!=null){
-                                                pstindakanranapdrpr.close();
-                                            }
-                                        } 
-                                    }                 
-                                }
-                            } catch (Exception e) {
-                                System.out.println("Notif pasien dokter umum : "+e);
-                            } finally{
-                                if(rspasien!=null){
-                                    rspasien.close();
-                                }
-                                if(pspasienranapdrpr!=null){
-                                    pspasienranapdrpr.close();
-                                }
-                            }
-                        }
-                        
-                        
-                   }
-                   i++;
-                }
-                if(i>0){
-                    tabMode.addRow(new Object[]{">>","Jumlah :","","","","",null,ttljml,ttlbiaya,ttlbhp,ttljm,ttluangrs});    
-                }
-           } catch (Exception e) {
-               System.out.println("Notifikasi ps : "+e);
-           } finally{
-               if(rs!=null){
-                   rs.close();
-               }
-               if(ps!=null){
-                   ps.close();
-               }
-           }    
-        }catch(SQLException e){
-            System.out.println("Catatan  "+e);
-        }
-        
-    }    
-    
-    //Piutang atawa BPJS/ausransi
-    private void cariPiutang() {
-       Valid.tabelKosong(tabMode);      
-       try{
-           ps=koneksi.prepareStatement("select kd_dokter,nm_dokter from dokter where status='1' and kd_dokter like ? order by nm_dokter");
-           try {
-                ps.setString(1,"%"+kddokter.getText()+"%");
-                rs=ps.executeQuery();
-                i=1;
-                ttlbiaya=0;
-                ttljm=0;
-                ttljml=0;
-                ttlbhp=0;
-                ttluangrs=0;
-                while(rs.next()){
-                   tabMode.addRow(new Object[]{i+".",rs.getString("nm_dokter"),"","","","",null,null,null,null,null,null});                 
-                   c=1;
-                   //jmralan
-                   if(chkRalan.isSelected()==true){
-                        pspasienralan=koneksi.prepareStatement(
-                            "select rawat_jl_dr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "+
-                            "from rawat_jl_dr inner join reg_periksa inner join pasien inner join poliklinik inner join penjab "
-                          + "inner join nota_inap inner join detail_nota_inap "+
-                            "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                            "and reg_periksa.no_rawat=nota_inap.no_rawat "
-                          + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "+
-                            "where rawat_jl_dr.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "                            
-                                    + "group by rawat_jl_dr.no_rawat");
-                        try {
-                            pspasienralan.setString(1,rs.getString("kd_dokter"));
-                            pspasienralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienralan.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienralan.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienralan.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;    
-                                pstindakanralan=koneksi.prepareStatement("select rawat_jl_dr.kd_jenis_prw,"+
-                                    "count(rawat_jl_dr.kd_jenis_prw) as jml,"+
-                                    "jns_perawatan.nm_perawatan,sum(rawat_jl_dr.bhp)as bhp,sum(rawat_jl_dr.material)as material,"+
-                                    "rawat_jl_dr.biaya_rawat as total_byrdr,sum(rawat_jl_dr.tarif_tindakandr)as tarif_tindakandr,"+
-                                    "sum(rawat_jl_dr.biaya_rawat) as total "+
-                                    "from rawat_jl_dr inner join jns_perawatan inner join reg_periksa on "+
-                                    "jns_perawatan.kd_jenis_prw=rawat_jl_dr.kd_jenis_prw and rawat_jl_dr.no_rawat=reg_periksa.no_rawat where "+
-                                    "rawat_jl_dr.tarif_tindakandr>0 and rawat_jl_dr.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ? and rawat_jl_dr.no_rawat=? "+
-                                    "group by rawat_jl_dr.kd_jenis_prw order by jns_perawatan.nm_perawatan");   
-                                try {
-                                    pstindakanralan.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanralan.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanralan.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanralan.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                        ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_registrasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notifikasi Tindakan Rawat Jalan : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakanralan!=null){
-                                        pstindakanralan.close();
-                                    }
-                                }                                        
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi Pasien Ralan : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasienralan!=null){
-                                pspasienralan.close();
-                            }
-                        }
-
-                        pspasienralandrpr=koneksi.prepareStatement(
-                            "select rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "+
-                            "from rawat_jl_drpr inner join reg_periksa inner join pasien inner join poliklinik inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                           
-                            "where rawat_jl_drpr.kd_dokter=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
-                          + "group by rawat_jl_drpr.no_rawat");
-                        try {
-                            pspasienralandrpr.setString(1,rs.getString("kd_dokter"));
-                            pspasienralandrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienralandrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienralandrpr.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienralandrpr.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1; 
-                                pstindakanralandrpr=koneksi.prepareStatement("select rawat_jl_drpr.kd_jenis_prw,"+
-                                        "count(rawat_jl_drpr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan.nm_perawatan,sum(rawat_jl_drpr.bhp)as bhp,sum(rawat_jl_drpr.material)as material,"+
-                                        "rawat_jl_drpr.biaya_rawat as total_byrdr,sum(rawat_jl_drpr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_jl_drpr.biaya_rawat) as total "+
-                                        "from rawat_jl_drpr inner join jns_perawatan inner join reg_periksa on "+
-                                        "jns_perawatan.kd_jenis_prw=rawat_jl_drpr.kd_jenis_prw and rawat_jl_drpr.no_rawat=reg_periksa.no_rawat where "+
-                                        "rawat_jl_drpr.tarif_tindakandr>0 and rawat_jl_drpr.kd_dokter=? and rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat=? "+
-                                        "group by rawat_jl_drpr.kd_jenis_prw order by jns_perawatan.nm_perawatan");   
-                                try {
-                                    pstindakanralandrpr.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanralandrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanralandrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanralandrpr.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanralandrpr.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                        ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_registrasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan ralan drpr : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakanralandrpr!=null){
-                                        pstindakanralandrpr.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi tidakan ralan drpr : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasienralandrpr!=null){
-                                pspasienralandrpr.close();
-                            }
-                        }                            
-                   }
-
-                   //jmradiologi
-                   if(chkRadiologi.isSelected()==true){
-                        pspasienradiologi=koneksi.prepareStatement("select periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Radiolgi' as nm_poli "+
-                            "from periksa_radiologi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on periksa_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where periksa_radiologi.kd_dokter=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                        pspasienradiologi2 = koneksi.prepareStatement("select periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Radiolgi' as nm_poli "
+                                + "from periksa_radiologi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on periksa_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where periksa_radiologi.dokter_perujuk=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
                                 + "group by periksa_radiologi.no_rawat");
                         try {
-                            pspasienradiologi.setString(1,rs.getString("kd_dokter"));
-                            pspasienradiologi.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienradiologi.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienradiologi.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienradiologi.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;   
-                                pstindakanradiologi=koneksi.prepareStatement("select periksa_radiologi.kd_jenis_prw,"+
-                                        "count(periksa_radiologi.kd_jenis_prw) as jml, "+
-                                        "jns_perawatan_radiologi.nm_perawatan,"+
-                                        "sum(periksa_radiologi.bhp) as bhp,"+
-                                        "sum(periksa_radiologi.bagian_rs) as bagian_rs,"+
-                                        "periksa_radiologi.biaya as total_byr,"+
-                                        "sum(periksa_radiologi.tarif_tindakan_dokter)as tarif_tindakan_dokter,"+
-                                        "sum(periksa_radiologi.biaya) as total  "+
-                                        "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "+
-                                        "periksa_radiologi.tarif_tindakan_dokter>0 and periksa_radiologi.kd_dokter=? and periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat=? "+
-                                        "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
+                            pspasienradiologi2.setString(1, rs.getString("kd_dokter"));
+                            pspasienradiologi2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienradiologi2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienradiologi2.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienradiologi2.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanradiologi2 = koneksi.prepareStatement("select periksa_radiologi.kd_jenis_prw,"
+                                        + "count(periksa_radiologi.kd_jenis_prw) as jml, "
+                                        + "jns_perawatan_radiologi.nm_perawatan,"
+                                        + "0 as bhp,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "sum(periksa_radiologi.tarif_perujuk)as tarif_perujuk,"
+                                        + "0 as total  "
+                                        + "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
+                                        + "periksa_radiologi.tarif_perujuk>0 and periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat=? "
+                                        + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
                                 try {
-                                    pstindakanradiologi.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanradiologi.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanradiologi.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanradiologi.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanradiologi.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("tarif_tindakan_dokter");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_periksa"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (P.J. Rad)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakan_dokter"),rstindakan.getDouble("bagian_rs")}); 
+                                    pstindakanradiologi2.setString(1, rs.getString("kd_dokter"));
+                                    pstindakanradiologi2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                    pstindakanradiologi2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanradiologi2.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanradiologi2.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("tarif_perujuk");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_perujuk"), 0});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (P.J. Rad)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakan_dokter"),rstindakan.getDouble("bagian_rs")}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Perujuk Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_perujuk"), 0});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan radiologi : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notifikasi tindakan radiologi : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakanradiologi!=null){
-                                        pstindakanradiologi.close();
-                                    }
-                                }
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi radiologi : "+e);
-                        } finally{
-                            if(rspasien!=null){
-                                rspasien.close();
-                            }
-                            if(pspasienradiologi!=null){
-                                pspasienradiologi.close();
-                            }
-                        }
-
-                        //jmradiologiperujuk
-                        pspasienradiologi2=koneksi.prepareStatement("select periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Radiolgi' as nm_poli "+
-                            "from periksa_radiologi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on periksa_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where periksa_radiologi.dokter_perujuk=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "+
-                            "group by periksa_radiologi.no_rawat");
-                        try {
-                            pspasienradiologi2.setString(1,rs.getString("kd_dokter"));
-                            pspasienradiologi2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienradiologi2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienradiologi2.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienradiologi2.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;     
-                                pstindakanradiologi2=koneksi.prepareStatement("select periksa_radiologi.kd_jenis_prw,"+
-                                        "count(periksa_radiologi.kd_jenis_prw) as jml, "+
-                                        "jns_perawatan_radiologi.nm_perawatan,"+
-                                        "0 as bhp,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "sum(periksa_radiologi.tarif_perujuk)as tarif_perujuk,"+
-                                        "0 as total  "+
-                                        "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "+
-                                        "periksa_radiologi.tarif_perujuk>0 and periksa_radiologi.dokter_perujuk=? and periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.no_rawat=? "+
-                                        "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
-                                try {
-                                    pstindakanradiologi2.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanradiologi2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanradiologi2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanradiologi2.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanradiologi2.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("tarif_perujuk");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_periksa"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Perujuk Rad)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_perujuk"),0}); 
-                                            c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Perujuk Rad)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_perujuk"),0}); 
-                                        }                           
-                                        a++;
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan radiologi : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
-                                        rstindakan.close();
-                                    }
-                                    if(pstindakanradiologi2!=null){
+                                    if (pstindakanradiologi2 != null) {
                                         pstindakanradiologi2.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi pasien radiologi : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notifikasi pasien radiologi : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasienradiologi2!=null){
+                            if (pspasienradiologi2 != null) {
                                 pspasienradiologi2.close();
                             }
                         }
-                   }                 
+                    }
 
-                   //jm laborat
-                   if(chkLaborat.isSelected()==true){
-                        pspasienlab=koneksi.prepareStatement("select periksa_lab.no_rawat,periksa_lab.tgl_periksa,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Laborat' as nm_poli "+
-                            "from periksa_lab inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where periksa_lab.kd_dokter=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "+
-                            "group by periksa_lab.no_rawat");                    
+                    //jm laborat
+                    if (chkLaborat.isSelected() == true) {
+                        pspasienlab = koneksi.prepareStatement("select periksa_lab.no_rawat,periksa_lab.tgl_periksa,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Laborat' as nm_poli "
+                                + "from periksa_lab inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where periksa_lab.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
+                                + "group by periksa_lab.no_rawat");
                         try {
-                            pspasienlab.setString(1,rs.getString("kd_dokter"));
-                            pspasienlab.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienlab.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienlab.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienlab.executeQuery();
-                            while(rspasien.next()){                        
-                                a=1;   
-                                pstindakanlab=koneksi.prepareStatement("select periksa_lab.kd_jenis_prw,"+
-                                        "count(periksa_lab.kd_jenis_prw) as jml, "+
-                                        "jns_perawatan_lab.nm_perawatan,"+
-                                        "sum(periksa_lab.bhp) as bhp,"+
-                                        "sum(periksa_lab.bagian_rs) as bagian_rs,"+
-                                        "periksa_lab.biaya as total_byr,"+
-                                        "sum(periksa_lab.tarif_tindakan_dokter)as tarif_tindakan_dokter,"+
-                                        "sum(periksa_lab.biaya) as total  "+
-                                        "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "+
-                                        "periksa_lab.kd_dokter=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat=? "+
-                                        "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
+                            pspasienlab.setString(1, rs.getString("kd_dokter"));
+                            pspasienlab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienlab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienlab.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienlab.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanlab = koneksi.prepareStatement("select periksa_lab.kd_jenis_prw,"
+                                        + "count(periksa_lab.kd_jenis_prw) as jml, "
+                                        + "jns_perawatan_lab.nm_perawatan,"
+                                        + "sum(periksa_lab.bhp) as bhp,"
+                                        + "sum(periksa_lab.bagian_rs) as bagian_rs,"
+                                        + "periksa_lab.biaya as total_byr,"
+                                        + "sum(periksa_lab.tarif_tindakan_dokter)as tarif_tindakan_dokter,"
+                                        + "sum(periksa_lab.biaya) as total  "
+                                        + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
+                                        + "periksa_lab.kd_dokter=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat=? "
+                                        + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
                                 try {
-                                    pstindakanlab.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanlab.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanlab.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanlab.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanlab.executeQuery();
-                                    while(rstindakan.next()){
-                                        detailjm=0;
-                                        detailrs=0;
-                                        detailtotal=0;
-                                        detailbhp=0;
-                                        biayaitem=0;
-                                        psdetaillab=koneksi.prepareStatement("select sum(detail_periksa_lab.bagian_dokter) as totaldokter,"+
-                                            "sum(detail_periksa_lab.bagian_rs) as totalrs,"+
-                                            "sum(detail_periksa_lab.bhp) as bhp, "+
-                                            "sum(detail_periksa_lab.biaya_item) as biaya_item,"+
-                                            "sum(detail_periksa_lab.biaya_item) as totalbayar from detail_periksa_lab inner join jns_perawatan_lab inner join "+
-                                            "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
-                                            "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "+
-                                            "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
-                                            "and periksa_lab.kd_dokter=? and detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
+                                    pstindakanlab.setString(1, rs.getString("kd_dokter"));
+                                    pstindakanlab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                    pstindakanlab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanlab.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanlab.executeQuery();
+                                    while (rstindakan.next()) {
+                                        detailjm = 0;
+                                        detailrs = 0;
+                                        detailtotal = 0;
+                                        detailbhp = 0;
+                                        biayaitem = 0;
+                                        psdetaillab = koneksi.prepareStatement("select sum(detail_periksa_lab.bagian_dokter) as totaldokter,"
+                                                + "sum(detail_periksa_lab.bagian_rs) as totalrs,"
+                                                + "sum(detail_periksa_lab.bhp) as bhp, "
+                                                + "sum(detail_periksa_lab.biaya_item) as biaya_item,"
+                                                + "sum(detail_periksa_lab.biaya_item) as totalbayar from detail_periksa_lab inner join jns_perawatan_lab inner join "
+                                                + "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "
+                                                + "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "
+                                                + "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "
+                                                + "and periksa_lab.kd_dokter=? and detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
                                         try {
-                                            psdetaillab.setString(1,rs.getString("kd_dokter"));
-                                            psdetaillab.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                            psdetaillab.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                            psdetaillab.setString(4,rstindakan.getString("kd_jenis_prw"));
-                                            psdetaillab.setString(5,rspasien.getString("no_rawat"));
-                                            rsdetaillab=psdetaillab.executeQuery();
-                                            while(rsdetaillab.next()){
-                                                 detailjm=rsdetaillab.getDouble("totaldokter");
-                                                 detailrs=rsdetaillab.getDouble("totalrs");
-                                                 detailtotal=rsdetaillab.getDouble("totalbayar");
-                                                 biayaitem=rsdetaillab.getDouble("biaya_item");
-                                                 detailbhp=rsdetaillab.getDouble("bhp");
+                                            psdetaillab.setString(1, rs.getString("kd_dokter"));
+                                            psdetaillab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                            psdetaillab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                            psdetaillab.setString(4, rstindakan.getString("kd_jenis_prw"));
+                                            psdetaillab.setString(5, rspasien.getString("no_rawat"));
+                                            rsdetaillab = psdetaillab.executeQuery();
+                                            while (rsdetaillab.next()) {
+                                                detailjm = rsdetaillab.getDouble("totaldokter");
+                                                detailrs = rsdetaillab.getDouble("totalrs");
+                                                detailtotal = rsdetaillab.getDouble("totalbayar");
+                                                biayaitem = rsdetaillab.getDouble("biaya_item");
+                                                detailbhp = rsdetaillab.getDouble("bhp");
                                             }
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total")+detailtotal;
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakan_dokter")+detailjm;
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs")+detailrs;
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_periksa"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (P.J. Lab)",(rstindakan.getDouble("total_byr")+biayaitem),rstindakan.getDouble("jml"),(rstindakan.getDouble("total")+detailtotal),(rstindakan.getDouble("bhp")+detailbhp),(rstindakan.getDouble("tarif_tindakan_dokter")+detailjm),(rstindakan.getDouble("bagian_rs")+detailrs)}); 
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total") + detailtotal;
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakan_dokter") + detailjm;
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs") + detailrs;
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp") + detailbhp;
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_tindakan_dokter") + detailjm), (rstindakan.getDouble("bagian_rs") + detailrs)});
                                                 c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (P.J. Lab)",(rstindakan.getDouble("total_byr")+biayaitem),rstindakan.getDouble("jml"),(rstindakan.getDouble("total")+detailtotal),(rstindakan.getDouble("bhp")+detailbhp),(rstindakan.getDouble("tarif_tindakan_dokter")+detailjm),(rstindakan.getDouble("bagian_rs")+detailrs)}); 
-                                            }                           
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (P.J. Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_tindakan_dokter") + detailjm), (rstindakan.getDouble("bagian_rs") + detailrs)});
+                                            }
                                             a++;
                                         } catch (Exception e) {
-                                            System.out.println("Notifikasi detail lab : "+e);
-                                        } finally{
-                                            if(rsdetaillab!=null){
+                                            System.out.println("Notifikasi detail lab : " + e);
+                                        } finally {
+                                            if (rsdetaillab != null) {
                                                 rsdetaillab.close();
                                             }
-                                            if(psdetaillab!=null){
+                                            if (psdetaillab != null) {
                                                 psdetaillab.close();
                                             }
                                         }
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan lab : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notifikasi tindakan lab : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakanlab!=null){
+                                    if (pstindakanlab != null) {
                                         pstindakanlab.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi pasien lab : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notifikasi pasien lab : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasienlab!=null){
+                            if (pspasienlab != null) {
                                 pspasienlab.close();
                             }
                         }
-                            
+
                         //jm perujuk
-                        pspasienlab2=koneksi.prepareStatement("select periksa_lab.no_rawat,periksa_lab.tgl_periksa,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Laborat' as nm_poli "+
-                            "from periksa_lab inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where periksa_lab.dokter_perujuk=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
-                                + "group by periksa_lab.no_rawat");                    
+                        pspasienlab2 = koneksi.prepareStatement("select periksa_lab.no_rawat,periksa_lab.tgl_periksa,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Laborat' as nm_poli "
+                                + "from periksa_lab inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where periksa_lab.dokter_perujuk=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
+                                + "group by periksa_lab.no_rawat");
                         try {
-                            pspasienlab2.setString(1,rs.getString("kd_dokter"));
-                            pspasienlab2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                            pspasienlab2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                            pspasienlab2.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienlab2.executeQuery();
-                            while(rspasien.next()){                        
-                                a=1;  
-                                pstindakanlab2=koneksi.prepareStatement("select periksa_lab.kd_jenis_prw,"+
-                                        "count(periksa_lab.kd_jenis_prw) as jml, "+
-                                        "jns_perawatan_lab.nm_perawatan,"+
-                                        "0 as bhp,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "sum(periksa_lab.tarif_perujuk)as tarif_perujuk,"+
-                                        "0 as total  "+
-                                        "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "+
-                                        "periksa_lab.dokter_perujuk=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat=? "+
-                                        "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
+                            pspasienlab2.setString(1, rs.getString("kd_dokter"));
+                            pspasienlab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienlab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienlab2.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienlab2.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanlab2 = koneksi.prepareStatement("select periksa_lab.kd_jenis_prw,"
+                                        + "count(periksa_lab.kd_jenis_prw) as jml, "
+                                        + "jns_perawatan_lab.nm_perawatan,"
+                                        + "0 as bhp,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "sum(periksa_lab.tarif_perujuk)as tarif_perujuk,"
+                                        + "0 as total  "
+                                        + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
+                                        + "periksa_lab.dokter_perujuk=? and periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat=? "
+                                        + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
                                 try {
-                                    pstindakanlab2.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanlab2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                    pstindakanlab2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                    pstindakanlab2.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanlab2.executeQuery();
-                                    while(rstindakan.next()){
-                                        detailjm=0;
-                                        detailrs=0;
-                                        detailtotal=0;
-                                        biayaitem=0;
-                                        detailbhp=0;
-                                        psdetaillab2=koneksi.prepareStatement("select sum(detail_periksa_lab.bagian_perujuk) as totaldokter,"+
-                                            "0 as bhp, "+
-                                            "0 as totalrs, "+
-                                            "0 as biaya_item,"+
-                                            "0 as totalbayar from detail_periksa_lab inner join jns_perawatan_lab inner join "+
-                                            "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
-                                            "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "+
-                                            "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
-                                            "and periksa_lab.dokter_perujuk=? and detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
+                                    pstindakanlab2.setString(1, rs.getString("kd_dokter"));
+                                    pstindakanlab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                    pstindakanlab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanlab2.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanlab2.executeQuery();
+                                    while (rstindakan.next()) {
+                                        detailjm = 0;
+                                        detailrs = 0;
+                                        detailtotal = 0;
+                                        biayaitem = 0;
+                                        detailbhp = 0;
+                                        psdetaillab2 = koneksi.prepareStatement("select sum(detail_periksa_lab.bagian_perujuk) as totaldokter,"
+                                                + "0 as bhp, "
+                                                + "0 as totalrs, "
+                                                + "0 as biaya_item,"
+                                                + "0 as totalbayar from detail_periksa_lab inner join jns_perawatan_lab inner join "
+                                                + "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "
+                                                + "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "
+                                                + "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "
+                                                + "and periksa_lab.dokter_perujuk=? and detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
                                         try {
-                                            psdetaillab2.setString(1,rs.getString("kd_dokter"));
-                                            psdetaillab2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                            psdetaillab2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                            psdetaillab2.setString(4,rstindakan.getString("kd_jenis_prw"));
-                                            psdetaillab2.setString(5,rspasien.getString("no_rawat"));
-                                            rsdetaillab=psdetaillab2.executeQuery();
-                                            while(rsdetaillab.next()){
-                                                 detailjm=rsdetaillab.getDouble("totaldokter");
-                                                 detailrs=rsdetaillab.getDouble("totalrs");
-                                                 detailtotal=rsdetaillab.getDouble("totalbayar");
-                                                 biayaitem=rsdetaillab.getDouble("biaya_item");
-                                                 detailbhp=rsdetaillab.getDouble("bhp");
+                                            psdetaillab2.setString(1, rs.getString("kd_dokter"));
+                                            psdetaillab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                            psdetaillab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                            psdetaillab2.setString(4, rstindakan.getString("kd_jenis_prw"));
+                                            psdetaillab2.setString(5, rspasien.getString("no_rawat"));
+                                            rsdetaillab = psdetaillab2.executeQuery();
+                                            while (rsdetaillab.next()) {
+                                                detailjm = rsdetaillab.getDouble("totaldokter");
+                                                detailrs = rsdetaillab.getDouble("totalrs");
+                                                detailtotal = rsdetaillab.getDouble("totalbayar");
+                                                biayaitem = rsdetaillab.getDouble("biaya_item");
+                                                detailbhp = rsdetaillab.getDouble("bhp");
                                             }
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total")+detailtotal;
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_perujuk")+detailjm;
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs")+detailrs;
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_periksa"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Perujuk Lab)",(rstindakan.getDouble("total_byr")+biayaitem),rstindakan.getDouble("jml"),(rstindakan.getDouble("total")+detailtotal),(rstindakan.getDouble("bhp")+detailbhp),(rstindakan.getDouble("tarif_perujuk")+detailjm),0}); 
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total") + detailtotal;
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_perujuk") + detailjm;
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs") + detailrs;
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp") + detailbhp;
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_perujuk") + detailjm), 0});
                                                 c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Perujuk Lab)",(rstindakan.getDouble("total_byr")+biayaitem),rstindakan.getDouble("jml"),(rstindakan.getDouble("total")+detailtotal),(rstindakan.getDouble("bhp")+detailbhp),(rstindakan.getDouble("tarif_perujuk")+detailjm),0}); 
-                                            }                           
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Perujuk Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_perujuk") + detailjm), 0});
+                                            }
                                             a++;
                                         } catch (Exception e) {
-                                            System.out.println("Notif detail rujukan : "+e);
-                                        } finally{
-                                            if(rsdetaillab!=null){
+                                            System.out.println("Notif detail rujukan : " + e);
+                                        } finally {
+                                            if (rsdetaillab != null) {
                                                 rsdetaillab.close();
                                             }
-                                            if(psdetaillab2!=null){
+                                            if (psdetaillab2 != null) {
                                                 psdetaillab2.close();
                                             }
                                         }
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan perujuk : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notifikasi tindakan perujuk : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakanlab2!=null){
+                                    if (pstindakanlab2 != null) {
                                         pstindakanlab2.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi pasien perujuk : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notifikasi pasien perujuk : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasienlab2!=null){
+                            if (pspasienlab2 != null) {
                                 pspasienlab2.close();
                             }
-                        }                   
-                   }
+                        }
+                    }
 
-                   if(chkOperasi.isSelected()==true){
+                    if (chkOperasi.isSelected() == true) {
                         //jmoperator1
-                        pspasienoperator1=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where operasi.operator1=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                        pspasienoperator1 = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where operasi.operator1=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
                                 + " group by operasi.no_rawat");
                         try {
-                            pspasienoperator1.setString(1,rs.getString("kd_dokter"));
-                            pspasienoperator1.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasienoperator1.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasienoperator1.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienoperator1.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;    
-                                pstindakanoperator1=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "(count(operasi.kode_paket)*(operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biayasarpras)) as bagian_rs,"+
-                                        "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
-                                        "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"+
-                                        "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
-                                        "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+"+
-                                        "operasi.biayaperawat_luar+operasi.biayaalat+"+
-                                        "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+"+
-                                        "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras) as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayaoperator1)as biayaoperator1,"+
-                                        "(count(operasi.kode_paket)*(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
-                                        "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"+
-                                        "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
-                                        "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+"+
-                                        "operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"+
-                                        "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+"+
-                                        "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras)) as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayaoperator1>0 and operasi.operator1=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                            pspasienoperator1.setString(1, rs.getString("kd_dokter"));
+                            pspasienoperator1.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasienoperator1.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasienoperator1.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienoperator1.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanoperator1 = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "(count(operasi.kode_paket)*(operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biayasarpras)) as bagian_rs,"
+                                        + "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"
+                                        + "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"
+                                        + "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"
+                                        + "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+"
+                                        + "operasi.biayaperawat_luar+operasi.biayaalat+"
+                                        + "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+"
+                                        + "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras) as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayaoperator1)as biayaoperator1,"
+                                        + "(count(operasi.kode_paket)*(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"
+                                        + "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"
+                                        + "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"
+                                        + "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+"
+                                        + "operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"
+                                        + "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+"
+                                        + "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras)) as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayaoperator1>0 and operasi.operator1=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
-                                    pstindakanoperator1.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanoperator1.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakanoperator1.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakanoperator1.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanoperator1.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayaoperator1");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Operator 1)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator1"),rstindakan.getDouble("bagian_rs")}); 
+                                    pstindakanoperator1.setString(1, rs.getString("kd_dokter"));
+                                    pstindakanoperator1.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                                    pstindakanoperator1.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakanoperator1.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanoperator1.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayaoperator1");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 1)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator1"), rstindakan.getDouble("bagian_rs")});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Operator 1)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator1"),rstindakan.getDouble("bagian_rs")}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Operator 1)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator1"), rstindakan.getDouble("bagian_rs")});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan operasi : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notif tindakan operasi : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakanoperator1!=null){
+                                    if (pstindakanoperator1 != null) {
                                         pstindakanoperator1.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien operasi : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notif pasien operasi : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasienoperator1!=null){
+                            if (pspasienoperator1 != null) {
                                 pspasienoperator1.close();
                             }
                         }
 
                         //jmoperator2
-                        pspasienoperator2=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where operasi.operator2=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                        pspasienoperator2 = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where operasi.operator2=? and operasi.tgl_operasi between ? and ? and reg_periksa.kd_pj like ? "
                                 + "group by operasi.no_rawat");
                         try {
-                            pspasienoperator2.setString(1,rs.getString("kd_dokter"));
-                            pspasienoperator2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasienoperator2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasienoperator2.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienoperator2.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;  
-                                pstindakanoperator2=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayaoperator2)as biayaoperator2,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayaoperator2>0 and operasi.operator2=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                            pspasienoperator2.setString(1, rs.getString("kd_dokter"));
+                            pspasienoperator2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasienoperator2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasienoperator2.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienoperator2.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanoperator2 = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayaoperator2)as biayaoperator2,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayaoperator2>0 and operasi.operator2=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
-                                    pstindakanoperator2.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanoperator2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakanoperator2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakanoperator2.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanoperator2.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayaoperator2");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Operator 2)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator2"),0}); 
+                                    pstindakanoperator2.setString(1, rs.getString("kd_dokter"));
+                                    pstindakanoperator2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                                    pstindakanoperator2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakanoperator2.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanoperator2.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayaoperator2");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 2)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator2"), 0});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Operator 2)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator2"),0}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Operator 2)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator2"), 0});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan operator 2 : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notif tindakan operator 2 : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakanoperator2!=null){
+                                    if (pstindakanoperator2 != null) {
                                         pstindakanoperator2.close();
                                     }
-                                }   
+                                }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien operator 2 : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notif pasien operator 2 : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasienoperator2!=null){
+                            if (pspasienoperator2 != null) {
                                 pspasienoperator2.close();
                             }
                         }
 
                         //jmoperator3
-                        pspasienoperator3=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where operasi.operator3=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                        pspasienoperator3 = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where operasi.operator3=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
                                 + "group by operasi.no_rawat");
                         try {
-                            pspasienoperator3.setString(1,rs.getString("kd_dokter"));
-                            pspasienoperator3.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasienoperator3.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasienoperator3.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasienoperator3.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;      
-                                pstindakanoperator3=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayaoperator3)as biayaoperator3,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayaoperator3>0 and operasi.operator3=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                            pspasienoperator3.setString(1, rs.getString("kd_dokter"));
+                            pspasienoperator3.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasienoperator3.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasienoperator3.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienoperator3.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanoperator3 = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayaoperator3)as biayaoperator3,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayaoperator3>0 and operasi.operator3=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
-                                    pstindakanoperator3.setString(1,rs.getString("kd_dokter"));
-                                    pstindakanoperator3.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakanoperator3.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakanoperator3.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakanoperator3.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayaoperator3");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Operator 3)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator3"),0}); 
+                                    pstindakanoperator3.setString(1, rs.getString("kd_dokter"));
+                                    pstindakanoperator3.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                                    pstindakanoperator3.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakanoperator3.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanoperator3.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayaoperator3");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 3)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator3"), 0});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Operator 3)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayaoperator3"),0}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Operator 3)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator3"), 0});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Notif tindakan operator 3");
-                                } finally{
-                                    if(rstindakan!=null){
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakanoperator3!=null){
+                                    if (pstindakanoperator3 != null) {
                                         pstindakanoperator3.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif operator 3 : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notif operator 3 : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasienoperator3!=null){
+                            if (pspasienoperator3 != null) {
                                 pspasienoperator3.close();
                             }
                         }
 
                         //jmdokter_anak
-                        pspasiendokter_anak=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where operasi.dokter_anak=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                        pspasiendokter_anak = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where operasi.dokter_anak=? and operasi.tgl_operasi between ? and ? and reg_periksa.kd_pj like ? "
                                 + "group by operasi.no_rawat");
                         try {
-                            pspasiendokter_anak.setString(1,rs.getString("kd_dokter"));
-                            pspasiendokter_anak.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasiendokter_anak.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasiendokter_anak.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasiendokter_anak.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;   
-                                pstindakandokter_anak=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayadokter_anak)as biayadokter_anak,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayadokter_anak>0 and operasi.dokter_anak=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                            pspasiendokter_anak.setString(1, rs.getString("kd_dokter"));
+                            pspasiendokter_anak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasiendokter_anak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasiendokter_anak.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasiendokter_anak.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakandokter_anak = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayadokter_anak)as biayadokter_anak,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayadokter_anak>0 and operasi.dokter_anak=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
-                                    pstindakandokter_anak.setString(1,rs.getString("kd_dokter"));
-                                    pstindakandokter_anak.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakandokter_anak.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakandokter_anak.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakandokter_anak.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayadokter_anak");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Dokter Anak)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayadokter_anak"),0}); 
+                                    pstindakandokter_anak.setString(1, rs.getString("kd_dokter"));
+                                    pstindakandokter_anak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                                    pstindakandokter_anak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_anak.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakandokter_anak.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayadokter_anak");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anak"), 0});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Dokter Anak)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayadokter_anak"),0}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anak"), 0});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter anak : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notif tindakan dokter anak : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakandokter_anak!=null){
+                                    if (pstindakandokter_anak != null) {
                                         pstindakandokter_anak.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif dokter anak : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notif dokter anak : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasiendokter_anak!=null){
+                            if (pspasiendokter_anak != null) {
                                 pspasiendokter_anak.close();
                             }
                         }
 
                         //jmdokter_anestesi
-                        pspasiendokter_anestesi=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where operasi.dokter_anestesi=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                        pspasiendokter_anestesi = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where operasi.dokter_anestesi=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
                                 + "group by operasi.no_rawat");
                         try {
-                            pspasiendokter_anestesi.setString(1,rs.getString("kd_dokter"));
-                            pspasiendokter_anestesi.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasiendokter_anestesi.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasiendokter_anestesi.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasiendokter_anestesi.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;  
-                                pstindakandokter_anestesi=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biayadokter_anestesi)as biayadokter_anestesi,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biayadokter_anestesi>0 and operasi.dokter_anestesi=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                            pspasiendokter_anestesi.setString(1, rs.getString("kd_dokter"));
+                            pspasiendokter_anestesi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasiendokter_anestesi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasiendokter_anestesi.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasiendokter_anestesi.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakandokter_anestesi = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayadokter_anestesi)as biayadokter_anestesi,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayadokter_anestesi>0 and operasi.dokter_anestesi=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
-                                    pstindakandokter_anestesi.setString(1,rs.getString("kd_dokter"));
-                                    pstindakandokter_anestesi.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakandokter_anestesi.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakandokter_anestesi.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakandokter_anestesi.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biayadokter_anestesi");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayadokter_anestesi"),0}); 
+                                    pstindakandokter_anestesi.setString(1, rs.getString("kd_dokter"));
+                                    pstindakandokter_anestesi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                                    pstindakandokter_anestesi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_anestesi.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakandokter_anestesi.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayadokter_anestesi");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anestesi)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anestesi"), 0});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biayadokter_anestesi"),0}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Anestesi)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anestesi"), 0});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi tindakan anastesi : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notifikasi tindakan anastesi : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakandokter_anestesi!=null){
+                                    if (pstindakandokter_anestesi != null) {
                                         pstindakandokter_anestesi.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien anastesi : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notif pasien anastesi : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasiendokter_anestesi!=null){
+                            if (pspasiendokter_anestesi != null) {
                                 pspasiendokter_anestesi.close();
                             }
                         }
 
                         //jmdokter_pjanak
-                        pspasiendokter_pjanak=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where operasi.dokter_pjanak=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                        pspasiendokter_pjanak = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where operasi.dokter_pjanak=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
                                 + "group by operasi.no_rawat");
                         try {
-                            pspasiendokter_pjanak.setString(1,rs.getString("kd_dokter"));
-                            pspasiendokter_pjanak.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            pspasiendokter_pjanak.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            pspasiendokter_pjanak.setString(4,"%"+pilihancarabayar+"%");
-                            rspasien=pspasiendokter_pjanak.executeQuery();
-                            while(rspasien.next()){ 
-                                a=1;    
-                                pstindakandokter_pjanak=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biaya_dokter_pjanak)as biaya_dokter_pjanak,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biaya_dokter_pjanak>0 and operasi.dokter_pjanak=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                            pspasiendokter_pjanak.setString(1, rs.getString("kd_dokter"));
+                            pspasiendokter_pjanak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasiendokter_pjanak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasiendokter_pjanak.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasiendokter_pjanak.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakandokter_pjanak = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biaya_dokter_pjanak)as biaya_dokter_pjanak,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biaya_dokter_pjanak>0 and operasi.dokter_pjanak=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
-                                    pstindakandokter_pjanak.setString(1,rs.getString("kd_dokter"));
-                                    pstindakandokter_pjanak.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakandokter_pjanak.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakandokter_pjanak.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakandokter_pjanak.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biaya_dokter_pjanak");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biaya_dokter_pjanak"),0}); 
+                                    pstindakandokter_pjanak.setString(1, rs.getString("kd_dokter"));
+                                    pstindakandokter_pjanak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                                    pstindakandokter_pjanak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_pjanak.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakandokter_pjanak.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biaya_dokter_pjanak");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Pj Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_pjanak"), 0});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biaya_dokter_pjanak"),0}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Pj Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_pjanak"), 0});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter pj umum : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notif tindakan dokter pj umum : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakandokter_pjanak!=null){
+                                    if (pstindakandokter_pjanak != null) {
                                         pstindakandokter_pjanak.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien pj anak : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notif pasien pj anak : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasiendokter_pjanak!=null){
+                            if (pspasiendokter_pjanak != null) {
                                 pspasiendokter_pjanak.close();
                             }
                         }
 
                         //jmdokter_umum
-                        pspasiendokter_umum=koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"+
-                            "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "+
-                            "from operasi inner join reg_periksa inner join pasien inner join penjab "+
-                            "inner join piutang_pasien "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "and reg_periksa.kd_pj=penjab.kd_pj "+
-                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "where operasi.dokter_umum=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                        pspasiendokter_umum = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join nota_inap inner join detail_nota_inap "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                + "where operasi.dokter_umum=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
                                 + "group by operasi.no_rawat");
-                        pspasiendokter_umum.setString(1,rs.getString("kd_dokter"));
-                        pspasiendokter_umum.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                        pspasiendokter_umum.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                        pspasiendokter_umum.setString(4,"%"+pilihancarabayar+"%");
-                        rspasien=pspasiendokter_umum.executeQuery();
+                        pspasiendokter_umum.setString(1, rs.getString("kd_dokter"));
+                        pspasiendokter_umum.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                        pspasiendokter_umum.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                        pspasiendokter_umum.setString(4, "%" + pilihancarabayar + "%");
+                        rspasien = pspasiendokter_umum.executeQuery();
                         try {
-                            while(rspasien.next()){ 
-                                a=1;   
-                                pstindakandokter_umum=koneksi.prepareStatement("select operasi.kode_paket,"+
-                                        "count(operasi.kode_paket) as jml, "+
-                                        "paket_operasi.nm_perawatan,"+
-                                        "0 as bagian_rs,"+
-                                        "0 as total_byr,"+
-                                        "(count(operasi.kode_paket)*operasi.biaya_dokter_umum)as biaya_dokter_umum,"+
-                                        "0 as total  "+
-                                        "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "+
-                                        "operasi.biaya_dokter_umum>0 and operasi.dokter_umum=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "+
-                                        "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakandokter_umum = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biaya_dokter_umum)as biaya_dokter_umum,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biaya_dokter_umum>0 and operasi.dokter_umum=? and operasi.tgl_operasi between ? and ? and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
-                                    pstindakandokter_umum.setString(1,rs.getString("kd_dokter"));
-                                    pstindakandokter_umum.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                                    pstindakandokter_umum.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                                    pstindakandokter_umum.setString(4,rspasien.getString("no_rawat"));
-                                    rstindakan=pstindakandokter_umum.executeQuery();
-                                    while(rstindakan.next()){
-                                        ttljml=ttljml+rstindakan.getDouble("jml");
-                                        ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                        ttljm=ttljm+rstindakan.getDouble("biaya_dokter_umum");
-                                        ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
-                                        if(a==1){
-                                            tabMode.addRow(new Object[]{"",c+". "+rspasien.getString("tgl_operasi"),rspasien.getString("nm_pasien"),rspasien.getString("nm_poli"),rspasien.getString("png_jawab"),rstindakan.getString("nm_perawatan")+" (Dokter Umum)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biaya_dokter_umum"),0}); 
+                                    pstindakandokter_umum.setString(1, rs.getString("kd_dokter"));
+                                    pstindakandokter_umum.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                                    pstindakandokter_umum.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_umum.setString(4, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakandokter_umum.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biaya_dokter_umum");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Umum)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_umum"), 0});
                                             c++;
-                                        }else{
-                                            tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan")+" (Dokter Umum)",rstindakan.getDouble("total_byr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),0,rstindakan.getDouble("biaya_dokter_umum"),0}); 
-                                        }                           
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Umum)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_umum"), 0});
+                                        }
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    System.out.println("Notif tindakan dokter umum : "+e);
-                                } finally{
-                                    if(rstindakan!=null){
+                                    System.out.println("Notif tindakan dokter umum : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
                                         rstindakan.close();
                                     }
-                                    if(pstindakandokter_umum!=null){
+                                    if (pstindakandokter_umum != null) {
                                         pstindakandokter_umum.close();
                                     }
                                 }
                             }
                         } catch (Exception e) {
-                            System.out.println("Notif pasien dokter umum : "+e);
-                        } finally{
-                            if(rspasien!=null){
+                            System.out.println("Notif pasien dokter umum : " + e);
+                        } finally {
+                            if (rspasien != null) {
                                 rspasien.close();
                             }
-                            if(pspasiendokter_umum!=null){
+                            if (pspasiendokter_umum != null) {
                                 pspasiendokter_umum.close();
                             }
                         }
-                   }                    
+                    }
 
-                   //jmranap
-                   if(chkRanap.isSelected()==true){
-                        if(ranapgabung==false){
-                            pspasienranap=koneksi.prepareStatement(
+                    //jmranap
+                    if (chkRanap.isSelected() == true) {
+                        if (ranapgabung == false) {
+                            pspasienranap = koneksi.prepareStatement(
                                     "select rawat_inap_dr.no_rawat from rawat_inap_dr inner join reg_periksa "
-                                            + "inner join nota_inap inner join detail_nota_inap "
-                                            + "inner join piutang_pasien inner join bayar_piutang "
-                                            + "on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
-                                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                            "and piutang_pasien.no_rawat=bayar_piutang.no_rawat "+
-                                    "where rawat_inap_dr.kd_dokter=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "+
-                                            
-                                    " group by rawat_inap_dr.no_rawat");
+                                    + "inner join nota_inap inner join detail_nota_inap "
+                                    + "on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "
+                                    + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                    + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                    + "where rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.kd_pj like ? "
+                                    + " group by rawat_inap_dr.no_rawat");
                             try {
-                                pspasienranap.setString(1,rs.getString("kd_dokter"));
-                                pspasienranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                pspasienranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                pspasienranap.setString(4,"%"+pilihancarabayar+"%");
-                                rspasien=pspasienranap.executeQuery();
-                                while(rspasien.next()){  
-                                    pskamar=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                        "where kamar_inap.no_rawat=? "+
-                                        "group by kamar_inap.no_rawat");
+                                pspasienranap.setString(1, rs.getString("kd_dokter"));
+                                pspasienranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                pspasienranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                pspasienranap.setString(4, "%" + pilihancarabayar + "%");
+                                rspasien = pspasienranap.executeQuery();
+                                while (rspasien.next()) {
+                                    pskamar = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                                            + "where kamar_inap.no_rawat=? "
+                                            + "and reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') "
+                                            + "group by kamar_inap.no_rawat");
                                     try {
-                                        pskamar.setString(1,rspasien.getString("no_rawat"));
-                                        rskamar=pskamar.executeQuery();
-                                        tanggal="";
-                                        kamar="";
-                                        penjab="";
-                                        pasien="";
-                                        if(rskamar.next()){  
-                                            tanggal=rskamar.getString("tgl_masuk")+" "+rskamar.getString("tgl_keluar");
-                                            if(kelas==false){
-                                                kamar=rskamar.getString("kd_kamar")+" "+rskamar.getString("nm_bangsal");
-                                            }else if(kelas==true){
-                                                kamar=rskamar.getString("kelas");
-                                            }                                            
-                                            penjab=rskamar.getString("png_jawab");
-                                            pasien=rskamar.getString("nm_pasien");
-                                        }else{
-                                            psanak=koneksi.prepareStatement(
-                                                "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "+
-                                                "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
-                                                "from reg_periksa inner join pasien inner join ranap_gabung on "+
-                                                "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=? ");                        
+                                        pskamar.setString(1, rspasien.getString("no_rawat"));
+                                        rskamar = pskamar.executeQuery();
+                                        tanggal = "";
+                                        kamar = "";
+                                        penjab = "";
+                                        pasien = "";
+                                        if (rskamar.next()) {
+                                            tanggal = rskamar.getString("tgl_masuk") + " " + rskamar.getString("tgl_keluar");
+                                            if (kelas == false) {
+                                                kamar = rskamar.getString("kd_kamar") + " " + rskamar.getString("nm_bangsal");
+                                            } else if (kelas == true) {
+                                                kamar = rskamar.getString("kelas");
+                                            }
+                                            penjab = rskamar.getString("png_jawab");
+                                            pasien = rskamar.getString("nm_pasien");
+                                        } else {
+                                            psanak = koneksi.prepareStatement(
+                                                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "
+                                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=? "
+                                                    + "and reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') ");
                                             try {
-                                                psanak.setString(1,rspasien.getString("no_rawat"));
-                                                rsanak=psanak.executeQuery();
-                                                if(rsanak.next()){
-                                                    pasien=rsanak.getString("nm_pasien");  
-                                                    pskamar2=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                                        "where kamar_inap.no_rawat=? "
+                                                psanak.setString(1, rspasien.getString("no_rawat"));
+                                                rsanak = psanak.executeQuery();
+                                                if (rsanak.next()) {
+                                                    pasien = rsanak.getString("nm_pasien");
+                                                    pskamar2 = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+                                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+                                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                                                            + "where kamar_inap.no_rawat=? "
+                                                            + "and reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') "
                                                             + "group by kamar_inap.no_rawat");
                                                     try {
-                                                        pskamar2.setString(1,rsanak.getString("no_rawat"));
-                                                        rskamar2=pskamar2.executeQuery();
-                                                        if(rskamar2.next()){
-                                                            tanggal=rskamar2.getString("tgl_masuk")+" "+rskamar2.getString("tgl_keluar");
-                                                            if(kelas==false){
-                                                                kamar=rskamar2.getString("kd_kamar")+" "+rskamar2.getString("nm_bangsal");
-                                                            }else if(kelas==true){
-                                                                kamar=rskamar2.getString("kelas");
-                                                            }                                                            
-                                                            penjab=rskamar2.getString("png_jawab");
+                                                        pskamar2.setString(1, rsanak.getString("no_rawat"));
+                                                        rskamar2 = pskamar2.executeQuery();
+                                                        if (rskamar2.next()) {
+                                                            tanggal = rskamar2.getString("tgl_masuk") + " " + rskamar2.getString("tgl_keluar");
+                                                            if (kelas == false) {
+                                                                kamar = rskamar2.getString("kd_kamar") + " " + rskamar2.getString("nm_bangsal");
+                                                            } else if (kelas == true) {
+                                                                kamar = rskamar2.getString("kelas");
+                                                            }
+                                                            penjab = rskamar2.getString("png_jawab");
                                                         }
                                                     } catch (Exception e) {
-                                                        System.out.println("Notif kamar2 : "+e);
-                                                    } finally{
-                                                        if(rskamar2!=null){
+                                                        System.out.println("Notif kamar2 : " + e);
+                                                    } finally {
+                                                        if (rskamar2 != null) {
                                                             rskamar2.close();
                                                         }
-                                                        if(pskamar2!=null){
+                                                        if (pskamar2 != null) {
                                                             pskamar2.close();
                                                         }
                                                     }
                                                 }
                                             } catch (Exception e) {
-                                                System.out.println("Notif pasien anak : "+e);
-                                            } finally{
-                                                if(rsanak!=null){
+                                                System.out.println("Notif pasien anak : " + e);
+                                            } finally {
+                                                if (rsanak != null) {
                                                     rsanak.close();
                                                 }
-                                                if(psanak!=null){
+                                                if (psanak != null) {
                                                     psanak.close();
                                                 }
                                             }
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif kamar : "+e);
-                                    } finally{
-                                        if(rskamar!=null){
+                                        System.out.println("Notif kamar : " + e);
+                                    } finally {
+                                        if (rskamar != null) {
                                             rskamar.close();
                                         }
-                                        if(pskamar!=null){
+                                        if (pskamar != null) {
                                             pskamar.close();
                                         }
-                                    }  
+                                    }
 
-                                    a=1;        
-                                    pstindakanranap=koneksi.prepareStatement("select rawat_inap_dr.kd_jenis_prw,"+
-                                        "count(rawat_inap_dr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan_inap.nm_perawatan,"+
-                                        "sum(rawat_inap_dr.bhp)as bhp,"+
-                                        "sum(rawat_inap_dr.material)as material,"+
-                                        "rawat_inap_dr.biaya_rawat as total_byrdr,"+
-                                        "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_inap_dr.biaya_rawat) as total  "+
-                                        "from rawat_inap_dr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "+
-                                        "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "+
-                                        "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
+                                    a = 1;
+                                    pstindakanranap = koneksi.prepareStatement("select rawat_inap_dr.kd_jenis_prw,"
+                                            + "count(rawat_inap_dr.kd_jenis_prw) as jml,"
+                                            + "jns_perawatan_inap.nm_perawatan,"
+                                            + "sum(rawat_inap_dr.bhp)as bhp,"
+                                            + "sum(rawat_inap_dr.material)as material,"
+                                            + "rawat_inap_dr.biaya_rawat as total_byrdr,"
+                                            + "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"
+                                            + "sum(rawat_inap_dr.biaya_rawat) as total  "
+                                            + "from rawat_inap_dr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "
+                                            + "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "
+                                            + "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                     try {
-                                        pstindakanranap.setString(1,rs.getString("kd_dokter"));
-                                        pstindakanranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                        pstindakanranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                        pstindakanranap.setString(4,rspasien.getString("no_rawat"));
-                                        rstindakan=pstindakanranap.executeQuery();
-                                        while(rstindakan.next()){
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
+                                        pstindakanranap.setString(1, rs.getString("kd_dokter"));
+                                        pstindakanranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                        pstindakanranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                        pstindakanranap.setString(4, rspasien.getString("no_rawat"));
+                                        rstindakan = pstindakanranap.executeQuery();
+                                        while (rstindakan.next()) {
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
                                                 c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                            }                           
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                            }
                                             a++;
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif tindakan ranap : "+e);
-                                    } finally{
-                                        if(rstindakan!=null){
+                                        System.out.println("Notif tindakan ranap : " + e);
+                                    } finally {
+                                        if (rstindakan != null) {
                                             rstindakan.close();
                                         }
-                                        if(pstindakanranap!=null){
+                                        if (pstindakanranap != null) {
                                             pstindakanranap.close();
                                         }
                                     }
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notif pasien ranap : "+e);
-                            } finally{
-                                if(rspasien!=null){
+                                System.out.println("Notif pasien ranap : " + e);
+                            } finally {
+                                if (rspasien != null) {
                                     rspasien.close();
                                 }
-                                if(pspasienranap!=null){
+                                if (pspasienranap != null) {
                                     pspasienranap.close();
                                 }
                             }
 
-                            pspasienranapdrpr=koneksi.prepareStatement(
+                            pspasienranapdrpr = koneksi.prepareStatement(
                                     "select rawat_inap_drpr.no_rawat "
-                                            + "from rawat_inap_drpr inner join reg_periksa "
-                                            + "inner join piutang_pasien "
-                                            + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
-                                            + "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                                    "where rawat_inap_drpr.kd_dokter=? and "
-                                            + "piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') "
-                                            + "group by rawat_inap_drpr.no_rawat");            
+                                    + "from rawat_inap_drpr inner join reg_periksa "
+                                    + "inner join nota_inap inner join detail_nota_inap "
+                                    + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
+                                    + "and rawat_inap_drpr.no_rawat=nota_inap.no_rawat "
+                                    + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                    + "where rawat_inap_drpr.kd_dokter=? and "
+                                    + "nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
+                                    + "group by rawat_inap_drpr.no_rawat");
                             try {
-                                pspasienranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                pspasienranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                pspasienranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                pspasienranapdrpr.setString(4,"%"+pilihancarabayar+"%");
-                                rspasien=pspasienranapdrpr.executeQuery();
-                                while(rspasien.next()){   
-                                    pskamar=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                        "where kamar_inap.no_rawat=? "
+                                pspasienranapdrpr.setString(1, rs.getString("kd_dokter"));
+                                pspasienranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                pspasienranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                pspasienranapdrpr.setString(4, "%" + pilihancarabayar + "%");
+                                rspasien = pspasienranapdrpr.executeQuery();
+                                while (rspasien.next()) {
+                                    pskamar = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                                            + "where kamar_inap.no_rawat=? "
                                             + "group by kamar_inap.no_rawat");
                                     try {
-                                        pskamar.setString(1,rspasien.getString("no_rawat"));
-                                        rskamar=pskamar.executeQuery();
-                                        tanggal="";
-                                        kamar="";
-                                        penjab="";
-                                        pasien="";
-                                        if(rskamar.next()){  
-                                            tanggal=rskamar.getString("tgl_masuk")+" "+rskamar.getString("tgl_keluar");
-                                            if(kelas==false){
-                                                kamar=rskamar.getString("kd_kamar")+" "+rskamar.getString("nm_bangsal");
-                                            }else if(kelas==true){
-                                                kamar=rskamar.getString("kelas");
-                                            }                                            
-                                            penjab=rskamar.getString("png_jawab");
-                                            pasien=rskamar.getString("nm_pasien");
-                                        }else{
-                                            psanak=koneksi.prepareStatement(
-                                                "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "+
-                                                "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
-                                                "from reg_periksa inner join pasien inner join ranap_gabung on "+
-                                                "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=? ");                        
+                                        pskamar.setString(1, rspasien.getString("no_rawat"));
+                                        rskamar = pskamar.executeQuery();
+                                        tanggal = "";
+                                        kamar = "";
+                                        penjab = "";
+                                        pasien = "";
+                                        if (rskamar.next()) {
+                                            tanggal = rskamar.getString("tgl_masuk") + " " + rskamar.getString("tgl_keluar");
+                                            if (kelas == false) {
+                                                kamar = rskamar.getString("kd_kamar") + " " + rskamar.getString("nm_bangsal");
+                                            } else if (kelas == true) {
+                                                kamar = rskamar.getString("kelas");
+                                            }
+                                            penjab = rskamar.getString("png_jawab");
+                                            pasien = rskamar.getString("nm_pasien");
+                                        } else {
+                                            psanak = koneksi.prepareStatement(
+                                                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "
+                                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=? ");
                                             try {
-                                                psanak.setString(1,rspasien.getString("no_rawat"));
-                                                rsanak=psanak.executeQuery();
-                                                if(rsanak.next()){
-                                                    pasien=rsanak.getString("nm_pasien");   
-                                                    pskamar2=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                                        "where kamar_inap.no_rawat=? "
+                                                psanak.setString(1, rspasien.getString("no_rawat"));
+                                                rsanak = psanak.executeQuery();
+                                                if (rsanak.next()) {
+                                                    pasien = rsanak.getString("nm_pasien");
+                                                    pskamar2 = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+                                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+                                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                                                            + "where kamar_inap.no_rawat=? "
                                                             + "group by kamar_inap.no_rawat");
                                                     try {
-                                                        pskamar2.setString(1,rsanak.getString("no_rawat"));
-                                                        rskamar2=pskamar2.executeQuery();
-                                                        if(rskamar2.next()){
-                                                            tanggal=rskamar2.getString("tgl_masuk")+" "+rskamar2.getString("tgl_keluar");
-                                                            if(kelas==false){
-                                                                kamar=rskamar2.getString("kd_kamar")+" "+rskamar2.getString("nm_bangsal");
-                                                            }else if(kelas==true){
-                                                                kamar=rskamar2.getString("kelas");
-                                                            }                                                            
-                                                            penjab=rskamar2.getString("png_jawab");
+                                                        pskamar2.setString(1, rsanak.getString("no_rawat"));
+                                                        rskamar2 = pskamar2.executeQuery();
+                                                        if (rskamar2.next()) {
+                                                            tanggal = rskamar2.getString("tgl_masuk") + " " + rskamar2.getString("tgl_keluar");
+                                                            if (kelas == false) {
+                                                                kamar = rskamar2.getString("kd_kamar") + " " + rskamar2.getString("nm_bangsal");
+                                                            } else if (kelas == true) {
+                                                                kamar = rskamar2.getString("kelas");
+                                                            }
+                                                            penjab = rskamar2.getString("png_jawab");
                                                         }
                                                     } catch (Exception e) {
-                                                        System.out.println("Notif kamar bayi : "+e);
-                                                    } finally{
-                                                        if(rskamar2!=null){
+                                                        System.out.println("Notif kamar bayi : " + e);
+                                                    } finally {
+                                                        if (rskamar2 != null) {
                                                             rskamar2.close();
                                                         }
-                                                        if(pskamar2!=null){
+                                                        if (pskamar2 != null) {
                                                             pskamar2.close();
                                                         }
                                                     }
                                                 }
                                             } catch (Exception e) {
-                                                System.out.println("Notif Pasien anak : "+e);
-                                            } finally{
-                                                if(rsanak!=null){
+                                                System.out.println("Notif Pasien anak : " + e);
+                                            } finally {
+                                                if (rsanak != null) {
                                                     rsanak.close();
                                                 }
-                                                if(psanak!=null){
+                                                if (psanak != null) {
                                                     psanak.close();
                                                 }
                                             }
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif Kamar : "+e);
-                                    } finally{
-                                        if(rskamar!=null){
+                                        System.out.println("Notif Kamar : " + e);
+                                    } finally {
+                                        if (rskamar != null) {
                                             rskamar.close();
                                         }
-                                        if(pskamar!=null){
+                                        if (pskamar != null) {
                                             pskamar.close();
                                         }
-                                    }  
+                                    }
 
-                                    a=1;   
-                                    pstindakanranapdrpr=koneksi.prepareStatement("select rawat_inap_drpr.kd_jenis_prw,"+
-                                        "count(rawat_inap_drpr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan_inap.nm_perawatan,"+
-                                        "sum(rawat_inap_drpr.bhp)as bhp,"+
-                                        "sum(rawat_inap_drpr.material)as material,"+
-                                        "rawat_inap_drpr.biaya_rawat as total_byrdr,"+
-                                        "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_inap_drpr.biaya_rawat) as total  "+
-                                        "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "+
-                                        "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "+
-                                        "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
+                                    a = 1;
+                                    pstindakanranapdrpr = koneksi.prepareStatement("select rawat_inap_drpr.kd_jenis_prw,"
+                                            + "count(rawat_inap_drpr.kd_jenis_prw) as jml,"
+                                            + "jns_perawatan_inap.nm_perawatan,"
+                                            + "sum(rawat_inap_drpr.bhp)as bhp,"
+                                            + "sum(rawat_inap_drpr.material)as material,"
+                                            + "rawat_inap_drpr.biaya_rawat as total_byrdr,"
+                                            + "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"
+                                            + "sum(rawat_inap_drpr.biaya_rawat) as total  "
+                                            + "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
+                                            + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "
+                                            + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                     try {
-                                        pstindakanranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                        pstindakanranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                        pstindakanranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                        pstindakanranapdrpr.setString(4,rspasien.getString("no_rawat"));
-                                        rstindakan=pstindakanranapdrpr.executeQuery();
-                                        while(rstindakan.next()){
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
+                                        pstindakanranapdrpr.setString(1, rs.getString("kd_dokter"));
+                                        pstindakanranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                        pstindakanranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                        pstindakanranapdrpr.setString(4, rspasien.getString("no_rawat"));
+                                        rstindakan = pstindakanranapdrpr.executeQuery();
+                                        while (rstindakan.next()) {
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
                                                 c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                            }                           
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                            }
                                             a++;
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif tindakan dokter pj umum : "+e);
-                                    } finally{
-                                        if(rstindakan!=null){
+                                        System.out.println("Notif tindakan dokter pj umum : " + e);
+                                    } finally {
+                                        if (rstindakan != null) {
                                             rstindakan.close();
                                         }
-                                        if(pstindakanranapdrpr!=null){
+                                        if (pstindakanranapdrpr != null) {
                                             pstindakanranapdrpr.close();
                                         }
-                                    }                   
+                                    }
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notif pasien dokter umum : "+e);
-                            } finally{
-                                if(rspasien!=null){
+                                System.out.println("Notif pasien dokter umum : " + e);
+                            } finally {
+                                if (rspasien != null) {
                                     rspasien.close();
                                 }
-                                if(pspasienranapdrpr!=null){
+                                if (pspasienranapdrpr != null) {
                                     pspasienranapdrpr.close();
                                 }
                             }
-                        }else if(ranapgabung==true){
-                            pspasienranap=koneksi.prepareStatement(
-                                    "select rawat_inap_dr.no_rawat from rawat_inap_dr inner join reg_periksa on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
-                                    "where rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.kd_pj like ? "+
-                                    "and rawat_inap_dr.no_rawat not in (select no_rawat2 from ranap_gabung) "
-                                           + "group by rawat_inap_dr.no_rawat");
+                        } else if (ranapgabung == true) {
+                            pspasienranap = koneksi.prepareStatement(
+                                    "select rawat_inap_dr.no_rawat from rawat_inap_dr inner join reg_periksa on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "
+                                    + "where rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.kd_pj like ? "
+                                    + "and rawat_inap_dr.no_rawat not in (select no_rawat2 from ranap_gabung) "
+                                    + "group by rawat_inap_dr.no_rawat");
                             try {
-                                pspasienranap.setString(1,rs.getString("kd_dokter"));
-                                pspasienranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                pspasienranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                pspasienranap.setString(4,"%"+pilihancarabayar+"%");
-                                rspasien=pspasienranap.executeQuery();
-                                while(rspasien.next()){  
-                                    norawatbayi="";
-                                    pskamar=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                        "where kamar_inap.no_rawat=? group by kamar_inap.no_rawat");
+                                pspasienranap.setString(1, rs.getString("kd_dokter"));
+                                pspasienranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                pspasienranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                pspasienranap.setString(4, "%" + pilihancarabayar + "%");
+                                rspasien = pspasienranap.executeQuery();
+                                while (rspasien.next()) {
+                                    norawatbayi = "";
+                                    pskamar = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                                            + "where kamar_inap.no_rawat=? group by kamar_inap.no_rawat");
                                     try {
-                                        pskamar.setString(1,rspasien.getString("no_rawat"));
-                                        rskamar=pskamar.executeQuery();
-                                        tanggal="";
-                                        kamar="";
-                                        penjab="";
-                                        pasien="";
-                                        if(rskamar.next()){  
-                                            tanggal=rskamar.getString("tgl_masuk")+" "+rskamar.getString("tgl_keluar");
-                                            if(kelas==false){
-                                                kamar=rskamar.getString("kd_kamar")+" "+rskamar.getString("nm_bangsal");
-                                            }else if(kelas==true){
-                                                kamar=rskamar.getString("kelas");
-                                            }                                            
-                                            penjab=rskamar.getString("png_jawab");
-                                            pasien=rskamar.getString("nm_pasien");
+                                        pskamar.setString(1, rspasien.getString("no_rawat"));
+                                        rskamar = pskamar.executeQuery();
+                                        tanggal = "";
+                                        kamar = "";
+                                        penjab = "";
+                                        pasien = "";
+                                        if (rskamar.next()) {
+                                            tanggal = rskamar.getString("tgl_masuk") + " " + rskamar.getString("tgl_keluar");
+                                            if (kelas == false) {
+                                                kamar = rskamar.getString("kd_kamar") + " " + rskamar.getString("nm_bangsal");
+                                            } else if (kelas == true) {
+                                                kamar = rskamar.getString("kelas");
+                                            }
+                                            penjab = rskamar.getString("png_jawab");
+                                            pasien = rskamar.getString("nm_pasien");
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif kamar : "+e);
-                                    } finally{
-                                        if(rskamar!=null){
+                                        System.out.println("Notif kamar : " + e);
+                                    } finally {
+                                        if (rskamar != null) {
                                             rskamar.close();
                                         }
-                                        if(pskamar!=null){
+                                        if (pskamar != null) {
                                             pskamar.close();
                                         }
-                                    }  
+                                    }
 
-                                    a=1;        
-                                    pstindakanranap=koneksi.prepareStatement("select rawat_inap_dr.kd_jenis_prw,"+
-                                        "count(rawat_inap_dr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan_inap.nm_perawatan,"+
-                                        "sum(rawat_inap_dr.bhp)as bhp,"+
-                                        "sum(rawat_inap_dr.material)as material,"+
-                                        "rawat_inap_dr.biaya_rawat as total_byrdr,"+
-                                        "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_inap_dr.biaya_rawat) as total  "+
-                                        "from rawat_inap_dr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "+
-                                        "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "+
-                                        "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
+                                    a = 1;
+                                    pstindakanranap = koneksi.prepareStatement("select rawat_inap_dr.kd_jenis_prw,"
+                                            + "count(rawat_inap_dr.kd_jenis_prw) as jml,"
+                                            + "jns_perawatan_inap.nm_perawatan,"
+                                            + "sum(rawat_inap_dr.bhp)as bhp,"
+                                            + "sum(rawat_inap_dr.material)as material,"
+                                            + "rawat_inap_dr.biaya_rawat as total_byrdr,"
+                                            + "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"
+                                            + "sum(rawat_inap_dr.biaya_rawat) as total  "
+                                            + "from rawat_inap_dr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "
+                                            + "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "
+                                            + "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                     try {
-                                        pstindakanranap.setString(1,rs.getString("kd_dokter"));
-                                        pstindakanranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                        pstindakanranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                        pstindakanranap.setString(4,rspasien.getString("no_rawat"));
-                                        rstindakan=pstindakanranap.executeQuery();
-                                        while(rstindakan.next()){
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
+                                        pstindakanranap.setString(1, rs.getString("kd_dokter"));
+                                        pstindakanranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                        pstindakanranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                        pstindakanranap.setString(4, rspasien.getString("no_rawat"));
+                                        rstindakan = pstindakanranap.executeQuery();
+                                        while (rstindakan.next()) {
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
                                                 c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                            }                           
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                            }
                                             a++;
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif tindakan ranap : "+e);
-                                    } finally{
-                                        if(rstindakan!=null){
+                                        System.out.println("Notif tindakan ranap : " + e);
+                                    } finally {
+                                        if (rstindakan != null) {
                                             rstindakan.close();
                                         }
-                                        if(pstindakanranap!=null){
+                                        if (pstindakanranap != null) {
                                             pstindakanranap.close();
                                         }
                                     }
-                                    
-                                    norawatbayi=Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",rspasien.getString("no_rawat"));
-                                    if(!norawatbayi.equals("")){
-                                        pasien=Sequel.cariIsi(
-                                            "select pasien.nm_pasien from reg_periksa inner join pasien on "+
-                                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? "
-                                           + "",norawatbayi);
-                                        a=1;        
-                                        pstindakanranap=koneksi.prepareStatement(
-                                            "select rawat_inap_dr.kd_jenis_prw,"+
-                                            "count(rawat_inap_dr.kd_jenis_prw) as jml,"+
-                                            "jns_perawatan_inap.nm_perawatan,"+
-                                            "sum(rawat_inap_dr.bhp)as bhp,"+
-                                            "sum(rawat_inap_dr.material)as material,"+
-                                            "rawat_inap_dr.biaya_rawat as total_byrdr,"+
-                                            "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"+
-                                            "sum(rawat_inap_dr.biaya_rawat) as total  "+
-                                            "from rawat_inap_dr inner join jns_perawatan_inap on jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "+
-                                            "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "+
-                                            "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
+
+                                    norawatbayi = Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?", rspasien.getString("no_rawat"));
+                                    if (!norawatbayi.equals("")) {
+                                        pasien = Sequel.cariIsi(
+                                                "select pasien.nm_pasien from reg_periksa inner join pasien on "
+                                                + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? "
+                                                + "", norawatbayi);
+                                        a = 1;
+                                        pstindakanranap = koneksi.prepareStatement(
+                                                "select rawat_inap_dr.kd_jenis_prw,"
+                                                + "count(rawat_inap_dr.kd_jenis_prw) as jml,"
+                                                + "jns_perawatan_inap.nm_perawatan,"
+                                                + "sum(rawat_inap_dr.bhp)as bhp,"
+                                                + "sum(rawat_inap_dr.material)as material,"
+                                                + "rawat_inap_dr.biaya_rawat as total_byrdr,"
+                                                + "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"
+                                                + "sum(rawat_inap_dr.biaya_rawat) as total  "
+                                                + "from rawat_inap_dr inner join jns_perawatan_inap on jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "
+                                                + "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "
+                                                + "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                         try {
-                                            pstindakanranap.setString(1,rs.getString("kd_dokter"));
-                                            pstindakanranap.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                            pstindakanranap.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                            pstindakanranap.setString(4,norawatbayi);
-                                            rstindakan=pstindakanranap.executeQuery();
-                                            while(rstindakan.next()){
-                                                ttljml=ttljml+rstindakan.getDouble("jml");
-                                                ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                                ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                                ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                                ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                                if(a==1){
-                                                    tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
+                                            pstindakanranap.setString(1, rs.getString("kd_dokter"));
+                                            pstindakanranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                            pstindakanranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                            pstindakanranap.setString(4, norawatbayi);
+                                            rstindakan = pstindakanranap.executeQuery();
+                                            while (rstindakan.next()) {
+                                                ttljml = ttljml + rstindakan.getDouble("jml");
+                                                ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                                ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                                ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                                ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                                if (a == 1) {
+                                                    tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
                                                     c++;
-                                                }else{
-                                                    tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                                }                           
+                                                } else {
+                                                    tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                                }
                                                 a++;
                                             }
                                         } catch (Exception e) {
-                                                System.out.println("Notif tindakan ranap : "+e);
-                                        } finally{
-                                            if(rstindakan!=null){
+                                            System.out.println("Notif tindakan ranap : " + e);
+                                        } finally {
+                                            if (rstindakan != null) {
                                                 rstindakan.close();
                                             }
-                                            if(pstindakanranap!=null){
+                                            if (pstindakanranap != null) {
                                                 pstindakanranap.close();
                                             }
                                         }
 
                                     }
-                                    
-                                    
+
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notif pasien ranap : "+e);
-                            } finally{
-                                if(rspasien!=null){
+                                System.out.println("Notif pasien ranap : " + e);
+                            } finally {
+                                if (rspasien != null) {
                                     rspasien.close();
                                 }
-                                if(pspasienranap!=null){
+                                if (pspasienranap != null) {
                                     pspasienranap.close();
                                 }
                             }
 
-                            pspasienranapdrpr=koneksi.prepareStatement(
+                            pspasienranapdrpr = koneksi.prepareStatement(
                                     "select rawat_inap_drpr.no_rawat from rawat_inap_drpr inner join reg_periksa "
-                                            + "inner join piutang_pasien "
-                                            + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "+                          
-                                            "and reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                                    "where rawat_inap_drpr.kd_dokter=? and piutang_pasien.tgl_piutang between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "+
-                                    "and rawat_inap_drpr.no_rawat not in (select no_rawat2 from ranap_gabung) "
-                                            + "group by rawat_inap_drpr.no_rawat");            
+                                    + "inner join nota_inap inner join detail_nota_inap "
+                                    + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
+                                    + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+                                    + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+                                    + "where rawat_inap_drpr.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
+                                    + "and rawat_inap_drpr.no_rawat not in (select no_rawat2 from ranap_gabung) "
+                                    + "group by rawat_inap_drpr.no_rawat");
                             try {
-                                pspasienranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                pspasienranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                pspasienranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                pspasienranapdrpr.setString(4,"%"+pilihancarabayar+"%");
-                                rspasien=pspasienranapdrpr.executeQuery();
-                                while(rspasien.next()){   
-				    norawatbayi="";
-                                    pskamar=koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
-                                        "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "+
-                                        "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                                        "where kamar_inap.no_rawat=? group by kamar_inap.no_rawat");
+                                pspasienranapdrpr.setString(1, rs.getString("kd_dokter"));
+                                pspasienranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                pspasienranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                pspasienranapdrpr.setString(4, "%" + pilihancarabayar + "%");
+                                rspasien = pspasienranapdrpr.executeQuery();
+                                while (rspasien.next()) {
+                                    norawatbayi = "";
+                                    pskamar = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                                            + "where kamar_inap.no_rawat=? group by kamar_inap.no_rawat");
                                     try {
-                                        pskamar.setString(1,rspasien.getString("no_rawat"));
-                                        rskamar=pskamar.executeQuery();
-                                        tanggal="";
-                                        kamar="";
-                                        penjab="";
-                                        pasien="";
-                                        if(rskamar.next()){  
-                                            tanggal=rskamar.getString("tgl_masuk")+" "+rskamar.getString("tgl_keluar");
-                                            if(kelas==false){
-                                                kamar=rskamar.getString("kd_kamar")+" "+rskamar.getString("nm_bangsal");
-                                            }else if(kelas==true){
-                                                kamar=rskamar.getString("kelas");
-                                            }                                            
-                                            penjab=rskamar.getString("png_jawab");
-                                            pasien=rskamar.getString("nm_pasien");
+                                        pskamar.setString(1, rspasien.getString("no_rawat"));
+                                        rskamar = pskamar.executeQuery();
+                                        tanggal = "";
+                                        kamar = "";
+                                        penjab = "";
+                                        pasien = "";
+                                        if (rskamar.next()) {
+                                            tanggal = rskamar.getString("tgl_masuk") + " " + rskamar.getString("tgl_keluar");
+                                            if (kelas == false) {
+                                                kamar = rskamar.getString("kd_kamar") + " " + rskamar.getString("nm_bangsal");
+                                            } else if (kelas == true) {
+                                                kamar = rskamar.getString("kelas");
+                                            }
+                                            penjab = rskamar.getString("png_jawab");
+                                            pasien = rskamar.getString("nm_pasien");
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif Kamar : "+e);
-                                    } finally{
-                                        if(rskamar!=null){
+                                        System.out.println("Notif Kamar : " + e);
+                                    } finally {
+                                        if (rskamar != null) {
                                             rskamar.close();
                                         }
-                                        if(pskamar!=null){
+                                        if (pskamar != null) {
                                             pskamar.close();
                                         }
-                                    }  
+                                    }
 
-                                    a=1;   
-                                    pstindakanranapdrpr=koneksi.prepareStatement("select rawat_inap_drpr.kd_jenis_prw,"+
-                                        "count(rawat_inap_drpr.kd_jenis_prw) as jml,"+
-                                        "jns_perawatan_inap.nm_perawatan,"+
-                                        "sum(rawat_inap_drpr.bhp)as bhp,"+
-                                        "sum(rawat_inap_drpr.material)as material,"+
-                                        "rawat_inap_drpr.biaya_rawat as total_byrdr,"+
-                                        "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"+
-                                        "sum(rawat_inap_drpr.biaya_rawat) as total  "+
-                                        "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "+
-                                        "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "+
-                                        "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
+                                    a = 1;
+                                    pstindakanranapdrpr = koneksi.prepareStatement("select rawat_inap_drpr.kd_jenis_prw,"
+                                            + "count(rawat_inap_drpr.kd_jenis_prw) as jml,"
+                                            + "jns_perawatan_inap.nm_perawatan,"
+                                            + "sum(rawat_inap_drpr.bhp)as bhp,"
+                                            + "sum(rawat_inap_drpr.material)as material,"
+                                            + "rawat_inap_drpr.biaya_rawat as total_byrdr,"
+                                            + "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"
+                                            + "sum(rawat_inap_drpr.biaya_rawat) as total  "
+                                            + "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
+                                            + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "
+                                            + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                     try {
-                                        pstindakanranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                        pstindakanranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                        pstindakanranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                        pstindakanranapdrpr.setString(4,rspasien.getString("no_rawat"));
-                                        rstindakan=pstindakanranapdrpr.executeQuery();
-                                        while(rstindakan.next()){
-                                            ttljml=ttljml+rstindakan.getDouble("jml");
-                                            ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                            ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                            ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                            ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                            if(a==1){
-                                                tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
+                                        pstindakanranapdrpr.setString(1, rs.getString("kd_dokter"));
+                                        pstindakanranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                        pstindakanranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                        pstindakanranapdrpr.setString(4, rspasien.getString("no_rawat"));
+                                        rstindakan = pstindakanranapdrpr.executeQuery();
+                                        while (rstindakan.next()) {
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
                                                 c++;
-                                            }else{
-                                                tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                            }                           
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                            }
                                             a++;
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Notif tindakan dokter pj umum : "+e);
-                                    } finally{
-                                        if(rstindakan!=null){
+                                        System.out.println("Notif tindakan dokter pj umum : " + e);
+                                    } finally {
+                                        if (rstindakan != null) {
                                             rstindakan.close();
                                         }
-                                        if(pstindakanranapdrpr!=null){
+                                        if (pstindakanranapdrpr != null) {
                                             pstindakanranapdrpr.close();
                                         }
-                                    }  
-                                    
-                                    norawatbayi=Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",rspasien.getString("no_rawat"));
-                                    if(!norawatbayi.equals("")){
-                                        pasien=Sequel.cariIsi(
-                                            "select pasien.nm_pasien from reg_periksa inner join pasien on "+
-                                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? ",norawatbayi);
-                                        a=1;                                           
-                                        pstindakanranapdrpr=koneksi.prepareStatement(
-                                            "select rawat_inap_drpr.kd_jenis_prw,"+
-                                            "count(rawat_inap_drpr.kd_jenis_prw) as jml,"+
-                                            "jns_perawatan_inap.nm_perawatan,"+
-                                            "sum(rawat_inap_drpr.bhp)as bhp,"+
-                                            "sum(rawat_inap_drpr.material)as material,"+
-                                            "rawat_inap_drpr.biaya_rawat as total_byrdr,"+
-                                            "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"+
-                                            "sum(rawat_inap_drpr.biaya_rawat) as total  "+
-                                            "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "+
-                                            "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "+
-                                            "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan"); 
+                                    }
+
+                                    norawatbayi = Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?", rspasien.getString("no_rawat"));
+                                    if (!norawatbayi.equals("")) {
+                                        pasien = Sequel.cariIsi(
+                                                "select pasien.nm_pasien from reg_periksa inner join pasien on "
+                                                + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? ", norawatbayi);
+                                        a = 1;
+                                        pstindakanranapdrpr = koneksi.prepareStatement(
+                                                "select rawat_inap_drpr.kd_jenis_prw,"
+                                                + "count(rawat_inap_drpr.kd_jenis_prw) as jml,"
+                                                + "jns_perawatan_inap.nm_perawatan,"
+                                                + "sum(rawat_inap_drpr.bhp)as bhp,"
+                                                + "sum(rawat_inap_drpr.material)as material,"
+                                                + "rawat_inap_drpr.biaya_rawat as total_byrdr,"
+                                                + "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"
+                                                + "sum(rawat_inap_drpr.biaya_rawat) as total  "
+                                                + "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
+                                                + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "
+                                                + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                         try {
-                                            pstindakanranapdrpr.setString(1,rs.getString("kd_dokter"));
-                                            pstindakanranapdrpr.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                                            pstindakanranapdrpr.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                                            pstindakanranapdrpr.setString(4,norawatbayi);
-                                            rstindakan=pstindakanranapdrpr.executeQuery();
-                                            while(rstindakan.next()){
-                                                ttljml=ttljml+rstindakan.getDouble("jml");
-                                                ttlbiaya=ttlbiaya+rstindakan.getDouble("total");
-                                                ttljm=ttljm+rstindakan.getDouble("tarif_tindakandr");
-                                                ttluangrs=ttluangrs+rstindakan.getDouble("material");
-                                                ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
-                                                if(a==1){
-                                                    tabMode.addRow(new Object[]{"",c+". "+tanggal,pasien,kamar,penjab,rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")}); 
+                                            pstindakanranapdrpr.setString(1, rs.getString("kd_dokter"));
+                                            pstindakanranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                            pstindakanranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                            pstindakanranapdrpr.setString(4, norawatbayi);
+                                            rstindakan = pstindakanranapdrpr.executeQuery();
+                                            while (rstindakan.next()) {
+                                                ttljml = ttljml + rstindakan.getDouble("jml");
+                                                ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                                ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                                ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                                ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                                if (a == 1) {
+                                                    tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
                                                     c++;
-                                                }else{
-                                                    tabMode.addRow(new Object[]{"","","","","",rstindakan.getString("nm_perawatan"),rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),rstindakan.getDouble("material")});    
-                                                }                           
+                                                } else {
+                                                    tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                                }
                                                 a++;
                                             }
                                         } catch (Exception e) {
-                                            System.out.println("Notif tindakan dokter pj umum : "+e);
-                                        } finally{
-                                            if(rstindakan!=null){
+                                            System.out.println("Notif tindakan dokter pj umum : " + e);
+                                        } finally {
+                                            if (rstindakan != null) {
                                                 rstindakan.close();
                                             }
-                                            if(pstindakanranapdrpr!=null){
+                                            if (pstindakanranapdrpr != null) {
                                                 pstindakanranapdrpr.close();
                                             }
-                                        } 
-                                    }                 
+                                        }
+                                    }
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notif pasien dokter umum : "+e);
-                            } finally{
-                                if(rspasien!=null){
+                                System.out.println("Notif pasien dokter umum : " + e);
+                            } finally {
+                                if (rspasien != null) {
                                     rspasien.close();
                                 }
-                                if(pspasienranapdrpr!=null){
+                                if (pspasienranapdrpr != null) {
                                     pspasienranapdrpr.close();
                                 }
                             }
                         }
-                        
-                        
-                   }
-                   i++;
+
+                    }
+                    i++;
                 }
-                if(i>0){
-                    tabMode.addRow(new Object[]{">>","Jumlah :","","","","",null,ttljml,ttlbiaya,ttlbhp,ttljm,ttluangrs});    
+                if (i > 0) {
+                    tabMode.addRow(new Object[]{">>", "Jumlah :", "", "", "", "", null, ttljml, ttlbiaya, ttlbhp, ttljm, ttluangrs});
                 }
-           } catch (Exception e) {
-               System.out.println("Notifikasi ps : "+e);
-           } finally{
-               if(rs!=null){
-                   rs.close();
-               }
-               if(ps!=null){
-                   ps.close();
-               }
-           }    
-        }catch(SQLException e){
-            System.out.println("Catatan  "+e);
+            } catch (Exception e) {
+                System.out.println("Notifikasi ps : " + e);
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Catatan  " + e);
         }
-        
-    }   
-    public void isCek(){
+
+    }
+
+    //Piutang atawa BPJS/ausransi
+    private void cariPiutang() {
+        Valid.tabelKosong(tabMode);
+        try {
+            ps = koneksi.prepareStatement("select kd_dokter,nm_dokter from dokter where status='1' and kd_dokter like ? order by nm_dokter");
+            try {
+                ps.setString(1, "%" + kddokter.getText() + "%");
+                rs = ps.executeQuery();
+                i = 1;
+                ttlbiaya = 0;
+                ttljm = 0;
+                ttljml = 0;
+                ttlbhp = 0;
+                ttluangrs = 0;
+                while (rs.next()) {
+                    tabMode.addRow(new Object[]{i + ".", rs.getString("nm_dokter"), "", "", "", "", null, null, null, null, null, null});
+                    c = 1;
+                    //jmralan yang DR di non
+                    if (chkRalan.isSelected() == true) {
+//                        pspasienralan = koneksi.prepareStatement(
+//                                "select rawat_jl_dr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "
+//                                + "from rawat_jl_dr inner join reg_periksa inner join pasien inner join poliklinik inner join penjab "
+//                                + "inner join nota_inap inner join detail_nota_inap "
+//                                + "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+//                                + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "
+//                                + "and reg_periksa.no_rawat=nota_inap.no_rawat "
+//                                + "and nota_inap.no_rawat=detail_nota_inap.no_rawat "
+//                                + "where rawat_jl_dr.kd_dokter=? and nota_inap.tanggal between ? and ? and reg_periksa.kd_pj like ? "
+//                                + "group by rawat_jl_dr.no_rawat");
+//                        try {
+//                            pspasienralan.setString(1, rs.getString("kd_dokter"));
+//                            pspasienralan.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                            pspasienralan.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+//                            pspasienralan.setString(4, "%" + pilihancarabayar + "%");
+//                            rspasien = pspasienralan.executeQuery();
+//                            while (rspasien.next()) {
+//                                a = 1;
+//                                pstindakanralan = koneksi.prepareStatement("select rawat_jl_dr.kd_jenis_prw,"
+//                                        + "count(rawat_jl_dr.kd_jenis_prw) as jml,"
+//                                        + "jns_perawatan.nm_perawatan,sum(rawat_jl_dr.bhp)as bhp,sum(rawat_jl_dr.material)as material,"
+//                                        + "rawat_jl_dr.biaya_rawat as total_byrdr,sum(rawat_jl_dr.tarif_tindakandr)as tarif_tindakandr,"
+//                                        + "sum(rawat_jl_dr.biaya_rawat) as total "
+//                                        + "from rawat_jl_dr inner join jns_perawatan inner join reg_periksa on "
+//                                        + "jns_perawatan.kd_jenis_prw=rawat_jl_dr.kd_jenis_prw and rawat_jl_dr.no_rawat=reg_periksa.no_rawat where "
+//                                        + "rawat_jl_dr.tarif_tindakandr>0 and rawat_jl_dr.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ? and rawat_jl_dr.no_rawat=? "
+//                                        + "group by rawat_jl_dr.kd_jenis_prw order by jns_perawatan.nm_perawatan");
+//                                try {
+//                                    pstindakanralan.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakanralan.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                    pstindakanralan.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+//                                    pstindakanralan.setString(4, rspasien.getString("no_rawat"));
+//                                    rstindakan = pstindakanralan.executeQuery();
+//                                    while (rstindakan.next()) {
+//                                        ttljml = ttljml + rstindakan.getDouble("jml");
+//                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+//                                        ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+//                                        ttluangrs = ttluangrs + rstindakan.getDouble("material");
+//                                        ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+//                                        if (a == 1) {
+//                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_registrasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+//                                            c++;
+//                                        } else {
+//                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+//                                        }
+//                                        a++;
+//                                    }
+//                                } catch (Exception e) {
+//                                    System.out.println("Notifikasi Tindakan Rawat Jalan : " + e);
+//                                } finally {
+//                                    if (rstindakan != null) {
+//                                        rstindakan.close();
+//                                    }
+//                                    if (pstindakanralan != null) {
+//                                        pstindakanralan.close();
+//                                    }
+//                                }
+//                            }
+//                        } catch (Exception e) {
+//                            System.out.println("Notifikasi Pasien Ralan : " + e);
+//                        } finally {
+//                            if (rspasien != null) {
+//                                rspasien.close();
+//                            }
+//                            if (pspasienralan != null) {
+//                                pspasienralan.close();
+//                            }
+//                        }
+
+                        pspasienralandrpr = koneksi.prepareStatement(
+                                "SELECT rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,bayar_piutang.`tgl_bayar`, pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli,piutang_pasien.status " +
+                                "FROM rawat_jl_drpr INNER JOIN reg_periksa INNER JOIN pasien INNER JOIN poliklinik INNER JOIN penjab " +
+                                "INNER JOIN piutang_pasien INNER JOIN bayar_piutang ON rawat_jl_drpr.no_rawat=reg_periksa.no_rawat AND reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
+                                "AND reg_periksa.kd_pj=penjab.kd_pj AND reg_periksa.kd_poli=poliklinik.kd_poli AND bayar_piutang.no_rkm_medis=pasien.no_rkm_medis " +
+                                "WHERE reg_periksa.kd_dokter=? AND bayar_piutang.tgl_bayar BETWEEN ? AND ? AND reg_periksa.kd_pj like ? AND piutang_pasien.status='Lunas' " +
+                                "GROUP BY rawat_jl_drpr.no_rawat");
+                        try {
+                            pspasienralandrpr.setString(1, rs.getString("kd_dokter"));
+                            pspasienralandrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienralandrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienralandrpr.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienralandrpr.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanralandrpr = koneksi.prepareStatement("select rawat_jl_drpr.kd_jenis_prw,"
+                                        + "count(rawat_jl_drpr.kd_jenis_prw) as jml,"
+                                        + "jns_perawatan.nm_perawatan,sum(rawat_jl_drpr.bhp)as bhp,sum(rawat_jl_drpr.material)as material,"
+                                        + "rawat_jl_drpr.biaya_rawat as total_byrdr,sum(rawat_jl_drpr.tarif_tindakandr)as tarif_tindakandr,"
+                                        + "sum(rawat_jl_drpr.biaya_rawat) as total "
+                                        + "from rawat_jl_drpr inner join jns_perawatan inner join reg_periksa on "
+                                        + "jns_perawatan.kd_jenis_prw=rawat_jl_drpr.kd_jenis_prw and rawat_jl_drpr.no_rawat=reg_periksa.no_rawat where "
+                                        + "rawat_jl_drpr.tarif_tindakandr>0 and rawat_jl_drpr.kd_dokter=? "
+                                       // + "and rawat_jl_drpr.tgl_perawatan between ? and ? "
+                                        + "and rawat_jl_drpr.no_rawat=? "
+                                        + "group by rawat_jl_drpr.kd_jenis_prw order by jns_perawatan.nm_perawatan");
+                                try {
+                                    pstindakanralandrpr.setString(1, rs.getString("kd_dokter"));
+                                    //pstindakanralandrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                    //pstindakanralandrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanralandrpr.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanralandrpr.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                        ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_registrasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notifikasi tindakan ralan drpr : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakanralandrpr != null) {
+                                        pstindakanralandrpr.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi tidakan ralan drpr : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasienralandrpr != null) {
+                                pspasienralandrpr.close();
+                            }
+                        }
+                    }
+
+                    //jmradiologi
+                    if (chkRadiologi.isSelected() == true) {
+                        pspasienradiologi = koneksi.prepareStatement("select periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Radiolgi' as nm_poli "
+                                + "from periksa_radiologi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on periksa_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.no_rawat= bayar_piutang.no_rawat "
+                                + "where periksa_radiologi.kd_dokter=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by periksa_radiologi.no_rawat");
+                        try {
+                            pspasienradiologi.setString(1, rs.getString("kd_dokter"));
+                            pspasienradiologi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienradiologi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienradiologi.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienradiologi.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanradiologi = koneksi.prepareStatement("select periksa_radiologi.kd_jenis_prw,"
+                                        + "count(periksa_radiologi.kd_jenis_prw) as jml, "
+                                        + "jns_perawatan_radiologi.nm_perawatan,"
+                                        + "sum(periksa_radiologi.bhp) as bhp,"
+                                        + "sum(periksa_radiologi.bagian_rs) as bagian_rs,"
+                                        + "periksa_radiologi.biaya as total_byr,"
+                                        + "sum(periksa_radiologi.tarif_tindakan_dokter)as tarif_tindakan_dokter,"
+                                        + "sum(periksa_radiologi.biaya) as total "
+                                        + "from periksa_radiologi inner join jns_perawatan_radiologi "
+                                        + "on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
+                                        + "periksa_radiologi.tarif_tindakan_dokter>0 and periksa_radiologi.kd_dokter=? "
+//                                        + "and periksa_radiologi.tgl_periksa between ? and ? "
+                                        + "and periksa_radiologi.no_rawat=? "
+                                        + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan ");
+                                try {
+                                    pstindakanradiologi.setString(1, rs.getString("kd_dokter"));
+                                    //pstindakanradiologi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                    //pstindakanradiologi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanradiologi.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanradiologi.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("tarif_tindakan_dokter");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakan_dokter"), rstindakan.getDouble("bagian_rs")});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (P.J. Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakan_dokter"), rstindakan.getDouble("bagian_rs")});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notifikasi tindakan radiologi : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakanradiologi != null) {
+                                        pstindakanradiologi.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi radiologi : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasienradiologi != null) {
+                                pspasienradiologi.close();
+                            }
+                        }
+
+                        //jmradiologiperujuk
+                        pspasienradiologi2 = koneksi.prepareStatement("select periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Radiolgi' as nm_poli "
+                                + "from periksa_radiologi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on periksa_radiologi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.no_rawat= bayar_piutang.no_rawat "
+                                + "where periksa_radiologi.dokter_perujuk=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by periksa_radiologi.no_rawat");
+                        try {
+                            pspasienradiologi2.setString(1, rs.getString("kd_dokter"));
+                            pspasienradiologi2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienradiologi2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienradiologi2.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienradiologi2.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanradiologi2 = koneksi.prepareStatement("select periksa_radiologi.kd_jenis_prw,"
+                                        + "count(periksa_radiologi.kd_jenis_prw) as jml, "
+                                        + "jns_perawatan_radiologi.nm_perawatan,"
+                                        + "0 as bhp,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "sum(periksa_radiologi.tarif_perujuk)as tarif_perujuk,"
+                                        + "0 as total  "
+                                        + "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
+                                        + "periksa_radiologi.tarif_perujuk>0 and periksa_radiologi.dokter_perujuk=? "
+//                                        + "and periksa_radiologi.tgl_periksa between ? and ? "
+                                        + "and periksa_radiologi.no_rawat=? "
+                                        + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
+                                try {
+                                    pstindakanradiologi2.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakanradiologi2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                    pstindakanradiologi2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanradiologi2.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanradiologi2.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("tarif_perujuk");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_perujuk"), 0});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Perujuk Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_perujuk"), 0});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notifikasi tindakan radiologi : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakanradiologi2 != null) {
+                                        pstindakanradiologi2.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi pasien radiologi : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasienradiologi2 != null) {
+                                pspasienradiologi2.close();
+                            }
+                        }
+                    }
+
+                    //jm laborat
+                    if (chkLaborat.isSelected() == true) {
+                        pspasienlab = koneksi.prepareStatement("select periksa_lab.no_rawat,periksa_lab.tgl_periksa,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Laborat' as nm_poli "
+                                + "from periksa_lab inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.no_rawat= bayar_piutang.no_rawat "
+                                + "where periksa_lab.kd_dokter=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by periksa_lab.no_rawat");
+                        try {
+                            pspasienlab.setString(1, rs.getString("kd_dokter"));
+                            pspasienlab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienlab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienlab.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienlab.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanlab = koneksi.prepareStatement("select periksa_lab.kd_jenis_prw,"
+                                        + "count(periksa_lab.kd_jenis_prw) as jml, "
+                                        + "jns_perawatan_lab.nm_perawatan,"
+                                        + "sum(periksa_lab.bhp) as bhp,"
+                                        + "sum(periksa_lab.bagian_rs) as bagian_rs,"
+                                        + "periksa_lab.biaya as total_byr,"
+                                        + "sum(periksa_lab.tarif_tindakan_dokter)as tarif_tindakan_dokter,"
+                                        + "sum(periksa_lab.biaya) as total  "
+                                        + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
+                                        + "periksa_lab.kd_dokter=? "
+//                                        + "and periksa_lab.tgl_periksa between ? and ? "
+                                        + "and periksa_lab.no_rawat=? "
+                                        + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
+                                try {
+                                    pstindakanlab.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakanlab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                    pstindakanlab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanlab.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanlab.executeQuery();
+                                    while (rstindakan.next()) {
+                                        detailjm = 0;
+                                        detailrs = 0;
+                                        detailtotal = 0;
+                                        detailbhp = 0;
+                                        biayaitem = 0;
+                                        psdetaillab = koneksi.prepareStatement("select sum(detail_periksa_lab.bagian_dokter) as totaldokter,"
+                                                + "sum(detail_periksa_lab.bagian_rs) as totalrs,"
+                                                + "sum(detail_periksa_lab.bhp) as bhp, "
+                                                + "sum(detail_periksa_lab.biaya_item) as biaya_item,"
+                                                + "sum(detail_periksa_lab.biaya_item) as totalbayar from detail_periksa_lab inner join jns_perawatan_lab inner join "
+                                                + "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "
+                                                + "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "
+                                                + "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "
+                                                + "and periksa_lab.kd_dokter=? and detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
+                                        try {
+                                            psdetaillab.setString(1, rs.getString("kd_dokter"));
+                                            psdetaillab.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                            psdetaillab.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                            psdetaillab.setString(4, rstindakan.getString("kd_jenis_prw"));
+                                            psdetaillab.setString(5, rspasien.getString("no_rawat"));
+                                            rsdetaillab = psdetaillab.executeQuery();
+                                            while (rsdetaillab.next()) {
+                                                detailjm = rsdetaillab.getDouble("totaldokter");
+                                                detailrs = rsdetaillab.getDouble("totalrs");
+                                                detailtotal = rsdetaillab.getDouble("totalbayar");
+                                                biayaitem = rsdetaillab.getDouble("biaya_item");
+                                                detailbhp = rsdetaillab.getDouble("bhp");
+                                            }
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total") + detailtotal;
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakan_dokter") + detailjm;
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs") + detailrs;
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp") + detailbhp;
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_tindakan_dokter") + detailjm), (rstindakan.getDouble("bagian_rs") + detailrs)});
+                                                c++;
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (P.J. Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_tindakan_dokter") + detailjm), (rstindakan.getDouble("bagian_rs") + detailrs)});
+                                            }
+                                            a++;
+                                        } catch (Exception e) {
+                                            System.out.println("Notifikasi detail lab : " + e);
+                                        } finally {
+                                            if (rsdetaillab != null) {
+                                                rsdetaillab.close();
+                                            }
+                                            if (psdetaillab != null) {
+                                                psdetaillab.close();
+                                            }
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notifikasi tindakan lab : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakanlab != null) {
+                                        pstindakanlab.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi pasien lab : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasienlab != null) {
+                                pspasienlab.close();
+                            }
+                        }
+
+                        //jm perujuk
+                        pspasienlab2 = koneksi.prepareStatement("select periksa_lab.no_rawat,periksa_lab.tgl_periksa,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Laborat' as nm_poli "
+                                + "from periksa_lab inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.no_rawat= bayar_piutang.no_rawat "
+                                + "where periksa_lab.dokter_perujuk=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by periksa_lab.no_rawat");
+                        try {
+                            pspasienlab2.setString(1, rs.getString("kd_dokter"));
+                            pspasienlab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                            pspasienlab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                            pspasienlab2.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienlab2.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanlab2 = koneksi.prepareStatement("select periksa_lab.kd_jenis_prw,"
+                                        + "count(periksa_lab.kd_jenis_prw) as jml, "
+                                        + "jns_perawatan_lab.nm_perawatan,"
+                                        + "0 as bhp,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "sum(periksa_lab.tarif_perujuk)as tarif_perujuk,"
+                                        + "0 as total  "
+                                        + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
+                                        + "periksa_lab.dokter_perujuk=? "
+//                                        + "and periksa_lab.tgl_periksa between ? and ? "
+                                        + "and periksa_lab.no_rawat=? "
+                                        + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
+                                try {
+                                    pstindakanlab2.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakanlab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                    pstindakanlab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                    pstindakanlab2.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanlab2.executeQuery();
+                                    while (rstindakan.next()) {
+                                        detailjm = 0;
+                                        detailrs = 0;
+                                        detailtotal = 0;
+                                        biayaitem = 0;
+                                        detailbhp = 0;
+                                        psdetaillab2 = koneksi.prepareStatement("select sum(detail_periksa_lab.bagian_perujuk) as totaldokter,"
+                                                + "0 as bhp, "
+                                                + "0 as totalrs, "
+                                                + "0 as biaya_item,"
+                                                + "0 as totalbayar from detail_periksa_lab inner join jns_perawatan_lab inner join "
+                                                + "periksa_lab on periksa_lab.no_rawat=detail_periksa_lab.no_rawat "
+                                                + "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "
+                                                + "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "
+                                                + "and periksa_lab.dokter_perujuk=? "
+//                                                + "and detail_periksa_lab.tgl_periksa between ? and ? "
+                                                + "and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
+                                        try {
+                                            psdetaillab2.setString(1, rs.getString("kd_dokter"));
+//                                            psdetaillab2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                            psdetaillab2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                            psdetaillab2.setString(2, rstindakan.getString("kd_jenis_prw"));
+                                            psdetaillab2.setString(3, rspasien.getString("no_rawat"));
+                                            rsdetaillab = psdetaillab2.executeQuery();
+                                            while (rsdetaillab.next()) {
+                                                detailjm = rsdetaillab.getDouble("totaldokter");
+                                                detailrs = rsdetaillab.getDouble("totalrs");
+                                                detailtotal = rsdetaillab.getDouble("totalbayar");
+                                                biayaitem = rsdetaillab.getDouble("biaya_item");
+                                                detailbhp = rsdetaillab.getDouble("bhp");
+                                            }
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total") + detailtotal;
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_perujuk") + detailjm;
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs") + detailrs;
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp") + detailbhp;
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_perujuk") + detailjm), 0});
+                                                c++;
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Perujuk Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_perujuk") + detailjm), 0});
+                                            }
+                                            a++;
+                                        } catch (Exception e) {
+                                            System.out.println("Notif detail rujukan : " + e);
+                                        } finally {
+                                            if (rsdetaillab != null) {
+                                                rsdetaillab.close();
+                                            }
+                                            if (psdetaillab2 != null) {
+                                                psdetaillab2.close();
+                                            }
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notifikasi tindakan perujuk : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakanlab2 != null) {
+                                        pstindakanlab2.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi pasien perujuk : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasienlab2 != null) {
+                                pspasienlab2.close();
+                            }
+                        }
+                    }
+
+                    if (chkOperasi.isSelected() == true) {
+                        //jmoperator1
+                        pspasienoperator1 = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien inner join bayar_piutang  "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.no_rawat=bayar_piutang.no_rawat "
+                                + "where operasi.operator1=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + " group by operasi.no_rawat");
+                        try {
+                            pspasienoperator1.setString(1, rs.getString("kd_dokter"));
+                            pspasienoperator1.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasienoperator1.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasienoperator1.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienoperator1.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanoperator1 = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "(count(operasi.kode_paket)*(operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biayasarpras)) as bagian_rs,"
+                                        + "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"
+                                        + "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"
+                                        + "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"
+                                        + "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+"
+                                        + "operasi.biayaperawat_luar+operasi.biayaalat+"
+                                        + "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+"
+                                        + "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras) as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayaoperator1)as biayaoperator1,"
+                                        + "(count(operasi.kode_paket)*(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"
+                                        + "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"
+                                        + "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"
+                                        + "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+"
+                                        + "operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"
+                                        + "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+"
+                                        + "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras)) as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayaoperator1>0 and operasi.operator1=? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
+                                        + "and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                                try {
+                                    pstindakanoperator1.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakanoperator1.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakanoperator1.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakanoperator1.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanoperator1.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayaoperator1");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 1)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator1"), rstindakan.getDouble("bagian_rs")});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Operator 1)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator1"), rstindakan.getDouble("bagian_rs")});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif tindakan operasi : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakanoperator1 != null) {
+                                        pstindakanoperator1.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif pasien operasi : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasienoperator1 != null) {
+                                pspasienoperator1.close();
+                            }
+                        }
+
+                        //jmoperator2
+                        pspasienoperator2 = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.`no_rawat`=bayar_piutang.`no_rawat` "
+                                + "where operasi.operator2=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by operasi.no_rawat");
+                        try {
+                            pspasienoperator2.setString(1, rs.getString("kd_dokter"));
+                            pspasienoperator2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasienoperator2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasienoperator2.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienoperator2.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanoperator2 = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayaoperator2)as biayaoperator2,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayaoperator2>0 and operasi.operator2=? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
+                                        + "and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                                try {
+                                    pstindakanoperator2.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakanoperator2.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakanoperator2.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakanoperator2.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanoperator2.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayaoperator2");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 2)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator2"), 0});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Operator 2)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator2"), 0});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif tindakan operator 2 : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakanoperator2 != null) {
+                                        pstindakanoperator2.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif pasien operator 2 : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasienoperator2 != null) {
+                                pspasienoperator2.close();
+                            }
+                        }
+
+                        //jmoperator3
+                        pspasienoperator3 = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.`no_rawat`=bayar_piutang.`no_rawat` "
+                                + "where operasi.operator3=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by operasi.no_rawat");
+                        try {
+                            pspasienoperator3.setString(1, rs.getString("kd_dokter"));
+                            pspasienoperator3.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasienoperator3.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasienoperator3.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasienoperator3.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakanoperator3 = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayaoperator3)as biayaoperator3,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayaoperator3>0 and operasi.operator3=? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
+                                        + "and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                                try {
+                                    pstindakanoperator3.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakanoperator3.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakanoperator3.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakanoperator3.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakanoperator3.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayaoperator3");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 3)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator3"), 0});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Operator 3)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator3"), 0});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif tindakan operator 3");
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakanoperator3 != null) {
+                                        pstindakanoperator3.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif operator 3 : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasienoperator3 != null) {
+                                pspasienoperator3.close();
+                            }
+                        }
+
+                        //jmdokter_anak
+                        pspasiendokter_anak = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.`no_rawat`=bayar_piutang.`no_rawat` "
+                                + "where operasi.dokter_anak=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by operasi.no_rawat");
+                        try {
+                            pspasiendokter_anak.setString(1, rs.getString("kd_dokter"));
+                            pspasiendokter_anak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasiendokter_anak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasiendokter_anak.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasiendokter_anak.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakandokter_anak = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayadokter_anak)as biayadokter_anak,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayadokter_anak>0 and operasi.dokter_anak=? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
+                                        + "and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                                try {
+                                    pstindakandokter_anak.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakandokter_anak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakandokter_anak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_anak.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakandokter_anak.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayadokter_anak");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anak"), 0});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anak"), 0});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif tindakan dokter anak : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakandokter_anak != null) {
+                                        pstindakandokter_anak.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif dokter anak : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasiendokter_anak != null) {
+                                pspasiendokter_anak.close();
+                            }
+                        }
+
+                        //jmdokter_anestesi
+                        pspasiendokter_anestesi = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.`no_rawat`=bayar_piutang.`no_rawat` "
+                                + "where operasi.dokter_anestesi=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by operasi.no_rawat");
+                        try {
+                            pspasiendokter_anestesi.setString(1, rs.getString("kd_dokter"));
+                            pspasiendokter_anestesi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasiendokter_anestesi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasiendokter_anestesi.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasiendokter_anestesi.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakandokter_anestesi = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biayadokter_anestesi)as biayadokter_anestesi,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biayadokter_anestesi>0 and operasi.dokter_anestesi=? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
+                                        + "and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                                try {
+                                    pstindakandokter_anestesi.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakandokter_anestesi.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakandokter_anestesi.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_anestesi.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakandokter_anestesi.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biayadokter_anestesi");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anestesi)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anestesi"), 0});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Anestesi)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anestesi"), 0});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notifikasi tindakan anastesi : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakandokter_anestesi != null) {
+                                        pstindakandokter_anestesi.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif pasien anastesi : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasiendokter_anestesi != null) {
+                                pspasiendokter_anestesi.close();
+                            }
+                        }
+
+                        //jmdokter_pjanak
+                        pspasiendokter_pjanak = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat and piutang_pasien.no_rawat=bayar_piutang.no_rawat "
+                                + "where operasi.dokter_pjanak=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by operasi.no_rawat");
+                        try {
+                            pspasiendokter_pjanak.setString(1, rs.getString("kd_dokter"));
+                            pspasiendokter_pjanak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                            pspasiendokter_pjanak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                            pspasiendokter_pjanak.setString(4, "%" + pilihancarabayar + "%");
+                            rspasien = pspasiendokter_pjanak.executeQuery();
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakandokter_pjanak = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biaya_dokter_pjanak)as biaya_dokter_pjanak,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biaya_dokter_pjanak>0 and operasi.dokter_pjanak=? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
+                                        + "and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                                try {
+                                    pstindakandokter_pjanak.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakandokter_pjanak.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakandokter_pjanak.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_pjanak.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakandokter_pjanak.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biaya_dokter_pjanak");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Pj Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_pjanak"), 0});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Pj Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_pjanak"), 0});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif tindakan dokter pj umum : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakandokter_pjanak != null) {
+                                        pstindakandokter_pjanak.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif pasien pj anak : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasiendokter_pjanak != null) {
+                                pspasiendokter_pjanak.close();
+                            }
+                        }
+
+                        //jmdokter_umum
+                        pspasiendokter_umum = koneksi.prepareStatement("select operasi.no_rawat,operasi.tgl_operasi,"
+                                + "pasien.nm_pasien,penjab.png_jawab,'Kamar Operasi' as nm_poli "
+                                + "from operasi inner join reg_periksa inner join pasien inner join penjab "
+                                + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                + "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj "
+                                + "and reg_periksa.no_rawat=piutang_pasien.no_rawat AND piutang_pasien.`no_rawat`=bayar_piutang.`no_rawat` "
+                                + "where operasi.dokter_umum=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                + "group by operasi.no_rawat");
+                        pspasiendokter_umum.setString(1, rs.getString("kd_dokter"));
+                        pspasiendokter_umum.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+                        pspasiendokter_umum.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                        pspasiendokter_umum.setString(4, "%" + pilihancarabayar + "%");
+                        rspasien = pspasiendokter_umum.executeQuery();
+                        try {
+                            while (rspasien.next()) {
+                                a = 1;
+                                pstindakandokter_umum = koneksi.prepareStatement("select operasi.kode_paket,"
+                                        + "count(operasi.kode_paket) as jml, "
+                                        + "paket_operasi.nm_perawatan,"
+                                        + "0 as bagian_rs,"
+                                        + "0 as total_byr,"
+                                        + "(count(operasi.kode_paket)*operasi.biaya_dokter_umum)as biaya_dokter_umum,"
+                                        + "0 as total  "
+                                        + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
+                                        + "operasi.biaya_dokter_umum>0 and operasi.dokter_umum=? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
+                                        + "and operasi.no_rawat=? "
+                                        + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
+                                try {
+                                    pstindakandokter_umum.setString(1, rs.getString("kd_dokter"));
+//                                    pstindakandokter_umum.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + "") + " 00:00:00");
+//                                    pstindakandokter_umum.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + "") + " 23:59:59");
+                                    pstindakandokter_umum.setString(2, rspasien.getString("no_rawat"));
+                                    rstindakan = pstindakandokter_umum.executeQuery();
+                                    while (rstindakan.next()) {
+                                        ttljml = ttljml + rstindakan.getDouble("jml");
+                                        ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                        ttljm = ttljm + rstindakan.getDouble("biaya_dokter_umum");
+                                        ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
+                                        if (a == 1) {
+                                            tabMode.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Umum)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_umum"), 0});
+                                            c++;
+                                        } else {
+                                            tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Umum)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_umum"), 0});
+                                        }
+                                        a++;
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif tindakan dokter umum : " + e);
+                                } finally {
+                                    if (rstindakan != null) {
+                                        rstindakan.close();
+                                    }
+                                    if (pstindakandokter_umum != null) {
+                                        pstindakandokter_umum.close();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif pasien dokter umum : " + e);
+                        } finally {
+                            if (rspasien != null) {
+                                rspasien.close();
+                            }
+                            if (pspasiendokter_umum != null) {
+                                pspasiendokter_umum.close();
+                            }
+                        }
+                    }
+
+                    //jmranap
+                    if (chkRanap.isSelected() == true) {
+                        if (ranapgabung == false) {
+//                            pspasienranap = koneksi.prepareStatement(
+//                                    "select rawat_inap_dr.no_rawat from rawat_inap_dr inner join reg_periksa "
+//                                    + "inner join nota_inap inner join detail_nota_inap "
+//                                    + "inner join piutang_pasien inner join bayar_piutang "
+//                                    + "on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "
+//                                    + "and reg_periksa.no_rawat=piutang_pasien.no_rawat "
+//                                    + "and piutang_pasien.no_rawat=bayar_piutang.no_rawat "
+//                                    + "where rawat_inap_dr.kd_dokter=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+//                                    + " group by rawat_inap_dr.no_rawat");
+//                            try {
+//                                pspasienranap.setString(1, rs.getString("kd_dokter"));
+//                                pspasienranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                pspasienranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+//                                pspasienranap.setString(4, "%" + pilihancarabayar + "%");
+//                                rspasien = pspasienranap.executeQuery();
+//                                while (rspasien.next()) {
+//                                    pskamar = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+//                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+//                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+//                                            + "where kamar_inap.no_rawat=? "
+//                                            + "group by kamar_inap.no_rawat");
+//                                    try {
+//                                        pskamar.setString(1, rspasien.getString("no_rawat"));
+//                                        rskamar = pskamar.executeQuery();
+//                                        tanggal = "";
+//                                        kamar = "";
+//                                        penjab = "";
+//                                        pasien = "";
+//                                        if (rskamar.next()) {
+//                                            tanggal = rskamar.getString("tgl_masuk") + " " + rskamar.getString("tgl_keluar");
+//                                            if (kelas == false) {
+//                                                kamar = rskamar.getString("kd_kamar") + " " + rskamar.getString("nm_bangsal");
+//                                            } else if (kelas == true) {
+//                                                kamar = rskamar.getString("kelas");
+//                                            }
+//                                            penjab = rskamar.getString("png_jawab");
+//                                            pasien = rskamar.getString("nm_pasien");
+//                                        } else {
+//                                            psanak = koneksi.prepareStatement(
+//                                                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "
+//                                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+//                                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+//                                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=? ");
+//                                            try {
+//                                                psanak.setString(1, rspasien.getString("no_rawat"));
+//                                                rsanak = psanak.executeQuery();
+//                                                if (rsanak.next()) {
+//                                                    pasien = rsanak.getString("nm_pasien");
+//                                                    pskamar2 = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+//                                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+//                                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+//                                                            + "where kamar_inap.no_rawat=? "
+//                                                            + "group by kamar_inap.no_rawat");
+//                                                    try {
+//                                                        pskamar2.setString(1, rsanak.getString("no_rawat"));
+//                                                        rskamar2 = pskamar2.executeQuery();
+//                                                        if (rskamar2.next()) {
+//                                                            tanggal = rskamar2.getString("tgl_masuk") + " " + rskamar2.getString("tgl_keluar");
+//                                                            if (kelas == false) {
+//                                                                kamar = rskamar2.getString("kd_kamar") + " " + rskamar2.getString("nm_bangsal");
+//                                                            } else if (kelas == true) {
+//                                                                kamar = rskamar2.getString("kelas");
+//                                                            }
+//                                                            penjab = rskamar2.getString("png_jawab");
+//                                                        }
+//                                                    } catch (Exception e) {
+//                                                        System.out.println("Notif kamar2 : " + e);
+//                                                    } finally {
+//                                                        if (rskamar2 != null) {
+//                                                            rskamar2.close();
+//                                                        }
+//                                                        if (pskamar2 != null) {
+//                                                            pskamar2.close();
+//                                                        }
+//                                                    }
+//                                                }
+//                                            } catch (Exception e) {
+//                                                System.out.println("Notif pasien anak : " + e);
+//                                            } finally {
+//                                                if (rsanak != null) {
+//                                                    rsanak.close();
+//                                                }
+//                                                if (psanak != null) {
+//                                                    psanak.close();
+//                                                }
+//                                            }
+//                                        }
+//                                    } catch (Exception e) {
+//                                        System.out.println("Notif kamar : " + e);
+//                                    } finally {
+//                                        if (rskamar != null) {
+//                                            rskamar.close();
+//                                        }
+//                                        if (pskamar != null) {
+//                                            pskamar.close();
+//                                        }
+//                                    }
+//
+//                                    a = 1;
+//                                    pstindakanranap = koneksi.prepareStatement("select rawat_inap_dr.kd_jenis_prw,"
+//                                            + "count(rawat_inap_dr.kd_jenis_prw) as jml,"
+//                                            + "jns_perawatan_inap.nm_perawatan,"
+//                                            + "sum(rawat_inap_dr.bhp)as bhp,"
+//                                            + "sum(rawat_inap_dr.material)as material,"
+//                                            + "rawat_inap_dr.biaya_rawat as total_byrdr,"
+//                                            + "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"
+//                                            + "sum(rawat_inap_dr.biaya_rawat) as total  "
+//                                            + "from rawat_inap_dr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "
+//                                            + "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "
+//                                            + "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
+//                                    try {
+//                                        pstindakanranap.setString(1, rs.getString("kd_dokter"));
+//                                        pstindakanranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                        pstindakanranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+//                                        pstindakanranap.setString(4, rspasien.getString("no_rawat"));
+//                                        rstindakan = pstindakanranap.executeQuery();
+//                                        while (rstindakan.next()) {
+//                                            ttljml = ttljml + rstindakan.getDouble("jml");
+//                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+//                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+//                                            ttluangrs = ttluangrs + rstindakan.getDouble("material");
+//                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+//                                            if (a == 1) {
+//                                                tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+//                                                c++;
+//                                            } else {
+//                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+//                                            }
+//                                            a++;
+//                                        }
+//                                    } catch (Exception e) {
+//                                        System.out.println("Notif tindakan ranap : " + e);
+//                                    } finally {
+//                                        if (rstindakan != null) {
+//                                            rstindakan.close();
+//                                        }
+//                                        if (pstindakanranap != null) {
+//                                            pstindakanranap.close();
+//                                        }
+//                                    }
+//                                }
+//                            } catch (Exception e) {
+//                                System.out.println("Notif pasien ranap : " + e);
+//                            } finally {
+//                                if (rspasien != null) {
+//                                    rspasien.close();
+//                                }
+//                                if (pspasienranap != null) {
+//                                    pspasienranap.close();
+//                                }
+//                            }
+
+                            pspasienranapdrpr = koneksi.prepareStatement(
+                                    "select rawat_inap_drpr.no_rawat "
+                                    + "from rawat_inap_drpr inner join reg_periksa "
+                                    + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                    + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
+                                    + "and reg_periksa.no_rawat=piutang_pasien.no_rawat "
+                                    + "AND piutang_pasien.no_rawat=bayar_piutang.no_rawat "
+                                    + "where rawat_inap_drpr.kd_dokter=? and "
+                                    + "bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                    + "group by rawat_inap_drpr.no_rawat");
+                            try {
+                                pspasienranapdrpr.setString(1, rs.getString("kd_dokter"));
+                                pspasienranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                pspasienranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                pspasienranapdrpr.setString(4, "%" + pilihancarabayar + "%");
+                                rspasien = pspasienranapdrpr.executeQuery();
+                                while (rspasien.next()) {
+                                    pskamar = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                                            + "where kamar_inap.no_rawat=? "
+                                            + "group by kamar_inap.no_rawat");
+                                    try {
+                                        pskamar.setString(1, rspasien.getString("no_rawat"));
+                                        rskamar = pskamar.executeQuery();
+                                        tanggal = "";
+                                        kamar = "";
+                                        penjab = "";
+                                        pasien = "";
+                                        if (rskamar.next()) {
+                                            tanggal = rskamar.getString("tgl_masuk") + " " + rskamar.getString("tgl_keluar");
+                                            if (kelas == false) {
+                                                kamar = rskamar.getString("kd_kamar") + " " + rskamar.getString("nm_bangsal");
+                                            } else if (kelas == true) {
+                                                kamar = rskamar.getString("kelas");
+                                            }
+                                            penjab = rskamar.getString("png_jawab");
+                                            pasien = rskamar.getString("nm_pasien");
+                                        } else {
+                                            psanak = koneksi.prepareStatement(
+                                                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "
+                                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=? ");
+                                            try {
+                                                psanak.setString(1, rspasien.getString("no_rawat"));
+                                                rsanak = psanak.executeQuery();
+                                                if (rsanak.next()) {
+                                                    pasien = rsanak.getString("nm_pasien");
+                                                    pskamar2 = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+                                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+                                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                                                            + "where kamar_inap.no_rawat=? "
+                                                            + "group by kamar_inap.no_rawat");
+                                                    try {
+                                                        pskamar2.setString(1, rsanak.getString("no_rawat"));
+                                                        rskamar2 = pskamar2.executeQuery();
+                                                        if (rskamar2.next()) {
+                                                            tanggal = rskamar2.getString("tgl_masuk") + " " + rskamar2.getString("tgl_keluar");
+                                                            if (kelas == false) {
+                                                                kamar = rskamar2.getString("kd_kamar") + " " + rskamar2.getString("nm_bangsal");
+                                                            } else if (kelas == true) {
+                                                                kamar = rskamar2.getString("kelas");
+                                                            }
+                                                            penjab = rskamar2.getString("png_jawab");
+                                                        }
+                                                    } catch (Exception e) {
+                                                        System.out.println("Notif kamar bayi : " + e);
+                                                    } finally {
+                                                        if (rskamar2 != null) {
+                                                            rskamar2.close();
+                                                        }
+                                                        if (pskamar2 != null) {
+                                                            pskamar2.close();
+                                                        }
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Notif Pasien anak : " + e);
+                                            } finally {
+                                                if (rsanak != null) {
+                                                    rsanak.close();
+                                                }
+                                                if (psanak != null) {
+                                                    psanak.close();
+                                                }
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif Kamar : " + e);
+                                    } finally {
+                                        if (rskamar != null) {
+                                            rskamar.close();
+                                        }
+                                        if (pskamar != null) {
+                                            pskamar.close();
+                                        }
+                                    }
+
+                                    a = 1;
+                                    pstindakanranapdrpr = koneksi.prepareStatement("select rawat_inap_drpr.kd_jenis_prw,"
+                                            + "count(rawat_inap_drpr.kd_jenis_prw) as jml,"
+                                            + "jns_perawatan_inap.nm_perawatan,"
+                                            + "sum(rawat_inap_drpr.bhp)as bhp,"
+                                            + "sum(rawat_inap_drpr.material)as material,"
+                                            + "rawat_inap_drpr.biaya_rawat as total_byrdr,"
+                                            + "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"
+                                            + "sum(rawat_inap_drpr.biaya_rawat) as total  "
+                                            + "from rawat_inap_drpr inner join jns_perawatan_inap "
+                                            + "on jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
+                                            + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? "
+//                                            + "and rawat_inap_drpr.tgl_perawatan between ? and ? "
+                                            + "and rawat_inap_drpr.no_rawat=? "
+                                            + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
+                                    try {
+                                        pstindakanranapdrpr.setString(1, rs.getString("kd_dokter"));
+//                                        pstindakanranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                        pstindakanranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                        pstindakanranapdrpr.setString(2, rspasien.getString("no_rawat"));
+                                        rstindakan = pstindakanranapdrpr.executeQuery();
+                                        while (rstindakan.next()) {
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                                c++;
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                            }
+                                            a++;
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif tindakan dokter pj umum : " + e);
+                                    } finally {
+                                        if (rstindakan != null) {
+                                            rstindakan.close();
+                                        }
+                                        if (pstindakanranapdrpr != null) {
+                                            pstindakanranapdrpr.close();
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif pasien dokter umum : " + e);
+                            } finally {
+                                if (rspasien != null) {
+                                    rspasien.close();
+                                }
+                                if (pspasienranapdrpr != null) {
+                                    pspasienranapdrpr.close();
+                                }
+                            }
+                        } else if (ranapgabung == true) {
+//                            pspasienranap = koneksi.prepareStatement(
+//                                    "select rawat_inap_dr.no_rawat from rawat_inap_dr inner join reg_periksa on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "
+//                                    + "where rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.kd_pj like ? "
+//                                    + "and rawat_inap_dr.no_rawat not in (select no_rawat2 from ranap_gabung) "
+//                                    + "group by rawat_inap_dr.no_rawat");
+//                            try {
+//                                pspasienranap.setString(1, rs.getString("kd_dokter"));
+//                                pspasienranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                pspasienranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+//                                pspasienranap.setString(4, "%" + pilihancarabayar + "%");
+//                                rspasien = pspasienranap.executeQuery();
+//                                while (rspasien.next()) {
+//                                    norawatbayi = "";
+//                                    pskamar = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+//                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+//                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+//                                            + "where kamar_inap.no_rawat=? group by kamar_inap.no_rawat");
+//                                    try {
+//                                        pskamar.setString(1, rspasien.getString("no_rawat"));
+//                                        rskamar = pskamar.executeQuery();
+//                                        tanggal = "";
+//                                        kamar = "";
+//                                        penjab = "";
+//                                        pasien = "";
+//                                        if (rskamar.next()) {
+//                                            tanggal = rskamar.getString("tgl_masuk") + " " + rskamar.getString("tgl_keluar");
+//                                            if (kelas == false) {
+//                                                kamar = rskamar.getString("kd_kamar") + " " + rskamar.getString("nm_bangsal");
+//                                            } else if (kelas == true) {
+//                                                kamar = rskamar.getString("kelas");
+//                                            }
+//                                            penjab = rskamar.getString("png_jawab");
+//                                            pasien = rskamar.getString("nm_pasien");
+//                                        }
+//                                    } catch (Exception e) {
+//                                        System.out.println("Notif kamar : " + e);
+//                                    } finally {
+//                                        if (rskamar != null) {
+//                                            rskamar.close();
+//                                        }
+//                                        if (pskamar != null) {
+//                                            pskamar.close();
+//                                        }
+//                                    }
+//
+//                                    a = 1;
+//                                    pstindakanranap = koneksi.prepareStatement("select rawat_inap_dr.kd_jenis_prw,"
+//                                            + "count(rawat_inap_dr.kd_jenis_prw) as jml,"
+//                                            + "jns_perawatan_inap.nm_perawatan,"
+//                                            + "sum(rawat_inap_dr.bhp)as bhp,"
+//                                            + "sum(rawat_inap_dr.material)as material,"
+//                                            + "rawat_inap_dr.biaya_rawat as total_byrdr,"
+//                                            + "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"
+//                                            + "sum(rawat_inap_dr.biaya_rawat) as total  "
+//                                            + "from rawat_inap_dr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "
+//                                            + "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "
+//                                            + "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
+//                                    try {
+//                                        pstindakanranap.setString(1, rs.getString("kd_dokter"));
+//                                        pstindakanranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                        pstindakanranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+//                                        pstindakanranap.setString(4, rspasien.getString("no_rawat"));
+//                                        rstindakan = pstindakanranap.executeQuery();
+//                                        while (rstindakan.next()) {
+//                                            ttljml = ttljml + rstindakan.getDouble("jml");
+//                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+//                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+//                                            ttluangrs = ttluangrs + rstindakan.getDouble("material");
+//                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+//                                            if (a == 1) {
+//                                                tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+//                                                c++;
+//                                            } else {
+//                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+//                                            }
+//                                            a++;
+//                                        }
+//                                    } catch (Exception e) {
+//                                        System.out.println("Notif tindakan ranap : " + e);
+//                                    } finally {
+//                                        if (rstindakan != null) {
+//                                            rstindakan.close();
+//                                        }
+//                                        if (pstindakanranap != null) {
+//                                            pstindakanranap.close();
+//                                        }
+//                                    }
+//
+//                                    norawatbayi = Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?", rspasien.getString("no_rawat"));
+//                                    if (!norawatbayi.equals("")) {
+//                                        pasien = Sequel.cariIsi(
+//                                                "select pasien.nm_pasien from reg_periksa inner join pasien on "
+//                                                + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? "
+//                                                + "", norawatbayi);
+//                                        a = 1;
+//                                        pstindakanranap = koneksi.prepareStatement(
+//                                                "select rawat_inap_dr.kd_jenis_prw,"
+//                                                + "count(rawat_inap_dr.kd_jenis_prw) as jml,"
+//                                                + "jns_perawatan_inap.nm_perawatan,"
+//                                                + "sum(rawat_inap_dr.bhp)as bhp,"
+//                                                + "sum(rawat_inap_dr.material)as material,"
+//                                                + "rawat_inap_dr.biaya_rawat as total_byrdr,"
+//                                                + "sum(rawat_inap_dr.tarif_tindakandr)as tarif_tindakandr,"
+//                                                + "sum(rawat_inap_dr.biaya_rawat) as total  "
+//                                                + "from rawat_inap_dr inner join jns_perawatan_inap on jns_perawatan_inap.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where "
+//                                                + "rawat_inap_dr.tarif_tindakandr>0 and rawat_inap_dr.kd_dokter=? and rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat=? "
+//                                                + "group by rawat_inap_dr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
+//                                        try {
+//                                            pstindakanranap.setString(1, rs.getString("kd_dokter"));
+//                                            pstindakanranap.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+//                                            pstindakanranap.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+//                                            pstindakanranap.setString(4, norawatbayi);
+//                                            rstindakan = pstindakanranap.executeQuery();
+//                                            while (rstindakan.next()) {
+//                                                ttljml = ttljml + rstindakan.getDouble("jml");
+//                                                ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+//                                                ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+//                                                ttluangrs = ttluangrs + rstindakan.getDouble("material");
+//                                                ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+//                                                if (a == 1) {
+//                                                    tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+//                                                    c++;
+//                                                } else {
+//                                                    tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+//                                                }
+//                                                a++;
+//                                            }
+//                                        } catch (Exception e) {
+//                                            System.out.println("Notif tindakan ranap : " + e);
+//                                        } finally {
+//                                            if (rstindakan != null) {
+//                                                rstindakan.close();
+//                                            }
+//                                            if (pstindakanranap != null) {
+//                                                pstindakanranap.close();
+//                                            }
+//                                        }
+//
+//                                    }
+//
+//                                }
+//                            } catch (Exception e) {
+//                                System.out.println("Notif pasien ranap : " + e);
+//                            } finally {
+//                                if (rspasien != null) {
+//                                    rspasien.close();
+//                                }
+//                                if (pspasienranap != null) {
+//                                    pspasienranap.close();
+//                                }
+//                            }
+
+                            pspasienranapdrpr = koneksi.prepareStatement(
+                                    "select rawat_inap_drpr.no_rawat from rawat_inap_drpr inner join reg_periksa "
+                                    + "inner join piutang_pasien INNER JOIN bayar_piutang "
+                                    + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
+                                    + "and reg_periksa.no_rawat=piutang_pasien.no_rawat "
+                                    + "AND piutang_pasien.no_rawat=bayar_piutang.no_rawat "
+                                    + "where rawat_inap_drpr.kd_dokter=? and bayar_piutang.tgl_bayar between ? and ? and reg_periksa.kd_pj like ? and piutang_pasien.status='Lunas' "
+                                    + "and rawat_inap_drpr.no_rawat not in (select no_rawat2 from ranap_gabung) "
+                                    + "group by rawat_inap_drpr.no_rawat");
+                            try {
+                                pspasienranapdrpr.setString(1, rs.getString("kd_dokter"));
+                                pspasienranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                pspasienranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                pspasienranapdrpr.setString(4, "%" + pilihancarabayar + "%");
+                                rspasien = pspasienranapdrpr.executeQuery();
+                                while (rspasien.next()) {
+                                    norawatbayi = "";
+                                    pskamar = koneksi.prepareStatement("select kamar_inap.no_rawat,pasien.nm_pasien,penjab.png_jawab,kamar_inap.kd_kamar,bangsal.kd_bangsal,bangsal.nm_bangsal,kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "
+                                            + "from kamar_inap inner join kamar inner join bangsal inner join reg_periksa inner join pasien inner join penjab on kamar_inap.no_rawat=reg_periksa.no_rawat and "
+                                            + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "
+                                            + "where kamar_inap.no_rawat=? group by kamar_inap.no_rawat");
+                                    try {
+                                        pskamar.setString(1, rspasien.getString("no_rawat"));
+                                        rskamar = pskamar.executeQuery();
+                                        tanggal = "";
+                                        kamar = "";
+                                        penjab = "";
+                                        pasien = "";
+                                        if (rskamar.next()) {
+                                            tanggal = rskamar.getString("tgl_masuk") + " " + rskamar.getString("tgl_keluar");
+                                            if (kelas == false) {
+                                                kamar = rskamar.getString("kd_kamar") + " " + rskamar.getString("nm_bangsal");
+                                            } else if (kelas == true) {
+                                                kamar = rskamar.getString("kelas");
+                                            }
+                                            penjab = rskamar.getString("png_jawab");
+                                            pasien = rskamar.getString("nm_pasien");
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif Kamar : " + e);
+                                    } finally {
+                                        if (rskamar != null) {
+                                            rskamar.close();
+                                        }
+                                        if (pskamar != null) {
+                                            pskamar.close();
+                                        }
+                                    }
+
+                                    a = 1;
+                                    pstindakanranapdrpr = koneksi.prepareStatement("select rawat_inap_drpr.kd_jenis_prw,"
+                                            + "count(rawat_inap_drpr.kd_jenis_prw) as jml,"
+                                            + "jns_perawatan_inap.nm_perawatan,"
+                                            + "sum(rawat_inap_drpr.bhp)as bhp,"
+                                            + "sum(rawat_inap_drpr.material)as material,"
+                                            + "rawat_inap_drpr.biaya_rawat as total_byrdr,"
+                                            + "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"
+                                            + "sum(rawat_inap_drpr.biaya_rawat) as total  "
+                                            + "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
+                                            + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? "
+                                            + "and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "
+                                            + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
+                                    try {
+                                        pstindakanranapdrpr.setString(1, rs.getString("kd_dokter"));
+                                        pstindakanranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                        pstindakanranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                        pstindakanranapdrpr.setString(4, rspasien.getString("no_rawat"));
+                                        rstindakan = pstindakanranapdrpr.executeQuery();
+                                        while (rstindakan.next()) {
+                                            ttljml = ttljml + rstindakan.getDouble("jml");
+                                            ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                            ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                            ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                            ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                            if (a == 1) {
+                                                tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                                c++;
+                                            } else {
+                                                tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                            }
+                                            a++;
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif tindakan dokter pj umum : " + e);
+                                    } finally {
+                                        if (rstindakan != null) {
+                                            rstindakan.close();
+                                        }
+                                        if (pstindakanranapdrpr != null) {
+                                            pstindakanranapdrpr.close();
+                                        }
+                                    }
+
+                                    norawatbayi = Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?", rspasien.getString("no_rawat"));
+                                    if (!norawatbayi.equals("")) {
+                                        pasien = Sequel.cariIsi(
+                                                "select pasien.nm_pasien from reg_periksa inner join pasien on "
+                                                + "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? ", norawatbayi);
+                                        a = 1;
+                                        pstindakanranapdrpr = koneksi.prepareStatement(
+                                                "select rawat_inap_drpr.kd_jenis_prw,"
+                                                + "count(rawat_inap_drpr.kd_jenis_prw) as jml,"
+                                                + "jns_perawatan_inap.nm_perawatan,"
+                                                + "sum(rawat_inap_drpr.bhp)as bhp,"
+                                                + "sum(rawat_inap_drpr.material)as material,"
+                                                + "rawat_inap_drpr.biaya_rawat as total_byrdr,"
+                                                + "sum(rawat_inap_drpr.tarif_tindakandr)as tarif_tindakandr,"
+                                                + "sum(rawat_inap_drpr.biaya_rawat) as total  "
+                                                + "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
+                                                + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and rawat_inap_drpr.tgl_perawatan between ? and ? and rawat_inap_drpr.no_rawat=? "
+                                                + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
+                                        try {
+                                            pstindakanranapdrpr.setString(1, rs.getString("kd_dokter"));
+                                            pstindakanranapdrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                                            pstindakanranapdrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                                            pstindakanranapdrpr.setString(4, norawatbayi);
+                                            rstindakan = pstindakanranapdrpr.executeQuery();
+                                            while (rstindakan.next()) {
+                                                ttljml = ttljml + rstindakan.getDouble("jml");
+                                                ttlbiaya = ttlbiaya + rstindakan.getDouble("total");
+                                                ttljm = ttljm + rstindakan.getDouble("tarif_tindakandr");
+                                                ttluangrs = ttluangrs + rstindakan.getDouble("material");
+                                                ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
+                                                if (a == 1) {
+                                                    tabMode.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                                    c++;
+                                                } else {
+                                                    tabMode.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                                }
+                                                a++;
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notif tindakan dokter pj umum : " + e);
+                                        } finally {
+                                            if (rstindakan != null) {
+                                                rstindakan.close();
+                                            }
+                                            if (pstindakanranapdrpr != null) {
+                                                pstindakanranapdrpr.close();
+                                            }
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif pasien dokter umum : " + e);
+                            } finally {
+                                if (rspasien != null) {
+                                    rspasien.close();
+                                }
+                                if (pspasienranapdrpr != null) {
+                                    pspasienranapdrpr.close();
+                                }
+                            }
+                        }
+
+                    }
+                    i++;
+                }
+                if (i > 0) {
+                    tabMode.addRow(new Object[]{">>", "Jumlah :", "", "", "", "", null, ttljml, ttlbiaya, ttlbhp, ttljm, ttluangrs});
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi ps : " + e);
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Catatan  " + e);
+        }
+
+    }
+
+    public void isCek() {
         //BtnPrint.setEnabled(var.getjm_ranap_dokter());
     }
-    
+
 }
