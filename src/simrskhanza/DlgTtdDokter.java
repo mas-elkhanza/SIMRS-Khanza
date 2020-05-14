@@ -7,7 +7,9 @@ package simrskhanza;
 
 import fungsi.koneksiDB;
 import fungsi.sekuel;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,7 +40,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
         this.dokter = dokter;
         this.ttd = ttd;
 
-        if (!ttd.isBlank()) {
+        if (!ttd.equals("")) {
             buttonBig4.setEnabled(false);
         } else {
             buttonBig4.setEnabled(true);
@@ -239,7 +241,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
         fileGambar.setText("./setting/" + dokter + ".png");
         canvas1.save(file);
         if (Sequel.menyimpantf("ttd_dokter", "'" + dokter + "'", "TTD", fileGambar) == true) {
-            JOptionPane.showMessageDialog(rootPane, "Simpan TTD Berhasil.");
+                JOptionPane.showMessageDialog(rootPane, "Simpan TTD Berhasil.");
         }
         canvas1.setThickness(5);
     }//GEN-LAST:event_buttonBig4ActionPerformed
@@ -271,7 +273,8 @@ public class DlgTtdDokter extends javax.swing.JDialog {
                 ps.executeUpdate();
 
                 file = new File("./setting/" + dokter + ".png");
-                file.delete();
+                
+                Files.delete(file.getAbsoluteFile().toPath());
                 JOptionPane.showMessageDialog(null, "Proses Hapus TTD berhasil.");
                 canvas1.clear();
             } catch (Exception e) {
@@ -303,6 +306,7 @@ public class DlgTtdDokter extends javax.swing.JDialog {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
+        ByteArrayInputStream ttd = Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + dokter + "'");          
         file = new File("./setting/" + dokter + ".png");
         canvas1.load(file);
         canvas1.setThickness(5);

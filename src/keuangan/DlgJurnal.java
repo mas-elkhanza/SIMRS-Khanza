@@ -1,6 +1,6 @@
 package keuangan;
 
-import fungsi.WarnaTable;
+import fungsi.WarnaTable; 
 import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
