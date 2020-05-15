@@ -250,11 +250,14 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
         GCS.setDocument(new batasInput((byte)5).getKata(GCS));
         BB.setDocument(new batasInput((byte)5).getKata(BB));
+        LILA.setDocument(new batasInput((byte)5).getKata(LILA));
         TB.setDocument(new batasInput((byte)5).getKata(TB));
         BMI.setDocument(new batasInput((byte)5).getKata(BMI));
         TFU.setDocument(new batasInput((byte)10).getKata(TFU));
         TBJ.setDocument(new batasInput((byte)10).getKata(TBJ));
         Letak.setDocument(new batasInput((byte)10).getKata(Letak));
+        UsiaKehamilan.setDocument(new batasInput((byte)10).getKata(UsiaKehamilan));
+        JumlahImunisasi.setDocument(new batasInput((byte)10).getKata(JumlahImunisasi));
         Presentasi.setDocument(new batasInput((byte)10).getKata(Presentasi));
         Penurunan.setDocument(new batasInput((byte)10).getKata(Penurunan));
         Kontraksi.setDocument(new batasInput((byte)10).getKata(Kontraksi));
@@ -295,8 +298,17 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         KetProthesa.setDocument(new batasInput((byte)50).getKata(KetProthesa));
         KetPsiko.setDocument(new batasInput((byte)50).getKata(KetPsiko));
         KetTinggal.setDocument(new batasInput((byte)50).getKata(KetTinggal));
+        KetBudaya.setDocument(new batasInput((byte)50).getKata(KetBudaya));
         KetEdukasi.setDocument(new batasInput((byte)50).getKata(KetEdukasi));
-        
+        KetLapor.setDocument(new batasInput((byte)10).getKata(KetLapor));
+        KetProvokes.setDocument(new batasInput((byte)40).getKata(KetProvokes));
+        KetQuality.setDocument(new batasInput((byte)40).getKata(KetQuality));
+        Lokasi.setDocument(new batasInput((byte)40).getKata(Lokasi));
+        Durasi.setDocument(new batasInput((byte)5).getKata(Durasi));
+        KetNyeri.setDocument(new batasInput((byte)40).getKata(KetNyeri));
+        KetDokter.setDocument(new batasInput((byte)10).getKata(KetDokter));
+        Masalah.setDocument(new batasInput((int)1000).getKata(Masalah));
+        Tindakan.setDocument(new batasInput((int)1000).getKata(Tindakan));
         TempatPersalinan.setDocument(new batasInput((byte)30).getKata(TempatPersalinan));
         UsiaHamil.setDocument(new batasInput((byte)20).getKata(UsiaHamil));
         JenisPersalinan.setDocument(new batasInput((byte)20).getKata(JenisPersalinan));
@@ -304,7 +316,6 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         Penyulit.setDocument(new batasInput((byte)40).getKata(Penyulit));
         BBPB.setDocument(new batasInput((byte)10).getKata(BBPB));
         Keadaan.setDocument(new batasInput((byte)40).getKata(Keadaan));
-        
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -791,7 +802,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2020" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2020" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -1388,7 +1399,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2020 22:36:05" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2020 09:09:13" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2197,7 +2208,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         jLabel92.setBounds(0, 610, 170, 23);
 
         HPHT.setForeground(new java.awt.Color(50, 70, 50));
-        HPHT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2020" }));
+        HPHT.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2020" }));
         HPHT.setDisplayFormat("dd-MM-yyyy");
         HPHT.setName("HPHT"); // NOI18N
         HPHT.setOpaque(false);
@@ -2236,7 +2247,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         jLabel96.setBounds(505, 610, 40, 23);
 
         TP.setForeground(new java.awt.Color(50, 70, 50));
-        TP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2020" }));
+        TP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2020" }));
         TP.setDisplayFormat("dd-MM-yyyy");
         TP.setName("TP"); // NOI18N
         TP.setOpaque(false);
@@ -3393,7 +3404,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3407,7 +3418,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -4865,7 +4876,11 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         GCS.setText("");
         BB.setText("");
         TB.setText("");
+        LILA.setText("");
         BMI.setText("");
+        
+        
+        
         TabRawat.setSelectedIndex(0);
         Informasi.requestFocus();
     } 
