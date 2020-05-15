@@ -98,6 +98,7 @@ import surat.SuratSakit;
  * @author dosen
  */
 public final class DlgReg extends javax.swing.JDialog {
+    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(DlgReg.class.getName());
     private final DefaultTableModel tabMode,tabMode2,tabMode3;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -9465,7 +9466,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     });
                 }                    
             }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
+                log.error("Tampil NoReg parameter : "+e);
             }finally{
                 if(rs != null){
                     rs.close();
@@ -9476,7 +9477,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
+            log.error("Query Tampil Noreg : "+e);
         }
     
         LCount.setText(""+tabMode.getRowCount());
@@ -9585,7 +9586,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     });
                 }                    
             }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
+                log.error("Notifikasi : "+e);
             }finally{
                 if(rs != null){
                     rs.close();
@@ -9596,7 +9597,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
+            log.error("Notifikasi : "+e);
         }
     
         LCount.setText(""+tabMode2.getRowCount());
@@ -9652,7 +9653,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         });
                 }
             } catch (Exception e) {
-                System.out.println("simrskhanza.DlgSpri.tampil() : " + e);
+                log.error("simrskhanza.DlgSpri.tampil() : " + e);
             } finally {
                 if (rs3 != null) {
                     rs3.close();
@@ -9662,7 +9663,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Notifikasi : " + e);
+            log.error("Notifikasi : " + e);
         }
         int b = tabMode3.getRowCount();
         LCount.setText("" + b);

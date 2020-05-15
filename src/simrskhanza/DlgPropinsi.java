@@ -71,7 +71,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
         }
 
         tbpropinsi.setDefaultRenderer(Object.class, new WarnaTable());
-        Nama.setDocument(new batasInput((byte)60).getFilter(Nama));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -109,17 +108,12 @@ public class DlgPropinsi extends javax.swing.JDialog {
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbpropinsi = new widget.Table();
-        panelGlass7 = new widget.panelisi();
-        jLabel4 = new widget.Label();
-        Nama = new widget.TextBox();
         panelGlass9 = new widget.panelisi();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
-        BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
-        BtnHapus = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
@@ -128,11 +122,11 @@ public class DlgPropinsi extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -159,27 +153,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 47));
-        panelGlass7.setLayout(null);
-
-        jLabel4.setText("Nama Propinsi :");
-        jLabel4.setName("jLabel4"); // NOI18N
-        panelGlass7.add(jLabel4);
-        jLabel4.setBounds(0, 12, 100, 23);
-
-        Nama.setEnabled(false);
-        Nama.setName("Nama"); // NOI18N
-        Nama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NamaKeyPressed(evt);
-            }
-        });
-        panelGlass7.add(Nama);
-        Nama.setBounds(105, 12, 540, 23);
-
-        internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
-
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
@@ -191,6 +164,11 @@ public class DlgPropinsi extends javax.swing.JDialog {
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(250, 23));
+        TCari.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TCariFocusGained(evt);
+            }
+        });
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -232,24 +210,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
         });
         panelGlass9.add(BtnAll);
 
-        BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpan.setMnemonic('S');
-        BtnSimpan.setToolTipText("Alt+S");
-        BtnSimpan.setEnabled(false);
-        BtnSimpan.setName("BtnSimpan"); // NOI18N
-        BtnSimpan.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanActionPerformed(evt);
-            }
-        });
-        BtnSimpan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpanKeyPressed(evt);
-            }
-        });
-        panelGlass9.add(BtnSimpan);
-
         BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
         BtnBatal.setMnemonic('B');
         BtnBatal.setToolTipText("Alt+B");
@@ -266,23 +226,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
             }
         });
         panelGlass9.add(BtnBatal);
-
-        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnHapus.setMnemonic('H');
-        BtnHapus.setToolTipText("Alt+H");
-        BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        BtnHapus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHapusKeyPressed(evt);
-            }
-        });
-        panelGlass9.add(BtnHapus);
 
         jLabel7.setText("Record :");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -319,28 +262,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaKeyPressed
-        Valid.pindah(evt,TCari,BtnSimpan,TCari);
-}//GEN-LAST:event_NamaKeyPressed
-
-    private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Nama.getText().trim().equals("")){
-            Valid.textKosong(Nama,"Propinsi");
-        }else{
-            Sequel.menyimpan("propinsi","'0','"+Nama.getText()+"'","Kode propinsi");
-            tampil();
-            emptTeks();
-        }
-}//GEN-LAST:event_BtnSimpanActionPerformed
-
-    private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnSimpanActionPerformed(null);
-        }else{
-            Valid.pindah(evt,BtnAll,BtnBatal);
-        }
-}//GEN-LAST:event_BtnSimpanKeyPressed
-
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
@@ -348,22 +269,8 @@ public class DlgPropinsi extends javax.swing.JDialog {
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             emptTeks();
-        }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
-}//GEN-LAST:event_BtnBatalKeyPressed
-
-    private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,Nama,"propinsi","nm_prop");
-        tampil();
-        emptTeks();
-}//GEN-LAST:event_BtnHapusActionPerformed
-
-    private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnHapusActionPerformed(null);
-        }else{
-            Valid.pindah(evt, BtnBatal, BtnKeluar);
         }
-}//GEN-LAST:event_BtnHapusKeyPressed
+}//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         dispose();
@@ -372,7 +279,7 @@ public class DlgPropinsi extends javax.swing.JDialog {
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             dispose();
-        }else{Valid.pindah(evt,BtnSimpan,Nama);}
+        }
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
@@ -380,8 +287,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
             BtnCariActionPerformed(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Nama.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             tbpropinsi.requestFocus();
         }
@@ -407,8 +312,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnAllActionPerformed(null);
-        }else{
-            Valid.pindah(evt, BtnCari,BtnSimpan);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -448,6 +351,11 @@ public class DlgPropinsi extends javax.swing.JDialog {
         onCari();
     }//GEN-LAST:event_formWindowActivated
 
+    private void TCariFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TCariFocusGained
+        // TODO add your handling code here:
+        tampil();
+    }//GEN-LAST:event_TCariFocusGained
+
     /**
     * @param args the command line arguments
     */
@@ -468,18 +376,13 @@ public class DlgPropinsi extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
-    private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Button BtnSimpan;
     private widget.Label LCount;
-    private widget.TextBox Nama;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
-    private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass9;
     private widget.Table tbpropinsi;
     // End of variables declaration//GEN-END:variables
@@ -487,7 +390,7 @@ public class DlgPropinsi extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{     
-            ps=koneksi.prepareStatement("select nm_prop,kd_prop from propinsi where nm_prop like ? and status=1 group by nm_prop order by kd_prop");
+            ps=koneksi.prepareStatement("select nama, kode_wilayah from wilayah where nama like ? and level='1' order by kode_wilayah");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
@@ -511,14 +414,13 @@ public class DlgPropinsi extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        Nama.setText("");
         TCari.setText("");
-        Nama.requestFocus();
+        TCari.requestFocus();
     }
 
     private void getData() {
         if(tbpropinsi.getSelectedRow()!= -1){
-            Nama.setText(tbpropinsi.getValueAt(tbpropinsi.getSelectedRow(),0).toString());
+           // Nama.setText(tbpropinsi.getValueAt(tbpropinsi.getSelectedRow(),0).toString());
         }
     }
     
