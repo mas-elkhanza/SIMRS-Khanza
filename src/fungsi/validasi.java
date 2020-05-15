@@ -21,6 +21,7 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -29,6 +30,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -43,6 +46,7 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -56,6 +60,7 @@ import uz.ncipro.calendar.JDateTimePicker;
  */
 public final class validasi {
 
+    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(validasi.class.getName());  
     private int a, j, i, result = 0;
     private String s, s1, auto, PEMBULATANHARGAOBAT = koneksiDB.PEMBULATANHARGAOBAT();
     private final Connection connect = koneksiDB.condb();
@@ -626,27 +631,27 @@ public final class validasi {
     }
 
     public void MyReportqry(String reportName, String reportDirName, String judul, String qry, Map parameters) {
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
-
         try {
+            Properties systemProp = System.getProperties();
+            
+            // Ambil current dir
+            String currentDir = systemProp.getProperty("user.dir");
+            
+            File dir = new File(currentDir);
+            
+            File fileRpt;
+            String fullPath = "";
+            if (dir.isDirectory()) {
+                String[] isiDir = dir.list();
+                for (String iDir : isiDir) {
+                    fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
+                    if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
+                        fullPath = fileRpt.toString();
+                        System.out.println("Found Report File at : " + fullPath);
+                    } // end if
+                } // end for i
+            } // end if
+            
             ps = connect.prepareStatement(qry);
             try {
                 String namafile = "./" + reportDirName + "/" + reportName;
@@ -662,8 +667,10 @@ public final class validasi {
                 jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
                 jasperViewer.setLocationRelativeTo(null);
                 jasperViewer.setVisible(true);
+            } catch (JRException ex) {
+                Logger.getLogger(validasi.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception rptexcpt) {
-                System.out.println("Report Can't view because : " + rptexcpt);
+                log.error("Report Can't view because : " + rptexcpt);
                 JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
             } finally {
                 if (rs != null) {
@@ -673,9 +680,9 @@ public final class validasi {
                     ps.close();
                 }
             }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        } catch (SQLException ex) {
+                log.error("Report SQL Error "+ex);
+            }
     }
 
     public void MyReportqrypdf(String reportName, String reportDirName, String judul, String qry, Map parameters) {
