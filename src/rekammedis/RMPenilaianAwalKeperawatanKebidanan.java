@@ -4878,7 +4878,31 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         TB.setText("");
         LILA.setText("");
         BMI.setText("");
-        
+        TFU.setText("");
+        TBJ.setText("");
+        Letak.setText("");
+        Presentasi.setText("");
+        Penurunan.setText("");
+        Kontraksi.setText("");
+        Kekuatan.setText("");
+        Lamanya.setText("");
+        BJJ.setText("");
+        KeteranganBJJ.setSelectedIndex(0);
+        Portio.setText("");
+        PembukaanServiks.setText("");
+        Ketuban.setText("");
+        Hodge.setText("");
+        Inspekulo.setSelectedIndex(0);
+        KeteranganInspekulo.setText("");
+        CTG.setSelectedIndex(0);
+        KeteranganCTG.setText("");
+        Laboratorium.setSelectedIndex(0);
+        KeteranganLaboratorium.setText("");
+        USG.setSelectedIndex(0);
+        KeteranganUSG.setText("");
+        Lakmus.setSelectedIndex(0);
+        KeteranganLakmus.setText("");
+        PemeriksaanPanggul.setSelectedIndex(0);
         
         
         TabRawat.setSelectedIndex(0);

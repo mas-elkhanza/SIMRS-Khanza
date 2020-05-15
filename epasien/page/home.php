@@ -162,18 +162,27 @@
                      <img src="images/appointment-image.jpg" class="img-responsive" alt="">
                 </div>
                 <div class="col-md-6 col-sm-6">
-                     <form id="appointment-form" role="form" method="post" action="#">
+                     <form id="appointment-form" role="form" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
                           <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
                                <h2><center>Buat Janji/Booking</center></h2>
                           </div>
                           <div class="wow fadeInUp" data-wow-delay="0.8s">
-                               <div class="col-md-6 col-sm-6">
+                               <div class="col-md-12 col-sm-12">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Anda">
+                                    <input type="text" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" name="nama" maxlength="40" placeholder="Nama Anda">
+                                    <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
+                               </div>
+                               <div class="col-md-12 col-sm-12">
+                                    <label for="alamat">Alamat</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat" maxlength="200" placeholder="Alamat Anda">
+                               </div>
+                               <div class="col-md-6 col-sm-6">    
+                                    <label for="nohp">Nomor HP/Telephone</label>
+                                    <input type="tel" class="form-control" id="phone" name="nohp" maxlength="40" placeholder="Nomor HP/Telephone Anda">
                                </div>
                                <div class="col-md-6 col-sm-6">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Anda">
+                                    <input type="email" class="form-control" id="email" name="email" maxlength="50" placeholder="Email Anda">
                                </div>
                                <div class="col-md-6 col-sm-6">
                                     <label for="tanggal">Pilih Tanggal</label>
@@ -215,10 +224,8 @@
                                     </select>
                                </div>
                                <div class="col-md-12 col-sm-12">
-                                    <label for="nohp">Nomor HP/Telephone</label>
-                                    <input type="tel" class="form-control" id="phone" name="nohp" placeholder="Nomor HP/Telephone Anda">
                                     <label for="pesan">Tambahan Pesan</label>
-                                    <textarea class="form-control" rows="5" id="message" name="pesan" placeholder="Tambahan Pessan"></textarea>
+                                    <textarea class="form-control" rows="3" maxlength="400" id="message" name="pesan" placeholder="Tambahan Pessan"></textarea>
                                     <button type="submit" class="form-control" id="cf-submit" name="btnBooking">Kirimkan</button>
                                </div>
                                <div class="col-md-12 col-sm-12">

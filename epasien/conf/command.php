@@ -55,6 +55,7 @@
             case "FasilitasRadiologi"                      : include_once("page/listradiologi.php"); break;
             case "FasilitasLaborat"                        : include_once("page/listlaborat.php"); break;
             case "FasilitasOperasi"                        : include_once("page/listoperasi.php"); break;
+            case "PendaftaranPeriksa"                      : include_once("page/listperiksa.php"); break;
             default                                        : include_once("page/home.php");
         }
     }
