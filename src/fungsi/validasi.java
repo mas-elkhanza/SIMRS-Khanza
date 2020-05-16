@@ -60,7 +60,7 @@ import uz.ncipro.calendar.JDateTimePicker;
  */
 public final class validasi {
 
-    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(validasi.class.getName());  
+    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(validasi.class.getName());
     private int a, j, i, result = 0;
     private String s, s1, auto, PEMBULATANHARGAOBAT = koneksiDB.PEMBULATANHARGAOBAT();
     private final Connection connect = koneksiDB.condb();
@@ -426,16 +426,16 @@ public final class validasi {
             workbook1.write();
             workbook1.close();
         } catch (IOException | WriteException ex) {
-            System.out.println("Notifikasi : " + ex);
+            log.error("Notifikasi : " + ex);
         }
     }
 
     public void hapusTable(DefaultTableModel tabMode, JTextField nilai_field, String table, String field) {
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...");
             nilai_field.requestFocus();
         } else if (nilai_field.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...");
         } else if (!nilai_field.getText().trim().equals("")) {
             sek.meghapus(table, field, nilai_field.getText());
 
@@ -500,25 +500,7 @@ public final class validasi {
 
     @SuppressWarnings("empty-statement")
     public void MyReport(String reportName, String reportDirName, String judul, Map parameters) {
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
+        getPathReport(reportDirName, reportName);
 
         try {
             try (Statement stm = connect.createStatement()) {
@@ -535,36 +517,18 @@ public final class validasi {
                     jasperViewer.setLocationRelativeTo(null);
                     jasperViewer.setVisible(true);
                 } catch (Exception rptexcpt) {
-                    System.out.println("Report Can't view because : " + rptexcpt);
+                    log.error("Report Can't view because : " + rptexcpt);
                     JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            log.error(e);
         }
     }
 
     @SuppressWarnings("empty-statement")
     public void MyReportPDF(String reportName, String reportDirName, String judul, Map parameters) {
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
+        getPathReport(reportDirName, reportName);
 
         try {
             try (Statement stm = connect.createStatement()) {
@@ -575,36 +539,18 @@ public final class validasi {
                     JasperExportManager.exportReportToPdfFile(jasperPrint, "./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
                     Desktop.getDesktop().open(f);
                 } catch (Exception rptexcpt) {
-                    System.out.println("Report Can't view because : " + rptexcpt);
+                    log.error("Report Can't view because : " + rptexcpt);
                     JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            log.error(e);
         }
     }
 
     @SuppressWarnings("empty-statement")
     public void MyReport2(String reportName, String reportDirName, String judul, Map parameters) {
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
+        getPathReport(reportDirName, reportName);
 
         try {
             try (Statement stm = connect.createStatement()) {
@@ -621,37 +567,19 @@ public final class validasi {
                     jasperViewer.setLocationRelativeTo(null);
                     jasperViewer.setVisible(true);
                 } catch (Exception rptexcpt) {
-                    System.out.println("Report Can't view because : " + rptexcpt);
+                    log.error("Report Can't view because : " + rptexcpt);
                     JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            log.error(e);
         }
     }
 
     public void MyReportqry(String reportName, String reportDirName, String judul, String qry, Map parameters) {
         try {
-            Properties systemProp = System.getProperties();
-            
-            // Ambil current dir
-            String currentDir = systemProp.getProperty("user.dir");
-            
-            File dir = new File(currentDir);
-            
-            File fileRpt;
-            String fullPath = "";
-            if (dir.isDirectory()) {
-                String[] isiDir = dir.list();
-                for (String iDir : isiDir) {
-                    fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                    if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
-                        fullPath = fileRpt.toString();
-                        System.out.println("Found Report File at : " + fullPath);
-                    } // end if
-                } // end for i
-            } // end if
-            
+            getPathReport(reportDirName, reportName);
+
             ps = connect.prepareStatement(qry);
             try {
                 String namafile = "./" + reportDirName + "/" + reportName;
@@ -681,11 +609,11 @@ public final class validasi {
                 }
             }
         } catch (SQLException ex) {
-                log.error("Report SQL Error "+ex);
-            }
+            log.error("Report SQL Error " + ex);
+        }
     }
 
-    public void MyReportqrypdf(String reportName, String reportDirName, String judul, String qry, Map parameters) {
+    private void getPathReport(String reportDirName, String reportName) {
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -705,7 +633,11 @@ public final class validasi {
                 } // end if
             } // end for i
         } // end if
+    }
 
+    public void MyReportqrypdf(String reportName, String reportDirName, String judul, String qry, Map parameters) {
+        getPathReport(reportDirName, reportName); 
+// Cek apakah file RptMaster.jrxml ada
         try {
             ps = connect.prepareStatement(qry);
             try {
@@ -717,7 +649,7 @@ public final class validasi {
                 JasperExportManager.exportReportToPdfFile(jasperPrint, "./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
                 Desktop.getDesktop().open(f);
             } catch (Exception rptexcpt) {
-                System.out.println("Report Can't view because : " + rptexcpt);
+                log.error("Report Can't view because : " + rptexcpt);
                 JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
             } finally {
                 if (rs != null) {
@@ -728,7 +660,7 @@ public final class validasi {
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            log.error(e);
         }
     }
 
@@ -740,7 +672,7 @@ public final class validasi {
             jasperViewer.setVisible(true);
             //JasperViewer.viewReport(JasperFillManager.fillReport(JasperCompileManager.compileReport("./report/"+reportName),parameters,connect),false);
         } catch (Exception ex) {
-            System.out.println("Notifikasi : " + ex);
+            log.error("Notifikasi : " + ex);
         }
     }
 
