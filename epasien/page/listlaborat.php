@@ -10,7 +10,7 @@
                 <div class="col-md-12 col-sm-12">
                      <div class="news-thumb wow fadeInUp" data-wow-delay="0.3s">
                          <form id="cariKamar" name="frmCariLaborat" method="post" action="" enctype=multipart/form-data>
-                           <table width="100%" border='0' align="center">
+                           <table width="100%" border="0" align="center">
                                <tr class="head">
                                   <td width="15%" align="right"><label for="laborat">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>

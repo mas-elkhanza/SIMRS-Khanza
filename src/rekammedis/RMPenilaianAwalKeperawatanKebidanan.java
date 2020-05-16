@@ -56,7 +56,8 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","J.K.","Agama","Bahasa","Cacat Fisik","Tgl.Lahir","Tgl.Asuhan","Informasi","TD","Nadi","RR","Suhu",
-            "GCS","BB","TB","LILA","BMI","TFU","TBJ","Letak","Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","BJJ"
+            "GCS","BB","TB","LILA","BMI","TFU","TBJ","Letak","Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","BJJ","Keterangan BJJ",
+            "Portio","Pembukaan Serviks","Ketuban","Hodge","Inspekulo","Hasil Inspekulo"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -66,7 +67,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 28; i++) {
+        for (i = 0; i < 35; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -124,6 +125,20 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 column.setPreferredWidth(51);
             }else if(i==27){
                 column.setPreferredWidth(35);
+            }else if(i==28){
+                column.setPreferredWidth(83);
+            }else if(i==29){
+                column.setPreferredWidth(70);
+            }else if(i==30){
+                column.setPreferredWidth(101);
+            }else if(i==31){
+                column.setPreferredWidth(55);
+            }else if(i==32){
+                column.setPreferredWidth(45);
+            }else if(i==33){
+                column.setPreferredWidth(50);
+            }else if(i==34){
+                column.setPreferredWidth(60);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1575,7 +1590,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         LabelServiks.setText("Pembukaan Serviks :");
         LabelServiks.setName("LabelServiks"); // NOI18N
         FormInput.add(LabelServiks);
-        LabelServiks.setBounds(169, 230, 110, 23);
+        LabelServiks.setBounds(214, 230, 110, 23);
 
         PembukaanServiks.setFocusTraversalPolicyProvider(true);
         PembukaanServiks.setName("PembukaanServiks"); // NOI18N
@@ -1585,18 +1600,18 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             }
         });
         FormInput.add(PembukaanServiks);
-        PembukaanServiks.setBounds(283, 230, 60, 23);
+        PembukaanServiks.setBounds(328, 230, 60, 23);
 
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel48.setText("cm ");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(346, 230, 25, 23);
+        jLabel48.setBounds(391, 230, 25, 23);
 
         jLabel49.setText("Ketuban :");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(390, 230, 60, 23);
+        jLabel49.setBounds(483, 230, 60, 23);
 
         Ketuban.setFocusTraversalPolicyProvider(true);
         Ketuban.setName("Ketuban"); // NOI18N
@@ -1606,18 +1621,18 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             }
         });
         FormInput.add(Ketuban);
-        Ketuban.setBounds(454, 230, 60, 23);
+        Ketuban.setBounds(547, 230, 60, 23);
 
         jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel50.setText("kep / bok");
+        jLabel50.setText("kep/bok");
         jLabel50.setName("jLabel50"); // NOI18N
         FormInput.add(jLabel50);
-        jLabel50.setBounds(517, 230, 60, 23);
+        jLabel50.setBounds(610, 230, 60, 23);
 
         jLabel51.setText("Hodge :");
         jLabel51.setName("jLabel51"); // NOI18N
         FormInput.add(jLabel51);
-        jLabel51.setBounds(563, 230, 80, 23);
+        jLabel51.setBounds(700, 230, 90, 23);
 
         Hodge.setFocusTraversalPolicyProvider(true);
         Hodge.setName("Hodge"); // NOI18N
@@ -1627,7 +1642,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             }
         });
         FormInput.add(Hodge);
-        Hodge.setBounds(647, 230, 60, 23);
+        Hodge.setBounds(794, 230, 60, 23);
 
         jLabel52.setText("Pemeriksaan penunjang :");
         jLabel52.setName("jLabel52"); // NOI18N
@@ -4817,7 +4832,8 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("agama"),rs.getString("nama_bahasa"),rs.getString("nama_cacat"),
                         rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),
                         rs.getString("gcs"),rs.getString("bb"),rs.getString("tb"),rs.getString("lila"),rs.getString("bmi"),rs.getString("tfu"),rs.getString("tbj"),rs.getString("letak"),
-                        rs.getString("presentasi"),rs.getString("penurunan"),rs.getString("his"),rs.getString("kekuatan"),rs.getString("lamanya"),rs.getString("bjj")
+                        rs.getString("presentasi"),rs.getString("penurunan"),rs.getString("his"),rs.getString("kekuatan"),rs.getString("lamanya"),rs.getString("bjj"),rs.getString("ket_bjj"),
+                        rs.getString("portio"),rs.getString("serviks"),rs.getString("ketuban"),rs.getString("hodge"),rs.getString("inspekulo"),rs.getString("ket_inspekulo")
                     });
                 }
             } catch (Exception e) {
