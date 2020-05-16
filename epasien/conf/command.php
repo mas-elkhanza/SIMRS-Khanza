@@ -82,12 +82,12 @@
                  <li><a href='index.php?act=FasilitasOnline' class='smoothScroll'>Konsultasi Online</a></li>
                  <li class='appointment-btn'><a href='index.php?act=LoginPasien' class='smoothScroll'>Log In Pasien</a></li>";
         }else{
-            echo "<li><a href='#top' class='smoothScroll'>Home</a></li>
-                 <li><a href='#about' class='smoothScroll'>Tentang Kami</a></li>
-                 <li><a href='#team' class='smoothScroll'>Dokter Kami</a></li>
-                 <li><a href='#news' class='smoothScroll'>Jadwal Praktek</a></li>
+            echo "<li><a href='index.php?act=Home#top' class='smoothScroll'>Home</a></li>
+                 <li><a href='index.php?act=Home#about' class='smoothScroll'>Tentang Kami</a></li>
+                 <li><a href='index.php?act=Home#team' class='smoothScroll'>Dokter Kami</a></li>
+                 <li><a href='index.php?act=Home#news' class='smoothScroll'>Jadwal Praktek</a></li>
                  <li><a href='index.php?act=FasilitasKamar' class='smoothScroll'>Fasilitas & Tarif</a></li>
-                 <li class='appointment-btn'><a href='#appointment'>Buat Janji/Booking</a></li>";
+                 <li class='appointment-btn'><a href='index.php?act=Home#appointment'>Buat Janji/Booking</a></li>";
         }
     }
  

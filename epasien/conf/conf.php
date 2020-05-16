@@ -19,11 +19,13 @@
     }
      
     function cleankar($dirty){
+         $konektor=bukakoneksi();
 	if (get_magic_quotes_gpc()) {
-            $clean = mysqli_real_escape_string(stripslashes($dirty));	 
+            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
 	}else{
-            $clean = mysqli_real_escape_string($dirty);	
+            $clean = mysqli_real_escape_string($konektor,$dirty);	
 	} 
+         mysqli_close($konektor);
 	return preg_replace('/[^a-zA-Z0-9\s_ ]/', '',$clean);
     }
     
@@ -31,7 +33,8 @@
         $args = array_slice(func_get_args(),1);
         $args = array_map('mysql_safe_string',$args);
         $query = vsprintf($format,$args);
-        return mysqli_query($query);
+        $konektor=bukakoneksi();
+        return mysqli_query($konektor,$query);
     }
     
     function validUrl($url){
@@ -77,7 +80,14 @@
     function bukainput($sql){
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor,$sql)
-        or die(/*mysqli_error().*/"<br/><font color=red><b>Gagal</b> menjalankan perintah query !");
+        or die(/*mysqli_error().*/"<br/><font color=red><b>Gagal</b>");
+        mysqli_close($konektor);
+        return $result;
+    }
+    
+    function bukainput2($sql){
+        $konektor=bukakoneksi();
+        $result=mysqli_query($konektor,$sql);
         mysqli_close($konektor);
         return $result;
     }
@@ -104,6 +114,11 @@
      
     function Tambah3($tabelname,$attrib) {
         $command = bukainput("INSERT INTO ".$tabelname." VALUES (".$attrib.")");
+        return $command;
+    }
+    
+    function Tambah4($tabelname,$attrib) {
+        $command = bukainput2("INSERT INTO ".$tabelname." VALUES (".$attrib.")");
         return $command;
     }
 
@@ -162,6 +177,11 @@
 
     function JSRedirect($url){
         echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=$url'></head><body></body></html>";
+    }
+
+    // redirect to another page
+    function redirect($location) {
+        return header("Location: {$location}");
     }
 
     function Zet($url){

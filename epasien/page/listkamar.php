@@ -14,7 +14,7 @@
                                <tr class="head">
                                   <td width="15%" align="right"><label for="kamar">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="kamar" id="kamar" class="form-control" value="" size="65" maxlength="250" /></td>
+                                  <td width="69%"><input name="kamar" type="text" id="kamar" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
                                   <td width="15%" align="left">&nbsp;<input name="BtnKamar" type=submit class="btn btn-warning" value="Cari"></td>
                                </tr>
                            </table>
@@ -31,11 +31,11 @@
                             </tr>
                             <?php 
                                $kamar      = trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
-                               $kamar      = validTeks($kamar);
+                               $kamar      = cleankar($kamar);
                                $querykamar = bukaquery("select kamar.kd_kamar,bangsal.nm_bangsal,kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' ".(isset($kamar)?" and (kamar.kd_kamar like '%$kamar%' or bangsal.nm_bangsal like '%$kamar%' or kamar.kelas like '%$kamar%' or kamar.status like '%$kamar%')":"")." order by bangsal.nm_bangsal");
                                while($rsquerykamar = mysqli_fetch_array($querykamar)) {
                                    echo "<tr>
-                                           <td align='center'>".$rsquerykamar["kd_kamar"]."</td>
+                                           <td align='left'>".$rsquerykamar["kd_kamar"]."</td>
                                            <td align='left'>".$rsquerykamar["nm_bangsal"]."</td>
                                            <td align='center'>".$rsquerykamar["kelas"]."</td>
                                            <td align='center'>".formatDuit($rsquerykamar["trf_kamar"])."</td>

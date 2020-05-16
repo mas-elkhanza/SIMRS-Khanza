@@ -1,7 +1,7 @@
 <?php 
     require_once('../conf/conf.php');
     $keyword    = trim(isset($_POST['value']))?trim($_POST['value']):NULL;
-    $keyword    = validTeks($keyword);
+    $keyword    = cleankar($keyword);
     echo "<table class='table table-hover' >
             <tr>
                 <th width='10%'><center>Hari Kerja</center></th>

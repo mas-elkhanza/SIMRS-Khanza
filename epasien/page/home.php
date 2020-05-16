@@ -141,7 +141,7 @@
                                <tr class="head">
                                   <td width="15%" align="right"><label for="keyword">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="keyword" id="keyword" class="form-control" value="" size="65" maxlength="250" /></td>
+                                  <td width="69%"><input name="keyword" type="text" id="keyword" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
                                   <td width="15%" align="left">&nbsp;<input name="BtnKeyword" type=submit class="btn btn-warning" value="Cari"></td>
                                </tr>
                            </table>
@@ -162,27 +162,30 @@
                      <img src="images/appointment-image.jpg" class="img-responsive" alt="">
                 </div>
                 <div class="col-md-6 col-sm-6">
-                     <form id="appointment-form" role="form" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
+                     <form id="appointment-form" role="form" onsubmit="return validasiIsi();" method="post" action="index.php?act=PendaftaranPeriksa" enctype=multipart/form-data>
                           <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
                                <h2><center>Buat Janji/Booking</center></h2>
                           </div>
                           <div class="wow fadeInUp" data-wow-delay="0.8s">
                                <div class="col-md-12 col-sm-12">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" name="nama" maxlength="40" placeholder="Nama Anda">
+                                    <input type="text" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" name="nama" maxlength="40" placeholder="Nama Anda" autocomplete="off">
                                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-12 col-sm-12">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" name="alamat" maxlength="200" placeholder="Alamat Anda">
+                                    <input type="text" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2" name="alamat" maxlength="200" placeholder="Alamat Anda" autocomplete="off">
+                                    <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">    
                                     <label for="nohp">Nomor HP/Telephone</label>
-                                    <input type="tel" class="form-control" id="phone" name="nohp" maxlength="40" placeholder="Nomor HP/Telephone Anda">
+                                    <input type="tel" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3" name="nohp" maxlength="40" placeholder="Nomor HP/Telephone Anda" autocomplete="off">
+                                    <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" maxlength="50" placeholder="Email Anda">
+                                    <input type="email" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4" name="email" maxlength="50" placeholder="Email Anda" autocomplete="off">
+                                    <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">
                                     <label for="tanggal">Pilih Tanggal</label>
@@ -225,11 +228,12 @@
                                </div>
                                <div class="col-md-12 col-sm-12">
                                     <label for="pesan">Tambahan Pesan</label>
-                                    <textarea class="form-control" rows="3" maxlength="400" id="message" name="pesan" placeholder="Tambahan Pessan"></textarea>
+                                    <textarea class="form-control" rows="2" maxlength="400" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" id="TxtIsi5" name="pesan" placeholder="Tambahan Pessan" autocomplete="off"></textarea>
+                                    <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
                                     <button type="submit" class="form-control" id="cf-submit" name="btnBooking">Kirimkan</button>
                                </div>
                                <div class="col-md-12 col-sm-12">
-                                   <label>Sudah pernah periksa sebelumnya? Klik <a href='index.php?act=LoginPasien' class="btn btn-warning" >Log In</a> jika pernah.</label><br/><br/>
+                                   <label><a href='index.php?act=CekBooking' class="btn btn-success" >Cek Booking</a> untuk melihat status booking Anda. Sudah pernah periksa sebelumnya? Silahkan <a href='index.php?act=LoginPasien' class="btn btn-danger" >Log In</a></label><br/>
                                </div>
                           </div>
                     </form>
