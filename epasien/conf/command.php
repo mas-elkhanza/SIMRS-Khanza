@@ -48,15 +48,15 @@
         $aksi=isset($_REQUEST['act'])?$_REQUEST['act']:NULL;
         formProtek();
         switch ($aksi) {
-            case "Home"                                    : include_once("page/home.php"); break;
-            case "LoginPasien"                             : include_once("page/login.php"); break;
-            case "DokterKami"                              : include_once("page/listsemuadokter.php"); break;
-            case "FasilitasKamar"                          : include_once("page/listkamar.php"); break;
-            case "FasilitasRadiologi"                      : include_once("page/listradiologi.php"); break;
-            case "FasilitasLaborat"                        : include_once("page/listlaborat.php"); break;
-            case "FasilitasOperasi"                        : include_once("page/listoperasi.php"); break;
-            case "PendaftaranPeriksa"                      : include_once("page/listperiksa.php"); break;
-            default                                        : include_once("page/home.php");
+            case "Home"                                    : include_once("pages/home.php"); break;
+            case "LoginPasien"                             : include_once("pages/login.php"); break;
+            case "DokterKami"                              : include_once("pages/listsemuadokter.php"); break;
+            case "FasilitasKamar"                          : include_once("pages/listkamar.php"); break;
+            case "FasilitasRadiologi"                      : include_once("pages/listradiologi.php"); break;
+            case "FasilitasLaborat"                        : include_once("pages/listlaborat.php"); break;
+            case "FasilitasOperasi"                        : include_once("pages/listoperasi.php"); break;
+            case "PendaftaranPeriksa"                      : include_once("pages/listperiksa.php"); break;
+            default                                        : include_once("pages/home.php");
         }
     }
 	

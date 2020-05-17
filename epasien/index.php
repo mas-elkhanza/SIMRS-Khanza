@@ -70,7 +70,7 @@
      <script type="text/javascript">
         $(function() {
             $("#carikeyword").bind('submit',function() {
-                 $.post('page/listjadwaldokter.php',{value:$('#keyword').val()}, function(data){$("#hasilcari").html(data);});
+                 $.post('pages/listjadwaldokter.php',{value:$('#keyword').val()}, function(data){$("#hasilcari").html(data);});
                  return false;
             });
         });

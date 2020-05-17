@@ -29,6 +29,53 @@
 	return preg_replace('/[^a-zA-Z0-9\s_ ]/', '',$clean);
     }
     
+    function antisqlinjection(){
+       if(!get_magic_quotes_gpc()){
+            $_GET = array_map('mysqli_real_escape_string', $_GET); 
+            $_POST = array_map('mysqli_real_escape_string', $_POST); 
+            $_COOKIE = array_map('mysqli_real_escape_string', $_COOKIE);
+        }else{  
+            $_GET = array_map('stripslashes', $_GET); 
+            $_POST = array_map('stripslashes', $_POST); 
+            $_COOKIE = array_map('stripslashes', $_COOKIE);
+            $_GET = array_map('mysqli_real_escape_string', $_GET); 
+            $_POST = array_map('mysqli_real_escape_string', $_POST); 
+            $_COOKIE = array_map('mysqli_real_escape_string', $_COOKIE);
+        }
+        if (strlen($_SERVER['REQUEST_URI']) > 255 || strpos($_SERVER['REQUEST_URI'], "concat") || 
+                strpos($_SERVER['REQUEST_URI'], "union") || strpos($_SERVER['REQUEST_URI'], "base64") || 
+                strpos($_SERVER['REQUEST_URI'], "'")||strpos($_SERVER['REQUEST_URI'], "/")||
+                strpos($_SERVER['REQUEST_URI'], "*")||strpos($_SERVER['REQUEST_URI'], ";")||
+                strpos($_SERVER['REQUEST_URI'], "/*")||strpos($_SERVER['REQUEST_URI'], "\\")||
+                strpos($_SERVER['REQUEST_URI'], "}")||strpos($_SERVER['REQUEST_URI'], "$")||
+                strpos($_SERVER['REQUEST_URI'], "{")||strpos($_SERVER['REQUEST_URI'], "@")||
+                strpos($_SERVER['REQUEST_URI'], "[")||strpos($_SERVER['REQUEST_URI'], "]")||
+                strpos($_SERVER['REQUEST_URI'], "(")||strpos($_SERVER['REQUEST_URI'], ")")||
+                strpos($_SERVER['REQUEST_URI'], "|")||strpos($_SERVER['REQUEST_URI'], ",")||
+                strpos($_SERVER['REQUEST_URI'], "<")||strpos($_SERVER['REQUEST_URI'], ">")||
+                strpos($_SERVER['REQUEST_URI'], "`")||strpos($_SERVER['REQUEST_URI'], ":")||
+                strpos($_SERVER['REQUEST_URI'], "+")||strpos($_SERVER['REQUEST_URI'], "-")||
+                strpos($_SERVER['REQUEST_URI'], "^")||strpos($_SERVER['REQUEST_URI'], "#")||
+                strpos($_SERVER['REQUEST_URI'], "!")||strpos($_SERVER['REQUEST_URI'], "-")||
+                strpos($_SERVER['REQUEST_URI'], "='")||strpos($_SERVER['REQUEST_URI'], "=/")) {
+            echo "<b>Harus disetujui : <br/>
+            Dilarang keras melakukan hacking/membajak Software/Web ini dengan cara apapun.<br/>
+            Bagi yang sengaja melakukan hacking/membajak softaware ini,<br/>
+            kami sumpahi sial 1000 turunan,miskin sampai 500 turunan.<br/>
+            Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama<br/>
+            nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh<br/>
+            sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami <br/>
+            karena telah berdoa buruk, semua ini kami lakukan karena kami ti<br/>
+            dak pernah rela karya kami dihack/dibajak..</b> ";
+            Zet($hal);
+            @header("HTTP/1.1 414 Request-URI Too Long");
+            @header("Status: 414 Request-URI Too Long");
+            @header("Connection: Close");
+            @exit;
+        }
+        
+    }
+    
     function mysql_safe_query($format) {
         $args = array_slice(func_get_args(),1);
         $args = array_map('mysql_safe_string',$args);
