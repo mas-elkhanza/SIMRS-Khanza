@@ -2,7 +2,7 @@
       <div class="container">
            <div class="row">
                 <div class="col-md-12 col-sm-12">
-                     <div class="about-info">
+                     <div class="about-info wow fadeInUp">
                           <h2 class="wow fadeInUp" data-wow-delay="0.1s"><center>Dokter Kami</center></h2>
                      </div>
                 </div>

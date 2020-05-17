@@ -32,7 +32,7 @@
                                             <h3>Booking berhasil</h3>
                                          </div>
                                          <div class='news-thumb wow fadeInUp' data-wow-delay='0.2s'>
-                                            <br>
+                                            <br><br>
                                             <b>
                                                 <table width='95%' border='0' align='center'>
                                                     <tr><td width='30%' align='left'>No. Booking</td><td width='70%' align='left'>:&nbsp;&nbsp;$no_urut</td></tr>
@@ -59,10 +59,10 @@
                             <div class='container'>
                                  <div class='row'>
                                       <div class='col-md-12 col-sm-12'>
-                                           <div class='section-title wow fadeInUp' data-wow-delay='0.1s'>
+                                           <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
                                                 <h3>Gagal melakukan booking.</h3>
                                                 <br>
-                                                Nomor HP/Telp yang Anda gunakan untuk melakukan booking terdeteksi sudah digunakan sebelumnya pada tanggal yang sama. Jika anda sudah melakukan booking silahkan <a href='index.php?act=CekBooking' class='btn btn-danger'>Cek Booking</a>
+                                                Nomor HP/Telp yang Anda gunakan untuk melakukan booking terdeteksi sudah digunakan sebelumnya pada tanggal yang sama. <a href='index.php?act=CekBooking' class='btn btn-danger'>Cek Booking</a> jika anda sudah melakukan booking sebelumnya 
                                            </div>
                                       </div>
                                  </div>

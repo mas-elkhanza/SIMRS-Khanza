@@ -86,9 +86,9 @@
  <section id="team" data-stellar-background-ratio="1">
       <div class="container">
            <div class="row">
-                <div class="col-md-6 col-sm-6">
+                <div class="col-md-12 col-sm-12">
                      <div class="about-info">
-                          <h2 class="wow fadeInUp" data-wow-delay="0.1s">Dokter Kami</h2>
+                          <h2 class="wow fadeInUp" data-wow-delay="0.1s"><center>Dokter Kami</center></h2>
                      </div>
                 </div>
                 <div class="clearfix"></div>
@@ -132,7 +132,7 @@
     <div class="container">
          <div class="row">
               <div class="col-md-12 col-sm-12">
-                   <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                   <div class="about-info wow fadeInUp" data-wow-delay="0.1s">
                         <h2>Jadwal Praktek Dokter</h2>
                    </div>
                    <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
@@ -163,10 +163,8 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                      <form id="appointment-form" role="form" onsubmit="return validasiIsi();" method="post" action="index.php?act=PendaftaranPeriksa" enctype=multipart/form-data>
-                          <div class="wow fadeInUp" data-wow-delay="0.4s">
+                          <div class="about-info wow fadeInUp" data-wow-delay="0.4s">
                                <h2><center>Buat Janji/Booking</center></h2>
-                          </div>
-                          <div class="wow fadeInUp" data-wow-delay="0.8s">
                                <div class="col-md-12 col-sm-12">
                                     <label for="nama">Nama</label>
                                     <input type="text" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" name="nama" maxlength="40" placeholder="Nama Anda" autocomplete="off">
