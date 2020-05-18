@@ -539,6 +539,7 @@ import keuangan.DlgJnsPerawatanRanap;
 import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganPenagihanPiutangPasien;
+import keuangan.KeuanganSetTarifOnline;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
 import rekammedis.RMDataResumePasien;
@@ -15818,6 +15819,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSetTarifOnlineActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganSetTarifOnline aplikasi=new KeuanganSetTarifOnline(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -16416,7 +16428,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona,btnPenilaianAwalKeperawatanKebidanan,
-            btnPengumumanEPasien,btnSuratHamil;
+            btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline;
     
     public void isWall(){
         try{            
@@ -17951,6 +17963,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.gettarif_utd()==true){
                 Panelmenu.add(btnTarifUtd);
+                jmlmenu++;
+            }
+            
+            if(akses.getset_tarif_online()==true){
+                Panelmenu.add(btnSetTarifOnline);
                 jmlmenu++;
             }
 
@@ -21060,6 +21077,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.gettarif_utd()==true){
             Panelmenu.add(btnTarifUtd);
+            jmlmenu++;
+        }
+        
+        if(akses.getset_tarif_online()==true){
+            Panelmenu.add(btnSetTarifOnline);
             jmlmenu++;
         }
 
@@ -24723,6 +24745,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gettarif_utd()==true){
             if(btnTarifUtd.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTarifUtd);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getset_tarif_online()==true){
+            if(btnSetTarifOnline.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSetTarifOnline);
                 jmlmenu++;
             }                
         }
@@ -29031,6 +29060,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratHamil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuratHamilActionPerformed(evt);
+            }
+        });
+        
+        btnSetTarifOnline = new widget.ButtonBig();
+        btnSetTarifOnline.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Non-Service_Specific_copy_Client_259291.png"))); 
+        btnSetTarifOnline.setText("Set Tarif Online");
+        btnSetTarifOnline.setIconTextGap(0);
+        btnSetTarifOnline.setName("btnSetTarifOnline"); 
+        btnSetTarifOnline.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetTarifOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetTarifOnlineActionPerformed(evt);
             }
         });
                 

@@ -135,7 +135,7 @@ public final class akses {
             ipsrs_returbeli=false,ipsrs_riwayat_barang=false,pasien_corona=false,toko_pendapatan_harian=false,diagnosa_pasien_corona=false,
             perawatan_pasien_corona=false,penilaian_awal_keperawatan_gigi=false,master_masalah_keperawatan_gigi=false,toko_bayar_piutang=false,
             toko_piutang_harian=false,toko_penjualan_harian=false,deteksi_corona=false,penilaian_awal_keperawatan_kebidanan=false,pengumuman_epasien=false,
-            surat_hamil=false;
+            surat_hamil=false,set_tarif_online=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -779,6 +779,7 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_kebidanan=true;
                         akses.pengumuman_epasien=true;
                         akses.surat_hamil=true;
+                        akses.set_tarif_online=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1406,6 +1407,7 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_kebidanan=rs2.getBoolean("penilaian_awal_keperawatan_kebidanan");
                         akses.pengumuman_epasien=rs2.getBoolean("pengumuman_epasien");
                         akses.surat_hamil=rs2.getBoolean("surat_hamil");
+                        akses.set_tarif_online=rs2.getBoolean("set_tarif_online");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2031,6 +2033,7 @@ public final class akses {
                         akses.penilaian_awal_keperawatan_kebidanan=false;
                         akses.pengumuman_epasien=false;
                         akses.surat_hamil=false;
+                        akses.set_tarif_online=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2710,4 +2713,5 @@ public final class akses {
     public static boolean getpenilaian_awal_keperawatan_kebidanan(){return akses.penilaian_awal_keperawatan_kebidanan;}
     public static boolean getpengumuman_epasien(){return akses.pengumuman_epasien;}
     public static boolean getsurat_hamil(){return akses.surat_hamil;}
+    public static boolean getset_tarif_online(){return akses.set_tarif_online;}
 }   
