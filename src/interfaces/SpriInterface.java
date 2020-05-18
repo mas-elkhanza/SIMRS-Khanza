@@ -7,6 +7,8 @@ package interfaces;
 
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,7 +17,7 @@ import java.util.List;
 public interface SpriInterface<T> {
     void save(T domain)throws SQLException;
     void update(T domain)throws SQLException;
-    void delete(T domain)throws SQLException;
+    void delete(DefaultTableModel a, JTextField text ,String domain)throws SQLException;
     List<T> findByDate(String tgl_awal, String tgl_ahir)throws SQLException;
     List<T> search(String domain)throws SQLException;
 }
