@@ -2,14 +2,14 @@
       <div class="container">
            <div class="row">
                 <div class="col-md-12 col-sm-12">
-                     <div class="about-info wow fadeInUp" data-wow-delay="0.1s">
+                     <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
                           <h2>Radiologi</h2>
                      </div>
                 </div>
                        
                 <div class="col-md-12 col-sm-12">
                      <div class="news-thumb wow fadeInUp" data-wow-delay="0.3s">
-                         <form id="cariKamar" name="frmCariLaborat" method="post" action="" enctype=multipart/form-data>
+                         <form id="cariKamar" name="frmCariRadiologi" method="post" action="" enctype=multipart/form-data>
                            <table width="100%" border='0' align="center">
                                <tr class="head">
                                   <td width="15%" align="right"><label for="radiologi">Keyword</label></td>

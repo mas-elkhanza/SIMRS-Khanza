@@ -58,15 +58,15 @@
      <link rel="stylesheet" href="css/tooplate-style.css"/>
      <link rel="stylesheet" href="plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"/>
      <script type="text/javascript" src="plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-     <script type="text/javascript" src="js/bootstrap.min.js"></script>
      <script type="text/javascript" src="conf/validator.js"></script>
-     <script type="text/javascript" src="js/jquery.js"></script>
-     <script type="text/javascript" src="js/jquery.sticky.js"></script>
-     <script type="text/javascript" src="js/jquery.stellar.min.js"></script>
-     <script type="text/javascript" src="js/wow.min.js"></script>
-     <script type="text/javascript" src="js/smoothscroll.js"></script>
-     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-     <script type="text/javascript" src="js/custom.js"></script>
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.sticky.js"></script>
+     <script src="js/jquery.stellar.min.js"></script>
+     <script src="js/wow.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/custom.js"></script>
      <script type="text/javascript">
         $(function() {
             $("#carikeyword").bind('submit',function() {
@@ -183,17 +183,15 @@
                     <div class="col-md-12 col-sm-12 border-top">
                          <div class="col-md-4 col-sm-6">
                               <div class="copyright-text"> 
-                                   <p>Copyright &copy; 2020 <?=$nama_instansi;?>
-                                   
-                                   | SIMKES Khanza</p>
+                                   <p>Copyright &copy; 2020 <?=$nama_instansi;?> | SIMKES Khanza</p>
                               </div>
                          </div>
                          <div class="col-md-6 col-sm-6">
                               <div class="footer-link"> 
-                                   <a href="#">Laboratory Tests</a>
-                                   <a href="#">Departments</a>
-                                   <a href="#">Insurance Policy</a>
-                                   <a href="#">Careers</a>
+                                  <center>
+                                     <a href="index.php?act=CekPoli">Poli/Unit Tersedia</a>
+                                     <a href="index.php?act=CekAsuransi">Kerja Sama Asuransi</a>
+                                  </center>
                               </div>
                          </div>
                          <div class="col-md-2 col-sm-2 text-align-center">

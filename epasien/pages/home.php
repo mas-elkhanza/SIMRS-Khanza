@@ -88,7 +88,7 @@
            <div class="row">
                 <div class="col-md-12 col-sm-12">
                      <div class="about-info">
-                          <h2 class="wow fadeInUp" data-wow-delay="0.1s"><center>Dokter Kami</center></h2>
+                          <h2 class="section-title wow fadeInUp" data-wow-delay="0.1s"><center>Dokter Kami</center></h2>
                      </div>
                 </div>
                 <div class="clearfix"></div>
@@ -132,7 +132,7 @@
     <div class="container">
          <div class="row">
               <div class="col-md-12 col-sm-12">
-                   <div class="about-info wow fadeInUp" data-wow-delay="0.1s">
+                   <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
                         <h2>Jadwal Praktek Dokter</h2>
                    </div>
                    <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">

@@ -2,7 +2,7 @@
       <div class="container">
            <div class="row">
                 <div class="col-md-12 col-sm-12">
-                     <div class="about-info wow fadeInUp" data-wow-delay="0.1s">
+                     <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
                           <h2>Konsultasi Online</h2>
                      </div>
                 </div>
