@@ -88,7 +88,11 @@ public final class sekuel {
 
     public void menyimpan2(String table, String value, String sama) {
         try {
-            queryInsert(table, value);
+            ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
+            ps.executeUpdate();
+            if (ps != null) {
+                ps.close();
+            }
 
             SimpanTrack("insert into " + table + " values(" + value + ")");
         } catch (Exception e) {
@@ -98,7 +102,11 @@ public final class sekuel {
 
     public boolean menyimpantf(String table, String value, String sama) {
         try {
-            queryInsert(table, value);
+            ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
+            ps.executeUpdate();
+            if (ps != null) {
+                ps.close();
+            }
 
             SimpanTrack("insert into " + table + " values(" + value + ")");
             return true;
@@ -109,17 +117,13 @@ public final class sekuel {
         }
     }
 
-    private void queryInsert(String table, String value) throws SQLException {
-        ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
-        ps.executeUpdate();
-        if (ps != null) {
-            ps.close();
-        }
-    }
-
     public boolean menyimpantf2(String table, String value, String sama) {
         try {
-            queryInsert(table, value);
+            ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
+            ps.executeUpdate();
+            if (ps != null) {
+                ps.close();
+            }
 
             SimpanTrack("insert into " + table + " values(" + value + ")");
             return true;
@@ -500,21 +504,25 @@ public final class sekuel {
     }
 
     public void menyimpan(String table, String isisimpan, String isiedit, String acuan_field) {
-
-        try {
-            queryInsert(table, isisimpan);
-            SimpanTrack("insert into " + table + " values(" + isisimpan + ")");
-
-            ps = connect.prepareStatement("update " + table + " set " + isiedit + " where " + acuan_field);
-            ps.executeUpdate();
-            if (ps != null) {
+        try{            
+            ps=connect.prepareStatement("insert into "+table+" values("+isisimpan+")");
+            ps.executeUpdate();   
+            if(ps != null){
                 ps.close();
+            }  
+            SimpanTrack("insert into "+table+" values("+isisimpan+")");
+        }catch(Exception e){
+            try {
+                ps=connect.prepareStatement("update "+table+" set "+isiedit+" where "+acuan_field);
+                ps.executeUpdate();
+                if(ps != null){
+                    ps.close();
+                }  
+                SimpanTrack("update "+table+" set "+isiedit+" where "+acuan_field);
+            } catch (Exception ex) {
+                System.out.println("Notifikasi Edit : "+ex);
             }
-            SimpanTrack("update " + table + " set " + isiedit + " where " + acuan_field);
-        } catch (SQLException ex) {
-            log.error(ex);
         }
-
     }
 
     public void menyimpan(String table, String value, String sama, JTextField AlmGb) {
