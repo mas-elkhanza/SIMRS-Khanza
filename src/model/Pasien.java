@@ -30,23 +30,23 @@ public class Pasien {
     private String pnd;
     private String keluarga;
     private String namakeluarga;
-    private char kd_pj;
+    private String kd_pj;
     private String no_peserta;
-    private int kd_kel;
-    private int kd_kec;
-    private int kd_kab;
+    private Wilayah kd_kel;
+    private Wilayah kd_kec;
+    private Wilayah kd_kab;
     private String pekerjaanpj;
     private String alamatpj;
     private String kelurahanpj;
     private String kecamatanpj;
     private String kabupatenpj;
-    private String perusahaan_pasien;
-    private int suku_bangsa;
-    private int bahasa_pasien;
-    private int cacat_fisik;
+    private PerusahaanPasien perusahaan_pasien;
+    private SukuBangsa suku_bangsa;
+    private BahasaPasien bahasa_pasien;
+    private CacatFisik cacat_fisik;
     private String email;
     private String nip;
-    private int kd_prop;
+    private Wilayah kd_prop;
     private String propinsipj;
 
     public String getNo_rkm_medis() {
@@ -193,11 +193,11 @@ public class Pasien {
         this.namakeluarga = namakeluarga;
     }
 
-    public char getKd_pj() {
+    public String getKd_pj() {
         return kd_pj;
     }
 
-    public void setKd_pj(char kd_pj) {
+    public void setKd_pj(String kd_pj) {
         this.kd_pj = kd_pj;
     }
 
@@ -209,27 +209,27 @@ public class Pasien {
         this.no_peserta = no_peserta;
     }
 
-    public int getKd_kel() {
+    public Wilayah getKd_kel() {
         return kd_kel;
     }
 
-    public void setKd_kel(int kd_kel) {
+    public void setKd_kel(Wilayah kd_kel) {
         this.kd_kel = kd_kel;
     }
 
-    public int getKd_kec() {
+    public Wilayah getKd_kec() {
         return kd_kec;
     }
 
-    public void setKd_kec(int kd_kec) {
+    public void setKd_kec(Wilayah kd_kec) {
         this.kd_kec = kd_kec;
     }
 
-    public int getKd_kab() {
+    public Wilayah getKd_kab() {
         return kd_kab;
     }
 
-    public void setKd_kab(int kd_kab) {
+    public void setKd_kab(Wilayah kd_kab) {
         this.kd_kab = kd_kab;
     }
 
@@ -273,38 +273,6 @@ public class Pasien {
         this.kabupatenpj = kabupatenpj;
     }
 
-    public String getPerusahaan_pasien() {
-        return perusahaan_pasien;
-    }
-
-    public void setPerusahaan_pasien(String perusahaan_pasien) {
-        this.perusahaan_pasien = perusahaan_pasien;
-    }
-
-    public int getSuku_bangsa() {
-        return suku_bangsa;
-    }
-
-    public void setSuku_bangsa(int suku_bangsa) {
-        this.suku_bangsa = suku_bangsa;
-    }
-
-    public int getBahasa_pasien() {
-        return bahasa_pasien;
-    }
-
-    public void setBahasa_pasien(int bahasa_pasien) {
-        this.bahasa_pasien = bahasa_pasien;
-    }
-
-    public int getCacat_fisik() {
-        return cacat_fisik;
-    }
-
-    public void setCacat_fisik(int cacat_fisik) {
-        this.cacat_fisik = cacat_fisik;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -321,14 +289,6 @@ public class Pasien {
         this.nip = nip;
     }
 
-    public int getKd_prop() {
-        return kd_prop;
-    }
-
-    public void setKd_prop(int kd_prop) {
-        this.kd_prop = kd_prop;
-    }
-
     public String getPropinsipj() {
         return propinsipj;
     }
@@ -336,6 +296,44 @@ public class Pasien {
     public void setPropinsipj(String propinsipj) {
         this.propinsipj = propinsipj;
     }
-    
-    
+
+    public PerusahaanPasien getPerusahaan_pasien() {
+        return perusahaan_pasien;
+    }
+
+    public void setPerusahaan_pasien(PerusahaanPasien perusahaan_pasien) {
+        this.perusahaan_pasien = perusahaan_pasien;
+    }
+
+    public SukuBangsa getSuku_bangsa() {
+        return suku_bangsa;
+    }
+
+    public void setSuku_bangsa(SukuBangsa suku_bangsa) {
+        this.suku_bangsa = suku_bangsa;
+    }
+
+    public BahasaPasien getBahasa_pasien() {
+        return bahasa_pasien;
+    }
+
+    public void setBahasa_pasien(BahasaPasien bahasa_pasien) {
+        this.bahasa_pasien = bahasa_pasien;
+    }
+
+    public CacatFisik getCacat_fisik() {
+        return cacat_fisik;
+    }
+
+    public void setCacat_fisik(CacatFisik cacat_fisik) {
+        this.cacat_fisik = cacat_fisik;
+    }
+
+    public Wilayah getKd_prop() {
+        return kd_prop;
+    }
+
+    public void setKd_prop(Wilayah kd_prop) {
+        this.kd_prop = kd_prop;
+    }
 }

@@ -49,7 +49,7 @@ import uz.ncipro.calendar.JDateTimePicker;
  */
 public final class sekuel {
 
-    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(sekuel.class.getName());  
+    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(sekuel.class.getName());
     private javax.swing.ImageIcon icon = null;
     private javax.swing.ImageIcon iconThumbnail = null;
     private String folder, AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
@@ -68,36 +68,27 @@ public final class sekuel {
     }
 
     public void menyimpan(String table, String value, String sama) {
-            try {
-                ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
-                try {
-                    ps.executeUpdate();
-                } catch (Exception e) {
-                    log.error(e);
-                    JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
-                } finally {
-                    if (ps != null) {
-                        ps.close();
-                    }
-                }
-                SimpanTrack("insert into " + table + " values(" + value + ")");
-            } catch (SQLException e) {
-                log.error(e);
-            }
-    }
-
-    public void menyimpan2(String table, String value, String sama) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             try {
                 ps.executeUpdate();
             } catch (Exception e) {
                 log.error(e);
+                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
                     ps.close();
                 }
             }
+            SimpanTrack("insert into " + table + " values(" + value + ")");
+        } catch (SQLException e) {
+            log.error(e);
+        }
+    }
+
+    public void menyimpan2(String table, String value, String sama) {
+        try {
+            queryInsert(table, value);
 
             SimpanTrack("insert into " + table + " values(" + value + ")");
         } catch (Exception e) {
@@ -107,11 +98,7 @@ public final class sekuel {
 
     public boolean menyimpantf(String table, String value, String sama) {
         try {
-            ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
-            ps.executeUpdate();
-            if (ps != null) {
-                ps.close();
-            }
+            queryInsert(table, value);
 
             SimpanTrack("insert into " + table + " values(" + value + ")");
             return true;
@@ -122,13 +109,17 @@ public final class sekuel {
         }
     }
 
+    private void queryInsert(String table, String value) throws SQLException {
+        ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
+        ps.executeUpdate();
+        if (ps != null) {
+            ps.close();
+        }
+    }
+
     public boolean menyimpantf2(String table, String value, String sama) {
         try {
-            ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
-            ps.executeUpdate();
-            if (ps != null) {
-                ps.close();
-            }
+            queryInsert(table, value);
 
             SimpanTrack("insert into " + table + " values(" + value + ")");
             return true;
@@ -311,18 +302,11 @@ public final class sekuel {
     public void menyimpan(String table, String value, int i, String[] a) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
-            try {
+            
                 for (angka = 1; angka <= i; angka++) {
                     ps.setString(angka, a[angka - 1]);
                 }
                 ps.executeUpdate();
-            } catch (Exception e) {
-                log.error(e);
-            } finally {
-                if (ps != null) {
-                    ps.close();
-                }
-            }
             if (AKTIFKANTRACKSQL.equals("yes")) {
                 dicari = "";
                 for (angka = 1; angka <= i; angka++) {
@@ -330,9 +314,10 @@ public final class sekuel {
                 }
             }
             SimpanTrack("insert into " + table + " values(" + dicari + ")");
-        } catch (Exception e) {
-            log.error(e);
-        }
+        
+            } catch (SQLException e) {
+                log.error(e);
+            }
     }
 
     public void menyimpan2(String table, String value, int i, String[] a) {
@@ -515,15 +500,11 @@ public final class sekuel {
     }
 
     public void menyimpan(String table, String isisimpan, String isiedit, String acuan_field) {
-       
+
         try {
-            ps = connect.prepareStatement("insert into " + table + " values(" + isisimpan + ")");
-            ps.executeUpdate();
-            if (ps != null) {
-                ps.close();
-            }
+            queryInsert(table, isisimpan);
             SimpanTrack("insert into " + table + " values(" + isisimpan + ")");
-            
+
             ps = connect.prepareStatement("update " + table + " set " + isiedit + " where " + acuan_field);
             ps.executeUpdate();
             if (ps != null) {
@@ -533,7 +514,7 @@ public final class sekuel {
         } catch (SQLException ex) {
             log.error(ex);
         }
-           
+
     }
 
     public void menyimpan(String table, String value, String sama, JTextField AlmGb) {
@@ -607,7 +588,7 @@ public final class sekuel {
                 ps.setString(1, nilai_field);
                 ps.executeUpdate();
             } catch (Exception e) {
-                System.out.println("Notifikasi Hapus : " + e);
+                log.error("Notifikasi Hapus : " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
             } finally {
                 if (ps != null) {
@@ -616,7 +597,7 @@ public final class sekuel {
             }
             SimpanTrack("delete from " + table + " where " + field + "='" + nilai_field + "'");
         } catch (Exception e) {
-            System.out.println("Notifikasi Hapus : " + e);
+            log.error("Notifikasi Hapus : " + e);
         }
     }
 
