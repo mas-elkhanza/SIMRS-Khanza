@@ -59,6 +59,7 @@
             case "PendaftaranPeriksa"                      : include_once("pages/listperiksa.php"); break;
             case "CekPoli"                                 : include_once("pages/listpoli.php"); break;
             case "CekAsuransi"                             : include_once("pages/listcarabayar.php"); break;
+            case "CekBooking"                              : include_once("pages/listbooking.php"); break;
             default                                        : include_once("pages/home.php");
         }
     }

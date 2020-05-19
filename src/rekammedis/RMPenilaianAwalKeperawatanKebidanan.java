@@ -63,7 +63,8 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             "Stts.Kawin 3","HPHT","Usia Hamil","TP","Imunisasi","Jml.Imun","G","P","A","Hidup","Riwayat Ginekologi","Obat/Vitamin","Obat/Vitamin Diminum",
             "Merokok","Jml.Rokok","Alkohol","Jml.Alkohol","Obat Tidur","Riwayat KB","Lama KB","Komplikasi KB","Ket.Komplikasi KB","Berhenti KB",
             "Alasan Berhenti KB","Alat Bantu","Ket.Alat Bantu","Prothesa","Keterangan Prothesa","ADL","Stts.Psikologi","Ket.Stts Psikologi",
-            "Hubungan Keluarga"
+            "Hubungan Keluarga","Tinggal Dengan","Keterangan Tinggal","Ekonomi","Budaya","Keterangan Budaya","Edukasi","Keterangan Edukasi",
+            "R.J.a.1","R.J.a.2","R.J.b","Hasil Penilaian Resiko Jatuh","Dilaporkan","Jam Lapor"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -73,7 +74,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 91; i++) {
+        for (i = 0; i < 104; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -256,7 +257,33 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             }else if(i==89){
                 column.setPreferredWidth(91);
             }else if(i==90){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(102);
+            }else if(i==91){
+                column.setPreferredWidth(83);
+            }else if(i==92){
+                column.setPreferredWidth(102);
+            }else if(i==93){
+                column.setPreferredWidth(48);
+            }else if(i==94){
+                column.setPreferredWidth(54);
+            }else if(i==95){
+                column.setPreferredWidth(101);
+            }else if(i==96){
+                column.setPreferredWidth(48);
+            }else if(i==97){
+                column.setPreferredWidth(103);
+            }else if(i==98){
+                column.setPreferredWidth(40);
+            }else if(i==99){
+                column.setPreferredWidth(40);
+            }else if(i==100){
+                column.setPreferredWidth(40);
+            }else if(i==101){
+                column.setPreferredWidth(210);
+            }else if(i==102){
+                column.setPreferredWidth(60);
+            }else if(i==103){
+                column.setPreferredWidth(58);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -4913,7 +4940,9 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                         rs.getString("ket_imunisasi"),rs.getString("g"),rs.getString("P"),rs.getString("a"),rs.getString("hidup"),rs.getString("ginekologi"),rs.getString("kebiasaan"),
                         rs.getString("ket_kebiasaan"),rs.getString("kebiasaan1"),rs.getString("ket_kebiasaan1"),rs.getString("kebiasaan2"),rs.getString("ket_kebiasaan2"),rs.getString("kebiasaan3"),
                         rs.getString("kb"),rs.getString("ket_kb"),rs.getString("komplikasi"),rs.getString("ket_komplikasi"),rs.getString("berhenti"),rs.getString("alasan"),rs.getString("alat_bantu"),
-                        rs.getString("ket_bantu"),rs.getString("prothesa"),rs.getString("ket_pro"),rs.getString("adl"),rs.getString("status_psiko"),rs.getString("ket_psiko"),rs.getString("hub_keluarga")
+                        rs.getString("ket_bantu"),rs.getString("prothesa"),rs.getString("ket_pro"),rs.getString("adl"),rs.getString("status_psiko"),rs.getString("ket_psiko"),rs.getString("hub_keluarga"),
+                        rs.getString("tinggal_dengan"),rs.getString("ket_tinggal"),rs.getString("ekonomi"),rs.getString("budaya"),rs.getString("ket_budaya"),rs.getString("edukasi"),
+                        rs.getString("ket_edukasi"),rs.getString("berjalan_a"),rs.getString("berjalan_b"),rs.getString("berjalan_c"),rs.getString("hasil"),rs.getString("lapor"),rs.getString("ket_lapor")
                     });
                 }
             } catch (Exception e) {
