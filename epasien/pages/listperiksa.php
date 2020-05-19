@@ -2,9 +2,9 @@
     $btnBooking=isset($_POST['btnBooking'])?$_POST['btnBooking']:NULL;
     if (isset($btnBooking)) {
         $nama         = trim(isset($_POST['nama']))?trim($_POST['nama']):NULL;
-        $nama         = cleankar($nama);
+        $nama         = strtoupper(cleankar($nama));
         $alamat       = trim(isset($_POST['alamat']))?trim($_POST['alamat']):NULL;
-        $alamat       = cleankar($alamat);
+        $alamat       = strtoupper(cleankar($alamat));
         $nohp         = trim(isset($_POST['nohp']))?trim($_POST['nohp']):NULL;
         $nohp         = cleankar($nohp);
         $email        = trim(isset($_POST['email']))?trim($_POST['email']):NULL;
@@ -22,7 +22,7 @@
         $max          = getOne("select ifnull(MAX(CONVERT(RIGHT(no_booking,4),signed)),0)+1 from booking_periksa where tanggal='$ThnDaftar-$BlnDaftar-$TglDaftar'");
         $no_urut      = "BP$ThnDaftar$BlnDaftar$TglDaftar".sprintf("%04s", $max);
         if ((!empty($nama))&&(!empty($alamat))&&(!empty($nohp))&&(!empty($email))&&(!empty($pesan))&&(!empty($poli))) {
-            $insert=Tambah4(" booking_periksa "," '$no_urut','$ThnDaftar-$BlnDaftar-$TglDaftar','$nama','$alamat','$nohp','$email','$poli','$pesan'");
+            $insert=Tambah4(" booking_periksa "," '$no_urut','$ThnDaftar-$BlnDaftar-$TglDaftar','$nama','$alamat','$nohp','$email','$poli','$pesan','Belum Dibalas'");
             if($insert){
                 echo "<section id='news' data-stellar-background-ratio='2.5'>
                             <div class='container'>

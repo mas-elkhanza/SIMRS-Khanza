@@ -30,7 +30,7 @@
                             <?php 
                                $laborat      = trim(isset($_POST['laborat']))?trim($_POST['laborat']):NULL;
                                $laborat      = cleankar($laborat);
-                               $querylaborat = bukaquery("select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,jns_perawatan_lab.kelas from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where jns_perawatan_lab.status='1' and penjab.png_jawab like '%umum%' ".(isset($laborat)?" and (jns_perawatan_lab.nm_perawatan like '%$laborat%' or jns_perawatan_lab.kelas like '%$laborat%')":"")." order by jns_perawatan_lab.nm_perawatan");
+                               $querylaborat = bukaquery("select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,jns_perawatan_lab.kelas from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where jns_perawatan_lab.status='1' and penjab.png_jawab like '%umum%' ".(isset($laborat)?" and (jns_perawatan_lab.nm_perawatan like '%$laborat%' or jns_perawatan_lab.kelas like '%$laborat%')":"")." order by jns_perawatan_lab.kelas");
                                while($rsquerylaborat = mysqli_fetch_array($querylaborat)) {
                                    echo "<tr>
                                            <td align='left'>".$rsquerylaborat["nm_perawatan"]."</td>

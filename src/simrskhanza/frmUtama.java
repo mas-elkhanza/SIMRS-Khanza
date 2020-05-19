@@ -15830,6 +15830,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnBookingPeriksaActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
     /**
     * @param args the command line arguments
     */
@@ -16428,7 +16432,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona,btnPenilaianAwalKeperawatanKebidanan,
-            btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline;
+            btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa;
     
     public void isWall(){
         try{            
@@ -16557,6 +16561,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
 
+            if(akses.getbooking_periksa()==true){
+                Panelmenu.add(btnBookingPeriksa);
+                jmlmenu++;
+            }
+            
             if(akses.getbooking_registrasi()==true){
                 Panelmenu.add(btnBookingRegistrasi);
                 jmlmenu++;
@@ -19679,6 +19688,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnRegistrasi);
             jmlmenu++;
         }
+        
+        if(akses.getbooking_periksa()==true){
+            Panelmenu.add(btnBookingPeriksa);
+            jmlmenu++;
+        }
 
         if(akses.getbooking_registrasi()==true){
             Panelmenu.add(btnBookingRegistrasi);
@@ -22782,6 +22796,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getregistrasi()==true){
             if(btnRegistrasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRegistrasi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbooking_periksa()==true){
+            if(btnBookingPeriksa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBookingPeriksa);
                 jmlmenu++;
             }                
         }
@@ -29072,6 +29093,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSetTarifOnline.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSetTarifOnlineActionPerformed(evt);
+            }
+        });
+        
+        btnBookingPeriksa = new widget.ButtonBig();
+        btnBookingPeriksa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_addressbook_32380.png"))); 
+        btnBookingPeriksa.setText("Booking Periksa");
+        btnBookingPeriksa.setIconTextGap(0);
+        btnBookingPeriksa.setName("btnBookingPeriksa"); 
+        btnBookingPeriksa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBookingPeriksa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookingPeriksaActionPerformed(evt);
             }
         });
                 

@@ -32,7 +32,7 @@
                             <?php 
                                $kamar      = trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
                                $kamar      = cleankar($kamar);
-                               $querykamar = bukaquery("select kamar.kd_kamar,bangsal.nm_bangsal,kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' ".(isset($kamar)?" and (kamar.kd_kamar like '%$kamar%' or bangsal.nm_bangsal like '%$kamar%' or kamar.kelas like '%$kamar%' or kamar.status like '%$kamar%')":"")." order by bangsal.nm_bangsal");
+                               $querykamar = bukaquery("select kamar.kd_kamar,bangsal.nm_bangsal,kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' ".(isset($kamar)?" and (kamar.kd_kamar like '%$kamar%' or bangsal.nm_bangsal like '%$kamar%' or kamar.kelas like '%$kamar%' or kamar.status like '%$kamar%')":"")." order by kamar.kelas");
                                while($rsquerykamar = mysqli_fetch_array($querykamar)) {
                                    echo "<tr>
                                            <td align='left'>".$rsquerykamar["kd_kamar"]."</td>

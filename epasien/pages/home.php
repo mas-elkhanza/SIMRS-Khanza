@@ -167,12 +167,12 @@
                                <h2><center>Buat Janji/Booking</center></h2>
                                <div class="col-md-12 col-sm-12">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" name="nama" maxlength="40" placeholder="Nama Anda" autocomplete="off">
+                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" name="nama" maxlength="40" placeholder="Nama Anda" autocomplete="off">
                                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-12 col-sm-12">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2" name="alamat" maxlength="200" placeholder="Alamat Anda" autocomplete="off">
+                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2" name="alamat" maxlength="200" placeholder="Alamat Anda" autocomplete="off">
                                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">    
