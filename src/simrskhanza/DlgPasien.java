@@ -4593,7 +4593,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } else if (R6.isSelected() == true) {
             klg = "ANAK";
         }
-//
+
 //        if (Kelurahan.isEditable() == true) {
 //            Sequel.queryu4("insert into kelurahan values(?,?)", 2, new String[]{"0", Kelurahan.getText().replaceAll("KELURAHAN", "-")});
 //            kdkel = Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?", Kelurahan.getText().replaceAll("KELURAHAN", "-"));
@@ -8377,12 +8377,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                             + "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"
                             + "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik "
                             + "from pasien "
-                            + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
-                            + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                            + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
+                            + "left join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                            + "left join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                            + "left join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
                             + "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "
                             + "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id "
-                            + "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "
+                            + "left join propinsi on pasien.kd_prop=propinsi.kd_prop "
                             + "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "
                             + "inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "
                             + "inner join penjab on pasien.kd_pj=penjab.kd_pj order by pasien.no_rkm_medis desc");
@@ -8395,12 +8395,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                             + "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"
                             + "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik "
                             + "from pasien "
-                            + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
-                            + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                            + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
+                            + "left join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                            + "left join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                            + "left join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
                             + "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "
                             + "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id "
-                            + "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "
+                            + "left join propinsi on pasien.kd_prop=propinsi.kd_prop "
                             + "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "
                             + "inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "
                             + "inner join penjab on pasien.kd_pj=penjab.kd_pj "
@@ -8435,9 +8435,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                             + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj),"
                             + "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"
                             + "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "
-                            + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                            + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "
-                            + "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id inner join propinsi on pasien.kd_prop=propinsi.kd_prop "
+                            + "left join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                            + "left join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                            + "left join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
+                            + "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "
+                            + "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id "
+                            + "left join propinsi on pasien.kd_prop=propinsi.kd_prop "
                             + "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "
                             + "inner join penjab on pasien.kd_pj=penjab.kd_pj order by pasien.no_rkm_medis desc LIMIT ? ");
                 } else {
@@ -8448,9 +8451,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                             + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj),"
                             + "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"
                             + "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "
-                            + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                            + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "
-                            + "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id inner join propinsi on pasien.kd_prop=propinsi.kd_prop "
+                            + "left join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                            + "left join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                            + "left join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
+                            + "inner join perusahaan_pasien on perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien "
+                            + "inner join cacat_fisik on pasien.cacat_fisik=cacat_fisik.id "
+                            + "left join propinsi on pasien.kd_prop=propinsi.kd_prop "
                             + "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "
                             + "inner join penjab on pasien.kd_pj=penjab.kd_pj "
                             + "where concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ? and pasien.no_rkm_medis like ? "
