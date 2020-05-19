@@ -4608,7 +4608,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 kdprop = Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?", Propinsi.getText().replaceAll("PROPINSI", "-"));
             }
 //        }
-
+        System.out.println("kdkel,kdkec,kdkab,kdprop>>>"+kdkel+", "+kdkec+", "+kdkab+", "+kdprop);
         if (Sequel.menyimpantf2("pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rekam Medis Pasien", 36, new String[]{
             TNo.getText(), TNm.getText(), TKtp.getText(), CmbJk.getSelectedItem().toString().substring(0, 1), TTmp.getText(),
             Valid.SetTgl(DTPLahir.getSelectedItem() + ""), NmIbu.getText(),
@@ -4637,6 +4637,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 Sequel.queryu2("delete from set_no_rkm_medis");
                 Sequel.queryu2("insert into set_no_rkm_medis values(?)", 1, new String[]{TNo.getText()});
             }
+            JOptionPane.showMessageDialog(rootPane, "Simpan Sukses");
             emptTeks();
         } else {
             autoNomor();
@@ -4668,6 +4669,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     Sequel.queryu2("delete from set_no_rkm_medis");
                     Sequel.queryu2("insert into set_no_rkm_medis values(?)", 1, new String[]{TNo.getText()});
                 }
+                JOptionPane.showMessageDialog(rootPane, "Simpan Sukses");
                 emptTeks();
             } else {
                 autoNomor();
@@ -4699,6 +4701,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         Sequel.queryu2("delete from set_no_rkm_medis");
                         Sequel.queryu2("insert into set_no_rkm_medis values(?)", 1, new String[]{TNo.getText()});
                     }
+                    JOptionPane.showMessageDialog(rootPane, "Simpan Sukses");
                     emptTeks();
                 } else {
                     autoNomor();
@@ -4730,6 +4733,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             Sequel.queryu2("delete from set_no_rkm_medis");
                             Sequel.queryu2("insert into set_no_rkm_medis values(?)", 1, new String[]{TNo.getText()});
                         }
+                        JOptionPane.showMessageDialog(rootPane, "Simpan Sukses");
                         emptTeks();
                     } else {
                         autoNomor();
@@ -4761,6 +4765,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 Sequel.queryu2("delete from set_no_rkm_medis");
                                 Sequel.queryu2("insert into set_no_rkm_medis values(?)", 1, new String[]{TNo.getText()});
                             }
+                            JOptionPane.showMessageDialog(rootPane, "Simpan Sukses");
                             emptTeks();
                         } else {
                             TNm.requestFocus();
