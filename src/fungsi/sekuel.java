@@ -1803,7 +1803,7 @@ public final class sekuel {
     private void SimpanTrack(String sql) {
         if (AKTIFKANTRACKSQL.equals("yes")) {
             try {
-                ps = connect.prepareStatement("insert into trackersql values(now(),?,?)");
+                ps = connect.prepareStatement("insert into trackersql values(null,now(),?,?)");
                 try {
                     ps.setString(1, sql);
                     ps.setString(2, akses.getkode());
