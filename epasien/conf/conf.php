@@ -146,6 +146,18 @@
         mysqli_close($konektor);
         return $result;
     }
+    
+    function TO_DAYS($date) {
+	if (is_numeric($date)) {
+            $res = 719528 + (int) ($date / 86400);
+	} else {
+            $TZ = date_default_timezone_get();
+            date_default_timezone_set('UTC');
+            $res = 719528 + (int) (strtotime($date) / 86400);
+            date_default_timezone_set($TZ);
+	}
+	return $res;
+    }
 
     function Tambah($tabelname,$attrib,$pesan) {
         $command = bukainput("INSERT INTO ".$tabelname." VALUES (".$attrib.")");
@@ -225,6 +237,10 @@
     function JSRedirect($url){
         echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=$url'></head><body></body></html>";
     }
+    
+    function JSRedirect2($url,$time){
+        echo"<html><head><title></title><meta http-equiv='refresh' content='$time;URL=$url'></head><body></body></html>";
+    }
 
     // redirect to another page
     function redirect($location) {
@@ -297,6 +313,12 @@
     function getOne($sql) {
         $hasil=bukaquery($sql);
         list($result) =mysqli_fetch_array($hasil);
+        return $result;
+    }
+    
+    function getOne2($sql) {
+        $hasil = bukaquery2($sql);
+        list($result) = mysqli_fetch_array($hasil);
         return $result;
     }
 
