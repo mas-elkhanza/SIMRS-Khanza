@@ -539,6 +539,7 @@ import keuangan.DlgJnsPerawatanRanap;
 import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganPenagihanPiutangPasien;
+import keuangan.KeuanganSetTarifOnline;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
 import rekammedis.RMDataResumePasien;
@@ -1534,7 +1535,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/05/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/05/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -2034,7 +2035,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/InformasiKamar.png"))); // NOI18N
+        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Informasi-Kamar.png"))); // NOI18N
         btnAnalisaKamar.setText("Informasi Kamar");
         btnAnalisaKamar.setIconTextGap(0);
         btnAnalisaKamar.setName("btnAnalisaKamar"); // NOI18N
@@ -5422,7 +5423,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnBookingRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Address Book_32590.png"))); // NOI18N
+        btnBookingRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Booking.png"))); // NOI18N
         btnBookingRegistrasi.setText("Booking Registrasi");
         btnBookingRegistrasi.setIconTextGap(0);
         btnBookingRegistrasi.setName("btnBookingRegistrasi"); // NOI18N
@@ -15818,6 +15819,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSetTarifOnlineActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganSetTarifOnline aplikasi=new KeuanganSetTarifOnline(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnBookingPeriksaActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
     /**
     * @param args the command line arguments
     */
@@ -16416,7 +16432,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona,btnPenilaianAwalKeperawatanKebidanan,
-            btnPengumumanEPasien,btnSuratHamil;
+            btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa;
     
     public void isWall(){
         try{            
@@ -16545,6 +16561,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
 
+            if(akses.getbooking_periksa()==true){
+                Panelmenu.add(btnBookingPeriksa);
+                jmlmenu++;
+            }
+            
             if(akses.getbooking_registrasi()==true){
                 Panelmenu.add(btnBookingRegistrasi);
                 jmlmenu++;
@@ -17951,6 +17972,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
             if(akses.gettarif_utd()==true){
                 Panelmenu.add(btnTarifUtd);
+                jmlmenu++;
+            }
+            
+            if(akses.getset_tarif_online()==true){
+                Panelmenu.add(btnSetTarifOnline);
                 jmlmenu++;
             }
 
@@ -19662,6 +19688,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnRegistrasi);
             jmlmenu++;
         }
+        
+        if(akses.getbooking_periksa()==true){
+            Panelmenu.add(btnBookingPeriksa);
+            jmlmenu++;
+        }
 
         if(akses.getbooking_registrasi()==true){
             Panelmenu.add(btnBookingRegistrasi);
@@ -21060,6 +21091,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.gettarif_utd()==true){
             Panelmenu.add(btnTarifUtd);
+            jmlmenu++;
+        }
+        
+        if(akses.getset_tarif_online()==true){
+            Panelmenu.add(btnSetTarifOnline);
             jmlmenu++;
         }
 
@@ -22760,6 +22796,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getregistrasi()==true){
             if(btnRegistrasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRegistrasi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbooking_periksa()==true){
+            if(btnBookingPeriksa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBookingPeriksa);
                 jmlmenu++;
             }                
         }
@@ -24723,6 +24766,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gettarif_utd()==true){
             if(btnTarifUtd.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTarifUtd);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getset_tarif_online()==true){
+            if(btnSetTarifOnline.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSetTarifOnline);
                 jmlmenu++;
             }                
         }
@@ -29031,6 +29081,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratHamil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuratHamilActionPerformed(evt);
+            }
+        });
+        
+        btnSetTarifOnline = new widget.ButtonBig();
+        btnSetTarifOnline.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Non-Service_Specific_copy_Client_259291.png"))); 
+        btnSetTarifOnline.setText("Set Tarif Online");
+        btnSetTarifOnline.setIconTextGap(0);
+        btnSetTarifOnline.setName("btnSetTarifOnline"); 
+        btnSetTarifOnline.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetTarifOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetTarifOnlineActionPerformed(evt);
+            }
+        });
+        
+        btnBookingPeriksa = new widget.ButtonBig();
+        btnBookingPeriksa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_addressbook_32380.png"))); 
+        btnBookingPeriksa.setText("Booking Periksa");
+        btnBookingPeriksa.setIconTextGap(0);
+        btnBookingPeriksa.setName("btnBookingPeriksa"); 
+        btnBookingPeriksa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBookingPeriksa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookingPeriksaActionPerformed(evt);
             }
         });
                 

@@ -2101,7 +2101,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Keluhan</td>"+
+                                                    "<td valign='top' colspan='2'>Subjek</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -2111,7 +2111,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Pemeriksaan</td>"+
+                                                    "<td valign='top' colspan='2'>Objek</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -2121,7 +2121,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Penilaian</td>"+
+                                                    "<td valign='top' colspan='2'>Asesmen</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -2131,7 +2131,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
+                                                    "<td valign='top' colspan='2'>Plan</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -2433,7 +2433,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Keluhan</td>"+
+                                                    "<td valign='top' colspan='2'>Subjek</td>"+
                                                     "<td valign='top' colspan='5'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -2443,7 +2443,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Pemeriksaan</td>"+
+                                                    "<td valign='top' colspan='2'>Objek</td>"+
                                                     "<td valign='top' colspan='5'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -2453,7 +2453,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Penilaian</td>"+
+                                                    "<td valign='top' colspan='2'>Asesmen</td>"+
                                                     "<td valign='top' colspan='5'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -2463,7 +2463,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
+                                                    "<td valign='top' colspan='2'>Plan</td>"+
                                                     "<td valign='top' colspan='5'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -8691,7 +8691,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Keluhan</td>"+
+                                                    "<td valign='top' colspan='2'>Subjek</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -8701,7 +8701,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Pemeriksaan</td>"+
+                                                    "<td valign='top' colspan='2'>Objek</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -8711,7 +8711,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Penilaian</td>"+
+                                                    "<td valign='top' colspan='2'>Asesmen</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -8721,7 +8721,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
+                                                    "<td valign='top' colspan='2'>Plan</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -9023,7 +9023,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Keluhan</td>"+
+                                                    "<td valign='top' colspan='2'>Subjek</td>"+
                                                     "<td valign='top' colspan='5'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -9033,7 +9033,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Pemeriksaan</td>"+
+                                                    "<td valign='top' colspan='2'>Objek</td>"+
                                                     "<td valign='top' colspan='5'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -9043,7 +9043,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Penilaian</td>"+
+                                                    "<td valign='top' colspan='2'>Asesmen</td>"+
                                                     "<td valign='top' colspan='5'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
@@ -9053,7 +9053,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                  "<tr>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
-                                                    "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
+                                                    "<td valign='top' colspan='2'>Plan</td>"+
                                                     "<td valign='top' colspan='5'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
