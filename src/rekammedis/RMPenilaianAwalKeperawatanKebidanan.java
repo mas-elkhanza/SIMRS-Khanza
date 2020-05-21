@@ -5149,9 +5149,37 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()); 
             RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()); 
             Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()); 
-            /*"GCS","BB","TB","LILA","BMI","TFU","TBJ","Letak","Presentasi","Penurunan","Kontraksi/HIS","Kekuatan","Lamanya","BJJ","Keterangan BJJ",
-            "Portio","Pembukaan Serviks","Ketuban","Hodge","Inspekulo","Hasil Inspekulo","CTG","Hasil CTG","USG","Hasil USG","Laboratorium",
-            "Hasil Laboratorium","Lakmus","Hasil Lakmus","Pemeriksaan Panggul","Keluhan Utama","Menarche","Lamanya","Banyaknya","Haid Terakhir",
+            GCS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()); 
+            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString()); 
+            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()); 
+            LILA.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString()); 
+            BMI.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()); 
+            TFU.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString()); 
+            TBJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString()); 
+            Letak.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString()); 
+            Presentasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            Penurunan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            Kontraksi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            Kekuatan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString()); 
+            Lamanya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString()); 
+            BJJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString()); 
+            KeteranganBJJ.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString()); 
+            Portio.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()); 
+            PembukaanServiks.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString()); 
+            Ketuban.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString()); 
+            Hodge.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString()); 
+            Inspekulo.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString()); 
+            KeteranganInspekulo.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            CTG.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString()); 
+            KeteranganCTG.setText(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            USG.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString()); 
+            KeteranganUSG.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString()); 
+            Laboratorium.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString()); 
+            KeteranganLaboratorium.setText(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
+            Lakmus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString()); 
+            KeteranganLakmus.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            PemeriksaanPanggul.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
+            /*"Pemeriksaan Panggul","Keluhan Utama","Menarche","Lamanya","Banyaknya","Haid Terakhir",
             "Siklus","Ket.Siklus","Masalah Menstruasi","Stts.Menikah","Kali","Usia Kw 1","Stts.Kawin 1","Usia Kw 2","Stts.Kawin 2","Usia Kw 3",
             "Stts.Kawin 3","HPHT","Usia Hamil","TP","Imunisasi","Jml.Imun","G","P","A","Hidup","Riwayat Ginekologi","Obat/Vitamin","Obat/Vitamin Diminum",
             "Merokok","Jml.Rokok","Alkohol","Jml.Alkohol","Obat Tidur","Riwayat KB","Lama KB","Komplikasi KB","Ket.Komplikasi KB","Berhenti KB",
