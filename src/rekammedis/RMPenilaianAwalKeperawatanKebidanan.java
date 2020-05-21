@@ -5179,8 +5179,15 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             Lakmus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString()); 
             KeteranganLakmus.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
             PemeriksaanPanggul.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
-            /*"Pemeriksaan Panggul","Keluhan Utama","Menarche","Lamanya","Banyaknya","Haid Terakhir",
-            "Siklus","Ket.Siklus","Masalah Menstruasi","Stts.Menikah","Kali","Usia Kw 1","Stts.Kawin 1","Usia Kw 2","Stts.Kawin 2","Usia Kw 3",
+            KeluhanUtama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
+            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            Lama.setText(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
+            Banyaknya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
+            HaidTerakhir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString());
+            Siklus.setText(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString());
+            KetSiklus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString());
+            KetSiklus2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString());
+            /*"Stts.Menikah","Kali","Usia Kw 1","Stts.Kawin 1","Usia Kw 2","Stts.Kawin 2","Usia Kw 3",
             "Stts.Kawin 3","HPHT","Usia Hamil","TP","Imunisasi","Jml.Imun","G","P","A","Hidup","Riwayat Ginekologi","Obat/Vitamin","Obat/Vitamin Diminum",
             "Merokok","Jml.Rokok","Alkohol","Jml.Alkohol","Obat Tidur","Riwayat KB","Lama KB","Komplikasi KB","Ket.Komplikasi KB","Berhenti KB",
             "Alasan Berhenti KB","Alat Bantu","Ket.Alat Bantu","Prothesa","Keterangan Prothesa","ADL","Stts.Psikologi","Ket.Stts Psikologi",
