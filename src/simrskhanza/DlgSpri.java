@@ -42,6 +42,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -706,7 +708,7 @@ public class DlgSpri extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass9.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -719,7 +721,7 @@ public class DlgSpri extends javax.swing.JDialog {
         jLabel18.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass9.add(jLabel18);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -830,7 +832,7 @@ public class DlgSpri extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-05-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1188,11 +1190,11 @@ public class DlgSpri extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        
+
         if (TCari.getText().trim().equals("") || TNoRM.getText().trim().equals("No. RM")) {
             JOptionPane.showMessageDialog(null, "Maaf, Pilih data yang akan dicetak dahulu.");
             BtnCariActionPerformed(evt);
-        }else{
+        } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if (tabMode.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
@@ -1242,7 +1244,7 @@ public class DlgSpri extends javax.swing.JDialog {
                             + " order by temp_spri.tanggal ", param);
                 }
             }
-        this.setCursor(Cursor.getDefaultCursor());
+            this.setCursor(Cursor.getDefaultCursor());
         }
 }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -1574,9 +1576,6 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.TextBox txtRencanaPerawatan;
     // End of variables declaration//GEN-END:variables
 
-//"Tanggal","Jam","No.R.Medik","Nama Pasien","J.K.","Tmp.Lahir",
-//                      "Tgl.Lahir","G.D.","Stts.Nikah","Agama","Rencana Perawatan","Ruangan",
-//                      "Dokter","Diagnosa"
     private void jam() {
         ActionListener taskPerformer = new ActionListener() {
             private int nilai_jam;
@@ -1690,7 +1689,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     }
 
     private void getData() {
-        if (tbSpri.getSelectedRow() != -1){
+        if (tbSpri.getSelectedRow() != -1) {
             id = tbSpri.getValueAt(tbSpri.getSelectedRow(), 19).toString();
             txtId.setText(id);
             cmbJam.setSelectedItem(tbSpri.getValueAt(tbSpri.getSelectedRow(), 1).toString().substring(0, 2));

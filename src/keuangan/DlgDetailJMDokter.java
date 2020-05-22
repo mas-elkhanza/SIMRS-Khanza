@@ -1118,7 +1118,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                pspasienralan.close();
 //                            }
 //                        }
-                        if (chkRanap.isSelected()) {
                             pspasienralandrpr = koneksi.prepareStatement(
                                     "select rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "
                                     + "from rawat_jl_drpr inner join pasien "
@@ -1131,24 +1130,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "
                                     + "and reg_periksa.no_rawat=nota_jalan.no_rawat "
                                     + "and nota_jalan.no_rawat=detail_nota_jalan.no_rawat "
-                                    + "where rawat_jl_drpr.kd_dokter like ? and nota_jalan.tanggal between ? and ? and reg_periksa.kd_pj like ? AND reg_periksa.status_lanjut='Ranap' "
+                                    + "where rawat_jl_drpr.kd_dokter like ? and nota_jalan.tanggal between ? and ? and reg_periksa.kd_pj like ? "
                                     + "group by rawat_jl_drpr.no_rawat");
-                        } else if (chkRalan.isSelected()) {
-                            pspasienralandrpr = koneksi.prepareStatement(
-                                    "select rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "
-                                    + "from rawat_jl_drpr inner join pasien "
-                                    + "inner join reg_periksa "
-                                    + "inner join poliklinik "
-                                    + "inner join penjab "
-                                    + "inner join nota_jalan "
-                                    + "inner join detail_nota_jalan "
-                                    + "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                    + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "
-                                    + "and reg_periksa.no_rawat=nota_jalan.no_rawat "
-                                    + "and nota_jalan.no_rawat=detail_nota_jalan.no_rawat "
-                                    + "where rawat_jl_drpr.kd_dokter like ? and nota_jalan.tanggal between ? and ? and reg_periksa.kd_pj like ? AND reg_periksa.status_lanjut='Ralan' "
-                                    + "group by rawat_jl_drpr.no_rawat");
-                        }
                         try {
                             pspasienralandrpr.setString(1, "%" + rs.getString("kd_dokter") + "%");
                             pspasienralandrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
@@ -2839,23 +2822,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                            }
 //                        }
 
-                        if (chkRanap.isSelected()) {
-                        pspasienralandrpr = koneksi.prepareStatement(
-                                "SELECT rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,bayar_piutang.`tgl_bayar`, pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli,piutang_pasien.status "
-                                + "FROM rawat_jl_drpr INNER JOIN reg_periksa INNER JOIN pasien INNER JOIN poliklinik INNER JOIN penjab "
-                                + "INNER JOIN piutang_pasien INNER JOIN bayar_piutang ON rawat_jl_drpr.no_rawat=reg_periksa.no_rawat AND reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                + "AND reg_periksa.kd_pj=penjab.kd_pj AND reg_periksa.kd_poli=poliklinik.kd_poli AND bayar_piutang.no_rkm_medis=pasien.no_rkm_medis "
-                                + "WHERE reg_periksa.kd_dokter=? AND bayar_piutang.tgl_bayar BETWEEN ? AND ? AND reg_periksa.kd_pj like ? AND piutang_pasien.status='Lunas' and reg_periksa.status_lanjut='Ranap' "
-                                + "GROUP BY rawat_jl_drpr.no_rawat");
-                        }else if (chkRalan.isSelected()){
                             pspasienralandrpr = koneksi.prepareStatement(
                                 "SELECT rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,bayar_piutang.`tgl_bayar`, pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli,piutang_pasien.status "
                                 + "FROM rawat_jl_drpr INNER JOIN reg_periksa INNER JOIN pasien INNER JOIN poliklinik INNER JOIN penjab "
                                 + "INNER JOIN piutang_pasien INNER JOIN bayar_piutang ON rawat_jl_drpr.no_rawat=reg_periksa.no_rawat AND reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                                 + "AND reg_periksa.kd_pj=penjab.kd_pj AND reg_periksa.kd_poli=poliklinik.kd_poli AND bayar_piutang.no_rkm_medis=pasien.no_rkm_medis "
-                                + "WHERE reg_periksa.kd_dokter=? AND bayar_piutang.tgl_bayar BETWEEN ? AND ? AND reg_periksa.kd_pj like ? AND piutang_pasien.status='Lunas' and reg_periksa.status_lanjut='Ralan' "
+                                + "WHERE reg_periksa.kd_dokter=? AND bayar_piutang.tgl_bayar BETWEEN ? AND ? AND reg_periksa.kd_pj like ? AND piutang_pasien.status='Lunas' "
                                 + "GROUP BY rawat_jl_drpr.no_rawat");
-                        } 
                         try {
                             pspasienralandrpr.setString(1, rs.getString("kd_dokter"));
                             pspasienralandrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
