@@ -48,7 +48,7 @@ public class SpriDao implements SpriInterface<Spri> {
                 + domain.getNorm() + "','"
                 + domain.getDiagnosa() + "','"
                 + domain.getRencana_perawatan() + "','"
-                + domain.getRencana_perawatan() + "','"
+                + domain.getUpf()+ "','"
                 + domain.getDokter().getKd_dokter() + "','"
                 + domain.getNama() + "','"
                 + domain.getKeluhan() + "','"
