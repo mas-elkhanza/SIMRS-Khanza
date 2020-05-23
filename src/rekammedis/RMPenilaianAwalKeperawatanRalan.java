@@ -3199,7 +3199,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             isMenu();
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan triasenya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan...!!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
@@ -3257,7 +3257,9 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
                         "inner join petugas on penilaian_awal_keperawatan_ralan.nip=petugas.nip "+
                         "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                         "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
-        } 
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
+        }  
     }//GEN-LAST:event_BtnPrint1ActionPerformed
 
     private void DetailRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetailRencanaKeyPressed

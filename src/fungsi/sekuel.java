@@ -12,6 +12,7 @@
 
 package fungsi;
 
+import fungsi.akses;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -51,7 +52,7 @@ import uz.ncipro.calendar.JDateTimePicker;
 public final class sekuel {
     private javax.swing.ImageIcon icon = null;
     private javax.swing.ImageIcon iconThumbnail = null;
-    private String folder,AKTIFKANTRACKSQL=koneksiDB.AKTIFKANTRACKSQL();    
+    private String folder,AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
     private final Connection connect=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
