@@ -1535,7 +1535,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/05/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/05/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -5368,7 +5368,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnJadwalOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Alarm_132148.png"))); // NOI18N
+        btnJadwalOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/JadwalOperasi.png"))); // NOI18N
         btnJadwalOperasi.setText("Jadwal Operasi");
         btnJadwalOperasi.setIconTextGap(0);
         btnJadwalOperasi.setName("btnJadwalOperasi"); // NOI18N
