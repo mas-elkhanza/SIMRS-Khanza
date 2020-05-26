@@ -11,6 +11,7 @@
  */
 package fungsi;
 
+import fungsi.akses;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -74,7 +75,8 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -112,7 +114,8 @@ public final class sekuel {
             return true;
         } catch (Exception e) {
             log.error(e);
-            JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             return false;
         }
     }
@@ -133,7 +136,8 @@ public final class sekuel {
         }
     }
 
-    public boolean menyimpantf(String table, String value, int i, String[] a, String acuan_field, String update, int j, String[] b) {
+    public boolean menyimpantf(String table, String value, int i, String[] a, String acuan_field, String update, int j,
+            String[] b) {
         bool = false;
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -193,7 +197,8 @@ public final class sekuel {
 
             } catch (Exception e) {
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -263,7 +268,8 @@ public final class sekuel {
         } catch (Exception e) {
             log.error(e);
             if (e.toString().contains("Duplicate")) {
-                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } else {
                 JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Ada kesalahan Query...!");
             }
@@ -306,11 +312,11 @@ public final class sekuel {
     public void menyimpan(String table, String value, int i, String[] a) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
-            
-                for (angka = 1; angka <= i; angka++) {
-                    ps.setString(angka, a[angka - 1]);
-                }
-                ps.executeUpdate();
+
+            for (angka = 1; angka <= i; angka++) {
+                ps.setString(angka, a[angka - 1]);
+            }
+            ps.executeUpdate();
             if (AKTIFKANTRACKSQL.equals("yes")) {
                 dicari = "";
                 for (angka = 1; angka <= i; angka++) {
@@ -318,10 +324,10 @@ public final class sekuel {
                 }
             }
             SimpanTrack("insert into " + table + " values(" + dicari + ")");
-        
-            } catch (SQLException e) {
-                log.error(e);
-            }
+
+        } catch (SQLException e) {
+            log.error(e);
+        }
     }
 
     public void menyimpan2(String table, String value, int i, String[] a) {
@@ -350,7 +356,8 @@ public final class sekuel {
         }
     }
 
-    public void menyimpan(String table, String value, int i, String[] a, String acuan_field, String update, int j, String[] b) {
+    public void menyimpan(String table, String value, int i, String[] a, String acuan_field, String update, int j,
+            String[] b) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             for (angka = 1; angka <= i; angka++) {
@@ -394,7 +401,8 @@ public final class sekuel {
         }
     }
 
-    public void menyimpan2(String table, String value, int i, String[] a, String acuan_field, String update, int j, String[] b) {
+    public void menyimpan2(String table, String value, int i, String[] a, String acuan_field, String update, int j,
+            String[] b) {
         try {
             dicari = "";
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -440,7 +448,8 @@ public final class sekuel {
         }
     }
 
-    public void menyimpan3(String table, String value, int i, String[] a, String acuan_field, String update, int j, String[] b) {
+    public void menyimpan3(String table, String value, int i, String[] a, String acuan_field, String update, int j,
+            String[] b) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             for (angka = 1; angka <= i; angka++) {
@@ -504,23 +513,23 @@ public final class sekuel {
     }
 
     public void menyimpan(String table, String isisimpan, String isiedit, String acuan_field) {
-        try{            
-            ps=connect.prepareStatement("insert into "+table+" values("+isisimpan+")");
-            ps.executeUpdate();   
-            if(ps != null){
+        try {
+            ps = connect.prepareStatement("insert into " + table + " values(" + isisimpan + ")");
+            ps.executeUpdate();
+            if (ps != null) {
                 ps.close();
-            }  
-            SimpanTrack("insert into "+table+" values("+isisimpan+")");
-        }catch(Exception e){
+            }
+            SimpanTrack("insert into " + table + " values(" + isisimpan + ")");
+        } catch (Exception e) {
             try {
-                ps=connect.prepareStatement("update "+table+" set "+isiedit+" where "+acuan_field);
+                ps = connect.prepareStatement("update " + table + " set " + isiedit + " where " + acuan_field);
                 ps.executeUpdate();
-                if(ps != null){
+                if (ps != null) {
                     ps.close();
-                }  
-                SimpanTrack("update "+table+" set "+isiedit+" where "+acuan_field);
+                }
+                SimpanTrack("update " + table + " set " + isiedit + " where " + acuan_field);
             } catch (Exception ex) {
-                System.out.println("Notifikasi Edit : "+ex);
+                System.out.println("Notifikasi Edit : " + ex);
             }
         }
     }
@@ -534,7 +543,8 @@ public final class sekuel {
                 JOptionPane.showMessageDialog(AlmGb, "Simpan Berhasil...");
             } catch (Exception e) {
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -556,7 +566,8 @@ public final class sekuel {
             } catch (Exception e) {
                 log.error(e);
                 bool = false;
-                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -578,7 +589,8 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -597,7 +609,8 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 log.error("Notifikasi Hapus : " + e);
-                JOptionPane.showMessageDialog(null, "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -618,13 +631,15 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
             } finally {
                 if (ps != null) {
                     ps.close();
                 }
             }
-            SimpanTrack("delete from " + table + " where " + field + "='" + nilai_field + "' and " + field2 + "='" + nilai_field2 + "'");
+            SimpanTrack("delete from " + table + " where " + field + "='" + nilai_field + "' and " + field2 + "='"
+                    + nilai_field2 + "'");
         } catch (Exception e) {
             log.error(e);
         }
@@ -639,7 +654,8 @@ public final class sekuel {
                 JOptionPane.showMessageDialog(null, "Proses hapus berhasil...!!!!");
             } catch (Exception e) {
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -677,7 +693,8 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, Gagal Mengedit. Mungkin kode sudah digunakan sebelumnya...!!!!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, Gagal Mengedit. Mungkin kode sudah digunakan sebelumnya...!!!!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -699,7 +716,8 @@ public final class sekuel {
             } catch (Exception e) {
                 bool = false;
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, Gagal Mengedit. Mungkin kode sudah digunakan sebelumnya...!!!!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, Gagal Mengedit. Mungkin kode sudah digunakan sebelumnya...!!!!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -840,7 +858,8 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, Pilih dulu data yang mau anda edit...\n Klik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, Pilih dulu data yang mau anda edit...\n Klik data pada table untuk memilih...!!!!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -862,7 +881,8 @@ public final class sekuel {
             } catch (Exception e) {
                 bool = false;
                 log.error(e);
-                JOptionPane.showMessageDialog(null, "Maaf, Pilih dulu data yang mau anda edit...\n Klik data pada table untuk memilih...!!!!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, Pilih dulu data yang mau anda edit...\n Klik data pada table untuk memilih...!!!!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -1202,8 +1222,7 @@ public final class sekuel {
     public int cariRegistrasi(String norawat) {
         angka = 0;
         try {
-            ps = connect.prepareStatement(
-                    "select count(billing.no_rawat) from billing where billing.no_rawat=?");
+            ps = connect.prepareStatement("select count(billing.no_rawat) from billing where billing.no_rawat=?");
             try {
                 ps.setString(1, norawat);
                 rs = ps.executeQuery();
@@ -1695,7 +1714,7 @@ public final class sekuel {
                 } else {
                     angka2 = 0;
                 }
-                //rs.close();
+                // rs.close();
             } catch (Exception e) {
                 log.error(e);
             } finally {
@@ -1780,8 +1799,7 @@ public final class sekuel {
                 for (int I = 0; rs.next(); I++) {
                     ((Painter) txt).setImage(gambar(text));
                     Blob blob = rs.getBlob(5);
-                    ((Painter) txt).setImageIcon(new javax.swing.ImageIcon(
-                            blob.getBytes(1, (int) (blob.length()))));
+                    ((Painter) txt).setImageIcon(new javax.swing.ImageIcon(blob.getBytes(1, (int) (blob.length()))));
                 }
             } catch (Exception e) {
                 cetak(e.toString());
@@ -1860,7 +1878,7 @@ public final class sekuel {
         for (int i = 0; i < angka; i++) {
             javax.swing.table.TableColumn tbc = tb.getColumnModel().getColumn(i);
             tbc.setPreferredWidth(lebar[i]);
-            //tb.setRowHeight(17);
+            // tb.setRowHeight(17);
         }
     }
 
@@ -1877,8 +1895,7 @@ public final class sekuel {
             int scaledW = (int) (scale * inImage.getWidth(null));
             int scaledH = (int) (scale * inImage.getHeight(null));
 
-            BufferedImage outImage = new BufferedImage(scaledW, scaledH,
-                    BufferedImage.TYPE_INT_RGB);
+            BufferedImage outImage = new BufferedImage(scaledW, scaledH, BufferedImage.TYPE_INT_RGB);
 
             AffineTransform tx = new AffineTransform();
 
@@ -1941,9 +1958,8 @@ public final class sekuel {
                 FileChannel outChannel;
                 try (FileChannel inChannel = inFile.getChannel()) {
                     outChannel = outFile.getChannel();
-                    for (ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
-                            inChannel.read(buffer) != -1;
-                            buffer.clear()) {
+                    for (ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024); inChannel.read(buffer) != -1; buffer
+                            .clear()) {
                         buffer.flip();
                         while (buffer.hasRemaining()) {
                             outChannel.write(buffer);
