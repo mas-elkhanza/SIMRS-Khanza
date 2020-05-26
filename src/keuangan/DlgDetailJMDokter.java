@@ -28,7 +28,7 @@ import simrskhanza.DlgPenanggungJawab;
 
 public class DlgDetailJMDokter extends javax.swing.JDialog {
 
-    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(DlgDetailJMDokter.class.getName());
+    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(DlgDetailJMDokter.class.getName());  
     private final DefaultTableModel tabMode;
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
@@ -48,7 +48,6 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
             rsperiksa_labperujuk,rsdetaillab*/;
     private String jml = "", biaya = "", jm = "", uangrs = "", bhp = "", tarif = "", tanggal = "", kamar = "", penjab = "", pasien = "", pilihancarabayar = "", norawatbayi = "";
     private boolean kelas = false, ranapgabung = false;
-    private String whereStatusRawat;
 
     /**
      * Creates new form DlgProgramStudi
@@ -1118,39 +1117,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                                pspasienralan.close();
 //                            }
 //                        }
-                        if (chkRanap.isSelected()) {
-                            pspasienralandrpr = koneksi.prepareStatement(
-                                    "select rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "
-                                    + "from rawat_jl_drpr inner join pasien "
-                                    + "inner join reg_periksa "
-                                    + "inner join poliklinik "
-                                    + "inner join penjab "
-                                    + "inner join nota_jalan "
-                                    + "inner join detail_nota_jalan "
-                                    + "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                    + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "
-                                    + "and reg_periksa.no_rawat=nota_jalan.no_rawat "
-                                    + "and nota_jalan.no_rawat=detail_nota_jalan.no_rawat "
-                                    + "where rawat_jl_drpr.kd_dokter like ? and nota_jalan.tanggal between ? and ? and reg_periksa.kd_pj like ? AND reg_periksa.status_lanjut='Ranap' "
-                                    + "group by rawat_jl_drpr.no_rawat");
-                        } else if (chkRalan.isSelected()) {
-                            pspasienralandrpr = koneksi.prepareStatement(
-                                    "select rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "
-                                    + "from rawat_jl_drpr inner join pasien "
-                                    + "inner join reg_periksa "
-                                    + "inner join poliklinik "
-                                    + "inner join penjab "
-                                    + "inner join nota_jalan "
-                                    + "inner join detail_nota_jalan "
-                                    + "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                    + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "
-                                    + "and reg_periksa.no_rawat=nota_jalan.no_rawat "
-                                    + "and nota_jalan.no_rawat=detail_nota_jalan.no_rawat "
-                                    + "where rawat_jl_drpr.kd_dokter like ? and nota_jalan.tanggal between ? and ? and reg_periksa.kd_pj like ? AND reg_periksa.status_lanjut='Ralan' "
-                                    + "group by rawat_jl_drpr.no_rawat");
-                        }
+
+                        pspasienralandrpr = koneksi.prepareStatement(
+                                "select rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli "
+                                + "from rawat_jl_drpr inner join reg_periksa inner join pasien inner join poliklinik inner join penjab "
+                                + "inner join nota_jalan inner join detail_nota_jalan "
+                                + "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "
+                                + "and reg_periksa.no_rawat=nota_jalan.no_rawat "
+                                + "and nota_jalan.no_rawat=detail_nota_jalan.no_rawat "
+                                + "where rawat_jl_drpr.kd_dokter=? and nota_jalan.tanggal between ? and ? and reg_periksa.kd_pj like ? "
+                                + "group by rawat_jl_drpr.no_rawat");
                         try {
-                            pspasienralandrpr.setString(1, "%" + rs.getString("kd_dokter") + "%");
+                            pspasienralandrpr.setString(1, rs.getString("kd_dokter"));
                             pspasienralandrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
                             pspasienralandrpr.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
                             pspasienralandrpr.setString(4, "%" + pilihancarabayar + "%");
@@ -1187,7 +1166,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         a++;
                                     }
                                 } catch (Exception e) {
-                                    log.error("Rawat jl DRPR >>>" + e);
+                                    log.error("Rawat jl DRPR >>>"+e);
                                 } finally {
                                     if (rstindakan != null) {
                                         rstindakan.close();
@@ -1198,7 +1177,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 }
                             }
                         } catch (Exception e) {
-                            log.error("Rawat jl DRPR >>>" + e);
+                            log.error("Rawat jl DRPR >>>"+e);
                         } finally {
                             if (rspasien != null) {
                                 rspasien.close();
@@ -1238,7 +1217,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "sum(periksa_radiologi.biaya) as total  "
                                         + "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
                                         + "periksa_radiologi.tarif_tindakan_dokter>0 and periksa_radiologi.kd_dokter=? "
-                                        //                                        + "and periksa_radiologi.tgl_periksa between ? and ? and "
+//                                        + "and periksa_radiologi.tgl_periksa between ? and ? and "
                                         + "periksa_radiologi.no_rawat=? "
                                         + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
                                 try {
@@ -1312,7 +1291,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
                                         + "periksa_radiologi.tarif_perujuk>0 and periksa_radiologi.dokter_perujuk=? "
-                                        //                                        + "and periksa_radiologi.tgl_periksa between ? and ? and "
+//                                        + "and periksa_radiologi.tgl_periksa between ? and ? and "
                                         + "periksa_radiologi.no_rawat=? "
                                         + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
                                 try {
@@ -1389,7 +1368,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "sum(periksa_lab.biaya) as total  "
                                         + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
                                         + "periksa_lab.kd_dokter=? and "
-                                        //                                        + "periksa_lab.tgl_periksa between ? and ? and "
+//                                        + "periksa_lab.tgl_periksa between ? and ? and "
                                         + "periksa_lab.no_rawat=? "
                                         + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
                                 try {
@@ -1413,7 +1392,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 + "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "
                                                 + "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "
                                                 + "and periksa_lab.kd_dokter=? and "
-                                                //                                                + "detail_periksa_lab.tgl_periksa between ? and ? and "
+//                                                + "detail_periksa_lab.tgl_periksa between ? and ? and "
                                                 + "detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
                                         try {
                                             psdetaillab.setString(1, rs.getString("kd_dokter"));
@@ -1503,7 +1482,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
                                         + "periksa_lab.dokter_perujuk=? and "
-                                        //                                        + "periksa_lab.tgl_periksa between ? and ? and "
+//                                        + "periksa_lab.tgl_periksa between ? and ? and "
                                         + "periksa_lab.no_rawat=? "
                                         + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
                                 try {
@@ -1527,7 +1506,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 + "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "
                                                 + "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "
                                                 + "and periksa_lab.dokter_perujuk=? and "
-                                                //                                                + "detail_periksa_lab.tgl_periksa between ? and ? and "
+//                                                + "detail_periksa_lab.tgl_periksa between ? and ? and "
                                                 + "detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
                                         try {
                                             psdetaillab2.setString(1, rs.getString("kd_dokter"));
@@ -1630,7 +1609,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras)) as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayaoperator1>0 and operasi.operator1=? and "
-                                        //                                        + "operasi.tgl_operasi between ? and ? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
                                         + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -1702,7 +1681,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayaoperator2>0 and operasi.operator2=? and "
-                                        //                                        + "operasi.tgl_operasi between ? and ? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
                                         + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -1774,7 +1753,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayaoperator3>0 and operasi.operator3=? and "
-                                        //                                        + "operasi.tgl_operasi between ? and ? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
                                         + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -1846,7 +1825,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayadokter_anak>0 and operasi.dokter_anak=? and "
-                                        //                                        + "operasi.tgl_operasi between ? and ? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
                                         + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -1918,7 +1897,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayadokter_anestesi>0 and operasi.dokter_anestesi=? and "
-                                        //                                        + "operasi.tgl_operasi between ? and ? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
                                         + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -1990,7 +1969,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biaya_dokter_pjanak>0 and operasi.dokter_pjanak=? and "
-                                        //                                        + "operasi.tgl_operasi between ? and ? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
                                         + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -2062,7 +2041,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biaya_dokter_umum>0 and operasi.dokter_umum=? and "
-                                        //                                        + "operasi.tgl_operasi between ? and ? and "
+//                                        + "operasi.tgl_operasi between ? and ? and "
                                         + "operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -2374,7 +2353,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             + "sum(rawat_inap_drpr.biaya_rawat) as total  "
                                             + "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
                                             + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and "
-                                            //                                            + "rawat_inap_drpr.tgl_perawatan between ? and ? and "
+//                                            + "rawat_inap_drpr.tgl_perawatan between ? and ? and "
                                             + "rawat_inap_drpr.no_rawat=? "
                                             + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                     try {
@@ -2631,7 +2610,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             + "sum(rawat_inap_drpr.biaya_rawat) as total  "
                                             + "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
                                             + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and "
-                                            //                                            + "rawat_inap_drpr.tgl_perawatan between ? and ? and "
+//                                            + "rawat_inap_drpr.tgl_perawatan between ? and ? and "
                                             + "rawat_inap_drpr.no_rawat=? "
                                             + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                     try {
@@ -2682,8 +2661,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 + "sum(rawat_inap_drpr.biaya_rawat) as total  "
                                                 + "from rawat_inap_drpr inner join jns_perawatan_inap on  jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
                                                 + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? and "
-                                                //                                                        + "rawat_inap_drpr.tgl_perawatan between ? and ? and "
-                                                + "rawat_inap_drpr.no_rawat=? "
+//                                                        + "rawat_inap_drpr.tgl_perawatan between ? and ? and "
+                                                        + "rawat_inap_drpr.no_rawat=? "
                                                 + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                         try {
                                             pstindakanranapdrpr.setString(1, rs.getString("kd_dokter"));
@@ -2839,23 +2818,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                            }
 //                        }
 
-                        if (chkRanap.isSelected()) {
                         pspasienralandrpr = koneksi.prepareStatement(
-                                "SELECT rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,bayar_piutang.`tgl_bayar`, pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli,piutang_pasien.status "
-                                + "FROM rawat_jl_drpr INNER JOIN reg_periksa INNER JOIN pasien INNER JOIN poliklinik INNER JOIN penjab "
-                                + "INNER JOIN piutang_pasien INNER JOIN bayar_piutang ON rawat_jl_drpr.no_rawat=reg_periksa.no_rawat AND reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                + "AND reg_periksa.kd_pj=penjab.kd_pj AND reg_periksa.kd_poli=poliklinik.kd_poli AND bayar_piutang.no_rkm_medis=pasien.no_rkm_medis "
-                                + "WHERE reg_periksa.kd_dokter=? AND bayar_piutang.tgl_bayar BETWEEN ? AND ? AND reg_periksa.kd_pj like ? AND piutang_pasien.status='Lunas' and reg_periksa.status_lanjut='Ranap' "
-                                + "GROUP BY rawat_jl_drpr.no_rawat");
-                        }else if (chkRalan.isSelected()){
-                            pspasienralandrpr = koneksi.prepareStatement(
-                                "SELECT rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,bayar_piutang.`tgl_bayar`, pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli,piutang_pasien.status "
-                                + "FROM rawat_jl_drpr INNER JOIN reg_periksa INNER JOIN pasien INNER JOIN poliklinik INNER JOIN penjab "
-                                + "INNER JOIN piutang_pasien INNER JOIN bayar_piutang ON rawat_jl_drpr.no_rawat=reg_periksa.no_rawat AND reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                + "AND reg_periksa.kd_pj=penjab.kd_pj AND reg_periksa.kd_poli=poliklinik.kd_poli AND bayar_piutang.no_rkm_medis=pasien.no_rkm_medis "
-                                + "WHERE reg_periksa.kd_dokter=? AND bayar_piutang.tgl_bayar BETWEEN ? AND ? AND reg_periksa.kd_pj like ? AND piutang_pasien.status='Lunas' and reg_periksa.status_lanjut='Ralan' "
-                                + "GROUP BY rawat_jl_drpr.no_rawat");
-                        } 
+                                "SELECT rawat_jl_drpr.no_rawat,reg_periksa.tgl_registrasi,bayar_piutang.`tgl_bayar`, pasien.nm_pasien,penjab.png_jawab,poliklinik.nm_poli,piutang_pasien.status " +
+                                "FROM rawat_jl_drpr INNER JOIN reg_periksa INNER JOIN pasien INNER JOIN poliklinik INNER JOIN penjab " +
+                                "INNER JOIN piutang_pasien INNER JOIN bayar_piutang ON rawat_jl_drpr.no_rawat=reg_periksa.no_rawat AND reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
+                                "AND reg_periksa.kd_pj=penjab.kd_pj AND reg_periksa.kd_poli=poliklinik.kd_poli AND bayar_piutang.no_rkm_medis=pasien.no_rkm_medis " +
+                                "WHERE reg_periksa.kd_dokter=? AND bayar_piutang.tgl_bayar BETWEEN ? AND ? AND reg_periksa.kd_pj like ? AND piutang_pasien.status='Lunas' " +
+                                "GROUP BY rawat_jl_drpr.no_rawat");
                         try {
                             pspasienralandrpr.setString(1, rs.getString("kd_dokter"));
                             pspasienralandrpr.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
@@ -2872,7 +2841,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "from rawat_jl_drpr inner join jns_perawatan inner join reg_periksa on "
                                         + "jns_perawatan.kd_jenis_prw=rawat_jl_drpr.kd_jenis_prw and rawat_jl_drpr.no_rawat=reg_periksa.no_rawat where "
                                         + "rawat_jl_drpr.tarif_tindakandr>0 and rawat_jl_drpr.kd_dokter=? "
-                                        // + "and rawat_jl_drpr.tgl_perawatan between ? and ? "
+                                       // + "and rawat_jl_drpr.tgl_perawatan between ? and ? "
                                         + "and rawat_jl_drpr.no_rawat=? "
                                         + "group by rawat_jl_drpr.kd_jenis_prw order by jns_perawatan.nm_perawatan");
                                 try {
@@ -2948,7 +2917,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "from periksa_radiologi inner join jns_perawatan_radiologi "
                                         + "on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
                                         + "periksa_radiologi.tarif_tindakan_dokter>0 and periksa_radiologi.kd_dokter=? "
-                                        //                                        + "and periksa_radiologi.tgl_periksa between ? and ? "
+//                                        + "and periksa_radiologi.tgl_periksa between ? and ? "
                                         + "and periksa_radiologi.no_rawat=? "
                                         + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan ");
                                 try {
@@ -3021,7 +2990,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from periksa_radiologi inner join jns_perawatan_radiologi on periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw where "
                                         + "periksa_radiologi.tarif_perujuk>0 and periksa_radiologi.dokter_perujuk=? "
-                                        //                                        + "and periksa_radiologi.tgl_periksa between ? and ? "
+//                                        + "and periksa_radiologi.tgl_periksa between ? and ? "
                                         + "and periksa_radiologi.no_rawat=? "
                                         + "group by periksa_radiologi.kd_jenis_prw order by jns_perawatan_radiologi.nm_perawatan  ");
                                 try {
@@ -3096,7 +3065,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "sum(periksa_lab.biaya) as total  "
                                         + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
                                         + "periksa_lab.kd_dokter=? "
-                                        //                                        + "and periksa_lab.tgl_periksa between ? and ? "
+//                                        + "and periksa_lab.tgl_periksa between ? and ? "
                                         + "and periksa_lab.no_rawat=? "
                                         + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
                                 try {
@@ -3207,7 +3176,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from periksa_lab inner join jns_perawatan_lab on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where "
                                         + "periksa_lab.dokter_perujuk=? "
-                                        //                                        + "and periksa_lab.tgl_periksa between ? and ? "
+//                                        + "and periksa_lab.tgl_periksa between ? and ? "
                                         + "and periksa_lab.no_rawat=? "
                                         + "group by periksa_lab.kd_jenis_prw order by jns_perawatan_lab.nm_perawatan  ");
                                 try {
@@ -3231,7 +3200,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 + "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa where "
                                                 + "periksa_lab.jam=detail_periksa_lab.jam and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "
                                                 + "and periksa_lab.dokter_perujuk=? "
-                                                //                                                + "and detail_periksa_lab.tgl_periksa between ? and ? "
+//                                                + "and detail_periksa_lab.tgl_periksa between ? and ? "
                                                 + "and detail_periksa_lab.kd_jenis_prw=? and periksa_lab.no_rawat=? ");
                                         try {
                                             psdetaillab2.setString(1, rs.getString("kd_dokter"));
@@ -3333,7 +3302,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras)) as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayaoperator1>0 and operasi.operator1=? "
-                                        //                                        + "and operasi.tgl_operasi between ? and ? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
                                         + "and operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -3404,7 +3373,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayaoperator2>0 and operasi.operator2=? "
-                                        //                                        + "and operasi.tgl_operasi between ? and ? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
                                         + "and operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -3475,7 +3444,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayaoperator3>0 and operasi.operator3=? "
-                                        //                                        + "and operasi.tgl_operasi between ? and ? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
                                         + "and operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -3546,7 +3515,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayadokter_anak>0 and operasi.dokter_anak=? "
-                                        //                                        + "and operasi.tgl_operasi between ? and ? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
                                         + "and operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -3617,7 +3586,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biayadokter_anestesi>0 and operasi.dokter_anestesi=? "
-                                        //                                        + "and operasi.tgl_operasi between ? and ? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
                                         + "and operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -3688,7 +3657,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biaya_dokter_pjanak>0 and operasi.dokter_pjanak=? "
-                                        //                                        + "and operasi.tgl_operasi between ? and ? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
                                         + "and operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -3759,7 +3728,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         + "0 as total  "
                                         + "from operasi inner join paket_operasi on operasi.kode_paket=paket_operasi.kode_paket where "
                                         + "operasi.biaya_dokter_umum>0 and operasi.dokter_umum=? "
-                                        //                                        + "and operasi.tgl_operasi between ? and ? "
+//                                        + "and operasi.tgl_operasi between ? and ? "
                                         + "and operasi.no_rawat=? "
                                         + "group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                                 try {
@@ -4070,7 +4039,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             + "from rawat_inap_drpr inner join jns_perawatan_inap "
                                             + "on jns_perawatan_inap.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where "
                                             + "rawat_inap_drpr.tarif_tindakandr>0 and rawat_inap_drpr.kd_dokter=? "
-                                            //                                            + "and rawat_inap_drpr.tgl_perawatan between ? and ? "
+//                                            + "and rawat_inap_drpr.tgl_perawatan between ? and ? "
                                             + "and rawat_inap_drpr.no_rawat=? "
                                             + "group by rawat_inap_drpr.kd_jenis_prw order by jns_perawatan_inap.nm_perawatan");
                                     try {

@@ -105,7 +105,7 @@ public class SpriDao implements SpriInterface<Spri> {
     public List<Spri> findByDate(String tgl_awal, String tgl_ahir) {
             List<Spri> kis = new ArrayList<>();
         try {
-            log.info("Tanggal SPRI ="+tgl_awal+", "+tgl_ahir);
+            System.out.println("Tanggal ="+tgl_awal+", "+tgl_ahir);
             ps = connect.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
                     + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
                     + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"

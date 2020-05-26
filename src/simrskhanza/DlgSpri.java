@@ -1119,6 +1119,7 @@ public class DlgSpri extends javax.swing.JDialog {
                 txtKdPenyakit.setText("");
             }
             d = new Dokter();
+            System.out.println("date ");
             spri.setTanggal(Valid.SetTgl(DTPTgl.getSelectedItem() + ""));
             spri.setJam(cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem());
             spri.setNorm(TNoRM.getText());
