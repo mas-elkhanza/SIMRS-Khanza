@@ -59,7 +59,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
     private double total=0,jumlahtotal=0;
     private Properties prop = new Properties();
     private DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
-    private int i=0,pilihan=0;
+    private int i=0,pilihan=0,getno=0;
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -1692,7 +1692,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void DTPBeriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPBeriItemStateChanged
         try {
-            autoresep();
+            if(getno==0){
+                autoresep();
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_DTPBeriItemStateChanged
@@ -1960,6 +1962,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void getData() {
         if(tbResep.getSelectedRow()!= -1){
+            getno=1;
             NoResep.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()); 
             if(!NoResep.getText().equals("")){
                 Sequel.cariIsi("select no_rawat from resep_obat where no_resep=?",TNoRw,NoResep.getText());
@@ -1972,6 +1975,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 cmbDtk.setSelectedItem(tbResep.getValueAt(tbResep.getSelectedRow(),1).toString().substring(17,19));
                 Valid.SetTgl(DTPBeri,tbResep.getValueAt(tbResep.getSelectedRow(),1).toString().substring(0,10));                    
             }
+            getno=0;
         }
     }
    

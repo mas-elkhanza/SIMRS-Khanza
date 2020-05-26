@@ -16,7 +16,6 @@ import fungsi.WarnaTable;
 import fungsi.validasi;
 import fungsi.sekuel;
 import fungsi.koneksiDB;
-import fungsi.*;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -825,8 +824,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             kdPPK1.setText(tabMode.getValueAt(row,10).toString());
             kdPPK2.setText(tabMode.getValueAt(row,11).toString());
             try {
-                ResultSet hasil = koneksi.createStatement().executeQuery(
-                        "select wallpaper,logo from setting");
+                ResultSet hasil = koneksi.prepareStatement("select wallpaper,logo from setting").executeQuery();
                 for (int I = 0; hasil.next(); I++) {
                     ((Painter) PhotoGambar).setImage(gambar(tabMode.getValueAt(row,0).toString()));
                     Blob blob = hasil.getBlob(1);
@@ -840,6 +838,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
                         blob2.getBytes(1, (int) (blob2.length()))));
                     blob2.free();
                 }
+                hasil.close();
             } catch (Exception ex) {
                 cetak(ex.toString());
             }

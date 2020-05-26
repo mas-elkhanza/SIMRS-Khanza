@@ -8,7 +8,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import ipsrs.DlgSuplierIPSRS;
+import ipsrs.IPSRSSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -38,7 +38,7 @@ public final class DlgHutangNonMedisBelumLunas extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs;
-    private DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
+    private IPSRSSuplier suplier=new IPSRSSuplier(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0;
     private String koderekening="",tanggaldatang="",tanggaltempo="";

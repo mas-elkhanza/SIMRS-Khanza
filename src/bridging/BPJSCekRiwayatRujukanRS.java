@@ -50,7 +50,7 @@ public final class BPJSCekRiwayatRujukanRS extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private DlgPasien pasien=new DlgPasien(null,false);
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private String URL="",link="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
