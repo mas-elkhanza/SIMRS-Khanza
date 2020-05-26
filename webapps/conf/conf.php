@@ -24,13 +24,12 @@
 
 //function
      function cleankar($dirty){
-	/*if (get_magic_quotes_gpc()) {
-		$clean = mysql_real_escape_string(stripslashes($dirty));	 
+	if (get_magic_quotes_gpc()) {
+            $clean = mysqli_real_escape_string(stripslashes($dirty));	 
 	}else{
-		$clean = mysql_real_escape_string($dirty);	
+            $clean = mysqli_real_escape_string($dirty);	
 	} 
-	return preg_replace('/[^a-zA-Z0-9\s_ ]/', '',$clean);*/
-         return $dirty;
+	return preg_replace('/[^a-zA-Z0-9\s_ ]/', '',$clean);
     }
     
     function mysql_safe_query($format) {
