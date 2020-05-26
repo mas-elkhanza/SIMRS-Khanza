@@ -213,7 +213,7 @@
                                                 <select name="ThnDaftar" class="form-control">
                                                  <?php
                                                     echo "<option>$thnbesok</option>";
-                                                    loadThn2();
+                                                    loadThn4();
                                                  ?>
                                                 </select>
                                             </td>

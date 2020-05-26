@@ -5,7 +5,7 @@
         $nohp               = cleankar($nohp);
         $nobooking          = trim(isset($_POST['nobooking']))?trim($_POST['nobooking']):NULL;
         $nobooking          = cleankar($nobooking);
-        $querycekbooking    = bukaquery("select count(no_booking) as noboking,if(tanggal>current_date,'aman','kadaluarsa') as tanggal from booking_periksa where no_booking='$nobooking' and no_telp='$nohp'");
+        $querycekbooking    = bukaquery("select count(no_booking) as noboking,if(tanggal>current_date,'aman','kadaluarsa') as tanggal,status from booking_periksa where no_booking='$nobooking' and no_telp='$nohp'");
         if($rsquerycekbooking = mysqli_fetch_array($querycekbooking)) {
             if($rsquerycekbooking["noboking"]==0){
                 echo "<section id='news' data-stellar-background-ratio='2.5'>
@@ -30,6 +30,7 @@
                                           <div class='col-md-12 col-sm-12'>
                                                <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
                                                     <h3>Booking kadaluarsa</h3>
+                                                    <br>
                                                     Silahkan melakukan booking ulang... !!! 
                                                </div>
                                           </div>
@@ -37,6 +38,23 @@
                                 </div>
                           </section>";
                     JSRedirect2("index.php?act=Home",4);
+                }else{
+                    if($rsquerycekbooking["status"]=="Belum Dibalas"){
+                        echo "<section id='news' data-stellar-background-ratio='2.5'>
+                                    <div class='container'>
+                                         <div class='row'>
+                                              <div class='col-md-12 col-sm-12'>
+                                                   <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
+                                                        <h3>No. Booking $nobooking</h3>
+                                                        <br>
+                                                        Mohon maaf, booking Anda masih menunggu peninjauan dari admin Kami. Silahkan cek kembali beberapa saat lagi   
+                                                   </div>
+                                              </div>
+                                         </div>
+                                    </div>
+                              </section>";
+                        JSRedirect2("index.php?act=Home",7);
+                    }
                 }
             }
         }else{

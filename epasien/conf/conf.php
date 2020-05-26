@@ -355,7 +355,6 @@
 
 
     function loadTgl2(){
-        //echo "<option>-&nbsp</option>";
         for($tgl=1; $tgl<=31; $tgl++){
             $tgl_leng=strlen($tgl);
             if ($tgl_leng==1)
@@ -392,7 +391,6 @@
     }
 
     function loadBln2(){
-        //echo "<option>-&nbsp</option>";
         for($bln=1; $bln<=12; $bln++){
             $bln_leng=strlen($bln);
             if ($bln_leng==1)
@@ -444,7 +442,6 @@
     }
     function loadThn3(){
         $thnini=date('Y');
-        //echo "<option>-&nbsp</option>";
         for($thn=$thnini+30; $thn>=1960; $thn--){
             $thn_leng=strlen($thn);
             if ($thn_leng==1)
@@ -457,8 +454,7 @@
 
     function loadThn4(){
         $thnini=date('Y');
-        //echo "<option>-&nbsp</option>";
-        for($thn=$thnini; $thn>=1960; $thn--){
+        for($thn=$thnini+4; $thn>=$thnini; $thn--){
             $thn_leng=strlen($thn);
             if ($thn_leng==1)
             $i="0".$thn;
@@ -483,12 +479,12 @@
     function loadMenit(){
         //echo "<option selected>-----&nbsp</option>";
         for($menit=0; $menit<=60; $menit++){
-                $menit_leng=strlen($menit);
-                if ($menit_leng==1)
-                $i="0".$menit;
-                else
-                $i=$menit;                        
-                echo "<option value=$i>$i</option>";
+            $menit_leng=strlen($menit);
+            if ($menit_leng==1)
+            $i="0".$menit;
+            else
+            $i=$menit;                        
+            echo "<option value=$i>$i</option>";
         }
     }
 
