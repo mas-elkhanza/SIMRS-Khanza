@@ -55,7 +55,7 @@ public final class SiranapKetersediaanKamar extends javax.swing.JDialog {
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private final Properties prop = new Properties();
     private String requestXML,URL="",respon="",idrs="";
-    private ApiKemenkesSirs api=new ApiKemenkesSirs();
+    private SirsApi api=new SirsApi();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper= new ObjectMapper();

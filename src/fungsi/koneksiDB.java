@@ -44,18 +44,7 @@ public class koneksiDB {
                         "  Informasi dan panduan bisa dicek di halaman https://github.com/mas-elkhanza/SIMRS-Khanza/wiki \n"+
                         "                                                                           ");
             }catch(Exception e){
-                System.out.println("Notif : "+e);
-                try {
-                    if(connection.isClosed()){
-                        prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
-                        dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
-                        dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
-                        connection=dataSource.getConnection();  
-                    }
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null,"Koneksi Putus : "+e);
-                }
+                JOptionPane.showMessageDialog(null,"Koneksi Putus : "+e);
             }
         }
         return connection;        
@@ -415,36 +404,6 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=EnkripsiAES.decrypt(prop.getProperty("PASSSIRS"));
-        }catch(Exception e){
-            var=""; 
-        }
-        return var;
-    }
-    
-    public static String URLAPICORONA(){
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("URLAPICORONA");
-        }catch(Exception e){
-            var=""; 
-        }
-        return var;
-    }
-    
-    public static String IDCORONA(){
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=EnkripsiAES.decrypt(prop.getProperty("IDCORONA"));
-        }catch(Exception e){
-            var=""; 
-        }
-        return var;
-    }
-    
-    public static String PASSCORONA(){
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=EnkripsiAES.decrypt(prop.getProperty("PASSCORONA"));
         }catch(Exception e){
             var=""; 
         }

@@ -45,7 +45,7 @@ public final class BPJSCekDetailSEP2 extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
-    private ApiBPJS api=new ApiBPJS();
+    private BPJSApi api=new BPJSApi();
     private String URL="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;

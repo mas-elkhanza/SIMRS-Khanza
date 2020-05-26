@@ -35,7 +35,7 @@ public class BPJSCekNoKartu {
     private final Properties prop = new Properties();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
-    private ApiBPJS api=new ApiBPJS();
+    private BPJSApi api=new BPJSApi();
     private String URL="";
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();

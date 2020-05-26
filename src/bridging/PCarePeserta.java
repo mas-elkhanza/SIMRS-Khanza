@@ -43,7 +43,7 @@ public final class PCarePeserta extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     private String URL = "",otorisasi;
     private HttpHeaders headers;
     private HttpEntity requestEntity;

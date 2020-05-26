@@ -1497,7 +1497,7 @@
                             <StringItem index="2" value="Besar"/>
                             <StringItem index="3" value="Sedang"/>
                             <StringItem index="4" value="Kecil"/>
-                            <StringItem index="5" value="Elektive"/>
+                            <StringItem index="5" value="Elektif"/>
                             <StringItem index="6" value="Emergency"/>
                           </StringArray>
                         </Property>
