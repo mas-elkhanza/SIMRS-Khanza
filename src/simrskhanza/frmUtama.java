@@ -553,6 +553,7 @@ import laporan.LaporanKedatanganPasienPerJam;
 import laporan.LaporanRegistrasiPoliPerTanggal;
 import laporan.LaporanRekapKunjunganRuangPerTahun;
 import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
+import permintaan.DlgBookingPeriksa;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
 import perpustakaan.PerpustakaanCariEbook;
@@ -15832,7 +15833,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnBookingPeriksaActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBookingPeriksa aplikasi=new DlgBookingPeriksa();
+        aplikasi.setSize(750, PanelUtama.getHeight()-40);
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }
     /**
     * @param args the command line arguments
