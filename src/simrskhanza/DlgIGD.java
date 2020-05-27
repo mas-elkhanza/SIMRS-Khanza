@@ -61,6 +61,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -6650,7 +6652,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             sendCommand(RESET, writer);
             writer.close();
         } catch (Exception ex) {
-             System.out.println("Notif Writer 3 : "+ex);
+             Logger.getLogger(DlgIGD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

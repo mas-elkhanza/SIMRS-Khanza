@@ -37,6 +37,7 @@ import inventory.DlgPeresepanDokter;
 import inventory.DlgResepObat;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -59,6 +60,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -883,10 +886,10 @@ public final class DlgReg extends javax.swing.JDialog {
                     DlgCatatan.setOpacity(0.77f);
                 }
             } catch (Exception e) {
-                System.out.println("Notif Tansparant : "+e);
+                Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
             }
         } catch (Exception ex) {
-            System.out.println("Notif Load XML : "+ex);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         ChkInput.setSelected(false);
@@ -5789,7 +5792,7 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             this.setCursor(Cursor.getDefaultCursor());
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
                     }finally{
                         if( rs != null){
                             rs.close();
@@ -5800,7 +5803,7 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
                 }                  
             }              
         }
@@ -6358,8 +6361,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             while(rs.next()) {
                 dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
             }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+        } catch (SQLException e) {
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
         
         JFreeChart freeChart = ChartFactory.createPieChart("Grafik Periksa Per Unit/Poli Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
@@ -6382,7 +6385,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
         JFreeChart freeChart = ChartFactory.createBarChart("Grafik Periksa Per Unit/Poli Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Poliklinik/Unit","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
         ChartFrame cf = new ChartFrame("Grafik Periksa Per Unit/Poli",freeChart);
@@ -6404,7 +6407,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 dpd.setValue(rs.getString(1)+"("+rs.getString(2)+")",rs.getDouble(2));
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
         
         JFreeChart freeChart = ChartFactory.createPieChart("Grafik Periksa Per Dokter Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),dpd,true,true, false);
@@ -6427,7 +6430,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 dcd.setValue(rs.getDouble(2),rs.getString(1)+"("+rs.getString(2)+")",rs.getString(1));
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
         
        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Periksa Per Dokter Tanggal "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Dokter","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
@@ -7844,7 +7847,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                 this.setCursor(Cursor.getDefaultCursor());
                             }
                         } catch (Exception e) {
-                            System.out.println(e);
+                            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
                         }finally{
                             if( rs != null){
                                 rs.close();
@@ -7854,8 +7857,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                 pscaripiutang.close();
                             }
                         }
-                    } catch (Exception e) {
-                        System.out.println(e);
+                    } catch (SQLException e) {
+                        Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
                     }     
                 }
             }
@@ -8189,8 +8192,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
             try {
                 berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+TNoRw.getText());                    
-            } catch (Exception ex) {
-                System.out.println("Notifikasi : "+ex);
+            } catch (Exception e) {
+                Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
             }
 
             berkas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -8212,7 +8215,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 try {
                     berkas.loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString());                    
                 } catch (Exception ex) {
-                    System.out.println("Notifikasi : "+ex);
+                    Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 berkas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -8547,8 +8550,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         }else{ 
                             billingprasial();
                         }
-                    } catch (Exception e) {
-                        System.out.println(e);
+                    } catch (HeadlessException | SQLException e) {
+                        Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
                     }finally{
                         if( rs != null){
                             rs.close();
@@ -8559,7 +8562,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         }
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
                 }                  
             }              
         }
@@ -8927,8 +8930,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
                                   tbPetugas.requestFocus();
                             }
-                        }catch(Exception ex){
-                            System.out.println("Notifikasi : "+ex);
+                        }catch(HeadlessException | SQLException ex){
+                            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, ex);
                         }finally{
                               if(rs != null){
                                   rs.close();
@@ -8938,7 +8941,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                               }
                         }
                     } catch (Exception e) {
-                        System.out.println(e);
+                        Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
                     }
                 }else{            
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9011,6 +9014,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 emptTeks();
         getDataSpri();
             } catch (java.lang.NullPointerException e) {
+                Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }//GEN-LAST:event_tbSpriMouseClicked
@@ -9466,7 +9470,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     });
                 }                    
             }catch(Exception e){
-                log.error("Tampil NoReg parameter : "+e);
+                Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
             }finally{
                 if(rs != null){
                     rs.close();
@@ -9477,7 +9481,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 }
             }
         } catch (Exception e) {
-            log.error("Query Tampil Noreg : "+e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
     
         LCount.setText(""+tabMode.getRowCount());
@@ -9586,7 +9590,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     });
                 }                    
             }catch(Exception e){
-                log.error("Notifikasi : "+e);
+                Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
             }finally{
                 if(rs != null){
                     rs.close();
@@ -9597,7 +9601,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 }
             }
         } catch (Exception e) {
-            log.error("Notifikasi : "+e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
     
         LCount.setText(""+tabMode2.getRowCount());
@@ -9653,7 +9657,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         });
                 }
             } catch (Exception e) {
-                log.error("simrskhanza.DlgSpri.tampil() : " + e);
+                Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rs3 != null) {
                     rs3.close();
@@ -9663,7 +9667,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 }
             }
         } catch (SQLException e) {
-            log.error("Notifikasi : " + e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
         int b = tabMode3.getRowCount();
         LCount.setText("" + b);
@@ -9853,7 +9857,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     }
                 }
             } catch (Exception ex) {
-                System.out.println(ex);
+                Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, ex);
             }finally{
                 if(rs != null ){
                     rs.close();
@@ -9864,7 +9868,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -10026,7 +10030,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             sendCommand(RESET, writer);
             writer.close();
         } catch (Exception ex) {
-             System.out.println("Notif Writer 3 : "+ex);
+             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -10081,7 +10085,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             gantiBaris(writer);
             reader.close();
         } catch (Exception ex) {
-            System.out.println("Notif : "+ex);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -10092,7 +10096,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             writer.write(ESC);
             writer.write('E');
         } catch (Exception e) {
-            System.out.println("Notif : "+e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }            
     }
     
@@ -10101,7 +10105,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             writer.write(ESC);
             writer.write('F');
         } catch (Exception e) {
-            System.out.println("Notif : "+e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     
@@ -10109,7 +10113,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         try {
             writer.write("\n");
         } catch (Exception e) {
-            System.out.println("Notif : "+e);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }            
     }
     
@@ -10274,7 +10278,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             kuota = Sequel.cariInteger("Select jadwal.kuota from dokter INNER JOIN jadwal INNER JOIN poliklinik "+
                 "on dokter.kd_dokter=jadwal.kd_dokter and poliklinik.kd_poli=jadwal.kd_poli "+
                 "where jadwal.hari_kerja='"+hari+"' and poliklinik.kd_poli like '%"+kdpoli.getText()+"%' and dokter.status='1' and dokter.kd_dokter like '%"+kddokter.getText()+"%'");
-            System.out.println("Kouta "+kuota);
+            Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, kuota);
             isPas();
         }
        
