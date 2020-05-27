@@ -29,7 +29,7 @@ public class DlgRHPembelianIPSRS extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private IPSRSBarang barang=new IPSRSBarang(null,false);
+    private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
     private int i=0;
     private double jumlah,total,totalbeli;
 

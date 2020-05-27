@@ -55,7 +55,8 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private int i=0,nilai_detik,rujukanbaru=0;
     private String pilihan="",alarm="",URL="",link="",norm="",statusreg="",statuspasien="",norujuk="",nol_detik,detik;
-    private ApiKemenkesSisrute api=new ApiKemenkesSisrute();
+    private final Properties prop = new Properties();
+    private SisruteApi api=new SisruteApi();
     private BackgroundMusic music;
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private HttpHeaders headers;
@@ -209,8 +210,9 @@ public final class SisruteRujukanMasukan extends javax.swing.JDialog {
         });
         
         try {
-            link=koneksiDB.URLAPISISRUTE();
-            alarm=koneksiDB.ALARMRSISRUTE();
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPISISRUTE");
+            alarm=prop.getProperty("ALARMRSISRUTE");
             idrs=koneksiDB.IDSISRUTE();
         } catch (Exception e) {
             alarm="no";
@@ -755,7 +757,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
                 Sequel.menyimpan("temporary","'0','"+
@@ -993,11 +995,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.tabelKosong(tabMode);
             URL = link+"/rujukan?tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"");
             headers = new HttpHeaders();
-	   headers.add("X-cons-id",idrs);
-	   headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-	   headers.add("X-signature",api.getHmac()); 
-	   headers.add("Content-type","application/json");             
-	   headers.add("Content-length",null); 
+	    headers.add("X-cons-id",idrs);
+	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+	    headers.add("X-signature",api.getHmac()); 
+	    headers.add("Content-type","application/json");             
+	    headers.add("Content-length",null); 
             requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("status");

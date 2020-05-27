@@ -49,7 +49,7 @@ public class PCareDataPemberianTindakan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private final Properties prop = new Properties();
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     private Jurnal jur=new Jurnal();
     
     /** Creates new form DlgProgramStudi

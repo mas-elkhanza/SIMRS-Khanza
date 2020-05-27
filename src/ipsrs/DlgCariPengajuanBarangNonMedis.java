@@ -30,7 +30,7 @@ public class DlgCariPengajuanBarangNonMedis extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
-    private IPSRSBarang barang=new IPSRSBarang(null,false);
+    private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private double total=0,subtotal=0;
@@ -824,7 +824,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }else{
                 Sequel.queryu("update pengajuan_barang_nonmedis set status='Disetujui' where no_pengajuan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                IPSRSSuratPemesanan aplikasi=new IPSRSSuratPemesanan(null,false);
+                DlgSuratPemesananNonMedis aplikasi=new DlgSuratPemesananNonMedis(null,false);
                 aplikasi.tampilkan=false;
                 aplikasi.isCek();
                 aplikasi.panggilgetData(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());

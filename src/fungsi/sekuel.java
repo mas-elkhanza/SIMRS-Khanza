@@ -11,7 +11,6 @@
  */
 package fungsi;
 
-import fungsi.akses;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

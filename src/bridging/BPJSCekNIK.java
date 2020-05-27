@@ -35,7 +35,7 @@ public class BPJSCekNIK {
     private final Properties prop = new Properties();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
-    private ApiBPJS api=new ApiBPJS();
+    private BPJSApi api=new BPJSApi();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();   

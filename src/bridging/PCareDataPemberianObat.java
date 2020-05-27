@@ -43,7 +43,7 @@ public class PCareDataPemberianObat extends javax.swing.JDialog {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     private Jurnal jur=new Jurnal();
     private double ttlhpp=0,ttljual=0;
     private riwayatobat Trackobat=new riwayatobat();

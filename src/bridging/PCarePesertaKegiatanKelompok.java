@@ -53,7 +53,7 @@ public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
     private JsonNode nameNode;
     private JsonNode response;
     private final Properties prop = new Properties();
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     private StringBuilder htmlContent;
     
     /** Creates new form DlgProgramStudi
