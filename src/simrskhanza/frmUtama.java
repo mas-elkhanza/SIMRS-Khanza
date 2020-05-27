@@ -15837,7 +15837,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgBookingPeriksa aplikasi=new DlgBookingPeriksa();
-        aplikasi.setSize(750, PanelUtama.getHeight()-40);
+        aplikasi.isCek();
+        aplikasi.setSize(800, PanelUtama.getHeight()-40);
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());

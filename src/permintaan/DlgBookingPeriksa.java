@@ -124,8 +124,8 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
-        jLabel7 = new widget.Label();
-        LCount = new widget.Label();
+        LCount1 = new widget.Label();
+        BtnHapus = new widget.Button();
         BtnJawab = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -139,6 +139,8 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         DTPCari3 = new widget.Tanggal();
         jLabel25 = new widget.Label();
         DTPCari4 = new widget.Tanggal();
+        jLabel7 = new widget.Label();
+        LCount = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("::[ Booking Online Periksa ]::");
@@ -182,7 +184,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel6.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass8.add(jLabel6);
 
-        TCari.setPreferredSize(new java.awt.Dimension(160, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(205, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -221,14 +223,26 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         });
         panelGlass8.add(BtnAll);
 
-        jLabel7.setText("Record :");
-        jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelGlass8.add(jLabel7);
+        LCount1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount1.setPreferredSize(new java.awt.Dimension(20, 23));
+        panelGlass8.add(LCount1);
 
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass8.add(LCount);
+        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnHapus.setMnemonic('H');
+        BtnHapus.setText("Hapus");
+        BtnHapus.setToolTipText("Alt+H");
+        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHapusActionPerformed(evt);
+            }
+        });
+        BtnHapus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnHapusKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnHapus);
 
         BtnJawab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N
         BtnJawab.setMnemonic('J');
@@ -293,7 +307,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         R1.setText("Belum Dibalas");
         R1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         R1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        R1.setPreferredSize(new java.awt.Dimension(110, 23));
+        R1.setPreferredSize(new java.awt.Dimension(100, 23));
         panelCari.add(R1);
 
         R2.setBackground(new java.awt.Color(240, 250, 230));
@@ -302,10 +316,10 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         R2.setText("Booking :");
         R2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         R2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        R2.setPreferredSize(new java.awt.Dimension(95, 23));
+        R2.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-05-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -326,7 +340,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-05-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -343,10 +357,10 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         R3.setText("Periksa :");
         R3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         R3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        R3.setPreferredSize(new java.awt.Dimension(95, 23));
+        R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-05-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-05-2020" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setOpaque(false);
         DTPCari3.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -367,7 +381,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-05-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-05-2020" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setOpaque(false);
         DTPCari4.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -382,6 +396,15 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             }
         });
         panelCari.add(DTPCari4);
+
+        jLabel7.setText("Record :");
+        jLabel7.setPreferredSize(new java.awt.Dimension(55, 23));
+        panelCari.add(jLabel7);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LCount.setText("0");
+        LCount.setPreferredSize(new java.awt.Dimension(45, 23));
+        panelCari.add(LCount);
 
         jPanel3.add(panelCari, java.awt.BorderLayout.PAGE_START);
 
@@ -505,7 +528,11 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnJawabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJawabActionPerformed
-       
+        if(tbObat.getSelectedRow()>-1){
+            
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+        } 
     }//GEN-LAST:event_BtnJawabActionPerformed
 
     private void BtnJawabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnJawabKeyPressed
@@ -515,6 +542,23 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         aktif=false;
     }//GEN-LAST:event_formWindowClosed
+
+    private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
+        if(tbObat.getSelectedRow()>-1){
+            Sequel.meghapus("booking_periksa","no_booking",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            tampil();
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+        }
+    }//GEN-LAST:event_BtnHapusActionPerformed
+
+    private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnHapusActionPerformed(null);
+        }else{
+            Valid.pindah(evt, TCari, BtnJawab);
+        }
+    }//GEN-LAST:event_BtnHapusKeyPressed
 
     /**
      * @param args the command line arguments
@@ -554,6 +598,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
+    private widget.Button BtnHapus;
     private widget.Button BtnJawab;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
@@ -562,6 +607,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private widget.Tanggal DTPCari3;
     private widget.Tanggal DTPCari4;
     private widget.Label LCount;
+    private widget.Label LCount1;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
     private widget.RadioButton R3;
@@ -664,5 +710,10 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             }                
         };
         new Timer(1000, taskPerformer).start();
+    }
+    
+    public void isCek(){
+        BtnHapus.setEnabled(akses.getbooking_periksa());
+        BtnPrint.setEnabled(akses.getbooking_periksa());
     }
 }

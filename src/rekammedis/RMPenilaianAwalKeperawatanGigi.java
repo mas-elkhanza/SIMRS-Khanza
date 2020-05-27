@@ -275,7 +275,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         tbMasalahDetailMasalah.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        TD.setDocument(new batasInput((byte)5).getKata(TD));
+        TD.setDocument(new batasInput((byte)7).getKata(TD));
         Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
         RR.setDocument(new batasInput((byte)5).getKata(RR));
         Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
@@ -2214,7 +2214,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Obat2an,BtnBatal);
+            Valid.pindah(evt,Rencana,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
