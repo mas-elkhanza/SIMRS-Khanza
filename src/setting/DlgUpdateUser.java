@@ -649,7 +649,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang,pasien_corona,toko_pendapatan_harian,"+
                         "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi,"+
                         "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan,"+
-                        "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa,toko_sirkulasi from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1926,14 +1926,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[J]Set Tarif Online",rs.getBoolean("set_tarif_online")});
                     }
                     
-                    if("[Q]Hutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[Q]Hutang Toko",rs.getBoolean("toko_hutang")});
-                    }
-                    
-                    if("[Q]Bayar Pesan Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[Q]Bayar Pesan Toko",rs.getBoolean("toko_bayar_pemesanan")});
-                    }
-                    
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[K]Cek NIK",rs.getBoolean("bpjs_cek_nik")});
                     }
@@ -3052,6 +3044,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[Q]Penjualan Harian Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[Q]Penjualan Harian Toko",rs.getBoolean("toko_penjualan_harian")});
+                    }
+                    
+                    if("[Q]Hutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[Q]Hutang Toko",rs.getBoolean("toko_hutang")});
+                    }
+                    
+                    if("[Q]Bayar Pesan Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[Q]Bayar Pesan Toko",rs.getBoolean("toko_bayar_pemesanan")});
+                    }
+                    
+                    if("[Q]Sirkulasi Barang Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[Q]Sirkulasi Barang Toko",rs.getBoolean("toko_sirkulasi")});
                     }
                     
                     if("[R]Set P.J. Unit Penunjang".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4437,14 +4441,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","akun_penagihan_piutang='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[J]Hutang Toko".equals(tbUser.getValueAt(i,1).toString())){
-                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","toko_hutang='"+tbUser.getValueAt(i,2).toString()+"'");
-            }
-            
-            if("[J]Bayar Pesan Toko".equals(tbUser.getValueAt(i,1).toString())){
-                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","toko_bayar_pemesanan='"+tbUser.getValueAt(i,2).toString()+"'");
-            }
-            
             if("[J]Set Tarif Online".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","set_tarif_online='"+tbUser.getValueAt(i,2).toString()+"'");
             }
@@ -5571,6 +5567,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[Q]Penjualan Harian Toko".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","toko_penjualan_harian='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[Q]Hutang Toko".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","toko_hutang='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[Q]Bayar Pesan Toko".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","toko_bayar_pemesanan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[Q]Sirkulasi Barang Toko".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","toko_sirkulasi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[R]Set P.J. Unit Penunjang".equals(tbUser.getValueAt(i,1).toString())){

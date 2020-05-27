@@ -135,7 +135,7 @@ public final class akses {
             ipsrs_returbeli=false,ipsrs_riwayat_barang=false,pasien_corona=false,toko_pendapatan_harian=false,diagnosa_pasien_corona=false,
             perawatan_pasien_corona=false,penilaian_awal_keperawatan_gigi=false,master_masalah_keperawatan_gigi=false,toko_bayar_piutang=false,
             toko_piutang_harian=false,toko_penjualan_harian=false,deteksi_corona=false,penilaian_awal_keperawatan_kebidanan=false,pengumuman_epasien=false,
-            surat_hamil=false,set_tarif_online=false,booking_periksa=false;
+            surat_hamil=false,set_tarif_online=false,booking_periksa=false,toko_sirkulasi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -781,6 +781,7 @@ public final class akses {
                         akses.surat_hamil=true;
                         akses.set_tarif_online=true;
                         akses.booking_periksa=true;
+                        akses.toko_sirkulasi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1410,6 +1411,7 @@ public final class akses {
                         akses.surat_hamil=rs2.getBoolean("surat_hamil");
                         akses.set_tarif_online=rs2.getBoolean("set_tarif_online");
                         akses.booking_periksa=rs2.getBoolean("booking_periksa");
+                        akses.toko_sirkulasi=rs2.getBoolean("toko_sirkulasi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2037,6 +2039,7 @@ public final class akses {
                         akses.surat_hamil=false;
                         akses.set_tarif_online=false;
                         akses.booking_periksa=false;
+                        akses.toko_sirkulasi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2718,4 +2721,5 @@ public final class akses {
     public static boolean getsurat_hamil(){return akses.surat_hamil;}
     public static boolean getset_tarif_online(){return akses.set_tarif_online;}
     public static boolean getbooking_periksa(){return akses.booking_periksa;}
+    public static boolean gettoko_sirkulasi(){return akses.toko_sirkulasi;}
 }   
