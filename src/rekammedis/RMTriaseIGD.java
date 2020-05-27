@@ -43,7 +43,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import kepegawaian.DlgCariPetugas;
+import kepegawaian.DlgCariDokter;
 
 
 /**
@@ -61,7 +61,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     private MasterTriaseMacamKasus kasus=new MasterTriaseMacamKasus(null,false);
     private boolean[] pilih; 
     private String[] kode,pengkajian;
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private String keputusan="",pilihan="",datatriase="";
     private StringBuilder htmlContent;
     
@@ -427,21 +427,21 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        petugas.addWindowListener(new WindowListener() {
+        dokter.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){       
+                if(dokter.getTable().getSelectedRow()!= -1){       
                     if(index==1){
-                        PrimerKodePetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                        PrimerNamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        PrimerKodePetugas.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        PrimerNamaPetugas.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                         btnPrimerPetugas.requestFocus();
                     }else if(index==2){
-                        SekunderKodePetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                        SekunderNamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        SekunderKodePetugas.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        SekunderNamaPetugas.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                         btnSekunderPetugas.requestFocus();
                     }
                 }   
@@ -851,7 +851,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         internalFrame8.setPreferredSize(new java.awt.Dimension(0, 74));
         internalFrame8.setLayout(null);
 
-        jLabel12.setText("Petugas :");
+        jLabel12.setText("Dokter IGD :");
         jLabel12.setName("jLabel12"); // NOI18N
         internalFrame8.add(jLabel12);
         jLabel12.setBounds(252, 40, 70, 23);
@@ -903,7 +903,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel28.setBounds(362, 10, 90, 23);
 
         PrimerTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2020 06:04:59" }));
+        PrimerTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-04-2020 22:00:45" }));
         PrimerTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         PrimerTanggalTriase.setName("PrimerTanggalTriase"); // NOI18N
         PrimerTanggalTriase.setOpaque(false);
@@ -1281,7 +1281,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         internalFrame12.setPreferredSize(new java.awt.Dimension(0, 74));
         internalFrame12.setLayout(null);
 
-        jLabel30.setText("Petugas :");
+        jLabel30.setText("Dokter IGD :");
         jLabel30.setName("jLabel30"); // NOI18N
         internalFrame12.add(jLabel30);
         jLabel30.setBounds(252, 40, 70, 23);
@@ -1330,7 +1330,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel37.setBounds(362, 10, 90, 23);
 
         SekunderTanggalTriase.setForeground(new java.awt.Color(50, 70, 50));
-        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2020 06:04:59" }));
+        SekunderTanggalTriase.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-04-2020 22:00:46" }));
         SekunderTanggalTriase.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         SekunderTanggalTriase.setName("SekunderTanggalTriase"); // NOI18N
         SekunderTanggalTriase.setOpaque(false);
@@ -1624,7 +1624,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         jLabel18.setBounds(0, 40, 89, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2020 06:04:59" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-04-2020 22:00:46" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
@@ -1784,7 +1784,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-04-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1798,7 +1798,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-04-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2103,7 +2103,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 }else if(PrimerCatatan.getText().trim().equals("")){
                     Valid.textKosong(PrimerCatatan,"Catatan");
                 }else if(PrimerKodePetugas.getText().trim().equals("")||PrimerNamaPetugas.getText().trim().equals("")){
-                    Valid.textKosong(btnPrimerPetugas,"Petugas Primer");
+                    Valid.textKosong(btnPrimerPetugas,"Dokter Primer");
                 }else if((jmlskala1==0)&&(jmlskala2==0)){
                     Valid.textKosong(TCariPemeriksaan,"Skala 1 / Skala 2");
                 }else{
@@ -2181,7 +2181,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 }else if(SekunderCatatan.getText().trim().equals("")){
                     Valid.textKosong(SekunderCatatan,"Catatan");
                 }else if(SekunderKodePetugas.getText().trim().equals("")||SekunderNamaPetugas.getText().trim().equals("")){
-                    Valid.textKosong(btnSekunderPetugas,"Petugas Sekunder");
+                    Valid.textKosong(btnSekunderPetugas,"Dokter Sekunder");
                 }else if((jmlskala3==0)&&(jmlskala4==0)&&(jmlskala5==0)){
                     Valid.textKosong(TCariPemeriksaan2,"Skala 3 / Skala 4 / Skala 5");
                 }else{
@@ -2336,7 +2336,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     }else if(PrimerCatatan.getText().trim().equals("")){
                         Valid.textKosong(PrimerCatatan,"Catatan");
                     }else if(PrimerKodePetugas.getText().trim().equals("")||PrimerNamaPetugas.getText().trim().equals("")){
-                        Valid.textKosong(btnPrimerPetugas,"Petugas Primer");
+                        Valid.textKosong(btnPrimerPetugas,"Dokter Primer");
                     }else if((jmlskala1==0)&&(jmlskala2==0)){
                         Valid.textKosong(TCariPemeriksaan,"Skala 1 / Skala 2");
                     }else{
@@ -2416,7 +2416,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     }else if(SekunderCatatan.getText().trim().equals("")){
                         Valid.textKosong(SekunderCatatan,"Catatan");
                     }else if(SekunderKodePetugas.getText().trim().equals("")||SekunderNamaPetugas.getText().trim().equals("")){
-                        Valid.textKosong(btnSekunderPetugas,"Petugas Sekunder");
+                        Valid.textKosong(btnSekunderPetugas,"Dokter Sekunder");
                     }else if((jmlskala3==0)&&(jmlskala4==0)&&(jmlskala5==0)){
                         Valid.textKosong(TCariPemeriksaan2,"Skala 3 / Skala 4 / Skala 5");
                     }else{
@@ -2590,7 +2590,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             
                             ps=koneksi.prepareStatement(
                                 "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
-                                "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.nip,data_triase_igd.tekanan_darah,"+
+                                "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.kd_dokter,data_triase_igd.tekanan_darah,"+
                                 "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
                                 "data_triase_igd.no_rawat from data_triase_igdprimer inner join data_triase_igd on data_triase_igd.no_rawat="+
                                 "data_triase_igdprimer.no_rawat where data_triase_igd.no_rawat=?");
@@ -2756,7 +2756,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                                     "<td width='34%' valign='top'>Catatan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("catatan")+"</td>"+
                                                 "</tr>"+
                                                 "<tr class='isi2'>"+
-                                                    "<td width='34%' valign='top'>Nama Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nip")+" "+Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip"))+"</td>"+
+                                                    "<td width='34%' valign='top'>Nama Dokter</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("kd_dokter")+" "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("kd_dokter"))+"</td>"+
                                                 "</tr>"+
                                             "</table>"+
                                         "</td>"
@@ -2775,7 +2775,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             
                             ps=koneksi.prepareStatement(
                                 "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
-                                "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nip,data_triase_igd.tekanan_darah,"+
+                                "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.kd_dokter,data_triase_igd.tekanan_darah,"+
                                 "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
                                 "data_triase_igd.no_rawat from data_triase_igdsekunder inner join data_triase_igd on data_triase_igd.no_rawat="+
                                 "data_triase_igdsekunder.no_rawat where data_triase_igd.no_rawat=?");
@@ -3012,7 +3012,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                                     "<td width='34%' valign='top'>Catatan</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("catatan")+"</td>"+
                                                 "</tr>"+
                                                 "<tr class='isi2'>"+
-                                                    "<td width='34%' valign='top'>Nama Petugas</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nip")+" "+Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip"))+"</td>"+
+                                                    "<td width='34%' valign='top'>Nama Dokter</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("kd_dokter")+" "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("kd_dokter"))+"</td>"+
                                                 "</tr>"+
                                             "</table>"+
                                         "</td>"
@@ -3170,7 +3170,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         TabPilihan.setSelectedIndex(0);
                         ps=koneksi.prepareStatement(
                                 "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
-                                "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.nip,data_triase_igd.tekanan_darah,"+
+                                "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.kd_dokter,data_triase_igd.tekanan_darah,"+
                                 "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
                                 "data_triase_igd.no_rawat from data_triase_igdprimer inner join data_triase_igd on data_triase_igd.no_rawat="+
                                 "data_triase_igdprimer.no_rawat where data_triase_igd.no_rawat=?");
@@ -3298,8 +3298,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 
                                 PrimerTanggalTriase.setDate(rs.getDate("tanggaltriase"));
                                 PrimerCatatan.setText(rs.getString("catatan"));
-                                PrimerKodePetugas.setText(rs.getString("nip"));
-                                PrimerNamaPetugas.setText(Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip")));
+                                PrimerKodePetugas.setText(rs.getString("kd_dokter"));
+                                PrimerNamaPetugas.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("kd_dokter")));
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3314,7 +3314,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
 
                         ps=koneksi.prepareStatement(
                                 "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
-                                "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nip,data_triase_igd.tekanan_darah,"+
+                                "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.kd_dokter,data_triase_igd.tekanan_darah,"+
                                 "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
                                 "data_triase_igd.no_rawat from data_triase_igdsekunder inner join data_triase_igd on data_triase_igd.no_rawat="+
                                 "data_triase_igdsekunder.no_rawat where data_triase_igd.no_rawat=?");
@@ -3492,8 +3492,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 
                                 SekunderTanggalTriase.setDate(rs.getDate("tanggaltriase"));
                                 SekunderCatatan.setText(rs.getString("catatan"));
-                                SekunderKodePetugas.setText(rs.getString("nip"));
-                                SekunderNamaPetugas.setText(Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip")));
+                                SekunderKodePetugas.setText(rs.getString("kd_dokter"));
+                                SekunderNamaPetugas.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("kd_dokter")));
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3620,11 +3620,11 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
 
     private void btnPrimerPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimerPetugasActionPerformed
         index=1;
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setAlwaysOnTop(false);
-        petugas.setVisible(true);
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setAlwaysOnTop(false);
+        dokter.setVisible(true);
     }//GEN-LAST:event_btnPrimerPetugasActionPerformed
 
     private void btnPrimerPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPrimerPetugasKeyPressed
@@ -3915,11 +3915,11 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
 
     private void btnSekunderPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSekunderPetugasActionPerformed
         index=2;
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setAlwaysOnTop(false);
-        petugas.setVisible(true);
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setAlwaysOnTop(false);
+        dokter.setVisible(true);
     }//GEN-LAST:event_btnSekunderPetugasActionPerformed
 
     private void btnSekunderPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSekunderPetugasKeyPressed
@@ -4015,13 +4015,13 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
-                            "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.nip,data_triase_igd.tekanan_darah,"+
+                            "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.kd_dokter,data_triase_igd.tekanan_darah,"+
                             "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
-                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,petugas.nama,data_triase_igd.tgl_kunjungan, "+
+                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,dokter.nm_dokter,data_triase_igd.tgl_kunjungan, "+
                             "data_triase_igd.cara_masuk,master_triase_macam_kasus.macam_kasus from data_triase_igdprimer inner join data_triase_igd "+
-                            "inner join pasien inner join petugas inner join reg_periksa inner join master_triase_macam_kasus on "+
+                            "inner join pasien inner join dokter inner join reg_periksa inner join master_triase_macam_kasus on "+
                             "data_triase_igd.no_rawat=data_triase_igdprimer.no_rawat and reg_periksa.no_rawat=data_triase_igd.no_rawat "+
-                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and petugas.nip=data_triase_igdprimer.nip "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and dokter.kd_dokter=data_triase_igdprimer.kd_dokter "+
                             "and master_triase_macam_kasus.kode_kasus=data_triase_igd.kode_kasus where data_triase_igd.no_rawat=?");
                         try {
                             ps.setString(1,tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
@@ -4041,10 +4041,10 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 param.put("plan",rs.getString("plan"));
                                 param.put("tanggaltriase",rs.getDate("tanggaltriase"));
                                 param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
-                                param.put("petugas",rs.getString("nama"));
+                                param.put("dokter",rs.getString("nm_dokter"));
                                 param.put("catatan",rs.getString("catatan"));
                                 param.put("tandavital","Suhu (C) : "+rs.getString("suhu")+", Nyeri : "+rs.getString("nyeri")+", Tensi : "+rs.getString("tekanan_darah")+", Nadi(/menit) : "+rs.getString("nadi")+", Saturasi O²(%) : "+rs.getString("saturasi_o2")+", Respirasi(/menit) : "+rs.getString("pernapasan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));  
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala1 inner join data_triase_igddetail_skala1 "+
@@ -4131,13 +4131,13 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
-                            "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.nip,data_triase_igd.tekanan_darah,"+
+                            "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.kd_dokter,data_triase_igd.tekanan_darah,"+
                             "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
-                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,petugas.nama,data_triase_igd.tgl_kunjungan, "+
+                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,dokter.nm_dokter,data_triase_igd.tgl_kunjungan, "+
                             "data_triase_igd.cara_masuk,master_triase_macam_kasus.macam_kasus from data_triase_igdprimer inner join data_triase_igd "+
-                            "inner join pasien inner join petugas inner join reg_periksa inner join master_triase_macam_kasus on "+
+                            "inner join pasien inner join dokter inner join reg_periksa inner join master_triase_macam_kasus on "+
                             "data_triase_igd.no_rawat=data_triase_igdprimer.no_rawat and reg_periksa.no_rawat=data_triase_igd.no_rawat "+
-                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and petugas.nip=data_triase_igdprimer.nip "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and dokter.kd_dokter=data_triase_igdprimer.kd_dokter "+
                             "and master_triase_macam_kasus.kode_kasus=data_triase_igd.kode_kasus where data_triase_igd.no_rawat=?");
                         try {
                             ps.setString(1,tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
@@ -4158,9 +4158,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 param.put("tanggaltriase",rs.getDate("tanggaltriase"));
                                 param.put("tandavital","Suhu (C) : "+rs.getString("suhu")+", Nyeri : "+rs.getString("nyeri")+", Tensi : "+rs.getString("tekanan_darah")+", Nadi(/menit) : "+rs.getString("nadi")+", Saturasi O²(%) : "+rs.getString("saturasi_o2")+", Respirasi(/menit) : "+rs.getString("pernapasan"));
                                 param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
-                                param.put("petugas",rs.getString("nama"));
+                                param.put("dokter",rs.getString("nm_dokter"));
                                 param.put("catatan",rs.getString("catatan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));  
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala2 inner join data_triase_igddetail_skala2 "+
@@ -4247,13 +4247,13 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
-                            "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nip,data_triase_igd.tekanan_darah,"+
+                            "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.kd_dokter,data_triase_igd.tekanan_darah,"+
                             "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
-                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,petugas.nama,data_triase_igd.tgl_kunjungan, "+
+                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,dokter.nm_dokter,data_triase_igd.tgl_kunjungan, "+
                             "data_triase_igd.cara_masuk,master_triase_macam_kasus.macam_kasus from data_triase_igdsekunder inner join data_triase_igd "+
-                            "inner join pasien inner join petugas inner join reg_periksa inner join master_triase_macam_kasus on "+
+                            "inner join pasien inner join dokter inner join reg_periksa inner join master_triase_macam_kasus on "+
                             "data_triase_igd.no_rawat=data_triase_igdsekunder.no_rawat and reg_periksa.no_rawat=data_triase_igd.no_rawat "+
-                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and petugas.nip=data_triase_igdsekunder.nip "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and dokter.kd_dokter=data_triase_igdsekunder.kd_dokter "+
                             "and master_triase_macam_kasus.kode_kasus=data_triase_igd.kode_kasus where data_triase_igd.no_rawat=?");
                         try {
                             ps.setString(1,tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
@@ -4273,9 +4273,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 param.put("tanggaltriase",rs.getDate("tanggaltriase"));
                                 param.put("tandavital","Suhu (C) : "+rs.getString("suhu")+", Nyeri : "+rs.getString("nyeri")+", Tensi : "+rs.getString("tekanan_darah")+", Nadi(/menit) : "+rs.getString("nadi")+", Saturasi O²(%) : "+rs.getString("saturasi_o2")+", Respirasi(/menit) : "+rs.getString("pernapasan"));
                                 param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
-                                param.put("petugas",rs.getString("nama"));
+                                param.put("dokter",rs.getString("nm_dokter"));
                                 param.put("catatan",rs.getString("catatan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));  
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala3 inner join data_triase_igddetail_skala3 "+
@@ -4362,13 +4362,13 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
-                            "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nip,data_triase_igd.tekanan_darah,"+
+                            "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.kd_dokter,data_triase_igd.tekanan_darah,"+
                             "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
-                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,petugas.nama,data_triase_igd.tgl_kunjungan, "+
+                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,dokter.nm_dokter,data_triase_igd.tgl_kunjungan, "+
                             "data_triase_igd.cara_masuk,master_triase_macam_kasus.macam_kasus from data_triase_igdsekunder inner join data_triase_igd "+
-                            "inner join pasien inner join petugas inner join reg_periksa inner join master_triase_macam_kasus on "+
+                            "inner join pasien inner join dokter inner join reg_periksa inner join master_triase_macam_kasus on "+
                             "data_triase_igd.no_rawat=data_triase_igdsekunder.no_rawat and reg_periksa.no_rawat=data_triase_igd.no_rawat "+
-                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and petugas.nip=data_triase_igdsekunder.nip "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and dokter.kd_dokter=data_triase_igdsekunder.kd_dokter "+
                             "and master_triase_macam_kasus.kode_kasus=data_triase_igd.kode_kasus where data_triase_igd.no_rawat=?");
                         try {
                             ps.setString(1,tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
@@ -4388,9 +4388,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 param.put("tanggaltriase",rs.getDate("tanggaltriase"));
                                 param.put("tandavital","Suhu (C) : "+rs.getString("suhu")+", Nyeri : "+rs.getString("nyeri")+", Tensi : "+rs.getString("tekanan_darah")+", Nadi(/menit) : "+rs.getString("nadi")+", Saturasi O²(%) : "+rs.getString("saturasi_o2")+", Respirasi(/menit) : "+rs.getString("pernapasan"));
                                 param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
-                                param.put("petugas",rs.getString("nama"));
+                                param.put("dokter",rs.getString("nm_dokter"));
                                 param.put("catatan",rs.getString("catatan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));  
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala4 inner join data_triase_igddetail_skala4 "+
@@ -4477,13 +4477,13 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                     try {
                         ps=koneksi.prepareStatement(
                             "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
-                            "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nip,data_triase_igd.tekanan_darah,"+
+                            "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.kd_dokter,data_triase_igd.tekanan_darah,"+
                             "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
-                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,petugas.nama,data_triase_igd.tgl_kunjungan, "+
+                            "data_triase_igd.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,dokter.nm_dokter,data_triase_igd.tgl_kunjungan, "+
                             "data_triase_igd.cara_masuk,master_triase_macam_kasus.macam_kasus from data_triase_igdsekunder inner join data_triase_igd "+
-                            "inner join pasien inner join petugas inner join reg_periksa inner join master_triase_macam_kasus on "+
+                            "inner join pasien inner join dokter inner join reg_periksa inner join master_triase_macam_kasus on "+
                             "data_triase_igd.no_rawat=data_triase_igdsekunder.no_rawat and reg_periksa.no_rawat=data_triase_igd.no_rawat "+
-                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and petugas.nip=data_triase_igdsekunder.nip "+
+                            "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and dokter.kd_dokter=data_triase_igdsekunder.kd_dokter "+
                             "and master_triase_macam_kasus.kode_kasus=data_triase_igd.kode_kasus where data_triase_igd.no_rawat=?");
                         try {
                             ps.setString(1,tbTriase.getValueAt(tbTriase.getSelectedRow(),0).toString());
@@ -4503,9 +4503,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 param.put("tanggaltriase",rs.getDate("tanggaltriase"));
                                 param.put("tandavital","Suhu (C) : "+rs.getString("suhu")+", Nyeri : "+rs.getString("nyeri")+", Tensi : "+rs.getString("tekanan_darah")+", Nadi(/menit) : "+rs.getString("nadi")+", Saturasi O²(%) : "+rs.getString("saturasi_o2")+", Respirasi(/menit) : "+rs.getString("pernapasan"));
                                 param.put("jamtriase",rs.getString("tanggaltriase").toString().substring(11,19));
-                                param.put("petugas",rs.getString("nama"));
+                                param.put("dokter",rs.getString("nm_dokter"));
                                 param.put("catatan",rs.getString("catatan"));
-                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("nip")));  
+                                param.put("finger",Sequel.cariIsi("select sha1(sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter")));  
                                 ps2=koneksi.prepareStatement(
                                     "select master_triase_pemeriksaan.kode_pemeriksaan,master_triase_pemeriksaan.nama_pemeriksaan "+
                                     "from master_triase_pemeriksaan inner join master_triase_skala5 inner join data_triase_igddetail_skala5 "+
@@ -5244,7 +5244,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             btnSekunderPetugas.setEnabled(false);
             PrimerKodePetugas.setText(akses.getkode());
             SekunderKodePetugas.setText(akses.getkode());
-            Sequel.cariIsi("select nama from petugas where nip=?", PrimerNamaPetugas,PrimerKodePetugas.getText());
+            Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", PrimerNamaPetugas,PrimerKodePetugas.getText());
             SekunderNamaPetugas.setText(PrimerNamaPetugas.getText());
         } 
     }
@@ -5256,7 +5256,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 TPasien1.setText(tbTriase.getValueAt(tbTriase.getSelectedRow(),2).toString());
                 ps=koneksi.prepareStatement(
                         "select data_triase_igdprimer.keluhan_utama,data_triase_igdprimer.kebutuhan_khusus,data_triase_igdprimer.catatan,"+
-                        "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.nip,data_triase_igd.tekanan_darah,"+
+                        "data_triase_igdprimer.plan,data_triase_igdprimer.tanggaltriase,data_triase_igdprimer.kd_dokter,data_triase_igd.tekanan_darah,"+
                         "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
                         "data_triase_igd.no_rawat from data_triase_igdprimer inner join data_triase_igd on data_triase_igd.no_rawat="+
                         "data_triase_igdprimer.no_rawat where data_triase_igd.no_rawat=?");
@@ -5427,7 +5427,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                             "</tr>"+                       
                             "<tr class='isi'>"+
                                 "<td valign='middle'>&nbsp;</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Primer</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Dokter Triase Primer</td>"+
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Tanggal & Jam</td>"+
@@ -5438,8 +5438,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 "<td valign='middle'>"+rs.getString("catatan")+"</td>"+
                             "</tr>"+
                             "<tr class='isi'>"+
-                                "<td valign='middle'>Nama Petugas</td>"+
-                                "<td valign='middle'>"+rs.getString("nip")+" "+Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip"))+"</td>"+
+                                "<td valign='middle'>Nama Dokter</td>"+
+                                "<td valign='middle'>"+rs.getString("kd_dokter")+" "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("kd_dokter"))+"</td>"+
                             "</tr>"
                         );
                         
@@ -5463,7 +5463,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                 
                 ps=koneksi.prepareStatement(
                         "select data_triase_igdsekunder.anamnesa_singkat,data_triase_igdsekunder.catatan,"+
-                        "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.nip,data_triase_igd.tekanan_darah,"+
+                        "data_triase_igdsekunder.plan,data_triase_igdsekunder.tanggaltriase,data_triase_igdsekunder.kd_dokter,data_triase_igd.tekanan_darah,"+
                         "data_triase_igd.nadi,data_triase_igd.pernapasan,data_triase_igd.suhu,data_triase_igd.saturasi_o2,data_triase_igd.nyeri,"+
                         "data_triase_igd.no_rawat from data_triase_igdsekunder inner join data_triase_igd on data_triase_igd.no_rawat="+
                         "data_triase_igdsekunder.no_rawat where data_triase_igd.no_rawat=?");
@@ -5700,7 +5700,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                         htmlContent.append(                             
                             "<tr class='isi'>"+
                                 "<td valign='middle'>&nbsp;</td>"+
-                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Petugas Triase Sekunder</td>"+
+                                "<td valign='middle' bgcolor='#FFFAF8' align='center'>Dokter Triase Sekunder</td>"+
                             "</tr>"+
                             "<tr class='isi'>"+
                                 "<td valign='middle'>Tanggal & Jam</td>"+
@@ -5711,8 +5711,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                 "<td valign='middle'>"+rs.getString("catatan")+"</td>"+
                             "</tr>"+
                             "<tr class='isi'>"+
-                                "<td valign='middle'>Nama Petugas</td>"+
-                                "<td valign='middle'>"+rs.getString("nip")+" "+Sequel.cariIsi("select nama from petugas where nip=?",rs.getString("nip"))+"</td>"+
+                                "<td valign='middle'>Nama Dokter</td>"+
+                                "<td valign='middle'>"+rs.getString("kd_dokter")+" "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("kd_dokter"))+"</td>"+
                             "</tr>"
                         );
                         

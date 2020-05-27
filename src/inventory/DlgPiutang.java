@@ -980,7 +980,7 @@ public class DlgPiutang extends javax.swing.JDialog {
         panelisi3.add(NoNota);
         NoNota.setBounds(74, 10, 110, 23);
 
-        label11.setText("Tgl.Jual :");
+        label11.setText("Tgl.Piutang :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
@@ -1386,7 +1386,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG OBAT','"+(ttljual+ongkir-uangmuka)+"','0'","Rekening");    
-                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','KAS DI TANGAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening"); 
+                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','PERSEDIAAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening"); 
                     sukses=jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(TglJual.getSelectedItem()+""),"U","PIUTANG DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());   
                 }
                 if(sukses==true){

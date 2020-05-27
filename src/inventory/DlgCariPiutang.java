@@ -1430,8 +1430,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         }
                     }
                         
-                    sisapiutang=rs.getDouble(11)-Sequel.cariIsiAngka("select sum(besar_cicilan) from bayar_piutang where no_rawat='"+rs.getString(1)+"' ");
                     cicilan=Sequel.cariIsiAngka("select sum(besar_cicilan) from bayar_piutang where no_rawat='"+rs.getString(1)+"' ");
+                    sisapiutang=rs.getDouble(11)-cicilan;
                     if(sisapiutang<1){
                         status="Lunas";
                     }else if(sisapiutang>1){

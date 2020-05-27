@@ -57,7 +57,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private AplicareCekReferensiKamar referensi=new AplicareCekReferensiKamar(null,false);
     private String requestJson,URL="",kodeppk=Sequel.cariIsi("select kode_ppk from setting"),CONSIDAPIAPLICARE="";
-    private BPJSApiAplicare api=new BPJSApiAplicare();
+    private ApiBPJSAplicare api=new ApiBPJSAplicare();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper= new ObjectMapper();

@@ -50,7 +50,7 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
     private PCareCekReferensiSubspesialis spesialis=new PCareCekReferensiSubspesialis(null,false);
     private PCareCekReferensiSarana sarana=new PCareCekReferensiSarana(null,false);
     private int i=0;
-    private PcareApi api=new PcareApi();
+    private ApiPcare api=new ApiPcare();
     private String URL="",link="",otorisasi;
     private HttpHeaders headers;
     private HttpEntity requestEntity;

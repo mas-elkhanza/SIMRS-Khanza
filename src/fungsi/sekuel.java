@@ -11,6 +11,7 @@
  */
 package fungsi;
 
+import fungsi.akses;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -136,7 +137,8 @@ public final class sekuel {
         }
     }
 
-    public boolean menyimpantf(String table, String value, int i, String[] a, String acuan_field, String update, int j, String[] b) {
+    public boolean menyimpantf(String table, String value, int i, String[] a, String acuan_field, String update, int j,
+            String[] b) {
         bool = false;
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -266,7 +268,8 @@ public final class sekuel {
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
             if (e.toString().contains("Duplicate")) {
-                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } else {
                 JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Ada kesalahan Query...!");
             }
@@ -353,7 +356,8 @@ public final class sekuel {
         }
     }
 
-    public void menyimpan(String table, String value, int i, String[] a, String acuan_field, String update, int j, String[] b) {
+    public void menyimpan(String table, String value, int i, String[] a, String acuan_field, String update, int j,
+            String[] b) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             for (angka = 1; angka <= i; angka++) {
@@ -397,7 +401,8 @@ public final class sekuel {
         }
     }
 
-    public void menyimpan2(String table, String value, int i, String[] a, String acuan_field, String update, int j, String[] b) {
+    public void menyimpan2(String table, String value, int i, String[] a, String acuan_field, String update, int j,
+            String[] b) {
         try {
             dicari = "";
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -443,7 +448,8 @@ public final class sekuel {
         }
     }
 
-    public void menyimpan3(String table, String value, int i, String[] a, String acuan_field, String update, int j, String[] b) {
+    public void menyimpan3(String table, String value, int i, String[] a, String acuan_field, String update, int j,
+            String[] b) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             for (angka = 1; angka <= i; angka++) {
@@ -559,7 +565,8 @@ public final class sekuel {
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
                 bool = false;
-                JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
+                JOptionPane.showMessageDialog(null,
+                        "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -627,7 +634,8 @@ public final class sekuel {
                     ps.close();
                 }
             }
-            SimpanTrack("delete from " + table + " where " + field + "='" + nilai_field + "' and " + field2 + "='" + nilai_field2 + "'");
+            SimpanTrack("delete from " + table + " where " + field + "='" + nilai_field + "' and " + field2 + "='"
+                    + nilai_field2 + "'");
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -1205,8 +1213,7 @@ public final class sekuel {
     public int cariRegistrasi(String norawat) {
         angka = 0;
         try {
-            ps = connect.prepareStatement(
-                    "select count(billing.no_rawat) from billing where billing.no_rawat=?");
+            ps = connect.prepareStatement("select count(billing.no_rawat) from billing where billing.no_rawat=?");
             try {
                 ps.setString(1, norawat);
                 rs = ps.executeQuery();
@@ -1698,7 +1705,7 @@ public final class sekuel {
                 } else {
                     angka2 = 0;
                 }
-                //rs.close();
+                // rs.close();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
             } finally {
@@ -1783,8 +1790,7 @@ public final class sekuel {
                 for (int I = 0; rs.next(); I++) {
                     ((Painter) txt).setImage(gambar(text));
                     Blob blob = rs.getBlob(5);
-                    ((Painter) txt).setImageIcon(new javax.swing.ImageIcon(
-                            blob.getBytes(1, (int) (blob.length()))));
+                    ((Painter) txt).setImageIcon(new javax.swing.ImageIcon(blob.getBytes(1, (int) (blob.length()))));
                 }
             } catch (Exception e) {
                 cetak(e.toString());
@@ -1864,7 +1870,7 @@ public final class sekuel {
         for (int i = 0; i < angka; i++) {
             javax.swing.table.TableColumn tbc = tb.getColumnModel().getColumn(i);
             tbc.setPreferredWidth(lebar[i]);
-            //tb.setRowHeight(17);
+            // tb.setRowHeight(17);
         }
     }
 
@@ -1881,8 +1887,7 @@ public final class sekuel {
             int scaledW = (int) (scale * inImage.getWidth(null));
             int scaledH = (int) (scale * inImage.getHeight(null));
 
-            BufferedImage outImage = new BufferedImage(scaledW, scaledH,
-                    BufferedImage.TYPE_INT_RGB);
+            BufferedImage outImage = new BufferedImage(scaledW, scaledH, BufferedImage.TYPE_INT_RGB);
 
             AffineTransform tx = new AffineTransform();
 
@@ -1945,9 +1950,8 @@ public final class sekuel {
                 FileChannel outChannel;
                 try (FileChannel inChannel = inFile.getChannel()) {
                     outChannel = outFile.getChannel();
-                    for (ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
-                            inChannel.read(buffer) != -1;
-                            buffer.clear()) {
+                    for (ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024); inChannel.read(buffer) != -1; buffer
+                            .clear()) {
                         buffer.flip();
                         while (buffer.hasRemaining()) {
                             outChannel.write(buffer);
