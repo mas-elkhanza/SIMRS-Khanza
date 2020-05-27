@@ -20,8 +20,8 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import fungsi.koneksiDBRadiologi;
-import ipsrs.DlgBarangIPSRS;
+import bridging.koneksiDBFUJI;
+import ipsrs.IPSRSBarang;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -55,6 +55,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private Connection koneksiradiologi;
     private Jurnal jur=new Jurnal();
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
@@ -452,7 +453,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Hasil Periksa Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Hasil Periksa Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -782,7 +783,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(816, 102));
         jPanel1.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(310, 102));
@@ -887,7 +888,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " BHP Radiologi ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " BHP Radiologi ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(350, 102));
@@ -987,7 +988,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
 
         jPanel1.add(jPanel2);
 
-        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Hasil Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), " Hasil Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
@@ -1076,7 +1077,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCariPeriksa.requestFocus();
         }else {
-            Sequel.queryu("delete from temporary_radiologi");
+            Sequel.queryu("truncate table temporary_radiologi");
             ttl=0;
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
                 item=0;
@@ -1208,7 +1209,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
     private void BtnTambahBhpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahBhpActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBarangIPSRS produsen=new DlgBarangIPSRS(null,false);
+        IPSRSBarang produsen=new IPSRSBarang(null,false);
         produsen.isCek();
         produsen.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         produsen.setLocationRelativeTo(internalFrame1);
@@ -2024,9 +2025,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }
     
-    public void tampilbridging(String order) {         
+    public void tampilFuji(String order) {         
         try{
-            Connection koneksiradiologi=koneksiDBRadiologi.condb();
+            koneksiradiologi=koneksiDBFUJI.condb();
             pspemeriksaan=koneksi.prepareStatement(
                     "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
                     "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
@@ -2043,16 +2044,16 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             "select proyeksi, kV, mAS, FFD, BSF, inak, jml_penyinaran, dosis from order_out where kode_tindakan=? and no_rontgen=?");
                     try {
                         pspemeriksaan2.setString(1,rs.getString("kd_jenis_prw"));
-                        pspemeriksaan2.setString(2,order);
+                        pspemeriksaan2.setString(2,order.replaceAll("PR",""));
                         rs2=pspemeriksaan2.executeQuery();
-                        while(rs2.next()){
+                        if(rs2.next()){
                             tabMode.addRow(new Object[]{
                                 true,rs.getString(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),
                                 rs.getDouble(7),rs.getDouble(8),rs.getDouble(9),rs.getDouble(10),rs2.getString("proyeksi"),rs2.getString("kV"),
                                 rs2.getString("mAS"),rs2.getString("FFD"),rs2.getString("BSF"),rs2.getString("inak"),rs2.getString("jml_penyinaran"),
                                 rs2.getString("dosis")
                             });
-                            koneksiradiologi.prepareStatement("update order_out set statusupdate='1' where kode_tindakan='"+rs.getString("kd_jenis_prw")+"' and no_rontgen='"+order+"'").executeUpdate();
+                            koneksiradiologi.prepareStatement("update order_out set statusupdate='1' where kode_tindakan='"+rs.getString("kd_jenis_prw")+"' and no_rontgen='"+order.replaceAll("PR","")+"'").executeUpdate();
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -2069,7 +2070,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 pspemeriksaan2=koneksiradiologi.prepareStatement(
                         "select expertise_finding, expertise_conclusion, expertise_bookmark from order_out where no_rontgen=?");
                 try {
-                    pspemeriksaan2.setString(1,order);
+                    pspemeriksaan2.setString(1,order.replaceAll("PR",""));
                     rs2=pspemeriksaan2.executeQuery();
                     if(rs2.next()){
                         HasilPeriksa.setText("Finding : "+rs2.getString("expertise_finding")+", Konklusi : "+rs2.getString("expertise_conclusion")+", Bookmark : "+rs2.getString("expertise_bookmark"));
@@ -2093,9 +2094,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 }
                 if(pspemeriksaan!=null){
                     pspemeriksaan.close();
-                }
-                if(koneksiradiologi!=null){
-                    koneksiradiologi.close();
                 }
             }
         }catch(Exception e){
@@ -2133,7 +2131,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         tampil(order);
     }
     
-    public void setOrderBridging(String order,String norawat,String posisi){
+    public void setOrderFuji(String order,String norawat,String posisi){
         noorder=order;
         TNoRw.setText(norawat);
         this.status=posisi;
@@ -2160,7 +2158,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             System.out.println(e);
         }
         isPsien();
-        tampilbridging(order);
+        tampilFuji(order);
     }
 
     private void simpan() {
