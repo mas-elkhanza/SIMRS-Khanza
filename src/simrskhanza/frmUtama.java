@@ -10459,8 +10459,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 win.setLocationRelativeTo(PanelUtama);
                 win.toFront();
             }
-        }        
-        
+        }
     }//GEN-LAST:event_PanelWallMouseMoved
 
     private void btnCekBPJSFaskesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekBPJSFaskesActionPerformed

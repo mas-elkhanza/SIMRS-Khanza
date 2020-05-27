@@ -8,7 +8,7 @@
         $nohp         = trim(isset($_POST['nohp']))?trim($_POST['nohp']):NULL;
         $nohp         = cleankar($nohp);
         $email        = trim(isset($_POST['email']))?trim($_POST['email']):NULL;
-        $email        = validTeks($email);
+        $email        = cleankar($email);
         $pesan        = trim(isset($_POST['pesan']))?trim($_POST['pesan']):NULL;
         $pesan        = cleankar($pesan);
         $TglDaftar    = trim(isset($_POST['TglDaftar']))?trim($_POST['TglDaftar']):NULL;
@@ -19,7 +19,7 @@
         $ThnDaftar    = cleankar($ThnDaftar);
         $poli         = trim(isset($_POST['poli']))?trim($_POST['poli']):NULL;
         $poli         = cleankar($poli);
-        $sekarang     = date("Y-m-d");
+        $sekarang     = date("Y-m-d H:i:s");
         $interval     = getOne("select (TO_DAYS('$ThnDaftar-$BlnDaftar-$TglDaftar')-TO_DAYS('$sekarang'))");
         if($interval>0){
             if ((!empty($nama))&&(!empty($alamat))&&(!empty($nohp))&&(!empty($email))&&(!empty($pesan))&&(!empty($poli))) {
@@ -39,7 +39,7 @@
                                             <b>
                                             <table width='95%' border='0' align='center'>
                                                 <tr><td width='29%' align='left' valign='top'>No. Booking</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>$no_urut</td></tr>
-                                                <tr><td width='29%' align='left' valign='top'>Tgl. Booking</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>".date("d-m-Y")."</td></tr>
+                                                <tr><td width='29%' align='left' valign='top'>Tgl. Booking</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>$sekarang</td></tr>
                                                 <tr><td width='29%' align='left' valign='top'>Tgl. Periksa</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>$TglDaftar-$BlnDaftar-$ThnDaftar</td></tr>
                                                 <tr><td width='29%' align='left' valign='top'>Nama</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>$nama</td></tr>
                                                 <tr><td width='29%' align='left' valign='top'>No. Hp/Telp</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>$nohp</td></tr>

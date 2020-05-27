@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+    date_default_timezone_set('Asia/Jakarta');
     session_start();
     require_once('conf/command.php');
     require_once('conf/conf.php');

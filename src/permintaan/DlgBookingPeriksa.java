@@ -11,6 +11,7 @@ import fungsi.akses;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -43,8 +44,10 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private String pilihtampil="";
     private String alarm="",nol_detik,detik;
     private boolean aktif=false;
-    private int nilai_detik,i=0,bookingbaru=0;
+    private int nilai_detik,i=0,bookingbaru=0,p_kelurahan=0,p_kecamatan=0,p_kabupaten=0,p_propinsi=0;
     private BackgroundMusic music;
+    private String[] arrSplit;
+    private String kelurahan="",kecamatan="",kabupaten="",propinsi="";
     
     
     /**
@@ -69,7 +72,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(117);
             }else if(i==2){
                 column.setPreferredWidth(65);
             }else if(i==3){
@@ -100,6 +103,54 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             System.out.println("E : "+e);
         }
         
+        try {
+            ps=koneksi.prepareStatement("select * from set_alamat_pasien");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    Kelurahan.setEditable(rs.getBoolean("kelurahan"));
+                    Kecamatan.setEditable(rs.getBoolean("kecamatan"));                    
+                    Kabupaten.setEditable(rs.getBoolean("kabupaten"));                    
+                    Propinsi.setEditable(rs.getBoolean("propinsi"));
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    kelurahan=rs.getString("kelurahan");
+                    p_kelurahan=rs.getInt("p_kelurahan");
+                    kecamatan=rs.getString("kecamatan");
+                    p_kecamatan=rs.getInt("p_kecamatan");
+                    kabupaten=rs.getString("kabupaten");
+                    p_kabupaten=rs.getInt("p_kabupaten");
+                    propinsi=rs.getString("propinsi");
+                    p_propinsi=rs.getInt("p_propinsi");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        } 
+        
         if(alarm.equals("yes")){
             jam();
         }
@@ -115,6 +166,38 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        WindowBalas = new javax.swing.JDialog();
+        internalFrame5 = new widget.InternalFrame();
+        panelGlass6 = new widget.panelisi();
+        BtnSimpan4 = new widget.Button();
+        BtnCloseIn4 = new widget.Button();
+        scrollPane2 = new widget.ScrollPane();
+        FormInput = new widget.PanelBiasa();
+        NoBooking = new widget.TextBox();
+        jLabel18 = new widget.Label();
+        Alamat = new widget.TextBox();
+        jLabel15 = new widget.Label();
+        jLabel14 = new widget.Label();
+        NoTelp = new widget.TextBox();
+        jLabel17 = new widget.Label();
+        Email = new widget.TextBox();
+        ChkRM = new widget.CekBox();
+        TNo = new widget.TextBox();
+        NamaPasien = new widget.TextBox();
+        jLabel3 = new widget.Label();
+        jLabel13 = new widget.Label();
+        jLabel53 = new widget.Label();
+        jLabel19 = new widget.Label();
+        Kelurahan = new widget.TextBox();
+        BtnKelurahan = new widget.Button();
+        BtnKecamatan = new widget.Button();
+        Kecamatan = new widget.TextBox();
+        Kabupaten = new widget.TextBox();
+        BtnKabupaten = new widget.Button();
+        Propinsi = new widget.TextBox();
+        BtnPropinsi = new widget.Button();
+        scrollPane1 = new widget.ScrollPane();
+        TambahanPesan = new widget.TextArea();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -142,6 +225,293 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
 
+        WindowBalas.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowBalas.setUndecorated(true);
+        WindowBalas.setResizable(false);
+
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Balas Booking Periksa ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
+        panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        BtnSimpan4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan4.setMnemonic('S');
+        BtnSimpan4.setText("Simpan");
+        BtnSimpan4.setToolTipText("Alt+S");
+        BtnSimpan4.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnSimpan4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan4ActionPerformed(evt);
+            }
+        });
+        panelGlass6.add(BtnSimpan4);
+
+        BtnCloseIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseIn4.setMnemonic('U');
+        BtnCloseIn4.setText("Tutup");
+        BtnCloseIn4.setToolTipText("Alt+U");
+        BtnCloseIn4.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnCloseIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseIn4ActionPerformed(evt);
+            }
+        });
+        panelGlass6.add(BtnCloseIn4);
+
+        internalFrame5.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
+
+        scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        scrollPane2.setPreferredSize(new java.awt.Dimension(1093, 138));
+
+        FormInput.setBorder(null);
+        FormInput.setPreferredSize(new java.awt.Dimension(560, 168));
+        FormInput.setLayout(null);
+
+        NoBooking.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoBookingKeyPressed(evt);
+            }
+        });
+        FormInput.add(NoBooking);
+        NoBooking.setBounds(564, 20, 170, 23);
+
+        jLabel18.setText("No.Booking :");
+        FormInput.add(jLabel18);
+        jLabel18.setBounds(470, 20, 90, 23);
+
+        Alamat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlamatKeyPressed(evt);
+            }
+        });
+        FormInput.add(Alamat);
+        Alamat.setBounds(120, 80, 349, 23);
+
+        jLabel15.setText("Alamat Pasien :");
+        FormInput.add(jLabel15);
+        jLabel15.setBounds(0, 80, 116, 23);
+
+        jLabel14.setText("No.Telp :");
+        FormInput.add(jLabel14);
+        jLabel14.setBounds(470, 50, 90, 23);
+
+        NoTelp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoTelpKeyPressed(evt);
+            }
+        });
+        FormInput.add(NoTelp);
+        NoTelp.setBounds(564, 50, 170, 23);
+
+        jLabel17.setText("E-Mail :");
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(470, 80, 90, 23);
+
+        Email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EmailKeyPressed(evt);
+            }
+        });
+        FormInput.add(Email);
+        Email.setBounds(564, 80, 170, 23);
+
+        ChkRM.setBorder(null);
+        ChkRM.setSelected(true);
+        ChkRM.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkRM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkRM.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkRM.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkRMItemStateChanged(evt);
+            }
+        });
+        FormInput.add(ChkRM);
+        ChkRM.setBounds(280, 20, 23, 23);
+
+        TNo.setEditable(false);
+        TNo.setBackground(new java.awt.Color(245, 250, 240));
+        TNo.setHighlighter(null);
+        TNo.setOpaque(true);
+        TNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNoKeyPressed(evt);
+            }
+        });
+        FormInput.add(TNo);
+        TNo.setBounds(120, 20, 160, 23);
+
+        NamaPasien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NamaPasienKeyPressed(evt);
+            }
+        });
+        FormInput.add(NamaPasien);
+        NamaPasien.setBounds(120, 50, 270, 23);
+
+        jLabel3.setText("No.Rekam Medis :");
+        FormInput.add(jLabel3);
+        jLabel3.setBounds(0, 20, 116, 23);
+
+        jLabel13.setText("Nama Pasien :");
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(0, 50, 116, 23);
+
+        jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel53.setText("I. DATA PASIEN :");
+        FormInput.add(jLabel53);
+        jLabel53.setBounds(10, 0, 180, 23);
+
+        jLabel19.setText("Pesan Pasien :");
+        FormInput.add(jLabel19);
+        jLabel19.setBounds(470, 110, 90, 23);
+
+        Kelurahan.setText("KELURAHAN");
+        Kelurahan.setHighlighter(null);
+        Kelurahan.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                KelurahanMouseMoved(evt);
+            }
+        });
+        Kelurahan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                KelurahanMouseExited(evt);
+            }
+        });
+        Kelurahan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KelurahanKeyPressed(evt);
+            }
+        });
+        FormInput.add(Kelurahan);
+        Kelurahan.setBounds(120, 110, 142, 23);
+
+        BtnKelurahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnKelurahan.setMnemonic('2');
+        BtnKelurahan.setToolTipText("ALt+2");
+        BtnKelurahan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKelurahanActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnKelurahan);
+        BtnKelurahan.setBounds(265, 110, 28, 23);
+
+        BtnKecamatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnKecamatan.setMnemonic('3');
+        BtnKecamatan.setToolTipText("ALt+3");
+        BtnKecamatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKecamatanActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnKecamatan);
+        BtnKecamatan.setBounds(441, 110, 28, 23);
+
+        Kecamatan.setText("KECAMATAN");
+        Kecamatan.setHighlighter(null);
+        Kecamatan.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                KecamatanMouseMoved(evt);
+            }
+        });
+        Kecamatan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                KecamatanMouseExited(evt);
+            }
+        });
+        Kecamatan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KecamatanKeyPressed(evt);
+            }
+        });
+        FormInput.add(Kecamatan);
+        Kecamatan.setBounds(296, 110, 142, 23);
+
+        Kabupaten.setText("KABUPATEN");
+        Kabupaten.setHighlighter(null);
+        Kabupaten.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                KabupatenMouseMoved(evt);
+            }
+        });
+        Kabupaten.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                KabupatenMouseExited(evt);
+            }
+        });
+        Kabupaten.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KabupatenKeyPressed(evt);
+            }
+        });
+        FormInput.add(Kabupaten);
+        Kabupaten.setBounds(120, 140, 142, 23);
+
+        BtnKabupaten.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnKabupaten.setMnemonic('4');
+        BtnKabupaten.setToolTipText("ALt+4");
+        BtnKabupaten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKabupatenActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnKabupaten);
+        BtnKabupaten.setBounds(265, 140, 28, 23);
+
+        Propinsi.setText("PROPINSI");
+        Propinsi.setHighlighter(null);
+        Propinsi.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                PropinsiMouseMoved(evt);
+            }
+        });
+        Propinsi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PropinsiMouseExited(evt);
+            }
+        });
+        Propinsi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PropinsiKeyPressed(evt);
+            }
+        });
+        FormInput.add(Propinsi);
+        Propinsi.setBounds(296, 140, 142, 23);
+
+        BtnPropinsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPropinsi.setMnemonic('4');
+        BtnPropinsi.setToolTipText("ALt+4");
+        BtnPropinsi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPropinsiActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnPropinsi);
+        BtnPropinsi.setBounds(441, 140, 28, 23);
+
+        scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        TambahanPesan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        TambahanPesan.setColumns(20);
+        TambahanPesan.setRows(5);
+        TambahanPesan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TambahanPesanKeyPressed(evt);
+            }
+        });
+        scrollPane1.setViewportView(TambahanPesan);
+
+        FormInput.add(scrollPane1);
+        scrollPane1.setBounds(564, 110, 170, 52);
+
+        scrollPane2.setViewportView(FormInput);
+
+        internalFrame5.add(scrollPane2, java.awt.BorderLayout.CENTER);
+
+        WindowBalas.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("::[ Booking Online Periksa ]::");
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -158,7 +528,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbObatMouseClicked(evt);
@@ -469,6 +838,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        WindowBalas.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -529,7 +899,12 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
     private void BtnJawabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJawabActionPerformed
         if(tbObat.getSelectedRow()>-1){
-            
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));    
+            getData();
+            WindowBalas.setSize(internalFrame1.getWidth()-10, internalFrame1.getHeight()-10);
+            WindowBalas.setLocationRelativeTo(internalFrame1);
+            WindowBalas.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
         } 
@@ -541,6 +916,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         aktif=false;
+        WindowBalas.dispose();
     }//GEN-LAST:event_formWindowClosed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
@@ -559,6 +935,228 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             Valid.pindah(evt, TCari, BtnJawab);
         }
     }//GEN-LAST:event_BtnHapusKeyPressed
+
+    private void BtnCloseIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn4ActionPerformed
+        akses.setAktif(false);
+        WindowBalas.dispose();
+    }//GEN-LAST:event_BtnCloseIn4ActionPerformed
+
+    private void BtnSimpan4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan4ActionPerformed
+        
+    }//GEN-LAST:event_BtnSimpan4ActionPerformed
+
+    private void NamaPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaPasienKeyPressed
+        
+    }//GEN-LAST:event_NamaPasienKeyPressed
+
+    private void TNoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoKeyPressed
+        /*if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            TTmp.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            KabupatenPj.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_DOWN){
+            kddokter.requestFocus();
+        }*/
+    }//GEN-LAST:event_TNoKeyPressed
+
+    private void ChkRMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkRMItemStateChanged
+        if(ChkRM.isSelected()==true){
+            TNo.setEditable(false);
+            TNo.setBackground(new Color(245,250,240));
+            //autoNomor();
+        }else if(ChkRM.isSelected()==false){
+            TNo.setEditable(true);
+            TNo.setBackground(new Color(250,255,245));
+        }
+    }//GEN-LAST:event_ChkRMItemStateChanged
+
+    private void NoTelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoTelpKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoTelpKeyPressed
+
+    private void AlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AlamatKeyPressed
+
+    private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailKeyPressed
+
+    private void NoBookingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoBookingKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoBookingKeyPressed
+
+    private void KelurahanMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KelurahanMouseMoved
+        if(Kelurahan.getText().equals("KELURAHAN")){
+            Kelurahan.setText("");
+        }
+    }//GEN-LAST:event_KelurahanMouseMoved
+
+    private void KelurahanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KelurahanMouseExited
+        if(Kelurahan.getText().equals("")){
+            Kelurahan.setText("KELURAHAN");
+        }
+    }//GEN-LAST:event_KelurahanMouseExited
+
+    private void KelurahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelurahanKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(Kelurahan.getText().equals("")){
+                Kelurahan.setText("KELURAHAN");
+            }
+            if(Kecamatan.getText().equals("KECAMATAN")){
+                Kecamatan.setText("");
+            }
+            Kecamatan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            if(Kelurahan.getText().equals("")){
+                Kelurahan.setText("KELURAHAN");
+            }
+            if(Alamat.getText().equals("ALAMAT")){
+                Alamat.setText("");
+            }
+            Alamat.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnKelurahanActionPerformed(null);
+        }
+    }//GEN-LAST:event_KelurahanKeyPressed
+
+    private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
+        /*akses.setform("DlgPasien");
+        pilih=1;
+        kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kel.setLocationRelativeTo(internalFrame1);
+        kel.setVisible(true);*/
+    }//GEN-LAST:event_BtnKelurahanActionPerformed
+
+    private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
+        /*akses.setform("DlgPasien");
+        pilih=1;
+        kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kec.setLocationRelativeTo(internalFrame1);
+        kec.setVisible(true);*/
+    }//GEN-LAST:event_BtnKecamatanActionPerformed
+
+    private void KecamatanMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KecamatanMouseMoved
+        if(Kecamatan.getText().equals("KECAMATAN")){
+            Kecamatan.setText("");
+        }
+    }//GEN-LAST:event_KecamatanMouseMoved
+
+    private void KecamatanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KecamatanMouseExited
+        if(Kecamatan.getText().equals("")){
+            Kecamatan.setText("KECAMATAN");
+        }
+    }//GEN-LAST:event_KecamatanMouseExited
+
+    private void KecamatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecamatanKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(Kecamatan.getText().equals("")){
+                Kecamatan.setText("KECAMATAN");
+            }
+            if(Kabupaten.getText().equals("KABUPATEN")){
+                Kabupaten.setText("");
+            }
+            Kabupaten.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            if(Kecamatan.getText().equals("")){
+                Kecamatan.setText("KECAMATAN");
+            }
+            if(Kelurahan.getText().equals("KELURAHAN")){
+                Kelurahan.setText("");
+            }
+            Kelurahan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnKecamatanActionPerformed(null);
+        }
+    }//GEN-LAST:event_KecamatanKeyPressed
+
+    private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KabupatenMouseMoved
+        if(Kabupaten.getText().equals("KABUPATEN")){
+            Kabupaten.setText("");
+        }
+    }//GEN-LAST:event_KabupatenMouseMoved
+
+    private void KabupatenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KabupatenMouseExited
+        if(Kabupaten.getText().equals("")){
+            Kabupaten.setText("KABUPATEN");
+        }
+    }//GEN-LAST:event_KabupatenMouseExited
+
+    private void KabupatenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KabupatenKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(Kabupaten.getText().equals("")){
+                Kabupaten.setText("KABUPATEN");
+            }
+            if(Propinsi.getText().equals("PROPINSI")){
+                Propinsi.setText("");
+            }
+            Propinsi.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            if(Kabupaten.getText().equals("")){
+                Kabupaten.setText("KABUPATEN");
+            }
+            if(Kecamatan.getText().equals("KECAMATAN")){
+                Kecamatan.setText("");
+            }
+            Kecamatan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnKabupatenActionPerformed(null);
+        }
+    }//GEN-LAST:event_KabupatenKeyPressed
+
+    private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
+        /*akses.setform("DlgPasien");
+        pilih=1;
+        kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kab.setLocationRelativeTo(internalFrame1);
+        kab.setVisible(true);*/
+    }//GEN-LAST:event_BtnKabupatenActionPerformed
+
+    private void PropinsiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PropinsiMouseMoved
+        if(Propinsi.getText().equals("PROPINSI")){
+            Propinsi.setText("");
+        }
+    }//GEN-LAST:event_PropinsiMouseMoved
+
+    private void PropinsiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PropinsiMouseExited
+        if(Propinsi.getText().equals("")){
+            Propinsi.setText("PROPINSI");
+        }
+    }//GEN-LAST:event_PropinsiMouseExited
+
+    private void PropinsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PropinsiKeyPressed
+        /*if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(Propinsi.getText().equals("")){
+                Propinsi.setText("PROPINSI");
+            }
+            if(AlamatPj.getText().equals("ALAMAT")){
+                AlamatPj.setText("");
+            }
+            AlamatPj.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            if(Propinsi.getText().equals("")){
+                Propinsi.setText("PROPINSI");
+            }
+            if(Kabupaten.getText().equals("KABUPATEN")){
+                Kabupaten.setText("");
+            }
+            Kabupaten.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnPropinsiActionPerformed(null);
+        }*/
+    }//GEN-LAST:event_PropinsiKeyPressed
+
+    private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
+        /*akses.setform("DlgPasien");
+        pilih=1;
+        prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        prop.setLocationRelativeTo(internalFrame1);
+        prop.setVisible(true);*/
+    }//GEN-LAST:event_BtnPropinsiActionPerformed
+
+    private void TambahanPesanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TambahanPesanKeyPressed
+        //Valid.pindah(evt,BMI,RiwayatPenyakit);
+    }//GEN-LAST:event_TambahanPesanKeyPressed
 
     /**
      * @param args the command line arguments
@@ -596,32 +1194,64 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox Alamat;
     private widget.Button BtnAll;
     private widget.Button BtnCari;
+    private widget.Button BtnCloseIn4;
     private widget.Button BtnHapus;
     private widget.Button BtnJawab;
+    private widget.Button BtnKabupaten;
+    private widget.Button BtnKecamatan;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKelurahan;
     private widget.Button BtnPrint;
+    private widget.Button BtnPropinsi;
+    private widget.Button BtnSimpan4;
+    private widget.CekBox ChkRM;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Tanggal DTPCari3;
     private widget.Tanggal DTPCari4;
+    private widget.TextBox Email;
+    private widget.PanelBiasa FormInput;
+    private widget.TextBox Kabupaten;
+    private widget.TextBox Kecamatan;
+    private widget.TextBox Kelurahan;
     private widget.Label LCount;
     private widget.Label LCount1;
+    private widget.TextBox NamaPasien;
+    private widget.TextBox NoBooking;
+    private widget.TextBox NoTelp;
+    private widget.TextBox Propinsi;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
     private widget.RadioButton R3;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
+    private widget.TextBox TNo;
+    private widget.TextArea TambahanPesan;
+    private javax.swing.JDialog WindowBalas;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame5;
+    private widget.Label jLabel13;
+    private widget.Label jLabel14;
+    private widget.Label jLabel15;
+    private widget.Label jLabel17;
+    private widget.Label jLabel18;
+    private widget.Label jLabel19;
     private widget.Label jLabel22;
     private widget.Label jLabel25;
+    private widget.Label jLabel3;
+    private widget.Label jLabel53;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelCari;
+    private widget.panelisi panelGlass6;
     private widget.panelisi panelGlass8;
+    private widget.ScrollPane scrollPane1;
+    private widget.ScrollPane scrollPane2;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     
@@ -710,6 +1340,57 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             }                
         };
         new Timer(1000, taskPerformer).start();
+    }
+    
+    private void getData(){
+        if(tbObat.getSelectedRow()!= -1){
+            NoBooking.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            NamaPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            arrSplit = tbObat.getValueAt(tbObat.getSelectedRow(),4).toString().toUpperCase().split(",");
+            try {
+                if(!arrSplit[0].equals("")){
+                    Alamat.setText(arrSplit[0]);
+                }
+            } catch (Exception e) {
+                Alamat.setText("-");
+            }
+            
+            try {
+                if(!arrSplit[1].equals("")){
+                    Kelurahan.setText(arrSplit[1].replaceFirst(" ",""));
+                }
+            } catch (Exception e) {
+                Kelurahan.setText("-");
+            }
+            
+            try {
+                if(!arrSplit[2].equals("")){
+                    Kecamatan.setText(arrSplit[2].replaceFirst(" ",""));
+                }
+            } catch (Exception e) {
+                Kecamatan.setText("-");
+            }
+            
+            try {
+                if(!arrSplit[3].equals("")){
+                    Kabupaten.setText(arrSplit[3].replaceFirst(" ",""));
+                }
+            } catch (Exception e) {
+                Kabupaten.setText("-");
+            }
+            
+            try {
+                if(!arrSplit[4].equals("")){
+                    Propinsi.setText(arrSplit[4].replaceFirst(" ",""));
+                }
+            } catch (Exception e) {
+                Propinsi.setText("-");
+            }
+            
+            NoTelp.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            Email.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            TambahanPesan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+        }
     }
     
     public void isCek(){
