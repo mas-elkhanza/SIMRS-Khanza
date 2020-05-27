@@ -12,7 +12,7 @@
 
 package inventory;
 
-import bridging.ApiPcare;
+import bridging.PcareApi;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable2;
@@ -81,7 +81,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     private String[] arrSplit;
     private boolean sukses=true;
     /** Creates new form DlgPenyakit

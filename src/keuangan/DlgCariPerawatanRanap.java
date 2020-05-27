@@ -11,7 +11,7 @@
 
 package keuangan;
 
-import bridging.ApiPcare;
+import bridging.PcareApi;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
@@ -88,7 +88,7 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     private final Properties prop = new Properties();
     
     /** Creates new form DlgPenyakit

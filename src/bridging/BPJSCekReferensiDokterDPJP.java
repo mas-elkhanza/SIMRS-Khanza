@@ -51,7 +51,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private String URL="",link="";
-    private ApiBPJS api=new ApiBPJS();
+    private BPJSApi api=new BPJSApi();
     private BPJSCekReferensiPoli spesialis=new BPJSCekReferensiPoli(null,false);
     private HttpHeaders headers ;
     private HttpEntity requestEntity;

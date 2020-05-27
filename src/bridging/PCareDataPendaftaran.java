@@ -86,7 +86,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private PCareCekReferensiSubspesialis subspesialis=new PCareCekReferensiSubspesialis(null,false);
     private PCareCekReferensiProvider provider=new PCareCekReferensiProvider(null,false);
     private PCareCekReferensiKhusus khusus=new PCareCekReferensiKhusus(null,false);
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     private String URL="",bangsal="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="",otorisasi,kamar="",divreg="",kacab="",userpcare="";
     private HttpHeaders headers,headers2;
     private HttpEntity requestEntity;

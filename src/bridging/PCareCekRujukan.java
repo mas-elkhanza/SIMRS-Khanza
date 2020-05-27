@@ -55,7 +55,7 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */

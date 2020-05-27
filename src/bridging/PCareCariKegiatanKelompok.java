@@ -42,7 +42,7 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     private String URL="",link="",otorisasi;
     private HttpHeaders headers;
     private HttpEntity requestEntity;

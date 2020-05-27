@@ -12,7 +12,7 @@
 
 package keuangan;
 
-import bridging.ApiPcare;
+import bridging.PcareApi;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kepegawaian.DlgCariPetugas;
@@ -76,7 +76,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private ApiPcare api=new ApiPcare();
+    private PcareApi api=new PcareApi();
     private final Properties prop = new Properties();
 
     /**

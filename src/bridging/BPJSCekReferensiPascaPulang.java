@@ -44,7 +44,7 @@ public final class BPJSCekReferensiPascaPulang extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private ApiBPJS api=new ApiBPJS();
+    private BPJSApi api=new BPJSApi();
     private String link="",URL="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
