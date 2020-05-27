@@ -5632,8 +5632,6 @@ public final class DlgReg extends javax.swing.JDialog {
         pasien.satuantni.dispose();
         pasien.suku.dispose();
         dokter.dispose();
-        dokter.dokter.dispose();
-        dokter2.dokter.dispose();
         poli.dispose();
         poli2.dispose();
         dlgrjk.dispose();
@@ -6053,7 +6051,7 @@ public final class DlgReg extends javax.swing.JDialog {
                         dlgki.setLocationRelativeTo(internalFrame1);
                         dlgki.emptTeks();
                         dlgki.isCek();
-                        dlgki.setNoRm(TNoRw.getText());
+                        dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());
                         dlgki.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
@@ -8179,7 +8177,9 @@ public final class DlgReg extends javax.swing.JDialog {
                         dlgki.setLocationRelativeTo(internalFrame1);
                         dlgki.emptTeks();
                         dlgki.isCek();
-                        dlgki.setNoRm(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(), 1).toString());
+                        dlgki.setNoRm(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString(),
+                                tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),6).toString(),
+                                tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),7).toString());
                         dlgki.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }

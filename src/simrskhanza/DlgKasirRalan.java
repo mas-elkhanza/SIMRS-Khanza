@@ -5263,7 +5263,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             otomatisRalan();
                         }
                         kamarinap.isCek();
-                        kamarinap.setNoRm(TNoRw.getText());
+                        kamarinap.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());  
                         kamarinap.setVisible(true);
                     }
                 }
@@ -6412,7 +6412,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         kamarinap.setLocationRelativeTo(internalFrame1);
                         kamarinap.emptTeks();
                         kamarinap.isCek();
-                        kamarinap.setNoRm(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(), 10).toString());
+                        kamarinap.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());
                         kamarinap.setVisible(true);
                     }
                 }

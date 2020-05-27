@@ -77,6 +77,8 @@ public final class validasi {
     private final Calendar now = Calendar.getInstance();
     private final int year = (now.get(Calendar.YEAR));
     private static final Properties prop = new Properties();
+    private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
+                         "tujuh","delapan","sembilan","sepuluh","sebelas"};
 
     public validasi() {
         super();
@@ -945,12 +947,12 @@ public final class validasi {
     }
 
     public void printUrl(String url) throws URISyntaxException {
-        try {
-            Date dtpa = new SimpleDateFormat("yyyy-MM-dd")
-                    .parse(tabMode.getValueAt(j, i).toString().replaceAll("'", ""));
-            dtp.setDate(dtpa);
-        } catch (ParseException ex) {
-            dtp.setDate(new Date());
+        try{
+           Properties prop = new Properties();
+           prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+url)));  
+        }catch (Exception e) {
+           System.out.println(e);
         }
     }
 
@@ -1137,5 +1139,49 @@ public final class validasi {
                 // To change body of generated methods, choose Tools | Templates.
             }
         });
+    }
+    
+    public String terbilang(double angka){
+        if(angka<12)
+        {
+          return nomina[(int)angka];
+        }
+        
+        if(angka>=12 && angka <=19)
+        {
+            return nomina[(int)angka%10] +" belas ";
+        }
+        
+        if(angka>=20 && angka <=99)
+        {
+            return nomina[(int)angka/10] +" puluh "+nomina[(int)angka%10];
+        }
+        
+        if(angka>=100 && angka <=199)
+        {
+            return "seratus "+ terbilang(angka%100);
+        }
+        
+        if(angka>=200 && angka <=999)
+        {
+            return nomina[(int)angka/100]+" ratus "+terbilang(angka%100);
+        }
+        
+        if(angka>=1000 && angka <=1999)
+        {
+            return "seribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 2000 && angka <=999999)
+        {
+            return terbilang((int)angka/1000)+" ribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 1000000 && angka <=999999999)
+        {
+            return terbilang((int)angka/1000000)+" juta "+ terbilang(angka%1000000);
+        }
+        
+        return "";
     }
 }

@@ -3921,7 +3921,6 @@ public final class DlgIGD extends javax.swing.JDialog {
         pasien.satuantni.dispose();
         pasien.suku.dispose();
         dokter.dispose();
-        dokter.dokter.dispose();
         dlgrjk.dispose();
         rujukmasuk.WindowPerujuk.dispose();
         DlgSakit2.dispose();
@@ -4178,7 +4177,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                     dlgki.setLocationRelativeTo(internalFrame1);
                     dlgki.emptTeks();
                     dlgki.isCek();
-                    dlgki.setNoRm(TNoRw.getText());
+                    dlgki.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());
                     dlgki.setVisible(true);
                 }
             }
