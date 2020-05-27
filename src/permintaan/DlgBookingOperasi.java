@@ -40,7 +40,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String status="",kamar="",diagnosa="",order="",kelas="",penjab="",norawatibu="",posisi="";
+    private String status="",kamar="",diagnosa="",order="",kelas="",penjab="",norawatibu="",posisi="",norm="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariDaftarOperasi operasi=new DlgCariDaftarOperasi(null,false);
     
@@ -1003,7 +1003,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             for(i=0;i<tabMode.getRowCount();i++){ 
                 Sequel.menyimpan("temporary","'0','"+
                     tabMode.getValueAt(i,0).toString()+"','"+
@@ -1241,7 +1241,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 kamarinap.setLocationRelativeTo(internalFrame1);
                 kamarinap.emptTeks();
                 kamarinap.isCek();
-                kamarinap.setNoRm(TNoRw.getText());
+                norm=Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",TNoRw.getText());
+                kamarinap.setNoRm(TNoRw.getText(),norm,TPasien.getText());
                 kamarinap.setVisible(true);
             }
         }

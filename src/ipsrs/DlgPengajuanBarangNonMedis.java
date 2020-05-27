@@ -35,7 +35,6 @@ public class DlgPengajuanBarangNonMedis extends javax.swing.JDialog {
     private Double[] harga, subtotal;
     private WarnaTable2 warna = new WarnaTable2();
     private DlgCariPegawai pegawai = new DlgCariPegawai(null, false);
-    private DlgBarangIPSRS barang = new DlgBarangIPSRS(null, false);
     private double total = 0, y = 0;
     private boolean sukses = true;
 
@@ -533,8 +532,8 @@ public class DlgPengajuanBarangNonMedis extends javax.swing.JDialog {
     }// GEN-LAST:event_BtnKeluarKeyPressed
     /*
      * private void KdKeyPressed(java.awt.event.KeyEvent evt)
-     * {//GEN-FIRST:event_TKdKeyPressed Valid.pindah(evt,BtnCari,Nm);
-     * }//GEN-LAST:event_TKdKeyPressed
+     * {                                                             
+     * }                              
      */
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnSimpanActionPerformed

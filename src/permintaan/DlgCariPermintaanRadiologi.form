@@ -28,7 +28,7 @@
             <Property name="text" type="java.lang.String" value="Cetak Permintaan Radiologi"/>
             <Property name="name" type="java.lang.String" value="MnCetakHasilRadiologi" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 28]"/>
+              <Dimension value="[200, 28]"/>
             </Property>
           </Properties>
           <Events>
@@ -52,7 +52,7 @@
             <Property name="text" type="java.lang.String" value="Barcode No.Permintaan"/>
             <Property name="name" type="java.lang.String" value="MnBarcodePermintaan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 28]"/>
+              <Dimension value="[200, 28]"/>
             </Property>
           </Properties>
           <Events>
@@ -76,14 +76,14 @@
             <Property name="text" type="java.lang.String" value="Barcode No.Permintaan 2"/>
             <Property name="name" type="java.lang.String" value="MnBarcodePermintaan1" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 28]"/>
+              <Dimension value="[200, 28]"/>
             </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnBarcodePermintaan1ActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="MnKirimData">
+        <MenuItem class="javax.swing.JMenuItem" name="MnKirimDataFUJI">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -97,17 +97,17 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Kirim Permintaan ke Server Bridging"/>
-            <Property name="name" type="java.lang.String" value="MnKirimData" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Kirim Permintaan ke RIS FUJI"/>
+            <Property name="name" type="java.lang.String" value="MnKirimDataFUJI" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 28]"/>
+              <Dimension value="[200, 28]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnKirimDataActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnKirimDataFUJIActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="MnAmbilData">
+        <MenuItem class="javax.swing.JMenuItem" name="MnAmbilDataFUJI">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -121,14 +121,14 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ambil Hasil dari Server Bridging"/>
-            <Property name="name" type="java.lang.String" value="MnAmbilData" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Ambil Hasil dari RIS FUJI"/>
+            <Property name="name" type="java.lang.String" value="MnAmbilDataFUJI" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 28]"/>
+              <Dimension value="[200, 28]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnAmbilDataActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnAmbilDataFUJIActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -223,7 +223,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="23-05-2020 12:56:37"/>
+                    <StringItem index="0" value="14-02-2020 19:03:43"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>

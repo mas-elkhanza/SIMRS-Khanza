@@ -10958,20 +10958,19 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
     }
 
-    public void setNoRm(String norwt) {
+    public void setNoRm(String norwt,String norm,String nmpasien) {
         norawat.setText(norwt);
-        Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ", TNoRM, norawat.getText());
-        Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ", TPasien, TNoRM.getText());
-        R1.setSelected(true);
+        TNoRM.setText(norm);
+        TPasien.setText(nmpasien);
+        R1.setSelected(true);        
         TCari.setText(norwt);
-        try {
-            ps = koneksi.prepareStatement(
-                    "select no_rawat, kd_kamar, diagnosa_awal, diagnosa_akhir, tgl_masuk, jam_masuk, tgl_keluar, jam_keluar, ttl_biaya "
-                            + "from kamar_inap where no_rawat=? order by tgl_masuk,jam_masuk desc limit 1 ");
+        try {    
+            ps=koneksi.prepareStatement("select no_rawat, kd_kamar, diagnosa_awal, diagnosa_akhir, tgl_masuk, jam_masuk, tgl_keluar, jam_keluar, ttl_biaya "+
+                    "from kamar_inap where no_rawat=? order by tgl_masuk,jam_masuk desc limit 1 ");
             try {
-                ps.setString(1, norawat.getText());
-                rs = ps.executeQuery();
-                if (rs.next()) {
+                ps.setString(1,norawat.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
                     norawat.setEditable(false);
                     norawat.setText(rs.getString(1));
                     kdkamar.setText(rs.getString(2));
@@ -10983,21 +10982,21 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     ttlbiaya.setText(rs.getString(8));
 
                     kdkamar.setEditable(false);
-                    diagnosaawal.setEditable(false);
+                    diagnosaawal.setEditable(false);                
                     diagnosaakhir.setVisible(true);
                     btnDiagnosa.setVisible(true);
                     jLabel23.setVisible(true);
                     cmbStatus.setVisible(true);
                     jLabel26.setVisible(true);
                     diagnosaakhir.setText("");
-                    LblStts.setText("Pulang/Check Out");
-                    i = 1;
+                    LblStts.setText("Pulang/Check Out");  
+                    i=1;
                     btnReg.setEnabled(false);
                     btnKamar.setEnabled(false);
-                    CmbTahun.setSelectedItem(now.substring(0, 4));
-                    CmbBln.setSelectedItem(now.substring(5, 7));
-                    CmbTgl.setSelectedItem(now.substring(8, 10));
-                } else {
+                    CmbTahun.setSelectedItem(now.substring(0,4));
+                    CmbBln.setSelectedItem(now.substring(5,7));
+                    CmbTgl.setSelectedItem(now.substring(8,10));
+                }else{
                     norawat.setEditable(true);
                     kdkamar.setEditable(true);
                     diagnosaawal.setEditable(true);
@@ -11007,36 +11006,36 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     JamMasuk.setText("");
                     TOut.setText("");
                     ttlbiaya.setText("0");
-                    jLabel23.setVisible(false);
+                    jLabel23.setVisible(false);                
                     cmbStatus.setVisible(false);
                     jLabel26.setVisible(false);
                     diagnosaakhir.setText("-");
                     LblStts.setText("Masuk/Check In");
                     btnReg.setEnabled(true);
-                    btnKamar.setEnabled(true);
-                    CmbTahun.setSelectedItem(now.substring(0, 4));
-                    CmbBln.setSelectedItem(now.substring(5, 7));
-                    CmbTgl.setSelectedItem(now.substring(8, 10));
+                    btnKamar.setEnabled(true);   
+                    CmbTahun.setSelectedItem(now.substring(0,4));
+                    CmbBln.setSelectedItem(now.substring(5,7));
+                    CmbTgl.setSelectedItem(now.substring(8,10));          
                 }
             } catch (Exception e) {
-                log.error("Notifikasi : " + e);
-            } finally {
-                if (rs != null) {
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
                     rs.close();
-                }
-                if (ps != null) {
+                }                
+                if(ps != null){
                     ps.close();
                 }
             }
-
-            if (kdkamar.isEditable() == false) {
+            
+            if(kdkamar.isEditable()==false){
                 isKmr();
                 isjml();
             }
-            CmbTahunItemStateChanged(null);
-        } catch (SQLException e) {
-            log.error(e);
-        }
+            CmbTahunItemStateChanged(null);   
+        } catch (Exception e) {
+            System.out.println(e);
+        }       
     }
 
     public void isCek() {
