@@ -88,7 +88,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     private BPJSCekNIK cekViaBPJS=new BPJSCekNIK();
     private boolean empt=false;
     private HttpHeaders headers;
-    private HttpHeaders headers2;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
