@@ -75,6 +75,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
@@ -85,6 +86,7 @@ public final class sekuel {
 
         } catch (SQLException ex) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(sekuel.class.getName() + ", " + ex);
         }
 
     }
@@ -100,6 +102,7 @@ public final class sekuel {
             SimpanTrack("insert into " + table + " values(" + value + ")");
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -115,6 +118,7 @@ public final class sekuel {
             return true;
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
             JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             return false;
         }
@@ -132,6 +136,7 @@ public final class sekuel {
             return true;
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
             return false;
         }
     }
@@ -197,6 +202,7 @@ public final class sekuel {
 
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
@@ -213,6 +219,7 @@ public final class sekuel {
             SimpanTrack("insert into " + table + " values(" + dicari + ")");
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -226,6 +233,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -241,6 +249,7 @@ public final class sekuel {
             SimpanTrack("insert into " + table + " values(" + dicari + ")");
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -266,6 +275,7 @@ public final class sekuel {
             return true;
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
             if (e.toString().contains("Duplicate")) {
                 JOptionPane.showMessageDialog(null,
                         "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
@@ -289,6 +299,7 @@ public final class sekuel {
             } catch (Exception e) {
                 bool = false;
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -304,6 +315,7 @@ public final class sekuel {
         } catch (Exception e) {
             bool = false;
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
         return bool;
     }
@@ -326,6 +338,7 @@ public final class sekuel {
 
         } catch (SQLException e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -500,6 +513,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -508,6 +522,7 @@ public final class sekuel {
             SimpanTrack("insert into " + table + " values(" + value + ")");
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -542,6 +557,7 @@ public final class sekuel {
                 JOptionPane.showMessageDialog(AlmGb, "Simpan Berhasil...");
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
@@ -550,6 +566,7 @@ public final class sekuel {
             }
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -563,6 +580,7 @@ public final class sekuel {
                 bool = true;
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 bool = false;
                 JOptionPane.showMessageDialog(null,
                         "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
@@ -573,6 +591,7 @@ public final class sekuel {
             }
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
             bool = false;
         }
         return bool;
@@ -587,6 +606,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, gagal menyimpan data. Kemungkinan ada " + sama + " yang sama dimasukkan sebelumnya...!");
             } finally {
                 if (ps != null) {
@@ -595,6 +615,7 @@ public final class sekuel {
             }
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -606,6 +627,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
             } finally {
                 if (ps != null) {
@@ -615,6 +637,7 @@ public final class sekuel {
             SimpanTrack("delete from " + table + " where " + field + "='" + nilai_field + "'");
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -627,6 +650,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
             } finally {
                 if (ps != null) {
@@ -637,6 +661,7 @@ public final class sekuel {
                     + nilai_field2 + "'");
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -649,6 +674,7 @@ public final class sekuel {
                 JOptionPane.showMessageDialog(null, "Proses hapus berhasil...!!!!");
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
             } finally {
                 if (ps != null) {
@@ -658,6 +684,7 @@ public final class sekuel {
             SimpanTrack("delete from " + table + " where " + field + "='" + nilai_field + "'");
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -669,6 +696,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -677,6 +705,7 @@ public final class sekuel {
             SimpanTrack("delete from " + table + " where " + field + "='" + nilai_field + "'");
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -687,6 +716,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, Gagal Mengedit. Mungkin kode sudah digunakan sebelumnya...!!!!");
             } finally {
                 if (ps != null) {
@@ -696,6 +726,7 @@ public final class sekuel {
             SimpanTrack("update " + table + " set " + update + " where " + acuan_field);
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -709,6 +740,7 @@ public final class sekuel {
             } catch (Exception e) {
                 bool = false;
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, Gagal Mengedit. Mungkin kode sudah digunakan sebelumnya...!!!!");
             } finally {
                 if (ps != null) {
@@ -719,6 +751,7 @@ public final class sekuel {
         } catch (Exception e) {
             bool = false;
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
         return bool;
     }
@@ -733,6 +766,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, Gagal Mengedit. Periksa kembali data...!!!!");
             } finally {
                 if (ps != null) {
@@ -749,6 +783,7 @@ public final class sekuel {
             SimpanTrack("update " + table + " set " + update + " " + dicari + " where " + acuan_field);
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -763,6 +798,7 @@ public final class sekuel {
                 JOptionPane.showMessageDialog(null, "Proses edit berhasil...!!!!");
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Periksa kembali data...!!!!");
             } finally {
                 if (ps != null) {
@@ -779,6 +815,7 @@ public final class sekuel {
             SimpanTrack("update " + table + " set " + update + " " + dicari + " where " + acuan_field);
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -792,6 +829,7 @@ public final class sekuel {
                 ps.executeUpdate();
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
             } finally {
                 if (ps != null) {
                     ps.close();
@@ -806,6 +844,7 @@ public final class sekuel {
             SimpanTrack("update " + table + " set " + update + " " + dicari + " where " + acuan_field);
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
     }
 
@@ -822,6 +861,7 @@ public final class sekuel {
             } catch (Exception e) {
                 bool = false;
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, Gagal Mengedit. Periksa kembali data...!!!!");
             } finally {
                 if (ps != null) {
@@ -1817,8 +1857,10 @@ public final class sekuel {
                     ps.setString(2, akses.getkode());
                     ps.executeUpdate();
                     Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, sql);
+                    System.out.println(sekuel.class.getName() + ", " + sql);
                 } catch (Exception e) {
                     Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                    System.out.println(sekuel.class.getName() + ", " + e);
                 } finally {
                     if (ps != null) {
                         ps.close();
@@ -1826,6 +1868,7 @@ public final class sekuel {
                 }
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
             }
         }
     }
@@ -1843,6 +1886,7 @@ public final class sekuel {
                 }
             } catch (Exception e) {
                 Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                System.out.println(sekuel.class.getName() + ", " + e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -1854,6 +1898,7 @@ public final class sekuel {
             }
         } catch (Exception e) {
             Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println(sekuel.class.getName() + ", " + e);
         }
 
         return dicari;
