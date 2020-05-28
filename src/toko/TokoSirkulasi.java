@@ -28,7 +28,8 @@ public class TokoSirkulasi extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private double ttltotalbeli=0,totalbeli=0,stok=0,aset=0,ttlaset=0,jumlahbeli=0,jumlahutd=0,totalutd=0,ttltotalutd=0,ttltotalpesan=0,totalpesan=0,jumlahpesan=0,jumlahkeluar,totalkeluar,ttltotalkeluar;
+    private double ttltotalbeli=0,totalbeli=0,stok=0,aset=0,ttlaset=0,jumlahbeli=0,jumlahpiutang=0,totalpiutang=0,ttltotalpiutang=0,ttltotalpesan=0,totalpesan=0,jumlahpesan=0,
+            jumlahpenjualan,totalpenjualan,ttltotalpenjualan,jumlahretursup,totalretursup,ttltotalretursup;
     private IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
@@ -40,9 +41,9 @@ public class TokoSirkulasi extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Barang","Nama Barang","Satuan","Stok","Stok(Rp)","Pengadaan","Pengadaan(Rp)",
-                      "Penerimaan","Penerimaan(Rp)","Stok Keluar","Stok Keluar(Rp)","Pengambilan UTD","Pengambilan UTD(Rp)"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "Kode Barang","Nama Barang","Satuan","Stok","Stok(Rp)","Pengadaan","Pengadaan(Rp)","Penerimaan","Penerimaan(Rp)","Penjualan","Penjualan(Rp)","Piutang","Piutang(Rp)","Retur Sup","Retur Sup(Rp)"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbDokter.setModel(tabMode);
@@ -50,12 +51,12 @@ public class TokoSirkulasi extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i <13; i++) {
+        for (int i = 0; i <15; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(170);
             }else if(i==2){
                 column.setPreferredWidth(70);
             }else if(i==3){
@@ -77,6 +78,10 @@ public class TokoSirkulasi extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(70);
             }else if(i==12){
+                column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(70);
+            }else if(i==14){
                 column.setPreferredWidth(100);
             }
         }
@@ -385,15 +390,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             
-            Sequel.queryu("truncate table temporary");
+            Sequel.queryu("truncate table temporary_toko");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','','','',''",13,new String[]{
+                Sequel.menyimpan("temporary_toko","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','',''",15,new String[]{
                     tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
                     tabMode.getValueAt(i,3).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
                     tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,7).toString(),tabMode.getValueAt(i,8).toString(),
                     tabMode.getValueAt(i,9).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString(),
-                    tabMode.getValueAt(i,12).toString()
+                    tabMode.getValueAt(i,12).toString(),tabMode.getValueAt(i,13).toString(),tabMode.getValueAt(i,14).toString()
                 }); 
             }
             
@@ -406,7 +411,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Valid.MyReport("rptSirkulasiNonMedis.jasper","report","::[ Sirkulasi Barang Non Medis, Penunjang Lab & Radiologi ]::",param);
+            Valid.MyReport("rptSirkulasiToko.jasper","report","::[ Sirkulasi Barang Toko ]::",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -455,12 +460,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?",nmbar,kdbar.getText());
+            Sequel.cariIsi("select nama_brng from tokobarang where kode_brng=?",nmbar,kdbar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?",nmbar,kdbar.getText());
+            Sequel.cariIsi("select nama_brng from tokobarang where kode_brng=?",nmbar,kdbar.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_brng from ipsrsbarang where kode_brng=?",nmbar,kdbar.getText());
+            Sequel.cariIsi("select nama_brng from tokobarang where kode_brng=?",nmbar,kdbar.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBarangActionPerformed(null);
@@ -541,15 +546,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void prosesCari() {
        Valid.tabelKosong(tabMode);      
        try{   
-            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng,ipsrsbarang.nama_brng, "+
-                        "kodesatuan.satuan,ipsrsbarang.stok,(ipsrsbarang.stok*ipsrsbarang.harga) as aset "+
-                        "from ipsrsbarang inner join kodesatuan on ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
-                        "where ipsrsbarang.nama_brng like ? and ipsrsbarang.kode_brng like ? or "+
-                        "ipsrsbarang.nama_brng like ? and ipsrsbarang.nama_brng like ? or "+
-                        "ipsrsbarang.nama_brng like ? and kodesatuan.satuan like ? "+
-                        " order by ipsrsbarang.kode_brng");
+            ps=koneksi.prepareStatement("select tokobarang.kode_brng,tokobarang.nama_brng, "+
+                        "kodesatuan.satuan,tokobarang.stok,(tokobarang.stok*tokobarang.dasar) as aset "+
+                        "from tokobarang inner join kodesatuan on tokobarang.kode_sat=kodesatuan.kode_sat "+
+                        "where tokobarang.nama_brng like ? and tokobarang.kode_brng like ? or "+
+                        "tokobarang.nama_brng like ? and tokobarang.nama_brng like ? or "+
+                        "tokobarang.nama_brng like ? and kodesatuan.satuan like ? "+
+                        " order by tokobarang.kode_brng");
             try {
-                ttltotalbeli=0;ttltotalpesan=0;ttltotalkeluar=0;ttlaset=0;ttltotalutd=0;
+                ttltotalbeli=0;ttltotalpesan=0;ttltotalpenjualan=0;ttlaset=0;ttltotalpiutang=0;ttltotalretursup=0;
                 ps.setString(1,"%"+nmbar.getText()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+nmbar.getText()+"%");
@@ -558,16 +563,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();            
                 while(rs.next()){
-                    totalbeli=0;jumlahbeli=0;totalpesan=0;jumlahpesan=0;jumlahkeluar=0;
-                    totalkeluar=0;stok=0;aset=0;jumlahutd=0;totalutd=0;
+                    totalbeli=0;jumlahbeli=0;totalpesan=0;jumlahpesan=0;jumlahpenjualan=0;
+                    totalpenjualan=0;stok=0;aset=0;jumlahpiutang=0;totalpiutang=0;jumlahretursup=0;
+                    totalretursup=0;
 
                     stok=rs.getDouble("stok");
                     aset=rs.getDouble("aset");
                     
-                    ps2=koneksi.prepareStatement("select sum(ipsrsdetailbeli.jumlah), sum(ipsrsdetailbeli.subtotal) "+
-                        " from ipsrspembelian inner join ipsrsdetailbeli "+
-                        " on ipsrspembelian.no_faktur=ipsrsdetailbeli.no_faktur "+
-                        " where ipsrsdetailbeli.kode_brng=? and ipsrspembelian.tgl_beli "+
+                    ps2=koneksi.prepareStatement("select sum(toko_detail_beli.jumlah), sum(toko_detail_beli.total) "+
+                        " from tokopembelian inner join toko_detail_beli "+
+                        " on tokopembelian.no_faktur=toko_detail_beli.no_faktur "+
+                        " where toko_detail_beli.kode_brng=? and tokopembelian.tgl_beli "+
                         " between ? and ? ");
                     try {
                         ps2.setString(1,rs.getString(1));
@@ -589,11 +595,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }          
                     
-                    //ipsrspemesanan
-                    ps2=koneksi.prepareStatement("select sum(ipsrsdetailpesan.jumlah), sum(ipsrsdetailpesan.subtotal) "+
-                        " from ipsrspemesanan inner join ipsrsdetailpesan "+
-                        " on ipsrspemesanan.no_faktur=ipsrsdetailpesan.no_faktur "+
-                        " where ipsrsdetailpesan.kode_brng=? and ipsrspemesanan.tgl_pesan "+
+                    //tokopemesanan
+                    ps2=koneksi.prepareStatement("select sum(toko_detail_pesan.jumlah), sum(toko_detail_pesan.total) "+
+                        " from tokopemesanan inner join toko_detail_pesan "+
+                        " on tokopemesanan.no_faktur=toko_detail_pesan.no_faktur "+
+                        " where toko_detail_pesan.kode_brng=? and tokopemesanan.tgl_pesan "+
                         " between ? and ? ");
                     try {
                         ps2.setString(1,rs.getString(1));
@@ -615,22 +621,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }  
                     
-                    ps2=koneksi.prepareStatement("select sum(ipsrsdetailpengeluaran.jumlah), sum(ipsrsdetailpengeluaran.total) "+
-                        " from ipsrspengeluaran inner join ipsrsdetailpengeluaran "+
-                        " on ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
-                        " where ipsrsdetailpengeluaran.kode_brng=? and "+
-                        " ipsrspengeluaran.tanggal between ? and ?");
+                    ps2=koneksi.prepareStatement("select sum(toko_detail_jual.jumlah), sum(toko_detail_jual.total) "+
+                        " from tokopenjualan inner join toko_detail_jual "+
+                        " on tokopenjualan.nota_jual=toko_detail_jual.nota_jual "+
+                        " where toko_detail_jual.kode_brng=? and "+
+                        " tokopenjualan.tgl_jual between ? and ?");
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
-                            jumlahkeluar=rs2.getDouble(1);
-                            totalkeluar=rs2.getDouble(2);
+                            jumlahpenjualan=rs2.getDouble(1);
+                            totalpenjualan=rs2.getDouble(2);
                         }
                     } catch (Exception e) {
-                        System.out.println("Notifikas keluar : "+e);
+                        System.out.println("Notifikas penjualan : "+e);
                     } finally{
                         if(rs2!=null){
                             rs2.close();
@@ -640,21 +646,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                     
-                    ps2=koneksi.prepareStatement("select sum(utd_pengambilan_penunjang.jml) as jumlah, "+
-                        "sum(utd_pengambilan_penunjang.total) as jumpas "+
-                        " from utd_pengambilan_penunjang where utd_pengambilan_penunjang.kode_brng=? and "+
-                        " utd_pengambilan_penunjang.tanggal between ? and ?");            
+                    ps2=koneksi.prepareStatement("select sum(toko_detail_piutang.jumlah), sum(toko_detail_piutang.total) "+
+                        " from tokopiutang inner join toko_detail_piutang "+
+                        " on tokopiutang.nota_piutang=toko_detail_piutang.nota_piutang "+
+                        " where toko_detail_piutang.kode_brng=? and "+
+                        " tokopiutang.tgl_piutang between ? and ?");
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
-                            jumlahutd=rs2.getDouble(1);
-                            totalutd=rs2.getDouble(2);
+                            jumlahpiutang=rs2.getDouble(1);
+                            totalpiutang=rs2.getDouble(2);
                         }
                     } catch (Exception e) {
-                        System.out.println("Note : "+e);
+                        System.out.println("Notifikas piutang : "+e);
                     } finally{
                         if(rs2!=null){
                             rs2.close();
@@ -664,23 +671,51 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                     
-                    if((stok>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahkeluar>0)||(jumlahutd>0)){
+                    ps2=koneksi.prepareStatement("select sum(toko_detail_returbeli.jml_retur), sum(toko_detail_returbeli.total) "+
+                        " from tokoreturbeli inner join toko_detail_returbeli "+
+                        " on tokoreturbeli.no_retur_beli=toko_detail_returbeli.no_retur_beli "+
+                        " where toko_detail_returbeli.kode_brng=? and "+
+                        " tokoreturbeli.tgl_retur between ? and ?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahretursup=rs2.getDouble(1);
+                            totalretursup=rs2.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas piutang : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    if((stok>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahpenjualan>0)||(jumlahpiutang>0)||(jumlahretursup>0)){
                         tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
                            rs.getString(3),Valid.SetAngka(stok),Valid.SetAngka(aset),
                            Valid.SetAngka(jumlahbeli),Valid.SetAngka(totalbeli),
                            Valid.SetAngka(jumlahpesan),Valid.SetAngka(totalpesan),
-                           Valid.SetAngka(jumlahkeluar),Valid.SetAngka(totalkeluar),
-                           Valid.SetAngka(jumlahutd),Valid.SetAngka(totalutd)
+                           Valid.SetAngka(jumlahpenjualan),Valid.SetAngka(totalpenjualan),
+                           Valid.SetAngka(jumlahpiutang),Valid.SetAngka(totalpiutang),
+                           Valid.SetAngka(jumlahretursup),Valid.SetAngka(totalretursup)
                         }); 
                         ttltotalbeli=ttltotalbeli+totalbeli;
                         ttltotalpesan=ttltotalpesan+totalpesan;
                         ttlaset=ttlaset+aset;
-                        ttltotalkeluar=ttltotalkeluar+totalkeluar;
-                        ttltotalutd=ttltotalutd+totalutd;
+                        ttltotalpenjualan=ttltotalpenjualan+totalpenjualan;
+                        ttltotalpiutang=ttltotalpiutang+totalpiutang;
+                        ttltotalretursup=ttltotalretursup+totalretursup;
                     }
                 }   
-                tabMode.addRow(new Object[]{"","","","","","","","","","","","",""}); 
-                tabMode.addRow(new Object[]{"<>>","Total :","","",Valid.SetAngka(ttlaset),"",Valid.SetAngka(ttltotalbeli),"",Valid.SetAngka(ttltotalpesan),"",Valid.SetAngka(ttltotalkeluar),"",Valid.SetAngka(ttltotalutd)
+                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","",""}); 
+                tabMode.addRow(new Object[]{
+                    "<>>","Total :","","",Valid.SetAngka(ttlaset),"",Valid.SetAngka(ttltotalbeli),"",Valid.SetAngka(ttltotalpesan),"",Valid.SetAngka(ttltotalpenjualan),"",Valid.SetAngka(ttltotalpiutang),"",Valid.SetAngka(ttltotalretursup)
                 }); 
             } catch (Exception e) {
                 System.out.println("Notifikasi Data Barang : "+e);
