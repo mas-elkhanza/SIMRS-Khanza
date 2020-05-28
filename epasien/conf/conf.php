@@ -146,6 +146,18 @@
         mysqli_close($konektor);
         return $result;
     }
+    
+    function TO_DAYS($date) {
+	if (is_numeric($date)) {
+            $res = 719528 + (int) ($date / 86400);
+	} else {
+            $TZ = date_default_timezone_get();
+            date_default_timezone_set('UTC');
+            $res = 719528 + (int) (strtotime($date) / 86400);
+            date_default_timezone_set($TZ);
+	}
+	return $res;
+    }
 
     function Tambah($tabelname,$attrib,$pesan) {
         $command = bukainput("INSERT INTO ".$tabelname." VALUES (".$attrib.")");
@@ -225,6 +237,10 @@
     function JSRedirect($url){
         echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=$url'></head><body></body></html>";
     }
+    
+    function JSRedirect2($url,$time){
+        echo"<html><head><title></title><meta http-equiv='refresh' content='$time;URL=$url'></head><body></body></html>";
+    }
 
     // redirect to another page
     function redirect($location) {
@@ -299,6 +315,12 @@
         list($result) =mysqli_fetch_array($hasil);
         return $result;
     }
+    
+    function getOne2($sql) {
+        $hasil = bukaquery2($sql);
+        list($result) = mysqli_fetch_array($hasil);
+        return $result;
+    }
 
     function cekKosong($sql) {
         $jum = mysqli_num_rows($sql);
@@ -333,7 +355,6 @@
 
 
     function loadTgl2(){
-        //echo "<option>-&nbsp</option>";
         for($tgl=1; $tgl<=31; $tgl++){
             $tgl_leng=strlen($tgl);
             if ($tgl_leng==1)
@@ -370,7 +391,6 @@
     }
 
     function loadBln2(){
-        //echo "<option>-&nbsp</option>";
         for($bln=1; $bln<=12; $bln++){
             $bln_leng=strlen($bln);
             if ($bln_leng==1)
@@ -422,7 +442,6 @@
     }
     function loadThn3(){
         $thnini=date('Y');
-        //echo "<option>-&nbsp</option>";
         for($thn=$thnini+30; $thn>=1960; $thn--){
             $thn_leng=strlen($thn);
             if ($thn_leng==1)
@@ -435,8 +454,7 @@
 
     function loadThn4(){
         $thnini=date('Y');
-        //echo "<option>-&nbsp</option>";
-        for($thn=$thnini; $thn>=1960; $thn--){
+        for($thn=$thnini+4; $thn>=$thnini; $thn--){
             $thn_leng=strlen($thn);
             if ($thn_leng==1)
             $i="0".$thn;
@@ -461,12 +479,12 @@
     function loadMenit(){
         //echo "<option selected>-----&nbsp</option>";
         for($menit=0; $menit<=60; $menit++){
-                $menit_leng=strlen($menit);
-                if ($menit_leng==1)
-                $i="0".$menit;
-                else
-                $i=$menit;                        
-                echo "<option value=$i>$i</option>";
+            $menit_leng=strlen($menit);
+            if ($menit_leng==1)
+            $i="0".$menit;
+            else
+            $i=$menit;                        
+            echo "<option value=$i>$i</option>";
         }
     }
 

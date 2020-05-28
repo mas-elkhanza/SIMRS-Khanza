@@ -110,18 +110,19 @@
               
               echo "<meta http-equiv='refresh' content='1;URL=?page=Cari&Thnawal=$Thnawal&Blnawal=$Blnawal&keyword=$keyword'>";
         }
-        $say =" rekap_presensi.jam_datang like '%$Thnawal-$Blnawal%'"; 
-        $_sql = "SELECT pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift,
-                rekap_presensi.jam_datang, rekap_presensi.jam_pulang, rekap_presensi.status, 
-                rekap_presensi.keterlambatan, rekap_presensi.durasi,rekap_presensi.keterangan,
-                rekap_presensi.photo  from pegawai 
-                inner join rekap_presensi on pegawai.id=rekap_presensi.id                 
-                where  $say and pegawai.nik like '%".$keyword."%' or
-                $say and pegawai.nama like '%".$keyword."%' or
-                $say and rekap_presensi.shift like '%".$keyword."%' or
-                $say and rekap_presensi.jam_datang like '%".$keyword."%' or
-                $say and rekap_presensi.status like '%".$keyword."%' or
-                $say and rekap_presensi.keterlambatan like '%".$keyword."%' order by $urut,rekap_presensi.jam_datang   ";                 
+        $keyword    = validTeks($keyword);
+        $say        = " rekap_presensi.jam_datang like '%$Thnawal-$Blnawal%'"; 
+        $_sql       = "SELECT pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shift,
+                        rekap_presensi.jam_datang, rekap_presensi.jam_pulang, rekap_presensi.status, 
+                        rekap_presensi.keterlambatan, rekap_presensi.durasi,rekap_presensi.keterangan,
+                        rekap_presensi.photo  from pegawai 
+                        inner join rekap_presensi on pegawai.id=rekap_presensi.id                 
+                        where  $say and pegawai.nik like '%".$keyword."%' or
+                        $say and pegawai.nama like '%".$keyword."%' or
+                        $say and rekap_presensi.shift like '%".$keyword."%' or
+                        $say and rekap_presensi.jam_datang like '%".$keyword."%' or
+                        $say and rekap_presensi.status like '%".$keyword."%' or
+                        $say and rekap_presensi.keterlambatan like '%".$keyword."%' order by $urut,rekap_presensi.jam_datang   ";                 
 
        
         $hasil=bukaquery($_sql);

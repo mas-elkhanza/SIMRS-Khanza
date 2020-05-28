@@ -22,6 +22,10 @@
         $kode_ppkinhealth   = $pengaturan["kode_ppkinhealth"];
         $kode_ppkkemenkes   = $pengaturan["kode_ppkinhealth"];
     }
+    $besok                  = date("Y-m-d", strtotime("+1 day"));
+    $thnbesok               = substr($besok,0,4);
+    $blnbesok               = substr($besok,5,2);
+    $tglbesok               = substr($besok,8,2);
 ?>
 <section id="home" class="slider" data-stellar-background-ratio="0.5">
       <div class="container">
@@ -191,23 +195,26 @@
                                         <tr>
                                             <td>
                                                <select name="TglDaftar" class="form-control">
-                                                    <?php
-                                                       loadTglnow();
-                                                    ?>
+                                                <?php
+                                                    echo "<option>$tglbesok</option>";
+                                                    loadTgl2();
+                                                ?>
                                                </select>
                                             </td>
                                             <td>
                                                 <select name="BlnDaftar" class="form-control">
-                                                     <?php
-                                                        loadBlnnow();
-                                                     ?>
+                                                 <?php
+                                                    echo "<option>$blnbesok</option>";
+                                                    loadBln2();
+                                                 ?>
                                                 </select>
                                             </td>
                                             <td>
                                                 <select name="ThnDaftar" class="form-control">
-                                                     <?php
-                                                        loadThnnow();
-                                                     ?>
+                                                 <?php
+                                                    echo "<option>$thnbesok</option>";
+                                                    loadThn4();
+                                                 ?>
                                                 </select>
                                             </td>
                                         </tr>
