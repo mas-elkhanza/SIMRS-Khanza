@@ -22,7 +22,7 @@
               <Color blue="78" green="0" red="f5" type="rgb"/>
             </Property>
             <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="64" green="0" red="e1" type="rgb"/>
+              <Color blue="67" green="0" red="e4" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -480,7 +480,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="28/05/2020"/>
+            <StringItem index="0" value="29/05/2020"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -8944,10 +8944,10 @@
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f5" green="f5" red="ff" type="rgb"/>
+          <Color blue="f7" green="f2" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cd" green="cd" red="ff" type="rgb"/>
+          <Color blue="cf" green="ca" red="ff" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -9400,10 +9400,10 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d2" green="cd" red="ff" type="rgb"/>
+          <Color blue="d4" green="ca" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="fa" green="f5" red="ff" type="rgb"/>
+          <Color blue="fc" green="f2" red="ff" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>

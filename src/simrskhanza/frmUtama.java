@@ -619,6 +619,7 @@ import toko.TokoPenjualan;
 import toko.TokoPiutang;
 import toko.TokoPiutangHarian;
 import toko.TokoReturBeli;
+import toko.TokoReturJual;
 import toko.TokoRiwayatBarang;
 import toko.TokoSirkulasi;
 import toko.TokoSuplier;
@@ -1342,7 +1343,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setWarnaAtas(new java.awt.Color(245, 0, 120));
-        internalFrame2.setWarnaBawah(new java.awt.Color(225, 0, 100));
+        internalFrame2.setWarnaBawah(new java.awt.Color(228, 0, 103));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -1537,7 +1538,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/05/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29/05/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6596,8 +6597,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 42));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(255, 245, 245));
-        internalFrame1.setWarnaBawah(new java.awt.Color(255, 205, 205));
+        internalFrame1.setWarnaAtas(new java.awt.Color(255, 242, 247));
+        internalFrame1.setWarnaBawah(new java.awt.Color(255, 202, 207));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -6877,8 +6878,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(255, 205, 210));
-        internalFrame4.setWarnaBawah(new java.awt.Color(255, 245, 250));
+        internalFrame4.setWarnaAtas(new java.awt.Color(255, 202, 212));
+        internalFrame4.setWarnaBawah(new java.awt.Color(255, 242, 252));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -15857,7 +15858,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnReturJualTokoActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoReturJual form=new TokoReturJual(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     /**

@@ -34,7 +34,6 @@ import javax.swing.table.TableColumn;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgKecamatan;
 import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgPenanggungJawab;
 import simrskhanza.DlgPropinsi;
 
 /**
@@ -49,13 +48,12 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private PreparedStatement ps;
     private ResultSet rs;
     private String pilihtampil="";
-    private String alarm="",nol_detik,detik;
+    private String alarm="",nol_detik,detik,pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="";
     private boolean aktif=false;
     private int nilai_detik,i=0,bookingbaru=0,p_kelurahan=0,p_kecamatan=0,p_kabupaten=0,p_propinsi=0;
     private BackgroundMusic music;
     private String[] arrSplit;
     private String kelurahan="",kecamatan="",kabupaten="",propinsi="",kdkel="",kdkec="",kdkab="",kdprop="";
-    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(this,false);
     private DlgKabupaten kab=new DlgKabupaten(this,false);
     private DlgPropinsi prop=new DlgPropinsi(this,false);
     private DlgKecamatan kec=new DlgKecamatan(this,false);
@@ -251,6 +249,26 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                     ps.close();
                 }
             }
+            
+            ps=koneksi.prepareStatement("select * from set_urut_no_rkm_medis");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    pengurutan=rs.getString("urutan");
+                    tahun=rs.getString("tahun");
+                    bulan=rs.getString("bulan");
+                    posisitahun=rs.getString("posisi_tahun_bulan");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         } 
@@ -309,12 +327,9 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel20 = new widget.Label();
         jLabel21 = new widget.Label();
         NmPoli = new widget.TextBox();
-        BtnPropinsi1 = new widget.Button();
         KdPoli = new widget.TextBox();
-        jLabel23 = new widget.Label();
-        KdPoli1 = new widget.TextBox();
-        NmPoli1 = new widget.TextBox();
-        BtnPropinsi2 = new widget.Button();
+        jLabel55 = new widget.Label();
+        NoRm = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -625,16 +640,16 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         scrollPane1.setViewportView(TambahanPesan);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(554, 110, 210, 82);
+        scrollPane1.setBounds(554, 110, 210, 42);
 
         jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel54.setText("II. DATA BOOKING :");
         FormInput.add(jLabel54);
-        jLabel54.setBounds(10, 200, 180, 23);
+        jLabel54.setBounds(10, 170, 180, 23);
 
         jLabel16.setText("Tanggal Booking :");
         FormInput.add(jLabel16);
-        jLabel16.setBounds(0, 220, 116, 23);
+        jLabel16.setBounds(0, 190, 116, 23);
 
         TanggalBooking.setEditable(false);
         TanggalBooking.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -643,7 +658,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             }
         });
         FormInput.add(TanggalBooking);
-        TanggalBooking.setBounds(120, 220, 140, 23);
+        TanggalBooking.setBounds(120, 190, 140, 23);
 
         TanggalPeriksa.setEditable(false);
         TanggalPeriksa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -652,17 +667,17 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             }
         });
         FormInput.add(TanggalPeriksa);
-        TanggalPeriksa.setBounds(360, 220, 80, 23);
+        TanggalPeriksa.setBounds(360, 190, 80, 23);
 
         jLabel20.setText("Poli Dituju :");
         jLabel20.setPreferredSize(new java.awt.Dimension(74, 14));
         FormInput.add(jLabel20);
-        jLabel20.setBounds(442, 220, 70, 23);
+        jLabel20.setBounds(442, 190, 70, 23);
 
         jLabel21.setText("Tanggal Periksa :");
         jLabel21.setPreferredSize(new java.awt.Dimension(74, 14));
         FormInput.add(jLabel21);
-        jLabel21.setBounds(260, 220, 96, 23);
+        jLabel21.setBounds(260, 190, 96, 23);
 
         NmPoli.setHighlighter(null);
         NmPoli.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -681,18 +696,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             }
         });
         FormInput.add(NmPoli);
-        NmPoli.setBounds(579, 220, 154, 23);
-
-        BtnPropinsi1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPropinsi1.setMnemonic('4');
-        BtnPropinsi1.setToolTipText("ALt+4");
-        BtnPropinsi1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPropinsi1ActionPerformed(evt);
-            }
-        });
-        FormInput.add(BtnPropinsi1);
-        BtnPropinsi1.setBounds(736, 220, 28, 23);
+        NmPoli.setBounds(579, 190, 185, 23);
 
         KdPoli.setHighlighter(null);
         KdPoli.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -711,67 +715,25 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             }
         });
         FormInput.add(KdPoli);
-        KdPoli.setBounds(516, 220, 60, 23);
+        KdPoli.setBounds(516, 190, 60, 23);
 
-        jLabel23.setText("Cara Bayar :");
-        jLabel23.setPreferredSize(new java.awt.Dimension(74, 14));
-        FormInput.add(jLabel23);
-        jLabel23.setBounds(0, 170, 116, 23);
-
-        KdPoli1.setHighlighter(null);
-        KdPoli1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                KdPoli1MouseMoved(evt);
-            }
-        });
-        KdPoli1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                KdPoli1MouseExited(evt);
-            }
-        });
-        KdPoli1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPoli1KeyPressed(evt);
-            }
-        });
-        FormInput.add(KdPoli1);
-        KdPoli1.setBounds(120, 170, 60, 23);
-
-        NmPoli1.setHighlighter(null);
-        NmPoli1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                NmPoli1MouseMoved(evt);
-            }
-        });
-        NmPoli1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                NmPoli1MouseExited(evt);
-            }
-        });
-        NmPoli1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmPoli1KeyPressed(evt);
-            }
-        });
-        FormInput.add(NmPoli1);
-        NmPoli1.setBounds(183, 170, 204, 23);
-
-        BtnPropinsi2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPropinsi2.setMnemonic('4');
-        BtnPropinsi2.setToolTipText("ALt+4");
-        BtnPropinsi2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPropinsi2ActionPerformed(evt);
-            }
-        });
-        FormInput.add(BtnPropinsi2);
-        BtnPropinsi2.setBounds(390, 170, 28, 23);
+        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel55.setText("III. PENCARIAN JADWAl DOKTER & KUOTA TERSEDIA :");
+        FormInput.add(jLabel55);
+        jLabel55.setBounds(10, 220, 300, 23);
 
         scrollPane2.setViewportView(FormInput);
 
         internalFrame5.add(scrollPane2, java.awt.BorderLayout.CENTER);
 
         WindowBalas.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
+
+        NoRm.setHighlighter(null);
+        NoRm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoRmKeyPressed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("::[ Booking Online Periksa ]::");
@@ -949,7 +911,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         R2.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-05-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -970,7 +932,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-05-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -990,7 +952,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-05-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setOpaque(false);
         DTPCari3.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1011,7 +973,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-05-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2020" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setOpaque(false);
         DTPCari4.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1103,7 +1065,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         kec.dispose();
         prop.dispose();
         kel.dispose();
-        penjab.dispose();
         WindowBalas.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
@@ -1167,6 +1128,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         if(tbObat.getSelectedRow()>-1){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));    
             getData();
+            autoNomor();
             WindowBalas.setSize(internalFrame1.getWidth()-10, internalFrame1.getHeight()-10);
             WindowBalas.setLocationRelativeTo(internalFrame1);
             WindowBalas.setVisible(true);
@@ -1207,7 +1169,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         kec.dispose();
         prop.dispose();
         kel.dispose();
-        penjab.dispose();
         WindowBalas.dispose();
     }//GEN-LAST:event_BtnCloseIn4ActionPerformed
 
@@ -1233,7 +1194,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         if(ChkRM.isSelected()==true){
             TNo.setEditable(false);
             TNo.setBackground(new Color(245,250,240));
-            //autoNomor();
+            autoNomor();
         }else if(ChkRM.isSelected()==false){
             TNo.setEditable(true);
             TNo.setBackground(new Color(250,255,245));
@@ -1440,10 +1401,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NmPoliKeyPressed
 
-    private void BtnPropinsi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsi1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnPropinsi1ActionPerformed
-
     private void KdPoliMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KdPoliMouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_KdPoliMouseMoved
@@ -1456,33 +1413,9 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_KdPoliKeyPressed
 
-    private void KdPoli1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KdPoli1MouseMoved
+    private void NoRmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KdPoli1MouseMoved
-
-    private void KdPoli1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KdPoli1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdPoli1MouseExited
-
-    private void KdPoli1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPoli1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdPoli1KeyPressed
-
-    private void NmPoli1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NmPoli1MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NmPoli1MouseMoved
-
-    private void NmPoli1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NmPoli1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NmPoli1MouseExited
-
-    private void NmPoli1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmPoli1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NmPoli1KeyPressed
-
-    private void BtnPropinsi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsi2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnPropinsi2ActionPerformed
+    }//GEN-LAST:event_NoRmKeyPressed
 
     /**
      * @param args the command line arguments
@@ -1532,8 +1465,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private widget.Button BtnKelurahan;
     private widget.Button BtnPrint;
     private widget.Button BtnPropinsi;
-    private widget.Button BtnPropinsi1;
-    private widget.Button BtnPropinsi2;
     private widget.Button BtnSimpan4;
     private widget.CekBox ChkRM;
     private widget.Tanggal DTPCari1;
@@ -1544,15 +1475,14 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private widget.PanelBiasa FormInput;
     private widget.TextBox Kabupaten;
     private widget.TextBox KdPoli;
-    private widget.TextBox KdPoli1;
     private widget.TextBox Kecamatan;
     private widget.TextBox Kelurahan;
     private widget.Label LCount;
     private widget.Label LCount1;
     private widget.TextBox NamaPasien;
     private widget.TextBox NmPoli;
-    private widget.TextBox NmPoli1;
     private widget.TextBox NoBooking;
+    private widget.TextBox NoRm;
     private widget.TextBox NoTelp;
     private widget.TextBox Propinsi;
     private widget.RadioButton R1;
@@ -1578,11 +1508,11 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     private widget.Label jLabel20;
     private widget.Label jLabel21;
     private widget.Label jLabel22;
-    private widget.Label jLabel23;
     private widget.Label jLabel25;
     private widget.Label jLabel3;
     private widget.Label jLabel53;
     private widget.Label jLabel54;
+    private widget.Label jLabel55;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel3;
@@ -1739,5 +1669,57 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
     public void isCek(){
         BtnHapus.setEnabled(akses.getbooking_periksa());
         BtnPrint.setEnabled(akses.getbooking_periksa());
+    }
+    
+    private void autoNomor() {        
+        if(ChkRM.isSelected()==true){
+            if(tahun.equals("Yes")){
+                awalantahun=TanggalPeriksa.getText().substring(6,10);
+            }else{
+                awalantahun="";
+            }
+
+            if(bulan.equals("Yes")){
+                awalanbulan=TanggalPeriksa.getText().substring(3,5);
+            }else{
+                awalanbulan="";
+            }
+
+            if(posisitahun.equals("Depan")){
+                switch (pengurutan) {
+                    case "Straight":
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                    case "Terminal":
+                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),5,2),SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                    case "Middle":
+                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2),SUBSTRING(RIGHT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                }
+            }else if(posisitahun.equals("Belakang")){
+                switch (pengurutan) {
+                    case "Straight":
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(LEFT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                    case "Terminal":
+                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),5,2),SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                    case "Middle":
+                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2),SUBSTRING(LEFT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                }            
+            }
+
+            if(posisitahun.equals("Depan")){
+                TNo.setText(awalantahun+awalanbulan+NoRm.getText());
+            }else if(posisitahun.equals("Belakang")){
+                if(!(awalanbulan+awalantahun).equals("")){
+                    TNo.setText(NoRm.getText()+"-"+awalanbulan+awalantahun);
+                }else{
+                    TNo.setText(NoRm.getText());
+                }            
+            }
+        }
     }
 }

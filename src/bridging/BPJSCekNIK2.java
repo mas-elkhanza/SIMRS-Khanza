@@ -1376,14 +1376,30 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     pskelengkapan.close();
                 }
             }
+            
+            ps=koneksi.prepareStatement("select * from set_urut_no_rkm_medis");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    pengurutan=rs.getString("urutan");
+                    tahun=rs.getString("tahun");
+                    bulan=rs.getString("bulan");
+                    posisitahun=rs.getString("posisi_tahun_bulan");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
         }catch(Exception e){
             System.out.println(e);
         }
         hariawal=Sequel.cariIsi("select hariawal from set_jam_minimal");
-        pengurutan=Sequel.cariIsi("select urutan from set_urut_no_rkm_medis");
-        tahun=Sequel.cariIsi("select tahun from set_urut_no_rkm_medis");
-        bulan=Sequel.cariIsi("select bulan from set_urut_no_rkm_medis");
-        posisitahun=Sequel.cariIsi("select posisi_tahun_bulan from set_urut_no_rkm_medis");
         
         try {
             user=akses.getkode().replace(" ","").substring(0,9);
