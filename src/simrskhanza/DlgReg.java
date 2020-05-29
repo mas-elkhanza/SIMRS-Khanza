@@ -112,7 +112,6 @@ import surat.SuratTidakHamil;
  */
 public final class DlgReg extends javax.swing.JDialog {
 
-    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(DlgReg.class.getName());
     private final DefaultTableModel tabMode, tabMode2, tabMode3;
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
