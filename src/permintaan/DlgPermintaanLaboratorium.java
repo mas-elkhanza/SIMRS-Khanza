@@ -257,7 +257,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println(e);
-                Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(DlgPermintaanLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rsset_tarif != null) {
                     rsset_tarif.close();
@@ -268,7 +268,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println(e);
-            Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DlgPermintaanLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
         try {
@@ -1253,7 +1253,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
-                        Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                        Logger.getLogger(DlgPermintaanLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                     } finally {
                         if (rstampil != null) {
                             rstampil.close();
@@ -1267,7 +1267,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println("Error Detail : " + e);
-            Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DlgPermintaanLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
@@ -1528,7 +1528,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
-                Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(DlgPermintaanLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rstindakan != null) {
                     rstindakan.close();
@@ -1548,7 +1548,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
-            Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DlgPermintaanLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -1670,7 +1670,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 JOptionPane.showMessageDialog(null, "Proses simpan selesai...!");
             } catch (Exception e) {
                 System.out.println(e);
-                Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(DlgPermintaanLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             }
             ChkJln.setSelected(true);
         }

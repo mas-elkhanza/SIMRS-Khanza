@@ -1,14 +1,3 @@
-/*
-  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile 
-  Software ini dalam bentuk apapun tanpa seijin pembuat software
-  (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
-  npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
-  nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
-  nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
-  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
-  karena telah berdoa buruk, semua ini kami lakukan karena kami ti
-  dak pernah rela karya kami dibajak tanpa ijin.
- */
 package simrskhanza;
 
 import bridging.AplicareCekReferensiKamar;
@@ -801,6 +790,7 @@ import setting.DlgSetHarga;
 import setting.DlgSetHargaKamar;
 import setting.DlgSetHargaObatRalan;
 import setting.DlgSetHargaObatRanap;
+import setting.DlgSetHargaToko;
 import setting.DlgSetInputParsial;
 import setting.DlgSetKamarInap;
 import setting.DlgSetKeterlambatan;
@@ -851,6 +841,7 @@ import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDKomponenDarah;
 import tranfusidarah.UTDMedisRusak;
 import tranfusidarah.UTDPemisahanDarah;
+import tranfusidarah.UTDPendonor;
 import tranfusidarah.UTDPenunjangRusak;
 import tranfusidarah.UTDPenyerahanDarah;
 import tranfusidarah.UTDStokDarah;
@@ -862,6 +853,7 @@ import viabarcode.DlgBarcodeRanap;
  * @author perpustakaan
  */
 public class frmUtama extends javax.swing.JFrame {
+
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
@@ -880,7 +872,9 @@ public class frmUtama extends javax.swing.JFrame {
             tampilkantni = Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri"),
             AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
 
-    /** Creates new form frmUtama */
+    /**
+     * Creates new form frmUtama
+     */
     private frmUtama() {
         super();
         initComponents();
@@ -983,8 +977,9 @@ public class frmUtama extends javax.swing.JFrame {
     }
 
     public static frmUtama getInstance() {
-        if (myInstance == null)
+        if (myInstance == null) {
             myInstance = new frmUtama();
+        }
 
         return myInstance;
     }
@@ -8464,10 +8459,10 @@ public class frmUtama extends javax.swing.JFrame {
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDokterActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgDokter dokter=new DlgDokter(null,false);
+        DlgDokter dokter = new DlgDokter(null, false);
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        dokter.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         dokter.setLocationRelativeTo(PanelUtama);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);
@@ -8478,10 +8473,10 @@ public class frmUtama extends javax.swing.JFrame {
     private void btnPegawaiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnPegawaiActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgPetugas petugas=new DlgPetugas(null,false);
+        DlgPetugas petugas = new DlgPetugas(null, false);
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        petugas.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         petugas.setLocationRelativeTo(PanelUtama);
         petugas.setVisible(true);
         DlgHome.dispose();
@@ -8659,10 +8654,10 @@ public class frmUtama extends javax.swing.JFrame {
     private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSuplierActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSuplier suplier=new DlgSuplier(this,false);
+        DlgSuplier suplier = new DlgSuplier(this, false);
         suplier.isCek();
         suplier.emptTeks();
-        suplier.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        suplier.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         suplier.setLocationRelativeTo(PanelUtama);
         suplier.setVisible(true);
         DlgHome.dispose();
@@ -9538,7 +9533,6 @@ public class frmUtama extends javax.swing.JFrame {
          * "penggajian/login.php?act=login&usere=paijo&passwordte=mumet"); } } catch
          * (Exception ex) { System.out.println("Notifikasi : "+ex); }
          */
-
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }// GEN-LAST:event_btnPenggajianActionPerformed
@@ -10731,7 +10725,6 @@ public class frmUtama extends javax.swing.JFrame {
          * "medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu"); }
          * catch (Exception ex) { System.out.println("Notifikasi : "+ex); }
          */
-
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }// GEN-LAST:event_btnRetensiRMActionPerformed
@@ -15326,6 +15319,103 @@ public class frmUtama extends javax.swing.JFrame {
         this.setCursor(Cursor.getDefaultCursor());
     }
 
+    private void btnPengajuanCutiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PengajuanCutiAdmin form = new PengajuanCutiAdmin(this, false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+
+    private void btnKedatanganPasienPerJamActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LaporanKedatanganPasienPerJam form = new LaporanKedatanganPasienPerJam(this, false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+
+    private void btnPendonorDarahActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        UTDPendonor form=new UTDPendonor(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnSuplierTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoSuplier suplier=new TokoSuplier(this,false);
+        suplier.isCek();
+        suplier.emptTeks();
+        suplier.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        suplier.setLocationRelativeTo(PanelUtama);
+        suplier.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnJenisTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoJenis aplikasi=new TokoJenis(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnSetHargaTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSetHargaToko aplikasi=new DlgSetHargaToko(this,false);
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoBarang form=new TokoBarang(this,false);
+        form.emptTeks();
+        form.onCari();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenagihanPiutangPasienActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganPenagihanPiutangPasien form=new KeuanganPenagihanPiutangPasien(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     private void btnGrafikItemApotekPerGolonganActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
@@ -16084,146 +16174,146 @@ public class frmUtama extends javax.swing.JFrame {
     private void btnBookingPeriksaActionPerformed(java.awt.event.ActionEvent evt) {
 
     }
-    
+
     private void btnAkunPenagihanPiutangActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgAkunPenagihanPiutang form=new DlgAkunPenagihanPiutang(this,false);
+        DlgAkunPenagihanPiutang form = new DlgAkunPenagihanPiutang(this, false);
         form.isCek();
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnStokOpnameTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoInputStok opname=new TokoInputStok(this,false);
+        TokoInputStok opname = new TokoInputStok(this, false);
         opname.tampil();
         opname.isCek();
-        opname.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        opname.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         opname.setLocationRelativeTo(PanelUtama);
         opname.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnRiwayatBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoRiwayatBarang sirkulasi=new TokoRiwayatBarang(this,false);
+        TokoRiwayatBarang sirkulasi = new TokoRiwayatBarang(this, false);
         sirkulasi.isCek();
-        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         sirkulasi.setLocationRelativeTo(PanelUtama);
         sirkulasi.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnSuratPemesananTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoSuratPemesanan form=new TokoSuratPemesanan(this,false);
+        TokoSuratPemesanan form = new TokoSuratPemesanan(this, false);
         form.isCek();
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnPengajuanBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoPengajuanBarang form=new TokoPengajuanBarang(this,false);
+        TokoPengajuanBarang form = new TokoPengajuanBarang(this, false);
         form.isCek();
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnPenerimaanBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoPemesanan pembelian=new TokoPemesanan(this,false);
+        TokoPemesanan pembelian = new TokoPemesanan(this, false);
         pembelian.isCek();
-        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         pembelian.setLocationRelativeTo(PanelUtama);
         pembelian.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnHutangTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KeuanganHutangToko form=new KeuanganHutangToko(this,false);
+        KeuanganHutangToko form = new KeuanganHutangToko(this, false);
         form.tampil();
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnBayarPesanTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KeuanganBayarPesanToko bayarpesan=new KeuanganBayarPesanToko(this,false);
+        KeuanganBayarPesanToko bayarpesan = new KeuanganBayarPesanToko(this, false);
         bayarpesan.tampil();
-        bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        bayarpesan.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         bayarpesan.setLocationRelativeTo(PanelUtama);
         bayarpesan.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnMemberTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoMember form=new TokoMember(null,false);
+        TokoMember form = new TokoMember(null, false);
         form.emptTeks();
         form.isCek();
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnRegistrasiPoliPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        LaporanRegistrasiPoliPerTanggal form=new LaporanRegistrasiPoliPerTanggal(null,false);
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        LaporanRegistrasiPoliPerTanggal form = new LaporanRegistrasiPoliPerTanggal(null, false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnPengadaanBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoPembelian pembelian=new TokoPembelian(this,false);
+        TokoPembelian pembelian = new TokoPembelian(this, false);
         pembelian.isCek();
-        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         pembelian.setLocationRelativeTo(PanelUtama);
         pembelian.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnPenjualanTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoPenjualan form=new TokoPenjualan(null,false);
+        TokoPenjualan form = new TokoPenjualan(null, false);
         form.isCek();
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
@@ -18142,7 +18232,6 @@ public class frmUtama extends javax.swing.JFrame {
             // Panelmenu.add(btnSensusRanap);
             // jmlmenu++;
             // }
-
             if (akses.getrl32() == true) {
                 Panelmenu.add(btnRl32);
                 jmlmenu++;
@@ -22839,22 +22928,13 @@ public class frmUtama extends javax.swing.JFrame {
             jmlmenu++;
         }
 
-        Panelmenu.add(btnPenelitianPerpustakaan);
-        jmlmenu++;
-
-        Panelmenu.add(btnCariEbook);
-        jmlmenu++;
-
-        Panelmenu.add(btnCariInventarisPerpustakaan);
-        jmlmenu++;
-
-        if (akses.gettoko_suplier() == true) {
-            Panelmenu.add(btnSuplierToko);
+        if (akses.gettoko_jenis() == true) {
+            Panelmenu.add(btnJenisToko);
             jmlmenu++;
         }
 
-        if (akses.gettoko_jenis() == true) {
-            Panelmenu.add(btnJenisToko);
+        if (akses.gettoko_suplier() == true) {
+            Panelmenu.add(btnSuplierToko);
             jmlmenu++;
         }
 
@@ -23067,6 +23147,16 @@ public class frmUtama extends javax.swing.JFrame {
             Panelmenu.add(btnPasswordAsuransi);
             jmlmenu++;
         }
+
+        Panelmenu.add(btnPenelitianPerpustakaan);
+        jmlmenu++;
+
+        Panelmenu.add(btnCariEbook);
+        jmlmenu++;
+
+        Panelmenu.add(btnCariInventarisPerpustakaan);
+        jmlmenu++;
+
     }
 
     private void isCariIsi() {
@@ -24742,7 +24832,6 @@ public class frmUtama extends javax.swing.JFrame {
         // jmlmenu++;
         // }
         // }
-
         if (akses.getrl32() == true) {
             if (btnRl32.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
                 Panelmenu.add(btnRl32);
@@ -27549,8 +27638,7 @@ public class frmUtama extends javax.swing.JFrame {
 
     private void initKhanza() {
         btnKategoriPerpustakaan = new widget.ButtonBig();
-        btnKategoriPerpustakaan.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_document-open_118911.png")));
+        btnKategoriPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_document-open_118911.png")));
         btnKategoriPerpustakaan.setText("Kategori Koleksi");
         btnKategoriPerpustakaan.setIconTextGap(0);
         btnKategoriPerpustakaan.setName("btnKategoriPerpustakaan");
@@ -27562,8 +27650,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnJenisPerpustakaan = new widget.ButtonBig();
-        btnJenisPerpustakaan.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Untitled-1-02_3775448.png")));
+        btnJenisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Untitled-1-02_3775448.png")));
         btnJenisPerpustakaan.setText("Jenis Koleksi");
         btnJenisPerpustakaan.setIconTextGap(0);
         btnJenisPerpustakaan.setName("btnJenisPerpustakaan");
@@ -27575,8 +27662,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnRuangPerpustakaan = new widget.ButtonBig();
-        btnRuangPerpustakaan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_City_728922.png")));
+        btnRuangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_City_728922.png")));
         btnRuangPerpustakaan.setText("Ruang Perpustakaan");
         btnRuangPerpustakaan.setIconTextGap(0);
         btnRuangPerpustakaan.setName("btnRuangPerpustakaan");
@@ -27588,8 +27674,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPengarangPerpustakaan = new widget.ButtonBig();
-        btnPengarangPerpustakaan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Teacher_131497.png")));
+        btnPengarangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Teacher_131497.png")));
         btnPengarangPerpustakaan.setText("Pengarang/Penulis");
         btnPengarangPerpustakaan.setIconTextGap(0);
         btnPengarangPerpustakaan.setName("btnPengarangPerpustakaan");
@@ -27601,8 +27686,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenerbitPerpustakaan = new widget.ButtonBig();
-        btnPenerbitPerpustakaan.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_package_editors_109.png")));
+        btnPenerbitPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_package_editors_109.png")));
         btnPenerbitPerpustakaan.setText("Penerbit Koleksi");
         btnPenerbitPerpustakaan.setIconTextGap(0);
         btnPenerbitPerpustakaan.setName("btnPenerbitPerpustakaan");
@@ -27614,8 +27698,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnKoleksiPerpustakaan = new widget.ButtonBig();
-        btnKoleksiPerpustakaan.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_General_Office_61_3592836.png")));
+        btnKoleksiPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_General_Office_61_3592836.png")));
         btnKoleksiPerpustakaan.setText("Koleksi Perpustakaan");
         btnKoleksiPerpustakaan.setIconTextGap(0);
         btnKoleksiPerpustakaan.setName("btnKoleksiPerpustakaan");
@@ -27627,8 +27710,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnInventarisPerpustakaan = new widget.ButtonBig();
-        btnInventarisPerpustakaan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_library_47990.png")));
+        btnInventarisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_library_47990.png")));
         btnInventarisPerpustakaan.setText("Inventaris Perpustakaan");
         btnInventarisPerpustakaan.setIconTextGap(0);
         btnInventarisPerpustakaan.setName("btnInventarisPerpustakaan");
@@ -27640,8 +27722,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPengaturanPeminjamanPerpustakaan = new widget.ButtonBig();
-        btnPengaturanPeminjamanPerpustakaan.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_EditDocument_728933.png")));
+        btnPengaturanPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_EditDocument_728933.png")));
         btnPengaturanPeminjamanPerpustakaan.setText("Pengaturan Peminjaman");
         btnPengaturanPeminjamanPerpustakaan.setIconTextGap(0);
         btnPengaturanPeminjamanPerpustakaan.setName("btnPengaturanPeminjamanPerpustakaan");
@@ -27653,8 +27734,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnDendaPerpustakaan = new widget.ButtonBig();
-        btnDendaPerpustakaan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Wallet_3387286.png")));
+        btnDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Wallet_3387286.png")));
         btnDendaPerpustakaan.setText("Denda Perpustakaan");
         btnDendaPerpustakaan.setIconTextGap(0);
         btnDendaPerpustakaan.setName("btnDendaPerpustakaan");
@@ -27666,8 +27746,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnAnggotaPerpustakaan = new widget.ButtonBig();
-        btnAnggotaPerpustakaan.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_male_user_3440844.png")));
+        btnAnggotaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_male_user_3440844.png")));
         btnAnggotaPerpustakaan.setText("Anggota Perpustakaan");
         btnAnggotaPerpustakaan.setIconTextGap(0);
         btnAnggotaPerpustakaan.setName("btnAnggotaPerpustakaan");
@@ -27679,8 +27758,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPeminjamanPerpustakaan = new widget.ButtonBig();
-        btnPeminjamanPerpustakaan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_diagram-07_35577.png")));
+        btnPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_diagram-07_35577.png")));
         btnPeminjamanPerpustakaan.setText("Peminjaman Koleksi Perpustakaan");
         btnPeminjamanPerpustakaan.setIconTextGap(0);
         btnPeminjamanPerpustakaan.setName("btnPeminjamanPerpustakaan");
@@ -27692,8 +27770,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnBayarDendaPerpustakaan = new widget.ButtonBig();
-        btnBayarDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_wallet_money_sale_shop_4177574.png")));
+        btnBayarDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_money_sale_shop_4177574.png")));
         btnBayarDendaPerpustakaan.setText("Bayar Denda Perpustakaan");
         btnBayarDendaPerpustakaan.setIconTextGap(0);
         btnBayarDendaPerpustakaan.setName("btnBayarDendaPerpustakaan");
@@ -27705,8 +27782,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenelitianPerpustakaan = new widget.ButtonBig();
-        btnPenelitianPerpustakaan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_research_87460.png")));
+        btnPenelitianPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_research_87460.png")));
         btnPenelitianPerpustakaan.setText("Koleksi Penelitian");
         btnPenelitianPerpustakaan.setIconTextGap(0);
         btnPenelitianPerpustakaan.setName("btnPenelitianPerpustakaan");
@@ -27718,8 +27794,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnEbookPerpustakaan = new widget.ButtonBig();
-        btnEbookPerpustakaan.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_bookmark_3440843.png")));
+        btnEbookPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_bookmark_3440843.png")));
         btnEbookPerpustakaan.setText("Data Koleksi Ebook");
         btnEbookPerpustakaan.setIconTextGap(0);
         btnEbookPerpustakaan.setName("btnEbookPerpustakaan");
@@ -27743,8 +27818,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPestControl = new widget.ButtonBig();
-        btnPestControl.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_world_eco_leaves_2992451.png")));
+        btnPestControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_world_eco_leaves_2992451.png")));
         btnPestControl.setText("Pest Control");
         btnPestControl.setIconTextGap(0);
         btnPestControl.setName("btnPestControl");
@@ -27756,8 +27830,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMutuAirLimbah = new widget.ButtonBig();
-        btnMutuAirLimbah.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_Care_ecology_water_hand_2992434.png")));
+        btnMutuAirLimbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Care_ecology_water_hand_2992434.png")));
         btnMutuAirLimbah.setText("Mutu Air Limbah");
         btnMutuAirLimbah.setIconTextGap(0);
         btnMutuAirLimbah.setName("btnMutuAirLimbah");
@@ -27769,8 +27842,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnCariInventarisPerpustakaan = new widget.ButtonBig();
-        btnCariInventarisPerpustakaan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_data_1421637.png")));
+        btnCariInventarisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_data_1421637.png")));
         btnCariInventarisPerpustakaan.setText("Cari Inventaris Perpustakaan");
         btnCariInventarisPerpustakaan.setIconTextGap(0);
         btnCariInventarisPerpustakaan.setName("btnCariInventarisPerpustakaan");
@@ -27794,8 +27866,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenyebabKecelakaanK3 = new widget.ButtonBig();
-        btnPenyebabKecelakaanK3
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_sponge_2___331505.png")));
+        btnPenyebabKecelakaanK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_sponge_2___331505.png")));
         btnPenyebabKecelakaanK3.setText("Penyebab Kecelakaan K3");
         btnPenyebabKecelakaanK3.setIconTextGap(0);
         btnPenyebabKecelakaanK3.setName("btnPenyebabKecelakaanK3");
@@ -27819,8 +27890,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnLokasiKejadianK3 = new widget.ButtonBig();
-        btnLokasiKejadianK3
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_arrows_blue_61552.png")));
+        btnLokasiKejadianK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_arrows_blue_61552.png")));
         btnLokasiKejadianK3.setText("Lokasi Kejadian K3");
         btnLokasiKejadianK3.setIconTextGap(0);
         btnLokasiKejadianK3.setName("btnLokasiKejadianK3");
@@ -27832,8 +27902,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnDampakCideraK3 = new widget.ButtonBig();
-        btnDampakCideraK3
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ambulance_45490.png")));
+        btnDampakCideraK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ambulance_45490.png")));
         btnDampakCideraK3.setText("Dampak Cidera K3");
         btnDampakCideraK3.setIconTextGap(0);
         btnDampakCideraK3.setName("btnDampakCideraK3");
@@ -27845,8 +27914,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikLimbahDomestikPerBulan = new widget.ButtonBig();
-        btnGrafikLimbahDomestikPerBulan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikLimbahDomestikPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikLimbahDomestikPerBulan.setText("Limbah Padat Domestik Medis Per Bulan");
         btnGrafikLimbahDomestikPerBulan.setIconTextGap(0);
         btnGrafikLimbahDomestikPerBulan.setName("btnGrafikLimbahDomestikPerBulan");
@@ -27858,8 +27926,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnJenisPekerjaanK3 = new widget.ButtonBig();
-        btnJenisPekerjaanK3.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_applications-engineering_8830.png")));
+        btnJenisPekerjaanK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_applications-engineering_8830.png")));
         btnJenisPekerjaanK3.setText("Jenis Pekerjaan K3");
         btnJenisPekerjaanK3.setIconTextGap(0);
         btnJenisPekerjaanK3.setName("btnJenisPekerjaanK3");
@@ -27883,8 +27950,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPeristiwaK3 = new widget.ButtonBig();
-        btnPeristiwaK3.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Artboard_18_3874677.png")));
+        btnPeristiwaK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Artboard_18_3874677.png")));
         btnPeristiwaK3.setText("Peristiwa K3");
         btnPeristiwaK3.setIconTextGap(0);
         btnPeristiwaK3.setName("btnPeristiwaK3");
@@ -27932,8 +27998,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikK3PerJenisCidera = new widget.ButtonBig();
-        btnGrafikK3PerJenisCidera
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikK3PerJenisCidera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikK3PerJenisCidera.setText("K3 Per Jenis Cidera");
         btnGrafikK3PerJenisCidera.setIconTextGap(0);
         btnGrafikK3PerJenisCidera.setName("btnGrafikK3PerJenisCidera");
@@ -27969,8 +28034,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikK3PerLokasiKejadian = new widget.ButtonBig();
-        btnGrafikK3PerLokasiKejadian
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikK3PerLokasiKejadian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikK3PerLokasiKejadian.setText("K3 Per Lokasi Kejadian");
         btnGrafikK3PerLokasiKejadian.setIconTextGap(0);
         btnGrafikK3PerLokasiKejadian.setName("btnGrafikK3PerLokasiKejadian");
@@ -27982,8 +28046,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikK3PerDampakCidera = new widget.ButtonBig();
-        btnGrafikK3PerDampakCidera
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikK3PerDampakCidera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikK3PerDampakCidera.setText("K3 Per Dampak Cidera");
         btnGrafikK3PerDampakCidera.setIconTextGap(0);
         btnGrafikK3PerDampakCidera.setName("btnGrafikK3PerDampakCidera");
@@ -27995,8 +28058,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikK3PerJenisPekerjaan = new widget.ButtonBig();
-        btnGrafikK3PerJenisPekerjaan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikK3PerJenisPekerjaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikK3PerJenisPekerjaan.setText("K3 Per Jenis Pekerjaan");
         btnGrafikK3PerJenisPekerjaan.setIconTextGap(0);
         btnGrafikK3PerJenisPekerjaan.setName("btnGrafikK3PerJenisPekerjaan");
@@ -28008,8 +28070,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikK3PerBagianTubuh = new widget.ButtonBig();
-        btnGrafikK3PerBagianTubuh
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikK3PerBagianTubuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikK3PerBagianTubuh.setText("K3 Per Bagian Tubuh");
         btnGrafikK3PerBagianTubuh.setIconTextGap(0);
         btnGrafikK3PerBagianTubuh.setName("btnGrafikK3PerBagianTubuh");
@@ -28033,8 +28094,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenyebabKecelakaanK3PerTahun = new widget.ButtonBig();
-        btnPenyebabKecelakaanK3PerTahun
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_sponge_2___331505.png")));
+        btnPenyebabKecelakaanK3PerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_sponge_2___331505.png")));
         btnPenyebabKecelakaanK3PerTahun.setText("Penyebab Kecelakaan K3 Per Tahun");
         btnPenyebabKecelakaanK3PerTahun.setIconTextGap(0);
         btnPenyebabKecelakaanK3PerTahun.setName("btnPenyebabKecelakaanK3PerTahun");
@@ -28046,8 +28106,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnJenisLukaK3PerTahun = new widget.ButtonBig();
-        btnJenisLukaK3PerTahun
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_h3_19725.png")));
+        btnJenisLukaK3PerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_h3_19725.png")));
         btnJenisLukaK3PerTahun.setText("Jenis Luka K3 Per Tahun");
         btnJenisLukaK3PerTahun.setIconTextGap(0);
         btnJenisLukaK3PerTahun.setName("btnJenisLukaK3PerTahun");
@@ -28059,8 +28118,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnLokasiKejadianK3PerTahun = new widget.ButtonBig();
-        btnLokasiKejadianK3PerTahun
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_arrows_blue_61552.png")));
+        btnLokasiKejadianK3PerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_arrows_blue_61552.png")));
         btnLokasiKejadianK3PerTahun.setText("Lokasi Kejadian K3 Per Tahun");
         btnLokasiKejadianK3PerTahun.setIconTextGap(0);
         btnLokasiKejadianK3PerTahun.setName("btnLokasiKejadianK3PerTahun");
@@ -28072,8 +28130,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnDampakCideraK3PerTahun = new widget.ButtonBig();
-        btnDampakCideraK3PerTahun
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ambulance_45490.png")));
+        btnDampakCideraK3PerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ambulance_45490.png")));
         btnDampakCideraK3PerTahun.setText("Dampak Cidera K3 Per Tahun");
         btnDampakCideraK3PerTahun.setIconTextGap(0);
         btnDampakCideraK3PerTahun.setName("btnDampakCideraK3PerTahun");
@@ -28085,8 +28142,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnJenisPekerjaanK3PerTahun = new widget.ButtonBig();
-        btnJenisPekerjaanK3PerTahun.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_applications-engineering_8830.png")));
+        btnJenisPekerjaanK3PerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_applications-engineering_8830.png")));
         btnJenisPekerjaanK3PerTahun.setText("Jenis Pekerjaan K3 Per Tahun");
         btnJenisPekerjaanK3PerTahun.setIconTextGap(0);
         btnJenisPekerjaanK3PerTahun.setName("btnJenisPekerjaanK3PerTahun");
@@ -28122,8 +28178,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnBPJSHistoriPelayanan = new widget.ButtonBig();
-        btnBPJSHistoriPelayanan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Hourglass_34227.png")));
+        btnBPJSHistoriPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Hourglass_34227.png")));
         btnBPJSHistoriPelayanan.setText("Histori Pelayanan BPJS");
         btnBPJSHistoriPelayanan.setIconTextGap(0);
         btnBPJSHistoriPelayanan.setName("btnBPJSHistoriPelayanan");
@@ -28135,8 +28190,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnRekapMutasiBerkas = new widget.ButtonBig();
-        btnRekapMutasiBerkas
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_group_data_45163.png")));
+        btnRekapMutasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_group_data_45163.png")));
         btnRekapMutasiBerkas.setText("Rekap Mutasi Berkas");
         btnRekapMutasiBerkas.setIconTextGap(0);
         btnRekapMutasiBerkas.setName("btnRekapMutasiBerkas");
@@ -28148,8 +28202,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnSkriningRalanPernapasanPerTahun = new widget.ButtonBig();
-        btnSkriningRalanPernapasanPerTahun
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/skrining.png")));
+        btnSkriningRalanPernapasanPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/skrining.png")));
         btnSkriningRalanPernapasanPerTahun.setText("Skrining Pernapasan Ralan Per Tahun");
         btnSkriningRalanPernapasanPerTahun.setIconTextGap(0);
         btnSkriningRalanPernapasanPerTahun.setName("btnSkriningRalanPernapasanPerTahun");
@@ -28161,8 +28214,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPengajuanBarangMedis = new widget.ButtonBig();
-        btnPengajuanBarangMedis
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ordering_49597.png")));
+        btnPengajuanBarangMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ordering_49597.png")));
         btnPengajuanBarangMedis.setText("Pengajuan Obat & BHP");
         btnPengajuanBarangMedis.setIconTextGap(0);
         btnPengajuanBarangMedis.setName("btnPengajuanBarangMedis");
@@ -28174,8 +28226,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPengajuanBarangNonMedis = new widget.ButtonBig();
-        btnPengajuanBarangNonMedis.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_distributor-report_49583.png")));
+        btnPengajuanBarangNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_distributor-report_49583.png")));
         btnPengajuanBarangNonMedis.setText("Pengajuan Barang Non Medis");
         btnPengajuanBarangNonMedis.setIconTextGap(0);
         btnPengajuanBarangNonMedis.setName("btnPengajuanBarangNonMedis");
@@ -28187,8 +28238,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikKunjunganRanapBulan = new widget.ButtonBig();
-        btnGrafikKunjunganRanapBulan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikKunjunganRanapBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikKunjunganRanapBulan.setText("Kunjungan Ranap Per Bulan");
         btnGrafikKunjunganRanapBulan.setIconTextGap(0);
         btnGrafikKunjunganRanapBulan.setName("btnGrafikKunjunganRanapBulan");
@@ -28200,8 +28250,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikKunjunganRanapTanggal = new widget.ButtonBig();
-        btnGrafikKunjunganRanapTanggal
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikKunjunganRanapTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikKunjunganRanapTanggal.setText("Kunjungan Ranap Per Tanggal");
         btnGrafikKunjunganRanapTanggal.setIconTextGap(0);
         btnGrafikKunjunganRanapTanggal.setName("btnGrafikKunjunganRanapTanggal");
@@ -28213,8 +28262,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikKunjunganRanapRuang = new widget.ButtonBig();
-        btnGrafikKunjunganRanapRuang
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikKunjunganRanapRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikKunjunganRanapRuang.setText("Kunjungan Ranap Per Ruang");
         btnGrafikKunjunganRanapRuang.setIconTextGap(0);
         btnGrafikKunjunganRanapRuang.setName("btnGrafikKunjunganRanapRuang");
@@ -28226,8 +28274,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnKunjunganBangsalTahun = new widget.ButtonBig();
-        btnKunjunganBangsalTahun
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Company_132030.png")));
+        btnKunjunganBangsalTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Company_132030.png")));
         btnKunjunganBangsalTahun.setText("Masuk Ruang Per Tahun");
         btnKunjunganBangsalTahun.setIconTextGap(0);
         btnKunjunganBangsalTahun.setName("btnKunjunganBangsalTahun");
@@ -28239,8 +28286,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikJenjangJabatanPegawai = new widget.ButtonBig();
-        btnGrafikJenjangJabatanPegawai
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikJenjangJabatanPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikJenjangJabatanPegawai.setText("Pegawai Per Jenjang Jabatan");
         btnGrafikJenjangJabatanPegawai.setIconTextGap(0);
         btnGrafikJenjangJabatanPegawai.setName("btnGrafikJenjangJabatanPegawai");
@@ -28264,8 +28310,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikDepartemenPegawai = new widget.ButtonBig();
-        btnGrafikDepartemenPegawai
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikDepartemenPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikDepartemenPegawai.setText("Pegawai Per Departemen");
         btnGrafikDepartemenPegawai.setIconTextGap(0);
         btnGrafikDepartemenPegawai.setName("btnGrafikDepartemenPegawai");
@@ -28277,8 +28322,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikPendidikanPegawai = new widget.ButtonBig();
-        btnGrafikPendidikanPegawai
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikPendidikanPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikPendidikanPegawai.setText("Pegawai Per Pendidikan");
         btnGrafikPendidikanPegawai.setIconTextGap(0);
         btnGrafikPendidikanPegawai.setName("btnGrafikPendidikanPegawai");
@@ -28302,8 +28346,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikStatusKerjaPegawai = new widget.ButtonBig();
-        btnGrafikStatusKerjaPegawai
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikStatusKerjaPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikStatusKerjaPegawai.setText("Pegawai Per Status Kerja");
         btnGrafikStatusKerjaPegawai.setIconTextGap(0);
         btnGrafikStatusKerjaPegawai.setName("btnGrafikStatusKerjaPegawai");
@@ -28315,8 +28358,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikStatusPulangRanap = new widget.ButtonBig();
-        btnGrafikStatusPulangRanap
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikStatusPulangRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikStatusPulangRanap.setText("Status Pulang Ranap");
         btnGrafikStatusPulangRanap.setIconTextGap(0);
         btnGrafikStatusPulangRanap.setName("btnGrafikStatusPulangRanap");
@@ -28328,8 +28370,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnKIPPasienRanap = new widget.ButtonBig();
-        btnKIPPasienRanap
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png")));
+        btnKIPPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png")));
         btnKIPPasienRanap.setText("KIP Pasien Ranap");
         btnKIPPasienRanap.setIconTextGap(0);
         btnKIPPasienRanap.setName("btnKIPPasienRanap");
@@ -28341,8 +28382,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnKIPPasienRalan = new widget.ButtonBig();
-        btnKIPPasienRalan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png")));
+        btnKIPPasienRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png")));
         btnKIPPasienRalan.setText("KIP Pasien Ralan");
         btnKIPPasienRalan.setIconTextGap(0);
         btnKIPPasienRalan.setName("btnKIPPasienRalan");
@@ -28354,8 +28394,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMappingDokterDPJPVClaim = new widget.ButtonBig();
-        btnMappingDokterDPJPVClaim
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_doctor_assistant_38712.png")));
+        btnMappingDokterDPJPVClaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_doctor_assistant_38712.png")));
         btnMappingDokterDPJPVClaim.setText("Mapping Dokter DPJP VClaim");
         btnMappingDokterDPJPVClaim.setIconTextGap(0);
         btnMappingDokterDPJPVClaim.setName("btnMappingDokterDPJPVClaim");
@@ -28379,8 +28418,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMasterTriaseSkala2 = new widget.ButtonBig();
-        btnMasterTriaseSkala2
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_emergency_45491.png")));
+        btnMasterTriaseSkala2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_emergency_45491.png")));
         btnMasterTriaseSkala2.setText("Master Triase Skala 2");
         btnMasterTriaseSkala2.setIconTextGap(0);
         btnMasterTriaseSkala2.setName("btnMasterTriaseSkala2");
@@ -28392,8 +28430,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMasterTriaseSkala3 = new widget.ButtonBig();
-        btnMasterTriaseSkala3.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_dialog-warning_118940.png")));
+        btnMasterTriaseSkala3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_dialog-warning_118940.png")));
         btnMasterTriaseSkala3.setText("Master Triase Skala 3");
         btnMasterTriaseSkala3.setIconTextGap(0);
         btnMasterTriaseSkala3.setName("btnMasterTriaseSkala3");
@@ -28405,8 +28442,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMasterTriaseSkala4 = new widget.ButtonBig();
-        btnMasterTriaseSkala4.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Male-User-Warning_49595.png")));
+        btnMasterTriaseSkala4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Male-User-Warning_49595.png")));
         btnMasterTriaseSkala4.setText("Master Triase Skala 4");
         btnMasterTriaseSkala4.setIconTextGap(0);
         btnMasterTriaseSkala4.setName("btnMasterTriaseSkala4");
@@ -28430,8 +28466,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMasterTriasePemeriksaan = new widget.ButtonBig();
-        btnMasterTriasePemeriksaan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_stethoscope_38717.png")));
+        btnMasterTriasePemeriksaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_stethoscope_38717.png")));
         btnMasterTriasePemeriksaan.setText("Master Triase Pemeriksaan");
         btnMasterTriasePemeriksaan.setIconTextGap(0);
         btnMasterTriasePemeriksaan.setName("btnMasterTriasePemeriksaan");
@@ -28443,8 +28478,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMasterTriaseMacamKasus = new widget.ButtonBig();
-        btnMasterTriaseMacamKasus
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_briefcase_45523.png")));
+        btnMasterTriaseMacamKasus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_briefcase_45523.png")));
         btnMasterTriaseMacamKasus.setText("Master Triase Macam Kasus");
         btnMasterTriaseMacamKasus.setIconTextGap(0);
         btnMasterTriaseMacamKasus.setName("btnMasterTriaseMacamKasus");
@@ -28468,8 +28502,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnRekapPermintaanDiet = new widget.ButtonBig();
-        btnRekapPermintaanDiet
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_fried_rice_3377056.png")));
+        btnRekapPermintaanDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_fried_rice_3377056.png")));
         btnRekapPermintaanDiet.setText("Rekap Permintaan Diet");
         btnRekapPermintaanDiet.setIconTextGap(0);
         btnRekapPermintaanDiet.setName("btnRekapPermintaanDiet");
@@ -28505,8 +28538,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnfee_visit_dokter = new widget.ButtonBig();
-        btnfee_visit_dokter
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png")));
+        btnfee_visit_dokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png")));
         btnfee_visit_dokter.setText("Fee Visit Dokter");
         btnfee_visit_dokter.setIconTextGap(0);
         btnfee_visit_dokter.setName("btnfee_visit_dokter");
@@ -28518,8 +28550,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnUser = new widget.ButtonBig();
-        btnUser.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484978_application-pgp-signature.png"))); // NOI18N
+        btnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484978_application-pgp-signature.png"))); // NOI18N
         btnUser.setText("Set User");
         btnUser.setIconTextGap(0);
         btnUser.setName("btnUser"); // NOI18N
@@ -28531,8 +28562,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPengajuanAsetInventaris = new widget.ButtonBig();
-        btnPengajuanAsetInventaris
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png"))); // NOI18N
+        btnPengajuanAsetInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reports_49615.png"))); // NOI18N
         btnPengajuanAsetInventaris.setText("Pengajuan Aset/Inventaris");
         btnPengajuanAsetInventaris.setIconTextGap(0);
         btnPengajuanAsetInventaris.setName("btnPengajuanAsetInventaris"); // NOI18N
@@ -28544,8 +28574,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikItemApotekPerJenis = new widget.ButtonBig();
-        btnGrafikItemApotekPerJenis
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikItemApotekPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikItemApotekPerJenis.setText("Item Apotek Per Jenis");
         btnGrafikItemApotekPerJenis.setIconTextGap(0);
         btnGrafikItemApotekPerJenis.setName("btnGrafikItemApotekPerJenis");
@@ -28557,8 +28586,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikItemApotekPerKategori = new widget.ButtonBig();
-        btnGrafikItemApotekPerKategori
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikItemApotekPerKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikItemApotekPerKategori.setText("Item Apotek Per Kategori");
         btnGrafikItemApotekPerKategori.setIconTextGap(0);
         btnGrafikItemApotekPerKategori.setName("btnGrafikItemApotekPerKategori");
@@ -28570,8 +28598,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikItemApotekPerGolongan = new widget.ButtonBig();
-        btnGrafikItemApotekPerGolongan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikItemApotekPerGolongan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikItemApotekPerGolongan.setText("Item Apotek Per Golongan");
         btnGrafikItemApotekPerGolongan.setIconTextGap(0);
         btnGrafikItemApotekPerGolongan.setName("btnGrafikItemApotekPerGolongan");
@@ -28583,8 +28610,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikItemApotekPerIndustriFarmasi = new widget.ButtonBig();
-        btnGrafikItemApotekPerIndustriFarmasi
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikItemApotekPerIndustriFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikItemApotekPerIndustriFarmasi.setText("Item Apotek Per Industri Farmasi");
         btnGrafikItemApotekPerIndustriFarmasi.setIconTextGap(0);
         btnGrafikItemApotekPerIndustriFarmasi.setName("btnGrafikItemApotekPerIndustriFarmasi");
@@ -28596,8 +28622,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btn10BesarObatPoli = new widget.ButtonBig();
-        btn10BesarObatPoli
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_07_Note_Book_2064482.png"))); // NOI18N
+        btn10BesarObatPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_07_Note_Book_2064482.png"))); // NOI18N
         btn10BesarObatPoli.setText("10 Obat Terbanyak Poli");
         btn10BesarObatPoli.setIconTextGap(0);
         btn10BesarObatPoli.setName("btn10BesarObatPoli"); // NOI18N
@@ -28609,8 +28634,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikPengajuanAsetUrgensi = new widget.ButtonBig();
-        btnGrafikPengajuanAsetUrgensi
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikPengajuanAsetUrgensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikPengajuanAsetUrgensi.setText("Pengajuan Aset Per Urgensi");
         btnGrafikPengajuanAsetUrgensi.setIconTextGap(0);
         btnGrafikPengajuanAsetUrgensi.setName("btnGrafikPengajuanAsetUrgensi");
@@ -28622,8 +28646,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikPengajuanAsetStatus = new widget.ButtonBig();
-        btnGrafikPengajuanAsetStatus
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikPengajuanAsetStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikPengajuanAsetStatus.setText("Pengajuan Aset Per Status");
         btnGrafikPengajuanAsetStatus.setIconTextGap(0);
         btnGrafikPengajuanAsetStatus.setName("btnGrafikPengajuanAsetStatus");
@@ -28635,8 +28658,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikPengajuanAsetDepartemen = new widget.ButtonBig();
-        btnGrafikPengajuanAsetDepartemen
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikPengajuanAsetDepartemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikPengajuanAsetDepartemen.setText("Pengajuan Aset Per Departemen");
         btnGrafikPengajuanAsetDepartemen.setIconTextGap(0);
         btnGrafikPengajuanAsetDepartemen.setName("btnGrafikPengajuanAsetDepartemen");
@@ -28648,8 +28670,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnRekapPengajuanAsetDepartemen = new widget.ButtonBig();
-        btnRekapPengajuanAsetDepartemen.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/if_x-office-document-template_25011.png")));
+        btnRekapPengajuanAsetDepartemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_x-office-document-template_25011.png")));
         btnRekapPengajuanAsetDepartemen.setText("Rekap Pengajuan Aset Departemen");
         btnRekapPengajuanAsetDepartemen.setIconTextGap(0);
         btnRekapPengajuanAsetDepartemen.setName("btnRekapPengajuanAsetDepartemen"); // NOI18N
@@ -28661,8 +28682,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikKelompokJabatanPegawai = new widget.ButtonBig();
-        btnGrafikKelompokJabatanPegawai
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikKelompokJabatanPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikKelompokJabatanPegawai.setText("Pegawai Per Kelompok Jabatan");
         btnGrafikKelompokJabatanPegawai.setIconTextGap(0);
         btnGrafikKelompokJabatanPegawai.setName("btnGrafikKelompokJabatanPegawai");
@@ -28674,8 +28694,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikResikoKerjaPegawai = new widget.ButtonBig();
-        btnGrafikResikoKerjaPegawai
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikResikoKerjaPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikResikoKerjaPegawai.setText("Pegawai Per Resiko Kerja");
         btnGrafikResikoKerjaPegawai.setIconTextGap(0);
         btnGrafikResikoKerjaPegawai.setName("btnGrafikResikoKerjaPegawai");
@@ -28687,8 +28706,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikEmergencyIndexPegawai = new widget.ButtonBig();
-        btnGrafikEmergencyIndexPegawai
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
+        btnGrafikEmergencyIndexPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png")));
         btnGrafikEmergencyIndexPegawai.setText("Pegawai Per Emergency Index");
         btnGrafikEmergencyIndexPegawai.setIconTextGap(0);
         btnGrafikEmergencyIndexPegawai.setName("btnGrafikEmergencyIndex");
@@ -28736,8 +28754,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnResumePasien = new widget.ButtonBig();
-        btnResumePasien.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_icon-56-document-text_314896.png")));
+        btnResumePasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-56-document-text_314896.png")));
         btnResumePasien.setText("Resume Pasien");
         btnResumePasien.setIconTextGap(0);
         btnResumePasien.setName("btnResumePasien");
@@ -28749,8 +28766,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPerkiraanBiayaRanap = new widget.ButtonBig();
-        btnPerkiraanBiayaRanap
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Rank-History_49609.png")));
+        btnPerkiraanBiayaRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Rank-History_49609.png")));
         btnPerkiraanBiayaRanap.setText("Perkiraan Biaya Ranap");
         btnPerkiraanBiayaRanap.setIconTextGap(0);
         btnPerkiraanBiayaRanap.setName("btnPerkiraanBiayaRanap");
@@ -28774,8 +28790,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnRekapObatPasien = new widget.ButtonBig();
-        btnRekapObatPasien
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png")));
+        btnRekapObatPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png")));
         btnRekapObatPasien.setText("Rekap Obat Per Pasien");
         btnRekapObatPasien.setIconTextGap(0);
         btnRekapObatPasien.setName("btnRekapObatPasien");
@@ -28811,8 +28826,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPermintaanPerbaikanInventaris = new widget.ButtonBig();
-        btnPermintaanPerbaikanInventaris
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ordering_49597.png")));
+        btnPermintaanPerbaikanInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ordering_49597.png")));
         btnPermintaanPerbaikanInventaris.setText("Permintaan Perbaikan Inventaris");
         btnPermintaanPerbaikanInventaris.setIconTextGap(0);
         btnPermintaanPerbaikanInventaris.setName("btnPermintaanPerbaikanInventaris");
@@ -28896,8 +28910,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMappingPoliInhealth = new widget.ButtonBig();
-        btnMappingPoliInhealth.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_icon-62-document-table_314903.png")));
+        btnMappingPoliInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-62-document-table_314903.png")));
         btnMappingPoliInhealth.setText("Mapping Poli Inhealth");
         btnMappingPoliInhealth.setIconTextGap(0);
         btnMappingPoliInhealth.setName("btnMappingPoliInhealth");
@@ -28921,8 +28934,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMappingTindakanRalanInhealth = new widget.ButtonBig();
-        btnMappingTindakanRalanInhealth
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png")));
+        btnMappingTindakanRalanInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png")));
         btnMappingTindakanRalanInhealth.setText("Tarif Ralan Inhealth");
         btnMappingTindakanRalanInhealth.setIconTextGap(0);
         btnMappingTindakanRalanInhealth.setName("btnMappingTindakanRalanInhealth");
@@ -28934,8 +28946,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMappingTindakanRanapInhealth = new widget.ButtonBig();
-        btnMappingTindakanRanapInhealth
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png")));
+        btnMappingTindakanRanapInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png")));
         btnMappingTindakanRanapInhealth.setText("Tarif Ranap Inhealth");
         btnMappingTindakanRanapInhealth.setIconTextGap(0);
         btnMappingTindakanRanapInhealth.setName("btnMappingTindakanRanapInhealth");
@@ -28947,8 +28958,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMappingTindakanRadiologiInhealth = new widget.ButtonBig();
-        btnMappingTindakanRadiologiInhealth
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1410153940_radiology.png")));
+        btnMappingTindakanRadiologiInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1410153940_radiology.png")));
         btnMappingTindakanRadiologiInhealth.setText("Tarif Radiologi Inhealth");
         btnMappingTindakanRadiologiInhealth.setIconTextGap(0);
         btnMappingTindakanRadiologiInhealth.setName("btnMappingTindakanRadiologiInhealth");
@@ -28960,8 +28970,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMappingTindakanLaboratInhealth = new widget.ButtonBig();
-        btnMappingTindakanLaboratInhealth
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png")));
+        btnMappingTindakanLaboratInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png")));
         btnMappingTindakanLaboratInhealth.setText("Tarif Laborat Inhealth");
         btnMappingTindakanLaboratInhealth.setIconTextGap(0);
         btnMappingTindakanLaboratInhealth.setName("btnMappingTindakanLaboratInhealth");
@@ -28973,8 +28982,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMappingTindakanOperasiInhealth = new widget.ButtonBig();
-        btnMappingTindakanOperasiInhealth
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487111_stock_paste.png")));
+        btnMappingTindakanOperasiInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487111_stock_paste.png")));
         btnMappingTindakanOperasiInhealth.setText("Tarif Operasi Inhealth");
         btnMappingTindakanOperasiInhealth.setIconTextGap(0);
         btnMappingTindakanOperasiInhealth.setName("btnMappingTindakanOperasiInhealth");
@@ -28986,8 +28994,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnHibahObatBHP = new widget.ButtonBig();
-        btnHibahObatBHP.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Address_Book_Alt_blue_86952.png")));
+        btnHibahObatBHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Address_Book_Alt_blue_86952.png")));
         btnHibahObatBHP.setText("Hibah Obat & BHP");
         btnHibahObatBHP.setIconTextGap(0);
         btnHibahObatBHP.setName("btnHibahObatBHP");
@@ -28999,8 +29006,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnAsalHibah = new widget.ButtonBig();
-        btnAsalHibah.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/if_filing_cabinet_search-g_86207.png")));
+        btnAsalHibah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_filing_cabinet_search-g_86207.png")));
         btnAsalHibah.setText("Asal Hibah");
         btnAsalHibah.setIconTextGap(0);
         btnAsalHibah.setName("btnAsalHibah");
@@ -29024,8 +29030,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnKirimTagihanInheath = new widget.ButtonBig();
-        btnKirimTagihanInheath
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_08_61472.png")));
+        btnKirimTagihanInheath.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_08_61472.png")));
         btnKirimTagihanInheath.setText("Tagihan Inhealth");
         btnKirimTagihanInheath.setIconTextGap(0);
         btnKirimTagihanInheath.setName("btnKirimTagihanInheath");
@@ -29037,8 +29042,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnSirkulasiObat4 = new widget.ButtonBig();
-        btnSirkulasiObat4.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png")));
+        btnSirkulasiObat4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png")));
         btnSirkulasiObat4.setText("Sirkulasi Obat, Alkes & BHP 4");
         btnSirkulasiObat4.setIconTextGap(0);
         btnSirkulasiObat4.setName("btnSirkulasiObat4");
@@ -29050,8 +29054,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnSirkulasiObat5 = new widget.ButtonBig();
-        btnSirkulasiObat5.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png")));
+        btnSirkulasiObat5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png")));
         btnSirkulasiObat5.setText("Sirkulasi Obat, Alkes & BHP 5");
         btnSirkulasiObat5.setIconTextGap(0);
         btnSirkulasiObat5.setName("btnSirkulasiObat5");
@@ -29063,8 +29066,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnSirkulasiNonMedis2 = new widget.ButtonBig();
-        btnSirkulasiNonMedis2.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasiNonMedis2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
         btnSirkulasiNonMedis2.setText("Sirkulasi Non Medis 2");
         btnSirkulasiNonMedis2.setIconTextGap(0);
         btnSirkulasiNonMedis2.setName("btnSirkulasiNonMedis2"); // NOI18N
@@ -29076,8 +29078,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMonitoringAsuhanGizi = new widget.ButtonBig();
-        btnMonitoringAsuhanGizi.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_constr_account_statements_1267308.png")));
+        btnMonitoringAsuhanGizi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_constr_account_statements_1267308.png")));
         btnMonitoringAsuhanGizi.setText("Monitoring Asuhan Gizi");
         btnMonitoringAsuhanGizi.setIconTextGap(0);
         btnMonitoringAsuhanGizi.setName("btnMonitoringAsuhanGizi");
@@ -29089,8 +29090,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnGrafikPenerimaanObatPerBulan = new widget.ButtonBig();
-        btnGrafikPenerimaanObatPerBulan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
+        btnGrafikPenerimaanObatPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png")));
         btnGrafikPenerimaanObatPerBulan.setText("Penerimaan Obat, Alkes & BHP Per Bulan");
         btnGrafikPenerimaanObatPerBulan.setIconTextGap(0);
         btnGrafikPenerimaanObatPerBulan.setName("btnGrafikPenerimaanObatPerBulan");
@@ -29102,8 +29102,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnRekapKunjungan = new widget.ButtonBig();
-        btnRekapKunjungan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Calendar_27835.png")));
+        btnRekapKunjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Calendar_27835.png")));
         btnRekapKunjungan.setText("Rekap Kunjungan");
         btnRekapKunjungan.setIconTextGap(0);
         btnRekapKunjungan.setName("btnRekapKunjungan");
@@ -29115,8 +29114,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnSuratSakit = new widget.ButtonBig();
-        btnSuratSakit.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_order-history_49596.png")));
+        btnSuratSakit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_order-history_49596.png")));
         btnSuratSakit.setText("Surat Keterangan Sakit");
         btnSuratSakit.setIconTextGap(0);
         btnSuratSakit.setName("btnSuratSakit");
@@ -29128,8 +29126,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenilaianAwalKeperawatanRalan = new widget.ButtonBig();
-        btnPenilaianAwalKeperawatanRalan.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_report-clipboard-medical-checklist-healthcare_5859123.png")));
+        btnPenilaianAwalKeperawatanRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_report-clipboard-medical-checklist-healthcare_5859123.png")));
         btnPenilaianAwalKeperawatanRalan.setText("Penilaian Awal Keperawatan Ralan");
         btnPenilaianAwalKeperawatanRalan.setIconTextGap(0);
         btnPenilaianAwalKeperawatanRalan.setName("btnPenilaianAwalKeperawatanRalan");
@@ -29141,8 +29138,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMasterMasalahKeperawatan = new widget.ButtonBig();
-        btnMasterMasalahKeperawatan
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Hospital_5947112.png")));
+        btnMasterMasalahKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Hospital_5947112.png")));
         btnMasterMasalahKeperawatan.setText("Master Masalah Keperawatan");
         btnMasterMasalahKeperawatan.setIconTextGap(0);
         btnMasterMasalahKeperawatan.setName("btnMasterMasalahKeperawatan");
@@ -29153,9 +29149,104 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
+        btnPengajuanCuti = new widget.ButtonBig();
+        btnPengajuanCuti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_reminders_3572.png")));
+        btnPengajuanCuti.setText("Pengajuan Cuti");
+        btnPengajuanCuti.setIconTextGap(0);
+        btnPengajuanCuti.setName("btnPengajuanCuti");
+        btnPengajuanCuti.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengajuanCuti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengajuanCutiActionPerformed(evt);
+            }
+        });
+
+        btnKedatanganPasienPerJam = new widget.ButtonBig();
+        btnKedatanganPasienPerJam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_cmyk-04_906567.png")));
+        btnKedatanganPasienPerJam.setText("Kedatangan Pasien Per Jam");
+        btnKedatanganPasienPerJam.setIconTextGap(0);
+        btnKedatanganPasienPerJam.setName("btnKedatanganPasienPerJam");
+        btnKedatanganPasienPerJam.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKedatanganPasienPerJam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKedatanganPasienPerJamActionPerformed(evt);
+            }
+        });
+
+        btnPendonorDarah = new widget.ButtonBig();
+        btnPendonorDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_623_Love_sharing_heart_wedding_valentine_valentines_day_love_4171308.png")));
+        btnPendonorDarah.setText("Pendonor Darah");
+        btnPendonorDarah.setIconTextGap(0);
+        btnPendonorDarah.setName("btnPendonorDarah");
+        btnPendonorDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPendonorDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPendonorDarahActionPerformed(evt);
+            }
+        });
+
+        btnSuplierToko = new widget.ButtonBig();
+        btnSuplierToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kde-folder-public_25193.png")));
+        btnSuplierToko.setText("Suplier Toko");
+        btnSuplierToko.setIconTextGap(0);
+        btnSuplierToko.setName("btnSuplierToko");
+        btnSuplierToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuplierToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuplierTokoActionPerformed(evt);
+            }
+        });
+
+        btnJenisToko = new widget.ButtonBig();
+        btnJenisToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cabinet.png")));
+        btnJenisToko.setText("Jenis Barang Toko");
+        btnJenisToko.setIconTextGap(0);
+        btnJenisToko.setName("btnJenisToko");
+        btnJenisToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJenisToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJenisTokoActionPerformed(evt);
+            }
+        });
+
+        btnSetHargaToko = new widget.ButtonBig();
+        btnSetHargaToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Sales-by-Payment-Method-rep_49616.png")));
+        btnSetHargaToko.setText("Set Harga Toko");
+        btnSetHargaToko.setIconTextGap(0);
+        btnSetHargaToko.setName("btnSetHargaToko");
+        btnSetHargaToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetHargaToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetHargaTokoActionPerformed(evt);
+            }
+        });
+
+        btnBarangToko = new widget.ButtonBig();
+        btnBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_shopping_cart_3440920.png")));
+        btnBarangToko.setText("Barang Toko");
+        btnBarangToko.setIconTextGap(0);
+        btnBarangToko.setName("btnBarangToko");
+        btnBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBarangTokoActionPerformed(evt);
+            }
+        });
+
+        btnPenagihanPiutangPasien = new widget.ButtonBig();
+        btnPenagihanPiutangPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png")));
+        btnPenagihanPiutangPasien.setText("Penagihan Piutang Pasien");
+        btnPenagihanPiutangPasien.setIconTextGap(0);
+        btnPenagihanPiutangPasien.setName("btnPenagihanPiutangPasien");
+        btnPenagihanPiutangPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenagihanPiutangPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenagihanPiutangPasienActionPerformed(evt);
+            }
+        });
+
         btnAkunPenagihanPiutang = new widget.ButtonBig();
-        btnAkunPenagihanPiutang
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357487_Business.png")));
+        btnAkunPenagihanPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357487_Business.png")));
         btnAkunPenagihanPiutang.setText("Akun Penagihan Piutang");
         btnAkunPenagihanPiutang.setIconTextGap(0);
         btnAkunPenagihanPiutang.setName("btnAkunPenagihanPiutang");
@@ -29179,8 +29270,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnRiwayatBarangToko = new widget.ButtonBig();
-        btnRiwayatBarangToko.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ecommerce-21_4707177.png")));
+        btnRiwayatBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ecommerce-21_4707177.png")));
         btnRiwayatBarangToko.setText("Riwayat Barang Toko");
         btnRiwayatBarangToko.setIconTextGap(0);
         btnRiwayatBarangToko.setName("btnRiwayatBarangToko");
@@ -29192,8 +29282,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnSuratPemesananToko = new widget.ButtonBig();
-        btnSuratPemesananToko
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_internet-mail_118808.png")));
+        btnSuratPemesananToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_internet-mail_118808.png")));
         btnSuratPemesananToko.setText("Surat Pemesanan Toko");
         btnSuratPemesananToko.setIconTextGap(0);
         btnSuratPemesananToko.setName("btnSuratPemesananToko");
@@ -29205,8 +29294,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPengajuanBarangToko = new widget.ButtonBig();
-        btnPengajuanBarangToko.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-45-note-list_315263.png")));
+        btnPengajuanBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_icon-45-note-list_315263.png")));
         btnPengajuanBarangToko.setText("Pengajuan Barang Toko");
         btnPengajuanBarangToko.setIconTextGap(0);
         btnPengajuanBarangToko.setName("btnPengajuanBarangToko");
@@ -29218,8 +29306,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenerimaanBarangToko = new widget.ButtonBig();
-        btnPenerimaanBarangToko.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_gifts_sale_shop_4177581.png")));
+        btnPenerimaanBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_gifts_sale_shop_4177581.png")));
         btnPenerimaanBarangToko.setText("Penerimaan Barang Toko");
         btnPenerimaanBarangToko.setIconTextGap(0);
         btnPenerimaanBarangToko.setName("btnPenerimaanBarangToko");
@@ -29231,8 +29318,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPengadaanBarangToko = new widget.ButtonBig();
-        btnPengadaanBarangToko
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Notebook_3387299.png")));
+        btnPengadaanBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Notebook_3387299.png")));
         btnPengadaanBarangToko.setText("Pengadaan Barang Toko");
         btnPengadaanBarangToko.setIconTextGap(0);
         btnPengadaanBarangToko.setName("btnPengadaanBarangToko");
@@ -29244,8 +29330,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnHutangToko = new widget.ButtonBig();
-        btnHutangToko
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_checkout_47678.png")));
+        btnHutangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_checkout_47678.png")));
         btnHutangToko.setText("Hutang Toko");
         btnHutangToko.setIconTextGap(0);
         btnHutangToko.setName("btnHutangToko");
@@ -29257,8 +29342,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnBayarPesanToko = new widget.ButtonBig();
-        btnBayarPesanToko
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_checkout_47678.png")));
+        btnBayarPesanToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_checkout_47678.png")));
         btnBayarPesanToko.setText("Bayar Pesan Toko");
         btnBayarPesanToko.setIconTextGap(0);
         btnBayarPesanToko.setName("btnBayarPesanToko");
@@ -29282,8 +29366,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenjualanToko = new widget.ButtonBig();
-        btnPenjualanToko.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_lock__payment__pay__security_2542006.png")));
+        btnPenjualanToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_lock__payment__pay__security_2542006.png")));
         btnPenjualanToko.setText("Penjualan Toko");
         btnPenjualanToko.setIconTextGap(0);
         btnPenjualanToko.setName("btnPenjualanToko");
@@ -29295,8 +29378,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnRegistrasiPoliPerTanggal = new widget.ButtonBig();
-        btnRegistrasiPoliPerTanggal
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_News_728959.png")));
+        btnRegistrasiPoliPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_News_728959.png")));
         btnRegistrasiPoliPerTanggal.setText("Registrasi Poli Per Tanggal");
         btnRegistrasiPoliPerTanggal.setIconTextGap(0);
         btnRegistrasiPoliPerTanggal.setName("btnRegistrasiPoliPerTanggal");
@@ -29320,8 +29402,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnReturKeSuplierToko = new widget.ButtonBig();
-        btnReturKeSuplierToko.setIcon(new javax.swing.ImageIcon(getClass().getResource(
-                "/48x48/iconfinder_Package__Package_Delivery_Truck_Shipping_Transport_Box-30_4072100.png")));
+        btnReturKeSuplierToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Package__Package_Delivery_Truck_Shipping_Transport_Box-30_4072100.png")));
         btnReturKeSuplierToko.setText("Retur Ke Suplier Toko");
         btnReturKeSuplierToko.setIconTextGap(0);
         btnReturKeSuplierToko.setName("btnReturKeSuplierToko");
@@ -29333,8 +29414,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnReturBarangNonMedis = new widget.ButtonBig();
-        btnReturBarangNonMedis.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_eccomerce_-_carton_box_return_3440901.png")));
+        btnReturBarangNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_carton_box_return_3440901.png")));
         btnReturBarangNonMedis.setText("Retur Ke Suplier Non Medis");
         btnReturBarangNonMedis.setIconTextGap(0);
         btnReturBarangNonMedis.setName("btnReturBarangNonMedis");
@@ -29346,8 +29426,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnRiwayatBarangNonMedis = new widget.ButtonBig();
-        btnRiwayatBarangNonMedis.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_accessories-text-editor_23663.png")));
+        btnRiwayatBarangNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_accessories-text-editor_23663.png")));
         btnRiwayatBarangNonMedis.setText("Riwayat Barang Non Medis");
         btnRiwayatBarangNonMedis.setIconTextGap(0);
         btnRiwayatBarangNonMedis.setName("btnRiwayatBarangNonMedis");
@@ -29359,8 +29438,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPasienCorona = new widget.ButtonBig();
-        btnPasienCorona.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_fever-illness-sick-temperature-thermomete_5994873.png")));
+        btnPasienCorona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_fever-illness-sick-temperature-thermomete_5994873.png")));
         btnPasienCorona.setText("Pasien Corona");
         btnPasienCorona.setIconTextGap(0);
         btnPasienCorona.setName("btnPasienCorona");
@@ -29372,8 +29450,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPendapatanHarianToko = new widget.ButtonBig();
-        btnPendapatanHarianToko.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_eccomerce_-_calculator_3440925.png")));
+        btnPendapatanHarianToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_eccomerce_-_calculator_3440925.png")));
         btnPendapatanHarianToko.setText("Pendapatan Harian Toko");
         btnPendapatanHarianToko.setIconTextGap(0);
         btnPendapatanHarianToko.setName("btnPendapatanHarianToko");
@@ -29385,8 +29462,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnDiagnosaPasienCorona = new widget.ButtonBig();
-        btnDiagnosaPasienCorona.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_Dna-genetics-genomic-strand-virus_5994869.png")));
+        btnDiagnosaPasienCorona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Dna-genetics-genomic-strand-virus_5994869.png")));
         btnDiagnosaPasienCorona.setText("Diagnosa Pasien Corona");
         btnDiagnosaPasienCorona.setIconTextGap(0);
         btnDiagnosaPasienCorona.setName("btnDiagnosaPasienCorona");
@@ -29398,8 +29474,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPerawatanPasienCorona = new widget.ButtonBig();
-        btnPerawatanPasienCorona.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_Night-sleep-sleeping-health_5994844.png")));
+        btnPerawatanPasienCorona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Night-sleep-sleeping-health_5994844.png")));
         btnPerawatanPasienCorona.setText("Perawatan Pasien Corona");
         btnPerawatanPasienCorona.setIconTextGap(0);
         btnPerawatanPasienCorona.setName("btnPerawatanPasienCorona");
@@ -29411,8 +29486,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenilaianAwalKeperawatanGigi = new widget.ButtonBig();
-        btnPenilaianAwalKeperawatanGigi
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_09-report_5980350.png")));
+        btnPenilaianAwalKeperawatanGigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_09-report_5980350.png")));
         btnPenilaianAwalKeperawatanGigi.setText("Penilaian Awal Keperawatan Gigi");
         btnPenilaianAwalKeperawatanGigi.setIconTextGap(0);
         btnPenilaianAwalKeperawatanGigi.setName("btnPenilaianAwalKeperawatanGigi");
@@ -29424,8 +29498,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnMasterMasalahKeperawatanGigi = new widget.ButtonBig();
-        btnMasterMasalahKeperawatanGigi.setIcon(new javax.swing.ImageIcon(getClass().getResource(
-                "/48x48/iconfinder_healthcare_and_medical-hygienic-tooth_paste-toothpaste-toothbrush-health_care_4394831.png")));
+        btnMasterMasalahKeperawatanGigi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_healthcare_and_medical-hygienic-tooth_paste-toothpaste-toothbrush-health_care_4394831.png")));
         btnMasterMasalahKeperawatanGigi.setText("Master Masalah Keperawatan Gigi");
         btnMasterMasalahKeperawatanGigi.setIconTextGap(0);
         btnMasterMasalahKeperawatanGigi.setName("btnMasterMasalahKeperawatanGigi");
@@ -29437,8 +29510,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnBayarPiutangToko = new widget.ButtonBig();
-        btnBayarPiutangToko.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_vector_65_04_473782.png")));
+        btnBayarPiutangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_vector_65_04_473782.png")));
         btnBayarPiutangToko.setText("Bayar Piutang Toko");
         btnBayarPiutangToko.setIconTextGap(0);
         btnBayarPiutangToko.setName("btnBayarPiutangToko");
@@ -29450,8 +29522,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPiutangHarianToko = new widget.ButtonBig();
-        btnPiutangHarianToko
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_News_5947117.png")));
+        btnPiutangHarianToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_News_5947117.png")));
         btnPiutangHarianToko.setText("Piutang Harian Toko");
         btnPiutangHarianToko.setIconTextGap(0);
         btnPiutangHarianToko.setName("btnPiutangHarianToko");
@@ -29463,8 +29534,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenjualanHarianToko = new widget.ButtonBig();
-        btnPenjualanHarianToko
-                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_edit-copy_118918.png")));
+        btnPenjualanHarianToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_edit-copy_118918.png")));
         btnPenjualanHarianToko.setText("Penjualan Harian Toko");
         btnPenjualanHarianToko.setIconTextGap(0);
         btnPenjualanHarianToko.setName("btnPenjualanHarianToko");
@@ -29476,8 +29546,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnDeteksiDiniCorona = new widget.ButtonBig();
-        btnDeteksiDiniCorona.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_Medical_Result-Health-Document-Virus-Medical_5958965.png")));
+        btnDeteksiDiniCorona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Medical_Result-Health-Document-Virus-Medical_5958965.png")));
         btnDeteksiDiniCorona.setText("Deteksi Dini Corona");
         btnDeteksiDiniCorona.setIconTextGap(0);
         btnDeteksiDiniCorona.setName("btnDeteksiDiniCorona");
@@ -29489,8 +29558,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPenilaianAwalKeperawatanKebidanan = new widget.ButtonBig();
-        btnPenilaianAwalKeperawatanKebidanan.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_209-pregnant-woman-2_3099532.png")));
+        btnPenilaianAwalKeperawatanKebidanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_209-pregnant-woman-2_3099532.png")));
         btnPenilaianAwalKeperawatanKebidanan.setText("Penilaian Awal Ralan Kebidanan");
         btnPenilaianAwalKeperawatanKebidanan.setIconTextGap(0);
         btnPenilaianAwalKeperawatanKebidanan.setName("btnPenilaianAwalKeperawatanKebidanan");
@@ -29502,8 +29570,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnPengumumanEPasien = new widget.ButtonBig();
-        btnPengumumanEPasien.setIcon(
-                new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_email-laptop_4417124.png")));
+        btnPengumumanEPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_email-laptop_4417124.png")));
         btnPengumumanEPasien.setText("Pengumuman E-Pasien");
         btnPengumumanEPasien.setIconTextGap(0);
         btnPengumumanEPasien.setName("btnPengumumanEPasien");
@@ -29527,8 +29594,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
         btnSetTarifOnline = new widget.ButtonBig();
-        btnSetTarifOnline.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/48x48/iconfinder_Non-Service_Specific_copy_Client_259291.png")));
+        btnSetTarifOnline.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Non-Service_Specific_copy_Client_259291.png")));
         btnSetTarifOnline.setText("Set Tarif Online");
         btnSetTarifOnline.setIconTextGap(0);
         btnSetTarifOnline.setName("btnSetTarifOnline");
@@ -29552,5 +29618,4 @@ public class frmUtama extends javax.swing.JFrame {
         });
 
     }
-
 }
