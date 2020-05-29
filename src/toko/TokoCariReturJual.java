@@ -114,7 +114,7 @@ public class TokoCariReturJual extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("TokoCariReturBeli")){
+                if(akses.getform().equals("TokoCariReturJual")){
                     if(member.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),1).toString());
@@ -137,7 +137,7 @@ public class TokoCariReturJual extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("TokoCariReturBeli")){
+                if(akses.getform().equals("TokoCariReturJual")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         member.dispose();
                     }                
@@ -154,7 +154,7 @@ public class TokoCariReturJual extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("TokoCariReturBeli")){
+                if(akses.getform().equals("TokoCariReturJual")){
                     if(petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -179,7 +179,7 @@ public class TokoCariReturJual extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("TokoCariReturBeli")){
+                if(akses.getform().equals("TokoCariReturJual")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
@@ -202,7 +202,7 @@ public class TokoCariReturJual extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("TokoCariReturBeli")){
+                if(akses.getform().equals("TokoCariReturJual")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();
                     }                
@@ -219,7 +219,7 @@ public class TokoCariReturJual extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("TokoCariReturBeli")){
+                if(akses.getform().equals("TokoCariReturJual")){
                     if(barang.jenis.getTable().getSelectedRow()!= -1){                   
                         kdjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
                         nmjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());
@@ -293,7 +293,7 @@ public class TokoCariReturJual extends javax.swing.JDialog {
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(50, 50, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppHapus.setText("Hapus Data Retur Beli Ke Suplier");
+        ppHapus.setText("Hapus Data Retur Jual Dari Pembeli");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppHapus.setName("ppHapus"); // NOI18N
@@ -678,7 +678,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        akses.setform("TokoCariReturBeli");
+        akses.setform("TokoCariReturJual");
         member.emptTeks();
         member.isCek();
         member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -688,7 +688,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnSuplierActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("TokoCariReturBeli");
+        akses.setform("TokoCariReturJual");
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -702,7 +702,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TglBeli1KeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        akses.setform("TokoCariReturBeli");
+        akses.setform("TokoCariReturJual");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -712,7 +712,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnBarangActionPerformed
 
     private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanActionPerformed
-        akses.setform("TokoCariReturBeli");
+        akses.setform("TokoCariReturJual");
         barang.jenis.emptTeks();
         barang.jenis.isCek();
         barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -883,7 +883,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
     if(tbDokter.getSelectedRow()> -1){
         if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString().trim().equals("")){
-            Valid.textKosong(TCari,"No.Faktur");
+            Valid.textKosong(TCari,"No.Nota");
         }else{
           try {
              pscaripesan=koneksi.prepareStatement("select no_retur_jual, total from tokoreturjual where no_retur_jual=?");
@@ -896,8 +896,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         pstoko_detail_returjual.setString(1,rs.getString(1));
                         rs2=pstoko_detail_returjual.executeQuery();
                         while(rs2.next()){
-                            Trackbarang.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jml_retur"),0,"Retur Beli", akses.getkode(),"Hapus");
-                            Sequel.mengedit("tokobarang","kode_brng=?","stok=stok+?",2,new String[]{
+                            Trackbarang.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jml_retur"),"Retur Jual", akses.getkode(),"Hapus");
+                            Sequel.mengedit("tokobarang","kode_brng=?","stok=stok-?",2,new String[]{
                                    rs2.getString("jml_retur"),rs2.getString("kode_brng")
                             });
                         }
@@ -914,12 +914,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Retur_Beli_Toko from set_akun"),"RETUR BELI TOKO",rs.getString("total"),"0"
+                        Sequel.cariIsi("select Retur_Jual_Toko from set_akun"),"RETUR JUAL TOKO","0",rs.getString("total")
                     });    
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Kontra_Retur_Beli_Toko from set_akun"),"KONTRA RETUR BELI TOKO","0",rs.getString("total")
+                        Sequel.cariIsi("select Kontra_Retur_Jual_Toko from set_akun"),"KONTRA RETUR JUAL TOKO",rs.getString("total"),"0"
                     }); 
-                    jur.simpanJurnal(rs.getString("no_retur_jual"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI RETUR BELI TOKO"+", OLEH "+akses.getkode());
+                    jur.simpanJurnal(rs.getString("no_retur_jual"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI RETUR JUAL TOKO"+", OLEH "+akses.getkode());
                     Sequel.queryu2("delete from tokoreturjual where no_retur_jual=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
                     tampil();
                 }
@@ -1064,7 +1064,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             tagihan=tagihan+rs2.getDouble("total");
                             subtotal=subtotal+rs2.getDouble("total");
                             tabMode.addRow(new Object[]{
-                                i+". "+rs2.getString("kode_brng"),rs2.getString("nama_brng"),"No. Faktur : "+rs2.getString("nota_jual"),rs2.getString("satuan"),rs2.getString("jml_retur"),Valid.SetAngka(rs2.getDouble("h_retur")),Valid.SetAngka(rs2.getDouble("total"))
+                                i+". "+rs2.getString("kode_brng"),rs2.getString("nama_brng"),"No. Nota : "+rs2.getString("nota_jual"),rs2.getString("satuan"),rs2.getString("jml_retur"),Valid.SetAngka(rs2.getDouble("h_retur")),Valid.SetAngka(rs2.getDouble("total"))
                             });
                             i++;
                         }                        
