@@ -59,7 +59,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        tabMode = new DefaultTableModel(null, new Object[] { "P", "Pilihan Hak Akses Menu di SIMKES", "Status" }) {
+        tabMode = new DefaultTableModel(null, new Object[]{"P", "Pilihan Hak Akses Menu di SIMKES", "Status"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 boolean a = true;
@@ -69,7 +69,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 return a;
             }
 
-            Class[] types = new Class[] { java.lang.Boolean.class, java.lang.Object.class, java.lang.Boolean.class };
+            Class[] types = new Class[]{java.lang.Boolean.class, java.lang.Object.class, java.lang.Boolean.class};
 
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -85,12 +85,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
         for (i = 0; i < 3; i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(25);
-            } else if (i == 1) {
-                column.setPreferredWidth(670);
-            } else if (i == 2) {
-                column.setPreferredWidth(40);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(25);
+                    break;
+                case 1:
+                    column.setPreferredWidth(670);
+                    break;
+                case 2:
+                    column.setPreferredWidth(40);
+                    break;
+                default:
+                    break;
             }
         }
         tbUser.setDefaultRenderer(Object.class, new WarnaTable());
@@ -427,11 +433,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 BtnKeluarActionPerformed(evt);
             }
         });
-        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnKeluarKeyPressed(evt);
-            }
-        });
         panelGlass8.add(BtnKeluar);
 
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
@@ -514,14 +515,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         dispose();
     }// GEN-LAST:event_BtnKeluarActionPerformed
 
-    private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnKeluarKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
-            BtnCariActionPerformed(null);
-        } else {
-            Valid.pindah(evt, BtnSimpan, TCari);
-        }
-    }// GEN-LAST:event_BtnKeluarKeyPressed
-
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppBersihkanActionPerformed
         for (i = 0; i < tbUser.getRowCount(); i++) {
             tbUser.setValueAt(false, i, 0);
@@ -562,14 +555,11 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         // TODO add your handling code here:
         Valid.loadCombo(CmbAkses, "kategori", "user_akses");
 
-        CmbAkses.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                if (CmbAkses.getSelectedItem().equals("-")) {
-                    tampil(TKd.getText());
-                } else {
-                    kategori();
-                }
+        CmbAkses.addItemListener((ItemEvent e) -> {
+            if (CmbAkses.getSelectedItem().equals("-")) {
+                tampil(TKd.getText());
+            } else {
+                kategori();
             }
         });
     }// GEN-LAST:event_formWindowOpened
@@ -674,2657 +664,199 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     pilih[i], menu[i], akses[i]
                 });
             }
-            
-            ps=koneksi.prepareStatement("select penyakit, obat_penyakit, dokter, jadwal_praktek, petugas, pasien, registrasi, tindakan_ralan,"+
-                    "kamar_inap, tindakan_ranap, operasi, rujukan_keluar, rujukan_masuk, beri_obat, resep_pulang, "+
-                    "pasien_meninggal, diet_pasien, kelahiran_bayi, periksa_lab, periksa_radiologi, kasir_ralan, "+
-                    "deposit_pasien, piutang_pasien, peminjaman_berkas, barcode, presensi_harian, presensi_bulanan, "+
-                    "pegawai_admin, pegawai_user, suplier, satuan_barang, konversi_satuan, jenis_barang, obat, "+
-                    "stok_opname_obat, stok_obat_pasien, pengadaan_obat, pemesanan_obat, penjualan_obat, piutang_obat, "+
-                    "retur_ke_suplier, retur_dari_pembeli, retur_obat_ranap, retur_piutang_pasien, keuntungan_penjualan, "+
-                    "keuntungan_beri_obat, sirkulasi_obat, ipsrs_barang, ipsrs_pengadaan_barang, ipsrs_stok_keluar, "+
-                    "ipsrs_rekap_pengadaan, ipsrs_rekap_stok_keluar, ipsrs_pengeluaran_harian, inventaris_jenis, "+
-                    "inventaris_kategori, inventaris_merk, inventaris_ruang, inventaris_produsen, inventaris_koleksi,"+
-                    "inventaris_inventaris, inventaris_sirkulasi, parkir_jenis, parkir_in, parkir_out, parkir_rekap_harian, "+
-                    "parkir_rekap_bulanan, informasi_kamar, harian_tindakan_poli, obat_per_poli, obat_per_kamar, "+
-                    "obat_per_dokter_ralan, obat_per_dokter_ranap, harian_dokter, bulanan_dokter, harian_paramedis,"+
-                    "bulanan_paramedis, pembayaran_ralan, pembayaran_ranap, rekap_pembayaran_ralan, rekap_pembayaran_ranap,"+
-                    "tagihan_masuk, tambahan_biaya, potongan_biaya, resep_obat, resume_pasien, penyakit_ralan, penyakit_ranap, "+
-                    "kamar, tarif_ralan, tarif_ranap, tarif_lab, tarif_radiologi, tarif_operasi, akun_rekening, rekening_tahun, "+
-                    "posting_jurnal, buku_besar, cashflow, keuangan, pengeluaran, setup_pjlab, setup_otolokasi, setup_jam_kamin, "+
-                    "setup_embalase, tracer_login, display, set_harga_obat, set_penggunaan_tarif, set_oto_ralan, biaya_harian, "+
-                    "biaya_masuk_sekali, set_no_rm, billing_ralan, billing_ranap, jm_ranap_dokter, igd, barcoderalan, barcoderanap, "+
-                    "set_harga_obat_ralan,set_harga_obat_ranap,penyakit_pd3i,surveilans_pd3i,surveilans_ralan,diagnosa_pasien, "+
-                    "surveilans_ranap,pny_takmenular_ranap,pny_takmenular_ralan,kunjungan_ralan,rl32,rl33,rl37,rl38,harian_tindakan_dokter,sms, "+
-                    "sidikjari,jam_masuk,jadwal_pegawai,parkir_barcode,set_nota,dpjp_ranap,mutasi_barang,rl34,rl36,"+
-                    "fee_visit_dokter,fee_bacaan_ekg,fee_rujukan_rontgen,fee_rujukan_ranap,fee_ralan,akun_bayar,bayar_pemesanan_obat,"+
-                    "obat_per_dokter_peresep,ipsrs_jenis_barang,pemasukan_lain,pengaturan_rekening,closing_kasir,keterlambatan_presensi,"+
-                    "set_harga_kamar,rekap_per_shift,bpjs_cek_nik,bpjs_cek_kartu,bpjs_cek_riwayat,obat_per_cara_bayar,kunjungan_ranap,"+
-                    "bayar_piutang,payment_point,bpjs_cek_nomor_rujukan,icd9,darurat_stok,retensi_rm,temporary_presensi,jurnal_harian, "+
-                    "sirkulasi_obat2,edit_registrasi,bpjs_referensi_diagnosa,bpjs_referensi_poli,industrifarmasi,harian_js,bulanan_js,"+
-                    "harian_paket_bhp,bulanan_paket_bhp,piutang_pasien2,bpjs_referensi_faskes,bpjs_sep,pengambilan_utd,tarif_utd, "+
-                    "pengambilan_utd2,utd_medis_rusak,pengambilan_penunjang_utd,pengambilan_penunjang_utd2,utd_penunjang_rusak,"+
-                    "suplier_penunjang,utd_donor,bpjs_monitoring_klaim,utd_cekal_darah,utd_komponen_darah,utd_stok_darah, "+
-                    "utd_pemisahan_darah,harian_kamar,rincian_piutang_pasien,keuntungan_beri_obat_nonpiutang,reklasifikasi_ralan, "+
-                    "reklasifikasi_ranap,utd_penyerahan_darah,hutang_obat,riwayat_obat_alkes_bhp,sensus_harian_poli,rl4a,aplicare_referensi_kamar, "+
-                    "aplicare_ketersediaan_kamar,inacbg_klaim_baru_otomatis,inacbg_klaim_baru_manual,inacbg_coder_nik,mutasi_berkas, "+
-                    "akun_piutang,harian_kso,bulanan_kso,harian_menejemen,bulanan_menejemen,inhealth_cek_eligibilitas,inhealth_referensi_jenpel_ruang_rawat, "+
-                    "inhealth_referensi_poli,inhealth_referensi_faskes,inhealth_sjp,piutang_ralan,piutang_ranap,detail_piutang_penjab, "+
-                    "lama_pelayanan_ralan,catatan_pasien,rl4b,rl4asebab,rl4bsebab,data_HAIs,harian_HAIs,bulanan_HAIs,hitung_bor,perusahaan_pasien, "+
-                    "resep_dokter,lama_pelayanan_apotek,hitung_alos,detail_tindakan,rujukan_poli_internal,rekap_poli_anak,grafik_kunjungan_poli, "+
-                    "grafik_kunjungan_perdokter,grafik_kunjungan_perpekerjaan,grafik_kunjungan_perpendidikan,grafik_kunjungan_pertahun,"+
-                    "berkas_digital_perawatan,penyakit_menular_ranap,penyakit_menular_ralan,grafik_kunjungan_perbulan,grafik_kunjungan_pertanggal, "+
-                    "grafik_kunjungan_demografi,grafik_kunjungan_statusdaftartahun,grafik_kunjungan_statusdaftartahun2, "+
-                    "grafik_kunjungan_statusdaftarbulan,grafik_kunjungan_statusdaftarbulan2,grafik_kunjungan_statusdaftartanggal,"+
-                    "grafik_kunjungan_statusdaftartanggal2,grafik_kunjungan_statusbataltahun,grafik_kunjungan_statusbatalbulan,"+
-                    "pcare_cek_penyakit,grafik_kunjungan_statusbataltanggal,kategori_barang,golongan_barang,pemberian_obat_pertanggal,"+
-                    "penjualan_obat_pertanggal,pcare_cek_kesadaran,pembatalan_periksa_dokter,pembayaran_per_unit,rekap_pembayaran_per_unit, "+
-                    "grafik_kunjungan_percarabayar,ipsrs_pengadaan_pertanggal,ipsrs_stokkeluar_pertanggal,grafik_kunjungan_ranaptahun,"+
-                    "pcare_cek_rujukan,grafik_lab_ralantahun,grafik_rad_ralantahun,cek_entry_ralan,inacbg_klaim_baru_manual2,"+
-                    "permintaan_medis,rekap_permintaan_medis,surat_pemesanan_medis,permintaan_non_medis,rekap_permintaan_non_medis, "+
-                    "surat_pemesanan_non_medis,grafik_per_perujuk,bpjs_cek_prosedur,bpjs_cek_kelas_rawat,bpjs_cek_dokter, "+
-                    "bpjs_cek_spesialistik,bpjs_cek_ruangrawat,bpjs_cek_carakeluar,bpjs_cek_pasca_pulang,detail_tindakan_okvk, "+
-                    "billing_parsial,bpjs_cek_nomor_rujukan_rs,bpjs_cek_rujukan_kartu_pcare,bpjs_cek_rujukan_kartu_rs,akses_depo_obat,"+
-                    "bpjs_rujukan_keluar,grafik_lab_ralanbulan,pengeluaran_stok_apotek,grafik_rad_ralanbulan,detailjmdokter2,"+
-                    "pengaduan_pasien,grafik_lab_ralanhari,grafik_rad_ralanhari,sensus_harian_ralan,metode_racik,pembayaran_akun_bayar, "+
-                    "pengguna_obat_resep,rekap_pemesanan,master_berkas_pegawai,berkas_kepegawaian,riwayat_jabatan,riwayat_pendidikan,"+
-                    "riwayat_naik_gaji,kegiatan_ilmiah,riwayat_penghargaan,riwayat_penelitian,penerimaan_non_medis,bayar_pesan_non_medis,"+
-                    "hutang_barang_non_medis,rekap_pemesanan_non_medis,insiden_keselamatan,insiden_keselamatan_pasien,grafik_ikp_pertahun,"+
-                    "grafik_ikp_perbulan,grafik_ikp_pertanggal,riwayat_data_batch,grafik_ikp_jenis,grafik_ikp_dampak,"+
-                    "piutang_akun_piutang,grafik_kunjungan_per_agama,grafik_kunjungan_per_umur,suku_bangsa,bahasa_pasien,"+
-                    "golongan_tni,satuan_tni,jabatan_tni,pangkat_tni,golongan_polri,satuan_polri,jabatan_polri,pangkat_polri, "+
-                    "cacat_fisik,grafik_kunjungan_suku,grafik_kunjungan_bahasa,booking_operasi,mapping_poli_bpjs,grafik_kunjungan_per_cacat, "+
-                    "barang_cssd,skdp_bpjs,booking_registrasi,bpjs_cek_propinsi,bpjs_cek_kabupaten,bpjs_cek_kecamatan, "+
-                    "bpjs_cek_dokterdpjp,bpjs_cek_riwayat_rujukanrs,bpjs_cek_tanggal_rujukan,permintaan_lab,permintaan_radiologi, "+
-                    "surat_indeks,surat_map,surat_almari,surat_rak,surat_ruang,surat_klasifikasi,surat_status,surat_sifat,surat_balas,"+
-                    "surat_masuk,pcare_cek_dokter,pcare_cek_poli,pcare_cek_provider,pcare_cek_statuspulang,pcare_cek_spesialis,"+
-                    "pcare_cek_subspesialis,pcare_cek_sarana,pcare_cek_khusus,pcare_cek_obat,pcare_cek_tindakan,"+
-                    "pcare_cek_faskessubspesialis,pcare_cek_faskesalihrawat,pcare_cek_faskesthalasemia,pcare_mapping_obat,"+
-                    "pcare_mapping_tindakan,pcare_club_prolanis,pcare_mapping_poli,pcare_kegiatan_kelompok,pcare_mapping_tindakan_ranap,"+
-                    "pcare_peserta_kegiatan_kelompok,sirkulasi_obat3,bridging_pcare_daftar,pcare_mapping_dokter,"+
-                    "ranap_per_ruang,penyakit_ranap_cara_bayar,anggota_militer_dirawat,set_input_parsial,lama_pelayanan_radiologi, "+
-                    "lama_pelayanan_lab,bpjs_cek_sep,catatan_perawatan,surat_keluar,kegiatan_farmasi,stok_opname_logistik,"+
-                    "sirkulasi_non_medis,rekap_lab_pertahun,perujuk_lab_pertahun,rekap_radiologi_pertahun,perujuk_radiologi_pertahun,"+
-                    "jumlah_porsi_diet,jumlah_macam_diet,payment_point2,pembayaran_akun_bayar2,hapus_nota_salah,"+
-                    "pengkajian_askep,hais_perbangsal,ppn_obat,saldo_akun_perbulan,display_apotek,sisrute_referensi_faskes,"+
-                    "sisrute_referensi_alasanrujuk,sisrute_referensi_diagnosa,sisrute_rujukan_masuk,sisrute_rujukan_keluar,"+
-                    "bpjs_cek_skdp,data_batch,kunjungan_permintaan_lab,kunjungan_permintaan_lab2,kunjungan_permintaan_radiologi,"+
-                    "kunjungan_permintaan_radiologi2,pcare_pemberian_obat,pcare_pemberian_tindakan,pembayaran_akun_bayar3,"+
-                    "password_asuransi,kemenkes_sitt,siranap_ketersediaan_kamar,grafik_tb_periodelaporan,grafik_tb_rujukan,"+
-                    "grafik_tb_riwayat,grafik_tb_tipediagnosis,grafik_tb_statushiv,grafik_tb_skoringanak,grafik_tb_konfirmasiskoring5,"+
-                    "grafik_tb_konfirmasiskoring6,grafik_tb_sumberobat,grafik_tb_hasilakhirpengobatan,grafik_tb_hasilteshiv,"+
-                    "kadaluarsa_batch,sisa_stok,obat_per_resep,pemakaian_air_pdam,limbah_b3_medis,grafik_air_pdam_pertanggal,"+
-                    "grafik_air_pdam_perbulan,grafik_limbahb3_pertanggal,grafik_limbahb3_perbulan,limbah_domestik,"+
-                    "grafik_limbahdomestik_pertanggal,grafik_limbahdomestik_perbulan,mutu_air_limbah,pest_control,ruang_perpustakaan,"+
-                    "kategori_perpustakaan,jenis_perpustakaan,pengarang_perpustakaan,penerbit_perpustakaan,koleksi_perpustakaan,"+
-                    "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"+
-                    "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"+
-                    "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"+
-                    "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian,"+
-                    "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh,jenis_cidera_k3rstahun,penyebab_k3rstahun,"+
-                    "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun,jenis_pekerjaan_k3rstahun,bagian_tubuh_k3rstahun,"+
-                    "sekrining_rawat_jalan,bpjs_histori_pelayanan,rekap_mutasi_berkas,skrining_ralan_pernapasan_pertahun,pengajuan_barang_medis,"+
-                    "pengajuan_barang_nonmedis,grafik_kunjungan_ranapbulan,grafik_kunjungan_ranaptanggal,grafik_kunjungan_ranap_peruang,"+
-                    "kunjungan_bangsal_pertahun,grafik_jenjang_jabatanpegawai,grafik_bidangpegawai,grafik_departemenpegawai,"+
-                    "grafik_pendidikanpegawai,grafik_sttswppegawai,grafik_sttskerjapegawai,grafik_sttspulangranap,kip_pasien_ranap,"+
-                    "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase_igd,master_triase_skala1,master_triase_skala2,master_triase_skala3,"+
-                    "master_triase_skala4,master_triase_skala5,master_triase_pemeriksaan,master_triase_macamkasus,rekap_permintaan_diet,"+
-                    "daftar_pasien_ranap,daftar_pasien_ranaptni,pengajuan_asetinventaris,item_apotek_jenis,item_apotek_kategori,"+
-                    "item_apotek_golongan,item_apotek_industrifarmasi,10_obat_terbanyak_poli,grafik_pengajuan_aset_urgensi,"+
-                    "grafik_pengajuan_aset_status,grafik_pengajuan_aset_departemen,rekap_pengajuan_aset_departemen,grafik_kelompok_jabatanpegawai,"+
-                    "grafik_resiko_kerjapegawai,grafik_emergency_indexpegawai,grafik_inventaris_ruang,harian_HAIs2,grafik_inventaris_jenis,"+
-                    "data_resume_pasien,perkiraan_biaya_ranap,rekap_obat_poli,rekap_obat_pasien,permintaan_perbaikan_inventaris,grafik_HAIs_pasienbangsal,"+
-                    "grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb,grafik_HAIs_laju_isk,grafik_HAIs_laju_ilo,"+
-                    "grafik_HAIs_laju_hap,inhealth_mapping_poli,inhealth_mapping_dokter,inhealth_mapping_tindakan_ralan,inhealth_mapping_tindakan_ranap,"+
-                    "inhealth_mapping_tindakan_radiologi,inhealth_mapping_tindakan_laborat,inhealth_mapping_tindakan_operasi,hibah_obat_bhp,"+
-                    "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis,monitoring_asuhan_gizi,"+
-                    "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"+
-                    "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"+
-                    "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"+
-                    "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal,"+
-                    "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang,pasien_corona,toko_pendapatan_harian,"+
-                    "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi,"+
-                    "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan,"+
-                    "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa from user where id_user=AES_ENCRYPT(?,'nur')");
-            
-            ps.setString(1, user);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                if ("[A]Jadwal Praktek".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Jadwal Praktek", rs.getBoolean("jadwal_praktek")});
-                }
-                
-                if ("[A]Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Registrasi", rs.getBoolean("registrasi")});
-                }
-                
-                if ("[A]Tindakan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Tindakan Ralan", rs.getBoolean("tindakan_ralan")});
-                }
-                
-                if ("[A]Kamar Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Kamar Inap", rs.getBoolean("kamar_inap")});
-                }
-                
-                if ("[A]Tindakan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Tindakan Ranap", rs.getBoolean("tindakan_ranap")});
-                }
-                
-                if ("[A]Operasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Operasi", rs.getBoolean("operasi")});
-                }
-                
-                if ("[A]Rujukan Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Rujukan Keluar", rs.getBoolean("rujukan_keluar")});
-                }
-                
-                if ("[A]Rujukan Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Rujukan Masuk", rs.getBoolean("rujukan_masuk")});
-                }
-                
-                if ("[A]Beri Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Beri Obat, Alkes & BHP", rs.getBoolean("beri_obat")});
-                }
-                
-                if ("[A]Resep Pulang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Resep Pulang", rs.getBoolean("resep_pulang")});
-                }
-                
-                if ("[A]Diet Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Diet Pasien", rs.getBoolean("diet_pasien")});
-                }
-                
-                if ("[A]Periksa Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Periksa Lab", rs.getBoolean("periksa_lab")});
-                }
-                
-                if ("[A]Periksa Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Periksa Radiologi", rs.getBoolean("periksa_radiologi")});
-                }
-                
-                if ("[A]Kasir Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Kasir Ralan", rs.getBoolean("kasir_ralan")});
-                }
-                
-                if ("[A]Informasi Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Informasi Kamar", rs.getBoolean("informasi_kamar")});
-                }
-                
-                if ("[A]No.Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]No.Resep", rs.getBoolean("resep_obat")});
-                }
-                
-                if ("[A]Billing Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Billing Ralan", rs.getBoolean("billing_ralan")});
-                }
-                
-                if ("[A]Billing Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Billing Ranap", rs.getBoolean("billing_ranap")});
-                }
-                
-                if ("[A]IGD".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]IGD", rs.getBoolean("igd")});
-                }
-                
-                if ("[A]DPJP Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]DPJP Ranap", rs.getBoolean("dpjp_ranap")});
-                }
-                
-                if ("[A]Edit Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Edit Registrasi", rs.getBoolean("edit_registrasi")});
-                }
-                
-                if ("[A]Rujukan Poli Internal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Rujukan Poli Internal", rs.getBoolean("rujukan_poli_internal")});
-                }
-                
-                if ("[A]Billing Parsial".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Billing Parsial", rs.getBoolean("billing_parsial")});
-                }
-                
-                if ("[A]Akses Depo Obat/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Akses Depo Obat/BHP", rs.getBoolean("akses_depo_obat")});
-                }
-                
-                if ("[A]Jadwal Operasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Jadwal Operasi", rs.getBoolean("booking_operasi")});
-                }
-                
-                if ("[A]Booking Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Booking Registrasi", rs.getBoolean("booking_registrasi")});
-                }
-                
-                if ("[A]Permintaan Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Permintaan Lab", rs.getBoolean("permintaan_lab")});
-                }
-                
-                if ("[A]Permintaan Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Permintaan Radiologi", rs.getBoolean("permintaan_radiologi")});
-                }
-                
-                if ("[A]Catatan Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Catatan Dokter", rs.getBoolean("catatan_perawatan")});
-                }
-                
-                if ("[A]Asesmen Awal Rawat Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Asesmen Awal Rawat Inap", rs.getBoolean("pengkajian_askep")});
-                }
-                
-                if ("[A]Skrining Rawat Jalan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Skrining Rawat Jalan", rs.getBoolean("sekrining_rawat_jalan")});
-                }
-                
-                if ("[A]Perkiraan Biaya Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Perkiraan Biaya Ranap", rs.getBoolean("perkiraan_biaya_ranap")});
-                }
-                
-                if ("[A]Permintaan Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Permintaan Diet", rs.getBoolean("permintaan_diet")});
-                }
-                
-                if("[A]Deteksi Dini Corona".toLowerCase().contains(TCari.getText().toLowerCase())){
-                    tabMode.addRow(new Object[]{false,"[A]Deteksi Dini Corona",rs.getBoolean("deteksi_corona")});
-                }
-                
-                if("[A]Booking Periksa".toLowerCase().contains(TCari.getText().toLowerCase())){
-                    tabMode.addRow(new Object[]{false,"[A]Booking Periksa",rs.getBoolean("booking_periksa")});
-                }
-                
-                if("[B]Barcode Ralan".toLowerCase().contains(TCari.getText().toLowerCase())){
-                    tabMode.addRow(new Object[]{false,"[B]Barcode Ralan",rs.getBoolean("barcoderalan")});
-                }
-                
-                if ("[B]Barcode Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[B]Barcode Ranap", rs.getBoolean("barcoderanap")});
-                }
-                
-                if ("[C]Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Dokter", rs.getBoolean("dokter")});
-                }
-                
-                if ("[C]Petugas".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Petugas", rs.getBoolean("petugas")});
-                }
-                
-                if ("[C]Barcode Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Barcode Presensi", rs.getBoolean("barcode")});
-                }
-                
-                if ("[C]Presensi Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Presensi Harian", rs.getBoolean("presensi_harian")});
-                }
-                
-                if ("[C]Presensi Bulanan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Presensi Bulanan", rs.getBoolean("presensi_bulanan")});
-                }
-                
-                if ("[C]Pegawai Admin".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Pegawai Admin", rs.getBoolean("pegawai_admin")});
-                }
-                
-                if ("[C]Pegawai User".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Pegawai User", rs.getBoolean("pegawai_user")});
-                }
-                
-                if ("[C]SMS Gateway".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]SMS Gateway", rs.getBoolean("sms")});
-                }
-                
-                if ("[C]Sidik Jari".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Sidik Jari", rs.getBoolean("sidikjari")});
-                }
-                
-                if ("[C]Jam Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Jam Presensi", rs.getBoolean("jam_masuk")});
-                }
-                
-                if ("[C]Jadwal Pegawai".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Jadwal Pegawai", rs.getBoolean("jadwal_pegawai")});
-                }
-                
-                if ("[C]Temporary Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Temporary Presensi", rs.getBoolean("temporary_presensi")});
-                }
-                
-                if ("[C]Master Berkas Pegawai".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Master Berkas Pegawai", rs.getBoolean("master_berkas_pegawai")});
-                }
-                
-                if ("[C]Berkas Kepegawaian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Berkas Kepegawaian", rs.getBoolean("berkas_kepegawaian")});
-                }
-                
-                if ("[C]Riwayat Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Riwayat Jabatan", rs.getBoolean("riwayat_jabatan")});
-                }
-                
-                if ("[C]Riwayat Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Riwayat Pendidikan", rs.getBoolean("riwayat_pendidikan")});
-                }
-                
-                if ("[C]Riwayat Naik Gaji".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Riwayat Naik Gaji", rs.getBoolean("riwayat_naik_gaji")});
-                }
-                
-                if ("[C]Kegiatan Ilmiah & Pelatihan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Kegiatan Ilmiah & Pelatihan", rs.getBoolean("kegiatan_ilmiah")});
-                }
-                
-                if ("[C]Riwayat Penghargaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Riwayat Penghargaan", rs.getBoolean("riwayat_penghargaan")});
-                }
-                
-                if ("[C]Riwayat Penelitian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Riwayat Penelitian", rs.getBoolean("riwayat_penelitian")});
-                }
-                
-                if ("[C]Jenis Cidera K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Jenis Cidera K3", rs.getBoolean("jenis_cidera_k3rs")});
-                }
-                
-                if ("[C]Penyebab Kecelakaan K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Penyebab Kecelakaan K3", rs.getBoolean("penyebab_k3rs")});
-                }
-                
-                if ("[C]Jenis Luka K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Jenis Luka K3", rs.getBoolean("jenis_luka_k3rs")});
-                }
-                
-                if ("[C]Lokasi Kejadian K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Lokasi Kejadian K3", rs.getBoolean("lokasi_kejadian_k3rs")});
-                }
-                
-                if ("[C]Dampak Cidera K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Dampak Cidera K3", rs.getBoolean("dampak_cidera_k3rs")});
-                }
-                
-                if ("[C]Jenis Pekerjaan K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Jenis Pekerjaan K3", rs.getBoolean("jenis_pekerjaan_k3rs")});
-                }
-                
-                if ("[C]Bagian Tubuh K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Bagian Tubuh K3", rs.getBoolean("bagian_tubuh_k3rs")});
-                }
-                
-                if ("[C]Peristiwa K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Peristiwa K3", rs.getBoolean("peristiwa_k3rs")});
-                }
-                
-                if ("[C]Jenis Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Jenis Cidera K3 Per Tahun", rs.getBoolean("jenis_cidera_k3rstahun")});
-                }
-                
-                if ("[C]Penyebab Kecelakaan K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Penyebab Kecelakaan K3 Per Tahun", rs.getBoolean("penyebab_k3rstahun")});
-                }
-                
-                if ("[C]Jenis Luka K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Jenis Luka K3 Per Tahun", rs.getBoolean("jenis_luka_k3rstahun")});
-                }
-                
-                if ("[C]Lokasi Kejadian K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Lokasi Kejadian K3 Per Tahun", rs.getBoolean("lokasi_kejadian_k3rstahun")});
-                }
-                
-                if ("[C]Dampak Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Dampak Cidera K3 Per Tahun", rs.getBoolean("dampak_cidera_k3rstahun")});
-                }
-                
-                if ("[C]Jenis Pekerjaan K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Jenis Pekerjaan K3 Per Tahun", rs.getBoolean("jenis_pekerjaan_k3rstahun")});
-                }
-                
-                if ("[C]Bagian Tubuh K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[C]Bagian Tubuh K3 Per Tahun", rs.getBoolean("bagian_tubuh_k3rstahun")});
-                }
-                
-                if ("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Suplier Obat/Alkes/BHP", rs.getBoolean("suplier")});
-                }
-                
-                if ("[D]Satuan Barang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Satuan Barang", rs.getBoolean("satuan_barang")});
-                }
-                
-                if ("[D]Konversi Satuan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Konversi Satuan", rs.getBoolean("konversi_satuan")});
-                }
-                
-                if ("[D]Jenis Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Jenis Obat/Alkes/BHP", rs.getBoolean("jenis_barang")});
-                }
-                
-                if ("[D]Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Obat, Alkes & BHP", rs.getBoolean("obat")});
-                }
-                
-                if ("[D]Stok Opname Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Stok Opname Apotek", rs.getBoolean("stok_opname_obat")});
-                }
-                
-                if ("[D]Stok Obat Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Stok Obat Pasien", rs.getBoolean("stok_obat_pasien")});
-                }
-                
-                if ("[D]Pengadaan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Pengadaan Obat, Alkes & BHP", rs.getBoolean("pengadaan_obat")});
-                }
-                
-                if ("[D]Penerimaan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Penerimaan Obat, Alkes & BHP", rs.getBoolean("pemesanan_obat")});
-                }
-                
-                if ("[D]Penjualan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Penjualan Obat, Alkes & BHP", rs.getBoolean("penjualan_obat")});
-                }
-                
-                if ("[D]Piutang Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Piutang Obat, Alkes & BHP", rs.getBoolean("piutang_obat")});
-                }
-                
-                if ("[D]Retur Ke Suplier".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Retur Ke Suplier", rs.getBoolean("retur_ke_suplier")});
-                }
-                
-                if ("[D]Retur Dari Pembeli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Retur Dari Pembeli", rs.getBoolean("retur_dari_pembeli")});
-                }
-                
-                if ("[D]Retur Obat, Alkes & BHP Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Retur Obat, Alkes & BHP Ranap", rs.getBoolean("retur_obat_ranap")});
-                }
-                
-                if ("[D]Retur Piutang Pembeli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Retur Piutang Pembeli", rs.getBoolean("retur_piutang_pasien")});
-                }
-                
-                if ("[D]Keuntungan Penjualan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Keuntungan Penjualan", rs.getBoolean("keuntungan_penjualan")});
-                }
-                
-                if ("[D]Keuntungan Beri Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Keuntungan Beri Obat, Alkes & BHP", rs.getBoolean("keuntungan_beri_obat")});
-                }
-                
-                if ("[D]Sirkulasi Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP", rs.getBoolean("sirkulasi_obat")});
-                }
-                
-                if ("[D]Mutasi Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Mutasi Obat/Alkes/BHP", rs.getBoolean("mutasi_barang")});
-                }
-                
-                if ("[D]Darurat Stok".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Darurat Stok", rs.getBoolean("darurat_stok")});
-                }
-                
-                if ("[D]Sirkulasi Obat, Alkes & BHP 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 2", rs.getBoolean("sirkulasi_obat2")});
-                }
-                
-                if ("[D]Industri Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Industri Farmasi", rs.getBoolean("industrifarmasi")});
-                }
-                
-                if ("[D]Pengambilan BHP UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Pengambilan BHP UTD", rs.getBoolean("pengambilan_utd")});
-                }
-                
-                if ("[D]Keuntungan Beri Obat, Alkes & BHP 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Keuntungan Beri Obat, Alkes & BHP 2", rs.getBoolean("keuntungan_beri_obat_nonpiutang")});
-                }
-                
-                if ("[D]Riwayat Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Riwayat Obat, Alkes & BHP", rs.getBoolean("riwayat_obat_alkes_bhp")});
-                }
-                
-                if ("[D]Resep Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Resep Dokter", rs.getBoolean("resep_dokter")});
-                }
-                
-                if ("[D]Kategori Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Kategori Obat/Alkes/BHP", rs.getBoolean("kategori_barang")});
-                }
-                
-                if ("[D]Golongan Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Golongan Obat/Alkes/BHP", rs.getBoolean("golongan_barang")});
-                }
-                
-                if ("[D]Obat/Alkes/BHP Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Obat/Alkes/BHP Per Tanggal", rs.getBoolean("pemberian_obat_pertanggal")});
-                }
-                
-                if ("[D]Penjualan Bebas Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Penjualan Bebas Per Tanggal", rs.getBoolean("penjualan_obat_pertanggal")});
-                }
-                
-                if ("[D]Permintaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Permintaan Obat & BHP", rs.getBoolean("permintaan_medis")});
-                }
-                
-                if ("[D]Rekap Permintaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Rekap Permintaan Obat & BHP", rs.getBoolean("rekap_permintaan_medis")});
-                }
-                
-                if ("[D]Surat Pemesanan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Surat Pemesanan Obat & BHP", rs.getBoolean("surat_pemesanan_medis")});
-                }
-                
-                if ("[D]Stok Keluar Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Stok Keluar Medis", rs.getBoolean("pengeluaran_stok_apotek")});
-                }
-                
-                if ("[D]Metode Racik".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Metode Racik", rs.getBoolean("metode_racik")});
-                }
-                
-                if ("[D]Pengguna Obat/Alkes/BHP Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Pengguna Obat/Alkes/BHP Resep", rs.getBoolean("pengguna_obat_resep")});
-                }
-                
-                if ("[D]Rekap Penerimaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Rekap Penerimaan Obat & BHP", rs.getBoolean("rekap_pemesanan")});
-                }
-                
-                if ("[D]Riwayat Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Riwayat Batch", rs.getBoolean("riwayat_data_batch")});
-                }
-                
-                if ("[D]Kegiatan Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Kegiatan Farmasi", rs.getBoolean("kegiatan_farmasi")});
-                }
-                
-                if ("[D]Sirkulasi Obat, Alkes & BHP 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 3", rs.getBoolean("sirkulasi_obat3")});
-                }
-                
-                if ("[D]PPN Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]PPN Obat", rs.getBoolean("ppn_obat")});
-                }
-                
-                if ("[D]Data Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Data Batch", rs.getBoolean("data_batch")});
-                }
-                
-                if ("[D]Kadaluarsa Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Kadaluarsa Batch", rs.getBoolean("kadaluarsa_batch")});
-                }
-                
-                if ("[D]Sisa Stok".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Sisa Stok", rs.getBoolean("sisa_stok")});
-                }
-                
-                if ("[D]Obat Per Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Obat Per Resep", rs.getBoolean("obat_per_resep")});
-                }
-                
-                if ("[D]Pengajuan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Pengajuan Obat & BHP", rs.getBoolean("pengajuan_barang_medis")});
-                }
-                
-                if ("[D]10 Obat Terbanyak Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]10 Obat Terbanyak Poli", rs.getBoolean("10_obat_terbanyak_poli")});
-                }
-                
-                if ("[D]Rekap Obat Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Rekap Obat Per Poli", rs.getBoolean("rekap_obat_poli")});
-                }
-                
-                if ("[D]Rekap Obat Per Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Rekap Obat Per Pasien", rs.getBoolean("rekap_obat_pasien")});
-                }
-                
-                if ("[D]Hibah Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Hibah Obat & BHP", rs.getBoolean("hibah_obat_bhp")});
-                }
-                
-                if ("[D]Sirkulasi Obat, Alkes & BHP 4".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 4", rs.getBoolean("sirkulasi_obat4")});
-                }
-                
-                if ("[D]Sirkulasi Obat, Alkes & BHP 5".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 5", rs.getBoolean("sirkulasi_obat5")});
-                }
-                
-                if ("[E]Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Barang Non Medis", rs.getBoolean("ipsrs_barang")});
-                }
-                
-                if ("[E]Pengadaan Barang Nonmedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Pengadaan Barang Nonmedis", rs.getBoolean("ipsrs_pengadaan_barang")});
-                }
-                
-                if ("[E]Stok Keluar Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Stok Keluar Non Medis", rs.getBoolean("ipsrs_stok_keluar")});
-                }
-                
-                if ("[E]Rekap Pengadaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Rekap Pengadaan Non Medis", rs.getBoolean("ipsrs_rekap_pengadaan")});
-                }
-                
-                if ("[E]Rekap Stok Keluar Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Rekap Stok Keluar Non Medis", rs.getBoolean("ipsrs_rekap_stok_keluar")});
-                }
-                
-                if ("[E]Biaya Pengadaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Biaya Pengadaan Non Medis", rs.getBoolean("ipsrs_pengeluaran_harian")});
-                }
-                
-                if ("[E]Jenis Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Jenis Non Medis", rs.getBoolean("ipsrs_jenis_barang")});
-                }
-                
-                if ("[E]Pengambilan UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Pengambilan UTD", rs.getBoolean("pengambilan_penunjang_utd")});
-                }
-                
-                if ("[E]Suplier Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Suplier Non Medis", rs.getBoolean("suplier_penunjang")});
-                }
-                
-                if ("[E]Pengadaan Non Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Pengadaan Non Medis Per Tanggal", rs.getBoolean("ipsrs_pengadaan_pertanggal")});
-                }
-                
-                if ("[E]Stok Keluar Non Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Stok Keluar Non Medis Per Tanggal", rs.getBoolean("ipsrs_stokkeluar_pertanggal")});
-                }
-                
-                if ("[E]Permintaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Permintaan Barang Non Medis", rs.getBoolean("permintaan_non_medis")});
-                }
-                
-                if ("[E]Rekap Permintaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Rekap Permintaan Barang Non Medis", rs.getBoolean("rekap_permintaan_non_medis")});
-                }
-                
-                if ("[E]Surat Pemesanan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Surat Pemesanan Barang Non Medis", rs.getBoolean("surat_pemesanan_non_medis")});
-                }
-                
-                if ("[E]Penerimaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Penerimaan Barang Non Medis", rs.getBoolean("penerimaan_non_medis")});
-                }
-                
-                if ("[E]Rekap Penerimaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Rekap Penerimaan Non Medis", rs.getBoolean("rekap_pemesanan_non_medis")});
-                }
-                
-                if ("[E]Stok Opname Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Stok Opname Non Medis", rs.getBoolean("stok_opname_logistik")});
-                }
-                
-                if ("[E]Sirkulasi Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Sirkulasi Non Medis", rs.getBoolean("sirkulasi_non_medis")});
-                }
-                
-                if ("[E]Pengajuan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Pengajuan Barang Non Medis", rs.getBoolean("pengajuan_barang_nonmedis")});
-                }
-                
-                if ("[E]Sirkulasi Non Medis 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[E]Sirkulasi Non Medis 2", rs.getBoolean("sirkulasi_non_medis")});
-                }
-                
-                if ("[F]Kategori Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[F]Kategori Inventaris", rs.getBoolean("inventaris_kategori")});
-                    
-                    if("[E]Retur Ke Suplier Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[E]Retur Ke Suplier Non Medis",rs.getBoolean("ipsrs_returbeli")});
+            ps = koneksi.prepareStatement("select penyakit, obat_penyakit, dokter, jadwal_praktek, petugas, pasien, registrasi, tindakan_ralan,"
+                    + "kamar_inap, tindakan_ranap, operasi, rujukan_keluar, rujukan_masuk, beri_obat, resep_pulang, "
+                    + "pasien_meninggal, diet_pasien, kelahiran_bayi, periksa_lab, periksa_radiologi, kasir_ralan, "
+                    + "deposit_pasien, piutang_pasien, peminjaman_berkas, barcode, presensi_harian, presensi_bulanan, "
+                    + "pegawai_admin, pegawai_user, suplier, satuan_barang, konversi_satuan, jenis_barang, obat, "
+                    + "stok_opname_obat, stok_obat_pasien, pengadaan_obat, pemesanan_obat, penjualan_obat, piutang_obat, "
+                    + "retur_ke_suplier, retur_dari_pembeli, retur_obat_ranap, retur_piutang_pasien, keuntungan_penjualan, "
+                    + "keuntungan_beri_obat, sirkulasi_obat, ipsrs_barang, ipsrs_pengadaan_barang, ipsrs_stok_keluar, "
+                    + "ipsrs_rekap_pengadaan, ipsrs_rekap_stok_keluar, ipsrs_pengeluaran_harian, inventaris_jenis, "
+                    + "inventaris_kategori, inventaris_merk, inventaris_ruang, inventaris_produsen, inventaris_koleksi,"
+                    + "inventaris_inventaris, inventaris_sirkulasi, parkir_jenis, parkir_in, parkir_out, parkir_rekap_harian, "
+                    + "parkir_rekap_bulanan, informasi_kamar, harian_tindakan_poli, obat_per_poli, obat_per_kamar, "
+                    + "obat_per_dokter_ralan, obat_per_dokter_ranap, harian_dokter, bulanan_dokter, harian_paramedis,"
+                    + "bulanan_paramedis, pembayaran_ralan, pembayaran_ranap, rekap_pembayaran_ralan, rekap_pembayaran_ranap,"
+                    + "tagihan_masuk, tambahan_biaya, potongan_biaya, resep_obat, resume_pasien, penyakit_ralan, penyakit_ranap, "
+                    + "kamar, tarif_ralan, tarif_ranap, tarif_lab, tarif_radiologi, tarif_operasi, akun_rekening, rekening_tahun, "
+                    + "posting_jurnal, buku_besar, cashflow, keuangan, pengeluaran, setup_pjlab, setup_otolokasi, setup_jam_kamin, "
+                    + "setup_embalase, tracer_login, display, set_harga_obat, set_penggunaan_tarif, set_oto_ralan, biaya_harian, "
+                    + "biaya_masuk_sekali, set_no_rm, billing_ralan, billing_ranap, jm_ranap_dokter, igd, barcoderalan, barcoderanap, "
+                    + "set_harga_obat_ralan,set_harga_obat_ranap,penyakit_pd3i,surveilans_pd3i,surveilans_ralan,diagnosa_pasien, "
+                    + "surveilans_ranap,pny_takmenular_ranap,pny_takmenular_ralan,kunjungan_ralan,rl32,rl33,rl37,rl38,harian_tindakan_dokter,sms, "
+                    + "sidikjari,jam_masuk,jadwal_pegawai,parkir_barcode,set_nota,dpjp_ranap,mutasi_barang,rl34,rl36,"
+                    + "fee_visit_dokter,fee_bacaan_ekg,fee_rujukan_rontgen,fee_rujukan_ranap,fee_ralan,akun_bayar,bayar_pemesanan_obat,"
+                    + "obat_per_dokter_peresep,ipsrs_jenis_barang,pemasukan_lain,pengaturan_rekening,closing_kasir,keterlambatan_presensi,"
+                    + "set_harga_kamar,rekap_per_shift,bpjs_cek_nik,bpjs_cek_kartu,bpjs_cek_riwayat,obat_per_cara_bayar,kunjungan_ranap,"
+                    + "bayar_piutang,payment_point,bpjs_cek_nomor_rujukan,icd9,darurat_stok,retensi_rm,temporary_presensi,jurnal_harian, "
+                    + "sirkulasi_obat2,edit_registrasi,bpjs_referensi_diagnosa,bpjs_referensi_poli,industrifarmasi,harian_js,bulanan_js,"
+                    + "harian_paket_bhp,bulanan_paket_bhp,piutang_pasien2,bpjs_referensi_faskes,bpjs_sep,pengambilan_utd,tarif_utd, "
+                    + "pengambilan_utd2,utd_medis_rusak,pengambilan_penunjang_utd,pengambilan_penunjang_utd2,utd_penunjang_rusak,"
+                    + "suplier_penunjang,utd_donor,bpjs_monitoring_klaim,utd_cekal_darah,utd_komponen_darah,utd_stok_darah, "
+                    + "utd_pemisahan_darah,harian_kamar,rincian_piutang_pasien,keuntungan_beri_obat_nonpiutang,reklasifikasi_ralan, "
+                    + "reklasifikasi_ranap,utd_penyerahan_darah,hutang_obat,riwayat_obat_alkes_bhp,sensus_harian_poli,rl4a,aplicare_referensi_kamar, "
+                    + "aplicare_ketersediaan_kamar,inacbg_klaim_baru_otomatis,inacbg_klaim_baru_manual,inacbg_coder_nik,mutasi_berkas, "
+                    + "akun_piutang,harian_kso,bulanan_kso,harian_menejemen,bulanan_menejemen,inhealth_cek_eligibilitas,inhealth_referensi_jenpel_ruang_rawat, "
+                    + "inhealth_referensi_poli,inhealth_referensi_faskes,inhealth_sjp,piutang_ralan,piutang_ranap,detail_piutang_penjab, "
+                    + "lama_pelayanan_ralan,catatan_pasien,rl4b,rl4asebab,rl4bsebab,data_HAIs,harian_HAIs,bulanan_HAIs,hitung_bor,perusahaan_pasien, "
+                    + "resep_dokter,lama_pelayanan_apotek,hitung_alos,detail_tindakan,rujukan_poli_internal,rekap_poli_anak,grafik_kunjungan_poli, "
+                    + "grafik_kunjungan_perdokter,grafik_kunjungan_perpekerjaan,grafik_kunjungan_perpendidikan,grafik_kunjungan_pertahun,"
+                    + "berkas_digital_perawatan,penyakit_menular_ranap,penyakit_menular_ralan,grafik_kunjungan_perbulan,grafik_kunjungan_pertanggal, "
+                    + "grafik_kunjungan_demografi,grafik_kunjungan_statusdaftartahun,grafik_kunjungan_statusdaftartahun2, "
+                    + "grafik_kunjungan_statusdaftarbulan,grafik_kunjungan_statusdaftarbulan2,grafik_kunjungan_statusdaftartanggal,"
+                    + "grafik_kunjungan_statusdaftartanggal2,grafik_kunjungan_statusbataltahun,grafik_kunjungan_statusbatalbulan,"
+                    + "pcare_cek_penyakit,grafik_kunjungan_statusbataltanggal,kategori_barang,golongan_barang,pemberian_obat_pertanggal,"
+                    + "penjualan_obat_pertanggal,pcare_cek_kesadaran,pembatalan_periksa_dokter,pembayaran_per_unit,rekap_pembayaran_per_unit, "
+                    + "grafik_kunjungan_percarabayar,ipsrs_pengadaan_pertanggal,ipsrs_stokkeluar_pertanggal,grafik_kunjungan_ranaptahun,"
+                    + "pcare_cek_rujukan,grafik_lab_ralantahun,grafik_rad_ralantahun,cek_entry_ralan,inacbg_klaim_baru_manual2,"
+                    + "permintaan_medis,rekap_permintaan_medis,surat_pemesanan_medis,permintaan_non_medis,rekap_permintaan_non_medis, "
+                    + "surat_pemesanan_non_medis,grafik_per_perujuk,bpjs_cek_prosedur,bpjs_cek_kelas_rawat,bpjs_cek_dokter, "
+                    + "bpjs_cek_spesialistik,bpjs_cek_ruangrawat,bpjs_cek_carakeluar,bpjs_cek_pasca_pulang,detail_tindakan_okvk, "
+                    + "billing_parsial,bpjs_cek_nomor_rujukan_rs,bpjs_cek_rujukan_kartu_pcare,bpjs_cek_rujukan_kartu_rs,akses_depo_obat,"
+                    + "bpjs_rujukan_keluar,grafik_lab_ralanbulan,pengeluaran_stok_apotek,grafik_rad_ralanbulan,detailjmdokter2,"
+                    + "pengaduan_pasien,grafik_lab_ralanhari,grafik_rad_ralanhari,sensus_harian_ralan,metode_racik,pembayaran_akun_bayar, "
+                    + "pengguna_obat_resep,rekap_pemesanan,master_berkas_pegawai,berkas_kepegawaian,riwayat_jabatan,riwayat_pendidikan,"
+                    + "riwayat_naik_gaji,kegiatan_ilmiah,riwayat_penghargaan,riwayat_penelitian,penerimaan_non_medis,bayar_pesan_non_medis,"
+                    + "hutang_barang_non_medis,rekap_pemesanan_non_medis,insiden_keselamatan,insiden_keselamatan_pasien,grafik_ikp_pertahun,"
+                    + "grafik_ikp_perbulan,grafik_ikp_pertanggal,riwayat_data_batch,grafik_ikp_jenis,grafik_ikp_dampak,"
+                    + "piutang_akun_piutang,grafik_kunjungan_per_agama,grafik_kunjungan_per_umur,suku_bangsa,bahasa_pasien,"
+                    + "golongan_tni,satuan_tni,jabatan_tni,pangkat_tni,golongan_polri,satuan_polri,jabatan_polri,pangkat_polri, "
+                    + "cacat_fisik,grafik_kunjungan_suku,grafik_kunjungan_bahasa,booking_operasi,mapping_poli_bpjs,grafik_kunjungan_per_cacat, "
+                    + "barang_cssd,skdp_bpjs,booking_registrasi,bpjs_cek_propinsi,bpjs_cek_kabupaten,bpjs_cek_kecamatan, "
+                    + "bpjs_cek_dokterdpjp,bpjs_cek_riwayat_rujukanrs,bpjs_cek_tanggal_rujukan,permintaan_lab,permintaan_radiologi, "
+                    + "surat_indeks,surat_map,surat_almari,surat_rak,surat_ruang,surat_klasifikasi,surat_status,surat_sifat,surat_balas,"
+                    + "surat_masuk,pcare_cek_dokter,pcare_cek_poli,pcare_cek_provider,pcare_cek_statuspulang,pcare_cek_spesialis,"
+                    + "pcare_cek_subspesialis,pcare_cek_sarana,pcare_cek_khusus,pcare_cek_obat,pcare_cek_tindakan,"
+                    + "pcare_cek_faskessubspesialis,pcare_cek_faskesalihrawat,pcare_cek_faskesthalasemia,pcare_mapping_obat,"
+                    + "pcare_mapping_tindakan,pcare_club_prolanis,pcare_mapping_poli,pcare_kegiatan_kelompok,pcare_mapping_tindakan_ranap,"
+                    + "pcare_peserta_kegiatan_kelompok,sirkulasi_obat3,bridging_pcare_daftar,pcare_mapping_dokter,"
+                    + "ranap_per_ruang,penyakit_ranap_cara_bayar,anggota_militer_dirawat,set_input_parsial,lama_pelayanan_radiologi, "
+                    + "lama_pelayanan_lab,bpjs_cek_sep,catatan_perawatan,surat_keluar,kegiatan_farmasi,stok_opname_logistik,"
+                    + "sirkulasi_non_medis,rekap_lab_pertahun,perujuk_lab_pertahun,rekap_radiologi_pertahun,perujuk_radiologi_pertahun,"
+                    + "jumlah_porsi_diet,jumlah_macam_diet,payment_point2,pembayaran_akun_bayar2,hapus_nota_salah,"
+                    + "pengkajian_askep,hais_perbangsal,ppn_obat,saldo_akun_perbulan,display_apotek,sisrute_referensi_faskes,"
+                    + "sisrute_referensi_alasanrujuk,sisrute_referensi_diagnosa,sisrute_rujukan_masuk,sisrute_rujukan_keluar,"
+                    + "bpjs_cek_skdp,data_batch,kunjungan_permintaan_lab,kunjungan_permintaan_lab2,kunjungan_permintaan_radiologi,"
+                    + "kunjungan_permintaan_radiologi2,pcare_pemberian_obat,pcare_pemberian_tindakan,pembayaran_akun_bayar3,"
+                    + "password_asuransi,kemenkes_sitt,siranap_ketersediaan_kamar,grafik_tb_periodelaporan,grafik_tb_rujukan,"
+                    + "grafik_tb_riwayat,grafik_tb_tipediagnosis,grafik_tb_statushiv,grafik_tb_skoringanak,grafik_tb_konfirmasiskoring5,"
+                    + "grafik_tb_konfirmasiskoring6,grafik_tb_sumberobat,grafik_tb_hasilakhirpengobatan,grafik_tb_hasilteshiv,"
+                    + "kadaluarsa_batch,sisa_stok,obat_per_resep,pemakaian_air_pdam,limbah_b3_medis,grafik_air_pdam_pertanggal,"
+                    + "grafik_air_pdam_perbulan,grafik_limbahb3_pertanggal,grafik_limbahb3_perbulan,limbah_domestik,"
+                    + "grafik_limbahdomestik_pertanggal,grafik_limbahdomestik_perbulan,mutu_air_limbah,pest_control,ruang_perpustakaan,"
+                    + "kategori_perpustakaan,jenis_perpustakaan,pengarang_perpustakaan,penerbit_perpustakaan,koleksi_perpustakaan,"
+                    + "inventaris_perpustakaan,set_peminjaman_perpustakaan,denda_perpustakaan,anggota_perpustakaan,peminjaman_perpustakaan,"
+                    + "bayar_denda_perpustakaan,ebook_perpustakaan,jenis_cidera_k3rs,penyebab_k3rs,jenis_luka_k3rs,lokasi_kejadian_k3rs,"
+                    + "dampak_cidera_k3rs,jenis_pekerjaan_k3rs,bagian_tubuh_k3rs,peristiwa_k3rs,grafik_k3_pertahun,grafik_k3_perbulan,"
+                    + "grafik_k3_pertanggal,grafik_k3_perjeniscidera,grafik_k3_perpenyebab,grafik_k3_perjenisluka,grafik_k3_lokasikejadian,"
+                    + "grafik_k3_dampakcidera,grafik_k3_perjenispekerjaan,grafik_k3_perbagiantubuh,jenis_cidera_k3rstahun,penyebab_k3rstahun,"
+                    + "jenis_luka_k3rstahun,lokasi_kejadian_k3rstahun,dampak_cidera_k3rstahun,jenis_pekerjaan_k3rstahun,bagian_tubuh_k3rstahun,"
+                    + "sekrining_rawat_jalan,bpjs_histori_pelayanan,rekap_mutasi_berkas,skrining_ralan_pernapasan_pertahun,pengajuan_barang_medis,"
+                    + "pengajuan_barang_nonmedis,grafik_kunjungan_ranapbulan,grafik_kunjungan_ranaptanggal,grafik_kunjungan_ranap_peruang,"
+                    + "kunjungan_bangsal_pertahun,grafik_jenjang_jabatanpegawai,grafik_bidangpegawai,grafik_departemenpegawai,"
+                    + "grafik_pendidikanpegawai,grafik_sttswppegawai,grafik_sttskerjapegawai,grafik_sttspulangranap,kip_pasien_ranap,"
+                    + "kip_pasien_ralan,bpjs_mapping_dokterdpjp,data_triase_igd,master_triase_skala1,master_triase_skala2,master_triase_skala3,"
+                    + "master_triase_skala4,master_triase_skala5,master_triase_pemeriksaan,master_triase_macamkasus,rekap_permintaan_diet,"
+                    + "daftar_pasien_ranap,daftar_pasien_ranaptni,pengajuan_asetinventaris,item_apotek_jenis,item_apotek_kategori,"
+                    + "item_apotek_golongan,item_apotek_industrifarmasi,10_obat_terbanyak_poli,grafik_pengajuan_aset_urgensi,"
+                    + "grafik_pengajuan_aset_status,grafik_pengajuan_aset_departemen,rekap_pengajuan_aset_departemen,grafik_kelompok_jabatanpegawai,"
+                    + "grafik_resiko_kerjapegawai,grafik_emergency_indexpegawai,grafik_inventaris_ruang,harian_HAIs2,grafik_inventaris_jenis,"
+                    + "data_resume_pasien,perkiraan_biaya_ranap,rekap_obat_poli,rekap_obat_pasien,permintaan_perbaikan_inventaris,grafik_HAIs_pasienbangsal,"
+                    + "grafik_HAIs_pasienbulan,grafik_HAIs_laju_vap,grafik_HAIs_laju_iad,grafik_HAIs_laju_pleb,grafik_HAIs_laju_isk,grafik_HAIs_laju_ilo,"
+                    + "grafik_HAIs_laju_hap,inhealth_mapping_poli,inhealth_mapping_dokter,inhealth_mapping_tindakan_ralan,inhealth_mapping_tindakan_ranap,"
+                    + "inhealth_mapping_tindakan_radiologi,inhealth_mapping_tindakan_laborat,inhealth_mapping_tindakan_operasi,hibah_obat_bhp,"
+                    + "asal_hibah,asuhan_gizi,inhealth_kirim_tagihan,sirkulasi_obat4,sirkulasi_obat5,sirkulasi_non_medis,monitoring_asuhan_gizi,"
+                    + "penerimaan_obat_perbulan,rekap_kunjungan,surat_sakit,penilaian_awal_keperawatan_ralan,permintaan_diet,master_masalah_keperawatan,"
+                    + "pengajuan_cuti,kedatangan_pasien,utd_pendonor,toko_suplier,toko_jenis,toko_set_harga,toko_barang,penagihan_piutang_pasien,"
+                    + "akun_penagihan_piutang,stok_opname_toko,toko_riwayat_barang,toko_surat_pemesanan,toko_pengajuan_barang,toko_penerimaan_barang,"
+                    + "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal,"
+                    + "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang,pasien_corona,toko_pendapatan_harian,"
+                    + "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi,"
+                    + "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan,"
+                    + "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa from user where id_user=AES_ENCRYPT(?,'nur')");
+            try {
+                ps.setString(1, user);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    if ("[A]Jadwal Praktek".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Jadwal Praktek", rs.getBoolean("jadwal_praktek")});
                     }
-                    
-                    if("[E]Riwayat Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[E]Riwayat Barang Non Medis",rs.getBoolean("ipsrs_riwayat_barang")});
-                    }
-                    
-                    if("[F]Jenis Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[F]Jenis Inventaris",rs.getBoolean("inventaris_jenis")});
-                    }
-
-                    if ("[F]Merk Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Merk Inventaris", rs.getBoolean("inventaris_merk")});
-                    }
-
-                    if ("[F]Ruang Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Ruang Inventaris", rs.getBoolean("inventaris_ruang")});
-                    }
-
-                    if ("[F]Produsen Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Produsen Inventaris", rs.getBoolean("inventaris_produsen")});
-                    }
-
-                    if ("[F]Koleksi Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Koleksi Inventaris", rs.getBoolean("inventaris_koleksi")});
-                    }
-
-                    if ("[F]Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Inventaris", rs.getBoolean("inventaris_inventaris")});
-                    }
-
-                    if ("[F]Sirkulasi Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Sirkulasi Inventaris", rs.getBoolean("inventaris_sirkulasi")});
-                    }
-
-                    if ("[F]Barang CSSD".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Barang CSSD", rs.getBoolean("barang_cssd")});
-                    }
-
-                    if ("[F]Pemakaian Air PDAM".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Pemakaian Air PDAM", rs.getBoolean("pemakaian_air_pdam")});
-                    }
-
-                    if ("[F]Limbah Padat B3 Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Limbah Padat B3 Medis", rs.getBoolean("limbah_b3_medis")});
-                    }
-
-                    if ("[F]Limbah Padat Domestik".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Limbah Padat Domestik", rs.getBoolean("limbah_domestik")});
-                    }
-
-                    if ("[F]Mutu Air Limbah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Mutu Air Limbah", rs.getBoolean("mutu_air_limbah")});
-                    }
-
-                    if ("[F]Pest Control".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Pest Control", rs.getBoolean("pest_control")});
-                    }
-
-                    if ("[F]Pengajuan Aset/Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Pengajuan Aset/Inventaris", rs.getBoolean("pengajuan_asetinventaris")});
-                    }
-
-                    if ("[F]Rekap Pengajuan Aset Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Rekap Pengajuan Aset Departemen", rs.getBoolean("rekap_pengajuan_aset_departemen")});
-                    }
-
-                    if ("[F]Permintaan Perbaikan Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Permintaan Perbaikan Inventaris", rs.getBoolean("permintaan_perbaikan_inventaris")});
-                    }
-
-                    if ("[F]Asal Hibah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[F]Asal Hibah", rs.getBoolean("asal_hibah")});
-                    }
-
-                    if ("[G]Jenis Parkir".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[G]Jenis Parkir", rs.getBoolean("parkir_jenis")});
-                    }
-
-                    if ("[G]Parkir Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[G]Parkir Masuk", rs.getBoolean("parkir_in")});
-                    }
-
-                    if ("[G]Parkir Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[G]Parkir Keluar", rs.getBoolean("parkir_out")});
-                    }
-
-                    if ("[G]Rekap Parkir Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[G]Rekap Parkir Harian", rs.getBoolean("parkir_rekap_harian")});
-                    }
-
-                    if ("[G]Rekap Parkir Bulanan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[G]Rekap Parkir Bulanan", rs.getBoolean("parkir_rekap_bulanan")});
-                    }
-
-                    if ("[G]Barcode Parkir".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[G]Barcode Parkir", rs.getBoolean("parkir_barcode")});
-                    }
-
-                    if ("[H]Harian Dokter Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Harian Dokter Poli", rs.getBoolean("harian_tindakan_poli")});
-                    }
-
-                    if ("[H]Obat Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Obat Per Poli", rs.getBoolean("obat_per_poli")});
-                    }
-
-                    if ("[H]Obat Per Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Obat Per Kamar", rs.getBoolean("obat_per_kamar")});
-                    }
-
-                    if ("[H]Obat Per Dokter Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Obat Per Dokter Ralan", rs.getBoolean("obat_per_dokter_ralan")});
-                    }
-
-                    if ("[H]Obat Per Dokter Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Obat Per Dokter Ranap", rs.getBoolean("obat_per_dokter_ranap")});
-                    }
-
-                    if ("[H]Harian Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Harian Dokter", rs.getBoolean("harian_dokter")});
-                    }
-
-                    if ("[H]Bulanan Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Bulanan Dokter", rs.getBoolean("bulanan_dokter")});
-                    }
-
-                    if ("[H]Harian Paramedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Harian Paramedis", rs.getBoolean("harian_paramedis")});
-                    }
-
-                    if ("[H]Bulanan Paramedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Bulanan Paramedis", rs.getBoolean("bulanan_paramedis")});
-                    }
-
-                    if ("[H]Pembayaran Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Pembayaran Ralan", rs.getBoolean("pembayaran_ralan")});
-                    }
-
-                    if ("[H]Pembayaran Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Pembayaran Ranap", rs.getBoolean("pembayaran_ranap")});
-                    }
-
-                    if ("[H]Rekap Pembayaran Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Rekap Pembayaran Ralan", rs.getBoolean("rekap_pembayaran_ralan")});
-                    }
-
-                    if ("[H]Rekap Pembayaran Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Rekap Pembayaran Ranap", rs.getBoolean("rekap_pembayaran_ranap")});
-                    }
-
-                    if ("[H]Tagihan Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Tagihan Masuk", rs.getBoolean("tagihan_masuk")});
-                    }
-
-                    if ("[H]Tambahan Biaya".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Tambahan Biaya", rs.getBoolean("tambahan_biaya")});
-                    }
-
-                    if ("[H]Potongan Biaya".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Potongan Biaya", rs.getBoolean("potongan_biaya")});
-                    }
-
-                    if ("[H]Detail JM Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Detail JM Dokter", rs.getBoolean("jm_ranap_dokter")});
-                    }
-
-                    if ("[H]Harian Dokter Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Harian Dokter Ralan", rs.getBoolean("harian_tindakan_dokter")});
-                    }
-
-                    if ("[H]Fee Visit Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Fee Visit Dokter", rs.getBoolean("fee_visit_dokter")});
-                    }
-
-                    if ("[H]Fee Bacaan EKG".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Fee Bacaan EKG", rs.getBoolean("fee_bacaan_ekg")});
-                    }
-
-                    if ("[H]Fee Rujukan Rontgen".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Fee Rujukan Rontgen", rs.getBoolean("fee_rujukan_rontgen")});
-                    }
-
-                    if ("[H]Fee Rujukan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Fee Rujukan Ranap", rs.getBoolean("fee_rujukan_ranap")});
-                    }
-
-                    if ("[H]Fee Periksa Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Fee Periksa Ralan", rs.getBoolean("fee_ralan")});
-                    }
-
-                    if ("[H]Obat Per Dokter Peresep".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Obat Per Dokter Peresep", rs.getBoolean("obat_per_dokter_peresep")});
-                    }
-
-                    if ("[H]Rekap Per Shift".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Rekap Per Shift", rs.getBoolean("rekap_per_shift")});
-                    }
-
-                    if ("[H]Obat Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Obat Per Cara Bayar", rs.getBoolean("obat_per_cara_bayar")});
-                    }
-
-                    if ("[H]Payment Point".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Payment Point", rs.getBoolean("payment_point")});
-                    }
-
-                    if ("[H]Harian J.S.".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Harian J.S.", rs.getBoolean("harian_js")});
-                    }
-
-                    if ("[H]Bulanan J.S.".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Bulanan J.S.", rs.getBoolean("bulanan_js")});
-                    }
-
-                    if ("[H]Harian BHP Medis/Paket Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Harian BHP Medis/Paket Obat", rs.getBoolean("harian_paket_bhp")});
-                    }
-
-                    if ("[H]Bulanan BHP Medis/Paket Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Bulanan BHP Medis/Paket Obat", rs.getBoolean("bulanan_paket_bhp")});
-                    }
-
-                    if ("[H]Harian Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Harian Kamar", rs.getBoolean("harian_kamar")});
-                    }
-
-                    if ("[H]Harian KSO".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Harian KSO", rs.getBoolean("harian_kso")});
-                    }
-
-                    if ("[H]Bulanan KSO".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Bulanan KSO", rs.getBoolean("bulanan_kso")});
-                    }
-
-                    if ("[H]Harian Menejemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Harian Menejemen", rs.getBoolean("harian_menejemen")});
-                    }
-
-                    if ("[H]Bulanan Menejemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Bulanan Menejemen", rs.getBoolean("bulanan_menejemen")});
-                    }
-
-                    if ("[H]Piutang Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Piutang Ralan", rs.getBoolean("piutang_ralan")});
-                    }
-
-                    if ("[H]Piutang Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Piutang Ranap", rs.getBoolean("piutang_ranap")});
-                    }
-
-                    if ("[H]Detail Tindakan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Detail Tindakan", rs.getBoolean("detail_tindakan")});
-                    }
-
-                    if ("[H]Rekap Poli Anak".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Rekap Poli Anak", rs.getBoolean("rekap_poli_anak")});
-                    }
-
-                    if ("[H]Pembayaran Per Unit".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Unit", rs.getBoolean("pembayaran_per_unit")});
-                    }
-
-                    if ("[H]Rekap Pembayaran Per Unit".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Rekap Pembayaran Per Unit", rs.getBoolean("rekap_pembayaran_per_unit")});
-                    }
-
-                    if ("[H]Detail VK/OK".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Detail VK/OK", rs.getBoolean("detail_tindakan_okvk")});
-                    }
-
-                    if ("[H]Detail JM Dokter 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Detail JM Dokter 2", rs.getBoolean("detailjmdokter2")});
-                    }
-
-                    if ("[H]Pembayaran Per Akun Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Akun Bayar", rs.getBoolean("pembayaran_akun_bayar")});
-                    }
-
-                    if ("[H]Piutang Per Akun Piutang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Piutang Per Akun Piutang", rs.getBoolean("piutang_akun_piutang")});
-                    }
-
-                    if ("[H]Payment Point 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Payment Point 2", rs.getBoolean("payment_point2")});
-                    }
-
-                    if ("[H]Pembayaran Per Akun Bayar 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Akun Bayar 2", rs.getBoolean("pembayaran_akun_bayar2")});
-                    }
-
-                    if ("[H]Hapus Nota Salah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Hapus Nota Salah", rs.getBoolean("hapus_nota_salah")});
-                    }
-
-                    if ("[H]Pembayaran Per Akun Bayar 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Akun Bayar 3", rs.getBoolean("pembayaran_akun_bayar3")});
-                    }
-
-                    if ("[I]ICD 10".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]ICD 10", rs.getBoolean("penyakit")});
-                    }
-
-                    if ("[I]Obat Penyakit".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Obat Penyakit", rs.getBoolean("obat_penyakit")});
-                    }
-
-                    if ("[I]Frekuensi Penyakit Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Frekuensi Penyakit Ralan", rs.getBoolean("penyakit_ralan")});
-                    }
-
-                    if ("[I]Frekuensi Penyakit Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Frekuensi Penyakit Ranap", rs.getBoolean("penyakit_ranap")});
-                    }
-
-                    if ("[I]Penyakit AFP & PD3I".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Penyakit AFP & PD3I", rs.getBoolean("penyakit_pd3i")});
-                    }
-
-                    if ("[I]Surveilans AFP & PD3I".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Surveilans AFP & PD3I", rs.getBoolean("surveilans_pd3i")});
-                    }
-
-                    if ("[I]Surveilans Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Surveilans Ralan", rs.getBoolean("surveilans_ralan")});
-                    }
-
-                    if ("[I]Surveilans Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Surveilans Ranap", rs.getBoolean("surveilans_ranap")});
-                    }
-
-                    if ("[I]Pny.Tdk Menular Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Pny.Tdk Menular Ranap", rs.getBoolean("pny_takmenular_ranap")});
-                    }
-
-                    if ("[I]Pny.Tdk Menular Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Pny.Tdk Menular Ralan", rs.getBoolean("pny_takmenular_ralan")});
-                    }
-
-                    if ("[I]Kunjungan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Kunjungan Ralan", rs.getBoolean("kunjungan_ralan")});
-                    }
-
-                    if ("[I]RL 3.2 Rawat Darurat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 3.2 Rawat Darurat", rs.getBoolean("rl32")});
-                    }
-
-                    if ("[I]RL 3.3 Gigi dan Mulut".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 3.3 Gigi dan Mulut", rs.getBoolean("rl33")});
-                    }
-
-                    if ("[I]RL 3.7 Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 3.7 Radiologi", rs.getBoolean("rl37")});
-                    }
-
-                    if ("[I]RL 3.8 Laboratorium".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 3.8 Laboratorium", rs.getBoolean("rl38")});
-                    }
-
-                    if ("[I]RL 3.4 Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 3.4 Kebidanan", rs.getBoolean("rl34")});
-                    }
-
-                    if ("[I]RL 3.6 Pembedahan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 3.6 Pembedahan", rs.getBoolean("rl36")});
-                    }
-
-                    if ("[I]Kunjungan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Kunjungan Ranap", rs.getBoolean("kunjungan_ranap")});
-                    }
-
-                    if ("[I]ICD 9".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]ICD 9", rs.getBoolean("icd9")});
-                    }
-
-                    if ("[I]Sensus Harian Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Sensus Harian Poli", rs.getBoolean("sensus_harian_poli")});
-                    }
-
-                    if ("[I]RL 4A Sebab Morbiditas Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 4A Sebab Morbiditas Ranap", rs.getBoolean("rl4a")});
-                    }
-
-                    if ("[I]RL 4B Sebab Morbiditas Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 4B Sebab Morbiditas Ralan", rs.getBoolean("rl4b")});
-                    }
-
-                    if ("[I]RL 4A Morbiditas Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 4A Morbiditas Ralan", rs.getBoolean("rl4asebab")});
-                    }
-
-                    if ("[I]RL 4B Morbiditas Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]RL 4B Morbiditas Ralan", rs.getBoolean("rl4bsebab")});
-                    }
-
-                    if ("[I]Lama Pelayanan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Ralan", rs.getBoolean("lama_pelayanan_ralan")});
-                    }
-
-                    if ("[I]Harian HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Harian HAIs", rs.getBoolean("harian_HAIs")});
-                    }
-
-                    if ("[I]Bulanan HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Bulanan HAIs", rs.getBoolean("bulanan_HAIs")});
-                    }
-
-                    if ("[I]Hitung BOR".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Hitung BOR", rs.getBoolean("hitung_bor")});
-                    }
-
-                    if ("[I]Lama Pelayanan Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Apotek", rs.getBoolean("lama_pelayanan_apotek")});
-                    }
-
-                    if ("[I]Hitung ALOS".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Hitung ALOS", rs.getBoolean("hitung_alos")});
-                    }
-
-                    if ("[I]Pny Menular Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Pny Menular Ranap", rs.getBoolean("penyakit_menular_ranap")});
-                    }
-
-                    if ("[I]Pny Menular Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Pny Menular Ralan", rs.getBoolean("penyakit_menular_ralan")});
-                    }
-
-                    if ("[I]Pembatalan Periksa Per Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Pembatalan Periksa Per Dokter", rs.getBoolean("pembatalan_periksa_dokter")});
-                    }
-
-                    if ("[I]Cek Entry Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Cek Entry Ralan", rs.getBoolean("cek_entry_ralan")});
-                    }
-
-                    if ("[I]Sensus Harian Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Sensus Harian Ralan", rs.getBoolean("sensus_harian_ralan")});
-                    }
-
-                    if ("[I]Insiden Keselamatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Insiden Keselamatan", rs.getBoolean("insiden_keselamatan")});
-                    }
-
-                    if ("[I]Ranap Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Ranap Per Ruang", rs.getBoolean("ranap_per_ruang")});
-                    }
-
-                    if ("[I]Penyakit Ranap Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Penyakit Ranap Per Cara Bayar", rs.getBoolean("penyakit_ranap_cara_bayar")});
-                    }
-
-                    if ("[I]Anggota TNI Dirawat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Anggota TNI Dirawat", rs.getBoolean("anggota_militer_dirawat")});
-                    }
-
-                    if ("[I]Lama Pelayanan Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Radiologi", rs.getBoolean("lama_pelayanan_radiologi")});
-                    }
-
-                    if ("[I]Lama Pelayanan Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Lab", rs.getBoolean("lama_pelayanan_lab")});
-                    }
-
-                    if ("[I]Rekap Lab Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Rekap Lab Per Tahun", rs.getBoolean("rekap_lab_pertahun")});
-                    }
-
-                    if ("[I]Perujuk Lab Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Perujuk Lab Per Tahun", rs.getBoolean("perujuk_lab_pertahun")});
-                    }
-
-                    if ("[I]Rekap Radiologi Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Rekap Radiologi Per Tahun", rs.getBoolean("rekap_radiologi_pertahun")});
-                    }
-
-                    if ("[I]Perujuk Radiologi Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Perujuk Radiologi Per Tahun", rs.getBoolean("perujuk_radiologi_pertahun")});
-                    }
 
-                    if ("[I]Rekap Bulanan Porsi Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Rekap Bulanan Porsi Diet", rs.getBoolean("jumlah_porsi_diet")});
+                    if ("[A]Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Registrasi", rs.getBoolean("registrasi")});
                     }
 
-                    if ("[I]Rekap Bulanan Macam Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Rekap Bulanan Macam Diet", rs.getBoolean("jumlah_macam_diet")});
+                    if ("[A]Tindakan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Tindakan Ralan", rs.getBoolean("tindakan_ralan")});
                     }
 
-                    if ("[I]Kunjungan Lab Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Kunjungan Lab Ralan", rs.getBoolean("kunjungan_permintaan_lab")});
+                    if ("[A]Kamar Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Kamar Inap", rs.getBoolean("kamar_inap")});
                     }
 
-                    if ("[I]Kunjungan Lab Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Kunjungan Lab Ranap", rs.getBoolean("kunjungan_permintaan_lab2")});
+                    if ("[A]Tindakan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Tindakan Ranap", rs.getBoolean("tindakan_ranap")});
                     }
 
-                    if ("[I]Kunjungan Radiologi Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Kunjungan Radiologi Ralan", rs.getBoolean("kunjungan_permintaan_radiologi")});
+                    if ("[A]Operasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Operasi", rs.getBoolean("operasi")});
                     }
 
-                    if ("[I]Kunjungan Radiologi Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Kunjungan Radiologi Ranap", rs.getBoolean("kunjungan_permintaan_radiologi2")});
+                    if ("[A]Rujukan Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Rujukan Keluar", rs.getBoolean("rujukan_keluar")});
                     }
 
-                    if ("[I]Data TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Data TB", rs.getBoolean("kemenkes_sitt")});
+                    if ("[A]Rujukan Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Rujukan Masuk", rs.getBoolean("rujukan_masuk")});
                     }
 
-                    if ("[I]Rekap Mutasi Berkas".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Rekap Mutasi Berkas", rs.getBoolean("rekap_mutasi_berkas")});
+                    if ("[A]Beri Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Beri Obat, Alkes & BHP", rs.getBoolean("beri_obat")});
                     }
 
-                    if ("[I]Skrining Pernapasan Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Skrining Pernapasan Ralan Per Tahun", rs.getBoolean("skrining_ralan_pernapasan_pertahun")});
+                    if ("[A]Resep Pulang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Resep Pulang", rs.getBoolean("resep_pulang")});
                     }
 
-                    if ("[I]Masuk Ruang Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Masuk Ruang Per Tahun", rs.getBoolean("kunjungan_bangsal_pertahun")});
+                    if ("[A]Diet Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Diet Pasien", rs.getBoolean("diet_pasien")});
                     }
 
-                    if ("[I]KIP Pasien Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]KIP Pasien Ranap", rs.getBoolean("kip_pasien_ranap")});
+                    if ("[A]Periksa Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Periksa Lab", rs.getBoolean("periksa_lab")});
                     }
 
-                    if ("[I]KIP Pasien Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]KIP Pasien Ralan", rs.getBoolean("kip_pasien_ralan")});
+                    if ("[A]Periksa Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Periksa Radiologi", rs.getBoolean("periksa_radiologi")});
                     }
 
-                    if ("[I]Rekap Permintaan Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Rekap Permintaan Diet", rs.getBoolean("rekap_permintaan_diet")});
+                    if ("[A]Kasir Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Kasir Ralan", rs.getBoolean("kasir_ralan")});
                     }
 
-                    if ("[I]Daftar Pasien Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Daftar Pasien Ranap", rs.getBoolean("daftar_pasien_ranap")});
+                    if ("[A]Informasi Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Informasi Kamar", rs.getBoolean("informasi_kamar")});
                     }
 
-                    if ("[I]Daftar Pasien Ranap TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Daftar Pasien Ranap TNI", rs.getBoolean("daftar_pasien_ranaptni")});
+                    if ("[A]No.Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]No.Resep", rs.getBoolean("resep_obat")});
                     }
 
-                    if ("[I]Harian HAIs 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Harian HAIs 2", rs.getBoolean("harian_HAIs2")});
+                    if ("[A]Billing Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Billing Ralan", rs.getBoolean("billing_ralan")});
                     }
 
-                    if ("[I]Rekap Kunjungan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[I]Rekap Kunjungan", rs.getBoolean("rekap_kunjungan")});
+                    if ("[A]Billing Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Billing Ranap", rs.getBoolean("billing_ranap")});
                     }
 
-                    if ("[J]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Deposit Pasien", rs.getBoolean("deposit_pasien")});
+                    if ("[A]IGD".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]IGD", rs.getBoolean("igd")});
                     }
 
-                    if ("[J]Piutang Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Piutang Pasien", rs.getBoolean("piutang_pasien")});
-                    }
-
-                    if ("[J]Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Kamar", rs.getBoolean("kamar"),});
-                    }
-
-                    if ("[J]Tarif Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Tarif Ralan", rs.getBoolean("tarif_ralan")});
-                    }
-
-                    if ("[J]Tarif Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Tarif Ranap", rs.getBoolean("tarif_ranap")});
-                    }
-
-                    if ("[J]Tarif Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Tarif Lab", rs.getBoolean("tarif_lab")});
-                    }
-
-                    if ("[J]Tarif Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Tarif Radiologi", rs.getBoolean("tarif_radiologi")});
-                    }
-
-                    if ("[J]Tarif Operasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Tarif Operasi", rs.getBoolean("tarif_operasi")});
-                    }
-
-                    if ("[J]Akun Rekening".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Akun Rekening", rs.getBoolean("akun_rekening")});
-                    }
-
-                    if ("[J]Rekening Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Rekening Tahun", rs.getBoolean("rekening_tahun")});
-                    }
-
-                    if ("[J]Posting Jurnal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Posting Jurnal", rs.getBoolean("posting_jurnal")});
-                    }
-
-                    if ("[J]Buku Besar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Buku Besar", rs.getBoolean("buku_besar")});
-                    }
-
-                    if ("[J]Cash Flow".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Cash Flow", rs.getBoolean("cashflow")});
-                    }
-
-                    if ("[J]Keuangan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Keuangan", rs.getBoolean("keuangan")});
-                    }
-
-                    if ("[J]Pengeluaran Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Pengeluaran Harian", rs.getBoolean("pengeluaran")});
-                    }
-
-                    if ("[J]Akun Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Akun Bayar", rs.getBoolean("akun_bayar")});
-                    }
-
-                    if ("[J]Bayar Pesan Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Bayar Pesan Obat", rs.getBoolean("bayar_pemesanan_obat")});
-                    }
-
-                    if ("[J]Pemasukkan Lain-Lain".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Pemasukkan Lain-Lain", rs.getBoolean("pemasukan_lain")});
-                    }
-
-                    if ("[J]Pengaturan Rekening".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Pengaturan Rekening", rs.getBoolean("pengaturan_rekening")});
-                    }
-
-                    if ("[J]Bayar Piutang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Bayar Piutang", rs.getBoolean("bayar_piutang")});
-                    }
-
-                    if ("[J]Jurnal Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Jurnal Harian", rs.getBoolean("jurnal_harian")});
-                    }
-
-                    if ("[J]Piutang Belum Lunas".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Piutang Belum Lunas", rs.getBoolean("piutang_pasien2")});
-                    }
-
-                    if ("[J]Tarif UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Tarif UTD", rs.getBoolean("tarif_utd")});
-                    }
-
-                    if ("[J]Rincian Piutang Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Rincian Piutang Pasien", rs.getBoolean("rincian_piutang_pasien")});
-                    }
-
-                    if ("[J]Hutang Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Hutang Obat & BHP", rs.getBoolean("hutang_obat")});
-                    }
-
-                    if ("[J]Akun Piutang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Akun Piutang", rs.getBoolean("akun_piutang")});
-                    }
-
-                    if ("[J]Piutang Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Piutang Per Cara Bayar", rs.getBoolean("detail_piutang_penjab")});
-                    }
-
-                    if ("[J]Bayar Pesan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Bayar Pesan Non Medis", rs.getBoolean("bayar_pesan_non_medis")});
-                    }
-
-                    if ("[J]Hutang Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Hutang Barang Non Medis", rs.getBoolean("hutang_barang_non_medis")});
-                    }
-
-                    if ("[J]Saldo Akun Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[J]Saldo Akun Per Bulan", rs.getBoolean("saldo_akun_perbulan")});
-                    }
-
-                    if ("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[K]Cek NIK", rs.getBoolean("bpjs_cek_nik")});
-                    }
-
-                    if ("[K]Cek No.Kartu".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[K]Cek No.Kartu", rs.getBoolean("bpjs_cek_kartu")});
-                    }
-
-                    if ("[K]Riwayat Rujukan PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[K]Riwayat Rujukan PCare di VClaim", rs.getBoolean("bpjs_cek_riwayat")});
-                    }
-
-                    if ("[K]Cek No.Rujukan PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[K]Cek No.Rujukan PCare di VClaim", rs.getBoolean("bpjs_cek_nomor_rujukan")});
-                    }
-
-                    if ("[K]Referensi Diagnosa VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa VClaim", rs.getBoolean("bpjs_referensi_diagnosa")});
-                    }
-
-                    if ("[K]Referensi Poli VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[K]Referensi Poli VClaim", rs.getBoolean("bpjs_referensi_poli")});
-                    }
-
-                    if ("[K]Referensi Faskes VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                        tabMode.addRow(new Object[]{false, "[K]Referensi Faskes VClaim", rs.getBoolean("bpjs_referensi_faskes")});
-                        
-                        if("[J]Set Tarif Online".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[J]Set Tarif Online",rs.getBoolean("set_tarif_online")});
-                        }
-                        
-                        if("[Q]Hutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[Q]Hutang Toko",rs.getBoolean("toko_hutang")});
-                        }
-                        
-                        if("[Q]Bayar Pesan Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[Q]Bayar Pesan Toko",rs.getBoolean("toko_bayar_pemesanan")});
-                        }
-                        
-                        if ("[K]Data Bridging SEP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Data Bridging SEP VClaim", rs.getBoolean("bpjs_sep")});
-                        }
-                        
-                        if ("[K]Monitoring Verifikasi Klaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Monitoring Verifikasi Klaim", rs.getBoolean("bpjs_monitoring_klaim")});
-                        }
-                        
-                        if ("[K]Reklasifikasi Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Reklasifikasi Ralan", rs.getBoolean("reklasifikasi_ralan")});
-                        }
-                        
-                        if ("[K]Reklasifikasi Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Reklasifikasi Ranap", rs.getBoolean("reklasifikasi_ranap")});
-                        }
-                        
-                        if ("[K]Referensi Kamar Aplicare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kamar Aplicare", rs.getBoolean("aplicare_referensi_kamar")});
-                        }
-                        
-                        if ("[K]Ketersediaan Kamar Aplicare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Ketersediaan Kamar Aplicare", rs.getBoolean("aplicare_ketersediaan_kamar")});
-                        }
-                        
-                        if ("[K]Klaim Baru Otomatis INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Klaim Baru Otomatis INACBG", rs.getBoolean("inacbg_klaim_baru_otomatis")});
-                        }
-                        
-                        if ("[K]Klaim Baru Manual INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Klaim Baru Manual INACBG", rs.getBoolean("inacbg_klaim_baru_manual")});
-                        }
-                        
-                        if ("[K]Coder NIK INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Coder NIK INACBG", rs.getBoolean("inacbg_coder_nik")});
-                        }
-                        
-                        if ("[K]Cek Eligibilitas Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Eligibilitas Inhealth", rs.getBoolean("inhealth_cek_eligibilitas")});
-                        }
-                        
-                        if ("[K]Referensi Ruang Rawat Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Ruang Rawat Inhealth", rs.getBoolean("inhealth_referensi_jenpel_ruang_rawat")});
-                        }
-                        
-                        if ("[K]Referensi Poli Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Poli Inhealth", rs.getBoolean("inhealth_referensi_poli")});
-                        }
-                        
-                        if ("[K]Referensi Faskes Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Faskes Inhealth", rs.getBoolean("inhealth_referensi_faskes")});
-                        }
-                        
-                        if ("[K]Data Bridging SJP Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Data Bridging SJP Inhealth", rs.getBoolean("inhealth_sjp")});
-                        }
-                        
-                        if ("[K]Referensi Diagnosa Pcare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa Pcare", rs.getBoolean("pcare_cek_penyakit")});
-                        }
-                        
-                        if ("[K]Referensi Kesadaran Pcare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kesadaran Pcare", rs.getBoolean("pcare_cek_kesadaran")});
-                        }
-                        
-                        if ("[K]Cek Rujukan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Rujukan PCare", rs.getBoolean("pcare_cek_rujukan")});
-                        }
-                        
-                        if ("[K]Klaim Baru Manual INACBG 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Klaim Baru Manual INACBG 2", rs.getBoolean("inacbg_klaim_baru_manual2")});
-                        }
-                        
-                        if ("[K]Referensi Prosedur VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Prosedur VClaim", rs.getBoolean("bpjs_cek_prosedur")});
-                        }
-                        
-                        if ("[K]Referensi Kelas Rawat VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kelas Rawat VClaim", rs.getBoolean("bpjs_cek_kelas_rawat")});
-                        }
-                        
-                        if ("[K]Referensi Dokter VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Dokter VClaim", rs.getBoolean("bpjs_cek_dokter")});
-                        }
-                        
-                        if ("[K]Referensi Spesialistik VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Spesialistik VClaim", rs.getBoolean("bpjs_cek_spesialistik")});
-                        }
-                        
-                        if ("[K]Referensi Ruang Rawat VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Ruang Rawat VClaim", rs.getBoolean("bpjs_cek_ruangrawat")});
-                        }
-                        
-                        if ("[K]Referensi Cara Keluar VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Cara Keluar VClaim", rs.getBoolean("bpjs_cek_carakeluar")});
-                        }
-                        
-                        if ("[K]Referensi Pasca Pulang VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Pasca Pulang VClaim", rs.getBoolean("bpjs_cek_pasca_pulang")});
-                        }
-                        
-                        if ("[K]Cek No.Rujukan RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek No.Rujukan RS di VClaim", rs.getBoolean("bpjs_cek_nomor_rujukan_rs")});
-                        }
-                        
-                        if ("[K]Cek Rujukan Kartu PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Rujukan Kartu PCare di VClaim", rs.getBoolean("bpjs_cek_rujukan_kartu_pcare")});
-                        }
-                        
-                        if ("[K]Cek Rujukan Kartu RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Rujukan Kartu RS di VClaim", rs.getBoolean("bpjs_cek_rujukan_kartu_rs")});
-                        }
-                        
-                        if ("[K]Pembuatan Rujukan VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Pembuatan Rujukan VClaim", rs.getBoolean("bpjs_rujukan_keluar")});
-                        }
-                        
-                        if ("[K]Mapping Poli VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Poli VClaim", rs.getBoolean("mapping_poli_bpjs")});
-                        }
-                        
-                        if ("[K]SKDP BPJS".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]SKDP BPJS", rs.getBoolean("skdp_bpjs")});
-                        }
-                        
-                        if ("[K]Referensi Propinsi VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Propinsi VClaim", rs.getBoolean("bpjs_cek_propinsi")});
-                        }
-                        
-                        if ("[K]Referensi Kabupaten VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kabupaten VClaim", rs.getBoolean("bpjs_cek_kabupaten")});
-                        }
-                        
-                        if ("[K]Referensi Kecamatan VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kecamatan VClaim", rs.getBoolean("bpjs_cek_kecamatan")});
-                        }
-                        
-                        if ("[K]Referensi Dokter DPJP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Dokter DPJP VClaim", rs.getBoolean("bpjs_cek_dokterdpjp")});
-                        }
-                        
-                        if ("[K]Riwayat Rujukan RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Riwayat Rujukan RS di VClaim", rs.getBoolean("bpjs_cek_riwayat_rujukanrs")});
-                        }
-                        
-                        if ("[K]Tanggal Rujukan di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tanggal Rujukan di VClaim", rs.getBoolean("bpjs_cek_tanggal_rujukan")});
-                        }
-                        
-                        if ("[K]Histori Pelayanan BPJS".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Histori Pelayanan BPJS", rs.getBoolean("bpjs_histori_pelayanan")});
-                        }
-                        
-                        if ("[K]Referensi Dokter PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Dokter PCare", rs.getBoolean("pcare_cek_dokter")});
-                        }
-                        
-                        if ("[K]Referensi Poli PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Poli PCare", rs.getBoolean("pcare_cek_poli")});
-                        }
-                        
-                        if ("[K]Referensi Provider PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Provider PCare", rs.getBoolean("pcare_cek_provider")});
-                        }
-                        
-                        if ("[K]Referensi Stts Pulang PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Stts Pulang PCare", rs.getBoolean("pcare_cek_statuspulang")});
-                        }
-                        
-                        if ("[K]Referensi Spesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Spesialis PCare", rs.getBoolean("pcare_cek_spesialis")});
-                        }
-                        
-                        if ("[K]Referensi Subspesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Subspesialis PCare", rs.getBoolean("pcare_cek_subspesialis")});
-                        }
-                        
-                        if ("[K]Referensi Sarana PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Sarana PCare", rs.getBoolean("pcare_cek_sarana")});
-                        }
-                        
-                        if ("[K]Referensi Khusus PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Khusus PCare", rs.getBoolean("pcare_cek_khusus")});
-                        }
-                        
-                        if ("[K]Referensi Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Obat PCare", rs.getBoolean("pcare_cek_obat")});
-                        }
-                        
-                        if ("[K]Referensi Tindakan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Tindakan PCare", rs.getBoolean("pcare_cek_tindakan")});
-                        }
-                        
-                        if ("[K]Faskes Subspesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Faskes Subspesialis PCare", rs.getBoolean("pcare_cek_faskessubspesialis")});
-                        }
-                        
-                        if ("[K]Faskes Alih Rawat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Faskes Alih Rawat PCare", rs.getBoolean("pcare_cek_faskesalihrawat")});
-                        }
-                        
-                        if ("[K]Faskes Thalasemia & Hemofili PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Faskes Thalasemia & Hemofili PCare", rs.getBoolean("pcare_cek_faskesthalasemia")});
-                        }
-                        
-                        if ("[K]Mapping Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Obat PCare", rs.getBoolean("pcare_mapping_obat")});
-                        }
-                        
-                        if ("[K]Tarif Ralan RS & PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Ralan RS & PCare", rs.getBoolean("pcare_mapping_tindakan")});
-                        }
-                        
-                        if ("[K]Club Prolanis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Club Prolanis PCare", rs.getBoolean("pcare_club_prolanis")});
-                        }
-                        
-                        if ("[K]Mapping Poli PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Poli PCare", rs.getBoolean("pcare_mapping_poli")});
-                        }
-                        
-                        if ("[K]Kegiatan Kelompok PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Kegiatan Kelompok PCare", rs.getBoolean("pcare_kegiatan_kelompok")});
-                        }
-                        
-                        if ("[K]Tarif Ranap RS & PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Ranap RS & PCare", rs.getBoolean("pcare_mapping_tindakan_ranap")});
-                        }
-                        
-                        if ("[K]Peserta Keg Kelompok PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Peserta Keg Kelompok PCare", rs.getBoolean("pcare_peserta_kegiatan_kelompok")});
-                        }
-                        
-                        if ("[K]Data Pendafataran PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Data Pendafataran PCare", rs.getBoolean("bridging_pcare_daftar")});
-                        }
-                        
-                        if ("[K]Mapping Dokter PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Dokter PCare", rs.getBoolean("pcare_mapping_dokter")});
-                        }
-                        
-                        if ("[K]Cek Nomor SEP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Nomor SEP", rs.getBoolean("bpjs_cek_sep")});
-                        }
-                        
-                        if ("[K]Referensi Faskes Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Faskes Sisrute", rs.getBoolean("sisrute_referensi_faskes")});
-                        }
-                        
-                        if ("[K]Referensi Alasan Rujuk Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Alasan Rujuk Sisrute", rs.getBoolean("sisrute_referensi_alasanrujuk")});
-                        }
-                        
-                        if ("[K]Referensi Diagnosa Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa Sisrute", rs.getBoolean("sisrute_referensi_diagnosa")});
-                        }
-                        
-                        if ("[K]Rujukan Masuk Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Rujukan Masuk Sisrute", rs.getBoolean("sisrute_rujukan_masuk")});
-                        }
-                        
-                        if ("[K]Rujukan Keluar Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Rujukan Keluar Sisrute", rs.getBoolean("sisrute_rujukan_keluar")});
-                        }
-                        
-                        if ("[K]Cek SKDP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek SKDP VClaim", rs.getBoolean("bpjs_cek_skdp")});
-                        }
-                        
-                        if ("[K]Pemberian Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Pemberian Obat PCare", rs.getBoolean("pcare_pemberian_obat")});
-                        }
-                        
-                        if ("[K]Pemberian Tindakan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Pemberian Tindakan PCare", rs.getBoolean("pcare_pemberian_tindakan")});
-                        }
-                        
-                        if ("[K]Ketersediaan Kamar SIRANAP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Ketersediaan Kamar SIRANAP", rs.getBoolean("siranap_ketersediaan_kamar")});
-                        }
-                        
-                        if ("[K]Mapping Dokter DPJP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Dokter DPJP VClaim", rs.getBoolean("bpjs_mapping_dokterdpjp")});
-                        }
-                        
-                        if ("[K]Mapping Poli Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Poli Inhealth", rs.getBoolean("inhealth_mapping_poli")});
-                        }
-                        
-                        if ("[K]Mapping Dokter Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Dokter Inhealth", rs.getBoolean("inhealth_mapping_dokter")});
-                        }
-                        
-                        if ("[K]Tarif Ralan Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Ralan Inhealth", rs.getBoolean("inhealth_mapping_tindakan_ralan")});
-                        }
-                        
-                        if ("[K]Tarif Ranap Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Ranap Inhealth", rs.getBoolean("inhealth_mapping_tindakan_ranap")});
-                        }
-                        
-                        if ("[K]Tarif Radiologi Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Radiologi Inhealth", rs.getBoolean("inhealth_mapping_tindakan_radiologi")});
-                        }
-                        
-                        if ("[K]Tarif Laborat Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Laborat Inhealth", rs.getBoolean("inhealth_mapping_tindakan_laborat")});
-                        }
-                        
-                        if ("[K]Tarif Operasi Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Operasi Inhealth", rs.getBoolean("inhealth_mapping_tindakan_operasi")});
-                        }
-                        
-                        if ("[K]Tagihan Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tagihan Inhealth", rs.getBoolean("inhealth_kirim_tagihan")});
-                        }
-                        
-                        if ("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Pasien", rs.getBoolean("pasien")});
-                        }
-                        
-                        if ("[L]Pasien Meninggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Pasien Meninggal", rs.getBoolean("pasien_meninggal")});
-                        }
-                        
-                        if ("[L]Kelahiran Bayi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Kelahiran Bayi", rs.getBoolean("kelahiran_bayi")});
-                        }
-                        
-                        if ("[L]Peminjaman Berkas RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Peminjaman Berkas RM", rs.getBoolean("peminjaman_berkas")});
-                        }
-                        
-                        if ("[L]Riwayat Perawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Riwayat Perawatan", rs.getBoolean("resume_pasien")});
-                        }
-                        
-                        if ("[L]Diagnosa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Diagnosa Pasien", rs.getBoolean("diagnosa_pasien")});
-                        }
-                        
-                        if ("[L]Retensi Data R.M.".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Retensi Data R.M.", rs.getBoolean("retensi_rm")});
-                        }
-                        
-                        if ("[L]Mutasi Berkas RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Mutasi Berkas RM", rs.getBoolean("mutasi_berkas")});
-                            
-                            if("[K]Pasien Corona".toLowerCase().contains(TCari.getText().toLowerCase())){
-                                tabMode.addRow(new Object[]{false,"[K]Pasien Corona",rs.getBoolean("pasien_corona")});
-                            }
-                            
-                            if("[K]Diagnosa Pasien Corona".toLowerCase().contains(TCari.getText().toLowerCase())){
-                                tabMode.addRow(new Object[]{false,"[K]Diagnosa Pasien Corona",rs.getBoolean("diagnosa_pasien_corona")});
-                            }
-                            
-                            if("[K]Perawatan Pasien Corona".toLowerCase().contains(TCari.getText().toLowerCase())){
-                                tabMode.addRow(new Object[]{false,"[K]Perawatan Pasien Corona",rs.getBoolean("perawatan_pasien_corona")});
-                            }
-                            
-                            if("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
-                                tabMode.addRow(new Object[]{false,"[L]Pasien",rs.getBoolean("pasien")});
-                            }
-                            
-                            if ("[L]Catatan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Catatan Pasien", rs.getBoolean("catatan_pasien")});
-                            }
-                            
-                            if ("[L]Data HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Data HAIs", rs.getBoolean("data_HAIs")});
-                            }
-                            
-                            if ("[L]Instansi/Perusahaan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Instansi/Perusahaan Pasien", rs.getBoolean("perusahaan_pasien")});
-                            }
-                            
-                            if ("[L]Berkas Digital Perawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Berkas Digital Perawatan", rs.getBoolean("berkas_digital_perawatan")});
-                            }
-                            
-                            if ("[L]Pengaduan/Chat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Pengaduan/Chat", rs.getBoolean("pengaduan_pasien")});
-                            }
-                            
-                            if ("[L]Insiden Keselamatan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Insiden Keselamatan Pasien", rs.getBoolean("insiden_keselamatan_pasien")});
-                            }
-                            
-                            if ("[L]Suku/Bangsa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Suku/Bangsa Pasien", rs.getBoolean("suku_bangsa")});
-                            }
-                            
-                            if ("[L]Bahasa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Bahasa Pasien", rs.getBoolean("bahasa_pasien")});
-                            }
-                            
-                            if ("[L]Golongan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Golongan TNI", rs.getBoolean("golongan_tni")});
-                            }
-                            
-                            if ("[L]Satuan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Satuan TNI", rs.getBoolean("satuan_tni")});
-                            }
-                            
-                            if ("[L]Jabatan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Jabatan TNI", rs.getBoolean("jabatan_tni")});
-                            }
-                            
-                            if ("[L]Pangkat TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Pangkat TNI", rs.getBoolean("pangkat_tni")});
-                            }
-                            
-                            if ("[L]Golongan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Golongan POLRI", rs.getBoolean("golongan_polri")});
-                            }
-                            
-                            if ("[L]Satuan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Satuan POLRI", rs.getBoolean("satuan_polri")});
-                            }
-                            
-                            if ("[L]Jabatan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Jabatan POLRI", rs.getBoolean("jabatan_polri")});
-                            }
-                            
-                            if ("[L]Pangkat POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Pangkat POLRI", rs.getBoolean("pangkat_polri")});
-                            }
-                            
-                            if ("[L]Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Cacat Fisik", rs.getBoolean("cacat_fisik")});
-                            }
-                            
-                            if ("[L]HAIs Per Kamar/Bangsal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]HAIs Per Kamar/Bangsal", rs.getBoolean("hais_perbangsal")});
-                            }
-                            
-                            if ("[L]Data Triase".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Data Triase", rs.getBoolean("data_triase_igd")});
-                            }
-                            
-                            if ("[L]Master Triase Skala 1".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 1", rs.getBoolean("master_triase_skala1")});
-                            }
-                            
-                            if ("[L]Master Triase Skala 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 2", rs.getBoolean("master_triase_skala2")});
-                            }
-                            
-                            if ("[L]Master Triase Skala 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 3", rs.getBoolean("master_triase_skala3")});
-                            }
-                            
-                            if ("[L]Master Triase Skala 4".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 4", rs.getBoolean("master_triase_skala4")});
-                            }
-                            
-                            if ("[L]Master Triase Skala 5".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 5", rs.getBoolean("master_triase_skala5")});
-                            }
-                            
-                            if ("[L]Master Triase Pemeriksaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Master Triase Pemeriksaan", rs.getBoolean("master_triase_pemeriksaan")});
-                            }
-                            
-                            if ("[L]Master Triase Macam Kasus".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Master Triase Macam Kasus", rs.getBoolean("master_triase_macamkasus")});
-                            }
-                            
-                            if ("[L]Resume Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Resume Pasien", rs.getBoolean("data_resume_pasien")});
-                            }
-                            
-                            if ("[L]Asuhan Gizi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Asuhan Gizi", rs.getBoolean("asuhan_gizi")});
-                            }
-                            
-                            if ("[L]Monitoring Asuhan Gizi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Monitoring Asuhan Gizi", rs.getBoolean("monitoring_asuhan_gizi")});
-                            }
-                            
-                            if ("[L]Penilaian Awal Keperawatan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Penilaian Awal Keperawatan Ralan", rs.getBoolean("penilaian_awal_keperawatan_ralan")});
-                            }
-                            
-                            if ("[L]Master Masalah Keperawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[L]Master Masalah Keperawatan", rs.getBoolean("master_masalah_keperawatan")});
-                            }
-                            
-                            if ("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[M]Pengambilan BHP Medis", rs.getBoolean("pengambilan_utd2")});
-                            }
-                            
-                            if ("[M]BHP Medis Rusak".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[M]BHP Medis Rusak", rs.getBoolean("utd_medis_rusak")});
-                            }
-                            
-                            if ("[M]Pengambilan BHP Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[M]Pengambilan BHP Non Medis", rs.getBoolean("pengambilan_penunjang_utd2")});
-                            }
-                            
-                            if ("[M]BHP Non Medis Rusak".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[M]BHP Non Medis Rusak", rs.getBoolean("utd_penunjang_rusak")});
-                            }
-                            
-                            if ("[M]Donor Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[M]Donor Darah", rs.getBoolean("utd_donor")});
-                            }
-                            
-                            if ("[M]Cekal Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[M]Cekal Darah", rs.getBoolean("utd_cekal_darah")});
-                            }
-                            
-                            if ("[M]Komponen Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[M]Komponen Darah", rs.getBoolean("utd_komponen_darah")});
-                            }
-                            
-                            if ("[M]Stok Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                tabMode.addRow(new Object[]{false, "[M]Stok Darah", rs.getBoolean("utd_stok_darah")});
-                                
-                                if("[L]Penilaian Awal Keperawatan Gigi".toLowerCase().contains(TCari.getText().toLowerCase())){
-                                    tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Keperawatan Gigi",rs.getBoolean("penilaian_awal_keperawatan_gigi")});
-                                }
-                                
-                                if("[L]Master Masalah Keperawatan Gigi".toLowerCase().contains(TCari.getText().toLowerCase())){
-                                    tabMode.addRow(new Object[]{false,"[L]Master Masalah Keperawatan Gigi",rs.getBoolean("master_masalah_keperawatan_gigi")});
-                                }
-                                
-                                if("[L]Penilaian Awal Ralan Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())){
-                                    tabMode.addRow(new Object[]{false,"[L]Penilaian Awal Ralan Kebidanan",rs.getBoolean("penilaian_awal_keperawatan_kebidanan")});
-                                }
-                                
-                                if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
-                                    tabMode.addRow(new Object[]{false,"[M]Pengambilan BHP Medis",rs.getBoolean("pengambilan_utd2")});
-                                }
-                                
-                                if ("[M]Pemisahan Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[M]Pemisahan Darah", rs.getBoolean("utd_pemisahan_darah")});
-                                }
-                                
-                                if ("[M]Penyerahan Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[M]Penyerahan Darah", rs.getBoolean("utd_penyerahan_darah")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Poli", rs.getBoolean("grafik_kunjungan_poli")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Dokter", rs.getBoolean("grafik_kunjungan_perdokter")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Pekerjaan", rs.getBoolean("grafik_kunjungan_perpekerjaan")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Pendidikan", rs.getBoolean("grafik_kunjungan_perpendidikan")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Tahun", rs.getBoolean("grafik_kunjungan_pertahun")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Bulan", rs.getBoolean("grafik_kunjungan_perbulan")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Tanggal", rs.getBoolean("grafik_kunjungan_pertanggal")});
-                                }
-                                
-                                if ("[N]Demografi Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Demografi Registrasi", rs.getBoolean("grafik_kunjungan_demografi")});
-                                }
-                                
-                                if ("[N]Reg Lama Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Tahun", rs.getBoolean("grafik_kunjungan_statusdaftartahun")});
-                                }
-                                
-                                if ("[N]Reg Baru Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Tahun", rs.getBoolean("grafik_kunjungan_statusdaftartahun2")});
-                                }
-                                
-                                if ("[N]Reg Lama Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Bulan", rs.getBoolean("grafik_kunjungan_statusdaftarbulan")});
-                                }
-                                
-                                if ("[N]Reg Baru Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Bulan", rs.getBoolean("grafik_kunjungan_statusdaftarbulan2")});
-                                }
-                                
-                                if ("[N]Reg Lama Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Tanggal", rs.getBoolean("grafik_kunjungan_statusdaftartanggal")});
-                                }
-                                
-                                if ("[N]Reg Baru Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Tanggal", rs.getBoolean("grafik_kunjungan_statusdaftartanggal2")});
-                                }
-                                
-                                if ("[N]Batal Periksa Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Tahun", rs.getBoolean("grafik_kunjungan_statusbataltahun")});
-                                }
-                                
-                                if ("[N]Batal Periksa Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Bulan", rs.getBoolean("grafik_kunjungan_statusbatalbulan")});
-                                }
-                                
-                                if ("[N]Batal Periksa Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Tanggal", rs.getBoolean("grafik_kunjungan_statusbataltanggal")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Cara Bayar", rs.getBoolean("grafik_kunjungan_percarabayar")});
-                                }
-                                
-                                if ("[N]Kunjungan Ranap Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Tahun", rs.getBoolean("grafik_kunjungan_ranaptahun")});
-                                }
-                                
-                                if ("[N]Kunjungan Lab Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Tahun", rs.getBoolean("grafik_lab_ralantahun")});
-                                }
-                                
-                                if ("[N]Kunjungan Rad Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Tahun", rs.getBoolean("grafik_rad_ralantahun")});
-                                }
-                                
-                                if ("[N]Kunjungan Per Perujuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Per Perujuk", rs.getBoolean("grafik_per_perujuk")});
-                                }
-                                
-                                if ("[N]Kunjungan Lab Ralan Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Bulan", rs.getBoolean("grafik_lab_ralanbulan")});
-                                }
-                                
-                                if ("[N]Kunjungan Rad Ralan Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Bulan", rs.getBoolean("grafik_rad_ralanbulan")});
-                                }
-                                
-                                if ("[N]Kunjungan Lab Ralan Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Tanggal", rs.getBoolean("grafik_lab_ralanhari")});
-                                }
-                                
-                                if ("[N]Kunjungan Rad Ralan Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Tanggal", rs.getBoolean("grafik_rad_ralanhari")});
-                                }
-                                
-                                if ("[N]Kejadian IKP Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Tahun", rs.getBoolean("grafik_ikp_pertahun")});
-                                }
-                                
-                                if ("[N]Kejadian IKP Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Bulan", rs.getBoolean("grafik_ikp_perbulan")});
-                                }
-                                
-                                if ("[N]Kejadian IKP Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Tanggal", rs.getBoolean("grafik_ikp_pertanggal")});
-                                }
-                                
-                                if ("[N]Kejadian IKP Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Jenis", rs.getBoolean("grafik_ikp_jenis")});
-                                }
-                                
-                                if ("[N]Kejadian IKP Per Dampak".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Dampak", rs.getBoolean("grafik_ikp_dampak")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Agama".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Agama", rs.getBoolean("grafik_kunjungan_per_agama")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Umur".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Umur", rs.getBoolean("grafik_kunjungan_per_umur")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Suku/Bangsa".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Suku/Bangsa", rs.getBoolean("grafik_kunjungan_suku")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Bahasa".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Bahasa", rs.getBoolean("grafik_kunjungan_bahasa")});
-                                }
-                                
-                                if ("[N]Kunjungan Reg Per Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Cacat Fisik", rs.getBoolean("grafik_kunjungan_per_cacat")});
-                                }
-                                
-                                if ("[N]Periode Laporan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Periode Laporan TB", rs.getBoolean("grafik_tb_periodelaporan")});
-                                }
-                                
-                                if ("[N]Rujukan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Rujukan TB", rs.getBoolean("grafik_tb_rujukan")});
-                                }
-                                
-                                if ("[N]Riwayat TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Riwayat TB", rs.getBoolean("grafik_tb_riwayat")});
-                                }
-                                
-                                if ("[N]Tipe Diagnosis TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Tipe Diagnosis TB", rs.getBoolean("grafik_tb_tipediagnosis")});
-                                }
-                                
-                                if ("[N]Status HIV TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Status HIV TB", rs.getBoolean("grafik_tb_statushiv")});
-                                }
-                                
-                                if ("[N]Skoring Anak TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Skoring Anak TB", rs.getBoolean("grafik_tb_skoringanak")});
-                                }
-                                
-                                if ("[N]Konfirmasi Skoring 5 TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Konfirmasi Skoring 5 TB", rs.getBoolean("grafik_tb_konfirmasiskoring5")});
-                                }
-                                
-                                if ("[N]Konfirmasi Skoring 6 TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Konfirmasi Skoring 6 TB", rs.getBoolean("grafik_tb_konfirmasiskoring6")});
-                                }
-                                
-                                if ("[N]Sumber Obat TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Sumber Obat TB", rs.getBoolean("grafik_tb_sumberobat")});
-                                }
-                                
-                                if ("[N]Hasil Akhir Pengobatan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Hasil Akhir Pengobatan TB", rs.getBoolean("grafik_tb_hasilakhirpengobatan")});
-                                }
-                                
-                                if ("[N]Hasil Tes HIV TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Hasil Tes HIV TB", rs.getBoolean("grafik_tb_hasilteshiv")});
-                                }
-                                
-                                if ("[N]Pemakaian Air PDAM Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pemakaian Air PDAM Per Tanggal", rs.getBoolean("grafik_air_pdam_pertanggal")});
-                                }
-                                
-                                if ("[N]Pemakaian Air PDAM Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pemakaian Air PDAM Per Bulan", rs.getBoolean("grafik_air_pdam_perbulan")});
-                                }
-                                
-                                if ("[N]Limbah B3 Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Limbah B3 Medis Per Tanggal", rs.getBoolean("grafik_limbahb3_pertanggal")});
-                                }
-                                
-                                if ("[N]Limbah B3 Medis Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Limbah B3 Medis Per Bulan", rs.getBoolean("grafik_limbahb3_perbulan")});
-                                }
-                                
-                                if ("[N]Limbah Padat Domestik Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Limbah Padat Domestik Per Tanggal", rs.getBoolean("grafik_limbahdomestik_pertanggal")});
-                                }
-                                
-                                if ("[N]Limbah Padat Domestik Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Limbah Padat Domestik Per Bulan", rs.getBoolean("grafik_limbahdomestik_perbulan")});
-                                }
-                                
-                                if ("[N]K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Tahun", rs.getBoolean("grafik_k3_pertahun")});
-                                }
-                                
-                                if ("[N]K3 Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Bulan", rs.getBoolean("grafik_k3_perbulan")});
-                                }
-                                
-                                if ("[N]K3 Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Tanggal", rs.getBoolean("grafik_k3_pertanggal")});
-                                }
-                                
-                                if ("[N]K3 Per Jenis Cidera".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Cidera", rs.getBoolean("grafik_k3_perjeniscidera")});
-                                }
-                                
-                                if ("[N]K3 Per Penyebab Kecelakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Penyebab Kecelakaan", rs.getBoolean("grafik_k3_perpenyebab")});
-                                }
-                                
-                                if ("[N]K3 Per Jenis Luka".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Luka", rs.getBoolean("grafik_k3_perjenisluka")});
-                                }
-                                
-                                if ("[N]K3 Per Lokasi Kejadian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Lokasi Kejadian", rs.getBoolean("grafik_k3_lokasikejadian")});
-                                }
-                                
-                                if ("[N]K3 Per Dampak Cidera".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Dampak Cidera", rs.getBoolean("grafik_k3_dampakcidera")});
-                                }
-                                
-                                if ("[N]K3 Per Jenis Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Pekerjaan", rs.getBoolean("grafik_k3_perjenispekerjaan")});
-                                }
-                                
-                                if ("[N]K3 Per Bagian Tubuh".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]K3 Per Bagian Tubuh", rs.getBoolean("grafik_k3_perbagiantubuh")});
-                                }
-                                
-                                if ("[N]Kunjungan Ranap Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Bulan", rs.getBoolean("grafik_kunjungan_ranapbulan")});
-                                }
-                                
-                                if ("[N]Kunjungan Ranap Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Tanggal", rs.getBoolean("grafik_kunjungan_ranaptanggal")});
-                                }
-                                
-                                if ("[N]Kunjungan Ranap Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Ruang", rs.getBoolean("grafik_kunjungan_ranap_peruang")});
-                                }
-                                
-                                if ("[N]Pegawai Per Jenjang Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pegawai Per Jenjang Jabatan", rs.getBoolean("grafik_jenjang_jabatanpegawai")});
-                                }
-                                
-                                if ("[N]Pegawai Per Bidang/Bagian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pegawai Per Bidang/Bagian", rs.getBoolean("grafik_bidangpegawai")});
-                                }
-                                
-                                if ("[N]Pegawai Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pegawai Per Departemen", rs.getBoolean("grafik_departemenpegawai")});
-                                }
-                                
-                                if ("[N]Pegawai Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pegawai Per Pendidikan", rs.getBoolean("grafik_pendidikanpegawai")});
-                                }
-                                
-                                if ("[N]Pegawai Per Status WP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pegawai Per Status WP", rs.getBoolean("grafik_sttswppegawai")});
-                                }
-                                
-                                if ("[N]Pegawai Per Status Kerja".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pegawai Per Status Kerja", rs.getBoolean("grafik_sttskerjapegawai")});
-                                }
-                                
-                                if ("[N]Status Pulang Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Status Pulang Ranap", rs.getBoolean("grafik_sttspulangranap")});
-                                }
-                                
-                                if ("[N]Item Apotek Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Jenis", rs.getBoolean("item_apotek_jenis")});
-                                }
-                                
-                                if ("[N]Item Apotek Per Kategori".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Kategori", rs.getBoolean("item_apotek_kategori")});
-                                }
-                                
-                                if ("[N]Item Apotek Per Golongan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Golongan", rs.getBoolean("item_apotek_golongan")});
-                                }
-                                
-                                if ("[N]Item Apotek Per Industri Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Industri Farmasi", rs.getBoolean("item_apotek_industrifarmasi")});
-                                }
-                                
-                                if ("[N]Pengajuan Aset Per Urgensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Urgensi", rs.getBoolean("grafik_pengajuan_aset_urgensi")});
-                                }
-                                
-                                if ("[N]Pengajuan Aset Per Status".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Status", rs.getBoolean("grafik_pengajuan_aset_status")});
-                                }
-                                
-                                if ("[N]Pengajuan Aset Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Departemen", rs.getBoolean("grafik_pengajuan_aset_departemen")});
-                                }
-                                
-                                if ("[N]Pegawai Per Kelompok Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pegawai Per Kelompok Jabatan", rs.getBoolean("grafik_kelompok_jabatanpegawai")});
-                                }
-                                
-                                if ("[N]Pegawai Per Resiko Kerja".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pegawai Per Resiko Kerja", rs.getBoolean("grafik_resiko_kerjapegawai")});
-                                }
-                                
-                                if ("[N]Pegawai Per Emergency Index".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pegawai Per Emergency Index", rs.getBoolean("grafik_emergency_indexpegawai")});
-                                }
-                                
-                                if ("[N]Jumlah Inventaris Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Jumlah Inventaris Per Ruang", rs.getBoolean("grafik_inventaris_ruang")});
-                                }
-                                
-                                if ("[N]Jumlah Inventaris Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Jumlah Inventaris Per Jenis", rs.getBoolean("grafik_inventaris_jenis")});
-                                }
-                                
-                                if ("[N]Pasien HAIs Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pasien HAIs Per Ruang", rs.getBoolean("grafik_HAIs_pasienbangsal")});
-                                }
-                                
-                                if ("[N]Pasien HAIs Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Pasien HAIs Per Bulan", rs.getBoolean("grafik_HAIs_pasienbulan")});
-                                }
-                                
-                                if ("[N]Laju HAIs VAP Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Laju HAIs VAP Per Ruang", rs.getBoolean("grafik_HAIs_laju_vap")});
-                                }
-                                
-                                if ("[N]Laju HAIs IAD Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Laju HAIs IAD Per Ruang", rs.getBoolean("grafik_HAIs_laju_iad")});
-                                }
-                                
-                                if ("[N]Laju HAIs Plebitis Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Laju HAIs Plebitis Per Ruang", rs.getBoolean("grafik_HAIs_laju_pleb")});
-                                }
-                                
-                                if ("[N]Laju HAIs ISK Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Laju HAIs ISK Per Ruang", rs.getBoolean("grafik_HAIs_laju_isk")});
-                                }
-                                
-                                if ("[N]Laju HAIs ILO Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Laju HAIs ILO Per Ruang", rs.getBoolean("grafik_HAIs_laju_ilo")});
-                                }
-                                
-                                if ("[N]Laju HAIs HAP Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Laju HAIs HAP Per Ruang", rs.getBoolean("grafik_HAIs_laju_hap")});
-                                }
-                                
-                                if ("[N]Penerimaan Obat, Alkes & BHP Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[N]Penerimaan Obat, Alkes & BHP Per Bulan", rs.getBoolean("penerimaan_obat_perbulan")});
-                                }
-                                
-                                if ("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Indeks Surat", rs.getBoolean("surat_indeks")});
-                                }
-                                
-                                if ("[O]Map Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Map Surat", rs.getBoolean("surat_map")});
-                                }
-                                
-                                if ("[O]Almari Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Almari Surat", rs.getBoolean("surat_almari")});
-                                }
-                                
-                                if ("[O]Rak Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Rak Surat", rs.getBoolean("surat_rak")});
-                                }
-                                
-                                if ("[O]Ruang Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Ruang Surat", rs.getBoolean("surat_ruang")});
-                                }
-                                
-                                if ("[O]Klasifikasi Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Klasifikasi Surat", rs.getBoolean("surat_klasifikasi")});
-                                }
-                                
-                                if ("[O]Status Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Status Surat", rs.getBoolean("surat_status")});
-                                }
-                                
-                                if ("[O]Sifat Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Sifat Surat", rs.getBoolean("surat_sifat")});
-                                }
-                                
-                                if ("[O]Stts Balas Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Stts Balas Surat", rs.getBoolean("surat_balas")});
-                                }
-                                
-                                if ("[O]Surat Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Surat Masuk", rs.getBoolean("surat_masuk")});
-                                }
-                                
-                                if ("[O]Surat Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Surat Keluar", rs.getBoolean("surat_keluar")});
-                                }
-                                
-                                if ("[O]Surat Keterangan Sakit".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[O]Surat Keterangan Sakit", rs.getBoolean("surat_sakit")});
-                                }
-                                
-                                if ("[P]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Ruang Perpustakaan", rs.getBoolean("ruang_perpustakaan")});
-                                }
-                                
-                                if ("[P]Kategori Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Kategori Koleksi", rs.getBoolean("kategori_perpustakaan")});
-                                }
-                                
-                                if ("[P]Jenis Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Jenis Koleksi", rs.getBoolean("jenis_perpustakaan")});
-                                }
-                                
-                                if ("[P]Pengarang/Penulis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Pengarang/Penulis", rs.getBoolean("pengarang_perpustakaan")});
-                                }
-                                
-                                if ("[P]Penerbit Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Penerbit Koleksi", rs.getBoolean("penerbit_perpustakaan")});
-                                }
-                                
-                                if ("[P]Koleksi Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Koleksi Perpustakaan", rs.getBoolean("koleksi_perpustakaan")});
-                                }
-                                
-                                if ("[P]Inventaris Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Inventaris Perpustakaan", rs.getBoolean("inventaris_perpustakaan")});
-                                }
-                                
-                                if ("[P]Pengaturan Peminjaman".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Pengaturan Peminjaman", rs.getBoolean("set_peminjaman_perpustakaan")});
-                                }
-                                
-                                if ("[P]Denda Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Denda Perpustakaan", rs.getBoolean("denda_perpustakaan")});
-                                }
-                                
-                                if ("[P]Anggota Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Anggota Perpustakaan", rs.getBoolean("anggota_perpustakaan")});
-                                }
-                                
-                                if ("[P]Peminjaman Koleksi Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Peminjaman Koleksi Perpustakaan", rs.getBoolean("peminjaman_perpustakaan")});
-                                }
-                                
-                                if ("[P]Bayar Denda Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Bayar Denda Perpustakaan", rs.getBoolean("bayar_denda_perpustakaan")});
-                                }
-                                
-                                if ("[P]Data Koleksi Ebook".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[P]Data Koleksi Ebook", rs.getBoolean("ebook_perpustakaan")});
-                                }
-                                
-                                if ("[Q]Set P.J. Unit Penunjang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set P.J. Unit Penunjang", rs.getBoolean("setup_pjlab")});
-                                }
-                                
-                                if ("[Q]Set Oto Lokasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Oto Lokasi", rs.getBoolean("setup_otolokasi")});
-                                }
-                                
-                                if ("[Q]Set Kamar Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Kamar Inap", rs.getBoolean("setup_jam_kamin")});
-                                }
-                                
-                                if ("[Q]Set Embalase & Tuslah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Embalase & Tuslah", rs.getBoolean("setup_embalase")});
-                                }
-                                
-                                if ("[Q]Tracer Login".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Tracer Login", rs.getBoolean("tracer_login")});
-                                }
-                                
-                                if ("[Q]Display Antrian Registrasi & Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Display Antrian Registrasi & Poli", rs.getBoolean("display")});
-                                }
-                                
-                                if ("[Q]Set Harga Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat", rs.getBoolean("set_harga_obat")});
-                                }
-                                
-                                if ("[Q]Set Penggunaan Tarif".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Penggunaan Tarif", rs.getBoolean("set_penggunaan_tarif")});
-                                }
-                                
-                                if ("[Q]Set Oto Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Oto Ralan", rs.getBoolean("set_oto_ralan")});
-                                }
-                                
-                                if ("[Q]Biaya Harian Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Biaya Harian Kamar", rs.getBoolean("biaya_harian")});
-                                }
-                                
-                                if ("[Q]Biaya Masuk Sekali".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Biaya Masuk Sekali", rs.getBoolean("biaya_masuk_sekali")});
-                                }
-                                
-                                if ("[Q]Set RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set RM", rs.getBoolean("set_no_rm")});
-                                }
-                                
-                                if ("[Q]Set Harga Obat Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat Ralan", rs.getBoolean("set_harga_obat_ralan")});
-                                }
-                                
-                                if ("[Q]Set Harga Obat Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat Ranap", rs.getBoolean("set_harga_obat_ranap")});
-                                }
-                                
-                                if ("[Q]Set Billing".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Billing", rs.getBoolean("set_nota")});
-                                }
-                                
-                                if ("[Q]Closing Kasir".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Closing Kasir", rs.getBoolean("closing_kasir")});
-                                }
-                                
-                                if ("[Q]Set Keterlambatan Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Keterlambatan Presensi", rs.getBoolean("keterlambatan_presensi")});
-                                }
-                                
-                                if ("[Q]Set Harga Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Harga Kamar", rs.getBoolean("set_harga_kamar")});
-                                }
-                                
-                                if ("[Q]Set Input Parsial".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Set Input Parsial", rs.getBoolean("set_input_parsial")});
-                                }
-                                
-                                if ("[Q]Display Antrian Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Display Antrian Apotek", rs.getBoolean("display_apotek")});
-                                }
-                                
-                                if ("[Q]Password Asuransi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                                    tabMode.addRow(new Object[]{false, "[Q]Password Asuransi", rs.getBoolean("password_asuransi")});
-                                }
-                            }
-                            LCount.setText("" + tabMode.getRowCount());
-                            if (rs != null) {
-                                rs.close();
-                            }
-                            if (ps != null) {
-                                ps.close();
-                            }
-                        }
-                        
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DlgUpdateUser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception e){
-            Logger.getLogger(DlgUpdateUser.class.getName()).log(Level.SEVERE, null, e);
-        }
-            }
-
-    private void kategori() {
-        try {
-            jml = 0;
-            for (i = 0; i < tbUser.getRowCount(); i++) {
-                if (tbUser.getValueAt(i, 0).toString().equals("true")) {
-                    jml++;
-                }
-            }
-
-            pilih = null;
-            pilih = new boolean[jml];
-            akses = null;
-            akses = new boolean[jml];
-            menu = null;
-            menu = new String[jml];
-
-            jml = 0;
-            for (i = 0; i < tbUser.getRowCount(); i++) {
-                if (tbUser.getValueAt(i, 0).toString().equals("true")) {
-                    pilih[jml] = true;
-                    menu[jml] = tbUser.getValueAt(i, 1).toString();
-                    akses[jml] = Boolean.parseBoolean(tbUser.getValueAt(i, 2).toString());
-                    jml++;
-                }
-            }
-
-            Valid.tabelKosong(tabMode);
-
-            for (i = 0; i < jml; i++) {
-                tabMode.addRow(new Object[]{
-                    pilih[i], menu[i], akses[i]
-                });
-            }
-
-            ps = koneksi.prepareStatement("select * from user_akses where kategori=?");
-            
-            ps.setString(1, CmbAkses.getSelectedItem().toString());
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                if ("[A]Jadwal Praktek".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Jadwal Praktek", rs.getBoolean("jadwal_praktek")});
-                }
-                
-                if ("[A]Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Registrasi", rs.getBoolean("registrasi")});
-                }
-                
-                if ("[A]Tindakan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Tindakan Ralan", rs.getBoolean("tindakan_ralan")});
-                }
-                
-                if ("[A]Kamar Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Kamar Inap", rs.getBoolean("kamar_inap")});
-                }
-                
-                if ("[A]Tindakan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Tindakan Ranap", rs.getBoolean("tindakan_ranap")});
-                }
-                
-                if ("[A]Operasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Operasi", rs.getBoolean("operasi")});
-                }
-                
-                if ("[A]Rujukan Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Rujukan Keluar", rs.getBoolean("rujukan_keluar")});
-                }
-                
-                if ("[A]Rujukan Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Rujukan Masuk", rs.getBoolean("rujukan_masuk")});
-                }
-                
-                if ("[A]Beri Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Beri Obat, Alkes & BHP", rs.getBoolean("beri_obat")});
-                }
-                
-                if ("[A]Resep Pulang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Resep Pulang", rs.getBoolean("resep_pulang")});
-                }
-                
-                if ("[A]Diet Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Diet Pasien", rs.getBoolean("diet_pasien")});
-                }
-                
-                if ("[A]Periksa Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Periksa Lab", rs.getBoolean("periksa_lab")});
-                }
-                
-                if ("[A]Periksa Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Periksa Radiologi", rs.getBoolean("periksa_radiologi")});
-                }
-                
-                if ("[A]Kasir Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Kasir Ralan", rs.getBoolean("kasir_ralan")});
-                }
-                
-                if ("[A]Informasi Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Informasi Kamar", rs.getBoolean("informasi_kamar")});
-                }
-                
-                if ("[A]No.Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]No.Resep", rs.getBoolean("resep_obat")});
-                }
-                
-                if ("[A]Billing Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Billing Ralan", rs.getBoolean("billing_ralan")});
-                }
-                
-                if ("[A]Billing Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]Billing Ranap", rs.getBoolean("billing_ranap")});
-                }
-                
-                if ("[A]IGD".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]IGD", rs.getBoolean("igd")});
-                }
-                
-                if ("[A]DPJP Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                    tabMode.addRow(new Object[]{false, "[A]DPJP Ranap", rs.getBoolean("dpjp_ranap")});
-                    
-                    if("[O]Pengumuman E-Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[O]Pengumuman E-Pasien",rs.getBoolean("pengumuman_epasien")});
-                    }
-                    
-                    if("[O]Surat Hamil".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[O]Surat Hamil",rs.getBoolean("surat_hamil")});
-                    }
-                    
-                    if("[P]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[P]Ruang Perpustakaan",rs.getBoolean("ruang_perpustakaan")});
+                    if ("[A]DPJP Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]DPJP Ranap", rs.getBoolean("dpjp_ranap")});
                     }
 
                     if ("[A]Edit Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
@@ -3379,6 +911,14 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false, "[A]Permintaan Diet", rs.getBoolean("permintaan_diet")});
                     }
 
+                    if ("[A]Deteksi Dini Corona".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Deteksi Dini Corona", rs.getBoolean("deteksi_corona")});
+                    }
+
+                    if ("[A]Booking Periksa".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Booking Periksa", rs.getBoolean("booking_periksa")});
+                    }
+
                     if ("[B]Barcode Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                         tabMode.addRow(new Object[]{false, "[B]Barcode Ralan", rs.getBoolean("barcoderalan")});
                     }
@@ -3421,2208 +961,4663 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
                     if ("[C]Sidik Jari".toLowerCase().contains(TCari.getText().toLowerCase())) {
                         tabMode.addRow(new Object[]{false, "[C]Sidik Jari", rs.getBoolean("sidikjari")});
-                        
-                        if("[Q]Piutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[Q]Piutang Toko",rs.getBoolean("toko_piutang")});
-                        }
-                        
-                        if("[Q]Retur Ke Suplier Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[Q]Retur Ke Suplier Toko",rs.getBoolean("toko_retur_beli")});
-                        }
-                        
-                        if("[Q]Pendapatan Harian Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[Q]Pendapatan Harian Toko",rs.getBoolean("toko_pendapatan_harian")});
-                        }
-                        
-                        if("[Q]Bayar Piutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[Q]Bayar Piutang Toko",rs.getBoolean("toko_bayar_piutang")});
-                        }
-                        
-                        if("[Q]Piutang Harian Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[Q]Piutang Harian Toko",rs.getBoolean("toko_piutang_harian")});
-                        }
-                        
-                        if("[Q]Penjualan Harian Toko".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[Q]Penjualan Harian Toko",rs.getBoolean("toko_penjualan_harian")});
-                        }
-                        
-                        if("[R]Set P.J. Unit Penunjang".toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{false,"[R]Set P.J. Unit Penunjang",rs.getBoolean("setup_pjlab")});
-                        }
-                        
-                        if ("[C]Jam Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Jam Presensi", rs.getBoolean("jam_masuk")});
-                        }
-                        
-                        if ("[C]Jadwal Pegawai".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Jadwal Pegawai", rs.getBoolean("jadwal_pegawai")});
-                        }
-                        
-                        if ("[C]Temporary Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Temporary Presensi", rs.getBoolean("temporary_presensi")});
-                        }
-                        
-                        if ("[C]Master Berkas Pegawai".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Master Berkas Pegawai", rs.getBoolean("master_berkas_pegawai")});
-                        }
-                        
-                        if ("[C]Berkas Kepegawaian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Berkas Kepegawaian", rs.getBoolean("berkas_kepegawaian")});
-                        }
-                        
-                        if ("[C]Riwayat Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Riwayat Jabatan", rs.getBoolean("riwayat_jabatan")});
-                        }
-                        
-                        if ("[C]Riwayat Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Riwayat Pendidikan", rs.getBoolean("riwayat_pendidikan")});
-                        }
-                        
-                        if ("[C]Riwayat Naik Gaji".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Riwayat Naik Gaji", rs.getBoolean("riwayat_naik_gaji")});
-                        }
-                        
-                        if ("[C]Kegiatan Ilmiah & Pelatihan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Kegiatan Ilmiah & Pelatihan", rs.getBoolean("kegiatan_ilmiah")});
-                        }
-                        
-                        if ("[C]Riwayat Penghargaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Riwayat Penghargaan", rs.getBoolean("riwayat_penghargaan")});
-                        }
-                        
-                        if ("[C]Riwayat Penelitian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Riwayat Penelitian", rs.getBoolean("riwayat_penelitian")});
-                        }
-                        
-                        if ("[C]Jenis Cidera K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Jenis Cidera K3", rs.getBoolean("jenis_cidera_k3rs")});
-                        }
-                        
-                        if ("[C]Penyebab Kecelakaan K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Penyebab Kecelakaan K3", rs.getBoolean("penyebab_k3rs")});
-                        }
-                        
-                        if ("[C]Jenis Luka K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Jenis Luka K3", rs.getBoolean("jenis_luka_k3rs")});
-                        }
-                        
-                        if ("[C]Lokasi Kejadian K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Lokasi Kejadian K3", rs.getBoolean("lokasi_kejadian_k3rs")});
-                        }
-                        
-                        if ("[C]Dampak Cidera K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Dampak Cidera K3", rs.getBoolean("dampak_cidera_k3rs")});
-                        }
-                        
-                        if ("[C]Jenis Pekerjaan K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Jenis Pekerjaan K3", rs.getBoolean("jenis_pekerjaan_k3rs")});
-                        }
-                        
-                        if ("[C]Bagian Tubuh K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Bagian Tubuh K3", rs.getBoolean("bagian_tubuh_k3rs")});
-                        }
-                        
-                        if ("[C]Peristiwa K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Peristiwa K3", rs.getBoolean("peristiwa_k3rs")});
-                        }
-                        
-                        if ("[C]Jenis Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Jenis Cidera K3 Per Tahun", rs.getBoolean("jenis_cidera_k3rstahun")});
-                        }
-                        
-                        if ("[C]Penyebab Kecelakaan K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Penyebab Kecelakaan K3 Per Tahun", rs.getBoolean("penyebab_k3rstahun")});
-                        }
-                        
-                        if ("[C]Jenis Luka K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Jenis Luka K3 Per Tahun", rs.getBoolean("jenis_luka_k3rstahun")});
-                        }
-                        
-                        if ("[C]Lokasi Kejadian K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Lokasi Kejadian K3 Per Tahun", rs.getBoolean("lokasi_kejadian_k3rstahun")});
-                        }
-                        
-                        if ("[C]Dampak Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Dampak Cidera K3 Per Tahun", rs.getBoolean("dampak_cidera_k3rstahun")});
-                        }
-                        
-                        if ("[C]Jenis Pekerjaan K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Jenis Pekerjaan K3 Per Tahun", rs.getBoolean("jenis_pekerjaan_k3rstahun")});
-                        }
-                        
-                        if ("[C]Bagian Tubuh K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[C]Bagian Tubuh K3 Per Tahun", rs.getBoolean("bagian_tubuh_k3rstahun")});
-                        }
-                        
-                        if ("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Suplier Obat/Alkes/BHP", rs.getBoolean("suplier")});
-                        }
-                        
-                        if ("[D]Satuan Barang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Satuan Barang", rs.getBoolean("satuan_barang")});
-                        }
-                        
-                        if ("[D]Konversi Satuan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Konversi Satuan", rs.getBoolean("konversi_satuan")});
-                        }
-                        
-                        if ("[D]Jenis Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Jenis Obat/Alkes/BHP", rs.getBoolean("jenis_barang")});
-                        }
-                        
-                        if ("[D]Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Obat, Alkes & BHP", rs.getBoolean("obat")});
-                        }
-                        
-                        if ("[D]Stok Opname Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Stok Opname Apotek", rs.getBoolean("stok_opname_obat")});
-                        }
-                        
-                        if ("[D]Stok Obat Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Stok Obat Pasien", rs.getBoolean("stok_obat_pasien")});
-                        }
-                        
-                        if ("[D]Pengadaan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Pengadaan Obat, Alkes & BHP", rs.getBoolean("pengadaan_obat")});
-                        }
-                        
-                        if ("[D]Penerimaan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Penerimaan Obat, Alkes & BHP", rs.getBoolean("pemesanan_obat")});
-                        }
-                        
-                        if ("[D]Penjualan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Penjualan Obat, Alkes & BHP", rs.getBoolean("penjualan_obat")});
-                        }
-                        
-                        if ("[D]Piutang Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Piutang Obat, Alkes & BHP", rs.getBoolean("piutang_obat")});
-                        }
-                        
-                        if ("[D]Retur Ke Suplier".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Retur Ke Suplier", rs.getBoolean("retur_ke_suplier")});
-                        }
-                        
-                        if ("[D]Retur Dari Pembeli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Retur Dari Pembeli", rs.getBoolean("retur_dari_pembeli")});
-                        }
-                        
-                        if ("[D]Retur Obat, Alkes & BHP Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Retur Obat, Alkes & BHP Ranap", rs.getBoolean("retur_obat_ranap")});
-                        }
-                        
-                        if ("[D]Retur Piutang Pembeli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Retur Piutang Pembeli", rs.getBoolean("retur_piutang_pasien")});
-                        }
-                        
-                        if ("[D]Keuntungan Penjualan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Keuntungan Penjualan", rs.getBoolean("keuntungan_penjualan")});
-                        }
-                        
-                        if ("[D]Keuntungan Beri Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Keuntungan Beri Obat, Alkes & BHP", rs.getBoolean("keuntungan_beri_obat")});
-                        }
-                        
-                        if ("[D]Sirkulasi Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP", rs.getBoolean("sirkulasi_obat")});
-                        }
-                        
-                        if ("[D]Mutasi Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Mutasi Obat/Alkes/BHP", rs.getBoolean("mutasi_barang")});
-                        }
-                        
-                        if ("[D]Darurat Stok".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Darurat Stok", rs.getBoolean("darurat_stok")});
-                        }
-                        
-                        if ("[D]Sirkulasi Obat, Alkes & BHP 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 2", rs.getBoolean("sirkulasi_obat2")});
-                        }
-                        
-                        if ("[D]Industri Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Industri Farmasi", rs.getBoolean("industrifarmasi")});
-                        }
-                        
-                        if ("[D]Pengambilan BHP UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Pengambilan BHP UTD", rs.getBoolean("pengambilan_utd")});
-                        }
-                        
-                        if ("[D]Keuntungan Beri Obat, Alkes & BHP 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Keuntungan Beri Obat, Alkes & BHP 2", rs.getBoolean("keuntungan_beri_obat_nonpiutang")});
-                        }
-                        
-                        if ("[D]Riwayat Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Riwayat Obat, Alkes & BHP", rs.getBoolean("riwayat_obat_alkes_bhp")});
-                        }
-                        
-                        if ("[D]Resep Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Resep Dokter", rs.getBoolean("resep_dokter")});
-                        }
-                        
-                        if ("[D]Kategori Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Kategori Obat/Alkes/BHP", rs.getBoolean("kategori_barang")});
-                        }
-                        
-                        if ("[D]Golongan Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Golongan Obat/Alkes/BHP", rs.getBoolean("golongan_barang")});
-                        }
-                        
-                        if ("[D]Obat/Alkes/BHP Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Obat/Alkes/BHP Per Tanggal", rs.getBoolean("pemberian_obat_pertanggal")});
-                        }
-                        
-                        if ("[D]Penjualan Bebas Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Penjualan Bebas Per Tanggal", rs.getBoolean("penjualan_obat_pertanggal")});
-                        }
-                        
-                        if ("[D]Permintaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Permintaan Obat & BHP", rs.getBoolean("permintaan_medis")});
-                        }
-                        
-                        if ("[D]Rekap Permintaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Rekap Permintaan Obat & BHP", rs.getBoolean("rekap_permintaan_medis")});
-                        }
-                        
-                        if ("[D]Surat Pemesanan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Surat Pemesanan Obat & BHP", rs.getBoolean("surat_pemesanan_medis")});
-                        }
-                        
-                        if ("[D]Stok Keluar Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Stok Keluar Medis", rs.getBoolean("pengeluaran_stok_apotek")});
-                        }
-                        
-                        if ("[D]Metode Racik".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Metode Racik", rs.getBoolean("metode_racik")});
-                        }
-                        
-                        if ("[D]Pengguna Obat/Alkes/BHP Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Pengguna Obat/Alkes/BHP Resep", rs.getBoolean("pengguna_obat_resep")});
-                        }
-                        
-                        if ("[D]Rekap Penerimaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Rekap Penerimaan Obat & BHP", rs.getBoolean("rekap_pemesanan")});
-                        }
-                        
-                        if ("[D]Riwayat Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Riwayat Batch", rs.getBoolean("riwayat_data_batch")});
-                        }
-                        
-                        if ("[D]Kegiatan Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Kegiatan Farmasi", rs.getBoolean("kegiatan_farmasi")});
-                        }
-                        
-                        if ("[D]Sirkulasi Obat, Alkes & BHP 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 3", rs.getBoolean("sirkulasi_obat3")});
-                        }
-                        
-                        if ("[D]PPN Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]PPN Obat", rs.getBoolean("ppn_obat")});
-                        }
-                        
-                        if ("[D]Data Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Data Batch", rs.getBoolean("data_batch")});
-                        }
-                        
-                        if ("[D]Kadaluarsa Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Kadaluarsa Batch", rs.getBoolean("kadaluarsa_batch")});
-                        }
-                        
-                        if ("[D]Sisa Stok".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Sisa Stok", rs.getBoolean("sisa_stok")});
-                        }
-                        
-                        if ("[D]Obat Per Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Obat Per Resep", rs.getBoolean("obat_per_resep")});
-                        }
-                        
-                        if ("[D]Pengajuan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Pengajuan Obat & BHP", rs.getBoolean("pengajuan_barang_medis")});
-                        }
-                        
-                        if ("[D]10 Obat Terbanyak Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]10 Obat Terbanyak Poli", rs.getBoolean("10_obat_terbanyak_poli")});
-                        }
-                        
-                        if ("[D]Rekap Obat Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Rekap Obat Per Poli", rs.getBoolean("rekap_obat_poli")});
-                        }
-                        
-                        if ("[D]Rekap Obat Per Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Rekap Obat Per Pasien", rs.getBoolean("rekap_obat_pasien")});
-                        }
-                        
-                        if ("[D]Hibah Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Hibah Obat & BHP", rs.getBoolean("hibah_obat_bhp")});
-                        }
-                        
-                        if ("[D]Sirkulasi Obat, Alkes & BHP 4".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 4", rs.getBoolean("sirkulasi_obat4")});
-                        }
-                        
-                        if ("[D]Sirkulasi Obat, Alkes & BHP 5".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 5", rs.getBoolean("sirkulasi_obat5")});
-                        }
-                        
-                        if ("[E]Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Barang Non Medis", rs.getBoolean("ipsrs_barang")});
-                        }
-                        
-                        if ("[E]Pengadaan Barang Nonmedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Pengadaan Barang Nonmedis", rs.getBoolean("ipsrs_pengadaan_barang")});
-                        }
-                        
-                        if ("[E]Stok Keluar Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Stok Keluar Non Medis", rs.getBoolean("ipsrs_stok_keluar")});
-                        }
-                        
-                        if ("[E]Rekap Pengadaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Rekap Pengadaan Non Medis", rs.getBoolean("ipsrs_rekap_pengadaan")});
-                        }
-                        
-                        if ("[E]Rekap Stok Keluar Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Rekap Stok Keluar Non Medis", rs.getBoolean("ipsrs_rekap_stok_keluar")});
-                        }
-                        
-                        if ("[E]Biaya Pengadaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Biaya Pengadaan Non Medis", rs.getBoolean("ipsrs_pengeluaran_harian")});
-                        }
-                        
-                        if ("[E]Jenis Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Jenis Non Medis", rs.getBoolean("ipsrs_jenis_barang")});
-                        }
-                        
-                        if ("[E]Pengambilan UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Pengambilan UTD", rs.getBoolean("pengambilan_penunjang_utd")});
-                        }
-                        
-                        if ("[E]Suplier Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Suplier Non Medis", rs.getBoolean("suplier_penunjang")});
-                        }
-                        
-                        if ("[E]Pengadaan Non Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Pengadaan Non Medis Per Tanggal", rs.getBoolean("ipsrs_pengadaan_pertanggal")});
-                        }
-                        
-                        if ("[E]Stok Keluar Non Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Stok Keluar Non Medis Per Tanggal", rs.getBoolean("ipsrs_stokkeluar_pertanggal")});
-                        }
-                        
-                        if ("[E]Permintaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Permintaan Barang Non Medis", rs.getBoolean("permintaan_non_medis")});
-                        }
-                        
-                        if ("[E]Rekap Permintaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Rekap Permintaan Barang Non Medis", rs.getBoolean("rekap_permintaan_non_medis")});
-                        }
-                        
-                        if ("[E]Surat Pemesanan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Surat Pemesanan Barang Non Medis", rs.getBoolean("surat_pemesanan_non_medis")});
-                        }
-                        
-                        if ("[E]Penerimaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Penerimaan Barang Non Medis", rs.getBoolean("penerimaan_non_medis")});
-                        }
-                        
-                        if ("[E]Rekap Penerimaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Rekap Penerimaan Non Medis", rs.getBoolean("rekap_pemesanan_non_medis")});
-                        }
-                        
-                        if ("[E]Stok Opname Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Stok Opname Non Medis", rs.getBoolean("stok_opname_logistik")});
-                        }
-                        
-                        if ("[E]Sirkulasi Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Sirkulasi Non Medis", rs.getBoolean("sirkulasi_non_medis")});
-                        }
-                        
-                        if ("[E]Pengajuan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Pengajuan Barang Non Medis", rs.getBoolean("pengajuan_barang_nonmedis")});
-                        }
-                        
-                        if ("[E]Sirkulasi Non Medis 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[E]Sirkulasi Non Medis 2", rs.getBoolean("sirkulasi_non_medis")});
-                        }
-                        
+                    }
+
+                    if ("[C]Jam Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Jam Presensi", rs.getBoolean("jam_masuk")});
+                    }
+
+                    if ("[C]Jadwal Pegawai".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Jadwal Pegawai", rs.getBoolean("jadwal_pegawai")});
+                    }
+
+                    if ("[C]Temporary Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Temporary Presensi", rs.getBoolean("temporary_presensi")});
+                    }
+
+                    if ("[C]Master Berkas Pegawai".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Master Berkas Pegawai", rs.getBoolean("master_berkas_pegawai")});
+                    }
+
+                    if ("[C]Berkas Kepegawaian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Berkas Kepegawaian", rs.getBoolean("berkas_kepegawaian")});
+                    }
+
+                    if ("[C]Riwayat Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Riwayat Jabatan", rs.getBoolean("riwayat_jabatan")});
+                    }
+
+                    if ("[C]Riwayat Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Riwayat Pendidikan", rs.getBoolean("riwayat_pendidikan")});
+                    }
+
+                    if ("[C]Riwayat Naik Gaji".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Riwayat Naik Gaji", rs.getBoolean("riwayat_naik_gaji")});
+                    }
+
+                    if ("[C]Kegiatan Ilmiah & Pelatihan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Kegiatan Ilmiah & Pelatihan", rs.getBoolean("kegiatan_ilmiah")});
+                    }
+
+                    if ("[C]Riwayat Penghargaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Riwayat Penghargaan", rs.getBoolean("riwayat_penghargaan")});
+                    }
+
+                    if ("[C]Riwayat Penelitian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Riwayat Penelitian", rs.getBoolean("riwayat_penelitian")});
+                    }
+
+                    if ("[C]Jenis Cidera K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Jenis Cidera K3", rs.getBoolean("jenis_cidera_k3rs")});
+                    }
+
+                    if ("[C]Penyebab Kecelakaan K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Penyebab Kecelakaan K3", rs.getBoolean("penyebab_k3rs")});
+                    }
+
+                    if ("[C]Jenis Luka K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Jenis Luka K3", rs.getBoolean("jenis_luka_k3rs")});
+                    }
+
+                    if ("[C]Lokasi Kejadian K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Lokasi Kejadian K3", rs.getBoolean("lokasi_kejadian_k3rs")});
+                    }
+
+                    if ("[C]Dampak Cidera K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Dampak Cidera K3", rs.getBoolean("dampak_cidera_k3rs")});
+                    }
+
+                    if ("[C]Jenis Pekerjaan K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Jenis Pekerjaan K3", rs.getBoolean("jenis_pekerjaan_k3rs")});
+                    }
+
+                    if ("[C]Bagian Tubuh K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Bagian Tubuh K3", rs.getBoolean("bagian_tubuh_k3rs")});
+                    }
+
+                    if ("[C]Peristiwa K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Peristiwa K3", rs.getBoolean("peristiwa_k3rs")});
+                    }
+
+                    if ("[C]Jenis Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Jenis Cidera K3 Per Tahun", rs.getBoolean("jenis_cidera_k3rstahun")});
+                    }
+
+                    if ("[C]Penyebab Kecelakaan K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Penyebab Kecelakaan K3 Per Tahun", rs.getBoolean("penyebab_k3rstahun")});
+                    }
+
+                    if ("[C]Jenis Luka K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Jenis Luka K3 Per Tahun", rs.getBoolean("jenis_luka_k3rstahun")});
+                    }
+
+                    if ("[C]Lokasi Kejadian K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Lokasi Kejadian K3 Per Tahun", rs.getBoolean("lokasi_kejadian_k3rstahun")});
+                    }
+
+                    if ("[C]Dampak Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Dampak Cidera K3 Per Tahun", rs.getBoolean("dampak_cidera_k3rstahun")});
+                    }
+
+                    if ("[C]Jenis Pekerjaan K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Jenis Pekerjaan K3 Per Tahun", rs.getBoolean("jenis_pekerjaan_k3rstahun")});
+                    }
+
+                    if ("[C]Bagian Tubuh K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[C]Bagian Tubuh K3 Per Tahun", rs.getBoolean("bagian_tubuh_k3rstahun")});
+                    }
+
+                    if ("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Suplier Obat/Alkes/BHP", rs.getBoolean("suplier")});
+                    }
+
+                    if ("[D]Satuan Barang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Satuan Barang", rs.getBoolean("satuan_barang")});
+                    }
+
+                    if ("[D]Konversi Satuan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Konversi Satuan", rs.getBoolean("konversi_satuan")});
+                    }
+
+                    if ("[D]Jenis Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Jenis Obat/Alkes/BHP", rs.getBoolean("jenis_barang")});
+                    }
+
+                    if ("[D]Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Obat, Alkes & BHP", rs.getBoolean("obat")});
+                    }
+
+                    if ("[D]Stok Opname Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Stok Opname Apotek", rs.getBoolean("stok_opname_obat")});
+                    }
+
+                    if ("[D]Stok Obat Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Stok Obat Pasien", rs.getBoolean("stok_obat_pasien")});
+                    }
+
+                    if ("[D]Pengadaan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Pengadaan Obat, Alkes & BHP", rs.getBoolean("pengadaan_obat")});
+                    }
+
+                    if ("[D]Penerimaan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Penerimaan Obat, Alkes & BHP", rs.getBoolean("pemesanan_obat")});
+                    }
+
+                    if ("[D]Penjualan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Penjualan Obat, Alkes & BHP", rs.getBoolean("penjualan_obat")});
+                    }
+
+                    if ("[D]Piutang Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Piutang Obat, Alkes & BHP", rs.getBoolean("piutang_obat")});
+                    }
+
+                    if ("[D]Retur Ke Suplier".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Retur Ke Suplier", rs.getBoolean("retur_ke_suplier")});
+                    }
+
+                    if ("[D]Retur Dari Pembeli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Retur Dari Pembeli", rs.getBoolean("retur_dari_pembeli")});
+                    }
+
+                    if ("[D]Retur Obat, Alkes & BHP Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Retur Obat, Alkes & BHP Ranap", rs.getBoolean("retur_obat_ranap")});
+                    }
+
+                    if ("[D]Retur Piutang Pembeli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Retur Piutang Pembeli", rs.getBoolean("retur_piutang_pasien")});
+                    }
+
+                    if ("[D]Keuntungan Penjualan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Keuntungan Penjualan", rs.getBoolean("keuntungan_penjualan")});
+                    }
+
+                    if ("[D]Keuntungan Beri Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Keuntungan Beri Obat, Alkes & BHP", rs.getBoolean("keuntungan_beri_obat")});
+                    }
+
+                    if ("[D]Sirkulasi Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP", rs.getBoolean("sirkulasi_obat")});
+                    }
+
+                    if ("[D]Mutasi Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Mutasi Obat/Alkes/BHP", rs.getBoolean("mutasi_barang")});
+                    }
+
+                    if ("[D]Darurat Stok".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Darurat Stok", rs.getBoolean("darurat_stok")});
+                    }
+
+                    if ("[D]Sirkulasi Obat, Alkes & BHP 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 2", rs.getBoolean("sirkulasi_obat2")});
+                    }
+
+                    if ("[D]Industri Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Industri Farmasi", rs.getBoolean("industrifarmasi")});
+                    }
+
+                    if ("[D]Pengambilan BHP UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Pengambilan BHP UTD", rs.getBoolean("pengambilan_utd")});
+                    }
+
+                    if ("[D]Keuntungan Beri Obat, Alkes & BHP 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Keuntungan Beri Obat, Alkes & BHP 2", rs.getBoolean("keuntungan_beri_obat_nonpiutang")});
+                    }
+
+                    if ("[D]Riwayat Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Riwayat Obat, Alkes & BHP", rs.getBoolean("riwayat_obat_alkes_bhp")});
+                    }
+
+                    if ("[D]Resep Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Resep Dokter", rs.getBoolean("resep_dokter")});
+                    }
+
+                    if ("[D]Kategori Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Kategori Obat/Alkes/BHP", rs.getBoolean("kategori_barang")});
+                    }
+
+                    if ("[D]Golongan Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Golongan Obat/Alkes/BHP", rs.getBoolean("golongan_barang")});
+                    }
+
+                    if ("[D]Obat/Alkes/BHP Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Obat/Alkes/BHP Per Tanggal", rs.getBoolean("pemberian_obat_pertanggal")});
+                    }
+
+                    if ("[D]Penjualan Bebas Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Penjualan Bebas Per Tanggal", rs.getBoolean("penjualan_obat_pertanggal")});
+                    }
+
+                    if ("[D]Permintaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Permintaan Obat & BHP", rs.getBoolean("permintaan_medis")});
+                    }
+
+                    if ("[D]Rekap Permintaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Rekap Permintaan Obat & BHP", rs.getBoolean("rekap_permintaan_medis")});
+                    }
+
+                    if ("[D]Surat Pemesanan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Surat Pemesanan Obat & BHP", rs.getBoolean("surat_pemesanan_medis")});
+                    }
+
+                    if ("[D]Stok Keluar Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Stok Keluar Medis", rs.getBoolean("pengeluaran_stok_apotek")});
+                    }
+
+                    if ("[D]Metode Racik".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Metode Racik", rs.getBoolean("metode_racik")});
+                    }
+
+                    if ("[D]Pengguna Obat/Alkes/BHP Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Pengguna Obat/Alkes/BHP Resep", rs.getBoolean("pengguna_obat_resep")});
+                    }
+
+                    if ("[D]Rekap Penerimaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Rekap Penerimaan Obat & BHP", rs.getBoolean("rekap_pemesanan")});
+                    }
+
+                    if ("[D]Riwayat Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Riwayat Batch", rs.getBoolean("riwayat_data_batch")});
+                    }
+
+                    if ("[D]Kegiatan Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Kegiatan Farmasi", rs.getBoolean("kegiatan_farmasi")});
+                    }
+
+                    if ("[D]Sirkulasi Obat, Alkes & BHP 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 3", rs.getBoolean("sirkulasi_obat3")});
+                    }
+
+                    if ("[D]PPN Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]PPN Obat", rs.getBoolean("ppn_obat")});
+                    }
+
+                    if ("[D]Data Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Data Batch", rs.getBoolean("data_batch")});
+                    }
+
+                    if ("[D]Kadaluarsa Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Kadaluarsa Batch", rs.getBoolean("kadaluarsa_batch")});
+                    }
+
+                    if ("[D]Sisa Stok".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Sisa Stok", rs.getBoolean("sisa_stok")});
+                    }
+
+                    if ("[D]Obat Per Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Obat Per Resep", rs.getBoolean("obat_per_resep")});
+                    }
+
+                    if ("[D]Pengajuan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Pengajuan Obat & BHP", rs.getBoolean("pengajuan_barang_medis")});
+                    }
+
+                    if ("[D]10 Obat Terbanyak Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]10 Obat Terbanyak Poli", rs.getBoolean("10_obat_terbanyak_poli")});
+                    }
+
+                    if ("[D]Rekap Obat Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Rekap Obat Per Poli", rs.getBoolean("rekap_obat_poli")});
+                    }
+
+                    if ("[D]Rekap Obat Per Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Rekap Obat Per Pasien", rs.getBoolean("rekap_obat_pasien")});
+                    }
+
+                    if ("[D]Hibah Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Hibah Obat & BHP", rs.getBoolean("hibah_obat_bhp")});
+                    }
+
+                    if ("[D]Sirkulasi Obat, Alkes & BHP 4".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 4", rs.getBoolean("sirkulasi_obat4")});
+                    }
+
+                    if ("[D]Sirkulasi Obat, Alkes & BHP 5".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 5", rs.getBoolean("sirkulasi_obat5")});
+                    }
+
+                    if ("[E]Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Barang Non Medis", rs.getBoolean("ipsrs_barang")});
+                    }
+
+                    if ("[E]Pengadaan Barang Nonmedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Pengadaan Barang Nonmedis", rs.getBoolean("ipsrs_pengadaan_barang")});
+                    }
+
+                    if ("[E]Stok Keluar Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Stok Keluar Non Medis", rs.getBoolean("ipsrs_stok_keluar")});
+                    }
+
+                    if ("[E]Rekap Pengadaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Rekap Pengadaan Non Medis", rs.getBoolean("ipsrs_rekap_pengadaan")});
+                    }
+
+                    if ("[E]Rekap Stok Keluar Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Rekap Stok Keluar Non Medis", rs.getBoolean("ipsrs_rekap_stok_keluar")});
+                    }
+
+                    if ("[E]Biaya Pengadaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Biaya Pengadaan Non Medis", rs.getBoolean("ipsrs_pengeluaran_harian")});
+                    }
+
+                    if ("[E]Jenis Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Jenis Non Medis", rs.getBoolean("ipsrs_jenis_barang")});
+                    }
+
+                    if ("[E]Pengambilan UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Pengambilan UTD", rs.getBoolean("pengambilan_penunjang_utd")});
+                    }
+
+                    if ("[E]Suplier Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Suplier Non Medis", rs.getBoolean("suplier_penunjang")});
+                    }
+
+                    if ("[E]Pengadaan Non Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Pengadaan Non Medis Per Tanggal", rs.getBoolean("ipsrs_pengadaan_pertanggal")});
+                    }
+
+                    if ("[E]Stok Keluar Non Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Stok Keluar Non Medis Per Tanggal", rs.getBoolean("ipsrs_stokkeluar_pertanggal")});
+                    }
+
+                    if ("[E]Permintaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Permintaan Barang Non Medis", rs.getBoolean("permintaan_non_medis")});
+                    }
+
+                    if ("[E]Rekap Permintaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Rekap Permintaan Barang Non Medis", rs.getBoolean("rekap_permintaan_non_medis")});
+                    }
+
+                    if ("[E]Surat Pemesanan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Surat Pemesanan Barang Non Medis", rs.getBoolean("surat_pemesanan_non_medis")});
+                    }
+
+                    if ("[E]Penerimaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Penerimaan Barang Non Medis", rs.getBoolean("penerimaan_non_medis")});
+                    }
+
+                    if ("[E]Rekap Penerimaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Rekap Penerimaan Non Medis", rs.getBoolean("rekap_pemesanan_non_medis")});
+                    }
+
+                    if ("[E]Stok Opname Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Stok Opname Non Medis", rs.getBoolean("stok_opname_logistik")});
+                    }
+
+                    if ("[E]Sirkulasi Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Sirkulasi Non Medis", rs.getBoolean("sirkulasi_non_medis")});
+                    }
+
+                    if ("[E]Pengajuan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Pengajuan Barang Non Medis", rs.getBoolean("pengajuan_barang_nonmedis")});
+                    }
+
+                    if ("[E]Sirkulasi Non Medis 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[E]Sirkulasi Non Medis 2", rs.getBoolean("sirkulasi_non_medis")});
+                    }
+
+                    if ("[F]Kategori Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[F]Kategori Inventaris", rs.getBoolean("inventaris_kategori")});
+
+                        if ("[E]Retur Ke Suplier Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[E]Retur Ke Suplier Non Medis", rs.getBoolean("ipsrs_returbeli")});
+                        }
+
+                        if ("[E]Riwayat Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[E]Riwayat Barang Non Medis", rs.getBoolean("ipsrs_riwayat_barang")});
+                        }
+
                         if ("[F]Jenis Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Jenis Inventaris", rs.getBoolean("inventaris_jenis")});
                         }
-                        
-                        if ("[F]Kategori Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[F]Kategori Inventaris", rs.getBoolean("inventaris_kategori")});
-                        }
-                        
+
                         if ("[F]Merk Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Merk Inventaris", rs.getBoolean("inventaris_merk")});
                         }
-                        
+
                         if ("[F]Ruang Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Ruang Inventaris", rs.getBoolean("inventaris_ruang")});
                         }
-                        
+
                         if ("[F]Produsen Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Produsen Inventaris", rs.getBoolean("inventaris_produsen")});
                         }
-                        
+
                         if ("[F]Koleksi Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Koleksi Inventaris", rs.getBoolean("inventaris_koleksi")});
                         }
-                        
+
                         if ("[F]Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Inventaris", rs.getBoolean("inventaris_inventaris")});
                         }
-                        
+
                         if ("[F]Sirkulasi Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Sirkulasi Inventaris", rs.getBoolean("inventaris_sirkulasi")});
                         }
-                        
+
                         if ("[F]Barang CSSD".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Barang CSSD", rs.getBoolean("barang_cssd")});
                         }
-                        
+
                         if ("[F]Pemakaian Air PDAM".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Pemakaian Air PDAM", rs.getBoolean("pemakaian_air_pdam")});
                         }
-                        
+
                         if ("[F]Limbah Padat B3 Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Limbah Padat B3 Medis", rs.getBoolean("limbah_b3_medis")});
                         }
-                        
+
                         if ("[F]Limbah Padat Domestik".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Limbah Padat Domestik", rs.getBoolean("limbah_domestik")});
                         }
-                        
+
                         if ("[F]Mutu Air Limbah".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Mutu Air Limbah", rs.getBoolean("mutu_air_limbah")});
                         }
-                        
+
                         if ("[F]Pest Control".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Pest Control", rs.getBoolean("pest_control")});
                         }
-                        
+
                         if ("[F]Pengajuan Aset/Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Pengajuan Aset/Inventaris", rs.getBoolean("pengajuan_asetinventaris")});
                         }
-                        
+
                         if ("[F]Rekap Pengajuan Aset Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Rekap Pengajuan Aset Departemen", rs.getBoolean("rekap_pengajuan_aset_departemen")});
                         }
-                        
+
                         if ("[F]Permintaan Perbaikan Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Permintaan Perbaikan Inventaris", rs.getBoolean("permintaan_perbaikan_inventaris")});
                         }
-                        
+
                         if ("[F]Asal Hibah".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[F]Asal Hibah", rs.getBoolean("asal_hibah")});
                         }
-                        
+
                         if ("[G]Jenis Parkir".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[G]Jenis Parkir", rs.getBoolean("parkir_jenis")});
                         }
-                        
+
                         if ("[G]Parkir Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[G]Parkir Masuk", rs.getBoolean("parkir_in")});
                         }
-                        
+
                         if ("[G]Parkir Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[G]Parkir Keluar", rs.getBoolean("parkir_out")});
                         }
-                        
+
                         if ("[G]Rekap Parkir Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[G]Rekap Parkir Harian", rs.getBoolean("parkir_rekap_harian")});
                         }
-                        
+
                         if ("[G]Rekap Parkir Bulanan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[G]Rekap Parkir Bulanan", rs.getBoolean("parkir_rekap_bulanan")});
                         }
-                        
+
                         if ("[G]Barcode Parkir".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[G]Barcode Parkir", rs.getBoolean("parkir_barcode")});
                         }
-                        
+
                         if ("[H]Harian Dokter Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Harian Dokter Poli", rs.getBoolean("harian_tindakan_poli")});
                         }
-                        
+
                         if ("[H]Obat Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Obat Per Poli", rs.getBoolean("obat_per_poli")});
                         }
-                        
+
                         if ("[H]Obat Per Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Obat Per Kamar", rs.getBoolean("obat_per_kamar")});
                         }
-                        
+
                         if ("[H]Obat Per Dokter Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Obat Per Dokter Ralan", rs.getBoolean("obat_per_dokter_ralan")});
                         }
-                        
+
                         if ("[H]Obat Per Dokter Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Obat Per Dokter Ranap", rs.getBoolean("obat_per_dokter_ranap")});
                         }
-                        
+
                         if ("[H]Harian Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Harian Dokter", rs.getBoolean("harian_dokter")});
                         }
-                        
+
                         if ("[H]Bulanan Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Bulanan Dokter", rs.getBoolean("bulanan_dokter")});
                         }
-                        
+
                         if ("[H]Harian Paramedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Harian Paramedis", rs.getBoolean("harian_paramedis")});
                         }
-                        
+
                         if ("[H]Bulanan Paramedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Bulanan Paramedis", rs.getBoolean("bulanan_paramedis")});
                         }
-                        
+
                         if ("[H]Pembayaran Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Pembayaran Ralan", rs.getBoolean("pembayaran_ralan")});
                         }
-                        
+
                         if ("[H]Pembayaran Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Pembayaran Ranap", rs.getBoolean("pembayaran_ranap")});
                         }
-                        
+
                         if ("[H]Rekap Pembayaran Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Rekap Pembayaran Ralan", rs.getBoolean("rekap_pembayaran_ralan")});
                         }
-                        
+
                         if ("[H]Rekap Pembayaran Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Rekap Pembayaran Ranap", rs.getBoolean("rekap_pembayaran_ranap")});
                         }
-                        
+
                         if ("[H]Tagihan Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Tagihan Masuk", rs.getBoolean("tagihan_masuk")});
                         }
-                        
+
                         if ("[H]Tambahan Biaya".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Tambahan Biaya", rs.getBoolean("tambahan_biaya")});
                         }
-                        
+
                         if ("[H]Potongan Biaya".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Potongan Biaya", rs.getBoolean("potongan_biaya")});
                         }
-                        
+
                         if ("[H]Detail JM Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Detail JM Dokter", rs.getBoolean("jm_ranap_dokter")});
                         }
-                        
+
                         if ("[H]Harian Dokter Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Harian Dokter Ralan", rs.getBoolean("harian_tindakan_dokter")});
                         }
-                        
+
                         if ("[H]Fee Visit Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Fee Visit Dokter", rs.getBoolean("fee_visit_dokter")});
                         }
-                        
+
                         if ("[H]Fee Bacaan EKG".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Fee Bacaan EKG", rs.getBoolean("fee_bacaan_ekg")});
                         }
-                        
+
                         if ("[H]Fee Rujukan Rontgen".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Fee Rujukan Rontgen", rs.getBoolean("fee_rujukan_rontgen")});
                         }
-                        
+
                         if ("[H]Fee Rujukan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Fee Rujukan Ranap", rs.getBoolean("fee_rujukan_ranap")});
                         }
-                        
+
                         if ("[H]Fee Periksa Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Fee Periksa Ralan", rs.getBoolean("fee_ralan")});
                         }
-                        
+
                         if ("[H]Obat Per Dokter Peresep".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Obat Per Dokter Peresep", rs.getBoolean("obat_per_dokter_peresep")});
                         }
-                        
+
                         if ("[H]Rekap Per Shift".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Rekap Per Shift", rs.getBoolean("rekap_per_shift")});
                         }
-                        
+
                         if ("[H]Obat Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Obat Per Cara Bayar", rs.getBoolean("obat_per_cara_bayar")});
                         }
-                        
+
                         if ("[H]Payment Point".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Payment Point", rs.getBoolean("payment_point")});
                         }
-                        
+
                         if ("[H]Harian J.S.".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Harian J.S.", rs.getBoolean("harian_js")});
                         }
-                        
+
                         if ("[H]Bulanan J.S.".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Bulanan J.S.", rs.getBoolean("bulanan_js")});
                         }
-                        
+
                         if ("[H]Harian BHP Medis/Paket Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Harian BHP Medis/Paket Obat", rs.getBoolean("harian_paket_bhp")});
                         }
-                        
+
                         if ("[H]Bulanan BHP Medis/Paket Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Bulanan BHP Medis/Paket Obat", rs.getBoolean("bulanan_paket_bhp")});
                         }
-                        
+
                         if ("[H]Harian Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Harian Kamar", rs.getBoolean("harian_kamar")});
                         }
-                        
+
                         if ("[H]Harian KSO".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Harian KSO", rs.getBoolean("harian_kso")});
                         }
-                        
+
                         if ("[H]Bulanan KSO".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Bulanan KSO", rs.getBoolean("bulanan_kso")});
                         }
-                        
+
                         if ("[H]Harian Menejemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Harian Menejemen", rs.getBoolean("harian_menejemen")});
                         }
-                        
+
                         if ("[H]Bulanan Menejemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Bulanan Menejemen", rs.getBoolean("bulanan_menejemen")});
                         }
-                        
+
                         if ("[H]Piutang Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Piutang Ralan", rs.getBoolean("piutang_ralan")});
                         }
-                        
+
                         if ("[H]Piutang Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Piutang Ranap", rs.getBoolean("piutang_ranap")});
                         }
-                        
+
                         if ("[H]Detail Tindakan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Detail Tindakan", rs.getBoolean("detail_tindakan")});
                         }
-                        
+
                         if ("[H]Rekap Poli Anak".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Rekap Poli Anak", rs.getBoolean("rekap_poli_anak")});
                         }
-                        
+
                         if ("[H]Pembayaran Per Unit".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Unit", rs.getBoolean("pembayaran_per_unit")});
                         }
-                        
+
                         if ("[H]Rekap Pembayaran Per Unit".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Rekap Pembayaran Per Unit", rs.getBoolean("rekap_pembayaran_per_unit")});
                         }
-                        
+
                         if ("[H]Detail VK/OK".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Detail VK/OK", rs.getBoolean("detail_tindakan_okvk")});
                         }
-                        
+
                         if ("[H]Detail JM Dokter 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Detail JM Dokter 2", rs.getBoolean("detailjmdokter2")});
                         }
-                        
+
                         if ("[H]Pembayaran Per Akun Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Akun Bayar", rs.getBoolean("pembayaran_akun_bayar")});
                         }
-                        
+
                         if ("[H]Piutang Per Akun Piutang".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Piutang Per Akun Piutang", rs.getBoolean("piutang_akun_piutang")});
                         }
-                        
+
                         if ("[H]Payment Point 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Payment Point 2", rs.getBoolean("payment_point2")});
                         }
-                        
+
                         if ("[H]Pembayaran Per Akun Bayar 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Akun Bayar 2", rs.getBoolean("pembayaran_akun_bayar2")});
                         }
-                        
+
                         if ("[H]Hapus Nota Salah".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Hapus Nota Salah", rs.getBoolean("hapus_nota_salah")});
                         }
-                        
+
                         if ("[H]Pembayaran Per Akun Bayar 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Akun Bayar 3", rs.getBoolean("pembayaran_akun_bayar3")});
                         }
-                        
+
                         if ("[I]ICD 10".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]ICD 10", rs.getBoolean("penyakit")});
                         }
-                        
+
                         if ("[I]Obat Penyakit".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Obat Penyakit", rs.getBoolean("obat_penyakit")});
                         }
-                        
+
                         if ("[I]Frekuensi Penyakit Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Frekuensi Penyakit Ralan", rs.getBoolean("penyakit_ralan")});
                         }
-                        
+
                         if ("[I]Frekuensi Penyakit Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Frekuensi Penyakit Ranap", rs.getBoolean("penyakit_ranap")});
                         }
-                        
+
                         if ("[I]Penyakit AFP & PD3I".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Penyakit AFP & PD3I", rs.getBoolean("penyakit_pd3i")});
                         }
-                        
+
                         if ("[I]Surveilans AFP & PD3I".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Surveilans AFP & PD3I", rs.getBoolean("surveilans_pd3i")});
                         }
-                        
+
                         if ("[I]Surveilans Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Surveilans Ralan", rs.getBoolean("surveilans_ralan")});
                         }
-                        
+
                         if ("[I]Surveilans Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Surveilans Ranap", rs.getBoolean("surveilans_ranap")});
                         }
-                        
+
                         if ("[I]Pny.Tdk Menular Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Pny.Tdk Menular Ranap", rs.getBoolean("pny_takmenular_ranap")});
                         }
-                        
+
                         if ("[I]Pny.Tdk Menular Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Pny.Tdk Menular Ralan", rs.getBoolean("pny_takmenular_ralan")});
                         }
-                        
+
                         if ("[I]Kunjungan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Kunjungan Ralan", rs.getBoolean("kunjungan_ralan")});
                         }
-                        
+
                         if ("[I]RL 3.2 Rawat Darurat".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 3.2 Rawat Darurat", rs.getBoolean("rl32")});
                         }
-                        
+
                         if ("[I]RL 3.3 Gigi dan Mulut".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 3.3 Gigi dan Mulut", rs.getBoolean("rl33")});
                         }
-                        
+
                         if ("[I]RL 3.7 Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 3.7 Radiologi", rs.getBoolean("rl37")});
                         }
-                        
+
                         if ("[I]RL 3.8 Laboratorium".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 3.8 Laboratorium", rs.getBoolean("rl38")});
                         }
-                        
+
                         if ("[I]RL 3.4 Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 3.4 Kebidanan", rs.getBoolean("rl34")});
                         }
-                        
+
                         if ("[I]RL 3.6 Pembedahan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 3.6 Pembedahan", rs.getBoolean("rl36")});
                         }
-                        
+
                         if ("[I]Kunjungan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Kunjungan Ranap", rs.getBoolean("kunjungan_ranap")});
                         }
-                        
+
                         if ("[I]ICD 9".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]ICD 9", rs.getBoolean("icd9")});
                         }
-                        
+
                         if ("[I]Sensus Harian Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Sensus Harian Poli", rs.getBoolean("sensus_harian_poli")});
                         }
-                        
+
                         if ("[I]RL 4A Sebab Morbiditas Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 4A Sebab Morbiditas Ranap", rs.getBoolean("rl4a")});
                         }
-                        
+
                         if ("[I]RL 4B Sebab Morbiditas Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 4B Sebab Morbiditas Ralan", rs.getBoolean("rl4b")});
                         }
-                        
+
                         if ("[I]RL 4A Morbiditas Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 4A Morbiditas Ralan", rs.getBoolean("rl4asebab")});
                         }
-                        
+
                         if ("[I]RL 4B Morbiditas Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]RL 4B Morbiditas Ralan", rs.getBoolean("rl4bsebab")});
                         }
-                        
+
                         if ("[I]Lama Pelayanan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Ralan", rs.getBoolean("lama_pelayanan_ralan")});
                         }
-                        
+
                         if ("[I]Harian HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Harian HAIs", rs.getBoolean("harian_HAIs")});
                         }
-                        
+
                         if ("[I]Bulanan HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Bulanan HAIs", rs.getBoolean("bulanan_HAIs")});
                         }
-                        
+
                         if ("[I]Hitung BOR".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Hitung BOR", rs.getBoolean("hitung_bor")});
                         }
-                        
+
                         if ("[I]Lama Pelayanan Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Apotek", rs.getBoolean("lama_pelayanan_apotek")});
                         }
-                        
+
                         if ("[I]Hitung ALOS".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Hitung ALOS", rs.getBoolean("hitung_alos")});
                         }
-                        
+
                         if ("[I]Pny Menular Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Pny Menular Ranap", rs.getBoolean("penyakit_menular_ranap")});
                         }
-                        
+
                         if ("[I]Pny Menular Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Pny Menular Ralan", rs.getBoolean("penyakit_menular_ralan")});
                         }
-                        
+
                         if ("[I]Pembatalan Periksa Per Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Pembatalan Periksa Per Dokter", rs.getBoolean("pembatalan_periksa_dokter")});
                         }
-                        
+
                         if ("[I]Cek Entry Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Cek Entry Ralan", rs.getBoolean("cek_entry_ralan")});
                         }
-                        
+
                         if ("[I]Sensus Harian Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Sensus Harian Ralan", rs.getBoolean("sensus_harian_ralan")});
                         }
-                        
+
                         if ("[I]Insiden Keselamatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Insiden Keselamatan", rs.getBoolean("insiden_keselamatan")});
                         }
-                        
+
                         if ("[I]Ranap Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Ranap Per Ruang", rs.getBoolean("ranap_per_ruang")});
                         }
-                        
+
                         if ("[I]Penyakit Ranap Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Penyakit Ranap Per Cara Bayar", rs.getBoolean("penyakit_ranap_cara_bayar")});
                         }
-                        
+
                         if ("[I]Anggota TNI Dirawat".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Anggota TNI Dirawat", rs.getBoolean("anggota_militer_dirawat")});
                         }
-                        
+
                         if ("[I]Lama Pelayanan Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Radiologi", rs.getBoolean("lama_pelayanan_radiologi")});
                         }
-                        
+
                         if ("[I]Lama Pelayanan Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Lab", rs.getBoolean("lama_pelayanan_lab")});
                         }
-                        
+
                         if ("[I]Rekap Lab Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Rekap Lab Per Tahun", rs.getBoolean("rekap_lab_pertahun")});
                         }
-                        
+
                         if ("[I]Perujuk Lab Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Perujuk Lab Per Tahun", rs.getBoolean("perujuk_lab_pertahun")});
                         }
-                        
+
                         if ("[I]Rekap Radiologi Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Rekap Radiologi Per Tahun", rs.getBoolean("rekap_radiologi_pertahun")});
                         }
-                        
+
                         if ("[I]Perujuk Radiologi Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Perujuk Radiologi Per Tahun", rs.getBoolean("perujuk_radiologi_pertahun")});
                         }
-                        
+
                         if ("[I]Rekap Bulanan Porsi Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Rekap Bulanan Porsi Diet", rs.getBoolean("jumlah_porsi_diet")});
                         }
-                        
+
                         if ("[I]Rekap Bulanan Macam Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Rekap Bulanan Macam Diet", rs.getBoolean("jumlah_macam_diet")});
                         }
-                        
+
                         if ("[I]Kunjungan Lab Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Kunjungan Lab Ralan", rs.getBoolean("kunjungan_permintaan_lab")});
                         }
-                        
+
                         if ("[I]Kunjungan Lab Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Kunjungan Lab Ranap", rs.getBoolean("kunjungan_permintaan_lab2")});
                         }
-                        
+
                         if ("[I]Kunjungan Radiologi Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Kunjungan Radiologi Ralan", rs.getBoolean("kunjungan_permintaan_radiologi")});
                         }
-                        
+
                         if ("[I]Kunjungan Radiologi Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Kunjungan Radiologi Ranap", rs.getBoolean("kunjungan_permintaan_radiologi2")});
                         }
-                        
+
                         if ("[I]Data TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Data TB", rs.getBoolean("kemenkes_sitt")});
                         }
-                        
+
                         if ("[I]Rekap Mutasi Berkas".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Rekap Mutasi Berkas", rs.getBoolean("rekap_mutasi_berkas")});
                         }
-                        
+
                         if ("[I]Skrining Pernapasan Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Skrining Pernapasan Ralan Per Tahun", rs.getBoolean("skrining_ralan_pernapasan_pertahun")});
                         }
-                        
+
                         if ("[I]Masuk Ruang Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Masuk Ruang Per Tahun", rs.getBoolean("kunjungan_bangsal_pertahun")});
                         }
-                        
+
                         if ("[I]KIP Pasien Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]KIP Pasien Ranap", rs.getBoolean("kip_pasien_ranap")});
                         }
-                        
+
                         if ("[I]KIP Pasien Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]KIP Pasien Ralan", rs.getBoolean("kip_pasien_ralan")});
                         }
-                        
+
                         if ("[I]Rekap Permintaan Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Rekap Permintaan Diet", rs.getBoolean("rekap_permintaan_diet")});
                         }
-                        
+
                         if ("[I]Daftar Pasien Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Daftar Pasien Ranap", rs.getBoolean("daftar_pasien_ranap")});
                         }
-                        
+
                         if ("[I]Daftar Pasien Ranap TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Daftar Pasien Ranap TNI", rs.getBoolean("daftar_pasien_ranaptni")});
                         }
-                        
+
                         if ("[I]Harian HAIs 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Harian HAIs 2", rs.getBoolean("harian_HAIs2")});
                         }
-                        
+
                         if ("[I]Rekap Kunjungan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[I]Rekap Kunjungan", rs.getBoolean("rekap_kunjungan")});
                         }
-                        
+
                         if ("[J]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Deposit Pasien", rs.getBoolean("deposit_pasien")});
                         }
-                        
+
                         if ("[J]Piutang Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Piutang Pasien", rs.getBoolean("piutang_pasien")});
                         }
-                        
+
                         if ("[J]Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Kamar", rs.getBoolean("kamar"),});
                         }
-                        
+
                         if ("[J]Tarif Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Tarif Ralan", rs.getBoolean("tarif_ralan")});
                         }
-                        
+
                         if ("[J]Tarif Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Tarif Ranap", rs.getBoolean("tarif_ranap")});
                         }
-                        
+
                         if ("[J]Tarif Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Tarif Lab", rs.getBoolean("tarif_lab")});
                         }
-                        
+
                         if ("[J]Tarif Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Tarif Radiologi", rs.getBoolean("tarif_radiologi")});
                         }
-                        
+
                         if ("[J]Tarif Operasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Tarif Operasi", rs.getBoolean("tarif_operasi")});
                         }
-                        
+
                         if ("[J]Akun Rekening".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Akun Rekening", rs.getBoolean("akun_rekening")});
                         }
-                        
+
                         if ("[J]Rekening Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Rekening Tahun", rs.getBoolean("rekening_tahun")});
                         }
-                        
+
                         if ("[J]Posting Jurnal".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Posting Jurnal", rs.getBoolean("posting_jurnal")});
                         }
-                        
+
                         if ("[J]Buku Besar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Buku Besar", rs.getBoolean("buku_besar")});
                         }
-                        
+
                         if ("[J]Cash Flow".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Cash Flow", rs.getBoolean("cashflow")});
                         }
-                        
+
                         if ("[J]Keuangan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Keuangan", rs.getBoolean("keuangan")});
                         }
-                        
+
                         if ("[J]Pengeluaran Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Pengeluaran Harian", rs.getBoolean("pengeluaran")});
                         }
-                        
+
                         if ("[J]Akun Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Akun Bayar", rs.getBoolean("akun_bayar")});
                         }
-                        
+
                         if ("[J]Bayar Pesan Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Bayar Pesan Obat", rs.getBoolean("bayar_pemesanan_obat")});
                         }
-                        
+
                         if ("[J]Pemasukkan Lain-Lain".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Pemasukkan Lain-Lain", rs.getBoolean("pemasukan_lain")});
                         }
-                        
+
                         if ("[J]Pengaturan Rekening".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Pengaturan Rekening", rs.getBoolean("pengaturan_rekening")});
                         }
-                        
+
                         if ("[J]Bayar Piutang".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Bayar Piutang", rs.getBoolean("bayar_piutang")});
                         }
-                        
+
                         if ("[J]Jurnal Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Jurnal Harian", rs.getBoolean("jurnal_harian")});
                         }
-                        
+
                         if ("[J]Piutang Belum Lunas".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Piutang Belum Lunas", rs.getBoolean("piutang_pasien2")});
                         }
-                        
+
                         if ("[J]Tarif UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Tarif UTD", rs.getBoolean("tarif_utd")});
                         }
-                        
+
                         if ("[J]Rincian Piutang Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Rincian Piutang Pasien", rs.getBoolean("rincian_piutang_pasien")});
                         }
-                        
+
                         if ("[J]Hutang Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Hutang Obat & BHP", rs.getBoolean("hutang_obat")});
                         }
-                        
+
                         if ("[J]Akun Piutang".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Akun Piutang", rs.getBoolean("akun_piutang")});
                         }
-                        
+
                         if ("[J]Piutang Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Piutang Per Cara Bayar", rs.getBoolean("detail_piutang_penjab")});
                         }
-                        
+
                         if ("[J]Bayar Pesan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Bayar Pesan Non Medis", rs.getBoolean("bayar_pesan_non_medis")});
                         }
-                        
+
                         if ("[J]Hutang Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Hutang Barang Non Medis", rs.getBoolean("hutang_barang_non_medis")});
                         }
-                        
+
                         if ("[J]Saldo Akun Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[J]Saldo Akun Per Bulan", rs.getBoolean("saldo_akun_perbulan")});
                         }
-                        
+
                         if ("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[K]Cek NIK", rs.getBoolean("bpjs_cek_nik")});
                         }
-                        
+
                         if ("[K]Cek No.Kartu".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[K]Cek No.Kartu", rs.getBoolean("bpjs_cek_kartu")});
                         }
-                        
+
                         if ("[K]Riwayat Rujukan PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[K]Riwayat Rujukan PCare di VClaim", rs.getBoolean("bpjs_cek_riwayat")});
                         }
-                        
+
                         if ("[K]Cek No.Rujukan PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[K]Cek No.Rujukan PCare di VClaim", rs.getBoolean("bpjs_cek_nomor_rujukan")});
                         }
-                        
+
                         if ("[K]Referensi Diagnosa VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa VClaim", rs.getBoolean("bpjs_referensi_diagnosa")});
                         }
-                        
+
                         if ("[K]Referensi Poli VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[K]Referensi Poli VClaim", rs.getBoolean("bpjs_referensi_poli")});
                         }
-                        
+
                         if ("[K]Referensi Faskes VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
                             tabMode.addRow(new Object[]{false, "[K]Referensi Faskes VClaim", rs.getBoolean("bpjs_referensi_faskes")});
-                        }
-                        
-                        if ("[K]Data Bridging SEP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Data Bridging SEP VClaim", rs.getBoolean("bpjs_sep")});
-                        }
-                        
-                        if ("[K]Monitoring Verifikasi Klaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Monitoring Verifikasi Klaim", rs.getBoolean("bpjs_monitoring_klaim")});
-                        }
-                        
-                        if ("[K]Reklasifikasi Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Reklasifikasi Ralan", rs.getBoolean("reklasifikasi_ralan")});
-                        }
-                        
-                        if ("[K]Reklasifikasi Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Reklasifikasi Ranap", rs.getBoolean("reklasifikasi_ranap")});
-                        }
-                        
-                        if ("[K]Referensi Kamar Aplicare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kamar Aplicare", rs.getBoolean("aplicare_referensi_kamar")});
-                        }
-                        
-                        if ("[K]Ketersediaan Kamar Aplicare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Ketersediaan Kamar Aplicare", rs.getBoolean("aplicare_ketersediaan_kamar")});
-                        }
-                        
-                        if ("[K]Klaim Baru Otomatis INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Klaim Baru Otomatis INACBG", rs.getBoolean("inacbg_klaim_baru_otomatis")});
-                        }
-                        
-                        if ("[K]Klaim Baru Manual INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Klaim Baru Manual INACBG", rs.getBoolean("inacbg_klaim_baru_manual")});
-                        }
-                        
-                        if ("[K]Coder NIK INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Coder NIK INACBG", rs.getBoolean("inacbg_coder_nik")});
-                        }
-                        
-                        if ("[K]Cek Eligibilitas Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Eligibilitas Inhealth", rs.getBoolean("inhealth_cek_eligibilitas")});
-                        }
-                        
-                        if ("[K]Referensi Ruang Rawat Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Ruang Rawat Inhealth", rs.getBoolean("inhealth_referensi_jenpel_ruang_rawat")});
-                        }
-                        
-                        if ("[K]Referensi Poli Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Poli Inhealth", rs.getBoolean("inhealth_referensi_poli")});
-                        }
-                        
-                        if ("[K]Referensi Faskes Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Faskes Inhealth", rs.getBoolean("inhealth_referensi_faskes")});
-                        }
-                        
-                        if ("[K]Data Bridging SJP Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Data Bridging SJP Inhealth", rs.getBoolean("inhealth_sjp")});
-                        }
-                        
-                        if ("[K]Referensi Diagnosa Pcare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa Pcare", rs.getBoolean("pcare_cek_penyakit")});
-                        }
-                        
-                        if ("[K]Referensi Kesadaran Pcare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kesadaran Pcare", rs.getBoolean("pcare_cek_kesadaran")});
-                        }
-                        
-                        if ("[K]Cek Rujukan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Rujukan PCare", rs.getBoolean("pcare_cek_rujukan")});
-                        }
-                        
-                        if ("[K]Klaim Baru Manual INACBG 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Klaim Baru Manual INACBG 2", rs.getBoolean("inacbg_klaim_baru_manual2")});
-                        }
-                        
-                        if ("[K]Referensi Prosedur VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Prosedur VClaim", rs.getBoolean("bpjs_cek_prosedur")});
-                        }
-                        
-                        if ("[K]Referensi Kelas Rawat VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kelas Rawat VClaim", rs.getBoolean("bpjs_cek_kelas_rawat")});
-                        }
-                        
-                        if ("[K]Referensi Dokter VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Dokter VClaim", rs.getBoolean("bpjs_cek_dokter")});
-                        }
-                        
-                        if ("[K]Referensi Spesialistik VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Spesialistik VClaim", rs.getBoolean("bpjs_cek_spesialistik")});
-                        }
-                        
-                        if ("[K]Referensi Ruang Rawat VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Ruang Rawat VClaim", rs.getBoolean("bpjs_cek_ruangrawat")});
-                        }
-                        
-                        if ("[K]Referensi Cara Keluar VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Cara Keluar VClaim", rs.getBoolean("bpjs_cek_carakeluar")});
-                        }
-                        
-                        if ("[K]Referensi Pasca Pulang VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Pasca Pulang VClaim", rs.getBoolean("bpjs_cek_pasca_pulang")});
-                        }
-                        
-                        if ("[K]Cek No.Rujukan RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek No.Rujukan RS di VClaim", rs.getBoolean("bpjs_cek_nomor_rujukan_rs")});
-                        }
-                        
-                        if ("[K]Cek Rujukan Kartu PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Rujukan Kartu PCare di VClaim", rs.getBoolean("bpjs_cek_rujukan_kartu_pcare")});
-                        }
-                        
-                        if ("[K]Cek Rujukan Kartu RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Rujukan Kartu RS di VClaim", rs.getBoolean("bpjs_cek_rujukan_kartu_rs")});
-                        }
-                        
-                        if ("[K]Pembuatan Rujukan VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Pembuatan Rujukan VClaim", rs.getBoolean("bpjs_rujukan_keluar")});
-                        }
-                        
-                        if ("[K]Mapping Poli VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Poli VClaim", rs.getBoolean("mapping_poli_bpjs")});
-                        }
-                        
-                        if ("[K]SKDP BPJS".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]SKDP BPJS", rs.getBoolean("skdp_bpjs")});
-                        }
-                        
-                        if ("[K]Referensi Propinsi VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Propinsi VClaim", rs.getBoolean("bpjs_cek_propinsi")});
-                        }
-                        
-                        if ("[K]Referensi Kabupaten VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kabupaten VClaim", rs.getBoolean("bpjs_cek_kabupaten")});
-                        }
-                        
-                        if ("[K]Referensi Kecamatan VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Kecamatan VClaim", rs.getBoolean("bpjs_cek_kecamatan")});
-                        }
-                        
-                        if ("[K]Referensi Dokter DPJP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Dokter DPJP VClaim", rs.getBoolean("bpjs_cek_dokterdpjp")});
-                        }
-                        
-                        if ("[K]Riwayat Rujukan RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Riwayat Rujukan RS di VClaim", rs.getBoolean("bpjs_cek_riwayat_rujukanrs")});
-                        }
-                        
-                        if ("[K]Tanggal Rujukan di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tanggal Rujukan di VClaim", rs.getBoolean("bpjs_cek_tanggal_rujukan")});
-                        }
-                        
-                        if ("[K]Histori Pelayanan BPJS".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Histori Pelayanan BPJS", rs.getBoolean("bpjs_histori_pelayanan")});
-                        }
-                        
-                        if ("[K]Referensi Dokter PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Dokter PCare", rs.getBoolean("pcare_cek_dokter")});
-                        }
-                        
-                        if ("[K]Referensi Poli PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Poli PCare", rs.getBoolean("pcare_cek_poli")});
-                        }
-                        
-                        if ("[K]Referensi Provider PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Provider PCare", rs.getBoolean("pcare_cek_provider")});
-                        }
-                        
-                        if ("[K]Referensi Stts Pulang PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Stts Pulang PCare", rs.getBoolean("pcare_cek_statuspulang")});
-                        }
-                        
-                        if ("[K]Referensi Spesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Spesialis PCare", rs.getBoolean("pcare_cek_spesialis")});
-                        }
-                        
-                        if ("[K]Referensi Subspesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Subspesialis PCare", rs.getBoolean("pcare_cek_subspesialis")});
-                        }
-                        
-                        if ("[K]Referensi Sarana PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Sarana PCare", rs.getBoolean("pcare_cek_sarana")});
-                        }
-                        
-                        if ("[K]Referensi Khusus PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Khusus PCare", rs.getBoolean("pcare_cek_khusus")});
-                        }
-                        
-                        if ("[K]Referensi Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Obat PCare", rs.getBoolean("pcare_cek_obat")});
-                        }
-                        
-                        if ("[K]Referensi Tindakan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Tindakan PCare", rs.getBoolean("pcare_cek_tindakan")});
-                        }
-                        
-                        if ("[K]Faskes Subspesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Faskes Subspesialis PCare", rs.getBoolean("pcare_cek_faskessubspesialis")});
-                        }
-                        
-                        if ("[K]Faskes Alih Rawat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Faskes Alih Rawat PCare", rs.getBoolean("pcare_cek_faskesalihrawat")});
-                        }
-                        
-                        if ("[K]Faskes Thalasemia & Hemofili PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Faskes Thalasemia & Hemofili PCare", rs.getBoolean("pcare_cek_faskesthalasemia")});
-                        }
-                        
-                        if ("[K]Mapping Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Obat PCare", rs.getBoolean("pcare_mapping_obat")});
-                        }
-                        
-                        if ("[K]Tarif Ralan RS & PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Ralan RS & PCare", rs.getBoolean("pcare_mapping_tindakan")});
-                        }
-                        
-                        if ("[K]Club Prolanis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Club Prolanis PCare", rs.getBoolean("pcare_club_prolanis")});
-                        }
-                        
-                        if ("[K]Mapping Poli PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Poli PCare", rs.getBoolean("pcare_mapping_poli")});
-                        }
-                        
-                        if ("[K]Kegiatan Kelompok PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Kegiatan Kelompok PCare", rs.getBoolean("pcare_kegiatan_kelompok")});
-                        }
-                        
-                        if ("[K]Tarif Ranap RS & PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Ranap RS & PCare", rs.getBoolean("pcare_mapping_tindakan_ranap")});
-                        }
-                        
-                        if ("[K]Peserta Keg Kelompok PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Peserta Keg Kelompok PCare", rs.getBoolean("pcare_peserta_kegiatan_kelompok")});
-                        }
-                        
-                        if ("[K]Data Pendafataran PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Data Pendafataran PCare", rs.getBoolean("bridging_pcare_daftar")});
-                        }
-                        
-                        if ("[K]Mapping Dokter PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Dokter PCare", rs.getBoolean("pcare_mapping_dokter")});
-                        }
-                        
-                        if ("[K]Cek Nomor SEP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek Nomor SEP", rs.getBoolean("bpjs_cek_sep")});
-                        }
-                        
-                        if ("[K]Referensi Faskes Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Faskes Sisrute", rs.getBoolean("sisrute_referensi_faskes")});
-                        }
-                        
-                        if ("[K]Referensi Alasan Rujuk Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Alasan Rujuk Sisrute", rs.getBoolean("sisrute_referensi_alasanrujuk")});
-                        }
-                        
-                        if ("[K]Referensi Diagnosa Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa Sisrute", rs.getBoolean("sisrute_referensi_diagnosa")});
-                        }
-                        
-                        if ("[K]Rujukan Masuk Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Rujukan Masuk Sisrute", rs.getBoolean("sisrute_rujukan_masuk")});
-                        }
-                        
-                        if ("[K]Rujukan Keluar Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Rujukan Keluar Sisrute", rs.getBoolean("sisrute_rujukan_keluar")});
-                        }
-                        
-                        if ("[K]Cek SKDP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Cek SKDP VClaim", rs.getBoolean("bpjs_cek_skdp")});
-                        }
-                        
-                        if ("[K]Pemberian Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Pemberian Obat PCare", rs.getBoolean("pcare_pemberian_obat")});
-                        }
-                        
-                        if ("[K]Pemberian Tindakan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Pemberian Tindakan PCare", rs.getBoolean("pcare_pemberian_tindakan")});
-                        }
-                        
-                        if ("[K]Ketersediaan Kamar SIRANAP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Ketersediaan Kamar SIRANAP", rs.getBoolean("siranap_ketersediaan_kamar")});
-                        }
-                        
-                        if ("[K]Mapping Dokter DPJP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Dokter DPJP VClaim", rs.getBoolean("bpjs_mapping_dokterdpjp")});
-                        }
-                        
-                        if ("[K]Mapping Poli Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Poli Inhealth", rs.getBoolean("inhealth_mapping_poli")});
-                        }
-                        
-                        if ("[K]Mapping Dokter Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Mapping Dokter Inhealth", rs.getBoolean("inhealth_mapping_dokter")});
-                        }
-                        
-                        if ("[K]Tarif Ralan Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Ralan Inhealth", rs.getBoolean("inhealth_mapping_tindakan_ralan")});
-                        }
-                        
-                        if ("[K]Tarif Ranap Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Ranap Inhealth", rs.getBoolean("inhealth_mapping_tindakan_ranap")});
-                        }
-                        
-                        if ("[K]Tarif Radiologi Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Radiologi Inhealth", rs.getBoolean("inhealth_mapping_tindakan_radiologi")});
-                        }
-                        
-                        if ("[K]Tarif Laborat Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Laborat Inhealth", rs.getBoolean("inhealth_mapping_tindakan_laborat")});
-                        }
-                        
-                        if ("[K]Tarif Operasi Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tarif Operasi Inhealth", rs.getBoolean("inhealth_mapping_tindakan_operasi")});
-                        }
-                        
-                        if ("[K]Tagihan Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[K]Tagihan Inhealth", rs.getBoolean("inhealth_kirim_tagihan")});
-                        }
-                        
-                        if ("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Pasien", rs.getBoolean("pasien")});
-                        }
-                        
-                        if ("[L]Pasien Meninggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Pasien Meninggal", rs.getBoolean("pasien_meninggal")});
-                        }
-                        
-                        if ("[L]Kelahiran Bayi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Kelahiran Bayi", rs.getBoolean("kelahiran_bayi")});
-                        }
-                        
-                        if ("[L]Peminjaman Berkas RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Peminjaman Berkas RM", rs.getBoolean("peminjaman_berkas")});
-                        }
-                        
-                        if ("[L]Riwayat Perawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Riwayat Perawatan", rs.getBoolean("resume_pasien")});
-                        }
-                        
-                        if ("[L]Diagnosa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Diagnosa Pasien", rs.getBoolean("diagnosa_pasien")});
-                        }
-                        
-                        if ("[L]Retensi Data R.M.".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Retensi Data R.M.", rs.getBoolean("retensi_rm")});
-                        }
-                        
-                        if ("[L]Mutasi Berkas RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Mutasi Berkas RM", rs.getBoolean("mutasi_berkas")});
-                        }
-                        
-                        if ("[L]Catatan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Catatan Pasien", rs.getBoolean("catatan_pasien")});
-                        }
-                        
-                        if ("[L]Data HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Data HAIs", rs.getBoolean("data_HAIs")});
-                        }
-                        
-                        if ("[L]Instansi/Perusahaan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Instansi/Perusahaan Pasien", rs.getBoolean("perusahaan_pasien")});
-                        }
-                        
-                        if ("[L]Berkas Digital Perawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Berkas Digital Perawatan", rs.getBoolean("berkas_digital_perawatan")});
-                        }
-                        
-                        if ("[L]Pengaduan/Chat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Pengaduan/Chat", rs.getBoolean("pengaduan_pasien")});
-                        }
-                        
-                        if ("[L]Insiden Keselamatan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Insiden Keselamatan Pasien", rs.getBoolean("insiden_keselamatan_pasien")});
-                        }
-                        
-                        if ("[L]Suku/Bangsa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Suku/Bangsa Pasien", rs.getBoolean("suku_bangsa")});
-                        }
-                        
-                        if ("[L]Bahasa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Bahasa Pasien", rs.getBoolean("bahasa_pasien")});
-                        }
-                        
-                        if ("[L]Golongan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Golongan TNI", rs.getBoolean("golongan_tni")});
-                        }
-                        
-                        if ("[L]Satuan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Satuan TNI", rs.getBoolean("satuan_tni")});
-                        }
-                        
-                        if ("[L]Jabatan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Jabatan TNI", rs.getBoolean("jabatan_tni")});
-                        }
-                        
-                        if ("[L]Pangkat TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Pangkat TNI", rs.getBoolean("pangkat_tni")});
-                        }
-                        
-                        if ("[L]Golongan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Golongan POLRI", rs.getBoolean("golongan_polri")});
-                        }
-                        
-                        if ("[L]Satuan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Satuan POLRI", rs.getBoolean("satuan_polri")});
-                        }
-                        
-                        if ("[L]Jabatan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Jabatan POLRI", rs.getBoolean("jabatan_polri")});
-                        }
-                        
-                        if ("[L]Pangkat POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Pangkat POLRI", rs.getBoolean("pangkat_polri")});
-                        }
-                        
-                        if ("[L]Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Cacat Fisik", rs.getBoolean("cacat_fisik")});
-                        }
-                        
-                        if ("[L]HAIs Per Kamar/Bangsal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]HAIs Per Kamar/Bangsal", rs.getBoolean("hais_perbangsal")});
-                        }
-                        
-                        if ("[L]Data Triase".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Data Triase", rs.getBoolean("data_triase_igd")});
-                        }
-                        
-                        if ("[L]Master Triase Skala 1".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 1", rs.getBoolean("master_triase_skala1")});
-                        }
-                        
-                        if ("[L]Master Triase Skala 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 2", rs.getBoolean("master_triase_skala2")});
-                        }
-                        
-                        if ("[L]Master Triase Skala 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 3", rs.getBoolean("master_triase_skala3")});
-                        }
-                        
-                        if ("[L]Master Triase Skala 4".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 4", rs.getBoolean("master_triase_skala4")});
-                        }
-                        
-                        if ("[L]Master Triase Skala 5".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 5", rs.getBoolean("master_triase_skala5")});
-                        }
-                        
-                        if ("[L]Master Triase Pemeriksaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Master Triase Pemeriksaan", rs.getBoolean("master_triase_pemeriksaan")});
-                        }
-                        
-                        if ("[L]Master Triase Macam Kasus".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Master Triase Macam Kasus", rs.getBoolean("master_triase_macamkasus")});
-                        }
-                        
-                        if ("[L]Resume Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Resume Pasien", rs.getBoolean("data_resume_pasien")});
-                        }
-                        
-                        if ("[L]Asuhan Gizi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Asuhan Gizi", rs.getBoolean("asuhan_gizi")});
-                        }
-                        
-                        if ("[L]Monitoring Asuhan Gizi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Monitoring Asuhan Gizi", rs.getBoolean("monitoring_asuhan_gizi")});
-                        }
-                        
-                        if ("[L]Penilaian Awal Keperawatan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Penilaian Awal Keperawatan Ralan", rs.getBoolean("penilaian_awal_keperawatan_ralan")});
-                        }
-                        
-                        if ("[L]Master Masalah Keperawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[L]Master Masalah Keperawatan", rs.getBoolean("master_masalah_keperawatan")});
-                        }
-                        
-                        if ("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]Pengambilan BHP Medis", rs.getBoolean("pengambilan_utd2")});
-                        }
-                        
-                        if ("[M]BHP Medis Rusak".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]BHP Medis Rusak", rs.getBoolean("utd_medis_rusak")});
-                        }
-                        
-                        if ("[M]Pengambilan BHP Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]Pengambilan BHP Non Medis", rs.getBoolean("pengambilan_penunjang_utd2")});
-                        }
-                        
-                        if ("[M]BHP Non Medis Rusak".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]BHP Non Medis Rusak", rs.getBoolean("utd_penunjang_rusak")});
-                        }
-                        
-                        if ("[M]Donor Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]Donor Darah", rs.getBoolean("utd_donor")});
-                        }
-                        
-                        if ("[M]Cekal Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]Cekal Darah", rs.getBoolean("utd_cekal_darah")});
-                        }
-                        
-                        if ("[M]Komponen Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]Komponen Darah", rs.getBoolean("utd_komponen_darah")});
-                        }
-                        
-                        if ("[M]Stok Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]Stok Darah", rs.getBoolean("utd_stok_darah")});
-                        }
-                        
-                        if ("[M]Pemisahan Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]Pemisahan Darah", rs.getBoolean("utd_pemisahan_darah")});
-                        }
-                        
-                        if ("[M]Penyerahan Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[M]Penyerahan Darah", rs.getBoolean("utd_penyerahan_darah")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Poli", rs.getBoolean("grafik_kunjungan_poli")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Dokter", rs.getBoolean("grafik_kunjungan_perdokter")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Pekerjaan", rs.getBoolean("grafik_kunjungan_perpekerjaan")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Pendidikan", rs.getBoolean("grafik_kunjungan_perpendidikan")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Tahun", rs.getBoolean("grafik_kunjungan_pertahun")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Bulan", rs.getBoolean("grafik_kunjungan_perbulan")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Tanggal", rs.getBoolean("grafik_kunjungan_pertanggal")});
-                        }
-                        
-                        if ("[N]Demografi Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Demografi Registrasi", rs.getBoolean("grafik_kunjungan_demografi")});
-                        }
-                        
-                        if ("[N]Reg Lama Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Tahun", rs.getBoolean("grafik_kunjungan_statusdaftartahun")});
-                        }
-                        
-                        if ("[N]Reg Baru Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Tahun", rs.getBoolean("grafik_kunjungan_statusdaftartahun2")});
-                        }
-                        
-                        if ("[N]Reg Lama Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Bulan", rs.getBoolean("grafik_kunjungan_statusdaftarbulan")});
-                        }
-                        
-                        if ("[N]Reg Baru Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Bulan", rs.getBoolean("grafik_kunjungan_statusdaftarbulan2")});
-                        }
-                        
-                        if ("[N]Reg Lama Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Tanggal", rs.getBoolean("grafik_kunjungan_statusdaftartanggal")});
-                        }
-                        
-                        if ("[N]Reg Baru Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Tanggal", rs.getBoolean("grafik_kunjungan_statusdaftartanggal2")});
-                        }
-                        
-                        if ("[N]Batal Periksa Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Tahun", rs.getBoolean("grafik_kunjungan_statusbataltahun")});
-                        }
-                        
-                        if ("[N]Batal Periksa Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Bulan", rs.getBoolean("grafik_kunjungan_statusbatalbulan")});
-                        }
-                        
-                        if ("[N]Batal Periksa Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Tanggal", rs.getBoolean("grafik_kunjungan_statusbataltanggal")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Cara Bayar", rs.getBoolean("grafik_kunjungan_percarabayar")});
-                        }
-                        
-                        if ("[N]Kunjungan Ranap Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Tahun", rs.getBoolean("grafik_kunjungan_ranaptahun")});
-                        }
-                        
-                        if ("[N]Kunjungan Lab Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Tahun", rs.getBoolean("grafik_lab_ralantahun")});
-                        }
-                        
-                        if ("[N]Kunjungan Rad Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Tahun", rs.getBoolean("grafik_rad_ralantahun")});
-                        }
-                        
-                        if ("[N]Kunjungan Per Perujuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Per Perujuk", rs.getBoolean("grafik_per_perujuk")});
-                        }
-                        
-                        if ("[N]Kunjungan Lab Ralan Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Bulan", rs.getBoolean("grafik_lab_ralanbulan")});
-                        }
-                        
-                        if ("[N]Kunjungan Rad Ralan Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Bulan", rs.getBoolean("grafik_rad_ralanbulan")});
-                        }
-                        
-                        if ("[N]Kunjungan Lab Ralan Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Tanggal", rs.getBoolean("grafik_lab_ralanhari")});
-                        }
-                        
-                        if ("[N]Kunjungan Rad Ralan Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Tanggal", rs.getBoolean("grafik_rad_ralanhari")});
-                        }
-                        
-                        if ("[N]Kejadian IKP Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Tahun", rs.getBoolean("grafik_ikp_pertahun")});
-                        }
-                        
-                        if ("[N]Kejadian IKP Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Bulan", rs.getBoolean("grafik_ikp_perbulan")});
-                        }
-                        
-                        if ("[N]Kejadian IKP Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Tanggal", rs.getBoolean("grafik_ikp_pertanggal")});
-                        }
-                        
-                        if ("[N]Kejadian IKP Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Jenis", rs.getBoolean("grafik_ikp_jenis")});
-                        }
-                        
-                        if ("[N]Kejadian IKP Per Dampak".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Dampak", rs.getBoolean("grafik_ikp_dampak")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Agama".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Agama", rs.getBoolean("grafik_kunjungan_per_agama")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Umur".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Umur", rs.getBoolean("grafik_kunjungan_per_umur")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Suku/Bangsa".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Suku/Bangsa", rs.getBoolean("grafik_kunjungan_suku")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Bahasa".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Bahasa", rs.getBoolean("grafik_kunjungan_bahasa")});
-                        }
-                        
-                        if ("[N]Kunjungan Reg Per Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Cacat Fisik", rs.getBoolean("grafik_kunjungan_per_cacat")});
-                        }
-                        
-                        if ("[N]Periode Laporan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Periode Laporan TB", rs.getBoolean("grafik_tb_periodelaporan")});
-                        }
-                        
-                        if ("[N]Rujukan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Rujukan TB", rs.getBoolean("grafik_tb_rujukan")});
-                        }
-                        
-                        if ("[N]Riwayat TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Riwayat TB", rs.getBoolean("grafik_tb_riwayat")});
-                        }
-                        
-                        if ("[N]Tipe Diagnosis TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Tipe Diagnosis TB", rs.getBoolean("grafik_tb_tipediagnosis")});
-                        }
-                        
-                        if ("[N]Status HIV TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Status HIV TB", rs.getBoolean("grafik_tb_statushiv")});
-                        }
-                        
-                        if ("[N]Skoring Anak TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Skoring Anak TB", rs.getBoolean("grafik_tb_skoringanak")});
-                        }
-                        
-                        if ("[N]Konfirmasi Skoring 5 TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Konfirmasi Skoring 5 TB", rs.getBoolean("grafik_tb_konfirmasiskoring5")});
-                        }
-                        
-                        if ("[N]Konfirmasi Skoring 6 TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Konfirmasi Skoring 6 TB", rs.getBoolean("grafik_tb_konfirmasiskoring6")});
-                        }
-                        
-                        if ("[N]Sumber Obat TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Sumber Obat TB", rs.getBoolean("grafik_tb_sumberobat")});
-                        }
-                        
-                        if ("[N]Hasil Akhir Pengobatan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Hasil Akhir Pengobatan TB", rs.getBoolean("grafik_tb_hasilakhirpengobatan")});
-                        }
-                        
-                        if ("[N]Hasil Tes HIV TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Hasil Tes HIV TB", rs.getBoolean("grafik_tb_hasilteshiv")});
-                        }
-                        
-                        if ("[N]Pemakaian Air PDAM Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pemakaian Air PDAM Per Tanggal", rs.getBoolean("grafik_air_pdam_pertanggal")});
-                        }
-                        
-                        if ("[N]Pemakaian Air PDAM Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pemakaian Air PDAM Per Bulan", rs.getBoolean("grafik_air_pdam_perbulan")});
-                        }
-                        
-                        if ("[N]Limbah B3 Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Limbah B3 Medis Per Tanggal", rs.getBoolean("grafik_limbahb3_pertanggal")});
-                        }
-                        
-                        if ("[N]Limbah B3 Medis Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Limbah B3 Medis Per Bulan", rs.getBoolean("grafik_limbahb3_perbulan")});
-                        }
-                        
-                        if ("[N]Limbah Padat Domestik Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Limbah Padat Domestik Per Tanggal", rs.getBoolean("grafik_limbahdomestik_pertanggal")});
-                        }
-                        
-                        if ("[N]Limbah Padat Domestik Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Limbah Padat Domestik Per Bulan", rs.getBoolean("grafik_limbahdomestik_perbulan")});
-                        }
-                        
-                        if ("[N]K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Tahun", rs.getBoolean("grafik_k3_pertahun")});
-                        }
-                        
-                        if ("[N]K3 Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Bulan", rs.getBoolean("grafik_k3_perbulan")});
-                        }
-                        
-                        if ("[N]K3 Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Tanggal", rs.getBoolean("grafik_k3_pertanggal")});
-                        }
-                        
-                        if ("[N]K3 Per Jenis Cidera".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Cidera", rs.getBoolean("grafik_k3_perjeniscidera")});
-                        }
-                        
-                        if ("[N]K3 Per Penyebab Kecelakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Penyebab Kecelakaan", rs.getBoolean("grafik_k3_perpenyebab")});
-                        }
-                        
-                        if ("[N]K3 Per Jenis Luka".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Luka", rs.getBoolean("grafik_k3_perjenisluka")});
-                        }
-                        
-                        if ("[N]K3 Per Lokasi Kejadian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Lokasi Kejadian", rs.getBoolean("grafik_k3_lokasikejadian")});
-                        }
-                        
-                        if ("[N]K3 Per Dampak Cidera".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Dampak Cidera", rs.getBoolean("grafik_k3_dampakcidera")});
-                        }
-                        
-                        if ("[N]K3 Per Jenis Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Pekerjaan", rs.getBoolean("grafik_k3_perjenispekerjaan")});
-                        }
-                        
-                        if ("[N]K3 Per Bagian Tubuh".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]K3 Per Bagian Tubuh", rs.getBoolean("grafik_k3_perbagiantubuh")});
-                        }
-                        
-                        if ("[N]Kunjungan Ranap Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Bulan", rs.getBoolean("grafik_kunjungan_ranapbulan")});
-                        }
-                        
-                        if ("[N]Kunjungan Ranap Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Tanggal", rs.getBoolean("grafik_kunjungan_ranaptanggal")});
-                        }
-                        
-                        if ("[N]Kunjungan Ranap Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Ruang", rs.getBoolean("grafik_kunjungan_ranap_peruang")});
-                        }
-                        
-                        if ("[N]Pegawai Per Jenjang Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pegawai Per Jenjang Jabatan", rs.getBoolean("grafik_jenjang_jabatanpegawai")});
-                        }
-                        
-                        if ("[N]Pegawai Per Bidang/Bagian".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pegawai Per Bidang/Bagian", rs.getBoolean("grafik_bidangpegawai")});
-                        }
-                        
-                        if ("[N]Pegawai Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pegawai Per Departemen", rs.getBoolean("grafik_departemenpegawai")});
-                        }
-                        
-                        if ("[N]Pegawai Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pegawai Per Pendidikan", rs.getBoolean("grafik_pendidikanpegawai")});
-                        }
-                        
-                        if ("[N]Pegawai Per Status WP".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pegawai Per Status WP", rs.getBoolean("grafik_sttswppegawai")});
-                        }
-                        
-                        if ("[N]Pegawai Per Status Kerja".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pegawai Per Status Kerja", rs.getBoolean("grafik_sttskerjapegawai")});
-                        }
-                        
-                        if ("[N]Status Pulang Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Status Pulang Ranap", rs.getBoolean("grafik_sttspulangranap")});
-                        }
-                        
-                        if ("[N]Item Apotek Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Jenis", rs.getBoolean("item_apotek_jenis")});
-                        }
-                        
-                        if ("[N]Item Apotek Per Kategori".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Kategori", rs.getBoolean("item_apotek_kategori")});
-                        }
-                        
-                        if ("[N]Item Apotek Per Golongan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Golongan", rs.getBoolean("item_apotek_golongan")});
-                        }
-                        
-                        if ("[N]Item Apotek Per Industri Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Industri Farmasi", rs.getBoolean("item_apotek_industrifarmasi")});
-                        }
-                        
-                        if ("[N]Pengajuan Aset Per Urgensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Urgensi", rs.getBoolean("grafik_pengajuan_aset_urgensi")});
-                        }
-                        
-                        if ("[N]Pengajuan Aset Per Status".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Status", rs.getBoolean("grafik_pengajuan_aset_status")});
-                        }
-                        
-                        if ("[N]Pengajuan Aset Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Departemen", rs.getBoolean("grafik_pengajuan_aset_departemen")});
-                        }
-                        
-                        if ("[N]Pegawai Per Kelompok Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pegawai Per Kelompok Jabatan", rs.getBoolean("grafik_kelompok_jabatanpegawai")});
-                        }
-                        
-                        if ("[N]Pegawai Per Resiko Kerja".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pegawai Per Resiko Kerja", rs.getBoolean("grafik_resiko_kerjapegawai")});
-                        }
-                        
-                        if ("[N]Pegawai Per Emergency Index".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pegawai Per Emergency Index", rs.getBoolean("grafik_emergency_indexpegawai")});
-                        }
-                        
-                        if ("[N]Jumlah Inventaris Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Jumlah Inventaris Per Ruang", rs.getBoolean("grafik_inventaris_ruang")});
-                        }
-                        
-                        if ("[N]Jumlah Inventaris Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Jumlah Inventaris Per Jenis", rs.getBoolean("grafik_inventaris_jenis")});
-                        }
-                        
-                        if ("[N]Pasien HAIs Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pasien HAIs Per Ruang", rs.getBoolean("grafik_HAIs_pasienbangsal")});
-                        }
-                        
-                        if ("[N]Pasien HAIs Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Pasien HAIs Per Bulan", rs.getBoolean("grafik_HAIs_pasienbulan")});
-                        }
-                        
-                        if ("[N]Laju HAIs VAP Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Laju HAIs VAP Per Ruang", rs.getBoolean("grafik_HAIs_laju_vap")});
-                        }
-                        
-                        if ("[N]Laju HAIs IAD Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Laju HAIs IAD Per Ruang", rs.getBoolean("grafik_HAIs_laju_iad")});
-                        }
-                        
-                        if ("[N]Laju HAIs Plebitis Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Laju HAIs Plebitis Per Ruang", rs.getBoolean("grafik_HAIs_laju_pleb")});
-                        }
-                        
-                        if ("[N]Laju HAIs ISK Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Laju HAIs ISK Per Ruang", rs.getBoolean("grafik_HAIs_laju_isk")});
-                        }
-                        
-                        if ("[N]Laju HAIs ILO Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Laju HAIs ILO Per Ruang", rs.getBoolean("grafik_HAIs_laju_ilo")});
-                        }
-                        
-                        if ("[N]Laju HAIs HAP Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Laju HAIs HAP Per Ruang", rs.getBoolean("grafik_HAIs_laju_hap")});
-                        }
-                        
-                        if ("[N]Penerimaan Obat, Alkes & BHP Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[N]Penerimaan Obat, Alkes & BHP Per Bulan", rs.getBoolean("penerimaan_obat_perbulan")});
-                        }
-                        
-                        if ("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Indeks Surat", rs.getBoolean("surat_indeks")});
-                        }
-                        
-                        if ("[O]Map Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Map Surat", rs.getBoolean("surat_map")});
-                        }
-                        
-                        if ("[O]Almari Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Almari Surat", rs.getBoolean("surat_almari")});
-                        }
-                        
-                        if ("[O]Rak Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Rak Surat", rs.getBoolean("surat_rak")});
-                        }
-                        
-                        if ("[O]Ruang Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Ruang Surat", rs.getBoolean("surat_ruang")});
-                        }
-                        
-                        if ("[O]Klasifikasi Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Klasifikasi Surat", rs.getBoolean("surat_klasifikasi")});
-                        }
-                        
-                        if ("[O]Status Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Status Surat", rs.getBoolean("surat_status")});
-                        }
-                        
-                        if ("[O]Sifat Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Sifat Surat", rs.getBoolean("surat_sifat")});
-                        }
-                        
-                        if ("[O]Stts Balas Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Stts Balas Surat", rs.getBoolean("surat_balas")});
-                        }
-                        
-                        if ("[O]Surat Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Surat Masuk", rs.getBoolean("surat_masuk")});
-                        }
-                        
-                        if ("[O]Surat Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Surat Keluar", rs.getBoolean("surat_keluar")});
-                        }
-                        
-                        if ("[O]Surat Keterangan Sakit".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[O]Surat Keterangan Sakit", rs.getBoolean("surat_sakit")});
-                        }
-                        
-                        if ("[P]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Ruang Perpustakaan", rs.getBoolean("ruang_perpustakaan")});
-                        }
-                        
-                        if ("[P]Kategori Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Kategori Koleksi", rs.getBoolean("kategori_perpustakaan")});
-                        }
-                        
-                        if ("[P]Jenis Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Jenis Koleksi", rs.getBoolean("jenis_perpustakaan")});
-                        }
-                        
-                        if ("[P]Pengarang/Penulis".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Pengarang/Penulis", rs.getBoolean("pengarang_perpustakaan")});
-                        }
-                        
-                        if ("[P]Penerbit Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Penerbit Koleksi", rs.getBoolean("penerbit_perpustakaan")});
-                        }
-                        
-                        if ("[P]Koleksi Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Koleksi Perpustakaan", rs.getBoolean("koleksi_perpustakaan")});
-                        }
-                        
-                        if ("[P]Inventaris Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Inventaris Perpustakaan", rs.getBoolean("inventaris_perpustakaan")});
-                        }
-                        
-                        if ("[P]Pengaturan Peminjaman".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Pengaturan Peminjaman", rs.getBoolean("set_peminjaman_perpustakaan")});
-                        }
-                        
-                        if ("[P]Denda Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Denda Perpustakaan", rs.getBoolean("denda_perpustakaan")});
-                        }
-                        
-                        if ("[P]Anggota Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Anggota Perpustakaan", rs.getBoolean("anggota_perpustakaan")});
-                        }
-                        
-                        if ("[P]Peminjaman Koleksi Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Peminjaman Koleksi Perpustakaan", rs.getBoolean("peminjaman_perpustakaan")});
-                        }
-                        
-                        if ("[P]Bayar Denda Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Bayar Denda Perpustakaan", rs.getBoolean("bayar_denda_perpustakaan")});
-                        }
-                        
-                        if ("[P]Data Koleksi Ebook".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[P]Data Koleksi Ebook", rs.getBoolean("ebook_perpustakaan")});
-                        }
-                        
-                        if ("[Q]Set P.J. Unit Penunjang".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set P.J. Unit Penunjang", rs.getBoolean("setup_pjlab")});
-                        }
-                        
-                        if ("[Q]Set Oto Lokasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Oto Lokasi", rs.getBoolean("setup_otolokasi")});
-                        }
-                        
-                        if ("[Q]Set Kamar Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Kamar Inap", rs.getBoolean("setup_jam_kamin")});
-                        }
-                        
-                        if ("[Q]Set Embalase & Tuslah".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Embalase & Tuslah", rs.getBoolean("setup_embalase")});
-                        }
-                        
-                        if ("[Q]Tracer Login".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Tracer Login", rs.getBoolean("tracer_login")});
-                        }
-                        
-                        if ("[Q]Display Antrian Registrasi & Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Display Antrian Registrasi & Poli", rs.getBoolean("display")});
-                        }
-                        
-                        if ("[Q]Set Harga Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat", rs.getBoolean("set_harga_obat")});
-                        }
-                        
-                        if ("[Q]Set Penggunaan Tarif".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Penggunaan Tarif", rs.getBoolean("set_penggunaan_tarif")});
-                        }
-                        
-                        if ("[Q]Set Oto Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Oto Ralan", rs.getBoolean("set_oto_ralan")});
-                        }
-                        
-                        if ("[Q]Biaya Harian Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Biaya Harian Kamar", rs.getBoolean("biaya_harian")});
-                        }
-                        
-                        if ("[Q]Biaya Masuk Sekali".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Biaya Masuk Sekali", rs.getBoolean("biaya_masuk_sekali")});
-                        }
-                        
-                        if ("[Q]Set RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set RM", rs.getBoolean("set_no_rm")});
-                        }
-                        
-                        if ("[Q]Set Harga Obat Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat Ralan", rs.getBoolean("set_harga_obat_ralan")});
-                        }
-                        
-                        if ("[Q]Set Harga Obat Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat Ranap", rs.getBoolean("set_harga_obat_ranap")});
-                        }
-                        
-                        if ("[Q]Set Billing".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Billing", rs.getBoolean("set_nota")});
-                        }
-                        
-                        if ("[Q]Closing Kasir".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Closing Kasir", rs.getBoolean("closing_kasir")});
-                        }
-                        
-                        if ("[Q]Set Keterlambatan Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Keterlambatan Presensi", rs.getBoolean("keterlambatan_presensi")});
-                        }
-                        
-                        if ("[Q]Set Harga Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Harga Kamar", rs.getBoolean("set_harga_kamar")});
-                        }
-                        
-                        if ("[Q]Set Input Parsial".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Set Input Parsial", rs.getBoolean("set_input_parsial")});
-                        }
-                        
-                        if ("[Q]Display Antrian Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Display Antrian Apotek", rs.getBoolean("display_apotek")});
-                        }
-                        
-                        if ("[Q]Password Asuransi".toLowerCase().contains(TCari.getText().toLowerCase())) {
-                            tabMode.addRow(new Object[]{false, "[Q]Password Asuransi", rs.getBoolean("password_asuransi")});
+
+                            if ("[J]Set Tarif Online".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Set Tarif Online", rs.getBoolean("set_tarif_online")});
+                            }
+
+                            if ("[Q]Hutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Hutang Toko", rs.getBoolean("toko_hutang")});
+                            }
+
+                            if ("[Q]Bayar Pesan Toko".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Bayar Pesan Toko", rs.getBoolean("toko_bayar_pemesanan")});
+                            }
+
+                            if ("[K]Data Bridging SEP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Data Bridging SEP VClaim", rs.getBoolean("bpjs_sep")});
+                            }
+
+                            if ("[K]Monitoring Verifikasi Klaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Monitoring Verifikasi Klaim", rs.getBoolean("bpjs_monitoring_klaim")});
+                            }
+
+                            if ("[K]Reklasifikasi Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Reklasifikasi Ralan", rs.getBoolean("reklasifikasi_ralan")});
+                            }
+
+                            if ("[K]Reklasifikasi Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Reklasifikasi Ranap", rs.getBoolean("reklasifikasi_ranap")});
+                            }
+
+                            if ("[K]Referensi Kamar Aplicare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kamar Aplicare", rs.getBoolean("aplicare_referensi_kamar")});
+                            }
+
+                            if ("[K]Ketersediaan Kamar Aplicare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Ketersediaan Kamar Aplicare", rs.getBoolean("aplicare_ketersediaan_kamar")});
+                            }
+
+                            if ("[K]Klaim Baru Otomatis INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Klaim Baru Otomatis INACBG", rs.getBoolean("inacbg_klaim_baru_otomatis")});
+                            }
+
+                            if ("[K]Klaim Baru Manual INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Klaim Baru Manual INACBG", rs.getBoolean("inacbg_klaim_baru_manual")});
+                            }
+
+                            if ("[K]Coder NIK INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Coder NIK INACBG", rs.getBoolean("inacbg_coder_nik")});
+                            }
+
+                            if ("[K]Cek Eligibilitas Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Eligibilitas Inhealth", rs.getBoolean("inhealth_cek_eligibilitas")});
+                            }
+
+                            if ("[K]Referensi Ruang Rawat Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Ruang Rawat Inhealth", rs.getBoolean("inhealth_referensi_jenpel_ruang_rawat")});
+                            }
+
+                            if ("[K]Referensi Poli Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Poli Inhealth", rs.getBoolean("inhealth_referensi_poli")});
+                            }
+
+                            if ("[K]Referensi Faskes Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Faskes Inhealth", rs.getBoolean("inhealth_referensi_faskes")});
+                            }
+
+                            if ("[K]Data Bridging SJP Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Data Bridging SJP Inhealth", rs.getBoolean("inhealth_sjp")});
+                            }
+
+                            if ("[K]Referensi Diagnosa Pcare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa Pcare", rs.getBoolean("pcare_cek_penyakit")});
+                            }
+
+                            if ("[K]Referensi Kesadaran Pcare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kesadaran Pcare", rs.getBoolean("pcare_cek_kesadaran")});
+                            }
+
+                            if ("[K]Cek Rujukan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Rujukan PCare", rs.getBoolean("pcare_cek_rujukan")});
+                            }
+
+                            if ("[K]Klaim Baru Manual INACBG 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Klaim Baru Manual INACBG 2", rs.getBoolean("inacbg_klaim_baru_manual2")});
+                            }
+
+                            if ("[K]Referensi Prosedur VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Prosedur VClaim", rs.getBoolean("bpjs_cek_prosedur")});
+                            }
+
+                            if ("[K]Referensi Kelas Rawat VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kelas Rawat VClaim", rs.getBoolean("bpjs_cek_kelas_rawat")});
+                            }
+
+                            if ("[K]Referensi Dokter VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Dokter VClaim", rs.getBoolean("bpjs_cek_dokter")});
+                            }
+
+                            if ("[K]Referensi Spesialistik VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Spesialistik VClaim", rs.getBoolean("bpjs_cek_spesialistik")});
+                            }
+
+                            if ("[K]Referensi Ruang Rawat VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Ruang Rawat VClaim", rs.getBoolean("bpjs_cek_ruangrawat")});
+                            }
+
+                            if ("[K]Referensi Cara Keluar VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Cara Keluar VClaim", rs.getBoolean("bpjs_cek_carakeluar")});
+                            }
+
+                            if ("[K]Referensi Pasca Pulang VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Pasca Pulang VClaim", rs.getBoolean("bpjs_cek_pasca_pulang")});
+                            }
+
+                            if ("[K]Cek No.Rujukan RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek No.Rujukan RS di VClaim", rs.getBoolean("bpjs_cek_nomor_rujukan_rs")});
+                            }
+
+                            if ("[K]Cek Rujukan Kartu PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Rujukan Kartu PCare di VClaim", rs.getBoolean("bpjs_cek_rujukan_kartu_pcare")});
+                            }
+
+                            if ("[K]Cek Rujukan Kartu RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Rujukan Kartu RS di VClaim", rs.getBoolean("bpjs_cek_rujukan_kartu_rs")});
+                            }
+
+                            if ("[K]Pembuatan Rujukan VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Pembuatan Rujukan VClaim", rs.getBoolean("bpjs_rujukan_keluar")});
+                            }
+
+                            if ("[K]Mapping Poli VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Poli VClaim", rs.getBoolean("mapping_poli_bpjs")});
+                            }
+
+                            if ("[K]SKDP BPJS".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]SKDP BPJS", rs.getBoolean("skdp_bpjs")});
+                            }
+
+                            if ("[K]Referensi Propinsi VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Propinsi VClaim", rs.getBoolean("bpjs_cek_propinsi")});
+                            }
+
+                            if ("[K]Referensi Kabupaten VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kabupaten VClaim", rs.getBoolean("bpjs_cek_kabupaten")});
+                            }
+
+                            if ("[K]Referensi Kecamatan VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kecamatan VClaim", rs.getBoolean("bpjs_cek_kecamatan")});
+                            }
+
+                            if ("[K]Referensi Dokter DPJP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Dokter DPJP VClaim", rs.getBoolean("bpjs_cek_dokterdpjp")});
+                            }
+
+                            if ("[K]Riwayat Rujukan RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Riwayat Rujukan RS di VClaim", rs.getBoolean("bpjs_cek_riwayat_rujukanrs")});
+                            }
+
+                            if ("[K]Tanggal Rujukan di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tanggal Rujukan di VClaim", rs.getBoolean("bpjs_cek_tanggal_rujukan")});
+                            }
+
+                            if ("[K]Histori Pelayanan BPJS".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Histori Pelayanan BPJS", rs.getBoolean("bpjs_histori_pelayanan")});
+                            }
+
+                            if ("[K]Referensi Dokter PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Dokter PCare", rs.getBoolean("pcare_cek_dokter")});
+                            }
+
+                            if ("[K]Referensi Poli PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Poli PCare", rs.getBoolean("pcare_cek_poli")});
+                            }
+
+                            if ("[K]Referensi Provider PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Provider PCare", rs.getBoolean("pcare_cek_provider")});
+                            }
+
+                            if ("[K]Referensi Stts Pulang PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Stts Pulang PCare", rs.getBoolean("pcare_cek_statuspulang")});
+                            }
+
+                            if ("[K]Referensi Spesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Spesialis PCare", rs.getBoolean("pcare_cek_spesialis")});
+                            }
+
+                            if ("[K]Referensi Subspesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Subspesialis PCare", rs.getBoolean("pcare_cek_subspesialis")});
+                            }
+
+                            if ("[K]Referensi Sarana PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Sarana PCare", rs.getBoolean("pcare_cek_sarana")});
+                            }
+
+                            if ("[K]Referensi Khusus PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Khusus PCare", rs.getBoolean("pcare_cek_khusus")});
+                            }
+
+                            if ("[K]Referensi Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Obat PCare", rs.getBoolean("pcare_cek_obat")});
+                            }
+
+                            if ("[K]Referensi Tindakan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Tindakan PCare", rs.getBoolean("pcare_cek_tindakan")});
+                            }
+
+                            if ("[K]Faskes Subspesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Faskes Subspesialis PCare", rs.getBoolean("pcare_cek_faskessubspesialis")});
+                            }
+
+                            if ("[K]Faskes Alih Rawat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Faskes Alih Rawat PCare", rs.getBoolean("pcare_cek_faskesalihrawat")});
+                            }
+
+                            if ("[K]Faskes Thalasemia & Hemofili PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Faskes Thalasemia & Hemofili PCare", rs.getBoolean("pcare_cek_faskesthalasemia")});
+                            }
+
+                            if ("[K]Mapping Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Obat PCare", rs.getBoolean("pcare_mapping_obat")});
+                            }
+
+                            if ("[K]Tarif Ralan RS & PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Ralan RS & PCare", rs.getBoolean("pcare_mapping_tindakan")});
+                            }
+
+                            if ("[K]Club Prolanis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Club Prolanis PCare", rs.getBoolean("pcare_club_prolanis")});
+                            }
+
+                            if ("[K]Mapping Poli PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Poli PCare", rs.getBoolean("pcare_mapping_poli")});
+                            }
+
+                            if ("[K]Kegiatan Kelompok PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Kegiatan Kelompok PCare", rs.getBoolean("pcare_kegiatan_kelompok")});
+                            }
+
+                            if ("[K]Tarif Ranap RS & PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Ranap RS & PCare", rs.getBoolean("pcare_mapping_tindakan_ranap")});
+                            }
+
+                            if ("[K]Peserta Keg Kelompok PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Peserta Keg Kelompok PCare", rs.getBoolean("pcare_peserta_kegiatan_kelompok")});
+                            }
+
+                            if ("[K]Data Pendafataran PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Data Pendafataran PCare", rs.getBoolean("bridging_pcare_daftar")});
+                            }
+
+                            if ("[K]Mapping Dokter PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Dokter PCare", rs.getBoolean("pcare_mapping_dokter")});
+                            }
+
+                            if ("[K]Cek Nomor SEP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Nomor SEP", rs.getBoolean("bpjs_cek_sep")});
+                            }
+
+                            if ("[K]Referensi Faskes Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Faskes Sisrute", rs.getBoolean("sisrute_referensi_faskes")});
+                            }
+
+                            if ("[K]Referensi Alasan Rujuk Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Alasan Rujuk Sisrute", rs.getBoolean("sisrute_referensi_alasanrujuk")});
+                            }
+
+                            if ("[K]Referensi Diagnosa Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa Sisrute", rs.getBoolean("sisrute_referensi_diagnosa")});
+                            }
+
+                            if ("[K]Rujukan Masuk Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Rujukan Masuk Sisrute", rs.getBoolean("sisrute_rujukan_masuk")});
+                            }
+
+                            if ("[K]Rujukan Keluar Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Rujukan Keluar Sisrute", rs.getBoolean("sisrute_rujukan_keluar")});
+                            }
+
+                            if ("[K]Cek SKDP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek SKDP VClaim", rs.getBoolean("bpjs_cek_skdp")});
+                            }
+
+                            if ("[K]Pemberian Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Pemberian Obat PCare", rs.getBoolean("pcare_pemberian_obat")});
+                            }
+
+                            if ("[K]Pemberian Tindakan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Pemberian Tindakan PCare", rs.getBoolean("pcare_pemberian_tindakan")});
+                            }
+
+                            if ("[K]Ketersediaan Kamar SIRANAP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Ketersediaan Kamar SIRANAP", rs.getBoolean("siranap_ketersediaan_kamar")});
+                            }
+
+                            if ("[K]Mapping Dokter DPJP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Dokter DPJP VClaim", rs.getBoolean("bpjs_mapping_dokterdpjp")});
+                            }
+
+                            if ("[K]Mapping Poli Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Poli Inhealth", rs.getBoolean("inhealth_mapping_poli")});
+                            }
+
+                            if ("[K]Mapping Dokter Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Dokter Inhealth", rs.getBoolean("inhealth_mapping_dokter")});
+                            }
+
+                            if ("[K]Tarif Ralan Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Ralan Inhealth", rs.getBoolean("inhealth_mapping_tindakan_ralan")});
+                            }
+
+                            if ("[K]Tarif Ranap Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Ranap Inhealth", rs.getBoolean("inhealth_mapping_tindakan_ranap")});
+                            }
+
+                            if ("[K]Tarif Radiologi Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Radiologi Inhealth", rs.getBoolean("inhealth_mapping_tindakan_radiologi")});
+                            }
+
+                            if ("[K]Tarif Laborat Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Laborat Inhealth", rs.getBoolean("inhealth_mapping_tindakan_laborat")});
+                            }
+
+                            if ("[K]Tarif Operasi Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Operasi Inhealth", rs.getBoolean("inhealth_mapping_tindakan_operasi")});
+                            }
+
+                            if ("[K]Tagihan Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tagihan Inhealth", rs.getBoolean("inhealth_kirim_tagihan")});
+                            }
+
+                            if ("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Pasien", rs.getBoolean("pasien")});
+                            }
+
+                            if ("[L]Pasien Meninggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Pasien Meninggal", rs.getBoolean("pasien_meninggal")});
+                            }
+
+                            if ("[L]Kelahiran Bayi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Kelahiran Bayi", rs.getBoolean("kelahiran_bayi")});
+                            }
+
+                            if ("[L]Peminjaman Berkas RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Peminjaman Berkas RM", rs.getBoolean("peminjaman_berkas")});
+                            }
+
+                            if ("[L]Riwayat Perawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Riwayat Perawatan", rs.getBoolean("resume_pasien")});
+                            }
+
+                            if ("[L]Diagnosa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Diagnosa Pasien", rs.getBoolean("diagnosa_pasien")});
+                            }
+
+                            if ("[L]Retensi Data R.M.".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Retensi Data R.M.", rs.getBoolean("retensi_rm")});
+                            }
+
+                            if ("[L]Mutasi Berkas RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Mutasi Berkas RM", rs.getBoolean("mutasi_berkas")});
+
+                                if ("[K]Pasien Corona".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[K]Pasien Corona", rs.getBoolean("pasien_corona")});
+                                }
+
+                                if ("[K]Diagnosa Pasien Corona".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[K]Diagnosa Pasien Corona", rs.getBoolean("diagnosa_pasien_corona")});
+                                }
+
+                                if ("[K]Perawatan Pasien Corona".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[K]Perawatan Pasien Corona", rs.getBoolean("perawatan_pasien_corona")});
+                                }
+
+                                if ("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Pasien", rs.getBoolean("pasien")});
+                                }
+
+                                if ("[L]Catatan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Catatan Pasien", rs.getBoolean("catatan_pasien")});
+                                }
+
+                                if ("[L]Data HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Data HAIs", rs.getBoolean("data_HAIs")});
+                                }
+
+                                if ("[L]Instansi/Perusahaan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Instansi/Perusahaan Pasien", rs.getBoolean("perusahaan_pasien")});
+                                }
+
+                                if ("[L]Berkas Digital Perawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Berkas Digital Perawatan", rs.getBoolean("berkas_digital_perawatan")});
+                                }
+
+                                if ("[L]Pengaduan/Chat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Pengaduan/Chat", rs.getBoolean("pengaduan_pasien")});
+                                }
+
+                                if ("[L]Insiden Keselamatan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Insiden Keselamatan Pasien", rs.getBoolean("insiden_keselamatan_pasien")});
+                                }
+
+                                if ("[L]Suku/Bangsa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Suku/Bangsa Pasien", rs.getBoolean("suku_bangsa")});
+                                }
+
+                                if ("[L]Bahasa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Bahasa Pasien", rs.getBoolean("bahasa_pasien")});
+                                }
+
+                                if ("[L]Golongan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Golongan TNI", rs.getBoolean("golongan_tni")});
+                                }
+
+                                if ("[L]Satuan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Satuan TNI", rs.getBoolean("satuan_tni")});
+                                }
+
+                                if ("[L]Jabatan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Jabatan TNI", rs.getBoolean("jabatan_tni")});
+                                }
+
+                                if ("[L]Pangkat TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Pangkat TNI", rs.getBoolean("pangkat_tni")});
+                                }
+
+                                if ("[L]Golongan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Golongan POLRI", rs.getBoolean("golongan_polri")});
+                                }
+
+                                if ("[L]Satuan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Satuan POLRI", rs.getBoolean("satuan_polri")});
+                                }
+
+                                if ("[L]Jabatan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Jabatan POLRI", rs.getBoolean("jabatan_polri")});
+                                }
+
+                                if ("[L]Pangkat POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Pangkat POLRI", rs.getBoolean("pangkat_polri")});
+                                }
+
+                                if ("[L]Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Cacat Fisik", rs.getBoolean("cacat_fisik")});
+                                }
+
+                                if ("[L]HAIs Per Kamar/Bangsal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]HAIs Per Kamar/Bangsal", rs.getBoolean("hais_perbangsal")});
+                                }
+
+                                if ("[L]Data Triase".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Data Triase", rs.getBoolean("data_triase_igd")});
+                                }
+
+                                if ("[L]Master Triase Skala 1".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 1", rs.getBoolean("master_triase_skala1")});
+                                }
+
+                                if ("[L]Master Triase Skala 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 2", rs.getBoolean("master_triase_skala2")});
+                                }
+
+                                if ("[L]Master Triase Skala 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 3", rs.getBoolean("master_triase_skala3")});
+                                }
+
+                                if ("[L]Master Triase Skala 4".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 4", rs.getBoolean("master_triase_skala4")});
+                                }
+
+                                if ("[L]Master Triase Skala 5".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 5", rs.getBoolean("master_triase_skala5")});
+                                }
+
+                                if ("[L]Master Triase Pemeriksaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Master Triase Pemeriksaan", rs.getBoolean("master_triase_pemeriksaan")});
+                                }
+
+                                if ("[L]Master Triase Macam Kasus".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Master Triase Macam Kasus", rs.getBoolean("master_triase_macamkasus")});
+                                }
+
+                                if ("[L]Resume Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Resume Pasien", rs.getBoolean("data_resume_pasien")});
+                                }
+
+                                if ("[L]Asuhan Gizi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Asuhan Gizi", rs.getBoolean("asuhan_gizi")});
+                                }
+
+                                if ("[L]Monitoring Asuhan Gizi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Monitoring Asuhan Gizi", rs.getBoolean("monitoring_asuhan_gizi")});
+                                }
+
+                                if ("[L]Penilaian Awal Keperawatan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Penilaian Awal Keperawatan Ralan", rs.getBoolean("penilaian_awal_keperawatan_ralan")});
+                                }
+
+                                if ("[L]Master Masalah Keperawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[L]Master Masalah Keperawatan", rs.getBoolean("master_masalah_keperawatan")});
+                                }
+
+                                if ("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[M]Pengambilan BHP Medis", rs.getBoolean("pengambilan_utd2")});
+                                }
+
+                                if ("[M]BHP Medis Rusak".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[M]BHP Medis Rusak", rs.getBoolean("utd_medis_rusak")});
+                                }
+
+                                if ("[M]Pengambilan BHP Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[M]Pengambilan BHP Non Medis", rs.getBoolean("pengambilan_penunjang_utd2")});
+                                }
+
+                                if ("[M]BHP Non Medis Rusak".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[M]BHP Non Medis Rusak", rs.getBoolean("utd_penunjang_rusak")});
+                                }
+
+                                if ("[M]Donor Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[M]Donor Darah", rs.getBoolean("utd_donor")});
+                                }
+
+                                if ("[M]Cekal Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[M]Cekal Darah", rs.getBoolean("utd_cekal_darah")});
+                                }
+
+                                if ("[M]Komponen Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[M]Komponen Darah", rs.getBoolean("utd_komponen_darah")});
+                                }
+
+                                if ("[M]Stok Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                    tabMode.addRow(new Object[]{false, "[M]Stok Darah", rs.getBoolean("utd_stok_darah")});
+
+                                    if ("[L]Penilaian Awal Keperawatan Gigi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[L]Penilaian Awal Keperawatan Gigi", rs.getBoolean("penilaian_awal_keperawatan_gigi")});
+                                    }
+
+                                    if ("[L]Master Masalah Keperawatan Gigi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[L]Master Masalah Keperawatan Gigi", rs.getBoolean("master_masalah_keperawatan_gigi")});
+                                    }
+
+                                    if ("[L]Penilaian Awal Ralan Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[L]Penilaian Awal Ralan Kebidanan", rs.getBoolean("penilaian_awal_keperawatan_kebidanan")});
+                                    }
+
+                                    if ("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[M]Pengambilan BHP Medis", rs.getBoolean("pengambilan_utd2")});
+                                    }
+
+                                    if ("[M]Pemisahan Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[M]Pemisahan Darah", rs.getBoolean("utd_pemisahan_darah")});
+                                    }
+
+                                    if ("[M]Penyerahan Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[M]Penyerahan Darah", rs.getBoolean("utd_penyerahan_darah")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Poli", rs.getBoolean("grafik_kunjungan_poli")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Dokter", rs.getBoolean("grafik_kunjungan_perdokter")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Pekerjaan", rs.getBoolean("grafik_kunjungan_perpekerjaan")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Pendidikan", rs.getBoolean("grafik_kunjungan_perpendidikan")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Tahun", rs.getBoolean("grafik_kunjungan_pertahun")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Bulan", rs.getBoolean("grafik_kunjungan_perbulan")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Tanggal", rs.getBoolean("grafik_kunjungan_pertanggal")});
+                                    }
+
+                                    if ("[N]Demografi Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Demografi Registrasi", rs.getBoolean("grafik_kunjungan_demografi")});
+                                    }
+
+                                    if ("[N]Reg Lama Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Tahun", rs.getBoolean("grafik_kunjungan_statusdaftartahun")});
+                                    }
+
+                                    if ("[N]Reg Baru Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Tahun", rs.getBoolean("grafik_kunjungan_statusdaftartahun2")});
+                                    }
+
+                                    if ("[N]Reg Lama Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Bulan", rs.getBoolean("grafik_kunjungan_statusdaftarbulan")});
+                                    }
+
+                                    if ("[N]Reg Baru Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Bulan", rs.getBoolean("grafik_kunjungan_statusdaftarbulan2")});
+                                    }
+
+                                    if ("[N]Reg Lama Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Tanggal", rs.getBoolean("grafik_kunjungan_statusdaftartanggal")});
+                                    }
+
+                                    if ("[N]Reg Baru Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Tanggal", rs.getBoolean("grafik_kunjungan_statusdaftartanggal2")});
+                                    }
+
+                                    if ("[N]Batal Periksa Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Tahun", rs.getBoolean("grafik_kunjungan_statusbataltahun")});
+                                    }
+
+                                    if ("[N]Batal Periksa Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Bulan", rs.getBoolean("grafik_kunjungan_statusbatalbulan")});
+                                    }
+
+                                    if ("[N]Batal Periksa Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Tanggal", rs.getBoolean("grafik_kunjungan_statusbataltanggal")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Cara Bayar", rs.getBoolean("grafik_kunjungan_percarabayar")});
+                                    }
+
+                                    if ("[N]Kunjungan Ranap Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Tahun", rs.getBoolean("grafik_kunjungan_ranaptahun")});
+                                    }
+
+                                    if ("[N]Kunjungan Lab Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Tahun", rs.getBoolean("grafik_lab_ralantahun")});
+                                    }
+
+                                    if ("[N]Kunjungan Rad Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Tahun", rs.getBoolean("grafik_rad_ralantahun")});
+                                    }
+
+                                    if ("[N]Kunjungan Per Perujuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Per Perujuk", rs.getBoolean("grafik_per_perujuk")});
+                                    }
+
+                                    if ("[N]Kunjungan Lab Ralan Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Bulan", rs.getBoolean("grafik_lab_ralanbulan")});
+                                    }
+
+                                    if ("[N]Kunjungan Rad Ralan Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Bulan", rs.getBoolean("grafik_rad_ralanbulan")});
+                                    }
+
+                                    if ("[N]Kunjungan Lab Ralan Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Tanggal", rs.getBoolean("grafik_lab_ralanhari")});
+                                    }
+
+                                    if ("[N]Kunjungan Rad Ralan Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Tanggal", rs.getBoolean("grafik_rad_ralanhari")});
+                                    }
+
+                                    if ("[N]Kejadian IKP Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Tahun", rs.getBoolean("grafik_ikp_pertahun")});
+                                    }
+
+                                    if ("[N]Kejadian IKP Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Bulan", rs.getBoolean("grafik_ikp_perbulan")});
+                                    }
+
+                                    if ("[N]Kejadian IKP Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Tanggal", rs.getBoolean("grafik_ikp_pertanggal")});
+                                    }
+
+                                    if ("[N]Kejadian IKP Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Jenis", rs.getBoolean("grafik_ikp_jenis")});
+                                    }
+
+                                    if ("[N]Kejadian IKP Per Dampak".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Dampak", rs.getBoolean("grafik_ikp_dampak")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Agama".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Agama", rs.getBoolean("grafik_kunjungan_per_agama")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Umur".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Umur", rs.getBoolean("grafik_kunjungan_per_umur")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Suku/Bangsa".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Suku/Bangsa", rs.getBoolean("grafik_kunjungan_suku")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Bahasa".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Bahasa", rs.getBoolean("grafik_kunjungan_bahasa")});
+                                    }
+
+                                    if ("[N]Kunjungan Reg Per Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Cacat Fisik", rs.getBoolean("grafik_kunjungan_per_cacat")});
+                                    }
+
+                                    if ("[N]Periode Laporan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Periode Laporan TB", rs.getBoolean("grafik_tb_periodelaporan")});
+                                    }
+
+                                    if ("[N]Rujukan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Rujukan TB", rs.getBoolean("grafik_tb_rujukan")});
+                                    }
+
+                                    if ("[N]Riwayat TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Riwayat TB", rs.getBoolean("grafik_tb_riwayat")});
+                                    }
+
+                                    if ("[N]Tipe Diagnosis TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Tipe Diagnosis TB", rs.getBoolean("grafik_tb_tipediagnosis")});
+                                    }
+
+                                    if ("[N]Status HIV TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Status HIV TB", rs.getBoolean("grafik_tb_statushiv")});
+                                    }
+
+                                    if ("[N]Skoring Anak TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Skoring Anak TB", rs.getBoolean("grafik_tb_skoringanak")});
+                                    }
+
+                                    if ("[N]Konfirmasi Skoring 5 TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Konfirmasi Skoring 5 TB", rs.getBoolean("grafik_tb_konfirmasiskoring5")});
+                                    }
+
+                                    if ("[N]Konfirmasi Skoring 6 TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Konfirmasi Skoring 6 TB", rs.getBoolean("grafik_tb_konfirmasiskoring6")});
+                                    }
+
+                                    if ("[N]Sumber Obat TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Sumber Obat TB", rs.getBoolean("grafik_tb_sumberobat")});
+                                    }
+
+                                    if ("[N]Hasil Akhir Pengobatan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Hasil Akhir Pengobatan TB", rs.getBoolean("grafik_tb_hasilakhirpengobatan")});
+                                    }
+
+                                    if ("[N]Hasil Tes HIV TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Hasil Tes HIV TB", rs.getBoolean("grafik_tb_hasilteshiv")});
+                                    }
+
+                                    if ("[N]Pemakaian Air PDAM Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pemakaian Air PDAM Per Tanggal", rs.getBoolean("grafik_air_pdam_pertanggal")});
+                                    }
+
+                                    if ("[N]Pemakaian Air PDAM Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pemakaian Air PDAM Per Bulan", rs.getBoolean("grafik_air_pdam_perbulan")});
+                                    }
+
+                                    if ("[N]Limbah B3 Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Limbah B3 Medis Per Tanggal", rs.getBoolean("grafik_limbahb3_pertanggal")});
+                                    }
+
+                                    if ("[N]Limbah B3 Medis Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Limbah B3 Medis Per Bulan", rs.getBoolean("grafik_limbahb3_perbulan")});
+                                    }
+
+                                    if ("[N]Limbah Padat Domestik Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Limbah Padat Domestik Per Tanggal", rs.getBoolean("grafik_limbahdomestik_pertanggal")});
+                                    }
+
+                                    if ("[N]Limbah Padat Domestik Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Limbah Padat Domestik Per Bulan", rs.getBoolean("grafik_limbahdomestik_perbulan")});
+                                    }
+
+                                    if ("[N]K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Tahun", rs.getBoolean("grafik_k3_pertahun")});
+                                    }
+
+                                    if ("[N]K3 Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Bulan", rs.getBoolean("grafik_k3_perbulan")});
+                                    }
+
+                                    if ("[N]K3 Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Tanggal", rs.getBoolean("grafik_k3_pertanggal")});
+                                    }
+
+                                    if ("[N]K3 Per Jenis Cidera".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Cidera", rs.getBoolean("grafik_k3_perjeniscidera")});
+                                    }
+
+                                    if ("[N]K3 Per Penyebab Kecelakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Penyebab Kecelakaan", rs.getBoolean("grafik_k3_perpenyebab")});
+                                    }
+
+                                    if ("[N]K3 Per Jenis Luka".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Luka", rs.getBoolean("grafik_k3_perjenisluka")});
+                                    }
+
+                                    if ("[N]K3 Per Lokasi Kejadian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Lokasi Kejadian", rs.getBoolean("grafik_k3_lokasikejadian")});
+                                    }
+
+                                    if ("[N]K3 Per Dampak Cidera".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Dampak Cidera", rs.getBoolean("grafik_k3_dampakcidera")});
+                                    }
+
+                                    if ("[N]K3 Per Jenis Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Pekerjaan", rs.getBoolean("grafik_k3_perjenispekerjaan")});
+                                    }
+
+                                    if ("[N]K3 Per Bagian Tubuh".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]K3 Per Bagian Tubuh", rs.getBoolean("grafik_k3_perbagiantubuh")});
+                                    }
+
+                                    if ("[N]Kunjungan Ranap Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Bulan", rs.getBoolean("grafik_kunjungan_ranapbulan")});
+                                    }
+
+                                    if ("[N]Kunjungan Ranap Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Tanggal", rs.getBoolean("grafik_kunjungan_ranaptanggal")});
+                                    }
+
+                                    if ("[N]Kunjungan Ranap Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Ruang", rs.getBoolean("grafik_kunjungan_ranap_peruang")});
+                                    }
+
+                                    if ("[N]Pegawai Per Jenjang Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pegawai Per Jenjang Jabatan", rs.getBoolean("grafik_jenjang_jabatanpegawai")});
+                                    }
+
+                                    if ("[N]Pegawai Per Bidang/Bagian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pegawai Per Bidang/Bagian", rs.getBoolean("grafik_bidangpegawai")});
+                                    }
+
+                                    if ("[N]Pegawai Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pegawai Per Departemen", rs.getBoolean("grafik_departemenpegawai")});
+                                    }
+
+                                    if ("[N]Pegawai Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pegawai Per Pendidikan", rs.getBoolean("grafik_pendidikanpegawai")});
+                                    }
+
+                                    if ("[N]Pegawai Per Status WP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pegawai Per Status WP", rs.getBoolean("grafik_sttswppegawai")});
+                                    }
+
+                                    if ("[N]Pegawai Per Status Kerja".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pegawai Per Status Kerja", rs.getBoolean("grafik_sttskerjapegawai")});
+                                    }
+
+                                    if ("[N]Status Pulang Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Status Pulang Ranap", rs.getBoolean("grafik_sttspulangranap")});
+                                    }
+
+                                    if ("[N]Item Apotek Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Jenis", rs.getBoolean("item_apotek_jenis")});
+                                    }
+
+                                    if ("[N]Item Apotek Per Kategori".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Kategori", rs.getBoolean("item_apotek_kategori")});
+                                    }
+
+                                    if ("[N]Item Apotek Per Golongan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Golongan", rs.getBoolean("item_apotek_golongan")});
+                                    }
+
+                                    if ("[N]Item Apotek Per Industri Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Industri Farmasi", rs.getBoolean("item_apotek_industrifarmasi")});
+                                    }
+
+                                    if ("[N]Pengajuan Aset Per Urgensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Urgensi", rs.getBoolean("grafik_pengajuan_aset_urgensi")});
+                                    }
+
+                                    if ("[N]Pengajuan Aset Per Status".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Status", rs.getBoolean("grafik_pengajuan_aset_status")});
+                                    }
+
+                                    if ("[N]Pengajuan Aset Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Departemen", rs.getBoolean("grafik_pengajuan_aset_departemen")});
+                                    }
+
+                                    if ("[N]Pegawai Per Kelompok Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pegawai Per Kelompok Jabatan", rs.getBoolean("grafik_kelompok_jabatanpegawai")});
+                                    }
+
+                                    if ("[N]Pegawai Per Resiko Kerja".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pegawai Per Resiko Kerja", rs.getBoolean("grafik_resiko_kerjapegawai")});
+                                    }
+
+                                    if ("[N]Pegawai Per Emergency Index".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pegawai Per Emergency Index", rs.getBoolean("grafik_emergency_indexpegawai")});
+                                    }
+
+                                    if ("[N]Jumlah Inventaris Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Jumlah Inventaris Per Ruang", rs.getBoolean("grafik_inventaris_ruang")});
+                                    }
+
+                                    if ("[N]Jumlah Inventaris Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Jumlah Inventaris Per Jenis", rs.getBoolean("grafik_inventaris_jenis")});
+                                    }
+
+                                    if ("[N]Pasien HAIs Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pasien HAIs Per Ruang", rs.getBoolean("grafik_HAIs_pasienbangsal")});
+                                    }
+
+                                    if ("[N]Pasien HAIs Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Pasien HAIs Per Bulan", rs.getBoolean("grafik_HAIs_pasienbulan")});
+                                    }
+
+                                    if ("[N]Laju HAIs VAP Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Laju HAIs VAP Per Ruang", rs.getBoolean("grafik_HAIs_laju_vap")});
+                                    }
+
+                                    if ("[N]Laju HAIs IAD Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Laju HAIs IAD Per Ruang", rs.getBoolean("grafik_HAIs_laju_iad")});
+                                    }
+
+                                    if ("[N]Laju HAIs Plebitis Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Laju HAIs Plebitis Per Ruang", rs.getBoolean("grafik_HAIs_laju_pleb")});
+                                    }
+
+                                    if ("[N]Laju HAIs ISK Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Laju HAIs ISK Per Ruang", rs.getBoolean("grafik_HAIs_laju_isk")});
+                                    }
+
+                                    if ("[N]Laju HAIs ILO Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Laju HAIs ILO Per Ruang", rs.getBoolean("grafik_HAIs_laju_ilo")});
+                                    }
+
+                                    if ("[N]Laju HAIs HAP Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Laju HAIs HAP Per Ruang", rs.getBoolean("grafik_HAIs_laju_hap")});
+                                    }
+
+                                    if ("[N]Penerimaan Obat, Alkes & BHP Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[N]Penerimaan Obat, Alkes & BHP Per Bulan", rs.getBoolean("penerimaan_obat_perbulan")});
+                                    }
+
+                                    if ("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Indeks Surat", rs.getBoolean("surat_indeks")});
+                                    }
+
+                                    if ("[O]Map Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Map Surat", rs.getBoolean("surat_map")});
+                                    }
+
+                                    if ("[O]Almari Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Almari Surat", rs.getBoolean("surat_almari")});
+                                    }
+
+                                    if ("[O]Rak Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Rak Surat", rs.getBoolean("surat_rak")});
+                                    }
+
+                                    if ("[O]Ruang Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Ruang Surat", rs.getBoolean("surat_ruang")});
+                                    }
+
+                                    if ("[O]Klasifikasi Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Klasifikasi Surat", rs.getBoolean("surat_klasifikasi")});
+                                    }
+
+                                    if ("[O]Status Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Status Surat", rs.getBoolean("surat_status")});
+                                    }
+
+                                    if ("[O]Sifat Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Sifat Surat", rs.getBoolean("surat_sifat")});
+                                    }
+
+                                    if ("[O]Stts Balas Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Stts Balas Surat", rs.getBoolean("surat_balas")});
+                                    }
+
+                                    if ("[O]Surat Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Surat Masuk", rs.getBoolean("surat_masuk")});
+                                    }
+
+                                    if ("[O]Surat Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Surat Keluar", rs.getBoolean("surat_keluar")});
+                                    }
+
+                                    if ("[O]Surat Keterangan Sakit".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[O]Surat Keterangan Sakit", rs.getBoolean("surat_sakit")});
+                                    }
+
+                                    if ("[P]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Ruang Perpustakaan", rs.getBoolean("ruang_perpustakaan")});
+                                    }
+
+                                    if ("[P]Kategori Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Kategori Koleksi", rs.getBoolean("kategori_perpustakaan")});
+                                    }
+
+                                    if ("[P]Jenis Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Jenis Koleksi", rs.getBoolean("jenis_perpustakaan")});
+                                    }
+
+                                    if ("[P]Pengarang/Penulis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Pengarang/Penulis", rs.getBoolean("pengarang_perpustakaan")});
+                                    }
+
+                                    if ("[P]Penerbit Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Penerbit Koleksi", rs.getBoolean("penerbit_perpustakaan")});
+                                    }
+
+                                    if ("[P]Koleksi Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Koleksi Perpustakaan", rs.getBoolean("koleksi_perpustakaan")});
+                                    }
+
+                                    if ("[P]Inventaris Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Inventaris Perpustakaan", rs.getBoolean("inventaris_perpustakaan")});
+                                    }
+
+                                    if ("[P]Pengaturan Peminjaman".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Pengaturan Peminjaman", rs.getBoolean("set_peminjaman_perpustakaan")});
+                                    }
+
+                                    if ("[P]Denda Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Denda Perpustakaan", rs.getBoolean("denda_perpustakaan")});
+                                    }
+
+                                    if ("[P]Anggota Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Anggota Perpustakaan", rs.getBoolean("anggota_perpustakaan")});
+                                    }
+
+                                    if ("[P]Peminjaman Koleksi Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Peminjaman Koleksi Perpustakaan", rs.getBoolean("peminjaman_perpustakaan")});
+                                    }
+
+                                    if ("[P]Bayar Denda Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Bayar Denda Perpustakaan", rs.getBoolean("bayar_denda_perpustakaan")});
+                                    }
+
+                                    if ("[P]Data Koleksi Ebook".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[P]Data Koleksi Ebook", rs.getBoolean("ebook_perpustakaan")});
+                                    }
+
+                                    if ("[Q]Set P.J. Unit Penunjang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set P.J. Unit Penunjang", rs.getBoolean("setup_pjlab")});
+                                    }
+
+                                    if ("[Q]Set Oto Lokasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Oto Lokasi", rs.getBoolean("setup_otolokasi")});
+                                    }
+
+                                    if ("[Q]Set Kamar Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Kamar Inap", rs.getBoolean("setup_jam_kamin")});
+                                    }
+
+                                    if ("[Q]Set Embalase & Tuslah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Embalase & Tuslah", rs.getBoolean("setup_embalase")});
+                                    }
+
+                                    if ("[Q]Tracer Login".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Tracer Login", rs.getBoolean("tracer_login")});
+                                    }
+
+                                    if ("[Q]Display Antrian Registrasi & Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Display Antrian Registrasi & Poli", rs.getBoolean("display")});
+                                    }
+
+                                    if ("[Q]Set Harga Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat", rs.getBoolean("set_harga_obat")});
+                                    }
+
+                                    if ("[Q]Set Penggunaan Tarif".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Penggunaan Tarif", rs.getBoolean("set_penggunaan_tarif")});
+                                    }
+
+                                    if ("[Q]Set Oto Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Oto Ralan", rs.getBoolean("set_oto_ralan")});
+                                    }
+
+                                    if ("[Q]Biaya Harian Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Biaya Harian Kamar", rs.getBoolean("biaya_harian")});
+                                    }
+
+                                    if ("[Q]Biaya Masuk Sekali".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Biaya Masuk Sekali", rs.getBoolean("biaya_masuk_sekali")});
+                                    }
+
+                                    if ("[Q]Set RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set RM", rs.getBoolean("set_no_rm")});
+                                    }
+
+                                    if ("[Q]Set Harga Obat Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat Ralan", rs.getBoolean("set_harga_obat_ralan")});
+                                    }
+
+                                    if ("[Q]Set Harga Obat Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat Ranap", rs.getBoolean("set_harga_obat_ranap")});
+                                    }
+
+                                    if ("[Q]Set Billing".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Billing", rs.getBoolean("set_nota")});
+                                    }
+
+                                    if ("[Q]Closing Kasir".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Closing Kasir", rs.getBoolean("closing_kasir")});
+                                    }
+
+                                    if ("[Q]Set Keterlambatan Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Keterlambatan Presensi", rs.getBoolean("keterlambatan_presensi")});
+                                    }
+
+                                    if ("[Q]Set Harga Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Harga Kamar", rs.getBoolean("set_harga_kamar")});
+                                    }
+
+                                    if ("[Q]Set Input Parsial".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Set Input Parsial", rs.getBoolean("set_input_parsial")});
+                                    }
+
+                                    if ("[Q]Display Antrian Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Display Antrian Apotek", rs.getBoolean("display_apotek")});
+                                    }
+
+                                    if ("[Q]Password Asuransi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                        tabMode.addRow(new Object[]{false, "[Q]Password Asuransi", rs.getBoolean("password_asuransi")});
+                                    }
+                                }
+
+                            }
+
                         }
                     }
                     LCount.setText("" + tabMode.getRowCount());
-                    if (rs != null) {
-                        rs.close();
-                    }
-                    if (ps != null) {
-                        ps.close();
-                    }
                 }
-                
-            }   } catch (SQLException ex) {
+            } catch (SQLException ex) {
+                System.out.println("Error: " + Level.SEVERE + " " + ex);
+                Logger.getLogger(DlgUpdateUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+        } catch (Exception ex) {
+            System.out.println("Error: " + Level.SEVERE + " " + ex);
             Logger.getLogger(DlgUpdateUser.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (Exception e){
-            Logger.getLogger(DlgUpdateUser.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-        
-        
+
+    private void kategori() {
+        jml = 0;
+        for (i = 0; i < tbUser.getRowCount(); i++) {
+            if (tbUser.getValueAt(i, 0).toString().equals("true")) {
+                jml++;
+            }
+        }
+
+        pilih = null;
+        pilih = new boolean[jml];
+        akses = null;
+        akses = new boolean[jml];
+        menu = null;
+        menu = new String[jml];
+
+        jml = 0;
+        for (i = 0; i < tbUser.getRowCount(); i++) {
+            if (tbUser.getValueAt(i, 0).toString().equals("true")) {
+                pilih[jml] = true;
+                menu[jml] = tbUser.getValueAt(i, 1).toString();
+                akses[jml] = Boolean.parseBoolean(tbUser.getValueAt(i, 2).toString());
+                jml++;
+            }
+        }
+
+        Valid.tabelKosong(tabMode);
+
+        for (i = 0; i < jml; i++) {
+            tabMode.addRow(new Object[]{
+                pilih[i], menu[i], akses[i]
+            });
+        }
+
+        try {
+            ps = koneksi.prepareStatement("select * from user_akses where kategori=?");
+            try {
+                ps.setString(1, CmbAkses.getSelectedItem().toString());
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    if ("[A]Jadwal Praktek".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Jadwal Praktek", rs.getBoolean("jadwal_praktek")});
+                    }
+
+                    if ("[A]Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Registrasi", rs.getBoolean("registrasi")});
+                    }
+
+                    if ("[A]Tindakan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Tindakan Ralan", rs.getBoolean("tindakan_ralan")});
+                    }
+
+                    if ("[A]Kamar Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Kamar Inap", rs.getBoolean("kamar_inap")});
+                    }
+
+                    if ("[A]Tindakan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Tindakan Ranap", rs.getBoolean("tindakan_ranap")});
+                    }
+
+                    if ("[A]Operasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Operasi", rs.getBoolean("operasi")});
+                    }
+
+                    if ("[A]Rujukan Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Rujukan Keluar", rs.getBoolean("rujukan_keluar")});
+                    }
+
+                    if ("[A]Rujukan Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Rujukan Masuk", rs.getBoolean("rujukan_masuk")});
+                    }
+
+                    if ("[A]Beri Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Beri Obat, Alkes & BHP", rs.getBoolean("beri_obat")});
+                    }
+
+                    if ("[A]Resep Pulang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Resep Pulang", rs.getBoolean("resep_pulang")});
+                    }
+
+                    if ("[A]Diet Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Diet Pasien", rs.getBoolean("diet_pasien")});
+                    }
+
+                    if ("[A]Periksa Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Periksa Lab", rs.getBoolean("periksa_lab")});
+                    }
+
+                    if ("[A]Periksa Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Periksa Radiologi", rs.getBoolean("periksa_radiologi")});
+                    }
+
+                    if ("[A]Kasir Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Kasir Ralan", rs.getBoolean("kasir_ralan")});
+                    }
+
+                    if ("[A]Informasi Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Informasi Kamar", rs.getBoolean("informasi_kamar")});
+                    }
+
+                    if ("[A]No.Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]No.Resep", rs.getBoolean("resep_obat")});
+                    }
+
+                    if ("[A]Billing Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Billing Ralan", rs.getBoolean("billing_ralan")});
+                    }
+
+                    if ("[A]Billing Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]Billing Ranap", rs.getBoolean("billing_ranap")});
+                    }
+
+                    if ("[A]IGD".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]IGD", rs.getBoolean("igd")});
+                    }
+
+                    if ("[A]DPJP Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                        tabMode.addRow(new Object[]{false, "[A]DPJP Ranap", rs.getBoolean("dpjp_ranap")});
+
+                        if ("[O]Pengumuman E-Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[O]Pengumuman E-Pasien", rs.getBoolean("pengumuman_epasien")});
+                        }
+
+                        if ("[O]Surat Hamil".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[O]Surat Hamil", rs.getBoolean("surat_hamil")});
+                        }
+
+                        if ("[P]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[P]Ruang Perpustakaan", rs.getBoolean("ruang_perpustakaan")});
+                        }
+
+                        if ("[A]Edit Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Edit Registrasi", rs.getBoolean("edit_registrasi")});
+                        }
+
+                        if ("[A]Rujukan Poli Internal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Rujukan Poli Internal", rs.getBoolean("rujukan_poli_internal")});
+                        }
+
+                        if ("[A]Billing Parsial".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Billing Parsial", rs.getBoolean("billing_parsial")});
+                        }
+
+                        if ("[A]Akses Depo Obat/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Akses Depo Obat/BHP", rs.getBoolean("akses_depo_obat")});
+                        }
+
+                        if ("[A]Jadwal Operasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Jadwal Operasi", rs.getBoolean("booking_operasi")});
+                        }
+
+                        if ("[A]Booking Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Booking Registrasi", rs.getBoolean("booking_registrasi")});
+                        }
+
+                        if ("[A]Permintaan Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Permintaan Lab", rs.getBoolean("permintaan_lab")});
+                        }
+
+                        if ("[A]Permintaan Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Permintaan Radiologi", rs.getBoolean("permintaan_radiologi")});
+                        }
+
+                        if ("[A]Catatan Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Catatan Dokter", rs.getBoolean("catatan_perawatan")});
+                        }
+
+                        if ("[A]Asesmen Awal Rawat Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Asesmen Awal Rawat Inap", rs.getBoolean("pengkajian_askep")});
+                        }
+
+                        if ("[A]Skrining Rawat Jalan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Skrining Rawat Jalan", rs.getBoolean("sekrining_rawat_jalan")});
+                        }
+
+                        if ("[A]Perkiraan Biaya Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Perkiraan Biaya Ranap", rs.getBoolean("perkiraan_biaya_ranap")});
+                        }
+
+                        if ("[A]Permintaan Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[A]Permintaan Diet", rs.getBoolean("permintaan_diet")});
+                        }
+
+                        if ("[B]Barcode Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[B]Barcode Ralan", rs.getBoolean("barcoderalan")});
+                        }
+
+                        if ("[B]Barcode Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[B]Barcode Ranap", rs.getBoolean("barcoderanap")});
+                        }
+
+                        if ("[C]Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[C]Dokter", rs.getBoolean("dokter")});
+                        }
+
+                        if ("[C]Petugas".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[C]Petugas", rs.getBoolean("petugas")});
+                        }
+
+                        if ("[C]Barcode Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[C]Barcode Presensi", rs.getBoolean("barcode")});
+                        }
+
+                        if ("[C]Presensi Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[C]Presensi Harian", rs.getBoolean("presensi_harian")});
+                        }
+
+                        if ("[C]Presensi Bulanan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[C]Presensi Bulanan", rs.getBoolean("presensi_bulanan")});
+                        }
+
+                        if ("[C]Pegawai Admin".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[C]Pegawai Admin", rs.getBoolean("pegawai_admin")});
+                        }
+
+                        if ("[C]Pegawai User".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[C]Pegawai User", rs.getBoolean("pegawai_user")});
+                        }
+
+                        if ("[C]SMS Gateway".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[C]SMS Gateway", rs.getBoolean("sms")});
+                        }
+
+                        if ("[C]Sidik Jari".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                            tabMode.addRow(new Object[]{false, "[C]Sidik Jari", rs.getBoolean("sidikjari")});
+
+                            if ("[Q]Piutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Piutang Toko", rs.getBoolean("toko_piutang")});
+                            }
+
+                            if ("[Q]Retur Ke Suplier Toko".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Retur Ke Suplier Toko", rs.getBoolean("toko_retur_beli")});
+                            }
+
+                            if ("[Q]Pendapatan Harian Toko".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Pendapatan Harian Toko", rs.getBoolean("toko_pendapatan_harian")});
+                            }
+
+                            if ("[Q]Bayar Piutang Toko".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Bayar Piutang Toko", rs.getBoolean("toko_bayar_piutang")});
+                            }
+
+                            if ("[Q]Piutang Harian Toko".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Piutang Harian Toko", rs.getBoolean("toko_piutang_harian")});
+                            }
+
+                            if ("[Q]Penjualan Harian Toko".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Penjualan Harian Toko", rs.getBoolean("toko_penjualan_harian")});
+                            }
+
+                            if ("[R]Set P.J. Unit Penunjang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[R]Set P.J. Unit Penunjang", rs.getBoolean("setup_pjlab")});
+                            }
+
+                            if ("[C]Jam Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Jam Presensi", rs.getBoolean("jam_masuk")});
+                            }
+
+                            if ("[C]Jadwal Pegawai".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Jadwal Pegawai", rs.getBoolean("jadwal_pegawai")});
+                            }
+
+                            if ("[C]Temporary Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Temporary Presensi", rs.getBoolean("temporary_presensi")});
+                            }
+
+                            if ("[C]Master Berkas Pegawai".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Master Berkas Pegawai", rs.getBoolean("master_berkas_pegawai")});
+                            }
+
+                            if ("[C]Berkas Kepegawaian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Berkas Kepegawaian", rs.getBoolean("berkas_kepegawaian")});
+                            }
+
+                            if ("[C]Riwayat Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Riwayat Jabatan", rs.getBoolean("riwayat_jabatan")});
+                            }
+
+                            if ("[C]Riwayat Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Riwayat Pendidikan", rs.getBoolean("riwayat_pendidikan")});
+                            }
+
+                            if ("[C]Riwayat Naik Gaji".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Riwayat Naik Gaji", rs.getBoolean("riwayat_naik_gaji")});
+                            }
+
+                            if ("[C]Kegiatan Ilmiah & Pelatihan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Kegiatan Ilmiah & Pelatihan", rs.getBoolean("kegiatan_ilmiah")});
+                            }
+
+                            if ("[C]Riwayat Penghargaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Riwayat Penghargaan", rs.getBoolean("riwayat_penghargaan")});
+                            }
+
+                            if ("[C]Riwayat Penelitian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Riwayat Penelitian", rs.getBoolean("riwayat_penelitian")});
+                            }
+
+                            if ("[C]Jenis Cidera K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Jenis Cidera K3", rs.getBoolean("jenis_cidera_k3rs")});
+                            }
+
+                            if ("[C]Penyebab Kecelakaan K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Penyebab Kecelakaan K3", rs.getBoolean("penyebab_k3rs")});
+                            }
+
+                            if ("[C]Jenis Luka K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Jenis Luka K3", rs.getBoolean("jenis_luka_k3rs")});
+                            }
+
+                            if ("[C]Lokasi Kejadian K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Lokasi Kejadian K3", rs.getBoolean("lokasi_kejadian_k3rs")});
+                            }
+
+                            if ("[C]Dampak Cidera K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Dampak Cidera K3", rs.getBoolean("dampak_cidera_k3rs")});
+                            }
+
+                            if ("[C]Jenis Pekerjaan K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Jenis Pekerjaan K3", rs.getBoolean("jenis_pekerjaan_k3rs")});
+                            }
+
+                            if ("[C]Bagian Tubuh K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Bagian Tubuh K3", rs.getBoolean("bagian_tubuh_k3rs")});
+                            }
+
+                            if ("[C]Peristiwa K3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Peristiwa K3", rs.getBoolean("peristiwa_k3rs")});
+                            }
+
+                            if ("[C]Jenis Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Jenis Cidera K3 Per Tahun", rs.getBoolean("jenis_cidera_k3rstahun")});
+                            }
+
+                            if ("[C]Penyebab Kecelakaan K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Penyebab Kecelakaan K3 Per Tahun", rs.getBoolean("penyebab_k3rstahun")});
+                            }
+
+                            if ("[C]Jenis Luka K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Jenis Luka K3 Per Tahun", rs.getBoolean("jenis_luka_k3rstahun")});
+                            }
+
+                            if ("[C]Lokasi Kejadian K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Lokasi Kejadian K3 Per Tahun", rs.getBoolean("lokasi_kejadian_k3rstahun")});
+                            }
+
+                            if ("[C]Dampak Cidera K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Dampak Cidera K3 Per Tahun", rs.getBoolean("dampak_cidera_k3rstahun")});
+                            }
+
+                            if ("[C]Jenis Pekerjaan K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Jenis Pekerjaan K3 Per Tahun", rs.getBoolean("jenis_pekerjaan_k3rstahun")});
+                            }
+
+                            if ("[C]Bagian Tubuh K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[C]Bagian Tubuh K3 Per Tahun", rs.getBoolean("bagian_tubuh_k3rstahun")});
+                            }
+
+                            if ("[D]Suplier Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Suplier Obat/Alkes/BHP", rs.getBoolean("suplier")});
+                            }
+
+                            if ("[D]Satuan Barang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Satuan Barang", rs.getBoolean("satuan_barang")});
+                            }
+
+                            if ("[D]Konversi Satuan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Konversi Satuan", rs.getBoolean("konversi_satuan")});
+                            }
+
+                            if ("[D]Jenis Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Jenis Obat/Alkes/BHP", rs.getBoolean("jenis_barang")});
+                            }
+
+                            if ("[D]Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Obat, Alkes & BHP", rs.getBoolean("obat")});
+                            }
+
+                            if ("[D]Stok Opname Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Stok Opname Apotek", rs.getBoolean("stok_opname_obat")});
+                            }
+
+                            if ("[D]Stok Obat Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Stok Obat Pasien", rs.getBoolean("stok_obat_pasien")});
+                            }
+
+                            if ("[D]Pengadaan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Pengadaan Obat, Alkes & BHP", rs.getBoolean("pengadaan_obat")});
+                            }
+
+                            if ("[D]Penerimaan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Penerimaan Obat, Alkes & BHP", rs.getBoolean("pemesanan_obat")});
+                            }
+
+                            if ("[D]Penjualan Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Penjualan Obat, Alkes & BHP", rs.getBoolean("penjualan_obat")});
+                            }
+
+                            if ("[D]Piutang Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Piutang Obat, Alkes & BHP", rs.getBoolean("piutang_obat")});
+                            }
+
+                            if ("[D]Retur Ke Suplier".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Retur Ke Suplier", rs.getBoolean("retur_ke_suplier")});
+                            }
+
+                            if ("[D]Retur Dari Pembeli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Retur Dari Pembeli", rs.getBoolean("retur_dari_pembeli")});
+                            }
+
+                            if ("[D]Retur Obat, Alkes & BHP Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Retur Obat, Alkes & BHP Ranap", rs.getBoolean("retur_obat_ranap")});
+                            }
+
+                            if ("[D]Retur Piutang Pembeli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Retur Piutang Pembeli", rs.getBoolean("retur_piutang_pasien")});
+                            }
+
+                            if ("[D]Keuntungan Penjualan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Keuntungan Penjualan", rs.getBoolean("keuntungan_penjualan")});
+                            }
+
+                            if ("[D]Keuntungan Beri Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Keuntungan Beri Obat, Alkes & BHP", rs.getBoolean("keuntungan_beri_obat")});
+                            }
+
+                            if ("[D]Sirkulasi Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP", rs.getBoolean("sirkulasi_obat")});
+                            }
+
+                            if ("[D]Mutasi Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Mutasi Obat/Alkes/BHP", rs.getBoolean("mutasi_barang")});
+                            }
+
+                            if ("[D]Darurat Stok".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Darurat Stok", rs.getBoolean("darurat_stok")});
+                            }
+
+                            if ("[D]Sirkulasi Obat, Alkes & BHP 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 2", rs.getBoolean("sirkulasi_obat2")});
+                            }
+
+                            if ("[D]Industri Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Industri Farmasi", rs.getBoolean("industrifarmasi")});
+                            }
+
+                            if ("[D]Pengambilan BHP UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Pengambilan BHP UTD", rs.getBoolean("pengambilan_utd")});
+                            }
+
+                            if ("[D]Keuntungan Beri Obat, Alkes & BHP 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Keuntungan Beri Obat, Alkes & BHP 2", rs.getBoolean("keuntungan_beri_obat_nonpiutang")});
+                            }
+
+                            if ("[D]Riwayat Obat, Alkes & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Riwayat Obat, Alkes & BHP", rs.getBoolean("riwayat_obat_alkes_bhp")});
+                            }
+
+                            if ("[D]Resep Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Resep Dokter", rs.getBoolean("resep_dokter")});
+                            }
+
+                            if ("[D]Kategori Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Kategori Obat/Alkes/BHP", rs.getBoolean("kategori_barang")});
+                            }
+
+                            if ("[D]Golongan Obat/Alkes/BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Golongan Obat/Alkes/BHP", rs.getBoolean("golongan_barang")});
+                            }
+
+                            if ("[D]Obat/Alkes/BHP Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Obat/Alkes/BHP Per Tanggal", rs.getBoolean("pemberian_obat_pertanggal")});
+                            }
+
+                            if ("[D]Penjualan Bebas Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Penjualan Bebas Per Tanggal", rs.getBoolean("penjualan_obat_pertanggal")});
+                            }
+
+                            if ("[D]Permintaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Permintaan Obat & BHP", rs.getBoolean("permintaan_medis")});
+                            }
+
+                            if ("[D]Rekap Permintaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Rekap Permintaan Obat & BHP", rs.getBoolean("rekap_permintaan_medis")});
+                            }
+
+                            if ("[D]Surat Pemesanan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Surat Pemesanan Obat & BHP", rs.getBoolean("surat_pemesanan_medis")});
+                            }
+
+                            if ("[D]Stok Keluar Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Stok Keluar Medis", rs.getBoolean("pengeluaran_stok_apotek")});
+                            }
+
+                            if ("[D]Metode Racik".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Metode Racik", rs.getBoolean("metode_racik")});
+                            }
+
+                            if ("[D]Pengguna Obat/Alkes/BHP Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Pengguna Obat/Alkes/BHP Resep", rs.getBoolean("pengguna_obat_resep")});
+                            }
+
+                            if ("[D]Rekap Penerimaan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Rekap Penerimaan Obat & BHP", rs.getBoolean("rekap_pemesanan")});
+                            }
+
+                            if ("[D]Riwayat Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Riwayat Batch", rs.getBoolean("riwayat_data_batch")});
+                            }
+
+                            if ("[D]Kegiatan Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Kegiatan Farmasi", rs.getBoolean("kegiatan_farmasi")});
+                            }
+
+                            if ("[D]Sirkulasi Obat, Alkes & BHP 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 3", rs.getBoolean("sirkulasi_obat3")});
+                            }
+
+                            if ("[D]PPN Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]PPN Obat", rs.getBoolean("ppn_obat")});
+                            }
+
+                            if ("[D]Data Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Data Batch", rs.getBoolean("data_batch")});
+                            }
+
+                            if ("[D]Kadaluarsa Batch".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Kadaluarsa Batch", rs.getBoolean("kadaluarsa_batch")});
+                            }
+
+                            if ("[D]Sisa Stok".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Sisa Stok", rs.getBoolean("sisa_stok")});
+                            }
+
+                            if ("[D]Obat Per Resep".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Obat Per Resep", rs.getBoolean("obat_per_resep")});
+                            }
+
+                            if ("[D]Pengajuan Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Pengajuan Obat & BHP", rs.getBoolean("pengajuan_barang_medis")});
+                            }
+
+                            if ("[D]10 Obat Terbanyak Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]10 Obat Terbanyak Poli", rs.getBoolean("10_obat_terbanyak_poli")});
+                            }
+
+                            if ("[D]Rekap Obat Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Rekap Obat Per Poli", rs.getBoolean("rekap_obat_poli")});
+                            }
+
+                            if ("[D]Rekap Obat Per Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Rekap Obat Per Pasien", rs.getBoolean("rekap_obat_pasien")});
+                            }
+
+                            if ("[D]Hibah Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Hibah Obat & BHP", rs.getBoolean("hibah_obat_bhp")});
+                            }
+
+                            if ("[D]Sirkulasi Obat, Alkes & BHP 4".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 4", rs.getBoolean("sirkulasi_obat4")});
+                            }
+
+                            if ("[D]Sirkulasi Obat, Alkes & BHP 5".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[D]Sirkulasi Obat, Alkes & BHP 5", rs.getBoolean("sirkulasi_obat5")});
+                            }
+
+                            if ("[E]Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Barang Non Medis", rs.getBoolean("ipsrs_barang")});
+                            }
+
+                            if ("[E]Pengadaan Barang Nonmedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Pengadaan Barang Nonmedis", rs.getBoolean("ipsrs_pengadaan_barang")});
+                            }
+
+                            if ("[E]Stok Keluar Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Stok Keluar Non Medis", rs.getBoolean("ipsrs_stok_keluar")});
+                            }
+
+                            if ("[E]Rekap Pengadaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Rekap Pengadaan Non Medis", rs.getBoolean("ipsrs_rekap_pengadaan")});
+                            }
+
+                            if ("[E]Rekap Stok Keluar Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Rekap Stok Keluar Non Medis", rs.getBoolean("ipsrs_rekap_stok_keluar")});
+                            }
+
+                            if ("[E]Biaya Pengadaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Biaya Pengadaan Non Medis", rs.getBoolean("ipsrs_pengeluaran_harian")});
+                            }
+
+                            if ("[E]Jenis Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Jenis Non Medis", rs.getBoolean("ipsrs_jenis_barang")});
+                            }
+
+                            if ("[E]Pengambilan UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Pengambilan UTD", rs.getBoolean("pengambilan_penunjang_utd")});
+                            }
+
+                            if ("[E]Suplier Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Suplier Non Medis", rs.getBoolean("suplier_penunjang")});
+                            }
+
+                            if ("[E]Pengadaan Non Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Pengadaan Non Medis Per Tanggal", rs.getBoolean("ipsrs_pengadaan_pertanggal")});
+                            }
+
+                            if ("[E]Stok Keluar Non Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Stok Keluar Non Medis Per Tanggal", rs.getBoolean("ipsrs_stokkeluar_pertanggal")});
+                            }
+
+                            if ("[E]Permintaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Permintaan Barang Non Medis", rs.getBoolean("permintaan_non_medis")});
+                            }
+
+                            if ("[E]Rekap Permintaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Rekap Permintaan Barang Non Medis", rs.getBoolean("rekap_permintaan_non_medis")});
+                            }
+
+                            if ("[E]Surat Pemesanan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Surat Pemesanan Barang Non Medis", rs.getBoolean("surat_pemesanan_non_medis")});
+                            }
+
+                            if ("[E]Penerimaan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Penerimaan Barang Non Medis", rs.getBoolean("penerimaan_non_medis")});
+                            }
+
+                            if ("[E]Rekap Penerimaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Rekap Penerimaan Non Medis", rs.getBoolean("rekap_pemesanan_non_medis")});
+                            }
+
+                            if ("[E]Stok Opname Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Stok Opname Non Medis", rs.getBoolean("stok_opname_logistik")});
+                            }
+
+                            if ("[E]Sirkulasi Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Sirkulasi Non Medis", rs.getBoolean("sirkulasi_non_medis")});
+                            }
+
+                            if ("[E]Pengajuan Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Pengajuan Barang Non Medis", rs.getBoolean("pengajuan_barang_nonmedis")});
+                            }
+
+                            if ("[E]Sirkulasi Non Medis 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[E]Sirkulasi Non Medis 2", rs.getBoolean("sirkulasi_non_medis")});
+                            }
+
+                            if ("[F]Jenis Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Jenis Inventaris", rs.getBoolean("inventaris_jenis")});
+                            }
+
+                            if ("[F]Kategori Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Kategori Inventaris", rs.getBoolean("inventaris_kategori")});
+                            }
+
+                            if ("[F]Merk Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Merk Inventaris", rs.getBoolean("inventaris_merk")});
+                            }
+
+                            if ("[F]Ruang Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Ruang Inventaris", rs.getBoolean("inventaris_ruang")});
+                            }
+
+                            if ("[F]Produsen Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Produsen Inventaris", rs.getBoolean("inventaris_produsen")});
+                            }
+
+                            if ("[F]Koleksi Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Koleksi Inventaris", rs.getBoolean("inventaris_koleksi")});
+                            }
+
+                            if ("[F]Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Inventaris", rs.getBoolean("inventaris_inventaris")});
+                            }
+
+                            if ("[F]Sirkulasi Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Sirkulasi Inventaris", rs.getBoolean("inventaris_sirkulasi")});
+                            }
+
+                            if ("[F]Barang CSSD".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Barang CSSD", rs.getBoolean("barang_cssd")});
+                            }
+
+                            if ("[F]Pemakaian Air PDAM".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Pemakaian Air PDAM", rs.getBoolean("pemakaian_air_pdam")});
+                            }
+
+                            if ("[F]Limbah Padat B3 Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Limbah Padat B3 Medis", rs.getBoolean("limbah_b3_medis")});
+                            }
+
+                            if ("[F]Limbah Padat Domestik".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Limbah Padat Domestik", rs.getBoolean("limbah_domestik")});
+                            }
+
+                            if ("[F]Mutu Air Limbah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Mutu Air Limbah", rs.getBoolean("mutu_air_limbah")});
+                            }
+
+                            if ("[F]Pest Control".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Pest Control", rs.getBoolean("pest_control")});
+                            }
+
+                            if ("[F]Pengajuan Aset/Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Pengajuan Aset/Inventaris", rs.getBoolean("pengajuan_asetinventaris")});
+                            }
+
+                            if ("[F]Rekap Pengajuan Aset Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Rekap Pengajuan Aset Departemen", rs.getBoolean("rekap_pengajuan_aset_departemen")});
+                            }
+
+                            if ("[F]Permintaan Perbaikan Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Permintaan Perbaikan Inventaris", rs.getBoolean("permintaan_perbaikan_inventaris")});
+                            }
+
+                            if ("[F]Asal Hibah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[F]Asal Hibah", rs.getBoolean("asal_hibah")});
+                            }
+
+                            if ("[G]Jenis Parkir".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[G]Jenis Parkir", rs.getBoolean("parkir_jenis")});
+                            }
+
+                            if ("[G]Parkir Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[G]Parkir Masuk", rs.getBoolean("parkir_in")});
+                            }
+
+                            if ("[G]Parkir Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[G]Parkir Keluar", rs.getBoolean("parkir_out")});
+                            }
+
+                            if ("[G]Rekap Parkir Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[G]Rekap Parkir Harian", rs.getBoolean("parkir_rekap_harian")});
+                            }
+
+                            if ("[G]Rekap Parkir Bulanan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[G]Rekap Parkir Bulanan", rs.getBoolean("parkir_rekap_bulanan")});
+                            }
+
+                            if ("[G]Barcode Parkir".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[G]Barcode Parkir", rs.getBoolean("parkir_barcode")});
+                            }
+
+                            if ("[H]Harian Dokter Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Harian Dokter Poli", rs.getBoolean("harian_tindakan_poli")});
+                            }
+
+                            if ("[H]Obat Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Obat Per Poli", rs.getBoolean("obat_per_poli")});
+                            }
+
+                            if ("[H]Obat Per Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Obat Per Kamar", rs.getBoolean("obat_per_kamar")});
+                            }
+
+                            if ("[H]Obat Per Dokter Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Obat Per Dokter Ralan", rs.getBoolean("obat_per_dokter_ralan")});
+                            }
+
+                            if ("[H]Obat Per Dokter Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Obat Per Dokter Ranap", rs.getBoolean("obat_per_dokter_ranap")});
+                            }
+
+                            if ("[H]Harian Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Harian Dokter", rs.getBoolean("harian_dokter")});
+                            }
+
+                            if ("[H]Bulanan Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Bulanan Dokter", rs.getBoolean("bulanan_dokter")});
+                            }
+
+                            if ("[H]Harian Paramedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Harian Paramedis", rs.getBoolean("harian_paramedis")});
+                            }
+
+                            if ("[H]Bulanan Paramedis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Bulanan Paramedis", rs.getBoolean("bulanan_paramedis")});
+                            }
+
+                            if ("[H]Pembayaran Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Pembayaran Ralan", rs.getBoolean("pembayaran_ralan")});
+                            }
+
+                            if ("[H]Pembayaran Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Pembayaran Ranap", rs.getBoolean("pembayaran_ranap")});
+                            }
+
+                            if ("[H]Rekap Pembayaran Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Rekap Pembayaran Ralan", rs.getBoolean("rekap_pembayaran_ralan")});
+                            }
+
+                            if ("[H]Rekap Pembayaran Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Rekap Pembayaran Ranap", rs.getBoolean("rekap_pembayaran_ranap")});
+                            }
+
+                            if ("[H]Tagihan Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Tagihan Masuk", rs.getBoolean("tagihan_masuk")});
+                            }
+
+                            if ("[H]Tambahan Biaya".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Tambahan Biaya", rs.getBoolean("tambahan_biaya")});
+                            }
+
+                            if ("[H]Potongan Biaya".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Potongan Biaya", rs.getBoolean("potongan_biaya")});
+                            }
+
+                            if ("[H]Detail JM Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Detail JM Dokter", rs.getBoolean("jm_ranap_dokter")});
+                            }
+
+                            if ("[H]Harian Dokter Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Harian Dokter Ralan", rs.getBoolean("harian_tindakan_dokter")});
+                            }
+
+                            if ("[H]Fee Visit Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Fee Visit Dokter", rs.getBoolean("fee_visit_dokter")});
+                            }
+
+                            if ("[H]Fee Bacaan EKG".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Fee Bacaan EKG", rs.getBoolean("fee_bacaan_ekg")});
+                            }
+
+                            if ("[H]Fee Rujukan Rontgen".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Fee Rujukan Rontgen", rs.getBoolean("fee_rujukan_rontgen")});
+                            }
+
+                            if ("[H]Fee Rujukan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Fee Rujukan Ranap", rs.getBoolean("fee_rujukan_ranap")});
+                            }
+
+                            if ("[H]Fee Periksa Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Fee Periksa Ralan", rs.getBoolean("fee_ralan")});
+                            }
+
+                            if ("[H]Obat Per Dokter Peresep".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Obat Per Dokter Peresep", rs.getBoolean("obat_per_dokter_peresep")});
+                            }
+
+                            if ("[H]Rekap Per Shift".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Rekap Per Shift", rs.getBoolean("rekap_per_shift")});
+                            }
+
+                            if ("[H]Obat Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Obat Per Cara Bayar", rs.getBoolean("obat_per_cara_bayar")});
+                            }
+
+                            if ("[H]Payment Point".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Payment Point", rs.getBoolean("payment_point")});
+                            }
+
+                            if ("[H]Harian J.S.".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Harian J.S.", rs.getBoolean("harian_js")});
+                            }
+
+                            if ("[H]Bulanan J.S.".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Bulanan J.S.", rs.getBoolean("bulanan_js")});
+                            }
+
+                            if ("[H]Harian BHP Medis/Paket Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Harian BHP Medis/Paket Obat", rs.getBoolean("harian_paket_bhp")});
+                            }
+
+                            if ("[H]Bulanan BHP Medis/Paket Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Bulanan BHP Medis/Paket Obat", rs.getBoolean("bulanan_paket_bhp")});
+                            }
+
+                            if ("[H]Harian Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Harian Kamar", rs.getBoolean("harian_kamar")});
+                            }
+
+                            if ("[H]Harian KSO".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Harian KSO", rs.getBoolean("harian_kso")});
+                            }
+
+                            if ("[H]Bulanan KSO".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Bulanan KSO", rs.getBoolean("bulanan_kso")});
+                            }
+
+                            if ("[H]Harian Menejemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Harian Menejemen", rs.getBoolean("harian_menejemen")});
+                            }
+
+                            if ("[H]Bulanan Menejemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Bulanan Menejemen", rs.getBoolean("bulanan_menejemen")});
+                            }
+
+                            if ("[H]Piutang Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Piutang Ralan", rs.getBoolean("piutang_ralan")});
+                            }
+
+                            if ("[H]Piutang Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Piutang Ranap", rs.getBoolean("piutang_ranap")});
+                            }
+
+                            if ("[H]Detail Tindakan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Detail Tindakan", rs.getBoolean("detail_tindakan")});
+                            }
+
+                            if ("[H]Rekap Poli Anak".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Rekap Poli Anak", rs.getBoolean("rekap_poli_anak")});
+                            }
+
+                            if ("[H]Pembayaran Per Unit".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Unit", rs.getBoolean("pembayaran_per_unit")});
+                            }
+
+                            if ("[H]Rekap Pembayaran Per Unit".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Rekap Pembayaran Per Unit", rs.getBoolean("rekap_pembayaran_per_unit")});
+                            }
+
+                            if ("[H]Detail VK/OK".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Detail VK/OK", rs.getBoolean("detail_tindakan_okvk")});
+                            }
+
+                            if ("[H]Detail JM Dokter 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Detail JM Dokter 2", rs.getBoolean("detailjmdokter2")});
+                            }
+
+                            if ("[H]Pembayaran Per Akun Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Akun Bayar", rs.getBoolean("pembayaran_akun_bayar")});
+                            }
+
+                            if ("[H]Piutang Per Akun Piutang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Piutang Per Akun Piutang", rs.getBoolean("piutang_akun_piutang")});
+                            }
+
+                            if ("[H]Payment Point 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Payment Point 2", rs.getBoolean("payment_point2")});
+                            }
+
+                            if ("[H]Pembayaran Per Akun Bayar 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Akun Bayar 2", rs.getBoolean("pembayaran_akun_bayar2")});
+                            }
+
+                            if ("[H]Hapus Nota Salah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Hapus Nota Salah", rs.getBoolean("hapus_nota_salah")});
+                            }
+
+                            if ("[H]Pembayaran Per Akun Bayar 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[H]Pembayaran Per Akun Bayar 3", rs.getBoolean("pembayaran_akun_bayar3")});
+                            }
+
+                            if ("[I]ICD 10".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]ICD 10", rs.getBoolean("penyakit")});
+                            }
+
+                            if ("[I]Obat Penyakit".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Obat Penyakit", rs.getBoolean("obat_penyakit")});
+                            }
+
+                            if ("[I]Frekuensi Penyakit Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Frekuensi Penyakit Ralan", rs.getBoolean("penyakit_ralan")});
+                            }
+
+                            if ("[I]Frekuensi Penyakit Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Frekuensi Penyakit Ranap", rs.getBoolean("penyakit_ranap")});
+                            }
+
+                            if ("[I]Penyakit AFP & PD3I".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Penyakit AFP & PD3I", rs.getBoolean("penyakit_pd3i")});
+                            }
+
+                            if ("[I]Surveilans AFP & PD3I".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Surveilans AFP & PD3I", rs.getBoolean("surveilans_pd3i")});
+                            }
+
+                            if ("[I]Surveilans Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Surveilans Ralan", rs.getBoolean("surveilans_ralan")});
+                            }
+
+                            if ("[I]Surveilans Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Surveilans Ranap", rs.getBoolean("surveilans_ranap")});
+                            }
+
+                            if ("[I]Pny.Tdk Menular Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Pny.Tdk Menular Ranap", rs.getBoolean("pny_takmenular_ranap")});
+                            }
+
+                            if ("[I]Pny.Tdk Menular Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Pny.Tdk Menular Ralan", rs.getBoolean("pny_takmenular_ralan")});
+                            }
+
+                            if ("[I]Kunjungan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Kunjungan Ralan", rs.getBoolean("kunjungan_ralan")});
+                            }
+
+                            if ("[I]RL 3.2 Rawat Darurat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 3.2 Rawat Darurat", rs.getBoolean("rl32")});
+                            }
+
+                            if ("[I]RL 3.3 Gigi dan Mulut".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 3.3 Gigi dan Mulut", rs.getBoolean("rl33")});
+                            }
+
+                            if ("[I]RL 3.7 Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 3.7 Radiologi", rs.getBoolean("rl37")});
+                            }
+
+                            if ("[I]RL 3.8 Laboratorium".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 3.8 Laboratorium", rs.getBoolean("rl38")});
+                            }
+
+                            if ("[I]RL 3.4 Kebidanan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 3.4 Kebidanan", rs.getBoolean("rl34")});
+                            }
+
+                            if ("[I]RL 3.6 Pembedahan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 3.6 Pembedahan", rs.getBoolean("rl36")});
+                            }
+
+                            if ("[I]Kunjungan Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Kunjungan Ranap", rs.getBoolean("kunjungan_ranap")});
+                            }
+
+                            if ("[I]ICD 9".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]ICD 9", rs.getBoolean("icd9")});
+                            }
+
+                            if ("[I]Sensus Harian Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Sensus Harian Poli", rs.getBoolean("sensus_harian_poli")});
+                            }
+
+                            if ("[I]RL 4A Sebab Morbiditas Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 4A Sebab Morbiditas Ranap", rs.getBoolean("rl4a")});
+                            }
+
+                            if ("[I]RL 4B Sebab Morbiditas Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 4B Sebab Morbiditas Ralan", rs.getBoolean("rl4b")});
+                            }
+
+                            if ("[I]RL 4A Morbiditas Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 4A Morbiditas Ralan", rs.getBoolean("rl4asebab")});
+                            }
+
+                            if ("[I]RL 4B Morbiditas Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]RL 4B Morbiditas Ralan", rs.getBoolean("rl4bsebab")});
+                            }
+
+                            if ("[I]Lama Pelayanan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Ralan", rs.getBoolean("lama_pelayanan_ralan")});
+                            }
+
+                            if ("[I]Harian HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Harian HAIs", rs.getBoolean("harian_HAIs")});
+                            }
+
+                            if ("[I]Bulanan HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Bulanan HAIs", rs.getBoolean("bulanan_HAIs")});
+                            }
+
+                            if ("[I]Hitung BOR".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Hitung BOR", rs.getBoolean("hitung_bor")});
+                            }
+
+                            if ("[I]Lama Pelayanan Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Apotek", rs.getBoolean("lama_pelayanan_apotek")});
+                            }
+
+                            if ("[I]Hitung ALOS".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Hitung ALOS", rs.getBoolean("hitung_alos")});
+                            }
+
+                            if ("[I]Pny Menular Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Pny Menular Ranap", rs.getBoolean("penyakit_menular_ranap")});
+                            }
+
+                            if ("[I]Pny Menular Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Pny Menular Ralan", rs.getBoolean("penyakit_menular_ralan")});
+                            }
+
+                            if ("[I]Pembatalan Periksa Per Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Pembatalan Periksa Per Dokter", rs.getBoolean("pembatalan_periksa_dokter")});
+                            }
+
+                            if ("[I]Cek Entry Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Cek Entry Ralan", rs.getBoolean("cek_entry_ralan")});
+                            }
+
+                            if ("[I]Sensus Harian Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Sensus Harian Ralan", rs.getBoolean("sensus_harian_ralan")});
+                            }
+
+                            if ("[I]Insiden Keselamatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Insiden Keselamatan", rs.getBoolean("insiden_keselamatan")});
+                            }
+
+                            if ("[I]Ranap Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Ranap Per Ruang", rs.getBoolean("ranap_per_ruang")});
+                            }
+
+                            if ("[I]Penyakit Ranap Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Penyakit Ranap Per Cara Bayar", rs.getBoolean("penyakit_ranap_cara_bayar")});
+                            }
+
+                            if ("[I]Anggota TNI Dirawat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Anggota TNI Dirawat", rs.getBoolean("anggota_militer_dirawat")});
+                            }
+
+                            if ("[I]Lama Pelayanan Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Radiologi", rs.getBoolean("lama_pelayanan_radiologi")});
+                            }
+
+                            if ("[I]Lama Pelayanan Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Lama Pelayanan Lab", rs.getBoolean("lama_pelayanan_lab")});
+                            }
+
+                            if ("[I]Rekap Lab Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Rekap Lab Per Tahun", rs.getBoolean("rekap_lab_pertahun")});
+                            }
+
+                            if ("[I]Perujuk Lab Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Perujuk Lab Per Tahun", rs.getBoolean("perujuk_lab_pertahun")});
+                            }
+
+                            if ("[I]Rekap Radiologi Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Rekap Radiologi Per Tahun", rs.getBoolean("rekap_radiologi_pertahun")});
+                            }
+
+                            if ("[I]Perujuk Radiologi Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Perujuk Radiologi Per Tahun", rs.getBoolean("perujuk_radiologi_pertahun")});
+                            }
+
+                            if ("[I]Rekap Bulanan Porsi Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Rekap Bulanan Porsi Diet", rs.getBoolean("jumlah_porsi_diet")});
+                            }
+
+                            if ("[I]Rekap Bulanan Macam Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Rekap Bulanan Macam Diet", rs.getBoolean("jumlah_macam_diet")});
+                            }
+
+                            if ("[I]Kunjungan Lab Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Kunjungan Lab Ralan", rs.getBoolean("kunjungan_permintaan_lab")});
+                            }
+
+                            if ("[I]Kunjungan Lab Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Kunjungan Lab Ranap", rs.getBoolean("kunjungan_permintaan_lab2")});
+                            }
+
+                            if ("[I]Kunjungan Radiologi Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Kunjungan Radiologi Ralan", rs.getBoolean("kunjungan_permintaan_radiologi")});
+                            }
+
+                            if ("[I]Kunjungan Radiologi Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Kunjungan Radiologi Ranap", rs.getBoolean("kunjungan_permintaan_radiologi2")});
+                            }
+
+                            if ("[I]Data TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Data TB", rs.getBoolean("kemenkes_sitt")});
+                            }
+
+                            if ("[I]Rekap Mutasi Berkas".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Rekap Mutasi Berkas", rs.getBoolean("rekap_mutasi_berkas")});
+                            }
+
+                            if ("[I]Skrining Pernapasan Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Skrining Pernapasan Ralan Per Tahun", rs.getBoolean("skrining_ralan_pernapasan_pertahun")});
+                            }
+
+                            if ("[I]Masuk Ruang Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Masuk Ruang Per Tahun", rs.getBoolean("kunjungan_bangsal_pertahun")});
+                            }
+
+                            if ("[I]KIP Pasien Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]KIP Pasien Ranap", rs.getBoolean("kip_pasien_ranap")});
+                            }
+
+                            if ("[I]KIP Pasien Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]KIP Pasien Ralan", rs.getBoolean("kip_pasien_ralan")});
+                            }
+
+                            if ("[I]Rekap Permintaan Diet".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Rekap Permintaan Diet", rs.getBoolean("rekap_permintaan_diet")});
+                            }
+
+                            if ("[I]Daftar Pasien Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Daftar Pasien Ranap", rs.getBoolean("daftar_pasien_ranap")});
+                            }
+
+                            if ("[I]Daftar Pasien Ranap TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Daftar Pasien Ranap TNI", rs.getBoolean("daftar_pasien_ranaptni")});
+                            }
+
+                            if ("[I]Harian HAIs 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Harian HAIs 2", rs.getBoolean("harian_HAIs2")});
+                            }
+
+                            if ("[I]Rekap Kunjungan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[I]Rekap Kunjungan", rs.getBoolean("rekap_kunjungan")});
+                            }
+
+                            if ("[J]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Deposit Pasien", rs.getBoolean("deposit_pasien")});
+                            }
+
+                            if ("[J]Piutang Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Piutang Pasien", rs.getBoolean("piutang_pasien")});
+                            }
+
+                            if ("[J]Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Kamar", rs.getBoolean("kamar"),});
+                            }
+
+                            if ("[J]Tarif Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Tarif Ralan", rs.getBoolean("tarif_ralan")});
+                            }
+
+                            if ("[J]Tarif Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Tarif Ranap", rs.getBoolean("tarif_ranap")});
+                            }
+
+                            if ("[J]Tarif Lab".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Tarif Lab", rs.getBoolean("tarif_lab")});
+                            }
+
+                            if ("[J]Tarif Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Tarif Radiologi", rs.getBoolean("tarif_radiologi")});
+                            }
+
+                            if ("[J]Tarif Operasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Tarif Operasi", rs.getBoolean("tarif_operasi")});
+                            }
+
+                            if ("[J]Akun Rekening".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Akun Rekening", rs.getBoolean("akun_rekening")});
+                            }
+
+                            if ("[J]Rekening Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Rekening Tahun", rs.getBoolean("rekening_tahun")});
+                            }
+
+                            if ("[J]Posting Jurnal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Posting Jurnal", rs.getBoolean("posting_jurnal")});
+                            }
+
+                            if ("[J]Buku Besar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Buku Besar", rs.getBoolean("buku_besar")});
+                            }
+
+                            if ("[J]Cash Flow".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Cash Flow", rs.getBoolean("cashflow")});
+                            }
+
+                            if ("[J]Keuangan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Keuangan", rs.getBoolean("keuangan")});
+                            }
+
+                            if ("[J]Pengeluaran Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Pengeluaran Harian", rs.getBoolean("pengeluaran")});
+                            }
+
+                            if ("[J]Akun Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Akun Bayar", rs.getBoolean("akun_bayar")});
+                            }
+
+                            if ("[J]Bayar Pesan Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Bayar Pesan Obat", rs.getBoolean("bayar_pemesanan_obat")});
+                            }
+
+                            if ("[J]Pemasukkan Lain-Lain".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Pemasukkan Lain-Lain", rs.getBoolean("pemasukan_lain")});
+                            }
+
+                            if ("[J]Pengaturan Rekening".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Pengaturan Rekening", rs.getBoolean("pengaturan_rekening")});
+                            }
+
+                            if ("[J]Bayar Piutang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Bayar Piutang", rs.getBoolean("bayar_piutang")});
+                            }
+
+                            if ("[J]Jurnal Harian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Jurnal Harian", rs.getBoolean("jurnal_harian")});
+                            }
+
+                            if ("[J]Piutang Belum Lunas".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Piutang Belum Lunas", rs.getBoolean("piutang_pasien2")});
+                            }
+
+                            if ("[J]Tarif UTD".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Tarif UTD", rs.getBoolean("tarif_utd")});
+                            }
+
+                            if ("[J]Rincian Piutang Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Rincian Piutang Pasien", rs.getBoolean("rincian_piutang_pasien")});
+                            }
+
+                            if ("[J]Hutang Obat & BHP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Hutang Obat & BHP", rs.getBoolean("hutang_obat")});
+                            }
+
+                            if ("[J]Akun Piutang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Akun Piutang", rs.getBoolean("akun_piutang")});
+                            }
+
+                            if ("[J]Piutang Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Piutang Per Cara Bayar", rs.getBoolean("detail_piutang_penjab")});
+                            }
+
+                            if ("[J]Bayar Pesan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Bayar Pesan Non Medis", rs.getBoolean("bayar_pesan_non_medis")});
+                            }
+
+                            if ("[J]Hutang Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Hutang Barang Non Medis", rs.getBoolean("hutang_barang_non_medis")});
+                            }
+
+                            if ("[J]Saldo Akun Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[J]Saldo Akun Per Bulan", rs.getBoolean("saldo_akun_perbulan")});
+                            }
+
+                            if ("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek NIK", rs.getBoolean("bpjs_cek_nik")});
+                            }
+
+                            if ("[K]Cek No.Kartu".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek No.Kartu", rs.getBoolean("bpjs_cek_kartu")});
+                            }
+
+                            if ("[K]Riwayat Rujukan PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Riwayat Rujukan PCare di VClaim", rs.getBoolean("bpjs_cek_riwayat")});
+                            }
+
+                            if ("[K]Cek No.Rujukan PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek No.Rujukan PCare di VClaim", rs.getBoolean("bpjs_cek_nomor_rujukan")});
+                            }
+
+                            if ("[K]Referensi Diagnosa VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa VClaim", rs.getBoolean("bpjs_referensi_diagnosa")});
+                            }
+
+                            if ("[K]Referensi Poli VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Poli VClaim", rs.getBoolean("bpjs_referensi_poli")});
+                            }
+
+                            if ("[K]Referensi Faskes VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Faskes VClaim", rs.getBoolean("bpjs_referensi_faskes")});
+                            }
+
+                            if ("[K]Data Bridging SEP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Data Bridging SEP VClaim", rs.getBoolean("bpjs_sep")});
+                            }
+
+                            if ("[K]Monitoring Verifikasi Klaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Monitoring Verifikasi Klaim", rs.getBoolean("bpjs_monitoring_klaim")});
+                            }
+
+                            if ("[K]Reklasifikasi Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Reklasifikasi Ralan", rs.getBoolean("reklasifikasi_ralan")});
+                            }
+
+                            if ("[K]Reklasifikasi Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Reklasifikasi Ranap", rs.getBoolean("reklasifikasi_ranap")});
+                            }
+
+                            if ("[K]Referensi Kamar Aplicare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kamar Aplicare", rs.getBoolean("aplicare_referensi_kamar")});
+                            }
+
+                            if ("[K]Ketersediaan Kamar Aplicare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Ketersediaan Kamar Aplicare", rs.getBoolean("aplicare_ketersediaan_kamar")});
+                            }
+
+                            if ("[K]Klaim Baru Otomatis INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Klaim Baru Otomatis INACBG", rs.getBoolean("inacbg_klaim_baru_otomatis")});
+                            }
+
+                            if ("[K]Klaim Baru Manual INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Klaim Baru Manual INACBG", rs.getBoolean("inacbg_klaim_baru_manual")});
+                            }
+
+                            if ("[K]Coder NIK INACBG".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Coder NIK INACBG", rs.getBoolean("inacbg_coder_nik")});
+                            }
+
+                            if ("[K]Cek Eligibilitas Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Eligibilitas Inhealth", rs.getBoolean("inhealth_cek_eligibilitas")});
+                            }
+
+                            if ("[K]Referensi Ruang Rawat Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Ruang Rawat Inhealth", rs.getBoolean("inhealth_referensi_jenpel_ruang_rawat")});
+                            }
+
+                            if ("[K]Referensi Poli Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Poli Inhealth", rs.getBoolean("inhealth_referensi_poli")});
+                            }
+
+                            if ("[K]Referensi Faskes Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Faskes Inhealth", rs.getBoolean("inhealth_referensi_faskes")});
+                            }
+
+                            if ("[K]Data Bridging SJP Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Data Bridging SJP Inhealth", rs.getBoolean("inhealth_sjp")});
+                            }
+
+                            if ("[K]Referensi Diagnosa Pcare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa Pcare", rs.getBoolean("pcare_cek_penyakit")});
+                            }
+
+                            if ("[K]Referensi Kesadaran Pcare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kesadaran Pcare", rs.getBoolean("pcare_cek_kesadaran")});
+                            }
+
+                            if ("[K]Cek Rujukan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Rujukan PCare", rs.getBoolean("pcare_cek_rujukan")});
+                            }
+
+                            if ("[K]Klaim Baru Manual INACBG 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Klaim Baru Manual INACBG 2", rs.getBoolean("inacbg_klaim_baru_manual2")});
+                            }
+
+                            if ("[K]Referensi Prosedur VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Prosedur VClaim", rs.getBoolean("bpjs_cek_prosedur")});
+                            }
+
+                            if ("[K]Referensi Kelas Rawat VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kelas Rawat VClaim", rs.getBoolean("bpjs_cek_kelas_rawat")});
+                            }
+
+                            if ("[K]Referensi Dokter VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Dokter VClaim", rs.getBoolean("bpjs_cek_dokter")});
+                            }
+
+                            if ("[K]Referensi Spesialistik VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Spesialistik VClaim", rs.getBoolean("bpjs_cek_spesialistik")});
+                            }
+
+                            if ("[K]Referensi Ruang Rawat VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Ruang Rawat VClaim", rs.getBoolean("bpjs_cek_ruangrawat")});
+                            }
+
+                            if ("[K]Referensi Cara Keluar VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Cara Keluar VClaim", rs.getBoolean("bpjs_cek_carakeluar")});
+                            }
+
+                            if ("[K]Referensi Pasca Pulang VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Pasca Pulang VClaim", rs.getBoolean("bpjs_cek_pasca_pulang")});
+                            }
+
+                            if ("[K]Cek No.Rujukan RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek No.Rujukan RS di VClaim", rs.getBoolean("bpjs_cek_nomor_rujukan_rs")});
+                            }
+
+                            if ("[K]Cek Rujukan Kartu PCare di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Rujukan Kartu PCare di VClaim", rs.getBoolean("bpjs_cek_rujukan_kartu_pcare")});
+                            }
+
+                            if ("[K]Cek Rujukan Kartu RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Rujukan Kartu RS di VClaim", rs.getBoolean("bpjs_cek_rujukan_kartu_rs")});
+                            }
+
+                            if ("[K]Pembuatan Rujukan VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Pembuatan Rujukan VClaim", rs.getBoolean("bpjs_rujukan_keluar")});
+                            }
+
+                            if ("[K]Mapping Poli VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Poli VClaim", rs.getBoolean("mapping_poli_bpjs")});
+                            }
+
+                            if ("[K]SKDP BPJS".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]SKDP BPJS", rs.getBoolean("skdp_bpjs")});
+                            }
+
+                            if ("[K]Referensi Propinsi VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Propinsi VClaim", rs.getBoolean("bpjs_cek_propinsi")});
+                            }
+
+                            if ("[K]Referensi Kabupaten VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kabupaten VClaim", rs.getBoolean("bpjs_cek_kabupaten")});
+                            }
+
+                            if ("[K]Referensi Kecamatan VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Kecamatan VClaim", rs.getBoolean("bpjs_cek_kecamatan")});
+                            }
+
+                            if ("[K]Referensi Dokter DPJP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Dokter DPJP VClaim", rs.getBoolean("bpjs_cek_dokterdpjp")});
+                            }
+
+                            if ("[K]Riwayat Rujukan RS di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Riwayat Rujukan RS di VClaim", rs.getBoolean("bpjs_cek_riwayat_rujukanrs")});
+                            }
+
+                            if ("[K]Tanggal Rujukan di VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tanggal Rujukan di VClaim", rs.getBoolean("bpjs_cek_tanggal_rujukan")});
+                            }
+
+                            if ("[K]Histori Pelayanan BPJS".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Histori Pelayanan BPJS", rs.getBoolean("bpjs_histori_pelayanan")});
+                            }
+
+                            if ("[K]Referensi Dokter PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Dokter PCare", rs.getBoolean("pcare_cek_dokter")});
+                            }
+
+                            if ("[K]Referensi Poli PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Poli PCare", rs.getBoolean("pcare_cek_poli")});
+                            }
+
+                            if ("[K]Referensi Provider PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Provider PCare", rs.getBoolean("pcare_cek_provider")});
+                            }
+
+                            if ("[K]Referensi Stts Pulang PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Stts Pulang PCare", rs.getBoolean("pcare_cek_statuspulang")});
+                            }
+
+                            if ("[K]Referensi Spesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Spesialis PCare", rs.getBoolean("pcare_cek_spesialis")});
+                            }
+
+                            if ("[K]Referensi Subspesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Subspesialis PCare", rs.getBoolean("pcare_cek_subspesialis")});
+                            }
+
+                            if ("[K]Referensi Sarana PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Sarana PCare", rs.getBoolean("pcare_cek_sarana")});
+                            }
+
+                            if ("[K]Referensi Khusus PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Khusus PCare", rs.getBoolean("pcare_cek_khusus")});
+                            }
+
+                            if ("[K]Referensi Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Obat PCare", rs.getBoolean("pcare_cek_obat")});
+                            }
+
+                            if ("[K]Referensi Tindakan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Tindakan PCare", rs.getBoolean("pcare_cek_tindakan")});
+                            }
+
+                            if ("[K]Faskes Subspesialis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Faskes Subspesialis PCare", rs.getBoolean("pcare_cek_faskessubspesialis")});
+                            }
+
+                            if ("[K]Faskes Alih Rawat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Faskes Alih Rawat PCare", rs.getBoolean("pcare_cek_faskesalihrawat")});
+                            }
+
+                            if ("[K]Faskes Thalasemia & Hemofili PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Faskes Thalasemia & Hemofili PCare", rs.getBoolean("pcare_cek_faskesthalasemia")});
+                            }
+
+                            if ("[K]Mapping Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Obat PCare", rs.getBoolean("pcare_mapping_obat")});
+                            }
+
+                            if ("[K]Tarif Ralan RS & PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Ralan RS & PCare", rs.getBoolean("pcare_mapping_tindakan")});
+                            }
+
+                            if ("[K]Club Prolanis PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Club Prolanis PCare", rs.getBoolean("pcare_club_prolanis")});
+                            }
+
+                            if ("[K]Mapping Poli PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Poli PCare", rs.getBoolean("pcare_mapping_poli")});
+                            }
+
+                            if ("[K]Kegiatan Kelompok PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Kegiatan Kelompok PCare", rs.getBoolean("pcare_kegiatan_kelompok")});
+                            }
+
+                            if ("[K]Tarif Ranap RS & PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Ranap RS & PCare", rs.getBoolean("pcare_mapping_tindakan_ranap")});
+                            }
+
+                            if ("[K]Peserta Keg Kelompok PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Peserta Keg Kelompok PCare", rs.getBoolean("pcare_peserta_kegiatan_kelompok")});
+                            }
+
+                            if ("[K]Data Pendafataran PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Data Pendafataran PCare", rs.getBoolean("bridging_pcare_daftar")});
+                            }
+
+                            if ("[K]Mapping Dokter PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Dokter PCare", rs.getBoolean("pcare_mapping_dokter")});
+                            }
+
+                            if ("[K]Cek Nomor SEP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek Nomor SEP", rs.getBoolean("bpjs_cek_sep")});
+                            }
+
+                            if ("[K]Referensi Faskes Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Faskes Sisrute", rs.getBoolean("sisrute_referensi_faskes")});
+                            }
+
+                            if ("[K]Referensi Alasan Rujuk Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Alasan Rujuk Sisrute", rs.getBoolean("sisrute_referensi_alasanrujuk")});
+                            }
+
+                            if ("[K]Referensi Diagnosa Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Referensi Diagnosa Sisrute", rs.getBoolean("sisrute_referensi_diagnosa")});
+                            }
+
+                            if ("[K]Rujukan Masuk Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Rujukan Masuk Sisrute", rs.getBoolean("sisrute_rujukan_masuk")});
+                            }
+
+                            if ("[K]Rujukan Keluar Sisrute".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Rujukan Keluar Sisrute", rs.getBoolean("sisrute_rujukan_keluar")});
+                            }
+
+                            if ("[K]Cek SKDP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Cek SKDP VClaim", rs.getBoolean("bpjs_cek_skdp")});
+                            }
+
+                            if ("[K]Pemberian Obat PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Pemberian Obat PCare", rs.getBoolean("pcare_pemberian_obat")});
+                            }
+
+                            if ("[K]Pemberian Tindakan PCare".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Pemberian Tindakan PCare", rs.getBoolean("pcare_pemberian_tindakan")});
+                            }
+
+                            if ("[K]Ketersediaan Kamar SIRANAP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Ketersediaan Kamar SIRANAP", rs.getBoolean("siranap_ketersediaan_kamar")});
+                            }
+
+                            if ("[K]Mapping Dokter DPJP VClaim".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Dokter DPJP VClaim", rs.getBoolean("bpjs_mapping_dokterdpjp")});
+                            }
+
+                            if ("[K]Mapping Poli Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Poli Inhealth", rs.getBoolean("inhealth_mapping_poli")});
+                            }
+
+                            if ("[K]Mapping Dokter Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Mapping Dokter Inhealth", rs.getBoolean("inhealth_mapping_dokter")});
+                            }
+
+                            if ("[K]Tarif Ralan Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Ralan Inhealth", rs.getBoolean("inhealth_mapping_tindakan_ralan")});
+                            }
+
+                            if ("[K]Tarif Ranap Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Ranap Inhealth", rs.getBoolean("inhealth_mapping_tindakan_ranap")});
+                            }
+
+                            if ("[K]Tarif Radiologi Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Radiologi Inhealth", rs.getBoolean("inhealth_mapping_tindakan_radiologi")});
+                            }
+
+                            if ("[K]Tarif Laborat Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Laborat Inhealth", rs.getBoolean("inhealth_mapping_tindakan_laborat")});
+                            }
+
+                            if ("[K]Tarif Operasi Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tarif Operasi Inhealth", rs.getBoolean("inhealth_mapping_tindakan_operasi")});
+                            }
+
+                            if ("[K]Tagihan Inhealth".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[K]Tagihan Inhealth", rs.getBoolean("inhealth_kirim_tagihan")});
+                            }
+
+                            if ("[L]Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Pasien", rs.getBoolean("pasien")});
+                            }
+
+                            if ("[L]Pasien Meninggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Pasien Meninggal", rs.getBoolean("pasien_meninggal")});
+                            }
+
+                            if ("[L]Kelahiran Bayi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Kelahiran Bayi", rs.getBoolean("kelahiran_bayi")});
+                            }
+
+                            if ("[L]Peminjaman Berkas RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Peminjaman Berkas RM", rs.getBoolean("peminjaman_berkas")});
+                            }
+
+                            if ("[L]Riwayat Perawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Riwayat Perawatan", rs.getBoolean("resume_pasien")});
+                            }
+
+                            if ("[L]Diagnosa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Diagnosa Pasien", rs.getBoolean("diagnosa_pasien")});
+                            }
+
+                            if ("[L]Retensi Data R.M.".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Retensi Data R.M.", rs.getBoolean("retensi_rm")});
+                            }
+
+                            if ("[L]Mutasi Berkas RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Mutasi Berkas RM", rs.getBoolean("mutasi_berkas")});
+                            }
+
+                            if ("[L]Catatan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Catatan Pasien", rs.getBoolean("catatan_pasien")});
+                            }
+
+                            if ("[L]Data HAIs".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Data HAIs", rs.getBoolean("data_HAIs")});
+                            }
+
+                            if ("[L]Instansi/Perusahaan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Instansi/Perusahaan Pasien", rs.getBoolean("perusahaan_pasien")});
+                            }
+
+                            if ("[L]Berkas Digital Perawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Berkas Digital Perawatan", rs.getBoolean("berkas_digital_perawatan")});
+                            }
+
+                            if ("[L]Pengaduan/Chat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Pengaduan/Chat", rs.getBoolean("pengaduan_pasien")});
+                            }
+
+                            if ("[L]Insiden Keselamatan Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Insiden Keselamatan Pasien", rs.getBoolean("insiden_keselamatan_pasien")});
+                            }
+
+                            if ("[L]Suku/Bangsa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Suku/Bangsa Pasien", rs.getBoolean("suku_bangsa")});
+                            }
+
+                            if ("[L]Bahasa Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Bahasa Pasien", rs.getBoolean("bahasa_pasien")});
+                            }
+
+                            if ("[L]Golongan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Golongan TNI", rs.getBoolean("golongan_tni")});
+                            }
+
+                            if ("[L]Satuan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Satuan TNI", rs.getBoolean("satuan_tni")});
+                            }
+
+                            if ("[L]Jabatan TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Jabatan TNI", rs.getBoolean("jabatan_tni")});
+                            }
+
+                            if ("[L]Pangkat TNI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Pangkat TNI", rs.getBoolean("pangkat_tni")});
+                            }
+
+                            if ("[L]Golongan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Golongan POLRI", rs.getBoolean("golongan_polri")});
+                            }
+
+                            if ("[L]Satuan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Satuan POLRI", rs.getBoolean("satuan_polri")});
+                            }
+
+                            if ("[L]Jabatan POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Jabatan POLRI", rs.getBoolean("jabatan_polri")});
+                            }
+
+                            if ("[L]Pangkat POLRI".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Pangkat POLRI", rs.getBoolean("pangkat_polri")});
+                            }
+
+                            if ("[L]Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Cacat Fisik", rs.getBoolean("cacat_fisik")});
+                            }
+
+                            if ("[L]HAIs Per Kamar/Bangsal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]HAIs Per Kamar/Bangsal", rs.getBoolean("hais_perbangsal")});
+                            }
+
+                            if ("[L]Data Triase".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Data Triase", rs.getBoolean("data_triase_igd")});
+                            }
+
+                            if ("[L]Master Triase Skala 1".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 1", rs.getBoolean("master_triase_skala1")});
+                            }
+
+                            if ("[L]Master Triase Skala 2".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 2", rs.getBoolean("master_triase_skala2")});
+                            }
+
+                            if ("[L]Master Triase Skala 3".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 3", rs.getBoolean("master_triase_skala3")});
+                            }
+
+                            if ("[L]Master Triase Skala 4".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 4", rs.getBoolean("master_triase_skala4")});
+                            }
+
+                            if ("[L]Master Triase Skala 5".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Master Triase Skala 5", rs.getBoolean("master_triase_skala5")});
+                            }
+
+                            if ("[L]Master Triase Pemeriksaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Master Triase Pemeriksaan", rs.getBoolean("master_triase_pemeriksaan")});
+                            }
+
+                            if ("[L]Master Triase Macam Kasus".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Master Triase Macam Kasus", rs.getBoolean("master_triase_macamkasus")});
+                            }
+
+                            if ("[L]Resume Pasien".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Resume Pasien", rs.getBoolean("data_resume_pasien")});
+                            }
+
+                            if ("[L]Asuhan Gizi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Asuhan Gizi", rs.getBoolean("asuhan_gizi")});
+                            }
+
+                            if ("[L]Monitoring Asuhan Gizi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Monitoring Asuhan Gizi", rs.getBoolean("monitoring_asuhan_gizi")});
+                            }
+
+                            if ("[L]Penilaian Awal Keperawatan Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Penilaian Awal Keperawatan Ralan", rs.getBoolean("penilaian_awal_keperawatan_ralan")});
+                            }
+
+                            if ("[L]Master Masalah Keperawatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[L]Master Masalah Keperawatan", rs.getBoolean("master_masalah_keperawatan")});
+                            }
+
+                            if ("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]Pengambilan BHP Medis", rs.getBoolean("pengambilan_utd2")});
+                            }
+
+                            if ("[M]BHP Medis Rusak".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]BHP Medis Rusak", rs.getBoolean("utd_medis_rusak")});
+                            }
+
+                            if ("[M]Pengambilan BHP Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]Pengambilan BHP Non Medis", rs.getBoolean("pengambilan_penunjang_utd2")});
+                            }
+
+                            if ("[M]BHP Non Medis Rusak".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]BHP Non Medis Rusak", rs.getBoolean("utd_penunjang_rusak")});
+                            }
+
+                            if ("[M]Donor Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]Donor Darah", rs.getBoolean("utd_donor")});
+                            }
+
+                            if ("[M]Cekal Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]Cekal Darah", rs.getBoolean("utd_cekal_darah")});
+                            }
+
+                            if ("[M]Komponen Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]Komponen Darah", rs.getBoolean("utd_komponen_darah")});
+                            }
+
+                            if ("[M]Stok Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]Stok Darah", rs.getBoolean("utd_stok_darah")});
+                            }
+
+                            if ("[M]Pemisahan Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]Pemisahan Darah", rs.getBoolean("utd_pemisahan_darah")});
+                            }
+
+                            if ("[M]Penyerahan Darah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[M]Penyerahan Darah", rs.getBoolean("utd_penyerahan_darah")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Poli", rs.getBoolean("grafik_kunjungan_poli")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Dokter".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Dokter", rs.getBoolean("grafik_kunjungan_perdokter")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Pekerjaan", rs.getBoolean("grafik_kunjungan_perpekerjaan")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Pendidikan", rs.getBoolean("grafik_kunjungan_perpendidikan")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Tahun", rs.getBoolean("grafik_kunjungan_pertahun")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Bulan", rs.getBoolean("grafik_kunjungan_perbulan")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Tanggal", rs.getBoolean("grafik_kunjungan_pertanggal")});
+                            }
+
+                            if ("[N]Demografi Registrasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Demografi Registrasi", rs.getBoolean("grafik_kunjungan_demografi")});
+                            }
+
+                            if ("[N]Reg Lama Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Tahun", rs.getBoolean("grafik_kunjungan_statusdaftartahun")});
+                            }
+
+                            if ("[N]Reg Baru Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Tahun", rs.getBoolean("grafik_kunjungan_statusdaftartahun2")});
+                            }
+
+                            if ("[N]Reg Lama Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Bulan", rs.getBoolean("grafik_kunjungan_statusdaftarbulan")});
+                            }
+
+                            if ("[N]Reg Baru Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Bulan", rs.getBoolean("grafik_kunjungan_statusdaftarbulan2")});
+                            }
+
+                            if ("[N]Reg Lama Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Reg Lama Per Tanggal", rs.getBoolean("grafik_kunjungan_statusdaftartanggal")});
+                            }
+
+                            if ("[N]Reg Baru Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Reg Baru Per Tanggal", rs.getBoolean("grafik_kunjungan_statusdaftartanggal2")});
+                            }
+
+                            if ("[N]Batal Periksa Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Tahun", rs.getBoolean("grafik_kunjungan_statusbataltahun")});
+                            }
+
+                            if ("[N]Batal Periksa Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Bulan", rs.getBoolean("grafik_kunjungan_statusbatalbulan")});
+                            }
+
+                            if ("[N]Batal Periksa Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Batal Periksa Per Tanggal", rs.getBoolean("grafik_kunjungan_statusbataltanggal")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Cara Bayar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Cara Bayar", rs.getBoolean("grafik_kunjungan_percarabayar")});
+                            }
+
+                            if ("[N]Kunjungan Ranap Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Tahun", rs.getBoolean("grafik_kunjungan_ranaptahun")});
+                            }
+
+                            if ("[N]Kunjungan Lab Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Tahun", rs.getBoolean("grafik_lab_ralantahun")});
+                            }
+
+                            if ("[N]Kunjungan Rad Ralan Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Tahun", rs.getBoolean("grafik_rad_ralantahun")});
+                            }
+
+                            if ("[N]Kunjungan Per Perujuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Per Perujuk", rs.getBoolean("grafik_per_perujuk")});
+                            }
+
+                            if ("[N]Kunjungan Lab Ralan Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Bulan", rs.getBoolean("grafik_lab_ralanbulan")});
+                            }
+
+                            if ("[N]Kunjungan Rad Ralan Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Bulan", rs.getBoolean("grafik_rad_ralanbulan")});
+                            }
+
+                            if ("[N]Kunjungan Lab Ralan Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Lab Ralan Per Tanggal", rs.getBoolean("grafik_lab_ralanhari")});
+                            }
+
+                            if ("[N]Kunjungan Rad Ralan Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Rad Ralan Per Tanggal", rs.getBoolean("grafik_rad_ralanhari")});
+                            }
+
+                            if ("[N]Kejadian IKP Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Tahun", rs.getBoolean("grafik_ikp_pertahun")});
+                            }
+
+                            if ("[N]Kejadian IKP Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Bulan", rs.getBoolean("grafik_ikp_perbulan")});
+                            }
+
+                            if ("[N]Kejadian IKP Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Tanggal", rs.getBoolean("grafik_ikp_pertanggal")});
+                            }
+
+                            if ("[N]Kejadian IKP Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Jenis", rs.getBoolean("grafik_ikp_jenis")});
+                            }
+
+                            if ("[N]Kejadian IKP Per Dampak".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kejadian IKP Per Dampak", rs.getBoolean("grafik_ikp_dampak")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Agama".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Agama", rs.getBoolean("grafik_kunjungan_per_agama")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Umur".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Umur", rs.getBoolean("grafik_kunjungan_per_umur")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Suku/Bangsa".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Suku/Bangsa", rs.getBoolean("grafik_kunjungan_suku")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Bahasa".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Bahasa", rs.getBoolean("grafik_kunjungan_bahasa")});
+                            }
+
+                            if ("[N]Kunjungan Reg Per Cacat Fisik".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Reg Per Cacat Fisik", rs.getBoolean("grafik_kunjungan_per_cacat")});
+                            }
+
+                            if ("[N]Periode Laporan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Periode Laporan TB", rs.getBoolean("grafik_tb_periodelaporan")});
+                            }
+
+                            if ("[N]Rujukan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Rujukan TB", rs.getBoolean("grafik_tb_rujukan")});
+                            }
+
+                            if ("[N]Riwayat TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Riwayat TB", rs.getBoolean("grafik_tb_riwayat")});
+                            }
+
+                            if ("[N]Tipe Diagnosis TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Tipe Diagnosis TB", rs.getBoolean("grafik_tb_tipediagnosis")});
+                            }
+
+                            if ("[N]Status HIV TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Status HIV TB", rs.getBoolean("grafik_tb_statushiv")});
+                            }
+
+                            if ("[N]Skoring Anak TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Skoring Anak TB", rs.getBoolean("grafik_tb_skoringanak")});
+                            }
+
+                            if ("[N]Konfirmasi Skoring 5 TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Konfirmasi Skoring 5 TB", rs.getBoolean("grafik_tb_konfirmasiskoring5")});
+                            }
+
+                            if ("[N]Konfirmasi Skoring 6 TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Konfirmasi Skoring 6 TB", rs.getBoolean("grafik_tb_konfirmasiskoring6")});
+                            }
+
+                            if ("[N]Sumber Obat TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Sumber Obat TB", rs.getBoolean("grafik_tb_sumberobat")});
+                            }
+
+                            if ("[N]Hasil Akhir Pengobatan TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Hasil Akhir Pengobatan TB", rs.getBoolean("grafik_tb_hasilakhirpengobatan")});
+                            }
+
+                            if ("[N]Hasil Tes HIV TB".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Hasil Tes HIV TB", rs.getBoolean("grafik_tb_hasilteshiv")});
+                            }
+
+                            if ("[N]Pemakaian Air PDAM Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pemakaian Air PDAM Per Tanggal", rs.getBoolean("grafik_air_pdam_pertanggal")});
+                            }
+
+                            if ("[N]Pemakaian Air PDAM Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pemakaian Air PDAM Per Bulan", rs.getBoolean("grafik_air_pdam_perbulan")});
+                            }
+
+                            if ("[N]Limbah B3 Medis Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Limbah B3 Medis Per Tanggal", rs.getBoolean("grafik_limbahb3_pertanggal")});
+                            }
+
+                            if ("[N]Limbah B3 Medis Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Limbah B3 Medis Per Bulan", rs.getBoolean("grafik_limbahb3_perbulan")});
+                            }
+
+                            if ("[N]Limbah Padat Domestik Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Limbah Padat Domestik Per Tanggal", rs.getBoolean("grafik_limbahdomestik_pertanggal")});
+                            }
+
+                            if ("[N]Limbah Padat Domestik Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Limbah Padat Domestik Per Bulan", rs.getBoolean("grafik_limbahdomestik_perbulan")});
+                            }
+
+                            if ("[N]K3 Per Tahun".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Tahun", rs.getBoolean("grafik_k3_pertahun")});
+                            }
+
+                            if ("[N]K3 Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Bulan", rs.getBoolean("grafik_k3_perbulan")});
+                            }
+
+                            if ("[N]K3 Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Tanggal", rs.getBoolean("grafik_k3_pertanggal")});
+                            }
+
+                            if ("[N]K3 Per Jenis Cidera".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Cidera", rs.getBoolean("grafik_k3_perjeniscidera")});
+                            }
+
+                            if ("[N]K3 Per Penyebab Kecelakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Penyebab Kecelakaan", rs.getBoolean("grafik_k3_perpenyebab")});
+                            }
+
+                            if ("[N]K3 Per Jenis Luka".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Luka", rs.getBoolean("grafik_k3_perjenisluka")});
+                            }
+
+                            if ("[N]K3 Per Lokasi Kejadian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Lokasi Kejadian", rs.getBoolean("grafik_k3_lokasikejadian")});
+                            }
+
+                            if ("[N]K3 Per Dampak Cidera".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Dampak Cidera", rs.getBoolean("grafik_k3_dampakcidera")});
+                            }
+
+                            if ("[N]K3 Per Jenis Pekerjaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Jenis Pekerjaan", rs.getBoolean("grafik_k3_perjenispekerjaan")});
+                            }
+
+                            if ("[N]K3 Per Bagian Tubuh".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]K3 Per Bagian Tubuh", rs.getBoolean("grafik_k3_perbagiantubuh")});
+                            }
+
+                            if ("[N]Kunjungan Ranap Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Bulan", rs.getBoolean("grafik_kunjungan_ranapbulan")});
+                            }
+
+                            if ("[N]Kunjungan Ranap Per Tanggal".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Tanggal", rs.getBoolean("grafik_kunjungan_ranaptanggal")});
+                            }
+
+                            if ("[N]Kunjungan Ranap Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Kunjungan Ranap Per Ruang", rs.getBoolean("grafik_kunjungan_ranap_peruang")});
+                            }
+
+                            if ("[N]Pegawai Per Jenjang Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pegawai Per Jenjang Jabatan", rs.getBoolean("grafik_jenjang_jabatanpegawai")});
+                            }
+
+                            if ("[N]Pegawai Per Bidang/Bagian".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pegawai Per Bidang/Bagian", rs.getBoolean("grafik_bidangpegawai")});
+                            }
+
+                            if ("[N]Pegawai Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pegawai Per Departemen", rs.getBoolean("grafik_departemenpegawai")});
+                            }
+
+                            if ("[N]Pegawai Per Pendidikan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pegawai Per Pendidikan", rs.getBoolean("grafik_pendidikanpegawai")});
+                            }
+
+                            if ("[N]Pegawai Per Status WP".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pegawai Per Status WP", rs.getBoolean("grafik_sttswppegawai")});
+                            }
+
+                            if ("[N]Pegawai Per Status Kerja".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pegawai Per Status Kerja", rs.getBoolean("grafik_sttskerjapegawai")});
+                            }
+
+                            if ("[N]Status Pulang Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Status Pulang Ranap", rs.getBoolean("grafik_sttspulangranap")});
+                            }
+
+                            if ("[N]Item Apotek Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Jenis", rs.getBoolean("item_apotek_jenis")});
+                            }
+
+                            if ("[N]Item Apotek Per Kategori".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Kategori", rs.getBoolean("item_apotek_kategori")});
+                            }
+
+                            if ("[N]Item Apotek Per Golongan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Golongan", rs.getBoolean("item_apotek_golongan")});
+                            }
+
+                            if ("[N]Item Apotek Per Industri Farmasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Item Apotek Per Industri Farmasi", rs.getBoolean("item_apotek_industrifarmasi")});
+                            }
+
+                            if ("[N]Pengajuan Aset Per Urgensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Urgensi", rs.getBoolean("grafik_pengajuan_aset_urgensi")});
+                            }
+
+                            if ("[N]Pengajuan Aset Per Status".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Status", rs.getBoolean("grafik_pengajuan_aset_status")});
+                            }
+
+                            if ("[N]Pengajuan Aset Per Departemen".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pengajuan Aset Per Departemen", rs.getBoolean("grafik_pengajuan_aset_departemen")});
+                            }
+
+                            if ("[N]Pegawai Per Kelompok Jabatan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pegawai Per Kelompok Jabatan", rs.getBoolean("grafik_kelompok_jabatanpegawai")});
+                            }
+
+                            if ("[N]Pegawai Per Resiko Kerja".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pegawai Per Resiko Kerja", rs.getBoolean("grafik_resiko_kerjapegawai")});
+                            }
+
+                            if ("[N]Pegawai Per Emergency Index".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pegawai Per Emergency Index", rs.getBoolean("grafik_emergency_indexpegawai")});
+                            }
+
+                            if ("[N]Jumlah Inventaris Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Jumlah Inventaris Per Ruang", rs.getBoolean("grafik_inventaris_ruang")});
+                            }
+
+                            if ("[N]Jumlah Inventaris Per Jenis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Jumlah Inventaris Per Jenis", rs.getBoolean("grafik_inventaris_jenis")});
+                            }
+
+                            if ("[N]Pasien HAIs Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pasien HAIs Per Ruang", rs.getBoolean("grafik_HAIs_pasienbangsal")});
+                            }
+
+                            if ("[N]Pasien HAIs Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Pasien HAIs Per Bulan", rs.getBoolean("grafik_HAIs_pasienbulan")});
+                            }
+
+                            if ("[N]Laju HAIs VAP Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Laju HAIs VAP Per Ruang", rs.getBoolean("grafik_HAIs_laju_vap")});
+                            }
+
+                            if ("[N]Laju HAIs IAD Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Laju HAIs IAD Per Ruang", rs.getBoolean("grafik_HAIs_laju_iad")});
+                            }
+
+                            if ("[N]Laju HAIs Plebitis Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Laju HAIs Plebitis Per Ruang", rs.getBoolean("grafik_HAIs_laju_pleb")});
+                            }
+
+                            if ("[N]Laju HAIs ISK Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Laju HAIs ISK Per Ruang", rs.getBoolean("grafik_HAIs_laju_isk")});
+                            }
+
+                            if ("[N]Laju HAIs ILO Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Laju HAIs ILO Per Ruang", rs.getBoolean("grafik_HAIs_laju_ilo")});
+                            }
+
+                            if ("[N]Laju HAIs HAP Per Ruang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Laju HAIs HAP Per Ruang", rs.getBoolean("grafik_HAIs_laju_hap")});
+                            }
+
+                            if ("[N]Penerimaan Obat, Alkes & BHP Per Bulan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[N]Penerimaan Obat, Alkes & BHP Per Bulan", rs.getBoolean("penerimaan_obat_perbulan")});
+                            }
+
+                            if ("[O]Indeks Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Indeks Surat", rs.getBoolean("surat_indeks")});
+                            }
+
+                            if ("[O]Map Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Map Surat", rs.getBoolean("surat_map")});
+                            }
+
+                            if ("[O]Almari Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Almari Surat", rs.getBoolean("surat_almari")});
+                            }
+
+                            if ("[O]Rak Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Rak Surat", rs.getBoolean("surat_rak")});
+                            }
+
+                            if ("[O]Ruang Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Ruang Surat", rs.getBoolean("surat_ruang")});
+                            }
+
+                            if ("[O]Klasifikasi Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Klasifikasi Surat", rs.getBoolean("surat_klasifikasi")});
+                            }
+
+                            if ("[O]Status Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Status Surat", rs.getBoolean("surat_status")});
+                            }
+
+                            if ("[O]Sifat Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Sifat Surat", rs.getBoolean("surat_sifat")});
+                            }
+
+                            if ("[O]Stts Balas Surat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Stts Balas Surat", rs.getBoolean("surat_balas")});
+                            }
+
+                            if ("[O]Surat Masuk".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Surat Masuk", rs.getBoolean("surat_masuk")});
+                            }
+
+                            if ("[O]Surat Keluar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Surat Keluar", rs.getBoolean("surat_keluar")});
+                            }
+
+                            if ("[O]Surat Keterangan Sakit".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[O]Surat Keterangan Sakit", rs.getBoolean("surat_sakit")});
+                            }
+
+                            if ("[P]Ruang Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Ruang Perpustakaan", rs.getBoolean("ruang_perpustakaan")});
+                            }
+
+                            if ("[P]Kategori Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Kategori Koleksi", rs.getBoolean("kategori_perpustakaan")});
+                            }
+
+                            if ("[P]Jenis Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Jenis Koleksi", rs.getBoolean("jenis_perpustakaan")});
+                            }
+
+                            if ("[P]Pengarang/Penulis".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Pengarang/Penulis", rs.getBoolean("pengarang_perpustakaan")});
+                            }
+
+                            if ("[P]Penerbit Koleksi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Penerbit Koleksi", rs.getBoolean("penerbit_perpustakaan")});
+                            }
+
+                            if ("[P]Koleksi Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Koleksi Perpustakaan", rs.getBoolean("koleksi_perpustakaan")});
+                            }
+
+                            if ("[P]Inventaris Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Inventaris Perpustakaan", rs.getBoolean("inventaris_perpustakaan")});
+                            }
+
+                            if ("[P]Pengaturan Peminjaman".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Pengaturan Peminjaman", rs.getBoolean("set_peminjaman_perpustakaan")});
+                            }
+
+                            if ("[P]Denda Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Denda Perpustakaan", rs.getBoolean("denda_perpustakaan")});
+                            }
+
+                            if ("[P]Anggota Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Anggota Perpustakaan", rs.getBoolean("anggota_perpustakaan")});
+                            }
+
+                            if ("[P]Peminjaman Koleksi Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Peminjaman Koleksi Perpustakaan", rs.getBoolean("peminjaman_perpustakaan")});
+                            }
+
+                            if ("[P]Bayar Denda Perpustakaan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Bayar Denda Perpustakaan", rs.getBoolean("bayar_denda_perpustakaan")});
+                            }
+
+                            if ("[P]Data Koleksi Ebook".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[P]Data Koleksi Ebook", rs.getBoolean("ebook_perpustakaan")});
+                            }
+
+                            if ("[Q]Set P.J. Unit Penunjang".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set P.J. Unit Penunjang", rs.getBoolean("setup_pjlab")});
+                            }
+
+                            if ("[Q]Set Oto Lokasi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Oto Lokasi", rs.getBoolean("setup_otolokasi")});
+                            }
+
+                            if ("[Q]Set Kamar Inap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Kamar Inap", rs.getBoolean("setup_jam_kamin")});
+                            }
+
+                            if ("[Q]Set Embalase & Tuslah".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Embalase & Tuslah", rs.getBoolean("setup_embalase")});
+                            }
+
+                            if ("[Q]Tracer Login".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Tracer Login", rs.getBoolean("tracer_login")});
+                            }
+
+                            if ("[Q]Display Antrian Registrasi & Poli".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Display Antrian Registrasi & Poli", rs.getBoolean("display")});
+                            }
+
+                            if ("[Q]Set Harga Obat".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat", rs.getBoolean("set_harga_obat")});
+                            }
+
+                            if ("[Q]Set Penggunaan Tarif".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Penggunaan Tarif", rs.getBoolean("set_penggunaan_tarif")});
+                            }
+
+                            if ("[Q]Set Oto Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Oto Ralan", rs.getBoolean("set_oto_ralan")});
+                            }
+
+                            if ("[Q]Biaya Harian Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Biaya Harian Kamar", rs.getBoolean("biaya_harian")});
+                            }
+
+                            if ("[Q]Biaya Masuk Sekali".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Biaya Masuk Sekali", rs.getBoolean("biaya_masuk_sekali")});
+                            }
+
+                            if ("[Q]Set RM".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set RM", rs.getBoolean("set_no_rm")});
+                            }
+
+                            if ("[Q]Set Harga Obat Ralan".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat Ralan", rs.getBoolean("set_harga_obat_ralan")});
+                            }
+
+                            if ("[Q]Set Harga Obat Ranap".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Harga Obat Ranap", rs.getBoolean("set_harga_obat_ranap")});
+                            }
+
+                            if ("[Q]Set Billing".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Billing", rs.getBoolean("set_nota")});
+                            }
+
+                            if ("[Q]Closing Kasir".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Closing Kasir", rs.getBoolean("closing_kasir")});
+                            }
+
+                            if ("[Q]Set Keterlambatan Presensi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Keterlambatan Presensi", rs.getBoolean("keterlambatan_presensi")});
+                            }
+
+                            if ("[Q]Set Harga Kamar".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Harga Kamar", rs.getBoolean("set_harga_kamar")});
+                            }
+
+                            if ("[Q]Set Input Parsial".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Set Input Parsial", rs.getBoolean("set_input_parsial")});
+                            }
+
+                            if ("[Q]Display Antrian Apotek".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Display Antrian Apotek", rs.getBoolean("display_apotek")});
+                            }
+
+                            if ("[Q]Password Asuransi".toLowerCase().contains(TCari.getText().toLowerCase())) {
+                                tabMode.addRow(new Object[]{false, "[Q]Password Asuransi", rs.getBoolean("password_asuransi")});
+                            }
+                        }
+                    }
+                }
+                LCount.setText("" + tabMode.getRowCount());
+            } catch (SQLException ex) {
+                Logger.getLogger(DlgUpdateUser.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error: " + ex);
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DlgUpdateUser.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: " + ex);
+        }
+    }
 
     public void isUser(String User, String Nama, String Password) {
         TKd.setText(User);

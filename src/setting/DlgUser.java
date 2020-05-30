@@ -3077,7 +3077,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         personal.isUser(TKd.getText(),TNmUser.getText(),TPass.getText());
         personal.setSize(800,this.getHeight()-50);
         personal.setLocationRelativeTo(internalFrame1);
-        personal.setAlwaysOnTop(false);
+        personal.setAlwaysOnTop(true);
         personal.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());   
     }//GEN-LAST:event_MnSetUserActionPerformed
