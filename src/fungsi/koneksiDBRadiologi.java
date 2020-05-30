@@ -21,7 +21,15 @@ public class koneksiDBRadiologi {
     private static final Properties prop = new Properties();  
     private static final MysqlDataSource dataSource=new MysqlDataSource();
     
+    /**
+     *
+     */
     public koneksiDBRadiologi(){} 
+
+    /**
+     *
+     * @return
+     */
     public static Connection condb(){ 
         if(connection == null){
             try{

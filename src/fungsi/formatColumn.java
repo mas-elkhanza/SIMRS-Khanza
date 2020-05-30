@@ -20,10 +20,26 @@ public class formatColumn {
     private DefaultTableModel model;
     private TableColumnModel tcm;
     private TableColumn tc;
+
+    /**
+     *
+     */
     public static int curr = 0;
     public static int angka = 1;
+
+    /**
+     *
+     */
     public static int kanan = 2;
+
+    /**
+     *
+     */
     public static int tengah = 3;
+
+    /**
+     *
+     */
     public static int tanggal = 4;
     
     public void  setColumnFormat(DefaultTableModel tabMode,int column, int format) {

@@ -106,6 +106,13 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     * @return
+     */
     public boolean menyimpantf(String table, String value, String sama) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -124,6 +131,13 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     * @return
+     */
     public boolean menyimpantf2(String table, String value, String sama) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -223,6 +237,14 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     * @param i
+     * @param a
+     */
     public void menyimpan2(String table, String value, String sama, int i, String[] a) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -286,6 +308,15 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     * @param i
+     * @param a
+     * @return
+     */
     public boolean menyimpantf2(String table, String value, String sama, int i, String[] a) {
         bool = true;
         try {
@@ -320,6 +351,13 @@ public final class sekuel {
         return bool;
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param i
+     * @param a
+     */
     public void menyimpan(String table, String value, int i, String[] a) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -342,6 +380,13 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param i
+     * @param a
+     */
     public void menyimpan2(String table, String value, int i, String[] a) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -413,6 +458,17 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param i
+     * @param a
+     * @param acuan_field
+     * @param update
+     * @param j
+     * @param b
+     */
     public void menyimpan2(String table, String value, int i, String[] a, String acuan_field, String update, int j,
             String[] b) {
         try {
@@ -506,6 +562,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     */
     public void menyimpan(String table, String value) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -526,6 +587,13 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param isisimpan
+     * @param isiedit
+     * @param acuan_field
+     */
     public void menyimpan(String table, String isisimpan, String isiedit, String acuan_field) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + isisimpan + ")");
@@ -548,6 +616,13 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     * @param AlmGb
+     */
     public void menyimpan(String table, String value, String sama, JTextField AlmGb) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ",?)");
@@ -570,6 +645,14 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     * @param AlmGb
+     * @return
+     */
     public boolean menyimpantf(String table, String value, String sama, JTextField AlmGb) {
         bool = true;
         try {
@@ -597,6 +680,14 @@ public final class sekuel {
         return bool;
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     * @param AlmGb
+     * @param AlmPhoto
+     */
     public void menyimpan(String table, String value, String sama, JTextField AlmGb, JTextField AlmPhoto) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ",?,?)");
@@ -641,6 +732,14 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param field
+     * @param field2
+     * @param nilai_field
+     * @param nilai_field2
+     */
     public void meghapus(String table, String field, String field2, String nilai_field, String nilai_field2) {
         try {
             ps = connect.prepareStatement("delete from " + table + " where " + field + "=? and " + field2 + "=?");
@@ -688,6 +787,12 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param field
+     * @param nilai_field
+     */
     public void meghapus3(String table, String field, String nilai_field) {
         try {
             ps = connect.prepareStatement("delete from " + table + " where " + field + "=?");
@@ -709,6 +814,12 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param acuan_field
+     * @param update
+     */
     public void mengedit(String table, String acuan_field, String update) {
         try {
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
@@ -787,6 +898,14 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param acuan_field
+     * @param update
+     * @param i
+     * @param a
+     */
     public void mengedit2(String table, String acuan_field, String update, int i, String[] a) {
         try {
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
@@ -819,6 +938,14 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param acuan_field
+     * @param update
+     * @param i
+     * @param a
+     */
     public void mengedit3(String table, String acuan_field, String update, int i, String[] a) {
         try {
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
@@ -848,6 +975,15 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param acuan_field
+     * @param update
+     * @param i
+     * @param a
+     * @return
+     */
     public boolean mengedittf(String table, String acuan_field, String update, int i, String[] a) {
         bool = true;
         try {
@@ -882,6 +1018,13 @@ public final class sekuel {
         return bool;
     }
 
+    /**
+     *
+     * @param table
+     * @param acuan_field
+     * @param update
+     * @param AlmGb
+     */
     public void mengedit(String table, String acuan_field, String update, JTextField AlmGb) {
         try {
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
@@ -925,6 +1068,10 @@ public final class sekuel {
         return bool;
     }
 
+    /**
+     *
+     * @param qry
+     */
     public void query(String qry) {
         try {
             ps = connect.prepareStatement(qry);
@@ -964,6 +1111,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param qry
+     * @return
+     */
     public boolean queryutf(String qry) {
         bool = false;
         try {
@@ -988,6 +1140,11 @@ public final class sekuel {
         return bool;
     }
 
+    /**
+     *
+     * @param qry
+     * @param parameter
+     */
     public void queryu(String qry, String parameter) {
         try {
             ps = connect.prepareStatement(qry);
@@ -1008,6 +1165,10 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param qry
+     */
     public void queryu2(String qry) {
         try {
             ps = connect.prepareStatement(qry);
@@ -1026,6 +1187,12 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param qry
+     * @param i
+     * @param a
+     */
     public void queryu2(String qry, int i, String[] a) {
         try {
             try {
@@ -1053,6 +1220,13 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param qry
+     * @param i
+     * @param a
+     * @return
+     */
     public boolean queryu2tf(String qry, int i, String[] a) {
         bool = false;
         try {
@@ -1084,6 +1258,12 @@ public final class sekuel {
         return bool;
     }
 
+    /**
+     *
+     * @param qry
+     * @param i
+     * @param a
+     */
     public void queryu3(String qry, int i, String[] a) {
         try {
             try {
@@ -1111,6 +1291,12 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param qry
+     * @param i
+     * @param a
+     */
     public void queryu4(String qry, int i, String[] a) {
         try {
             try {
@@ -1136,6 +1322,9 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     */
     public void AutoComitFalse() {
         try {
             connect.setAutoCommit(false);
@@ -1157,6 +1346,9 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     */
     public void RollBack() {
         try {
             connect.rollback();
@@ -1193,6 +1385,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param dtp
+     */
     public void cariIsi(String sql, JDateTimePicker dtp) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1223,6 +1420,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param txt
+     */
     public void cariIsi(String sql, JTextField txt) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1249,6 +1451,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param norawat
+     * @return
+     */
     public int cariRegistrasi(String norawat) {
         angka = 0;
         try {
@@ -1275,6 +1482,12 @@ public final class sekuel {
         return angka;
     }
 
+    /**
+     *
+     * @param sql
+     * @param txt
+     * @param kunci
+     */
     public void cariIsi(String sql, JTextField txt, String kunci) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1329,6 +1542,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param txt
+     */
     public void cariIsi(String sql, JLabel txt) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1355,6 +1573,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @return
+     */
     public String cariIsi(String sql) {
         dicari = "";
         try {
@@ -1385,6 +1608,11 @@ public final class sekuel {
         return dicari;
     }
 
+    /**
+     *
+     * @param sql
+     * @return
+     */
     public ByteArrayInputStream cariGambar(String sql) {
         ByteArrayInputStream inputStream = null;
         try {
@@ -1412,6 +1640,12 @@ public final class sekuel {
         return inputStream;
     }
 
+    /**
+     *
+     * @param sql
+     * @param data
+     * @return
+     */
     public String cariIsi(String sql, String data) {
         dicari = "";
         try {
@@ -1499,6 +1733,11 @@ public final class sekuel {
         return angka;
     }
 
+    /**
+     *
+     * @param sql
+     * @return
+     */
     public Integer cariIntegerCount(String sql) {
         angka = 0;
         try {
@@ -1526,6 +1765,12 @@ public final class sekuel {
         return angka;
     }
 
+    /**
+     *
+     * @param sql
+     * @param data
+     * @return
+     */
     public Integer cariInteger(String sql, String data) {
         angka = 0;
         try {
@@ -1557,6 +1802,13 @@ public final class sekuel {
         return angka;
     }
 
+    /**
+     *
+     * @param sql
+     * @param data
+     * @param data2
+     * @return
+     */
     public Integer cariInteger(String sql, String data, String data2) {
         angka = 0;
         try {
@@ -1589,6 +1841,14 @@ public final class sekuel {
         return angka;
     }
 
+    /**
+     *
+     * @param sql
+     * @param data
+     * @param data2
+     * @param data3
+     * @return
+     */
     public Integer cariInteger(String sql, String data, String data2, String data3) {
         angka = 0;
         try {
@@ -1622,6 +1882,11 @@ public final class sekuel {
         return angka;
     }
 
+    /**
+     *
+     * @param sql
+     * @return
+     */
     public Integer cariInteger2(String sql) {
         angka = 0;
         try {
@@ -1651,6 +1916,11 @@ public final class sekuel {
         return angka;
     }
 
+    /**
+     *
+     * @param sql
+     * @param txt
+     */
     public void cariIsiAngka(String sql, JTextField txt) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1677,6 +1947,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param txt
+     */
     public void cariIsiAngka(String sql, JLabel txt) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1703,6 +1978,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @return
+     */
     public double cariIsiAngka(String sql) {
         angka2 = 0;
         try {
@@ -1793,6 +2073,11 @@ public final class sekuel {
         return angka2;
     }
 
+    /**
+     *
+     * @param sql
+     * @param txt
+     */
     public void cariGambar(String sql, JLabel txt) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1821,6 +2106,12 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param txt
+     * @param text
+     */
     public void cariGambar(String sql, java.awt.Canvas txt, String text) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1908,6 +2199,11 @@ public final class sekuel {
         return folder + File.separator + id.trim() + ".jpg";
     }
 
+    /**
+     *
+     * @param tb
+     * @param lebar
+     */
     public void Tabel(javax.swing.JTable tb, int lebar[]) {
         tb.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         angka = tb.getColumnCount();
@@ -1952,6 +2248,9 @@ public final class sekuel {
         System.out.println(str);
     }
 
+    /**
+     *
+     */
     public class Painter extends Canvas {
 
         Image image;

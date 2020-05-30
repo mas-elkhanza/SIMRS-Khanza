@@ -15,6 +15,10 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import javazoom.jl.player.Player;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class BackgroundMusic {
 
     private String filename;
@@ -38,6 +42,9 @@ public class BackgroundMusic {
         }
     }
 
+    /**
+     *
+     */
     public void start() {
         play();
         playMusic = new Thread(new PlayMusic());

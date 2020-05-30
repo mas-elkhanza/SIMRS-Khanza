@@ -2068,10 +2068,18 @@ public final class akses {
         return akses.jml1;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int getjml2() {
         return akses.jml2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getadmin() {
         return akses.admin;
     }
@@ -2080,26 +2088,50 @@ public final class akses {
         return akses.user;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getvakum() {
         return akses.vakum;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getaplikasi() {
         return akses.aplikasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenyakit() {
         return akses.penyakit;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getobat_penyakit() {
         return akses.obat_penyakit;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdokter() {
         return akses.dokter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjadwal_praktek() {
         return akses.jadwal_praktek;
     }
@@ -2112,6 +2144,10 @@ public final class akses {
         return akses.pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getregistrasi() {
         return akses.registrasi;
     }
@@ -2120,10 +2156,18 @@ public final class akses {
         return akses.tindakan_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkamar_inap() {
         return akses.kamar_inap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettindakan_ranap() {
         return akses.tindakan_ranap;
     }
@@ -2140,10 +2184,18 @@ public final class akses {
         return akses.rujukan_masuk;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getberi_obat() {
         return akses.beri_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getresep_pulang() {
         return akses.resep_pulang;
     }
@@ -2152,10 +2204,18 @@ public final class akses {
         return akses.pasien_meninggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdiet_pasien() {
         return akses.diet_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkelahiran_bayi() {
         return akses.kelahiran_bayi;
     }
@@ -2164,18 +2224,34 @@ public final class akses {
         return akses.periksa_lab;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getperiksa_radiologi() {
         return akses.periksa_radiologi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkasir_ralan() {
         return akses.kasir_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdeposit_pasien() {
         return akses.deposit_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpiutang_pasien() {
         return akses.piutang_pasien;
     }
@@ -2188,6 +2264,10 @@ public final class akses {
         return akses.barcode;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpresensi_harian() {
         return akses.presensi_harian;
     }
@@ -2204,14 +2284,26 @@ public final class akses {
         return akses.pegawai_user;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsuplier() {
         return akses.suplier;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsatuan_barang() {
         return akses.satuan_barang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkonversi_satuan() {
         return akses.konversi_satuan;
     }
@@ -2220,6 +2312,10 @@ public final class akses {
         return akses.jenis_barang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getobat() {
         return akses.obat;
     }
@@ -2232,6 +2328,10 @@ public final class akses {
         return akses.stok_obat_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpengadaan_obat() {
         return akses.pengadaan_obat;
     }
@@ -2240,10 +2340,17 @@ public final class akses {
         return akses.pemesanan_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenjualan_obat() {
         return akses.penjualan_obat;
     }
 
+    /**
+     *
+     */
     public static void setpenjualan_obatfalse() {
         akses.penjualan_obat = false;
     }
@@ -2252,10 +2359,18 @@ public final class akses {
         return akses.piutang_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getretur_ke_suplier() {
         return akses.retur_ke_suplier;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getretur_dari_pembeli() {
         return akses.retur_dari_pembeli;
     }
@@ -2264,10 +2379,18 @@ public final class akses {
         return akses.retur_obat_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getretur_piutang_pasien() {
         return akses.retur_piutang_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkeuntungan_penjualan() {
         return akses.keuntungan_penjualan;
     }
@@ -2276,10 +2399,18 @@ public final class akses {
         return akses.keuntungan_beri_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsirkulasi_obat() {
         return akses.sirkulasi_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getipsrs_barang() {
         return akses.ipsrs_barang;
     }
@@ -2292,14 +2423,26 @@ public final class akses {
         return akses.ipsrs_stok_keluar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getipsrs_rekap_pengadaan() {
         return akses.ipsrs_rekap_pengadaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getipsrs_rekap_stok_keluar() {
         return akses.ipsrs_rekap_stok_keluar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getipsrs_pengeluaran_harian() {
         return akses.ipsrs_pengeluaran_harian;
     }
@@ -2308,10 +2451,18 @@ public final class akses {
         return akses.ipsrs_jenis_barang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinventaris_jenis() {
         return akses.inventaris_jenis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinventaris_kategori() {
         return akses.inventaris_kategori;
     }
@@ -2320,6 +2471,10 @@ public final class akses {
         return akses.inventaris_merk;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinventaris_ruang() {
         return akses.inventaris_ruang;
     }
@@ -2332,22 +2487,42 @@ public final class akses {
         return akses.inventaris_koleksi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinventaris_inventaris() {
         return akses.inventaris_inventaris;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinventaris_sirkulasi() {
         return akses.inventaris_sirkulasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getparkir_jenis() {
         return akses.parkir_jenis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getparkir_in() {
         return akses.parkir_in;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getparkir_out() {
         return akses.parkir_out;
     }
@@ -2356,14 +2531,26 @@ public final class akses {
         return akses.parkir_rekap_harian;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getparkir_rekap_bulanan() {
         return akses.parkir_rekap_bulanan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinformasi_kamar() {
         return akses.informasi_kamar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getharian_tindakan_poli() {
         return akses.harian_tindakan_poli;
     }
@@ -2372,6 +2559,10 @@ public final class akses {
         return akses.obat_per_poli;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getobat_per_kamar() {
         return akses.obat_per_kamar;
     }
@@ -2380,30 +2571,58 @@ public final class akses {
         return akses.obat_per_dokter_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getobat_per_dokter_ranap() {
         return akses.obat_per_dokter_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getharian_dokter() {
         return akses.harian_dokter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbulanan_dokter() {
         return akses.bulanan_dokter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getharian_paramedis() {
         return akses.harian_paramedis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbulanan_paramedis() {
         return akses.bulanan_paramedis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpembayaran_ralan() {
         return akses.pembayaran_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpembayaran_ranap() {
         return akses.pembayaran_ranap;
     }
@@ -2420,6 +2639,10 @@ public final class akses {
         return akses.tagihan_masuk;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettambahan_biaya() {
         return akses.tambahan_biaya;
     }
@@ -2432,10 +2655,18 @@ public final class akses {
         return akses.resep_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getresume_pasien() {
         return akses.resume_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenyakit_ralan() {
         return akses.penyakit_ralan;
     }
@@ -2444,18 +2675,34 @@ public final class akses {
         return akses.penyakit_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkamar() {
         return akses.kamar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettarif_ralan() {
         return akses.tarif_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettarif_ranap() {
         return akses.tarif_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettarif_lab() {
         return akses.tarif_lab;
     }
@@ -2464,18 +2711,34 @@ public final class akses {
         return akses.tarif_radiologi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettarif_operasi() {
         return akses.tarif_operasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getakun_rekening() {
         return akses.akun_rekening;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekening_tahun() {
         return akses.rekening_tahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getposting_jurnal() {
         return akses.posting_jurnal;
     }
@@ -2484,14 +2747,26 @@ public final class akses {
         return akses.buku_besar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getcashflow() {
         return akses.cashflow;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkeuangan() {
         return akses.keuangan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpengeluaran() {
         return akses.pengeluaran;
     }
@@ -2500,6 +2775,10 @@ public final class akses {
         return akses.setup_pjlab;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsetup_otolokasi() {
         return akses.setup_otolokasi;
     }
@@ -2508,6 +2787,10 @@ public final class akses {
         return akses.setup_jam_kamin;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsetup_embalase() {
         return akses.setup_embalase;
     }
@@ -2520,14 +2803,26 @@ public final class akses {
         return akses.display;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getset_harga_obat() {
         return akses.set_harga_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getset_penggunaan_tarif() {
         return akses.set_penggunaan_tarif;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getset_oto_ralan() {
         return akses.set_oto_ralan;
     }
@@ -2536,6 +2831,10 @@ public final class akses {
         return akses.biaya_harian;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbiaya_masuk_sekali() {
         return akses.biaya_masuk_sekali;
     }
@@ -2548,10 +2847,18 @@ public final class akses {
         return akses.billing_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbilling_ranap() {
         return akses.billing_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getkode() {
         return akses.kode;
     }
@@ -2572,6 +2879,10 @@ public final class akses {
         return akses.form;
     }
 
+    /**
+     *
+     * @param namauser
+     */
     public static void setnamauser(String namauser) {
         akses.namauser = namauser;
     }
@@ -2580,14 +2891,26 @@ public final class akses {
         return akses.namauser;
     }
 
+    /**
+     *
+     * @param status
+     */
     public static void setstatus(boolean status) {
         akses.status = status;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getstatus() {
         return akses.status;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjm_ranap_dokter() {
         return akses.jm_ranap_dokter;
     }
@@ -2596,6 +2919,10 @@ public final class akses {
         return akses.igd;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbarcoderalan() {
         return akses.barcoderalan;
     }
@@ -2604,6 +2931,10 @@ public final class akses {
         return akses.barcoderanap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getset_harga_obat_ralan() {
         return akses.set_harga_obat_ralan;
     }
@@ -2620,10 +2951,18 @@ public final class akses {
         return akses.surveilans_pd3i;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsurveilans_ralan() {
         return akses.surveilans_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdiagnosa_pasien() {
         return akses.diagnosa_pasien;
     }
@@ -2632,18 +2971,34 @@ public final class akses {
         return akses.surveilans_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpny_takmenular_ranap() {
         return akses.pny_takmenular_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpny_takmenular_ralan() {
         return akses.pny_takmenular_ralan;
     }
 
+    /**
+     *
+     * @param namars
+     */
     public static void setnamars(String namars) {
         akses.namars = namars;
     }
 
+    /**
+     *
+     * @param alamatrs
+     */
     public static void setalamatrs(String alamatrs) {
         akses.alamatrs = alamatrs;
     }
@@ -2660,6 +3015,10 @@ public final class akses {
         akses.kontakrs = kontakrs;
     }
 
+    /**
+     *
+     * @param emailrs
+     */
     public static void setemailrs(String emailrs) {
         akses.emailrs = emailrs;
     }
@@ -2668,10 +3027,18 @@ public final class akses {
         return akses.namars;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getalamatrs() {
         return akses.alamatrs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getkabupatenrs() {
         return akses.kabupatenrs;
     }
@@ -2692,30 +3059,58 @@ public final class akses {
         return akses.kunjungan_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrl32() {
         return akses.rl32;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrl33() {
         return akses.rl33;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrl37() {
         return akses.rl37;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrl38() {
         return akses.rl38;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getharian_tindakan_dokter() {
         return akses.harian_tindakan_dokter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsms() {
         return akses.sms;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsidikjari() {
         return akses.sidikjari;
     }
@@ -2728,14 +3123,26 @@ public final class akses {
         return akses.jadwal_pegawai;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getparkir_barcode() {
         return akses.parkir_barcode;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getset_nota() {
         return akses.set_nota;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdpjp_ranap() {
         return akses.dpjp_ranap;
     }
@@ -2752,6 +3159,10 @@ public final class akses {
         return akses.rl36;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getfee_visit_dokter() {
         return akses.fee_visit_dokter;
     }
@@ -2760,14 +3171,26 @@ public final class akses {
         return akses.fee_bacaan_ekg;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getfee_rujukan_rontgen() {
         return akses.fee_rujukan_rontgen;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getfee_rujukan_ranap() {
         return akses.fee_rujukan_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getfee_ralan() {
         return akses.fee_ralan;
     }
@@ -2776,6 +3199,10 @@ public final class akses {
         return akses.akun_bayar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbayar_pemesanan_obat() {
         return akses.bayar_pemesanan_obat;
     }
@@ -2784,6 +3211,10 @@ public final class akses {
         return akses.obat_per_dokter_peresep;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpemasukan_lain() {
         return akses.pemasukan_lain;
     }
@@ -2792,6 +3223,10 @@ public final class akses {
         return akses.pengaturan_rekening;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getclosing_kasir() {
         return akses.closing_kasir;
     }
@@ -2804,6 +3239,10 @@ public final class akses {
         return akses.set_harga_kamar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_per_shift() {
         return akses.rekap_per_shift;
     }
@@ -2812,22 +3251,42 @@ public final class akses {
         return akses.bpjs_cek_nik;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_kartu() {
         return akses.bpjs_cek_kartu;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_riwayat() {
         return akses.bpjs_cek_riwayat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getobat_per_cara_bayar() {
         return akses.obat_per_cara_bayar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkunjungan_ranap() {
         return akses.kunjungan_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbayar_piutang() {
         return akses.bayar_piutang;
     }
@@ -2836,22 +3295,42 @@ public final class akses {
         return akses.payment_point;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_nomor_rujukan() {
         return akses.bpjs_cek_nomor_rujukan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean geticd9() {
         return akses.icd9;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdarurat_stok() {
         return akses.darurat_stok;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getretensi_rm() {
         return akses.retensi_rm;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettemporary_presensi() {
         return akses.temporary_presensi;
     }
@@ -2860,30 +3339,58 @@ public final class akses {
         return akses.jurnal_harian;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsirkulasi_obat2() {
         return akses.sirkulasi_obat2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getedit_registrasi() {
         return akses.edit_registrasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_referensi_diagnosa() {
         return akses.bpjs_referensi_diagnosa;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_referensi_poli() {
         return akses.bpjs_referensi_poli;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getindustrifarmasi() {
         return akses.industrifarmasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getharian_js() {
         return akses.harian_js;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbulanan_js() {
         return akses.bulanan_js;
     }
@@ -2896,6 +3403,10 @@ public final class akses {
         return akses.bulanan_paket_bhp;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpiutang_pasien2() {
         return akses.piutang_pasien2;
     }
@@ -2912,18 +3423,34 @@ public final class akses {
         return akses.pengambilan_utd;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettarif_utd() {
         return akses.tarif_utd;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpengambilan_utd2() {
         return akses.pengambilan_utd2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getutd_medis_rusak() {
         return akses.utd_medis_rusak;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpengambilan_penunjang_utd() {
         return akses.pengambilan_penunjang_utd;
     }
@@ -2936,18 +3463,34 @@ public final class akses {
         return akses.utd_penunjang_rusak;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsuplier_penunjang() {
         return akses.suplier_penunjang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getutd_donor() {
         return akses.utd_donor;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_monitoring_klaim() {
         return akses.bpjs_monitoring_klaim;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getutd_cekal_darah() {
         return akses.utd_cekal_darah;
     }
@@ -2960,6 +3503,10 @@ public final class akses {
         return akses.utd_stok_darah;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getutd_pemisahan_darah() {
         return akses.utd_pemisahan_darah;
     }
@@ -2968,10 +3515,18 @@ public final class akses {
         return akses.harian_kamar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrincian_piutang_pasien() {
         return akses.rincian_piutang_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkeuntungan_beri_obat_nonpiutang() {
         return akses.keuntungan_beri_obat_nonpiutang;
     }
@@ -2980,6 +3535,10 @@ public final class akses {
         return akses.reklasifikasi_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getreklasifikasi_ranap() {
         return akses.reklasifikasi_ranap;
     }
@@ -2988,10 +3547,17 @@ public final class akses {
         return akses.utd_penyerahan_darah;
     }
 
+    /**
+     *
+     */
     public static void setutd_penyerahan_darahfalse() {
         akses.utd_penyerahan_darah = false;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gethutang_obat() {
         return akses.hutang_obat;
     }
@@ -3004,14 +3570,26 @@ public final class akses {
         return akses.sensus_harian_poli;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrl4a() {
         return akses.rl4a;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getaplicare_referensi_kamar() {
         return akses.aplicare_referensi_kamar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getaplicare_ketersediaan_kamar() {
         return akses.aplicare_ketersediaan_kamar;
     }
@@ -3020,22 +3598,42 @@ public final class akses {
         return akses.inacbg_klaim_baru_otomatis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinacbg_klaim_baru_manual() {
         return akses.inacbg_klaim_baru_manual;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinacbg_coder_nik() {
         return akses.inacbg_coder_nik;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmutasi_berkas() {
         return akses.mutasi_berkas;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getakun_piutang() {
         return akses.akun_piutang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getharian_kso() {
         return akses.harian_kso;
     }
@@ -3044,18 +3642,34 @@ public final class akses {
         return akses.bulanan_kso;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getharian_menejemen() {
         return akses.harian_menejemen;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbulanan_menejemen() {
         return akses.bulanan_menejemen;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinhealth_cek_eligibilitas() {
         return akses.inhealth_cek_eligibilitas;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinhealth_referensi_jenpel_ruang_rawat() {
         return akses.inhealth_referensi_jenpel_ruang_rawat;
     }
@@ -3068,14 +3682,26 @@ public final class akses {
         return akses.inhealth_referensi_faskes;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinhealth_sjp() {
         return akses.inhealth_sjp;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpiutang_ralan() {
         return akses.piutang_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpiutang_ranap() {
         return akses.piutang_ranap;
     }
@@ -3084,6 +3710,10 @@ public final class akses {
         return akses.detail_piutang_penjab;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getlama_pelayanan_ralan() {
         return akses.lama_pelayanan_ralan;
     }
@@ -3092,10 +3722,18 @@ public final class akses {
         return akses.catatan_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrl4b() {
         return akses.rl4b;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrl4asebab() {
         return akses.rl4asebab;
     }
@@ -3108,10 +3746,18 @@ public final class akses {
         return akses.data_HAIs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getharian_HAIs() {
         return akses.harian_HAIs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbulanan_HAIs() {
         return akses.bulanan_HAIs;
     }
@@ -3124,14 +3770,25 @@ public final class akses {
         return akses.perusahaan_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getresep_dokter() {
         return akses.resep_dokter;
     }
 
+    /**
+     *
+     */
     public static void setresep_dokterfalse() {
         akses.resep_dokter = false;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getlama_pelayanan_apotek() {
         return akses.lama_pelayanan_apotek;
     }
@@ -3140,6 +3797,10 @@ public final class akses {
         return akses.hitung_alos;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdetail_tindakan() {
         return akses.detail_tindakan;
     }
@@ -3152,18 +3813,34 @@ public final class akses {
         return akses.rekap_poli_anak;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_poli() {
         return akses.grafik_kunjungan_poli;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_perdokter() {
         return akses.grafik_kunjungan_perdokter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_perpekerjaan() {
         return akses.grafik_kunjungan_perpekerjaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_perpendidikan() {
         return akses.grafik_kunjungan_perpendidikan;
     }
@@ -3176,54 +3853,106 @@ public final class akses {
         return akses.berkas_digital_perawatan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenyakit_menular_ranap() {
         return akses.penyakit_menular_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenyakit_menular_ralan() {
         return akses.penyakit_menular_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_perbulan() {
         return akses.grafik_kunjungan_perbulan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_pertanggal() {
         return akses.grafik_kunjungan_pertanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_demografi() {
         return akses.grafik_kunjungan_demografi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_statusdaftartahun() {
         return akses.grafik_kunjungan_statusdaftartahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_statusdaftartahun2() {
         return akses.grafik_kunjungan_statusdaftartahun2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_statusdaftarbulan() {
         return akses.grafik_kunjungan_statusdaftarbulan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_statusdaftarbulan2() {
         return akses.grafik_kunjungan_statusdaftarbulan2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_statusdaftartanggal() {
         return akses.grafik_kunjungan_statusdaftartanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_statusdaftartanggal2() {
         return akses.grafik_kunjungan_statusdaftartanggal2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_statusbataltahun() {
         return akses.grafik_kunjungan_statusbataltahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_statusbatalbulan() {
         return akses.grafik_kunjungan_statusbatalbulan;
     }
@@ -3240,34 +3969,66 @@ public final class akses {
         return akses.kategori_barang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgolongan_barang() {
         return akses.golongan_barang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpemberian_obat_pertanggal() {
         return akses.pemberian_obat_pertanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenjualan_obat_pertanggal() {
         return akses.penjualan_obat_pertanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_kesadaran() {
         return akses.pcare_cek_kesadaran;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpembatalan_periksa_dokter() {
         return akses.pembatalan_periksa_dokter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpembayaran_per_unit() {
         return akses.pembayaran_per_unit;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_pembayaran_per_unit() {
         return akses.rekap_pembayaran_per_unit;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_percarabayar() {
         return akses.grafik_kunjungan_percarabayar;
     }
@@ -3276,6 +4037,10 @@ public final class akses {
         return akses.ipsrs_pengadaan_pertanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getipsrs_stokkeluar_pertanggal() {
         return akses.ipsrs_stokkeluar_pertanggal;
     }
@@ -3284,10 +4049,18 @@ public final class akses {
         return akses.grafik_kunjungan_ranaptahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_rujukan() {
         return akses.pcare_cek_rujukan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_lab_ralantahun() {
         return akses.grafik_lab_ralantahun;
     }
@@ -3300,22 +4073,42 @@ public final class akses {
         return akses.cek_entry_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinacbg_klaim_baru_manual2() {
         return akses.inacbg_klaim_baru_manual2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpermintaan_medis() {
         return akses.permintaan_medis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_permintaan_medis() {
         return akses.rekap_permintaan_medis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsurat_pemesanan_medis() {
         return akses.surat_pemesanan_medis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpermintaan_non_medis() {
         return akses.permintaan_non_medis;
     }
@@ -3324,6 +4117,10 @@ public final class akses {
         return akses.rekap_permintaan_non_medis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsurat_pemesanan_non_medis() {
         return akses.surat_pemesanan_non_medis;
     }
@@ -3332,6 +4129,10 @@ public final class akses {
         return akses.grafik_per_perujuk;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_prosedur() {
         return akses.bpjs_cek_prosedur;
     }
@@ -3340,18 +4141,34 @@ public final class akses {
         return akses.bpjs_cek_kelas_rawat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_dokter() {
         return akses.bpjs_cek_dokter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_spesialistik() {
         return akses.bpjs_cek_spesialistik;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_ruangrawat() {
         return akses.bpjs_cek_ruangrawat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_carakeluar() {
         return akses.bpjs_cek_carakeluar;
     }
@@ -3360,6 +4177,10 @@ public final class akses {
         return akses.bpjs_cek_pasca_pulang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdetail_tindakan_okvk() {
         return akses.detail_tindakan_okvk;
     }
@@ -3368,6 +4189,10 @@ public final class akses {
         return akses.billing_parsial;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_nomor_rujukan_rs() {
         return akses.bpjs_cek_nomor_rujukan_rs;
     }
@@ -3380,6 +4205,10 @@ public final class akses {
         return akses.bpjs_cek_rujukan_kartu_rs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getakses_depo_obat() {
         return akses.akses_depo_obat;
     }
@@ -3404,6 +4233,10 @@ public final class akses {
         return akses.detailjmdokter2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpengaduan_pasien() {
         return akses.pengaduan_pasien;
     }
@@ -3416,10 +4249,18 @@ public final class akses {
         return akses.grafik_rad_ralanhari;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsensus_harian_ralan() {
         return akses.sensus_harian_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmetode_racik() {
         return akses.metode_racik;
     }
@@ -3432,14 +4273,26 @@ public final class akses {
         return akses.pengguna_obat_resep;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_pemesanan() {
         return akses.rekap_pemesanan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmaster_berkas_pegawai() {
         return akses.master_berkas_pegawai;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getberkas_kepegawaian() {
         return akses.berkas_kepegawaian;
     }
@@ -3448,14 +4301,26 @@ public final class akses {
         return akses.riwayat_jabatan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getriwayat_pendidikan() {
         return akses.riwayat_pendidikan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getriwayat_naik_gaji() {
         return akses.riwayat_naik_gaji;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkegiatan_ilmiah() {
         return akses.kegiatan_ilmiah;
     }
@@ -3468,18 +4333,34 @@ public final class akses {
         return akses.riwayat_penelitian;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenerimaan_non_medis() {
         return akses.penerimaan_non_medis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbayar_pesan_non_medis() {
         return akses.bayar_pesan_non_medis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gethutang_barang_non_medis() {
         return akses.hutang_barang_non_medis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_pemesanan_non_medis() {
         return akses.rekap_pemesanan_non_medis;
     }
@@ -3492,6 +4373,10 @@ public final class akses {
         return akses.insiden_keselamatan_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_ikp_pertahun() {
         return akses.grafik_ikp_pertahun;
     }
@@ -3500,14 +4385,26 @@ public final class akses {
         return akses.grafik_ikp_perbulan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_ikp_pertanggal() {
         return akses.grafik_ikp_pertanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getriwayat_data_batch() {
         return akses.riwayat_data_batch;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_ikp_jenis() {
         return akses.grafik_ikp_jenis;
     }
@@ -3516,10 +4413,17 @@ public final class akses {
         return akses.grafik_ikp_dampak;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpiutang_akun_piutang() {
         return akses.piutang_akun_piutang;
     }
 
+    /**
+     *
+     */
     public static void setresep_obatfalse() {
         akses.resep_obat = false;
     }
@@ -3532,10 +4436,18 @@ public final class akses {
         return akses.grafik_kunjungan_per_umur;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsuku_bangsa() {
         return akses.suku_bangsa;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbahasa_pasien() {
         return akses.bahasa_pasien;
     }
@@ -3548,10 +4460,18 @@ public final class akses {
         return akses.satuan_tni;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjabatan_tni() {
         return akses.jabatan_tni;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpangkat_tni() {
         return akses.pangkat_tni;
     }
@@ -3564,6 +4484,10 @@ public final class akses {
         return akses.satuan_polri;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjabatan_polri() {
         return akses.jabatan_polri;
     }
@@ -3576,26 +4500,50 @@ public final class akses {
         return akses.cacat_fisik;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_suku() {
         return akses.grafik_kunjungan_suku;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_bahasa() {
         return akses.grafik_kunjungan_bahasa;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbooking_operasi() {
         return akses.booking_operasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmapping_poli_bpjs() {
         return akses.mapping_poli_bpjs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_per_cacat() {
         return akses.grafik_kunjungan_per_cacat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbarang_cssd() {
         return akses.barang_cssd;
     }
@@ -3604,18 +4552,34 @@ public final class akses {
         return akses.skdp_bpjs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbooking_registrasi() {
         return akses.booking_registrasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_propinsi() {
         return akses.bpjs_cek_propinsi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_kabupaten() {
         return akses.bpjs_cek_kabupaten;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_kecamatan() {
         return akses.bpjs_cek_kecamatan;
     }
@@ -3628,10 +4592,18 @@ public final class akses {
         return akses.bpjs_cek_riwayat_rujukanrs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_tanggal_rujukan() {
         return akses.bpjs_cek_tanggal_rujukan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpermintaan_lab() {
         return akses.permintaan_lab;
     }
@@ -3640,30 +4612,55 @@ public final class akses {
         akses.periksa_lab = false;
     }
 
+    /**
+     *
+     */
     public static void setpermintaanlabfalse() {
         akses.permintaan_lab = false;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpermintaan_radiologi() {
         return akses.permintaan_radiologi;
     }
 
+    /**
+     *
+     */
     public static void setperiksaradiologifalse() {
         akses.periksa_radiologi = false;
     }
 
+    /**
+     *
+     */
     public static void setpermintaanradiologifalse() {
         akses.permintaan_radiologi = false;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsurat_indeks() {
         return akses.surat_indeks;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsurat_map() {
         return akses.surat_map;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsurat_almari() {
         return akses.surat_almari;
     }
@@ -3688,10 +4685,18 @@ public final class akses {
         return akses.surat_sifat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsurat_balas() {
         return akses.surat_balas;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsurat_masuk() {
         return akses.surat_masuk;
     }
@@ -3700,6 +4705,10 @@ public final class akses {
         return akses.pcare_cek_dokter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_poli() {
         return akses.pcare_cek_poli;
     }
@@ -3708,30 +4717,58 @@ public final class akses {
         return akses.pcare_cek_provider;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_statuspulang() {
         return akses.pcare_cek_statuspulang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_spesialis() {
         return akses.pcare_cek_spesialis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_subspesialis() {
         return akses.pcare_cek_subspesialis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_sarana() {
         return akses.pcare_cek_sarana;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_khusus() {
         return akses.pcare_cek_khusus;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_obat() {
         return akses.pcare_cek_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_tindakan() {
         return akses.pcare_cek_tindakan;
     }
@@ -3740,10 +4777,18 @@ public final class akses {
         return akses.pcare_cek_faskessubspesialis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_faskesalihrawat() {
         return akses.pcare_cek_faskesalihrawat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_cek_faskesthalasemia() {
         return akses.pcare_cek_faskesthalasemia;
     }
@@ -3752,14 +4797,26 @@ public final class akses {
         return akses.pcare_mapping_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_mapping_tindakan() {
         return akses.pcare_mapping_tindakan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_club_prolanis() {
         return akses.pcare_club_prolanis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_mapping_poli() {
         return akses.pcare_mapping_poli;
     }
@@ -3768,6 +4825,10 @@ public final class akses {
         return akses.pcare_kegiatan_kelompok;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_mapping_tindakan_ranap() {
         return akses.pcare_mapping_tindakan_ranap;
     }
@@ -3776,6 +4837,10 @@ public final class akses {
         return akses.pcare_peserta_kegiatan_kelompok;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsirkulasi_obat3() {
         return akses.sirkulasi_obat3;
     }
@@ -3792,30 +4857,58 @@ public final class akses {
         return akses.ranap_per_ruang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenyakit_ranap_cara_bayar() {
         return akses.penyakit_ranap_cara_bayar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getanggota_militer_dirawat() {
         return akses.anggota_militer_dirawat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getset_input_parsial() {
         return akses.set_input_parsial;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getlama_pelayanan_radiologi() {
         return akses.lama_pelayanan_radiologi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getlama_pelayanan_lab() {
         return akses.lama_pelayanan_lab;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_cek_sep() {
         return akses.bpjs_cek_sep;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getcatatan_perawatan() {
         return akses.catatan_perawatan;
     }
@@ -3824,10 +4917,18 @@ public final class akses {
         return akses.surat_keluar;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkegiatan_farmasi() {
         return akses.kegiatan_farmasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getstok_opname_logistik() {
         return akses.stok_opname_logistik;
     }
@@ -3840,14 +4941,26 @@ public final class akses {
         return akses.rekap_lab_pertahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getperujuk_lab_pertahun() {
         return akses.perujuk_lab_pertahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_radiologi_pertahun() {
         return akses.rekap_radiologi_pertahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getperujuk_radiologi_pertahun() {
         return akses.perujuk_radiologi_pertahun;
     }
@@ -3856,22 +4969,42 @@ public final class akses {
         return akses.jumlah_porsi_diet;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjumlah_macam_diet() {
         return akses.jumlah_macam_diet;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpayment_point2() {
         return akses.payment_point2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpembayaran_akun_bayar2() {
         return akses.pembayaran_akun_bayar2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gethapus_nota_salah() {
         return akses.hapus_nota_salah;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gethais_perbangsal() {
         return akses.hais_perbangsal;
     }
@@ -3884,14 +5017,26 @@ public final class akses {
         return akses.saldo_akun_perbulan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdisplay_apotek() {
         return akses.display_apotek;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsisrute_referensi_faskes() {
         return akses.sisrute_referensi_faskes;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsisrute_referensi_alasanrujuk() {
         return akses.sisrute_referensi_alasanrujuk;
     }
@@ -3904,14 +5049,26 @@ public final class akses {
         return akses.sisrute_rujukan_masuk;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getAktif() {
         return akses.aktif;
     }
 
+    /**
+     *
+     * @param status
+     */
     public static void setAktif(boolean status) {
         akses.aktif = status;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsisrute_rujukan_keluar() {
         return akses.sisrute_rujukan_keluar;
     }
@@ -3920,10 +5077,18 @@ public final class akses {
         return akses.bpjs_cek_skdp;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdata_batch() {
         return akses.data_batch;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkunjungan_permintaan_lab() {
         return akses.kunjungan_permintaan_lab;
     }
@@ -3932,26 +5097,50 @@ public final class akses {
         return akses.kunjungan_permintaan_lab2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkunjungan_permintaan_radiologi() {
         return akses.kunjungan_permintaan_radiologi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkunjungan_permintaan_radiologi2() {
         return akses.kunjungan_permintaan_radiologi2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_pemberian_obat() {
         return akses.pcare_pemberian_obat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpcare_pemberian_tindakan() {
         return akses.pcare_pemberian_tindakan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpembayaran_akun_bayar3() {
         return akses.pembayaran_akun_bayar3;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpassword_asuransi() {
         return akses.password_asuransi;
     }
@@ -3960,6 +5149,10 @@ public final class akses {
         return akses.kemenkes_sitt;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsiranap_ketersediaan_kamar() {
         return akses.siranap_ketersediaan_kamar;
     }
@@ -3968,26 +5161,50 @@ public final class akses {
         return akses.grafik_tb_periodelaporan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_tb_rujukan() {
         return akses.grafik_tb_rujukan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_tb_riwayat() {
         return akses.grafik_tb_riwayat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_tb_tipediagnosis() {
         return akses.grafik_tb_tipediagnosis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_tb_statushiv() {
         return akses.grafik_tb_statushiv;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_tb_skoringanak() {
         return akses.grafik_tb_skoringanak;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_tb_konfirmasiskoring5() {
         return akses.grafik_tb_konfirmasiskoring5;
     }
@@ -4008,14 +5225,26 @@ public final class akses {
         return akses.grafik_tb_hasilteshiv;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkadaluarsa_batch() {
         return akses.kadaluarsa_batch;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsisa_stok() {
         return akses.sisa_stok;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getobat_per_resep() {
         return akses.obat_per_resep;
     }
@@ -4024,18 +5253,34 @@ public final class akses {
         return akses.pemakaian_air_pdam;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getlimbah_b3_medis() {
         return akses.limbah_b3_medis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_air_pdam_pertanggal() {
         return akses.grafik_air_pdam_pertanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_air_pdam_perbulan() {
         return akses.grafik_air_pdam_perbulan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_limbahb3_pertanggal() {
         return akses.grafik_limbahb3_pertanggal;
     }
@@ -4044,14 +5289,26 @@ public final class akses {
         return akses.grafik_limbahb3_perbulan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getlimbah_domestik() {
         return akses.limbah_domestik;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_limbahdomestik_pertanggal() {
         return akses.grafik_limbahdomestik_pertanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_limbahdomestik_perbulan() {
         return akses.grafik_limbahdomestik_perbulan;
     }
@@ -4060,6 +5317,10 @@ public final class akses {
         return akses.mutu_air_limbah;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpest_control() {
         return akses.pest_control;
     }
@@ -4068,10 +5329,18 @@ public final class akses {
         return akses.ruang_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkategori_perpustakaan() {
         return akses.kategori_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjenis_perpustakaan() {
         return akses.jenis_perpustakaan;
     }
@@ -4080,6 +5349,10 @@ public final class akses {
         return akses.pengarang_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenerbit_perpustakaan() {
         return akses.penerbit_perpustakaan;
     }
@@ -4088,6 +5361,10 @@ public final class akses {
         return akses.koleksi_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinventaris_perpustakaan() {
         return akses.inventaris_perpustakaan;
     }
@@ -4096,26 +5373,50 @@ public final class akses {
         return akses.set_peminjaman_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdenda_perpustakaan() {
         return akses.denda_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getanggota_perpustakaan() {
         return akses.anggota_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpeminjaman_perpustakaan() {
         return akses.peminjaman_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbayar_denda_perpustakaan() {
         return akses.bayar_denda_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getebook_perpustakaan() {
         return akses.ebook_perpustakaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjenis_cidera_k3rs() {
         return akses.jenis_cidera_k3rs;
     }
@@ -4124,6 +5425,10 @@ public final class akses {
         return akses.penyebab_k3rs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjenis_luka_k3rs() {
         return akses.jenis_luka_k3rs;
     }
@@ -4132,14 +5437,26 @@ public final class akses {
         return akses.lokasi_kejadian_k3rs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdampak_cidera_k3rs() {
         return akses.dampak_cidera_k3rs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjenis_pekerjaan_k3rs() {
         return akses.jenis_pekerjaan_k3rs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbagian_tubuh_k3rs() {
         return akses.bagian_tubuh_k3rs;
     }
@@ -4148,6 +5465,10 @@ public final class akses {
         return akses.peristiwa_k3rs;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_k3_pertahun() {
         return akses.grafik_k3_pertahun;
     }
@@ -4184,6 +5505,10 @@ public final class akses {
         return akses.grafik_k3_perjenispekerjaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_k3_perbagiantubuh() {
         return akses.grafik_k3_perbagiantubuh;
     }
@@ -4196,14 +5521,26 @@ public final class akses {
         return akses.penyebab_k3rstahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getjenis_luka_k3rstahun() {
         return akses.jenis_luka_k3rstahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getlokasi_kejadian_k3rstahun() {
         return akses.lokasi_kejadian_k3rstahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdampak_cidera_k3rstahun() {
         return akses.dampak_cidera_k3rstahun;
     }
@@ -4212,18 +5549,34 @@ public final class akses {
         return akses.jenis_pekerjaan_k3rstahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbagian_tubuh_k3rstahun() {
         return akses.bagian_tubuh_k3rstahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsekrining_rawat_jalan() {
         return akses.sekrining_rawat_jalan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_histori_pelayanan() {
         return akses.bpjs_histori_pelayanan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_mutasi_berkas() {
         return akses.rekap_mutasi_berkas;
     }
@@ -4240,34 +5593,66 @@ public final class akses {
         return akses.pengajuan_barang_nonmedis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_ranapbulan() {
         return akses.grafik_kunjungan_ranapbulan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_ranaptanggal() {
         return akses.grafik_kunjungan_ranaptanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_kunjungan_ranap_peruang() {
         return akses.grafik_kunjungan_ranap_peruang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkunjungan_bangsal_pertahun() {
         return akses.kunjungan_bangsal_pertahun;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_jenjang_jabatanpegawai() {
         return akses.grafik_jenjang_jabatanpegawai;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_bidangpegawai() {
         return akses.grafik_bidangpegawai;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_departemenpegawai() {
         return akses.grafik_departemenpegawai;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_pendidikanpegawai() {
         return akses.grafik_pendidikanpegawai;
     }
@@ -4276,6 +5661,10 @@ public final class akses {
         return akses.grafik_sttswppegawai;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_sttskerjapegawai() {
         return akses.grafik_sttskerjapegawai;
     }
@@ -4288,10 +5677,18 @@ public final class akses {
         return akses.kip_pasien_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkip_pasien_ralan() {
         return akses.kip_pasien_ralan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbpjs_mapping_dokterdpjp() {
         return akses.bpjs_mapping_dokterdpjp;
     }
@@ -4300,18 +5697,34 @@ public final class akses {
         return akses.data_triase_igd;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmaster_triase_skala1() {
         return akses.master_triase_skala1;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmaster_triase_skala2() {
         return akses.master_triase_skala2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmaster_triase_skala3() {
         return akses.master_triase_skala3;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmaster_triase_skala4() {
         return akses.master_triase_skala4;
     }
@@ -4320,30 +5733,58 @@ public final class akses {
         return akses.master_triase_skala5;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmaster_triase_pemeriksaan() {
         return akses.master_triase_pemeriksaan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmaster_triase_macamkasus() {
         return akses.master_triase_macamkasus;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_permintaan_diet() {
         return akses.rekap_permintaan_diet;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdaftar_pasien_ranap() {
         return akses.daftar_pasien_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdaftar_pasien_ranaptni() {
         return akses.daftar_pasien_ranaptni;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpengajuan_asetinventaris() {
         return akses.pengajuan_asetinventaris;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getitem_apotek_jenis() {
         return akses.item_apotek_jenis;
     }
@@ -4352,6 +5793,10 @@ public final class akses {
         return akses.item_apotek_kategori;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getitem_apotek_golongan() {
         return akses.item_apotek_golongan;
     }
@@ -4360,10 +5805,18 @@ public final class akses {
         return akses.item_apotek_industrifarmasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getobat10_terbanyak_poli() {
         return akses.obat10_terbanyak_poli;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_pengajuan_aset_urgensi() {
         return akses.grafik_pengajuan_aset_urgensi;
     }
@@ -4372,6 +5825,10 @@ public final class akses {
         return akses.grafik_pengajuan_aset_status;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_pengajuan_aset_departemen() {
         return akses.grafik_pengajuan_aset_departemen;
     }
@@ -4384,6 +5841,10 @@ public final class akses {
         return akses.grafik_kelompok_jabatanpegawai;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_resiko_kerjapegawai() {
         return akses.grafik_resiko_kerjapegawai;
     }
@@ -4392,10 +5853,18 @@ public final class akses {
         return akses.grafik_emergency_indexpegawai;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_inventaris_ruang() {
         return akses.grafik_inventaris_ruang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getharian_HAIs2() {
         return akses.harian_HAIs2;
     }
@@ -4408,18 +5877,34 @@ public final class akses {
         return akses.data_resume_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getperkiraan_biaya_ranap() {
         return akses.perkiraan_biaya_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_obat_poli() {
         return akses.rekap_obat_poli;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_obat_pasien() {
         return akses.rekap_obat_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_HAIs_pasienbangsal() {
         return akses.grafik_HAIs_pasienbangsal;
     }
@@ -4428,6 +5913,10 @@ public final class akses {
         return akses.grafik_HAIs_pasienbulan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpermintaan_perbaikan_inventaris() {
         return akses.permintaan_perbaikan_inventaris;
     }
@@ -4436,22 +5925,42 @@ public final class akses {
         return akses.grafik_HAIs_laju_vap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_HAIs_laju_iad() {
         return akses.grafik_HAIs_laju_iad;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_HAIs_laju_pleb() {
         return akses.grafik_HAIs_laju_pleb;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_HAIs_laju_isk() {
         return akses.grafik_HAIs_laju_isk;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_HAIs_laju_ilo() {
         return akses.grafik_HAIs_laju_ilo;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getgrafik_HAIs_laju_hap() {
         return akses.grafik_HAIs_laju_hap;
     }
@@ -4464,6 +5973,10 @@ public final class akses {
         return akses.inhealth_mapping_dokter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinhealth_mapping_tindakan_ralan() {
         return akses.inhealth_mapping_tindakan_ralan;
     }
@@ -4472,18 +5985,34 @@ public final class akses {
         return akses.inhealth_mapping_tindakan_ranap;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinhealth_mapping_tindakan_radiologi() {
         return akses.inhealth_mapping_tindakan_radiologi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinhealth_mapping_tindakan_laborat() {
         return akses.inhealth_mapping_tindakan_laborat;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getinhealth_mapping_tindakan_operasi() {
         return akses.inhealth_mapping_tindakan_operasi;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gethibah_obat_bhp() {
         return akses.hibah_obat_bhp;
     }
@@ -4504,6 +6033,10 @@ public final class akses {
         return akses.sirkulasi_obat4;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsirkulasi_obat5() {
         return akses.sirkulasi_obat5;
     }
@@ -4512,6 +6045,10 @@ public final class akses {
         return akses.sirkulasi_non_medis2;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmonitoring_asuhan_gizi() {
         return akses.monitoring_asuhan_gizi;
     }
@@ -4520,6 +6057,10 @@ public final class akses {
         return akses.penerimaan_obat_perbulan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getrekap_kunjungan() {
         return akses.rekap_kunjungan;
     }
@@ -4528,6 +6069,10 @@ public final class akses {
         return akses.surat_sakit;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenilaian_awal_keperawatan_ralan() {
         return akses.penilaian_awal_keperawatan_ralan;
     }
@@ -4536,14 +6081,26 @@ public final class akses {
         return akses.permintaan_diet;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getmaster_masalah_keperawatan() {
         return akses.master_masalah_keperawatan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpengajuan_cuti() {
         return akses.pengajuan_cuti;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getkedatangan_pasien() {
         return akses.kedatangan_pasien;
     }
@@ -4552,14 +6109,26 @@ public final class akses {
         return akses.utd_pendonor;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_suplier() {
         return akses.toko_suplier;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_jenis() {
         return akses.toko_jenis;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_set_harga() {
         return akses.toko_set_harga;
     }
@@ -4572,10 +6141,18 @@ public final class akses {
         return akses.penagihan_piutang_pasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getakun_penagihan_piutang() {
         return akses.akun_penagihan_piutang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getstok_opname_toko() {
         return akses.stok_opname_toko;
     }
@@ -4584,22 +6161,42 @@ public final class akses {
         return akses.toko_riwayat_barang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_surat_pemesanan() {
         return akses.toko_surat_pemesanan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_pengajuan_barang() {
         return akses.toko_pengajuan_barang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_penerimaan_barang() {
         return akses.toko_penerimaan_barang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_pengadaan_barang() {
         return akses.toko_pengadaan_barang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_hutang() {
         return akses.toko_hutang;
     }
@@ -4608,6 +6205,10 @@ public final class akses {
         return akses.toko_bayar_pemesanan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_member() {
         return akses.toko_member;
     }
@@ -4616,22 +6217,42 @@ public final class akses {
         return akses.toko_penjualan;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getregistrasi_poli_per_tanggal() {
         return akses.registrasi_poli_per_tanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_piutang() {
         return akses.toko_piutang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_retur_beli() {
         return akses.toko_retur_beli;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getipsrs_returbeli() {
         return akses.ipsrs_returbeli;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getipsrs_riwayat_barang() {
         return akses.ipsrs_riwayat_barang;
     }
@@ -4640,18 +6261,34 @@ public final class akses {
         return akses.pasien_corona;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_pendapatan_harian() {
         return akses.toko_pendapatan_harian;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdiagnosa_pasien_corona() {
         return akses.diagnosa_pasien_corona;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getperawatan_pasien_corona() {
         return akses.perawatan_pasien_corona;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getpenilaian_awal_keperawatan_gigi() {
         return akses.penilaian_awal_keperawatan_gigi;
     }
@@ -4664,14 +6301,26 @@ public final class akses {
         return akses.toko_bayar_piutang;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_piutang_harian() {
         return akses.toko_piutang_harian;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean gettoko_penjualan_harian() {
         return akses.toko_penjualan_harian;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getdeteksi_corona() {
         return akses.deteksi_corona;
     }
@@ -4684,6 +6333,10 @@ public final class akses {
         return akses.pengumuman_epasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getsurat_hamil() {
         return akses.surat_hamil;
     }
@@ -4692,6 +6345,10 @@ public final class akses {
         return akses.set_tarif_online;
     }
 
+    /**
+     *
+     * @return
+     */
     public static boolean getbooking_periksa() {
         return akses.booking_periksa;
     }

@@ -23,6 +23,11 @@ public class koneksiDB {
     private static String var="";
     
     public koneksiDB(){} 
+
+    /**
+     *
+     * @return
+     */
     public static Connection condb(){ 
         if(connection == null){
             try{
@@ -66,6 +71,10 @@ public class koneksiDB {
         return connection;        
     }
     
+    /**
+     *
+     * @return
+     */
     public static String HOST(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -76,6 +85,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String DATABASE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -86,6 +99,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String PORT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -146,6 +163,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String ANTRIAN(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -176,6 +197,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String ALARMLAB(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -186,6 +211,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String FORMALARMLAB(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -196,6 +225,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String ALARMRADIOLOGI(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -206,6 +239,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String FORMALARMRADIOLOGI(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -226,6 +263,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String ALARMBOOKINGPERIKSA(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -266,6 +307,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String CONSIDAPIBPJS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -286,6 +331,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String SECRETKEYAPIAPLICARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -326,6 +375,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String CONSIDAPIPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -336,6 +389,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String PASSPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -346,6 +403,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String USERPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -356,6 +417,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String DIVREGPCARE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -376,6 +441,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String URLAPISISRUTE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -396,6 +465,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String PASSSISRUTE(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -406,6 +479,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String URLAPISIRS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -426,6 +503,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String PASSSIRS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -446,6 +527,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String IDCORONA(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -466,6 +551,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String URLAPISITT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -476,6 +565,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String IDSITT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -496,6 +589,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String KABUPATENSITT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -506,6 +603,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String KAMARAKTIFRANAP(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -516,6 +617,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String DOKTERAKTIFKASIRRALAN(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -536,6 +641,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String RUANGANAKTIFINVENTARIS(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -556,6 +665,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String URUTNOREG(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -596,6 +709,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String TOKENINHEALTH(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -606,6 +723,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String PEMBULATANHARGAOBAT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -626,6 +747,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String CETAKRINCIANOBAT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -636,6 +761,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String AKTIFKANBILLINGPARSIAL(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -656,6 +785,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String USERDUKCAPILJAKARTA(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -696,6 +829,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String URLDUKCAPIL(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -706,6 +843,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String USERDUKCAPIL(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -716,6 +857,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String PASSDUKCAPIL(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -736,6 +881,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String AKTIFKANTRACKSQL(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -756,6 +905,10 @@ public class koneksiDB {
         return var;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String KEYWSLICA(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));

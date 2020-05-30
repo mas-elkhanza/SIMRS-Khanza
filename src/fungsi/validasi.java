@@ -80,12 +80,22 @@ public final class validasi {
     private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
                          "tujuh","delapan","sembilan","sepuluh","sebelas"};
 
+    /**
+     *
+     */
     public validasi() {
         super();
     }
 
     ;
 
+    /**
+     *
+     * @param tabMode
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer(DefaultTableModel tabMode, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         s = Integer.toString(tabMode.getRowCount() + 1);
         j = s.length();
@@ -96,6 +106,13 @@ public final class validasi {
         teks.setText(strAwal + s1 + s);
     }
 
+    /**
+     *
+     * @param tabel
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer(String tabel, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement("select * from " + tabel);
@@ -125,6 +142,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer2(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -154,6 +178,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer3(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -187,6 +218,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer4(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -255,6 +293,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer6(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -288,6 +333,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param tabel
+     * @param strAwal
+     * @param pnj
+     * @return
+     */
     public String autoNomer(String tabel, String strAwal, Integer pnj) {
         try {
             auto = "";
@@ -370,6 +422,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     */
     public void editTable(String table, String field_acuan, JTextField nilai_field, String update) {
         if (nilai_field.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null,
@@ -391,6 +450,14 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param tabMode
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     */
     public void editTable(DefaultTableModel tabMode, String table, String field_acuan, JComboBox nilai_field,
             String update) {
         if (tabMode.getRowCount() == 0) {
@@ -405,6 +472,14 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param tabMode
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     */
     public void editTable(DefaultTableModel tabMode, String table, String field_acuan, JLabel nilai_field,
             String update) {
         if (tabMode.getRowCount() == 0) {
@@ -442,6 +517,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param tabMode
+     * @param nilai_field
+     * @param table
+     * @param field
+     */
     public void hapusTable(DefaultTableModel tabMode, JTextField nilai_field, String table, String field) {
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...");
@@ -455,6 +537,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param tabMode
+     * @param nilai_field
+     * @param table
+     * @param field
+     */
     public void hapusTable(DefaultTableModel tabMode, JComboBox nilai_field, String table, String field) {
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
@@ -468,6 +557,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param cmb
+     * @param field
+     * @param table
+     */
     public void loadCombo(JComboBox cmb, String field, String table) {
         cmb.removeAllItems();
         try {
@@ -495,6 +590,10 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param cmb
+     */
     public void LoadTahun(JComboBox cmb) {
         cmb.removeAllItems();
         for (i = (year + 1); i >= 1980; i--) {
@@ -503,6 +602,10 @@ public final class validasi {
         cmb.setSelectedItem(year);
     }
 
+    /**
+     *
+     * @param cmb
+     */
     public void LoadTahunAkd(JComboBox cmb) {
         cmb.removeAllItems();
         for (i = 1950; i <= year; i++) {
@@ -540,6 +643,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param parameters
+     */
     @SuppressWarnings("empty-statement")
     public void MyReportPDF(String reportName, String reportDirName, String judul, Map parameters) {
         getPathReport(reportDirName, reportName);
@@ -563,6 +673,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param parameters
+     */
     @SuppressWarnings("empty-statement")
     public void MyReport2(String reportName, String reportDirName, String judul, Map parameters) {
         getPathReport(reportDirName, reportName);
@@ -651,6 +768,14 @@ public final class validasi {
         } // end if
     }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param qry
+     * @param parameters
+     */
     public void MyReportqrypdf(String reportName, String reportDirName, String judul, String qry, Map parameters) {
         getPathReport(reportDirName, reportName);
         // Cek apakah file RptMaster.jrxml ada
@@ -681,6 +806,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param reportName
+     * @param parameters
+     * @param title
+     */
     public void MyReport(String reportName, Map parameters, String title) {
         try {
             JasperViewer jasperViewer = new JasperViewer(
@@ -694,6 +825,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -710,6 +847,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     * @param bawah
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JTextField kanan, JTextField bawah) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -720,6 +864,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah2(java.awt.event.KeyEvent evt, JTextField kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             kanan.requestFocus();
@@ -728,6 +878,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah2(java.awt.event.KeyEvent evt, JTextField kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             kanan.requestFocus();
@@ -736,6 +892,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JTextArea kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -752,6 +914,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(KeyEvent evt, JComboBox kiri, JTextArea kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -768,6 +936,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     * @param bawah
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JButton kanan, JTextField bawah) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -778,6 +953,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah2(java.awt.event.KeyEvent evt, JTextField kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             kanan.requestFocus();
@@ -786,6 +967,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JButton kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -794,6 +981,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JButton kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -802,6 +995,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -818,6 +1017,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JComboBox kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -826,6 +1031,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JComboBox kiri, JDateTimePicker kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -834,6 +1045,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JCheckBox kiri, JDateTimePicker kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -842,6 +1059,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JDateTimePicker kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -850,6 +1073,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JComboBox kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -866,6 +1095,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(KeyEvent evt, JButton kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -874,6 +1109,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(KeyEvent evt, JTextArea kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -882,6 +1123,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(KeyEvent evt, JTextArea kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -890,6 +1137,10 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param url
+     */
     public void panggilUrl(String url) {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();
@@ -920,6 +1171,10 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param url
+     */
     public void panggilUrl2(String url) {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();
@@ -946,6 +1201,11 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param url
+     * @throws URISyntaxException
+     */
     public void printUrl(String url) throws URISyntaxException {
         try{
            Properties prop = new Properties();
@@ -956,6 +1216,11 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param original
+     * @return
+     */
     public String SetTgl(String original) {
         original = original.replaceAll("'", "");
         s = "";
@@ -966,6 +1231,11 @@ public final class validasi {
         return s;
     }
 
+    /**
+     *
+     * @param original
+     * @return
+     */
     public String SetTglJam(String original) {
         original = original.replaceAll("'", "");
         s = "";
@@ -996,6 +1266,11 @@ public final class validasi {
         return original;
     }
 
+    /**
+     *
+     * @param dtp
+     * @param tgl
+     */
     public void SetTgl(JDateTimePicker dtp, String tgl) {
         try {
             Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'", ""));
@@ -1005,6 +1280,11 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param dtp
+     * @param tgl
+     */
     public void SetTgl2(JDateTimePicker dtp, String tgl) {
         try {
             Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl.replaceAll("'", ""));
@@ -1014,6 +1294,11 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param tgl
+     * @return
+     */
     public Date SetTgl2(String tgl) {
         try {
             Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'", ""));
@@ -1023,11 +1308,21 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void textKosong(JTextField teks, String pesan) {
         JOptionPane.showMessageDialog(null, "Maaf, " + pesan + " tidak boleh kosong...!!!");
         teks.requestFocus();
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void textKosong(JTextArea teks, String pesan) {
         JOptionPane.showMessageDialog(null, "Maaf, " + pesan + " tidak boleh kosong...!!!");
         teks.requestFocus();
@@ -1038,6 +1333,10 @@ public final class validasi {
         teks.requestFocus();
     }
 
+    /**
+     *
+     * @param tabMode
+     */
     public void tabelKosong(DefaultTableModel tabMode) {
         j = tabMode.getRowCount();
         for (i = 0; i < j; i++) {
@@ -1045,11 +1344,21 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void textKosong(JComboBox teks, String pesan) {
         JOptionPane.showMessageDialog(null, "Maaf, " + pesan + " tidak boleh kosong...!!!");
         teks.requestFocus();
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka(double nilai) {
         return df2.format(nilai);
     }
@@ -1058,6 +1367,11 @@ public final class validasi {
         return df4.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka4(double nilai) {
         return df5.format(nilai);
     }
@@ -1066,22 +1380,48 @@ public final class validasi {
         return df3.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka5(double nilai) {
         return df6.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka6(double nilai) {
         return df7.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public double SetAngka7(double nilai) {
         return Double.parseDouble(df7.format(nilai));
     }
 
+    /**
+     *
+     * @param value
+     * @param places
+     * @return
+     */
     public double SetAngka8(double value, int places) {
         return new BigDecimal(value).setScale(places, RoundingMode.HALF_UP).doubleValue();
     }
 
+    /**
+     *
+     * @param txt
+     * @return
+     */
     public double SetAngka(String txt) {
         double x;
         try {
@@ -1097,6 +1437,12 @@ public final class validasi {
         return x;
     }
 
+    /**
+     *
+     * @param number
+     * @param multiple
+     * @return
+     */
     public double roundUp(double number, int multiple) {
         if (PEMBULATANHARGAOBAT.equals("yes")) {
             result = multiple;
@@ -1114,6 +1460,11 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void setPlaceHolder(JTextField teks, String pesan) {
         teks.setText(pesan);
         teks.setForeground(Color.GRAY);
@@ -1141,6 +1492,11 @@ public final class validasi {
         });
     }
     
+    /**
+     *
+     * @param angka
+     * @return
+     */
     public String terbilang(double angka){
         if(angka<12)
         {
