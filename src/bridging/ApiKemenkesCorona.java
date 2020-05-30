@@ -17,9 +17,17 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class ApiKemenkesCorona {        
     private static final Properties prop = new Properties();
     private String Key,pass;
+
+    /**
+     *
+     */
     public ApiKemenkesCorona(){
         try {            
             prop.loadFromXML(new FileInputStream("setting/database.xml"));   
@@ -28,6 +36,11 @@ public class ApiKemenkesCorona {
             System.out.println("Notifikasi : "+ex);
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public String getHmac() {        
          Key=pass;
 	return Key;
@@ -38,6 +51,12 @@ public class ApiKemenkesCorona {
         return millis/1000;
     }
     
+    /**
+     *
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("SSL");
         javax.net.ssl.TrustManager[] trustManagers= {

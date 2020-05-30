@@ -11,10 +11,19 @@ package bridging;
  */
 public class tessaja {
     public static BPJSApi api=new BPJSApi();
+
+    /**
+     *
+     */
     public static void tessaja(){
         System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString()));
         System.out.println("X-Signature:"+api.getHmac());
     }
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         tessaja();
     }

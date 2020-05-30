@@ -22,6 +22,11 @@ public class koneksiDBSysmex {
     private static final MysqlDataSource dataSource=new MysqlDataSource();
     
     public koneksiDBSysmex(){} 
+
+    /**
+     *
+     * @return
+     */
     public static Connection condb(){ 
         if(connection == null){
             try{

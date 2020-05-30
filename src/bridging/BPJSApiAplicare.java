@@ -21,6 +21,10 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class BPJSApiAplicare {        
     private static final Properties prop = new Properties();
     private String Key,Consid;
@@ -44,6 +48,11 @@ public class BPJSApiAplicare {
             System.out.println("Notifikasi : "+ex);
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public String getHmac() {        
         GetUTCdatetimeAsString = GetUTCdatetimeAsString();        
         salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);
@@ -58,6 +67,13 @@ public class BPJSApiAplicare {
 	return generateHmacSHA256Signature;
     }
 
+    /**
+     *
+     * @param data
+     * @param key
+     * @return
+     * @throws GeneralSecurityException
+     */
     public String generateHmacSHA256Signature(String data, String key)throws GeneralSecurityException {
         hmacData = null;
 	try {
@@ -77,6 +93,12 @@ public class BPJSApiAplicare {
         return millis/1000;
     }
     
+    /**
+     *
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         sslContext = SSLContext.getInstance("SSL");
         TrustManager[] trustManagers= {

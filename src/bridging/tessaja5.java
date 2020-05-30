@@ -17,6 +17,10 @@ import org.apache.commons.codec.binary.Base64;
  * @author khanzasoft
  */
 public class tessaja5 {
+
+    /**
+     *
+     */
     public static SisruteApi api=new SisruteApi();
     private static Properties prop = new Properties();
     public static void tessaja() throws FileNotFoundException, IOException{
@@ -27,6 +31,12 @@ public class tessaja5 {
         String otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
         System.out.println("X-Authorization:Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
     }
+
+    /**
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         tessaja();
     }

@@ -45,6 +45,9 @@ public class ApiLICA {
     private JsonNode response;
     private ObjectMapper mapper = new ObjectMapper();
     
+    /**
+     *
+     */
     public ApiLICA(){
         super();
         try {
@@ -55,6 +58,10 @@ public class ApiLICA {
         }
     }
     
+    /**
+     *
+     * @param nopermintaan
+     */
     public void kirim(String nopermintaan) {
         try {
              ps=koneksi.prepareStatement(

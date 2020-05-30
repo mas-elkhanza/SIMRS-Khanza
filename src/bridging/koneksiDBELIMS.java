@@ -21,7 +21,15 @@ public class koneksiDBELIMS {
     private static final Properties prop = new Properties();  
     private static final MysqlDataSource dataSource=new MysqlDataSource();
     
+    /**
+     *
+     */
     public koneksiDBELIMS(){} 
+
+    /**
+     *
+     * @return
+     */
     public static Connection condb(){ 
         if(connection == null){
             try{

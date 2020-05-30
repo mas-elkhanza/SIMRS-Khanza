@@ -22,6 +22,11 @@ public class koneksiDBFUJI {
     private static final MysqlDataSource dataSource=new MysqlDataSource();
     
     public koneksiDBFUJI(){} 
+
+    /**
+     *
+     * @return
+     */
     public static Connection condb(){ 
         if(connection == null){
             try{

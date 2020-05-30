@@ -25,13 +25,113 @@ import org.springframework.http.MediaType;
  * @author khanzasoft
  */
 public class BPJSCekNIK {
-    public String cobnmAsuransi="",cobnoAsuransi="",cobtglTAT="",cobtglTMT="",
-            hakKelasketerangan="",hakKelaskode="",informasidinsos="",informasinoSKTM="",
-            informasiprolanisPRB="",jenisPesertaketerangan="",jenisPesertakode="",
-            mrnoMR="",mrnoTelepon="",nama="",nik="",noKartu="",pisa="",
-            provUmumkdProvider="",provUmumnmProvider="",sex="",statusPesertaketerangan="",
-            statusPesertakode="",tglCetakKartu="",tglLahir="",tglTAT="",
-            tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="",URL="",link="";
+
+    /**
+     *
+     */
+    public String cobnmAsuransi="",cobnoAsuransi="",cobtglTAT="",
+
+    /**
+     *
+     */
+    cobtglTMT="",
+
+    /**
+     *
+     */
+    hakKelasketerangan="",
+
+    /**
+     *
+     */
+    hakKelaskode="",informasidinsos="",
+
+    /**
+     *
+     */
+    informasinoSKTM="",
+
+    /**
+     *
+     */
+    informasiprolanisPRB="",
+
+    /**
+     *
+     */
+    jenisPesertaketerangan="",
+
+    /**
+     *
+     */
+    jenisPesertakode="",
+            mrnoMR="",
+
+    /**
+     *
+     */
+    mrnoTelepon="",
+
+    /**
+     *
+     */
+    nama="",nik="",
+
+    /**
+     *
+     */
+    noKartu="",
+
+    /**
+     *
+     */
+    pisa="",
+
+    /**
+     *
+     */
+    provUmumkdProvider="",
+
+    /**
+     *
+     */
+    provUmumnmProvider="",sex="",
+
+    /**
+     *
+     */
+    statusPesertaketerangan="",
+            statusPesertakode="",
+
+    /**
+     *
+     */
+    tglCetakKartu="",
+
+    /**
+     *
+     */
+    tglLahir="",tglTAT="",
+
+    /**
+     *
+     */
+    tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",
+
+    /**
+     *
+     */
+    informasi="",
+
+    /**
+     *
+     */
+    URL="",
+
+    /**
+     *
+     */
+    link="";
     private final Properties prop = new Properties();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
@@ -43,6 +143,9 @@ public class BPJSCekNIK {
     private JsonNode nameNode;
     private JsonNode response;
         
+    /**
+     *
+     */
     public BPJSCekNIK(){
         super();
         try {

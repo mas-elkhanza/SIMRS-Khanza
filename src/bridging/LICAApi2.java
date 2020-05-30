@@ -45,6 +45,9 @@ public class LICAApi2 {
     private JsonNode response;
     private ObjectMapper mapper = new ObjectMapper();
     
+    /**
+     *
+     */
     public LICAApi2(){
         super();
         try {
@@ -55,6 +58,10 @@ public class LICAApi2 {
         }
     }
     
+    /**
+     *
+     * @param nopermintaan
+     */
     public void kirim(String nopermintaan) {
         try {
              ps=koneksi.prepareStatement(
@@ -155,6 +162,10 @@ public class LICAApi2 {
         }
     }
     
+    /**
+     *
+     * @param nopermintaan
+     */
     public void ambil(String nopermintaan) {
         try{
             headers = new HttpHeaders();

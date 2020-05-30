@@ -28,6 +28,10 @@ public class DUKCAPILJakartaPostLahir {
     private final Properties prop = new Properties();
     private final sekuel Sequel=new sekuel();
     private final Properties prop2 = new Properties();
+
+    /**
+     *
+     */
     public String UID="";
     private boolean status=false;
     private String URL;
