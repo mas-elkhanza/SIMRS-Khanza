@@ -73,7 +73,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Penerimaan_Toko,Kontra_Penerimaan_Toko,Pengadaan_Toko,Bayar_Pemesanan_Toko,
             Penjualan_Toko,HPP_Barang_Toko,Persediaan_Barang_Toko,Piutang_Toko,Kontra_Piutang_Toko,
             Retur_Beli_Toko,Kontra_Retur_Beli_Toko,Retur_Beli_Non_Medis,Kontra_Retur_Beli_Non_Medis,
-            Retur_Jual_Toko,Kontra_Retur_Jual_Toko,
+            Retur_Jual_Toko,Kontra_Retur_Jual_Toko,Retur_Piutang_Toko,Kontra_Retur_Piutang_Toko,
             kode_pendapatan_tindakan,nama_pendapatan_tindakan,kode_beban_jasa_dokter,nama_beban_jasa_dokter, kode_utang_jasa_dokter,
             nama_utang_jasa_dokter,kode_beban_jasa_paramedis,nama_beban_jasa_paramedis,kode_utang_jasa_paramedis,nama_utang_jasa_paramedis, 
             kode_beban_kso,nama_beban_kso,kode_utang_kso,nama_utang_kso,kode_hpp_persediaan,nama_hpp_persediaan,kode_persediaan_bhp,
@@ -731,6 +731,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Kontra_Retur_Beli_Non_Medis=tbPengaturan.getValueAt(131,1).toString();
             Retur_Jual_Toko=tbPengaturan.getValueAt(132,1).toString();
             Kontra_Retur_Jual_Toko=tbPengaturan.getValueAt(133,1).toString();
+            Retur_Piutang_Toko=tbPengaturan.getValueAt(134,1).toString();
+            Kontra_Retur_Piutang_Toko=tbPengaturan.getValueAt(135,1).toString();
             
             if(Tindakan_Ralan.equals("")||Laborat_Ralan.equals("")||Radiologi_Ralan.equals("")||Obat_Ralan.equals("")||
                 Registrasi_Ralan.equals("")||Tambahan_Ralan.equals("")||Potongan_Ralan.equals("")||Tindakan_Ranap.equals("")||
@@ -778,7 +780,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Kontra_Penerimaan_Toko.equals("")||Pengadaan_Toko.equals("")||Bayar_Pemesanan_Toko.equals("")||Penjualan_Toko.equals("")||
                 HPP_Barang_Toko.equals("")||Persediaan_Barang_Toko.equals("")||Piutang_Toko.equals("")||Kontra_Piutang_Toko.equals("")||
                 Retur_Beli_Toko.equals("")||Kontra_Retur_Beli_Toko.equals("")||Retur_Beli_Non_Medis.equals("")||Kontra_Retur_Beli_Non_Medis.equals("")||
-                Retur_Jual_Toko.equals("")||Kontra_Retur_Jual_Toko.equals("")){
+                Retur_Jual_Toko.equals("")||Kontra_Retur_Jual_Toko.equals("")||Retur_Piutang_Toko.equals("")||Kontra_Retur_Piutang_Toko.equals("")){
                     JOptionPane.showMessageDialog(null,"Silahkan lengkapi seluruh data Akun...!!!!");
                     tbPengaturan.requestFocus();
             }else{
@@ -822,7 +824,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Harian_Ranap, Uang_Muka_Ranap, Piutang_Pasien_Ranap
                 });
                 Sequel.queryu("delete from set_akun");
-                Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",46,new String[]{
+                Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",48,new String[]{
                     Pengadaan_Obat,
                     Pemesanan_Obat,Kontra_Pemesanan_Obat,Bayar_Pemesanan_Obat,Penjualan_Obat,Piutang_Obat,
                     Kontra_Piutang_Obat,Retur_Ke_Suplayer,Kontra_Retur_Ke_Suplayer,Retur_Dari_pembeli,
@@ -834,7 +836,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Bayar_Pemesanan_Non_Medis,Hibah_Obat,Kontra_Hibah_Obat,Penerimaan_Toko,Kontra_Penerimaan_Toko,
                     Pengadaan_Toko,Bayar_Pemesanan_Toko,Penjualan_Toko,HPP_Barang_Toko,Persediaan_Barang_Toko,
                     Piutang_Toko,Kontra_Piutang_Toko,Retur_Beli_Toko,Kontra_Retur_Beli_Toko,Retur_Beli_Non_Medis,
-                    Kontra_Retur_Beli_Non_Medis,Retur_Jual_Toko,Kontra_Retur_Jual_Toko
+                    Kontra_Retur_Beli_Non_Medis,Retur_Jual_Toko,Kontra_Retur_Jual_Toko,Retur_Piutang_Toko,
+                    Kontra_Retur_Piutang_Toko
                 });
                 JOptionPane.showMessageDialog(null,"Proses selesai...!!!!");
                 tampil();
@@ -1241,6 +1244,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Kontra_Retur_Beli_Non_Medis="";
             Retur_Jual_Toko="";
             Kontra_Retur_Jual_Toko="";
+            Retur_Piutang_Toko="";
+            Kontra_Retur_Piutang_Toko="";
             
             ps=koneksi.prepareStatement("select * from set_akun_ralan");
             try {
@@ -1412,6 +1417,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Kontra_Retur_Beli_Non_Medis=rs.getString("Kontra_Retur_Beli_Non_Medis");
                     Retur_Jual_Toko=rs.getString("Retur_Jual_Toko");
                     Kontra_Retur_Jual_Toko=rs.getString("Kontra_Retur_Jual_Toko");
+                    Retur_Piutang_Toko=rs.getString("Retur_Piutang_Toko");
+                    Kontra_Retur_Piutang_Toko=rs.getString("Kontra_Retur_Piutang_Toko");
                 }               
             } catch (Exception e) {
                 System.out.println("Notif Set Akun :"+e);
@@ -2095,6 +2102,16 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Kontra_Retur_Jual_Toko),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kontra_Retur_Jual_Toko),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Kontra_Retur_Jual_Toko)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Retur Piutang Toko pada menu Retur Piutang Toko",Retur_Piutang_Toko,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Retur_Piutang_Toko),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Retur_Piutang_Toko),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Retur_Piutang_Toko)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Kontra Akun Retur Piutang Toko pada menu Retur Piutang Toko",Kontra_Retur_Piutang_Toko,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Kontra_Retur_Piutang_Toko),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kontra_Retur_Piutang_Toko),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Kontra_Retur_Piutang_Toko)
             });
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

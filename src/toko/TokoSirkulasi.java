@@ -29,7 +29,8 @@ public class TokoSirkulasi extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private double ttltotalbeli=0,totalbeli=0,stok=0,aset=0,ttlaset=0,jumlahbeli=0,jumlahpiutang=0,totalpiutang=0,ttltotalpiutang=0,ttltotalpesan=0,totalpesan=0,jumlahpesan=0,
-            jumlahpenjualan,totalpenjualan,ttltotalpenjualan,jumlahretursup,totalretursup,ttltotalretursup;
+            jumlahpenjualan=0,totalpenjualan=0,ttltotalpenjualan=0,jumlahretursup=0,totalretursup=0,ttltotalretursup=0,jumlahreturjual=0,totalreturjual=0,ttltotalreturjual=0,
+            jumlahreturpiutang=0,totalreturpiutang=0,ttltotalreturpiutang=0;
     private IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
@@ -42,7 +43,7 @@ public class TokoSirkulasi extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "Kode Barang","Nama Barang","Satuan","Stok","Stok(Rp)","Pengadaan","Pengadaan(Rp)","Penerimaan","Penerimaan(Rp)","Penjualan","Penjualan(Rp)","Piutang","Piutang(Rp)","Retur Sup","Retur Sup(Rp)"
+                "Kode Barang","Nama Barang","Satuan","Stok","Stok(Rp)","Pengadaan","Pengadaan(Rp)","Penerimaan","Penerimaan(Rp)","Penjualan","Penjualan(Rp)","Piutang","Piutang(Rp)","Retur Sup","Retur Sup(Rp)","Retur Jual","Retur Jual(Rp)","Retur Piutang","Retur Piutang(Rp)"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -51,7 +52,7 @@ public class TokoSirkulasi extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i <15; i++) {
+        for (int i = 0; i <19; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
@@ -82,6 +83,14 @@ public class TokoSirkulasi extends javax.swing.JDialog {
             }else if(i==13){
                 column.setPreferredWidth(70);
             }else if(i==14){
+                column.setPreferredWidth(100);
+            }else if(i==15){
+                column.setPreferredWidth(70);
+            }else if(i==16){
+                column.setPreferredWidth(100);
+            }else if(i==17){
+                column.setPreferredWidth(70);
+            }else if(i==18){
                 column.setPreferredWidth(100);
             }
         }
@@ -393,12 +402,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Sequel.queryu("truncate table temporary_toko");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
-                Sequel.menyimpan("temporary_toko","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','',''",15,new String[]{
+                Sequel.menyimpan("temporary_toko","'0',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'','','','','','','','','','','','','','','','','',''",19,new String[]{
                     tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
                     tabMode.getValueAt(i,3).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
                     tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,7).toString(),tabMode.getValueAt(i,8).toString(),
                     tabMode.getValueAt(i,9).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString(),
-                    tabMode.getValueAt(i,12).toString(),tabMode.getValueAt(i,13).toString(),tabMode.getValueAt(i,14).toString()
+                    tabMode.getValueAt(i,12).toString(),tabMode.getValueAt(i,13).toString(),tabMode.getValueAt(i,14).toString(),
+                    tabMode.getValueAt(i,15).toString(),tabMode.getValueAt(i,16).toString(),tabMode.getValueAt(i,17).toString(),
+                    tabMode.getValueAt(i,18).toString()
                 }); 
             }
             
@@ -554,7 +565,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         "tokobarang.nama_brng like ? and kodesatuan.satuan like ? "+
                         " order by tokobarang.kode_brng");
             try {
-                ttltotalbeli=0;ttltotalpesan=0;ttltotalpenjualan=0;ttlaset=0;ttltotalpiutang=0;ttltotalretursup=0;
+                ttltotalbeli=0;ttltotalpesan=0;ttltotalpenjualan=0;ttlaset=0;ttltotalpiutang=0;ttltotalretursup=0;ttltotalreturjual=0;ttltotalreturpiutang=0;
                 ps.setString(1,"%"+nmbar.getText()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+nmbar.getText()+"%");
@@ -565,7 +576,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 while(rs.next()){
                     totalbeli=0;jumlahbeli=0;totalpesan=0;jumlahpesan=0;jumlahpenjualan=0;
                     totalpenjualan=0;stok=0;aset=0;jumlahpiutang=0;totalpiutang=0;jumlahretursup=0;
-                    totalretursup=0;
+                    totalretursup=0;jumlahreturjual=0;totalreturjual=0;jumlahreturpiutang=0;
+                    totalreturpiutang=0;
 
                     stok=rs.getDouble("stok");
                     aset=rs.getDouble("aset");
@@ -696,14 +708,66 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                     
-                    if((stok>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahpenjualan>0)||(jumlahpiutang>0)||(jumlahretursup>0)){
+                    ps2=koneksi.prepareStatement("select sum(toko_detail_returjual.jml_retur), sum(toko_detail_returjual.total) "+
+                        " from tokoreturjual inner join toko_detail_returjual "+
+                        " on tokoreturjual.no_retur_jual=toko_detail_returjual.no_retur_jual "+
+                        " where toko_detail_returjual.kode_brng=? and "+
+                        " tokoreturjual.tgl_retur between ? and ?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahreturjual=rs2.getDouble(1);
+                            totalreturjual=rs2.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas piutang : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement("select sum(toko_detail_returpiutang.jml_retur), sum(toko_detail_returpiutang.total) "+
+                        " from tokoreturpiutang inner join toko_detail_returpiutang "+
+                        " on tokoreturpiutang.no_retur_piutang=toko_detail_returpiutang.no_retur_piutang "+
+                        " where toko_detail_returpiutang.kode_brng=? and "+
+                        " tokoreturpiutang.tgl_retur between ? and ?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahreturpiutang=rs2.getDouble(1);
+                            totalreturpiutang=rs2.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas piutang : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    if((stok>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahpenjualan>0)||(jumlahpiutang>0)||(jumlahretursup>0)||(jumlahreturjual>0)||(jumlahreturpiutang>0)){
                         tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
                            rs.getString(3),Valid.SetAngka(stok),Valid.SetAngka(aset),
                            Valid.SetAngka(jumlahbeli),Valid.SetAngka(totalbeli),
                            Valid.SetAngka(jumlahpesan),Valid.SetAngka(totalpesan),
                            Valid.SetAngka(jumlahpenjualan),Valid.SetAngka(totalpenjualan),
                            Valid.SetAngka(jumlahpiutang),Valid.SetAngka(totalpiutang),
-                           Valid.SetAngka(jumlahretursup),Valid.SetAngka(totalretursup)
+                           Valid.SetAngka(jumlahretursup),Valid.SetAngka(totalretursup),
+                           Valid.SetAngka(jumlahreturjual),Valid.SetAngka(totalreturjual),
+                           Valid.SetAngka(jumlahreturpiutang),Valid.SetAngka(totalreturpiutang)
                         }); 
                         ttltotalbeli=ttltotalbeli+totalbeli;
                         ttltotalpesan=ttltotalpesan+totalpesan;
@@ -711,11 +775,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ttltotalpenjualan=ttltotalpenjualan+totalpenjualan;
                         ttltotalpiutang=ttltotalpiutang+totalpiutang;
                         ttltotalretursup=ttltotalretursup+totalretursup;
+                        ttltotalreturjual=ttltotalreturjual+totalreturjual;
+                        ttltotalreturpiutang=ttltotalreturpiutang+totalreturpiutang;
                     }
                 }   
-                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","",""}); 
+                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","","","","","",""}); 
                 tabMode.addRow(new Object[]{
-                    "<>>","Total :","","",Valid.SetAngka(ttlaset),"",Valid.SetAngka(ttltotalbeli),"",Valid.SetAngka(ttltotalpesan),"",Valid.SetAngka(ttltotalpenjualan),"",Valid.SetAngka(ttltotalpiutang),"",Valid.SetAngka(ttltotalretursup)
+                    "<>>","Total :","","",Valid.SetAngka(ttlaset),"",Valid.SetAngka(ttltotalbeli),"",Valid.SetAngka(ttltotalpesan),"",Valid.SetAngka(ttltotalpenjualan),"",Valid.SetAngka(ttltotalpiutang),"",Valid.SetAngka(ttltotalretursup),"",Valid.SetAngka(ttltotalreturjual),"",Valid.SetAngka(ttltotalreturpiutang)
                 }); 
             } catch (Exception e) {
                 System.out.println("Notifikasi Data Barang : "+e);

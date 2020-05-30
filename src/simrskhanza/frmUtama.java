@@ -620,6 +620,7 @@ import toko.TokoPiutang;
 import toko.TokoPiutangHarian;
 import toko.TokoReturBeli;
 import toko.TokoReturJual;
+import toko.TokoReturPiutang;
 import toko.TokoRiwayatBarang;
 import toko.TokoSirkulasi;
 import toko.TokoSuplier;
@@ -15869,6 +15870,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnReturPiutangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoReturPiutang form=new TokoReturPiutang(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16467,7 +16480,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona,btnPenilaianAwalKeperawatanKebidanan,
-            btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa,btnSirkulasiBarangToko,btnReturJualToko;
+            btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa,btnSirkulasiBarangToko,btnReturJualToko,btnReturPiutangToko;
     
     public void isWall(){
         try{            
@@ -19546,6 +19559,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_retur_jual()==true){
                 Panelmenu.add(btnReturJualToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_retur_piutang()==true){
+                Panelmenu.add(btnReturPiutangToko); 
                 jmlmenu++;
             }
             
@@ -22663,6 +22681,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettoko_retur_jual()==true){
             Panelmenu.add(btnReturJualToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_retur_piutang()==true){
+            Panelmenu.add(btnReturPiutangToko); 
             jmlmenu++;
         }
         
@@ -26963,6 +26986,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_retur_piutang()==true){
+            if(btnReturPiutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnReturPiutangToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettoko_hutang()==true){
             if(btnHutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHutangToko);
@@ -29198,6 +29228,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnReturJualToko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReturJualTokoActionPerformed(evt);
+            }
+        }); 
+        
+        btnReturPiutangToko = new widget.ButtonBig();
+        btnReturPiutangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); 
+        btnReturPiutangToko.setText("Retur Piutang Toko");
+        btnReturPiutangToko.setIconTextGap(0);
+        btnReturPiutangToko.setName("btnReturPiutangToko"); 
+        btnReturPiutangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReturPiutangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturPiutangTokoActionPerformed(evt);
             }
         }); 
     }
