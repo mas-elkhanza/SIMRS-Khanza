@@ -49,7 +49,13 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class grafikpasienperpekerjaaan extends JDialog {
       sekuel Sequel = new sekuel();
       validasi Valid = new validasi();
-      public grafikpasienperpekerjaaan(String title,String symbol) {
+
+    /**
+     *
+     * @param title
+     * @param symbol
+     */
+    public grafikpasienperpekerjaaan(String title,String symbol) {
         // super(title);
           setTitle(title);
          JPanel chartPanel = createDemoPanel(symbol);
@@ -168,6 +174,7 @@ public class grafikpasienperpekerjaaan extends JDialog {
          /**
           * Creates a panel for the demo (used by SuperDemo.java).
           *
+     * @param symbol
           * @return A panel.
           */
 

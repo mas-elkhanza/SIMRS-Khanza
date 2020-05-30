@@ -49,7 +49,13 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class grafikperiksaralanibubulan extends JDialog {
       sekuel Sequel = new sekuel();
       validasi Valid = new validasi();
-      public grafikperiksaralanibubulan(String title,String symbol) {
+
+    /**
+     *
+     * @param title
+     * @param symbol
+     */
+    public grafikperiksaralanibubulan(String title,String symbol) {
           setTitle(title);
          JPanel chartPanel = createDemoPanel(symbol);
          
@@ -84,7 +90,12 @@ public class grafikperiksaralanibubulan extends JDialog {
             return result;
        }
 
-        public static CategoryDataset createDataset2(String symbol) {//grafik volume
+    /**
+     *
+     * @param symbol
+     * @return
+     */
+    public static CategoryDataset createDataset2(String symbol) {//grafik volume
             DefaultCategoryDataset result = new DefaultCategoryDataset();
             String series1 = "Registrasi Perbulan";             
 

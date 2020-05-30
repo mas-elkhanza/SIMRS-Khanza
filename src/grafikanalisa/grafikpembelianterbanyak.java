@@ -50,6 +50,7 @@ public class grafikpembelianterbanyak extends JDialog {
            * Creates a new demo instance.
            *
            * @param title  the frame title.
+     * @param symbol
            */
       public grafikpembelianterbanyak(String title,String symbol) {
         // super(title);
@@ -70,6 +71,7 @@ public class grafikpembelianterbanyak extends JDialog {
         /**
            * Creates a dataset.
            *
+     * @param symbol
            * @return A dataset.
            */
 
@@ -101,6 +103,7 @@ public class grafikpembelianterbanyak extends JDialog {
        /**
           * Creates a dataset.
           *
+     * @param symbol
           * @return A dataset.
           */
         public static CategoryDataset createDataset2(String symbol) {//grafik volume

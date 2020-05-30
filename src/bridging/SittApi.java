@@ -57,6 +57,10 @@ public class SittApi {
 	return Key;
     }
 
+    /**
+     *
+     * @return
+     */
     public long GetUTCdatetimeAsString(){    
         long millis = System.currentTimeMillis();   
         return millis/1000;

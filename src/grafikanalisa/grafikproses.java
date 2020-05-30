@@ -99,6 +99,7 @@ public class grafikproses extends JDialog {
        /**
           * Creates a dataset.
           *
+     * @param symbol
           * @return A dataset.
           */
         public static CategoryDataset createDataset2(String symbol) {//grafik volume
@@ -170,6 +171,7 @@ public class grafikproses extends JDialog {
          /**
           * Creates a panel for the demo (used by SuperDemo.java).
           *
+     * @param symbol
           * @return A panel.
           */
 
