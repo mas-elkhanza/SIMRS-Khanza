@@ -1,5 +1,4 @@
 package toko;
-import ipsrs.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -31,7 +30,7 @@ public class TokoSirkulasi extends javax.swing.JDialog {
     private double ttltotalbeli=0,totalbeli=0,stok=0,aset=0,ttlaset=0,jumlahbeli=0,jumlahpiutang=0,totalpiutang=0,ttltotalpiutang=0,ttltotalpesan=0,totalpesan=0,jumlahpesan=0,
             jumlahpenjualan=0,totalpenjualan=0,ttltotalpenjualan=0,jumlahretursup=0,totalretursup=0,ttltotalretursup=0,jumlahreturjual=0,totalreturjual=0,ttltotalreturjual=0,
             jumlahreturpiutang=0,totalreturpiutang=0,ttltotalreturpiutang=0;
-    private IPSRSBarang barang=new IPSRSBarang(null,false);
+    private TokoBarang barang=new TokoBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
 
