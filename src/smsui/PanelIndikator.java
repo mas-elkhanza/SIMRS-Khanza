@@ -24,6 +24,10 @@ public class PanelIndikator extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     *
+     * @param s
+     */
     public void setStatus(Status s){
         signal.setText(s.getSignal() +" % ");
         baterai.setText(s.getBaterai() + " %");

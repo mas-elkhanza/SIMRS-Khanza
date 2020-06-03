@@ -41,8 +41,8 @@ public class DlgCacatFisik extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form Dlgcacat_fisik
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCacatFisik(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -512,6 +512,9 @@ public class DlgCacatFisik extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Nama.setText("");
         TCari.setText("");
@@ -524,14 +527,24 @@ public class DlgCacatFisik extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbkecamatan;
     }
     
+    /**
+     *
+     */
     public void onCari(){
         TCari.requestFocus();
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getcacat_fisik());
         BtnHapus.setEnabled(akses.getcacat_fisik());

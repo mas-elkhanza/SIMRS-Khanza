@@ -47,8 +47,8 @@ public final class CoronaReferensiStatusIsolasi extends javax.swing.JDialog {
     private JsonNode response;
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public CoronaReferensiStatusIsolasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -304,6 +304,9 @@ public final class CoronaReferensiStatusIsolasi extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         try {
             headers = new HttpHeaders();
@@ -337,7 +340,10 @@ public final class CoronaReferensiStatusIsolasi extends javax.swing.JDialog {
         }
     }   
     
- 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

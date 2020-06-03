@@ -37,6 +37,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -51,6 +53,7 @@ import javax.swing.table.TableColumn;
 import keuangan.DlgCariPerawatanRanap;
 import model.Dokter;
 import model.Spri;
+import setting.DlgUser;
 
 /**
  *
@@ -65,7 +68,15 @@ public class DlgSpri extends javax.swing.JDialog {
     private DlgPasien pasien = new DlgPasien(null, false);
     private PreparedStatement ps, psdiagnosa;
     private ResultSet rs;
+
+    /**
+     *
+     */
     public DlgCariPerawatanRanap perawatan = new DlgCariPerawatanRanap(null, false);
+
+    /**
+     *
+     */
     public DlgCariPenyakit diagnosa = new DlgCariPenyakit(null, false);
     private String sql = " spri.norm=pasien.no_rkm_medis  ";
     private String status = "";
@@ -80,8 +91,8 @@ public class DlgSpri extends javax.swing.JDialog {
     /**
      * Creates new form DlgPasienMati
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgSpri(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -401,10 +412,19 @@ public class DlgSpri extends javax.swing.JDialog {
         Valid.setPlaceHolder(txtNmPenyakit, "Nama Penyakit");
     }
 
+    /**
+     *
+     * @param status
+     */
     public void setForm(String status) {
         this.status = status;
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void setPlaceHolder(JTextField teks, String pesan) {
         teks.setText(pesan);
         teks.setForeground(Color.GRAY);
@@ -1305,6 +1325,8 @@ public class DlgSpri extends javax.swing.JDialog {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
+                    Logger.getLogger(DlgSpri.class.getName()).log(Level.SEVERE, null, e);
+                    System.out.println("getData(), "+e);
             }
         }
 }//GEN-LAST:event_tbSpriMouseClicked
@@ -1375,6 +1397,8 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                 try {
                     getData();
                 } catch (java.lang.NullPointerException e) {
+                    Logger.getLogger(DlgSpri.class.getName()).log(Level.SEVERE, null, e);
+                    System.out.println("getData(), "+e);
                 }
             }
         }
@@ -1632,6 +1656,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         new Timer(1000, taskPerformer).start();
     }
 
+    /**
+     *
+     */
     public void tampil() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Valid.tabelKosong(tabMode);
@@ -1673,6 +1700,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         this.setCursor(Cursor.getDefaultCursor());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Valid.setPlaceHolder(TPasien, "Nama Pasien");
         Valid.setPlaceHolder(TNoRM, "No. RM");
@@ -1721,12 +1751,19 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         }
     }
 
+    /**
+     *
+     */
     public void isCek() {
         BtnSimpan.setEnabled(akses.getpasien_meninggal());
         BtnHapus.setEnabled(akses.getpasien_meninggal());
         BtnPrint.setEnabled(akses.getpasien_meninggal());
     }
 
+    /**
+     *
+     * @param norm
+     */
     public void setNoRm(String norm) {
         TNoRM.setText(norm);
         TCari.setText(norm);

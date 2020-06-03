@@ -452,6 +452,9 @@ private void EmbalaseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Embalase.setText("");
         Tuslah.setText("");

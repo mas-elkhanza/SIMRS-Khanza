@@ -24,6 +24,10 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgPenanggungJawab;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgRBObatDokterRanap extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();

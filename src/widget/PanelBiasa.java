@@ -43,6 +43,10 @@ public class PanelBiasa extends JPanel{
         addComponentListener(new GradientCacheManager());
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaAtas() {
         return warnaAtas;
     }
@@ -51,6 +55,10 @@ public class PanelBiasa extends JPanel{
         this.warnaAtas = warnaAtas;
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaBawah() {
         return warnaBawah;
     }

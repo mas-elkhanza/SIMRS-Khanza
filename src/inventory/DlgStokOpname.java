@@ -1275,6 +1275,9 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         LTotal2.setText(df2.format(totallebih));
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kdbar.setText("");
         Nmbar.setText("");
@@ -1315,15 +1318,25 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return Stok;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
     
-        
+    /**
+     *
+     */
     public void isCek(){
         BtnHapus.setEnabled(akses.getstok_opname_obat());
         BtnPrint.setEnabled(akses.getstok_opname_obat());    

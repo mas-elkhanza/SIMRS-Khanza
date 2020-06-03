@@ -45,8 +45,8 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private String hari="",poli="";
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariDokter2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -381,6 +381,9 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try {
@@ -494,22 +497,40 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
         LCount.setText(""+b);
     }
 
+    /**
+     *
+     * @param namapoli
+     */
     public void setPoli(String namapoli){
         this.poli=namapoli;
     }
     
+    /**
+     *
+     */
     public void emptTeks() { 
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         BtnTambah.setEnabled(akses.getdokter());
     }
     
+    /**
+     *
+     * @param tanggal
+     */
     public void SetHari(Date tanggal){
         cal.setTime(tanggal);
         day=cal.get(Calendar.DAY_OF_WEEK);

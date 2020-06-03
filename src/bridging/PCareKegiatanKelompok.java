@@ -1597,6 +1597,9 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdClub.setText("");
         NmClub.setText("");
@@ -1624,6 +1627,9 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpcare_kegiatan_kelompok());
         BtnHapus.setEnabled(akses.getpcare_kegiatan_kelompok());
@@ -1632,6 +1638,10 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         ppPeserta.setEnabled(akses.getpcare_peserta_kegiatan_kelompok());
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }    

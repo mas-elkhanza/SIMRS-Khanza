@@ -26,11 +26,19 @@ public class BackgroundMusic {
     Thread playMusic;
     // constructor that takes the name of an MP3 file
 
+    /**
+     *
+     * @param filename
+     */
     public BackgroundMusic(String filename) {
         this.filename = filename;
     }
 
     // play the MP3 file to the sound card
+
+    /**
+     *
+     */
     public void play() {
         try {
             FileInputStream fis = new FileInputStream(filename);
@@ -51,11 +59,17 @@ public class BackgroundMusic {
         playMusic.start();
     }
 
+    /**
+     *
+     */
     public void stop() {
         close();
         playMusic = null;
     }
 
+    /**
+     *
+     */
     public void close() {
         if (player != null) {
             player.close();

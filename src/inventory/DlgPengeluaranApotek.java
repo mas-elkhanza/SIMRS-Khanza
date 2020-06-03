@@ -20,6 +20,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgPengeluaranApotek extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -35,14 +39,18 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
     private String[] kodebarang,nobatch,namabarang,kategori,satuan,nofaktur;
     private double[] harga,jumlah,total,stok;
     private WarnaTable2 warna=new WarnaTable2();
+
+    /**
+     *
+     */
     public boolean tampilkanpermintaan=false;
     private double stok_asal=0;
     private boolean sukses=true;
     private String aktifkanbatch="no";
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPengeluaranApotek(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1185,8 +1193,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         LTotal.setText(Valid.SetAngka(ttl));
     }
     
-  
-    
+    /**
+     *
+     */
     public void isCek(){
         TCari.requestFocus();
         autoNomor();
@@ -1208,8 +1217,11 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 "SKM"+Tgl.getSelectedItem().toString().substring(8,10)+Tgl.getSelectedItem().toString().substring(3,5)+Tgl.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
     }    
 
- 
-   public void tampil(String nopermintaan) {
+    /**
+     *
+     * @param nopermintaan
+     */
+    public void tampil(String nopermintaan) {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(

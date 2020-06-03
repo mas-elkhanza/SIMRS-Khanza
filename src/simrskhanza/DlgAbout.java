@@ -18,7 +18,11 @@ package simrskhanza;
  */
 public class DlgAbout extends javax.swing.JDialog {
 
-    
+    /**
+     *
+     * @param parent
+     * @param modal
+     */
     public DlgAbout(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

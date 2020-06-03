@@ -2836,6 +2836,9 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         }
     }
     
+    /**
+     *
+     */
     public void emptTeks() {
         NomorDonor.setText("");
         NamaPendonor.setText("");
@@ -2856,14 +2859,25 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return NomorDonor;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
     
+    /**
+     *
+     */
     public void isCek(){ 
         BtnSimpan.setEnabled(akses.getutd_donor());
         BtnHapus.setEnabled(akses.getutd_donor());

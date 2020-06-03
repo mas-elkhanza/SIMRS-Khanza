@@ -24,11 +24,19 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPegawai;
 import simrskhanza.DlgPenanggungJawab;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class KeunganCariPenagihanPiutangPasien extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+
+    /**
+     *
+     */
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private DlgAkunPenagihanPiutang akuntagih=new DlgAkunPenagihanPiutang(null,false);
@@ -38,8 +46,8 @@ public class KeunganCariPenagihanPiutangPasien extends javax.swing.JDialog {
     private double nilaitagihan=0,totaltagihan=0;
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public KeunganCariPenagihanPiutangPasien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1039,6 +1047,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
               
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.setText("");
         NoPenagihan.setText("");
@@ -1056,6 +1067,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         TCari.requestFocus();        
     }
     
+    /**
+     *
+     */
     public void isCek(){
         TCari.requestFocus();
         if(akses.getkode().equals("Admin Utama")){

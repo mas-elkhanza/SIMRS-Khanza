@@ -36,7 +36,17 @@ public class DUKCAPILJakartaCekNik {
     /**
      *
      */
-    NM_PROP,UMUR,NAMA_LGKP,
+    NM_PROP,
+
+    /**
+     *
+     */
+    UMUR,
+
+    /**
+     *
+     */
+    NAMA_LGKP,
 
     /**
      *
@@ -46,7 +56,12 @@ public class DUKCAPILJakartaCekNik {
     /**
      *
      */
-    AKTA_LHR,JENIS_PKRJN,
+    AKTA_LHR,
+
+    /**
+     *
+     */
+    JENIS_PKRJN,
 
     /**
      *
@@ -56,8 +71,27 @@ public class DUKCAPILJakartaCekNik {
     /**
      *
      */
-    TMPT_LHR,NM_KEC,NO_KEL,
-            NO_KK,NM_KAB,
+    TMPT_LHR,
+
+    /**
+     *
+     */
+    NM_KEC,
+
+    /**
+     *
+     */
+    NO_KEL,
+
+    /**
+     *
+     */
+    NO_KK,
+
+    /**
+     *
+     */
+    NM_KAB,
 
     /**
      *
@@ -67,7 +101,12 @@ public class DUKCAPILJakartaCekNik {
     /**
      *
      */
-    NIK,NO_KAB,
+    NIK,
+
+    /**
+     *
+     */
+    NO_KAB,
 
     /**
      *
@@ -102,7 +141,12 @@ public class DUKCAPILJakartaCekNik {
     /**
      *
      */
-    DSC_STAT_KWN,DSC_STAT_HBKEL,
+    DSC_STAT_KWN,
+
+    /**
+     *
+     */
+    DSC_STAT_HBKEL,
 
     /**
      *
@@ -119,6 +163,9 @@ public class DUKCAPILJakartaCekNik {
     private JsonNode root;
     private JsonNode nameNode;
     
+    /**
+     *
+     */
     public DUKCAPILJakartaCekNik(){
         super();
         try {

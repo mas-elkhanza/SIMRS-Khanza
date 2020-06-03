@@ -50,6 +50,7 @@ public class grafikpenjualantersedikit extends JDialog {
            * Creates a new demo instance.
            *
            * @param title  the frame title.
+     * @param symbol
            */
       public grafikpenjualantersedikit(String title,String symbol) {
         // super(title);
@@ -70,6 +71,7 @@ public class grafikpenjualantersedikit extends JDialog {
         /**
            * Creates a dataset.
            *
+     * @param symbol
            * @return A dataset.
            */
 

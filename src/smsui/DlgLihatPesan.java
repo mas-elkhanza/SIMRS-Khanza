@@ -32,7 +32,9 @@ public final class DlgLihatPesan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
 
-    /** Creates new form DlgLihatPesan */
+    /** Creates new form DlgLihatPesan
+     * @param parent
+     * @param modal */
     public DlgLihatPesan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -200,6 +202,9 @@ public final class DlgLihatPesan extends javax.swing.JDialog {
     private widget.Table tbPesan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         String sql="select * from sms";
         prosesCari(sql);

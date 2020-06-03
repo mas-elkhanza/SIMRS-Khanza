@@ -5171,6 +5171,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.Table tbRanapParamedis;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){     
         Valid.tabelKosong(tabModeRalanDokter);
         try{
@@ -5358,6 +5361,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void tampil2(){     
         Valid.tabelKosong(tabModeRalanParamedis);
         try{
@@ -5545,6 +5551,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil3(){     
         Valid.tabelKosong(tabModeRalanDokterParamedis);
         String whereStatusRawat = "";
@@ -5784,6 +5793,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil4(){     
         Valid.tabelKosong(tabModeOperasi);
         try{
@@ -6273,6 +6285,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil5(){     
         Valid.tabelKosong(tabModeRanapDokter);
         try{
@@ -6456,6 +6471,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil6(){     
         Valid.tabelKosong(tabModeRanapParamedis);
         try{
@@ -6639,6 +6657,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil7(){     
         Valid.tabelKosong(tabModeRanapDokterParamedis);
         try{
@@ -6902,7 +6923,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
 
-    
+    /**
+     *
+     */
     public void tampil8(){     
         Valid.tabelKosong(tabModeRadiologi);
         try{
@@ -7159,6 +7182,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil9(){     
         Valid.tabelKosong(tabModeLaborat);
         try{
@@ -7414,6 +7440,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil10(){     
         Valid.tabelKosong(tabModeDetailLaborat);
         try {

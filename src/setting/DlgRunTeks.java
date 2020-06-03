@@ -48,7 +48,8 @@ public class DlgRunTeks extends javax.swing.JDialog {
     private validasi Valid=new validasi();
 
     /** Creates new form DlgAdmin
-     * @param parent */
+     * @param parent
+     * @param modal */
     public DlgRunTeks(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -559,6 +560,9 @@ private void TTeksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTe
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TTeks.setText("");
         ((Painter) PhotoGambar).setImage("");
@@ -574,10 +578,17 @@ private void TTeksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTe
 
     private String folder;
 
+    /**
+     *
+     */
     public class Painter extends Canvas {
 
         Image image;
 
+        /**
+         *
+         * @param file
+         */
         public void setImage(String file) {
             URL url = null;
             try {
@@ -588,6 +599,11 @@ private void TTeksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTe
             image = getToolkit().getImage(url);
             repaint();
         }
+
+        /**
+         *
+         * @param file
+         */
         public void setImageIcon(ImageIcon file) {
             image = file.getImage();
             repaint();

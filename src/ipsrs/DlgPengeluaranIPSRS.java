@@ -24,6 +24,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -38,6 +42,10 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
     private String[] kodebarang,namabarang,satuan,jumlah,stok;
     private double[] harga,total;
     private WarnaTable2 warna=new WarnaTable2();
+
+    /**
+     *
+     */
     public boolean tampilkanpermintaan=true;
     private boolean sukses=true;
 
@@ -815,6 +823,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }        
     }
     
+    /**
+     *
+     */
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
@@ -862,6 +873,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 "SKNM"+TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5)+TglKeluar.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
     }
 
+    /**
+     *
+     * @param nopermintaan
+     */
     public void tampil(String nopermintaan) {
         
         Valid.tabelKosong(tabMode);        

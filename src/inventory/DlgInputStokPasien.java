@@ -34,6 +34,10 @@ import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgInputStokPasien extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -909,6 +913,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         jml=0;
         for(i=0;i<tbDokter.getRowCount();i++){
@@ -1193,10 +1200,18 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         
     }
      
+    /**
+     *
+     */
     public void isCek(){
          BtnSimpan.setEnabled(akses.getstok_obat_pasien());   
     }
 
+    /**
+     *
+     * @param no_rawat
+     * @param pasien
+     */
     public void setNoRm(String no_rawat,String pasien){
         norawat.setText(no_rawat);
         nm_pasien.setText(pasien);

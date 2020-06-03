@@ -23,6 +23,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPegawai;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class TokoCariPengajuanBarang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -36,8 +40,8 @@ public class TokoCariPengajuanBarang extends javax.swing.JDialog {
     private int no=0,i=0;
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public TokoCariPengajuanBarang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1075,12 +1079,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }        
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdbar.setText("");
         nmbar.setText("");
         kdbar.requestFocus();        
     }
     
+    /**
+     *
+     */
     public void isCek(){
         TCari.requestFocus();
         BtnPrint.setEnabled(akses.gettoko_pengajuan_barang());

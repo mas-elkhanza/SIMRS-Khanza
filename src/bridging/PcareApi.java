@@ -20,10 +20,17 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class PcareApi {        
     private static final Properties prop = new Properties();
     private String Key,Consid;
     
+    /**
+     *
+     */
     public PcareApi(){
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -33,6 +40,11 @@ public class PcareApi {
             System.out.println("Notifikasi : "+ex);
         }        
     }
+
+    /**
+     *
+     * @return
+     */
     public String getHmac() {        
         long GetUTCdatetimeAsString = GetUTCdatetimeAsString();
         String salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);

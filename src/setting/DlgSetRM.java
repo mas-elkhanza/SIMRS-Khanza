@@ -2268,11 +2268,17 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         norm.setText("");
         norm.requestFocus();
     }
     
+    /**
+     *
+     */
     public void emptTeks2() {
         PanjangKTP.setText("0");
         YesNoKTP.setSelectedIndex(0);
@@ -2402,6 +2408,9 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
         }
     }
     
+    /**
+     *
+     */
     public void tampilkelengkapan() {
         Valid.tabelKosong(tabMode4);
         try{    

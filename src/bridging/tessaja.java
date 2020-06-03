@@ -10,6 +10,10 @@ package bridging;
  * @author khanzasoft
  */
 public class tessaja {
+
+    /**
+     *
+     */
     public static BPJSApi api=new BPJSApi();
 
     /**

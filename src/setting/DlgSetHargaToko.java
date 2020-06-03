@@ -462,6 +462,9 @@ public class DlgSetHargaToko extends javax.swing.JDialog {
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -497,6 +500,9 @@ public class DlgSetHargaToko extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Distributor.setText("");
         Grosir.setText("");

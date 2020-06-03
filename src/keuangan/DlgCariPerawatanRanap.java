@@ -73,14 +73,30 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
     private boolean sukses=false;
     private int jml=0,i=0,index=0;
+
+    /**
+     *
+     */
     public  DlgCariDokter dokter=new DlgCariDokter(null,false);
+
+    /**
+     *
+     */
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+
+    /**
+     *
+     */
     public  DlgJnsPerawatanRanap perawatan=new DlgJnsPerawatanRanap(null,false);
     private double ttljmdokter=0,ttljmperawat=0,ttlkso=0,ttlpendapatan=0;
     private String Suspen_Piutang_Tindakan_Ranap="",Tindakan_Ranap="",Beban_Jasa_Medik_Dokter_Tindakan_Ranap="",
             Utang_Jasa_Medik_Dokter_Tindakan_Ranap="",Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="",
             Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="",Beban_KSO_Tindakan_Ranap="",
             Utang_KSO_Tindakan_Ranap="",norawatibu="";
+
+    /**
+     *
+     */
     public DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -1404,6 +1420,9 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() { 
         try{  
             jml=0;
@@ -1690,18 +1709,39 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         LCount.setText(""+tbKamar.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() { 
         TCari.setText("");
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnTambah.setEnabled(akses.gettarif_ranap());
     }
     
+    /**
+     *
+     * @param norwt
+     * @param pilihtable
+     * @param tanggal
+     * @param jam
+     * @param menit
+     * @param detik
+     * @param status
+     * @param pasien
+     */
     public void setNoRm(String norwt,String pilihtable,Date tanggal,String jam,String menit,String detik,boolean status,String pasien) {
         aktifpcare="no";
         for(i=0;i<tbKamar.getRowCount();i++){ 
@@ -1769,6 +1809,23 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         ChkJln.setSelected(status);
     }
     
+    /**
+     *
+     * @param kode
+     * @param nama
+     * @param suhu
+     * @param tensi
+     * @param Hasil
+     * @param perkembangan
+     * @param kode2
+     * @param nama2
+     * @param berat
+     * @param tinggi
+     * @param nadi
+     * @param respirasi
+     * @param gcs
+     * @param alergi
+     */
     public void setPetugas(String kode, String nama,String suhu,String tensi, String Hasil, 
             String perkembangan, String kode2, String nama2,String berat,String tinggi, 
             String nadi,String respirasi,String gcs,String alergi){
@@ -1847,6 +1904,11 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         Sequel.cariIsi("select nm_kategori from kategori_perawatan where kd_kategori=? ",NmKtg,KdKtg.getText());
     }
     
+    /**
+     *
+     * @param aktif
+     * @param nokunjung
+     */
     public void setPCare(String aktif,String nokunjung){
         aktifpcare=aktif;
         nokunjungan=nokunjung;

@@ -51,8 +51,8 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
     /**
      * Creates new form DlgPemberianInfus
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgSKDPBPJS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -1677,6 +1677,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         KdDokter.setText("");
         NmDokter.setText("");
@@ -1734,6 +1737,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     * @param norm
+     * @param nama
+     */
     public void setNoRm(String norm, String nama) {
         TNoRM.setText(norm);
         TPasien.setText(nama);
@@ -1743,6 +1751,15 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         tampil();
     }
 
+    /**
+     *
+     * @param norm
+     * @param nama
+     * @param kodepoli
+     * @param namapoli
+     * @param kodedokter
+     * @param namadokter
+     */
     public void setNoRm(String norm, String nama, String kodepoli, String namapoli, String kodedokter, String namadokter) {
         TNoRM.setText(norm);
         TPasien.setText(nama);
@@ -1770,6 +1787,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     */
     public void isCek() {
         BtnSimpan.setEnabled(akses.getskdp_bpjs());
         BtnHapus.setEnabled(akses.getskdp_bpjs());
@@ -1777,6 +1797,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnEdit.setEnabled(akses.getskdp_bpjs());
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbObat;
     }

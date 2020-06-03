@@ -58,7 +58,15 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     private validasi Valid = new validasi();
     private Jurnal jur = new Jurnal();
     private Connection koneksi = koneksiDB.condb();
+
+    /**
+     *
+     */
     public DlgCariPerawatanRanap perawatan = new DlgCariPerawatanRanap(null, false);
+
+    /**
+     *
+     */
     public DlgCariPerawatanRanap2 perawatan2 = new DlgCariPerawatanRanap2(null, false);
     private DlgPasien pasien = new DlgPasien(null, false);
     private PreparedStatement ps, ps2, ps3, ps4, ps5, psrekening, ps6;
@@ -74,8 +82,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     /**
      * Creates new form DlgRawatInap
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgRawatInap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -5805,6 +5813,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbRawatPr;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampilDr() {
         Valid.tabelKosong(tabModeDr);
         try {
@@ -6032,6 +6043,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
 
+    /**
+     *
+     */
     public void tampilDrPr() {
         Valid.tabelKosong(tabModeDrPr);
         try {
@@ -6259,6 +6273,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
 
+    /**
+     *
+     * @param norwt
+     * @param awal
+     * @param akhir
+     */
     public void setNoRm(String norwt, Date awal, Date akhir) {
         TNoRw.setText(norwt);
         KdDok.setText(Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?", norwt));
@@ -6294,6 +6314,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
 
+    /**
+     *
+     */
     public void isCek() {
         BtnSimpan.setEnabled(akses.gettindakan_ranap());
         BtnHapus.setEnabled(akses.gettindakan_ranap());

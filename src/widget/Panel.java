@@ -25,6 +25,9 @@ public class Panel extends JPanel {
     private final Color black = new Color(30,30,0);
     private final Color warna = new Color(80,80,0);
 
+    /**
+     *
+     */
     public Panel() {
         super();
         //this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(50,60,70)));

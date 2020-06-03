@@ -58,8 +58,8 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
     private String aktifkanbatch="no";
     private boolean sukses=true;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariObatPenyakit(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -174,6 +174,10 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         jam();
     }
+
+    /**
+     *
+     */
     public DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
     
     private String[] hlm;
@@ -903,6 +907,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kd2.setText("");      
     }
@@ -986,18 +993,34 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return Kd2;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         BtnTambah.setEnabled(akses.getobat_penyakit());
     }
     
+    /**
+     *
+     * @param norwt
+     * @param penyakit
+     */
     public void setNoRm(String norwt,String penyakit) {
         PenyakitCari.setText(penyakit);
         tampil();

@@ -55,8 +55,20 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
     private String[] kode,nama,kategori,kelastarif;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
     private int jml=0,i=0,index=0;
+
+    /**
+     *
+     */
     public  DlgCariDokter dokter=new DlgCariDokter(null,false);
+
+    /**
+     *
+     */
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+
+    /**
+     *
+     */
     public  DlgJnsPerawatanRanap perawatan=new DlgJnsPerawatanRanap(null,false);
     private double ttljmdokter=0,ttljmperawat=0,ttlkso=0,ttlpendapatan=0,
             hapusttljmdokter=0,hapusttljmperawat=0,hapusttlkso=0,hapusttlpendapatan=0;
@@ -65,6 +77,10 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
             Utang_Jasa_Medik_Dokter_Tindakan_Ranap="",Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="",
             Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="",Beban_KSO_Tindakan_Ranap="",
             Utang_KSO_Tindakan_Ranap="";    
+
+    /**
+     *
+     */
     public DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
     
     /** Creates new form DlgPenyakit
@@ -2035,6 +2051,9 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() { 
         try{  
             jml=0;
@@ -2620,6 +2639,9 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         LCount.setText(""+tbKamar.getRowCount());
     }
     
+    /**
+     *
+     */
     public void tampil2() { 
         try{ 
             Valid.tabelKosong(tabMode);
@@ -3164,15 +3186,33 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnTambah.setEnabled(akses.gettarif_ranap());
         TCari.requestFocus();
     }
     
+    /**
+     *
+     * @param norwt
+     * @param pilihtable
+     * @param tanggal
+     * @param jam
+     * @param menit
+     * @param detik
+     * @param status
+     * @param pasien
+     */
     public void setNoRm(String norwt,String pilihtable,Date tanggal,String jam,String menit,String detik,boolean status,String pasien) {
         TNoRw.setText(norwt);
         kddokter.setText("");
@@ -3224,6 +3264,23 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }
     
+    /**
+     *
+     * @param kode
+     * @param nama
+     * @param suhu
+     * @param tensi
+     * @param Hasil
+     * @param perkembangan
+     * @param kode2
+     * @param nama2
+     * @param berat
+     * @param tinggi
+     * @param nadi
+     * @param respirasi
+     * @param gcs
+     * @param alergi
+     */
     public void setPetugas(String kode, String nama,String suhu,String tensi, String Hasil, 
             String perkembangan, String kode2, String nama2,String berat,
             String tinggi,String nadi,String respirasi,String gcs,String alergi){

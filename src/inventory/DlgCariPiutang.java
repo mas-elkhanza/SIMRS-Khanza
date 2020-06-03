@@ -28,6 +28,10 @@ import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
 import simrskhanza.DlgPasien;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCariPiutang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -37,8 +41,20 @@ public class DlgCariPiutang extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
+
+    /**
+     *
+     */
     public  DlgPasien member=new DlgPasien(null,false);
+
+    /**
+     *
+     */
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+
+    /**
+     *
+     */
     public  DlgBarang barang=new DlgBarang(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");   
     private double ttljual=0,subttljual=0,ttldisc=0,subttldisc=0,ttlall=0,
@@ -1459,13 +1475,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         
     }
 
-     public void emptTeks() {
+    /**
+     *
+     */
+    public void emptTeks() {
         kdbar.setText("");
         nmbar.setText("");
         kdsat.setText("");
         kdbar.requestFocus();        
     } 
      
+    /**
+     *
+     */
     public void isCek(){
         MnDetailCicilan.setEnabled(akses.getbayar_piutang());
         BtnPrint.setEnabled(akses.getpiutang_obat());

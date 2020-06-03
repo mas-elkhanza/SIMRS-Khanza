@@ -33,7 +33,12 @@ public class DUKCAPILTEGALCekNIK {
     /**
      *
      */
-    NIK="",NAMA_LGKP="",
+    NIK="",
+
+    /**
+     *
+     */
+    NAMA_LGKP="",
 
     /**
      *
@@ -43,7 +48,27 @@ public class DUKCAPILTEGALCekNIK {
     /**
      *
      */
-    NO_RW="",KEC_NAME="",JENIS_PKRJN="",NO_RT="",ALAMAT="",
+    NO_RW="",
+
+    /**
+     *
+     */
+    KEC_NAME="",
+
+    /**
+     *
+     */
+    JENIS_PKRJN="",
+
+    /**
+     *
+     */
+    NO_RT="",
+
+    /**
+     *
+     */
+    ALAMAT="",
 
     /**
      *
@@ -58,12 +83,22 @@ public class DUKCAPILTEGALCekNIK {
     /**
      *
      */
-    PROP_NAME="",KEL_NAME="",
+    PROP_NAME="",
 
     /**
      *
      */
-    JENIS_KLMIN="",TGL_LHR="",
+    KEL_NAME="",
+
+    /**
+     *
+     */
+    JENIS_KLMIN="",
+
+    /**
+     *
+     */
+    TGL_LHR="",
 
     /**
      *

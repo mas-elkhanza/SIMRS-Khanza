@@ -168,6 +168,9 @@ public final class DlgKamar extends javax.swing.JDialog {
         
     }
     
+    /**
+     *
+     */
     public DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private int pilihan=0;
 
@@ -1074,6 +1077,9 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{     
@@ -1141,6 +1147,9 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TTarif.setText("");
@@ -1164,17 +1173,27 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
 
     }
 
+    /**
+     *
+     */
     public void load() {
         kdbangsalcari.setText("");
         BangsalCari.setText("");
         CmbCrIsi.setSelectedItem(" ");
     }    
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
        
-     public void isCek(){
+    /**
+     *
+     */
+    public void isCek(){
         BtnSimpan.setEnabled(akses.getkamar());
         BtnHapus.setEnabled(akses.getkamar());
         BtnPrint.setEnabled(akses.getkamar());

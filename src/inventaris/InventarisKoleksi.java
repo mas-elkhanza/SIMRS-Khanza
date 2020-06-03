@@ -50,8 +50,8 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
     private String namaruang="";
 
     /** Creates new form DlgJnsPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public InventarisKoleksi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1250,6 +1250,9 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     private widget.Tanggal tgl_pengadaan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         try {
             ps=koneksiDB.condb().prepareStatement("select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang, "+
@@ -1314,6 +1317,9 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
         }        
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         no_inventaris.setText("");
         kode_barang.setText("");
@@ -1357,6 +1363,10 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
           }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }
@@ -1375,6 +1385,9 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));

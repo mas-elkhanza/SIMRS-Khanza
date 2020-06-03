@@ -43,8 +43,8 @@ public class DlgKelurahan extends javax.swing.JDialog {
     /**
      * Creates new form Dlgkelurahan
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgKelurahan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -423,6 +423,9 @@ public class DlgKelurahan extends javax.swing.JDialog {
         LCount.setText("" + tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.setText("");
         TCari.requestFocus();
@@ -434,14 +437,25 @@ public class DlgKelurahan extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @param kd_kec
+     */
     public void setData(String kd_kec) {
         this.kd_kec = kd_kec;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbkelurahan;
     }
 
+    /**
+     *
+     */
     public void onCari() {
         TCari.requestFocus();
     }

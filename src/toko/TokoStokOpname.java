@@ -802,6 +802,9 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         LTotal.setText(df2.format(total));
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kdbar.setText("");
         Nmbar.setText("");
@@ -830,15 +833,25 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return Stok;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
     
-        
+    /**
+     *
+     */
     public void isCek(){
         BtnHapus.setEnabled(akses.getstok_opname_toko());
         BtnPrint.setEnabled(akses.getstok_opname_toko()); 

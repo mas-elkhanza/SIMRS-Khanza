@@ -57,8 +57,8 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
     private String pilihan;
         
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSCekHistoriPelayanan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -343,6 +343,10 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param nomorrujukan
+     */
     public void tampil(String nomorrujukan) {
         try {
             headers = new HttpHeaders();
@@ -380,10 +384,18 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
         }
     }  
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     * @param Kartu
+     */
     public void setKartu(String Kartu){
         this.NoKartu.setText(Kartu);
     }

@@ -1210,6 +1210,9 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         KdPetugas.setText(akses.getkode());
         Sequel.cariIsi("select nama from pegawai where nik=?", NmPetugas,KdPetugas.getText());

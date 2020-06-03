@@ -623,6 +623,9 @@ public final class DlgKtgPerawatan extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -631,6 +634,10 @@ public final class DlgKtgPerawatan extends javax.swing.JDialog {
         Valid.autoNomer(tabMode,"KP",3,TKd);
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKategori;
     }

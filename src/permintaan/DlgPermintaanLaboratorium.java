@@ -1272,6 +1272,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         KodePerujuk.setText("");
         NmPerujuk.setText("");
@@ -1283,6 +1286,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         autoNomor();
     }
 
+    /**
+     *
+     */
     public void onCari() {
         TCari.requestFocus();
     }
@@ -1332,6 +1338,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Sequel.cariIsi("select concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat from pasien inner join kelurahan inner join kecamatan inner join kabupaten on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where no_rkm_medis=? ", Alamat, TNoRM.getText());
     }
 
+    /**
+     *
+     */
     public void isReset() {
         jml = tbTarif.getRowCount();
         for (i = 0; i < jml; i++) {
@@ -1397,6 +1406,11 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         new Timer(1000, taskPerformer).start();
     }
 
+    /**
+     *
+     * @param norwt
+     * @param posisi
+     */
     public void setNoRm(String norwt, String posisi) {
         TNoRw.setText(norwt);
         this.status = posisi;
@@ -1405,6 +1419,13 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         isReset();
     }
 
+    /**
+     *
+     * @param norwt
+     * @param posisi
+     * @param kddokter
+     * @param nmdokter
+     */
     public void setNoRm(String norwt, String posisi, String kddokter, String nmdokter) {
         TNoRw.setText(norwt);
         this.status = posisi;
@@ -1415,6 +1436,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NmPerujuk.setText(nmdokter);
     }
 
+    /**
+     *
+     */
     public void isCek() {
         BtnSimpan.setEnabled(akses.getpermintaan_lab());
         BtnPrint.setEnabled(akses.getpermintaan_lab());
@@ -1552,6 +1576,11 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     * @param kodeperujuk
+     * @param namaperujuk
+     */
     public void setDokterPerujuk(String kodeperujuk, String namaperujuk) {
         KodePerujuk.setText(kodeperujuk);
         NmPerujuk.setText(namaperujuk);

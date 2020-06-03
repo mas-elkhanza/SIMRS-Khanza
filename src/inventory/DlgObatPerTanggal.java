@@ -55,8 +55,20 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
                    h14=0,h15=0,h16=0,h17=0,h18=0,h19=0,h20=0,h21=0,h22=0,h23=0,h24=0,h25=0,h26=0,h27=0,h28=0,h29=0,h30=0,h31=0 ;
     private Date date = null;
     private int i=0;
+
+    /**
+     *
+     */
     public DlgCariJenis jenis = new DlgCariJenis(null, false);
+
+    /**
+     *
+     */
     public DlgCariKategori kategori = new DlgCariKategori(null, false);
+
+    /**
+     *
+     */
     public DlgCariGolongan golongan = new DlgCariGolongan(null, false);
 
     /** Creates new form DlgJadwal

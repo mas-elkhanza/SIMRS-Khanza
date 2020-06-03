@@ -50,6 +50,11 @@ public class SisruteApi {
             System.out.println("Notifikasi : "+ex);
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public String getHmac() {        
         long GetUTCdatetimeAsString = GetUTCdatetimeAsString();        
         String salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);
@@ -86,6 +91,10 @@ public class SisruteApi {
 	}
     }
         
+    /**
+     *
+     * @return
+     */
     public long GetUTCdatetimeAsString(){    
         long millis = System.currentTimeMillis();   
         return millis/1000;

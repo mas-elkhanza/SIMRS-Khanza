@@ -20,6 +20,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgLabaRugi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3;
     private sekuel Sequel=new sekuel();
@@ -2180,7 +2184,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }        
     }
     
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnPrint.setEnabled(akses.getkeuangan());
     }

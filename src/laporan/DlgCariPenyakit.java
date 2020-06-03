@@ -43,6 +43,10 @@ public final class DlgCariPenyakit extends javax.swing.JDialog {
     private String awal="0";
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
+
+    /**
+     *
+     */
     public  DlgPenyakit penyakit=new DlgPenyakit(null,false);
     private double jumlah=0,x=0,i=0; 
     private int z=0,j=0,mulai=0;
@@ -460,14 +464,24 @@ public final class DlgCariPenyakit extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {   
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnTambah.setEnabled(akses.getpenyakit());
     }

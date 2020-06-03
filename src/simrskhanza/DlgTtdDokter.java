@@ -30,12 +30,19 @@ public class DlgTtdDokter extends javax.swing.JDialog {
 
     /**
      * Creates new form NewJFrame
+     * @param parent
+     * @param modal
      */
     public DlgTtdDokter(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
+    /**
+     *
+     * @param dokter
+     * @param ttd
+     */
     public void setDokter(String dokter, String ttd) {
         this.dokter = dokter;
         this.ttd = ttd;

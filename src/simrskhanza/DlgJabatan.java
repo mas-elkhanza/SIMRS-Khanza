@@ -589,6 +589,9 @@ public final class DlgJabatan extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -597,10 +600,18 @@ public final class DlgJabatan extends javax.swing.JDialog {
         Valid.autoNomer(" jabatan ","J",3,TKd);
     }
     
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return TKd;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }

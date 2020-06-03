@@ -31,11 +31,19 @@ public class PanelWT extends JPanel{
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(3,3,3,3));
     }
 
+    /**
+     *
+     * @param layout
+     */
     public PanelWT(LayoutManager layout) {
         super(layout);
         addComponentListener(new GradientCacheManager());
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaAtas() {
         return warnaAtas;
     }
@@ -44,6 +52,10 @@ public class PanelWT extends JPanel{
         this.warnaAtas = warnaAtas;
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaBawah() {
         return warnaBawah;
     }

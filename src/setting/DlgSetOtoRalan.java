@@ -1653,18 +1653,27 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         LCount.setText(""+tabMode3.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdtindakan.setText("");
         nmtindakan.setText("");
         kdtindakan.requestFocus();
     }
     
+    /**
+     *
+     */
     public void emptTeks2() {
         kdtindakan2.setText("");
         nmtindakan2.setText("");
         kdtindakan2.requestFocus();
     }
     
+    /**
+     *
+     */
     public void emptTeks3() {
         kdtindakan3.setText("");
         nmtindakan3.setText("");

@@ -47,8 +47,8 @@ public final class CoronaReferensiKecamatan extends javax.swing.JDialog {
     private JsonNode response;
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public CoronaReferensiKecamatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -304,6 +304,9 @@ public final class CoronaReferensiKecamatan extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         try {
             headers = new HttpHeaders();
@@ -340,14 +343,26 @@ public final class CoronaReferensiKecamatan extends javax.swing.JDialog {
         }
     }   
     
+    /**
+     *
+     * @param kodekab
+     */
     public void SetKab(String kodekab){
         this.kodekab=kodekab;
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     * @param cari
+     */
     public void setCari(String cari){
         TCari.setText(cari);
     }

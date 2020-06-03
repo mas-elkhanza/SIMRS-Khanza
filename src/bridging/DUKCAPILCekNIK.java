@@ -24,55 +24,121 @@ import org.springframework.web.client.RestTemplate;
  * @author khanzasoft
  */
 public class DUKCAPILCekNIK {
+
+    /**
+     *
+     */
     public String EKTP_STATUS="",
 
     /**
      *
      */
-    NO_KK="",NIK="",NAMA_LGKP="",
+    NO_KK="",
 
     /**
      *
      */
-    KAB_NAME="",AGAMA="",
-            NO_RW="",KEC_NAME="",
+    NIK="",
 
     /**
      *
      */
-    JENIS_PKRJN="",NO_RT="",
+    NAMA_LGKP="",
 
     /**
      *
      */
-    NO_KEL="",ALAMAT="",
+    KAB_NAME="",
+
+    /**
+     *
+     */
+    AGAMA="",
+
+    /**
+     *
+     */
+    NO_RW="",
+
+    /**
+     *
+     */
+    KEC_NAME="",
+
+    /**
+     *
+     */
+    JENIS_PKRJN="",
+
+    /**
+     *
+     */
+    NO_RT="",
+
+    /**
+     *
+     */
+    NO_KEL="",
+
+    /**
+     *
+     */
+    ALAMAT="",
 
     /**
      *
      */
     NO_KEC="",
-            TMPT_LHR="",
 
     /**
      *
      */
-    PDDK_AKH="",STATUS_KAWIN="",
+    TMPT_LHR="",
 
     /**
      *
      */
-    NO_PROP="",NAMA_LGKP_IBU="",
-            PROP_NAME="",
+    PDDK_AKH="",
 
     /**
      *
      */
-    NO_KAB="",KEL_NAME="",
+    STATUS_KAWIN="",
 
     /**
      *
      */
-    JENIS_KLMIN="",TGL_LHR="",
+    NO_PROP="",
+
+    /**
+     *
+     */
+    NAMA_LGKP_IBU="",
+
+    /**
+     *
+     */
+    PROP_NAME="",
+
+    /**
+     *
+     */
+    NO_KAB="",
+
+    /**
+     *
+     */
+    KEL_NAME="",
+
+    /**
+     *
+     */
+    JENIS_KLMIN="",
+
+    /**
+     *
+     */
+    TGL_LHR="",
 
     /**
      *
@@ -82,7 +148,12 @@ public class DUKCAPILCekNIK {
     /**
      *
      */
-    requestJson="",stringbalik="";
+    requestJson="",
+
+    /**
+     *
+     */
+    stringbalik="";
     private final Properties prop = new Properties();
     private sekuel Sequel=new sekuel();
     private String URL;

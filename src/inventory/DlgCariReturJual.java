@@ -26,13 +26,25 @@ import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCariReturJual extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private riwayatobat Trackobat=new riwayatobat();
+
+    /**
+     *
+     */
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+
+    /**
+     *
+     */
     public  DlgBarang barang=new DlgBarang(null,false);
     private double ttlretur=0,subtotal=0;
     private Connection koneksi=koneksiDB.condb();
@@ -1112,6 +1124,9 @@ public class DlgCariReturJual extends javax.swing.JDialog {
         
     }
 
+    /**
+     *
+     */
     public void isCek(){
         BtnPrint.setEnabled(akses.getretur_dari_pembeli());
         if(akses.getkode().equals("Admin Utama")){

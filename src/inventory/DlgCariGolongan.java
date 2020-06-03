@@ -37,6 +37,10 @@ public final class DlgCariGolongan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+
+    /**
+     *
+     */
     public DlgGolongan nama=new DlgGolongan(null,false);
     private PreparedStatement ps;
     private ResultSet rs;
@@ -382,14 +386,24 @@ public final class DlgCariGolongan extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         BtnTambah.setEnabled(akses.getgolongan_barang());
     }

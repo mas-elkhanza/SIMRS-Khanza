@@ -40,7 +40,13 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class grafiklahirbulan extends JDialog {
       sekuel Sequel = new sekuel();
       validasi Valid = new validasi();
-      public grafiklahirbulan(String title,String symbol) {
+
+    /**
+     *
+     * @param title
+     * @param symbol
+     */
+    public grafiklahirbulan(String title,String symbol) {
         // super(title);
           setTitle(title);
          JPanel chartPanel = createDemoPanel(symbol);

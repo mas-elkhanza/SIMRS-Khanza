@@ -846,6 +846,9 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Nm.setText("");
         Almt.setText("");
@@ -869,10 +872,17 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
 
     private String folder;
 
+    /**
+     *
+     */
     public class Painter extends Canvas {
 
         Image image;
 
+        /**
+         *
+         * @param file
+         */
         public void setImage(String file) {
             URL url = null;
             try {
@@ -883,6 +893,11 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             image = getToolkit().getImage(url);
             repaint();
         }
+
+        /**
+         *
+         * @param file
+         */
         public void setImageIcon(ImageIcon file) {
             image = file.getImage();
             repaint();

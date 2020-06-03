@@ -4301,6 +4301,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.Table tbPendaftaran;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {        
         Valid.tabelKosong(tabMode);
         try {
@@ -4374,6 +4377,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil2() {        
         Valid.tabelKosong(tabMode2);
         try {
@@ -4516,6 +4522,14 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         TanggalDaftar.requestFocus();
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param status
+     * @param kdpoli
+     * @param namapoli
+     */
     public void setNoRm(String norwt, Date tgl1,String status,String kdpoli,String namapoli) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -4524,7 +4538,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         isRawat();            
     }
       
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getbridging_pcare_daftar());
         BtnEdit.setEnabled(akses.getbridging_pcare_daftar());
@@ -4537,6 +4553,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ppRiwayat.setEnabled(akses.getresume_pasien());            
     }
     
+    /**
+     *
+     */
     public void tutupInput(){
         TabRawat.setSelectedIndex(1);
     }
@@ -4728,18 +4747,34 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }                         
     }
     
+    /**
+     *
+     */
     public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
+
+        /**
+         *
+         * @param uri
+         */
         public HttpEntityEnclosingDeleteRequest(final URI uri) {
             super();
             setURI(uri);
         }
 
+        /**
+         *
+         * @return
+         */
         @Override
         public String getMethod() {
             return "DELETE";
         }
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void bodyWithDeleteRequest() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
@@ -4804,6 +4839,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void bodyWithDeleteRequest2() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
@@ -4868,6 +4907,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void bodyWithDeleteRequest3() throws Exception {
         RestTemplate restTemplate = new RestTemplate();

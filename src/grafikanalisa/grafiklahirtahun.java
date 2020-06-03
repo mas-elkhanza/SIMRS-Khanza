@@ -74,6 +74,7 @@ public class grafiklahirtahun extends JDialog {
         /**
            * Creates a dataset.
            *
+     * @param symbol
            * @return A dataset.
            */
 

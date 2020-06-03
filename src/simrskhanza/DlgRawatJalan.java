@@ -70,6 +70,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private DlgPasien pasien=new DlgPasien(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
+
+    /**
+     *
+     */
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);       
     private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,pstindakan,psset_tarif;
     private ResultSet rs,rstindakan,rsset_tarif;
@@ -81,8 +85,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
 
     /** Creates new form DlgPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgRawatJalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -5962,6 +5966,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRM.getText());
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     */
     public void setNoRm(String norwt,Date tgl1,Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText("");
@@ -6028,6 +6038,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.gettindakan_ralan());
         BtnHapus.setEnabled(akses.gettindakan_ralan());
@@ -6392,6 +6405,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         new Timer(1000, taskPerformer).start();
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     * @param kodedokter
+     * @param namadokter
+     */
     public void setNoRm(String norwt,Date tgl1,Date tgl2,String kodedokter, String namadokter) {
         TNoRw.setText(norwt);
         DTPCari1.setDate(tgl1);
@@ -6414,10 +6435,18 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         TDokter3.setText(namadokter); 
     }
     
+    /**
+     *
+     * @param KodePoli
+     */
     public void SetPoli(String KodePoli){
         this.kode_poli=KodePoli;
     }
     
+    /**
+     *
+     * @param KodePj
+     */
     public void SetPj(String KodePj){
         this.kd_pj=KodePj;
     }

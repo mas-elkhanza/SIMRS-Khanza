@@ -583,6 +583,13 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param spesialistik
+     * @param kode
+     * @param nokartu
+     * @param tanggal
+     */
     public void tampil(String spesialistik,String kode,String nokartu,String tanggal) {        
         try {
             URL = link+"/spesialis/rujuk/khusus/"+spesialistik+"/subspesialis/"+kode+"/noKartu/"+nokartu+"/tglEstRujuk/"+tanggal;	
@@ -637,6 +644,10 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         }
     } 
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }    

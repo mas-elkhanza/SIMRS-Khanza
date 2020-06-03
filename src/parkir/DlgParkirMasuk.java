@@ -981,6 +981,9 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Table tbKamIn;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         
         Valid.tabelKosong(tabMode);
@@ -1048,6 +1051,9 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {       
         NomorKendaraan.setText("");
         NomorKendaraan.requestFocus();
@@ -1059,11 +1065,9 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
-    
-   
-
-    
-    
+    /**
+     *
+     */
     public void isCek(){
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);

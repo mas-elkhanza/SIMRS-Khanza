@@ -34,8 +34,17 @@ public class BPJSCekNoKartu {
     /**
      *
      */
-    cobtglTAT="",cobtglTMT="",
-            hakKelasketerangan="",
+    cobtglTAT="",
+
+    /**
+     *
+     */
+    cobtglTMT="",
+
+    /**
+     *
+     */
+    hakKelasketerangan="",
 
     /**
      *
@@ -45,7 +54,12 @@ public class BPJSCekNoKartu {
     /**
      *
      */
-    informasidinsos="",informasinoSKTM="",
+    informasidinsos="",
+
+    /**
+     *
+     */
+    informasinoSKTM="",
 
     /**
      *
@@ -55,7 +69,12 @@ public class BPJSCekNoKartu {
     /**
      *
      */
-    jenisPesertaketerangan="",jenisPesertakode="",
+    jenisPesertaketerangan="",
+
+    /**
+     *
+     */
+    jenisPesertakode="",
 
     /**
      *
@@ -75,18 +94,37 @@ public class BPJSCekNoKartu {
     /**
      *
      */
-    nik="",noKartu="",
+    nik="",
+
+    /**
+     *
+     */
+    noKartu="",
 
     /**
      *
      */
     pisa="",
-            provUmumkdProvider="",provUmumnmProvider="",
 
     /**
      *
      */
-    sex="",statusPesertaketerangan="",
+    provUmumkdProvider="",
+
+    /**
+     *
+     */
+    provUmumnmProvider="",
+
+    /**
+     *
+     */
+    sex="",
+
+    /**
+     *
+     */
+    statusPesertaketerangan="",
 
     /**
      *
@@ -96,13 +134,22 @@ public class BPJSCekNoKartu {
     /**
      *
      */
-    tglCetakKartu="",tglLahir="",
+    tglCetakKartu="",
+
+    /**
+     *
+     */
+    tglLahir="",
 
     /**
      *
      */
     tglTAT="",
-            tglTMT="",
+
+    /**
+     *
+     */
+    tglTMT="",
 
     /**
      *
@@ -143,6 +190,10 @@ public class BPJSCekNoKartu {
         }
     }
     
+    /**
+     *
+     * @param nokartu
+     */
     public void tampil(String nokartu) {
         try {
             headers = new HttpHeaders();

@@ -332,6 +332,10 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param faskes
+     */
     public void tampil(String faskes) {
         try {
             Valid.tabelKosong(tabMode);
@@ -378,7 +382,10 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
         }
     }    
     
- 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

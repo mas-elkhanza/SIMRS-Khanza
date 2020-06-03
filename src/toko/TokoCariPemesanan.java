@@ -26,13 +26,29 @@ import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
 import keuangan.KeuanganBayarPesanToko;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class TokoCariPemesanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+
+    /**
+     *
+     */
     public  TokoSuplier suplier=new TokoSuplier(null,false);
+
+    /**
+     *
+     */
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+
+    /**
+     *
+     */
     public  TokoBarang barang=new TokoBarang(null,false);
     private riwayattoko Trackbarang=new riwayattoko();
     private PreparedStatement ps,ps2,pscaripesan,pstoko_detail_pesan;
@@ -42,8 +58,8 @@ public class TokoCariPemesanan extends javax.swing.JDialog {
     private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public TokoCariPemesanan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1244,12 +1260,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }        
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdbar.setText("");
         nmbar.setText("");
         kdbar.requestFocus();        
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnPrint.setEnabled(akses.gettoko_penerimaan_barang());
         if(akses.getkode().equals("Admin Utama")){

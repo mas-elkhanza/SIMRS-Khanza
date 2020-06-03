@@ -30,6 +30,10 @@ import model.KamarInap;
 public class DlgSensusHarianRanap extends javax.swing.JDialog {
 
     private DefaultTableModel tabMode;
+
+    /**
+     *
+     */
     public DlgKamar dlgKamar = new DlgKamar(null, false);
     private String kd_kamar;
     private KamarInap kamarInap = new KamarInap();
@@ -40,6 +44,8 @@ public class DlgSensusHarianRanap extends javax.swing.JDialog {
 
     /**
      * Creates new form DlgSensusHarianRanap
+     * @param parent
+     * @param modal
      */
     public DlgSensusHarianRanap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

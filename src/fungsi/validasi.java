@@ -259,6 +259,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer5(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -373,6 +380,13 @@ public final class validasi {
         return auto;
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @return
+     */
     public String autoNomer3(String sql, String strAwal, Integer pnj) {
         try {
             auto = "";
@@ -409,6 +423,14 @@ public final class validasi {
         return auto;
     }
 
+    /**
+     *
+     * @param tabMode
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     */
     public void editTable(DefaultTableModel tabMode, String table, String field_acuan, JTextField nilai_field,
             String update) {
         if (tabMode.getRowCount() == 0) {
@@ -438,6 +460,16 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param tabMode
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     * @param i
+     * @param a
+     */
     public void editTable(DefaultTableModel tabMode, String table, String field_acuan, String nilai_field,
             String update, int i, String[] a) {
         if (tabMode.getRowCount() == 0) {
@@ -494,6 +526,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param model
+     * @param table
+     * @param file
+     */
     public void fillData(DefaultTableModel model, JTable table, File file) {
         try {
             WritableWorkbook workbook1 = Workbook.createWorkbook(file);
@@ -615,6 +653,13 @@ public final class validasi {
         cmb.setSelectedItem(year + "1");
     }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param parameters
+     */
     @SuppressWarnings("empty-statement")
     public void MyReport(String reportName, String reportDirName, String judul, Map parameters) {
         getPathReport(reportDirName, reportName);
@@ -708,6 +753,14 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param qry
+     * @param parameters
+     */
     public void MyReportqry(String reportName, String reportDirName, String judul, String qry, Map parameters) {
         try {
             getPathReport(reportDirName, reportName);
@@ -839,6 +892,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JCheckBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -906,6 +965,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextArea kiri, JTextArea kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -928,6 +993,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -1009,6 +1080,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextArea kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -1087,6 +1164,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JComboBox kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -1247,6 +1330,11 @@ public final class validasi {
         return s;
     }
 
+    /**
+     *
+     * @param original
+     * @return
+     */
     public String SetTgl3(String original) {
         original = original.replaceAll("'", "");
         s = "";
@@ -1257,6 +1345,12 @@ public final class validasi {
         return s;
     }
 
+    /**
+     *
+     * @param original
+     * @param max
+     * @return
+     */
     public String MaxTeks(String original, int max) {
         if (original.length() >= max) {
             s = original.substring(0, (max - 1));
@@ -1328,6 +1422,11 @@ public final class validasi {
         teks.requestFocus();
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void textKosong(JButton teks, String pesan) {
         JOptionPane.showMessageDialog(null, "Maaf, " + pesan + " tidak boleh kosong...!!!");
         teks.requestFocus();
@@ -1363,6 +1462,11 @@ public final class validasi {
         return df2.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka3(double nilai) {
         return df4.format(nilai);
     }
@@ -1376,6 +1480,11 @@ public final class validasi {
         return df5.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka2(double nilai) {
         return df3.format(nilai);
     }

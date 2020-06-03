@@ -316,6 +316,10 @@ public final class PCareClubProlanis extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param kode
+     */
     public void tampil(String kode) {        
         try {
             URL = link+"/kelompok/club/"+kode;	
@@ -369,6 +373,10 @@ public final class PCareClubProlanis extends javax.swing.JDialog {
         }
     } 
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

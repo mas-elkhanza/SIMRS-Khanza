@@ -27,6 +27,10 @@ import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 import kepegawaian.DlgCariPetugas;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -38,9 +42,25 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
     private riwayatobat Trackobat=new riwayatobat();
     private int i=0,no=1;
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
+
+    /**
+     *
+     */
     public DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+
+    /**
+     *
+     */
     public DlgCariBangsal bangsal2=new DlgCariBangsal(null,false);
+
+    /**
+     *
+     */
     public DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+
+    /**
+     *
+     */
     public DlgBarang barang=new DlgBarang(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
     private double ttl=0,subttl=0;
@@ -49,8 +69,8 @@ public class DlgCariPengeluaranApotek extends javax.swing.JDialog {
     private boolean sukses=true;
     
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariPengeluaranApotek(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1229,6 +1249,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdbar.setText("");
         nmbar.setText("");
@@ -1236,6 +1259,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         kdbar.requestFocus();        
     }   
      
+    /**
+     *
+     */
     public void isCek(){
         BtnPrint.setEnabled(akses.getpengeluaran_stok_apotek());
         if(akses.getkode().equals("Admin Utama")){

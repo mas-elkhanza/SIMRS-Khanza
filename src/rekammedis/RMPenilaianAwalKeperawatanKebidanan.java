@@ -5672,6 +5672,9 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TglAsuhan.setDate(new Date());
         Informasi.setSelectedIndex(0);
@@ -5961,6 +5964,11 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         }
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl2
+     */
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -5970,7 +5978,9 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         tampilPersalinan();
     }
     
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_kebidanan());
         BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_kebidanan());
@@ -5988,6 +5998,9 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         }            
     }
 
+    /**
+     *
+     */
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
        tampil();

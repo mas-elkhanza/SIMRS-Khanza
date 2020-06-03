@@ -49,7 +49,13 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class grafikperiksaperagama extends JDialog {
       sekuel Sequel = new sekuel();
       validasi Valid = new validasi();
-      public grafikperiksaperagama(String title,String symbol) {
+
+    /**
+     *
+     * @param title
+     * @param symbol
+     */
+    public grafikperiksaperagama(String title,String symbol) {
         // super(title);
           setTitle(title);
          JPanel chartPanel = createDemoPanel(symbol);
@@ -68,6 +74,7 @@ public class grafikperiksaperagama extends JDialog {
         /**
            * Creates a dataset.
            *
+     * @param symbol
            * @return A dataset.
            */
 

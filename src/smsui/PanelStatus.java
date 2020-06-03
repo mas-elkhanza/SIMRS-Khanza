@@ -18,8 +18,20 @@ import javax.swing.ImageIcon;
  * @author perpustakaan
  */
 public class PanelStatus extends javax.swing.JPanel {
+
+    /**
+     *
+     */
     public static final int KONEKSI_Catatan = 0;
+
+    /**
+     *
+     */
     public static final int TERSAMBUNG = 1;
+
+    /**
+     *
+     */
     public static final int TERPUTUS = 3;
 
     /** Creates new form PanelStatus */
@@ -27,6 +39,11 @@ public class PanelStatus extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     *
+     * @param status
+     * @param s
+     */
     public void setStatusKoneksi(int status, String s){
         if(status == KONEKSI_Catatan ){
             jLabel1.setIcon(new ImageIcon(getClass().getResource("/smsimage/Catatan.png")));

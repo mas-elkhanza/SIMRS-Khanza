@@ -17,6 +17,10 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class SirsApi {        
     private static final Properties prop = new Properties();
     private String Key,pass;
@@ -32,6 +36,11 @@ public class SirsApi {
             System.out.println("Notifikasi : "+ex);
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public String getHmac() {        
         try {                    
             MessageDigest md = MessageDigest.getInstance("MD5");

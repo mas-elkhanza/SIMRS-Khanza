@@ -990,6 +990,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){        
         try {
             Valid.tabelKosong(tabMode);
@@ -1110,6 +1113,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         new Timer(1000, taskPerformer).start();
     }
     
+    /**
+     *
+     */
     public void isCek(){
         if(akses.getjml2()>=1){            
             Sequel.cariIsi("select no_ktp from pegawai where nik=?",Nama,akses.getkode());

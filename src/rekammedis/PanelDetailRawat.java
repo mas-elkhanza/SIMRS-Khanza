@@ -248,7 +248,11 @@ public class PanelDetailRawat extends widget.panelisi {
         // TODO add your handling code here:
         pilihTab();
     }//GEN-LAST:event_tabDetailRawatMouseClicked
-public void pilihTab() {
+
+    /**
+     *
+     */
+    public void pilihTab() {
         switch (tabDetailRawat.getSelectedIndex()) {
             case 0:
                 tampil1();
@@ -270,6 +274,9 @@ public void pilihTab() {
         }
     }
     
+    /**
+     *
+     */
     public void laporan(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     
@@ -312,7 +319,14 @@ public void pilihTab() {
         }   
     }
 
-     public void setRM(String norm,String tanggal1,String tanggal2,boolean caritanggal){
+    /**
+     *
+     * @param norm
+     * @param tanggal1
+     * @param tanggal2
+     * @param caritanggal
+     */
+    public void setRM(String norm,String tanggal1,String tanggal2,boolean caritanggal){
         this.norm=norm;
         this.tanggal1=tanggal1;
         this.tanggal2=tanggal2;

@@ -21,6 +21,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class TokoPiutang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -1339,6 +1343,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         SisaPiutang.setText(Valid.SetAngka(tagihan-uangmuka));     
     }
     
+    /**
+     *
+     */
     public void isCek(){
         autoNomor();
         Ongkir.setText("0");
@@ -1363,6 +1370,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
     
+    /**
+     *
+     */
     public void autoNomor(){
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_piutang,5),signed)),0) from tokopiutang where tgl_piutang='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' ",
                 "TP"+Tgl.getSelectedItem().toString().substring(6,10)+Tgl.getSelectedItem().toString().substring(3,5)+Tgl.getSelectedItem().toString().substring(0,2),5,NoNota); 

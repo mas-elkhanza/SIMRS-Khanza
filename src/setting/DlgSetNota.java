@@ -2424,6 +2424,9 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Table tbAdmin3;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{    
@@ -2472,6 +2475,9 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
+    /**
+     *
+     */
     public void tampil2() {
         Valid.tabelKosong(tabMode2);
         try{    
@@ -2513,6 +2519,9 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
+    /**
+     *
+     */
     public void tampil3() {
         Valid.tabelKosong(tabMode3);
         try{    
@@ -2751,6 +2760,9 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         NotaRalan.setText("");
         KwitansiRalan.setText("");
@@ -2779,6 +2791,9 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         NotaRalan.requestFocus();
     }
     
+    /**
+     *
+     */
     public void emptTeks2() {
         NamaService.setText("");
         BesarBiaya.setText("");
@@ -2799,6 +2814,9 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         chkResepPulang.setSelected(false);
     }
     
+    /**
+     *
+     */
     public void emptTeks3() {
         NamaService1.setText("");
         BesarBiaya1.setText("");

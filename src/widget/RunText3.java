@@ -41,6 +41,9 @@ public class RunText3 {
         timer.start();
     }
 
+    /**
+     *
+     */
     public void mainKill() {
         Timer timer = new Timer(6000, new ActionListener() {
 
@@ -52,6 +55,10 @@ public class RunText3 {
         timer.start();
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) {
         EventQueue.invokeLater(new Runnable() {
 

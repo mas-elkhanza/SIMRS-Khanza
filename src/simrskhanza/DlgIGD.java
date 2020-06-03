@@ -96,8 +96,20 @@ public final class DlgIGD extends javax.swing.JDialog {
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private Connection koneksi = koneksiDB.condb();
+
+    /**
+     *
+     */
     public DlgPasien pasien = new DlgPasien(null, false);
+
+    /**
+     *
+     */
     public DlgCariDokter dokter = new DlgCariDokter(null, false);
+
+    /**
+     *
+     */
     public DlgRujukMasuk rujukmasuk = new DlgRujukMasuk(null, false);
     private DlgCatatan catatan = new DlgCatatan(null, false);
     private DlgRujukanPoliInternal dlgrjk = new DlgRujukanPoliInternal(null, false);
@@ -163,8 +175,8 @@ public final class DlgIGD extends javax.swing.JDialog {
     /**
      * Creates new form DlgReg
      * 
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgIGD(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -6658,6 +6670,7 @@ public final class DlgIGD extends javax.swing.JDialog {
     }// GEN-LAST:event_MnCetakSuratHamilActionPerformed
 
     /**
+     * @param args
      * @data args the command line arguments
      */
     public static void main(String args[]) {
@@ -6972,6 +6985,9 @@ public final class DlgIGD extends javax.swing.JDialog {
         LCount.setText("" + tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TNoReg.setText("");
         TNoRw.setText("");
@@ -7157,10 +7173,18 @@ public final class DlgIGD extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField() {
         return TNoRw;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton() {
         return BtnKeluar;
     }
@@ -7179,6 +7203,9 @@ public final class DlgIGD extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void isCek() {
         DTPReg.setDate(new Date());
         DTPCari1.setDate(new Date());
@@ -7250,6 +7277,9 @@ public final class DlgIGD extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void ctk() {
         try {
             String os = System.getProperty("os.name").toLowerCase();
@@ -7284,6 +7314,12 @@ public final class DlgIGD extends javax.swing.JDialog {
         sendCommand(VERTICAL_PRINT_POSITION, writer);
     }
 
+    /**
+     *
+     * @param command
+     * @param writer
+     * @throws IOException
+     */
     public void sendCommand(char[] command, Writer writer) throws IOException {
         writer.write(command);
     }
@@ -7390,6 +7426,12 @@ public final class DlgIGD extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @param norm
+     * @param nosisrute
+     * @param FaskesAsal
+     */
     public void SetPasien(String norm, String nosisrute, String FaskesAsal) {
         ChkInput.setSelected(true);
         isForm();
@@ -7399,6 +7441,10 @@ public final class DlgIGD extends javax.swing.JDialog {
         isPas();
     }
 
+    /**
+     *
+     * @param norm
+     */
     public void SetPasien(String norm) {
         ChkInput.setSelected(true);
         isForm();
@@ -7406,6 +7452,19 @@ public final class DlgIGD extends javax.swing.JDialog {
         isPas();
     }
 
+    /**
+     *
+     * @param NamaPasien
+     * @param Kontak
+     * @param Alamat
+     * @param TempatLahir
+     * @param TglLahir
+     * @param JK
+     * @param NoKartuJKN
+     * @param NIK
+     * @param nosisrute
+     * @param FaskesAsal
+     */
     public void setPasien(String NamaPasien, String Kontak, String Alamat, String TempatLahir, String TglLahir,
             String JK, String NoKartuJKN, String NIK, String nosisrute, String FaskesAsal) {
         akses.setform("DlgIGD");

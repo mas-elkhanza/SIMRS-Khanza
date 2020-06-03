@@ -25,6 +25,10 @@ public class formatColumn {
      *
      */
     public static int curr = 0;
+
+    /**
+     *
+     */
     public static int angka = 1;
 
     /**
@@ -42,6 +46,12 @@ public class formatColumn {
      */
     public static int tanggal = 4;
     
+    /**
+     *
+     * @param tabMode
+     * @param column
+     * @param format
+     */
     public void  setColumnFormat(DefaultTableModel tabMode,int column, int format) {
         tc = tcm.getColumn(column);
         switch (format) {

@@ -408,6 +408,9 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {  
         Valid.tabelKosong(tabMode);
         try{
@@ -538,18 +541,34 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
         
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     * @param penjab
+     * @param kelasoperasi
+     */
     public void setBayar(String penjab,String kelasoperasi){
         this.kd_pj=penjab;
         this.kelas=kelasoperasi;
     }
+
+    /**
+     *
+     */
     public void isCek(){        
        BtnTambah.setEnabled(akses.gettarif_operasi());
     }

@@ -82,13 +82,40 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
+
+    /**
+     *
+     */
     public DlgIKBBayi ikb = new DlgIKBBayi(null, false);
 
+    /**
+     *
+     */
     public DlgKamar kamar = new DlgKamar(null, false);
+
+    /**
+     *
+     */
     public DlgReg reg = new DlgReg(null, false);
+
+    /**
+     *
+     */
     public DlgSpri spri = new DlgSpri(null, false);
+
+    /**
+     *
+     */
     public DlgPasienMati pasienMeninggal = new DlgPasienMati(null, false);
+
+    /**
+     *
+     */
     public DlgBilingRanap billing = new DlgBilingRanap(null, false);
+
+    /**
+     *
+     */
     public DlgDiagnosaPenyakit diagnosa = new DlgDiagnosaPenyakit(null, false);
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
 
@@ -108,8 +135,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
     /**
      * Creates new form DlgKamarInap
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgKamarInap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -10821,6 +10848,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         LCount.setText("" + tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         norawat.setText("");
         TNoRM.setText("");
@@ -10958,6 +10988,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @param norwt
+     * @param norm
+     * @param nmpasien
+     */
     public void setNoRm(String norwt,String norm,String nmpasien) {
         norawat.setText(norwt);
         TNoRM.setText(norm);
@@ -11038,6 +11074,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }       
     }
 
+    /**
+     *
+     */
     public void isCek() {
         try {
             namakamar = koneksiDB.KAMARAKTIFRANAP();
@@ -11157,6 +11196,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         tampil();
     }
 
+    /**
+     *
+     */
     public void setCariKosong() {
         TCari.setText("");
     }

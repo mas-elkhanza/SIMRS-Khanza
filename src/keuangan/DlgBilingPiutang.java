@@ -52,8 +52,8 @@ public class DlgBilingPiutang extends javax.swing.JDialog {
     private int jawab,i=0;
 
     /** Creates new form DlgBiling
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBilingPiutang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -488,6 +488,11 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param norawat
+     * @param uangmuka2
+     */
     public void isRawat(String norawat,double uangmuka2) {
         uangmuka=uangmuka2;
         status=Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?",norawat);        

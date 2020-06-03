@@ -48,8 +48,8 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
     private JsonNode response;
     private RestTemplate rest;
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public YaskiReferensiPropinsi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -272,6 +272,10 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param poli
+     */
     public void tampil(String poli) {
         try {
             headers = new HttpHeaders();
@@ -307,6 +311,10 @@ public final class YaskiReferensiPropinsi extends javax.swing.JDialog {
         }
     }    
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

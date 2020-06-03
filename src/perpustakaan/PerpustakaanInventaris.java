@@ -51,8 +51,8 @@ public final class PerpustakaanInventaris extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
 
     /** Creates new form DlgJnsPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PerpustakaanInventaris(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1252,6 +1252,9 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     private widget.Tanggal tgl_pengadaan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         try {
             Valid.tabelKosong(tabMode);
@@ -1335,6 +1338,9 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
         }        
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         no_inventaris.setText("");
         kode_buku.setText("");
@@ -1377,6 +1383,10 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
           }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }
@@ -1395,6 +1405,9 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getinventaris_perpustakaan());
         BtnHapus.setEnabled(akses.getinventaris_perpustakaan());

@@ -339,6 +339,10 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param diagnosa
+     */
     public void tampil(String diagnosa) {
         try {
             URL = link+"/kunjungan/rujukan/"+diagnosa;
@@ -435,6 +439,10 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
         }
     }   
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

@@ -41,8 +41,8 @@ public class DlgCatatan extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgPemberianObat
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCatatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -317,13 +317,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRM.getText());
     }
 
+    /**
+     *
+     * @param norm
+     */
     public void setNoRm(String norm) {
         TNoRM.setText(norm);  
         isPsien();   
         Sequel.cariIsi("select catatan from catatan_pasien where no_rkm_medis=?",TCatatan,TNoRM.getText());       
     }
     
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(true);
         BtnHapus.setEnabled(true);

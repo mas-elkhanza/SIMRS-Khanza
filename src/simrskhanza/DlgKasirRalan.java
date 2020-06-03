@@ -83,6 +83,10 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private Connection koneksi = koneksiDB.condb();
+
+    /**
+     *
+     */
     public DlgPenanggungJawab penjab = new DlgPenanggungJawab(null, false);
     private PreparedStatement psotomatis, psotomatis2, pskasir, pscaripiutang;
     private ResultSet rskasir;
@@ -109,8 +113,16 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             + "where set_otomatis_tindakan_ralan.kd_dokter=? and set_otomatis_tindakan_ralan.kd_pj=?",
             namadokter = "", namapoli = "", order = "reg_periksa.no_rawat desc",
             validasicatatan = Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
+
+    /**
+     *
+     */
     public DlgBilingRalan billing = new DlgBilingRalan(null, false);
     private int i = 0, pilihan = 0, sudah = 0, jmlparsial = 0;
+
+    /**
+     *
+     */
     public DlgKamarInap kamarinap = new DlgKamarInap(null, false);
     private DlgRawatJalan dlgrwjl2 = new DlgRawatJalan(null, false);
     private boolean semua;
@@ -118,8 +130,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     /**
      * Creates new form DlgReg
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgKasirRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -8958,14 +8970,25 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField() {
         return TNoRw;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton() {
         return BtnKeluar;
     }
 
+    /**
+     *
+     */
     public void isCek() {
         MnRawatJalan1.setEnabled(akses.gettindakan_ralan());
         MnPemberianObat.setEnabled(akses.getberi_obat());
@@ -9403,6 +9426,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void setCariKosong() {
         TCari.setText("");
         if (TabRawat.getSelectedIndex() == 0) {

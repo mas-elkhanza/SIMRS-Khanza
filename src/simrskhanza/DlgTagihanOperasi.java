@@ -24,6 +24,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgTagihanOperasi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2;
     private sekuel Sequel=new sekuel();
@@ -51,8 +55,8 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
 
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal*/
+     * @param frame
+     * @param bln*/
     public DlgTagihanOperasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -3556,8 +3560,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
-
-    
+    /**
+     *
+     */
     public void isCek(){
        // Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,NoNota); 
         TCari.requestFocus();
@@ -3568,6 +3573,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }        
     }
     
+    /**
+     *
+     * @param norm
+     * @param nama
+     * @param posisi
+     */
     public void setNoRm(String norm,String nama,String posisi){
         TNoRw.setText(norm);
         TPasien.setText(nama);
@@ -3609,6 +3620,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     * @param Operasi
+     * @param kodedokter
+     * @param namadokter
+     */
     public void SetCariOperasi(String Operasi,String kodedokter,String namadokter){
         TCariPaket.setText(Operasi);
         kdoperator1.setText(kodedokter);

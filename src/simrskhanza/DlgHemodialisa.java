@@ -46,8 +46,8 @@ public class DlgHemodialisa extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgPemberianObat
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgHemodialisa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1098,6 +1098,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Table tbPemberianObat;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampilPO() {
         Valid.tabelKosong(tabModePO);
         try{
@@ -1154,6 +1157,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     */
     public void setNoRm(String norwt, Date tgl1, Date tgl2) {
         TNoRw.setText(norwt);        
         isRawat();
@@ -1178,6 +1187,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getberi_obat());
         BtnHapus.setEnabled(akses.getberi_obat());

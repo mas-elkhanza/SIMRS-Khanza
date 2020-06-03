@@ -41,8 +41,8 @@ public class InventarisRuang extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public InventarisRuang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -586,6 +586,9 @@ public class InventarisRuang extends javax.swing.JDialog {
     private widget.Table tbSpesialis;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -614,6 +617,9 @@ public class InventarisRuang extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -630,10 +636,17 @@ public class InventarisRuang extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getinventaris_ruang());
        BtnHapus.setEnabled(akses.getinventaris_ruang());

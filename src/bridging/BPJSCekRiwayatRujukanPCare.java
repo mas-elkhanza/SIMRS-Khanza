@@ -395,6 +395,10 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param nomorrujukan
+     */
     public void tampil(String nomorrujukan) {
         try {
             headers = new HttpHeaders();

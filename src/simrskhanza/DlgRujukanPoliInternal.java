@@ -45,8 +45,8 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     private Properties prop = new Properties();
     private int lebar=0,tinggi=0;
     /** Creates new form DlgPemberianObat
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgRujukanPoliInternal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -500,9 +500,14 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     private widget.panelisi panelGlass8;
     // End of variables declaration//GEN-END:variables
     
-
- 
-
+    /**
+     *
+     * @param norw
+     * @param norm
+     * @param namapasien
+     * @param lebar
+     * @param tinggi
+     */
     public void setNoRm(String norw,String norm,String namapasien,int lebar,int tinggi) {
         TNoRw.setText(norw);
         TNoRM.setText(norm);
@@ -511,7 +516,9 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
         this.tinggi=tinggi;
     }
     
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(true);
     }

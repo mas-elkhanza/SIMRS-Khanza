@@ -3671,6 +3671,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
 
+    /**
+     *
+     */
     public void tampil2(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -3892,6 +3895,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil3(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -4113,6 +4119,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil4(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -4437,6 +4446,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil5(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -4769,6 +4781,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil6(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -5151,6 +5166,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil7(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -5470,6 +5488,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil8(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -5781,6 +5802,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil9(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -6063,6 +6087,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil10(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -6300,6 +6327,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil11(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -6537,6 +6567,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil12(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -6899,6 +6932,9 @@ public class PanelRiwayat extends widget.panelisi {
         }   
     }
     
+    /**
+     *
+     */
     public void tampil14(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -10014,6 +10050,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil16(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -10299,6 +10338,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil17(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -10497,6 +10539,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil18(){ 
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -10610,6 +10655,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil19(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -10942,6 +10990,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil20(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -11383,6 +11434,13 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     * @param norm
+     * @param tanggal1
+     * @param tanggal2
+     * @param caritanggal
+     */
     public void setRM(String norm,String tanggal1,String tanggal2,boolean caritanggal){
         this.norm=norm;
         this.tanggal1=tanggal1;
@@ -11390,6 +11448,9 @@ public class PanelRiwayat extends widget.panelisi {
         this.caritanggal=caritanggal;
     }
 
+    /**
+     *
+     */
     public void pilihTab() {
         switch (TabRawat.getSelectedIndex()) {
             case 0:
@@ -11457,6 +11518,9 @@ public class PanelRiwayat extends widget.panelisi {
         }
     }
     
+    /**
+     *
+     */
     public void laporan(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     

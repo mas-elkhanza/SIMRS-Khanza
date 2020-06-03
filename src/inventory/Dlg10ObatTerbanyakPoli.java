@@ -600,6 +600,9 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
     private widget.panelisi panelisi4;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){        
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -740,6 +743,9 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
         }  
     }
 
+    /**
+     *
+     */
     public void tampil2(){        
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

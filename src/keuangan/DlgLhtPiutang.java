@@ -721,6 +721,9 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){
         Valid.tabelKosong(tabMode);
         try{
@@ -784,6 +787,11 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }
 
+    /**
+     *
+     * @param norm
+     * @param tgl
+     */
     public void setNoRm(String norm, Date tgl){
         TCari.setText(norm);
         Tgl1.setDate(tgl);

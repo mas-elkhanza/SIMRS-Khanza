@@ -24,6 +24,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class TokoPemesanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -40,6 +44,10 @@ public class TokoPemesanan extends javax.swing.JDialog {
     private String[] kodebarang,namabarang,satuan;
     private double[] h_beli,jumlah,subtotal,diskon,besardiskon,jmltotal,dasar,distributor,grosir,retail;
     private WarnaTable2 warna=new WarnaTable2();
+
+    /**
+     *
+     */
     public boolean tampikan=true;
     private boolean sukses=true;
     private String Penerimaan_Toko=Sequel.cariIsi("select Penerimaan_Toko from set_akun"),Kontra_Penerimaan_Toko=Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun");
@@ -1288,6 +1296,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         
     }
     
+    /**
+     *
+     */
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
@@ -1307,6 +1318,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from tokopemesanan where tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PNT"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
 
+    /**
+     *
+     * @param noorder
+     */
     public void tampil(String noorder) {
         NoOrder.setText(noorder);
         kdsup.setText(Sequel.cariIsi("select kode_suplier from toko_surat_pemesanan where no_pemesanan=?",noorder));

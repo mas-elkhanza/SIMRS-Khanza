@@ -5408,6 +5408,12 @@ public class DlgTambahUserAkses extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @param User
+     * @param Nama
+     * @param Password
+     */
     public void isUser(String User, String Nama, String Password) {
         TKd.setText(User);
         //TNmUser.setText(Nama);

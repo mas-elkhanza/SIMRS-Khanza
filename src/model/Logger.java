@@ -17,34 +17,66 @@ public class Logger {
     private String pesan;
     private String level;
 
+    /**
+     *
+     * @return
+     */
     public int getId_logger() {
         return id_logger;
     }
 
+    /**
+     *
+     * @param id_logger
+     */
     public void setId_logger(int id_logger) {
         this.id_logger = id_logger;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getTanggal() {
         return tanggal;
     }
 
+    /**
+     *
+     * @param tanggal
+     */
     public void setTanggal(Date tanggal) {
         this.tanggal = tanggal;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPesan() {
         return pesan;
     }
 
+    /**
+     *
+     * @param pesan
+     */
     public void setPesan(String pesan) {
         this.pesan = pesan;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLevel() {
         return level;
     }
 
+    /**
+     *
+     * @param level
+     */
     public void setLevel(String level) {
         this.level = level;
     }

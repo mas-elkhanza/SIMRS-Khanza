@@ -47,8 +47,8 @@ public class DlgAkunPenagihanPiutang extends javax.swing.JDialog {
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
 
     /** Creates new form DlgJadwal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgAkunPenagihanPiutang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -877,7 +877,9 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         LCount.setText(""+tabMode.getRowCount());
     }
 
-
+    /**
+     *
+     */
     public void emptTeks() {
        nmrek.setText("");
        kdrek.setText("");
@@ -900,6 +902,9 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getakun_penagihan_piutang());
         BtnHapus.setEnabled(akses.getakun_penagihan_piutang());
@@ -907,6 +912,10 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         BtnPrint.setEnabled(akses.getakun_penagihan_piutang());
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJadwal;
     }

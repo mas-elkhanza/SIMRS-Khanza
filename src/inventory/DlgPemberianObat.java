@@ -55,10 +55,26 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+
+    /**
+     *
+     */
     public  DlgCariObat dlgobtjalan=new DlgCariObat(null,false);
+
+    /**
+     *
+     */
     public  DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+
+    /**
+     *
+     */
     public  DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
     private riwayatobat Trackobat=new riwayatobat();
+
+    /**
+     *
+     */
     public  DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
     private DlgPasien pasien=new DlgPasien(null,false);
     private String bangsal="",lokasi="",tgl="",pas="",sql="",status="";
@@ -73,8 +89,8 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private boolean sukses=true;
     
     /** Creates new form DlgPemberianObat
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPemberianObat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1381,6 +1397,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Table tbPemberianObat;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampilPO() {
         pas="";
         if(!TCariPasien.getText().equals("")){
@@ -1448,6 +1467,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount1.setText(""+Valid.SetAngka(jumlahtotal));
     }
     
+    /**
+     *
+     */
     public void tampilPO2() {
         pas="";
         if(!TCariPasien.getText().equals("")){
@@ -1542,6 +1564,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     * @param statuspasien
+     */
     public void setNoRm(String norwt, Date tgl1, Date tgl2,String statuspasien) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -1565,6 +1594,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         DTPCari2.setDate(tgl2);
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     * @param statuspasien
+     */
     public void setNoRm2(String norwt, Date tgl1, Date tgl2,String statuspasien) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -1604,6 +1640,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnHapus.setEnabled(akses.getberi_obat());
         BtnPrint.setEnabled(akses.getberi_obat());
@@ -1668,6 +1707,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         new Timer(1000, taskPerformer).start();
     }
 
+    /**
+     *
+     * @param kodedokter
+     * @param namadokter
+     */
     public void setDokter(String kodedokter,String namadokter){
         this.kodedokter=kodedokter;
         this.namadokter=namadokter;

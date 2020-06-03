@@ -1286,6 +1286,9 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
     private widget.Table tbData;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         try{         
             Valid.tabelKosong(TabMode);
@@ -1347,6 +1350,9 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         
     }
     
+    /**
+     *
+     */
     public void tampil2() {
         try{         
             Valid.tabelKosong(TabMode);
@@ -1398,6 +1404,9 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         
     }
     
+    /**
+     *
+     */
     public void tampil3() {
         try{         
             Valid.tabelKosong(TabMode);
@@ -1453,7 +1462,21 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
         
     }
     
-    
+    /**
+     *
+     * @param NoRawat
+     * @param NoRm
+     * @param NoSEP
+     * @param NoReg
+     * @param NamaPoli
+     * @param NamaBayar
+     * @param NamaDokter
+     * @param NamaPasien
+     * @param AlamatPasien
+     * @param PenanggungJawab
+     * @param TanggalDaftar
+     * @param JenisPelayanan
+     */
     public void setNoRm(String NoRawat,String NoRm,String NoSEP,String NoReg,String NamaPoli,
         String NamaBayar,String NamaDokter,String NamaPasien,String AlamatPasien,
         String PenanggungJawab,String TanggalDaftar, String JenisPelayanan) {

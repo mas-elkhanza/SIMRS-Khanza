@@ -38,14 +38,18 @@ public final class DlgCariJenisIPSRS extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+
+    /**
+     *
+     */
     public DlgJenisIPSRS nm_jenis=new DlgJenisIPSRS(null,false);
     private PreparedStatement ps;
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
     
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariJenisIPSRS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -383,14 +387,24 @@ public final class DlgCariJenisIPSRS extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         BtnTambah.setEnabled(akses.getipsrs_jenis_barang());
     }

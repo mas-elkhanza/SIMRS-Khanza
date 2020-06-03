@@ -500,6 +500,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbPiutang;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){        
         try {
             Valid.tabelKosong(tabMode);
@@ -548,6 +551,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         isHitung();
     }
 
+    /**
+     *
+     */
     public void tampil2(){        
         try {
             Valid.tabelKosong(tabMode2);

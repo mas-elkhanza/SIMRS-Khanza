@@ -922,6 +922,9 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Meteran.setText("0");
         JmlHarian.setText("0");
@@ -956,6 +959,9 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpemakaian_air_pdam());
         BtnHapus.setEnabled(akses.getpemakaian_air_pdam());

@@ -60,8 +60,8 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
     
 
     /** Creates new form DlgPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgUbahPeriksaLab(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1127,6 +1127,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Table tbTarif;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {        
         try {
             jml2=0;
@@ -1345,6 +1348,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         
     }
     
+    /**
+     *
+     */
     public void emptTeks() {
         KodePerujuk.setText("");
         NmPerujuk.setText("");
@@ -1354,6 +1360,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Pemeriksaan.requestFocus();  
     }
     
+    /**
+     *
+     */
     public void onCari(){
         Pemeriksaan.requestFocus(); 
     }
@@ -1364,7 +1373,12 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Sequel.cariIsi("select jk from pasien where no_rkm_medis=? ",Jk,TNoRM.getText());
     }
     
-
+    /**
+     *
+     * @param norwt
+     * @param tanggal
+     * @param jam
+     */
     public void setNoRm(String norwt,String tanggal,String jam) {        
         try {
             TNoRw.setText(norwt);
@@ -1466,6 +1480,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }         
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getperiksa_lab());
         BtnHapus.setEnabled(akses.getperiksa_lab());
@@ -1486,6 +1503,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void tampiltarif() {          
         try{
             jml=0;

@@ -30,6 +30,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariBangsal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCekStok extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -43,8 +47,8 @@ public class DlgCekStok extends javax.swing.JDialog {
     private WarnaTable warna=new WarnaTable();
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCekStok(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -395,6 +399,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         try{  
             Valid.tabelKosong(tabMode);

@@ -917,6 +917,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         NoMember.setText("");
         NamaMember.setText("");
@@ -945,11 +948,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
-
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return NoMember;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbPetugas;
     }
@@ -968,6 +978,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.gettoko_member());
         BtnHapus.setEnabled(akses.gettoko_member());

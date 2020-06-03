@@ -182,6 +182,7 @@ public class grafiksql extends JDialog {
          /**
           * Creates a panel for the demo (used by SuperDemo.java).
           *
+     * @param tabel
      * @param kolom
      * @param label
           * @return A panel.

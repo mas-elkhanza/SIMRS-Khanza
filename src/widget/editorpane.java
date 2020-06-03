@@ -14,6 +14,10 @@ import javax.swing.border.LineBorder;
  * @author khanzasoft
  */
 public class editorpane extends JEditorPane{
+
+    /**
+     *
+     */
     public editorpane() {
         super();
         setFont(new java.awt.Font("Tahoma", 0, 11));        

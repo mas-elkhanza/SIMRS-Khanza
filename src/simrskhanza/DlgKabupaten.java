@@ -40,8 +40,8 @@ public class DlgKabupaten extends javax.swing.JDialog {
     private String kd_provinsi;
 
     /** Creates new form Dlgkabupaten
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgKabupaten(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -415,6 +415,9 @@ public class DlgKabupaten extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.setText("");
         TCari.requestFocus();
@@ -426,14 +429,25 @@ public class DlgKabupaten extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @param kd_provinsi
+     */
     public void setData(String kd_provinsi){
         this.kd_provinsi = kd_provinsi;
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbkabupaten;
     }
     
+    /**
+     *
+     */
     public void onCari(){
         TCari.requestFocus();
     }

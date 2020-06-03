@@ -18,6 +18,16 @@ public class riwayattoko {
     private ResultSet rs,rsawal;
     private PreparedStatement ps,psawal;
     private double stokawal=0,stokakhir=0;
+
+    /**
+     *
+     * @param kodebarang
+     * @param masuk
+     * @param keluar
+     * @param posisi
+     * @param petugas
+     * @param status
+     */
     public void catatRiwayat(String kodebarang,double masuk,double keluar,String posisi,String petugas,String status){        
         try {
             stokakhir=0;stokawal=0;            

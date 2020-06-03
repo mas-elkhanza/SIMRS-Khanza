@@ -39,6 +39,10 @@ import keuangan.DlgKamar;
 public final class DlgHitungBOR extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode, tabMode2;
+
+    /**
+     *
+     */
     public DlgKamar dlgKamar = new DlgKamar(null, false);
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
@@ -707,6 +711,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.panelisi panelGlass5;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -857,6 +864,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
 
+    /**
+     *
+     */
     public void tampil2() {
         try {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

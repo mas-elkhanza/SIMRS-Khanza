@@ -24,6 +24,10 @@ import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgPiutang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -1756,6 +1760,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdbar.setText("");
         nmbar.setText("");
@@ -1880,6 +1887,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }        
     }
    
+    /**
+     *
+     */
     public void isCek(){
         autoNomor();
         Ongkir.setText("0");
@@ -1951,6 +1961,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }
 
+    /**
+     *
+     * @param norawat
+     * @param norm
+     * @param pasien
+     */
     public void setPasien(String norawat,String norm,String pasien) {
         NoNota.setText(norawat);
         kdpasien.setText(norm);

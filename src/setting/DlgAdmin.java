@@ -434,6 +434,9 @@ public class DlgAdmin extends javax.swing.JDialog {
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         String sql="select AES_DECRYPT(usere,'nur'),AES_DECRYPT(passworde,'windi') from admin";
         prosesCari(sql);
@@ -465,6 +468,9 @@ public class DlgAdmin extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");

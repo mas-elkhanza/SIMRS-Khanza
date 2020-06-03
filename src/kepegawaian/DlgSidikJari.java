@@ -403,6 +403,9 @@ public final class DlgSidikJari extends javax.swing.JDialog {
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{            
@@ -422,7 +425,10 @@ public final class DlgSidikJari extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
        
-     public void isCek(){
+    /**
+     *
+     */
+    public void isCek(){
         BtnHapus.setEnabled(akses.getsidikjari());
         BtnPrint.setEnabled(akses.getsidikjari());
      }

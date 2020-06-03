@@ -234,6 +234,10 @@ public final class PCarePeserta extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param nopeserta
+     */
     public void tampil(String nopeserta) {        
         try {
             headers = new HttpHeaders();

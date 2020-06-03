@@ -620,12 +620,17 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
     
-    
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnHapus.setEnabled(akses.getstok_obat_pasien());
         BtnPrint.setEnabled(akses.getstok_obat_pasien());    

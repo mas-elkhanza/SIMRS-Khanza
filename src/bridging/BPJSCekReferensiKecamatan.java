@@ -373,6 +373,10 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param poli
+     */
     public void tampil(String poli) {
         try {
             headers = new HttpHeaders();
@@ -410,10 +414,19 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
         }
     }    
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     * @param KdKab
+     * @param NmKab
+     */
     public void setPropinsi(String KdKab,String NmKab){
         this.KdKab.setText(KdKab);
         this.NmKab.setText(NmKab);

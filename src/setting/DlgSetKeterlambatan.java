@@ -495,6 +495,9 @@ private void ToleransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Toleransi.setText("");
         Terlambat1.setText("");

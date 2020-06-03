@@ -629,10 +629,17 @@ public class MasterMasalahKeperawatanGigi extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getmaster_masalah_keperawatan_gigi());
        BtnHapus.setEnabled(akses.getmaster_masalah_keperawatan_gigi());

@@ -1269,6 +1269,9 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
     private widget.TextBox tlp;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -1330,6 +1333,9 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {       
         no_inventaris.setText("");
         nama_barang.setText("");
@@ -1357,7 +1363,9 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
         }
     }
 
-    
+    /**
+     *
+     */
     public void isCek(){
         if(akses.getjml2()>=1){
             nip.setEditable(false);
@@ -1370,6 +1378,9 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
         } 
     }
     
+    /**
+     *
+     */
     public void isInventaris(){
         try {
                 ps=koneksi.prepareStatement(

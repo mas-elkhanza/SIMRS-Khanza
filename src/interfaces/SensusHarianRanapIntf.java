@@ -11,8 +11,26 @@ import java.util.List;
 /**
  *
  * @author Administrator
+ * @param <T>
  */
 public interface SensusHarianRanapIntf<T> {
+
+    /**
+     *
+     * @param kd_bangsal
+     * @param tgl_awal
+     * @param tgl_ahir
+     * @return
+     * @throws SQLException
+     */
     List<T> findByKamar(String kd_bangsal, String tgl_awal, String tgl_ahir) throws SQLException ;
+
+    /**
+     *
+     * @param tgl_awal
+     * @param tgl_ahir
+     * @return
+     * @throws SQLException
+     */
     List<T> findByAll(String tgl_awal, String tgl_ahir) throws SQLException ;
 }

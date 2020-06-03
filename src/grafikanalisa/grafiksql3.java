@@ -76,6 +76,7 @@ public class grafiksql3 extends JDialog {
            * Creates a dataset.
            *
      * @param query
+     * @param kolom
            * @return A dataset.
            */
 
@@ -106,6 +107,7 @@ public class grafiksql3 extends JDialog {
           * Creates a dataset.
           *
      * @param query
+     * @param kolom
           * @return A dataset.
           */
         public static CategoryDataset createDataset2(String query,String kolom) {//grafik volume
@@ -167,7 +169,10 @@ public class grafiksql3 extends JDialog {
          /**
           * Creates a panel for the demo (used by SuperDemo.java).
           *
+     * @param query
+     * @param query2
      * @param kolom2
+     * @param kolom
           * @return A panel.
           */
 

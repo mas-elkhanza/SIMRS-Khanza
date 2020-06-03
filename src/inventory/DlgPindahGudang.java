@@ -1172,6 +1172,10 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox total;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param order
+     */
     public void tampil(String order) {
         Valid.tabelKosong(tabMode);
         try{

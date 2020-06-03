@@ -23,6 +23,11 @@ public class tessaja2 {
         System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString()));
         System.out.println("X-Signature:"+api.getHmac());
     }
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         tessaja();
     }

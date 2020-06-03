@@ -24,6 +24,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class IPSRSReturBeli extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -39,6 +43,10 @@ public class IPSRSReturBeli extends javax.swing.JDialog {
     private String[] kodebarang,namabarang,satuan,nofaktur;
     private double[] h_retur,jumlah,jmltotal,harga,stok;
     private WarnaTable2 warna=new WarnaTable2();
+
+    /**
+     *
+     */
     public boolean tampikan=true;
     private boolean sukses=true;
     private String Retur_Beli_Non_Medis=Sequel.cariIsi("select Retur_Beli_Non_Medis from set_akun"),Kontra_Retur_Beli_Non_Medis=Sequel.cariIsi("select Kontra_Retur_Beli_Non_Medis from set_akun");
@@ -978,6 +986,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         LTotal.setText(Valid.SetAngka(ttl));
     }
     
+    /**
+     *
+     */
     public void isCek(){
         autoNomor();
         TCari.requestFocus();

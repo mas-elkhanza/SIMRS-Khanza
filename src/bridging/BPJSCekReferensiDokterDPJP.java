@@ -61,8 +61,8 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     private JsonNode response;
         
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSCekReferensiDokterDPJP(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -455,6 +455,10 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param poli
+     */
     public void tampil(String poli) {
         try {
             Valid.tabelKosong(tabMode);
@@ -497,6 +501,10 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         }
     } 
     
+    /**
+     *
+     * @param poli
+     */
     public void tampil2(String poli) {
         try {
             URL = link+"/referensi/dokter/pelayanan/2/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
@@ -536,11 +544,20 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @param KodePoli
+     * @param NamaPoli
+     */
     public void setPoli(String KodePoli,String NamaPoli){
         KdSep.setText(KodePoli);
         NmSep.setText(NamaPoli);
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

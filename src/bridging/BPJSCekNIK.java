@@ -29,7 +29,12 @@ public class BPJSCekNIK {
     /**
      *
      */
-    public String cobnmAsuransi="",cobnoAsuransi="",cobtglTAT="",
+    public String cobnmAsuransi="",cobnoAsuransi="",
+
+    /**
+     *
+     */
+    cobtglTAT="",
 
     /**
      *
@@ -44,7 +49,12 @@ public class BPJSCekNIK {
     /**
      *
      */
-    hakKelaskode="",informasidinsos="",
+    hakKelaskode="",
+
+    /**
+     *
+     */
+    informasidinsos="",
 
     /**
      *
@@ -65,7 +75,11 @@ public class BPJSCekNIK {
      *
      */
     jenisPesertakode="",
-            mrnoMR="",
+
+    /**
+     *
+     */
+    mrnoMR="",
 
     /**
      *
@@ -75,7 +89,12 @@ public class BPJSCekNIK {
     /**
      *
      */
-    nama="",nik="",
+    nama="",
+
+    /**
+     *
+     */
+    nik="",
 
     /**
      *
@@ -95,13 +114,22 @@ public class BPJSCekNIK {
     /**
      *
      */
-    provUmumnmProvider="",sex="",
+    provUmumnmProvider="",
+
+    /**
+     *
+     */
+    sex="",
 
     /**
      *
      */
     statusPesertaketerangan="",
-            statusPesertakode="",
+
+    /**
+     *
+     */
+    statusPesertakode="",
 
     /**
      *
@@ -111,12 +139,27 @@ public class BPJSCekNIK {
     /**
      *
      */
-    tglLahir="",tglTAT="",
+    tglLahir="",
 
     /**
      *
      */
-    tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",
+    tglTAT="",
+
+    /**
+     *
+     */
+    tglTMT="",
+
+    /**
+     *
+     */
+    umurumurSaatPelayanan="",
+
+    /**
+     *
+     */
+    umurumurSekarang="",
 
     /**
      *
@@ -156,6 +199,10 @@ public class BPJSCekNIK {
         }
     }
     
+    /**
+     *
+     * @param nik
+     */
     public void tampil(String nik) {
         try {
             headers = new HttpHeaders();
