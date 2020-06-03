@@ -26,7 +26,7 @@
             $clean = mysqli_real_escape_string($konektor,$dirty);	
 	} 
          mysqli_close($konektor);
-	return preg_replace('/[^a-zA-Z0-9\s_,@ ]/', '',$clean);
+	return preg_replace('/[^a-zA-Z0-9\s_,@. ]/', '',$clean);
     }
     
     function antisqlinjection(){
@@ -112,7 +112,7 @@
     function bukaquery($sql){    
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor, $sql)
-        or die (mysqli_error($konektor)."<br/><font color=red><b>hmmmmmmm.....??????????</b>");
+        or die (/*mysqli_error($konektor)*/"<br/><font color=red><b>Terjadi Kesalahan</b></font>".JSRedirect2("index.php?act=Home",4));
         mysqli_close($konektor);
         return $result;
     }

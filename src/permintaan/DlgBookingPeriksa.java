@@ -1548,9 +1548,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                 i=Sequel.cariInteger("select (TO_DAYS('"+tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()+"')-TO_DAYS(current_date()))");
                 if(i>0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    getData();
-                    autoNomor();
-
                     if(aktifjadwal.equals("aktif")){
                         if(akses.getkode().equals("Admin Utama")){
                             LabelStatus.setText("Pengaturan kuota dan jadwal tidak diaktifkan, silahkan cek kuota dan jadwal secara manual...!!");
@@ -1561,6 +1558,8 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
                         LabelStatus.setText("Pengaturan kuota dan jadwal tidak diaktifkan, silahkan cek kuota dan jadwal secara manual...!!");
                     }
 
+                    getData();
+                    autoNomor();
                     WindowBalas.setSize(internalFrame1.getWidth()-10, 460);
                     WindowBalas.setLocationRelativeTo(internalFrame1);
                     WindowBalas.setVisible(true);
@@ -1646,8 +1645,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             Valid.textKosong(Propinsi,"Propinsi minimal "+p_propinsi+" karakter dan ");            
         }else if(NoReg.getText().trim().equals("")){
             Valid.textKosong(NoReg,"No.Antri");
-        }else if(BalasanPesan.getText().trim().equals("")){
-            Valid.textKosong(BalasanPesan,"Balasan Pesan");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 isBooking();
@@ -2296,7 +2293,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         }
     }
     
-    private void autoNomor() {        
+    private void autoNomor() {  
         if(ChkRM.isSelected()==true){
             if(tahun.equals("Yes")){
                 awalantahun=TanggalPeriksa.getText().substring(6,10);
@@ -2469,6 +2466,10 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         
         if(sukses==true){
             Sequel.mengedit("booking_periksa","no_booking=?","status=?",2,new String[]{StatusBalas.getSelectedItem().toString(),NoBooking.getText()});
+            if(ChkRM.isSelected()==true){
+                Sequel.queryu2("delete from set_no_rkm_medis");
+                Sequel.queryu2("insert into set_no_rkm_medis values(?)",1,new String[]{TNo.getText()});            
+            } 
             Sequel.Commit();
             tampil();
             BtnCloseBalasanActionPerformed(null);

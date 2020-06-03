@@ -20,10 +20,10 @@
         $poli         = trim(isset($_POST['poli']))?trim($_POST['poli']):NULL;
         $poli         = cleankar($poli);
         $sekarang     = date("Y-m-d H:i:s");
-        $interval     = getOne("select (TO_DAYS('$ThnDaftar-$BlnDaftar-$TglDaftar')-TO_DAYS('$sekarang'))");
+        $interval     = getOne2("select (TO_DAYS('$ThnDaftar-$BlnDaftar-$TglDaftar')-TO_DAYS('$sekarang'))");
         if($interval>0){
             if ((!empty($nama))&&(!empty($alamat))&&(!empty($nohp))&&(!empty($email))&&(!empty($pesan))&&(!empty($poli))) {
-                $max          = getOne("select ifnull(MAX(CONVERT(RIGHT(no_booking,4),signed)),0)+1 from booking_periksa where tanggal='$ThnDaftar-$BlnDaftar-$TglDaftar'");
+                $max          = getOne2("select ifnull(MAX(CONVERT(RIGHT(no_booking,4),signed)),0)+1 from booking_periksa where tanggal='$ThnDaftar-$BlnDaftar-$TglDaftar'");
                 $no_urut      = "BP$ThnDaftar$BlnDaftar$TglDaftar".sprintf("%04s", $max);
                 $insert=Tambah4("booking_periksa"," '$no_urut','$ThnDaftar-$BlnDaftar-$TglDaftar','$nama','$alamat','$nohp','$email','$poli','$pesan','Belum Dibalas','$sekarang'");
                 if($insert){
@@ -52,7 +52,7 @@
                                          </div>
                                          <a href='pages/CetakBooking.php?&nobooking=$no_urut' target=_blank class='form-control btn btn-success wow fadeInUp'> Cetak </a>
                                          <br><br>
-                                         Catatan : Nomor Booking bukan merupakan nomor pendaftaran poliklinik/unit. Kami akan melakukan pengecekan terhadap jadwal & kuota dokter yang tersedia berdasarkan booking Anda. Konfirmasi booking periksa akan Kami sampaikan melalui E-Mail atau Nomor HP/Telp Anda. Atau <a href='index.php?act=CekBooking' class='btn btn-danger'>Cek Booking</a> untuk melihat status booking Anda
+                                         Catatan : Nomor booking wajib anda ingat. Nomor booking bukan merupakan nomor pendaftaran poliklinik/unit. Kami akan melakukan pengecekan terhadap jadwal & kuota dokter yang tersedia berdasarkan booking Anda. Konfirmasi booking periksa akan Kami sampaikan melalui E-Mail atau Nomor HP/Telp Anda. Atau <a href='index.php?act=CekBooking' class='btn btn-danger'>Cek Booking</a> untuk melihat status booking Anda
                                      </div>
                                  </div>
                              </div>
@@ -63,8 +63,7 @@
                                      <div class='row'>
                                           <div class='col-md-12 col-sm-12'>
                                                <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                    <h3>Gagal melakukan booking</h3>
-                                                    <br>
+                                                    <h3>Gagal melakukan booking</h3><br>
                                                     Nomor HP/Telp yang Anda gunakan untuk melakukan booking terdeteksi sudah digunakan sebelumnya pada tanggal yang sama. <a href='index.php?act=CekBooking' class='btn btn-danger'>Cek Booking</a> jika anda sudah melakukan booking sebelumnya 
                                                </div>
                                           </div>
@@ -78,8 +77,7 @@
                                  <div class='row'>
                                       <div class='col-md-12 col-sm-12'>
                                            <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                <h3>Gagal melakukan booking</h3>
-                                                <br>
+                                                <h3>Gagal melakukan booking</h3><br>
                                                 Semua field wajib diisi
                                            </div>
                                       </div>
@@ -94,8 +92,7 @@
                              <div class='row'>
                                   <div class='col-md-12 col-sm-12'>
                                        <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                            <h3>Gagal melakukan booking</h3>
-                                            <br>
+                                            <h3>Gagal melakukan booking</h3><br>
                                             Maksimal booking 1 hari sebelum periksa
                                        </div>
                                   </div>
