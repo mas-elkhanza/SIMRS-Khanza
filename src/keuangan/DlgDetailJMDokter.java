@@ -77,7 +77,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row = {"No.", "Nama Dokter", "Nama Pasien", "Ruang", "Jenis Bayar", "Nama Tindakan", "Tarif", "Jml", "Biaya", "Paket BHP/Obat", "J.M.Dokter", "J.S.Rmh Skt"};
+        Object[] row = {"Nama Dokter", "Tanggal", "Nama Pasien", "Ruang", "Jenis Bayar", "Nama Tindakan", "Tarif", "Jml", "Biaya", "Paket BHP/Obat", "J.M.Dokter", "J.S.Rmh Skt"};
         tabMode = new DefaultTableModel(null, row) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -103,7 +103,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         for (i = 0; i < 12; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(150);
             } else if (i == 1) {
                 column.setPreferredWidth(150);
             } else if (i == 2) {
@@ -1079,41 +1079,46 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ttlbhp = 0;
                 ttluangrs = 0;
                 while (rs.next()) {
-                    tabMode.addRow(new Object[]{i + ".", rs.getString("nm_dokter"), "", "", "", "", null, null, null, null, null, null});
+                    //tabMode.addRow(new Object[]{i + ".", rs.getString("nm_dokter"), "", "", "", "", null, null, null, null, null, null});
                     c = 1;
-                    ralan = ralan();
-                    System.out.println("Ralan="+ralan);
+                    ralan();
+
                     //radiologi
                     radiologi();
+                    //tabMode.addRow(new Object[]{"", "", "", "", "", "", "", "", "", "", "", ""});
 
                     //laborat
                     laborat();
+                    //tabMode.addRow(new Object[]{"", "", "", "", "", "", "", "", "", "", "", ""});
 
                     //operasi
                     operasi();
+                    //tabMode.addRow(new Object[]{"", "", "", "", "", "", "", "", "", "", "", ""});
 
                     //ranap
                     ranap();
-                    if (ralan == false && radiologi == false
-                            && radiologi_perujuk == false
-                            && laborat == false
-                            && laborat_perujuk == false
-                            && operasi == false
-                            && ranap == false
-                            && jm_operator == false
-                            && jm_operator03 == false
-                            && jm_dokter_anak == false
-                            && jm_dokter_anestesi == false
-                            && jm_dokter_pjanak == false
-                            && jm_dokter_umum == false) {
-                        //tabMode.addRow(new Object[]{i + ".", rs.getString("nm_dokter"), "", "", "", "", null, null, null, null, null, null});
-                    } else {
-                        if (!rs.getString("nm_dokter").equals("-")) {
-                            tabMode.addRow(new Object[]{i + ".", rs.getString("nm_dokter"), "", "", "", "", null, null, null, null, null, null});
-                            tabMode=tabModeMiror;
-                            i++;
-                        }
-                    }
+                    //tabMode.addRow(new Object[]{"", "", "", "", "", "", "", "", "", "", "", ""});
+//                    if (ralan == false && radiologi == false
+//                            && radiologi_perujuk == false
+//                            && laborat == false
+//                            && laborat_perujuk == false
+//                            && operasi == false
+//                            && ranap == false
+//                            && jm_operator == false
+//                            && jm_operator03 == false
+//                            && jm_dokter_anak == false
+//                            && jm_dokter_anestesi == false
+//                            && jm_dokter_pjanak == false
+//                            && jm_dokter_umum == false) {
+//                        //tabMode.addRow(new Object[]{i + ".", rs.getString("nm_dokter"), "", "", "", "", null, null, null, null, null, null});
+//                    } else {
+//                        if (!rs.getString("nm_dokter").equals("-")) {
+//                            tabMode.addRow(new Object[]{i + ".", rs.getString("nm_dokter"), "", "", "", "", null, null, null, null, null, null});
+//                            tabMode=tabModeMiror;
+//                            i++;
+//                        }
+//                    }
+                    i++;
                 }
                 if (i > 0) {
                     tabMode.addRow(new Object[]{">>", "Jumlah :", "", "", "", "", null, ttljml, ttlbiaya, ttlbhp, ttljm, ttluangrs});
@@ -1133,7 +1138,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             System.out.println("Catatan  " + e);
             Logger.getLogger(DlgDetailJMDokter.class.getName()).log(Level.SEVERE, null, e);
         }
-
     }
 
     private void ranap() throws SQLException {
@@ -1271,7 +1275,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 ttluangrs = ttluangrs + rstindakan.getDouble("material");
                                 ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
                                 if (a == 1) {
-                                    tabModeMiror.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                    if (c == 1) {
+                                        tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                    } else {
+                                        tabModeMiror.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                    }
                                     c++;
                                 } else {
                                     tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
@@ -1380,7 +1388,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 ttluangrs = ttluangrs + rstindakan.getDouble("material");
                                 ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
                                 if (a == 1) {
-                                    tabModeMiror.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                    if (c == 1) {
+                                        tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                    } else {
+                                        tabModeMiror.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                    }
                                     c++;
                                 } else {
                                     tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
@@ -1432,7 +1444,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     ttluangrs = ttluangrs + rstindakan.getDouble("material");
                                     ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
                                     if (a == 1) {
-                                        tabModeMiror.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                        if (c == 1) {
+                                            tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                        } else {
+                                            tabModeMiror.addRow(new Object[]{"", c + ". " + tanggal, pasien, kamar, penjab, rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                        }
                                         c++;
                                     } else {
                                         tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
@@ -1527,7 +1543,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttljm = ttljm + rstindakan.getDouble("biayaoperator1");
                             ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 1)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator1"), rstindakan.getDouble("bagian_rs")});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 1)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator1"), rstindakan.getDouble("bagian_rs")});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 1)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator1"), rstindakan.getDouble("bagian_rs")});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Operator 1)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator1"), rstindakan.getDouble("bagian_rs")});
@@ -1603,7 +1623,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttljm = ttljm + rstindakan.getDouble("biayaoperator2");
                             ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 2)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator2"), 0});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 2)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator2"), 0});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 2)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator2"), 0});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Operator 2)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator2"), 0});
@@ -1679,7 +1703,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttljm = ttljm + rstindakan.getDouble("biayaoperator3");
                             ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 3)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator3"), 0});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("kd_dokter"), c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 3)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator3"), 0});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Operator 3)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator3"), 0});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Operator 3)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayaoperator3"), 0});
@@ -1755,7 +1783,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttljm = ttljm + rstindakan.getDouble("biayadokter_anak");
                             ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anak"), 0});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anak"), 0});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anak"), 0});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anak"), 0});
@@ -1831,7 +1863,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttljm = ttljm + rstindakan.getDouble("biayadokter_anestesi");
                             ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anestesi)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anestesi"), 0});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anestesi)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anestesi"), 0});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Anestesi)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anestesi"), 0});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Anestesi)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biayadokter_anestesi"), 0});
@@ -1907,7 +1943,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttljm = ttljm + rstindakan.getDouble("biaya_dokter_pjanak");
                             ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Pj Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_pjanak"), 0});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Pj Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_pjanak"), 0});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Pj Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_pjanak"), 0});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Pj Anak)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_pjanak"), 0});
@@ -1983,7 +2023,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttljm = ttljm + rstindakan.getDouble("biaya_dokter_umum");
                             ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Umum)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_umum"), 0});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Umum)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_umum"), 0});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_operasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Dokter Umum)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_umum"), 0});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Dokter Umum)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), 0, rstindakan.getDouble("biaya_dokter_umum"), 0});
@@ -2096,7 +2140,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs") + detailrs;
                                 ttlbhp = ttlbhp + rstindakan.getDouble("bhp") + detailbhp;
                                 if (a == 1) {
-                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_tindakan_dokter") + detailjm), (rstindakan.getDouble("bagian_rs") + detailrs)});
+                                    if (c == 1) {
+                                        tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_tindakan_dokter") + detailjm), (rstindakan.getDouble("bagian_rs") + detailrs)});
+                                    } else {
+                                        tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_tindakan_dokter") + detailjm), (rstindakan.getDouble("bagian_rs") + detailrs)});
+                                    }
                                     c++;
                                 } else {
                                     tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (P.J. Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_tindakan_dokter") + detailjm), (rstindakan.getDouble("bagian_rs") + detailrs)});
@@ -2215,7 +2263,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs") + detailrs;
                                 ttlbhp = ttlbhp + rstindakan.getDouble("bhp") + detailbhp;
                                 if (a == 1) {
-                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_perujuk") + detailjm), 0});
+                                    if (c == 1) {
+                                        tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_perujuk") + detailjm), 0});
+                                    } else {
+                                        tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_perujuk") + detailjm), 0});
+                                    }
                                     c++;
                                 } else {
                                     tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Perujuk Lab)", (rstindakan.getDouble("total_byr") + biayaitem), rstindakan.getDouble("jml"), (rstindakan.getDouble("total") + detailtotal), (rstindakan.getDouble("bhp") + detailbhp), (rstindakan.getDouble("tarif_perujuk") + detailjm), 0});
@@ -2307,7 +2359,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
                             ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakan_dokter"), rstindakan.getDouble("bagian_rs")});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakan_dokter"), rstindakan.getDouble("bagian_rs")});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (P.J. Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakan_dokter"), rstindakan.getDouble("bagian_rs")});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (P.J. Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakan_dokter"), rstindakan.getDouble("bagian_rs")});
@@ -2385,7 +2441,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttluangrs = ttluangrs + rstindakan.getDouble("bagian_rs");
                             ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_perujuk"), 0});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_perujuk"), 0});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_periksa"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan") + " (Perujuk Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_perujuk"), 0});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan") + " (Perujuk Rad)", rstindakan.getDouble("total_byr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_perujuk"), 0});
@@ -2418,7 +2478,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
 
-    private Boolean ralan() throws SQLException {
+    private void ralan() throws SQLException {
         //jmralan
         if (chkRalan.isSelected() == true) {
             pspasienralandrpr = koneksi.prepareStatement(
@@ -2467,7 +2527,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             ttluangrs = ttluangrs + rstindakan.getDouble("material");
                             ttlbhp = ttlbhp + rstindakan.getDouble("bhp");
                             if (a == 1) {
-                                tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_registrasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                if (c == 1) {
+                                    tabModeMiror.addRow(new Object[]{rs.getString("nm_dokter"), c + ". " + rspasien.getString("tgl_registrasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                } else {
+                                    tabModeMiror.addRow(new Object[]{"", c + ". " + rspasien.getString("tgl_registrasi"), rspasien.getString("nm_pasien"), rspasien.getString("nm_poli"), rspasien.getString("png_jawab"), rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
+                                }
                                 c++;
                             } else {
                                 tabModeMiror.addRow(new Object[]{"", "", "", "", "", rstindakan.getString("nm_perawatan"), rstindakan.getDouble("total_byrdr"), rstindakan.getDouble("jml"), rstindakan.getDouble("total"), rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"), rstindakan.getDouble("material")});
@@ -2498,7 +2562,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
         }
-        return true;
     }
 
     //Piutang atawa BPJS/ausransi

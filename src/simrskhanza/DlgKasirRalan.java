@@ -141,8 +141,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         setSize(885, 674);
 
         tabModekasir = new DefaultTableModel(null,
-                new String[]{"Kd.Dokter", "Dokter Dituju", "No.RM", "Pasien", "Poliklinik", "Jenis Bayar",
-                    "Alamat P.J.", "Hubungan P.J.", "Biaya Reg", "Penanggung Jawab", "Status", "No.Rawat",
+                new String[]{"Kd.Dokter", "Dokter Dituju", "No.RM", "Pasien", "Poliklinik", "Penanggung Jawab",
+                    "Alamat P.J.", "Hubungan P.J.", "Biaya Reg", "Jenis Bayar", "Status", "No.Rawat",
                     "Tanggal", "Jam", "No.Reg", "Status Bayar", "Stts Poli", "Kd PJ", "Kd Poli"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -167,7 +167,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             } else if (i == 4) {
                 column.setPreferredWidth(140);
             } else if (i == 5) {
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(140);
             } else if (i == 6) {
                 column.setPreferredWidth(170);
             } else if (i == 7) {
@@ -175,7 +175,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             } else if (i == 8) {
                 column.setPreferredWidth(70);
             } else if (i == 9) {
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(100);
             } else if (i == 10) {
                 column.setPreferredWidth(55);
             } else if (i == 11) {
@@ -201,8 +201,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTable());
 
         tabModekasir2 = new DefaultTableModel(null,
-                new String[]{"Kd.Dokter", "Dokter Rujukan", "Nomer RM", "Pasien", "Poliklinik Rujukan", "Jenis Bayar",
-                    "Alamat P.J.", "Hubungan P.J.", "Penanggung Jawab", "Status", "No.Rawat", "Tanggal", "Jam",
+                new String[]{"Kd.Dokter", "Dokter Rujukan", "Nomer RM", "Pasien", "Poliklinik Rujukan", "Penanggung Jawab",
+                    "Alamat P.J.", "Hubungan P.J.", "Jenis Bayar", "Status", "No.Rawat", "Tanggal", "Jam",
                     "Kode Poli", "Kode PJ"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -7551,7 +7551,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_MnHapusBookingOperasiActionPerformed
 
-    private void MnPermintaanLabActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPermintaanLabActionPerformed
+    private void MnPermintaanLabActionPerformed(java.awt.event.ActionEvent evt) {
+// GEN-FIRST:event_MnPermintaanLabActionPerformed
         if (tabModekasir.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
             TNoReg.requestFocus();
@@ -8838,27 +8839,27 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             + "reg_periksa.p_jawab like ? or penjab.png_jawab like ? or reg_periksa.almt_pj like ? or reg_periksa.status_bayar like ? or reg_periksa.hubunganpj like ?)")
                     + "order by " + order);
             try {
-                pskasir.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                if(!semua){
-                    pskasir.setString(3,"%"+caripenjab+"%");
-                    pskasir.setString(4,"%"+CrPoli.getText()+"%");
-                    pskasir.setString(5,"%"+CrPtg.getText()+"%");
-                    pskasir.setString(6,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                    pskasir.setString(7,"%"+cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                    pskasir.setString(8,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(9,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(10,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(11,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(12,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(13,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(14,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(15,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(16,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(17,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(18,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(19,"%"+TCari.getText().trim()+"%");
-                    pskasir.setString(20,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
+                pskasir.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                if (!semua) {
+                    pskasir.setString(3, "%" + caripenjab + "%");
+                    pskasir.setString(4, "%" + CrPoli.getText() + "%");
+                    pskasir.setString(5, "%" + CrPtg.getText() + "%");
+                    pskasir.setString(6, "%" + cmbStatus.getSelectedItem().toString().replaceAll("Semua", "") + "%");
+                    pskasir.setString(7, "%" + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%");
+                    pskasir.setString(8, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(9, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(10, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(11, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(12, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(13, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(14, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(15, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(16, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(17, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(18, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(19, "%" + TCari.getText().trim() + "%");
+                    pskasir.setString(20, "%" + TCari.getText().trim() + "%");
                 }
                 rskasir = pskasir.executeQuery();
                 while (rskasir.next()) {
