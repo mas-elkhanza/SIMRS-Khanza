@@ -29,6 +29,17 @@
 	return preg_replace('/[^a-zA-Z0-9\s_,@. ]/', '',$clean);
     }
     
+    function cleankar2($dirty){
+         $konektor=bukakoneksi();
+	if (get_magic_quotes_gpc()) {
+            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
+	}else{
+            $clean = mysqli_real_escape_string($konektor,$dirty);	
+	} 
+         mysqli_close($konektor);
+	return $clean;
+    }
+    
     function antisqlinjection(){
        if(!get_magic_quotes_gpc()){
             $_GET = array_map('mysqli_real_escape_string', $_GET); 

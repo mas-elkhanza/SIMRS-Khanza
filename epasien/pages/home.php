@@ -10,7 +10,7 @@
     $kode_ppk               = "";
     $kode_ppkinhealth       = "";
     $kode_ppkkemenkes       = "";
-    $querypengaturan        = bukaquery("select * from setting");
+    $querypengaturan        = @bukaquery("select * from setting");
     while($pengaturan = mysqli_fetch_array($querypengaturan)) {
         $nama_instansi      = $pengaturan["nama_instansi"];
         $alamat_instansi    = $pengaturan["alamat_instansi"];
@@ -98,7 +98,7 @@
                 <div class="clearfix"></div>
                 <?php
                     $delay=0.2;
-                    $querydokter=bukaquery("select dokter.kd_dokter,left(dokter.nm_dokter,20) as dokter,spesialis.nm_sps,dokter.no_ijn_praktek,pegawai.photo,dokter.no_telp from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps inner join pegawai on dokter.kd_dokter=pegawai.nik where dokter.status='1' and dokter.kd_dokter<>'-' group by spesialis.nm_sps limit 5");
+                    $querydokter=@bukaquery("select dokter.kd_dokter,left(dokter.nm_dokter,20) as dokter,spesialis.nm_sps,dokter.no_ijn_praktek,pegawai.photo,dokter.no_telp from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps inner join pegawai on dokter.kd_dokter=pegawai.nik where dokter.status='1' and dokter.kd_dokter<>'-' group by spesialis.nm_sps limit 5");
                     while($rsquerydokter = mysqli_fetch_array($querydokter)) {
                         echo "<div class='col-md-4 col-sm-6'>
                                 <div class='team-thumb wow fadeInUp' data-wow-delay='".$delay."s'>
@@ -171,22 +171,22 @@
                                <h2><center>Buat Janji/Booking</center></h2>
                                <div class="col-md-12 col-sm-12">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" name="nama" maxlength="40" placeholder="Nama Anda" autocomplete="off">
+                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" name="nama" maxlength="40" placeholder="Nama Anda" autocomplete="off" />
                                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-12 col-sm-12">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2" name="alamat" maxlength="200" placeholder="Alamat Anda" autocomplete="off">
+                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2" name="alamat" maxlength="200" placeholder="Alamat Anda" autocomplete="off" />
                                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">    
                                     <label for="nohp">Nomor HP/Telephone</label>
-                                    <input type="tel" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3" name="nohp" maxlength="40" placeholder="Nomor HP/Telephone Anda" autocomplete="off">
+                                    <input type="tel" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3" name="nohp" maxlength="40" placeholder="Nomor HP/Telephone Anda" autocomplete="off" />
                                     <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4" name="email" maxlength="50" placeholder="Email Anda" autocomplete="off">
+                                    <input type="email" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4" name="email" maxlength="50" placeholder="Email Anda" autocomplete="off" />
                                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">
@@ -224,7 +224,7 @@
                                     <label for="poli">Poliklinik/Unit Penunjang</label>
                                     <select name="poli" class="form-control">
                                          <?php
-                                            $querypoli=bukaquery("SELECT * from poliklinik order by nm_poli");
+                                            $querypoli=@bukaquery("SELECT * from poliklinik order by nm_poli");
                                             while($rsquerypoli = mysqli_fetch_array($querypoli)) {
                                                 echo "<option value='$rsquerypoli[0]'>$rsquerypoli[1]</option>";
                                             }

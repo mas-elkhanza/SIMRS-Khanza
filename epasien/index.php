@@ -19,7 +19,7 @@
     $kode_ppk               = "";
     $kode_ppkinhealth       = "";
     $kode_ppkkemenkes       = "";
-    $querypengaturan        = bukaquery("select * from setting");
+    $querypengaturan        = @bukaquery("select * from setting");
     while($pengaturan = mysqli_fetch_array($querypengaturan)) {
         $nama_instansi      = $pengaturan["nama_instansi"];
         $alamat_instansi    = $pengaturan["alamat_instansi"];
@@ -35,7 +35,7 @@
     $namapegawai            = "";
     $tanggalpengumuman      = "";
     $isipengumuman          = "";
-    $querypengumuman        = bukaquery("select pegawai.nama,date_format(pengumuman_epasien.tanggal,'%d/%m/%Y')as tanggal,pengumuman_epasien.pengumuman from pengumuman_epasien inner join pegawai on pengumuman_epasien.nik=pegawai.nik order by pengumuman_epasien.tanggal desc limit 1");
+    $querypengumuman        = @bukaquery("select pegawai.nama,date_format(pengumuman_epasien.tanggal,'%d/%m/%Y')as tanggal,pengumuman_epasien.pengumuman from pengumuman_epasien inner join pegawai on pengumuman_epasien.nik=pegawai.nik order by pengumuman_epasien.tanggal desc limit 1");
     while($pengumuman = mysqli_fetch_array($querypengumuman)) {
         $namapegawai        = $pengumuman["nama"];
         $tanggalpengumuman  = $pengumuman["tanggal"];

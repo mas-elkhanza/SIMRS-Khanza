@@ -8,19 +8,17 @@
                 </div>
                        
                 <div class="col-md-12 col-sm-12">
-                     <div class="news-thumb wow fadeInUp" data-wow-delay="0.2s">
+                     <div class="news-thumb wow fadeInUp" data-wow-delay="0.3s">
                          <form id="cariKamar" name="frmCariKamar" method="post" action="" enctype=multipart/form-data>
                            <table width="100%" border='0' align="center">
                                <tr class="head">
                                   <td width="15%" align="right"><label for="kamar">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="kamar" type="text" id="kamar" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
-                                  <td width="15%" align="left">&nbsp;<input name="BtnKamar" type=submit class="btn btn-warning" value="Cari"></td>
+                                  <td width="69%"><input name="kamar" type="text" id="kamar" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="15%" align="left">&nbsp;<input name="BtnKamar" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>
                          </form>
-                      </div>
-                      <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
                          <table class="table table-hover" >
                             <tr>
                                 <th width="15%"><center>Nomer Bed</center></th>
@@ -32,7 +30,7 @@
                             <?php 
                                $kamar      = trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
                                $kamar      = cleankar($kamar);
-                               $querykamar = bukaquery("select kamar.kd_kamar,bangsal.nm_bangsal,kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' ".(isset($kamar)?" and (kamar.kd_kamar like '%$kamar%' or bangsal.nm_bangsal like '%$kamar%' or kamar.kelas like '%$kamar%' or kamar.status like '%$kamar%')":"")." order by kamar.kelas");
+                               $querykamar = @bukaquery("select kamar.kd_kamar,bangsal.nm_bangsal,kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' ".(isset($kamar)?" and (kamar.kd_kamar like '%$kamar%' or bangsal.nm_bangsal like '%$kamar%' or kamar.kelas like '%$kamar%' or kamar.status like '%$kamar%')":"")." order by kamar.kelas");
                                while($rsquerykamar = mysqli_fetch_array($querykamar)) {
                                    echo "<tr>
                                            <td align='left'>".$rsquerykamar["kd_kamar"]."</td>
@@ -43,7 +41,7 @@
                                          </tr>";
                                }
                            ?>
-                        </table>
+                         </table>
                      </div>
                 </div>
            </div>
