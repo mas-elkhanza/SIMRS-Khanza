@@ -609,6 +609,7 @@ import toko.TokoBarang;
 import toko.TokoBayarPiutang;
 import toko.TokoInputStok;
 import toko.TokoJenis;
+import toko.TokoKeuntunganBarang;
 import toko.TokoMember;
 import toko.TokoPembelian;
 import toko.TokoPemesanan;
@@ -15895,6 +15896,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnKeuntunganBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoKeuntunganBarang form=new TokoKeuntunganBarang(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16494,7 +16506,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona,btnPenilaianAwalKeperawatanKebidanan,
             btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa,btnSirkulasiBarangToko,btnReturJualToko,btnReturPiutangToko,
-            btnSirkulasiBarangToko2;
+            btnSirkulasiBarangToko2,btnKeuntunganBarangToko;
     
     public void isWall(){
         try{            
@@ -19603,6 +19615,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettoko_piutang_harian()==true){
                 Panelmenu.add(btnPiutangHarianToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_keuntungan_barang()==true){
+                Panelmenu.add(btnKeuntunganBarangToko); 
                 jmlmenu++;
             }
             
@@ -22730,6 +22747,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.gettoko_piutang_harian()==true){
             Panelmenu.add(btnPiutangHarianToko); 
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_keuntungan_barang()==true){
+            Panelmenu.add(btnKeuntunganBarangToko); 
             jmlmenu++;
         }
 
@@ -27052,6 +27074,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_keuntungan_barang()==true){
+            if(btnKeuntunganBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKeuntunganBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettoko_bayar_piutang()==true){
             if(btnBayarPiutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarPiutangToko);
@@ -29283,6 +29312,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSirkulasiBarangToko2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSirkulasiBarangToko2ActionPerformed(evt);
+            }
+        }); 
+        
+        btnKeuntunganBarangToko = new widget.ButtonBig();
+        btnKeuntunganBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); 
+        btnKeuntunganBarangToko.setText("Keuntungan Barang Toko");
+        btnKeuntunganBarangToko.setIconTextGap(0);
+        btnKeuntunganBarangToko.setName("btnKeuntunganBarangToko"); 
+        btnKeuntunganBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKeuntunganBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeuntunganBarangTokoActionPerformed(evt);
             }
         }); 
     }
