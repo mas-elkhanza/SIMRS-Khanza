@@ -44,7 +44,11 @@ public class Canvas extends JComponent {
 		}
 	}
 
-	public void load(File file) {
+    /**
+     *
+     * @param file
+     */
+    public void load(File file) {
 		try {
 			img = ImageIO.read(file);
 			g = (Graphics2D) img.getGraphics();
@@ -116,11 +120,17 @@ public class Canvas extends JComponent {
 		g.setPaint(Color.red);
 	}
 
-	public void black() {
+    /**
+     *
+     */
+    public void black() {
 		g.setPaint(Color.black);
 	}
 
-	public void magenta() {
+    /**
+     *
+     */
+    public void magenta() {
 		g.setPaint(Color.magenta);
 	}
 
@@ -160,7 +170,10 @@ public class Canvas extends JComponent {
 		g.setPaint(color);
 	}
 
-	public void clear() {
+    /**
+     *
+     */
+    public void clear() {
 		if (background != null) {
 			setImage(copyImage(background));
 		} else {
@@ -187,7 +200,10 @@ public class Canvas extends JComponent {
 		}
 	}
 
-	public void pencil() {
+    /**
+     *
+     */
+    public void pencil() {
 		removeMouseListener(listener);
 		removeMouseMotionListener(motion);
 		defaultListener();
@@ -228,7 +244,11 @@ public class Canvas extends JComponent {
 		undoStack.push(copyImage(img));
 	}
 
-	public void setThickness(int thick) {
+    /**
+     *
+     * @param thick
+     */
+    public void setThickness(int thick) {
 		g.setStroke(new BasicStroke(thick));
 	}
 

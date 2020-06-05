@@ -16,6 +16,9 @@ public class CekBox extends JCheckBox{
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     *
+     */
     public CekBox(){
         super();
         setFont(new java.awt.Font("Tahoma", 0, 11));

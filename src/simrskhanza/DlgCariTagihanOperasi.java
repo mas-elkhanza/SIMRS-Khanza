@@ -28,6 +28,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCariTagihanOperasi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -47,8 +51,8 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
             selesaioperasi="",permintaan_pa="",laporan_operasi="";
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariTagihanOperasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -3311,6 +3315,9 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         
     }
 
+    /**
+     *
+     */
     public void isCek(){
         MnHapusObatOperasi.setEnabled(akses.getoperasi());
         MnHapusTagihanOperasi.setEnabled(akses.getoperasi());
@@ -3326,14 +3333,26 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         }
     }
      
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return Kd2;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
     
+    /**
+     *
+     * @param pasien
+     */
     public void setPasien(String pasien){
         NoRawat.setText(pasien);
     }

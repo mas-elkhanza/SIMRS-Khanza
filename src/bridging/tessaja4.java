@@ -18,6 +18,10 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class tessaja4 {
     private static Properties prop = new Properties();
+
+    /**
+     *
+     */
     public static PcareApi api=new PcareApi();
 
     /**
@@ -33,6 +37,12 @@ public class tessaja4 {
 	System.out.println("Content-type:application/json");             
 	System.out.println("Content-length:"+null); 
     }
+
+    /**
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         tessaja();
     }

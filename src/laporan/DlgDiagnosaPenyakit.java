@@ -784,8 +784,13 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRM.getText());
     }
 
-
-    
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     * @param status
+     */
     public void setNoRm(String norwt, Date tgl1, Date tgl2,String status) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -797,8 +802,9 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
     }
     
-    
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getdiagnosa_pasien());
         BtnHapus.setEnabled(akses.getdiagnosa_pasien());        

@@ -23,6 +23,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgPenanggungJawab;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();

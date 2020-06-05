@@ -15,6 +15,10 @@ import javax.swing.table.DefaultTableCellRenderer;
  * @author Owner
  */
 public class WarnaTable2 extends DefaultTableCellRenderer {
+
+    /**
+     *
+     */
     public int kolom;
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){

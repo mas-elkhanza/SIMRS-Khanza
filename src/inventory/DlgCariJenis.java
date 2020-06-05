@@ -36,13 +36,17 @@ import javax.swing.table.TableColumn;
 public final class DlgCariJenis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
+
+    /**
+     *
+     */
     public DlgJenis jenis=new DlgJenis(null,false);
     private PreparedStatement ps;
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariJenis(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -382,14 +386,24 @@ public final class DlgCariJenis extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         BtnTambah.setEnabled(akses.getobat());
     }

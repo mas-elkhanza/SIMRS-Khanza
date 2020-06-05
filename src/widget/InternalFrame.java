@@ -32,12 +32,20 @@ public class InternalFrame extends JPanel{
 
     //private Color warnaAtas = new Color(255,194,255);
     //private Color warnaBawah = new Color(255,194,255);
+
+    /**
+     *
+     */
     
     public InternalFrame(){
         super();
         this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(239,244,234)));
     }
 
+    /**
+     *
+     * @param layout
+     */
     public InternalFrame(LayoutManager layout) {
         super(layout);
         addComponentListener(new GradientCacheManager());
@@ -47,6 +55,10 @@ public class InternalFrame extends JPanel{
         return warnaAtas;
     }
 
+    /**
+     *
+     * @param warnaAtas
+     */
     public void setWarnaAtas(Color warnaAtas) {
         this.warnaAtas = warnaAtas;
     }
@@ -55,6 +67,10 @@ public class InternalFrame extends JPanel{
         return warnaBawah;
     }
 
+    /**
+     *
+     * @param warnaBawah
+     */
     public void setWarnaBawah(Color warnaBawah) {
         this.warnaBawah = warnaBawah;
     }

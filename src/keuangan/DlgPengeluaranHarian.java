@@ -1078,6 +1078,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }        
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Pengeluaran.setText("0");
         Keterangan.setText("");
@@ -1114,6 +1117,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         if(akses.getjml2()>=1){
             KdPtg.setEditable(false);

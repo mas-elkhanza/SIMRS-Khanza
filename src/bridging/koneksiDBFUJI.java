@@ -21,6 +21,9 @@ public class koneksiDBFUJI {
     private static final Properties prop = new Properties();  
     private static final MysqlDataSource dataSource=new MysqlDataSource();
     
+    /**
+     *
+     */
     public koneksiDBFUJI(){} 
 
     /**

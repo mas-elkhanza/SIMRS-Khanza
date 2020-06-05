@@ -71,6 +71,10 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private String signa1="1",signa2="1",kdObatSK="",requestJson="",nokunjungan="",URL="",otorisasi,sql="",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="",aktifkanbatch="no",aktifpcare="no",noresep="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
+
+    /**
+     *
+     */
     public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
     private DlgMetodeRacik metoderacik=new DlgMetodeRacik(null,false);
     private WarnaTable2 warna2=new WarnaTable2();
@@ -85,8 +89,8 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private String[] arrSplit;
     private boolean sukses=true;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariObat2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1901,6 +1905,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private widget.Table tbObatRacikan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {   
         jml=0;
         for(i=0;i<tbObat.getRowCount();i++){
@@ -2354,6 +2361,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
@@ -2557,10 +2567,17 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         } 
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbObat;
     }
     
+    /**
+     *
+     */
     public void isCek(){  
         kdgudang.setText(akses.getkdbangsal());
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());  
@@ -2590,6 +2607,15 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tanggal
+     * @param jam
+     * @param menit
+     * @param detik
+     * @param status
+     */
     public void setNoRm(String norwt,Date tanggal,String jam,String menit,String detik,boolean status) {        
         aktifpcare="no";
         TNoRw.setText(norwt);
@@ -2620,6 +2646,11 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         TCari.requestFocus();
     } 
     
+    /**
+     *
+     * @param norwt
+     * @param tanggal
+     */
     public void setNoRm(String norwt,Date tanggal) {       
         aktifpcare="no";
         TNoRw.setText(norwt);
@@ -2788,6 +2819,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }
     
+    /**
+     *
+     */
     public void tampildetailracikanobat() {        
         z=0;
         for(i=0;i<tbDetailObatRacikan.getRowCount();i++){
@@ -3307,6 +3341,10 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }            
     }
     
+    /**
+     *
+     * @param no_resep
+     */
     public void tampilobat2(String no_resep) { 
         this.noresep=no_resep;
         try{
@@ -4459,6 +4497,11 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }            
     }
     
+    /**
+     *
+     * @param aktif
+     * @param nokunjung
+     */
     public void setPCare(String aktif,String nokunjung){
         aktifpcare=aktif;
         nokunjungan=nokunjung;

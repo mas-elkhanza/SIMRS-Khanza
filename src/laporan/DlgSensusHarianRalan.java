@@ -1003,6 +1003,9 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private widget.Table table2;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
@@ -1111,6 +1114,9 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }
 
+    /**
+     *
+     */
     public void tampil2(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {

@@ -211,6 +211,10 @@ public final class BPJSPeserta extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param nomorpeserta
+     */
     public void tampil(String nomorpeserta) {
         cekViaBPJSKartu.tampil(nomorpeserta);
         if(cekViaBPJSKartu.informasi.equals("OK")){

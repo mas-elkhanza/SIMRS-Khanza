@@ -144,8 +144,19 @@ public final class InformasiTarifRalan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
+
+    /**
+     *
+     */
     public DlgCariPoli poli=new DlgCariPoli(null,false);
+
+    /**
+     *
+     */
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
 
     /** This method is called from within the constructor to

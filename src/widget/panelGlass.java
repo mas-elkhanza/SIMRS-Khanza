@@ -14,6 +14,9 @@ import javax.swing.JPanel;
  */
 public class panelGlass extends JPanel {
 
+    /**
+     *
+     */
     public panelGlass() {
         super();
         setBackground(new Color(255,255,255));

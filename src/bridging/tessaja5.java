@@ -23,6 +23,12 @@ public class tessaja5 {
      */
     public static SisruteApi api=new SisruteApi();
     private static Properties prop = new Properties();
+
+    /**
+     *
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public static void tessaja() throws FileNotFoundException, IOException{
         prop.loadFromXML(new FileInputStream("setting/database.xml"));
         System.out.println("X-cons-id:"+koneksiDB.CONSIDAPIPCARE());

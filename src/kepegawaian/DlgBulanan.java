@@ -1189,6 +1189,9 @@ public final class DlgBulanan extends javax.swing.JDialog {
     private widget.Tanggal tglPulang;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{  
@@ -1240,6 +1243,9 @@ public final class DlgBulanan extends javax.swing.JDialog {
 
     }
 
+    /**
+     *
+     */
     public void emptTeks() {       
         Jam.setSelectedItem("00");
         Jam2.setSelectedItem("00");
@@ -1303,6 +1309,9 @@ public final class DlgBulanan extends javax.swing.JDialog {
         Valid.LoadTahun(ThnCari);
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpresensi_bulanan());
         BtnHapus.setEnabled(akses.getpresensi_bulanan());

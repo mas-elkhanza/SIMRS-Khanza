@@ -46,6 +46,8 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -63,22 +65,90 @@ public class DlgPasien extends javax.swing.JDialog {
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private Connection koneksi = koneksiDB.condb();
+
+    /**
+     *
+     */
     public DlgPenanggungJawab penjab = new DlgPenanggungJawab(null, false);
+
+    /**
+     *
+     */
     public DlgKabupaten kab = new DlgKabupaten(null, false);
+
+    /**
+     *
+     */
     public DlgPropinsi prop = new DlgPropinsi(null, false);
+
+    /**
+     *
+     */
     public DlgKecamatan kec = new DlgKecamatan(null, false);
+
+    /**
+     *
+     */
     public DlgKelurahan kel = new DlgKelurahan(null, false);
+
+    /**
+     *
+     */
     public DlgPerusahaan perusahaan = new DlgPerusahaan(null, false);
+
+    /**
+     *
+     */
     public DlgBahasa bahasa = new DlgBahasa(null, false);
+
+    /**
+     *
+     */
     public DlgCacatFisik cacat = new DlgCacatFisik(null, false);
+
+    /**
+     *
+     */
     public DlgSuku suku = new DlgSuku(null, false);
+
+    /**
+     *
+     */
     public DlgGolonganTNI golongantni = new DlgGolonganTNI(null, false);
+
+    /**
+     *
+     */
     public DlgSatuanTNI satuantni = new DlgSatuanTNI(null, false);
+
+    /**
+     *
+     */
     public DlgPangkatTNI pangkattni = new DlgPangkatTNI(null, false);
+
+    /**
+     *
+     */
     public DlgJabatanTNI jabatantni = new DlgJabatanTNI(null, false);
+
+    /**
+     *
+     */
     public DlgGolonganPolri golonganpolri = new DlgGolonganPolri(null, false);
+
+    /**
+     *
+     */
     public DlgSatuanPolri satuanpolri = new DlgSatuanPolri(null, false);
+
+    /**
+     *
+     */
     public DlgPangkatPolri pangkatpolri = new DlgPangkatPolri(null, false);
+
+    /**
+     *
+     */
     public DlgJabatanPolri jabatanpolri = new DlgJabatanPolri(null, false);
 
     private int pilih = 0, z = 0, j = 0, p_no_ktp = 0, p_tmp_lahir = 0, p_nm_ibu = 0, p_alamat = 0,
@@ -107,8 +177,8 @@ public class DlgPasien extends javax.swing.JDialog {
     /**
      * Creates new form DlgPas
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgPasien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -1469,6 +1539,7 @@ public class DlgPasien extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -1523,6 +1594,7 @@ public class DlgPasien extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -1533,6 +1605,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
+            Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
         }
 
         if (tampilkantni.equals("Yes")) {
@@ -4624,7 +4697,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             kdprop = Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?", Propinsi.getText().replaceAll("PROPINSI", "-"));
         }
 //        }
-        System.out.println("kdkel,kdkec,kdkab,kdprop>>>" + kdkel + ", " + kdkec + ", " + kdkab + ", " + kdprop);
+//        System.out.println("kdkel,kdkec,kdkab,kdprop>>>" + kdkel + ", " + kdkec + ", " + kdkab + ", " + kdprop);
         if (Sequel.menyimpantf2("pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rekam Medis Pasien", 36, new String[]{
             TNo.getText(), TNm.getText(), TKtp.getText(), CmbJk.getSelectedItem().toString().substring(0, 1), TTmp.getText(),
             Valid.SetTgl(DTPLahir.getSelectedItem() + ""), NmIbu.getText(),
@@ -7147,6 +7220,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 Valid.SetTgl(DTPLahir, Sequel.cariIsi("select DATE_SUB('" + Valid.SetTgl(DTPLahir.getSelectedItem() + "") + "', interval " + TUmurTh.getText() + " year)"));
             } catch (Exception e) {
                 System.out.println(e);
+                Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
             }
             TUmurBl.requestFocus();
         } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
@@ -8052,6 +8126,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_TAlamatKeyPressed
 
     /**
+     * @param args
      * @data args the command line arguments
      */
     public static void main(String args[]) {
@@ -8750,6 +8825,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -8761,6 +8837,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             }
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
         }
 
         LCount.setText("" + tabMode.getRowCount());
@@ -9318,6 +9395,9 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
 //        LCount.setText("" + tabMode3.getRowCount());
 //    }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TNo.setText("");
         Kd2.setText("");
@@ -9433,6 +9513,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     }
                 } catch (Exception e) {
                     System.out.println("Notofikasi : " + e);
+                    Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -9564,6 +9645,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     }
                 } catch (Exception e) {
                     System.out.println("Notofikasi : " + e);
+                    Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -9678,6 +9760,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     }
                 } catch (Exception e) {
                     System.out.println("Notofikasi : " + e);
+                    Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -9749,18 +9832,33 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbPasien;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable2() {
         return tbPasien2;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable3() {
         return tbPasien3;
     }
 
+    /**
+     *
+     */
     public void isCek() {
         BtnSimpan.setEnabled(akses.getpasien());
         BtnHapus.setEnabled(akses.getpasien());
@@ -9864,6 +9962,17 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }
     }
 
+    /**
+     *
+     * @param NamaPasien
+     * @param Kontak
+     * @param Alamat
+     * @param TempatLahir
+     * @param TglLahir
+     * @param JK
+     * @param NoKartuJKN
+     * @param NIK
+     */
     public void setPasien(String NamaPasien, String Kontak, String Alamat,
             String TempatLahir, String TglLahir, String JK, String NoKartuJKN, String NIK) {
         this.TNm.setText(NamaPasien);

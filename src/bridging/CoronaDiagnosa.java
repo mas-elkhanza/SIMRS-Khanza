@@ -30,6 +30,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class CoronaDiagnosa extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2;
     private sekuel Sequel=new sekuel();
@@ -50,8 +54,8 @@ public class CoronaDiagnosa extends javax.swing.JDialog {
     private ApiKemenkesCorona api=new ApiKemenkesCorona();
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public CoronaDiagnosa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1017,11 +1021,17 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getdiagnosa_pasien_corona());
         BtnHapus.setEnabled(akses.getdiagnosa_pasien_corona());
     }
     
+    /**
+     *
+     */
     public void tampil2() {
         Valid.tabelKosong(tabMode2);
         try{
@@ -1068,6 +1078,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         LCount.setText(""+tabMode2.getRowCount());
     }
 
+    /**
+     *
+     * @param norm
+     * @param nmpasien
+     * @param tglmasuk
+     * @param tglkeluar
+     */
     public void SetPasien(String norm,String nmpasien,Date tglmasuk,Date tglkeluar){
         this.norm.setText(norm);
         this.nmpasien.setText(nmpasien);

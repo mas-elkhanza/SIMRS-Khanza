@@ -733,6 +733,9 @@ private void R3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event
     private widget.Table tbKamIn;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         if(R1.isSelected()==true){
             kmr=" stts_pulang='-' ";

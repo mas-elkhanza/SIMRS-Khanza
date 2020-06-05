@@ -12,7 +12,9 @@ import usu.widget.glass.ViewPortGlass;
  */
 public class ScrollPane extends JScrollPane {
 
-
+    /**
+     *
+     */
     public ScrollPane() {
         super();
         setViewport(new ViewPortGlass());

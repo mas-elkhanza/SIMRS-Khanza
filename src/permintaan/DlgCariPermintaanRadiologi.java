@@ -34,6 +34,10 @@ import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgPeriksaRadiologi;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4;
     private sekuel Sequel=new sekuel();
@@ -55,8 +59,8 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
             InformasiTambahan="",Klinis="";
     
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariPermintaanRadiologi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -2353,6 +2357,9 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         MnCetakHasilRadiologi.setEnabled(akses.getpermintaan_radiologi());
         BtnSampel.setEnabled(akses.getpermintaan_radiologi());
@@ -2363,10 +2370,17 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
         MnAmbilDataFUJI.setEnabled(akses.getperiksa_radiologi());
     }
     
+    /**
+     *
+     * @param pasien
+     */
     public void setPasien(String pasien){
         TCari.setText(pasien);
     }
 
+    /**
+     *
+     */
     public void pilihTab(){
         if(TabPilihRawat.getSelectedIndex()==0){
             pilihRalan();
@@ -2375,6 +2389,9 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void pilihRalan(){
         if(TabRawatJalan.getSelectedIndex()==0){
             tampil();
@@ -2383,6 +2400,9 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void pilihRanap(){
         if(TabRawatInap.getSelectedIndex()==0){
             tampil3();

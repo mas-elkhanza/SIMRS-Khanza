@@ -638,6 +638,9 @@ public class DlgSetTarif extends javax.swing.JDialog {
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         String sql="select * from set_tarif";
         prosesCari(sql);
@@ -677,6 +680,9 @@ public class DlgSetTarif extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         YesNo1.setSelectedIndex(0);
         YesNo2.setSelectedIndex(0);

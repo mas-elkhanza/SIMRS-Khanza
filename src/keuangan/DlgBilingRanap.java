@@ -53,13 +53,40 @@ import simrskhanza.DlgTagihanOperasi;
  */
 public class DlgBilingRanap extends javax.swing.JDialog {
     private final DefaultTableModel tabModeRwJlDr,tabModeTambahan,tabModePotongan,tabModeKamIn,tabModeAkunBayar,tabModeAkunPiutang;
+
+    /**
+     *
+     */
     public DlgResepPulang reseppulang=new DlgResepPulang(null,false);
 
+    /**
+     *
+     */
     public DlgPemberianObat beriobat=new DlgPemberianObat(null,false);
+
+    /**
+     *
+     */
     public DlgRawatInap rawatinap=new DlgRawatInap(null,false);
+
+    /**
+     *
+     */
     public DlgPeriksaLaboratorium periksalab=new DlgPeriksaLaboratorium(null,false);
+
+    /**
+     *
+     */
     public DlgPeriksaRadiologi periksarad=new DlgPeriksaRadiologi(null,false);
+
+    /**
+     *
+     */
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+
+    /**
+     *
+     */
     public DlgDeposit deposit=new DlgDeposit(null,false);
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -220,8 +247,8 @@ public class DlgBilingRanap extends javax.swing.JDialog {
     private String noNota;
 
     /** Creates new form DlgBiling
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBilingRanap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -3966,6 +3993,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbUbahLama;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void isRawat() {
          try {      
             pscekbilling=koneksi.prepareStatement(sqlpscekbilling);
@@ -4912,7 +4942,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }        
     }
     
-
+    /**
+     *
+     */
     public void isCek(){
         Valid.tabelKosong(tabModeAkunBayar);
         Valid.tabelKosong(tabModeAkunPiutang);
@@ -4950,6 +4982,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
     }
     
+    /**
+     *
+     */
     public void isKembali(){
         bayar=0;total=0;ppn=0;besarppn=0;tagihanppn=0;y=0;piutang=0;kekurangan=0;countbayar=0;
         row2=tabModeAkunBayar.getRowCount();
@@ -5713,6 +5748,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
              } 
     }
     
+    /**
+     *
+     * @param NoRawat
+     */
     public void tampilTambahan(String NoRawat) {
         norawattambahan.setText(NoRawat);
         Valid.tabelKosong(tabModeTambahan);
@@ -5739,6 +5778,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }            
     }
     
+    /**
+     *
+     * @param NoRawat
+     */
     public void tampilPotongan(String NoRawat) {
         norawatpotongan.setText(NoRawat);
         Valid.tabelKosong(tabModePotongan);
@@ -5766,6 +5809,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }            
     }
     
+    /**
+     *
+     * @param NoRawat
+     */
     public void tampilUbahLama(String NoRawat) {
         norawatubahlama.setText(NoRawat);
         Valid.tabelKosong(tabModeKamIn);

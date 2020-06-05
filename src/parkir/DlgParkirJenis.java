@@ -41,8 +41,8 @@ public class DlgParkirJenis extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgParkirJenis(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -658,6 +658,9 @@ public class DlgParkirJenis extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -677,10 +680,17 @@ public class DlgParkirJenis extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getparkir_jenis());
        BtnHapus.setEnabled(akses.getparkir_jenis());

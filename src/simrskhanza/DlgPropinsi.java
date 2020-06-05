@@ -40,8 +40,8 @@ public class DlgPropinsi extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form Dlgpropinsi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPropinsi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -413,6 +413,9 @@ public class DlgPropinsi extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.setText("");
         TCari.requestFocus();
@@ -424,10 +427,17 @@ public class DlgPropinsi extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbpropinsi;
     }
     
+    /**
+     *
+     */
     public void onCari(){
         TCari.requestFocus();
     }

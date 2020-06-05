@@ -68,7 +68,15 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,aturan,industri,kategori,golongan,no,nobatch,nofaktur,kadaluarsa;
     private String signa1="1",signa2="1",nokunjungan="",kdObatSK="",requestJson="",URL="",otorisasi,sql="",aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="";
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
+
+    /**
+     *
+     */
     public DlgBarang barang=new DlgBarang(null,false);
+
+    /**
+     *
+     */
     public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
     private DlgMetodeRacik metoderacik=new DlgMetodeRacik(null,false);
     private WarnaTable2 warna=new WarnaTable2();
@@ -86,8 +94,8 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private boolean sukses=true;
     
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariObat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1986,6 +1994,9 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Table tbObatRacikan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampilobat() {        
         z=0;
         for(i=0;i<tbObat.getRowCount();i++){
@@ -2387,6 +2398,10 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }            
     }
     
+    /**
+     *
+     * @param no_resep
+     */
     public void tampilobat2(String no_resep) {     
         this.noresep=no_resep; 
         try {
@@ -3154,6 +3169,9 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }            
     }
 
+    /**
+     *
+     */
     public void emptTeksobat() {
         Kd2.setText(""); 
         TCari.setText("");
@@ -3354,18 +3372,33 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         } 
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return Kd2;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbObat;
     }
     
+    /**
+     *
+     * @return
+     */
     public Button getButton(){
         return BtnSimpan;
     }
     
+    /**
+     *
+     */
     public void isCek(){   
         bangsal=Sequel.cariIsi("select kd_bangsal from set_depo_ralan where kd_poli=?",Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()));
         if(bangsal.equals("")){
@@ -3395,6 +3428,14 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }
     }
     
+    /**
+     *
+     * @param norwt
+     * @param norm
+     * @param nama
+     * @param tanggal
+     * @param jam
+     */
     public void setNoRm(String norwt,String norm,String nama,String tanggal, String jam) {        
         aktifpcare="no";
         TNoRw.setText(norwt);
@@ -3464,11 +3505,19 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         new Timer(1000, taskPerformer).start();
     }
     
+    /**
+     *
+     * @param kodedokter
+     * @param namadokter
+     */
     public void setDokter(String kodedokter,String namadokter){
         this.kodedokter=kodedokter;
         this.namadokter=namadokter;
     }
     
+    /**
+     *
+     */
     public void tampildetailracikanobat() {        
         z=0;
         for(i=0;i<tbDetailObatRacikan.getRowCount();i++){
@@ -4298,6 +4347,11 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }            
     }
     
+    /**
+     *
+     * @param aktif
+     * @param nokunjung
+     */
     public void setPCare(String aktif,String nokunjung){
         aktifpcare=aktif;
         nokunjungan=nokunjung;

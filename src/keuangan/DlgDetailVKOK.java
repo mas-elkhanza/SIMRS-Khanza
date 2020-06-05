@@ -797,6 +797,9 @@ public final class DlgDetailVKOK extends javax.swing.JDialog {
     private widget.Table tbOperasi1;
     // End of variables declaration//GEN-END:variables
     
+    /**
+     *
+     */
     public void tampil(){     
         Valid.tabelKosong(tabModeOperasi);
         try{
@@ -994,6 +997,9 @@ public final class DlgDetailVKOK extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil2(){     
         Valid.tabelKosong(tabModeOperasi2);
         try{

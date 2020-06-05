@@ -476,6 +476,9 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdpenyakit.setText("");
         nmpenyakit.setText("");

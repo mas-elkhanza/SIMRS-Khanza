@@ -1867,6 +1867,9 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {        
         Valid.tabelKosong(tabMode);
         try{
@@ -1975,6 +1978,14 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param status
+     * @param kdpoli
+     * @param namapoli
+     */
     public void setNoRm(String norwt, Date tgl1,String status,String kdpoli,String namapoli) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -1985,7 +1996,9 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         isRawat();            
     }
       
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getinhealth_sjp());
         BtnHapus.setEnabled(akses.getinhealth_sjp());

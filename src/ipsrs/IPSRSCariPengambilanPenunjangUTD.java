@@ -47,8 +47,8 @@ public final class IPSRSCariPengambilanPenunjangUTD extends javax.swing.JDialog 
     private double total=0;
     private Jurnal jur=new Jurnal();
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public IPSRSCariPengambilanPenunjangUTD(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -503,6 +503,9 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -562,6 +565,9 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void setHapus(){
         BtnHapus.setVisible(false);
     }

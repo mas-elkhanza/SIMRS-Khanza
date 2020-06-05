@@ -846,6 +846,9 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Tanggal.setDate(new Date());
         Pengumuman.setText("");
@@ -876,6 +879,9 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpengumuman_epasien());
         BtnHapus.setEnabled(akses.getpengumuman_epasien());

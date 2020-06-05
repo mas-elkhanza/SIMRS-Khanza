@@ -54,8 +54,8 @@ public class DlgDpjp extends javax.swing.JDialog {
     private boolean[] pilih; 
 
     /** Creates new form DlgPemberianObat
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgDpjp(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1061,6 +1061,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Table tbPasien;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(TabModePasien);
         try{            
@@ -1143,6 +1146,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     * @param status
+     */
     public void setNoRm(String norwt, Date tgl1, Date tgl2,String status) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -1169,6 +1179,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getdpjp_ranap());
         BtnHapus.setEnabled(akses.getdpjp_ranap());

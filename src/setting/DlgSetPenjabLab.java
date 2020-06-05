@@ -38,6 +38,10 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+
+    /**
+     *
+     */
     public  DlgCariDokter dokter=new DlgCariDokter(null,false);
     private int pilihan=0,i=0;
 
@@ -702,6 +706,9 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kddokter.setText("");
         TDokter.setText("");

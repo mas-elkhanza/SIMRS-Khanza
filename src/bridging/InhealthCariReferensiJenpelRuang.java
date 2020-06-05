@@ -41,8 +41,8 @@ public final class InhealthCariReferensiJenpelRuang extends javax.swing.JDialog 
     private ResultSet rs;
     private InhealthReferensiJenpelRuang bangsal=new InhealthReferensiJenpelRuang(null,false);
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public InhealthCariReferensiJenpelRuang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -421,14 +421,24 @@ public final class InhealthCariReferensiJenpelRuang extends javax.swing.JDialog 
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
        BtnTambah.setEnabled(akses.getinhealth_referensi_jenpel_ruang_rawat());
     }

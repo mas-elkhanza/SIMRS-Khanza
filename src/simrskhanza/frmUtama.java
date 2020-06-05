@@ -976,6 +976,10 @@ public class frmUtama extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public static frmUtama getInstance() {
         if (myInstance == null) {
             myInstance = new frmUtama();
@@ -16936,6 +16940,9 @@ public class frmUtama extends javax.swing.JFrame {
             btnDeteksiDiniCorona, btnPenilaianAwalKeperawatanKebidanan, btnPengumumanEPasien, btnSuratHamil,
             btnSetTarifOnline, btnBookingPeriksa;
 
+    /**
+     *
+     */
     public void isWall() {
         try {
             ps = koneksi.prepareStatement(
@@ -16996,6 +17003,9 @@ public class frmUtama extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     */
     public void isTampil() {
         Panelmenu.removeAll();
 

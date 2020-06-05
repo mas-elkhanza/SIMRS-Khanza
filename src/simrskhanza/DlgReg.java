@@ -116,12 +116,28 @@ public final class DlgReg extends javax.swing.JDialog {
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private Connection koneksi = koneksiDB.condb();
+
+    /**
+     *
+     */
     public DlgPasien pasien = new DlgPasien(null, false);
+
+    /**
+     *
+     */
     public DlgCariDokter dokter = new DlgCariDokter(null, false);
+
+    /**
+     *
+     */
     public DlgCariDokter2 dokter2 = new DlgCariDokter2(null, false);
     private DlgCariPoli poli = new DlgCariPoli(null, false);
     private DlgCariPoli2 poli2 = new DlgCariPoli2(null, false);
     private DlgRujukanPoliInternal dlgrjk = new DlgRujukanPoliInternal(null, false);
+
+    /**
+     *
+     */
     public DlgRujukMasuk rujukmasuk = new DlgRujukMasuk(null, false);
     private DlgCatatan catatan = new DlgCatatan(null, false);
     private PreparedStatement ps, ps2, ps3, pscaripiutang, psanak;
@@ -129,6 +145,10 @@ public final class DlgReg extends javax.swing.JDialog {
     private ResultSet rs, rs2, rs3;
     private int pilihan = 0, i = 0, kuota = 0, jmlparsial = 0;
     private Date cal = new Date();
+
+    /**
+     *
+     */
     public DlgSpri spri = new DlgSpri(null, false);
     private boolean ceksukses = false;
     private Calendar cal1 = Calendar.getInstance();
@@ -190,8 +210,8 @@ public final class DlgReg extends javax.swing.JDialog {
     /**
      * Creates new form DlgReg
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgReg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -10492,6 +10512,9 @@ public final class DlgReg extends javax.swing.JDialog {
         LCount.setText("" + b);
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TNoReg.setText("");
         TNoRw.setText("");
@@ -10701,10 +10724,18 @@ public final class DlgReg extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField() {
         return TNoRw;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton() {
         return BtnKeluar;
     }
@@ -10723,6 +10754,9 @@ public final class DlgReg extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void isCek() {
         DTPReg.setDate(new Date());
         DTPCari1.setDate(new Date());
@@ -10905,6 +10939,9 @@ public final class DlgReg extends javax.swing.JDialog {
 
     }
 
+    /**
+     *
+     */
     public void ctk() {
         try {
             String os = System.getProperty("os.name").toLowerCase();
@@ -10938,6 +10975,12 @@ public final class DlgReg extends javax.swing.JDialog {
         sendCommand(VERTICAL_PRINT_POSITION, writer);
     }
 
+    /**
+     *
+     * @param command
+     * @param writer
+     * @throws IOException
+     */
     public void sendCommand(char[] command, Writer writer) throws IOException {
         writer.write(command);
     }
@@ -11150,6 +11193,12 @@ public final class DlgReg extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @param norm
+     * @param nosisrute
+     * @param FaskesAsal
+     */
     public void SetPasien(String norm, String nosisrute, String FaskesAsal) {
         ChkInput.setSelected(true);
         isForm();
@@ -11159,6 +11208,10 @@ public final class DlgReg extends javax.swing.JDialog {
         isPas();
     }
 
+    /**
+     *
+     * @param norm
+     */
     public void SetPasien(String norm) {
         ChkInput.setSelected(true);
         isForm();
@@ -11166,6 +11219,19 @@ public final class DlgReg extends javax.swing.JDialog {
         isPas();
     }
 
+    /**
+     *
+     * @param NamaPasien
+     * @param Kontak
+     * @param Alamat
+     * @param TempatLahir
+     * @param TglLahir
+     * @param JK
+     * @param NoKartuJKN
+     * @param NIK
+     * @param nosisrute
+     * @param FaskesAsal
+     */
     public void setPasien(String NamaPasien, String Kontak, String Alamat, String TempatLahir, String TglLahir,
             String JK, String NoKartuJKN, String NIK, String nosisrute, String FaskesAsal) {
         akses.setform("DlgReg");

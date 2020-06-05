@@ -705,6 +705,9 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
     private widget.Table tbSpesialis;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -740,6 +743,9 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         no_inventaris.setText("");
         nama_barang.setText("");
@@ -755,10 +761,17 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getbarang_cssd());
         BtnHapus.setEnabled(akses.getbarang_cssd());

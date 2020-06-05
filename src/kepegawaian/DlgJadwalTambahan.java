@@ -882,6 +882,9 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getjadwal_pegawai());
         BtnHapus.setEnabled(akses.getjadwal_pegawai());

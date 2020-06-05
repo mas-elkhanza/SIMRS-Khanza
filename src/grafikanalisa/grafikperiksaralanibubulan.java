@@ -68,6 +68,11 @@ public class grafikperiksaralanibubulan extends JDialog {
       }
     Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
       
+    /**
+     *
+     * @param symbol
+     * @return
+     */
     public static CategoryDataset createDataset1(String symbol) { //data grafik nilai K dan D
 
           DefaultCategoryDataset result = new DefaultCategoryDataset();
@@ -148,7 +153,12 @@ public class grafikperiksaralanibubulan extends JDialog {
 
          }
 
-         public static JPanel createDemoPanel(String symbol) {
+    /**
+     *
+     * @param symbol
+     * @return
+     */
+    public static JPanel createDemoPanel(String symbol) {
              JFreeChart chart = createChart(symbol);
              return new ChartPanel(chart);
          }

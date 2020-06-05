@@ -28,8 +28,8 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariPegawai(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -435,11 +435,18 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kd2.setText("");   
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

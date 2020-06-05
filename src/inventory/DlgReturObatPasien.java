@@ -603,12 +603,17 @@ public final class DlgReturObatPasien extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
     
-    
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnHapus.setEnabled(akses.getretur_obat_ranap());
         BtnPrint.setEnabled(akses.getretur_obat_ranap());   

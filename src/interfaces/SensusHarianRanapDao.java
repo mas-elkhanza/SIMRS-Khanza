@@ -32,6 +32,13 @@ public class SensusHarianRanapDao implements SensusHarianRanapIntf<KamarInap> {
     ResultSet rs;
     private final java.sql.Connection connect = koneksiDB.condb();
 
+    /**
+     *
+     * @param kd_bangsal
+     * @param tgl_awal
+     * @param tgl_ahir
+     * @return
+     */
     @Override
     public List<KamarInap> findByKamar(String kd_bangsal, String tgl_awal, String tgl_ahir) {
         
@@ -66,6 +73,12 @@ public class SensusHarianRanapDao implements SensusHarianRanapIntf<KamarInap> {
         kis.add(kamarInap);
     }
 
+    /**
+     *
+     * @param tgl_awal
+     * @param tgl_ahir
+     * @return
+     */
     @Override
     public List<KamarInap> findByAll(String tgl_awal, String tgl_ahir) {
         List<KamarInap> kis = new ArrayList<>();

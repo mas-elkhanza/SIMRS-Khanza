@@ -211,6 +211,10 @@ public final class BPJSNik extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param nik
+     */
     public void tampil(String nik) {
         try {
             cekViaBPJS.tampil(nik);

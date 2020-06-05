@@ -14,6 +14,9 @@ public class Table extends JTable {
      */
     private static final long serialVersionUID = 1L;
 
+    /**
+     *
+     */
     public Table() {
         super();
         //setBackground(new Color(255,235,255));

@@ -64,10 +64,19 @@ public final class sekuel {
     private boolean bool = false;
     private DecimalFormat df2 = new DecimalFormat("####");
 
+    /**
+     *
+     */
     public sekuel() {
         super();
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     */
     public void menyimpan(String table, String value, String sama) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -91,6 +100,12 @@ public final class sekuel {
 
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     */
     public void menyimpan2(String table, String value, String sama) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -155,6 +170,18 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param i
+     * @param a
+     * @param acuan_field
+     * @param update
+     * @param j
+     * @param b
+     * @return
+     */
     public boolean menyimpantf(String table, String value, int i, String[] a, String acuan_field, String update, int j,
             String[] b) {
         bool = false;
@@ -205,6 +232,14 @@ public final class sekuel {
         return bool;
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     * @param i
+     * @param a
+     */
     public void menyimpan(String table, String value, String sama, int i, String[] a) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -275,6 +310,15 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param sama
+     * @param i
+     * @param a
+     * @return
+     */
     public boolean menyimpantf(String table, String value, String sama, int i, String[] a) {
         try {
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
@@ -413,6 +457,17 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param i
+     * @param a
+     * @param acuan_field
+     * @param update
+     * @param j
+     * @param b
+     */
     public void menyimpan(String table, String value, int i, String[] a, String acuan_field, String update, int j,
             String[] b) {
         try {
@@ -516,6 +571,17 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param value
+     * @param i
+     * @param a
+     * @param acuan_field
+     * @param update
+     * @param j
+     * @param b
+     */
     public void menyimpan3(String table, String value, int i, String[] a, String acuan_field, String update, int j,
             String[] b) {
         try {
@@ -710,6 +776,12 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param field
+     * @param nilai_field
+     */
     public void meghapus(String table, String field, String nilai_field) {
         try {
             ps = connect.prepareStatement("delete from " + table + " where " + field + "=?");
@@ -764,6 +836,12 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param field
+     * @param nilai_field
+     */
     public void meghapus2(String table, String field, String nilai_field) {
         try {
             ps = connect.prepareStatement("delete from " + table + " where " + field + "=?");
@@ -841,6 +919,13 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param acuan_field
+     * @param update
+     * @return
+     */
     public boolean mengedittf(String table, String acuan_field, String update) {
         bool = true;
         try {
@@ -867,6 +952,14 @@ public final class sekuel {
         return bool;
     }
 
+    /**
+     *
+     * @param table
+     * @param acuan_field
+     * @param update
+     * @param i
+     * @param a
+     */
     public void mengedit(String table, String acuan_field, String update, int i, String[] a) {
         try {
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
@@ -1044,6 +1137,14 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param acuan_field
+     * @param update
+     * @param AlmGb
+     * @return
+     */
     public boolean mengedittf(String table, String acuan_field, String update, JTextField AlmGb) {
         bool = true;
         try {
@@ -1091,6 +1192,10 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param qry
+     */
     public void queryu(String qry) {
         try {
             ps = connect.prepareStatement(qry);
@@ -1332,6 +1437,9 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     */
     public void AutoComitTrue() {
         try {
             connect.setAutoCommit(true);
@@ -1339,6 +1447,9 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     */
     public void Commit() {
         try {
             connect.commit();
@@ -1358,6 +1469,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param cmb
+     */
     public void cariIsi(String sql, JComboBox cmb) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1515,6 +1631,12 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param txt
+     * @param kunci
+     */
     public void cariIsi(String sql, JTextArea txt, String kunci) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1677,6 +1799,11 @@ public final class sekuel {
         return dicari;
     }
 
+    /**
+     *
+     * @param sql
+     * @return
+     */
     public Date cariIsi2(String sql) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1704,6 +1831,11 @@ public final class sekuel {
         return tanggal;
     }
 
+    /**
+     *
+     * @param sql
+     * @return
+     */
     public Integer cariInteger(String sql) {
         angka = 0;
         try {
@@ -2012,6 +2144,12 @@ public final class sekuel {
         return angka2;
     }
 
+    /**
+     *
+     * @param sql
+     * @param data
+     * @return
+     */
     public double cariIsiAngka(String sql, String data) {
         angka2 = 0;
         try {
@@ -2043,6 +2181,13 @@ public final class sekuel {
         return angka2;
     }
 
+    /**
+     *
+     * @param sql
+     * @param data
+     * @param data2
+     * @return
+     */
     public double cariIsiAngka2(String sql, String data, String data2) {
         angka2 = 0;
         try {
@@ -2164,6 +2309,11 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @return
+     */
     public String cariString(String sql) {
         dicari = "";
         try {
@@ -2284,8 +2434,17 @@ public final class sekuel {
         }
     }
 
+    /**
+     *
+     */
     public class NIOCopier {
 
+        /**
+         *
+         * @param asal
+         * @param tujuan
+         * @throws IOException
+         */
         public NIOCopier(String asal, String tujuan) throws IOException {
             FileOutputStream outFile;
             try (FileInputStream inFile = new FileInputStream(asal)) {

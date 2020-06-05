@@ -40,8 +40,8 @@ public class MasterTriasePemeriksaan extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public MasterTriasePemeriksaan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -629,10 +629,17 @@ public class MasterTriasePemeriksaan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getmaster_triase_pemeriksaan());
        BtnHapus.setEnabled(akses.getmaster_triase_pemeriksaan());

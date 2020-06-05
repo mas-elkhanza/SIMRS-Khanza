@@ -39,8 +39,8 @@ public class InventarisJenis extends javax.swing.JDialog {
     private validasi Valid=new validasi();
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public InventarisJenis(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -585,6 +585,9 @@ public class InventarisJenis extends javax.swing.JDialog {
     private widget.Table tbSpesialis;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         String sql="select * from inventaris_jenis order by id_jenis";
         prosesCari(sql);
@@ -604,6 +607,9 @@ public class InventarisJenis extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -620,10 +626,17 @@ public class InventarisJenis extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getinventaris_jenis());
        BtnHapus.setEnabled(akses.getinventaris_jenis());

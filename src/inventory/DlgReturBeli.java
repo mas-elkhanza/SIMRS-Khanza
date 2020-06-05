@@ -23,6 +23,10 @@ import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgReturBeli extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -1343,6 +1347,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kdbar.setText("");
         nmbar.setText("");
@@ -1423,6 +1430,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }          
     }
     
+    /**
+     *
+     */
     public void isCek(){
         autonomer();
         Sequel.cariIsi("select kd_bangsal from set_lokasi",kdgudang);

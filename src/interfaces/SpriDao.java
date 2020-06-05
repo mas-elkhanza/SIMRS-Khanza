@@ -39,6 +39,10 @@ public class SpriDao implements SpriInterface<Spri> {
     List<Pasien> pasiens = new ArrayList<>();
     List<Dokter> dokters = new ArrayList<>();
 
+    /**
+     *
+     * @param domain
+     */
     @Override
     public void save(Spri domain) {
         Sequel.menyimpan("temp_spri", ""
@@ -56,11 +60,22 @@ public class SpriDao implements SpriInterface<Spri> {
 
     }
 
+    /**
+     *
+     * @param a
+     * @param text
+     * @param domain
+     */
     @Override
     public void delete(DefaultTableModel a, JTextField text, String domain) {
         Valid.hapusTable(a, text, "temp_spri", domain);
     }
 
+    /**
+     *
+     * @param domain
+     * @return
+     */
     @Override
     public List<Spri> search(String domain) {
             List<Spri> kis = new ArrayList<>();
@@ -87,6 +102,10 @@ public class SpriDao implements SpriInterface<Spri> {
             return kis;
     }
 
+    /**
+     *
+     * @param domain
+     */
     @Override
     public void update(Spri domain) {
         Sequel.mengedit("temp_spri", "id='" + domain.getId() + "'", 
@@ -101,6 +120,12 @@ public class SpriDao implements SpriInterface<Spri> {
                 + "keluhan='" + domain.getKeluhan() + "'");
     }
 
+    /**
+     *
+     * @param tgl_awal
+     * @param tgl_ahir
+     * @return
+     */
     @Override
     public List<Spri> findByDate(String tgl_awal, String tgl_ahir) {
             List<Spri> kis = new ArrayList<>();

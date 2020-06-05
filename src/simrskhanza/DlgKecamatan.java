@@ -415,18 +415,33 @@ public class DlgKecamatan extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.setText("");
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @param kd_kab
+     */
     public void setData(String kd_kab){
         this.kd_kab = kd_kab;
     }
+
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbkecamatan;
     }
     
+    /**
+     *
+     */
     public void onCari(){
         TCari.requestFocus();
     }

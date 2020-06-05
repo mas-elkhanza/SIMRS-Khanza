@@ -34,14 +34,18 @@ import javax.swing.table.TableColumn;
 public final class TokoCariJenis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
+
+    /**
+     *
+     */
     public TokoJenis nm_jenis=new TokoJenis(null,false);
     private PreparedStatement ps;
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
     
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public TokoCariJenis(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -387,14 +391,24 @@ public final class TokoCariJenis extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         BtnTambah.setEnabled(akses.gettoko_jenis());
     }

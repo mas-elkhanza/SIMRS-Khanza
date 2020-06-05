@@ -38,8 +38,8 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
     private String norawat="";
     private int z=0;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMCariHasilLaborat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -328,6 +328,9 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -363,14 +366,25 @@ public final class RMCariHasilLaborat extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {   
         TCari.requestFocus();
     }
     
+    /**
+     *
+     * @param norawat
+     */
     public void setNoRawat(String norawat){
         this.norawat=norawat;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

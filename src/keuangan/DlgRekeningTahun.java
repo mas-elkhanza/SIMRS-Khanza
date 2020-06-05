@@ -55,8 +55,8 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
     private double md = 0,mk = 0,saldoakhir=0;
     private String asalform="";
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgRekeningTahun(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -880,6 +880,9 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{       
@@ -966,6 +969,9 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kd.setText("");
         Kd2.setText("");
@@ -990,18 +996,33 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return Kd;
     }
     
+    /**
+     *
+     * @return
+     */
     public JTextField getSaldo(){
         return Saldo;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTabel(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         asalform=akses.getform();       
         BtnSimpan.setEnabled(akses.getrekening_tahun());

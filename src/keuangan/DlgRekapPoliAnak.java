@@ -617,6 +617,9 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
     private widget.panelisi panelisi4;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{

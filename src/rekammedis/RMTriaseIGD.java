@@ -4767,6 +4767,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     private widget.Table tbTriase;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {        
         Valid.tabelKosong(tabMode);
         try{
@@ -4869,6 +4872,12 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         Transportasi.requestFocus();
     }
     
+    /**
+     *
+     * @param norwt
+     * @param norm
+     * @param namapasien
+     */
     public void setNoRm(String norwt,String norm,String namapasien) {
         emptTeks();
         TNoRw.setText(norwt);
@@ -4877,6 +4886,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         TCari.setText(norwt);   
     }
     
+    /**
+     *
+     */
     public void tampilPemeriksaan() {        
         Valid.tabelKosong(tabModePemeriksaan);
         try{
@@ -4903,6 +4915,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampilPemeriksaan2() {        
         Valid.tabelKosong(tabModePemeriksaan2);
         try{
@@ -5229,6 +5244,9 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getdata_triase_igd());
         BtnHapus.setEnabled(akses.getdata_triase_igd());

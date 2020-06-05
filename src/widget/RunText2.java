@@ -12,6 +12,9 @@ public class RunText2 extends JPanel {
     Timer t;
     private final int DELAY=200;
     
+    /**
+     *
+     */
     public void init() {
         setBackground(Color.BLACK);
         t=new Timer(DELAY,new BlinkText());
@@ -83,6 +86,10 @@ public class RunText2 extends JPanel {
         }
     }
     
+    /**
+     *
+     * @param arg
+     */
     public static void main(String arg[]) {
         final RunText2 x = new RunText2();
         x.init();

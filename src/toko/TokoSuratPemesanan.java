@@ -26,6 +26,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPegawai;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class TokoSuratPemesanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -40,6 +44,10 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
     private int jml=0,i=0,row=0,index=0,pilihan=1;
     private String[] kodebarang,namabarang,satuanbeli;
     private double[] h_beli,jumlah,subtotal,diskon,besardiskon,jmltotal;
+
+    /**
+     *
+     */
     public boolean tampilkan=true;
     private boolean sukses=true;
 
@@ -1461,6 +1469,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         
     }   
     
+    /**
+     *
+     */
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
@@ -1480,14 +1491,25 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 "SPT"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPemesanan); 
     }
 
+    /**
+     *
+     * @return
+     */
     public DefaultTableModel tabMode(){
         return tabMode;
     }
     
+    /**
+     *
+     */
     public void panggilgetData(){
         getData();
     }
     
+    /**
+     *
+     * @param nopengajuan
+     */
     public void panggilgetData(String nopengajuan){
         try{
             ps=koneksi.prepareStatement(

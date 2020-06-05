@@ -48,10 +48,30 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb(); 
+
+    /**
+     *
+     */
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
+
+    /**
+     *
+     */
     public DlgCariPoli poli=new DlgCariPoli(null,false);    
+
+    /**
+     *
+     */
     public DlgCariObat dlgobt=new DlgCariObat(null,false);
+
+    /**
+     *
+     */
     public DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
+
+    /**
+     *
+     */
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private double ttl=0,y=0,subttl=0,ralanparamedis=0,piutang=0,itembayar=0,itempiutang=0, 
                    bayar=0,total=0,tamkur=0,detailjs=0,detailbhp=0,ppn=0,besarppn=0,tagihanppn=0,
@@ -3664,6 +3684,9 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Table tbTambahan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void isRawat() {
         try {    
             pscekbilling=koneksi.prepareStatement(sqlpscekbilling);
@@ -3876,6 +3899,9 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
          isKembali();
     }
     
+    /**
+     *
+     */
     public void isRawat2() {
         Jasa_Medik_Dokter_Tindakan_Ralan=0;
         Jasa_Medik_Paramedis_Tindakan_Ralan=0;
@@ -4612,8 +4638,9 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         TtlSemua.setText(Valid.SetAngka3(ttl));
     }    
     
-    
-      
+    /**
+     *
+     */
     public void isCek(){
         Valid.tabelKosong(tabModeAkunBayar);
         Valid.tabelKosong(tabModeAkunPiutang);
@@ -4649,6 +4676,9 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     } 
     
+    /**
+     *
+     */
     public void isKembali(){
         bayar=0;total=0;ppn=0;besarppn=0;tagihanppn=0;y=0;piutang=0;kekurangan=0;countbayar=0;
         
@@ -4714,7 +4744,10 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }  
     }
     
-    
+    /**
+     *
+     * @param NoRawat
+     */
     public void tampilTambahan(String NoRawat) {
         norawat.setText(NoRawat);
         Valid.tabelKosong(tabModeTambahan);
@@ -4933,6 +4966,9 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     }
     
+    /**
+     *
+     */
     public void setPiutang(){
         chkRadiologi.setSelected(true);
         chkLaborat.setSelected(true);

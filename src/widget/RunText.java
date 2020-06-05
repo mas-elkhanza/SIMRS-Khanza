@@ -26,6 +26,9 @@ public class RunText extends Canvas implements Runnable {
     int fpsLimiter = 16;
     int posIncrement = 5;
 
+    /**
+     *
+     */
     public RunText() {
         x = MARGIN_X;
         y = getHeight() + 50;

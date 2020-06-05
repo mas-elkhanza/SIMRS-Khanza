@@ -38,8 +38,8 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
     
 
     /** Creates new form DlgPemberianInfus
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPemberianDiet(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1074,6 +1074,9 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {     
         try{
             Valid.tabelKosong(tabMode);
@@ -1181,7 +1184,9 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         }
     }
 
-
+    /**
+     *
+     */
     public void emptTeks() {
         KdDiet.setText("");
         NmDiet.setText("");
@@ -1207,6 +1212,12 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
          Sequel.cariIsi("select kd_kamar from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",Kamar,TNoRw.getText());
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     */
     public void setNoRm(String norwt,Date tgl1,Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -1231,6 +1242,9 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getdiet_pasien());
         BtnHapus.setEnabled(akses.getdiet_pasien());

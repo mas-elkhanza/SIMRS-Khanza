@@ -39,6 +39,10 @@ public class BPJSApiAplicare {
     private SecretKeySpec secretKey;
     private Scheme scheme;
     private HttpComponentsClientHttpRequestFactory factory;
+
+    /**
+     *
+     */
     public BPJSApiAplicare(){
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));            
@@ -88,6 +92,10 @@ public class BPJSApiAplicare {
 	}
     }
         
+    /**
+     *
+     * @return
+     */
     public long GetUTCdatetimeAsString(){    
         millis = System.currentTimeMillis();   
         return millis/1000;

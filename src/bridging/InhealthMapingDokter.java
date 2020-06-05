@@ -663,6 +663,9 @@ public final class InhealthMapingDokter extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         KdDokterRS.setText("");
         NmDokterRS.setText("");
@@ -678,13 +681,19 @@ public final class InhealthMapingDokter extends javax.swing.JDialog {
         }
     }
     
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getinhealth_mapping_dokter());
         BtnHapus.setEnabled(akses.getinhealth_mapping_dokter());
         BtnEdit.setEnabled(akses.getinhealth_mapping_dokter());
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }    

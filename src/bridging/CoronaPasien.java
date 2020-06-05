@@ -2094,6 +2094,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         NoRM.setText("");
         NamaPasien.setText("");
@@ -2183,6 +2186,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpasien_corona());
         BtnHapus.setEnabled(akses.getpasien_corona());
@@ -2190,6 +2196,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         ppDiagnosaPasien.setEnabled(akses.getdiagnosa_pasien_corona());
     }
     
+    /**
+     *
+     * @param nomr
+     */
     public void setPasien(String nomr){
         ChkInput.setSelected(true);
         isForm(); 
@@ -2234,6 +2244,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbObat;
     }

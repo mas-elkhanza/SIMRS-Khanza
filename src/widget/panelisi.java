@@ -33,6 +33,10 @@ public class panelisi extends JPanel{
     //private Color warnaAtas = new Color(255,194,255);
     //private Color warnaBawah = new Color(255,194,255);
 
+    /**
+     *
+     */
+
     public panelisi(){
         super();
         this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(239,244,234)));
@@ -47,6 +51,10 @@ public class panelisi extends JPanel{
         return warnaAtas;
     }
 
+    /**
+     *
+     * @param warnaAtas
+     */
     public void setWarnaAtas(Color warnaAtas) {
         this.warnaAtas = warnaAtas;
     }
@@ -55,6 +63,10 @@ public class panelisi extends JPanel{
         return warnaBawah;
     }
 
+    /**
+     *
+     * @param warnaBawah
+     */
     public void setWarnaBawah(Color warnaBawah) {
         this.warnaBawah = warnaBawah;
     }
@@ -108,6 +120,9 @@ public class panelisi extends JPanel{
 
     }
 
+    /**
+     *
+     */
     protected void createImageCache() {
         int width = 2;
         int height = getHeight();

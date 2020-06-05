@@ -40,8 +40,8 @@ public final class DlgBelum extends javax.swing.JDialog {
     private String say=" pegawai.id not in (select temporary_presensi.id from temporary_presensi) ";
 
     /** Creates new form DlgBangsal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBelum(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -349,6 +349,9 @@ public final class DlgBelum extends javax.swing.JDialog {
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {        
         Valid.tabelKosong(tabMode);
         try{         

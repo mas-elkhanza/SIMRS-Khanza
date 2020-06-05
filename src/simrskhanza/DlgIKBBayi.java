@@ -41,6 +41,10 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgIKBBayi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -65,8 +69,8 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             krjs2="",umribu="",umrayah="",umrplpr="",umrs1="",umrs2="";
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgIKBBayi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -3731,6 +3735,9 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         jkelcari=""; tglcari="";
         if(! cmbCrJk.getSelectedItem().toString().equals("SEMUA")){
@@ -3797,6 +3804,9 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         LCount.setText(""+b);
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         NoRm.setText("");
         NmBayi.setText("");
@@ -3867,11 +3877,18 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }
 
-
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return NoRm;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
@@ -3890,6 +3907,17 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }
     
+    /**
+     *
+     * @param norm
+     * @param nama
+     * @param ibubayi
+     * @param alamatibu
+     * @param jkel
+     * @param umur
+     * @param tgllhir
+     * @param daftar
+     */
     public void setNoRM(String norm,String nama,String ibubayi,String alamatibu,
             String jkel,String umur,Date tgllhir,Date daftar){
         NoRm.setText(norm);
@@ -3910,6 +3938,9 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         autoSKL();
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getkelahiran_bayi());
         BtnHapus.setEnabled(akses.getkelahiran_bayi());
@@ -3969,6 +4000,10 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }        
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbDokter;
     }

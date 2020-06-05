@@ -1321,6 +1321,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpengajuan_cuti());
         BtnHapus.setEnabled(akses.getpengajuan_cuti());

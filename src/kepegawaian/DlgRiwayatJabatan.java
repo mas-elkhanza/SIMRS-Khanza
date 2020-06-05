@@ -68,6 +68,11 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
     private final Properties prop = new Properties(); 
     private final validasi Valid=new validasi();
     
+    /**
+     *
+     * @param parent
+     * @param modal
+     */
     public DlgRiwayatJabatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -193,6 +198,10 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
         });
     }
  
+    /**
+     *
+     * @param url
+     */
     public void loadURL(String url) {  
         try {
             createScene();
@@ -208,10 +217,17 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
         });        
     }    
     
+    /**
+     *
+     */
     public void CloseScane(){
         Platform.setImplicitExit(false);
     }
     
+    /**
+     *
+     * @param node
+     */
     public void print(final Node node) {
         Printer printer = Printer.getDefaultPrinter();
         PageLayout pageLayout = printer.createPageLayout(Paper.NA_LETTER, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);

@@ -45,6 +45,9 @@ public class DUKCAPILJakartaPostLahir {
     private JsonNode root;
     private JsonNode nameNode;
     
+    /**
+     *
+     */
     public DUKCAPILJakartaPostLahir(){
         super();
         try {
@@ -54,6 +57,52 @@ public class DUKCAPILJakartaPostLahir {
         }
     }
     
+    /**
+     *
+     * @param nokk
+     * @param nmbayi
+     * @param tgllhr
+     * @param jamlhr
+     * @param jk
+     * @param jnslhr
+     * @param lahirke
+     * @param brt
+     * @param pjg
+     * @param pnlglhr
+     * @param nikibu
+     * @param nmibu
+     * @param alamatibu
+     * @param kerjaibu
+     * @param nikayah
+     * @param nmayah
+     * @param alamatayah
+     * @param kerjaayah
+     * @param noskl
+     * @param pnlgnama
+     * @param tindaklhr
+     * @param bpjsibu
+     * @param bpjsayah
+     * @param notlp
+     * @param bpjsby
+     * @param nikplpr
+     * @param nmplpr
+     * @param almtplpr
+     * @param krjplpr
+     * @param niks1
+     * @param nms1
+     * @param almts1
+     * @param krjs1
+     * @param niks2
+     * @param nms2
+     * @param almts2
+     * @param krjs2
+     * @param umribu
+     * @param umrayah
+     * @param umrplpr
+     * @param umrs1
+     * @param umrs2
+     * @return
+     */
     public boolean post(String nokk,String nmbayi,String tgllhr,String jamlhr,String jk,String jnslhr,String lahirke,
                        String brt,String pjg,String pnlglhr,String nikibu,String nmibu,String alamatibu,String kerjaibu,
                        String nikayah,String nmayah,String alamatayah,String kerjaayah,String noskl,String pnlgnama,

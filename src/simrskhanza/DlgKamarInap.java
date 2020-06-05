@@ -49,6 +49,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -77,18 +79,44 @@ import rekammedis.RMRiwayatPerawatan;
  */
 public class DlgKamarInap extends javax.swing.JDialog {
 
-    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(DlgKamarInap.class.getName());
     private final DefaultTableModel tabMode;
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
+
+    /**
+     *
+     */
     public DlgIKBBayi ikb = new DlgIKBBayi(null, false);
 
+    /**
+     *
+     */
     public DlgKamar kamar = new DlgKamar(null, false);
+
+    /**
+     *
+     */
     public DlgReg reg = new DlgReg(null, false);
+
+    /**
+     *
+     */
     public DlgSpri spri = new DlgSpri(null, false);
+
+    /**
+     *
+     */
     public DlgPasienMati pasienMeninggal = new DlgPasienMati(null, false);
+
+    /**
+     *
+     */
     public DlgBilingRanap billing = new DlgBilingRanap(null, false);
+
+    /**
+     *
+     */
     public DlgDiagnosaPenyakit diagnosa = new DlgDiagnosaPenyakit(null, false);
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
 
@@ -108,17 +136,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
     /**
      * Creates new form DlgKamarInap
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgKamarInap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         tabMode = new DefaultTableModel(null,
-                new Object[] { "No.Rawat", "Nomer RM", "Nama Pasien", "Alamat Pasien", "Penanggung Jawab",
-                        "Hubungan P.J.", "Jenis Bayar", "Kamar", "Tarif Kamar", "Diagnosa Awal", "Diagnosa Akhir",
-                        "Tgl.Masuk", "Jam Masuk", "Tgl.Keluar", "Jam Keluar", "Ttl.Biaya", "Stts.Pulang", "Lama",
-                        "Dokter P.J.", "Kamar", "Status Bayar" }) {
+                new Object[]{"No.Rawat", "Nomer RM", "Nama Pasien", "Alamat Pasien", "Penanggung Jawab",
+                    "Hubungan P.J.", "Jenis Bayar", "Kamar", "Tarif Kamar", "Diagnosa Awal", "Diagnosa Akhir",
+                    "Tgl.Masuk", "Jam Masuk", "Tgl.Keluar", "Jam Keluar", "Ttl.Biaya", "Stts.Pulang", "Lama",
+                    "Dokter P.J.", "Kamar", "Status Bayar"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -217,10 +245,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     DlgCatatan.setOpacity(0.90f);
                 }
             } catch (Exception e) {
-                log.error("Notif Tansparant : " + e);
+                System.out.println("Notif Tansparant : " + e);
+                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
             }
         } catch (Exception ex) {
-            log.error("Notif Load XML : " + ex);
+            System.out.println("Notif Load XML : " + ex);
+            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         TJmlHari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
@@ -485,18 +515,18 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             if (hariawal.equals("Yes")) {
                                 Sequel.cariIsi(
                                         "select (if(to_days('" + CmbTahun.getSelectedItem() + "-"
-                                                + CmbBln.getSelectedItem() + "-" + CmbTgl.getSelectedItem() + " "
-                                                + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":"
-                                                + cmbDtk.getSelectedItem() + "')-to_days('" + tglmasuk + " " + jammasuk
-                                                + "')=0,if(time_to_sec('" + CmbTahun.getSelectedItem() + "-"
-                                                + CmbBln.getSelectedItem() + "-" + CmbTgl.getSelectedItem() + " "
-                                                + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":"
-                                                + cmbDtk.getSelectedItem() + "')-time_to_sec('" + tglmasuk + " "
-                                                + jammasuk + "')>(3600*" + lama + "),1,0),to_days('"
-                                                + CmbTahun.getSelectedItem() + "-" + CmbBln.getSelectedItem() + "-"
-                                                + CmbTgl.getSelectedItem() + " " + cmbJam.getSelectedItem() + ":"
-                                                + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem()
-                                                + "')-to_days('" + tglmasuk + " " + jammasuk + "'))+1) as lama",
+                                        + CmbBln.getSelectedItem() + "-" + CmbTgl.getSelectedItem() + " "
+                                        + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":"
+                                        + cmbDtk.getSelectedItem() + "')-to_days('" + tglmasuk + " " + jammasuk
+                                        + "')=0,if(time_to_sec('" + CmbTahun.getSelectedItem() + "-"
+                                        + CmbBln.getSelectedItem() + "-" + CmbTgl.getSelectedItem() + " "
+                                        + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":"
+                                        + cmbDtk.getSelectedItem() + "')-time_to_sec('" + tglmasuk + " "
+                                        + jammasuk + "')>(3600*" + lama + "),1,0),to_days('"
+                                        + CmbTahun.getSelectedItem() + "-" + CmbBln.getSelectedItem() + "-"
+                                        + CmbTgl.getSelectedItem() + " " + cmbJam.getSelectedItem() + ":"
+                                        + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem()
+                                        + "')-to_days('" + tglmasuk + " " + jammasuk + "'))+1) as lama",
                                         TJmlHari);
                             } else {
                                 Sequel.cariIsi("select if(to_days('" + CmbTahun.getSelectedItem() + "-"
@@ -559,7 +589,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 key = rs.getString(1) + ", " + key;
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs != null) {
                                 rs.close();
@@ -569,7 +600,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception ex) {
-                        log.error(ex);
+                        System.out.println(ex);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
                     if (WindowInputKamar.isVisible() == true) {
@@ -578,8 +610,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     } else if (WindowInputKamar.isVisible() == false) {
                         Sequel.mengedit("kamar_inap",
                                 "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                        + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                        + "'",
+                                + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                                + "'",
                                 "diagnosa_akhir='" + key + "'");
                         tampil();
                     }
@@ -808,7 +840,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     aktifkan_hapus_data_salah = rssetjam.getString("aktifkan_hapus_data_salah");
                 }
             } catch (Exception e) {
-                log.error("Set Kamar Inap : " + e);
+                System.out.println("Set Kamar Inap : " + e);
+                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rssetjam != null) {
                     rssetjam.close();
@@ -818,7 +851,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }
             }
         } catch (Exception e) {
-            log.error("Set Kamar Inap : " + e);
+            System.out.println("Set Kamar Inap : " + e);
+            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
         }
 
         try {
@@ -829,7 +863,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             diagnosaakhir.setEditable(false);
-            log.error(e);
+            System.out.println(e);
+            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -4372,7 +4407,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             try {
                 pilihancetak = (String) JOptionPane.showInputDialog(rootPane,
                         "Silahkan pilih laporan yang mau dicetak!", "Laporan", JOptionPane.QUESTION_MESSAGE, null,
-                        new Object[] { "Laporan 1", "Laporan 2", "Laporan 3", "Lembar Bimbingan Rohani" }, "Laporan 1");
+                        new Object[]{"Laporan 1", "Laporan 2", "Laporan 3", "Lembar Bimbingan Rohani"}, "Laporan 1");
                 switch (pilihancetak) {
                     case "Laporan 1":
                         Map<String, Object> param = new HashMap<>();
@@ -4389,16 +4424,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         Valid.MyReportqry("rptKamarInap.jasper", "report", "::[ Data Kamar Inap Pasien ]::",
                                 "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab),"
-                                        + "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir, "
-                                        + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar, "
-                                        + "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp, "
-                                        + "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "
-                                        + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                        + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
-                                        + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                                        + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
-                                        + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  " + key
-                                        + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",
+                                + "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir, "
+                                + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar, "
+                                + "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp, "
+                                + "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "
+                                + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
+                                + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                                + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
+                                + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  " + key
+                                + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",
                                 param);
                         this.setCursor(Cursor.getDefaultCursor());
                         break;
@@ -4417,17 +4452,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         Valid.MyReportqry("rptKamarInap2.jasper", "report", "::[ Data Kamar Inap Pasien ]::",
                                 "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"
-                                        + "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,"
-                                        + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,"
-                                        + "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"
-                                        + "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,"
-                                        + "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "
-                                        + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                        + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
-                                        + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                                        + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
-                                        + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  " + key
-                                        + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",
+                                + "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,"
+                                + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,"
+                                + "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"
+                                + "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,"
+                                + "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "
+                                + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
+                                + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                                + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
+                                + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  " + key
+                                + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",
                                 param2);
                         this.setCursor(Cursor.getDefaultCursor());
                         break;
@@ -4446,17 +4481,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         Valid.MyReportqry("rptKamarInap5.jasper", "report", "::[ Data Kamar Inap Pasien ]::",
                                 "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.agama,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"
-                                        + "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,dokter.nm_dokter,kamar_inap.asal_kiriman,suku_bangsa.nama_suku_bangsa,"
-                                        + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,"
-                                        + "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"
-                                        + "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,"
-                                        + "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "
-                                        + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                        + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
-                                        + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                                        + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join suku_bangsa on pasien.suku_bangsa=suku_bangsa.id "
-                                        + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  " + key
-                                        + " and order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",
+                                + "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,dokter.nm_dokter,kamar_inap.asal_kiriman,suku_bangsa.nama_suku_bangsa,"
+                                + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,"
+                                + "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"
+                                + "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,"
+                                + "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "
+                                + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
+                                + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                                + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join suku_bangsa on pasien.suku_bangsa=suku_bangsa.id "
+                                + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  " + key
+                                + " and order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",
                                 param3);
                         this.setCursor(Cursor.getDefaultCursor());
                         break;
@@ -4472,23 +4507,24 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         Valid.MyReportqry("rptKamarInap3.jasper", "report", "::[ Data Kamar Inap Pasien ]::",
                                 "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"
-                                        + "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,pasien.agama,"
-                                        + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk, if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar, "
-                                        + "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"
-                                        + "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,"
-                                        + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "
-                                        + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                        + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
-                                        + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                                        + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
-                                        + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  " + key
-                                        + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",
+                                + "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,pasien.agama,"
+                                + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk, if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar, "
+                                + "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"
+                                + "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,"
+                                + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "
+                                + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
+                                + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                                + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
+                                + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  " + key
+                                + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",
                                 param4);
                         this.setCursor(Cursor.getDefaultCursor());
                         break;
                 }
             } catch (Exception e) {
-                log.error("Notifikasi : " + e);
+                System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }// GEN-LAST:event_BtnPrintActionPerformed
@@ -4596,13 +4632,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         case "KOSONG":
                             if (Sequel.menyimpantf("kamar_inap",
                                     "'" + norawat.getText() + "','" + kdkamar.getText() + "','" + TTarif.getText()
-                                            + "','" + diagnosaawal.getText() + "','" + diagnosaakhir.getText() + "','"
-                                            + upf.getSelectedItem() + "','" + kirimanDari.getSelectedItem() + "','"
-                                            + CmbTahun.getSelectedItem() + "-" + CmbBln.getSelectedItem() + "-"
-                                            + CmbTgl.getSelectedItem() + "','" + cmbJam.getSelectedItem() + ":"
-                                            + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem()
-                                            + "','0000-00-00','00:00:00','" + TJmlHari.getText() + "','"
-                                            + ttlbiaya.getText() + "','-'",
+                                    + "','" + diagnosaawal.getText() + "','" + diagnosaakhir.getText() + "','"
+                                    + upf.getSelectedItem() + "','" + kirimanDari.getSelectedItem() + "','"
+                                    + CmbTahun.getSelectedItem() + "-" + CmbBln.getSelectedItem() + "-"
+                                    + CmbTgl.getSelectedItem() + "','" + cmbJam.getSelectedItem() + ":"
+                                    + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem()
+                                    + "','0000-00-00','00:00:00','" + TJmlHari.getText() + "','"
+                                    + ttlbiaya.getText() + "','-'",
                                     "No.Rawat") == true) {
                                 Sequel.mengedit("reg_periksa", "no_rawat='" + norawat.getText() + "'",
                                         "status_lanjut='Ranap'");
@@ -4624,14 +4660,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 } else {
                     Sequel.mengedit("kamar_inap",
                             "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                    + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                    + "'",
+                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                            + "'",
                             "tgl_keluar='" + CmbTahun.getSelectedItem() + "-" + CmbBln.getSelectedItem() + "-"
-                                    + CmbTgl.getSelectedItem() + "',trf_kamar='" + TTarif.getText() + "',jam_keluar='"
-                                    + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":"
-                                    + cmbDtk.getSelectedItem() + "',ttl_biaya='" + ttlbiaya.getText()
-                                    + "',stts_pulang='" + cmbStatus.getSelectedItem() + "',diagnosa_akhir='"
-                                    + diagnosaakhir.getText() + "',lama='" + TJmlHari.getText() + "'");
+                            + CmbTgl.getSelectedItem() + "',trf_kamar='" + TTarif.getText() + "',jam_keluar='"
+                            + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":"
+                            + cmbDtk.getSelectedItem() + "',ttl_biaya='" + ttlbiaya.getText()
+                            + "',stts_pulang='" + cmbStatus.getSelectedItem() + "',diagnosa_akhir='"
+                            + diagnosaakhir.getText() + "',lama='" + TJmlHari.getText() + "'");
                     if (cmbStatus.getSelectedItem().equals("Meninggal")) {
                         DlgPasienMati dlgPasienMati = new DlgPasienMati(null, false);
                         dlgPasienMati.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -4776,7 +4812,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
-                log.error(e);
+                System.out.println(e);
+                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
             }
 
             if (evt.getClickCount() == 1) {
@@ -4792,7 +4829,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 JOptionPane.YES_NO_OPTION);
                         if (reply == JOptionPane.YES_OPTION) {
                             if (Sequel.menyimpantf("ranap_gabung", "?,?", "Data Ranap Gabung", 2,
-                                    new String[] { norawat.getText(), norawatgabung }) == true) {
+                                    new String[]{norawat.getText(), norawatgabung}) == true) {
                                 Sequel.queryu("delete from kamar_inap where no_rawat='" + norawatgabung + "'");
                                 Sequel.mengedit("kamar", "kd_kamar='" + kamaryangdigabung + "'", "status='KOSONG'");
                                 Sequel.mengedit("kamar_inap", "no_rawat='" + norawatgabung + "'",
@@ -4846,9 +4883,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             try {
                                 psanak = koneksi.prepareStatement(
                                         "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                                 try {
                                     psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                                     rs2 = psanak.executeQuery();
@@ -4885,7 +4922,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         tbKamIn.requestFocus();
                                     }
                                 } catch (Exception ex) {
-                                    log.error("Notifikasi : " + ex);
+                                    System.out.println("Notifikasi : " + ex);
+                                    Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                                 } finally {
                                     if (rs2 != null) {
                                         rs2.close();
@@ -4895,7 +4933,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     }
                                 }
                             } catch (Exception e) {
-                                log.error(e);
+                                System.out.println(e);
+                                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                             }
                         } else {
                             if (Sequel.cariRegistrasi(norawat.getText()) > 0) {
@@ -4945,7 +4984,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 try {
                     getData();
                 } catch (java.lang.NullPointerException e) {
-                    log.error(e);
+                    System.out.println(e);
+                    Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                 }
             }
 
@@ -4965,9 +5005,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             try {
                                 psanak = koneksi.prepareStatement(
                                         "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                                 try {
                                     psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                                     rs2 = psanak.executeQuery();
@@ -5004,7 +5044,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         tbKamIn.requestFocus();
                                     }
                                 } catch (Exception ex) {
-                                    log.error("Notifikasi : " + ex);
+                                    System.out.println("Notifikasi : " + ex);
+                                    Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                                 } finally {
                                     if (rs2 != null) {
                                         rs2.close();
@@ -5014,7 +5055,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     }
                                 }
                             } catch (Exception e) {
-                                log.error(e);
+                                System.out.println(e);
+                                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                             }
                         } else {
                             akses.setform("DlgKamarInap");
@@ -5101,9 +5143,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         } else {
                             psanak = koneksi.prepareStatement(
                                     "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                             try {
                                 psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                                 rs2 = psanak.executeQuery();
@@ -5136,7 +5178,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                log.error("Notifikasi : " + ex);
+                                System.out.println("Notifikasi : " + ex);
+                                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -5147,7 +5190,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     akses.setform("DlgKamarInap");
@@ -5183,9 +5227,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -5217,7 +5261,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5227,7 +5272,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     akses.setform("DlgKamarInap");
@@ -5265,9 +5311,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -5285,7 +5331,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5295,7 +5342,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     DlgRujuk dlgrjk = new DlgRujuk(null, false);
@@ -5322,9 +5370,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -5357,7 +5405,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5367,7 +5416,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     akses.setform("DlgKamarInap");
@@ -5471,7 +5521,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 billing.setVisible(true);
                             }
                         } catch (Exception e) {
-                            log.error("Notifikasi : " + e);
+                            System.out.println("Notifikasi : " + e);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rs != null) {
                                 rs.close();
@@ -5481,7 +5532,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 }
             }
@@ -5498,9 +5550,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -5518,7 +5570,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5528,7 +5581,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     DlgPemberianDiet rawatinap = new DlgPemberianDiet(null, false);
@@ -5573,9 +5627,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         } else {
                             psanak = koneksi.prepareStatement(
                                     "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                             try {
                                 psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                                 rs2 = psanak.executeQuery();
@@ -5593,7 +5647,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                log.error("Notifikasi : " + ex);
+                                System.out.println("Notifikasi : " + ex);
+                                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -5604,7 +5659,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     akses.setform("DlgKamarInap");
@@ -5638,9 +5694,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         } else {
                             psanak = koneksi.prepareStatement(
                                     "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                             try {
                                 psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                                 rs2 = psanak.executeQuery();
@@ -5656,7 +5712,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                log.error("Notifikasi : " + ex);
+                                System.out.println("Notifikasi : " + ex);
+                                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -5667,7 +5724,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     DlgTagihanOperasi dlgro = new DlgTagihanOperasi(null, false);
@@ -5691,9 +5749,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -5714,7 +5772,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5724,7 +5783,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     if (Sequel.cariRegistrasi(norawat.getText().trim()) > 0) {
@@ -5754,9 +5814,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -5776,7 +5836,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5786,7 +5847,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     if (Sequel.cariRegistrasi(norawat.getText().trim()) > 0) {
@@ -5813,9 +5875,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -5835,7 +5897,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -5845,7 +5908,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     akses.setform("DlgKamarInap");
@@ -5967,13 +6031,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     if (Rganti1.isSelected() == true) {
                         Sequel.menyimpan("kamar_inap",
                                 "'" + norawatpindah.getText() + "','" + kdkamarpindah.getText() + "','"
-                                        + TTarifpindah.getText() + "','" + diagnosaawal.getText() + "','"
-                                        + diagnosaakhir.getText() + "','" + upf.getSelectedItem() + "','"
-                                        + kirimanDari.getSelectedItem() + "','" + CmbTahunpindah.getSelectedItem() + "-"
-                                        + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem() + "','"
-                                        + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
-                                        + cmbDtkpindah.getSelectedItem() + "','0000-00-00','00:00:00','"
-                                        + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','-'",
+                                + TTarifpindah.getText() + "','" + diagnosaawal.getText() + "','"
+                                + diagnosaakhir.getText() + "','" + upf.getSelectedItem() + "','"
+                                + kirimanDari.getSelectedItem() + "','" + CmbTahunpindah.getSelectedItem() + "-"
+                                + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem() + "','"
+                                + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
+                                + cmbDtkpindah.getSelectedItem() + "','0000-00-00','00:00:00','"
+                                + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','-'",
                                 "No.Rawat");
                         Sequel.mengedit("kamar", "kd_kamar='" + kdkamarpindah.getText() + "'", "status='ISI'");
                         Sequel.queryu("delete from kamar_inap where no_rawat='"
@@ -6049,23 +6113,23 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 11).toString() + "' and jam_masuk='"
                                 + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 12).toString() + "'",
                                 "trf_kamar='" + TTarif.getText() + "',tgl_keluar='" + CmbTahunpindah.getSelectedItem()
-                                        + "-" + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem()
-                                        + "',jam_keluar='" + cmbJampindah.getSelectedItem() + ":"
-                                        + cmbMntpindah.getSelectedItem() + ":" + cmbDtkpindah.getSelectedItem()
-                                        + "',lama='" + TJmlHari.getText() + "',ttl_biaya='" + ttlbiaya.getText()
-                                        + "',stts_pulang='Pindah Kamar'");
+                                + "-" + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem()
+                                + "',jam_keluar='" + cmbJampindah.getSelectedItem() + ":"
+                                + cmbMntpindah.getSelectedItem() + ":" + cmbDtkpindah.getSelectedItem()
+                                + "',lama='" + TJmlHari.getText() + "',ttl_biaya='" + ttlbiaya.getText()
+                                + "',stts_pulang='Pindah Kamar'");
                         Sequel.mengedit("kamar",
                                 "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
                                 "status='KOSONG'");
                         Sequel.menyimpan("kamar_inap",
                                 "'" + norawatpindah.getText() + "','" + kdkamarpindah.getText() + "','"
-                                        + TTarifpindah.getText() + "','" + diagnosaawal.getText() + "','"
-                                        + diagnosaakhir.getText() + "','" + upf.getSelectedItem() + "','"
-                                        + kirimanDari.getSelectedItem() + "','" + CmbTahunpindah.getSelectedItem() + "-"
-                                        + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem() + "','"
-                                        + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
-                                        + cmbDtkpindah.getSelectedItem() + "','0000-00-00','00:00:00','"
-                                        + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','-'",
+                                + TTarifpindah.getText() + "','" + diagnosaawal.getText() + "','"
+                                + diagnosaakhir.getText() + "','" + upf.getSelectedItem() + "','"
+                                + kirimanDari.getSelectedItem() + "','" + CmbTahunpindah.getSelectedItem() + "-"
+                                + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem() + "','"
+                                + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
+                                + cmbDtkpindah.getSelectedItem() + "','0000-00-00','00:00:00','"
+                                + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','-'",
                                 "No.Rawat");
                         Sequel.mengedit("kamar", "kd_kamar='" + kdkamarpindah.getText() + "'", "status='ISI'");
                     } else if (Rganti4.isSelected() == true) {
@@ -6133,23 +6197,23 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 11).toString() + "' and jam_masuk='"
                                 + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 12).toString() + "'",
                                 "trf_kamar='" + TTarifpindah.getText() + "',tgl_keluar='"
-                                        + CmbTahunpindah.getSelectedItem() + "-" + CmbBlnpindah.getSelectedItem() + "-"
-                                        + CmbTglpindah.getSelectedItem() + "',jam_keluar='"
-                                        + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
-                                        + cmbDtkpindah.getSelectedItem() + "',ttl_biaya='" + ttlbiaya.getText()
-                                        + "',lama='" + TJmlHari.getText() + "',stts_pulang='Pindah Kamar'");
+                                + CmbTahunpindah.getSelectedItem() + "-" + CmbBlnpindah.getSelectedItem() + "-"
+                                + CmbTglpindah.getSelectedItem() + "',jam_keluar='"
+                                + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
+                                + cmbDtkpindah.getSelectedItem() + "',ttl_biaya='" + ttlbiaya.getText()
+                                + "',lama='" + TJmlHari.getText() + "',stts_pulang='Pindah Kamar'");
                         Sequel.mengedit("kamar",
                                 "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
                                 "status='KOSONG'");
                         Sequel.menyimpan("kamar_inap",
                                 "'" + norawatpindah.getText() + "','" + kdkamarpindah.getText() + "','"
-                                        + TTarifpindah.getText() + "','" + diagnosaawal.getText() + "','"
-                                        + diagnosaakhir.getText() + "','" + upf.getSelectedItem() + "','"
-                                        + kirimanDari.getSelectedItem() + "','" + CmbTahunpindah.getSelectedItem() + "-"
-                                        + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem() + "','"
-                                        + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
-                                        + cmbDtkpindah.getSelectedItem() + "','0000-00-00','00:00:00','"
-                                        + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','-'",
+                                + TTarifpindah.getText() + "','" + diagnosaawal.getText() + "','"
+                                + diagnosaakhir.getText() + "','" + upf.getSelectedItem() + "','"
+                                + kirimanDari.getSelectedItem() + "','" + CmbTahunpindah.getSelectedItem() + "-"
+                                + CmbBlnpindah.getSelectedItem() + "-" + CmbTglpindah.getSelectedItem() + "','"
+                                + cmbJampindah.getSelectedItem() + ":" + cmbMntpindah.getSelectedItem() + ":"
+                                + cmbDtkpindah.getSelectedItem() + "','0000-00-00','00:00:00','"
+                                + TJmlHaripindah.getText() + "','" + ttlbiayapindah.getText() + "','-'",
                                 "No.Rawat");
                         Sequel.mengedit("kamar", "kd_kamar='" + kdkamarpindah.getText() + "'", "status='ISI'");
                     }
@@ -6210,9 +6274,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -6229,7 +6293,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6239,7 +6304,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     DlgInputStokPasien dlgrjk = new DlgInputStokPasien(null, false);
@@ -6271,7 +6337,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
             // Sequel.meghapus("ubah_penjab","no_rawat",norawat.getText());
             Sequel.mengedit("reg_periksa", "no_rawat=?", " kd_pj=?", 2,
-                    new String[] { kdpenjab.getText(), norawat.getText() });
+                    new String[]{kdpenjab.getText(), norawat.getText()});
             // Sequel.menyimpan("ubah_penjab","?,?,?,?","Ubah Jenis Bayar",4,new
             // String[]{norawat.getText(),now,kdpj,kdpenjab.getText()});
 
@@ -6330,8 +6396,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 } else {
                     Sequel.mengedit("kamar_inap",
                             "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                    + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                    + "'",
+                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                            + "'",
                             "stts_pulang='Atas Persetujuan Dokter'");
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
@@ -6358,8 +6424,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 } else {
                     Sequel.mengedit("kamar_inap",
                             "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                    + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                    + "'",
+                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                            + "'",
                             "stts_pulang='Rujuk'");
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
@@ -6386,8 +6452,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 } else {
                     Sequel.mengedit("kamar_inap",
                             "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                    + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                    + "'",
+                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                            + "'",
                             "stts_pulang='Atas Permintaan Sendiri'");
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
@@ -6414,8 +6480,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 } else {
                     Sequel.mengedit("kamar_inap",
                             "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                    + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                    + "'",
+                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                            + "'",
                             "stts_pulang='Meninggal'");
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
@@ -6442,8 +6508,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 } else {
                     Sequel.mengedit("kamar_inap",
                             "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                    + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                    + "'",
+                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                            + "'",
                             "stts_pulang='Kabur'");
                     Sequel.mengedit("kamar",
                             "kd_kamar='" + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 19).toString() + "'",
@@ -6479,9 +6545,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -6499,7 +6565,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6509,7 +6576,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     billing.deposit.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -6532,9 +6600,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -6553,7 +6621,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6563,7 +6632,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     DlgResepObat resep = new DlgResepObat(null, false);
@@ -6591,9 +6661,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -6644,51 +6714,51 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         rs2.getString("no_rawat2")));
                                 param.put("chkri", Sequel.cariIsi(
                                         "select if(count(kamar_inap.no_rawat)>1,'V','') from reg_periksa inner join pasien inner join kamar_inap "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? ",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? ",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("chkrj", Sequel.cariIsi(
                                         "select if(count(reg_periksa.no_rawat)>1,'V','') from reg_periksa inner join pasien "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? ",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? ",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("riterakhir", Sequel.cariIsi(
                                         "select if(count(kamar_inap.no_rawat)>1,DATE_FORMAT(kamar_inap.tgl_keluar,'%d-%m-%Y'),'') from reg_periksa inner join pasien inner join kamar_inap "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("rjterakhir", Sequel.cariIsi(
                                         "select if(count(reg_periksa.no_rawat)>1,DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y'),'') from reg_periksa inner join pasien "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("rike", Sequel.cariIsi(
                                         "select if(count(kamar_inap.no_rawat)>1,(count(kamar_inap.no_rawat)-1),'') from reg_periksa inner join pasien inner join kamar_inap "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? ",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? ",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("rjke", Sequel.cariIsi(
                                         "select if(count(reg_periksa.no_rawat)>1,(count(reg_periksa.no_rawat)-1),'') from reg_periksa inner join pasien "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? ",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? ",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("riruang", Sequel.cariIsi(
                                         "select if(count(kamar_inap.no_rawat)>1,kamar_inap.kd_kamar,'') from reg_periksa inner join pasien inner join kamar_inap "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("rjruang", Sequel.cariIsi(
                                         "select if(count(reg_periksa.no_rawat)>1,kd_poli,'') from reg_periksa inner join pasien "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("chkruang", Sequel.cariIsi(
                                         "select if(count(kamar_inap.no_rawat)>1,'V','') from reg_periksa inner join pasien inner join kamar_inap "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("chkbangsal", Sequel.cariIsi(
                                         "select if(count(reg_periksa.no_rawat)>1,'V','') from reg_periksa inner join pasien "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("chkkelri", Sequel.cariIsi(
                                         "select if(count(kamar_inap.no_rawat)>1,'V','') from reg_periksa inner join pasien inner join kamar_inap "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("chkkelrj", Sequel.cariIsi(
                                         "select if(count(reg_periksa.no_rawat)>1,'V','') from reg_periksa inner join pasien "
-                                                + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
+                                        + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
                                         rs2.getString("no_rkm_medis")));
                                 param.put("petugas",
                                         Sequel.cariIsi("select nama from petugas where nip=?", akses.getkode()));
@@ -6706,7 +6776,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -6716,7 +6787,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     Map<String, Object> param = new HashMap<>();
@@ -6761,51 +6833,51 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     norawat.getText()));
                     param.put("chkri", Sequel.cariIsi(
                             "select if(count(kamar_inap.no_rawat)>1,'V','') from reg_periksa inner join pasien inner join kamar_inap "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? ",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? ",
                             TNoRM.getText()));
                     param.put("chkrj", Sequel.cariIsi(
                             "select if(count(reg_periksa.no_rawat)>1,'V','') from reg_periksa inner join pasien "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? ",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? ",
                             TNoRM.getText()));
                     param.put("riterakhir", Sequel.cariIsi(
                             "select if(count(kamar_inap.no_rawat)>1,DATE_FORMAT(kamar_inap.tgl_keluar,'%d-%m-%Y'),'') from reg_periksa inner join pasien inner join kamar_inap "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
                             TNoRM.getText()));
                     param.put("rjterakhir", Sequel.cariIsi(
                             "select if(count(reg_periksa.no_rawat)>1,DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y'),'') from reg_periksa inner join pasien "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
                             TNoRM.getText()));
                     param.put("rike", Sequel.cariIsi(
                             "select if(count(kamar_inap.no_rawat)>1,(count(kamar_inap.no_rawat)-1),'') from reg_periksa inner join pasien inner join kamar_inap "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? ",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? ",
                             TNoRM.getText()));
                     param.put("rjke", Sequel.cariIsi(
                             "select if(count(reg_periksa.no_rawat)>1,(count(reg_periksa.no_rawat)-1),'') from reg_periksa inner join pasien "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? ",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? ",
                             TNoRM.getText()));
                     param.put("riruang", Sequel.cariIsi(
                             "select if(count(kamar_inap.no_rawat)>1,kamar_inap.kd_kamar,'') from reg_periksa inner join pasien inner join kamar_inap "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
                             TNoRM.getText()));
                     param.put("rjruang", Sequel.cariIsi(
                             "select if(count(reg_periksa.no_rawat)>1,kd_poli,'') from reg_periksa inner join pasien "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
                             TNoRM.getText()));
                     param.put("chkruang", Sequel.cariIsi(
                             "select if(count(kamar_inap.no_rawat)>1,'V','') from reg_periksa inner join pasien inner join kamar_inap "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
                             TNoRM.getText()));
                     param.put("chkbangsal", Sequel.cariIsi(
                             "select if(count(reg_periksa.no_rawat)>1,'V','') from reg_periksa inner join pasien "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
                             TNoRM.getText()));
                     param.put("chkkelri", Sequel.cariIsi(
                             "select if(count(kamar_inap.no_rawat)>1,'V','') from reg_periksa inner join pasien inner join kamar_inap "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rkm_medis=? order by kamar_inap.tgl_masuk desc limit 1",
                             TNoRM.getText()));
                     param.put("chkkelrj", Sequel.cariIsi(
                             "select if(count(reg_periksa.no_rawat)>1,'V','') from reg_periksa inner join pasien "
-                                    + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc ",
                             TNoRM.getText()));
                     param.put("petugas", Sequel.cariIsi("select nama from petugas where nip=?", akses.getkode()));
 
@@ -6848,9 +6920,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         try {
                             psanak = koneksi.prepareStatement(
                                     "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                             try {
                                 psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -6885,7 +6957,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                log.error("Notifikasi : " + ex);
+                                System.out.println("Notifikasi : " + ex);
+                                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -6895,7 +6968,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 }
                             }
                         } catch (Exception e) {
-                            log.error(e);
+                            System.out.println(e);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                         }
                     }
                 } else {
@@ -6945,9 +7019,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         } else {
                             psanak = koneksi.prepareStatement(
                                     "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                             try {
                                 psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                                 rs2 = psanak.executeQuery();
@@ -6965,7 +7039,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                log.error("Notifikasi : " + ex);
+                                System.out.println("Notifikasi : " + ex);
+                                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -6976,7 +7051,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     billing.periksarad.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -7009,9 +7085,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -7045,7 +7121,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7055,7 +7132,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     Map<String, Object> param = new HashMap<>();
@@ -7108,9 +7186,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -7146,7 +7224,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7156,7 +7235,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
+                        Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7252,7 +7332,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 }
                             }
                         } catch (Exception e) {
-                            log.error("Notifikasi Umur : " + e);
+                            System.out.println("Notifikasi Umur : " + e);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7263,22 +7344,23 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         }
                         Valid.autoNomer3(
                                 "select (ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0)+1) from reg_periksa where tgl_registrasi='"
-                                        + rs.getString("tgl_registrasi") + "' ",
+                                + rs.getString("tgl_registrasi") + "' ",
                                 dateformat.format(rs.getDate("tgl_registrasi")) + "/", 6, NoRawatGabung);
                         if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Reg Periksa",
                                 19,
-                                new String[] { rs.getString("no_reg"), NoRawatGabung.getText(),
-                                        rs.getString("tgl_registrasi"), rs.getString("jam_reg"),
-                                        rs.getString("kd_dokter"), NoRmBayi.getText(), rs.getString("kd_poli"),
-                                        rs.getString("p_jawab"), rs.getString("almt_pj"), rs.getString("hubunganpj"),
-                                        rs.getString("biaya_reg"), "Belum", "Baru", "Ranap", rs.getString("kd_pj"),
-                                        umur, sttsumur, "Sudah Bayar", "Baru" }) == true) {
+                                new String[]{rs.getString("no_reg"), NoRawatGabung.getText(),
+                                    rs.getString("tgl_registrasi"), rs.getString("jam_reg"),
+                                    rs.getString("kd_dokter"), NoRmBayi.getText(), rs.getString("kd_poli"),
+                                    rs.getString("p_jawab"), rs.getString("almt_pj"), rs.getString("hubunganpj"),
+                                    rs.getString("biaya_reg"), "Belum", "Baru", "Ranap", rs.getString("kd_pj"),
+                                    umur, sttsumur, "Sudah Bayar", "Baru"}) == true) {
                             Sequel.menyimpan("ranap_gabung", "?,?", "Data Ranap Gabung", 2,
-                                    new String[] { norawat.getText(), NoRawatGabung.getText() });
+                                    new String[]{norawat.getText(), NoRawatGabung.getText()});
                         }
                     }
                 } catch (Exception ex) {
-                    log.error("Notifikasi : " + ex);
+                    System.out.println("Notifikasi : " + ex);
+                    Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -7290,7 +7372,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
                 tampil();
             } catch (Exception e) {
-                log.error(e);
+                System.out.println(e);
+                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
             }
             NoRawatGabung.setText("");
             NoRmBayi.setText("");
@@ -7358,8 +7441,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 } else {
                     Sequel.mengedit("kamar_inap",
                             "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                    + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                    + "'",
+                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                            + "'",
                             "stts_pulang='-',tgl_keluar='0000-00-00',jam_keluar='00:00:00'");
                     tampil();
                 }
@@ -7377,9 +7460,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -7402,7 +7485,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
+                            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7412,7 +7496,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     akses.setform("DlgKamarInap");
@@ -7451,9 +7535,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -7477,7 +7561,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7487,7 +7571,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     DlgDpjp dpjp = new DlgDpjp(null, false);
@@ -7534,9 +7618,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         try {
                             psanak = koneksi.prepareStatement(
                                     "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                             try {
                                 psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                                 rs2 = psanak.executeQuery();
@@ -7570,7 +7654,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                log.error("Notifikasi : " + ex);
+                                System.out.println("Notifikasi : " + ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -7580,7 +7664,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 }
                             }
                         } catch (Exception e) {
-                            log.error(e);
+                            System.out.println(e);
                         }
                     }
                 } else {
@@ -7641,14 +7725,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM4.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -7671,8 +7755,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 } else {
                     Sequel.mengedit("kamar_inap",
                             "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
-                                    + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
-                                    + "'",
+                            + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                            + "'",
                             "stts_pulang='Status Belum Lengkap'");
                     tampil();
                 }
@@ -7690,9 +7774,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -7722,7 +7806,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7732,7 +7816,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7785,14 +7869,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM5.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -7813,7 +7897,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         dokterranap = rs.getString("nm_dokter") + ", " + dokterranap;
                     }
                 } catch (Exception e) {
-                    log.error("Notifikasi : " + e);
+                    System.out.println("Notifikasi : " + e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -7824,7 +7908,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }
                 tbKamIn.setValueAt(dokterranap, i, 18);
             } catch (Exception e) {
-                log.error("Notifikasi : " + e);
+                System.out.println("Notifikasi : " + e);
             }
         }
     }// GEN-LAST:event_MnDPJPRanapActionPerformed
@@ -7839,9 +7923,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -7862,7 +7946,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7872,7 +7956,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7938,9 +8022,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -7958,7 +8042,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -7968,7 +8052,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     DlgDataHAIs hais = new DlgDataHAIs(null, false);
@@ -8004,9 +8088,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -8042,7 +8126,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8052,7 +8136,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8114,9 +8198,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -8130,7 +8214,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                             + "berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="
                                             + rs2.getString("no_rawat2"));
                                 } catch (Exception ex) {
-                                    log.error("Notifikasi : " + ex);
+                                    System.out.println("Notifikasi : " + ex);
                                 }
 
                                 berkas.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -8142,7 +8226,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8152,7 +8236,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8164,7 +8248,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 + "berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="
                                 + norawat.getText());
                     } catch (Exception ex) {
-                        log.error("Notifikasi : " + ex);
+                        System.out.println("Notifikasi : " + ex);
                     }
 
                     berkas.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -8191,9 +8275,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         } else {
                             psanak = koneksi.prepareStatement(
                                     "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                             try {
                                 psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                                 rs2 = psanak.executeQuery();
@@ -8213,7 +8297,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
-                                log.error("Notifikasi : " + ex);
+                                System.out.println("Notifikasi : " + ex);
                             } finally {
                                 if (rs2 != null) {
                                     rs2.close();
@@ -8225,7 +8309,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         }
 
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     DlgRawatJalan dlgrwjl = new DlgRawatJalan(null, false);
@@ -8267,14 +8351,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptGelangPasienAnak.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -8306,14 +8390,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptGelangPasienDewasa.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -8363,9 +8447,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -8408,7 +8492,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8418,7 +8502,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8469,9 +8553,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -8491,7 +8575,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8501,7 +8585,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8529,9 +8613,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -8549,7 +8633,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8559,7 +8643,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     DlgBookingOperasi form = new DlgBookingOperasi(null, false);
@@ -8584,9 +8668,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -8608,7 +8692,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8618,7 +8702,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8648,9 +8732,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -8672,7 +8756,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8682,7 +8766,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8712,9 +8796,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -8730,12 +8814,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                                 Valid.MyReportqry("rptLabelTracker3.jasper", "report", "::[ Label Tracker ]::",
                                         "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"
-                                                + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"
-                                                + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
-                                                + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
-                                                + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                                + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
-                                                + rs2.getString("no_rawat2") + "' ",
+                                        + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"
+                                        + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
+                                        + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
+                                        + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                        + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
+                                        + rs2.getString("no_rawat2") + "' ",
                                         param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
@@ -8743,7 +8827,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8753,7 +8837,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8767,12 +8851,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("rptLabelTracker3.jasper", "report", "::[ Label Tracker ]::",
                             "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"
-                                    + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"
-                                    + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
-                                    + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
-                                    + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                    + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
-                                    + norawat.getText() + "' ",
+                            + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"
+                            + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
+                            + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
+                            + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                            + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
+                            + norawat.getText() + "' ",
                             param);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -8790,9 +8874,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -8808,12 +8892,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                                 Valid.MyReportqry("rptLabelTracker4.jasper", "report", "::[ Label Tracker ]::",
                                         "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"
-                                                + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"
-                                                + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
-                                                + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
-                                                + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                                + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
-                                                + rs2.getString("no_rawat2") + "' ",
+                                        + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"
+                                        + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
+                                        + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
+                                        + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                                        + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
+                                        + rs2.getString("no_rawat2") + "' ",
                                         param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
@@ -8821,7 +8905,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8831,7 +8915,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8845,12 +8929,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("rptLabelTracker4.jasper", "report", "::[ Label Tracker ]::",
                             "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"
-                                    + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"
-                                    + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
-                                    + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
-                                    + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                                    + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
-                                    + norawat.getText() + "' ",
+                            + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"
+                            + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
+                            + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
+                            + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                            + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
+                            + norawat.getText() + "' ",
                             param);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -8866,9 +8950,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
             try {
                 psanak = koneksi.prepareStatement(
                         "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                 try {
                     psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                     rs2 = psanak.executeQuery();
@@ -8895,7 +8979,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         param.put("emailrs", akses.getemailrs());
                         Valid.MyReportqry("rptBarcodeRawat.jasper", "report", "::[ Barcode No.Rawat ]::",
                                 "select reg_periksa.no_rawat from reg_periksa where no_rawat='"
-                                        + rs2.getString("no_rawat2") + "'",
+                                + rs2.getString("no_rawat2") + "'",
                                 param);
                         this.setCursor(Cursor.getDefaultCursor());
                     } else {
@@ -8903,7 +8987,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         tbKamIn.requestFocus();
                     }
                 } catch (Exception ex) {
-                    log.error("Notifikasi : " + ex);
+                    System.out.println("Notifikasi : " + ex);
                 } finally {
                     if (rs2 != null) {
                         rs2.close();
@@ -8913,7 +8997,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }
                 }
             } catch (Exception e) {
-                log.error(e);
+                System.out.println(e);
             }
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8949,9 +9033,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -8972,7 +9056,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 param.put("emailrs", akses.getemailrs());
                                 Valid.MyReportqry("rptBarcodeRawat2.jasper", "report", "::[ Barcode No.Rawat ]::",
                                         "select reg_periksa.no_rawat from reg_periksa where no_rawat='"
-                                                + rs2.getString("no_rawat2") + "'",
+                                        + rs2.getString("no_rawat2") + "'",
                                         param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
@@ -8980,7 +9064,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -8990,7 +9074,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9038,14 +9122,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM18.jasper", "report", "::[ Label Rekam Medis ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -9073,14 +9157,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM6.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -9108,14 +9192,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM7.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -9143,14 +9227,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM8.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -9178,14 +9262,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM10.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -9213,14 +9297,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM14.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -9248,14 +9332,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM16.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -9283,14 +9367,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 Valid.MyReportqry("rptBarcodeRM19.jasper", "report", "::[ Gelang Pasien ]::",
                         "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                                + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                                + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
-                                + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
-                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
-                                + "inner join kelurahan inner join kecamatan inner join kabupaten "
-                                + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
-                                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
-                                + TNoRM.getText() + "' ",
+                        + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                        + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"
+                        + "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"
+                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "
+                        + "inner join kelurahan inner join kecamatan inner join kabupaten "
+                        + "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "
+                        + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"
+                        + TNoRM.getText() + "' ",
                         param);
                 this.setCursor(Cursor.getDefaultCursor());
             }
@@ -9307,9 +9391,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -9326,7 +9410,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9336,7 +9420,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     DlgSKDPBPJS form = new DlgSKDPBPJS(null, false);
@@ -9361,9 +9445,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -9382,7 +9466,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9392,7 +9476,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9419,9 +9503,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -9440,7 +9524,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9450,7 +9534,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9480,9 +9564,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 try {
                     psanak = koneksi.prepareStatement(
                             "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                     try {
                         psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                         rs2 = psanak.executeQuery();
@@ -9513,7 +9597,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
-                        log.error("Notifikasi : " + ex);
+                        System.out.println("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -9523,7 +9607,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         }
                     }
                 } catch (Exception e) {
-                    log.error(e);
+                    System.out.println(e);
                 }
             }
 
@@ -9569,9 +9653,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -9590,7 +9674,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9600,7 +9684,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9627,9 +9711,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -9666,7 +9750,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9676,7 +9760,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9732,14 +9816,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
             param.put("emailrs", akses.getemailrs());
             param.put("TanggalAwal", Sequel.cariIsi(
                     "select DATE_FORMAT(reg_periksa.tgl_registrasi, '%e %M %Y') from reg_periksa where reg_periksa.no_rawat='"
-                            + TNoRw1.getText() + "'"));
+                    + TNoRw1.getText() + "'"));
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptSuratSakit2.jasper", "report", "::[ Surat Sakit ]::",
                     "select reg_periksa.no_rkm_medis,dokter.nm_dokter,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.jk,"
-                            + " pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.pekerjaan,pasien.alamat"
-                            + " from reg_periksa inner join pasien inner join dokter"
-                            + " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_dokter=dokter.kd_dokter  "
-                            + "where reg_periksa.no_rawat='" + TNoRw1.getText() + "' ",
+                    + " pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.pekerjaan,pasien.alamat"
+                    + " from reg_periksa inner join pasien inner join dokter"
+                    + " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_dokter=dokter.kd_dokter  "
+                    + "where reg_periksa.no_rawat='" + TNoRw1.getText() + "' ",
                     param);
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -9768,9 +9852,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -9789,7 +9873,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9799,7 +9883,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9826,9 +9910,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -9845,21 +9929,21 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 param.put("kamar", tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 7).toString());
                                 param.put("tanggalmasuk", Sequel.cariIsi(
                                         "select concat(DATE_FORMAT(reg_periksa.tgl_registrasi, '%e %M %Y'),' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat='"
-                                                + rs2.getString("no_rawat2") + "'"));
+                                        + rs2.getString("no_rawat2") + "'"));
                                 param.put("tanggalkeluar", Sequel.cariIsi(
                                         "select concat(if(kamar_inap.tgl_keluar='0000-00-00',DATE_FORMAT(CURDATE(), '%e %M %Y'),DATE_FORMAT(kamar_inap.tgl_keluar, '%e %M %Y')),' ',kamar_inap.jam_keluar) from kamar_inap where kamar_inap.no_rawat='"
-                                                + tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString()
-                                                + "' order by kamar_inap.tgl_keluar desc limit 1"));
+                                        + tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString()
+                                        + "' order by kamar_inap.tgl_keluar desc limit 1"));
                                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                                 Valid.MyReportqry("SuratJaminanPelayananInap.jasper", "report",
                                         "::[ Surat Jaminan Pelayanan ]::",
                                         "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg, "
-                                                + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,"
-                                                + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,"
-                                                + "pasien.no_peserta,pasien.tgl_lahir from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
-                                                + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj "
-                                                + "and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
-                                                + rs2.getString("no_rawat2") + "'",
+                                        + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,"
+                                        + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,"
+                                        + "pasien.no_peserta,pasien.tgl_lahir from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
+                                        + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj "
+                                        + "and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
+                                        + rs2.getString("no_rawat2") + "'",
                                         param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
@@ -9867,7 +9951,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9877,7 +9961,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9891,20 +9975,20 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     param.put("kamar", tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 7).toString());
                     param.put("tanggalmasuk", Sequel.cariIsi(
                             "select concat(DATE_FORMAT(reg_periksa.tgl_registrasi, '%e %M %Y'),' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat='"
-                                    + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString() + "'"));
+                            + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString() + "'"));
                     param.put("tanggalkeluar", Sequel.cariIsi(
                             "select concat(if(kamar_inap.tgl_keluar='0000-00-00',DATE_FORMAT(CURDATE(), '%e %M %Y'),DATE_FORMAT(kamar_inap.tgl_keluar, '%e %M %Y')),' ',kamar_inap.jam_keluar) from kamar_inap where kamar_inap.no_rawat='"
-                                    + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString()
-                                    + "' order by kamar_inap.tgl_keluar desc limit 1"));
+                            + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString()
+                            + "' order by kamar_inap.tgl_keluar desc limit 1"));
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("SuratJaminanPelayananInap.jasper", "report", "::[ Surat Jaminan Pelayanan ]::",
                             "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg, "
-                                    + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,"
-                                    + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,"
-                                    + "pasien.no_peserta,pasien.tgl_lahir from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
-                                    + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj "
-                                    + "and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
-                                    + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString() + "'",
+                            + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,poliklinik.nm_poli,"
+                            + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab,"
+                            + "pasien.no_peserta,pasien.tgl_lahir from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
+                            + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj "
+                            + "and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='"
+                            + tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString() + "'",
                             param);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -9933,9 +10017,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -9954,7 +10038,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -9964,7 +10048,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -9992,9 +10076,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -10013,7 +10097,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -10023,7 +10107,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -10075,21 +10159,21 @@ public class DlgKamarInap extends javax.swing.JDialog {
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptLembarKeluarMasuk3.jasper", "report", "::[ Ringkasan Masuk Keluar ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                            + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                            + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj, suku_bangsa.nama_suku_bangsa,"
-                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj) as alamatpj, kamar_inap.tgl_masuk, kamar_inap.jam_masuk, "
-                            + "kamar.kelas, bangsal.nm_bangsal, kamar_inap.kd_kamar from reg_periksa "
-                            + "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "
-                            + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
-                            + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                            + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
-                            + "inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "
-                            + "inner join penjab on pasien.kd_pj=penjab.kd_pj "
-                            + "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "
-                            + "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "
-                            + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "
-                            + "inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal "
-                            + "where reg_periksa.no_rawat='" + norawat.getText() + "'",
+                    + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                    + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj, suku_bangsa.nama_suku_bangsa,"
+                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj) as alamatpj, kamar_inap.tgl_masuk, kamar_inap.jam_masuk, "
+                    + "kamar.kelas, bangsal.nm_bangsal, kamar_inap.kd_kamar from reg_periksa "
+                    + "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "
+                    + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                    + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                    + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
+                    + "inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "
+                    + "inner join penjab on pasien.kd_pj=penjab.kd_pj "
+                    + "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "
+                    + "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "
+                    + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "
+                    + "inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal "
+                    + "where reg_periksa.no_rawat='" + norawat.getText() + "'",
                     param);
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -10105,9 +10189,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
                             rs2 = psanak.executeQuery();
@@ -10126,7 +10210,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -10136,7 +10220,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -10172,21 +10256,21 @@ public class DlgKamarInap extends javax.swing.JDialog {
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptLembarSuratPernyataan.jasper", "report", "::[ Surat Pernyataan ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
-                            + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"
-                            + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj, suku_bangsa.nama_suku_bangsa,"
-                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj) as alamatpj, kamar_inap.tgl_masuk, kamar_inap.jam_masuk, "
-                            + "kamar.kelas, bangsal.nm_bangsal, kamar_inap.kd_kamar from reg_periksa "
-                            + "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "
-                            + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
-                            + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                            + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
-                            + "inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "
-                            + "inner join penjab on pasien.kd_pj=penjab.kd_pj "
-                            + "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "
-                            + "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "
-                            + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "
-                            + "inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal "
-                            + "where reg_periksa.no_rawat='" + norawat.getText() + "'",
+                    + "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"
+                    + "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj, suku_bangsa.nama_suku_bangsa,"
+                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj) as alamatpj, kamar_inap.tgl_masuk, kamar_inap.jam_masuk, "
+                    + "kamar.kelas, bangsal.nm_bangsal, kamar_inap.kd_kamar from reg_periksa "
+                    + "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "
+                    + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "
+                    + "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                    + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "
+                    + "inner join suku_bangsa on suku_bangsa.id=pasien.suku_bangsa "
+                    + "inner join penjab on pasien.kd_pj=penjab.kd_pj "
+                    + "inner join propinsi on pasien.kd_prop=propinsi.kd_prop "
+                    + "inner join kamar_inap on kamar_inap.no_rawat=reg_periksa.no_rawat "
+                    + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "
+                    + "inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal "
+                    + "where reg_periksa.no_rawat='" + norawat.getText() + "'",
                     param);
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -10223,9 +10307,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -10242,7 +10326,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -10252,7 +10336,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     pasienMeninggal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -10276,9 +10360,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     try {
                         psanak = koneksi.prepareStatement(
                                 "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                        + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                        + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                        + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                                + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                                + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                                + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
 
                         try {
                             psanak.setString(1, tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString());
@@ -10294,7 +10378,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
-                            log.error("Notifikasi : " + ex);
+                            System.out.println("Notifikasi : " + ex);
                         } finally {
                             if (rs2 != null) {
                                 rs2.close();
@@ -10304,7 +10388,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }
                         }
                     } catch (Exception e) {
-                        log.error(e);
+                        System.out.println(e);
                     }
                 } else {
                     spri.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -10348,22 +10432,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
             param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + kd_dokter + "'"));
             Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
                     "SELECT temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
-                            + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                            + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.keluhan "
-                            + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis "
-                            + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
-                            + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit " + " WHERE"
-                            // + " spri.tanggal like '%" + TCari.getText().trim() + "%' or "
-                            // + " spri.norm like '%" + TCari.getText().trim() + "%' or "
-                            // + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
-                            // + " pasien.jk like '%" + TCari.getText().trim() + "%' or "
-                            // + " pasien.tmp_lahir like '%" + TCari.getText().trim() + "%' or "
-                            // + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
-                            // + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
-                            // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
-                            // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
-                            + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' "
-                            + " order by temp_spri.tanggal ",
+                    + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
+                    + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.keluhan "
+                    + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis "
+                    + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
+                    + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit " + " WHERE"
+                    // + " spri.tanggal like '%" + TCari.getText().trim() + "%' or "
+                    // + " spri.norm like '%" + TCari.getText().trim() + "%' or "
+                    // + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
+                    // + " pasien.jk like '%" + TCari.getText().trim() + "%' or "
+                    // + " pasien.tmp_lahir like '%" + TCari.getText().trim() + "%' or "
+                    // + " pasien.gol_darah like '%" + TCari.getText().trim() + "%' or "
+                    // + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
+                    // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
+                    // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
+                    + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' "
+                    + " order by temp_spri.tanggal ",
                     param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -10753,49 +10837,49 @@ public class DlgKamarInap extends javax.swing.JDialog {
         try {
             ps = koneksi.prepareStatement(
                     "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,reg_periksa.p_jawab,reg_periksa.hubunganpj,"
-                            + "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,"
-                            + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,"
-                            + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar "
-                            + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                            + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
-                            + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
-                            + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
-                            + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where " + key
-                            + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk");
+                    + "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,"
+                    + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,"
+                    + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar "
+                    + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                    + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
+                    + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
+                    + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
+                    + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where " + key
+                    + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk");
             try {
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                    tabMode.addRow(new String[] { rs.getString("no_rawat"), rs.getString("no_rkm_medis"),
-                            rs.getString("nm_pasien") + " (" + rs.getString("umur") + ")", rs.getString("alamat"),
-                            rs.getString("p_jawab"), rs.getString("hubunganpj"), rs.getString("png_jawab"),
-                            rs.getString("kamar"), Valid.SetAngka(rs.getDouble("trf_kamar")),
-                            rs.getString("diagnosa_awal"), rs.getString("diagnosa_akhir"), rs.getString("tgl_masuk"),
-                            rs.getString("jam_masuk"), rs.getString("tgl_keluar"), rs.getString("jam_keluar"),
-                            Valid.SetAngka(rs.getDouble("ttl_biaya")), rs.getString("stts_pulang"),
-                            rs.getString("lama"), rs.getString("nm_dokter"), rs.getString("kd_kamar"),
-                            rs.getString("status_bayar") });
+                    tabMode.addRow(new String[]{rs.getString("no_rawat"), rs.getString("no_rkm_medis"),
+                        rs.getString("nm_pasien") + " (" + rs.getString("umur") + ")", rs.getString("alamat"),
+                        rs.getString("p_jawab"), rs.getString("hubunganpj"), rs.getString("png_jawab"),
+                        rs.getString("kamar"), Valid.SetAngka(rs.getDouble("trf_kamar")),
+                        rs.getString("diagnosa_awal"), rs.getString("diagnosa_akhir"), rs.getString("tgl_masuk"),
+                        rs.getString("jam_masuk"), rs.getString("tgl_keluar"), rs.getString("jam_keluar"),
+                        Valid.SetAngka(rs.getDouble("ttl_biaya")), rs.getString("stts_pulang"),
+                        rs.getString("lama"), rs.getString("nm_dokter"), rs.getString("kd_kamar"),
+                        rs.getString("status_bayar")});
                     psanak = koneksi.prepareStatement(
                             "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                                    + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                                    + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                                    + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
+                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
+                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
                     try {
                         psanak.setString(1, rs.getString(1));
                         rs2 = psanak.executeQuery();
                         if (rs2.next()) {
-                            tabMode.addRow(new String[] { "", rs2.getString("no_rkm_medis"),
-                                    rs2.getString("nm_pasien") + " (" + rs2.getString("umur") + ")",
-                                    rs.getString("alamat"), rs.getString("p_jawab"), rs.getString("hubunganpj"),
-                                    rs.getString("png_jawab"), rs.getString("kamar"),
-                                    Valid.SetAngka(rs.getDouble("trf_kamar") * (persenbayi / 100)), "", "",
-                                    rs.getString("tgl_masuk"), rs.getString("jam_masuk"), rs.getString("tgl_keluar"),
-                                    rs.getString("jam_keluar"),
-                                    Valid.SetAngka(rs.getDouble("ttl_biaya") * (persenbayi / 100)),
-                                    rs.getString("stts_pulang"), rs.getString("lama"), rs.getString("nm_dokter"),
-                                    rs.getString("kd_kamar"), rs.getString("status_bayar") });
+                            tabMode.addRow(new String[]{"", rs2.getString("no_rkm_medis"),
+                                rs2.getString("nm_pasien") + " (" + rs2.getString("umur") + ")",
+                                rs.getString("alamat"), rs.getString("p_jawab"), rs.getString("hubunganpj"),
+                                rs.getString("png_jawab"), rs.getString("kamar"),
+                                Valid.SetAngka(rs.getDouble("trf_kamar") * (persenbayi / 100)), "", "",
+                                rs.getString("tgl_masuk"), rs.getString("jam_masuk"), rs.getString("tgl_keluar"),
+                                rs.getString("jam_keluar"),
+                                Valid.SetAngka(rs.getDouble("ttl_biaya") * (persenbayi / 100)),
+                                rs.getString("stts_pulang"), rs.getString("lama"), rs.getString("nm_dokter"),
+                                rs.getString("kd_kamar"), rs.getString("status_bayar")});
                         }
                     } catch (Exception ex) {
-                        log.error("Notifikasi : " + ex);
+                        System.out.println("Notifikasi : " + ex);
                     } finally {
                         if (rs2 != null) {
                             rs2.close();
@@ -10806,7 +10890,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }
                 }
             } catch (Exception e) {
-                log.error("Notifikasi : " + e);
+                System.out.println("Notifikasi : " + e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -10816,11 +10900,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }
             }
         } catch (Exception e) {
-            log.error("Notifikasi : " + e);
+            System.out.println("Notifikasi : " + e);
         }
         LCount.setText("" + tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         norawat.setText("");
         TNoRM.setText("");
@@ -10896,7 +10983,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         Sequel.cariIsi("select trf_kamar from kamar where kd_kamar=? ", TTarif, kdkamar.getText());
                     }
                 } catch (Exception e) {
-                    log.error("Notifikasi : " + e);
+                    System.out.println("Notifikasi : " + e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -10906,7 +10993,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }
                 }
             } catch (Exception e) {
-                log.error("Notifikasi : " + e);
+                System.out.println("Notifikasi : " + e);
             }
         } else {
             kd_pj = Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?", norawatpindah.getText());
@@ -10928,7 +11015,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 kdkamar.getText());
                     }
                 } catch (Exception e) {
-                    log.error("Notifikasi : " + e);
+                    System.out.println("Notifikasi : " + e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -10938,7 +11025,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }
                 }
             } catch (Exception e) {
-                log.error("Notifikasi : " + e);
+                System.out.println("Notifikasi : " + e);
             }
         }
     }
@@ -10958,19 +11045,25 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
     }
 
-    public void setNoRm(String norwt,String norm,String nmpasien) {
+    /**
+     *
+     * @param norwt
+     * @param norm
+     * @param nmpasien
+     */
+    public void setNoRm(String norwt, String norm, String nmpasien) {
         norawat.setText(norwt);
         TNoRM.setText(norm);
         TPasien.setText(nmpasien);
-        R1.setSelected(true);        
+        R1.setSelected(true);
         TCari.setText(norwt);
-        try {    
-            ps=koneksi.prepareStatement("select no_rawat, kd_kamar, diagnosa_awal, diagnosa_akhir, tgl_masuk, jam_masuk, tgl_keluar, jam_keluar, ttl_biaya "+
-                    "from kamar_inap where no_rawat=? order by tgl_masuk,jam_masuk desc limit 1 ");
+        try {
+            ps = koneksi.prepareStatement("select no_rawat, kd_kamar, diagnosa_awal, diagnosa_akhir, tgl_masuk, jam_masuk, tgl_keluar, jam_keluar, ttl_biaya "
+                    + "from kamar_inap where no_rawat=? order by tgl_masuk,jam_masuk desc limit 1 ");
             try {
-                ps.setString(1,norawat.getText());
-                rs=ps.executeQuery();
-                if(rs.next()){
+                ps.setString(1, norawat.getText());
+                rs = ps.executeQuery();
+                if (rs.next()) {
                     norawat.setEditable(false);
                     norawat.setText(rs.getString(1));
                     kdkamar.setText(rs.getString(2));
@@ -10982,21 +11075,21 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     ttlbiaya.setText(rs.getString(8));
 
                     kdkamar.setEditable(false);
-                    diagnosaawal.setEditable(false);                
+                    diagnosaawal.setEditable(false);
                     diagnosaakhir.setVisible(true);
                     btnDiagnosa.setVisible(true);
                     jLabel23.setVisible(true);
                     cmbStatus.setVisible(true);
                     jLabel26.setVisible(true);
                     diagnosaakhir.setText("");
-                    LblStts.setText("Pulang/Check Out");  
-                    i=1;
+                    LblStts.setText("Pulang/Check Out");
+                    i = 1;
                     btnReg.setEnabled(false);
                     btnKamar.setEnabled(false);
-                    CmbTahun.setSelectedItem(now.substring(0,4));
-                    CmbBln.setSelectedItem(now.substring(5,7));
-                    CmbTgl.setSelectedItem(now.substring(8,10));
-                }else{
+                    CmbTahun.setSelectedItem(now.substring(0, 4));
+                    CmbBln.setSelectedItem(now.substring(5, 7));
+                    CmbTgl.setSelectedItem(now.substring(8, 10));
+                } else {
                     norawat.setEditable(true);
                     kdkamar.setEditable(true);
                     diagnosaawal.setEditable(true);
@@ -11006,38 +11099,43 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     JamMasuk.setText("");
                     TOut.setText("");
                     ttlbiaya.setText("0");
-                    jLabel23.setVisible(false);                
+                    jLabel23.setVisible(false);
                     cmbStatus.setVisible(false);
                     jLabel26.setVisible(false);
                     diagnosaakhir.setText("-");
                     LblStts.setText("Masuk/Check In");
                     btnReg.setEnabled(true);
-                    btnKamar.setEnabled(true);   
-                    CmbTahun.setSelectedItem(now.substring(0,4));
-                    CmbBln.setSelectedItem(now.substring(5,7));
-                    CmbTgl.setSelectedItem(now.substring(8,10));          
+                    btnKamar.setEnabled(true);
+                    CmbTahun.setSelectedItem(now.substring(0, 4));
+                    CmbBln.setSelectedItem(now.substring(5, 7));
+                    CmbTgl.setSelectedItem(now.substring(8, 10));
                 }
             } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            }finally{
-                if(rs != null){
+                System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
+            } finally {
+                if (rs != null) {
                     rs.close();
-                }                
-                if(ps != null){
+                }
+                if (ps != null) {
                     ps.close();
                 }
             }
-            
-            if(kdkamar.isEditable()==false){
+
+            if (kdkamar.isEditable() == false) {
                 isKmr();
                 isjml();
             }
-            CmbTahunItemStateChanged(null);   
+            CmbTahunItemStateChanged(null);
         } catch (Exception e) {
             System.out.println(e);
-        }       
+            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
+    /**
+     *
+     */
     public void isCek() {
         try {
             namakamar = koneksiDB.KAMARAKTIFRANAP();
@@ -11132,10 +11230,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 + tbKamIn.getValueAt(i, 12).toString()
                                 + "' and CAST(`tgl_keluar` AS CHAR(10)) = '0000-00-00'",
                                 " lama=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"
-                                        + lama + "),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))+1,"
-                                        + " ttl_biaya=(if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"
-                                        + lama
-                                        + "),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))+1)*trf_kamar");
+                                + lama + "),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))+1,"
+                                + " ttl_biaya=(if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"
+                                + lama
+                                + "),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))+1)*trf_kamar");
                     } else {
                         Sequel.mengedit(" kamar_inap ", " no_rawat='" + tbKamIn.getValueAt(i, 0).toString() + "' and "
                                 + " kd_kamar='"
@@ -11146,10 +11244,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 + tbKamIn.getValueAt(i, 12).toString()
                                 + "' and CAST(`tgl_keluar` AS CHAR(10)) = '0000-00-00'",
                                 " lama=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"
-                                        + lama + "),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))),"
-                                        + " ttl_biaya=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"
-                                        + lama
-                                        + "),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))*trf_kamar");
+                                + lama + "),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))),"
+                                + " ttl_biaya=if(to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk))=0,if(time_to_sec(NOW())-time_to_sec(concat(tgl_masuk,' ',jam_masuk))>(3600*"
+                                + lama
+                                + "),1,0),to_days(NOW())-to_days(concat(tgl_masuk,' ',jam_masuk)))*trf_kamar");
                     }
                 }
             }
@@ -11157,6 +11255,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         tampil();
     }
 
+    /**
+     *
+     */
     public void setCariKosong() {
         TCari.setText("");
     }

@@ -666,6 +666,9 @@ public class DlgSetInputParsial extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdpj.setText("");
         nmpj.setText("");

@@ -54,8 +54,8 @@ public final class DlgPetugas extends javax.swing.JDialog {
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
 
     /** Creates new form DlgPetugas
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPetugas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1298,6 +1298,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TNip.setText("");
         TNm.setText("");
@@ -1343,16 +1346,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     */
     public void load() {
         CmbCrGd.setSelectedItem("");
         CmbCrStts.setSelectedItem("");
         cmbCrJk.setSelectedItem("");
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return TNip;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbPetugas;
     }
@@ -1371,6 +1385,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpetugas());
         BtnHapus.setEnabled(akses.getpetugas());

@@ -41,7 +41,36 @@ public class PanelDiagnosa extends widget.panelisi {
     private int jml=0,i=0,index=0;
     private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek;
     private boolean[] pilih,pilih2;
-    public String norawat="",status="",norm="",tanggal1="",tanggal2="",keyword="";
+
+    /**
+     *
+     */
+    public String norawat="",
+
+    /**
+     *
+     */
+    status="",
+
+    /**
+     *
+     */
+    norm="",
+
+    /**
+     *
+     */
+    tanggal1="",
+
+    /**
+     *
+     */
+    tanggal2="",
+
+    /**
+     *
+     */
+    keyword="";
     /**
      * Creates new form panelDiagnosa
      */
@@ -578,6 +607,10 @@ public class PanelDiagnosa extends widget.panelisi {
     public widget.Table tbProsedur;
     public widget.Table tbTindakanPasien;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(TabModeDiagnosaPasien);
         try{            
@@ -654,6 +687,10 @@ public class PanelDiagnosa extends widget.panelisi {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public int getRecord(){
         if(TabRawat.getSelectedIndex()==0){
             i=0;
@@ -810,6 +847,9 @@ public class PanelDiagnosa extends widget.panelisi {
         }
     }
     
+    /**
+     *
+     */
     public void tampil2() {
         Valid.tabelKosong(TabModeTindakanPasien);
         try{            
@@ -880,6 +920,15 @@ public class PanelDiagnosa extends widget.panelisi {
         }
     }
     
+    /**
+     *
+     * @param norawat
+     * @param norm
+     * @param tanggal1
+     * @param tanggal2
+     * @param status
+     * @param keyword
+     */
     public void setRM(String norawat,String norm,String tanggal1,String tanggal2,String status,String keyword){
         this.norawat=norawat;
         this.norm=norm;
@@ -889,6 +938,9 @@ public class PanelDiagnosa extends widget.panelisi {
         this.keyword=keyword;
     }
     
+    /**
+     *
+     */
     public void simpan(){
         try {
             koneksi.setAutoCommit(false);
@@ -939,6 +991,9 @@ public class PanelDiagnosa extends widget.panelisi {
         pilihTab();
     }
 
+    /**
+     *
+     */
     public void pilihTab() {
         if(TabRawat.getSelectedIndex()==0){
             tampildiagnosa();
@@ -950,6 +1005,9 @@ public class PanelDiagnosa extends widget.panelisi {
         }
     }
     
+    /**
+     *
+     */
     public void batal(){
         Diagnosa.setText("");
         for(i=0;i<tbDiagnosa.getRowCount();i++){ 
@@ -961,6 +1019,9 @@ public class PanelDiagnosa extends widget.panelisi {
         Prosedur.setText("");
     }
     
+    /**
+     *
+     */
     public void hapus(){
         if(TabRawat.getSelectedIndex()==1){
             if(TabModeDiagnosaPasien.getRowCount()==0){
@@ -990,6 +1051,9 @@ public class PanelDiagnosa extends widget.panelisi {
         pilihTab();
     }
     
+    /**
+     *
+     */
     public void cetak(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(TabRawat.getSelectedIndex()==1){

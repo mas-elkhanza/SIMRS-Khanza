@@ -1145,6 +1145,9 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         if(TabRawat.getSelectedIndex()==0){
             kdbangsal.setText("");

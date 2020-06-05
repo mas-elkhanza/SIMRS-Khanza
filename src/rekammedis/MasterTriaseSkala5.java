@@ -44,8 +44,8 @@ public class MasterTriaseSkala5 extends javax.swing.JDialog {
     private MasterTriasePemeriksaan pemeriksaan=new MasterTriasePemeriksaan(null,false);
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public MasterTriaseSkala5(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -752,10 +752,17 @@ public class MasterTriaseSkala5 extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getmaster_triase_skala5());
        BtnHapus.setEnabled(akses.getmaster_triase_skala5());

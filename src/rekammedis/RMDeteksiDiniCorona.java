@@ -1661,6 +1661,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {     
         Valid.tabelKosong(tabMode);
         try{    
@@ -1717,6 +1720,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         NoRM.setText("");
         NamaPasien.setText("");
@@ -1797,6 +1803,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getdeteksi_corona());
         BtnHapus.setEnabled(akses.getdeteksi_corona());
@@ -1809,6 +1818,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     * @param norawat
+     * @param tgl2
+     */
     public void setNoRm(String norawat,Date tgl2){
         NoRawat.setText(norawat);
         TCari.setText(norawat);
@@ -1903,6 +1917,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbObat;
     }

@@ -52,6 +52,10 @@ public final class DlgResepObat extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps,ps2,psracikan;
     private ResultSet rs,rs2,rsracikan;
+
+    /**
+     *
+     */
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
@@ -61,9 +65,9 @@ public final class DlgResepObat extends javax.swing.JDialog {
     private DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
     private int i=0,pilihan=0;
 
-    /** Creates new form DlgResepObat 
-     *@param parent
-     *@param modal*/
+    /** Creates new form DlgResepObat
+     * @param frame
+     * @param bln*/
     public DlgResepObat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1781,6 +1785,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Table tbTambahan1;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{  
@@ -1946,6 +1953,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }        
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         KdDokter.setText("");
         NmDokter.setText("");
@@ -1975,6 +1985,16 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
    
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     * @param jam
+     * @param menit
+     * @param detik
+     * @param status
+     */
     public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik,String status) {
         TNoRw.setText(norwt);
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRm,TNoRw.getText());
@@ -1991,6 +2011,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         isForm();
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     * @param jam
+     * @param menit
+     * @param detik
+     * @param kodedokter
+     * @param namadokter
+     * @param status
+     */
     public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik,String kodedokter,String namadokter,String status) {
         TNoRw.setText(norwt);
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRm,TNoRw.getText());
@@ -2009,6 +2041,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         this.status=status;
     }
     
+    /**
+     *
+     */
     public void setDokterRalan(){
         Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",KdDokter,TNoRw.getText());
         Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",NmDokter,KdDokter.getText());
@@ -2028,6 +2063,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getresep_obat());
         BtnHapus.setEnabled(akses.getresep_obat());

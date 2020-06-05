@@ -25,6 +25,10 @@ import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 import kepegawaian.DlgCariPegawai;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgPermintaan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -944,8 +948,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         
     }
 
-    
-    
+    /**
+     *
+     */
     public void isCek(){
         autoNomor();
         TCari.requestFocus();

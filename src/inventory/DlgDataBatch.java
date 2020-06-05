@@ -35,6 +35,10 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgDataBatch extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel = new sekuel();
@@ -44,6 +48,12 @@ public class DlgDataBatch extends javax.swing.JDialog {
     private ResultSet rs;
     private int i = 0,row=0;
     private DlgBarang barang=new DlgBarang(null,false);
+
+    /**
+     *
+     * @param parent
+     * @param modal
+     */
     public DlgDataBatch(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1792,6 +1802,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kd.setText("");
         Nm.setText("");
@@ -1841,6 +1854,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbDokter;
     }
@@ -1859,8 +1876,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
-    
-            
+    /**
+     *
+     */
     public void isCek() {
         TCari.requestFocus();
         BtnSimpan.setEnabled(akses.getdata_batch());

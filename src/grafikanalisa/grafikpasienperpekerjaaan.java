@@ -74,6 +74,7 @@ public class grafikpasienperpekerjaaan extends JDialog {
         /**
            * Creates a dataset.
            *
+     * @param symbol
            * @return A dataset.
            */
 
@@ -104,6 +105,7 @@ public class grafikpasienperpekerjaaan extends JDialog {
        /**
           * Creates a dataset.
           *
+     * @param symbol
           * @return A dataset.
           */
         public static CategoryDataset createDataset2(String symbol) {//grafik volume

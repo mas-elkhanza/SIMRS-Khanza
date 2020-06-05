@@ -19,6 +19,10 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class UTDKomponenDarah extends javax.swing.JDialog {
     private final DefaultTableModel tabModeKomponen;
     private sekuel Sequel=new sekuel();
@@ -29,8 +33,8 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
     private int i;
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public UTDKomponenDarah(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -955,6 +959,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText(""+tabModeKomponen.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kode.setText("");
         Nama.setText("");
@@ -983,10 +990,17 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKomponen;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getutd_komponen_darah());
         BtnHapus.setEnabled(akses.getutd_komponen_darah());

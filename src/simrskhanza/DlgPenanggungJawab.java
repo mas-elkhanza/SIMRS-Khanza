@@ -46,8 +46,8 @@ public final class DlgPenanggungJawab extends javax.swing.JDialog {
     private int i=0;
     
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPenanggungJawab(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -674,6 +674,9 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kd.setText("");
         Kd2.setText("");
@@ -690,14 +693,24 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void onCari(){        
         TCari.requestFocus();
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getadmin());
         BtnHapus.setEnabled(akses.getadmin());

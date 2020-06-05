@@ -8,6 +8,10 @@ import java.util.Formatter;
 import org.smslib.helper.CommPortIdentifier;
 import org.smslib.helper.SerialPort;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class CommTest
 {
 	private static final String _NO_DEVICE_FOUND = "  no device found";
@@ -29,7 +33,11 @@ public class CommTest
 		return CommPortIdentifier.getPortIdentifiers();
 	}
 
-	public static void main(String[] args)
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args)
 	{
 		System.out.println("\nSearching for devices...");
 		portList = getCleanPortIdentifiers();
