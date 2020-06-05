@@ -2081,32 +2081,30 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     }) == true) {
                         WindowAmbilSampel.dispose();
                         pilihan = (String) JOptionPane.showInputDialog(null, "Waktu pengambilan sampel berhasil disimpan, apakah ada yang ingin dicetak..?", "Konfirmasi", JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Tidak Ada", "Barcode No.Permintaan 1", "Barcode No.Permintaan 2", "Lembar Permintaan Lab", "Lembar Permintaan Lab & Barcode No.Permintaan 1", "Lembar Permintaan Lab & Barcode No.Permintaan 2"}, "Tidak Ada");
-                        if (!pilihan.equals("")) {
-                            switch (pilihan) {
-                                case "Tidak Ada":
-                                    break;
-                                case "Barcode No.Permintaan 1":
-                                    MnBarcodePermintaanActionPerformed(evt);
-                                    break;
-                                case "Barcode No.Permintaan 2":
-                                    MnBarcodePermintaan1ActionPerformed(evt);
-                                    break;
-                                case "Lembar Permintaan Lab":
-                                    MnCetakHasilLabActionPerformed(evt);
-                                    break;
-                                case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
-                                    MnBarcodePermintaanActionPerformed(evt);
-                                    getData();
-                                    getData2();
-                                    MnCetakHasilLabActionPerformed(evt);
-                                    break;
-                                case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
-                                    MnBarcodePermintaan1ActionPerformed(evt);
-                                    getData();
-                                    getData2();
-                                    MnCetakHasilLabActionPerformed(evt);
-                                    break;
-                            }
+                        switch (pilihan) {
+                            case "Tidak Ada":
+                                break;
+                            case "Barcode No.Permintaan 1":
+                                MnBarcodePermintaanActionPerformed(evt);
+                                break;
+                            case "Barcode No.Permintaan 2":
+                                MnBarcodePermintaan1ActionPerformed(evt);
+                                break;
+                            case "Lembar Permintaan Lab":
+                                MnCetakHasilLabActionPerformed(evt);
+                                break;
+                            case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
+                                MnBarcodePermintaanActionPerformed(evt);
+                                getData();
+                                getData2();
+                                MnCetakHasilLabActionPerformed(evt);
+                                break;
+                            case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
+                                MnBarcodePermintaan1ActionPerformed(evt);
+                                getData();
+                                getData2();
+                                MnCetakHasilLabActionPerformed(evt);
+                                break;
                         }
                         TeksKosong();
                         tampil();
@@ -2126,26 +2124,26 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     }) == true) {
                         WindowAmbilSampel.dispose();
                         pilihan = (String) JOptionPane.showInputDialog(null, "Waktu pengambilan sampel berhasil disimpan, Apakah ada yang ingin dicetak..?", "Konfirmasi", JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Tidak Ada", "Barcode No.Permintaan 1", "Barcode No.Permintaan 2", "Lembar Permintaan Lab & Barcode No.Permintaan 1", "Lembar Permintaan Lab & Barcode No.Permintaan 2"}, "Tidak Ada");
-                        if (!pilihan.equals("")) {
-                            switch (pilihan) {
-                                case "Tidak Ada":
-                                    break;
-                                case "Barcode No.Permintaan 1":
-                                    MnBarcodePermintaanActionPerformed(evt);
-                                    break;
-                                case "Barcode No.Permintaan 2":
-                                    MnBarcodePermintaan1ActionPerformed(evt);
-                                    break;
-                                case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
-                                    MnBarcodePermintaanActionPerformed(evt);
-                                    MnCetakHasilLabActionPerformed(null);
-                                    break;
-                                case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
-                                    MnBarcodePermintaan1ActionPerformed(evt);
-                                    MnCetakHasilLabActionPerformed(null);
-                                    break;
-                            }
+
+                        switch (pilihan) {
+                            case "Tidak Ada":
+                                break;
+                            case "Barcode No.Permintaan 1":
+                                MnBarcodePermintaanActionPerformed(evt);
+                                break;
+                            case "Barcode No.Permintaan 2":
+                                MnBarcodePermintaan1ActionPerformed(evt);
+                                break;
+                            case "Lembar Permintaan Lab & Barcode No.Permintaan 1":
+                                MnBarcodePermintaanActionPerformed(evt);
+                                MnCetakHasilLabActionPerformed(null);
+                                break;
+                            case "Lembar Permintaan Lab & Barcode No.Permintaan 2":
+                                MnBarcodePermintaan1ActionPerformed(evt);
+                                MnCetakHasilLabActionPerformed(null);
+                                break;
                         }
+
                         TeksKosong();
                         tampil();
                     }
