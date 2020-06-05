@@ -17,6 +17,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -413,6 +415,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notif Rekening : "+e);
+                Logger.getLogger(DlgTagihanOperasi.class.getName()).log(Level.SEVERE, null, e);
             } finally{
                 if(rsrekening!=null){
                     rsrekening.close();
@@ -423,6 +426,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
             }            
         } catch (Exception e) {
             System.out.println(e);
+                Logger.getLogger(DlgTagihanOperasi.class.getName()).log(Level.SEVERE, null, e);
         } 
         
         try {
@@ -438,6 +442,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
                 }  
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
+                Logger.getLogger(DlgTagihanOperasi.class.getName()).log(Level.SEVERE, null, e);
             }finally{
                 if(rsset_tarif != null){
                     rsset_tarif.close();
@@ -448,6 +453,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+                Logger.getLogger(DlgTagihanOperasi.class.getName()).log(Level.SEVERE, null, e);
         } 
         
     }
@@ -2208,6 +2214,7 @@ private void tbtindakanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:
                 getData2();
             } catch (java.lang.NullPointerException e) {
                 System.out.println(e);
+                Logger.getLogger(DlgTagihanOperasi.class.getName()).log(Level.SEVERE, null, e);
             }
         }
        
@@ -3372,6 +3379,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
+                Logger.getLogger(DlgTagihanOperasi.class.getName()).log(Level.SEVERE, null, e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -3391,6 +3399,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }                  
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
+                Logger.getLogger(DlgTagihanOperasi.class.getName()).log(Level.SEVERE, null, e);
         }
         
     }
@@ -3452,6 +3461,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             }catch(SQLException e){
                 System.out.println(e);
+                Logger.getLogger(DlgTagihanOperasi.class.getName()).log(Level.SEVERE, null, e);
             }finally{
                 if(rs!=null){
                     rs.close();
@@ -3462,6 +3472,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
+                Logger.getLogger(DlgTagihanOperasi.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 

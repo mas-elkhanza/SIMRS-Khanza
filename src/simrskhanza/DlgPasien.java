@@ -46,6 +46,8 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -1537,6 +1539,7 @@ public class DlgPasien extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -1591,6 +1594,7 @@ public class DlgPasien extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -1601,6 +1605,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
+            Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
         }
 
         if (tampilkantni.equals("Yes")) {
@@ -4692,7 +4697,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             kdprop = Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?", Propinsi.getText().replaceAll("PROPINSI", "-"));
         }
 //        }
-        System.out.println("kdkel,kdkec,kdkab,kdprop>>>" + kdkel + ", " + kdkec + ", " + kdkab + ", " + kdprop);
+//        System.out.println("kdkel,kdkec,kdkab,kdprop>>>" + kdkel + ", " + kdkec + ", " + kdkab + ", " + kdprop);
         if (Sequel.menyimpantf2("pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rekam Medis Pasien", 36, new String[]{
             TNo.getText(), TNm.getText(), TKtp.getText(), CmbJk.getSelectedItem().toString().substring(0, 1), TTmp.getText(),
             Valid.SetTgl(DTPLahir.getSelectedItem() + ""), NmIbu.getText(),
@@ -7215,6 +7220,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 Valid.SetTgl(DTPLahir, Sequel.cariIsi("select DATE_SUB('" + Valid.SetTgl(DTPLahir.getSelectedItem() + "") + "', interval " + TUmurTh.getText() + " year)"));
             } catch (Exception e) {
                 System.out.println(e);
+                Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
             }
             TUmurBl.requestFocus();
         } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
@@ -8819,6 +8825,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -8830,6 +8837,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             }
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
         }
 
         LCount.setText("" + tabMode.getRowCount());
@@ -9505,6 +9513,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     }
                 } catch (Exception e) {
                     System.out.println("Notofikasi : " + e);
+                    Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -9636,6 +9645,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     }
                 } catch (Exception e) {
                     System.out.println("Notofikasi : " + e);
+                    Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
                 } finally {
                     if (rs != null) {
                         rs.close();
@@ -9750,6 +9760,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                     }
                 } catch (Exception e) {
                     System.out.println("Notofikasi : " + e);
+                    Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
                 } finally {
                     if (rs != null) {
                         rs.close();

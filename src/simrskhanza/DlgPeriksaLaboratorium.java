@@ -37,6 +37,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -348,6 +350,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notif Rekening : " + e);
+                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rsrekening != null) {
                     rsrekening.close();
@@ -358,6 +361,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
         try {
@@ -373,6 +377,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println(e);
+                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rsset_tarif != null) {
                     rsset_tarif.close();
@@ -383,6 +388,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
         try {
@@ -1663,6 +1669,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : " + e);
+                            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rstampil != null) {
                                 rstampil.close();
@@ -1696,6 +1703,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : " + e);
+                            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rstampil != null) {
                                 rstampil.close();
@@ -1729,6 +1737,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : " + e);
+                            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rstampil != null) {
                                 rstampil.close();
@@ -1762,6 +1771,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : " + e);
+                            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rstampil != null) {
                                 rstampil.close();
@@ -1775,6 +1785,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println("Error Detail : " + e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
@@ -1821,6 +1832,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : " + e);
+                            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rstampil != null) {
                                 rstampil.close();
@@ -1864,6 +1876,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : " + e);
+                            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rstampil != null) {
                                 rstampil.close();
@@ -1907,6 +1920,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : " + e);
+                            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rstampil != null) {
                                 rstampil.close();
@@ -1950,6 +1964,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : " + e);
+                            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                         } finally {
                             if (rstampil != null) {
                                 rstampil.close();
@@ -1963,6 +1978,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println("Error Detail : " + e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
@@ -2004,6 +2020,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notif : " + e);
+                                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                             } finally {
                                 if (rslica != null) {
                                     rslica.close();
@@ -2029,6 +2046,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
+                        Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                     } finally {
                         if (rstampil != null) {
                             rstampil.close();
@@ -2041,6 +2059,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println("Error Detail : " + e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
@@ -2240,6 +2259,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             } catch (Exception e) {
                 System.out.println(e);
+                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rssetpj != null) {
                     rssetpj.close();
@@ -2250,6 +2270,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
         isRawat();
@@ -2417,6 +2438,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rstindakan != null) {
                     rstindakan.close();
@@ -2436,6 +2458,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -2457,6 +2480,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
+                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rstindakan != null) {
                     rstindakan.close();
@@ -2467,6 +2491,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
@@ -2501,6 +2526,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             } catch (Exception e) {
                 System.out.println(e);
+                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rssetpj != null) {
                     rssetpj.close();
@@ -2511,6 +2537,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
         isPsien();
         tampiltarif(order);
@@ -2538,6 +2565,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             } catch (Exception e) {
                 System.out.println(e);
+                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rssetpj != null) {
                     rssetpj.close();
@@ -2548,6 +2576,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
         isPsien();
         tampiltarif(order);
@@ -2620,6 +2649,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notif : " + e);
+                                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                             } finally {
                                 if (rstindakan != null) {
                                     rstindakan.close();
@@ -2631,6 +2661,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
+                        Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                     } finally {
                         if (rstampil != null) {
                             rstampil.close();
@@ -2643,6 +2674,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println("Error Detail : " + e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
@@ -2668,6 +2700,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             } catch (Exception e) {
                 System.out.println(e);
+                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rssetpj != null) {
                     rssetpj.close();
@@ -2678,6 +2711,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
         isPsien();
         tampiltarif(order);
@@ -2733,6 +2767,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notif : " + e);
+                                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                             } finally {
                                 if (rstindakan != null) {
                                     rstindakan.close();
@@ -2744,6 +2779,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
+                        Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                     } finally {
                         if (rstampil != null) {
                             rstampil.close();
@@ -2756,6 +2792,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println("Error Detail : " + e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
@@ -2781,6 +2818,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             } catch (Exception e) {
                 System.out.println(e);
+                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
             } finally {
                 if (rssetpj != null) {
                     rssetpj.close();
@@ -2791,6 +2829,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
         isPsien();
         tampiltarif(order);
@@ -2854,6 +2893,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     } catch (Exception e) {
                         sukses = false;
                         System.out.println("Notifikasi 1 : " + e);
+                        Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                     } finally {
                         if (pssimpanperiksa != null) {
                             pssimpanperiksa.close();
@@ -2901,6 +2941,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             } catch (Exception e) {
                                 sukses = false;
                                 System.out.println("Notifikasi : " + e);
+                                Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                             } finally {
                                 if (psdetailpriksa != null) {
                                     psdetailpriksa.close();
@@ -2916,6 +2957,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi 2 : " + e);
+                        Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
                     } finally {
                         if (rscari != null) {
                             rscari.close();
@@ -2963,6 +3005,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             isReset();
         } catch (Exception e) {
             System.out.println(e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
         }
         ChkJln.setSelected(true);
     }
