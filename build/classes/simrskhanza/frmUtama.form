@@ -357,7 +357,7 @@
                 <Component class="widget.ComboBox" name="cmbMenu">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="18">
+                      <StringArray count="19">
                         <StringItem index="0" value="[A] Registrasi, Tagihan Ranap &amp; Ralan, Pelayanan &amp; Billing Pasien"/>
                         <StringItem index="1" value="[B] Input Data Tindakan, Obat &amp; BHP Via Barcode No.Rawat"/>
                         <StringItem index="2" value="[C] Presensi, Manajemen &amp; Penggajian Pegawai Rumah Sakit"/>
@@ -375,7 +375,8 @@
                         <StringItem index="14" value="[O] Manajemen Surat Masuk &amp; Keluar, Pengumuman E-Pasien"/>
                         <StringItem index="15" value="[P] Manajemen Perpustakaan &amp; Koleksi Pustaka Digital"/>
                         <StringItem index="16" value="[Q] Toko / Minimarket / Koperasi"/>
-                        <StringItem index="17" value="[R] Pengaturan Program Aplikasi HMS"/>
+                        <StringItem index="17" value="[R] Pengelolaan Data Filantropi, CSR, Zakat, Infaq &amp; Shodaqoh"/>
+                        <StringItem index="18" value="[S] Pengaturan Program Aplikasi HMS"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="cmbMenu" noResource="true"/>
@@ -480,7 +481,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="03/06/2020"/>
+            <StringItem index="0" value="06/06/2020"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
