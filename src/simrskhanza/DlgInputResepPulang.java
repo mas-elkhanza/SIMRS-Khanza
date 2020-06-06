@@ -49,8 +49,8 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
     private boolean sukses=true;
     
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgInputResepPulang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

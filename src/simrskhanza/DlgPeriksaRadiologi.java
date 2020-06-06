@@ -80,8 +80,8 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     /**
      * Creates new form DlgPerawatan
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgPeriksaRadiologi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

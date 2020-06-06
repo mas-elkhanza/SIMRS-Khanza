@@ -50,8 +50,8 @@ public final class DlgKamar extends javax.swing.JDialog {
     private String asalform="",ubah_status_kamar=Sequel.cariIsi("select ubah_status_kamar from set_jam_minimal");
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgKamar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

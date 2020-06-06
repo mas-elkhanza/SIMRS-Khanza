@@ -53,8 +53,8 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
     private int i=0;
 
     /** Creates new form DlgJnsPerawatanRalan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgJnsPerawatanRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

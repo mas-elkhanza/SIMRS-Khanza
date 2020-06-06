@@ -93,8 +93,8 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
 
     /**
      * Creates new form DlgPenyakit
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgCariPerawatanRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

@@ -33,6 +33,9 @@ public class MenuBar extends JMenuBar {
 
     private WeakReference<JMenu> helpMenu = null;
     
+    /**
+     *
+     */
     public MenuBar() {
         super();
         setBorder(BorderFactory.createEmptyBorder(5, 6,6, 6));

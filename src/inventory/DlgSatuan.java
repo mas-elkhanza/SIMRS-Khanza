@@ -45,8 +45,8 @@ public final class DlgSatuan extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     /** Creates new form DlgPenyakit
-     *@param parent
-     *@param modal */
+     * @param frame
+     * @param bln */
     public DlgSatuan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

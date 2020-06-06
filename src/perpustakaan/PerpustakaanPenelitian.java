@@ -66,8 +66,8 @@ public class PerpustakaanPenelitian extends javax.swing.JDialog {
     
     /**
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public PerpustakaanPenelitian(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

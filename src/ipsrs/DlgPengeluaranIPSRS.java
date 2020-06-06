@@ -50,8 +50,8 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
     private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPengeluaranIPSRS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

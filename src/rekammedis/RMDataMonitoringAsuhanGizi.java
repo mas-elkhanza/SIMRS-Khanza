@@ -55,8 +55,8 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMDataMonitoringAsuhanGizi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

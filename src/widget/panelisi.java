@@ -42,11 +42,19 @@ public class panelisi extends JPanel{
         this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(239,244,234)));
     }
 
+    /**
+     *
+     * @param layout
+     */
     public panelisi(LayoutManager layout) {
         super(layout);
         addComponentListener(new GradientCacheManager());
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaAtas() {
         return warnaAtas;
     }
@@ -59,6 +67,10 @@ public class panelisi extends JPanel{
         this.warnaAtas = warnaAtas;
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaBawah() {
         return warnaBawah;
     }

@@ -51,6 +51,10 @@ public class InternalFrame extends JPanel{
         addComponentListener(new GradientCacheManager());
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaAtas() {
         return warnaAtas;
     }
@@ -63,6 +67,10 @@ public class InternalFrame extends JPanel{
         this.warnaAtas = warnaAtas;
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaBawah() {
         return warnaBawah;
     }
@@ -124,6 +132,9 @@ public class InternalFrame extends JPanel{
         
     }
 
+    /**
+     *
+     */
     protected void createImageCache() {
         int width = 2;
         int height = getHeight();

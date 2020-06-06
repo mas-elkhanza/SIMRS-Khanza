@@ -51,8 +51,8 @@ public final class BPJSMapingPoli extends javax.swing.JDialog {
     
 
     /** Creates new form DlgJnsPerawatanRalan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSMapingPoli(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

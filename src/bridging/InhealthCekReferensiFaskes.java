@@ -51,8 +51,8 @@ public final class InhealthCekReferensiFaskes extends javax.swing.JDialog {
     private String kodeppk=Sequel.cariIsi("select kode_ppkinhealth from setting"),requestJson=""; 
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public InhealthCekReferensiFaskes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

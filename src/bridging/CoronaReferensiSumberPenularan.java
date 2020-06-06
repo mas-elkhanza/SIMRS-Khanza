@@ -47,8 +47,8 @@ public final class CoronaReferensiSumberPenularan extends javax.swing.JDialog {
     private JsonNode response;
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public CoronaReferensiSumberPenularan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

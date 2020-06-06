@@ -54,6 +54,7 @@ public class grafikperiksaperdokter extends JDialog {
     /**
      *
      * @param title
+     * @param string1
      * @param symbol
      */
     public grafikperiksaperdokter(String title,String symbol) {

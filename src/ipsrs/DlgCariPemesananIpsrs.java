@@ -62,8 +62,8 @@ public class DlgCariPemesananIpsrs extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariPemesananIpsrs(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

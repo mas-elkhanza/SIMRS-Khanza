@@ -42,8 +42,8 @@ public final class InhealthCekMappingPoli extends javax.swing.JDialog {
     private InhealthMapingPoli poli=new InhealthMapingPoli(null,false);
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public InhealthCekMappingPoli(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

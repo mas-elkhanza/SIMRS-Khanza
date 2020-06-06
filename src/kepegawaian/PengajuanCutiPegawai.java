@@ -47,8 +47,8 @@ public final class PengajuanCutiPegawai extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PengajuanCutiPegawai(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

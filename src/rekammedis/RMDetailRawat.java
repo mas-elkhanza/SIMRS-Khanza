@@ -39,8 +39,8 @@ public class RMDetailRawat extends javax.swing.JDialog {
 
     /**
      * Creates new form RMDetailRawat
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public RMDetailRawat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

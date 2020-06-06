@@ -56,8 +56,8 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     private StringBuilder htmlContent;
     
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMPenilaianAwalKeperawatanRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

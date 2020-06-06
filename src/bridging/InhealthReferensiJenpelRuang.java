@@ -43,8 +43,8 @@ public class InhealthReferensiJenpelRuang extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public InhealthReferensiJenpelRuang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

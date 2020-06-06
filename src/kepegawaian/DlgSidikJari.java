@@ -44,8 +44,8 @@ public final class DlgSidikJari extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgBangsal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgSidikJari(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

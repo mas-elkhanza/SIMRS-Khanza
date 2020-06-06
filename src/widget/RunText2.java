@@ -7,6 +7,10 @@ import java.util.Random;
 import java.awt.Font;
 import javax.swing.*;
  
+/**
+ *
+ * @author RSUI HA
+ */
 public class RunText2 extends JPanel {
     String s="Which Way? ";
     Timer t;
@@ -22,6 +26,13 @@ public class RunText2 extends JPanel {
     }
 
     //TM Sets X,Y Grid as Integer
+
+    /**
+     *
+     * @param w
+     * @param h
+     * @param z
+     */
     public void drawShapes(int w, int h, Graphics2D z) {
         GeneralPath draw = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
         //TM Sets Random generator

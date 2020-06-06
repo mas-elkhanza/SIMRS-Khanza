@@ -58,8 +58,8 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
     private DlgDiagnosaPenyakit penyakit=new DlgDiagnosaPenyakit(null,false);
     
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMDataResumePasien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

@@ -68,8 +68,8 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     private Period p;
 
     /** Creates new form DlgJnsPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public K3RSPeristiwa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

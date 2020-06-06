@@ -54,7 +54,8 @@ public class grafiksql2 extends JDialog {
     /**
      *
      * @param title
-     * @param query
+     * @param string1
+     * @param string2
      * @param Kolom
      */
     public grafiksql2(String title,String query,String Kolom) {

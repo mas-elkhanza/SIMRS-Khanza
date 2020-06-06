@@ -50,8 +50,8 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
     private DlgPindahGudang pindah=new DlgPindahGudang(null,false);
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgMutasiBarang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

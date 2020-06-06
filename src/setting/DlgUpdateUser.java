@@ -52,8 +52,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
     /**
      * Creates new form DlgUser
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgUpdateUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -442,19 +442,14 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TKdKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_TKdKeyPressed
-        Valid.pindah(evt, BtnSimpan, TPass);
-    }// GEN-LAST:event_TKdKeyPressed
-
-    private void TPassKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_TPassKeyPressed
-        Valid.pindah(evt, TKd, BtnSimpan);
-    }// GEN-LAST:event_TPassKeyPressed
-
-    private void TNmUserKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_TNmUserKeyPressed
+    private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         // TODO add your handling code here:
-    }// GEN-LAST:event_TNmUserKeyPressed
+        CmbAkses.setSelectedIndex(0);
+        dispose();
+    }//GEN-LAST:event_BtnKeluarActionPerformed
 
-    private void TCariKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_TCariKeyPressed
+    private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
+        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             BtnCariActionPerformed(null);
         } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
@@ -464,35 +459,50 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         } else if (evt.getKeyCode() == KeyEvent.VK_UP) {
             tbUser.requestFocus();
         }
-    }// GEN-LAST:event_TCariKeyPressed
+    }//GEN-LAST:event_TCariKeyPressed
 
-    private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnCariActionPerformed
+    private void TPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPassKeyPressed
+        // TODO add your handling code here:
+        Valid.pindah(evt, TKd, BtnSimpan);
+    }//GEN-LAST:event_TPassKeyPressed
+
+    private void TKdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKeyPressed
+        // TODO add your handling code here:
+        Valid.pindah(evt, BtnSimpan, TPass);
+    }//GEN-LAST:event_TKdKeyPressed
+
+    private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        // TODO add your handling code here:
         tampil(TKd.getText());
-    }// GEN-LAST:event_BtnCariActionPerformed
+    }//GEN-LAST:event_BtnCariActionPerformed
 
-    private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnCariKeyPressed
+    private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
+        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnCariActionPerformed(null);
         } else {
             Valid.pindah(evt, TCari, BtnAll);
         }
-    }// GEN-LAST:event_BtnCariKeyPressed
+    }//GEN-LAST:event_BtnCariKeyPressed
 
-    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnAllActionPerformed
-        TCari.setText("");
+    private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        // TODO add your handling code here:
+         TCari.setText("");
         tampil(TKd.getText());
-    }// GEN-LAST:event_BtnAllActionPerformed
+    }//GEN-LAST:event_BtnAllActionPerformed
 
-    private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnAllKeyPressed
+    private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
+        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnAllActionPerformed(null);
         } else {
             Valid.pindah(evt, BtnCari, BtnSimpan);
         }
-    }// GEN-LAST:event_BtnAllKeyPressed
+    }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnSimpanActionPerformed
-        if (TKd.getText().trim().equals("") || TNmUser.getText().trim().equals("")) {
+    private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        // TODO add your handling code here:
+         if (TKd.getText().trim().equals("") || TNmUser.getText().trim().equals("")) {
             Valid.textKosong(TNmUser, "User");
         } else if (TPass.getText().trim().equals("")) {
             Valid.textKosong(TPass, "Password");
@@ -500,20 +510,16 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             Simpan();
             Simpan2();
         }
-    }// GEN-LAST:event_BtnSimpanActionPerformed
+    }//GEN-LAST:event_BtnSimpanActionPerformed
 
-    private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BtnSimpanKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+    private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
+        // TODO add your handling code here:
+                if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnSimpanActionPerformed(null);
         } else {
             Valid.pindah(evt, BtnAll, BtnKeluar);
         }
-    }// GEN-LAST:event_BtnSimpanKeyPressed
-
-    private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnKeluarActionPerformed
-        CmbAkses.setSelectedIndex(0);
-        dispose();
-    }// GEN-LAST:event_BtnKeluarActionPerformed
+    }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppBersihkanActionPerformed
         for (i = 0; i < tbUser.getRowCount(); i++) {
@@ -538,18 +544,6 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tbUser.setValueAt(false, i, 2);
         }
     }// GEN-LAST:event_ppBersihkan1ActionPerformed
-
-    private void CmbAksesItemStateChanged(java.awt.event.ItemEvent evt) {// GEN-FIRST:event_CmbAksesItemStateChanged
-        // TODO add your handling code here:
-        // if(CmbAkses.getSelectedItem().equals("")){
-        //
-        // }else
-        // if (CmbAkses.getSelectedItem().equals("-")) {
-        // tampil(TKd.getText());
-        // } else {
-        // kategori();
-        // }
-    }// GEN-LAST:event_CmbAksesItemStateChanged
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:

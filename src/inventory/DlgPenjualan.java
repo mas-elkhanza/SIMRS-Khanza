@@ -64,8 +64,8 @@ public class DlgPenjualan extends javax.swing.JDialog {
     
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPenjualan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

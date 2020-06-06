@@ -227,8 +227,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     private WarnaTable2 warna2=new WarnaTable2();
 
     /** Creates new form DlgBiling
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBilingRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

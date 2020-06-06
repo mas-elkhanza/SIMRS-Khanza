@@ -45,8 +45,8 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
     private String kelas_operasi="Yes",kelas="",cara_bayar_operasi="Yes",kd_pj="";
     private DlgJnsPerawatanOperasi bangsal=new DlgJnsPerawatanOperasi(null,false);
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariDaftarOperasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

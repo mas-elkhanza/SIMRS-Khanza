@@ -9,6 +9,10 @@ import java.awt.Font;
  * @author usu
  */
 public class PasswordBox extends usu.widget.glass.PasswordBox {
+
+    /**
+     *
+     */
     public PasswordBox() {
         super();
         setSelectionColor(Color.BLUE.brighter());

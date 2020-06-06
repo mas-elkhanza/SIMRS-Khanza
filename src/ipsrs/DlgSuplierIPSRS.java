@@ -33,8 +33,8 @@ public class DlgSuplierIPSRS extends javax.swing.JDialog {
     private int i;
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgSuplierIPSRS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

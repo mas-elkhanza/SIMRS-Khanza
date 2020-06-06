@@ -40,8 +40,8 @@ public class MasterMasalahKeperawatanGigi extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public MasterMasalahKeperawatanGigi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

@@ -57,8 +57,8 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             HPP_Persediaan_Laborat_Rawat_inap="", Persediaan_BHP_Laborat_Rawat_Inap="",status="";
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariPeriksaLab(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
