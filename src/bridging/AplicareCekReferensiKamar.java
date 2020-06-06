@@ -46,7 +46,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private BPJSApiAplicare api=new BPJSApiAplicare();
+    private ApiBPJSAplicare api=new ApiBPJSAplicare();
     private String URL="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;

@@ -73,6 +73,8 @@ public final class validasi {
     private final Calendar now = Calendar.getInstance();
     private final int year=(now.get(Calendar.YEAR));
     private static final Properties prop = new Properties();  
+    private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
+                         "tujuh","delapan","sembilan","sepuluh","sebelas"};
     
     public validasi(){
         super();
@@ -452,6 +454,33 @@ public final class validasi {
         cmb.removeAllItems();
         try {
             ps=connect.prepareStatement("select "+field+" from "+table+" order by "+field);
+            try{
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    String item=rs.getString(1);
+                    cmb.addItem(item);
+                    a++;
+                }          
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void loadCombo(JComboBox cmb,String query){
+        cmb.removeAllItems();
+        try {
+            ps=connect.prepareStatement(query);
             try{
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -999,7 +1028,7 @@ public final class validasi {
     public void SetTgl(DefaultTableModel tabMode,JTable table,JDateTimePicker dtp,int i){
         j=table.getSelectedRow();
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tabMode.getValueAt(j,i).toString());
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tabMode.getValueAt(j,i).toString().replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1007,6 +1036,7 @@ public final class validasi {
     }
     
     public String SetTgl(String original){
+        original=original.replaceAll("'","");
         s = "";
         try {
             s=original.substring(6,10)+"-"+original.substring(3,5)+"-"+original.substring(0,2);
@@ -1015,7 +1045,18 @@ public final class validasi {
         return s;
     }
     
+    public String SetTglJam(String original){
+        original=original.replaceAll("'","");
+        s = "";
+        try {
+            s=original.substring(6,10)+"-"+original.substring(3,5)+"-"+original.substring(0,2)+" "+original.substring(11,19);
+        }catch (Exception e) {
+        }   
+        return s;
+    }
+    
     public String SetTgl3(String original){
+        original=original.replaceAll("'","");
         s = "";
         try {
             s=original.substring(8,10)+"-"+original.substring(5,7)+"-"+original.substring(0,4);
@@ -1035,7 +1076,7 @@ public final class validasi {
     
     public void SetTgl(JDateTimePicker dtp,String tgl){            
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1044,7 +1085,7 @@ public final class validasi {
     
     public void SetTgl2(JDateTimePicker dtp,String tgl){            
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl.replaceAll("'",""));
            dtp.setDate(dtpa);
         } catch (ParseException ex) {
            dtp.setDate(new Date());
@@ -1053,7 +1094,7 @@ public final class validasi {
     
     public Date SetTgl2(String tgl){
         try {
-           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+           Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'",""));
            return dtpa;
         } catch (ParseException ex) {
            return new Date();
@@ -1149,6 +1190,50 @@ public final class validasi {
         }else{
             return Math.round(number);
         }
+    }
+    
+    public String terbilang(double angka){
+        if(angka<12)
+        {
+          return nomina[(int)angka];
+        }
+        
+        if(angka>=12 && angka <=19)
+        {
+            return nomina[(int)angka%10] +" belas ";
+        }
+        
+        if(angka>=20 && angka <=99)
+        {
+            return nomina[(int)angka/10] +" puluh "+nomina[(int)angka%10];
+        }
+        
+        if(angka>=100 && angka <=199)
+        {
+            return "seratus "+ terbilang(angka%100);
+        }
+        
+        if(angka>=200 && angka <=999)
+        {
+            return nomina[(int)angka/100]+" ratus "+terbilang(angka%100);
+        }
+        
+        if(angka>=1000 && angka <=1999)
+        {
+            return "seribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 2000 && angka <=999999)
+        {
+            return terbilang((int)angka/1000)+" ribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 1000000 && angka <=999999999)
+        {
+            return terbilang((int)angka/1000000)+" juta "+ terbilang(angka%1000000);
+        }
+        
+        return "";
     }
 
     

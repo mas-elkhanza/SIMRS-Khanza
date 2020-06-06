@@ -10,7 +10,7 @@
  */
 
 package bridging;
-import bridging.SittApi;
+import bridging.ApiKemenkesSITT;
 import bridging.YaskiReferensiKabupaten;
 import bridging.YaskiReferensiKecamatan;
 import bridging.YaskiReferensiKelurahan;
@@ -68,7 +68,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private SittApi api=new SittApi();
+    private ApiKemenkesSITT api=new ApiKemenkesSITT();
     private YaskiReferensiPropinsi propinsi=new YaskiReferensiPropinsi(null,false);
     private YaskiReferensiKabupaten kabupaten=new YaskiReferensiKabupaten(null,false);
     private YaskiReferensiKecamatan kecamatan=new YaskiReferensiKecamatan(null,false);
@@ -2061,9 +2061,11 @@ public final class DlgDataTB extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.meghapus("data_tb","no_rawat",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
-        emptTeks();
-        tampil();
+        if(tbJnsPerawatan.getSelectedRow()>-1){
+            Sequel.meghapus("data_tb","no_rawat",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+            emptTeks();
+            tampil();
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed

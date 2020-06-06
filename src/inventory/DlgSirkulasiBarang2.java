@@ -1135,6 +1135,50 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                     
+                    ps2=koneksi.prepareStatement("select sum(jml), sum(jml*harga) "+
+                        " from mutasibarang where kode_brng=? and "+
+                        " tanggal between ? and ?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,tglopname+" 00:00:00");
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahmutasimasuk=rs2.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas Mutasi Masuk : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    ps2=koneksi.prepareStatement("select sum(jml), sum(jml*harga) "+
+                        " from mutasibarang where kode_brng=? and "+
+                        " tanggal between ? and ?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,tglopname+" 00:00:00");
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahmutasikeluar=rs2.getDouble(1);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas Mutasi Keluar : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
                     //hibah 
                     ps2=koneksi.prepareStatement("select sum(detailhibah_obat_bhp.jumlah2) "+
                         " from hibah_obat_bhp inner join detailhibah_obat_bhp "+
@@ -1182,10 +1226,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||(jumlahhibah>0)||
                             (jumlahutd>0)||(jumlahkeluar>0)||(jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(stok>0)||(jumlahrespulang>0)){
                         if(stokawal<=0){
-                            stokawal=stok-jumlahbeli-jumlahpesan+jumlahjual+jumlahpasin+jumlahpiutang-jumlahhibah+jumlahretbeli-jumlahretjual-jumlahretpiut+jumlahutd+jumlahkeluar+jumlahrespulang;
+                            stokawal=stok-jumlahbeli-jumlahpesan-jumlahmutasimasuk+jumlahmutasikeluar+jumlahjual+jumlahpasin+jumlahpiutang-jumlahhibah+jumlahretbeli-jumlahretjual-jumlahretpiut+jumlahutd+jumlahkeluar+jumlahrespulang;
                             stokakhir=stok;
                         }else{
-                            stokakhir=stokawal+jumlahbeli+jumlahpesan-jumlahjual-jumlahpasin-jumlahpiutang+jumlahhibah-jumlahretbeli+jumlahretjual+jumlahretpiut-jumlahutd-jumlahkeluar-jumlahrespulang;
+                            stokakhir=stokawal+jumlahbeli+jumlahpesan+jumlahmutasimasuk-jumlahmutasikeluar-jumlahjual-jumlahpasin-jumlahpiutang+jumlahhibah-jumlahretbeli+jumlahretjual+jumlahretpiut-jumlahutd-jumlahkeluar-jumlahrespulang;
                         }
                         tabMode.addRow(new Object[]{
                             rs.getString(1),rs.getString(2),rs.getString(3),tglopname,Valid.SetAngka(stokawal),

@@ -32,9 +32,9 @@ public class DlgRekapPenerimaanNonMedis extends javax.swing.JDialog {
     private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    public  DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
+    public  IPSRSSuplier suplier=new IPSRSSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    public  DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
+    public  IPSRSBarang barang=new IPSRSBarang(null,false);
     private PreparedStatement ps;
     private ResultSet rs;
     private double tagihan=0,subtotal=0,diskon;

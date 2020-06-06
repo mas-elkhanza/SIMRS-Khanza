@@ -13,10 +13,10 @@
 
      function  bukakoneksi(){
      	global $db_hostname, $db_username, $db_password, $db_name;
-        $konektor=mysqli_connect($db_hostname,$db_username,$db_password)
-        or die ("<font color=red><h3>Not Connected ..!!</h3></font>");
-        $db_select=mysqli_select_db($konektor, $db_name)
-        or die("<font color=red><h3>Cannot chose database..!!</h3></font>". mysqli_error());
+         $konektor=mysqli_connect($db_hostname,$db_username,$db_password)
+         or die ("<font color=red><h3>Not Connected ..!!</h3></font>");
+         $db_select=mysqli_select_db($konektor, $db_name)
+         or die("<font color=red><h3>Cannot chose database..!!</h3></font>". mysqli_error());
 	return $konektor;
      }
      
@@ -24,13 +24,12 @@
 
 //function
      function cleankar($dirty){
-	/*if (get_magic_quotes_gpc()) {
-		$clean = mysql_real_escape_string(stripslashes($dirty));	 
+	if (get_magic_quotes_gpc()) {
+            $clean = mysqli_real_escape_string(stripslashes($dirty));	 
 	}else{
-		$clean = mysql_real_escape_string($dirty);	
+            $clean = mysqli_real_escape_string($dirty);	
 	} 
-	return preg_replace('/[^a-zA-Z0-9\s_ ]/', '',$clean);*/
-         return $dirty;
+	return preg_replace('/[^a-zA-Z0-9\s_ ]/', '',$clean);
     }
     
     function mysql_safe_query($format) {
@@ -154,8 +153,7 @@
     }
 
 
-     function tutupkoneksi()
-	 {
+     function tutupkoneksi(){
        global  $konektor;
        mysqli_close($konektor);
      }
@@ -169,25 +167,25 @@
      }
      
      function bukaquery2($sql){
-        bukakoneksi();
-        $result=mysqli_query(bukakoneksi(),$sql);
-        mysqli_close(bukakoneksi());
+        $konektor=bukakoneksi();
+        $result=mysqli_query($konektor,$sql);
+        mysqli_close($konektor);
         return $result;
      }
 
      function bukainput($sql){
-        bukakoneksi();
-        $result=mysqli_query(bukakoneksi(),$sql)
+        $konektor=bukakoneksi();
+        $result=mysqli_query($konektor,$sql)
         or die(/*mysqli_error().*/"<br/><font color=red><b>Gagal</b> menjalankan perintah query !");
-        mysqli_close(bukakoneksi());
+        mysqli_close($konektor);
         return $result;
      }
 
      function hapusinput($sql){
-        bukakoneksi();
-        $result=mysqli_query(bukakoneksi(),$sql)
+        $konektor=bukakoneksi();
+        $result=mysqli_query($konektor,$sql)
         or die("<font color=red><b>Gagal</b>, Data masih dipakai di tabel lain !");
-        mysqli_close(bukakoneksi());
+        mysqli_close($konektor);
         return $result;
      }
 

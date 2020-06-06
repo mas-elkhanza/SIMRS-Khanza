@@ -31,7 +31,7 @@ public class BPJSCekNIK {
             tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="",URL="",link="";
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();   

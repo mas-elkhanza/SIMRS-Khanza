@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
+import uz.ncipro.calendar.JDateTimePicker;
 
 /**
  *
@@ -149,7 +150,7 @@ public class batasInput {
             }
         };return filter;
     }
-    
+   
     public PlainDocument getKata(final JTextArea inputan){
         filter=new PlainDocument(){
             @Override

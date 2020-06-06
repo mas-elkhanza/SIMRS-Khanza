@@ -46,7 +46,7 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private SisruteApi api=new SisruteApi();
+    private ApiKemenkesSisrute api=new ApiKemenkesSisrute();
     private String URL="",link="",idrs="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
@@ -334,7 +334,6 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
 
     public void tampil(String faskes) {
         try {
-            Valid.tabelKosong(tabMode);
             if(faskes.equals("")){
                 URL = link+"/referensi/faskes";
             }else{
@@ -342,12 +341,12 @@ public final class SisruteCekReferensiFaskes extends javax.swing.JDialog {
             }    	
                     
             headers = new HttpHeaders();
-	    headers.add("X-cons-id",idrs);
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
-	    headers.add("X-signature",api.getHmac()); 
-	    headers.add("Content-type","application/json");             
-	    headers.add("Content-length",null); 
-	    requestEntity = new HttpEntity(headers);
+	   headers.add("X-cons-id",idrs);
+	   headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString())); 
+	   headers.add("X-signature",api.getHmac()); 
+	   headers.add("Content-type","application/json");             
+	   headers.add("Content-length",null); 
+	   requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("status");
             System.out.println("Result : "+root.path("status").asText());

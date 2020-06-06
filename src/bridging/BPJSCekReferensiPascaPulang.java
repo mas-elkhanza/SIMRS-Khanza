@@ -42,7 +42,7 @@ public final class BPJSCekReferensiPascaPulang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private validasi Valid=new validasi();
     private int i=0;
-    private BPJSApi api=new BPJSApi();
+    private ApiBPJS api=new ApiBPJS();
     private String link="",URL="";
     private HttpHeaders headers ;
     private HttpEntity requestEntity;

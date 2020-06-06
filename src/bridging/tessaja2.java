@@ -10,7 +10,7 @@ package bridging;
  * @author khanzasoft
  */
 public class tessaja2 {
-    public static BPJSApiAplicare api=new BPJSApiAplicare();
+    public static ApiBPJSAplicare api=new ApiBPJSAplicare();
     public static void tessaja(){
         System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString()));
         System.out.println("X-Signature:"+api.getHmac());
