@@ -640,6 +640,7 @@ import tranfusidarah.UTDStokDarah;
 import viabarcode.DlgBarcodeRalan;
 import viabarcode.DlgBarcodeRanap;
 import ziscsr.ZISPengeluaranPenerimaDankes;
+import ziscsr.ZISPenghasilanPenerimaDankes;
 
 
 /**
@@ -15921,6 +15922,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnZISPenghasilanPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISPenghasilanPenerimaDankes form=new ZISPenghasilanPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16520,7 +16534,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona,btnPenilaianAwalKeperawatanKebidanan,
             btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa,btnSirkulasiBarangToko,btnReturJualToko,btnReturPiutangToko,
-            btnSirkulasiBarangToko2,btnKeuntunganBarangToko,btnZISPengeluaranPenerimaDankes;
+            btnSirkulasiBarangToko2,btnKeuntunganBarangToko,btnZISPengeluaranPenerimaDankes,btnZISPenghasilanPenerimaDankes;
     
     public void isWall(){
         try{            
@@ -19655,6 +19669,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu=0;
             if(akses.getzis_pengeluaran_penerima_dankes()==true){
                 Panelmenu.add(btnZISPengeluaranPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_penghasilan_penerima_dankes()==true){
+                Panelmenu.add(btnZISPenghasilanPenerimaDankes);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){   
@@ -22792,6 +22811,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getzis_pengeluaran_penerima_dankes()==true){
             Panelmenu.add(btnZISPengeluaranPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_penghasilan_penerima_dankes()==true){
+            Panelmenu.add(btnZISPenghasilanPenerimaDankes);
             jmlmenu++;
         }
 
@@ -27134,6 +27158,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getzis_penghasilan_penerima_dankes()==true){
+            if(btnZISPenghasilanPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISPenghasilanPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -29368,6 +29399,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISPengeluaranPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZISPengeluaranPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISPenghasilanPenerimaDankes = new widget.ButtonBig();
+        btnZISPenghasilanPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_edit-paste_38992.png"))); 
+        btnZISPenghasilanPenerimaDankes.setText("Ket Penghasilan Penerima Dankes");
+        btnZISPenghasilanPenerimaDankes.setIconTextGap(0);
+        btnZISPenghasilanPenerimaDankes.setName("btnZISPenghasilanPenerimaDankes"); 
+        btnZISPenghasilanPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISPenghasilanPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISPenghasilanPenerimaDankesActionPerformed(evt);
             }
         }); 
     }

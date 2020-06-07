@@ -1233,7 +1233,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         });
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-06-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1254,7 +1254,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-06-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setOpaque(false);
         DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1279,7 +1279,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         });
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-06-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2020" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setOpaque(false);
         DTPCari3.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1300,7 +1300,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-06-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-06-2020" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setOpaque(false);
         DTPCari4.setPreferredSize(new java.awt.Dimension(90, 23));
@@ -1379,7 +1379,6 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
 
         scrollBalasan.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 254)), "Balasan Pesan :", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
 
-        DataBalasan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
         DataBalasan.setColumns(20);
         DataBalasan.setRows(5);
         DataBalasan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1950,6 +1949,7 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
         if(tbObat.getSelectedRow()!= -1){
             isMenu();
         }else{
+            ChkAccor.setSelected(false);
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan...!!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
@@ -2486,13 +2486,13 @@ public class DlgBookingPeriksa extends javax.swing.JFrame {
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(240,HEIGHT));
             FormMenu.setVisible(true);  
-            scrollBalasan.setVisible(true);  
+            scrollBalasan.setVisible(true); 
             ChkAccor.setVisible(true);
-        }else if(ChkAccor.isSelected()==false){           
-            ChkAccor.setVisible(false);            
+        }else if(ChkAccor.isSelected()==false){  
+            ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);  
-            scrollBalasan.setVisible(false);      
+            scrollBalasan.setVisible(false);   
             ChkAccor.setVisible(true);
         }
     }

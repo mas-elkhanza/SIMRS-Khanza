@@ -3993,6 +3993,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         if(tbTriase.getSelectedRow()!= -1){
             isMenu();
         }else{
+            ChkAccor.setSelected(false);
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan triasenya...!!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
@@ -5746,12 +5747,13 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
             FormMenu.setVisible(true);  
             ScrollHTML.setVisible(true);  
             ChkAccor.setVisible(true);
-        }else if(ChkAccor.isSelected()==false){           
-            ChkAccor.setVisible(false);            
+        }else if(ChkAccor.isSelected()==false){   
+            ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);  
-            ScrollHTML.setVisible(false);      
+            ScrollHTML.setVisible(false);
             ChkAccor.setVisible(true);
+            
         }
     }
     

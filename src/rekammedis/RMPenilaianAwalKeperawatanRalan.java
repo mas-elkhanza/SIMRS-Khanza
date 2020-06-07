@@ -3199,6 +3199,7 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             isMenu();
         }else{
+            ChkAccor.setSelected(false);
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan...!!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
@@ -3871,11 +3872,11 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
             FormMenu.setVisible(true);  
             FormMasalahRencana.setVisible(true);  
             ChkAccor.setVisible(true);
-        }else if(ChkAccor.isSelected()==false){           
-            ChkAccor.setVisible(false);            
+        }else if(ChkAccor.isSelected()==false){   
+            ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);  
-            FormMasalahRencana.setVisible(false);      
+            FormMasalahRencana.setVisible(false);   
             ChkAccor.setVisible(true);
         }
     }
