@@ -14,7 +14,7 @@
                                <tr class="head">
                                   <td width="15%" align="right"><label for="operasi">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="operasi" type="text" id="operasi" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="69%"><input name="operasi" type="text" id="operasi" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_ (Maksimal 65 karakter)" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
                                   <td width="15%" align="left">&nbsp;<input name="BtnOperasi" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>

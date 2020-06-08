@@ -530,5 +530,25 @@
         elseif ($x < 1000000000)
           return Terbilang($x / 1000000) . " juta" . Terbilang($x % 1000000);
     }
+    
+    function encrypt_decrypt($string,$action){
+        $secret_key     = 'Bar12345Bar12345'; 
+        $secret_iv      = 'sayangsamakhanza';
+        $output         = FALSE;
+        $encrypt_method = "AES-256-CBC";
+        $key            = hash('sha256', $secret_key);
+        $iv             = substr(hash('sha256', $secret_iv), 0, 16);
+ 
+        switch ($action){
+             case "e":
+                $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
+                break;
+             case "d":
+                $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+                break;
+        }
+        
+        return $output;
+    }
         
 ?>

@@ -639,6 +639,7 @@ import tranfusidarah.UTDPenyerahanDarah;
 import tranfusidarah.UTDStokDarah;
 import viabarcode.DlgBarcodeRalan;
 import viabarcode.DlgBarcodeRanap;
+import ziscsr.ZISAtapRumahPenerimaDankes;
 import ziscsr.ZISDindingRumahPenerimaDankes;
 import ziscsr.ZISLantaiRumahPenerimaDankes;
 import ziscsr.ZISPengeluaranPenerimaDankes;
@@ -15977,6 +15978,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnZISAtapRumahPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISAtapRumahPenerimaDankes form=new ZISAtapRumahPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16577,7 +16591,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona,btnPenilaianAwalKeperawatanKebidanan,
             btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa,btnSirkulasiBarangToko,btnReturJualToko,btnReturPiutangToko,
             btnSirkulasiBarangToko2,btnKeuntunganBarangToko,btnZISPengeluaranPenerimaDankes,btnZISPenghasilanPenerimaDankes,btnZISUkuranRumahPenerimaDankes,
-            btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes;
+            btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes;
     
     public void isWall(){
         try{            
@@ -19732,6 +19746,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getzis_lantai_rumah_penerima_dankes()==true){
                 Panelmenu.add(btnZISLantaiRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_atap_rumah_penerima_dankes()==true){
+                Panelmenu.add(btnZISAtapRumahPenerimaDankes);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){   
@@ -22889,6 +22908,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getzis_lantai_rumah_penerima_dankes()==true){
             Panelmenu.add(btnZISLantaiRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_atap_rumah_penerima_dankes()==true){
+            Panelmenu.add(btnZISAtapRumahPenerimaDankes);
             jmlmenu++;
         }
 
@@ -27259,6 +27283,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getzis_atap_rumah_penerima_dankes()==true){
+            if(btnZISAtapRumahPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISAtapRumahPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -29541,6 +29572,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISLantaiRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZISLantaiRumahPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISAtapRumahPenerimaDankes = new widget.ButtonBig();
+        btnZISAtapRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_home_17008.png"))); 
+        btnZISAtapRumahPenerimaDankes.setText("Atap Rumah Penerima Dankes");
+        btnZISAtapRumahPenerimaDankes.setIconTextGap(0);
+        btnZISAtapRumahPenerimaDankes.setName("btnZISAtapRumahPenerimaDankes"); 
+        btnZISAtapRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISAtapRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISAtapRumahPenerimaDankesActionPerformed(evt);
             }
         }); 
     }

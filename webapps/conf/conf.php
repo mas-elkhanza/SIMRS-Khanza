@@ -23,12 +23,14 @@
     $sqlinjectionchars = array("=","-","'","\"","+"); //tambah sendiri
 
     function cleankar($dirty){
+	$konektor=bukakoneksi();
 	if (get_magic_quotes_gpc()) {
-            $clean = mysqli_real_escape_string(stripslashes($dirty));	 
+            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
 	}else{
-            $clean = mysqli_real_escape_string($dirty);	
+            $clean = mysqli_real_escape_string($konektor,$dirty);	
 	} 
-	return preg_replace('/[^a-zA-Z0-9\s_ ]/', '',$clean);
+         mysqli_close($konektor);
+	return preg_replace('/[^a-zA-Z0-9\s_,@. ]/', '',$clean);
     }
     
     function mysql_safe_query($format) {
