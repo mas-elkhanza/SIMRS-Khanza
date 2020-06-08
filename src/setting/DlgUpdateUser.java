@@ -487,7 +487,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         // TODO add your handling code here:
-         TCari.setText("");
+        TCari.setText("");
         tampil(TKd.getText());
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -502,7 +502,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         // TODO add your handling code here:
-         if (TKd.getText().trim().equals("") || TNmUser.getText().trim().equals("")) {
+        if (TKd.getText().trim().equals("") || TNmUser.getText().trim().equals("")) {
             Valid.textKosong(TNmUser, "User");
         } else if (TPass.getText().trim().equals("")) {
             Valid.textKosong(TPass, "Password");
@@ -514,38 +514,14 @@ public class DlgUpdateUser extends javax.swing.JDialog {
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         // TODO add your handling code here:
-                if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnSimpanActionPerformed(null);
         } else {
             Valid.pindah(evt, BtnAll, BtnKeluar);
         }
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
-    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppBersihkanActionPerformed
-        for (i = 0; i < tbUser.getRowCount(); i++) {
-            tbUser.setValueAt(false, i, 0);
-        }
-    }// GEN-LAST:event_ppBersihkanActionPerformed
-
-    private void ppSemuaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppSemuaActionPerformed
-        for (i = 0; i < tbUser.getRowCount(); i++) {
-            tbUser.setValueAt(true, i, 0);
-        }
-    }// GEN-LAST:event_ppSemuaActionPerformed
-
-    private void ppSemua1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppSemua1ActionPerformed
-        for (i = 0; i < tbUser.getRowCount(); i++) {
-            tbUser.setValueAt(true, i, 2);
-        }
-    }// GEN-LAST:event_ppSemua1ActionPerformed
-
-    private void ppBersihkan1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppBersihkan1ActionPerformed
-        for (i = 0; i < tbUser.getRowCount(); i++) {
-            tbUser.setValueAt(false, i, 2);
-        }
-    }// GEN-LAST:event_ppBersihkan1ActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         Valid.loadCombo(CmbAkses, "kategori", "user_akses");
 
@@ -556,9 +532,50 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 kategori();
             }
         });
-    }// GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_formWindowOpened
 
-    private void btnTambahKatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTambahKatActionPerformed
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
+
+    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        // TODO add your handling code here:
+        for (i = 0; i < tbUser.getRowCount(); i++) {
+            tbUser.setValueAt(false, i, 0);
+        }
+    }//GEN-LAST:event_ppBersihkanActionPerformed
+
+    private void ppSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaActionPerformed
+        // TODO add your handling code here:
+        for (i = 0; i < tbUser.getRowCount(); i++) {
+            tbUser.setValueAt(true, i, 0);
+        }
+    }//GEN-LAST:event_ppSemuaActionPerformed
+
+    private void ppBersihkan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkan1ActionPerformed
+        // TODO add your handling code here:
+        for (i = 0; i < tbUser.getRowCount(); i++) {
+            tbUser.setValueAt(false, i, 2);
+        }
+    }//GEN-LAST:event_ppBersihkan1ActionPerformed
+
+    private void ppSemua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemua1ActionPerformed
+        // TODO add your handling code here:
+        for (i = 0; i < tbUser.getRowCount(); i++) {
+            tbUser.setValueAt(true, i, 2);
+        }
+    }//GEN-LAST:event_ppSemua1ActionPerformed
+
+    private void TNmUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNmUserKeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_TNmUserKeyPressed
+
+    private void CmbAksesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbAksesItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbAksesItemStateChanged
+
+    private void btnTambahKatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahKatActionPerformed
         // TODO add your handling code here:
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         personal.isUser(TKd.getText(), TNmUser.getText(), TPass.getText());
@@ -567,17 +584,13 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         personal.setAlwaysOnTop(false);
         personal.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
-    }// GEN-LAST:event_btnTambahKatActionPerformed
+    }//GEN-LAST:event_btnTambahKatActionPerformed
 
-    private void btnUpdateKatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnUpdateKatActionPerformed
+    private void btnUpdateKatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateKatActionPerformed
         // TODO add your handling code here:
         updateKategori1();
         updateKategori2();
-    }// GEN-LAST:event_btnUpdateKatActionPerformed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {// GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
-    }// GEN-LAST:event_formWindowActivated
+    }//GEN-LAST:event_btnUpdateKatActionPerformed
 
     /**
      * @param args the command line arguments
