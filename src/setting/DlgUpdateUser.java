@@ -650,7 +650,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi,"+
                         "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan,"+
                         "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa,toko_sirkulasi,toko_retur_jual,toko_retur_piutang,"+
-                        "toko_sirkulasi2,toko_keuntungan_barang,zis_pengeluaran_penerima_dankes,zis_penghasilan_penerima_dankes from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "toko_sirkulasi2,toko_keuntungan_barang,zis_pengeluaran_penerima_dankes,zis_penghasilan_penerima_dankes,"+
+                        "zis_ukuran_rumah_penerima_dankes,zis_dinding_rumah_penerima_dankes,zis_lantai_rumah_penerima_dankes from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -3081,6 +3082,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[R]Ket Penghasilan Penerima Dankes".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[R]Ket Penghasilan Penerima Dankes",rs.getBoolean("zis_penghasilan_penerima_dankes")});
+                    }
+                    
+                    if("[R]Ukuran Rumah Penerima Dankes".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[R]Ukuran Rumah Penerima Dankes",rs.getBoolean("zis_ukuran_rumah_penerima_dankes")});
+                    }
+                    
+                    if("[R]Dinding Rumah Penerima Dankes".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[R]Dinding Rumah Penerima Dankes",rs.getBoolean("zis_dinding_rumah_penerima_dankes")});
+                    }
+                    
+                    if("[R]Lantai Rumah Penerima Dankes".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[R]Lantai Rumah Penerima Dankes",rs.getBoolean("zis_lantai_rumah_penerima_dankes")});
                     }
                     
                     if("[S]Set P.J. Unit Penunjang".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5628,6 +5641,18 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[R]Ket Penghasilan Penerima Dankes".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","zis_penghasilan_penerima_dankes='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[R]Ukuran Rumah Penerima Dankes".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","zis_ukuran_rumah_penerima_dankes='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[R]Dinding Rumah Penerima Dankes".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","zis_dinding_rumah_penerima_dankes='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[R]Lantai Rumah Penerima Dankes".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","zis_lantai_rumah_penerima_dankes='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[S]Set P.J. Unit Penunjang".equals(tbUser.getValueAt(i,1).toString())){

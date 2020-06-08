@@ -136,7 +136,8 @@ public final class akses {
             perawatan_pasien_corona=false,penilaian_awal_keperawatan_gigi=false,master_masalah_keperawatan_gigi=false,toko_bayar_piutang=false,
             toko_piutang_harian=false,toko_penjualan_harian=false,deteksi_corona=false,penilaian_awal_keperawatan_kebidanan=false,pengumuman_epasien=false,
             surat_hamil=false,set_tarif_online=false,booking_periksa=false,toko_sirkulasi=false,toko_retur_jual=false,toko_retur_piutang=false,
-            toko_sirkulasi2=false,toko_keuntungan_barang=false,zis_pengeluaran_penerima_dankes=false,zis_penghasilan_penerima_dankes=false;
+            toko_sirkulasi2=false,toko_keuntungan_barang=false,zis_pengeluaran_penerima_dankes=false,zis_penghasilan_penerima_dankes=false,
+            zis_ukuran_rumah_penerima_dankes=false,zis_dinding_rumah_penerima_dankes=false,zis_lantai_rumah_penerima_dankes=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -789,6 +790,9 @@ public final class akses {
                         akses.toko_keuntungan_barang=true;
                         akses.zis_pengeluaran_penerima_dankes=true;
                         akses.zis_penghasilan_penerima_dankes=true;
+                        akses.zis_ukuran_rumah_penerima_dankes=true;
+                        akses.zis_dinding_rumah_penerima_dankes=true;
+                        akses.zis_lantai_rumah_penerima_dankes=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1425,6 +1429,9 @@ public final class akses {
                         akses.toko_keuntungan_barang=rs2.getBoolean("toko_keuntungan_barang");
                         akses.zis_pengeluaran_penerima_dankes=rs2.getBoolean("zis_pengeluaran_penerima_dankes");
                         akses.zis_penghasilan_penerima_dankes=rs2.getBoolean("zis_penghasilan_penerima_dankes");
+                        akses.zis_ukuran_rumah_penerima_dankes=rs2.getBoolean("zis_ukuran_rumah_penerima_dankes");
+                        akses.zis_dinding_rumah_penerima_dankes=rs2.getBoolean("zis_dinding_rumah_penerima_dankes");
+                        akses.zis_lantai_rumah_penerima_dankes=rs2.getBoolean("zis_lantai_rumah_penerima_dankes");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2059,6 +2066,9 @@ public final class akses {
                         akses.toko_keuntungan_barang=false;
                         akses.zis_pengeluaran_penerima_dankes=false;
                         akses.zis_penghasilan_penerima_dankes=false;
+                        akses.zis_ukuran_rumah_penerima_dankes=false;
+                        akses.zis_dinding_rumah_penerima_dankes=false;
+                        akses.zis_lantai_rumah_penerima_dankes=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2747,4 +2757,7 @@ public final class akses {
     public static boolean gettoko_keuntungan_barang(){return akses.toko_keuntungan_barang;}
     public static boolean getzis_pengeluaran_penerima_dankes(){return akses.zis_pengeluaran_penerima_dankes;}
     public static boolean getzis_penghasilan_penerima_dankes(){return akses.zis_penghasilan_penerima_dankes;}
+    public static boolean getzis_ukuran_rumah_penerima_dankes(){return akses.zis_ukuran_rumah_penerima_dankes;}
+    public static boolean getzis_dinding_rumah_penerima_dankes(){return akses.zis_dinding_rumah_penerima_dankes;}
+    public static boolean getzis_lantai_rumah_penerima_dankes(){return akses.zis_lantai_rumah_penerima_dankes;}
 }   

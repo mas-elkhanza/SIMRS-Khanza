@@ -690,13 +690,13 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getzis_pengeluaran_penerima_dankes());
-        BtnHapus.setEnabled(akses.getzis_pengeluaran_penerima_dankes());
-        BtnEdit.setEnabled(akses.getzis_pengeluaran_penerima_dankes());
+        BtnSimpan.setEnabled(akses.getzis_penghasilan_penerima_dankes());
+        BtnHapus.setEnabled(akses.getzis_penghasilan_penerima_dankes());
+        BtnEdit.setEnabled(akses.getzis_penghasilan_penerima_dankes());
         
-        ppGanti.setEnabled(akses.getzis_pengeluaran_penerima_dankes());        
-        ppHapus.setEnabled(akses.getzis_pengeluaran_penerima_dankes());
-        ppSimpan.setEnabled(akses.getzis_pengeluaran_penerima_dankes());
+        ppGanti.setEnabled(akses.getzis_penghasilan_penerima_dankes());        
+        ppHapus.setEnabled(akses.getzis_penghasilan_penerima_dankes());
+        ppSimpan.setEnabled(akses.getzis_penghasilan_penerima_dankes());
     }
     
 }
