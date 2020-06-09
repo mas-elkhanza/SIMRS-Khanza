@@ -684,7 +684,7 @@ public final class validasi {
                 }
             }
         } catch (Exception e) {
-            log.error(e);
+            System.out.println("Error Report: "+e);
         }
     }
 
