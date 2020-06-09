@@ -506,11 +506,11 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notif Tansparant : " + e);
-                Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                
             }
         } catch (Exception ex) {
             System.out.println("Notif Load XML : " + ex);
-            Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
 
@@ -4998,7 +4998,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : " + ex);
-                        Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, ex);
+                        
                     } finally {
                         if (rskasir != null) {
                             rskasir.close();
@@ -5009,7 +5009,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println(e);
-                    Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                    
                 }
             }
         }
@@ -6810,7 +6810,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             }
                         } catch (Exception ex) {
                             System.out.println("Notifikasi : " + ex);
-                            Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, ex);
+                            
                         } finally {
                             if (rskasir != null) {
                                 rskasir.close();
@@ -6821,7 +6821,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception e) {
                         System.out.println(e);
-                        Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                        
                     }
                 }
             }
@@ -6938,7 +6938,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : " + ex);
-                        Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, ex);
+                        
                     } finally {
                         if (rskasir != null) {
                             rskasir.close();
@@ -6949,7 +6949,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println(e);
-                    Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                    
                 }
             }
         }
@@ -6973,7 +6973,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         + TNoRw.getText());
             } catch (Exception ex) {
                 System.out.println("Notifikasi : " + ex);
-                Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
 
             berkas.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -6999,7 +6999,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             + tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(), 10).toString());
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : " + ex);
-                    Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, ex);
+                    
                 }
 
                 berkas.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -8874,7 +8874,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Tampilkasir01 : " + e);
-                Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                
             } finally {
                 if (rskasir != null) {
                     rskasir.close();
@@ -8885,7 +8885,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Tampilkasir02 : " + e);
-            Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+            
         }
         LCount.setText("" + tabModekasir.getRowCount());
     }
@@ -8943,7 +8943,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Tampilkasir03 : " + e);
-                Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                
             } finally {
                 if (rskasir != null) {
                     rskasir.close();
@@ -8954,7 +8954,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Tampilkasir04 : " + e);
-            Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+            
         }
         LCount.setText("" + tabModekasir2.getRowCount());
     }
@@ -9134,7 +9134,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                 psotomatis2.executeUpdate();
                             } catch (Exception e) {
                                 System.out.println("proses input data " + e);
-                                Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                                
                             } finally {
                                 if (psotomatis2 != null) {
                                     psotomatis2.close();
@@ -9144,7 +9144,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
-                    Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                    
                 } finally {
                     if (rskasir != null) {
                         rskasir.close();
@@ -9180,7 +9180,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                     psotomatis2.executeUpdate();
                                 } catch (Exception e) {
                                     System.out.println("proses input data " + e);
-                                    Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                                    
                                 } finally {
                                     if (psotomatis2 != null) {
                                         psotomatis2.close();
@@ -9190,7 +9190,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
-                        Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                        
                     } finally {
                         if (rskasir != null) {
                             rskasir.close();
@@ -9233,7 +9233,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                     psotomatis2.executeUpdate();
                                 } catch (Exception e) {
                                     System.out.println("proses input data " + e);
-                                    Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                                    
                                 } finally {
                                     if (psotomatis2 != null) {
                                         psotomatis2.close();
@@ -9243,7 +9243,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
-                        Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                        
                     } finally {
                         if (rskasir != null) {
                             rskasir.close();
@@ -9255,7 +9255,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
-                Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                
             }
         }
     }
@@ -9291,7 +9291,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             psotomatis2.executeUpdate();
                         } catch (Exception e) {
                             System.out.println("proses input data " + e);
-                            Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                            
                         } finally {
                             if (psotomatis2 != null) {
                                 psotomatis2.close();
@@ -9301,7 +9301,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
-                Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                
             } finally {
                 if (rskasir != null) {
                     rskasir.close();
@@ -9339,7 +9339,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                 psotomatis2.executeUpdate();
                             } catch (Exception e) {
                                 System.out.println("proses input data " + e);
-                                Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                                
                             } finally {
                                 if (psotomatis2 != null) {
                                     psotomatis2.close();
@@ -9349,7 +9349,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
-                    Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                    
                 } finally {
                     if (rskasir != null) {
                         rskasir.close();
@@ -9392,7 +9392,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                 psotomatis2.executeUpdate();
                             } catch (Exception e) {
                                 System.out.println("proses input data " + e);
-                                Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                                
                             } finally {
                                 if (psotomatis2 != null) {
                                     psotomatis2.close();
@@ -9402,7 +9402,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
-                    Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+                    
                 } finally {
                     if (rskasir != null) {
                         rskasir.close();
@@ -9414,7 +9414,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
-            Logger.getLogger(DlgKasirRalan.class.getName()).log(Level.SEVERE, null, e);
+            
         }
     }
 
