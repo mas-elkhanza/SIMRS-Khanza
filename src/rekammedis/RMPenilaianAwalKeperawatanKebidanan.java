@@ -53,8 +53,8 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
     private StringBuilder htmlContent;
     
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMPenilaianAwalKeperawatanKebidanan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

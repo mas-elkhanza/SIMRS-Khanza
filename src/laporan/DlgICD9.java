@@ -45,8 +45,8 @@ public final class DlgICD9 extends javax.swing.JDialog {
     private ResultSet rs;
     private int z=0;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgICD9(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

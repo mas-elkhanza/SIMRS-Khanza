@@ -47,8 +47,8 @@ public final class CoronaReferensiStatusKeluar extends javax.swing.JDialog {
     private JsonNode response;
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public CoronaReferensiStatusKeluar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

@@ -20,6 +20,9 @@ public class FormatterBox extends FormatedTextBox {
      */
     private static final long serialVersionUID = 1L;
 
+    /**
+     *
+     */
     public FormatterBox() {
         super();
         setFont(getFont().deriveFont(Font.BOLD));

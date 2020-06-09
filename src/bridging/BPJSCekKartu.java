@@ -96,8 +96,8 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSCekKartu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

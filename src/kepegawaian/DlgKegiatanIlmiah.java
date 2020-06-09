@@ -77,8 +77,8 @@ public class DlgKegiatanIlmiah extends javax.swing.JDialog {
     
     /**
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgKegiatanIlmiah(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

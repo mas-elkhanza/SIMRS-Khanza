@@ -53,8 +53,8 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
     private DlgPemesanan aplikasi=new DlgPemesanan(null,false);
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariSuratPemesanan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

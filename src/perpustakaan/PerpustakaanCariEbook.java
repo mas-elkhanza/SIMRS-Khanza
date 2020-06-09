@@ -66,8 +66,8 @@ public class PerpustakaanCariEbook extends javax.swing.JDialog {
     
     /**
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public PerpustakaanCariEbook(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

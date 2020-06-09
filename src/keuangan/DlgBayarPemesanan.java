@@ -59,8 +59,8 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBayarPemesanan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

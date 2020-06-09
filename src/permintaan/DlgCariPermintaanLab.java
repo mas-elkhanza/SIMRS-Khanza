@@ -3074,11 +3074,17 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 }
 
                 rs = ps.executeQuery();
+                String no = "";
                 while (rs.next()) {
                     la = "";
                     ld = "";
                     pa = "";
-                    pd = "";
+                    pd = "";                    
+                    if (!no.equals(rs.getString("noorder")
+                            + rs.getString("no_rawat")
+                            + rs.getString("no_rkm_medis")
+                            + " "
+                            + rs.getString("nm_pasien"))) {
 //                    if (!rs.getString("nilai_rujukan_ld").equals("")) {
 //                        ld = "LD : " + rs.getString("nilai_rujukan_ld");
 //                    }
@@ -3099,6 +3105,26 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         rs.getString("nm_dokter"), rs.getString("nm_poli"), rs.getString("informasi_tambahan"),
                         rs.getString("diagnosa_klinis"), rs.getString("kd_pj"), rs.getString("png_jawab")
                     });
+                    no = rs.getString("noorder")
+                                + rs.getString("no_rawat")
+                                + rs.getString("no_rkm_medis")
+                                + " "
+                                + rs.getString("nm_pasien");
+                    }else if (no.equals(rs.getString("noorder")
+                            + rs.getString("no_rawat")
+                            + rs.getString("no_rkm_medis")
+                            + " "
+                            + rs.getString("nm_pasien"))) {
+                        
+                    tabMode2.addRow(new String[]{
+                        "", "", "",
+                        rs.getString("nm_perawatan"), rs.getString("Pemeriksaan"), rs.getString("satuan"), ld + la + pd + pa,
+                        rs.getString("tgl_permintaan"), rs.getString("jam_permintaan"), rs.getString("tgl_sampel"),
+                        rs.getString("jam_sampel"), rs.getString("tgl_hasil"), rs.getString("jam_hasil"), rs.getString("dokter_perujuk"),
+                        rs.getString("nm_dokter"), rs.getString("nm_poli"), rs.getString("informasi_tambahan"),
+                        rs.getString("diagnosa_klinis"), rs.getString("kd_pj"), rs.getString("png_jawab")
+                    });
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : " + e);
@@ -3169,7 +3195,6 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         KodeDokter = "";
         DokterPerujuk = "";
         Ruang = "";
-        Logger.getLogger(DlgCariPermintaanLab.class.getName()).log(Level.INFO, null, "Clear Teks");
     }
 
     /**
@@ -3371,7 +3396,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             + "(permintaan_lab.noorder like ? or permintaan_lab.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "
                             + "pasien.nm_pasien like ? or jns_perawatan_lab.nm_perawatan like ? or template_laboratorium.Pemeriksaan like ? or "
                             + "permintaan_lab.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")
-                    + "group by permintaan_lab.noorder,permintaan_detail_permintaan_lab.id_template order by permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
+                    + "GROUP BY permintaan_lab.noorder,jns_perawatan_lab.nm_perawatan order by permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
             try {
                 ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
                 ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
@@ -3390,11 +3415,45 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 }
 
                 rs = ps.executeQuery();
+                String no = "";
                 while (rs.next()) {
                     la = "";
                     ld = "";
                     pa = "";
                     pd = "";
+
+                    if (!no.equals(rs.getString("noorder")
+                            + rs.getString("no_rawat")
+                            + rs.getString("no_rkm_medis")
+                            + " "
+                            + rs.getString("nm_pasien"))) {
+                        tabMode4.addRow(new String[]{
+                            rs.getString("noorder"), rs.getString("no_rawat"), rs.getString("no_rkm_medis") + " " + rs.getString("nm_pasien"),
+                            rs.getString("nm_perawatan"), rs.getString("Pemeriksaan"), rs.getString("satuan"), ld + la + pd + pa,
+                            rs.getString("tgl_permintaan"), rs.getString("jam_permintaan"), rs.getString("tgl_sampel"), rs.getString("jam_sampel"),
+                            rs.getString("tgl_hasil"), rs.getString("jam_hasil"), rs.getString("dokter_perujuk"), rs.getString("nm_dokter"),
+                            rs.getString("nm_bangsal"), rs.getString("informasi_tambahan"), rs.getString("diagnosa_klinis"),
+                            rs.getString("kd_pj"), rs.getString("png_jawab")
+                        });
+                        no = rs.getString("noorder")
+                                + rs.getString("no_rawat")
+                                + rs.getString("no_rkm_medis")
+                                + " "
+                                + rs.getString("nm_pasien");
+                    } else if (no.equals(rs.getString("noorder")
+                            + rs.getString("no_rawat")
+                            + rs.getString("no_rkm_medis")
+                            + " "
+                            + rs.getString("nm_pasien"))) {
+                        tabMode4.addRow(new String[]{
+                            null, null, null,
+                            rs.getString("nm_perawatan"), rs.getString("Pemeriksaan"), rs.getString("satuan"), ld + la + pd + pa,
+                            rs.getString("tgl_permintaan"), rs.getString("jam_permintaan"), rs.getString("tgl_sampel"), rs.getString("jam_sampel"),
+                            rs.getString("tgl_hasil"), rs.getString("jam_hasil"), rs.getString("dokter_perujuk"), rs.getString("nm_dokter"),
+                            rs.getString("nm_bangsal"), rs.getString("informasi_tambahan"), rs.getString("diagnosa_klinis"),
+                            rs.getString("kd_pj"), rs.getString("png_jawab")
+                        });
+                    }
 //                    if (!rs.getString("nilai_rujukan_ld").equals("")) {
 //                        ld = "LD : " + rs.getString("nilai_rujukan_ld");
 //                    }
@@ -3407,14 +3466,6 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 //                    if (!rs.getString("nilai_rujukan_pd").equals("")) {
 //                        pa = " PA : " + rs.getString("nilai_rujukan_pa");
 //                    }
-                    tabMode4.addRow(new String[]{
-                        rs.getString("noorder"), rs.getString("no_rawat"), rs.getString("no_rkm_medis") + " " + rs.getString("nm_pasien"),
-                        rs.getString("nm_perawatan"), rs.getString("Pemeriksaan"), rs.getString("satuan"), ld + la + pd + pa,
-                        rs.getString("tgl_permintaan"), rs.getString("jam_permintaan"), rs.getString("tgl_sampel"), rs.getString("jam_sampel"),
-                        rs.getString("tgl_hasil"), rs.getString("jam_hasil"), rs.getString("dokter_perujuk"), rs.getString("nm_dokter"),
-                        rs.getString("nm_bangsal"), rs.getString("informasi_tambahan"), rs.getString("diagnosa_klinis"),
-                        rs.getString("kd_pj"), rs.getString("png_jawab")
-                    });
                 }
             } catch (Exception e) {
                 System.out.println("Notif : " + e);

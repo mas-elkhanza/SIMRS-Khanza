@@ -111,8 +111,8 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
     private String hari="";
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSCekRujukanKartuPCare(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

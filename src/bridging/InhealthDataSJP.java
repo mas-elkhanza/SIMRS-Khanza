@@ -67,8 +67,8 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private InhealthCekReferensiPoli poli=new InhealthCekReferensiPoli(null,false);
     
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public InhealthDataSJP(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

@@ -97,8 +97,8 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSCekNIK2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

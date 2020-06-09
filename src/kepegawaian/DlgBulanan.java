@@ -58,8 +58,8 @@ public final class DlgBulanan extends javax.swing.JDialog {
     
     int no=0,i=0,toleransi=0,terlambat1=0,terlambat2=0;
     /** Creates new form DlgBangsal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBulanan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

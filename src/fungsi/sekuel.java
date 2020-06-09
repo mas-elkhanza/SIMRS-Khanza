@@ -2292,19 +2292,19 @@ public final class sekuel {
                     ps.setString(1, sql);
                     ps.setString(2, akses.getkode());
                     ps.executeUpdate();
-                    Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, sql);
-                    System.out.println(sekuel.class.getName() + ", " + sql);
+                    Logger.getLogger(sekuel.class.getName()).log(Level.INFO, sql);
+                    //System.out.println(sekuel.class.getName() + ", " + sql);
                 } catch (Exception e) {
+                    System.out.println(sekuel.class.getName() + ", " +"QUERY SQL: "+sql+"\nERROR: "+ e.toString());
                     Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
-                    System.out.println(sekuel.class.getName() + ", " + e);
                 } finally {
                     if (ps != null) {
                         ps.close();
                     }
                 }
             } catch (Exception e) {
-                Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
                 System.out.println(sekuel.class.getName() + ", " + e);
+                Logger.getLogger(sekuel.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }

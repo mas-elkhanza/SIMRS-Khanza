@@ -53,7 +53,7 @@ public class grafikperiksaperpekerjaan extends JDialog {
     /**
      *
      * @param title
-     * @param symbol
+     * @param string1
      */
     public grafikperiksaperpekerjaan(String title,String symbol) {
         // super(title);

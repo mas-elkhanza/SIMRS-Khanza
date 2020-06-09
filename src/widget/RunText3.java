@@ -9,12 +9,19 @@ import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.Timer;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class RunText3 {
 
     private JWindow window = new JWindow();
     private JLabel label = new JLabel("Slide Text Swing, Slide Text Swing, ..........");
     private JPanel windowContents = new JPanel();
 
+    /**
+     *
+     */
     public RunText3() {
         windowContents.add(label);
         window.add(windowContents);

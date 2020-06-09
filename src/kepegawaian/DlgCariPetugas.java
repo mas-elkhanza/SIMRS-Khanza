@@ -30,8 +30,8 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariPetugas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

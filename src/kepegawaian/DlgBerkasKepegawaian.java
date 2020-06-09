@@ -69,8 +69,8 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     private int i=0,i2=0;
     private StringBuilder htmlContent;
     /** Creates new form DlgLhtBiaya
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBerkasKepegawaian(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

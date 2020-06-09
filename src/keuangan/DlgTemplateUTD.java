@@ -40,8 +40,8 @@ public final class DlgTemplateUTD extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgTemplateUTD(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

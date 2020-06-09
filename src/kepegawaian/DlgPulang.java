@@ -43,8 +43,8 @@ public final class DlgPulang extends javax.swing.JDialog {
     private String[] primary;
 
     /** Creates new form DlgBangsal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPulang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

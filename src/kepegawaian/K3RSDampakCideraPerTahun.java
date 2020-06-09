@@ -46,8 +46,8 @@ public final class K3RSDampakCideraPerTahun extends javax.swing.JDialog {
             ttljul=0,ttlagu=0,ttlsep=0,ttlokt=0,ttlnov=0,ttldes=0,jan=0,
             feb=0,mar=0,apr=0,mei=0,jun=0,jul=0,agu=0,sep=0,okt=0,nov=0,des=0;   
     /** Creates new form DlgLhtBiaya
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public K3RSDampakCideraPerTahun(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

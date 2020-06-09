@@ -44,8 +44,8 @@ public final class CoronaReferensiJK extends javax.swing.JDialog {
     private JsonNode response;
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public CoronaReferensiJK(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

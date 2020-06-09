@@ -42,8 +42,8 @@ public class RMDeteksiDiniCorona extends javax.swing.JDialog {
     
 
     /** Creates new form DlgPemberianInfus
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMDeteksiDiniCorona(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

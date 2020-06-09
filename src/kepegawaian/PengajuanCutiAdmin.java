@@ -48,8 +48,8 @@ public final class PengajuanCutiAdmin extends javax.swing.JDialog {
     private int i=0,pilihan=0;
     private double total=0;
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PengajuanCutiAdmin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

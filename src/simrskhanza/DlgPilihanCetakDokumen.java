@@ -41,8 +41,8 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
 
     /**
      * Creates new form DlgPenyakit
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgPilihanCetakDokumen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

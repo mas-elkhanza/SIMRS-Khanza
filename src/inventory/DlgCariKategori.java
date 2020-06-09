@@ -47,8 +47,8 @@ public final class DlgCariKategori extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariKategori(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

@@ -52,8 +52,8 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
     private String alergi_telur, alergi_susu_sapi, alergi_kacang, alergi_gluten, alergi_udang, alergi_ikan, alergi_hazelnut;
     
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMDataAsuhanGizi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

@@ -70,8 +70,8 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
     
     /**
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgRiwayatJabatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

@@ -64,8 +64,8 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
 
     /** Creates new form DlgJnsPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgJnsPerawatanOperasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

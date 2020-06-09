@@ -41,8 +41,8 @@ public class DlgSuku extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form Dlgsuku_bangsa
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgSuku(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

@@ -57,9 +57,9 @@ public final class DlgResepPulang extends javax.swing.JDialog {
     private String aktifkanbatch="no";
     private int i=0;
 
-    /** Creates new form DlgResepObat 
-     *@param parent
-     *@param modal*/
+    /** Creates new form DlgResepObat
+     * @param frame
+     * @param bln*/
     public DlgResepPulang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

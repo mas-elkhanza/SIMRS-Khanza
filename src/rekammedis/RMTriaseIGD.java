@@ -66,8 +66,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
     private StringBuilder htmlContent;
     
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMTriaseIGD(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

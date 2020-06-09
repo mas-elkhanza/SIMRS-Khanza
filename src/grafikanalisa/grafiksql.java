@@ -52,7 +52,10 @@ public class grafiksql extends JDialog {
 
     /**
      *
-     * @param title
+     * @param string
+     * @param string1
+     * @param string2
+     * @param string3
      * @param tabel
      * @param kolom
      * @param label

@@ -48,8 +48,8 @@ public class DlgJadwal extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgJadwal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgJadwal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

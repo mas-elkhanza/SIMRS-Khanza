@@ -29,8 +29,8 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
 
     /** Creates new form DlgLhtBiaya
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMRiwayatPerawatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

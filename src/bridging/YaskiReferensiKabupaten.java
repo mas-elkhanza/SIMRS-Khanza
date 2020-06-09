@@ -51,8 +51,8 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     private JsonNode nameNode;
     private JsonNode response;
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public YaskiReferensiKabupaten(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

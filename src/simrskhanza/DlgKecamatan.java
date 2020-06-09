@@ -41,8 +41,8 @@ public class DlgKecamatan extends javax.swing.JDialog {
     private String kd_kab;
 
     /** Creates new form Dlgkecamatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgKecamatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

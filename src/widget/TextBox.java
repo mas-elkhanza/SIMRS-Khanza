@@ -9,6 +9,10 @@ import usu.widget.glass.TextBoxGlass;
  * @author usu
  */
 public class TextBox extends TextBoxGlass {
+
+    /**
+     *
+     */
     public TextBox() {
         super();
         setFont(new java.awt.Font("Tahoma", 0, 11));        

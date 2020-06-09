@@ -25,7 +25,12 @@ public class RunText4 extends JFrame implements ActionListener{
     String newText = oldText.substring(1) + oldText.substring(0, 1);
      label.setText( newText );
   }
-   public static void main(String[] args)  {
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args)  {
     RunText4 frame = new RunText4();
     frame.setDefaultCloseOperation( EXIT_ON_CLOSE );
     frame.setSize(300,100);
