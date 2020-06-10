@@ -164,7 +164,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[Q]Penjualan Harian Toko","[A]Deteksi Dini Corona","[L]Penilaian Awal Ralan Kebidanan","[O]Pengumuman E-Pasien","[O]Surat Hamil","[J]Set Tarif Online",
                 "[A]Booking Periksa","[Q]Sirkulasi Barang Toko","[Q]Retur Jual Toko","[Q]Retur Jual Piutang","[Q]Sirkulasi Barang Toko 2","[Q]Keuntungan Barang Toko",
                 "[R]Ket Pengeluaran Penerima Dankes","[R]Ket Penghasilan Penerima Dankes","[R]Ukuran Rumah Penerima Dankes","[R]Dinding Rumah Penerima Dankes",
-                "[R]Lantai Rumah Penerima Dankes","[R]Atap Rumah Penerima Dankes"
+                "[R]Lantai Rumah Penerima Dankes","[R]Atap Rumah Penerima Dankes","[R]Kepemilikan Rumah Penerima Dankes","[R]Kamar Mandi Penerima Dankes"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -353,7 +353,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 637;i++) {
+        for (i = 0; i < 639;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -1263,6 +1263,10 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(176);
             }else if(i==636){
                 column.setPreferredWidth(169);
+            }else if(i==637){
+                column.setPreferredWidth(205);
+            }else if(i==638){
+                column.setPreferredWidth(172);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1757,7 +1761,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2436,7 +2440,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "zis_ukuran_rumah_penerima_dankes='"+tbUser.getValueAt(i,633).toString()+"',"+
                     "zis_dinding_rumah_penerima_dankes='"+tbUser.getValueAt(i,634).toString()+"',"+
                     "zis_lantai_rumah_penerima_dankes='"+tbUser.getValueAt(i,635).toString()+"',"+
-                    "zis_atap_rumah_penerima_dankes='"+tbUser.getValueAt(i,636).toString()+"'");
+                    "zis_atap_rumah_penerima_dankes='"+tbUser.getValueAt(i,636).toString()+"',"+
+                    "zis_kepemilikan_rumah_penerima_dankes='"+tbUser.getValueAt(i,637).toString()+"',"+
+                    "zis_kamar_mandi_penerima_dankes='"+tbUser.getValueAt(i,638).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3154,7 +3160,9 @@ public class DlgUser extends javax.swing.JDialog {
                                     "zis_ukuran_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,633).toString()+"',"+
                                     "zis_dinding_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,634).toString()+"',"+
                                     "zis_lantai_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,635).toString()+"',"+
-                                    "zis_atap_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,636).toString()+"'");
+                                    "zis_atap_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,636).toString()+"',"+
+                                    "zis_kepemilikan_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,637).toString()+"',"+
+                                    "zis_kamar_mandi_penerima_dankes='"+tbUser.getValueAt(barisdicopy,638).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3470,7 +3478,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan,"+
                         "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa,toko_sirkulasi,toko_retur_jual,toko_retur_piutang,"+
                         "toko_sirkulasi2,toko_keuntungan_barang,zis_pengeluaran_penerima_dankes,zis_penghasilan_penerima_dankes,"+
-                        "zis_ukuran_rumah_penerima_dankes,zis_dinding_rumah_penerima_dankes,zis_lantai_rumah_penerima_dankes,zis_atap_rumah_penerima_dankes from user order by AES_DECRYPT(id_user,'nur')");
+                        "zis_ukuran_rumah_penerima_dankes,zis_dinding_rumah_penerima_dankes,zis_lantai_rumah_penerima_dankes,zis_atap_rumah_penerima_dankes,"+
+                        "zis_kepemilikan_rumah_penerima_dankes,zis_kamar_mandi_penerima_dankes from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4119,7 +4128,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("zis_ukuran_rumah_penerima_dankes"),
                                rs.getBoolean("zis_dinding_rumah_penerima_dankes"),
                                rs.getBoolean("zis_lantai_rumah_penerima_dankes"),
-                               rs.getBoolean("zis_atap_rumah_penerima_dankes")
+                               rs.getBoolean("zis_atap_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_kepemilikan_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_kamar_mandi_penerima_dankes")
                             });
                         }   
                     } catch (Exception e) {
@@ -4757,7 +4768,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("zis_ukuran_rumah_penerima_dankes"),
                            rs.getBoolean("zis_dinding_rumah_penerima_dankes"),
                            rs.getBoolean("zis_lantai_rumah_penerima_dankes"),
-                           rs.getBoolean("zis_atap_rumah_penerima_dankes")
+                           rs.getBoolean("zis_atap_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_kepemilikan_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_kamar_mandi_penerima_dankes")
                         });
                     }                                             
                  }
