@@ -45,8 +45,8 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
     private BPJSMapingPoli poli=new BPJSMapingPoli(null,false);
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSCekMappingPoli(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -308,6 +308,9 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -341,10 +344,17 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
         }
     }    
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnTambah.setEnabled(akses.getmapping_poli_bpjs());
     }

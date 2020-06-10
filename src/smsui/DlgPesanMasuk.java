@@ -43,8 +43,8 @@ public final class DlgPesanMasuk extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;   
     /** Creates new form DlgLhtBiaya
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPesanMasuk(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -372,6 +372,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){        
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 

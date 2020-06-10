@@ -39,8 +39,8 @@ public class PerpustakaanPengaturanPeminjaman extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgAdmin
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PerpustakaanPengaturanPeminjaman(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -506,6 +506,9 @@ private void MakBukuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_M
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         MakBuku.setText("0");
         Lama.setText("0");

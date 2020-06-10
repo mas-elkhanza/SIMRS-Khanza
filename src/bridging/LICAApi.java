@@ -45,6 +45,9 @@ public class LICAApi {
     private JsonNode response;
     private ObjectMapper mapper = new ObjectMapper();
     
+    /**
+     *
+     */
     public LICAApi(){
         super();
         try {
@@ -55,6 +58,10 @@ public class LICAApi {
         }
     }
     
+    /**
+     *
+     * @param nopermintaan
+     */
     public void kirim(String nopermintaan) {
         try {
              ps=koneksi.prepareStatement(
@@ -154,6 +161,10 @@ public class LICAApi {
         }
     }
     
+    /**
+     *
+     * @param nopermintaan
+     */
     public void ambil(String nopermintaan) {
         try{
             headers = new HttpHeaders();
@@ -185,6 +196,12 @@ public class LICAApi {
         }
     }
     
+    /**
+     *
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("SSL");
         javax.net.ssl.TrustManager[] trustManagers= {

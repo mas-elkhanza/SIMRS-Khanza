@@ -7,11 +7,18 @@ import java.util.Random;
 import java.awt.Font;
 import javax.swing.*;
  
+/**
+ *
+ * @author RSUI HA
+ */
 public class RunText2 extends JPanel {
     String s="Which Way? ";
     Timer t;
     private final int DELAY=200;
     
+    /**
+     *
+     */
     public void init() {
         setBackground(Color.BLACK);
         t=new Timer(DELAY,new BlinkText());
@@ -19,6 +26,13 @@ public class RunText2 extends JPanel {
     }
 
     //TM Sets X,Y Grid as Integer
+
+    /**
+     *
+     * @param w
+     * @param h
+     * @param z
+     */
     public void drawShapes(int w, int h, Graphics2D z) {
         GeneralPath draw = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
         //TM Sets Random generator
@@ -83,6 +97,10 @@ public class RunText2 extends JPanel {
         }
     }
     
+    /**
+     *
+     * @param arg
+     */
     public static void main(String arg[]) {
         final RunText2 x = new RunText2();
         x.init();

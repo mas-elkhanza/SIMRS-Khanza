@@ -2,11 +2,20 @@ package fungsi;
 
 import java.util.Stack;
 
+/**
+ *
+ * @author RSUI HA
+ * @param <T>
+ */
 public class SizedStack<T> extends Stack<T> {
 
 	private final int maxSize;
 
-	public SizedStack(int size) {
+    /**
+     *
+     * @param size
+     */
+    public SizedStack(int size) {
 		super();
 		this.maxSize = size;
 	}

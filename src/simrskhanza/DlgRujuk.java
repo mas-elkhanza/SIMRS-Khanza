@@ -56,8 +56,8 @@ public final class DlgRujuk extends javax.swing.JDialog {
     private int i=0;
     private Date date = new Date();
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgRujuk(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1217,6 +1217,9 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -1273,6 +1276,9 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         LCount.setText(""+b);
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TNoRj.setText("");
         TTmpRujuk.setText("");
@@ -1290,6 +1296,10 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         ket.setText("");
     }
 
+    /**
+     *
+     * @param param
+     */
     public void load(String param) {
         if(! param.equals("")){
             KdDok.setText(param);   
@@ -1331,6 +1341,12 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param tgl2
+     */
     public void setNoRm(String norwt, Date tgl1, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -1358,6 +1374,9 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getrujukan_keluar());
         BtnHapus.setEnabled(akses.getrujukan_keluar());

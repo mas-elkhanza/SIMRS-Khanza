@@ -22,6 +22,10 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class BPJSApi {        
     private static final Properties prop = new Properties();
     private String Key,Consid;
@@ -37,6 +41,9 @@ public class BPJSApi {
     private Scheme scheme;
     private HttpComponentsClientHttpRequestFactory factory;
     
+    /**
+     *
+     */
     public BPJSApi(){
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -46,6 +53,11 @@ public class BPJSApi {
             System.out.println("Notifikasi : "+ex);
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public String getHmac() {        
         GetUTCdatetimeAsString = GetUTCdatetimeAsString();        
         salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);
@@ -60,6 +72,13 @@ public class BPJSApi {
 	return generateHmacSHA256Signature;
     }
 
+    /**
+     *
+     * @param data
+     * @param key
+     * @return
+     * @throws GeneralSecurityException
+     */
     public String generateHmacSHA256Signature(String data, String key)throws GeneralSecurityException {
         hmacData = null;
 	try {
@@ -74,11 +93,21 @@ public class BPJSApi {
 	}
     }
         
+    /**
+     *
+     * @return
+     */
     public long GetUTCdatetimeAsString(){    
         millis = System.currentTimeMillis();   
         return millis/1000;
     }
     
+    /**
+     *
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         sslContext = SSLContext.getInstance("SSL");
         TrustManager[] trustManagers= {

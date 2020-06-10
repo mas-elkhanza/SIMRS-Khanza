@@ -51,8 +51,8 @@ public final class PCareMapingPoli extends javax.swing.JDialog {
     
 
     /** Creates new form DlgJnsPerawatanRalan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PCareMapingPoli(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -778,6 +778,9 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdpoli.setText("");
         TPoli.setText("");
@@ -795,10 +798,9 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
 
-    
-   
-    
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpcare_mapping_poli());
         BtnHapus.setEnabled(akses.getpcare_mapping_poli());
@@ -806,6 +808,10 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         BtnPrint.setEnabled(akses.getpcare_mapping_poli());
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }    

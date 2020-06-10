@@ -36,15 +36,28 @@ public class SMSReadService {
     Service service;
     private Connection koneksi;
 
+    /**
+     *
+     * @param koneksi
+     * @param textArea
+     */
     public SMSReadService(Connection koneksi,JTextArea textArea){
         this.koneksi = koneksi;
         this.textArea = textArea;
     }
 
+    /**
+     *
+     * @param status
+     */
     public void setStatus(Status status){
         this.status = status;
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     public void startService() throws Exception{
         Properties prop = new Properties();
         try {

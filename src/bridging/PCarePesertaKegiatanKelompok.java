@@ -36,6 +36,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class PCarePesertaKegiatanKelompok extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -882,7 +886,9 @@ private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         this.setCursor(Cursor.getDefaultCursor());          
     }
 
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnHapus.setEnabled(akses.getpcare_peserta_kegiatan_kelompok());
         BtnPrint.setEnabled(akses.getpcare_peserta_kegiatan_kelompok());

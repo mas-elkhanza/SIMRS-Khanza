@@ -56,8 +56,8 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
     private int i=0;
 
     /** Creates new form DlgJadwal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgJadwalTambahan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -882,6 +882,9 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getjadwal_pegawai());
         BtnHapus.setEnabled(akses.getjadwal_pegawai());

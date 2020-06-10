@@ -122,6 +122,9 @@ public final class InformasiKamar extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private int pilihan=0;
 

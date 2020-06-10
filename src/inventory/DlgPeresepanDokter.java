@@ -58,20 +58,32 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private boolean[] pilih;
     private double[] jumlah, harga, beli, stok, kapasitas, p1, p2;
     private String[] no, kodebarang, namabarang, kodesatuan, kandungan, letakbarang, namajenis, aturan, industri;
+
+    /**
+     *
+     */
     public DlgBarang barang = new DlgBarang(null, false);
+
+    /**
+     *
+     */
     public DlgAturanPakai aturanpakai = new DlgAturanPakai(null, false);
     private WarnaTable2 warna = new WarnaTable2();
     private WarnaTable2 warna2 = new WarnaTable2();
     private WarnaTable2 warna3 = new WarnaTable2();
     private DlgMetodeRacik metoderacik = new DlgMetodeRacik(null, false);
+
+    /**
+     *
+     */
     public DlgCariDokter dokter = new DlgCariDokter(null, false);
     private String noracik = "", aktifkanbatch = "no", tampilkan_ppnobat_ralan = "", status = "", bangsal = "", kamar = "", norawatibu = "", kelas, bangsaldefault = Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
 
     /**
      * Creates new form DlgPenyakit
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgPeresepanDokter(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -1480,6 +1492,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Table tbResep;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampilobat() {
         z = 0;
         for (i = 0; i < tbResep.getRowCount(); i++) {
@@ -1718,6 +1733,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
 
+    /**
+     *
+     */
     public void emptTeksobat() {
         if (ChkRM.isSelected() == true) {
             Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,4),signed)),0) from resep_obat where tgl_perawatan='" + Valid.SetTgl(DTPBeri.getSelectedItem() + "") + "' ",
@@ -1725,14 +1743,25 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbResep;
     }
 
+    /**
+     *
+     * @return
+     */
     public Button getButton() {
         return BtnSimpan;
     }
 
+    /**
+     *
+     */
     public void isCek() {
         BtnTambah.setEnabled(akses.getresep_dokter());
         TCari.requestFocus();
@@ -1746,6 +1775,17 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
 
+    /**
+     *
+     * @param norwt
+     * @param tanggal
+     * @param jam
+     * @param menit
+     * @param detik
+     * @param KodeDokter
+     * @param NamaDokter
+     * @param status
+     */
     public void setNoRm(String norwt, Date tanggal, String jam, String menit, String detik, String KodeDokter, String NamaDokter, String status) {
         TNoRw.setText(norwt);
         Sequel.cariIsi("select concat(pasien.no_rkm_medis,' ',pasien.nm_pasien) from reg_periksa inner join pasien "
@@ -1766,6 +1806,15 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         copy = false;
     }
 
+    /**
+     *
+     * @param norwt
+     * @param KodeDokter
+     * @param NamaDokter
+     * @param Pasien
+     * @param kodepj
+     * @param status
+     */
     public void setNoRm(String norwt, String KodeDokter, String NamaDokter, String Pasien, String kodepj, String status) {
         TNoRw.setText(norwt);
         TPasien.setText(Pasien);
@@ -1780,6 +1829,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         copy = false;
     }
 
+    /**
+     *
+     * @param norwt
+     * @param tanggal
+     * @param status
+     */
     public void setNoRm(String norwt, Date tanggal, String status) {
         TNoRw.setText(norwt);
         Sequel.cariIsi("select concat(pasien.no_rkm_medis,' ',pasien.nm_pasien) from reg_periksa inner join pasien "
@@ -1857,6 +1912,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         new Timer(1000, taskPerformer).start();
     }
 
+    /**
+     *
+     */
     public void tampildetailracikanresep() {
         z = 0;
         for (i = 0; i < tbDetailResepObatRacikan.getRowCount(); i++) {
@@ -2172,6 +2230,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
 
+    /**
+     *
+     * @param no_resep
+     */
     public void tampilobat(String no_resep) {
         NoResep.setText(no_resep);
         ubah = true;
@@ -2635,6 +2697,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
 
+    /**
+     *
+     * @param no_resep
+     */
     public void tampilobat2(String no_resep) {
         try {
             Valid.tabelKosong(tabModeResep);
@@ -3174,6 +3240,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
 
+    /**
+     *
+     */
     public void MatikanJam() {
         ChkJln.setSelected(false);
     }

@@ -46,8 +46,8 @@ public final class DlgKehadiran extends javax.swing.JDialog {
             terlambat1="0",terlambat2="0",terlambat3="0",pagi="0",pilih="";
     
     /** Creates new form DlgBangsal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgKehadiran(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

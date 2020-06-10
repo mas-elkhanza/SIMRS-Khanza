@@ -25,6 +25,9 @@ public class BackCari extends JPanel {
     private final Color black = new Color(255,255,252);
     private final Color warna = new Color(255,255,255);
 
+    /**
+     *
+     */
     public BackCari() {
         super();
         this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(239,244,234)));

@@ -29,10 +29,9 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    public DlgPetugas petugas=new DlgPetugas(null,false);
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariPetugas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -317,8 +316,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        
-        //nama.setModal(true);
+        DlgPetugas petugas=new DlgPetugas(null,false);
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
@@ -426,14 +424,24 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         BtnTambah.setEnabled(akses.getpetugas());
     }

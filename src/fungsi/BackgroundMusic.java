@@ -15,6 +15,10 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import javazoom.jl.player.Player;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class BackgroundMusic {
 
     private String filename;
@@ -22,11 +26,19 @@ public class BackgroundMusic {
     Thread playMusic;
     // constructor that takes the name of an MP3 file
 
+    /**
+     *
+     * @param filename
+     */
     public BackgroundMusic(String filename) {
         this.filename = filename;
     }
 
     // play the MP3 file to the sound card
+
+    /**
+     *
+     */
     public void play() {
         try {
             FileInputStream fis = new FileInputStream(filename);
@@ -38,17 +50,26 @@ public class BackgroundMusic {
         }
     }
 
+    /**
+     *
+     */
     public void start() {
         play();
         playMusic = new Thread(new PlayMusic());
         playMusic.start();
     }
 
+    /**
+     *
+     */
     public void stop() {
         close();
         playMusic = null;
     }
 
+    /**
+     *
+     */
     public void close() {
         if (player != null) {
             player.close();

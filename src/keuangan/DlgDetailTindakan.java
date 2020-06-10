@@ -4070,16 +4070,15 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                                     "inner join dokter as dokter_pertama on dokter_pertama.kd_dokter = reg_periksa.kd_dokter " +
                                     "left join kamar on rawat_inap_drpr.kd_kamar = kamar.kd_kamar "+
                                     "left join bangsal on bangsal.kd_bangsal = kamar.kd_bangsal " +
-                                   "inner join piutang_pasien on reg_periksa.no_rawat=piutang_pasien.no_rawat "+
-                                   "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRanapDokterParamedis.getText()+NmDokterRanapDokterParamedis.getText()+"%'  and concat(rawat_inap_drpr.nip,petugas.nama) like '%"+KdPetugasRanapDokterParamedis.getText()+NmPetugasRanapDokterParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRanapDokterParamedis.getText()+NmCaraBayarRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.no_rawat like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
-                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRanapDokterParamedis.getText()+NmDokterRanapDokterParamedis.getText()+"%' and concat(rawat_inap_drpr.nip,petugas.nama) like '%"+KdPetugasRanapDokterParamedis.getText()+NmPetugasRanapDokterParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRanapDokterParamedis.getText()+NmCaraBayarRanapDokterParamedis.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
-                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRanapDokterParamedis.getText()+NmDokterRanapDokterParamedis.getText()+"%' and concat(rawat_inap_drpr.nip,petugas.nama) like '%"+KdPetugasRanapDokterParamedis.getText()+NmPetugasRanapDokterParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRanapDokterParamedis.getText()+NmCaraBayarRanapDokterParamedis.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%'  and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
-                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRanapDokterParamedis.getText()+NmDokterRanapDokterParamedis.getText()+"%' and concat(rawat_inap_drpr.nip,petugas.nama) like '%"+KdPetugasRanapDokterParamedis.getText()+NmPetugasRanapDokterParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRanapDokterParamedis.getText()+NmCaraBayarRanapDokterParamedis.getText()+"%' and jns_perawatan_inap.nm_perawatan like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%'  or "+
-                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRanapDokterParamedis.getText()+NmDokterRanapDokterParamedis.getText()+"%' and concat(rawat_inap_drpr.nip,petugas.nama) like '%"+KdPetugasRanapDokterParamedis.getText()+NmPetugasRanapDokterParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRanapDokterParamedis.getText()+NmCaraBayarRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.kd_dokter like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
-                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRanapDokterParamedis.getText()+NmDokterRanapDokterParamedis.getText()+"%' and concat(rawat_inap_drpr.nip,petugas.nama) like '%"+KdPetugasRanapDokterParamedis.getText()+NmPetugasRanapDokterParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRanapDokterParamedis.getText()+NmCaraBayarRanapDokterParamedis.getText()+"%' and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%'  or "+
-                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRanapDokterParamedis.getText()+NmDokterRanapDokterParamedis.getText()+"%' and concat(rawat_inap_drpr.nip,petugas.nama) like '%"+KdPetugasRanapDokterParamedis.getText()+NmPetugasRanapDokterParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRanapDokterParamedis.getText()+NmCaraBayarRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
-                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRanapDokterParamedis.getText()+NmDokterRanapDokterParamedis.getText()+"%' and concat(rawat_inap_drpr.nip,petugas.nama) like '%"+KdPetugasRanapDokterParamedis.getText()+NmPetugasRanapDokterParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRanapDokterParamedis.getText()+NmCaraBayarRanapDokterParamedis.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
-                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and concat(rawat_inap_drpr.kd_dokter,dokter.nm_dokter) like '%"+KdDokterRanapDokterParamedis.getText()+NmDokterRanapDokterParamedis.getText()+"%' and concat(rawat_inap_drpr.nip,petugas.nama) like '%"+KdPetugasRanapDokterParamedis.getText()+NmPetugasRanapDokterParamedis.getText()+"%' and concat(reg_periksa.kd_pj,penjab.png_jawab) like '%"+KdCaraBayarRanapDokterParamedis.getText()+NmCaraBayarRanapDokterParamedis.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%'  "+
+                                   "where reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and rawat_inap_drpr.kd_dokter like '%"+KdDokterRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+KdPetugasRanapDokterParamedis.getText()+"%' and reg_periksa.kd_pj like '%"+KdCaraBayarRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.no_rawat like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and rawat_inap_drpr.kd_dokter like '%"+KdDokterRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+KdPetugasRanapDokterParamedis.getText()+"%' and reg_periksa.kd_pj like '%"+KdCaraBayarRanapDokterParamedis.getText()+"%' and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and rawat_inap_drpr.kd_dokter like '%"+KdDokterRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+KdPetugasRanapDokterParamedis.getText()+"%' and reg_periksa.kd_pj like '%"+KdCaraBayarRanapDokterParamedis.getText()+"%' and pasien.nm_pasien like '%"+TCari.getText().trim()+"%'  and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and rawat_inap_drpr.kd_dokter like '%"+KdDokterRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+KdPetugasRanapDokterParamedis.getText()+"%' and reg_periksa.kd_pj like '%"+KdCaraBayarRanapDokterParamedis.getText()+"%' and jns_perawatan_inap.nm_perawatan like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%'  or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and rawat_inap_drpr.kd_dokter like '%"+KdDokterRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+KdPetugasRanapDokterParamedis.getText()+"%' and reg_periksa.kd_pj like '%"+KdCaraBayarRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.kd_dokter like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and rawat_inap_drpr.kd_dokter like '%"+KdDokterRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+KdPetugasRanapDokterParamedis.getText()+"%' and reg_periksa.kd_pj like '%"+KdCaraBayarRanapDokterParamedis.getText()+"%' and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%'  or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and rawat_inap_drpr.kd_dokter like '%"+KdDokterRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+KdPetugasRanapDokterParamedis.getText()+"%' and reg_periksa.kd_pj like '%"+KdCaraBayarRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and rawat_inap_drpr.kd_dokter like '%"+KdDokterRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+KdPetugasRanapDokterParamedis.getText()+"%' and reg_periksa.kd_pj like '%"+KdCaraBayarRanapDokterParamedis.getText()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%' or "+
+                                   "reg_periksa.status_bayar='Sudah Bayar' and reg_periksa.no_rawat not in (select no_rawat from piutang_pasien where status='Belum Lunas') and kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and rawat_inap_drpr.kd_dokter like '%"+KdDokterRanapDokterParamedis.getText()+"%' and rawat_inap_drpr.nip like '%"+KdPetugasRanapDokterParamedis.getText()+"%' and reg_periksa.kd_pj like '%"+KdCaraBayarRanapDokterParamedis.getText()+"%' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' and kamar_inap.stts_pulang not like '%Pindah kamar%'  "+
                                    " order by rawat_inap_drpr.no_rawat desc",param);
                         }   
                     }
@@ -5172,6 +5171,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.Table tbRanapParamedis;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){     
         Valid.tabelKosong(tabModeRalanDokter);
         try{
@@ -5359,6 +5361,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void tampil2(){     
         Valid.tabelKosong(tabModeRalanParamedis);
         try{
@@ -5546,6 +5551,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil3(){     
         Valid.tabelKosong(tabModeRalanDokterParamedis);
         String whereStatusRawat = "";
@@ -5785,6 +5793,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil4(){     
         Valid.tabelKosong(tabModeOperasi);
         try{
@@ -6274,6 +6285,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil5(){     
         Valid.tabelKosong(tabModeRanapDokter);
         try{
@@ -6457,6 +6471,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil6(){     
         Valid.tabelKosong(tabModeRanapParamedis);
         try{
@@ -6640,6 +6657,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil7(){     
         Valid.tabelKosong(tabModeRanapDokterParamedis);
         try{
@@ -6903,7 +6923,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
 
-    
+    /**
+     *
+     */
     public void tampil8(){     
         Valid.tabelKosong(tabModeRadiologi);
         try{
@@ -7160,6 +7182,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil9(){     
         Valid.tabelKosong(tabModeLaborat);
         try{
@@ -7415,6 +7440,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil10(){     
         Valid.tabelKosong(tabModeDetailLaborat);
         try {

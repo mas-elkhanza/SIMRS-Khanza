@@ -24,11 +24,136 @@ import org.springframework.web.client.RestTemplate;
  * @author khanzasoft
  */
 public class DUKCAPILCekNIK {
-    public String EKTP_STATUS="",NO_KK="",NIK="",NAMA_LGKP="",KAB_NAME="",AGAMA="",
-            NO_RW="",KEC_NAME="",JENIS_PKRJN="",NO_RT="",NO_KEL="",ALAMAT="",NO_KEC="",
-            TMPT_LHR="",PDDK_AKH="",STATUS_KAWIN="",NO_PROP="",NAMA_LGKP_IBU="",
-            PROP_NAME="",NO_KAB="",KEL_NAME="",JENIS_KLMIN="",TGL_LHR="",GOL_DARAH="",
-            requestJson="",stringbalik="";
+
+    /**
+     *
+     */
+    public String EKTP_STATUS="",
+
+    /**
+     *
+     */
+    NO_KK="",
+
+    /**
+     *
+     */
+    NIK="",
+
+    /**
+     *
+     */
+    NAMA_LGKP="",
+
+    /**
+     *
+     */
+    KAB_NAME="",
+
+    /**
+     *
+     */
+    AGAMA="",
+
+    /**
+     *
+     */
+    NO_RW="",
+
+    /**
+     *
+     */
+    KEC_NAME="",
+
+    /**
+     *
+     */
+    JENIS_PKRJN="",
+
+    /**
+     *
+     */
+    NO_RT="",
+
+    /**
+     *
+     */
+    NO_KEL="",
+
+    /**
+     *
+     */
+    ALAMAT="",
+
+    /**
+     *
+     */
+    NO_KEC="",
+
+    /**
+     *
+     */
+    TMPT_LHR="",
+
+    /**
+     *
+     */
+    PDDK_AKH="",
+
+    /**
+     *
+     */
+    STATUS_KAWIN="",
+
+    /**
+     *
+     */
+    NO_PROP="",
+
+    /**
+     *
+     */
+    NAMA_LGKP_IBU="",
+
+    /**
+     *
+     */
+    PROP_NAME="",
+
+    /**
+     *
+     */
+    NO_KAB="",
+
+    /**
+     *
+     */
+    KEL_NAME="",
+
+    /**
+     *
+     */
+    JENIS_KLMIN="",
+
+    /**
+     *
+     */
+    TGL_LHR="",
+
+    /**
+     *
+     */
+    GOL_DARAH="",
+
+    /**
+     *
+     */
+    requestJson="",
+
+    /**
+     *
+     */
+    stringbalik="";
     private final Properties prop = new Properties();
     private sekuel Sequel=new sekuel();
     private String URL;
@@ -38,6 +163,10 @@ public class DUKCAPILCekNIK {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
+
+    /**
+     *
+     */
     public DUKCAPILCekNIK(){
         super();
         try {
@@ -48,6 +177,10 @@ public class DUKCAPILCekNIK {
         }
     }
     
+    /**
+     *
+     * @param nik
+     */
     public void tampil(String nik) {
         try {
 	    headers = new HttpHeaders();

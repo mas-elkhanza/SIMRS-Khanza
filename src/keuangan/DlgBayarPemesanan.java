@@ -59,8 +59,8 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBayarPemesanan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1114,6 +1114,9 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Tanggal tgl_bayar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{           
@@ -1187,6 +1190,9 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         LTotal.setText(Valid.SetAngka(total));
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kd2.setText("");
         besar_bayar.setText("0");
@@ -1197,6 +1203,10 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         tgl_bayar.requestFocus();
     }
     
+    /**
+     *
+     * @param nofaktur
+     */
     public void setData(String nofaktur){
         no_faktur.setText(nofaktur);
         TCari.setText(nofaktur);
@@ -1219,14 +1229,25 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return no_faktur;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getbayar_pemesanan_obat());
         BtnHapus.setEnabled(akses.getbayar_pemesanan_obat());

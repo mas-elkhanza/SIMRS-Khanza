@@ -40,8 +40,8 @@ public class PerpustakaanPengarang extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PerpustakaanPengarang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -585,6 +585,9 @@ public class PerpustakaanPengarang extends javax.swing.JDialog {
     private widget.Table tbSpesialis;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -612,6 +615,9 @@ public class PerpustakaanPengarang extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -628,10 +634,17 @@ public class PerpustakaanPengarang extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getpengarang_perpustakaan());
        BtnHapus.setEnabled(akses.getpengarang_perpustakaan());

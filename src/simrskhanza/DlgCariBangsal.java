@@ -41,8 +41,8 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariBangsal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -386,14 +386,24 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
        BtnTambah.setEnabled(akses.getkamar());
     }

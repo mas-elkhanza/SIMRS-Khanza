@@ -585,6 +585,9 @@ public class InventarisKategori extends javax.swing.JDialog {
     private widget.Table tbSpesialis;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         String sql="select * from inventaris_kategori order by id_kategori";
         prosesCari(sql);
@@ -604,6 +607,9 @@ public class InventarisKategori extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -620,10 +626,17 @@ public class InventarisKategori extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getinventaris_kategori());
         BtnHapus.setEnabled(akses.getinventaris_kategori());

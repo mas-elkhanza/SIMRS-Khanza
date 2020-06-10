@@ -17,9 +17,17 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class SirsApi {        
     private static final Properties prop = new Properties();
     private String Key,pass;
+
+    /**
+     *
+     */
     public SirsApi(){
         try {            
             prop.loadFromXML(new FileInputStream("setting/database.xml"));   
@@ -28,6 +36,11 @@ public class SirsApi {
             System.out.println("Notifikasi : "+ex);
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public String getHmac() {        
         try {                    
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -44,7 +57,12 @@ public class SirsApi {
 	return Key;
     }
 
-    
+    /**
+     *
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("SSL");
         javax.net.ssl.TrustManager[] trustManagers= {

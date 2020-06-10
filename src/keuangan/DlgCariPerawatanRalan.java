@@ -67,8 +67,20 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
     private int jml=0,i=0,index=0;
+
+    /**
+     *
+     */
     public  DlgJnsPerawatanRalan perawatan=new DlgJnsPerawatanRalan(null,false);
+
+    /**
+     *
+     */
     public  DlgCariDokter dokter=new DlgCariDokter(null,false);
+
+    /**
+     *
+     */
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -81,8 +93,8 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
 
     /**
      * Creates new form DlgPenyakit
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgCariPerawatanRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -1193,6 +1205,9 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Table tbTindakan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         try{     
             jml=0;
@@ -1384,19 +1399,50 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         TCariTindakan.setText("");         
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbTindakan;
     }
     
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnTambahTindakan.setEnabled(akses.gettarif_ralan());
     }
     
+    /**
+     *
+     * @param KodePoli
+     */
     public void setPoli(String KodePoli){
         this.kd_poli=KodePoli;
     }
     
+    /**
+     *
+     * @param norwt
+     * @param kdpetugas
+     * @param nmpetugas
+     * @param pilihtable
+     * @param suhu
+     * @param tensi
+     * @param hasil
+     * @param perkembangan
+     * @param tanggal
+     * @param jam
+     * @param kdpetugas2
+     * @param nmpetugas2
+     * @param berat
+     * @param tinggi
+     * @param nadi
+     * @param respirasi
+     * @param gcs
+     * @param alergi
+     */
     public void setNoRm(String norwt,String kdpetugas,String nmpetugas, String pilihtable,
             String suhu, String tensi,String hasil, String perkembangan,String tanggal, 
             String jam,String kdpetugas2,String nmpetugas2, String berat,String tinggi, 
@@ -1510,6 +1556,11 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         new Timer(1000, taskPerformer).start();
     }
     
+    /**
+     *
+     * @param aktif
+     * @param nokunjung
+     */
     public void setPCare(String aktif,String nokunjung){
         aktifpcare=aktif;
         nokunjungan=nokunjung;

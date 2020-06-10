@@ -854,7 +854,9 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
-    
+    /**
+     *
+     */
     public void tampil() {         
         try {             
             Valid.tabelKosong(tabMode);
@@ -1046,6 +1048,11 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         }       
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tanggal
+     */
     public void setNoRm(String norwt,Date tanggal) {        
         TNoRw.setText(norwt);
         Tanggal.setDate(tanggal);
@@ -1178,6 +1185,10 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbObat;
     }

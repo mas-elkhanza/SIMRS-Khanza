@@ -17,9 +17,17 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class SittApi {        
     private static final Properties prop = new Properties();
     private String Key,pass;
+
+    /**
+     *
+     */
     public SittApi(){
         try {            
             prop.loadFromXML(new FileInputStream("setting/database.xml"));   
@@ -29,6 +37,10 @@ public class SittApi {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public String getHmac() {        
         try {                    
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -45,11 +57,21 @@ public class SittApi {
 	return Key;
     }
 
+    /**
+     *
+     * @return
+     */
     public long GetUTCdatetimeAsString(){    
         long millis = System.currentTimeMillis();   
         return millis/1000;
     }
     
+    /**
+     *
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("SSL");
         javax.net.ssl.TrustManager[] trustManagers= {

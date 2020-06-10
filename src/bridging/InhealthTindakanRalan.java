@@ -714,6 +714,9 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdtindakan.setText("");
         TTindakan.setText("");
@@ -729,7 +732,9 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         }
     }
     
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getinhealth_mapping_tindakan_ralan());
         BtnHapus.setEnabled(akses.getinhealth_mapping_tindakan_ralan());
@@ -737,6 +742,10 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getinhealth_mapping_tindakan_ralan());
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }    

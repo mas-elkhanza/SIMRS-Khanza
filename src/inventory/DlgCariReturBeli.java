@@ -28,6 +28,10 @@ import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCariReturBeli extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -37,7 +41,15 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private Connection koneksi=koneksiDB.condb();private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
+
+    /**
+     *
+     */
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+
+    /**
+     *
+     */
     public  DlgBarang barang=new DlgBarang(null,false);
     private double ttlretur=0,subtotal=0;
     private String tanggal,noret="",ptg="",sat="",bar="",nofak="";
@@ -46,8 +58,8 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
     private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariReturBeli(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1069,6 +1081,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         
     }
    
+    /**
+     *
+     */
     public void isCek(){
         BtnPrint.setEnabled(akses.getretur_ke_suplier());
         if(akses.getkode().equals("Admin Utama")){

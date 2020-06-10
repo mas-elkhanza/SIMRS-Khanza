@@ -27,6 +27,10 @@ import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class UTDPenyerahanDarah extends javax.swing.JDialog {
     private final DefaultTableModel tabModeMedis,tabModeNonMedis,tabMode;
     private sekuel Sequel=new sekuel();
@@ -2050,6 +2054,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         LKembali.setText(Valid.SetAngka(bayar-tagihanppn));     
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         TCari.requestFocus();        
         BtnSimpan.setEnabled(akses.getutd_penyerahan_darah());

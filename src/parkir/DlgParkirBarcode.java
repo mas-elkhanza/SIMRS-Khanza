@@ -727,6 +727,9 @@ public class DlgParkirBarcode extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         barcode.setText("");
         TCari.setText("");
@@ -742,10 +745,17 @@ public class DlgParkirBarcode extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getparkir_barcode());
        BtnHapus.setEnabled(akses.getparkir_barcode());

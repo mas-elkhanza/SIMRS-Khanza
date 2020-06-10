@@ -52,8 +52,8 @@ public final class DlgPenyakit extends javax.swing.JDialog {
     private double jumlah=0,x=0,i=0;
     private int z=0,j=0,mulai=0;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPenyakit(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1025,6 +1025,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -1048,10 +1051,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return TKd;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTabel(){
         return tbPenyakit;
     }
@@ -1070,6 +1081,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpenyakit());
         BtnHapus.setEnabled(akses.getpenyakit());

@@ -19,8 +19,17 @@ public class batasInput {
     private final int length;
     private PlainDocument filter;
 
+    /**
+     *
+     * @param length
+     */
     public batasInput(int length){this.length=length;}
 
+    /**
+     *
+     * @param inputan
+     * @return
+     */
     public PlainDocument getFilter(final JTextField inputan){
         filter=new PlainDocument(){
             @Override
@@ -56,6 +65,11 @@ public class batasInput {
         };return filter;
     }
 
+    /**
+     *
+     * @param inputan
+     * @return
+     */
     public PlainDocument getFilter(final JTextArea inputan){
         filter=new PlainDocument(){
             @Override
@@ -91,6 +105,11 @@ public class batasInput {
         };return filter;
     }
   
+    /**
+     *
+     * @param inputan
+     * @return
+     */
     public PlainDocument getOnlyAngka(final JTextField inputan) {
         filter=new PlainDocument(){
             @Override
@@ -115,6 +134,11 @@ public class batasInput {
         };return filter;
     }
     
+    /**
+     *
+     * @param inputan
+     * @return
+     */
     public PlainDocument getOnlyAngka2(final JTextField inputan) {
         filter=new PlainDocument(){
             @Override
@@ -144,6 +168,11 @@ public class batasInput {
         };return filter;
     }
 
+    /**
+     *
+     * @param inputan
+     * @return
+     */
     public PlainDocument getKata(final JTextField inputan){
         filter=new PlainDocument(){
             @Override
@@ -179,6 +208,11 @@ public class batasInput {
         };return filter;
     }
     
+    /**
+     *
+     * @param inputan
+     * @return
+     */
     public PlainDocument getKata(final JTextArea inputan){
         filter=new PlainDocument(){
             @Override

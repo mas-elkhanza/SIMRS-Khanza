@@ -22,9 +22,17 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.security.crypto.codec.Base64;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class SisruteApi {        
     private static final Properties prop = new Properties();
     private String Key,Consid,pass;
+
+    /**
+     *
+     */
     public SisruteApi(){
         try {            
             prop.loadFromXML(new FileInputStream("setting/database.xml"));            
@@ -42,6 +50,11 @@ public class SisruteApi {
             System.out.println("Notifikasi : "+ex);
         }
     }
+
+    /**
+     *
+     * @return
+     */
     public String getHmac() {        
         long GetUTCdatetimeAsString = GetUTCdatetimeAsString();        
         String salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);
@@ -56,6 +69,13 @@ public class SisruteApi {
 	return generateHmacSHA256Signature;
     }
 
+    /**
+     *
+     * @param data
+     * @param key
+     * @return
+     * @throws GeneralSecurityException
+     */
     public String generateHmacSHA256Signature(String data, String key)throws GeneralSecurityException {
 	byte[] hmacData = null;
 
@@ -71,11 +91,21 @@ public class SisruteApi {
 	}
     }
         
+    /**
+     *
+     * @return
+     */
     public long GetUTCdatetimeAsString(){    
         long millis = System.currentTimeMillis();   
         return millis/1000;
     }
     
+    /**
+     *
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
     public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("SSL");
         javax.net.ssl.TrustManager[] trustManagers= {

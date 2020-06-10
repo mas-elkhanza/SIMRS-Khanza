@@ -53,8 +53,8 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
     private int i=0;
 
     /** Creates new form DlgJnsPerawatanRalan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgJnsPerawatanRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -252,8 +252,19 @@ public final class DlgJnsPerawatanRalan extends javax.swing.JDialog {
     
     }
     
+    /**
+     *
+     */
     public DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
+
+    /**
+     *
+     */
     public DlgCariPoli poli=new DlgCariPoli(null,false);
+
+    /**
+     *
+     */
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
 
     /** This method is called from within the constructor to
@@ -1434,6 +1445,9 @@ private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -1515,6 +1529,10 @@ private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return TKd;
     }
@@ -1533,6 +1551,9 @@ private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.gettarif_ralan());
         BtnHapus.setEnabled(akses.gettarif_ralan());
@@ -1545,6 +1566,10 @@ private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } 
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }

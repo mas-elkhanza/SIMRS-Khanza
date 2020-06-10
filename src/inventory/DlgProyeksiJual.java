@@ -23,6 +23,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariBangsal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgProyeksiJual extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -35,7 +39,9 @@ public class DlgProyeksiJual extends javax.swing.JDialog {
     private DlgCariGolongan golongan = new DlgCariGolongan(null, false);
     private DlgCariBangsal asalstok=new DlgCariBangsal(null,false);
 
-    /** Creates new form DlgProgramStudi */
+    /** Creates new form DlgProgramStudi
+     * @param parent
+     * @param modal */
     public DlgProyeksiJual(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -890,6 +896,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         
     }
     
+    /**
+     *
+     */
     public void isCek(){
          BtnPrint.setEnabled(akses.getkeuntungan_penjualan());
     }

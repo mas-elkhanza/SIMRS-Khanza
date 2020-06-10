@@ -48,8 +48,8 @@ public class DlgJadwal extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgJadwal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgJadwal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1011,7 +1011,9 @@ private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         LCount.setText(""+tabMode.getRowCount());
     }
 
-
+    /**
+     *
+     */
     public void emptTeks() {
         kddokter.setText("");
         nmdokter.setText("");

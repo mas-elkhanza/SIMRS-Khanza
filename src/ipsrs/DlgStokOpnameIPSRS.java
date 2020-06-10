@@ -48,8 +48,8 @@ public final class DlgStokOpnameIPSRS extends javax.swing.JDialog {
     private PreparedStatement pstampil;
     private ResultSet rstampil;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgStokOpnameIPSRS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -802,6 +802,9 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         LTotal.setText(df2.format(total));
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kdbar.setText("");
         Nmbar.setText("");
@@ -830,15 +833,25 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return Stok;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
     
-        
+    /**
+     *
+     */
     public void isCek(){
         BtnHapus.setEnabled(akses.getstok_opname_obat());
         BtnPrint.setEnabled(akses.getstok_opname_obat()); 

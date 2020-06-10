@@ -44,8 +44,8 @@ public final class PerpustakaanPenerbit extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
 
     /** Creates new form DlgJnsPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PerpustakaanPenerbit(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -807,6 +807,9 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -848,6 +851,9 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -872,6 +878,10 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }
@@ -890,6 +900,9 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpenerbit_perpustakaan());
         BtnHapus.setEnabled(akses.getpenerbit_perpustakaan());

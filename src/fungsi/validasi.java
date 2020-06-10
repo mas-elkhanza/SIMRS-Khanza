@@ -21,6 +21,7 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -29,6 +30,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -43,6 +46,7 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -56,6 +60,7 @@ import uz.ncipro.calendar.JDateTimePicker;
  */
 public final class validasi {
 
+    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(validasi.class.getName());
     private int a, j, i, result = 0;
     private String s, s1, auto, PEMBULATANHARGAOBAT = koneksiDB.PEMBULATANHARGAOBAT();
     private final Connection connect = koneksiDB.condb();
@@ -72,13 +77,25 @@ public final class validasi {
     private final Calendar now = Calendar.getInstance();
     private final int year = (now.get(Calendar.YEAR));
     private static final Properties prop = new Properties();
+    private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
+                         "tujuh","delapan","sembilan","sepuluh","sebelas"};
 
+    /**
+     *
+     */
     public validasi() {
         super();
     }
 
     ;
 
+    /**
+     *
+     * @param tabMode
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer(DefaultTableModel tabMode, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         s = Integer.toString(tabMode.getRowCount() + 1);
         j = s.length();
@@ -89,6 +106,13 @@ public final class validasi {
         teks.setText(strAwal + s1 + s);
     }
 
+    /**
+     *
+     * @param tabel
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer(String tabel, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement("select * from " + tabel);
@@ -118,6 +142,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer2(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -147,6 +178,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer3(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -180,6 +218,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer4(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -195,7 +240,8 @@ public final class validasi {
                 for (i = 1; i <= pnj - j; i++) {
                     s1 = s1 + "0";
                 }
-                teks.setText((strAwal + s1 + s).substring(4, 6) + (strAwal + s1 + s).substring(2, 4) + (strAwal + s1 + s).substring(0, 2));
+                teks.setText((strAwal + s1 + s).substring(4, 6) + (strAwal + s1 + s).substring(2, 4)
+                        + (strAwal + s1 + s).substring(0, 2));
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, Query tidak bisa dijalankan...!!!!");
@@ -213,6 +259,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer5(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -228,7 +281,8 @@ public final class validasi {
                 for (i = 1; i <= pnj - j; i++) {
                     s1 = s1 + "0";
                 }
-                teks.setText((strAwal + s1 + s).substring(2, 4) + (strAwal + s1 + s).substring(0, 2) + (strAwal + s1 + s).substring(4, 6));
+                teks.setText((strAwal + s1 + s).substring(2, 4) + (strAwal + s1 + s).substring(0, 2)
+                        + (strAwal + s1 + s).substring(4, 6));
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, Query tidak bisa dijalankan...!!!!");
@@ -246,6 +300,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @param teks
+     */
     public void autoNomer6(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
             ps = connect.prepareStatement(sql);
@@ -279,6 +340,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param tabel
+     * @param strAwal
+     * @param pnj
+     * @return
+     */
     public String autoNomer(String tabel, String strAwal, Integer pnj) {
         try {
             auto = "";
@@ -312,6 +380,13 @@ public final class validasi {
         return auto;
     }
 
+    /**
+     *
+     * @param sql
+     * @param strAwal
+     * @param pnj
+     * @return
+     */
     public String autoNomer3(String sql, String strAwal, Integer pnj) {
         try {
             auto = "";
@@ -348,59 +423,115 @@ public final class validasi {
         return auto;
     }
 
-    public void editTable(DefaultTableModel tabMode, String table, String field_acuan, JTextField nilai_field, String update) {
+    /**
+     *
+     * @param tabMode
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     */
+    public void editTable(DefaultTableModel tabMode, String table, String field_acuan, JTextField nilai_field,
+            String update) {
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
             nilai_field.requestFocus();
         } else if (nilai_field.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (!nilai_field.getText().trim().equals("")) {
             sek.mengedit(table, field_acuan + "='" + nilai_field.getText() + "'", update);
         }
     }
 
+    /**
+     *
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     */
     public void editTable(String table, String field_acuan, JTextField nilai_field, String update) {
         if (nilai_field.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (!nilai_field.getText().trim().equals("")) {
             sek.mengedit(table, field_acuan + "='" + nilai_field.getText() + "'", update);
         }
     }
 
-    public void editTable(DefaultTableModel tabMode, String table, String field_acuan, String nilai_field, String update, int i, String[] a) {
+    /**
+     *
+     * @param tabMode
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     * @param i
+     * @param a
+     */
+    public void editTable(DefaultTableModel tabMode, String table, String field_acuan, String nilai_field,
+            String update, int i, String[] a) {
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
         } else if (nilai_field.trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (!nilai_field.trim().equals("")) {
             sek.mengedit(table, field_acuan + "=" + nilai_field, update, i, a);
         }
     }
 
-    public void editTable(DefaultTableModel tabMode, String table, String field_acuan, JComboBox nilai_field, String update) {
+    /**
+     *
+     * @param tabMode
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     */
+    public void editTable(DefaultTableModel tabMode, String table, String field_acuan, JComboBox nilai_field,
+            String update) {
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
             nilai_field.requestFocus();
         } else if (nilai_field.getSelectedItem().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (nilai_field.getSelectedItem() != "") {
             sek.mengedit(table, field_acuan + "='" + nilai_field.getSelectedItem() + "'", update);
 
         }
     }
 
-    public void editTable(DefaultTableModel tabMode, String table, String field_acuan, JLabel nilai_field, String update) {
+    /**
+     *
+     * @param tabMode
+     * @param table
+     * @param field_acuan
+     * @param nilai_field
+     * @param update
+     */
+    public void editTable(DefaultTableModel tabMode, String table, String field_acuan, JLabel nilai_field,
+            String update) {
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
             nilai_field.requestFocus();
         } else if (nilai_field.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (!nilai_field.getText().trim().equals("")) {
             sek.mengedit(table, field_acuan + "='" + nilai_field.getText() + "'", update);
 
         }
     }
 
+    /**
+     *
+     * @param model
+     * @param table
+     * @param file
+     */
     public void fillData(DefaultTableModel model, JTable table, File file) {
         try {
             WritableWorkbook workbook1 = Workbook.createWorkbook(file);
@@ -413,42 +544,63 @@ public final class validasi {
             }
             for (i = 0; i < model.getRowCount(); i++) {
                 for (j = 0; j < model.getColumnCount(); j++) {
-                    Label row = new Label(j, i + 1,
-                            model.getValueAt(i, j).toString());
+                    Label row = new Label(j, i + 1, model.getValueAt(i, j).toString());
                     sheet1.addCell(row);
                 }
             }
             workbook1.write();
             workbook1.close();
         } catch (IOException | WriteException ex) {
-            System.out.println("Notifikasi : " + ex);
+            log.error("Notifikasi : " + ex);
         }
     }
 
+    /**
+     *
+     * @param tabMode
+     * @param nilai_field
+     * @param table
+     * @param field
+     */
     public void hapusTable(DefaultTableModel tabMode, JTextField nilai_field, String table, String field) {
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...");
             nilai_field.requestFocus();
         } else if (nilai_field.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...");
         } else if (!nilai_field.getText().trim().equals("")) {
             sek.meghapus(table, field, nilai_field.getText());
 
         }
     }
 
+    /**
+     *
+     * @param tabMode
+     * @param nilai_field
+     * @param table
+     * @param field
+     */
     public void hapusTable(DefaultTableModel tabMode, JComboBox nilai_field, String table, String field) {
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
             nilai_field.requestFocus();
         } else if (nilai_field.getSelectedItem().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,
+                    "Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         } else if (nilai_field.getSelectedItem() != "") {
             String data = nilai_field.getSelectedItem().toString();
             sek.meghapus(table, field, data);
         }
     }
 
+    /**
+     *
+     * @param cmb
+     * @param field
+     * @param table
+     */
     public void loadCombo(JComboBox cmb, String field, String table) {
         cmb.removeAllItems();
         try {
@@ -476,6 +628,10 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param cmb
+     */
     public void LoadTahun(JComboBox cmb) {
         cmb.removeAllItems();
         for (i = (year + 1); i >= 1980; i--) {
@@ -484,6 +640,10 @@ public final class validasi {
         cmb.setSelectedItem(year);
     }
 
+    /**
+     *
+     * @param cmb
+     */
     public void LoadTahunAkd(JComboBox cmb) {
         cmb.removeAllItems();
         for (i = 1950; i <= year; i++) {
@@ -493,27 +653,16 @@ public final class validasi {
         cmb.setSelectedItem(year + "1");
     }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param parameters
+     */
     @SuppressWarnings("empty-statement")
     public void MyReport(String reportName, String reportDirName, String judul, Map parameters) {
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
+        getPathReport(reportDirName, reportName);
 
         try {
             try (Statement stm = connect.createStatement()) {
@@ -530,36 +679,25 @@ public final class validasi {
                     jasperViewer.setLocationRelativeTo(null);
                     jasperViewer.setVisible(true);
                 } catch (Exception rptexcpt) {
-                    System.out.println("Report Can't view because : " + rptexcpt);
+                    log.error("Report Can't view because : " + rptexcpt);
                     JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error Report: "+e);
         }
     }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param parameters
+     */
     @SuppressWarnings("empty-statement")
     public void MyReportPDF(String reportName, String reportDirName, String judul, Map parameters) {
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
+        getPathReport(reportDirName, reportName);
 
         try {
             try (Statement stm = connect.createStatement()) {
@@ -567,39 +705,29 @@ public final class validasi {
                     File f = new File("./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
                     String namafile = "./" + reportDirName + "/" + reportName;
                     JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
-                    JasperExportManager.exportReportToPdfFile(jasperPrint, "./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
+                    JasperExportManager.exportReportToPdfFile(jasperPrint,
+                            "./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
                     Desktop.getDesktop().open(f);
                 } catch (Exception rptexcpt) {
-                    System.out.println("Report Can't view because : " + rptexcpt);
+                    log.error("Report Can't view because : " + rptexcpt);
                     JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            log.error(e);
         }
     }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param parameters
+     */
     @SuppressWarnings("empty-statement")
     public void MyReport2(String reportName, String reportDirName, String judul, Map parameters) {
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jasper ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
+        getPathReport(reportDirName, reportName);
 
         try {
             try (Statement stm = connect.createStatement()) {
@@ -616,37 +744,27 @@ public final class validasi {
                     jasperViewer.setLocationRelativeTo(null);
                     jasperViewer.setVisible(true);
                 } catch (Exception rptexcpt) {
-                    System.out.println("Report Can't view because : " + rptexcpt);
+                    log.error("Report Can't view because : " + rptexcpt);
                     JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            log.error(e);
         }
     }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param qry
+     * @param parameters
+     */
     public void MyReportqry(String reportName, String reportDirName, String judul, String qry, Map parameters) {
-        Properties systemProp = System.getProperties();
-
-        // Ambil current dir
-        String currentDir = systemProp.getProperty("user.dir");
-
-        File dir = new File(currentDir);
-
-        File fileRpt;
-        String fullPath = "";
-        if (dir.isDirectory()) {
-            String[] isiDir = dir.list();
-            for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
-                if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
-                    fullPath = fileRpt.toString();
-                    System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
-
         try {
+            getPathReport(reportDirName, reportName);
+
             ps = connect.prepareStatement(qry);
             try {
                 String namafile = "./" + reportDirName + "/" + reportName;
@@ -662,8 +780,10 @@ public final class validasi {
                 jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
                 jasperViewer.setLocationRelativeTo(null);
                 jasperViewer.setVisible(true);
+            } catch (JRException ex) {
+                Logger.getLogger(validasi.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception rptexcpt) {
-                System.out.println("Report Can't view because : " + rptexcpt);
+                log.error("Report Can't view because : " + rptexcpt);
                 JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
             } finally {
                 if (rs != null) {
@@ -673,12 +793,12 @@ public final class validasi {
                     ps.close();
                 }
             }
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException ex) {
+            log.error("Report SQL Error " + ex);
         }
     }
 
-    public void MyReportqrypdf(String reportName, String reportDirName, String judul, String qry, Map parameters) {
+    private void getPathReport(String reportDirName, String reportName) {
         Properties systemProp = System.getProperties();
 
         // Ambil current dir
@@ -691,14 +811,27 @@ public final class validasi {
         if (dir.isDirectory()) {
             String[] isiDir = dir.list();
             for (String iDir : isiDir) {
-                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName + File.separatorChar + reportName);
+                fileRpt = new File(currentDir + File.separatorChar + iDir + File.separatorChar + reportDirName
+                        + File.separatorChar + reportName);
                 if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
                 } // end if
             } // end for i
         } // end if
+    }
 
+    /**
+     *
+     * @param reportName
+     * @param reportDirName
+     * @param judul
+     * @param qry
+     * @param parameters
+     */
+    public void MyReportqrypdf(String reportName, String reportDirName, String judul, String qry, Map parameters) {
+        getPathReport(reportDirName, reportName);
+        // Cek apakah file RptMaster.jrxml ada
         try {
             ps = connect.prepareStatement(qry);
             try {
@@ -707,10 +840,11 @@ public final class validasi {
                 rs = ps.executeQuery();
                 JRResultSetDataSource rsdt = new JRResultSetDataSource(rs);
                 JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, rsdt);
-                JasperExportManager.exportReportToPdfFile(jasperPrint, "./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
+                JasperExportManager.exportReportToPdfFile(jasperPrint,
+                        "./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
                 Desktop.getDesktop().open(f);
             } catch (Exception rptexcpt) {
-                System.out.println("Report Can't view because : " + rptexcpt);
+                log.error("Report Can't view because : " + rptexcpt);
                 JOptionPane.showMessageDialog(null, "Report Can't view because : " + rptexcpt);
             } finally {
                 if (rs != null) {
@@ -721,22 +855,35 @@ public final class validasi {
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            log.error(e);
         }
     }
 
+    /**
+     *
+     * @param reportName
+     * @param parameters
+     * @param title
+     */
     public void MyReport(String reportName, Map parameters, String title) {
         try {
-            JasperViewer jasperViewer = new JasperViewer(JasperFillManager.fillReport("./report/" + reportName, parameters, connect), false);
+            JasperViewer jasperViewer = new JasperViewer(
+                    JasperFillManager.fillReport("./report/" + reportName, parameters, connect), false);
             jasperViewer.setTitle(title);
             jasperViewer.setLocationRelativeTo(null);
             jasperViewer.setVisible(true);
-            //JasperViewer.viewReport(JasperFillManager.fillReport(JasperCompileManager.compileReport("./report/"+reportName),parameters,connect),false);
+            // JasperViewer.viewReport(JasperFillManager.fillReport(JasperCompileManager.compileReport("./report/"+reportName),parameters,connect),false);
         } catch (Exception ex) {
-            System.out.println("Notifikasi : " + ex);
+            log.error("Notifikasi : " + ex);
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -745,6 +892,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JCheckBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -753,6 +906,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     * @param bawah
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JTextField kanan, JTextField bawah) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -763,6 +923,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah2(java.awt.event.KeyEvent evt, JTextField kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             kanan.requestFocus();
@@ -771,6 +937,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah2(java.awt.event.KeyEvent evt, JTextField kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             kanan.requestFocus();
@@ -779,6 +951,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JTextArea kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -787,6 +965,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextArea kiri, JTextArea kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -795,6 +979,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(KeyEvent evt, JComboBox kiri, JTextArea kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -803,6 +993,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -811,6 +1007,13 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     * @param bawah
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JButton kanan, JTextField bawah) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -821,6 +1024,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah2(java.awt.event.KeyEvent evt, JTextField kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             kanan.requestFocus();
@@ -829,6 +1038,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JButton kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -837,6 +1052,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JButton kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -845,6 +1066,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -853,6 +1080,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JTextArea kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -861,6 +1094,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JComboBox kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -869,6 +1108,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JComboBox kiri, JDateTimePicker kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -877,6 +1122,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JCheckBox kiri, JDateTimePicker kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -885,6 +1136,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JDateTimePicker kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -893,6 +1150,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JComboBox kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -901,6 +1164,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(java.awt.event.KeyEvent evt, JComboBox kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -909,6 +1178,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(KeyEvent evt, JButton kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -917,6 +1192,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(KeyEvent evt, JTextArea kiri, JButton kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -925,6 +1206,12 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param evt
+     * @param kiri
+     * @param kanan
+     */
     public void pindah(KeyEvent evt, JTextArea kiri, JTextField kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -933,6 +1220,10 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param url
+     */
     public void panggilUrl(String url) {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();
@@ -940,23 +1231,33 @@ public final class validasi {
             Properties prop = new Properties();
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if (os.contains("win")) {
-                rt.exec("rundll32 url.dll,FileProtocolHandler " + "http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + prop.getProperty("HYBRIDWEB") + "/" + url);
+                rt.exec("rundll32 url.dll,FileProtocolHandler " + "http://" + koneksiDB.HOSTHYBRIDWEB() + ":"
+                        + prop.getProperty("PORTWEB") + "/" + prop.getProperty("HYBRIDWEB") + "/" + url);
             } else if (os.contains("mac")) {
-                rt.exec("open " + "http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + prop.getProperty("HYBRIDWEB") + "/" + url);
+                rt.exec("open " + "http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/"
+                        + prop.getProperty("HYBRIDWEB") + "/" + url);
             } else if (os.contains("nix") || os.contains("nux")) {
-                String[] browsers = {"x-www-browser", "epiphany", "firefox", "mozilla", "konqueror", "chrome", "chromium", "netscape", "opera", "links", "lynx", "midori"};
-                // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
+                String[] browsers = { "x-www-browser", "epiphany", "firefox", "mozilla", "konqueror", "chrome",
+                        "chromium", "netscape", "opera", "links", "lynx", "midori" };
+                // Build a command string which looks like "browser1 "url" || browser2 "url"
+                // ||..."
                 StringBuilder cmd = new StringBuilder();
                 for (i = 0; i < browsers.length; i++) {
-                    cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append("\" ");
+                    cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append("http://")
+                            .append(koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB")).append("/")
+                            .append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append("\" ");
                 }
-                rt.exec(new String[]{"sh", "-c", cmd.toString()});
+                rt.exec(new String[] { "sh", "-c", cmd.toString() });
             }
         } catch (Exception e) {
             System.out.println("Notif Browser : " + e);
         }
     }
 
+    /**
+     *
+     * @param url
+     */
     public void panggilUrl2(String url) {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();
@@ -968,40 +1269,43 @@ public final class validasi {
             } else if (os.contains("mac")) {
                 rt.exec("open " + url);
             } else if (os.contains("nix") || os.contains("nux")) {
-                String[] browsers = {"x-www-browser", "epiphany", "firefox", "mozilla", "konqueror", "chrome", "chromium", "netscape", "opera", "links", "lynx", "midori"};
-                // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
+                String[] browsers = { "x-www-browser", "epiphany", "firefox", "mozilla", "konqueror", "chrome",
+                        "chromium", "netscape", "opera", "links", "lynx", "midori" };
+                // Build a command string which looks like "browser1 "url" || browser2 "url"
+                // ||..."
                 StringBuilder cmd = new StringBuilder();
                 for (i = 0; i < browsers.length; i++) {
                     cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append(url).append("\" ");
                 }
-                rt.exec(new String[]{"sh", "-c", cmd.toString()});
+                rt.exec(new String[] { "sh", "-c", cmd.toString() });
             }
         } catch (Exception e) {
             System.out.println("Notif Browser : " + e);
         }
     }
 
+    /**
+     *
+     * @param url
+     * @throws URISyntaxException
+     */
     public void printUrl(String url) throws URISyntaxException {
-        try {
-            Properties prop = new Properties();
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            desktop.print(new File(new java.net.URI("http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + url)));
-        } catch (Exception e) {
-            System.out.println(e);
+        try{
+           Properties prop = new Properties();
+           prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+url)));  
+        }catch (Exception e) {
+           System.out.println(e);
         }
     }
 
-    public void SetTgl(DefaultTableModel tabMode, JTable table, JDateTimePicker dtp, int i) {
-        j = table.getSelectedRow();
-        try {
-            Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tabMode.getValueAt(j, i).toString());
-            dtp.setDate(dtpa);
-        } catch (ParseException ex) {
-            dtp.setDate(new Date());
-        }
-    }
-
+    /**
+     *
+     * @param original
+     * @return
+     */
     public String SetTgl(String original) {
+        original = original.replaceAll("'", "");
         s = "";
         try {
             s = original.substring(6, 10) + "-" + original.substring(3, 5) + "-" + original.substring(0, 2);
@@ -1010,7 +1314,29 @@ public final class validasi {
         return s;
     }
 
+    /**
+     *
+     * @param original
+     * @return
+     */
+    public String SetTglJam(String original) {
+        original = original.replaceAll("'", "");
+        s = "";
+        try {
+            s = original.substring(6, 10) + "-" + original.substring(3, 5) + "-" + original.substring(0, 2) + " "
+                    + original.substring(11, 19);
+        } catch (Exception e) {
+        }
+        return s;
+    }
+
+    /**
+     *
+     * @param original
+     * @return
+     */
     public String SetTgl3(String original) {
+        original = original.replaceAll("'", "");
         s = "";
         try {
             s = original.substring(8, 10) + "-" + original.substring(5, 7) + "-" + original.substring(0, 4);
@@ -1019,6 +1345,12 @@ public final class validasi {
         return s;
     }
 
+    /**
+     *
+     * @param original
+     * @param max
+     * @return
+     */
     public String MaxTeks(String original, int max) {
         if (original.length() >= max) {
             s = original.substring(0, (max - 1));
@@ -1028,48 +1360,82 @@ public final class validasi {
         return original;
     }
 
+    /**
+     *
+     * @param dtp
+     * @param tgl
+     */
     public void SetTgl(JDateTimePicker dtp, String tgl) {
         try {
-            Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+            Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'", ""));
             dtp.setDate(dtpa);
         } catch (ParseException ex) {
             dtp.setDate(new Date());
         }
     }
 
+    /**
+     *
+     * @param dtp
+     * @param tgl
+     */
     public void SetTgl2(JDateTimePicker dtp, String tgl) {
         try {
-            Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl);
+            Date dtpa = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(tgl.replaceAll("'", ""));
             dtp.setDate(dtpa);
         } catch (ParseException ex) {
             dtp.setDate(new Date());
         }
     }
 
+    /**
+     *
+     * @param tgl
+     * @return
+     */
     public Date SetTgl2(String tgl) {
         try {
-            Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
+            Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'", ""));
             return dtpa;
         } catch (ParseException ex) {
             return new Date();
         }
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void textKosong(JTextField teks, String pesan) {
         JOptionPane.showMessageDialog(null, "Maaf, " + pesan + " tidak boleh kosong...!!!");
         teks.requestFocus();
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void textKosong(JTextArea teks, String pesan) {
         JOptionPane.showMessageDialog(null, "Maaf, " + pesan + " tidak boleh kosong...!!!");
         teks.requestFocus();
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void textKosong(JButton teks, String pesan) {
         JOptionPane.showMessageDialog(null, "Maaf, " + pesan + " tidak boleh kosong...!!!");
         teks.requestFocus();
     }
 
+    /**
+     *
+     * @param tabMode
+     */
     public void tabelKosong(DefaultTableModel tabMode) {
         j = tabMode.getRowCount();
         for (i = 0; i < j; i++) {
@@ -1077,43 +1443,94 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void textKosong(JComboBox teks, String pesan) {
         JOptionPane.showMessageDialog(null, "Maaf, " + pesan + " tidak boleh kosong...!!!");
         teks.requestFocus();
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka(double nilai) {
         return df2.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka3(double nilai) {
         return df4.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka4(double nilai) {
         return df5.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka2(double nilai) {
         return df3.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka5(double nilai) {
         return df6.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public String SetAngka6(double nilai) {
         return df7.format(nilai);
     }
 
+    /**
+     *
+     * @param nilai
+     * @return
+     */
     public double SetAngka7(double nilai) {
         return Double.parseDouble(df7.format(nilai));
     }
 
+    /**
+     *
+     * @param value
+     * @param places
+     * @return
+     */
     public double SetAngka8(double value, int places) {
         return new BigDecimal(value).setScale(places, RoundingMode.HALF_UP).doubleValue();
     }
 
+    /**
+     *
+     * @param txt
+     * @return
+     */
     public double SetAngka(String txt) {
         double x;
         try {
@@ -1129,6 +1546,12 @@ public final class validasi {
         return x;
     }
 
+    /**
+     *
+     * @param number
+     * @param multiple
+     * @return
+     */
     public double roundUp(double number, int multiple) {
         if (PEMBULATANHARGAOBAT.equals("yes")) {
             result = multiple;
@@ -1146,6 +1569,11 @@ public final class validasi {
         }
     }
 
+    /**
+     *
+     * @param teks
+     * @param pesan
+     */
     public void setPlaceHolder(JTextField teks, String pesan) {
         teks.setText(pesan);
         teks.setForeground(Color.GRAY);
@@ -1159,7 +1587,7 @@ public final class validasi {
                     teks.setText("");
                     teks.setForeground(Color.getColor("#323232"));
                 }
-//To change body of generated methods, choose Tools | Templates.
+                // To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
@@ -1168,8 +1596,57 @@ public final class validasi {
                     teks.setText(pesan);
                     teks.setForeground(Color.GRAY);
                 }
-//To change body of generated methods, choose Tools | Templates.
+                // To change body of generated methods, choose Tools | Templates.
             }
         });
+    }
+    
+    /**
+     *
+     * @param angka
+     * @return
+     */
+    public String terbilang(double angka){
+        if(angka<12)
+        {
+          return nomina[(int)angka];
+        }
+        
+        if(angka>=12 && angka <=19)
+        {
+            return nomina[(int)angka%10] +" belas ";
+        }
+        
+        if(angka>=20 && angka <=99)
+        {
+            return nomina[(int)angka/10] +" puluh "+nomina[(int)angka%10];
+        }
+        
+        if(angka>=100 && angka <=199)
+        {
+            return "seratus "+ terbilang(angka%100);
+        }
+        
+        if(angka>=200 && angka <=999)
+        {
+            return nomina[(int)angka/100]+" ratus "+terbilang(angka%100);
+        }
+        
+        if(angka>=1000 && angka <=1999)
+        {
+            return "seribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 2000 && angka <=999999)
+        {
+            return terbilang((int)angka/1000)+" ribu "+ terbilang(angka%1000);
+        }
+        
+        if(angka >= 1000000 && angka <=999999999)
+        {
+            return terbilang((int)angka/1000000)+" juta "+ terbilang(angka%1000000);
+        }
+        
+        return "";
     }
 }

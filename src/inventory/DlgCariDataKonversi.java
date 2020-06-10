@@ -40,9 +40,9 @@ public final class DlgCariDataKonversi extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private PreparedStatement ps;
     private ResultSet rs;
-    /** Creates new form DlgPenyakit 
-     *@param parent
-     *@param modal */
+    /** Creates new form DlgPenyakit
+     * @param frame
+     * @param bln */
     public DlgCariDataKonversi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -400,19 +400,33 @@ public final class DlgCariDataKonversi extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     * @param kodesatuan
+     */
     public void setSatuanKecil(String kodesatuan){
         KodeSatuanKecil.setText(kodesatuan);
         NamaSatuanKecil.setText(Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?",kodesatuan));
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnTambah.setEnabled(akses.getkonversi_satuan());
     }

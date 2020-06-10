@@ -3272,6 +3272,9 @@ public final class DlgDataTB extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TNoRw.setText("");
         TNoRM.setText("");
@@ -3367,6 +3370,9 @@ public final class DlgDataTB extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         TabRawat.setSelectedIndex(1);
         tampil();
@@ -3376,6 +3382,10 @@ public final class DlgDataTB extends javax.swing.JDialog {
         BtnPrint.setEnabled(akses.getkemenkes_sitt());
     }
     
+    /**
+     *
+     * @param norawat
+     */
     public void setNoRM(String norawat){
         TabRawat.setSelectedIndex(0);
         TNoRw.setText(norawat);

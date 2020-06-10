@@ -29,6 +29,10 @@ import keuangan.Jurnal;
 import kepegawaian.DlgCariPegawai;
 import kepegawaian.DlgCariPetugas;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -36,8 +40,20 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
     private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
+
+    /**
+     *
+     */
     public  DlgSuplierIPSRS suplier=new DlgSuplierIPSRS(null,false);
+
+    /**
+     *
+     */
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+
+    /**
+     *
+     */
     public  DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
@@ -46,8 +62,8 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
     private DlgPemesananIPSRS aplikasi=new DlgPemesananIPSRS(null,false);
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariSuratPemesananNonMedis(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1211,6 +1227,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }        
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdbar.setText("");
         nmbar.setText("");
@@ -1218,6 +1237,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         kdbar.requestFocus();        
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnPrint.setEnabled(akses.getsurat_pemesanan_non_medis());
         ppHapus.setEnabled(akses.getsurat_pemesanan_non_medis());

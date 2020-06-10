@@ -66,8 +66,8 @@ public class DlgDokter extends javax.swing.JDialog {
     /**
      * Creates new form DlgDokter
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
     public DlgDokter(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -1462,6 +1462,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText("" + tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -1529,10 +1532,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField() {
         return TKd;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton() {
         return BtnKeluar;
     }
@@ -1551,6 +1562,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     */
     public void isCek() {
         BtnSimpan.setEnabled(akses.getdokter());
         BtnHapus.setEnabled(akses.getdokter());

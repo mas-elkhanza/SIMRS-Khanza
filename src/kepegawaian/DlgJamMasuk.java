@@ -43,8 +43,8 @@ public class DlgJamMasuk extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgJadwal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgJamMasuk(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -735,7 +735,9 @@ public class DlgJamMasuk extends javax.swing.JDialog {
         LCount.setText(""+b);
     }
 
-
+    /**
+     *
+     */
     public void emptTeks() {
         cmbJam1.setSelectedItem("00");
         cmbJam2.setSelectedItem("00");
@@ -760,12 +762,19 @@ public class DlgJamMasuk extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getjam_masuk());
         BtnHapus.setEnabled(akses.getjam_masuk());
         BtnEdit.setEnabled(akses.getjam_masuk());
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJadwal;
     }

@@ -35,14 +35,13 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgCariDokter extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariDokter(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -114,7 +113,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
             });
         }
     }
-    public DlgDokter dokter=new DlgDokter(null,false);
     
 
 
@@ -333,6 +331,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         //nm_dokter.setModal(true);
+        DlgDokter dokter=new DlgDokter(null,false);
         dokter.emptTeks();
         dokter.isCek();
         dokter.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
@@ -451,14 +450,24 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         LCount.setText(""+b);
     }
 
+    /**
+     *
+     */
     public void emptTeks() { 
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         BtnTambah.setEnabled(akses.getdokter());
     }

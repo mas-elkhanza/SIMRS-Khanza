@@ -12,6 +12,10 @@ import javax.swing.JTabbedPane;
  * @author khanzamedia
  */
 public class TabPane extends JTabbedPane {
+
+    /**
+     *
+     */
     public TabPane(){
         super();
         setBackground(new Color(255,255,255));    

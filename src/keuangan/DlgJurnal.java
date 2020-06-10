@@ -23,6 +23,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgJurnal extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode;
@@ -881,6 +885,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox tipe;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         String sql = "select kd_rek, nm_rek, debet, kredit "
                 + "from tampjurnal ";
@@ -914,6 +921,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdrek.setText("");
         nmrek.setText("");
@@ -947,12 +957,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }
 
+    /**
+     *
+     * @param nobukti
+     */
     public void setData(String nobukti) {
         NoBukti.setText(nobukti);
         Jenis.setSelectedItem("Penyesuaian");
         Ktg.setText("-");
     }
 
+    /**
+     *
+     */
     public void isCek() {
         BtnSimpan.setEnabled(akses.getposting_jurnal());
         BtnHapus.setEnabled(akses.getposting_jurnal());

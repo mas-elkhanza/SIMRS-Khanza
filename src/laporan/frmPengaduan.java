@@ -710,6 +710,9 @@ public class frmPengaduan extends javax.swing.JFrame {
         LCount.setText(""+tabMode.getRowCount());
     }
     
+    /**
+     *
+     */
     public void isCek(){
         if(akses.getkode().equals("Admin Utama")){
             BtnHapusTotal.setEnabled(true);

@@ -48,8 +48,8 @@ public final class DlgStokPasien extends javax.swing.JDialog {
     private String aktifkanbatch="no";
     private boolean sukses=true;
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgStokPasien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -620,12 +620,17 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }
     
-    
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnHapus.setEnabled(akses.getstok_obat_pasien());
         BtnPrint.setEnabled(akses.getstok_obat_pasien());    

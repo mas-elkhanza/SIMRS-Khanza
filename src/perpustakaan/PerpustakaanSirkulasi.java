@@ -44,8 +44,8 @@ public class PerpustakaanSirkulasi extends javax.swing.JDialog {
     private int pilihan=0;
 
     /** Creates new form DlgKamarInap
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PerpustakaanSirkulasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1449,6 +1449,9 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
     private widget.Tanggal tgl;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -1511,6 +1514,9 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {       
         TNoI.setText("");
         TJudul.setText("");
@@ -1541,7 +1547,9 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
         }
     }
 
-    
+    /**
+     *
+     */
     public void isCek(){
         if(akses.getjml2()>=1){
             TNIP.setEditable(false);
@@ -1565,6 +1573,9 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
         Sequel.cariIsi("select ifnull("+LblJmlT.getText()+"*(select denda_perhari from perpustakaan_set_peminjaman),0)", LblJmlDenda);
     }
 
+    /**
+     *
+     */
     public void isSetPinjam(){
         Sequel.cariIsi("select max_pinjam from perpustakaan_set_peminjaman", LblSetPnjm);
         Sequel.cariIsi("select if(count(no_anggota)<'"+LblSetPnjm.getText()+"','boleh','tidak') as jml "+
@@ -1573,6 +1584,9 @@ private void tglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKe
                        "from perpustakaan_anggota where no_anggota='"+TNoA.getText()+"' ", lblIjnKdl);
     }
     
+    /**
+     *
+     */
     public void isInventaris(){
         try {
             ps=koneksi.prepareStatement(

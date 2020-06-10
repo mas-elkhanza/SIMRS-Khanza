@@ -24,6 +24,10 @@ import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgPenjualan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabModeObatRacikan,tabModeDetailRacikan;
     private sekuel Sequel=new sekuel();
@@ -36,6 +40,10 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private double ttl=0,ttlhpp=0,y=0,z=0,stokbarang=0,embalasen=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),
         tuslahn=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase"),bayar=0,total=0,ppn=0,besarppn=0,tagihanppn=0;;
     private int jml=0,i=0,row,kolom=0,reply;
+
+    /**
+     *
+     */
     public DlgAturanPakai aturan_pakai=new DlgAturanPakai(null,false);
     private String verifikasi_penjualan_di_kasir=Sequel.cariIsi(
             "select verifikasi_penjualan_di_kasir from set_nota"),
@@ -56,8 +64,8 @@ public class DlgPenjualan extends javax.swing.JDialog {
     
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPenjualan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -3512,6 +3520,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         LKembali.setText(Valid.SetAngka(bayar-tagihanppn));     
     }
     
+    /**
+     *
+     */
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
@@ -3536,11 +3547,18 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }
     
+    /**
+     *
+     */
     public void autoNomor(){
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,3),signed)),0) from penjualan where tgl_jual='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' ",
                 "PJ"+Tgl.getSelectedItem().toString().substring(6,10)+Tgl.getSelectedItem().toString().substring(3,5)+Tgl.getSelectedItem().toString().substring(0,2),3,NoNota); 
     }
     
+    /**
+     *
+     * @param norm
+     */
     public void setPasien(String norm){
         kdmem.setText(norm);
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());

@@ -39,6 +39,8 @@ public class RMDetailRawat extends javax.swing.JDialog {
 
     /**
      * Creates new form RMDetailRawat
+     * @param frame
+     * @param bln
      */
     public RMDetailRawat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -143,6 +145,13 @@ public class RMDetailRawat extends javax.swing.JDialog {
         });
     }
 
+    /**
+     *
+     * @param norm
+     * @param tanggal1
+     * @param tanggal2
+     * @param caritanggal
+     */
     public void setRM(String norm, String tanggal1, String tanggal2, boolean caritanggal) {
         this.norm = norm;
         this.tanggal1 = tanggal1;
@@ -481,10 +490,18 @@ public class RMDetailRawat extends javax.swing.JDialog {
     private widget.panelisi panelisi4;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void isPasien() {
         Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ", TPasien, KdRw.getText());
     }
 
+    /**
+     *
+     * @param norm
+     * @param nama
+     */
     public void setNoRm(String norm, String nama) {
         KdRw.setText(norm);
         TPasien.setText(nama);

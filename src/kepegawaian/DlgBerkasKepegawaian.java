@@ -69,8 +69,8 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     private int i=0,i2=0;
     private StringBuilder htmlContent;
     /** Creates new form DlgLhtBiaya
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBerkasKepegawaian(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -325,6 +325,10 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         });
     }
  
+    /**
+     *
+     * @param url
+     */
     public void loadURL(String url) {  
         try {
             createScene();
@@ -340,10 +344,17 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         });        
     }    
     
+    /**
+     *
+     */
     public void CloseScane(){
         Platform.setImplicitExit(false);
     }
     
+    /**
+     *
+     * @param node
+     */
     public void print(final Node node) {
         Printer printer = Printer.getDefaultPrinter();
         PageLayout pageLayout = printer.createPageLayout(Paper.NA_LETTER, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
@@ -1004,6 +1015,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     private widget.panelisi panelGlass6;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
@@ -1127,6 +1141,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil2(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
@@ -1250,6 +1267,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil3(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
@@ -1373,6 +1393,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }
 
+    /**
+     *
+     */
     public void tampil4(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
@@ -1496,6 +1519,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void tampil5(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {

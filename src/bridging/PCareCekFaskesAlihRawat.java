@@ -500,6 +500,12 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param kode
+     * @param nokartu
+     * @param tanggal
+     */
     public void tampil(String kode,String nokartu,String tanggal) {        
         try {
             headers = new HttpHeaders();
@@ -553,6 +559,10 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
         }
     } 
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

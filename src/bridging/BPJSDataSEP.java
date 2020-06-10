@@ -94,8 +94,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private JsonNode response;
     private BPJSCekHistoriPelayanan historiPelayanan=new BPJSCekHistoriPelayanan(null,false);
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSDataSEP(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -2987,7 +2987,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             kamarinap.setLocationRelativeTo(internalFrame1);
                             kamarinap.emptTeks();
                             kamarinap.isCek();
-                            kamarinap.setNoRm(TNoRw.getText()); 
+                            kamarinap.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText());
                             kamarinap.setVisible(true);                    
                         }  
                     }
@@ -4014,6 +4014,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {        
         Valid.tabelKosong(tabMode);
         try{
@@ -4178,6 +4181,14 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         NoRujukan.requestFocus();
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl1
+     * @param status
+     * @param kdpoli
+     * @param namapoli
+     */
     public void setNoRm(String norwt, Date tgl1,String status,String kdpoli,String namapoli) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -4188,7 +4199,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         isRawat();            
     }
       
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getbpjs_sep());
         BtnHapus.setEnabled(akses.getbpjs_sep());
@@ -4203,6 +4216,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         ppRujukan.setEnabled(akses.getbpjs_rujukan_keluar());
     }
     
+    /**
+     *
+     */
     public void tutupInput(){
         TabRawat.setSelectedIndex(1);
     }
@@ -4278,18 +4294,34 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
+
+        /**
+         *
+         * @param uri
+         */
         public HttpEntityEnclosingDeleteRequest(final URI uri) {
             super();
             setURI(uri);
         }
 
+        /**
+         *
+         * @return
+         */
         @Override
         public String getMethod() {
             return "DELETE";
         }
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @Test
     public void bodyWithDeleteRequest() throws Exception {
         RestTemplate restTemplate = new RestTemplate();

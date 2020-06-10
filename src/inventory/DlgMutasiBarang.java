@@ -22,6 +22,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariBangsal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgMutasiBarang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -36,14 +40,18 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private double stok_asal,stok_tujuan;
     private WarnaTable2 warna=new WarnaTable2();
+
+    /**
+     *
+     */
     public boolean tampilkanpermintaan=false;
     private boolean sukses=false;
     private String aktifkanbatch="no";
     private DlgPindahGudang pindah=new DlgPindahGudang(null,false);
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgMutasiBarang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1147,6 +1155,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         
     }
     
+    /**
+     *
+     * @param nopermintaan
+     */
     public void tampil(String nopermintaan) {
         Valid.tabelKosong(tabMode);
         try{
@@ -1240,6 +1252,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         
     }
 
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getmutasi_barang());
     }
@@ -1356,6 +1371,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }    
     }
 
+    /**
+     *
+     */
     public void isCekStok(){
         for(i=0;i<tbDokter.getRowCount();i++){
             if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
@@ -1461,6 +1479,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }
     
+    /**
+     *
+     */
     public void isCekStok2(){
         for(i=0;i<tbDokter.getRowCount();i++){
             if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){

@@ -57,8 +57,8 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
     private JsonNode response;
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSCekReferensiPoli(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -335,6 +335,10 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param poli
+     */
     public void tampil(String poli) {
         try {
             headers = new HttpHeaders();
@@ -370,6 +374,10 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         }
     }    
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

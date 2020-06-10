@@ -39,26 +39,63 @@ import javax.swing.table.TableColumn;
 import restore.DlgRestoreObat;
 import simrskhanza.DlgCariBangsal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgBarang extends javax.swing.JDialog {
 
     private DefaultTableModel tabMode;
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private Connection koneksi = koneksiDB.condb();
+
+    /**
+     *
+     */
     public DlgCariJenis jenis = new DlgCariJenis(null, false);
+
+    /**
+     *
+     */
     public DlgCariKategori kategori = new DlgCariKategori(null, false);
+
+    /**
+     *
+     */
     public DlgCariGolongan golongan = new DlgCariGolongan(null, false);
+
+    /**
+     *
+     */
     public DlgCariSatuan satuan = new DlgCariSatuan(null, false);
+
+    /**
+     *
+     */
     public DlgIndustriFarmasi industri=new DlgIndustriFarmasi(null,false);
     private DlgCariBangsal bangsal = new DlgCariBangsal(null, false);
     private double totalstok, stokgudang;
     private PreparedStatement ps, ps2, ps3, ps4;
     private ResultSet rs, rs2, rs3;
     private int i = 0;
-    public String aktifkanbatch="no",pengaturanharga=Sequel.cariIsi("select setharga from set_harga_obat");;
+
+    /**
+     *
+     */
+    public String aktifkanbatch="no",
+
+    /**
+     *
+     */
+    pengaturanharga=Sequel.cariIsi("select setharga from set_harga_obat");;
     private String kdlokasi = "", nmlokasi = "", tanggal = "0000-00-00";
 
-
+    /**
+     *
+     * @param frame
+     * @param bln
+     */
     public DlgBarang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -2822,6 +2859,9 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
+    /**
+     *
+     */
     public void tampil3() {
         Valid.tabelKosong(tabMode);
         try {
@@ -2961,6 +3001,10 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             
     }
     
+    /**
+     *
+     * @param NoRetur
+     */
     public void tampil4(String NoRetur) {
         if(akses.getform().equals("DlgReturJual")){
             if(aktifkanbatch.equals("yes")){
@@ -3121,6 +3165,9 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kd.setText("");
         Nm.setText("");
@@ -3202,6 +3249,10 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbDokter;
     }
@@ -3321,11 +3372,19 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
+    /**
+     *
+     * @param kodelokasi
+     * @param namalokasi
+     */
     public void setLokasi(String kodelokasi,String namalokasi){
         this.kdlokasi=kodelokasi;
         this.nmlokasi=namalokasi;
     }
             
+    /**
+     *
+     */
     public void isCek() {
         TCari.requestFocus();
         BtnSimpan.setEnabled(akses.getobat());
@@ -3339,6 +3398,9 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         } 
     }
     
+    /**
+     *
+     */
     public void isBatch(){
         tabMode = new DefaultTableModel(null,new Object[]{
                 "P", "Kode Barang", "Nama Barang", "Kd.Sat Besar", "Nm.Satuan Besar","Isi", "Kd.Sat Kecil", "Nm.Satuan Kecil",

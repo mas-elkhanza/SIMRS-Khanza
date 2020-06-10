@@ -49,7 +49,13 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class grafikperiksaralanibubulan extends JDialog {
       sekuel Sequel = new sekuel();
       validasi Valid = new validasi();
-      public grafikperiksaralanibubulan(String title,String symbol) {
+
+    /**
+     *
+     * @param title
+     * @param symbol
+     */
+    public grafikperiksaralanibubulan(String title,String symbol) {
           setTitle(title);
          JPanel chartPanel = createDemoPanel(symbol);
          
@@ -62,10 +68,15 @@ public class grafikperiksaralanibubulan extends JDialog {
       }
     Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
       
+    /**
+     *
+     * @param symbol
+     * @return
+     */
     public static CategoryDataset createDataset1(String symbol) { //data grafik nilai K dan D
 
           DefaultCategoryDataset result = new DefaultCategoryDataset();
-          String series1 = "Periksa Perbulan";
+          String series1 = "Registrasi Perbulan";
           
             try {
                 Statement stat = koneksiDB.condb().createStatement();
@@ -84,9 +95,14 @@ public class grafikperiksaralanibubulan extends JDialog {
             return result;
        }
 
-        public static CategoryDataset createDataset2(String symbol) {//grafik volume
+    /**
+     *
+     * @param symbol
+     * @return
+     */
+    public static CategoryDataset createDataset2(String symbol) {//grafik volume
             DefaultCategoryDataset result = new DefaultCategoryDataset();
-            String series1 = "Periksa Perbulan";             
+            String series1 = "Registrasi Perbulan";             
 
             try {
                 Statement stat = koneksiDB.condb().createStatement();
@@ -127,7 +143,7 @@ public class grafikperiksaralanibubulan extends JDialog {
                      renderer2);
              subplot2.setDomainGridlinesVisible(true);
 
-             CategoryAxis domainAxis = new CategoryAxis("Periksa Perbulan");
+             CategoryAxis domainAxis = new CategoryAxis("Registrasi Perbulan");
              CombinedDomainCategoryPlot plot = new CombinedDomainCategoryPlot(domainAxis);
              plot.add(subplot1,2 );
              plot.add(subplot2,1 );
@@ -137,7 +153,12 @@ public class grafikperiksaralanibubulan extends JDialog {
 
          }
 
-         public static JPanel createDemoPanel(String symbol) {
+    /**
+     *
+     * @param symbol
+     * @return
+     */
+    public static JPanel createDemoPanel(String symbol) {
              JFreeChart chart = createChart(symbol);
              return new ChartPanel(chart);
          }

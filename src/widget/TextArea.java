@@ -11,6 +11,10 @@ import javax.swing.border.EmptyBorder;
  * @author usu
  */
 public class TextArea extends JTextArea {
+
+    /**
+     *
+     */
     public TextArea() {
         super();
         setOpaque(false);

@@ -421,6 +421,10 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param diagnosa
+     */
     public void tampil(String diagnosa) {        
         try {
             URL = link+"/spesialis/"+KdSpesialis.getText()+"/subspesialis";	
@@ -474,10 +478,19 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
         }
     } 
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     * @param KdProp
+     * @param NmProp
+     */
     public void setPropinsi(String KdProp,String NmProp){
         this.KdSpesialis.setText(KdProp);
         this.NmSpesialis.setText(NmProp);

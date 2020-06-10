@@ -334,6 +334,10 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param diagnosa
+     */
     public void tampil(String diagnosa) {
         try {
             headers = new HttpHeaders();
@@ -384,6 +388,10 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
         }
     }   
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

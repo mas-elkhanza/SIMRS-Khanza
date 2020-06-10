@@ -29,8 +29,8 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
 
     /** Creates new form DlgLhtBiaya
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMRiwayatPerawatan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -402,10 +402,18 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.panelisi panelisi4;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void isPasien(){
         Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",TPasien,KdRw.getText());
     }
 
+    /**
+     *
+     * @param norm
+     * @param nama
+     */
     public void setNoRm(String norm,String nama) {
         KdRw.setText(norm);
         TPasien.setText(nama);

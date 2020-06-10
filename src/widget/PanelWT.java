@@ -26,28 +26,51 @@ public class PanelWT extends JPanel{
     private Color warnaAtas = new Color(255,255,255);
     private Color warnaBawah = new Color(0,0,0);
 
+    /**
+     *
+     */
     public PanelWT(){
         super();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(3,3,3,3));
     }
 
+    /**
+     *
+     * @param layout
+     */
     public PanelWT(LayoutManager layout) {
         super(layout);
         addComponentListener(new GradientCacheManager());
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaAtas() {
         return warnaAtas;
     }
 
+    /**
+     *
+     * @param warnaAtas
+     */
     public void setWarnaAtas(Color warnaAtas) {
         this.warnaAtas = warnaAtas;
     }
 
+    /**
+     *
+     * @return
+     */
     public Color getWarnaBawah() {
         return warnaBawah;
     }
 
+    /**
+     *
+     * @param warnaBawah
+     */
     public void setWarnaBawah(Color warnaBawah) {
         this.warnaBawah = warnaBawah;
     }
@@ -60,6 +83,9 @@ public class PanelWT extends JPanel{
         }
     }
 
+    /**
+     *
+     */
     protected void createImageCache() {
         int width = 2;
         int height = getHeight();

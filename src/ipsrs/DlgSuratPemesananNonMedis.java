@@ -28,6 +28,10 @@ import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPegawai;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgSuratPemesananNonMedis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -45,13 +49,17 @@ public class DlgSuratPemesananNonMedis extends javax.swing.JDialog {
     private int jml=0,i=0,row=0,index=0,pilihan=1;
     private String[] kodebarang,namabarang,satuanbeli;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
+
+    /**
+     *
+     */
     public boolean tampilkan=true;
     private DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
     private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgSuratPemesananNonMedis(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1466,6 +1474,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         
     }   
     
+    /**
+     *
+     */
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
@@ -1485,14 +1496,25 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 "SPM"+Tanggal.getSelectedItem().toString().substring(8,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoPemesanan); 
     }
 
+    /**
+     *
+     * @return
+     */
     public DefaultTableModel tabMode(){
         return tabMode;
     }
     
+    /**
+     *
+     */
     public void panggilgetData(){
         getData();
     }
     
+    /**
+     *
+     * @param nopengajuan
+     */
     public void panggilgetData(String nopengajuan){
         try{
             ps=koneksi.prepareStatement(

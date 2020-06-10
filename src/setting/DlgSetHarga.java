@@ -42,6 +42,10 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+
+    /**
+     *
+     */
     public DlgCariJenis jenis = new DlgCariJenis(null, false);
     private PreparedStatement ps;
     private ResultSet rs;
@@ -3093,6 +3097,9 @@ public class DlgSetHarga extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void emptTeks() {
         if(TabSetting.getSelectedIndex()==0){
             cmbPengaturan.requestFocus();

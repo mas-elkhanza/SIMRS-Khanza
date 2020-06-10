@@ -55,8 +55,8 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMDataMonitoringAsuhanGizi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1031,6 +1031,9 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -1115,6 +1118,9 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         LCount.setText(""+b);
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         nip.setText("");
         namapetugas.setText("");
@@ -1148,6 +1154,11 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl2
+     */
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -1173,6 +1184,9 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getmonitoring_asuhan_gizi());
         BtnHapus.setEnabled(akses.getmonitoring_asuhan_gizi());

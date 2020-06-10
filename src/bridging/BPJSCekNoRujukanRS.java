@@ -92,18 +92,70 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private BPJSApi api=new BPJSApi();
+
+    /**
+     *
+     */
     public  DlgPropinsi propin=new DlgPropinsi(null,false);
+
+    /**
+     *
+     */
     public  DlgPerusahaan perusahaan=new DlgPerusahaan(null,false);
+
+    /**
+     *
+     */
     public  DlgBahasa bahasa=new DlgBahasa(null,false);
+
+    /**
+     *
+     */
     public  DlgCacatFisik cacat=new DlgCacatFisik(null,false);
+
+    /**
+     *
+     */
     public  DlgSuku suku=new DlgSuku(null,false);
+
+    /**
+     *
+     */
     public  DlgGolonganTNI golongantni=new DlgGolonganTNI(null,false);
+
+    /**
+     *
+     */
     public  DlgSatuanTNI satuantni=new DlgSatuanTNI(null,false);
+
+    /**
+     *
+     */
     public  DlgPangkatTNI pangkattni=new DlgPangkatTNI(null,false);
+
+    /**
+     *
+     */
     public  DlgJabatanTNI jabatantni=new DlgJabatanTNI(null,false);
+
+    /**
+     *
+     */
     public  DlgGolonganPolri golonganpolri=new DlgGolonganPolri(null,false);
+
+    /**
+     *
+     */
     public  DlgSatuanPolri satuanpolri=new DlgSatuanPolri(null,false);
+
+    /**
+     *
+     */
     public  DlgPangkatPolri pangkatpolri=new DlgPangkatPolri(null,false);
+
+    /**
+     *
+     */
     public  DlgJabatanPolri jabatanpolri=new DlgJabatanPolri(null,false);
     private BPJSCekReferensiDokterDPJP dpjp=new BPJSCekReferensiDokterDPJP(null,false);
     private DlgSKDPBPJS skdp=new DlgSKDPBPJS(null,false);
@@ -143,8 +195,8 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
     private String hari="";
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSCekNoRujukanRS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -5181,6 +5233,10 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param nomorrujukan
+     */
     public void tampil(String nomorrujukan) {
         try {
             URL = link+"/Rujukan/RS/"+nomorrujukan;
@@ -5615,6 +5671,9 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void emptTeks() {
         TNo.setText("");
         TNm.setText("");
@@ -6295,12 +6354,19 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
         Sequel.mengedit("pasien","no_rkm_medis=?","umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",1,new String[]{TNo.getText()});
     }
     
+    /**
+     *
+     * @param NoRujuk
+     */
     public void SetRujukan(String NoRujuk){
         NoRujukan.setText(NoRujuk);
         tampil(NoRujuk);
         empt=true;
     }
 
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getbpjs_sep());
         ppPengajuan.setEnabled(akses.getbpjs_sep());

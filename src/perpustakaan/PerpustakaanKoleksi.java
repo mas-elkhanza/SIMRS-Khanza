@@ -46,7 +46,9 @@ public final class PerpustakaanKoleksi extends javax.swing.JDialog {
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
 
-    /** Creates new form DlgJnsPerawatan */
+    /** Creates new form DlgJnsPerawatan
+     * @param frame
+     * @param bln */
     public PerpustakaanKoleksi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1215,6 +1217,9 @@ private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -1267,6 +1272,9 @@ private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         KodeBuku.setText("");
         Judul.setText("");
@@ -1331,6 +1339,10 @@ private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }
@@ -1349,6 +1361,9 @@ private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getkoleksi_perpustakaan());
         BtnHapus.setEnabled(akses.getkoleksi_perpustakaan());

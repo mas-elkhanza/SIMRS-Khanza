@@ -25,6 +25,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -46,8 +50,8 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
             HPP_Persediaan_Radiologi_Rawat_Inap="",Persediaan_BHP_Radiologi_Rawat_Inap="";
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgCariPeriksaRadiologi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1844,6 +1848,10 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         
     }
     
+    /**
+     *
+     * @param norw
+     */
     public void SetNoRw(String norw){
         NoRawat.setText(norw);
         tampil();
@@ -1859,6 +1867,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         MnCetakNota.setEnabled(akses.getperiksa_radiologi());
         BtnHapus.setEnabled(akses.getperiksa_radiologi());
@@ -1868,6 +1879,10 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         BtnPrint.setEnabled(akses.getperiksa_radiologi());
     }
  
+    /**
+     *
+     * @param pasien
+     */
     public void setPasien(String pasien){
         NoRawat.setText(pasien);
     }

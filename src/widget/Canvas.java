@@ -24,7 +24,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.event.MouseInputAdapter;
 
-
+/**
+ *
+ * @author RSUI HA
+ */
 public class Canvas extends JComponent {
 	private int X1, Y1, X2, Y2;
 	private Graphics2D g;
@@ -37,14 +40,22 @@ public class Canvas extends JComponent {
 	private MouseMotionListener motion;
 	private MouseListener listener;
 
-	public void save(File file) {
+    /**
+     *
+     * @param file
+     */
+    public void save(File file) {
 		try {
 			ImageIO.write((RenderedImage) img, "PNG", file);
 		} catch (IOException ex) {
 		}
 	}
 
-	public void load(File file) {
+    /**
+     *
+     * @param file
+     */
+    public void load(File file) {
 		try {
 			img = ImageIO.read(file);
 			g = (Graphics2D) img.getGraphics();
@@ -72,12 +83,18 @@ public class Canvas extends JComponent {
 		}
 	}
 
-	public Canvas() {
+    /**
+     *
+     */
+    public Canvas() {
 		setBackground(Color.WHITE);
 		defaultListener();
 	}
 
-	public void defaultListener() {
+    /**
+     *
+     */
+    public void defaultListener() {
 		setDoubleBuffered(false);
 		listener = new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -104,7 +121,12 @@ public class Canvas extends JComponent {
 		addMouseMotionListener(motion);
 	}
 
-	public void addRectangle(Rectangle rectangle, Color color) {
+    /**
+     *
+     * @param rectangle
+     * @param color
+     */
+    public void addRectangle(Rectangle rectangle, Color color) {
 
 		Graphics2D g2d = (Graphics2D) img.getGraphics();
 		g2d.setColor(color);
@@ -112,55 +134,95 @@ public class Canvas extends JComponent {
 		repaint();
 	}
 
-	public void red() {
+    /**
+     *
+     */
+    public void red() {
 		g.setPaint(Color.red);
 	}
 
-	public void black() {
+    /**
+     *
+     */
+    public void black() {
 		g.setPaint(Color.black);
 	}
 
-	public void magenta() {
+    /**
+     *
+     */
+    public void magenta() {
 		g.setPaint(Color.magenta);
 	}
 
-	public void green() {
+    /**
+     *
+     */
+    public void green() {
 		g.setPaint(Color.green);
 	}
 
-	public void blue() {
+    /**
+     *
+     */
+    public void blue() {
 		g.setPaint(Color.blue);
 	}
 
-	public void gray() {
+    /**
+     *
+     */
+    public void gray() {
 		g.setPaint(Color.GRAY);
 	}
 
-	public void orange() {
+    /**
+     *
+     */
+    public void orange() {
 		g.setPaint(Color.ORANGE);
 	}
 
-	public void yellow() {
+    /**
+     *
+     */
+    public void yellow() {
 		g.setPaint(Color.YELLOW);
 	}
 
-	public void pink() {
+    /**
+     *
+     */
+    public void pink() {
 		g.setPaint(Color.PINK);
 	}
 
-	public void cyan() {
+    /**
+     *
+     */
+    public void cyan() {
 		g.setPaint(Color.CYAN);
 	}
 
-	public void lightGray() {
+    /**
+     *
+     */
+    public void lightGray() {
 		g.setPaint(Color.lightGray);
 	}
 
-	public void picker(Color color) {
+    /**
+     *
+     * @param color
+     */
+    public void picker(Color color) {
 		g.setPaint(color);
 	}
 
-	public void clear() {
+    /**
+     *
+     */
+    public void clear() {
 		if (background != null) {
 			setImage(copyImage(background));
 		} else {
@@ -171,7 +233,10 @@ public class Canvas extends JComponent {
 		repaint();
 	}
 
-	public void undo() {
+    /**
+     *
+     */
+    public void undo() {
 		if (undoStack.size() > 0) {
 			undoTemp = undoStack.pop();
 			redoStack.push(img);
@@ -179,7 +244,10 @@ public class Canvas extends JComponent {
 		}
 	}
 
-	public void redo() {
+    /**
+     *
+     */
+    public void redo() {
 		if (redoStack.size() > 0) {
 			redoTemp = redoStack.pop();
 			undoStack.push(img);
@@ -187,14 +255,20 @@ public class Canvas extends JComponent {
 		}
 	}
 
-	public void pencil() {
+    /**
+     *
+     */
+    public void pencil() {
 		removeMouseListener(listener);
 		removeMouseMotionListener(motion);
 		defaultListener();
 		
 	}
 
-	public void rect() {
+    /**
+     *
+     */
+    public void rect() {
 		removeMouseListener(listener);
 		removeMouseMotionListener(motion);
 		MyMouseListener ml = new MyMouseListener();
@@ -211,7 +285,11 @@ public class Canvas extends JComponent {
 		repaint();
 	}
 
-	public void setBackground(Image img) {
+    /**
+     *
+     * @param img
+     */
+    public void setBackground(Image img) {
 		background = copyImage(img);
 		setImage(copyImage(img));
 	}
@@ -228,7 +306,11 @@ public class Canvas extends JComponent {
 		undoStack.push(copyImage(img));
 	}
 
-	public void setThickness(int thick) {
+    /**
+     *
+     * @param thick
+     */
+    public void setThickness(int thick) {
 		g.setStroke(new BasicStroke(thick));
 	}
 

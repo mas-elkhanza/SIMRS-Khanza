@@ -24,6 +24,10 @@ import simrskhanza.DlgJabatanTNI;
 import simrskhanza.DlgPangkatTNI;
 import simrskhanza.DlgSatuanTNI;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgDaftarPasienRanapTNI extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private final validasi Valid=new validasi();
@@ -33,9 +37,25 @@ public class DlgDaftarPasienRanapTNI extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private int i;
     private String tglkeluar,harirawat,kamar;
+
+    /**
+     *
+     */
     public  DlgGolonganTNI golongantni=new DlgGolonganTNI(null,false);
+
+    /**
+     *
+     */
     public  DlgSatuanTNI satuantni=new DlgSatuanTNI(null,false);
+
+    /**
+     *
+     */
     public  DlgPangkatTNI pangkattni=new DlgPangkatTNI(null,false);
+
+    /**
+     *
+     */
     public  DlgJabatanTNI jabatantni=new DlgJabatanTNI(null,false);
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -804,6 +824,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnPrint.setEnabled(akses.getdaftar_pasien_ranap());
     }

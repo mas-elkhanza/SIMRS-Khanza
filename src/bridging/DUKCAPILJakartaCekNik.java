@@ -27,10 +27,131 @@ import org.springframework.web.client.RestTemplate;
 public class DUKCAPILJakartaCekNik {
     private final Properties prop = new Properties();
     private final sekuel Sequel=new sekuel();
-    public String DSC_JENIS_PKRJN,NM_PROP,UMUR,NAMA_LGKP,NO_AKTA_LHR,
-            AKTA_LHR,JENIS_PKRJN,TGL_LHR,TMPT_LHR,NM_KEC,NO_KEL,
-            NO_KK,NM_KAB,NO_RT,NIK,NO_KAB,NM_KEL,ALAMAT,JENIS_KLMIN,
-            NO_RW,NO_PROP,NO_KEC,DSC_STAT_KWN,DSC_STAT_HBKEL,DSC_GOL_DRH;
+
+    /**
+     *
+     */
+    public String DSC_JENIS_PKRJN,
+
+    /**
+     *
+     */
+    NM_PROP,
+
+    /**
+     *
+     */
+    UMUR,
+
+    /**
+     *
+     */
+    NAMA_LGKP,
+
+    /**
+     *
+     */
+    NO_AKTA_LHR,
+
+    /**
+     *
+     */
+    AKTA_LHR,
+
+    /**
+     *
+     */
+    JENIS_PKRJN,
+
+    /**
+     *
+     */
+    TGL_LHR,
+
+    /**
+     *
+     */
+    TMPT_LHR,
+
+    /**
+     *
+     */
+    NM_KEC,
+
+    /**
+     *
+     */
+    NO_KEL,
+
+    /**
+     *
+     */
+    NO_KK,
+
+    /**
+     *
+     */
+    NM_KAB,
+
+    /**
+     *
+     */
+    NO_RT,
+
+    /**
+     *
+     */
+    NIK,
+
+    /**
+     *
+     */
+    NO_KAB,
+
+    /**
+     *
+     */
+    NM_KEL,
+
+    /**
+     *
+     */
+    ALAMAT,
+
+    /**
+     *
+     */
+    JENIS_KLMIN,
+
+    /**
+     *
+     */
+    NO_RW,
+
+    /**
+     *
+     */
+    NO_PROP,
+
+    /**
+     *
+     */
+    NO_KEC,
+
+    /**
+     *
+     */
+    DSC_STAT_KWN,
+
+    /**
+     *
+     */
+    DSC_STAT_HBKEL,
+
+    /**
+     *
+     */
+    DSC_GOL_DRH;
     private String URL;
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -42,6 +163,9 @@ public class DUKCAPILJakartaCekNik {
     private JsonNode root;
     private JsonNode nameNode;
     
+    /**
+     *
+     */
     public DUKCAPILJakartaCekNik(){
         super();
         try {
@@ -51,6 +175,10 @@ public class DUKCAPILJakartaCekNik {
         }
     }
     
+    /**
+     *
+     * @param nik
+     */
     public void tampil(String nik) {
         try {
             URL = prop.getProperty("URLDUKCAPILJAKARTA")+"?usernm="+koneksiDB.USERDUKCAPILJAKARTA()+"&pass="+koneksiDB.PASSDUKCAPILJAKARTA()+"&app=SILaporLahir&pget=Kelahiran&pusr=admin&proc=GETNIK&nik="+nik+"&pkey="+Sequel.cariIsi("select md5(concat('"+prop.getProperty("VAR1DUKCAPILJAKARTA")+"',md5(date_format(current_date(),'%d%m%Y')),'"+prop.getProperty("VAR2DUKCAPILJAKARTA")+"'))");

@@ -49,8 +49,8 @@ public class DlgPasienMati extends javax.swing.JDialog {
     private ResultSet rs;
     private String sql=" pasien_mati.no_rkm_medis=pasien.no_rkm_medis  ";
     /** Creates new form DlgPasienMati
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPasienMati(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1033,6 +1033,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.ComboBox tmptmeninggal;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -1076,6 +1079,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         LCount.setText(""+b);
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TNoRM.setText("");
         TPasien.setText("");
@@ -1106,12 +1112,19 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpasien_meninggal());
         BtnHapus.setEnabled(akses.getpasien_meninggal());
         BtnPrint.setEnabled(akses.getpasien_meninggal());
     }
     
+    /**
+     *
+     * @param norm
+     */
     public void setNoRm(String norm) {
         TNoRM.setText(norm); 
         TCari.setText(norm); 

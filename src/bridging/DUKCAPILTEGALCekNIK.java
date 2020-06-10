@@ -24,11 +24,96 @@ import org.springframework.web.client.RestTemplate;
  * @author khanzasoft
  */
 public class DUKCAPILTEGALCekNIK {
-    public String NO_KK="",NIK="",NAMA_LGKP="",KAB_NAME="",
-            NO_RW="",KEC_NAME="",JENIS_PKRJN="",NO_RT="",ALAMAT="",
-            TMPT_LHR="",NAMA_LGKP_IBU="",
-            PROP_NAME="",KEL_NAME="",JENIS_KLMIN="",TGL_LHR="",GOL_DARAH="",
-            requestJson="",stringbalik="";
+
+    /**
+     *
+     */
+    public String NO_KK="",
+
+    /**
+     *
+     */
+    NIK="",
+
+    /**
+     *
+     */
+    NAMA_LGKP="",
+
+    /**
+     *
+     */
+    KAB_NAME="",
+
+    /**
+     *
+     */
+    NO_RW="",
+
+    /**
+     *
+     */
+    KEC_NAME="",
+
+    /**
+     *
+     */
+    JENIS_PKRJN="",
+
+    /**
+     *
+     */
+    NO_RT="",
+
+    /**
+     *
+     */
+    ALAMAT="",
+
+    /**
+     *
+     */
+    TMPT_LHR="",
+
+    /**
+     *
+     */
+    NAMA_LGKP_IBU="",
+
+    /**
+     *
+     */
+    PROP_NAME="",
+
+    /**
+     *
+     */
+    KEL_NAME="",
+
+    /**
+     *
+     */
+    JENIS_KLMIN="",
+
+    /**
+     *
+     */
+    TGL_LHR="",
+
+    /**
+     *
+     */
+    GOL_DARAH="",
+
+    /**
+     *
+     */
+    requestJson="",
+
+    /**
+     *
+     */
+    stringbalik="";
     private final Properties prop = new Properties();
     private sekuel Sequel=new sekuel();
     private String URL;
@@ -38,6 +123,10 @@ public class DUKCAPILTEGALCekNIK {
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
+
+    /**
+     *
+     */
     public DUKCAPILTEGALCekNIK(){
         super();
         try {
@@ -48,6 +137,10 @@ public class DUKCAPILTEGALCekNIK {
         }
     }
     
+    /**
+     *
+     * @param nik
+     */
     public void tampil(String nik) {
         try {
             URL = EnkripsiAES.decrypt(prop.getProperty("URLDUKCAPILTEGAL"))+"?USER_ID="+EnkripsiAES.decrypt(prop.getProperty("USERDUKCAPILTEGAL"))

@@ -94,6 +94,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             Kso_Radiologi_Ralan=0,Persediaan_Radiologi_Rawat_Jalan=0,Obat_Rawat_Jalan=0;
     /**
      * Creates new form DlgBillingParsialRalan
+     * @param parent
+     * @param modal
      */
     public DlgBilingParsialRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -3433,6 +3435,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private widget.Table tbTindakanPrBayar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param norwt
+     * @param kodedokter
+     * @param namadokter
+     * @param KodePoli
+     */
     public void setNoRm(String norwt,String kodedokter, String namadokter,String KodePoli) {
         TNoRw.setText(norwt);
         this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt);
@@ -4308,6 +4317,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampilRadiologi() {         
         try{    
             if(Sequel.cariInteger("select count(*) from permintaan_pemeriksaan_radiologi inner join permintaan_radiologi "+
@@ -4553,6 +4565,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampilLaborat() {         
         try{    
             if(Sequel.cariInteger("select count(*) from permintaan_pemeriksaan_lab inner join permintaan_lab "+
@@ -4798,6 +4813,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampilDetailLaborat() {         
         try{    
             if(Sequel.cariInteger("select count(*) from permintaan_detail_permintaan_lab inner join permintaan_lab "+
@@ -4941,6 +4959,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampilDetailLaboratBayar() {         
         try{  
             Valid.tabelKosong(TabModeDetailLaboratBayar);
@@ -5095,6 +5116,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getbilling_parsial());
         BtnHapus.setEnabled(akses.gethapus_nota_salah());
@@ -5513,6 +5537,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         TtlSemua.setText(Valid.SetAngka3(ttl));
     }    
     
+    /**
+     *
+     */
     public void isKembali(){
         bayar=0;total=0;ppn=0;besarppn=0;tagihanppn=0;kekurangan=0;y=0;countbayar=0;
         

@@ -38,9 +38,9 @@ public final class DlgKonversi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    /** Creates new form DlgPenyakit 
-     *@param parent
-     *@param modal */
+    /** Creates new form DlgPenyakit
+     * @param frame
+     * @param bln */
     public DlgKonversi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -742,6 +742,9 @@ public final class DlgKonversi extends javax.swing.JDialog {
         LCount.setText(""+b);
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         n1.setText("");
         n2.setText("");
@@ -760,6 +763,9 @@ public final class DlgKonversi extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getkonversi_satuan());
         BtnHapus.setEnabled(akses.getkonversi_satuan());

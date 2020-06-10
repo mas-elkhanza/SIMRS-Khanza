@@ -47,8 +47,8 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
     
 
     /** Creates new form DlgPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgUbahNilaiLab(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -364,6 +364,12 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
     private widget.Table tbPemeriksaan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param norwt
+     * @param tanggal
+     * @param jam
+     */
     public void setNoRm(String norwt,String tanggal,String jam) {        
         try {
             TNoRw.setText(norwt);
@@ -402,6 +408,9 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
         }         
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getperiksa_lab());
     }

@@ -49,8 +49,8 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
     private boolean sukses=true;
     
     /** Creates new form DlgPenyakit
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgInputResepPulang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -628,6 +628,9 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         jml=0;
         for(i=0;i<tbKamar.getRowCount();i++){
@@ -866,19 +869,36 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.setText("");
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){        
         BtnTambah.setEnabled(akses.getobat());
     }
     
+    /**
+     *
+     * @param norwt
+     * @param penyakit
+     * @param tanggal
+     * @param jam
+     */
     public void setNoRm(String norwt,String penyakit, String tanggal, String jam) {        
         TKdPny.setText(penyakit);
         TNoRw.setText(norwt);

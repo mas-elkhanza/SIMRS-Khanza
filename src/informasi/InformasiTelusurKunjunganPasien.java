@@ -169,6 +169,9 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         
     }
     
+    /**
+     *
+     */
     public DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private int pilihan=0;
 

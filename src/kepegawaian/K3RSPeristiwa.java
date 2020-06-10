@@ -66,11 +66,10 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private LocalDate birthday;
     private Period p;
-    private long p2;
 
     /** Creates new form DlgJnsPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public K3RSPeristiwa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -184,7 +183,7 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        NoLaporan.setDocument(new batasInput((byte)15).getKata(NoLaporan));
+        NoLaporan.setDocument(new batasInput((byte)20).getKata(NoLaporan));
         Kronologi.setDocument(new batasInput((int)300).getKata(Kronologi));
         KondisiTidakAman.setDocument(new batasInput((int)100).getKata(KondisiTidakAman));
         TindakanTidakAman.setDocument(new batasInput((int)100).getKata(TindakanTidakAman));
@@ -3364,6 +3363,9 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         autoNomor();
         KdJenisPekerjaan.setText("");
@@ -3408,6 +3410,9 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         NoLaporan.requestFocus();
     }
     
+    /**
+     *
+     */
     public void autoNomor(){
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_k3rs,4),signed)),0) from k3rs_peristiwa where tgl_pelaporan='"+Valid.SetTgl(TglPelaporan.getSelectedItem()+"")+"' ",
                 "K3/"+TglPelaporan.getSelectedItem().toString().substring(6,10)+"/"+TglPelaporan.getSelectedItem().toString().substring(3,5)+"/"+TglPelaporan.getSelectedItem().toString().substring(0,2)+"/",4,NoLaporan); 
@@ -3506,6 +3511,9 @@ public final class K3RSPeristiwa extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         TabRawat.setSelectedIndex(1);
         tampil();

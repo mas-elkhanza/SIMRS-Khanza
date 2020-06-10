@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 import model.Dokter;
 import model.Pasien;
 import model.Spri;
@@ -37,6 +39,10 @@ public class SpriDao implements SpriInterface<Spri> {
     List<Pasien> pasiens = new ArrayList<>();
     List<Dokter> dokters = new ArrayList<>();
 
+    /**
+     *
+     * @param domain
+     */
     @Override
     public void save(Spri domain) {
         Sequel.menyimpan("temp_spri", ""
@@ -46,7 +52,7 @@ public class SpriDao implements SpriInterface<Spri> {
                 + domain.getNorm() + "','"
                 + domain.getDiagnosa() + "','"
                 + domain.getRencana_perawatan() + "','"
-                + domain.getRencana_perawatan() + "','"
+                + domain.getUpf()+ "','"
                 + domain.getDokter().getKd_dokter() + "','"
                 + domain.getNama() + "','"
                 + domain.getKeluhan() + "','"
@@ -54,11 +60,22 @@ public class SpriDao implements SpriInterface<Spri> {
 
     }
 
+    /**
+     *
+     * @param a
+     * @param text
+     * @param domain
+     */
     @Override
-    public void delete(Spri domain) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(DefaultTableModel a, JTextField text, String domain) {
+        Valid.hapusTable(a, text, "temp_spri", domain);
     }
 
+    /**
+     *
+     * @param domain
+     * @return
+     */
     @Override
     public List<Spri> search(String domain) {
             List<Spri> kis = new ArrayList<>();
@@ -85,16 +102,35 @@ public class SpriDao implements SpriInterface<Spri> {
             return kis;
     }
 
+    /**
+     *
+     * @param domain
+     */
     @Override
     public void update(Spri domain) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Sequel.mengedit("temp_spri", "id='" + domain.getId() + "'", 
+                "tanggal='" + domain.getTanggal() + "',"
+                + "jam='" + domain.getJam() + "',"
+                + "norm='" + domain.getNorm() + "',"
+                + "diagnosa='" + domain.getDiagnosa() + "',"
+                + "rencana_perawatan='" + domain.getRencana_perawatan() + "',"
+                + "upf='" + domain.getUpf() + "',"
+                + "kd_dokter='" + domain.getDokter().getKd_dokter() + "',"
+                + "nama='" + domain.getNama() + "',"
+                + "keluhan='" + domain.getKeluhan() + "'");
     }
 
+    /**
+     *
+     * @param tgl_awal
+     * @param tgl_ahir
+     * @return
+     */
     @Override
     public List<Spri> findByDate(String tgl_awal, String tgl_ahir) {
             List<Spri> kis = new ArrayList<>();
         try {
-            System.out.println("Tanggal ="+tgl_awal+", "+tgl_ahir);
+            log.info("Tanggal SPRI ="+tgl_awal+", "+tgl_ahir);
             ps = connect.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
                     + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
                     + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
@@ -102,7 +138,7 @@ public class SpriDao implements SpriInterface<Spri> {
                     + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
                     + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
                     + " where temp_spri.tanggal between ? and ? "
-                    + " order by temp_spri.tanggal desc limit 60");
+                    + " order by temp_spri.tanggal desc");
 
             ps.setString(1, tgl_awal);
             ps.setString(2, tgl_ahir);
@@ -120,6 +156,8 @@ public class SpriDao implements SpriInterface<Spri> {
 
     private void setSpriData(List<Spri> kis) throws SQLException {
         spri = new Spri();
+        p = new Pasien();
+        d = new Dokter();
         spri.setTanggal(rs.getString("tanggal"));
         spri.setJam(rs.getString("jam"));
         spri.setNorm(rs.getString("norm"));

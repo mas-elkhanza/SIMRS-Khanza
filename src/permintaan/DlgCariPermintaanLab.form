@@ -28,7 +28,7 @@
             <Property name="text" type="java.lang.String" value="Cetak Permintaan Lab"/>
             <Property name="name" type="java.lang.String" value="MnCetakHasilLab" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 28]"/>
+              <Dimension value="[210, 28]"/>
             </Property>
           </Properties>
           <Events>
@@ -52,7 +52,7 @@
             <Property name="text" type="java.lang.String" value="Barcode No.Permintaan"/>
             <Property name="name" type="java.lang.String" value="MnBarcodePermintaan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 28]"/>
+              <Dimension value="[210, 28]"/>
             </Property>
           </Properties>
           <Events>
@@ -76,7 +76,7 @@
             <Property name="text" type="java.lang.String" value="Barcode No.Permintaan 2"/>
             <Property name="name" type="java.lang.String" value="MnBarcodePermintaan1" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 28]"/>
+              <Dimension value="[210, 28]"/>
             </Property>
           </Properties>
           <Events>
@@ -100,7 +100,7 @@
             <Property name="text" type="java.lang.String" value="Kirim Permintaan ke LIS LICA"/>
             <Property name="name" type="java.lang.String" value="MnKirimLica" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 28]"/>
+              <Dimension value="[210, 28]"/>
             </Property>
           </Properties>
           <Events>
@@ -124,7 +124,7 @@
             <Property name="text" type="java.lang.String" value="Ambil Hasil dari LIS LICA"/>
             <Property name="name" type="java.lang.String" value="MnAmbilLica" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 28]"/>
+              <Dimension value="[210, 28]"/>
             </Property>
           </Properties>
           <Events>
@@ -223,7 +223,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="10-02-2020 13:30:58"/>
+                    <StringItem index="0" value="06-06-2020 10:19:18"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>

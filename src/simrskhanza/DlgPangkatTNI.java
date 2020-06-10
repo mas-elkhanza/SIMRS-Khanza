@@ -41,8 +41,8 @@ public class DlgPangkatTNI extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form Dlgpangkat_tni
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPangkatTNI(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -512,6 +512,9 @@ public class DlgPangkatTNI extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Nama.setText("");
         TCari.setText("");
@@ -524,14 +527,24 @@ public class DlgPangkatTNI extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbkecamatan;
     }
     
+    /**
+     *
+     */
     public void onCari(){
         TCari.requestFocus();
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpangkat_tni());
         BtnHapus.setEnabled(akses.getpangkat_tni());

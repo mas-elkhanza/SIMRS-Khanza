@@ -36,7 +36,15 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;    
+
+    /**
+     *
+     */
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+
+    /**
+     *
+     */
     public DlgTemplateLaboratorium template=new DlgTemplateLaboratorium(null,false);
     private int i=0;
     
@@ -1233,6 +1241,9 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -1287,6 +1298,10 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return TKd;
     }
@@ -1305,6 +1320,9 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.gettarif_lab());
         BtnHapus.setEnabled(akses.gettarif_lab());
@@ -1318,6 +1336,10 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         } 
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }

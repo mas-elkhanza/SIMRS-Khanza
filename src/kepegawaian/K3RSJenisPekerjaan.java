@@ -40,8 +40,8 @@ public class K3RSJenisPekerjaan extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public K3RSJenisPekerjaan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -629,10 +629,17 @@ public class K3RSJenisPekerjaan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbSpesialis;
     }
     
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getjenis_pekerjaan_k3rs());
        BtnHapus.setEnabled(akses.getjenis_pekerjaan_k3rs());

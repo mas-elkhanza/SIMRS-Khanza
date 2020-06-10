@@ -57,8 +57,8 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
     private JsonNode response;
     
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PCareCekReferensiTindakan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -358,6 +358,11 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param jenis
+     * @param key
+     */
     public void tampil(String jenis,String key) {
         try {
             URL = link+"/tindakan/kdTkp/"+jenis+"/0/10000";	
@@ -411,6 +416,10 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         }
     }   
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

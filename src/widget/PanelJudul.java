@@ -26,6 +26,9 @@ public class PanelJudul extends JPanel{
     private final Color black = new Color(30,30, 00);
     private final Color warna = new Color(100,100, 0);
 
+    /**
+     *
+     */
     public PanelJudul() {
         super();
         //this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(174,154,215)));

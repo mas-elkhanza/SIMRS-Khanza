@@ -49,7 +49,13 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class grafikjkelbayi extends JDialog {
       sekuel Sequel = new sekuel();
       validasi Valid = new validasi();
-      public grafikjkelbayi(String title,String symbol) {
+
+    /**
+     *
+     * @param title
+     * @param symbol
+     */
+    public grafikjkelbayi(String title,String symbol) {
         // super(title);
           setTitle(title);
          JPanel chartPanel = createDemoPanel(symbol);

@@ -23,6 +23,15 @@ public class Jurnal {
     private PreparedStatement ps2,ps;
     private String nojur="";
     private boolean sukses=true;
+
+    /**
+     *
+     * @param nobukti
+     * @param tanggal
+     * @param jenis
+     * @param keterangan
+     * @return
+     */
     public boolean simpanJurnal(String nobukti,String tanggal,String jenis,String keterangan){            
         if(Sequel.cariInteger("select count(*) from tampjurnal")>0){
             nojur=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_jurnal,6),signed)),0) from jurnal where tgl_jurnal='"+tanggal+"' ",

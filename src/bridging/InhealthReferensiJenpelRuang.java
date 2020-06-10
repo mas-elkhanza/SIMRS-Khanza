@@ -43,8 +43,8 @@ public class InhealthReferensiJenpelRuang extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public InhealthReferensiJenpelRuang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -783,6 +783,9 @@ private void BtnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdkamar.setText("");
         TKdBngsal.setText("");

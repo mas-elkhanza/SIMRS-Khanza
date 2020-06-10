@@ -56,8 +56,8 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
     private StringBuilder htmlContent;
     
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public RMPenilaianAwalKeperawatanRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -3540,6 +3540,9 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TglAsuhan.setDate(new Date());
         Informasi.setSelectedIndex(0);
@@ -3733,6 +3736,11 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @param norwt
+     * @param tgl2
+     */
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
@@ -3741,7 +3749,9 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         isRawat(); 
     }
     
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
         BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
@@ -3760,6 +3770,9 @@ public final class RMPenilaianAwalKeperawatanRalan extends javax.swing.JDialog {
         }            
     }
 
+    /**
+     *
+     */
     public void setTampil(){
        TabRawat.setSelectedIndex(1);
        tampil();

@@ -51,8 +51,8 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     private JsonNode nameNode;
     private JsonNode response;
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public YaskiReferensiKabupaten(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -359,6 +359,10 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param poli
+     */
     public void tampil(String poli) {
         try {
             headers = new HttpHeaders();
@@ -393,10 +397,19 @@ public final class YaskiReferensiKabupaten extends javax.swing.JDialog {
         }
     }    
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }
     
+    /**
+     *
+     * @param KdProp
+     * @param NmProp
+     */
     public void setPropinsi(String KdProp,String NmProp){
         this.KdProp.setText(KdProp);
         this.NmProp.setText(NmProp);

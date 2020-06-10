@@ -373,6 +373,10 @@ public class DlgVakum extends javax.swing.JDialog {
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param nm_table
+     */
     public void hapus(String nm_table){
         int jawab=JOptionPane.showConfirmDialog(null, "Yakin anda mau menghapus isi tabel "+nm_table+" ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if(jawab==JOptionPane.YES_OPTION){

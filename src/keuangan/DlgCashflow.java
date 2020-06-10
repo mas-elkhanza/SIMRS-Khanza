@@ -18,6 +18,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgCashflow extends javax.swing.JDialog {
     private DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -26,7 +30,9 @@ public class DlgCashflow extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private ResultSet rs;
 
-    /** Creates new form DlgProgramStudi */
+    /** Creates new form DlgProgramStudi
+     * @param parent
+     * @param modal */
     public DlgCashflow(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -484,6 +490,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnPrint.setEnabled(akses.getcashflow());
     }

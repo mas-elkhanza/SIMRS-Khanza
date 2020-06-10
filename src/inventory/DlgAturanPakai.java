@@ -516,6 +516,9 @@ public class DlgAturanPakai extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Nama.setText("");
         TCari.setText("");
@@ -528,10 +531,17 @@ public class DlgAturanPakai extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable() {
         return tbkabupaten;
     }
     
+    /**
+     *
+     */
     public void onCari(){
         TCari.requestFocus();
     }

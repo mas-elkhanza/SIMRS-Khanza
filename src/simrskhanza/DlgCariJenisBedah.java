@@ -30,6 +30,10 @@ public final class DlgCariJenisBedah extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
+
+    /**
+     *
+     */
     public DlgPetugas petugas=new DlgPetugas(null,false);
     /** Creates new form DlgPenyakit
      * @param parent
@@ -355,10 +359,17 @@ public final class DlgCariJenisBedah extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TCari.requestFocus();
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJenisBedah;
     }

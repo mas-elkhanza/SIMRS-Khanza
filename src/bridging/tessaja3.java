@@ -10,7 +10,16 @@ package bridging;
  * @author khanzasoft
  */
 public class tessaja3 {
+
+    /**
+     *
+     */
     public static DUKCAPILJakartaCekNik api=new DUKCAPILJakartaCekNik();
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         api.tampil("3328144205910001");
     }

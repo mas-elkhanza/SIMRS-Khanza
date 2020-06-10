@@ -50,8 +50,8 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     /** Creates new form DlgRujuk
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public UTDCekalDarah(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -974,6 +974,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         LCount.setText(""+b);
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         NoDonor.setText("");
         Nama.setText("");
@@ -1000,6 +1003,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     * @param nodonor
+     * @param nama
+     * @param alamat
+     * @param telp
+     */
     public void setDarah(String nodonor,String nama,String alamat,String telp) {
         NoDonor.setText(nodonor);
         Nama.setText(nama);
@@ -1024,6 +1034,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getutd_cekal_darah());
         BtnHapus.setEnabled(akses.getutd_cekal_darah());

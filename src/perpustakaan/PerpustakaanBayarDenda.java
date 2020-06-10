@@ -52,8 +52,8 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
     private double perhari=Sequel.cariIsiAngka("select denda_perhari from perpustakaan_set_peminjaman"),besardenda=0;
 
     /** Creates new form DlgSpesialis
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PerpustakaanBayarDenda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1399,6 +1399,9 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
     private widget.Tanggal tgl;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try {
@@ -1457,6 +1460,9 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void tampil2() {
         Valid.tabelKosong(tabMode2);
         try {
@@ -1522,6 +1528,9 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TNoI.setText("");
         TJudul.setText("");
@@ -1531,6 +1540,9 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         TNoA.requestFocus();
     }
     
+    /**
+     *
+     */
     public void emptTeks2() {
         TNoI.setText("");
         TJudul.setText("");
@@ -1569,6 +1581,9 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void isInventaris(){
         try {
             ps=koneksi.prepareStatement(
@@ -1600,6 +1615,9 @@ public class PerpustakaanBayarDenda extends javax.swing.JDialog {
         }
     }
 
+    /**
+     *
+     */
     public void isCek(){
        BtnSimpan.setEnabled(akses.getbayar_denda_perpustakaan());
        BtnHapus.setEnabled(akses.getbayar_denda_perpustakaan());

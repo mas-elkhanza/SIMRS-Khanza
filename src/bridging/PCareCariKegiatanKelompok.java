@@ -51,8 +51,8 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
     private JsonNode nameNode;
     private JsonNode response;
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PCareCariKegiatanKelompok(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -347,6 +347,10 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param tanggal
+     */
     public void tampil(String tanggal) {        
         try {
             URL = link+"/kelompok/kegiatan/"+tanggal;
@@ -412,6 +416,10 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
         }
     } 
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }

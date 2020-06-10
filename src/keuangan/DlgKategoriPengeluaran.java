@@ -865,6 +865,9 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{            
@@ -894,6 +897,9 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         KdAkun.setText("");
         Kd2.setText("");
@@ -917,16 +923,25 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return KdAkun;
     }
     
-    
-
+    /**
+     *
+     * @return
+     */
     public JTable getTabel(){
         return tbKamar;
     }
     
+    /**
+     *
+     */
     public void isCek(){
         asalform=akses.getform();       
         BtnSimpan.setEnabled(akses.getpengeluaran());

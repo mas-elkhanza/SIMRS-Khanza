@@ -23,6 +23,10 @@ import simrskhanza.DlgPasien;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 
+/**
+ *
+ * @author RSUI HA
+ */
 public class DlgReturJual extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -41,8 +45,8 @@ public class DlgReturJual extends javax.swing.JDialog {
     private boolean sukses=true;
 
     /** Creates new form DlgProgramStudi
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgReturJual(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1364,6 +1368,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Kdbar.setText("");
         nmbar.setText("");
@@ -1403,6 +1410,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }            
     }
     
+    /**
+     *
+     */
     public void isCek(){  
         autonomor();
         Sequel.cariIsi("select kd_bangsal from set_lokasi",kdgudang);
@@ -1419,6 +1429,11 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }        
     }
     
+    /**
+     *
+     * @param norm
+     * @param norawat
+     */
     public void setPasien(String norm,String norawat){
         kdmem.setText(norm);
         this.norawat=norawat;

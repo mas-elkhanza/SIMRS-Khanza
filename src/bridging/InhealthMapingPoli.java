@@ -767,6 +767,9 @@ private void btnPoliInhealthActionPerformed(java.awt.event.ActionEvent evt) {//G
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         kdpoli.setText("");
         TPoli.setText("");
@@ -784,10 +787,9 @@ private void btnPoliInhealthActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }
 
-    
-   
-    
-    
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getinhealth_mapping_poli());
         BtnHapus.setEnabled(akses.getinhealth_mapping_poli());
@@ -795,6 +797,10 @@ private void btnPoliInhealthActionPerformed(java.awt.event.ActionEvent evt) {//G
         BtnPrint.setEnabled(akses.getinhealth_mapping_poli());
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }    

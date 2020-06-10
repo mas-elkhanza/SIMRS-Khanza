@@ -47,8 +47,8 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
     private int i=0;
 
     /** Creates new form DlgBangsal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgMasterBerkasPegawai(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -746,6 +746,9 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -764,10 +767,18 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return TKd;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbBangsal;
     }

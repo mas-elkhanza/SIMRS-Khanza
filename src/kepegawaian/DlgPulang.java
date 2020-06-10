@@ -43,8 +43,8 @@ public final class DlgPulang extends javax.swing.JDialog {
     private String[] primary;
 
     /** Creates new form DlgBangsal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgPulang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -583,6 +583,9 @@ public final class DlgPulang extends javax.swing.JDialog {
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {        
         Valid.tabelKosong(tabMode);
         try{            
@@ -629,6 +632,9 @@ public final class DlgPulang extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void emptTeks() {
         catatan.setText("");
         id_pegawai.setText("");

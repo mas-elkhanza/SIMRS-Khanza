@@ -40,7 +40,13 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class grafiklahirbulan extends JDialog {
       sekuel Sequel = new sekuel();
       validasi Valid = new validasi();
-      public grafiklahirbulan(String title,String symbol) {
+
+    /**
+     *
+     * @param title
+     * @param symbol
+     */
+    public grafiklahirbulan(String title,String symbol) {
         // super(title);
           setTitle(title);
          JPanel chartPanel = createDemoPanel(symbol);
@@ -95,6 +101,7 @@ public class grafiklahirbulan extends JDialog {
        /**
           * Creates a dataset.
           *
+     * @param symbol
           * @return A dataset.
           */
         public static CategoryDataset createDataset2(String symbol) {//grafik volume
@@ -166,6 +173,7 @@ public class grafiklahirbulan extends JDialog {
          /**
           * Creates a panel for the demo (used by SuperDemo.java).
           *
+     * @param symbol
           * @return A panel.
           */
 

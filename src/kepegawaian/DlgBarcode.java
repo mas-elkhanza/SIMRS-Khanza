@@ -45,8 +45,8 @@ public final class DlgBarcode extends javax.swing.JDialog {
     private ResultSet rs;
 
     /** Creates new form DlgBangsal
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgBarcode(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -689,6 +689,9 @@ public final class DlgBarcode extends javax.swing.JDialog {
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{ 
@@ -722,6 +725,9 @@ public final class DlgBarcode extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         Id.setText("");
         Nik.setText("");
@@ -740,15 +746,26 @@ public final class DlgBarcode extends javax.swing.JDialog {
         }  
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return Id;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbBangsal;
     }
        
-     public void isCek(){
+    /**
+     *
+     */
+    public void isCek(){
         BtnSimpan.setEnabled(akses.getbarcode());
         BtnHapus.setEnabled(akses.getbarcode());
         BtnEdit.setEnabled(akses.getbarcode());

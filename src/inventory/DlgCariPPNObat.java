@@ -677,6 +677,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbRawatJalan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil(){        
         try {
             Valid.tabelKosong(tabMode);
@@ -740,6 +743,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
 
+    /**
+     *
+     */
     public void tampil2(){        
         try {
             Valid.tabelKosong(tabMode2);
@@ -803,6 +809,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    /**
+     *
+     */
     public void tampil3(){        
         try {
             Valid.tabelKosong(tabMode3);

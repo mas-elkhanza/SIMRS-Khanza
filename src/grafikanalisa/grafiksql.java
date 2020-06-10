@@ -49,7 +49,18 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class grafiksql extends JDialog {
       sekuel Sequel = new sekuel();
       validasi Valid = new validasi();
-      public grafiksql(String title,String tabel,String kolom,String label) {
+
+    /**
+     *
+     * @param string
+     * @param string1
+     * @param string2
+     * @param string3
+     * @param tabel
+     * @param kolom
+     * @param label
+     */
+    public grafiksql(String title,String tabel,String kolom,String label) {
         // super(title);
           setTitle(title);
          JPanel chartPanel = createDemoPanel(tabel,kolom,label);
@@ -68,6 +79,9 @@ public class grafiksql extends JDialog {
         /**
            * Creates a dataset.
            *
+     * @param tabel
+     * @param label
+     * @param kolom
            * @return A dataset.
            */
 
@@ -98,6 +112,9 @@ public class grafiksql extends JDialog {
        /**
           * Creates a dataset.
           *
+     * @param tabel
+     * @param label
+     * @param kolom
           * @return A dataset.
           */
         public static CategoryDataset createDataset2(String tabel,String kolom,String label) {//grafik volume
@@ -168,6 +185,9 @@ public class grafiksql extends JDialog {
          /**
           * Creates a panel for the demo (used by SuperDemo.java).
           *
+     * @param tabel
+     * @param kolom
+     * @param label
           * @return A panel.
           */
 

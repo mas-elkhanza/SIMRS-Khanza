@@ -57,11 +57,15 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
     private PreparedStatement pstampil;
     private ResultSet rs;
     private int i=0;
+
+    /**
+     *
+     */
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
 
     /** Creates new form DlgJnsPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public DlgJnsPerawatanOperasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -2101,6 +2105,9 @@ private void TOmloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TKd.setText("");
         TNm.setText("");
@@ -2272,14 +2279,25 @@ private void TOmloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 omloop3+omloop4+omloop5+sarpras+dokterpjanak+dokterumum));
     }
     
+    /**
+     *
+     * @return
+     */
     public JTextField getTextField(){
         return TKd;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getButton(){
         return BtnKeluar;
     }    
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.gettarif_operasi());
         BtnHapus.setEnabled(akses.gettarif_operasi());
@@ -2292,6 +2310,10 @@ private void TOmloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         } 
     }
     
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }

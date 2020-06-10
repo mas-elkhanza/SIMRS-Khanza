@@ -111,8 +111,8 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
     private String hari="";
 
     /** Creates new form DlgKamar
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public BPJSCekRujukanKartuPCare(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -5303,6 +5303,10 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param nomorrujukan
+     */
     public void tampil(String nomorrujukan) {
         try {
             URL = link+"/Rujukan/Peserta/"+nomorrujukan;
@@ -5735,6 +5739,9 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         }
     }
     
+    /**
+     *
+     */
     public void emptTeks() {
         TNo.setText("");
         TNm.setText("");
@@ -6423,12 +6430,19 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         Sequel.mengedit("pasien","no_rkm_medis=?","umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",1,new String[]{TNo.getText()});
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getbpjs_sep());
         ppPengajuan.setEnabled(akses.getbpjs_sep());
         ppPengajuan1.setEnabled(akses.getbpjs_sep());
     }
     
+    /**
+     *
+     * @param NoPeserta
+     */
     public void SetNoKartu(String NoPeserta){
         emptTeks();
         NoKartu.setText(NoPeserta);
@@ -6436,6 +6450,10 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         empt=true;
     }
     
+    /**
+     *
+     * @param norujuk
+     */
     public void SetNoRujuk(String norujuk){
         this.nosisrute=norujuk;
     }

@@ -45,8 +45,8 @@ public final class PerpustakaanAnggota extends javax.swing.JDialog {
     private String gabung="",habis="";
 
     /** Creates new form DlgJnsPerawatan
-     * @param parent
-     * @param modal */
+     * @param frame
+     * @param bln */
     public PerpustakaanAnggota(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -1096,6 +1096,9 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     */
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
@@ -1147,6 +1150,9 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
         LCount.setText(""+tabMode.getRowCount());
     }
 
+    /**
+     *
+     */
     public void emptTeks() {
         TmpLahir.setText("");
         NmAnggota.setText("");
@@ -1176,6 +1182,10 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbJnsPerawatan;
     }
@@ -1194,6 +1204,9 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
         }
     }
     
+    /**
+     *
+     */
     public void isCek(){
         BtnSimpan.setEnabled(akses.getanggota_perpustakaan());
         BtnHapus.setEnabled(akses.getanggota_perpustakaan());

@@ -512,6 +512,12 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param spesialistik
+     * @param sarana
+     * @param tanggal
+     */
     public void tampil(String spesialistik,String sarana,String tanggal) {        
         try {
             URL = link+"/spesialis/rujuk/subspesialis/"+spesialistik+"/sarana/"+sarana+"/tglEstRujuk/"+tanggal;	
@@ -567,6 +573,10 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
         }
     } 
 
+    /**
+     *
+     * @return
+     */
     public JTable getTable(){
         return tbKamar;
     }    
