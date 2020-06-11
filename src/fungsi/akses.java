@@ -139,7 +139,7 @@ public final class akses {
             toko_sirkulasi2=false,toko_keuntungan_barang=false,zis_pengeluaran_penerima_dankes=false,zis_penghasilan_penerima_dankes=false,
             zis_ukuran_rumah_penerima_dankes=false,zis_dinding_rumah_penerima_dankes=false,zis_lantai_rumah_penerima_dankes=false,
             zis_atap_rumah_penerima_dankes=false,zis_kepemilikan_rumah_penerima_dankes=false,zis_kamar_mandi_penerima_dankes=false,
-            zis_dapur_rumah_penerima_dankes=false;
+            zis_dapur_rumah_penerima_dankes=false,zis_kursi_rumah_penerima_dankes=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -799,6 +799,7 @@ public final class akses {
                         akses.zis_kepemilikan_rumah_penerima_dankes=true;
                         akses.zis_kamar_mandi_penerima_dankes=true;
                         akses.zis_dapur_rumah_penerima_dankes=true;
+                        akses.zis_kursi_rumah_penerima_dankes=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1442,6 +1443,7 @@ public final class akses {
                         akses.zis_kepemilikan_rumah_penerima_dankes=rs2.getBoolean("zis_kepemilikan_rumah_penerima_dankes");
                         akses.zis_kamar_mandi_penerima_dankes=rs2.getBoolean("zis_kamar_mandi_penerima_dankes");
                         akses.zis_dapur_rumah_penerima_dankes=rs2.getBoolean("zis_dapur_rumah_penerima_dankes");
+                        akses.zis_kursi_rumah_penerima_dankes=rs2.getBoolean("zis_kursi_rumah_penerima_dankes");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2083,6 +2085,7 @@ public final class akses {
                         akses.zis_kepemilikan_rumah_penerima_dankes=false;
                         akses.zis_kamar_mandi_penerima_dankes=false;
                         akses.zis_dapur_rumah_penerima_dankes=false;
+                        akses.zis_kursi_rumah_penerima_dankes=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2778,4 +2781,5 @@ public final class akses {
     public static boolean getzis_kepemilikan_rumah_penerima_dankes(){return akses.zis_kepemilikan_rumah_penerima_dankes;}
     public static boolean getzis_kamar_mandi_penerima_dankes(){return akses.zis_kamar_mandi_penerima_dankes;}
     public static boolean getzis_dapur_rumah_penerima_dankes(){return akses.zis_dapur_rumah_penerima_dankes;}
+    public static boolean getzis_kursi_rumah_penerima_dankes(){return akses.zis_kursi_rumah_penerima_dankes;}
 }   

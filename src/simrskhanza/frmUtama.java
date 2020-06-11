@@ -643,6 +643,7 @@ import ziscsr.ZISAtapRumahPenerimaDankes;
 import ziscsr.ZISDapurRumahPenerimaDankes;
 import ziscsr.ZISDindingRumahPenerimaDankes;
 import ziscsr.ZISKamarMandiPenerimaDankes;
+import ziscsr.ZISKursiRumahPenerimaDankes;
 import ziscsr.ZISLantaiRumahPenerimaDankes;
 import ziscsr.ZISPengeluaranPenerimaDankes;
 import ziscsr.ZISPenghasilanPenerimaDankes;
@@ -16032,6 +16033,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnZISKursiRumahPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISKursiRumahPenerimaDankes form=new ZISKursiRumahPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16633,7 +16647,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa,btnSirkulasiBarangToko,btnReturJualToko,btnReturPiutangToko,
             btnSirkulasiBarangToko2,btnKeuntunganBarangToko,btnZISPengeluaranPenerimaDankes,btnZISPenghasilanPenerimaDankes,btnZISUkuranRumahPenerimaDankes,
             btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes,btnZISKepemilikanRumahPenerimaDankes,
-            btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes;
+            btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes;
     
     public void isWall(){
         try{            
@@ -19808,6 +19822,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getzis_dapur_rumah_penerima_dankes()==true){
                 Panelmenu.add(btnZISDapurRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_kursi_rumah_penerima_dankes()==true){
+                Panelmenu.add(btnZISKursiRumahPenerimaDankes);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){   
@@ -22985,6 +23004,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getzis_dapur_rumah_penerima_dankes()==true){
             Panelmenu.add(btnZISDapurRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_kursi_rumah_penerima_dankes()==true){
+            Panelmenu.add(btnZISKursiRumahPenerimaDankes);
             jmlmenu++;
         }
 
@@ -27383,6 +27407,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getzis_kursi_rumah_penerima_dankes()==true){
+            if(btnZISKursiRumahPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISKursiRumahPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -29714,7 +29745,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZISDapurRumahPenerimaDankesActionPerformed(evt);
             }
-        }); 
+        });
+        
+        btnZISKursiRumahPenerimaDankes = new widget.ButtonBig();
+        btnZISKursiRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_education-school-chair-seat-computer-study-office_5854055.png"))); 
+        btnZISKursiRumahPenerimaDankes.setText("Kursi Rumah Penerima Dankes");
+        btnZISKursiRumahPenerimaDankes.setIconTextGap(0);
+        btnZISKursiRumahPenerimaDankes.setName("btnZISKursiRumahPenerimaDankes"); 
+        btnZISKursiRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISKursiRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISKursiRumahPenerimaDankesActionPerformed(evt);
+            }
+        });
     }
 
     
