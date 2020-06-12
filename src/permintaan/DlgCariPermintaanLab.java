@@ -1154,7 +1154,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            BtnCariActionPerformed(null);
+            pilihTab();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -1168,7 +1168,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnCariActionPerformed(null);
+            pilihTab();
         }else{
             Valid.pindah(evt, TCari, BtnAll);
         }
@@ -2846,7 +2846,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         Valid.tabelKosong(tabMode);
         try {
             semua=CrDokter.getText().trim().equals("")&&CrPoli.getText().trim().equals("")&&TCari.getText().trim().equals("");
-                ps=koneksi.prepareStatement(
+            ps=koneksi.prepareStatement(
                     "select permintaan_lab.noorder,permintaan_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,permintaan_lab.tgl_permintaan,"+
                     "if(permintaan_lab.jam_permintaan='00:00:00','',permintaan_lab.jam_permintaan) as jam_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                     "if(permintaan_lab.tgl_sampel='0000-00-00','',permintaan_lab.tgl_sampel) as tgl_sampel,if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel,"+
@@ -2863,7 +2863,6 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "pasien.nm_pasien like ? or permintaan_lab.diagnosa_klinis like ? or dokter.nm_dokter like ? or penjab.png_jawab like ?)")+
                     "order by permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
             try {
-                
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 if(!semua){
@@ -3143,13 +3142,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 "if(permintaan_lab.jam_permintaan='00:00:00','',permintaan_lab.jam_permintaan) as jam_permintaan,reg_periksa.kd_pj,penjab.png_jawab,"+
                 "if(permintaan_lab.tgl_sampel='0000-00-00','',permintaan_lab.tgl_sampel) as tgl_sampel,if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel,"+
                 "if(permintaan_lab.tgl_hasil='0000-00-00','',permintaan_lab.tgl_hasil) as tgl_hasil,if(permintaan_lab.jam_hasil='00:00:00','',permintaan_lab.jam_hasil) as jam_hasil,"+
-                "permintaan_lab.dokter_perujuk,dokter.nm_dokter,bangsal.nm_bangsal,permintaan_lab.informasi_tambahan,permintaan_lab.diagnosa_klinis "+
+                "permintaan_lab.dokter_perujuk,dokter.nm_dokter,ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal,permintaan_lab.informasi_tambahan,permintaan_lab.diagnosa_klinis "+
                 "from permintaan_lab inner join reg_periksa on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
                 "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join dokter on permintaan_lab.dokter_perujuk=dokter.kd_dokter "+
-                "inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
-                "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                 "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                 "where permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? "+
                 (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
@@ -3251,7 +3250,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         Valid.tabelKosong(tabMode4);  
         try {
             semua=CrDokter2.getText().trim().equals("")&&Kamar.getText().trim().equals("")&&TCari.getText().trim().equals("");
-                ps=koneksi.prepareStatement(
+            ps=koneksi.prepareStatement(
                     "select distinct permintaan_lab.noorder,permintaan_lab.no_rawat,reg_periksa.no_rkm_medis,"+
                     "pasien.nm_pasien,jns_perawatan_lab.nm_perawatan,template_laboratorium.Pemeriksaan,"+
                     "template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,reg_periksa.kd_pj,"+
@@ -3260,13 +3259,13 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "if(permintaan_lab.jam_permintaan='00:00:00','',permintaan_lab.jam_permintaan) as jam_permintaan,permintaan_lab.tgl_sampel,"+
                     "if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel, permintaan_lab.tgl_hasil,"+
                     "if(permintaan_lab.jam_hasil='00:00:00','',permintaan_lab.jam_hasil) as jam_hasil,"+
-                    "permintaan_lab.dokter_perujuk,dokter.nm_dokter,bangsal.nm_bangsal,permintaan_lab.informasi_tambahan,permintaan_lab.diagnosa_klinis "+
+                    "permintaan_lab.dokter_perujuk,dokter.nm_dokter,ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal,permintaan_lab.informasi_tambahan,permintaan_lab.diagnosa_klinis "+
                     "from permintaan_lab inner join reg_periksa on permintaan_lab.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join permintaan_pemeriksaan_lab on permintaan_lab.noorder=permintaan_pemeriksaan_lab.noorder "+
-                    "inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
-                    "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                    "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                    "left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                    "left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                    "left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
                     "inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=permintaan_pemeriksaan_lab.kd_jenis_prw "+
                     "inner join permintaan_detail_permintaan_lab on permintaan_lab.noorder=permintaan_detail_permintaan_lab.noorder and permintaan_detail_permintaan_lab.kd_jenis_prw=permintaan_pemeriksaan_lab.kd_jenis_prw  "+
                     "inner join template_laboratorium on template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template "+
