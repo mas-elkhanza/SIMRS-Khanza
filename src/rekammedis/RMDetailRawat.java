@@ -36,6 +36,7 @@ public class RMDetailRawat extends javax.swing.JDialog {
     private int i = 0, y = 0, w = 0, urut;
     private String tanggal = "", jam = "", dpjp = "", kddpjp = "", tanggal1 = "", 
             tanggal2 = "", norm = "", keputusan = "", dokterrujukan = "", polirujukan = "";
+    private String no_rawat;
 
     /**
      * Creates new form RMDetailRawat
@@ -152,7 +153,8 @@ public class RMDetailRawat extends javax.swing.JDialog {
      * @param tanggal2
      * @param caritanggal
      */
-    public void setRM(String norm, String tanggal1, String tanggal2, boolean caritanggal) {
+    public void setRM(String no_rawat, String norm, String tanggal1, String tanggal2, boolean caritanggal) {
+        this.no_rawat = no_rawat;
         this.norm = norm;
         this.tanggal1 = tanggal1;
         this.tanggal2 = tanggal2;
@@ -193,7 +195,7 @@ public class RMDetailRawat extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(462, 612));
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Detail Riwayat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Detail Riwayat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
 
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
@@ -381,7 +383,7 @@ public class RMDetailRawat extends javax.swing.JDialog {
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
 //        setRM(KdRw.getText(),Valid.SetTgl(Tgl1.getSelectedItem()+""), Valid.SetTgl(Tgl2.getSelectedItem()+""),ChkTanggal.isSelected());
 //        tampil15();
-        panelDetailRawat1.setRM(KdRw.getText(), Valid.SetTgl(Tgl1.getSelectedItem() + ""), Valid.SetTgl(Tgl2.getSelectedItem() + ""), ChkTanggal.isSelected());
+        panelDetailRawat1.setRM(no_rawat, KdRw.getText(), Valid.SetTgl(Tgl1.getSelectedItem() + ""), Valid.SetTgl(Tgl2.getSelectedItem() + ""), ChkTanggal.isSelected());
         panelDetailRawat1.pilihTab();
     }//GEN-LAST:event_BtnCari1ActionPerformed
 
@@ -389,7 +391,7 @@ public class RMDetailRawat extends javax.swing.JDialog {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 //       setRM(KdRw.getText(),Valid.SetTgl(Tgl1.getSelectedItem()+""), Valid.SetTgl(Tgl2.getSelectedItem()+""),ChkTanggal.isSelected());
 //        tampil15();
-            panelDetailRawat1.setRM(KdRw.getText(), Valid.SetTgl(Tgl1.getSelectedItem() + ""), Valid.SetTgl(Tgl2.getSelectedItem() + ""), ChkTanggal.isSelected());
+            panelDetailRawat1.setRM(no_rawat, KdRw.getText(), Valid.SetTgl(Tgl1.getSelectedItem() + ""), Valid.SetTgl(Tgl2.getSelectedItem() + ""), ChkTanggal.isSelected());
             panelDetailRawat1.pilihTab();
         } else {
             // Valid.pindah(evt, TKd, BtnAll);
@@ -397,7 +399,7 @@ public class RMDetailRawat extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void ChkTanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkTanggalItemStateChanged
-        panelDetailRawat1.setRM(KdRw.getText(), Valid.SetTgl(Tgl1.getSelectedItem() + ""), Valid.SetTgl(Tgl2.getSelectedItem() + ""), ChkTanggal.isSelected());
+        panelDetailRawat1.setRM(no_rawat, KdRw.getText(), Valid.SetTgl(Tgl1.getSelectedItem() + ""), Valid.SetTgl(Tgl2.getSelectedItem() + ""), ChkTanggal.isSelected());
         panelDetailRawat1.pilihTab();
 //setRM(KdRw.getText(),Valid.SetTgl(Tgl1.getSelectedItem()+""), Valid.SetTgl(Tgl2.getSelectedItem()+""),ChkTanggal.isSelected());
 //        tampil15();
@@ -499,16 +501,18 @@ public class RMDetailRawat extends javax.swing.JDialog {
 
     /**
      *
+     * @param no_rawat
      * @param norm
      * @param nama
      */
-    public void setNoRm(String norm, String nama) {
+    public void setNoRm(String no_rawat, String norm, String nama) {
+        this.no_rawat = no_rawat;
         KdRw.setText(norm);
         TPasien.setText(nama);
 //        setRM(KdRw.getText(),Valid.SetTgl(Tgl1.getSelectedItem()+""), Valid.SetTgl(Tgl2.getSelectedItem()+""),ChkTanggal.isSelected());
 //        tampil15();
 
-        panelDetailRawat1.setRM(KdRw.getText(), Valid.SetTgl(Tgl1.getSelectedItem() + ""), Valid.SetTgl(Tgl2.getSelectedItem() + ""), ChkTanggal.isSelected());
+        panelDetailRawat1.setRM(no_rawat, KdRw.getText(), Valid.SetTgl(Tgl1.getSelectedItem() + ""), Valid.SetTgl(Tgl2.getSelectedItem() + ""), ChkTanggal.isSelected());
         panelDetailRawat1.pilihTab();
     }
 }

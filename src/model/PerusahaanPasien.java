@@ -5,10 +5,13 @@
  */
 package model;
 
+import lombok.Data;
+
 /**
  *
  * @author Administrator
  */
+@Data
 public class PerusahaanPasien {
     private String kode_perusahaan;
     private String nama_perusahaan;
@@ -16,85 +19,4 @@ public class PerusahaanPasien {
     private String kota;
     private String no_telp;
 
-    /**
-     *
-     * @return
-     */
-    public String getKode_perusahaan() {
-        return kode_perusahaan;
-    }
-
-    /**
-     *
-     * @param kode_perusahaan
-     */
-    public void setKode_perusahaan(String kode_perusahaan) {
-        this.kode_perusahaan = kode_perusahaan;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getNama_perusahaan() {
-        return nama_perusahaan;
-    }
-
-    /**
-     *
-     * @param nama_perusahaan
-     */
-    public void setNama_perusahaan(String nama_perusahaan) {
-        this.nama_perusahaan = nama_perusahaan;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getAlamat() {
-        return alamat;
-    }
-
-    /**
-     *
-     * @param alamat
-     */
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getKota() {
-        return kota;
-    }
-
-    /**
-     *
-     * @param kota
-     */
-    public void setKota(String kota) {
-        this.kota = kota;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getNo_telp() {
-        return no_telp;
-    }
-
-    /**
-     *
-     * @param no_telp
-     */
-    public void setNo_telp(String no_telp) {
-        this.no_telp = no_telp;
-    }
-    
-    
 }

@@ -34,8 +34,6 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -43,6 +41,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import uz.ncipro.calendar.JDateTimePicker;
 
 /**
@@ -2296,7 +2296,7 @@ public final class sekuel {
                     //System.out.println(sekuel.class.getName() + ", " + sql);
                 } catch (Exception e) {
                     System.out.println(sekuel.class.getName() + ", " +"QUERY SQL: "+sql+"\nERROR: "+ e.toString());
-                    
+                    Logger.getLogger(sekuel.class.getName()).log(Level.FATAL, sql);
                 } finally {
                     if (ps != null) {
                         ps.close();
@@ -2304,7 +2304,7 @@ public final class sekuel {
                 }
             } catch (Exception e) {
                 System.out.println(sekuel.class.getName() + ", " + e);
-                
+                Logger.getLogger(sekuel.class.getName()).log(Level.FATAL, e);
             }
         }
     }

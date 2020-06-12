@@ -41,6 +41,7 @@ public class PanelDetailRawat extends widget.panelisi {
     private StringBuilder htmlContent;
     private boolean caritanggal=false;
     private int i=0,y=0,w=0,urut;
+    private String no_rawat;
     /**
      * Creates new form PanelDetailRawat
      */
@@ -326,7 +327,8 @@ public class PanelDetailRawat extends widget.panelisi {
      * @param tanggal2
      * @param caritanggal
      */
-    public void setRM(String norm,String tanggal1,String tanggal2,boolean caritanggal){
+    public void setRM(String no_rawat, String norm,String tanggal1,String tanggal2,boolean caritanggal){
+        this.no_rawat = no_rawat;
         this.norm=norm;
         this.tanggal1=tanggal1;
         this.tanggal2=tanggal2;
@@ -387,7 +389,7 @@ public class PanelDetailRawat extends widget.panelisi {
                                "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                                "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                                "where stts<>'Batal' and "+
-                               "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
+                               "reg_periksa.no_rawat='"+no_rawat+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
                         urut=1;
                         while(rs2.next()){      
                             try {
@@ -2552,7 +2554,7 @@ public class PanelDetailRawat extends widget.panelisi {
                                "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                                "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                                "where stts<>'Batal' and "+
-                               "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
+                               "reg_periksa.no_rawat='"+no_rawat+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
                         urut=1;
                         while(rs2.next()){      
                             try {
@@ -2830,7 +2832,7 @@ public class PanelDetailRawat extends widget.panelisi {
                                "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                                "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                                "where stts<>'Batal' and "+
-                               "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
+                               "reg_periksa.no_rawat='"+no_rawat+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
                         urut=1;
                         while(rs2.next()){      
                             try {
@@ -3080,7 +3082,6 @@ public class PanelDetailRawat extends widget.panelisi {
         }
         this.setCursor(Cursor.getDefaultCursor());
     }
- 
  private void tampil4(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
@@ -3117,7 +3118,7 @@ public class PanelDetailRawat extends widget.panelisi {
                                "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                                "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                                "where stts<>'Batal' and "+
-                               "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
+                               "reg_periksa.no_rawat='"+no_rawat+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
                         urut=1;
                         while(rs2.next()){      
                             try {
@@ -3455,7 +3456,7 @@ public class PanelDetailRawat extends widget.panelisi {
                                "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                                "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
                                "where stts<>'Batal' and "+
-                               "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
+                               "reg_periksa.no_rawat='"+no_rawat+"' order by reg_periksa.tgl_registrasi desc limit 1").executeQuery();
                         urut=1;
                         while(rs2.next()){      
                             try {
