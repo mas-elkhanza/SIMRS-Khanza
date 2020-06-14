@@ -642,7 +642,9 @@ import viabarcode.DlgBarcodeRanap;
 import ziscsr.ZISAtapRumahPenerimaDankes;
 import ziscsr.ZISDapurRumahPenerimaDankes;
 import ziscsr.ZISDindingRumahPenerimaDankes;
+import ziscsr.ZISElektronikPenerimaDankes;
 import ziscsr.ZISKamarMandiPenerimaDankes;
+import ziscsr.ZISKategoriPHBSPenerimaDankes;
 import ziscsr.ZISKursiRumahPenerimaDankes;
 import ziscsr.ZISLantaiRumahPenerimaDankes;
 import ziscsr.ZISPengeluaranPenerimaDankes;
@@ -16046,6 +16048,32 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnZISKategoriPHBSPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISKategoriPHBSPenerimaDankes form=new ZISKategoriPHBSPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISElektronikPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISElektronikPenerimaDankes form=new ZISElektronikPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16647,7 +16675,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa,btnSirkulasiBarangToko,btnReturJualToko,btnReturPiutangToko,
             btnSirkulasiBarangToko2,btnKeuntunganBarangToko,btnZISPengeluaranPenerimaDankes,btnZISPenghasilanPenerimaDankes,btnZISUkuranRumahPenerimaDankes,
             btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes,btnZISKepemilikanRumahPenerimaDankes,
-            btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes;
+            btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
+            btnZISElektronikPenerimaDankes;
     
     public void isWall(){
         try{            
@@ -19827,6 +19856,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getzis_kursi_rumah_penerima_dankes()==true){
                 Panelmenu.add(btnZISKursiRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_kategori_phbs_penerima_dankes()==true){
+                Panelmenu.add(btnZISKategoriPHBSPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_elektronik_penerima_dankes()==true){
+                Panelmenu.add(btnZISElektronikPenerimaDankes);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){   
@@ -23009,6 +23048,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getzis_kursi_rumah_penerima_dankes()==true){
             Panelmenu.add(btnZISKursiRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_kategori_phbs_penerima_dankes()==true){
+            Panelmenu.add(btnZISKategoriPHBSPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_elektronik_penerima_dankes()==true){
+            Panelmenu.add(btnZISElektronikPenerimaDankes);
             jmlmenu++;
         }
 
@@ -27414,6 +27463,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getzis_kategori_phbs_penerima_dankes()==true){
+            if(btnZISKategoriPHBSPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISKategoriPHBSPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_elektronik_penerima_dankes()==true){
+            if(btnZISElektronikPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISElektronikPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -29756,6 +29819,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISKursiRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZISKursiRumahPenerimaDankesActionPerformed(evt);
+            }
+        });
+        
+        btnZISKategoriPHBSPenerimaDankes = new widget.ButtonBig();
+        btnZISKategoriPHBSPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_house_sink_1378831.png"))); 
+        btnZISKategoriPHBSPenerimaDankes.setText("Kategori PHBS Penerima Dankes");
+        btnZISKategoriPHBSPenerimaDankes.setIconTextGap(0);
+        btnZISKategoriPHBSPenerimaDankes.setName("btnZISKategoriPHBSPenerimaDankes"); 
+        btnZISKategoriPHBSPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISKategoriPHBSPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISKategoriPHBSPenerimaDankesActionPerformed(evt);
+            }
+        });
+        
+        btnZISElektronikPenerimaDankes = new widget.ButtonBig();
+        btnZISElektronikPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Eco_bulb_energy_light_2992437.png"))); 
+        btnZISElektronikPenerimaDankes.setText("Elektronik Penerima Dankes");
+        btnZISElektronikPenerimaDankes.setIconTextGap(0);
+        btnZISElektronikPenerimaDankes.setName("btnZISElektronikPenerimaDankes"); 
+        btnZISElektronikPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISElektronikPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISElektronikPenerimaDankesActionPerformed(evt);
             }
         });
     }

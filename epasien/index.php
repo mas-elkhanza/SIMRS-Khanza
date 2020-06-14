@@ -11,7 +11,7 @@
     header("Pragma: no-cache");
     
     if(!isset($_SESSION["nama_instansi"])){
-        $querypengaturan                    = @bukaquery("select * from setting");
+        $querypengaturan                    = bukaquery("select * from setting");
         while($pengaturan = mysqli_fetch_array($querypengaturan)) {
             $_SESSION["nama_instansi"]      = $pengaturan["nama_instansi"];
             $_SESSION["alamat_instansi"]    = $pengaturan["alamat_instansi"];
@@ -28,7 +28,7 @@
     $namapegawai                            = "";
     $tanggalpengumuman                      = "";
     $isipengumuman                          = "";
-    $querypengumuman                        = @bukaquery("select pegawai.nama,date_format(pengumuman_epasien.tanggal,'%d/%m/%Y')as tanggal,pengumuman_epasien.pengumuman from pengumuman_epasien inner join pegawai on pengumuman_epasien.nik=pegawai.nik order by pengumuman_epasien.tanggal desc limit 1");
+    $querypengumuman                        = bukaquery("select pegawai.nama,date_format(pengumuman_epasien.tanggal,'%d/%m/%Y')as tanggal,pengumuman_epasien.pengumuman from pengumuman_epasien inner join pegawai on pengumuman_epasien.nik=pegawai.nik order by pengumuman_epasien.tanggal desc limit 1");
     while($pengumuman = mysqli_fetch_array($querypengumuman)) {
         $namapegawai                        = $pengumuman["nama"];
         $tanggalpengumuman                  = $pengumuman["tanggal"];
@@ -36,8 +36,8 @@
     }
     
     if(!isset($_SESSION["ses_pasien"])){
-        include_once "./indexpengunjung.php";
+        include_once "indexpengunjung.php";
     }else{
-        include_once "./indexuser.php";
+        include_once "indexuser.php";
     }
 ?>

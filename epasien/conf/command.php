@@ -33,7 +33,8 @@
     function formProtek() {
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiPasien()) {
-            $form = array ('HomePasien','Pengguna');
+            $form = array ('HomeUser','FasilitasKamarUser','InformasiKamarUser','FasilitasRadiologiUser','FasilitasLaboratUser','FasilitasOperasiUser',
+                           'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -66,7 +67,16 @@
             }
         }else{
             switch ($aksi) {
-                case "Home"                                    : include_once("pages/homeuser.php"); break;
+                case "HomeUser"                                : include_once("pages/homeuser.php"); break;
+                case "FasilitasKamarUser"                      : include_once("pages/listkamaruser.php"); break;
+                case "InformasiKamarUser"                      : include_once("pages/listinformasikamaruser.php"); break;
+                case "FasilitasRadiologiUser"                  : include_once("pages/listradiologiuser.php"); break;
+                case "FasilitasLaboratUser"                    : include_once("pages/listlaboratuser.php"); break;
+                case "FasilitasOperasiUser"                    : include_once("pages/listoperasiuser.php"); break;
+                case "FasilitasOnlineUser"                     : include_once("pages/listonlineuser.php"); break;
+                case "JadwalDokterUser"                        : include_once("pages/listjadwaldokteruser.php"); break;
+                case "CekPoliUser"                             : include_once("pages/listpoliuser.php"); break;
+                case "CekAsuransiUser"                         : include_once("pages/listcarabayaruser.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }

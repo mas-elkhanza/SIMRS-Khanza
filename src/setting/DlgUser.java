@@ -165,7 +165,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[A]Booking Periksa","[Q]Sirkulasi Barang Toko","[Q]Retur Jual Toko","[Q]Retur Jual Piutang","[Q]Sirkulasi Barang Toko 2","[Q]Keuntungan Barang Toko",
                 "[R]Ket Pengeluaran Penerima Dankes","[R]Ket Penghasilan Penerima Dankes","[R]Ukuran Rumah Penerima Dankes","[R]Dinding Rumah Penerima Dankes",
                 "[R]Lantai Rumah Penerima Dankes","[R]Atap Rumah Penerima Dankes","[R]Kepemilikan Rumah Penerima Dankes","[R]Kamar Mandi Penerima Dankes",
-                "[R]Dapur Rumah Penerima Dankes","[R]Kursi Rumah Penerima Dankes"
+                "[R]Dapur Rumah Penerima Dankes","[R]Kursi Rumah Penerima Dankes","[R]Kategori PHBS Penerima Dankes","[R]Elektronik Penerima Dankes"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -354,926 +354,1392 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 641;i++) {
+        for (i = 0; i < 643;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(130);
-            }else if(i==1){
-                column.setPreferredWidth(180);
-            }else if(i==2){
-                column.setPreferredWidth(100);
-            }else if(i==3){
-                column.setPreferredWidth(130);
-            }else if(i==4){
-                column.setPreferredWidth(55);
-            }else if(i==5){
-                column.setPreferredWidth(88);
-            }else if(i==6){
-                column.setPreferredWidth(55);
-            }else if(i==7){
-                column.setPreferredWidth(95);
-            }else if(i==8){
-                column.setPreferredWidth(63);
-            }else if(i==9){
-                column.setPreferredWidth(53);
-            }else if(i==10){
-                column.setPreferredWidth(73);
-            }else if(i==11){
-                column.setPreferredWidth(95);
-            }else if(i==12){
-                column.setPreferredWidth(84);
-            }else if(i==13){
-                column.setPreferredWidth(103);
-            }else if(i==14){
-                column.setPreferredWidth(66);
-            }else if(i==15){
-                column.setPreferredWidth(100);
-            }else if(i==16){
-                column.setPreferredWidth(100);
-            }else if(i==17){
-                column.setPreferredWidth(135);
-            }else if(i==18){
-                column.setPreferredWidth(94);
-            }else if(i==19){
-                column.setPreferredWidth(110);
-            }else if(i==20){
-                column.setPreferredWidth(82);
-            }else if(i==21){
-                column.setPreferredWidth(93);
-            }else if(i==22){
-                column.setPreferredWidth(82);
-            }else if(i==23){
-                column.setPreferredWidth(107);
-            }else if(i==24){
-                column.setPreferredWidth(81);
-            }else if(i==25){
-                column.setPreferredWidth(95);
-            }else if(i==26){
-                column.setPreferredWidth(95);
-            }else if(i==27){
-                column.setPreferredWidth(135);
-            }else if(i==28){
-                column.setPreferredWidth(110);
-            }else if(i==29){
-                column.setPreferredWidth(103);
-            }else if(i==30){
-                column.setPreferredWidth(108);
-            }else if(i==31){
-                column.setPreferredWidth(100);
-            }else if(i==32){
-                column.setPreferredWidth(92);
-            }else if(i==33){
-                column.setPreferredWidth(136);
-            }else if(i==34){
-                column.setPreferredWidth(98);
-            }else if(i==35){
-                column.setPreferredWidth(105);
-            }else if(i==36){
-                column.setPreferredWidth(87);
-            }else if(i==37){
-                column.setPreferredWidth(114);
-            }else if(i==38){
-                column.setPreferredWidth(127);
-            }else if(i==39){
-                column.setPreferredWidth(110);
-            }else if(i==40){
-                column.setPreferredWidth(170);
-            }else if(i==41){
-                column.setPreferredWidth(170);
-            }else if(i==42){
-                column.setPreferredWidth(163);
-            }else if(i==43){
-                column.setPreferredWidth(153);
-            }else if(i==44){
-                column.setPreferredWidth(101);
-            }else if(i==45){
-                column.setPreferredWidth(115);
-            }else if(i==46){
-                column.setPreferredWidth(178);
-            }else if(i==230){
-                column.setPreferredWidth(125);
-            }else if(i==231){
-                column.setPreferredWidth(100);
-            }else if(i==232){
-                column.setPreferredWidth(165);
-            }else if(i==233){
-                column.setPreferredWidth(133);
-            }else if(i==234){
-                column.setPreferredWidth(133);
-            }else if(i==235){
-                column.setPreferredWidth(73);
-            }else if(i==236){
-                column.setPreferredWidth(80);
-            }else if(i==237){
-                column.setPreferredWidth(82);
-            }else if(i==238){
-                column.setPreferredWidth(75);
-            }else if(i==239){
-                column.setPreferredWidth(155);
-            }else if(i==240){
-                column.setPreferredWidth(90);
-            }else if(i==241){
-                column.setPreferredWidth(135);
-            }else if(i==242){
-                column.setPreferredWidth(80);
-            }else if(i==243){
-                column.setPreferredWidth(96);
-            }else if(i==244){
-                column.setPreferredWidth(120);
-            }else if(i==245){
-                column.setPreferredWidth(98);
-            }else if(i==246){
-                column.setPreferredWidth(133);
-            }else if(i==247){
-                column.setPreferredWidth(149);
-            }else if(i==248){
-                column.setPreferredWidth(165);
-            }else if(i==249){
-                column.setPreferredWidth(167);
-            }else if(i==250){
-                column.setPreferredWidth(147);
-            }else if(i==251){
-                column.setPreferredWidth(139);
-            }else if(i==252){
-                column.setPreferredWidth(110);
-            }else if(i==253){
-                column.setPreferredWidth(107);
-            }else if(i==254){
-                column.setPreferredWidth(142);
-            }else if(i==255){
-                column.setPreferredWidth(155);
-            }else if(i==256){
-                column.setPreferredWidth(120);
-            }else if(i==257){
-                column.setPreferredWidth(120);
-            }else if(i==258){
-                column.setPreferredWidth(116);
-            }else if(i==259){
-                column.setPreferredWidth(116);
-            }else if(i==260){
-                column.setPreferredWidth(113);
-            }else if(i==261){
-                column.setPreferredWidth(128);
-            }else if(i==262){
-                column.setPreferredWidth(125);
-            }else if(i==263){
-                column.setPreferredWidth(134);
-            }else if(i==264){
-                column.setPreferredWidth(130);
-            }else if(i==265){
-                column.setPreferredWidth(143);
-            }else if(i==266){
-                column.setPreferredWidth(142);
-            }else if(i==267){
-                column.setPreferredWidth(140);
-            }else if(i==268){
-                column.setPreferredWidth(144);
-            }else if(i==269){
-                column.setPreferredWidth(157);
-            }else if(i==270){
-                column.setPreferredWidth(160);
-            }else if(i==271){
-                column.setPreferredWidth(150);
-            }else if(i==272){
-                column.setPreferredWidth(165);
-            }else if(i==273){
-                column.setPreferredWidth(123);
-            }else if(i==274){
-                column.setPreferredWidth(154);
-            }else if(i==275){
-                column.setPreferredWidth(170);
-            }else if(i==276){
-                column.setPreferredWidth(186);
-            }else if(i==277){
-                column.setPreferredWidth(186);
-            }else if(i==278){
-                column.setPreferredWidth(159);
-            }else if(i==279){
-                column.setPreferredWidth(112);
-            }else if(i==280){
-                column.setPreferredWidth(175);
-            }else if(i==281){
-                column.setPreferredWidth(176);
-            }else if(i==282){
-                column.setPreferredWidth(94);
-            }else if(i==283){
-                column.setPreferredWidth(156);
-            }else if(i==284){
-                column.setPreferredWidth(134);
-            }else if(i==285){
-                column.setPreferredWidth(166);
-            }else if(i==286){
-                column.setPreferredWidth(164);
-            }else if(i==287){
-                column.setPreferredWidth(163);
-            }else if(i==288){
-                column.setPreferredWidth(196);
-            }else if(i==289){
-                column.setPreferredWidth(192);
-            }else if(i==290){
-                column.setPreferredWidth(131);
-            }else if(i==291){
-                column.setPreferredWidth(146);
-            }else if(i==292){
-                column.setPreferredWidth(162);
-            }else if(i==293){
-                column.setPreferredWidth(134);
-            }else if(i==294){
-                column.setPreferredWidth(154);
-            }else if(i==295){
-                column.setPreferredWidth(168);
-            }else if(i==296){
-                column.setPreferredWidth(158);
-            }else if(i==297){
-                column.setPreferredWidth(166);
-            }else if(i==298){
-                column.setPreferredWidth(80);
-            }else if(i==299){
-                column.setPreferredWidth(81);
-            }else if(i==300){
-                column.setPreferredWidth(158);
-            }else if(i==301){
-                column.setPreferredWidth(186);
-            }else if(i==302){
-                column.setPreferredWidth(170);
-            }else if(i==303){
-                column.setPreferredWidth(127);
-            }else if(i==304){
-                column.setPreferredWidth(150);
-            }else if(i==305){
-                column.setPreferredWidth(170);
-            }else if(i==306){
-                column.setPreferredWidth(105);
-            }else if(i==307){
-                column.setPreferredWidth(172);
-            }else if(i==308){
-                column.setPreferredWidth(108);
-            }else if(i==309){
-                column.setPreferredWidth(100);
-            }else if(i==310){
-                column.setPreferredWidth(182);
-            }else if(i==311){
-                column.setPreferredWidth(185);
-            }else if(i==312){
-                column.setPreferredWidth(116);
-            }else if(i==313){
-                column.setPreferredWidth(85);
-            }else if(i==314){
-                column.setPreferredWidth(158);
-            }else if(i==315){
-                column.setPreferredWidth(180);
-            }else if(i==316){
-                column.setPreferredWidth(168);
-            }else if(i==317){
-                column.setPreferredWidth(132);
-            }else if(i==318){
-                column.setPreferredWidth(120);
-            }else if(i==319){
-                column.setPreferredWidth(102);
-            }else if(i==320){
-                column.setPreferredWidth(114);
-            }else if(i==321){
-                column.setPreferredWidth(104);
-            }else if(i==322){
-                column.setPreferredWidth(150);
-            }else if(i==323){
-                column.setPreferredWidth(127);
-            }else if(i==324){
-                column.setPreferredWidth(108);
-            }else if(i==325){
-                column.setPreferredWidth(165);
-            }else if(i==326){
-                column.setPreferredWidth(130);
-            }else if(i==327){
-                column.setPreferredWidth(143);
-            }else if(i==328){
-                column.setPreferredWidth(160);
-            }else if(i==329){
-                column.setPreferredWidth(116);
-            }else if(i==330){
-                column.setPreferredWidth(152);
-            }else if(i==331){
-                column.setPreferredWidth(132);
-            }else if(i==332){
-                column.setPreferredWidth(128);
-            }else if(i==333){
-                column.setPreferredWidth(141);
-            }else if(i==334){
-                column.setPreferredWidth(90);
-            }else if(i==335){
-                column.setPreferredWidth(127);
-            }else if(i==336){
-                column.setPreferredWidth(140);
-            }else if(i==337){
-                column.setPreferredWidth(142);
-            }else if(i==338){
-                column.setPreferredWidth(148);
-            }else if(i==339){
-                column.setPreferredWidth(140);
-            }else if(i==340){
-                column.setPreferredWidth(115);
-            }else if(i==341){
-                column.setPreferredWidth(88);
-            }else if(i==342){
-                column.setPreferredWidth(85);
-            }else if(i==343){
-                column.setPreferredWidth(73);
-            }else if(i==344){
-                column.setPreferredWidth(79);
-            }else if(i==345){
-                column.setPreferredWidth(79);
-            }else if(i==346){
-                column.setPreferredWidth(96);
-            }else if(i==347){
-                column.setPreferredWidth(86);
-            }else if(i==348){
-                column.setPreferredWidth(90);
-            }else if(i==349){
-                column.setPreferredWidth(90);
-            }else if(i==350){
-                column.setPreferredWidth(70);
-            }else if(i==351){
-                column.setPreferredWidth(178);
-            }else if(i==352){
-                column.setPreferredWidth(150);
-            }else if(i==353){
-                column.setPreferredWidth(95);
-            }else if(i==354){
-                column.setPreferredWidth(130);
-            }else if(i==355){
-                column.setPreferredWidth(167);
-            }else if(i==356){
-                column.setPreferredWidth(83);
-            }else if(i==357){
-                column.setPreferredWidth(71);
-            }else if(i==358){
-                column.setPreferredWidth(109);
-            }else if(i==359){
-                column.setPreferredWidth(140);
-            }else if(i==360){
-                column.setPreferredWidth(155);
-            }else if(i==361){
-                column.setPreferredWidth(157);
-            }else if(i==362){
-                column.setPreferredWidth(163);
-            }else if(i==363){
-                column.setPreferredWidth(163);
-            }else if(i==364){
-                column.setPreferredWidth(144);
-            }else if(i==365){
-                column.setPreferredWidth(94);
-            }else if(i==366){
-                column.setPreferredWidth(120);
-            }else if(i==367){
-                column.setPreferredWidth(82);
-            }else if(i==368){
-                column.setPreferredWidth(70);
-            }else if(i==369){
-                column.setPreferredWidth(81);
-            }else if(i==370){
-                column.setPreferredWidth(69);
-            }else if(i==371){
-                column.setPreferredWidth(82);
-            }else if(i==372){
-                column.setPreferredWidth(96);
-            }else if(i==373){
-                column.setPreferredWidth(83);
-            }else if(i==374){
-                column.setPreferredWidth(73);
-            }else if(i==375){
-                column.setPreferredWidth(99);
-            }else if(i==376){
-                column.setPreferredWidth(80);
-            }else if(i==377){
-                column.setPreferredWidth(132);
-            }else if(i==378){
-                column.setPreferredWidth(117);
-            }else if(i==379){
-                column.setPreferredWidth(140);
-            }else if(i==380){
-                column.setPreferredWidth(155);
-            }else if(i==381){
-                column.setPreferredWidth(140);
-            }else if(i==382){
-                column.setPreferredWidth(158);
-            }else if(i==383){
-                column.setPreferredWidth(134);
-            }else if(i==384){
-                column.setPreferredWidth(134);
-            }else if(i==385){
-                column.setPreferredWidth(124);
-            }else if(i==386){
-                column.setPreferredWidth(145);
-            }else if(i==387){
-                column.setPreferredWidth(145);
-            }else if(i==388){
-                column.setPreferredWidth(139);
-            }else if(i==389){
-                column.setPreferredWidth(190);
-            }else if(i==390){
-                column.setPreferredWidth(119);
-            }else if(i==391){
-                column.setPreferredWidth(130);
-            }else if(i==392){
-                column.setPreferredWidth(113);
-            }else if(i==393){
-                column.setPreferredWidth(110);
-            }else if(i==394){
-                column.setPreferredWidth(142);
-            }else if(i==395){
-                column.setPreferredWidth(135);
-            }else if(i==396){
-                column.setPreferredWidth(158);
-            }else if(i==397){
-                column.setPreferredWidth(158);
-            }else if(i==398){
-                column.setPreferredWidth(145);
-            }else if(i==399){
-                column.setPreferredWidth(127);
-            }else if(i==400){
-                column.setPreferredWidth(103);
-            }else if(i==401){
-                column.setPreferredWidth(169);
-            }else if(i==402){
-                column.setPreferredWidth(131);
-            }else if(i==403){
-                column.setPreferredWidth(99);
-            }else if(i==404){
-                column.setPreferredWidth(142);
-            }else if(i==405){
-                column.setPreferredWidth(117);
-            }else if(i==406){
-                column.setPreferredWidth(92);
-            }else if(i==407){
-                column.setPreferredWidth(94);
-            }else if(i==408){
-                column.setPreferredWidth(80);
-            }else if(i==409){
-                column.setPreferredWidth(102);
-            }else if(i==410){
-                column.setPreferredWidth(137);
-            }else if(i==411){
-                column.setPreferredWidth(110);
-            }else if(i==412){
-                column.setPreferredWidth(120);
-            }else if(i==413){
-                column.setPreferredWidth(126);
-            }else if(i==414){
-                column.setPreferredWidth(147);
-            }else if(i==415){
-                column.setPreferredWidth(153);
-            }else if(i==416){
-                column.setPreferredWidth(137);
-            }else if(i==417){
-                column.setPreferredWidth(146);
-            }else if(i==418){
-                column.setPreferredWidth(98);
-            }else if(i==419){
-                column.setPreferredWidth(166);
-            }else if(i==420){
-                column.setPreferredWidth(106);
-            }else if(i==421){
-                column.setPreferredWidth(148);
-            }else if(i==422){
-                column.setPreferredWidth(135);
-            }else if(i==423){
-                column.setPreferredWidth(67);
-            }else if(i==424){
-                column.setPreferredWidth(120);
-            }else if(i==425){
-                column.setPreferredWidth(129);
-            }else if(i==426){
-                column.setPreferredWidth(139);
-            }else if(i==427){
-                column.setPreferredWidth(167);
-            }else if(i==428){
-                column.setPreferredWidth(149);
-            }else if(i==429){
-                column.setPreferredWidth(129);
-            }else if(i==430){
-                column.setPreferredWidth(129);
-            }else if(i==431){
-                column.setPreferredWidth(100);
-            }else if(i==432){
-                column.setPreferredWidth(75);
-            }else if(i==433){
-                column.setPreferredWidth(118);
-            }else if(i==434){
-                column.setPreferredWidth(123);
-            }else if(i==435){
-                column.setPreferredWidth(150);
-            }else if(i==436){
-                column.setPreferredWidth(152);
-            }else if(i==437){
-                column.setPreferredWidth(133);
-            }else if(i==438){
-                column.setPreferredWidth(154);
-            }else if(i==439){
-                column.setPreferredWidth(170);
-            }else if(i==440){
-                column.setPreferredWidth(113);
-            }else if(i==441){
-                column.setPreferredWidth(60);
-            }else if(i==442){
-                column.setPreferredWidth(168);
-            }else if(i==443){
-                column.setPreferredWidth(118);
-            }else if(i==444){
-                column.setPreferredWidth(78);
-            }else if(i==445){
-                column.setPreferredWidth(78);
-            }else if(i==446){
-                column.setPreferredWidth(110);
-            }else if(i==447){
-                column.setPreferredWidth(90);
-            }else if(i==448){
-                column.setPreferredWidth(102);
-            }else if(i==449){
-                column.setPreferredWidth(139);
-            }else if(i==450){
-                column.setPreferredWidth(139);
-            }else if(i==451){
-                column.setPreferredWidth(102);
-            }else if(i==452){
-                column.setPreferredWidth(152);
-            }else if(i==453){
-                column.setPreferredWidth(103);
-            }else if(i==454){
-                column.setPreferredWidth(107);
-            }else if(i==455){
-                column.setPreferredWidth(67);
-            }else if(i==456){
-                column.setPreferredWidth(98);
-            }else if(i==457){
-                column.setPreferredWidth(122);
-            }else if(i==458){
-                column.setPreferredWidth(133);
-            }else if(i==459){
-                column.setPreferredWidth(184);
-            }else if(i==460){
-                column.setPreferredWidth(172);
-            }else if(i==461){
-                column.setPreferredWidth(164);
-            }else if(i==462){
-                column.setPreferredWidth(152);
-            }else if(i==463){
-                column.setPreferredWidth(136);
-            }else if(i==464){
-                column.setPreferredWidth(197);
-            }else if(i==465){
-                column.setPreferredWidth(186);
-            }else if(i==466){
-                column.setPreferredWidth(101);
-            }else if(i==467){
-                column.setPreferredWidth(82);
-            }else if(i==468){
-                column.setPreferredWidth(121);
-            }else if(i==469){
-                column.setPreferredWidth(99);
-            }else if(i==470){
-                column.setPreferredWidth(83);
-            }else if(i==471){
-                column.setPreferredWidth(113);
-            }else if(i==472){
-                column.setPreferredWidth(99);
-            }else if(i==473){
-                column.setPreferredWidth(125);
-            }else if(i==474){
-                column.setPreferredWidth(140);
-            }else if(i==475){
-                column.setPreferredWidth(141);
-            }else if(i==476){
-                column.setPreferredWidth(122);
-            }else if(i==477){
-                column.setPreferredWidth(132);
-            }else if(i==478){
-                column.setPreferredWidth(188);
-            }else if(i==479){
-                column.setPreferredWidth(152);
-            }else if(i==480){
-                column.setPreferredWidth(114);
-            }else if(i==481){
-                column.setPreferredWidth(97);
-            }else if(i==482){
-                column.setPreferredWidth(142);
-            }else if(i==483){
-                column.setPreferredWidth(87);
-            }else if(i==484){
-                column.setPreferredWidth(112);
-            }else if(i==485){
-                column.setPreferredWidth(111);
-            }else if(i==486){
-                column.setPreferredWidth(113);
-            }else if(i==487){
-                column.setPreferredWidth(103);
-            }else if(i==488){
-                column.setPreferredWidth(82);
-            }else if(i==489){
-                column.setPreferredWidth(86);
-            }else if(i==490){
-                column.setPreferredWidth(83);
-            }else if(i==491){
-                column.setPreferredWidth(95);
-            }else if(i==492){
-                column.setPreferredWidth(116);
-            }else if(i==493){
-                column.setPreferredWidth(161);
-            }else if(i==494){
-                column.setPreferredWidth(106);
-            }else if(i==495){
-                column.setPreferredWidth(131);
-            }else if(i==496){
-                column.setPreferredWidth(130);
-            }else if(i==497){
-                column.setPreferredWidth(132);
-            }else if(i==498){
-                column.setPreferredWidth(122);
-            }else if(i==499){
-                column.setPreferredWidth(149);
-            }else if(i==500){
-                column.setPreferredWidth(194);
-            }else if(i==501){
-                column.setPreferredWidth(139);
-            }else if(i==502){
-                column.setPreferredWidth(164);
-            }else if(i==503){
-                column.setPreferredWidth(163);
-            }else if(i==504){
-                column.setPreferredWidth(165);
-            }else if(i==505){
-                column.setPreferredWidth(155);
-            }else if(i==506){
-                column.setPreferredWidth(124);
-            }else if(i==507){
-                column.setPreferredWidth(132);
-            }else if(i==508){
-                column.setPreferredWidth(119);
-            }else if(i==509){
-                column.setPreferredWidth(200);
-            }else if(i==510){
-                column.setPreferredWidth(132);
-            }else if(i==511){
-                column.setPreferredWidth(162);
-            }else if(i==512){
-                column.setPreferredWidth(156);
-            }else if(i==513){
-                column.setPreferredWidth(168);
-            }else if(i==514){
-                column.setPreferredWidth(160);
-            }else if(i==515){
-                column.setPreferredWidth(135);
-            }else if(i==516){
-                column.setPreferredWidth(165);
-            }else if(i==517){
-                column.setPreferredWidth(155);
-            }else if(i==518){
-                column.setPreferredWidth(145);
-            }else if(i==519){
-                column.setPreferredWidth(138);
-            }else if(i==520){
-                column.setPreferredWidth(135);
-            }else if(i==521){
-                column.setPreferredWidth(143);
-            }else if(i==522){
-                column.setPreferredWidth(123);
-            }else if(i==523){
-                column.setPreferredWidth(104);
-            }else if(i==524){
-                column.setPreferredWidth(101);
-            }else if(i==525){
-                column.setPreferredWidth(162);
-            }else if(i==526){
-                column.setPreferredWidth(97);
-            }else if(i==527){
-                column.setPreferredWidth(123);
-            }else if(i==528){
-                column.setPreferredWidth(123);
-            }else if(i==529){
-                column.setPreferredWidth(123);
-            }else if(i==530){
-                column.setPreferredWidth(123);
-            }else if(i==531){
-                column.setPreferredWidth(123);
-            }else if(i==532){
-                column.setPreferredWidth(150);
-            }else if(i==533){
-                column.setPreferredWidth(154);
-            }else if(i==534){
-                column.setPreferredWidth(130);
-            }else if(i==535){
-                column.setPreferredWidth(119);
-            }else if(i==536){
-                column.setPreferredWidth(139);
-            }else if(i==537){
-                column.setPreferredWidth(150);
-            }else if(i==538){
-                column.setPreferredWidth(128);
-            }else if(i==539){
-                column.setPreferredWidth(144);
-            }else if(i==540){
-                column.setPreferredWidth(150);
-            }else if(i==541){
-                column.setPreferredWidth(184);
-            }else if(i==542){
-                column.setPreferredWidth(135);
-            }else if(i==543){
-                column.setPreferredWidth(157);
-            }else if(i==544){
-                column.setPreferredWidth(151);
-            }else if(i==545){
-                column.setPreferredWidth(180);
-            }else if(i==546){
-                column.setPreferredWidth(193);
-            }else if(i==547){
-                column.setPreferredWidth(174);
-            }else if(i==548){
-                column.setPreferredWidth(145);
-            }else if(i==549){
-                column.setPreferredWidth(169);
-            }else if(i==550){
-                column.setPreferredWidth(162);
-            }else if(i==551){
-                column.setPreferredWidth(86);
-            }else if(i==552){
-                column.setPreferredWidth(156);
-            }else if(i==553){
-                column.setPreferredWidth(95);
-            }else if(i==554){
-                column.setPreferredWidth(132);
-            }else if(i==555){
-                column.setPreferredWidth(119);
-            }else if(i==556){
-                column.setPreferredWidth(133);
-            }else if(i==557){
-                column.setPreferredWidth(180);
-            }else if(i==558){
-                column.setPreferredWidth(133);
-            }else if(i==559){
-                column.setPreferredWidth(129);
-            }else if(i==560){
-                column.setPreferredWidth(144);
-            }else if(i==561){
-                column.setPreferredWidth(142);
-            }else if(i==562){
-                column.setPreferredWidth(160);
-            }else if(i==563){
-                column.setPreferredWidth(140);
-            }else if(i==564){
-                column.setPreferredWidth(141);
-            }else if(i==565){
-                column.setPreferredWidth(144);
-            }else if(i==566){
-                column.setPreferredWidth(127);
-            }else if(i==567){
-                column.setPreferredWidth(141);
-            }else if(i==568){
-                column.setPreferredWidth(119);
-            }else if(i==569){
-                column.setPreferredWidth(122);
-            }else if(i==570){
-                column.setPreferredWidth(137);
-            }else if(i==571){
-                column.setPreferredWidth(128);
-            }else if(i==572){
-                column.setPreferredWidth(129);
-            }else if(i==573){
-                column.setPreferredWidth(110);
-            }else if(i==574){
-                column.setPreferredWidth(73);
-            }else if(i==575){
-                column.setPreferredWidth(77);
-            }else if(i==576){
-                column.setPreferredWidth(104);
-            }else if(i==577){
-                column.setPreferredWidth(162);
-            }else if(i==578){
-                column.setPreferredWidth(163);
-            }else if(i==579){
-                column.setPreferredWidth(124);
-            }else if(i==580){
-                column.setPreferredWidth(132);
-            }else if(i==581){
-                column.setPreferredWidth(220);
-            }else if(i==582){
-                column.setPreferredWidth(103);
-            }else if(i==583){
-                column.setPreferredWidth(135);
-            }else if(i==584){
-                column.setPreferredWidth(190);
-            }else if(i==585){
-                column.setPreferredWidth(101);
-            }else if(i==586){
-                column.setPreferredWidth(163);
-            }else if(i==587){
-                column.setPreferredWidth(96);
-            }else if(i==588){
-                column.setPreferredWidth(154);
-            }else if(i==589){
-                column.setPreferredWidth(95);
-            }else if(i==590){
-                column.setPreferredWidth(83);
-            }else if(i==591){
-                column.setPreferredWidth(111);
-            }else if(i==592){
-                column.setPreferredWidth(96);
-            }else if(i==593){
-                column.setPreferredWidth(83);
-            }else if(i==594){
-                column.setPreferredWidth(146);
-            }else if(i==595){
-                column.setPreferredWidth(138);
-            }else if(i==596){
-                column.setPreferredWidth(114);
-            }else if(i==597){
-                column.setPreferredWidth(125);
-            }else if(i==598){
-                column.setPreferredWidth(134);
-            }else if(i==599){
-                column.setPreferredWidth(138);
-            }else if(i==600){
-                column.setPreferredWidth(144);
-            }else if(i==601){
-                column.setPreferredWidth(140);
-            }else if(i==602){
-                column.setPreferredWidth(81);
-            }else if(i==603){
-                column.setPreferredWidth(105);
-            }else if(i==604){
-                column.setPreferredWidth(88);
-            }else if(i==605){
-                column.setPreferredWidth(97);
-            }else if(i==606){
-                column.setPreferredWidth(149);
-            }else if(i==607){
-                column.setPreferredWidth(86);
-            }else if(i==608){
-                column.setPreferredWidth(128);
-            }else if(i==609){
-                column.setPreferredWidth(153);
-            }else if(i==610){
-                column.setPreferredWidth(150);
-            }else if(i==611){
-                column.setPreferredWidth(90);
-            }else if(i==612){
-                column.setPreferredWidth(142);
-            }else if(i==613){
-                column.setPreferredWidth(139);
-            }else if(i==614){
-                column.setPreferredWidth(146);
-            }else if(i==615){
-                column.setPreferredWidth(181);
-            }else if(i==616){
-                column.setPreferredWidth(185);
-            }else if(i==617){
-                column.setPreferredWidth(116);
-            }else if(i==618){
-                column.setPreferredWidth(121);
-            }else if(i==619){
-                column.setPreferredWidth(132);
-            }else if(i==620){
-                column.setPreferredWidth(118);
-            }else if(i==621){
-                column.setPreferredWidth(177);
-            }else if(i==622){
-                column.setPreferredWidth(134);
-            }else if(i==623){
-                column.setPreferredWidth(79);
-            }else if(i==624){
-                column.setPreferredWidth(97);
-            }else if(i==625){
-                column.setPreferredWidth(98);
-            }else if(i==626){
-                column.setPreferredWidth(127);
-            }else if(i==627){
-                column.setPreferredWidth(99);
-            }else if(i==628){
-                column.setPreferredWidth(113);
-            }else if(i==629){
-                column.setPreferredWidth(136);
-            }else if(i==630){
-                column.setPreferredWidth(144);
-            }else if(i==631){
-                column.setPreferredWidth(189);
-            }else if(i==632){
-                column.setPreferredWidth(187);
-            }else if(i==633){
-                column.setPreferredWidth(180);
-            }else if(i==634){
-                column.setPreferredWidth(183);
-            }else if(i==635){
-                column.setPreferredWidth(176);
-            }else if(i==636){
-                column.setPreferredWidth(169);
-            }else if(i==637){
-                column.setPreferredWidth(205);
-            }else if(i==638){
-                column.setPreferredWidth(172);
-            }else if(i==639){
-                column.setPreferredWidth(175);
-            }else if(i==640){
-                column.setPreferredWidth(170);
-            }else{
-                column.setPreferredWidth(130);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(130);
+                    break;
+                case 1:
+                    column.setPreferredWidth(180);
+                    break;
+                case 2:
+                    column.setPreferredWidth(100);
+                    break;
+                case 3:
+                    column.setPreferredWidth(130);
+                    break;
+                case 4:
+                    column.setPreferredWidth(55);
+                    break;
+                case 5:
+                    column.setPreferredWidth(88);
+                    break;
+                case 6:
+                    column.setPreferredWidth(55);
+                    break;
+                case 7:
+                    column.setPreferredWidth(95);
+                    break;
+                case 8:
+                    column.setPreferredWidth(63);
+                    break;
+                case 9:
+                    column.setPreferredWidth(53);
+                    break;
+                case 10:
+                    column.setPreferredWidth(73);
+                    break;
+                case 11:
+                    column.setPreferredWidth(95);
+                    break;
+                case 12:
+                    column.setPreferredWidth(84);
+                    break;
+                case 13:
+                    column.setPreferredWidth(103);
+                    break;
+                case 14:
+                    column.setPreferredWidth(66);
+                    break;
+                case 15:
+                    column.setPreferredWidth(100);
+                    break;
+                case 16:
+                    column.setPreferredWidth(100);
+                    break;
+                case 17:
+                    column.setPreferredWidth(135);
+                    break;
+                case 18:
+                    column.setPreferredWidth(94);
+                    break;
+                case 19:
+                    column.setPreferredWidth(110);
+                    break;
+                case 20:
+                    column.setPreferredWidth(82);
+                    break;
+                case 21:
+                    column.setPreferredWidth(93);
+                    break;
+                case 22:
+                    column.setPreferredWidth(82);
+                    break;
+                case 23:
+                    column.setPreferredWidth(107);
+                    break;
+                case 24:
+                    column.setPreferredWidth(81);
+                    break;
+                case 25:
+                    column.setPreferredWidth(95);
+                    break;
+                case 26:
+                    column.setPreferredWidth(95);
+                    break;
+                case 27:
+                    column.setPreferredWidth(135);
+                    break;
+                case 28:
+                    column.setPreferredWidth(110);
+                    break;
+                case 29:
+                    column.setPreferredWidth(103);
+                    break;
+                case 30:
+                    column.setPreferredWidth(108);
+                    break;
+                case 31:
+                    column.setPreferredWidth(100);
+                    break;
+                case 32:
+                    column.setPreferredWidth(92);
+                    break;
+                case 33:
+                    column.setPreferredWidth(136);
+                    break;
+                case 34:
+                    column.setPreferredWidth(98);
+                    break;
+                case 35:
+                    column.setPreferredWidth(105);
+                    break;
+                case 36:
+                    column.setPreferredWidth(87);
+                    break;
+                case 37:
+                    column.setPreferredWidth(114);
+                    break;
+                case 38:
+                    column.setPreferredWidth(127);
+                    break;
+                case 39:
+                    column.setPreferredWidth(110);
+                    break;
+                case 40:
+                    column.setPreferredWidth(170);
+                    break;
+                case 41:
+                    column.setPreferredWidth(170);
+                    break;
+                case 42:
+                    column.setPreferredWidth(163);
+                    break;
+                case 43:
+                    column.setPreferredWidth(153);
+                    break;
+                case 44:
+                    column.setPreferredWidth(101);
+                    break;
+                case 45:
+                    column.setPreferredWidth(115);
+                    break;
+                case 46:
+                    column.setPreferredWidth(178);
+                    break;
+                case 230:
+                    column.setPreferredWidth(125);
+                    break;
+                case 231:
+                    column.setPreferredWidth(100);
+                    break;
+                case 232:
+                    column.setPreferredWidth(165);
+                    break;
+                case 233:
+                    column.setPreferredWidth(133);
+                    break;
+                case 234:
+                    column.setPreferredWidth(133);
+                    break;
+                case 235:
+                    column.setPreferredWidth(73);
+                    break;
+                case 236:
+                    column.setPreferredWidth(80);
+                    break;
+                case 237:
+                    column.setPreferredWidth(82);
+                    break;
+                case 238:
+                    column.setPreferredWidth(75);
+                    break;
+                case 239:
+                    column.setPreferredWidth(155);
+                    break;
+                case 240:
+                    column.setPreferredWidth(90);
+                    break;
+                case 241:
+                    column.setPreferredWidth(135);
+                    break;
+                case 242:
+                    column.setPreferredWidth(80);
+                    break;
+                case 243:
+                    column.setPreferredWidth(96);
+                    break;
+                case 244:
+                    column.setPreferredWidth(120);
+                    break;
+                case 245:
+                    column.setPreferredWidth(98);
+                    break;
+                case 246:
+                    column.setPreferredWidth(133);
+                    break;
+                case 247:
+                    column.setPreferredWidth(149);
+                    break;
+                case 248:
+                    column.setPreferredWidth(165);
+                    break;
+                case 249:
+                    column.setPreferredWidth(167);
+                    break;
+                case 250:
+                    column.setPreferredWidth(147);
+                    break;
+                case 251:
+                    column.setPreferredWidth(139);
+                    break;
+                case 252:
+                    column.setPreferredWidth(110);
+                    break;
+                case 253:
+                    column.setPreferredWidth(107);
+                    break;
+                case 254:
+                    column.setPreferredWidth(142);
+                    break;
+                case 255:
+                    column.setPreferredWidth(155);
+                    break;
+                case 256:
+                    column.setPreferredWidth(120);
+                    break;
+                case 257:
+                    column.setPreferredWidth(120);
+                    break;
+                case 258:
+                    column.setPreferredWidth(116);
+                    break;
+                case 259:
+                    column.setPreferredWidth(116);
+                    break;
+                case 260:
+                    column.setPreferredWidth(113);
+                    break;
+                case 261:
+                    column.setPreferredWidth(128);
+                    break;
+                case 262:
+                    column.setPreferredWidth(125);
+                    break;
+                case 263:
+                    column.setPreferredWidth(134);
+                    break;
+                case 264:
+                    column.setPreferredWidth(130);
+                    break;
+                case 265:
+                    column.setPreferredWidth(143);
+                    break;
+                case 266:
+                    column.setPreferredWidth(142);
+                    break;
+                case 267:
+                    column.setPreferredWidth(140);
+                    break;
+                case 268:
+                    column.setPreferredWidth(144);
+                    break;
+                case 269:
+                    column.setPreferredWidth(157);
+                    break;
+                case 270:
+                    column.setPreferredWidth(160);
+                    break;
+                case 271:
+                    column.setPreferredWidth(150);
+                    break;
+                case 272:
+                    column.setPreferredWidth(165);
+                    break;
+                case 273:
+                    column.setPreferredWidth(123);
+                    break;
+                case 274:
+                    column.setPreferredWidth(154);
+                    break;
+                case 275:
+                    column.setPreferredWidth(170);
+                    break;
+                case 276:
+                    column.setPreferredWidth(186);
+                    break;
+                case 277:
+                    column.setPreferredWidth(186);
+                    break;
+                case 278:
+                    column.setPreferredWidth(159);
+                    break;
+                case 279:
+                    column.setPreferredWidth(112);
+                    break;
+                case 280:
+                    column.setPreferredWidth(175);
+                    break;
+                case 281:
+                    column.setPreferredWidth(176);
+                    break;
+                case 282:
+                    column.setPreferredWidth(94);
+                    break;
+                case 283:
+                    column.setPreferredWidth(156);
+                    break;
+                case 284:
+                    column.setPreferredWidth(134);
+                    break;
+                case 285:
+                    column.setPreferredWidth(166);
+                    break;
+                case 286:
+                    column.setPreferredWidth(164);
+                    break;
+                case 287:
+                    column.setPreferredWidth(163);
+                    break;
+                case 288:
+                    column.setPreferredWidth(196);
+                    break;
+                case 289:
+                    column.setPreferredWidth(192);
+                    break;
+                case 290:
+                    column.setPreferredWidth(131);
+                    break;
+                case 291:
+                    column.setPreferredWidth(146);
+                    break;
+                case 292:
+                    column.setPreferredWidth(162);
+                    break;
+                case 293:
+                    column.setPreferredWidth(134);
+                    break;
+                case 294:
+                    column.setPreferredWidth(154);
+                    break;
+                case 295:
+                    column.setPreferredWidth(168);
+                    break;
+                case 296:
+                    column.setPreferredWidth(158);
+                    break;
+                case 297:
+                    column.setPreferredWidth(166);
+                    break;
+                case 298:
+                    column.setPreferredWidth(80);
+                    break;
+                case 299:
+                    column.setPreferredWidth(81);
+                    break;
+                case 300:
+                    column.setPreferredWidth(158);
+                    break;
+                case 301:
+                    column.setPreferredWidth(186);
+                    break;
+                case 302:
+                    column.setPreferredWidth(170);
+                    break;
+                case 303:
+                    column.setPreferredWidth(127);
+                    break;
+                case 304:
+                    column.setPreferredWidth(150);
+                    break;
+                case 305:
+                    column.setPreferredWidth(170);
+                    break;
+                case 306:
+                    column.setPreferredWidth(105);
+                    break;
+                case 307:
+                    column.setPreferredWidth(172);
+                    break;
+                case 308:
+                    column.setPreferredWidth(108);
+                    break;
+                case 309:
+                    column.setPreferredWidth(100);
+                    break;
+                case 310:
+                    column.setPreferredWidth(182);
+                    break;
+                case 311:
+                    column.setPreferredWidth(185);
+                    break;
+                case 312:
+                    column.setPreferredWidth(116);
+                    break;
+                case 313:
+                    column.setPreferredWidth(85);
+                    break;
+                case 314:
+                    column.setPreferredWidth(158);
+                    break;
+                case 315:
+                    column.setPreferredWidth(180);
+                    break;
+                case 316:
+                    column.setPreferredWidth(168);
+                    break;
+                case 317:
+                    column.setPreferredWidth(132);
+                    break;
+                case 318:
+                    column.setPreferredWidth(120);
+                    break;
+                case 319:
+                    column.setPreferredWidth(102);
+                    break;
+                case 320:
+                    column.setPreferredWidth(114);
+                    break;
+                case 321:
+                    column.setPreferredWidth(104);
+                    break;
+                case 322:
+                    column.setPreferredWidth(150);
+                    break;
+                case 323:
+                    column.setPreferredWidth(127);
+                    break;
+                case 324:
+                    column.setPreferredWidth(108);
+                    break;
+                case 325:
+                    column.setPreferredWidth(165);
+                    break;
+                case 326:
+                    column.setPreferredWidth(130);
+                    break;
+                case 327:
+                    column.setPreferredWidth(143);
+                    break;
+                case 328:
+                    column.setPreferredWidth(160);
+                    break;
+                case 329:
+                    column.setPreferredWidth(116);
+                    break;
+                case 330:
+                    column.setPreferredWidth(152);
+                    break;
+                case 331:
+                    column.setPreferredWidth(132);
+                    break;
+                case 332:
+                    column.setPreferredWidth(128);
+                    break;
+                case 333:
+                    column.setPreferredWidth(141);
+                    break;
+                case 334:
+                    column.setPreferredWidth(90);
+                    break;
+                case 335:
+                    column.setPreferredWidth(127);
+                    break;
+                case 336:
+                    column.setPreferredWidth(140);
+                    break;
+                case 337:
+                    column.setPreferredWidth(142);
+                    break;
+                case 338:
+                    column.setPreferredWidth(148);
+                    break;
+                case 339:
+                    column.setPreferredWidth(140);
+                    break;
+                case 340:
+                    column.setPreferredWidth(115);
+                    break;
+                case 341:
+                    column.setPreferredWidth(88);
+                    break;
+                case 342:
+                    column.setPreferredWidth(85);
+                    break;
+                case 343:
+                    column.setPreferredWidth(73);
+                    break;
+                case 344:
+                    column.setPreferredWidth(79);
+                    break;
+                case 345:
+                    column.setPreferredWidth(79);
+                    break;
+                case 346:
+                    column.setPreferredWidth(96);
+                    break;
+                case 347:
+                    column.setPreferredWidth(86);
+                    break;
+                case 348:
+                    column.setPreferredWidth(90);
+                    break;
+                case 349:
+                    column.setPreferredWidth(90);
+                    break;
+                case 350:
+                    column.setPreferredWidth(70);
+                    break;
+                case 351:
+                    column.setPreferredWidth(178);
+                    break;
+                case 352:
+                    column.setPreferredWidth(150);
+                    break;
+                case 353:
+                    column.setPreferredWidth(95);
+                    break;
+                case 354:
+                    column.setPreferredWidth(130);
+                    break;
+                case 355:
+                    column.setPreferredWidth(167);
+                    break;
+                case 356:
+                    column.setPreferredWidth(83);
+                    break;
+                case 357:
+                    column.setPreferredWidth(71);
+                    break;
+                case 358:
+                    column.setPreferredWidth(109);
+                    break;
+                case 359:
+                    column.setPreferredWidth(140);
+                    break;
+                case 360:
+                    column.setPreferredWidth(155);
+                    break;
+                case 361:
+                    column.setPreferredWidth(157);
+                    break;
+                case 362:
+                    column.setPreferredWidth(163);
+                    break;
+                case 363:
+                    column.setPreferredWidth(163);
+                    break;
+                case 364:
+                    column.setPreferredWidth(144);
+                    break;
+                case 365:
+                    column.setPreferredWidth(94);
+                    break;
+                case 366:
+                    column.setPreferredWidth(120);
+                    break;
+                case 367:
+                    column.setPreferredWidth(82);
+                    break;
+                case 368:
+                    column.setPreferredWidth(70);
+                    break;
+                case 369:
+                    column.setPreferredWidth(81);
+                    break;
+                case 370:
+                    column.setPreferredWidth(69);
+                    break;
+                case 371:
+                    column.setPreferredWidth(82);
+                    break;
+                case 372:
+                    column.setPreferredWidth(96);
+                    break;
+                case 373:
+                    column.setPreferredWidth(83);
+                    break;
+                case 374:
+                    column.setPreferredWidth(73);
+                    break;
+                case 375:
+                    column.setPreferredWidth(99);
+                    break;
+                case 376:
+                    column.setPreferredWidth(80);
+                    break;
+                case 377:
+                    column.setPreferredWidth(132);
+                    break;
+                case 378:
+                    column.setPreferredWidth(117);
+                    break;
+                case 379:
+                    column.setPreferredWidth(140);
+                    break;
+                case 380:
+                    column.setPreferredWidth(155);
+                    break;
+                case 381:
+                    column.setPreferredWidth(140);
+                    break;
+                case 382:
+                    column.setPreferredWidth(158);
+                    break;
+                case 383:
+                    column.setPreferredWidth(134);
+                    break;
+                case 384:
+                    column.setPreferredWidth(134);
+                    break;
+                case 385:
+                    column.setPreferredWidth(124);
+                    break;
+                case 386:
+                    column.setPreferredWidth(145);
+                    break;
+                case 387:
+                    column.setPreferredWidth(145);
+                    break;
+                case 388:
+                    column.setPreferredWidth(139);
+                    break;
+                case 389:
+                    column.setPreferredWidth(190);
+                    break;
+                case 390:
+                    column.setPreferredWidth(119);
+                    break;
+                case 391:
+                    column.setPreferredWidth(130);
+                    break;
+                case 392:
+                    column.setPreferredWidth(113);
+                    break;
+                case 393:
+                    column.setPreferredWidth(110);
+                    break;
+                case 394:
+                    column.setPreferredWidth(142);
+                    break;
+                case 395:
+                    column.setPreferredWidth(135);
+                    break;
+                case 396:
+                    column.setPreferredWidth(158);
+                    break;
+                case 397:
+                    column.setPreferredWidth(158);
+                    break;
+                case 398:
+                    column.setPreferredWidth(145);
+                    break;
+                case 399:
+                    column.setPreferredWidth(127);
+                    break;
+                case 400:
+                    column.setPreferredWidth(103);
+                    break;
+                case 401:
+                    column.setPreferredWidth(169);
+                    break;
+                case 402:
+                    column.setPreferredWidth(131);
+                    break;
+                case 403:
+                    column.setPreferredWidth(99);
+                    break;
+                case 404:
+                    column.setPreferredWidth(142);
+                    break;
+                case 405:
+                    column.setPreferredWidth(117);
+                    break;
+                case 406:
+                    column.setPreferredWidth(92);
+                    break;
+                case 407:
+                    column.setPreferredWidth(94);
+                    break;
+                case 408:
+                    column.setPreferredWidth(80);
+                    break;
+                case 409:
+                    column.setPreferredWidth(102);
+                    break;
+                case 410:
+                    column.setPreferredWidth(137);
+                    break;
+                case 411:
+                    column.setPreferredWidth(110);
+                    break;
+                case 412:
+                    column.setPreferredWidth(120);
+                    break;
+                case 413:
+                    column.setPreferredWidth(126);
+                    break;
+                case 414:
+                    column.setPreferredWidth(147);
+                    break;
+                case 415:
+                    column.setPreferredWidth(153);
+                    break;
+                case 416:
+                    column.setPreferredWidth(137);
+                    break;
+                case 417:
+                    column.setPreferredWidth(146);
+                    break;
+                case 418:
+                    column.setPreferredWidth(98);
+                    break;
+                case 419:
+                    column.setPreferredWidth(166);
+                    break;
+                case 420:
+                    column.setPreferredWidth(106);
+                    break;
+                case 421:
+                    column.setPreferredWidth(148);
+                    break;
+                case 422:
+                    column.setPreferredWidth(135);
+                    break;
+                case 423:
+                    column.setPreferredWidth(67);
+                    break;
+                case 424:
+                    column.setPreferredWidth(120);
+                    break;
+                case 425:
+                    column.setPreferredWidth(129);
+                    break;
+                case 426:
+                    column.setPreferredWidth(139);
+                    break;
+                case 427:
+                    column.setPreferredWidth(167);
+                    break;
+                case 428:
+                    column.setPreferredWidth(149);
+                    break;
+                case 429:
+                    column.setPreferredWidth(129);
+                    break;
+                case 430:
+                    column.setPreferredWidth(129);
+                    break;
+                case 431:
+                    column.setPreferredWidth(100);
+                    break;
+                case 432:
+                    column.setPreferredWidth(75);
+                    break;
+                case 433:
+                    column.setPreferredWidth(118);
+                    break;
+                case 434:
+                    column.setPreferredWidth(123);
+                    break;
+                case 435:
+                    column.setPreferredWidth(150);
+                    break;
+                case 436:
+                    column.setPreferredWidth(152);
+                    break;
+                case 437:
+                    column.setPreferredWidth(133);
+                    break;
+                case 438:
+                    column.setPreferredWidth(154);
+                    break;
+                case 439:
+                    column.setPreferredWidth(170);
+                    break;
+                case 440:
+                    column.setPreferredWidth(113);
+                    break;
+                case 441:
+                    column.setPreferredWidth(60);
+                    break;
+                case 442:
+                    column.setPreferredWidth(168);
+                    break;
+                case 443:
+                    column.setPreferredWidth(118);
+                    break;
+                case 444:
+                    column.setPreferredWidth(78);
+                    break;
+                case 445:
+                    column.setPreferredWidth(78);
+                    break;
+                case 446:
+                    column.setPreferredWidth(110);
+                    break;
+                case 447:
+                    column.setPreferredWidth(90);
+                    break;
+                case 448:
+                    column.setPreferredWidth(102);
+                    break;
+                case 449:
+                    column.setPreferredWidth(139);
+                    break;
+                case 450:
+                    column.setPreferredWidth(139);
+                    break;
+                case 451:
+                    column.setPreferredWidth(102);
+                    break;
+                case 452:
+                    column.setPreferredWidth(152);
+                    break;
+                case 453:
+                    column.setPreferredWidth(103);
+                    break;
+                case 454:
+                    column.setPreferredWidth(107);
+                    break;
+                case 455:
+                    column.setPreferredWidth(67);
+                    break;
+                case 456:
+                    column.setPreferredWidth(98);
+                    break;
+                case 457:
+                    column.setPreferredWidth(122);
+                    break;
+                case 458:
+                    column.setPreferredWidth(133);
+                    break;
+                case 459:
+                    column.setPreferredWidth(184);
+                    break;
+                case 460:
+                    column.setPreferredWidth(172);
+                    break;
+                case 461:
+                    column.setPreferredWidth(164);
+                    break;
+                case 462:
+                    column.setPreferredWidth(152);
+                    break;
+                case 463:
+                    column.setPreferredWidth(136);
+                    break;
+                case 464:
+                    column.setPreferredWidth(197);
+                    break;
+                case 465:
+                    column.setPreferredWidth(186);
+                    break;
+                case 466:
+                    column.setPreferredWidth(101);
+                    break;
+                case 467:
+                    column.setPreferredWidth(82);
+                    break;
+                case 468:
+                    column.setPreferredWidth(121);
+                    break;
+                case 469:
+                    column.setPreferredWidth(99);
+                    break;
+                case 470:
+                    column.setPreferredWidth(83);
+                    break;
+                case 471:
+                    column.setPreferredWidth(113);
+                    break;
+                case 472:
+                    column.setPreferredWidth(99);
+                    break;
+                case 473:
+                    column.setPreferredWidth(125);
+                    break;
+                case 474:
+                    column.setPreferredWidth(140);
+                    break;
+                case 475:
+                    column.setPreferredWidth(141);
+                    break;
+                case 476:
+                    column.setPreferredWidth(122);
+                    break;
+                case 477:
+                    column.setPreferredWidth(132);
+                    break;
+                case 478:
+                    column.setPreferredWidth(188);
+                    break;
+                case 479:
+                    column.setPreferredWidth(152);
+                    break;
+                case 480:
+                    column.setPreferredWidth(114);
+                    break;
+                case 481:
+                    column.setPreferredWidth(97);
+                    break;
+                case 482:
+                    column.setPreferredWidth(142);
+                    break;
+                case 483:
+                    column.setPreferredWidth(87);
+                    break;
+                case 484:
+                    column.setPreferredWidth(112);
+                    break;
+                case 485:
+                    column.setPreferredWidth(111);
+                    break;
+                case 486:
+                    column.setPreferredWidth(113);
+                    break;
+                case 487:
+                    column.setPreferredWidth(103);
+                    break;
+                case 488:
+                    column.setPreferredWidth(82);
+                    break;
+                case 489:
+                    column.setPreferredWidth(86);
+                    break;
+                case 490:
+                    column.setPreferredWidth(83);
+                    break;
+                case 491:
+                    column.setPreferredWidth(95);
+                    break;
+                case 492:
+                    column.setPreferredWidth(116);
+                    break;
+                case 493:
+                    column.setPreferredWidth(161);
+                    break;
+                case 494:
+                    column.setPreferredWidth(106);
+                    break;
+                case 495:
+                    column.setPreferredWidth(131);
+                    break;
+                case 496:
+                    column.setPreferredWidth(130);
+                    break;
+                case 497:
+                    column.setPreferredWidth(132);
+                    break;
+                case 498:
+                    column.setPreferredWidth(122);
+                    break;
+                case 499:
+                    column.setPreferredWidth(149);
+                    break;
+                case 500:
+                    column.setPreferredWidth(194);
+                    break;
+                case 501:
+                    column.setPreferredWidth(139);
+                    break;
+                case 502:
+                    column.setPreferredWidth(164);
+                    break;
+                case 503:
+                    column.setPreferredWidth(163);
+                    break;
+                case 504:
+                    column.setPreferredWidth(165);
+                    break;
+                case 505:
+                    column.setPreferredWidth(155);
+                    break;
+                case 506:
+                    column.setPreferredWidth(124);
+                    break;
+                case 507:
+                    column.setPreferredWidth(132);
+                    break;
+                case 508:
+                    column.setPreferredWidth(119);
+                    break;
+                case 509:
+                    column.setPreferredWidth(200);
+                    break;
+                case 510:
+                    column.setPreferredWidth(132);
+                    break;
+                case 511:
+                    column.setPreferredWidth(162);
+                    break;
+                case 512:
+                    column.setPreferredWidth(156);
+                    break;
+                case 513:
+                    column.setPreferredWidth(168);
+                    break;
+                case 514:
+                    column.setPreferredWidth(160);
+                    break;
+                case 515:
+                    column.setPreferredWidth(135);
+                    break;
+                case 516:
+                    column.setPreferredWidth(165);
+                    break;
+                case 517:
+                    column.setPreferredWidth(155);
+                    break;
+                case 518:
+                    column.setPreferredWidth(145);
+                    break;
+                case 519:
+                    column.setPreferredWidth(138);
+                    break;
+                case 520:
+                    column.setPreferredWidth(135);
+                    break;
+                case 521:
+                    column.setPreferredWidth(143);
+                    break;
+                case 522:
+                    column.setPreferredWidth(123);
+                    break;
+                case 523:
+                    column.setPreferredWidth(104);
+                    break;
+                case 524:
+                    column.setPreferredWidth(101);
+                    break;
+                case 525:
+                    column.setPreferredWidth(162);
+                    break;
+                case 526:
+                    column.setPreferredWidth(97);
+                    break;
+                case 527:
+                    column.setPreferredWidth(123);
+                    break;
+                case 528:
+                    column.setPreferredWidth(123);
+                    break;
+                case 529:
+                    column.setPreferredWidth(123);
+                    break;
+                case 530:
+                    column.setPreferredWidth(123);
+                    break;
+                case 531:
+                    column.setPreferredWidth(123);
+                    break;
+                case 532:
+                    column.setPreferredWidth(150);
+                    break;
+                case 533:
+                    column.setPreferredWidth(154);
+                    break;
+                case 534:
+                    column.setPreferredWidth(130);
+                    break;
+                case 535:
+                    column.setPreferredWidth(119);
+                    break;
+                case 536:
+                    column.setPreferredWidth(139);
+                    break;
+                case 537:
+                    column.setPreferredWidth(150);
+                    break;
+                case 538:
+                    column.setPreferredWidth(128);
+                    break;
+                case 539:
+                    column.setPreferredWidth(144);
+                    break;
+                case 540:
+                    column.setPreferredWidth(150);
+                    break;
+                case 541:
+                    column.setPreferredWidth(184);
+                    break;
+                case 542:
+                    column.setPreferredWidth(135);
+                    break;
+                case 543:
+                    column.setPreferredWidth(157);
+                    break;
+                case 544:
+                    column.setPreferredWidth(151);
+                    break;
+                case 545:
+                    column.setPreferredWidth(180);
+                    break;
+                case 546:
+                    column.setPreferredWidth(193);
+                    break;
+                case 547:
+                    column.setPreferredWidth(174);
+                    break;
+                case 548:
+                    column.setPreferredWidth(145);
+                    break;
+                case 549:
+                    column.setPreferredWidth(169);
+                    break;
+                case 550:
+                    column.setPreferredWidth(162);
+                    break;
+                case 551:
+                    column.setPreferredWidth(86);
+                    break;
+                case 552:
+                    column.setPreferredWidth(156);
+                    break;
+                case 553:
+                    column.setPreferredWidth(95);
+                    break;
+                case 554:
+                    column.setPreferredWidth(132);
+                    break;
+                case 555:
+                    column.setPreferredWidth(119);
+                    break;
+                case 556:
+                    column.setPreferredWidth(133);
+                    break;
+                case 557:
+                    column.setPreferredWidth(180);
+                    break;
+                case 558:
+                    column.setPreferredWidth(133);
+                    break;
+                case 559:
+                    column.setPreferredWidth(129);
+                    break;
+                case 560:
+                    column.setPreferredWidth(144);
+                    break;
+                case 561:
+                    column.setPreferredWidth(142);
+                    break;
+                case 562:
+                    column.setPreferredWidth(160);
+                    break;
+                case 563:
+                    column.setPreferredWidth(140);
+                    break;
+                case 564:
+                    column.setPreferredWidth(141);
+                    break;
+                case 565:
+                    column.setPreferredWidth(144);
+                    break;
+                case 566:
+                    column.setPreferredWidth(127);
+                    break;
+                case 567:
+                    column.setPreferredWidth(141);
+                    break;
+                case 568:
+                    column.setPreferredWidth(119);
+                    break;
+                case 569:
+                    column.setPreferredWidth(122);
+                    break;
+                case 570:
+                    column.setPreferredWidth(137);
+                    break;
+                case 571:
+                    column.setPreferredWidth(128);
+                    break;
+                case 572:
+                    column.setPreferredWidth(129);
+                    break;
+                case 573:
+                    column.setPreferredWidth(110);
+                    break;
+                case 574:
+                    column.setPreferredWidth(73);
+                    break;
+                case 575:
+                    column.setPreferredWidth(77);
+                    break;
+                case 576:
+                    column.setPreferredWidth(104);
+                    break;
+                case 577:
+                    column.setPreferredWidth(162);
+                    break;
+                case 578:
+                    column.setPreferredWidth(163);
+                    break;
+                case 579:
+                    column.setPreferredWidth(124);
+                    break;
+                case 580:
+                    column.setPreferredWidth(132);
+                    break;
+                case 581:
+                    column.setPreferredWidth(220);
+                    break;
+                case 582:
+                    column.setPreferredWidth(103);
+                    break;
+                case 583:
+                    column.setPreferredWidth(135);
+                    break;
+                case 584:
+                    column.setPreferredWidth(190);
+                    break;
+                case 585:
+                    column.setPreferredWidth(101);
+                    break;
+                case 586:
+                    column.setPreferredWidth(163);
+                    break;
+                case 587:
+                    column.setPreferredWidth(96);
+                    break;
+                case 588:
+                    column.setPreferredWidth(154);
+                    break;
+                case 589:
+                    column.setPreferredWidth(95);
+                    break;
+                case 590:
+                    column.setPreferredWidth(83);
+                    break;
+                case 591:
+                    column.setPreferredWidth(111);
+                    break;
+                case 592:
+                    column.setPreferredWidth(96);
+                    break;
+                case 593:
+                    column.setPreferredWidth(83);
+                    break;
+                case 594:
+                    column.setPreferredWidth(146);
+                    break;
+                case 595:
+                    column.setPreferredWidth(138);
+                    break;
+                case 596:
+                    column.setPreferredWidth(114);
+                    break;
+                case 597:
+                    column.setPreferredWidth(125);
+                    break;
+                case 598:
+                    column.setPreferredWidth(134);
+                    break;
+                case 599:
+                    column.setPreferredWidth(138);
+                    break;
+                case 600:
+                    column.setPreferredWidth(144);
+                    break;
+                case 601:
+                    column.setPreferredWidth(140);
+                    break;
+                case 602:
+                    column.setPreferredWidth(81);
+                    break;
+                case 603:
+                    column.setPreferredWidth(105);
+                    break;
+                case 604:
+                    column.setPreferredWidth(88);
+                    break;
+                case 605:
+                    column.setPreferredWidth(97);
+                    break;
+                case 606:
+                    column.setPreferredWidth(149);
+                    break;
+                case 607:
+                    column.setPreferredWidth(86);
+                    break;
+                case 608:
+                    column.setPreferredWidth(128);
+                    break;
+                case 609:
+                    column.setPreferredWidth(153);
+                    break;
+                case 610:
+                    column.setPreferredWidth(150);
+                    break;
+                case 611:
+                    column.setPreferredWidth(90);
+                    break;
+                case 612:
+                    column.setPreferredWidth(142);
+                    break;
+                case 613:
+                    column.setPreferredWidth(139);
+                    break;
+                case 614:
+                    column.setPreferredWidth(146);
+                    break;
+                case 615:
+                    column.setPreferredWidth(181);
+                    break;
+                case 616:
+                    column.setPreferredWidth(185);
+                    break;
+                case 617:
+                    column.setPreferredWidth(116);
+                    break;
+                case 618:
+                    column.setPreferredWidth(121);
+                    break;
+                case 619:
+                    column.setPreferredWidth(132);
+                    break;
+                case 620:
+                    column.setPreferredWidth(118);
+                    break;
+                case 621:
+                    column.setPreferredWidth(177);
+                    break;
+                case 622:
+                    column.setPreferredWidth(134);
+                    break;
+                case 623:
+                    column.setPreferredWidth(79);
+                    break;
+                case 624:
+                    column.setPreferredWidth(97);
+                    break;
+                case 625:
+                    column.setPreferredWidth(98);
+                    break;
+                case 626:
+                    column.setPreferredWidth(127);
+                    break;
+                case 627:
+                    column.setPreferredWidth(99);
+                    break;
+                case 628:
+                    column.setPreferredWidth(113);
+                    break;
+                case 629:
+                    column.setPreferredWidth(136);
+                    break;
+                case 630:
+                    column.setPreferredWidth(144);
+                    break;
+                case 631:
+                    column.setPreferredWidth(189);
+                    break;
+                case 632:
+                    column.setPreferredWidth(187);
+                    break;
+                case 633:
+                    column.setPreferredWidth(180);
+                    break;
+                case 634:
+                    column.setPreferredWidth(183);
+                    break;
+                case 635:
+                    column.setPreferredWidth(176);
+                    break;
+                case 636:
+                    column.setPreferredWidth(169);
+                    break;
+                case 637:
+                    column.setPreferredWidth(205);
+                    break;
+                case 638:
+                    column.setPreferredWidth(172);
+                    break;
+                case 639:
+                    column.setPreferredWidth(175);
+                    break;
+                case 640:
+                    column.setPreferredWidth(170);
+                    break;
+                case 641:
+                    column.setPreferredWidth(178);
+                    break;
+                case 642:
+                    column.setPreferredWidth(157);
+                    break;
+                default:
+                    column.setPreferredWidth(130);
+                    break;
             }
         }
         tbUser.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1766,7 +2232,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2449,7 +2915,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "zis_kepemilikan_rumah_penerima_dankes='"+tbUser.getValueAt(i,637).toString()+"',"+
                     "zis_kamar_mandi_penerima_dankes='"+tbUser.getValueAt(i,638).toString()+"',"+
                     "zis_dapur_rumah_penerima_dankes='"+tbUser.getValueAt(i,639).toString()+"',"+
-                    "zis_kursi_rumah_penerima_dankes='"+tbUser.getValueAt(i,640).toString()+"'");
+                    "zis_kursi_rumah_penerima_dankes='"+tbUser.getValueAt(i,640).toString()+"',"+
+                    "zis_kategori_phbs_penerima_dankes='"+tbUser.getValueAt(i,641).toString()+"',"+
+                    "zis_elektronik_penerima_dankes='"+tbUser.getValueAt(i,642).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3171,7 +3639,9 @@ public class DlgUser extends javax.swing.JDialog {
                                     "zis_kepemilikan_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,637).toString()+"',"+
                                     "zis_kamar_mandi_penerima_dankes='"+tbUser.getValueAt(barisdicopy,638).toString()+"',"+
                                     "zis_dapur_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,639).toString()+"',"+
-                                    "zis_kursi_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,640).toString()+"'");
+                                    "zis_kursi_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,640).toString()+"',"+
+                                    "zis_kategori_phbs_penerima_dankes='"+tbUser.getValueAt(barisdicopy,641).toString()+"',"+
+                                    "zis_elektronik_penerima_dankes='"+tbUser.getValueAt(barisdicopy,642).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3488,7 +3958,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa,toko_sirkulasi,toko_retur_jual,toko_retur_piutang,"+
                         "toko_sirkulasi2,toko_keuntungan_barang,zis_pengeluaran_penerima_dankes,zis_penghasilan_penerima_dankes,"+
                         "zis_ukuran_rumah_penerima_dankes,zis_dinding_rumah_penerima_dankes,zis_lantai_rumah_penerima_dankes,zis_atap_rumah_penerima_dankes,"+
-                        "zis_kepemilikan_rumah_penerima_dankes,zis_kamar_mandi_penerima_dankes,zis_dapur_rumah_penerima_dankes,zis_kursi_rumah_penerima_dankes from user order by AES_DECRYPT(id_user,'nur')");
+                        "zis_kepemilikan_rumah_penerima_dankes,zis_kamar_mandi_penerima_dankes,zis_dapur_rumah_penerima_dankes,zis_kursi_rumah_penerima_dankes,"+
+                        "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4141,7 +4612,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("zis_kepemilikan_rumah_penerima_dankes"),
                                rs.getBoolean("zis_kamar_mandi_penerima_dankes"),
                                rs.getBoolean("zis_dapur_rumah_penerima_dankes"),
-                               rs.getBoolean("zis_kursi_rumah_penerima_dankes")
+                               rs.getBoolean("zis_kursi_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_kategori_phbs_penerima_dankes"),
+                               rs.getBoolean("zis_elektronik_penerima_dankes")
                             });
                         }   
                     } catch (Exception e) {
@@ -4783,7 +5256,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("zis_kepemilikan_rumah_penerima_dankes"),
                            rs.getBoolean("zis_kamar_mandi_penerima_dankes"),
                            rs.getBoolean("zis_dapur_rumah_penerima_dankes"),
-                           rs.getBoolean("zis_kursi_rumah_penerima_dankes")
+                           rs.getBoolean("zis_kursi_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_kategori_phbs_penerima_dankes"),
+                           rs.getBoolean("zis_elektronik_penerima_dankes")
                         });
                     }                                             
                  }

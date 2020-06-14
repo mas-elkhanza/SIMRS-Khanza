@@ -19,7 +19,7 @@
                             <?php 
                                 $BtnLogin=isset($_POST['BtnLogin'])?$_POST['BtnLogin']:NULL;
                                 if (isset($BtnLogin)) {
-                                    if(@$_SESSION["Capcay"]!= @getOne2("select aes_encrypt(".cleankar($_POST["inputcaptcha"]).",'windi')")){
+                                    if(@$_SESSION["Capcay"]!= getOne2("select aes_encrypt(".cleankar($_POST["inputcaptcha"]).",'windi')")){
                                         echo "<form id=\"appointment-form\" role=\"form\" onsubmit=\"return validasiIsi();\" method=\"post\" action=\"\" enctype=multipart/form-data>
                                                     <div class=\"col-md-12 col-sm-12\">
                                                         <label for=\"norme\">Nomer Rekam Medis</label>

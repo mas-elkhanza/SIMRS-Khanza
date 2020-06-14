@@ -17,7 +17,7 @@
         imagettftext($gbr, $ukuran_font, $kemiringan, 8+15*$i, $posisi, $color, $font, $angka);	
     }
     
-    $_SESSION["Capcay"]     = @getOne2("select aes_encrypt(".$_SESSION["Capcay"].",'windi')");
+    $_SESSION["Capcay"]     = getOne2("select aes_encrypt(".$_SESSION["Capcay"].",'windi')");
 
     imagepng($gbr); 
     imagedestroy($gbr);

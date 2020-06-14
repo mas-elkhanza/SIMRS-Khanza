@@ -44,42 +44,18 @@ if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
     <title><?php echo $dataSettings['nama_instansi']; ?></title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
     <link href="css/roboto.css" rel="stylesheet">
-
-    <!-- Material Icon Css -->
     <link href="css/material-icon.css" rel="stylesheet">
-
-    <!-- Bootstrap Core Css -->
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
     <link href="plugins/node-waves/waves.css" rel="stylesheet" />
-
-    <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Sweet Alert Css -->
     <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-
-    <!-- JQuery DataTable Css -->
     <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="plugins/jquery-datatable/extensions/responsive/css/responsive.dataTables.min.css" rel="stylesheet">
-
-    <!-- Bootstrap Material Datetime Picker Css -->
     <link href="plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
-
-    <!-- Bootstrap Select Css -->
     <link href="plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
-
-    <!-- Wait Me Css -->
     <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
-
-    <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
-
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/theme-green.css" rel="stylesheet" />
 </head>
 

@@ -28,7 +28,7 @@
                             <?php 
                                $radiologi      = trim(isset($_POST['radiologi']))?trim($_POST['radiologi']):NULL;
                                $radiologi      = cleankar($radiologi);
-                               $queryradiologi = @bukaquery("select jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,jns_perawatan_radiologi.kelas from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where jns_perawatan_radiologi.status='1' and penjab.png_jawab like '%umum%' ".(isset($radiologi)?" and (jns_perawatan_radiologi.nm_perawatan like '%$radiologi%' or jns_perawatan_radiologi.kelas like '%$radiologi%')":"")." order by jns_perawatan_radiologi.kelas");
+                               $queryradiologi = bukaquery("select jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,jns_perawatan_radiologi.kelas from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where jns_perawatan_radiologi.status='1' and penjab.png_jawab like '%umum%' ".(isset($radiologi)?" and (jns_perawatan_radiologi.nm_perawatan like '%$radiologi%' or jns_perawatan_radiologi.kelas like '%$radiologi%')":"")." order by jns_perawatan_radiologi.kelas");
                                while($rsqueryradiologi = mysqli_fetch_array($queryradiologi)) {
                                    echo "<tr>
                                            <td align='left'>".$rsqueryradiologi["nm_perawatan"]."</td>

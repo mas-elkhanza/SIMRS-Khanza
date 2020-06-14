@@ -5,7 +5,7 @@
         $nohp               = cleankar($nohp);
         $nobooking          = trim(isset($_POST['nobooking']))?trim($_POST['nobooking']):NULL;
         $nobooking          = cleankar($nobooking);
-        $querycekbooking    = @bukaquery("select count(no_booking) as noboking,if(tanggal>current_date,'aman','kadaluarsa') as tanggal,status from booking_periksa where no_booking='$nobooking' and no_telp='$nohp'");
+        $querycekbooking    = bukaquery("select count(no_booking) as noboking,if(tanggal>current_date,'aman','kadaluarsa') as tanggal,status from booking_periksa where no_booking='$nobooking' and no_telp='$nohp'");
         if($rsquerycekbooking = mysqli_fetch_array($querycekbooking)) {
             if($rsquerycekbooking["noboking"]==0){
                 echo "<section id='news' data-stellar-background-ratio='2.5'>
@@ -52,7 +52,7 @@
                               </section>";
                         JSRedirect2("index.php?act=CekBooking",7);
                     }else if($rsquerycekbooking["status"]=="Ditolak"){
-                        $balasan = @getOne2("select balasan from booking_periksa_balasan where no_booking='$nobooking'");
+                        $balasan = getOne2("select balasan from booking_periksa_balasan where no_booking='$nobooking'");
                         echo "<section id='news' data-stellar-background-ratio='2.5'>
                                 <div class='container'>
                                     <div class='row'>
@@ -67,9 +67,9 @@
                               </section>";
                         JSRedirect2("index.php?act=Home#appointment",14);
                     }else if($rsquerycekbooking["status"]=="Diterima"){
-                        $querycekbookingperiksa = @bukaquery("select booking_registrasi.tanggal_booking,booking_registrasi.jam_booking,booking_registrasi.no_rkm_medis,booking_periksa.nama,booking_periksa.alamat,booking_periksa.no_telp,booking_periksa.email,booking_registrasi.tanggal_periksa,dokter.nm_dokter,poliklinik.nm_poli,booking_registrasi.no_reg,aes_decrypt(personal_pasien.password,'windi') as pass from booking_registrasi inner join dokter on booking_registrasi.kd_dokter=dokter.kd_dokter inner join poliklinik on booking_registrasi.kd_poli=poliklinik.kd_poli inner join booking_periksa_diterima on booking_periksa_diterima.no_rkm_medis=booking_registrasi.no_rkm_medis inner join booking_periksa on booking_periksa_diterima.no_booking=booking_periksa.no_booking inner join personal_pasien on booking_registrasi.no_rkm_medis=personal_pasien.no_rkm_medis where booking_periksa.no_booking='$nobooking'"); 
+                        $querycekbookingperiksa = bukaquery("select booking_registrasi.tanggal_booking,booking_registrasi.jam_booking,booking_registrasi.no_rkm_medis,booking_periksa.nama,booking_periksa.alamat,booking_periksa.no_telp,booking_periksa.email,booking_registrasi.tanggal_periksa,dokter.nm_dokter,poliklinik.nm_poli,booking_registrasi.no_reg,aes_decrypt(personal_pasien.password,'windi') as pass from booking_registrasi inner join dokter on booking_registrasi.kd_dokter=dokter.kd_dokter inner join poliklinik on booking_registrasi.kd_poli=poliklinik.kd_poli inner join booking_periksa_diterima on booking_periksa_diterima.no_rkm_medis=booking_registrasi.no_rkm_medis inner join booking_periksa on booking_periksa_diterima.no_booking=booking_periksa.no_booking inner join personal_pasien on booking_registrasi.no_rkm_medis=personal_pasien.no_rkm_medis where booking_periksa.no_booking='$nobooking'"); 
                         if($rsquerycekbookingperiksa = mysqli_fetch_array($querycekbookingperiksa)) {
-                            $balasan = @getOne2("select balasan from booking_periksa_balasan where no_booking='$nobooking'");
+                            $balasan = getOne2("select balasan from booking_periksa_balasan where no_booking='$nobooking'");
                             echo "<section id='news' data-stellar-background-ratio='2.5'>
                                     <div class='container'>
                                         <div class='row'>

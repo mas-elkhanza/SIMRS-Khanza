@@ -20,12 +20,12 @@
         $poli         = trim(isset($_POST['poli']))?trim($_POST['poli']):NULL;
         $poli         = cleankar($poli);
         $sekarang     = date("Y-m-d H:i:s");
-        $interval     = @getOne2("select (TO_DAYS('$ThnDaftar-$BlnDaftar-$TglDaftar')-TO_DAYS('$sekarang'))");
+        $interval     = getOne2("select (TO_DAYS('$ThnDaftar-$BlnDaftar-$TglDaftar')-TO_DAYS('$sekarang'))");
         if($interval>0){
             if ((!empty($nama))&&(!empty($alamat))&&(!empty($nohp))&&(!empty($email))&&(!empty($pesan))&&(!empty($poli))) {
-                $max          = @getOne2("select ifnull(MAX(CONVERT(RIGHT(no_booking,4),signed)),0)+1 from booking_periksa where tanggal='$ThnDaftar-$BlnDaftar-$TglDaftar'");
+                $max          = getOne2("select ifnull(MAX(CONVERT(RIGHT(no_booking,4),signed)),0)+1 from booking_periksa where tanggal='$ThnDaftar-$BlnDaftar-$TglDaftar'");
                 $no_urut      = "BP$ThnDaftar$BlnDaftar$TglDaftar".sprintf("%04s", $max);
-                $insert       = @Tambah4("booking_periksa"," '$no_urut','$ThnDaftar-$BlnDaftar-$TglDaftar','$nama','$alamat','$nohp','$email','$poli','$pesan','Belum Dibalas','$sekarang'");
+                $insert       = Tambah4("booking_periksa"," '$no_urut','$ThnDaftar-$BlnDaftar-$TglDaftar','$nama','$alamat','$nohp','$email','$poli','$pesan','Belum Dibalas','$sekarang'");
                 if($insert){
                     echo "<section id='news' data-stellar-background-ratio='2.5'>
                              <div class='container'>

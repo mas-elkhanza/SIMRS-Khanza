@@ -76,7 +76,7 @@
                 <div class="clearfix"></div>
                 <?php
                     $delay=0.2;
-                    $querydokter=@bukaquery("select dokter.kd_dokter,left(dokter.nm_dokter,20) as dokter,spesialis.nm_sps,dokter.no_ijn_praktek,pegawai.photo,dokter.no_telp from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps inner join pegawai on dokter.kd_dokter=pegawai.nik where dokter.status='1' and dokter.kd_dokter<>'-' group by spesialis.nm_sps limit 5");
+                    $querydokter=bukaquery("select dokter.kd_dokter,left(dokter.nm_dokter,20) as dokter,spesialis.nm_sps,dokter.no_ijn_praktek,pegawai.photo,dokter.no_telp from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps inner join pegawai on dokter.kd_dokter=pegawai.nik where dokter.status='1' and dokter.kd_dokter<>'-' group by spesialis.nm_sps limit 5");
                     while($rsquerydokter = mysqli_fetch_array($querydokter)) {
                         echo "<div class='col-md-4 col-sm-6'>
                                 <div class='team-thumb wow fadeInUp' data-wow-delay='".$delay."s'>
@@ -205,7 +205,7 @@
                                             if(!isset($_SESSION["poli"])){
                                                 echo "tes poli";
                                                 $datapoli   = "";
-                                                $querypoli  = @bukaquery("SELECT * from poliklinik order by nm_poli");
+                                                $querypoli  = bukaquery("SELECT * from poliklinik order by nm_poli");
                                                 while($rsquerypoli = mysqli_fetch_array($querypoli)) {
                                                     $datapoli=$datapoli."<option value='$rsquerypoli[0]'>$rsquerypoli[1]</option>";
                                                 }

@@ -14,35 +14,6 @@
      <link rel="stylesheet" href="css/owl.carousel.css"/>
      <link rel="stylesheet" href="css/owl.theme.default.min.css"/>
      <link rel="stylesheet" href="css/tooplate-style.css"/>
-     <link rel="stylesheet" href="css/bootstrap-datepicker.min.css" type="text/css">
-     <script src="conf/validator.js" type="text/javascript"></script>
-     <script src="js/jquery.min.js"></script>
-     <script src="js/jquery.js"></script>
-     <script src="js/jquery.sticky.js"></script>
-     <script src="js/jquery.stellar.min.js"></script>
-     <script type="text/javascript">
-        $(function() {
-            $("#carikeyword").bind('submit',function() {
-                 $.post('pages/listjadwaldokter.php',{value:$('#keyword').val()}, function(data){$("#hasilcari").html(data);});
-                 return false;
-            });
-        });
-        
-        $(function(){
-            $(".datepicker").datepicker({
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                todayHighlight: true
-            });
-        });
-        
-        function PopupCenter(pageURL, title,w,h) {
-            var left = (screen.width/2)-(w/2);
-            var top = (screen.height/2)-(h/2);
-            var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
-            
-        }
-    </script>
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
      <section class="preloader">
@@ -155,11 +126,22 @@
                </div>
           </div>
      </footer>
-     <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+     <script src="js/jquery.js"></script>
      <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.sticky.js"></script>
+     <script src="js/jquery.stellar.min.js"></script>
      <script src="js/wow.min.js"></script>
      <script src="js/smoothscroll.js"></script>
      <script src="js/owl.carousel.min.js"></script>
      <script src="js/custom.js"></script>
+     <script src="conf/validator.js" type="text/javascript"></script>
+     <script type="text/javascript">
+        $(function() {
+            $("#carikeyword").bind('submit',function() {
+                 $.post('pages/listjadwaldokter.php',{value:$('#keyword').val()}, function(data){$("#hasilcari").html(data);});
+                 return false;
+            });
+        });
+    </script>
 </body>
 </html>
