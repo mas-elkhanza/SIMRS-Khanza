@@ -11,16 +11,14 @@
                      <div class="news-thumb wow fadeInUp" data-wow-delay="0.3s">
                          <form id="cariKamar" name="frmCariAsuransi" method="post" action="" enctype=multipart/form-data>
                            <table width="100%" border='0' align="center">
-                               <tr class="head">
+                               <tr>
                                   <td width="15%" align="right"><label for="asuransi">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="asuransi" type="text" id="asuransi" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
-                                  <td width="15%" align="left">&nbsp;<input name="BtnAsuransi" type=submit class="btn btn-warning" value="Cari"></td>
+                                  <td width="69%"><input name="asuransi" type="text" id="asuransi" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="15%" align="left">&nbsp;<input name="BtnAsuransi" type=submit class="btn btn-warning" value="Cari"/></td>
                                </tr>
                            </table>
                          </form>
-                      </div>
-                      <div class="news-thumb wow fadeInUp" data-wow-delay="0.5s">
                          <table class="table table-hover" >
                             <tr>
                                 <th width="25%"><center>Nama Asuransi</center></th>

@@ -231,6 +231,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
                     NmDokter.setText(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),1).toString());
                     if(aktifjadwal.equals("aktif")){
                         kuota=Integer.parseInt(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),13).toString());
+                        Kuota.setText(""+kuota);
                     }
                     isNomer();                        
                 }      
@@ -1483,9 +1484,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(TNoRM.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRM,"pasien");
         }else if(NmDokter.getText().trim().equals("")||KdDokter.getText().trim().equals("")){
-            Valid.textKosong(KdDokter,"Operator");
+            Valid.textKosong(KdDokter,"Dokter");
         }else if(NmPoli.getText().trim().equals("")||NmPoli.getText().trim().equals("")){
-            Valid.textKosong(KdPoli,"Operasi");
+            Valid.textKosong(KdPoli,"Unit/Poliklinik");
         }else if(kdpnj.getText().trim().equals("")||nmpnj.getText().trim().equals("")){
             Valid.textKosong(kdpnj,"Cara Bayar");
         }else if(NoReg.getText().trim().equals("")){

@@ -4,6 +4,10 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="248"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -15,69 +19,112 @@
 		<![CDATA[select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                 reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,
                 reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts,penjab.png_jawab,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur, 
-                reg_periksa.status_bayar,reg_periksa.status_poli,reg_periksa.kd_pj,reg_periksa.kd_poli from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab 
+                reg_periksa.status_bayar,reg_periksa.status_poli,reg_periksa.kd_pj,reg_periksa.kd_poli,pasien.no_tlp from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab 
                 on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj 
                 and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_poli=poliklinik.kd_poli]]>
 	</queryString>
 	<field name="no_reg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_reg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tgl_registrasi" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_registrasi"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jam_reg" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.label" value="jam_reg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kd_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kd_dokter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_poli" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_poli"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poliklinik"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="p_jawab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="p_jawab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="almt_pj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="almt_pj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="hubunganpj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="hubunganpj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="biaya_reg" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="biaya_reg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="stts" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="stts"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="png_jawab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="png_jawab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penjab"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="umur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="umur"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="status_bayar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status_bayar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="status_poli" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status_poli"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kd_pj" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kd_pj"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kd_poli" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kd_poli"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_tlp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="no_tlp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -140,9 +187,17 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="18" splitType="Stretch">
+		<band height="17" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="885" y="0" width="83" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f2ea158b-5170-45da-bea3-2134bc458b82"/>
+				<reportElement mode="Opaque" x="901" y="0" width="67" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="764258bc-d8b8-4a3c-940c-35d36791f307"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.Telp Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="818" y="0" width="83" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="f2ea158b-5170-45da-bea3-2134bc458b82"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -150,7 +205,7 @@
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="698" y="0" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0243a9b7-6469-478b-b2f5-fab91213dd20"/>
+				<reportElement mode="Opaque" x="631" y="0" width="60" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="0243a9b7-6469-478b-b2f5-fab91213dd20"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -158,7 +213,7 @@
 				<text><![CDATA[Hubungan P.J.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="758" y="0" width="75" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="9f5606da-7159-4624-ae8a-a778d4fab1dc"/>
+				<reportElement mode="Opaque" x="691" y="0" width="75" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="9f5606da-7159-4624-ae8a-a778d4fab1dc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -166,7 +221,7 @@
 				<text><![CDATA[Jenis Bayar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="0" width="156" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ebecdab6-3be1-4e33-b421-b52e2d92f9e5"/>
+				<reportElement mode="Opaque" x="1" y="0" width="123" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="ebecdab6-3be1-4e33-b421-b52e2d92f9e5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -174,7 +229,7 @@
 				<text><![CDATA[Dokter Dituju]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="157" y="0" width="53" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="b06a7f3e-edaf-4b50-a2c4-e83d79c2858e"/>
+				<reportElement mode="Opaque" x="124" y="0" width="53" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="b06a7f3e-edaf-4b50-a2c4-e83d79c2858e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -182,7 +237,7 @@
 				<text><![CDATA[No.RM]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="210" y="0" width="158" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="5f74815a-5366-429d-9b7b-edb5653e1ce5"/>
+				<reportElement mode="Opaque" x="177" y="0" width="132" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="5f74815a-5366-429d-9b7b-edb5653e1ce5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -190,7 +245,7 @@
 				<text><![CDATA[Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="368" y="0" width="100" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="477d4290-e822-4850-a17f-7be6191df24b"/>
+				<reportElement mode="Opaque" x="309" y="0" width="92" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="477d4290-e822-4850-a17f-7be6191df24b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -198,7 +253,7 @@
 				<text><![CDATA[Poliklinik]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="468" y="0" width="80" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="25db6e27-b69f-413b-b76c-b8e41a033694"/>
+				<reportElement mode="Opaque" x="401" y="0" width="80" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="25db6e27-b69f-413b-b76c-b8e41a033694"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -206,7 +261,7 @@
 				<text><![CDATA[Penanggung Jawab]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="548" y="0" width="150" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="4228f86d-ea4d-4752-8cd3-55ee5ed2573a"/>
+				<reportElement mode="Opaque" x="481" y="0" width="150" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="4228f86d-ea4d-4752-8cd3-55ee5ed2573a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -214,7 +269,7 @@
 				<text><![CDATA[Alamat P.J.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="833" y="0" width="53" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="01180189-9bd3-4339-974e-16305c37b7d2"/>
+				<reportElement mode="Opaque" x="766" y="0" width="53" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="01180189-9bd3-4339-974e-16305c37b7d2"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -238,7 +293,7 @@
 	<detail>
 		<band height="12" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="1" y="0" width="153" height="10" uuid="3d38d2c3-ea7a-40ea-802f-178ad67c6b36"/>
+				<reportElement positionType="Float" x="1" y="0" width="120" height="10" uuid="3d38d2c3-ea7a-40ea-802f-178ad67c6b36"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -246,7 +301,7 @@
 				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="157" y="0" width="53" height="10" uuid="bdb5f17e-7b37-481f-83ff-0472226219b7"/>
+				<reportElement positionType="Float" x="124" y="0" width="53" height="10" uuid="bdb5f17e-7b37-481f-83ff-0472226219b7"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -254,7 +309,7 @@
 				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="210" y="0" width="158" height="10" uuid="6fc6970d-c72d-4ff8-b338-94be54a5a84b"/>
+				<reportElement positionType="Float" x="177" y="0" width="132" height="10" uuid="6fc6970d-c72d-4ff8-b338-94be54a5a84b"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -262,7 +317,7 @@
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="368" y="0" width="100" height="10" uuid="8bc05128-56fb-4608-b7a7-ba4baf89bef9"/>
+				<reportElement positionType="Float" x="309" y="0" width="92" height="10" uuid="8bc05128-56fb-4608-b7a7-ba4baf89bef9"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -270,7 +325,7 @@
 				<textFieldExpression><![CDATA[$F{nm_poli}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="468" y="0" width="78" height="10" uuid="db3afd94-c549-4827-8e74-dabbbc86d804"/>
+				<reportElement positionType="Float" x="401" y="0" width="78" height="10" uuid="db3afd94-c549-4827-8e74-dabbbc86d804"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -278,7 +333,7 @@
 				<textFieldExpression><![CDATA[$F{p_jawab}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="833" y="0" width="51" height="10" uuid="fdcb57a9-d78c-48a8-a719-302d1e7102ab"/>
+				<reportElement positionType="Float" x="766" y="0" width="51" height="10" uuid="fdcb57a9-d78c-48a8-a719-302d1e7102ab"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -286,7 +341,7 @@
 				<textFieldExpression><![CDATA[$F{status_bayar}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="548" y="0" width="148" height="10" uuid="e941155a-7c81-4c6f-bf68-1092a0ef3a71"/>
+				<reportElement positionType="Float" x="481" y="0" width="148" height="10" uuid="e941155a-7c81-4c6f-bf68-1092a0ef3a71"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -294,7 +349,7 @@
 				<textFieldExpression><![CDATA[$F{almt_pj}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="758" y="0" width="74" height="10" uuid="223c133c-ef9b-491e-9a2f-aa0efdad3a14"/>
+				<reportElement positionType="Float" x="691" y="0" width="74" height="10" uuid="223c133c-ef9b-491e-9a2f-aa0efdad3a14"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -302,7 +357,7 @@
 				<textFieldExpression><![CDATA[$F{png_jawab}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="698" y="0" width="60" height="10" uuid="3156f676-95ba-46e7-b212-7ef37b6cfe8a"/>
+				<reportElement positionType="Float" x="631" y="0" width="60" height="10" uuid="3156f676-95ba-46e7-b212-7ef37b6cfe8a"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -310,7 +365,7 @@
 				<textFieldExpression><![CDATA[$F{hubunganpj}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="885" y="0" width="83" height="10" uuid="2c75a39a-ca2f-487b-8c11-ee8d818375db"/>
+				<reportElement positionType="Float" x="818" y="0" width="83" height="10" uuid="2c75a39a-ca2f-487b-8c11-ee8d818375db"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -325,6 +380,14 @@
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="901" y="0" width="67" height="10" uuid="25197389-4412-46a0-9511-a99b57bbf75e"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_tlp}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

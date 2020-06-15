@@ -414,7 +414,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         tbRiwayatKehamilan1.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        TD.setDocument(new batasInput((byte)5).getKata(TD));
+        TD.setDocument(new batasInput((byte)7).getKata(TD));
         Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
         RR.setDocument(new batasInput((byte)5).getKata(RR));
         Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
@@ -4489,6 +4489,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
         if(tbObat.getSelectedRow()!= -1){
             isMenu();
         }else{
+            ChkAccor.setSelected(false);
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data yang mau ditampilkan...!!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
@@ -6000,13 +6001,13 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(470,HEIGHT));
             FormMenu.setVisible(true);  
-            FormMasalahRencana.setVisible(true);  
+            FormMasalahRencana.setVisible(true);
             ChkAccor.setVisible(true);
-        }else if(ChkAccor.isSelected()==false){           
-            ChkAccor.setVisible(false);            
+        }else if(ChkAccor.isSelected()==false){    
+            ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);  
-            FormMasalahRencana.setVisible(false);      
+            FormMasalahRencana.setVisible(false);  
             ChkAccor.setVisible(true);
         }
     }

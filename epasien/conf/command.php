@@ -33,7 +33,8 @@
     function formProtek() {
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiPasien()) {
-            $form = array ('HomeAdmin','Pengguna');
+            $form = array ('HomeUser','FasilitasKamarUser','InformasiKamarUser','FasilitasRadiologiUser','FasilitasLaboratUser','FasilitasOperasiUser',
+                           'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -47,21 +48,39 @@
     function actionPages() {
         $aksi=isset($_REQUEST['act'])?$_REQUEST['act']:NULL;
         formProtek();
-        switch ($aksi) {
-            case "Home"                                    : include_once("pages/home.php"); break;
-            case "LoginPasien"                             : include_once("pages/login.php"); break;
-            case "DokterKami"                              : include_once("pages/listsemuadokter.php"); break;
-            case "FasilitasKamar"                          : include_once("pages/listkamar.php"); break;
-            case "FasilitasRadiologi"                      : include_once("pages/listradiologi.php"); break;
-            case "FasilitasLaborat"                        : include_once("pages/listlaborat.php"); break;
-            case "FasilitasOperasi"                        : include_once("pages/listoperasi.php"); break;
-            case "FasilitasOnline"                         : include_once("pages/listonline.php"); break;
-            case "PendaftaranPeriksa"                      : include_once("pages/listperiksa.php"); break;
-            case "CekPoli"                                 : include_once("pages/listpoli.php"); break;
-            case "CekAsuransi"                             : include_once("pages/listcarabayar.php"); break;
-            case "CekBooking"                              : include_once("pages/listbooking.php"); break;
-            default                                        : include_once("pages/home.php");
+        if (!cekSessiPasien()) {
+            switch ($aksi) {
+                case "Home"                                    : include_once("pages/home.php"); break;
+                case "HomePasien"                              : include_once("pages/index.php"); break;
+                case "LoginPasien"                             : include_once("pages/login.php"); break;
+                case "DokterKami"                              : include_once("pages/listsemuadokter.php"); break;
+                case "FasilitasKamar"                          : include_once("pages/listkamar.php"); break;
+                case "FasilitasRadiologi"                      : include_once("pages/listradiologi.php"); break;
+                case "FasilitasLaborat"                        : include_once("pages/listlaborat.php"); break;
+                case "FasilitasOperasi"                        : include_once("pages/listoperasi.php"); break;
+                case "FasilitasOnline"                         : include_once("pages/listonline.php"); break;
+                case "PendaftaranPeriksa"                      : include_once("pages/listperiksa.php"); break;
+                case "CekPoli"                                 : include_once("pages/listpoli.php"); break;
+                case "CekAsuransi"                             : include_once("pages/listcarabayar.php"); break;
+                case "CekBooking"                              : include_once("pages/listbooking.php"); break;
+                default                                        : include_once("pages/home.php");
+            }
+        }else{
+            switch ($aksi) {
+                case "HomeUser"                                : include_once("pages/homeuser.php"); break;
+                case "FasilitasKamarUser"                      : include_once("pages/listkamaruser.php"); break;
+                case "InformasiKamarUser"                      : include_once("pages/listinformasikamaruser.php"); break;
+                case "FasilitasRadiologiUser"                  : include_once("pages/listradiologiuser.php"); break;
+                case "FasilitasLaboratUser"                    : include_once("pages/listlaboratuser.php"); break;
+                case "FasilitasOperasiUser"                    : include_once("pages/listoperasiuser.php"); break;
+                case "FasilitasOnlineUser"                     : include_once("pages/listonlineuser.php"); break;
+                case "JadwalDokterUser"                        : include_once("pages/listjadwaldokteruser.php"); break;
+                case "CekPoliUser"                             : include_once("pages/listpoliuser.php"); break;
+                case "CekAsuransiUser"                         : include_once("pages/listcarabayaruser.php"); break;
+                default                                        : include_once("pages/homeuser.php");
+            }
         }
+            
     }
 	
     function actionMenu() {

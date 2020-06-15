@@ -434,7 +434,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 42, 92, 23);
 
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-01-2020" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2020" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -626,7 +626,6 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
 
         jPanel3.add(panelisi5, java.awt.BorderLayout.PAGE_END);
 
-        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 255, 235)));
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 

@@ -14,13 +14,11 @@
                                <tr class="head">
                                   <td width="15%" align="right"><label for="poli">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="poli" type="text" id="poli" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
-                                  <td width="15%" align="left">&nbsp;<input name="BtnPoli" type=submit class="btn btn-warning" value="Cari"></td>
+                                  <td width="69%"><input name="poli" type="text" id="poli" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="15%" align="left">&nbsp;<input name="BtnPoli" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>
                          </form>
-                      </div>
-                      <div class="news-thumb wow fadeInUp" data-wow-delay="0.5s">
                          <table class="table table-hover" >
                             <tr>
                                 <th width="50%"><center>Nama Poliklinik/Unit</center></th>

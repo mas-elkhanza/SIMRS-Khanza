@@ -48,7 +48,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private DlgCariBangsal ruang=new DlgCariBangsal(null,false);
     private int jmlparsial=0,nilai_detik,resepbaru=0,i=0;
     private BackgroundMusic music;
-    private boolean aktif=false;
+    private boolean aktif=false,semua;
     
     /** Creates new form 
      * @param parent
@@ -888,7 +888,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            //TabRawatMouseClicked(null);
+            pilihTab();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -904,7 +904,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnCariActionPerformed(null);
+            pilihTab();
         }else{
             Valid.pindah(evt, TCari, BtnAll);
         }
@@ -1054,10 +1054,12 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         if(TabPilihRawat.getSelectedIndex()==0){
             CrDokter.setText("");
             CrPoli.setText("");
+            TCari.setText("");
             pilihRalan();
-        }else if(TabPilihRawat.getSelectedIndex()==0){
+        }else if(TabPilihRawat.getSelectedIndex()==1){
             CrDokter2.setText("");
             Kamar.setText("");
+            TCari.setText("");
             pilihRanap();
         }
 }//GEN-LAST:event_BtnAllActionPerformed
@@ -1448,43 +1450,32 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{  
+            semua=CrDokter.getText().trim().equals("")&&CrPoli.getText().trim().equals("")&&TCari.getText().trim().equals("");
             ps=koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,"+
                     " resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter, "+
                     " if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status,poliklinik.nm_poli,  "+
-                    " reg_periksa.kd_poli from resep_obat inner join reg_periksa inner join pasien inner join dokter inner join poliklinik "+
-                    " on resep_obat.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    " and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and resep_obat.no_resep like ? or "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and resep_obat.no_rawat like ? or "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and pasien.no_rkm_medis like ? or "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and pasien.nm_pasien like ? or "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    " reg_periksa.kd_poli from resep_obat "+
+                    " inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "+
+                    " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    " inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "+
+                    " inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    " where resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? "+
+                    (semua?"":"and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and "+
+                    "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
+                    "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                    "dokter.nm_dokter like ?)")+" order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(4,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(7,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(8,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(9,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
-                ps.setString(11,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(12,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(13,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(14,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(19,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText().trim()+"%");
-                ps.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(23,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(24,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(25,"%"+TCari.getText().trim()+"%");
+                if(!semua){
+                    ps.setString(3,"%"+CrDokter.getText().trim()+"%");
+                    ps.setString(4,"%"+CrPoli.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                } 
                 rs=ps.executeQuery();
                 if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                     while(rs.next()){
@@ -1577,42 +1568,32 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void tampil2() {
         Valid.tabelKosong(tabMode2);
         try{  
+            semua=CrDokter.getText().trim().equals("")&&CrPoli.getText().trim().equals("")&&TCari.getText().trim().equals("");
             ps=koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,resep_obat.no_rawat,pasien.no_rkm_medis,"+
                     " pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter,if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status,"+
-                    " poliklinik.nm_poli,resep_obat.status as status_asal from resep_obat inner join reg_periksa inner join pasien inner join dokter "+
-                    " inner join poliklinik on resep_obat.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_poli=poliklinik.kd_poli "+
-                    " and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and resep_obat.no_resep like ? or "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and resep_obat.no_rawat like ? or "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and pasien.no_rkm_medis like ? or "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and pasien.nm_pasien like ? or "+
-                    " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    " poliklinik.nm_poli,resep_obat.status as status_asal from resep_obat "+
+                    " inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "+
+                    " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    " inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "+
+                    " inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    " where resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? "+
+                    (semua?"":"and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and "+
+                    "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
+                    "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                    "dokter.nm_dokter like ?) ")+"order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(4,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(7,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(8,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(9,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
-                ps.setString(11,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(12,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(13,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(14,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(19,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText().trim()+"%");
-                ps.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(23,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(24,"%"+CrPoli.getText().trim()+"%");
-                ps.setString(25,"%"+TCari.getText().trim()+"%");
+                if(!semua){
+                    ps.setString(3,"%"+CrDokter.getText().trim()+"%");
+                    ps.setString(4,"%"+CrPoli.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                }
+                
                 rs=ps.executeQuery();
                 i=0;
                 if(cmbStatus.getSelectedItem().toString().equals("Semua")){
@@ -1864,43 +1845,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public void tampil3() {
         Valid.tabelKosong(tabMode3);
         try{  
+            semua=CrDokter2.getText().trim().equals("")&&Kamar.getText().trim().equals("")&&TCari.getText().trim().equals("");
             ps=koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,"+
                     " resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter, "+
-                    " if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status,bangsal.nm_bangsal,  "+
-                    " kamar.kd_bangsal from resep_obat inner join reg_periksa inner join pasien inner join dokter inner join bangsal inner join kamar inner join kamar_inap "+
-                    " on resep_obat.no_rawat=reg_periksa.no_rawat and kamar.kd_bangsal=bangsal.kd_bangsal and reg_periksa.no_rawat=kamar_inap.no_rawat and kamar_inap.kd_kamar=kamar.kd_kamar "+
-                    " and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and resep_obat.no_resep like ? or "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and resep_obat.no_rawat like ? or "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and pasien.no_rkm_medis like ? or "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? or "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and dokter.nm_dokter like ? group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    " if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status,"+
+                    " ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal, kamar.kd_bangsal from resep_obat  "+
+                    " inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "+
+                    " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    " inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "+
+                    " left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                    " left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                    " left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                    " where resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? "+
+                    (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
+                    "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
+                    "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ?)")+
+                    " group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(4,"%"+Kamar.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(7,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(8,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(9,"%"+Kamar.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
-                ps.setString(11,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(12,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(13,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(14,"%"+Kamar.getText().trim()+"%");
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(19,"%"+Kamar.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText().trim()+"%");
-                ps.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(23,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(24,"%"+Kamar.getText().trim()+"%");
-                ps.setString(25,"%"+TCari.getText().trim()+"%");
+                if(!semua){
+                    ps.setString(3,"%"+CrDokter2.getText().trim()+"%");
+                    ps.setString(4,"%"+Kamar.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                }
+                
                 rs=ps.executeQuery();
                 if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                     while(rs.next()){
@@ -1941,42 +1914,33 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public void tampil4() {
         Valid.tabelKosong(tabMode4);
         try{  
+            semua=CrDokter2.getText().trim().equals("")&&Kamar.getText().trim().equals("")&&TCari.getText().trim().equals("");
             ps=koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,resep_obat.no_rawat,pasien.no_rkm_medis,"+
                     " pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter,if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status,"+
-                    " bangsal.nm_bangsal,resep_obat.status as status_asal from resep_obat inner join reg_periksa inner join pasien inner join dokter "+
-                    " inner join bangsal inner join kamar inner join kamar_inap on resep_obat.no_rawat=reg_periksa.no_rawat and kamar.kd_bangsal=bangsal.kd_bangsal "+
-                    " and reg_periksa.no_rawat=kamar_inap.no_rawat and kamar_inap.kd_kamar=kamar.kd_kamar and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and resep_obat.no_resep like ? or "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and resep_obat.no_rawat like ? or "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and pasien.no_rkm_medis like ? or "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? or "+
-                    " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and dokter.nm_dokter like ? group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    " ifnull(bangsal.nm_bangsal,'Ranap Gabung') as nm_bangsal,resep_obat.status as status_asal from resep_obat "+
+                    " inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "+
+                    " inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    " inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "+
+                    " left join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                    " left join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                    " left join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "+
+                    " where resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? "+
+                    (semua?"":"and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and "+
+                    "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or "+
+                    "pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or dokter.nm_dokter like ?)")+
+                    " group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try{
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(3,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(4,"%"+Kamar.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(7,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(8,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(9,"%"+Kamar.getText().trim()+"%");
-                ps.setString(10,"%"+TCari.getText().trim()+"%");
-                ps.setString(11,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(12,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(13,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(14,"%"+Kamar.getText().trim()+"%");
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(18,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(19,"%"+Kamar.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText().trim()+"%");
-                ps.setString(21,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(22,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                ps.setString(23,"%"+CrDokter2.getText().trim()+"%");
-                ps.setString(24,"%"+Kamar.getText().trim()+"%");
-                ps.setString(25,"%"+TCari.getText().trim()+"%");
+                if(!semua){
+                    ps.setString(3,"%"+CrDokter2.getText().trim()+"%");
+                    ps.setString(4,"%"+Kamar.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                }
                 rs=ps.executeQuery();
                 i=0;
                 if(cmbStatus.getSelectedItem().toString().equals("Semua")){

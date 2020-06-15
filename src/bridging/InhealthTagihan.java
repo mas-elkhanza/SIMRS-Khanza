@@ -879,11 +879,11 @@ public final class InhealthTagihan extends javax.swing.JDialog {
             FormMenu.setVisible(true);  
             TabTarif.setVisible(true);  
             ChkAccor.setVisible(true);
-        }else if(ChkAccor.isSelected()==false){           
-            ChkAccor.setVisible(false);            
+        }else if(ChkAccor.isSelected()==false){   
+            ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);  
-            TabTarif.setVisible(false);      
+            TabTarif.setVisible(false);    
             ChkAccor.setVisible(true);
         }
     }

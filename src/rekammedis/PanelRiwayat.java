@@ -15,7 +15,6 @@ import java.awt.Desktop;
 import java.awt.Dimension;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +22,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.HyperlinkEvent;
@@ -41,7 +39,6 @@ public class PanelRiwayat extends widget.panelisi {
     private final Connection koneksi=koneksiDB.condb();
     private DefaultTableModel tabModeRegistrasi;
     private final sekuel Sequel=new sekuel();
-    private final Properties prop = new Properties(); 
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rs5;
     private PreparedStatement ps,ps2;
@@ -88,12 +85,6 @@ public class PanelRiwayat extends widget.panelisi {
         }
         tbRegistrasi.setDefaultRenderer(Object.class, new WarnaTable());
         
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-        } catch (Exception e) {
-            System.out.println("Resume : "+e);
-        }
-        
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditorKit(kit);
         LoadHTML2.setEditorKit(kit);
@@ -118,7 +109,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML21.setEditorKit(kit);
         
         StyleSheet styleSheet = kit.getStyleSheet();
-        styleSheet.addRule(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
+        styleSheet.addRule(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;border: white;}");
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML2.setDocument(doc);
@@ -3908,7 +3899,7 @@ public class PanelRiwayat extends widget.panelisi {
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -4313,7 +4304,7 @@ public class PanelRiwayat extends widget.panelisi {
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -6110,7 +6101,7 @@ public class PanelRiwayat extends widget.panelisi {
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs3.getString("lokasi_gambar")+"'><img alt='Gambar Radiologi' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs3.getString("lokasi_gambar")+"' width='450' height='450'/></a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -7406,7 +7397,7 @@ public class PanelRiwayat extends widget.panelisi {
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -7575,7 +7566,7 @@ public class PanelRiwayat extends widget.panelisi {
         try{
             File g = new File("file.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-            bg.write(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
+            bg.write(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;border: white;}");
             bg.close();
 
             File f = new File("resumemedis.html");            
@@ -10872,7 +10863,7 @@ public class PanelRiwayat extends widget.panelisi {
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs3.getString("lokasi_gambar")+"'><img alt='Gambar Radiologi' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs3.getString("lokasi_gambar")+"' width='450' height='450'/></a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -11277,7 +11268,7 @@ public class PanelRiwayat extends widget.panelisi {
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }

@@ -14,13 +14,11 @@
                                <tr class="head">
                                   <td width="15%" align="right"><label for="laborat">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="laborat" type="text" id="laborat" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
-                                  <td width="15%" align="left">&nbsp;<input name="BtnLaborat" type=submit class="btn btn-warning" value="Cari"></td>
+                                  <td width="69%"><input name="laborat" type="text" id="laborat" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_ (Maksimal 65 karakter)" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="15%" align="left">&nbsp;<input name="BtnLaborat" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>
                          </form>
-                      </div>
-                      <div class="news-thumb wow fadeInUp" data-wow-delay="0.5s">
                          <table class="table table-hover" >
                             <tr>
                                 <th width="70%"><center>Paket Pemeriksaan</center></th>
@@ -47,7 +45,7 @@
                                    }
                                }
                            ?>
-                        </table>
+                         </table>
                      </div>
                 </div>
            </div>

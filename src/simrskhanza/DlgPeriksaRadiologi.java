@@ -671,7 +671,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         NmPtg.setBounds(546, 42, 249, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2019" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-06-2020" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -867,7 +867,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
 
         jPanel3.add(panelisi5, java.awt.BorderLayout.PAGE_END);
 
-        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 255, 235)));
+        Scroll2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
@@ -967,7 +967,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
 
         jPanel2.add(panelisi4, java.awt.BorderLayout.PAGE_END);
 
-        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 255, 235)));
+        Scroll.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 

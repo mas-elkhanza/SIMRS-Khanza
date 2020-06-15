@@ -1,6 +1,6 @@
 <?php
 	function title(){
- 		$judul ="Ebook SIMRS Khanza --)(*!!@#$%";
+ 		$judul ="SIMKES Khanza --)(*!!@#$%";
 		$judul = preg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
 		$judul = str_replace(array('.','-','/',',')," ",$judul);
 		$judul = trim($judul);

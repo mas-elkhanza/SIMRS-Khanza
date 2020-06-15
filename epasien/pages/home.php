@@ -1,27 +1,5 @@
 <?php
     require_once('conf/conf.php');
-    
-    $nama_instansi          = "";
-    $alamat_instansi        = "";
-    $kabupaten              = "";
-    $propinsi               = "";
-    $kontak                 = "";
-    $email                  = "";
-    $kode_ppk               = "";
-    $kode_ppkinhealth       = "";
-    $kode_ppkkemenkes       = "";
-    $querypengaturan        = bukaquery("select * from setting");
-    while($pengaturan = mysqli_fetch_array($querypengaturan)) {
-        $nama_instansi      = $pengaturan["nama_instansi"];
-        $alamat_instansi    = $pengaturan["alamat_instansi"];
-        $kabupaten          = $pengaturan["kabupaten"];
-        $propinsi           = $pengaturan["propinsi"];
-        $kontak             = $pengaturan["kontak"];
-        $email              = $pengaturan["email"];
-        $kode_ppk           = $pengaturan["kode_ppk"];
-        $kode_ppkinhealth   = $pengaturan["kode_ppkinhealth"];
-        $kode_ppkkemenkes   = $pengaturan["kode_ppkinhealth"];
-    }
     $besok                  = date("Y-m-d", strtotime("+1 day"));
     $thnbesok               = substr($besok,0,4);
     $blnbesok               = substr($besok,5,2);
@@ -71,7 +49,7 @@
                      <div class="about-info">
                           <h2 class="wow fadeInUp" data-wow-delay="0.6s">Selamat datang di Pusat Kesehatan Anda</h2>
                           <div class="wow fadeInUp" data-wow-delay="0.8s">
-                              <p><?=$nama_instansi." merupakan salah satu rumah sakit umum di wilayah ".$kabupaten." yang berkedudukan di ".$alamat_instansi.". ".$nama_instansi." merupakan perkembangan dari balai pengobatan, klinik dan berada dibawah YASKI. ".$nama_instansi." mendapat izin operasional dengan Kode PPK ".$kode_ppkkemenkes." sejak bulan November 2009 dan diresmikan tanggal 21 februari 2010. ".$nama_instansi." dalam memberikan pelayanannya mengambil filosofi  dasar bahwa pelayanan kesehatan yang baik itu tidak harus mahal dan kalau bisa, harus tidak mahal. Filosofi dasar yang kedua adalah bersama yang tidak mampu kita harus maju. Hal ini memiliki arti bahwa ".$nama_instansi." harus mampu memajukan dirinya dan pihak-pihak yang berhubungan dengan dirinya menuju arah yang lebih baik."?></p>
+                              <p><?=$_SESSION["nama_instansi"]." merupakan salah satu rumah sakit umum di wilayah ".$_SESSION["kabupaten"]." yang berkedudukan di ".$_SESSION["alamat_instansi"].". ".$_SESSION["nama_instansi"]." merupakan perkembangan dari balai pengobatan, klinik dan berada dibawah YASKI. ".$_SESSION["nama_instansi"]." mendapat izin operasional dengan Kode PPK ".$_SESSION["kode_ppkkemenkes"]." sejak bulan November 2009 dan diresmikan tanggal 21 februari 2010. ".$_SESSION["nama_instansi"]." dalam memberikan pelayanannya mengambil filosofi  dasar bahwa pelayanan kesehatan yang baik itu tidak harus mahal dan kalau bisa, harus tidak mahal. Filosofi dasar yang kedua adalah bersama yang tidak mampu kita harus maju. Hal ini memiliki arti bahwa ".$_SESSION["nama_instansi"]." harus mampu memajukan dirinya dan pihak-pihak yang berhubungan dengan dirinya menuju arah yang lebih baik."?></p>
                           </div>
                           <figure class="profile wow fadeInUp" data-wow-delay="1s">
                                <img src="images/author-image.jpg" class="img-responsive" alt=""/>
@@ -145,7 +123,7 @@
                                <tr class="head">
                                   <td width="15%" align="right"><label for="keyword">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="keyword" type="text" id="keyword" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
+                                  <td width="69%"><input name="keyword" type="text" id="keyword" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
                                   <td width="15%" align="left">&nbsp;<input name="BtnKeyword" type=submit class="btn btn-warning" value="Cari"></td>
                                </tr>
                            </table>
@@ -171,22 +149,22 @@
                                <h2><center>Buat Janji/Booking</center></h2>
                                <div class="col-md-12 col-sm-12">
                                     <label for="nama">Nama</label>
-                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" name="nama" maxlength="40" placeholder="Nama Anda" autocomplete="off">
+                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" pattern="[a-zA-Z0-9, ./@_]{1,40}" title=" a-zA-Z0-9, ./@_ (Maksimal 40 karakter)" required name="nama" maxlength="40" placeholder="Nama Anda" autocomplete="off"/>
                                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-12 col-sm-12">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2" name="alamat" maxlength="200" placeholder="Alamat Anda" autocomplete="off">
+                                    <input type="text" class="form-control text-uppercase" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2" pattern="[a-zA-Z0-9, ./@_]{1,200}" title=" a-zA-Z0-9, ./@_ (Maksimal 200 karakter)" required name="alamat" maxlength="200" placeholder="Alamat Anda" autocomplete="off" />
                                     <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">    
                                     <label for="nohp">Nomor HP/Telephone</label>
-                                    <input type="tel" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3" name="nohp" maxlength="40" placeholder="Nomor HP/Telephone Anda" autocomplete="off">
+                                    <input type="tel" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3" pattern="[0-9]{1,40}" title=" 0-9 (Maksimal 40 karakter)" required name="nohp" maxlength="40" placeholder="Nomor HP/Telephone Anda" autocomplete="off" />
                                     <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4" name="email" maxlength="50" placeholder="Email Anda" autocomplete="off">
+                                    <input type="email" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4" pattern="[a-zA-Z0-9, ./@_]{1,50}" title=" a-zA-Z0-9, ./@_ (Maksimal 50 karakter)" required name="email" maxlength="50" placeholder="Email Anda" autocomplete="off" />
                                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                                </div>
                                <div class="col-md-6 col-sm-6">
@@ -224,16 +202,23 @@
                                     <label for="poli">Poliklinik/Unit Penunjang</label>
                                     <select name="poli" class="form-control">
                                          <?php
-                                            $querypoli=bukaquery("SELECT * from poliklinik order by nm_poli");
-                                            while($rsquerypoli = mysqli_fetch_array($querypoli)) {
-                                                echo "<option value='$rsquerypoli[0]'>$rsquerypoli[1]</option>";
+                                            if(!isset($_SESSION["poli"])){
+                                                echo "tes poli";
+                                                $datapoli   = "";
+                                                $querypoli  = bukaquery("SELECT * from poliklinik order by nm_poli");
+                                                while($rsquerypoli = mysqli_fetch_array($querypoli)) {
+                                                    $datapoli=$datapoli."<option value='$rsquerypoli[0]'>$rsquerypoli[1]</option>";
+                                                }
+                                                $_SESSION["poli"]=$datapoli;
                                             }
+                                            
+                                            echo $_SESSION["poli"];
                                         ?>
                                     </select>
                                </div>
                                <div class="col-md-12 col-sm-12">
                                     <label for="pesan">Tambahan Pesan</label>
-                                    <textarea class="form-control" rows="2" maxlength="400" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" id="TxtIsi5" name="pesan" placeholder="Tambahan Pessan" autocomplete="off"></textarea>
+                                    <textarea class="form-control" rows="2" maxlength="400" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" id="TxtIsi5" required name="pesan" placeholder="Tambahan Pessan" autocomplete="off"></textarea>
                                     <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
                                     <button type="submit" class="form-control" id="cf-submit" name="btnBooking">Kirimkan</button>
                                </div>

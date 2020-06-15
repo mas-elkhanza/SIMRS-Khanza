@@ -14,13 +14,11 @@
                                <tr class="head">
                                   <td width="15%" align="right"><label for="radiologi">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="radiologi" type="text" id="radiologi" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
-                                  <td width="15%" align="left">&nbsp;<input name="BtnRadiologi" type=submit class="btn btn-warning" value="Cari"></td>
+                                  <td width="69%"><input name="radiologi" type="text" id="radiologi" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_ (Maksimal 65 karakter)" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="15%" align="left">&nbsp;<input name="BtnRadiologi" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>
                          </form>
-                      </div>
-                      <div class="news-thumb wow fadeInUp" data-wow-delay="0.5s">
                          <table class="table table-hover" >
                             <tr>
                                 <th width="60%"><center>Nama Pemeriksaan</center></th>

@@ -3,6 +3,17 @@
     $db_username            = "root";
     $db_password            = "";
     $db_name                = "sik";
+    define('HARIDAFTAR', '03'); // Batasi hari pendaftaran 3 hari kedepan
+    define('LIMITJAM', '21:00:00'); // Batasi jam pendaftaran
+    define('SIGNUP', 'DISABLE'); // ENABLE atau DISABLE pendaftaran pasien baru
+    define('KODE_BERKAS', '002'); // Kode katergori berkas digital. Sesuaikan dengan kode yang ada di SIMRS.
+    define('UKURAN_BERKAS', '5000000'); // Ukuran berkas digital dalam byte
+    define('PENGADUAN', 'ENABLE'); // ENABLE atau DISABLE fitur pengaduan pasien.
+    define('URUTNOREG', 'DOKTER'); // DOKTER or POLI.
+    $month          = date('Y-m');
+    $date           = date('Y-m-d');
+    $time           = date('H:i:s');
+    $date_time      = date('Y-m-d H:i:s');
     
     function host(){
         global $db_hostname;
@@ -26,7 +37,18 @@
             $clean = mysqli_real_escape_string($konektor,$dirty);	
 	} 
          mysqli_close($konektor);
-	return preg_replace('/[^a-zA-Z0-9\s_ ]/', '',$clean);
+	return preg_replace('/[^a-zA-Z0-9\s_,@. ]/', '',$clean);
+    }
+    
+    function cleankar2($dirty){
+         $konektor=bukakoneksi();
+	if (get_magic_quotes_gpc()) {
+            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
+	}else{
+            $clean = mysqli_real_escape_string($konektor,$dirty);	
+	} 
+         mysqli_close($konektor);
+	return $clean;
     }
     
     function antisqlinjection(){
@@ -112,7 +134,7 @@
     function bukaquery($sql){    
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor, $sql)
-        or die (mysqli_error($konektor)."<br/><font color=red><b>hmmmmmmm.....??????????</b>");
+        or die (/*mysqli_error($konektor)*/"<br/><font color=red><b>Terjadi Kesalahan</b></font>".JSRedirect2("index.php?act=Home",4));
         mysqli_close($konektor);
         return $result;
     }
@@ -518,6 +540,26 @@
           return Terbilang($x / 1000) . " ribu" . Terbilang($x % 1000);
         elseif ($x < 1000000000)
           return Terbilang($x / 1000000) . " juta" . Terbilang($x % 1000000);
+    }
+    
+    function encrypt_decrypt($string,$action){
+        $secret_key     = 'Bar12345Bar12345'; 
+        $secret_iv      = 'sayangsamakhanza';
+        $output         = FALSE;
+        $encrypt_method = "AES-256-CBC";
+        $key            = hash('sha256', $secret_key);
+        $iv             = substr(hash('sha256', $secret_iv), 0, 16);
+ 
+        switch ($action){
+             case "e":
+                $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
+                break;
+             case "d":
+                $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+                break;
+        }
+        
+        return $output;
     }
         
 ?>

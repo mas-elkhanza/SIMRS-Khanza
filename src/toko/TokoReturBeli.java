@@ -807,6 +807,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     for(i=0;i<jml;i++){
                         tbDokter.setValueAt("",i,0);
                         tbDokter.setValueAt(0,i,5);
+                        tbDokter.setValueAt("",i,6);
                     }
                     getData();
                 }else{

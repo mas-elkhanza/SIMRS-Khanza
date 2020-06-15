@@ -11,7 +11,7 @@
     </script>
     <?php
         $nobooking = cleankar($_GET['nobooking']); 
-        $querybooking=bukaquery("select booking_periksa.no_booking,DATE_FORMAT(booking_periksa.tanggal,'%d-%m-%Y')as tanggal,booking_periksa.nama,booking_periksa.alamat,booking_periksa.no_telp,booking_periksa.email,poliklinik.nm_poli,booking_periksa.tambahan_pesan,DATE_FORMAT(booking_periksa.tanggal_booking,'%d-%m-%Y')as tanggal_booking from booking_periksa inner join poliklinik on booking_periksa.kd_poli=poliklinik.kd_poli where booking_periksa.no_booking='$nobooking'");
+        $querybooking=bukaquery("select booking_periksa.no_booking,DATE_FORMAT(booking_periksa.tanggal,'%d-%m-%Y')as tanggal,booking_periksa.nama,booking_periksa.alamat,booking_periksa.no_telp,booking_periksa.email,poliklinik.nm_poli,booking_periksa.tambahan_pesan,DATE_FORMAT(booking_periksa.tanggal_booking,'%d-%m-%Y %H:%i:%s')as tanggal_booking from booking_periksa inner join poliklinik on booking_periksa.kd_poli=poliklinik.kd_poli where booking_periksa.no_booking='$nobooking'");
         if(mysqli_num_rows($querybooking)!=0) { 
             $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
             echo "<table width='100%' bgcolor='#ffffff' align='left' border='0' padding='0' class='tbl_form' cellspacing='0' cellpadding='0'>

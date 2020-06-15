@@ -121,7 +121,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             "Kd.Dokter","Dokter Dituju","No.RM","Pasien",
             "Poliklinik","Penanggung Jawab","Alamat P.J.","Hubungan P.J.",
             "Biaya Reg","Jenis Bayar","Status","No.Rawat","Tanggal",
-            "Jam","No.Reg","Status Bayar","Stts Poli","Kd PJ","Kd Poli"}){
+            "Jam","No.Reg","Status Bayar","Stts Poli","Kd PJ","Kd Poli","No.Telp Pasien"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKasirRalan.setModel(tabModekasir);
@@ -129,7 +129,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         tbKasirRalan.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbKasirRalan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 19; i++) {
+        for (i = 0; i < 20; i++) {
             TableColumn column = tbKasirRalan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
@@ -171,6 +171,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }else if(i==18){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+            }else if(i==19){
+                column.setPreferredWidth(110);
             }
         }
         tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -178,7 +180,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         tabModekasir2=new DefaultTableModel(null,new String[]{
             "Kd.Dokter","Dokter Rujukan","Nomer RM","Pasien",
             "Poliklinik Rujukan","Penanggung Jawab","Alamat P.J.","Hubungan P.J.",
-            "Jenis Bayar","Status","No.Rawat","Tanggal","Jam","Kode Poli","Kode PJ"}){
+            "Jenis Bayar","Status","No.Rawat","Tanggal","Jam","Kode Poli","Kode PJ","No.Telp Pasien"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKasirRalan2.setModel(tabModekasir2);
@@ -186,7 +188,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         tbKasirRalan2.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbKasirRalan2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 16; i++) {
             TableColumn column = tbKasirRalan2.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
@@ -220,6 +222,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }else if(i==14){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+            }else if(i==15){
+                column.setPreferredWidth(110);
             }
         }
         tbKasirRalan2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -7843,7 +7847,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                     "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
                     "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts,penjab.png_jawab,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur, "+
-                    "reg_periksa.status_bayar,reg_periksa.status_poli,reg_periksa.kd_pj,reg_periksa.kd_poli "+
+                    "reg_periksa.status_bayar,reg_periksa.status_poli,reg_periksa.kd_pj,reg_periksa.kd_poli,pasien.no_tlp "+
                     "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+
                     "reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
@@ -8477,7 +8481,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             pskasir=koneksi.prepareStatement("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                 "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
                 "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts,penjab.png_jawab,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur, "+
-                "reg_periksa.status_bayar,reg_periksa.status_poli,reg_periksa.kd_pj,reg_periksa.kd_poli "+
+                "reg_periksa.status_bayar,reg_periksa.status_poli,reg_periksa.kd_pj,reg_periksa.kd_poli,pasien.no_tlp "+
                 "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+
                 "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut='Ralan' "+
@@ -8516,7 +8520,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         rskasir.getString(9),rskasir.getString(10),rskasir.getString(11),rskasir.getString(12),Valid.SetAngka(rskasir.getDouble(13)),
                         rskasir.getString("png_jawab"),rskasir.getString(14),rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
                         rskasir.getString("jam_reg"),rskasir.getString(1),rskasir.getString("status_bayar"),rskasir.getString("status_poli"),
-                        rskasir.getString("kd_pj"),rskasir.getString("kd_poli")
+                        rskasir.getString("kd_pj"),rskasir.getString("kd_poli"),rskasir.getString("no_tlp")
                     });
                 }                
             } catch(Exception e){
@@ -8542,7 +8546,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             pskasir=koneksi.prepareStatement("select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                 "rujukan_internal_poli.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
                 "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.stts,penjab.png_jawab,rujukan_internal_poli.kd_poli,"+
-                "concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.kd_pj "+
+                "concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.kd_pj,pasien.no_tlp "+
                 "from reg_periksa inner join rujukan_internal_poli on rujukan_internal_poli.no_rawat=reg_periksa.no_rawat "+
                 "inner join dokter on rujukan_internal_poli.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join poliklinik on rujukan_internal_poli.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
@@ -8578,11 +8582,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     tabModekasir2.addRow(new String[] {
                         rskasir.getString("kd_dokter"),rskasir.getString("nm_dokter"),
                         rskasir.getString("no_rkm_medis"),rskasir.getString("nm_pasien")+" ("+rskasir.getString("umur")+")",
-                        rskasir.getString("nm_poli"),rskasir.getString("p_jawab"),
-                        rskasir.getString("almt_pj"),rskasir.getString("hubunganpj"),
-                        rskasir.getString("png_jawab"),rskasir.getString("stts"),
-                        rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
-                        rskasir.getString("jam_reg"),rskasir.getString("kd_poli"),rskasir.getString("kd_pj")
+                        rskasir.getString("nm_poli"),rskasir.getString("p_jawab"),rskasir.getString("almt_pj"),rskasir.getString("hubunganpj"),
+                        rskasir.getString("png_jawab"),rskasir.getString("stts"),rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
+                        rskasir.getString("jam_reg"),rskasir.getString("kd_poli"),rskasir.getString("kd_pj"),rskasir.getString("no_tlp")
                     });
                 }                
             } catch(Exception e){

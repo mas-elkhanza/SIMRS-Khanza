@@ -609,6 +609,7 @@ import toko.TokoBarang;
 import toko.TokoBayarPiutang;
 import toko.TokoInputStok;
 import toko.TokoJenis;
+import toko.TokoKeuntunganBarang;
 import toko.TokoMember;
 import toko.TokoPembelian;
 import toko.TokoPemesanan;
@@ -619,7 +620,11 @@ import toko.TokoPenjualan;
 import toko.TokoPiutang;
 import toko.TokoPiutangHarian;
 import toko.TokoReturBeli;
+import toko.TokoReturJual;
+import toko.TokoReturPiutang;
 import toko.TokoRiwayatBarang;
+import toko.TokoSirkulasi;
+import toko.TokoSirkulasi2;
 import toko.TokoSuplier;
 import toko.TokoSuratPemesanan;
 import tranfusidarah.UTDCariPenyerahanDarah;
@@ -634,6 +639,17 @@ import tranfusidarah.UTDPenyerahanDarah;
 import tranfusidarah.UTDStokDarah;
 import viabarcode.DlgBarcodeRalan;
 import viabarcode.DlgBarcodeRanap;
+import ziscsr.ZISAtapRumahPenerimaDankes;
+import ziscsr.ZISDapurRumahPenerimaDankes;
+import ziscsr.ZISDindingRumahPenerimaDankes;
+import ziscsr.ZISElektronikPenerimaDankes;
+import ziscsr.ZISKamarMandiPenerimaDankes;
+import ziscsr.ZISKategoriPHBSPenerimaDankes;
+import ziscsr.ZISKursiRumahPenerimaDankes;
+import ziscsr.ZISLantaiRumahPenerimaDankes;
+import ziscsr.ZISPengeluaranPenerimaDankes;
+import ziscsr.ZISPenghasilanPenerimaDankes;
+import ziscsr.ZISUkuranRumahPenerimaDankes;
 
 
 /**
@@ -1340,8 +1356,8 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(245, 0, 117));
-        internalFrame2.setWarnaBawah(new java.awt.Color(225, 0, 97));
+        internalFrame2.setWarnaAtas(new java.awt.Color(245, 0, 120));
+        internalFrame2.setWarnaBawah(new java.awt.Color(228, 0, 103));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -1479,7 +1495,7 @@ public class frmUtama extends javax.swing.JFrame {
         label35.setPreferredSize(new java.awt.Dimension(105, 23));
         panelisi2.add(label35);
 
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset, Inventaris Barang & Instalasi Kesehatan Lingkungan", "[G] Menejemen Parkir Kendaraan Pasien & Karyawan", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal", "[J] Tarif Pelayanan, Menejemen Keuangan & Akuntansi", "[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Analisa, Dashboard & Info Grafik", "[O] Manajemen Surat Masuk & Keluar, Pengumuman E-Pasien", "[P] Manajemen Perpustakaan & Koleksi Pustaka Digital", "[Q] Toko / Minimarket / Koperasi", "[R] Pengaturan Program Aplikasi HMS" }));
+        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset, Inventaris Barang & Instalasi Kesehatan Lingkungan", "[G] Menejemen Parkir Kendaraan Pasien & Karyawan", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal", "[J] Tarif Pelayanan, Menejemen Keuangan & Akuntansi", "[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Analisa, Dashboard & Info Grafik", "[O] Manajemen Surat Masuk & Keluar, Pengumuman E-Pasien", "[P] Manajemen Perpustakaan & Koleksi Pustaka Digital", "[Q] Toko / Minimarket / Koperasi", "[R] Pengelolaan Data Filantropi, CSR, Zakat, Infaq & Shodaqoh", "[S] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
         cmbMenu.setPreferredSize(new java.awt.Dimension(470, 23));
         cmbMenu.addItemListener(new java.awt.event.ItemListener() {
@@ -1536,7 +1552,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/05/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/06/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -1728,7 +1744,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stock_task.png"))); // NOI18N
+        btnResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconnomorresep.png"))); // NOI18N
         btnResepObat.setText("No. Resep");
         btnResepObat.setIconTextGap(0);
         btnResepObat.setName("btnResepObat"); // NOI18N
@@ -2036,7 +2052,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Icon-Informasi-Kamar.png"))); // NOI18N
+        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_cleaning-door-knob-object-hygiene_5728178.png"))); // NOI18N
         btnAnalisaKamar.setText("Informasi Kamar");
         btnAnalisaKamar.setIconTextGap(0);
         btnAnalisaKamar.setName("btnAnalisaKamar"); // NOI18N
@@ -6595,8 +6611,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 42));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(255, 245, 245));
-        internalFrame1.setWarnaBawah(new java.awt.Color(255, 205, 205));
+        internalFrame1.setWarnaAtas(new java.awt.Color(255, 242, 247));
+        internalFrame1.setWarnaBawah(new java.awt.Color(255, 202, 207));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -6876,8 +6892,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(255, 205, 210));
-        internalFrame4.setWarnaBawah(new java.awt.Color(255, 245, 250));
+        internalFrame4.setWarnaAtas(new java.awt.Color(255, 202, 212));
+        internalFrame4.setWarnaBawah(new java.awt.Color(255, 242, 252));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -10459,8 +10475,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 win.setLocationRelativeTo(PanelUtama);
                 win.toFront();
             }
-        }        
-        
+        }
     }//GEN-LAST:event_PanelWallMouseMoved
 
     private void btnCekBPJSFaskesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekBPJSFaskesActionPerformed
@@ -15837,11 +15852,228 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgBookingPeriksa aplikasi=new DlgBookingPeriksa();
-        aplikasi.setSize(750, PanelUtama.getHeight()-40);
+        aplikasi.isCek();
+        aplikasi.setSize(800, PanelUtama.getHeight()-40);
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSirkulasiBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoSirkulasi sirkulasi=new TokoSirkulasi(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnReturJualTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoReturJual form=new TokoReturJual(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnReturPiutangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoReturPiutang form=new TokoReturPiutang(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnSirkulasiBarangToko2ActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoSirkulasi2 sirkulasi=new TokoSirkulasi2(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnKeuntunganBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        TokoKeuntunganBarang form=new TokoKeuntunganBarang(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISPengeluaranPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISPengeluaranPenerimaDankes form=new ZISPengeluaranPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISPenghasilanPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISPenghasilanPenerimaDankes form=new ZISPenghasilanPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISUkuranRumahPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISUkuranRumahPenerimaDankes form=new ZISUkuranRumahPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISDindingRumahPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISDindingRumahPenerimaDankes form=new ZISDindingRumahPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISLantaiRumahPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISLantaiRumahPenerimaDankes form=new ZISLantaiRumahPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISAtapRumahPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISAtapRumahPenerimaDankes form=new ZISAtapRumahPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISKepemilikanRumahPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISAtapRumahPenerimaDankes form=new ZISAtapRumahPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISKamarMandiPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISKamarMandiPenerimaDankes form=new ZISKamarMandiPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISDapurRumahPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISDapurRumahPenerimaDankes form=new ZISDapurRumahPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISKursiRumahPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISKursiRumahPenerimaDankes form=new ZISKursiRumahPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISKategoriPHBSPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISKategoriPHBSPenerimaDankes form=new ZISKategoriPHBSPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnZISElektronikPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISElektronikPenerimaDankes form=new ZISElektronikPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16440,7 +16672,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnBayarPesanToko,btnMemberToko,btnPenjualanToko,btnRegistrasiPoliPerTanggal,btnPiutangToko,btnReturKeSuplierToko,btnReturBarangNonMedis,
             btnRiwayatBarangNonMedis,btnPasienCorona,btnPendapatanHarianToko,btnDiagnosaPasienCorona,btnPerawatanPasienCorona,btnPenilaianAwalKeperawatanGigi,
             btnMasterMasalahKeperawatanGigi,btnBayarPiutangToko,btnPiutangHarianToko,btnPenjualanHarianToko,btnDeteksiDiniCorona,btnPenilaianAwalKeperawatanKebidanan,
-            btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa;
+            btnPengumumanEPasien,btnSuratHamil,btnSetTarifOnline,btnBookingPeriksa,btnSirkulasiBarangToko,btnReturJualToko,btnReturPiutangToko,
+            btnSirkulasiBarangToko2,btnKeuntunganBarangToko,btnZISPengeluaranPenerimaDankes,btnZISPenghasilanPenerimaDankes,btnZISUkuranRumahPenerimaDankes,
+            btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes,btnZISKepemilikanRumahPenerimaDankes,
+            btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
+            btnZISElektronikPenerimaDankes;
     
     public void isWall(){
         try{            
@@ -19517,6 +19753,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.gettoko_retur_jual()==true){
+                Panelmenu.add(btnReturJualToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_retur_piutang()==true){
+                Panelmenu.add(btnReturPiutangToko); 
+                jmlmenu++;
+            }
+            
             if(akses.gettoko_hutang()==true){
                 Panelmenu.add(btnHutangToko);
                 jmlmenu++;
@@ -19542,11 +19788,87 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.gettoko_keuntungan_barang()==true){
+                Panelmenu.add(btnKeuntunganBarangToko); 
+                jmlmenu++;
+            }
+            
             if(akses.gettoko_bayar_piutang()==true){
                 Panelmenu.add(btnBayarPiutangToko); 
                 jmlmenu++;
             }
-        }else if(cmbMenu.getSelectedIndex()==17){   
+            
+            if(akses.gettoko_sirkulasi()==true){
+                Panelmenu.add(btnSirkulasiBarangToko); 
+                jmlmenu++;
+            }
+            
+            if(akses.gettoko_sirkulasi2()==true){
+                Panelmenu.add(btnSirkulasiBarangToko2); 
+                jmlmenu++;
+            }
+        }else if(cmbMenu.getSelectedIndex()==17){
+            jmlmenu=0;
+            if(akses.getzis_pengeluaran_penerima_dankes()==true){
+                Panelmenu.add(btnZISPengeluaranPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_penghasilan_penerima_dankes()==true){
+                Panelmenu.add(btnZISPenghasilanPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_ukuran_rumah_penerima_dankes()==true){
+                Panelmenu.add(btnZISUkuranRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_dinding_rumah_penerima_dankes()==true){
+                Panelmenu.add(btnZISDindingRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_lantai_rumah_penerima_dankes()==true){
+                Panelmenu.add(btnZISLantaiRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_atap_rumah_penerima_dankes()==true){
+                Panelmenu.add(btnZISAtapRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_kepemilikan_rumah_penerima_dankes()==true){
+                Panelmenu.add(btnZISKepemilikanRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_kamar_mandi_penerima_dankes()==true){
+                Panelmenu.add(btnZISKamarMandiPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_dapur_rumah_penerima_dankes()==true){
+                Panelmenu.add(btnZISDapurRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_kursi_rumah_penerima_dankes()==true){
+                Panelmenu.add(btnZISKursiRumahPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_kategori_phbs_penerima_dankes()==true){
+                Panelmenu.add(btnZISKategoriPHBSPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_elektronik_penerima_dankes()==true){
+                Panelmenu.add(btnZISElektronikPenerimaDankes);
+                jmlmenu++;
+            }
+        }else if(cmbMenu.getSelectedIndex()==18){   
             jmlmenu=0;
             if(akses.getaplikasi()==true){
                 Panelmenu.add(btnSetupAplikasi);
@@ -22624,6 +22946,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.gettoko_retur_jual()==true){
+            Panelmenu.add(btnReturJualToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_retur_piutang()==true){
+            Panelmenu.add(btnReturPiutangToko); 
+            jmlmenu++;
+        }
+        
         if(akses.gettoko_hutang()==true){
             Panelmenu.add(btnHutangToko);
             jmlmenu++;
@@ -22649,8 +22981,83 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
 
+        if(akses.gettoko_keuntungan_barang()==true){
+            Panelmenu.add(btnKeuntunganBarangToko); 
+            jmlmenu++;
+        }
+
         if(akses.gettoko_bayar_piutang()==true){
             Panelmenu.add(btnBayarPiutangToko); 
+            jmlmenu++;
+        }
+        
+        if(akses.gettoko_sirkulasi()==true){
+            Panelmenu.add(btnSirkulasiBarangToko); 
+            jmlmenu++;
+        }
+
+        if(akses.gettoko_sirkulasi2()==true){
+            Panelmenu.add(btnSirkulasiBarangToko2); 
+            jmlmenu++;
+        }
+
+        if(akses.getzis_pengeluaran_penerima_dankes()==true){
+            Panelmenu.add(btnZISPengeluaranPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_penghasilan_penerima_dankes()==true){
+            Panelmenu.add(btnZISPenghasilanPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_ukuran_rumah_penerima_dankes()==true){
+            Panelmenu.add(btnZISUkuranRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_dinding_rumah_penerima_dankes()==true){
+            Panelmenu.add(btnZISDindingRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_lantai_rumah_penerima_dankes()==true){
+            Panelmenu.add(btnZISLantaiRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_atap_rumah_penerima_dankes()==true){
+            Panelmenu.add(btnZISAtapRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_kepemilikan_rumah_penerima_dankes()==true){
+            Panelmenu.add(btnZISKepemilikanRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_kamar_mandi_penerima_dankes()==true){
+            Panelmenu.add(btnZISKamarMandiPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_dapur_rumah_penerima_dankes()==true){
+            Panelmenu.add(btnZISDapurRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_kursi_rumah_penerima_dankes()==true){
+            Panelmenu.add(btnZISKursiRumahPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_kategori_phbs_penerima_dankes()==true){
+            Panelmenu.add(btnZISKategoriPHBSPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_elektronik_penerima_dankes()==true){
+            Panelmenu.add(btnZISElektronikPenerimaDankes);
             jmlmenu++;
         }
 
@@ -26909,6 +27316,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_retur_jual()==true){
+            if(btnReturJualToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnReturJualToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_retur_piutang()==true){
+            if(btnReturPiutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnReturPiutangToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettoko_hutang()==true){
             if(btnHutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHutangToko);
@@ -26944,9 +27365,114 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gettoko_keuntungan_barang()==true){
+            if(btnKeuntunganBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKeuntunganBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettoko_bayar_piutang()==true){
             if(btnBayarPiutangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarPiutangToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_sirkulasi()==true){
+            if(btnSirkulasiBarangToko.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSirkulasiBarangToko);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettoko_sirkulasi2()==true){
+            if(btnSirkulasiBarangToko2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSirkulasiBarangToko2);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_pengeluaran_penerima_dankes()==true){
+            if(btnZISPengeluaranPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISPengeluaranPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_penghasilan_penerima_dankes()==true){
+            if(btnZISPenghasilanPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISPenghasilanPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_ukuran_rumah_penerima_dankes()==true){
+            if(btnZISUkuranRumahPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISUkuranRumahPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_dinding_rumah_penerima_dankes()==true){
+            if(btnZISDindingRumahPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISDindingRumahPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_lantai_rumah_penerima_dankes()==true){
+            if(btnZISLantaiRumahPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISLantaiRumahPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_atap_rumah_penerima_dankes()==true){
+            if(btnZISAtapRumahPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISAtapRumahPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_kepemilikan_rumah_penerima_dankes()==true){
+            if(btnZISKepemilikanRumahPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISKepemilikanRumahPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_kamar_mandi_penerima_dankes()==true){
+            if(btnZISKamarMandiPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISKamarMandiPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_dapur_rumah_penerima_dankes()==true){
+            if(btnZISDapurRumahPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISDapurRumahPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_kursi_rumah_penerima_dankes()==true){
+            if(btnZISKursiRumahPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISKursiRumahPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_kategori_phbs_penerima_dankes()==true){
+            if(btnZISKategoriPHBSPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISKategoriPHBSPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_elektronik_penerima_dankes()==true){
+            if(btnZISElektronikPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISElektronikPenerimaDankes);
                 jmlmenu++;
             }                
         }
@@ -29115,7 +29641,210 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 btnBookingPeriksaActionPerformed(evt);
             }
         });
-                
+        
+        btnSirkulasiBarangToko = new widget.ButtonBig();
+        btnSirkulasiBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); 
+        btnSirkulasiBarangToko.setText("Sirkulasi Barang Toko");
+        btnSirkulasiBarangToko.setIconTextGap(0);
+        btnSirkulasiBarangToko.setName("btnSirkulasiBarangToko"); 
+        btnSirkulasiBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasiBarangTokoActionPerformed(evt);
+            }
+        });    
+        
+        btnReturJualToko = new widget.ButtonBig();
+        btnReturJualToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486142_shopping_cart.png"))); 
+        btnReturJualToko.setText("Retur Jual Toko");
+        btnReturJualToko.setIconTextGap(0);
+        btnReturJualToko.setName("btnReturJualToko"); 
+        btnReturJualToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReturJualToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturJualTokoActionPerformed(evt);
+            }
+        }); 
+        
+        btnReturPiutangToko = new widget.ButtonBig();
+        btnReturPiutangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); 
+        btnReturPiutangToko.setText("Retur Piutang Toko");
+        btnReturPiutangToko.setIconTextGap(0);
+        btnReturPiutangToko.setName("btnReturPiutangToko"); 
+        btnReturPiutangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReturPiutangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturPiutangTokoActionPerformed(evt);
+            }
+        }); 
+        
+        btnSirkulasiBarangToko2 = new widget.ButtonBig();
+        btnSirkulasiBarangToko2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); 
+        btnSirkulasiBarangToko2.setText("Sirkulasi Barang Toko 2");
+        btnSirkulasiBarangToko2.setIconTextGap(0);
+        btnSirkulasiBarangToko2.setName("btnSirkulasiBarangToko2"); 
+        btnSirkulasiBarangToko2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiBarangToko2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasiBarangToko2ActionPerformed(evt);
+            }
+        }); 
+        
+        btnKeuntunganBarangToko = new widget.ButtonBig();
+        btnKeuntunganBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); 
+        btnKeuntunganBarangToko.setText("Keuntungan Barang Toko");
+        btnKeuntunganBarangToko.setIconTextGap(0);
+        btnKeuntunganBarangToko.setName("btnKeuntunganBarangToko"); 
+        btnKeuntunganBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKeuntunganBarangToko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeuntunganBarangTokoActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISPengeluaranPenerimaDankes = new widget.ButtonBig();
+        btnZISPengeluaranPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_vector_65_04_473782.png"))); 
+        btnZISPengeluaranPenerimaDankes.setText("Ket Pengeluaran Penerima Dankes");
+        btnZISPengeluaranPenerimaDankes.setIconTextGap(0);
+        btnZISPengeluaranPenerimaDankes.setName("btnZISPengeluaranPenerimaDankes"); 
+        btnZISPengeluaranPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISPengeluaranPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISPengeluaranPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISPenghasilanPenerimaDankes = new widget.ButtonBig();
+        btnZISPenghasilanPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_phonebook_17015.png"))); 
+        btnZISPenghasilanPenerimaDankes.setText("Ket Penghasilan Penerima Dankes");
+        btnZISPenghasilanPenerimaDankes.setIconTextGap(0);
+        btnZISPenghasilanPenerimaDankes.setName("btnZISPenghasilanPenerimaDankes"); 
+        btnZISPenghasilanPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISPenghasilanPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISPenghasilanPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISUkuranRumahPenerimaDankes = new widget.ButtonBig();
+        btnZISUkuranRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Home_34226.png"))); 
+        btnZISUkuranRumahPenerimaDankes.setText("Ukuran Rumah Penerima Dankes");
+        btnZISUkuranRumahPenerimaDankes.setIconTextGap(0);
+        btnZISUkuranRumahPenerimaDankes.setName("btnZISUkuranRumahPenerimaDankes"); 
+        btnZISUkuranRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISUkuranRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISUkuranRumahPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISDindingRumahPenerimaDankes = new widget.ButtonBig();
+        btnZISDindingRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_building_17020.png"))); 
+        btnZISDindingRumahPenerimaDankes.setText("Dinding Rumah Penerima Dankes");
+        btnZISDindingRumahPenerimaDankes.setIconTextGap(0);
+        btnZISDindingRumahPenerimaDankes.setName("btnZISDindingRumahPenerimaDankes"); 
+        btnZISDindingRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISDindingRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISDindingRumahPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISLantaiRumahPenerimaDankes = new widget.ButtonBig();
+        btnZISLantaiRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_fence-picket-garden-yard-farm-barrier-wooden_2189586.png"))); 
+        btnZISLantaiRumahPenerimaDankes.setText("Lantai Rumah Penerima Dankes");
+        btnZISLantaiRumahPenerimaDankes.setIconTextGap(0);
+        btnZISLantaiRumahPenerimaDankes.setName("btnZISLantaiRumahPenerimaDankes"); 
+        btnZISLantaiRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISLantaiRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISLantaiRumahPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISAtapRumahPenerimaDankes = new widget.ButtonBig();
+        btnZISAtapRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_home_17008.png"))); 
+        btnZISAtapRumahPenerimaDankes.setText("Atap Rumah Penerima Dankes");
+        btnZISAtapRumahPenerimaDankes.setIconTextGap(0);
+        btnZISAtapRumahPenerimaDankes.setName("btnZISAtapRumahPenerimaDankes"); 
+        btnZISAtapRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISAtapRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISAtapRumahPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISKepemilikanRumahPenerimaDankes = new widget.ButtonBig();
+        btnZISKepemilikanRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Locked_Cell_Door_128415.png"))); 
+        btnZISKepemilikanRumahPenerimaDankes.setText("Kepemilikan Rumah Penerima Dankes");
+        btnZISKepemilikanRumahPenerimaDankes.setIconTextGap(0);
+        btnZISKepemilikanRumahPenerimaDankes.setName("btnZISKepemilikanRumahPenerimaDankes"); 
+        btnZISKepemilikanRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISKepemilikanRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISKepemilikanRumahPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISKamarMandiPenerimaDankes = new widget.ButtonBig();
+        btnZISKamarMandiPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_13-Shower_6027796.png"))); 
+        btnZISKamarMandiPenerimaDankes.setText("Kamar Mandi Penerima Dankes");
+        btnZISKamarMandiPenerimaDankes.setIconTextGap(0);
+        btnZISKamarMandiPenerimaDankes.setName("btnZISKamarMandiPenerimaDankes"); 
+        btnZISKamarMandiPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISKamarMandiPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISKamarMandiPenerimaDankesActionPerformed(evt);
+            }
+        }); 
+        
+        btnZISDapurRumahPenerimaDankes = new widget.ButtonBig();
+        btnZISDapurRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_25-Hot_cooking_5929219.png"))); 
+        btnZISDapurRumahPenerimaDankes.setText("Dapur Rumah Penerima Dankes");
+        btnZISDapurRumahPenerimaDankes.setIconTextGap(0);
+        btnZISDapurRumahPenerimaDankes.setName("btnZISDapurRumahPenerimaDankes"); 
+        btnZISDapurRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISDapurRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISDapurRumahPenerimaDankesActionPerformed(evt);
+            }
+        });
+        
+        btnZISKursiRumahPenerimaDankes = new widget.ButtonBig();
+        btnZISKursiRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_education-school-chair-seat-computer-study-office_5854055.png"))); 
+        btnZISKursiRumahPenerimaDankes.setText("Kursi Rumah Penerima Dankes");
+        btnZISKursiRumahPenerimaDankes.setIconTextGap(0);
+        btnZISKursiRumahPenerimaDankes.setName("btnZISKursiRumahPenerimaDankes"); 
+        btnZISKursiRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISKursiRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISKursiRumahPenerimaDankesActionPerformed(evt);
+            }
+        });
+        
+        btnZISKategoriPHBSPenerimaDankes = new widget.ButtonBig();
+        btnZISKategoriPHBSPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_house_sink_1378831.png"))); 
+        btnZISKategoriPHBSPenerimaDankes.setText("Kategori PHBS Penerima Dankes");
+        btnZISKategoriPHBSPenerimaDankes.setIconTextGap(0);
+        btnZISKategoriPHBSPenerimaDankes.setName("btnZISKategoriPHBSPenerimaDankes"); 
+        btnZISKategoriPHBSPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISKategoriPHBSPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISKategoriPHBSPenerimaDankesActionPerformed(evt);
+            }
+        });
+        
+        btnZISElektronikPenerimaDankes = new widget.ButtonBig();
+        btnZISElektronikPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Eco_bulb_energy_light_2992437.png"))); 
+        btnZISElektronikPenerimaDankes.setText("Elektronik Penerima Dankes");
+        btnZISElektronikPenerimaDankes.setIconTextGap(0);
+        btnZISElektronikPenerimaDankes.setName("btnZISElektronikPenerimaDankes"); 
+        btnZISElektronikPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISElektronikPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISElektronikPenerimaDankesActionPerformed(evt);
+            }
+        });
     }
 
     

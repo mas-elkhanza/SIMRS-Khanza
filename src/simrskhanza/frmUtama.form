@@ -19,10 +19,10 @@
             </Property>
             <Property name="name" type="java.lang.String" value="internalFrame2" noResource="true"/>
             <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="75" green="0" red="f5" type="rgb"/>
+              <Color blue="78" green="0" red="f5" type="rgb"/>
             </Property>
             <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="61" green="0" red="e1" type="rgb"/>
+              <Color blue="67" green="0" red="e4" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -357,7 +357,7 @@
                 <Component class="widget.ComboBox" name="cmbMenu">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="18">
+                      <StringArray count="19">
                         <StringItem index="0" value="[A] Registrasi, Tagihan Ranap &amp; Ralan, Pelayanan &amp; Billing Pasien"/>
                         <StringItem index="1" value="[B] Input Data Tindakan, Obat &amp; BHP Via Barcode No.Rawat"/>
                         <StringItem index="2" value="[C] Presensi, Manajemen &amp; Penggajian Pegawai Rumah Sakit"/>
@@ -375,7 +375,8 @@
                         <StringItem index="14" value="[O] Manajemen Surat Masuk &amp; Keluar, Pengumuman E-Pasien"/>
                         <StringItem index="15" value="[P] Manajemen Perpustakaan &amp; Koleksi Pustaka Digital"/>
                         <StringItem index="16" value="[Q] Toko / Minimarket / Koperasi"/>
-                        <StringItem index="17" value="[R] Pengaturan Program Aplikasi HMS"/>
+                        <StringItem index="17" value="[R] Pengelolaan Data Filantropi, CSR, Zakat, Infaq &amp; Shodaqoh"/>
+                        <StringItem index="18" value="[S] Pengaturan Program Aplikasi HMS"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="cmbMenu" noResource="true"/>
@@ -480,7 +481,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="26/05/2020"/>
+            <StringItem index="0" value="14/06/2020"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -763,7 +764,7 @@
     <Component class="widget.ButtonBig" name="btnResepObat">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/stock_task.png"/>
+          <Image iconType="3" name="/48x48/iconnomorresep.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="No. Resep"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -1211,7 +1212,7 @@
     <Component class="widget.ButtonBig" name="btnAnalisaKamar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/Icon-Informasi-Kamar.png"/>
+          <Image iconType="3" name="/48x48/iconfinder_cleaning-door-knob-object-hygiene_5728178.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Informasi Kamar"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -8944,10 +8945,10 @@
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f5" green="f5" red="ff" type="rgb"/>
+          <Color blue="f7" green="f2" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cd" green="cd" red="ff" type="rgb"/>
+          <Color blue="cf" green="ca" red="ff" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -9400,10 +9401,10 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d2" green="cd" red="ff" type="rgb"/>
+          <Color blue="d4" green="ca" red="ff" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="fa" green="f5" red="ff" type="rgb"/>
+          <Color blue="fc" green="f2" red="ff" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
