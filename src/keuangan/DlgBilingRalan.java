@@ -83,7 +83,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             Beban_Jasa_Medik_Paramedis_Operasi_Ralan = "", Utang_Jasa_Medik_Paramedis_Operasi_Ralan = "",
             HPP_Obat_Operasi_Ralan = "", Persediaan_Obat_Kamar_Operasi_Ralan = "",
             Operasi_Ralan = "", tampilkan_ppnobat_ralan = "", rincianoperasi = "", centangobatralan = "No",
-            sqlpscekbilling = "select count(billing.no_rawat) from billing1 where billing.no_rawat=?",
+            sqlpscekbilling = "select count(billing.no_rawat) from billing where billing.no_rawat=?",
             sqlpscarirm = "select no_rkm_medis from reg_periksa where no_rawat=?",
             sqlpscaripasien = "select nm_pasien from pasien where no_rkm_medis=? ",
             sqlpsreg = "select reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,"
@@ -159,12 +159,12 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             + "on detreturjual.kode_brng=databarang.kode_brng "
             + "and returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual=? group by databarang.nama_brng",
             sqlpstambahan = "select nama_biaya, besar_biaya from tambahan_biaya where no_rawat=?  ",
-            sqlpsbiling = "insert into billing1 values(?,?,?,?,?,?,?,?,?,?,?)",
+            sqlpsbiling = "insert into billing values(?,?,?,?,?,?,?,?,?,?,?)",
             sqlpstemporary = "insert into temporary_bayar_ralan values('0',?,?,?,?,?,?,?,?,?,'','','','','','','','')",
             sqlpspotongan = "select nama_pengurangan,besar_pengurangan from pengurangan_biaya where no_rawat=?",
             sqlpsbilling = "select no,nm_perawatan, if(biaya<>0,biaya,null) as satu, if(jumlah<>0,jumlah,null) as dua,"
             + "if(tambahan<>0,tambahan,null) as tiga, if(totalbiaya<>0,totalbiaya,null) as empat,pemisah,status "
-            + "from billing1 where no_rawat=? order by noindex",
+            + "from billing where no_rawat=? order by noindex",
             sqlpscariradiologi = "select jns_perawatan_radiologi.nm_perawatan, count(periksa_radiologi.kd_jenis_prw) as jml,periksa_radiologi.biaya as biaya, "
             + "sum(periksa_radiologi.biaya) as total,jns_perawatan_radiologi.kd_jenis_prw,sum(periksa_radiologi.tarif_perujuk+periksa_radiologi.tarif_tindakan_dokter) as totaldokter, "
             + "sum(periksa_radiologi.tarif_tindakan_petugas) as totalpetugas,sum(periksa_radiologi.kso) as totalkso,sum(periksa_radiologi.bhp) as totalbhp "
