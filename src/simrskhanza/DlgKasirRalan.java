@@ -130,8 +130,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     /**
      * Creates new form DlgReg
      *
+     * @param parent
      * @param frame
-     * @param bln
+     * @param modal
      */
     public DlgKasirRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -156,46 +157,68 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
 
         for (i = 0; i < 19; i++) {
             TableColumn column = tbKasirRalan.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(70);
-            } else if (i == 1) {
-                column.setPreferredWidth(180);
-            } else if (i == 2) {
-                column.setPreferredWidth(65);
-            } else if (i == 3) {
-                column.setPreferredWidth(180);
-            } else if (i == 4) {
-                column.setPreferredWidth(140);
-            } else if (i == 5) {
-                column.setPreferredWidth(140);
-            } else if (i == 6) {
-                column.setPreferredWidth(170);
-            } else if (i == 7) {
-                column.setPreferredWidth(90);
-            } else if (i == 8) {
-                column.setPreferredWidth(70);
-            } else if (i == 9) {
-                column.setPreferredWidth(100);
-            } else if (i == 10) {
-                column.setPreferredWidth(55);
-            } else if (i == 11) {
-                column.setPreferredWidth(105);
-            } else if (i == 12) {
-                column.setPreferredWidth(65);
-            } else if (i == 13) {
-                column.setPreferredWidth(55);
-            } else if (i == 14) {
-                column.setPreferredWidth(47);
-            } else if (i == 15) {
-                column.setPreferredWidth(80);
-            } else if (i == 16) {
-                column.setPreferredWidth(60);
-            } else if (i == 17) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 18) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(70);
+                    break;
+                case 1:
+                    column.setPreferredWidth(180);
+                    break;
+                case 2:
+                    column.setPreferredWidth(65);
+                    break;
+                case 3:
+                    column.setPreferredWidth(180);
+                    break;
+                case 4:
+                    column.setPreferredWidth(140);
+                    break;
+                case 5:
+                    column.setPreferredWidth(140);
+                    break;
+                case 6:
+                    column.setPreferredWidth(170);
+                    break;
+                case 7:
+                    column.setPreferredWidth(90);
+                    break;
+                case 8:
+                    column.setPreferredWidth(70);
+                    break;
+                case 9:
+                    column.setPreferredWidth(100);
+                    break;
+                case 10:
+                    column.setPreferredWidth(55);
+                    break;
+                case 11:
+                    column.setPreferredWidth(105);
+                    break;
+                case 12:
+                    column.setPreferredWidth(65);
+                    break;
+                case 13:
+                    column.setPreferredWidth(55);
+                    break;
+                case 14:
+                    column.setPreferredWidth(47);
+                    break;
+                case 15:
+                    column.setPreferredWidth(80);
+                    break;
+                case 16:
+                    column.setPreferredWidth(60);
+                    break;
+                case 17:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    break;
+                case 18:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    break;
+                default:
+                    break;
             }
         }
         tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -506,11 +529,11 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notif Tansparant : " + e);
-                
+
             }
         } catch (Exception ex) {
             System.out.println("Notif Load XML : " + ex);
-            
+
         }
     }
 
@@ -4998,7 +5021,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : " + ex);
-                        
+
                     } finally {
                         if (rskasir != null) {
                             rskasir.close();
@@ -5009,7 +5032,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println(e);
-                    
+
                 }
             }
         }
@@ -6810,7 +6833,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             }
                         } catch (Exception ex) {
                             System.out.println("Notifikasi : " + ex);
-                            
+
                         } finally {
                             if (rskasir != null) {
                                 rskasir.close();
@@ -6821,7 +6844,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception e) {
                         System.out.println(e);
-                        
+
                     }
                 }
             }
@@ -6938,7 +6961,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : " + ex);
-                        
+
                     } finally {
                         if (rskasir != null) {
                             rskasir.close();
@@ -6949,7 +6972,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println(e);
-                    
+
                 }
             }
         }
@@ -6973,7 +6996,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         + TNoRw.getText());
             } catch (Exception ex) {
                 System.out.println("Notifikasi : " + ex);
-                
+
             }
 
             berkas.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -6999,7 +7022,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             + tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(), 10).toString());
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : " + ex);
-                    
+
                 }
 
                 berkas.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -8874,7 +8897,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Tampilkasir01 : " + e);
-                
+
             } finally {
                 if (rskasir != null) {
                     rskasir.close();
@@ -8885,7 +8908,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Tampilkasir02 : " + e);
-            
+
         }
         LCount.setText("" + tabModekasir.getRowCount());
     }
@@ -8943,7 +8966,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Tampilkasir03 : " + e);
-                
+
             } finally {
                 if (rskasir != null) {
                     rskasir.close();
@@ -8954,7 +8977,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Tampilkasir04 : " + e);
-            
+
         }
         LCount.setText("" + tabModekasir2.getRowCount());
     }
@@ -9134,7 +9157,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                 psotomatis2.executeUpdate();
                             } catch (Exception e) {
                                 System.out.println("proses input data " + e);
-                                
+
                             } finally {
                                 if (psotomatis2 != null) {
                                     psotomatis2.close();
@@ -9144,7 +9167,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
-                    
+
                 } finally {
                     if (rskasir != null) {
                         rskasir.close();
@@ -9180,7 +9203,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                     psotomatis2.executeUpdate();
                                 } catch (Exception e) {
                                     System.out.println("proses input data " + e);
-                                    
+
                                 } finally {
                                     if (psotomatis2 != null) {
                                         psotomatis2.close();
@@ -9190,7 +9213,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
-                        
+
                     } finally {
                         if (rskasir != null) {
                             rskasir.close();
@@ -9233,7 +9256,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                     psotomatis2.executeUpdate();
                                 } catch (Exception e) {
                                     System.out.println("proses input data " + e);
-                                    
+
                                 } finally {
                                     if (psotomatis2 != null) {
                                         psotomatis2.close();
@@ -9243,7 +9266,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : " + e);
-                        
+
                     } finally {
                         if (rskasir != null) {
                             rskasir.close();
@@ -9255,7 +9278,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
-                
+
             }
         }
     }
@@ -9291,7 +9314,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             psotomatis2.executeUpdate();
                         } catch (Exception e) {
                             System.out.println("proses input data " + e);
-                            
+
                         } finally {
                             if (psotomatis2 != null) {
                                 psotomatis2.close();
@@ -9301,7 +9324,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
-                
+
             } finally {
                 if (rskasir != null) {
                     rskasir.close();
@@ -9339,7 +9362,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                 psotomatis2.executeUpdate();
                             } catch (Exception e) {
                                 System.out.println("proses input data " + e);
-                                
+
                             } finally {
                                 if (psotomatis2 != null) {
                                     psotomatis2.close();
@@ -9349,7 +9372,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
-                    
+
                 } finally {
                     if (rskasir != null) {
                         rskasir.close();
@@ -9392,7 +9415,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                                 psotomatis2.executeUpdate();
                             } catch (Exception e) {
                                 System.out.println("proses input data " + e);
-                                
+
                             } finally {
                                 if (psotomatis2 != null) {
                                     psotomatis2.close();
@@ -9402,7 +9425,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
-                    
+
                 } finally {
                     if (rskasir != null) {
                         rskasir.close();
@@ -9414,7 +9437,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
-            
+
         }
     }
 
