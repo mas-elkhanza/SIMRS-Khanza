@@ -37,7 +37,7 @@ public class DlgKabupaten extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private String kd_provinsi;
+    private String kd_provinsi="";
 
     /** Creates new form Dlgkabupaten
      * @param frame
@@ -391,10 +391,10 @@ public class DlgKabupaten extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{   
-            ps=koneksi.prepareStatement("select nama, kode_wilayah from wilayah where nama like ? and mst_kode_wilayah=? and level=2 order by kode_wilayah");
+            ps=koneksi.prepareStatement("select nama, kode_wilayah from wilayah where nama like ? and mst_kode_wilayah like ? and level=2 order by kode_wilayah");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,kd_provinsi);
+                ps.setString(2,"%"+kd_provinsi+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
