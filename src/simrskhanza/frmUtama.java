@@ -644,6 +644,7 @@ import ziscsr.ZISAtapRumahPenerimaDankes;
 import ziscsr.ZISDapurRumahPenerimaDankes;
 import ziscsr.ZISDindingRumahPenerimaDankes;
 import ziscsr.ZISElektronikPenerimaDankes;
+import ziscsr.ZISJenisSimpananPenerimaDankes;
 import ziscsr.ZISKamarMandiPenerimaDankes;
 import ziscsr.ZISKategoriPHBSPenerimaDankes;
 import ziscsr.ZISKursiRumahPenerimaDankes;
@@ -664,7 +665,6 @@ public class frmUtama extends javax.swing.JFrame {
     private final validasi Valid=new validasi();
     private final DlgKasirRalan kasirralan=new DlgKasirRalan(this,false);
     private final DlgReg reg=new DlgReg(this,false);
-    private final DlgAbout About=new DlgAbout(this,false);   
     private final INACBGHybrid inacbgklaim=new INACBGHybrid(this,false);
     private final INACBGCariCoderNIK cariNIK=new INACBGCariCoderNIK(this,false);
     private static frmUtama myInstance;
@@ -7873,18 +7873,20 @@ public class frmUtama extends javax.swing.JFrame {
 
 private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
      isTutup();
+     DlgHome.dispose();
+     DlgAbout About=new DlgAbout(this,true);
      About.setSize(PanelWall.getWidth(), PanelWall.getHeight());
      About.setLocationRelativeTo(PanelWall);  
      About.setVisible(true);
-     DlgHome.dispose();
 }//GEN-LAST:event_jMenu4MouseClicked
 
 private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
     isTutup();
+    DlgHome.dispose();
+    DlgAbout About=new DlgAbout(this,true);
     About.setSize(PanelWall.getWidth(), PanelWall.getHeight());
     About.setLocationRelativeTo(PanelWall);  
     About.setVisible(true);
-    DlgHome.dispose();
 }//GEN-LAST:event_jMenu4MenuSelected
 
 private void edAdminKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edAdminKeyPressed
@@ -16117,6 +16119,23 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnZISJenisSimpananPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISJenisSimpananPenerimaDankes form=new ZISJenisSimpananPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPenilaianAwalRalanBayiActionPerformed(java.awt.event.ActionEvent evt) {
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16720,7 +16739,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSirkulasiBarangToko2,btnKeuntunganBarangToko,btnZISPengeluaranPenerimaDankes,btnZISPenghasilanPenerimaDankes,btnZISUkuranRumahPenerimaDankes,
             btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes,btnZISKepemilikanRumahPenerimaDankes,
             btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
-            btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes;
+            btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi;
     
     public void isWall(){
         try{            
@@ -19052,6 +19071,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPenilaianAwalKeperawatanKebidanan);
                 jmlmenu++;
             }
+            
+            if(akses.getpenilaian_awal_keperawatan_anak()==true){
+                Panelmenu.add(btnPenilaianAwalRalanBayi);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==12){  
             jmlmenu=0;
             if(akses.getpengambilan_utd2()==true){
@@ -19915,6 +19939,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getzis_ternak_penerima_dankes()==true){
                 Panelmenu.add(btnZISTernakPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_jenis_simpanan_penerima_dankes()==true){
+                Panelmenu.add(btnZISJenisSimpananPenerimaDankes);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){   
@@ -22261,6 +22290,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getpenilaian_awal_keperawatan_anak()==true){
+            Panelmenu.add(btnPenilaianAwalRalanBayi);
+            jmlmenu++;
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             Panelmenu.add(btnPengambilanUTD2); 
             jmlmenu++;
@@ -23112,6 +23146,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getzis_ternak_penerima_dankes()==true){
             Panelmenu.add(btnZISTernakPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_jenis_simpanan_penerima_dankes()==true){
+            Panelmenu.add(btnZISJenisSimpananPenerimaDankes);
             jmlmenu++;
         }
 
@@ -26340,6 +26379,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getpenilaian_awal_keperawatan_anak()==true){
+            if(btnPenilaianAwalRalanBayi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalRalanBayi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -27534,6 +27580,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getzis_ternak_penerima_dankes()==true){
             if(btnZISTernakPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnZISTernakPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getzis_jenis_simpanan_penerima_dankes()==true){
+            if(btnZISJenisSimpananPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISJenisSimpananPenerimaDankes);
                 jmlmenu++;
             }                
         }
@@ -29916,6 +29969,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISTernakPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZISTernakPenerimaDankesActionPerformed(evt);
+            }
+        });
+        
+        btnZISJenisSimpananPenerimaDankes = new widget.ButtonBig();
+        btnZISJenisSimpananPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_gold_61617.png"))); 
+        btnZISJenisSimpananPenerimaDankes.setText("Jenis Simpanan Penerima Dankes");
+        btnZISJenisSimpananPenerimaDankes.setIconTextGap(0);
+        btnZISJenisSimpananPenerimaDankes.setName("btnZISJenisSimpananPenerimaDankes"); 
+        btnZISJenisSimpananPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISJenisSimpananPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISJenisSimpananPenerimaDankesActionPerformed(evt);
+            }
+        });
+        
+        btnPenilaianAwalRalanBayi = new widget.ButtonBig();
+        btnPenilaianAwalRalanBayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/baby-cot.png"))); 
+        btnPenilaianAwalRalanBayi.setText("Penilaian Awal Ralan Bayi/Anak");
+        btnPenilaianAwalRalanBayi.setIconTextGap(0);
+        btnPenilaianAwalRalanBayi.setName("btnPenilaianAwalRalanBayi"); 
+        btnPenilaianAwalRalanBayi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianAwalRalanBayi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenilaianAwalRalanBayiActionPerformed(evt);
             }
         });
     }

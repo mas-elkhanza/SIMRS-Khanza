@@ -140,7 +140,7 @@ public final class akses {
             zis_ukuran_rumah_penerima_dankes=false,zis_dinding_rumah_penerima_dankes=false,zis_lantai_rumah_penerima_dankes=false,
             zis_atap_rumah_penerima_dankes=false,zis_kepemilikan_rumah_penerima_dankes=false,zis_kamar_mandi_penerima_dankes=false,
             zis_dapur_rumah_penerima_dankes=false,zis_kursi_rumah_penerima_dankes=false,zis_kategori_phbs_penerima_dankes=false,
-            zis_elektronik_penerima_dankes=false,zis_ternak_penerima_dankes=false;
+            zis_elektronik_penerima_dankes=false,zis_ternak_penerima_dankes=false,zis_jenis_simpanan_penerima_dankes=false,penilaian_awal_keperawatan_anak=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -804,6 +804,8 @@ public final class akses {
                         akses.zis_kategori_phbs_penerima_dankes=true;
                         akses.zis_elektronik_penerima_dankes=true;
                         akses.zis_ternak_penerima_dankes=true;
+                        akses.zis_jenis_simpanan_penerima_dankes=true;
+                        akses.penilaian_awal_keperawatan_anak=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1451,6 +1453,8 @@ public final class akses {
                         akses.zis_kategori_phbs_penerima_dankes=rs2.getBoolean("zis_kategori_phbs_penerima_dankes");
                         akses.zis_elektronik_penerima_dankes=rs2.getBoolean("zis_elektronik_penerima_dankes");
                         akses.zis_ternak_penerima_dankes=rs2.getBoolean("zis_ternak_penerima_dankes");
+                        akses.zis_jenis_simpanan_penerima_dankes=rs2.getBoolean("zis_jenis_simpanan_penerima_dankes");
+                        akses.penilaian_awal_keperawatan_anak=rs2.getBoolean("penilaian_awal_keperawatan_anak");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2096,6 +2100,8 @@ public final class akses {
                         akses.zis_kategori_phbs_penerima_dankes=false;
                         akses.zis_elektronik_penerima_dankes=false;
                         akses.zis_ternak_penerima_dankes=false;
+                        akses.zis_jenis_simpanan_penerima_dankes=false;
+                        akses.penilaian_awal_keperawatan_anak=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2795,4 +2801,6 @@ public final class akses {
     public static boolean getzis_kategori_phbs_penerima_dankes(){return akses.zis_kategori_phbs_penerima_dankes;}
     public static boolean getzis_elektronik_penerima_dankes(){return akses.zis_elektronik_penerima_dankes;}
     public static boolean getzis_ternak_penerima_dankes(){return akses.zis_ternak_penerima_dankes;}
+    public static boolean getzis_jenis_simpanan_penerima_dankes(){return akses.zis_jenis_simpanan_penerima_dankes;}
+    public static boolean getpenilaian_awal_keperawatan_anak(){return akses.penilaian_awal_keperawatan_anak;}
 }   
