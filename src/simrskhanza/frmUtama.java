@@ -646,6 +646,7 @@ import ziscsr.ZISDindingRumahPenerimaDankes;
 import ziscsr.ZISElektronikPenerimaDankes;
 import ziscsr.ZISJenisSimpananPenerimaDankes;
 import ziscsr.ZISKamarMandiPenerimaDankes;
+import ziscsr.ZISKategoriAsnafPenerimaDankes;
 import ziscsr.ZISKategoriPHBSPenerimaDankes;
 import ziscsr.ZISKursiRumahPenerimaDankes;
 import ziscsr.ZISLantaiRumahPenerimaDankes;
@@ -16136,6 +16137,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
     }
     
+    private void btnZISKategoriAsnafPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISKategoriAsnafPenerimaDankes form=new ZISKategoriAsnafPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16739,7 +16753,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSirkulasiBarangToko2,btnKeuntunganBarangToko,btnZISPengeluaranPenerimaDankes,btnZISPenghasilanPenerimaDankes,btnZISUkuranRumahPenerimaDankes,
             btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes,btnZISKepemilikanRumahPenerimaDankes,
             btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
-            btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi;
+            btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
+            btnZISKategoriAsnafPenerimaDankes;
     
     public void isWall(){
         try{            
@@ -19944,6 +19959,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getzis_jenis_simpanan_penerima_dankes()==true){
                 Panelmenu.add(btnZISJenisSimpananPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_kategori_asnaf_penerima_dankes()==true){
+                Panelmenu.add(btnZISKategoriAsnafPenerimaDankes);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){   
@@ -23151,6 +23171,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getzis_jenis_simpanan_penerima_dankes()==true){
             Panelmenu.add(btnZISJenisSimpananPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_kategori_asnaf_penerima_dankes()==true){
+            Panelmenu.add(btnZISKategoriAsnafPenerimaDankes);
             jmlmenu++;
         }
 
@@ -27591,6 +27616,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getzis_kategori_asnaf_penerima_dankes()==true){
+            if(btnZISKategoriAsnafPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISKategoriAsnafPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -29993,6 +30025,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalRalanBayi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPenilaianAwalRalanBayiActionPerformed(evt);
+            }
+        });
+        
+        btnZISKategoriAsnafPenerimaDankes = new widget.ButtonBig();
+        btnZISKategoriAsnafPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_4_2716419.png"))); 
+        btnZISKategoriAsnafPenerimaDankes.setText("Kategori Asnaf Penerima Dankes");
+        btnZISKategoriAsnafPenerimaDankes.setIconTextGap(0);
+        btnZISKategoriAsnafPenerimaDankes.setName("btnZISKategoriAsnafPenerimaDankes"); 
+        btnZISKategoriAsnafPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISKategoriAsnafPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISKategoriAsnafPenerimaDankesActionPerformed(evt);
             }
         });
     }
