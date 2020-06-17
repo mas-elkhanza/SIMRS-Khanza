@@ -161,47 +161,70 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         for (i = 0; i < 21; i++) {
             TableColumn column = tbKamIn.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(105);
-            } else if (i == 1) {
-                column.setPreferredWidth(70);
-            } else if (i == 2) {
-                column.setPreferredWidth(170);
-            } else if (i == 3) {
-                column.setPreferredWidth(150);
-            } else if (i == 4) {
-                column.setPreferredWidth(120);
-            } else if (i == 5) {
-                column.setPreferredWidth(80);
-            } else if (i == 6) {
-                column.setPreferredWidth(80);
-            } else if (i == 7) {
-                column.setPreferredWidth(150);
-            } else if (i == 8) {
-                column.setPreferredWidth(75);
-            } else if (i == 9) {
-                column.setPreferredWidth(90);
-            } else if (i == 10) {
-                column.setPreferredWidth(90);
-            } else if (i == 11) {
-                column.setPreferredWidth(70);
-            } else if (i == 12) {
-                column.setPreferredWidth(60);
-            } else if (i == 13) {
-                column.setPreferredWidth(70);
-            } else if (i == 14) {
-                column.setPreferredWidth(60);
-            } else if (i == 15) {
-                column.setPreferredWidth(80);
-            } else if (i == 16) {
-                column.setPreferredWidth(75);
-            } else if (i == 17) {
-                column.setPreferredWidth(40);
-            } else if (i == 18) {
-                column.setPreferredWidth(130);
-            } else if (i == 19) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(105);
+                    break;
+                case 1:
+                    column.setPreferredWidth(70);
+                    break;
+                case 2:
+                    column.setPreferredWidth(170);
+                    break;
+                case 3:
+                    column.setPreferredWidth(150);
+                    break;
+                case 4:
+                    column.setPreferredWidth(120);
+                    break;
+                case 5:
+                    column.setPreferredWidth(80);
+                    break;
+                case 6:
+                    column.setPreferredWidth(80);
+                    break;
+                case 7:
+                    column.setPreferredWidth(150);
+                    break;
+                case 8:
+                    column.setPreferredWidth(75);
+                    break;
+                case 9:
+                    column.setPreferredWidth(90);
+                    break;
+                case 10:
+                    column.setPreferredWidth(90);
+                    break;
+                case 11:
+                    column.setPreferredWidth(70);
+                    break;
+                case 12:
+                    column.setPreferredWidth(60);
+                    break;
+                case 13:
+                    column.setPreferredWidth(70);
+                    break;
+                case 14:
+                    column.setPreferredWidth(60);
+                    break;
+                case 15:
+                    column.setPreferredWidth(80);
+                    break;
+                case 16:
+                    column.setPreferredWidth(75);
+                    break;
+                case 17:
+                    column.setPreferredWidth(40);
+                    break;
+                case 18:
+                    column.setPreferredWidth(130);
+                    break;
+                case 19:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    break;
+                default:
+                    break;
             }
         }
         tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
@@ -10287,7 +10310,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             RMDetailRawat resume = new RMDetailRawat(null, true);
-            resume.setNoRm(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 1).toString(),
+            resume.setNoRm(TNoRw1.getText(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 1).toString(),
                     tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 2).toString());
             resume.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
             resume.setLocationRelativeTo(internalFrame1);

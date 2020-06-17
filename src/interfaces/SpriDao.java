@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Dokter;
 import model.Pasien;
 import model.Spri;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -26,7 +27,6 @@ import org.apache.log4j.Logger;
  */
 public class SpriDao implements SpriInterface<Spri> {
 
-    static Logger log = Logger.getLogger(SpriDao.class.getName());  
     private final sekuel Sequel = new sekuel();
     private final java.sql.Connection connect = koneksiDB.condb();
     private validasi Valid = new validasi();
@@ -52,7 +52,7 @@ public class SpriDao implements SpriInterface<Spri> {
                 + domain.getNorm() + "','"
                 + domain.getDiagnosa() + "','"
                 + domain.getRencana_perawatan() + "','"
-                + domain.getUpf()+ "','"
+                + domain.getUpf() + "','"
                 + domain.getDokter().getKd_dokter() + "','"
                 + domain.getNama() + "','"
                 + domain.getKeluhan() + "','"
@@ -78,7 +78,7 @@ public class SpriDao implements SpriInterface<Spri> {
      */
     @Override
     public List<Spri> search(String domain) {
-            List<Spri> kis = new ArrayList<>();
+        List<Spri> kis = new ArrayList<>();
         try {
             ps = connect.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
                     + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
@@ -88,18 +88,19 @@ public class SpriDao implements SpriInterface<Spri> {
                     + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit where"
                     + " temp_spri.norm like ? or temp_spri.kd_dokter like ? or temp_spri.nama like ?"
                     + " order by temp_spri.tanggal ");
-            ps.setString(1, "%"+domain+"%");
-            ps.setString(2, "%"+domain+"%");
-            ps.setString(3, "%"+domain+"%");
-            
+            ps.setString(1, "%" + domain + "%");
+            ps.setString(2, "%" + domain + "%");
+            ps.setString(3, "%" + domain + "%");
+
             rs = ps.executeQuery();
             while (rs.next()) {
                 setSpriData(kis);
             }
         } catch (SQLException ex) {
-            log.error(ex);
+            Logger.getLogger(SpriDao.class.getName()).log(Level.ERROR, null, ex);
+            System.out.println("Error: " + ex);
         }
-            return kis;
+        return kis;
     }
 
     /**
@@ -108,7 +109,7 @@ public class SpriDao implements SpriInterface<Spri> {
      */
     @Override
     public void update(Spri domain) {
-        Sequel.mengedit("temp_spri", "id='" + domain.getId() + "'", 
+        Sequel.mengedit("temp_spri", "id='" + domain.getId() + "'",
                 "tanggal='" + domain.getTanggal() + "',"
                 + "jam='" + domain.getJam() + "',"
                 + "norm='" + domain.getNorm() + "',"
@@ -128,9 +129,8 @@ public class SpriDao implements SpriInterface<Spri> {
      */
     @Override
     public List<Spri> findByDate(String tgl_awal, String tgl_ahir) {
-            List<Spri> kis = new ArrayList<>();
+        List<Spri> kis = new ArrayList<>();
         try {
-            log.info("Tanggal SPRI ="+tgl_awal+", "+tgl_ahir);
             ps = connect.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
                     + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
                     + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,"
@@ -142,16 +142,17 @@ public class SpriDao implements SpriInterface<Spri> {
 
             ps.setString(1, tgl_awal);
             ps.setString(2, tgl_ahir);
-            
+
             rs = ps.executeQuery();
             while (rs.next()) {
                 setSpriData(kis);
             }
-            
+
         } catch (SQLException ex) {
-            log.error(ex);
+            Logger.getLogger(SpriDao.class.getName()).log(Level.ERROR, null, ex);
+            System.out.println("Error: " + ex);
         }
-            return kis;
+        return kis;
     }
 
     private void setSpriData(List<Spri> kis) throws SQLException {
@@ -162,7 +163,7 @@ public class SpriDao implements SpriInterface<Spri> {
         spri.setJam(rs.getString("jam"));
         spri.setNorm(rs.getString("norm"));
         spri.setNama(rs.getString("temp_spri.nama"));
-        
+
         p.setJk(rs.getString("pasien.jk"));
         p.setTmp_lahir(rs.getString("pasien.tmp_lahir"));
         p.setTgl_lahir(rs.getDate("pasien.tgl_lahir"));
@@ -170,15 +171,15 @@ public class SpriDao implements SpriInterface<Spri> {
         p.setStts_nikah(rs.getString("pasien.stts_nikah"));
         p.setAgama(rs.getString("pasien.agama"));
         spri.setPasien(p);
-        
+
         spri.setRencana_perawatan(rs.getString("temp_spri.rencana_perawatan"));
         spri.setUpf(rs.getString("temp_spri.upf"));
-        
+
         d.setNm_dokter(rs.getString("dokter.nm_dokter"));
         d.setKd_dokter(rs.getString("temp_spri.kd_dokter"));
         //dokters.add(d);
         spri.setDokter(d);
-        
+
         spri.setNama(rs.getString("nama"));
         spri.setKeluhan(rs.getString("keluhan"));
         spri.setDiagnosa(rs.getString("diagnosa"));

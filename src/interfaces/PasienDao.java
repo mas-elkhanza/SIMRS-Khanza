@@ -27,15 +27,13 @@ import org.apache.log4j.Logger;
  * @author Administrator
  */
 public class PasienDao {
-
-    static Logger log = Logger.getLogger(PasienDao.class.getName());  
     private final sekuel Sequel = new sekuel();
     private final java.sql.Connection connect = koneksiDB.condb();
     private validasi Valid = new validasi();
     PreparedStatement ps;
     ResultSet rs;
     Pasien p = new Pasien();
-    Wilayah d = new Wilayah(); 
+    Wilayah d = new Wilayah();
     private PerusahaanPasien perusahaan_pasien;
     private SukuBangsa suku_bangsa;
     private BahasaPasien bahasa_pasien;
@@ -43,5 +41,5 @@ public class PasienDao {
     List<Spri> spris = new ArrayList<>();
     List<Pasien> pasiens = new ArrayList<>();
     List<Dokter> dokters = new ArrayList<>();
-    
+
 }
