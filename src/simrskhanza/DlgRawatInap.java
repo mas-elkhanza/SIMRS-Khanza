@@ -5050,7 +5050,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{
-                inputResep();
+                DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
+                resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                resep.setLocationRelativeTo(internalFrame1);
+                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),
+                        cmbDtk.getSelectedItem().toString(),KdDok.getText(),TDokter.getText(),"ranap");
+                resep.isCek();
+                resep.tampilobat();
+                resep.setVisible(true);
             }
         }
     }//GEN-LAST:event_BtnResepObatActionPerformed
@@ -5088,7 +5095,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{
-                inputObat();
+                DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+                dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate());
+                dlgobt.isCek();
+                dlgobt.tampil();
+                dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                dlgobt.setLocationRelativeTo(internalFrame1);
+                dlgobt.setVisible(true);
             }
         }
     }//GEN-LAST:event_BtnInputObatActionPerformed
@@ -6520,25 +6533,5 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
-    private void inputResep() {
-        DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
-        resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-        resep.setLocationRelativeTo(internalFrame1);
-        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),
-                cmbDtk.getSelectedItem().toString(),KdDok.getText(),TDokter.getText(),"ranap");
-        resep.isCek();
-        resep.tampilobat();
-        resep.setVisible(true);
-    }
-    
-    private void inputObat() {
-        DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
-        dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate());
-        dlgobt.isCek();
-        dlgobt.tampil();
-        dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-        dlgobt.setLocationRelativeTo(internalFrame1);
-        dlgobt.setVisible(true);
-    }
     
 }

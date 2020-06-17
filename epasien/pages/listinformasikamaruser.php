@@ -1,11 +1,9 @@
+<div class="block-header">
+    <h2><center>KETERSEDIAAN KAMAR</center></h2>
+</div>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
-            <div class="header">
-                <h2>
-                    <center>KETERSEDIAAN KAMAR</center>
-                </h2>
-            </div>
             <div class="body">
                 <table class="table table-bordered table-striped table-hover display nowrap dataTables" width="100%">
                     <thead>
@@ -34,8 +32,6 @@
                     ?>
                     </tbody>
                 </table>
-            </div>
-            <div class="body">
                 <table class="table table-bordered table-striped table-hover display nowrap dataTable" width="100%">
                     <thead>
                         <tr>

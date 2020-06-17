@@ -1706,7 +1706,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
         }else if(status.equals("ranap")){
             bangsal=akses.getkdbangsal();
-        }            
+        }  
     }
     
     public void setNoRm(String norwt,Date tanggal, String jam,String menit,String detik,String KodeDokter,String NamaDokter,String status) {        

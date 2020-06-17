@@ -223,7 +223,7 @@
                                     <button type="submit" class="form-control" id="cf-submit" name="btnBooking">Kirimkan</button>
                                </div>
                                <div class="col-md-12 col-sm-12">
-                                   <label><a href="index.php?act=CekBooking" class="btn btn-danger" >Cek Booking</a> untuk melihat status booking Anda. Sudah pernah periksa sebelumnya? Silahkan <a href="index.php?act=LoginPasien" class="btn btn-success" >Log In</a></label><br/><br/>
+                                   <label><a href="index.php?act=CekBooking" class="btn btn-danger">Cek Booking</a> untuk melihat status booking Anda. Sudah pernah periksa sebelumnya? Silahkan <a href="index.php?act=LoginPasien" class="btn btn-success">Log In</a></label><br/><br/>
                                </div>
                           </div>
                     </form>

@@ -14,6 +14,7 @@
     $date           = date('Y-m-d');
     $time           = date('H:i:s');
     $date_time      = date('Y-m-d H:i:s');
+    $stokdarah      = "aktif";
     
     function host(){
         global $db_hostname;

@@ -1,5 +1,5 @@
 <div class="block-header">
-    <h2>DASHBOARD PASIEN</h2>
+    <h2><center>DASHBOARD PASIEN</center></h2>
 </div>
 
 <!-- Widgets -->
