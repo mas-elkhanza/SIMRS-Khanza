@@ -572,6 +572,7 @@ import perpustakaan.PerpustakaanPengaturanPeminjaman;
 import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
 import perpustakaan.PerpustakaanSirkulasi;
+import rekammedis.MasterImunisasi;
 import rekammedis.MasterMasalahKeperawatan;
 import rekammedis.MasterMasalahKeperawatanAnak;
 import rekammedis.MasterMasalahKeperawatanGigi;
@@ -16163,6 +16164,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterImunisasiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterImunisasi form=new MasterImunisasi(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16767,7 +16780,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes,btnZISKepemilikanRumahPenerimaDankes,
             btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
             btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
-            btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak;
+            btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi;
     
     public void isWall(){
         try{            
@@ -19087,6 +19100,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmaster_masalah_keperawatan_anak()==true){
                 Panelmenu.add(btnMasterMasalahKeperawatanAnak);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_imunisasi()==true){
+                Panelmenu.add(btnMasterImunisasi);
                 jmlmenu++;
             }
             
@@ -22315,6 +22333,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmaster_masalah_keperawatan_anak()==true){
             Panelmenu.add(btnMasterMasalahKeperawatanAnak);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_imunisasi()==true){
+            Panelmenu.add(btnMasterImunisasi);
             jmlmenu++;
         }
         
@@ -26413,6 +26436,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getmaster_imunisasi()==true){
+            if(btnMasterImunisasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterImunisasi);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_awal_keperawatan_ralan()==true){
             if(btnPenilaianAwalKeperawatanRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalKeperawatanRalan);
@@ -30079,6 +30109,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterMasalahKeperawatanAnak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMasterMasalahKeperawatanAnakActionPerformed(evt);
+            }
+        });
+        
+        btnMasterImunisasi = new widget.ButtonBig();
+        btnMasterImunisasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_19-tube_5980344.png"))); 
+        btnMasterImunisasi.setText("Master Imunisasi");
+        btnMasterImunisasi.setIconTextGap(0);
+        btnMasterImunisasi.setName("btnMasterImunisasi"); 
+        btnMasterImunisasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterImunisasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterImunisasiActionPerformed(evt);
             }
         });
     }
