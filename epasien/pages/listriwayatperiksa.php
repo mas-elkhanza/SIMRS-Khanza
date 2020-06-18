@@ -27,7 +27,7 @@
                                         <td align='left' valign='middle'>".$rsqueryperiksa["nm_poli"]."</td>
                                         <td align='left' valign='middle'>".$rsqueryperiksa["nm_dokter"]."</td>
                                         <td align='center' valign='middle'>".$rsqueryperiksa["status_lanjut"]."</td>
-                                        <td align='center' valign='middle'><a href='index.php?act=CekResume&norawat=".$rsqueryperiksa["no_rawat"]."' class='btn btn-warning'>Resume</a><a href='index.php?act=CekBilling&norawat=".$rsqueryperiksa["no_rawat"]."' class='btn btn-danger' >Billing</a></td>
+                                        <td align='center' valign='middle'><a href='index.php?act=CekResume&token=".encrypt_decrypt($rsqueryperiksa["no_rawat"],"e")."' class='btn btn-warning'>Resume</a><a href='index.php?act=CekBilling&token=".encrypt_decrypt($rsqueryperiksa["no_rawat"],"e")."' class='btn btn-danger' >Billing</a></td>
                                      </tr>";
                            }
                         ?>

@@ -1,5 +1,5 @@
 <?php
-    $norawat=isset($_GET['norawat'])?$_GET['norawat']:NULL;
+    $norawat=isset($_GET['token'])?encrypt_decrypt($_GET['token'],"d"):NULL;
     if (isset($norawat)) {
         $queryresume = bukaquery("select resume_pasien.kd_dokter,dokter.nm_dokter,resume_pasien.kondisi_pulang,resume_pasien.keluhan_utama, 
             resume_pasien.jalannya_penyakit,resume_pasien.pemeriksaan_penunjang,resume_pasien.hasil_laborat,resume_pasien.diagnosa_utama,resume_pasien.kd_diagnosa_utama, 

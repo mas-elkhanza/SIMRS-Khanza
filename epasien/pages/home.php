@@ -75,29 +75,36 @@
                 </div>
                 <div class="clearfix"></div>
                 <?php
-                    $delay=0.2;
-                    $querydokter=bukaquery("select dokter.kd_dokter,left(dokter.nm_dokter,20) as dokter,spesialis.nm_sps,dokter.no_ijn_praktek,pegawai.photo,dokter.no_telp from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps inner join pegawai on dokter.kd_dokter=pegawai.nik where dokter.status='1' and dokter.kd_dokter<>'-' group by spesialis.nm_sps limit 5");
-                    while($rsquerydokter = mysqli_fetch_array($querydokter)) {
-                        echo "<div class='col-md-4 col-sm-6'>
-                                <div class='team-thumb wow fadeInUp' data-wow-delay='".$delay."s'>
-                                     <img alt='Photo' src='http://".host()."/webapps/penggajian/$rsquerydokter[4]' class='img-responsive' />
-                                      <div class='team-info'>
-                                           <h3>$rsquerydokter[1]</h3>
-                                           <p>$rsquerydokter[2]</p>
-                                           <div class='team-contact-info'>
-                                                <p><i class='fa fa-phone'></i> HP/Telp. $rsquerydokter[5] </p>
-                                                <p><i class='fa fa-envelope-o'></i> No.SIP. $rsquerydokter[3] </p>
-                                           </div>
-                                           <ul class='social-icon'>
-                                                <li><a href='#' class='fa fa-linkedin-square'></a></li>
-                                                <li><a href='#' class='fa fa-envelope-o'></a></li>
-                                           </ul>
-                                      </div>
-                                </div>
-                                <br/>
-                           </div>";
-                        $delay=$delay+0.2;
+                    if(!isset($_SESSION["dokter"])){
+                        $delay          = 0.2;
+                        $datadokter     = "";
+                        $querydokter=bukaquery("select dokter.kd_dokter,left(dokter.nm_dokter,20) as dokter,spesialis.nm_sps,dokter.no_ijn_praktek,pegawai.photo,dokter.no_telp from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps inner join pegawai on dokter.kd_dokter=pegawai.nik where dokter.status='1' and dokter.kd_dokter<>'-' group by spesialis.nm_sps limit 5");
+                        while($rsquerydokter = mysqli_fetch_array($querydokter)) {
+                            $datadokter=$datadokter.
+                               "<div class='col-md-4 col-sm-6'>
+                                    <div class='team-thumb wow fadeInUp' data-wow-delay='".$delay."s'>
+                                         <img alt='Photo' src='http://".host()."/webapps/penggajian/$rsquerydokter[4]' class='img-responsive' />
+                                          <div class='team-info'>
+                                               <h3>$rsquerydokter[1]</h3>
+                                               <p>$rsquerydokter[2]</p>
+                                               <div class='team-contact-info'>
+                                                    <p><i class='fa fa-phone'></i> HP/Telp. $rsquerydokter[5] </p>
+                                                    <p><i class='fa fa-envelope-o'></i> No.SIP. $rsquerydokter[3] </p>
+                                               </div>
+                                               <ul class='social-icon'>
+                                                    <li><a href='#' class='fa fa-linkedin-square'></a></li>
+                                                    <li><a href='#' class='fa fa-envelope-o'></a></li>
+                                               </ul>
+                                          </div>
+                                    </div>
+                                    <br/>
+                               </div>";
+                            $delay=$delay+0.2;
+                        }
+                        $_SESSION["dokter"]=$datadokter;
                     }
+
+                    echo $_SESSION["dokter"];
                 ?>
                 <div class="col-md-4 col-sm-6">
                      <div class="wow fadeInUp" data-wow-delay="<?=$delay;?>s">
@@ -203,7 +210,6 @@
                                     <select name="poli" class="form-control">
                                          <?php
                                             if(!isset($_SESSION["poli"])){
-                                                echo "tes poli";
                                                 $datapoli   = "";
                                                 $querypoli  = bukaquery("SELECT * from poliklinik order by nm_poli");
                                                 while($rsquerypoli = mysqli_fetch_array($querypoli)) {

@@ -1,13 +1,22 @@
 <?php 
     if(isset($_SESSION["ses_pasien"])){
-        $halaman                       = isset($_GET["hal"])?$_GET["hal"]:NULL;
-        $subhalaman                    = isset($_GET["act"])?$_GET["act"]:NULL;
+        $halaman                            = isset($_GET["hal"])?$_GET["hal"]:NULL;
+        $subhalaman                         = isset($_GET["act"])?$_GET["act"]:NULL;
         if(!isset($_SESSION["nm_pasien"])){
-            $queryuser                 = @bukaquery2("select pasien.nm_pasien,pasien.email,personal_pasien.gambar from pasien inner join personal_pasien on personal_pasien.no_rkm_medis=pasien.no_rkm_medis where pasien.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
+            $queryuser                      = @bukaquery2("select pasien.nm_pasien,pasien.email,pasien.jk,personal_pasien.gambar from pasien inner join personal_pasien on personal_pasien.no_rkm_medis=pasien.no_rkm_medis where pasien.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
             while($rsqueryuser = mysqli_fetch_array($queryuser)) {
-                $_SESSION["nm_pasien"] = $rsqueryuser["nm_pasien"];
-                $_SESSION["email"]     = $rsqueryuser["email"];
-                $_SESSION["photo"]     = host()."/webapps/photopasien/".$rsqueryuser["gambar"];
+                $_SESSION["nm_pasien"]      = $rsqueryuser["nm_pasien"];
+                $_SESSION["email"]          = $rsqueryuser["email"];
+                $_SESSION["photo"]          = "";
+                if(($rsqueryuser["gambar"]=="")||($rsqueryuser["gambar"]=="-")){
+                    if($rsqueryuser["jk"]=="L"){
+                        $_SESSION["photo"]  = "images/userlaki.png";
+                    }else{
+                        $_SESSION["photo"]  = "images/userperempuan.png";
+                    }
+                }else{
+                    $_SESSION["photo"]      = "http://".host()."/webapps/photopasien/".$rsqueryuser["gambar"];
+                }
             }
         }
     }else{
@@ -260,7 +269,7 @@
         <aside id="leftsidebar" class="sidebar">
             <div class="user-info">
                 <div class="image">
-                    <img src="http://<?=$_SESSION["photo"];?>" width="55" height="48" alt="Photo" />&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#DDFF55">No.RM : <?=encrypt_decrypt($_SESSION["ses_pasien"],"d");?></font></b>
+                    <img src="<?=$_SESSION["photo"];?>" width="55" height="48" alt="Photo" />&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#DDFF55">No.RM : <?=encrypt_decrypt($_SESSION["ses_pasien"],"d");?></font></b>
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$_SESSION["nm_pasien"];?></div>
@@ -329,6 +338,12 @@
                         <a href="index.php?act=InformasiKamarUser&hal=InformasiKamar">
                             <i class="material-icons">hotel</i>
                             <span>Ketersediaan Kamar</span>
+                        </a>
+                    </li>
+                    <li <?=$halaman=="Pengaduan"?"class='active'":""?>>
+                        <a href="index.php?act=Pengaduan&hal=Pengaduan">
+                            <i class="material-icons">add_alert</i>
+                            <span>Pengaduan</span>
                         </a>
                     </li>
                 </ul>

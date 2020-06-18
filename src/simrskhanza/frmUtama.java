@@ -573,6 +573,7 @@ import setting.WindowInputPassword;
 import perpustakaan.PerpustakaanRuang;
 import perpustakaan.PerpustakaanSirkulasi;
 import rekammedis.MasterMasalahKeperawatan;
+import rekammedis.MasterMasalahKeperawatanAnak;
 import rekammedis.MasterMasalahKeperawatanGigi;
 import rekammedis.RMTriaseIGD;
 import rekammedis.MasterTriaseMacamKasus;
@@ -16150,6 +16151,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterMasalahKeperawatanAnakActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterMasalahKeperawatanAnak form=new MasterMasalahKeperawatanAnak(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16754,7 +16767,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes,btnZISKepemilikanRumahPenerimaDankes,
             btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
             btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
-            btnZISKategoriAsnafPenerimaDankes;
+            btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak;
     
     public void isWall(){
         try{            
@@ -19069,6 +19082,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getmaster_masalah_keperawatan_gigi()==true){
                 Panelmenu.add(btnMasterMasalahKeperawatanGigi);
+                jmlmenu++;
+            }
+            
+            if(akses.getmaster_masalah_keperawatan_anak()==true){
+                Panelmenu.add(btnMasterMasalahKeperawatanAnak);
                 jmlmenu++;
             }
             
@@ -22292,6 +22310,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getmaster_masalah_keperawatan_gigi()==true){
             Panelmenu.add(btnMasterMasalahKeperawatanGigi);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_masalah_keperawatan_anak()==true){
+            Panelmenu.add(btnMasterMasalahKeperawatanAnak);
             jmlmenu++;
         }
         
@@ -26383,6 +26406,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getmaster_masalah_keperawatan_anak()==true){
+            if(btnMasterMasalahKeperawatanAnak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterMasalahKeperawatanAnak);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_awal_keperawatan_ralan()==true){
             if(btnPenilaianAwalKeperawatanRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalKeperawatanRalan);
@@ -30037,6 +30067,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISKategoriAsnafPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZISKategoriAsnafPenerimaDankesActionPerformed(evt);
+            }
+        });
+        
+        btnMasterMasalahKeperawatanAnak = new widget.ButtonBig();
+        btnMasterMasalahKeperawatanAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/baby-boy.png"))); 
+        btnMasterMasalahKeperawatanAnak.setText("Master Masalah Keperawatan Bayi/Anak");
+        btnMasterMasalahKeperawatanAnak.setIconTextGap(0);
+        btnMasterMasalahKeperawatanAnak.setName("btnMasterMasalahKeperawatanAnak"); 
+        btnMasterMasalahKeperawatanAnak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterMasalahKeperawatanAnak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterMasalahKeperawatanAnakActionPerformed(evt);
             }
         });
     }

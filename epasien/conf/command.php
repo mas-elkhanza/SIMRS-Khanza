@@ -34,7 +34,7 @@
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiPasien()) {
             $form = array ('HomeUser','FasilitasKamarUser','InformasiKamarUser','FasilitasRadiologiUser','FasilitasLaboratUser','FasilitasOperasiUser',
-                           'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume');
+                           'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -80,6 +80,7 @@
                 case "CekAsuransiUser"                         : include_once("pages/listcarabayaruser.php"); break;
                 case "RiwayatPeriksa"                          : include_once("pages/listriwayatperiksa.php"); break;
                 case "CekResume"                               : include_once("pages/listresume.php"); break;
+                case "CekBilling"                              : include_once("pages/listbilling.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }
