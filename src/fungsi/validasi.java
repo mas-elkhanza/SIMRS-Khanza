@@ -79,6 +79,8 @@ public final class validasi {
     private static final Properties prop = new Properties();
     private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
                          "tujuh","delapan","sembilan","sepuluh","sebelas"};
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
 
     /**
      *
@@ -1314,6 +1316,35 @@ public final class validasi {
         return s;
     }
 
+    public String SetTimeToString(Date date) {
+        String tgl = "";
+        try {
+            tgl = sdfTime.format(date);
+        } catch (Exception e) {
+            System.out.println("Time : "+e.toString());
+        }
+        return tgl;
+    }
+    
+    public String SetDateToString(Date date) {
+        String tgl = "";
+        try {
+            tgl = sdf.format(date);
+        } catch (Exception e) {
+            System.out.println("Tanggal : "+e.toString());
+        }
+        return tgl;
+    }
+    
+    public Date SetStringToDate(String date) {
+        Date tgl = null ;
+        try {
+            tgl = sdf.parse(date);
+        } catch (Exception e) {
+            System.out.println("Tanggal : "+e.toString());
+        }
+        return tgl;
+    }
     /**
      *
      * @param original
@@ -1373,7 +1404,7 @@ public final class validasi {
             dtp.setDate(new Date());
         }
     }
-
+    
     /**
      *
      * @param dtp

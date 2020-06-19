@@ -89,30 +89,45 @@ public final class DlgPiutangBelumLunas extends javax.swing.JDialog {
 
         for (int i = 0; i < 12; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(20);
-            } else if (i == 1) {
-                column.setPreferredWidth(120);
-            } else if (i == 2) {
-                column.setPreferredWidth(80);
-            } else if (i == 3) {
-                column.setPreferredWidth(170);
-            } else if (i == 4) {
-                column.setPreferredWidth(80);
-            } else if (i == 5) {
-                column.setPreferredWidth(90);
-            } else if (i == 6) {
-                column.setPreferredWidth(80);
-            } else if (i == 7) {
-                column.setPreferredWidth(90);
-            } else if (i == 8) {
-                column.setPreferredWidth(90);
-            } else if (i == 9) {
-                column.setPreferredWidth(80);
-            } else if (i == 10) {
-                column.setPreferredWidth(120);
-            } else if (i == 11) {
-                column.setPreferredWidth(90);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(20);
+                    break;
+                case 1:
+                    column.setPreferredWidth(120);
+                    break;
+                case 2:
+                    column.setPreferredWidth(80);
+                    break;
+                case 3:
+                    column.setPreferredWidth(170);
+                    break;
+                case 4:
+                    column.setPreferredWidth(80);
+                    break;
+                case 5:
+                    column.setPreferredWidth(90);
+                    break;
+                case 6:
+                    column.setPreferredWidth(80);
+                    break;
+                case 7:
+                    column.setPreferredWidth(90);
+                    break;
+                case 8:
+                    column.setPreferredWidth(90);
+                    break;
+                case 9:
+                    column.setPreferredWidth(80);
+                    break;
+                case 10:
+                    column.setPreferredWidth(120);
+                    break;
+                case 11:
+                    column.setPreferredWidth(90);
+                    break;
+                default:
+                    break;
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -850,7 +865,40 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 
     private void tbBangsalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbBangsalPropertyChange
         if (this.isVisible() == true) {
-            getdata();
+            try {
+                if (tbBangsal.getSelectedRow() != -1) {
+                    if (tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 0).toString().equals("true")) {
+                        tbBangsal.setValueAt(
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 5).toString())
+                                - (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 6).toString())
+                                + Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 7).toString())
+                                + Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 11).toString())),
+                                tbBangsal.getSelectedRow(), 8);
+                    } else if (tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 0).toString().equals("false")) {
+                        tbBangsal.setValueAt(
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 5).toString())
+                                - (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 6).toString())
+                                + Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 7).toString())),
+                                tbBangsal.getSelectedRow(), 8);
+                        tbBangsal.setValueAt(
+                                Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 5).toString())
+                                - (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 6).toString())
+                                + Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 7).toString())),
+                                tbBangsal.getSelectedRow(), 11);
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("tbBangsalPropertyChange: " + e.toString());
+            }
+            row = tbBangsal.getRowCount();
+            for (i = 0; i < row; i++) {
+                if (tbBangsal.getValueAt(i, 0).toString().equals("true")) {
+                    total = total + Double.parseDouble(tbBangsal.getValueAt(i, 5).toString())
+                            - (Double.parseDouble(tbBangsal.getValueAt(i, 6).toString())
+                            + Double.parseDouble(tbBangsal.getValueAt(i, 7).toString()));
+                }
+            }
+            LCount1.setText(Valid.SetAngka(total));
         }
     }//GEN-LAST:event_tbBangsalPropertyChange
 
@@ -864,14 +912,19 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 
     private void checkAllItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkAllItemStateChanged
         // TODO add your handling code here:
+
         int jumlahBaris = tbBangsal.getRowCount();
         System.out.println("Jml Baris = " + jumlahBaris);
         if (checkAll.isSelected()) {
-            for (int i = 0; i <= tbBangsal.getRowCount(); i++) {
-                setCheck(true, i);
+            if (kdpenjab.getText().trim().equals("") || nmpenjab.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Silahkan pilih cara bayar terlebih dahulu");
+            } else {
+                for (int i = 0; i <= tbBangsal.getRowCount() - 1; i++) {
+                    setCheck(true, i);
+                }
             }
         } else {
-            for (int i = 0; i <= tbBangsal.getRowCount(); i++) {
+            for (int i = 0; i <= tbBangsal.getRowCount() - 1; i++) {
                 setCheck(false, i);
             }
         }
@@ -976,7 +1029,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     sisapiutang = sisapiutang + rs.getDouble(7) - cicilan;
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println("Tampil() Try ke-2: " + e.toString());
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -988,7 +1041,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 
             LCount.setText(Valid.SetAngka(sisapiutang));
         } catch (SQLException e) {
-            System.out.println("Notifikasi : " + e);
+            System.out.println("Tampil() Try ke-1 : " + e.toString());
         }
     }
 
@@ -1032,7 +1085,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     sisapiutang = sisapiutang + rs.getDouble(7) - cicilan;
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println("TampilPerAkun() Try ke-2 : " + e.toString());
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -1044,14 +1097,26 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
 
             LCount.setText(Valid.SetAngka(sisapiutang));
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+            System.out.println("TampilPerAkun() Try ke-1 : " + e.toString());
         }
     }
 
     private void getdata() {
-        if (kdpenjab.getText().equals("") || nmpenjab.getText().equals("")) {
+        if (kdpenjab.getText().trim().equals("") || nmpenjab.getText().equals("")) {
             if (tbBangsal.getSelectedRow() != -1) {
                 tbBangsal.setValueAt(false, tbBangsal.getSelectedRow(), 0);
+                if (tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 0).toString().equals("false")) {
+                    tbBangsal.setValueAt(
+                            Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 5).toString())
+                            - (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 6).toString())
+                            + Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 7).toString())),
+                            tbBangsal.getSelectedRow(), 8);
+                    tbBangsal.setValueAt(
+                            Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 5).toString())
+                            - (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 6).toString())
+                            + Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 7).toString())),
+                            tbBangsal.getSelectedRow(), 11);
+                }
             }
             JOptionPane.showMessageDialog(null, "Silahkan pilih cara bayar terlebih dahulu");
         } else {
@@ -1079,6 +1144,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     }
                 }
             } catch (Exception e) {
+                System.out.println("getdata: " + e.toString());
             }
             row = tbBangsal.getRowCount();
             for (i = 0; i < row; i++) {
@@ -1091,12 +1157,12 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             LCount1.setText(Valid.SetAngka(total));
         }
     }
-    
-    public void isCek(){
+
+    public void isCek() {
         TCari.requestFocus();
         BtnBayar.setEnabled(akses.getbayar_piutang());
     }
-    
+
     private void setCheck(Boolean b, int i) {
         try {
             if (b == true) {
@@ -1121,6 +1187,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         i, 11);
             }
         } catch (Exception e) {
+            System.out.println("setCheck: " + e.toString());
         }
     }
 }
