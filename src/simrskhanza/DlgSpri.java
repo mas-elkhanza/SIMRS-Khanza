@@ -103,7 +103,7 @@ public class DlgSpri extends javax.swing.JDialog {
 
         DTPCari1.setDate(new Date());
         DTPCari2.setDate(new Date());
-        
+
         Object[] row = {"Tanggal", "Jam", "No.R.Medik", "Nama Pasien", "J.K.", "Tmp.Lahir",
             "Tgl.Lahir", "G.D.", "Stts.Nikah", "Agama", "Rencana Perawatan", "Ruangan",
             "Dokter", "Diagnosa", "kd_dokter", "kd_penyakit", "nama", "keluhan", "nm_penyakit", "id"};
