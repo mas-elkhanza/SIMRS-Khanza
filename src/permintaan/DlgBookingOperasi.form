@@ -142,7 +142,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-128,0,0,3,55"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-128,0,0,3,-119"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -491,24 +491,10 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Tanggal" name="DTPCari1">
+                <Component class="widget.Tanggal1" name="DTPCari1">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="29-02-2020"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="DTPCari1" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[90, 23]"/>
-                    </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="DTPCari1ItemStateChanged"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DTPCari1KeyPressed"/>
-                  </Events>
                 </Component>
                 <Component class="widget.Label" name="jLabel22">
                   <Properties>
@@ -520,23 +506,10 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Tanggal" name="DTPCari2">
+                <Component class="widget.Tanggal1" name="DTPCari2">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="29-02-2020"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="DTPCari2" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[90, 23]"/>
-                    </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DTPCari2KeyPressed"/>
-                  </Events>
                 </Component>
                 <Component class="widget.RadioButton" name="R4">
                   <Properties>
@@ -566,24 +539,10 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Tanggal" name="DTPCari3">
+                <Component class="widget.Tanggal1" name="DTPCari3">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="29-02-2020"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="DTPCari3" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[90, 23]"/>
-                    </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="DTPCari3ItemStateChanged"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DTPCari3KeyPressed"/>
-                  </Events>
                 </Component>
                 <Component class="widget.Label" name="jLabel25">
                   <Properties>
@@ -595,24 +554,10 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Tanggal" name="DTPCari4">
+                <Component class="widget.Tanggal1" name="DTPCari4">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="29-02-2020"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                     <Property name="name" type="java.lang.String" value="DTPCari4" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[90, 23]"/>
-                    </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="DTPCari4ItemStateChanged"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DTPCari4KeyPressed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -755,29 +700,6 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.Tanggal" name="DTPTgl">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="32" green="46" red="32" type="rgb"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="29-02-2020"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
-                    <Property name="name" type="java.lang.String" value="DTPTgl" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DTPTglKeyPressed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="73" y="40" width="90" height="23"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
                 <Component class="widget.ComboBox" name="Status">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -863,7 +785,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="165" y="40" width="40" height="23"/>
+                      <AbsoluteConstraints x="200" y="40" width="40" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -904,7 +826,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="208" y="40" width="62" height="23"/>
+                      <AbsoluteConstraints x="240" y="40" width="50" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -981,7 +903,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="273" y="40" width="62" height="23"/>
+                      <AbsoluteConstraints x="300" y="40" width="50" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1058,7 +980,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="338" y="40" width="62" height="23"/>
+                      <AbsoluteConstraints x="360" y="40" width="50" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1135,7 +1057,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="557" y="40" width="62" height="23"/>
+                      <AbsoluteConstraints x="570" y="40" width="50" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1212,7 +1134,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="492" y="40" width="62" height="23"/>
+                      <AbsoluteConstraints x="510" y="40" width="50" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1253,7 +1175,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="427" y="40" width="62" height="23"/>
+                      <AbsoluteConstraints x="450" y="40" width="50" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1265,7 +1187,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="400" y="40" width="25" height="23"/>
+                      <AbsoluteConstraints x="420" y="40" width="25" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1335,6 +1257,19 @@
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="775" y="70" width="28" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Tanggal1" name="DTPTgl">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="DTPTgl" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[117, 23]"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="70" y="40" width="-1" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

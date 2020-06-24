@@ -389,7 +389,6 @@ public final class sekuel {
             SimpanTrack("insert into " + table + " values(" + dicari + ")");
         } catch (Exception e) {
             bool = false;
-            
             System.out.println(sekuel.class.getName() + ", " + e);
         }
         return bool;

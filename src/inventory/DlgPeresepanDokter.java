@@ -3172,6 +3172,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         pscarikapasitas = koneksi.prepareStatement("select IFNULL(kapasitas,1) from databarang where kode_brng=?");
                         try {
                             pscarikapasitas.setString(1, tbResep.getValueAt(i, 2).toString());
+                            System.out.println("Status pscarikapasitas : " + pscarikapasitas);
                             carikapasitas = pscarikapasitas.executeQuery();
                             if (carikapasitas.next()) {
                                 if (Sequel.menyimpantf2("resep_dokter", "?,?,?,?", "data", 4, new String[]{
@@ -3207,6 +3208,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             tbResep.getValueAt(i, 8).toString()
                         }) == false) {
                             sukses = false;
+                            System.out.println("Status simpan : " + sukses);
+                        }else{
+                            JOptionPane.showConfirmDialog(rootPane, kelas);
                         }
                     }
                 }
