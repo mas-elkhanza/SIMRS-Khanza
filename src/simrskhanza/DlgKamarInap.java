@@ -142,6 +142,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
     public DlgKamarInap(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        DTPCari1.setDate(new Date());
+        DTPCari2.setDate(new Date());
+        DTPCari3.setDate(new Date());
+        DTPCari4.setDate(new Date());
+        
         tabMode = new DefaultTableModel(null,
                 new Object[]{"No.Rawat", "Nomer RM", "Nama Pasien", "Alamat Pasien", "Penanggung Jawab",
                     "Hubungan P.J.", "Jenis Bayar", "Kamar", "Tarif Kamar", "Diagnosa Awal", "Diagnosa Akhir",
@@ -1153,13 +1159,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
         panelCari = new widget.panelisi();
         R1 = new widget.RadioButton();
         R2 = new widget.RadioButton();
-        DTPCari1 = new widget.Tanggal();
+        DTPCari1 = new widget.Tanggal1();
         jLabel22 = new widget.Label();
-        DTPCari2 = new widget.Tanggal();
+        DTPCari2 = new widget.Tanggal1();
         R3 = new widget.RadioButton();
-        DTPCari3 = new widget.Tanggal();
+        DTPCari3 = new widget.Tanggal1();
         jLabel25 = new widget.Label();
-        DTPCari4 = new widget.Tanggal();
+        DTPCari4 = new widget.Tanggal1();
         chkBaby = new javax.swing.JCheckBox();
         Scroll = new widget.ScrollPane();
         tbKamIn = new widget.Table();
@@ -3735,7 +3741,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -3961,21 +3967,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-06-2020" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(100, 23));
-        DTPCari1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DTPCari1ItemStateChanged(evt);
-            }
-        });
-        DTPCari1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPCari1KeyPressed(evt);
-            }
-        });
         panelCari.add(DTPCari1);
 
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -3984,21 +3976,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-06-2020" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(100, 23));
-        DTPCari2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DTPCari1ItemStateChanged(evt);
-            }
-        });
-        DTPCari2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPCari2KeyPressed(evt);
-            }
-        });
         panelCari.add(DTPCari2);
 
         R3.setBackground(new java.awt.Color(240, 250, 230));
@@ -4011,21 +3989,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-06-2020" }));
-        DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
-        DTPCari3.setOpaque(false);
-        DTPCari3.setPreferredSize(new java.awt.Dimension(100, 23));
-        DTPCari3.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DTPCari3ItemStateChanged(evt);
-            }
-        });
-        DTPCari3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPCari3KeyPressed(evt);
-            }
-        });
         panelCari.add(DTPCari3);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -4034,28 +3998,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-06-2020" }));
-        DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
-        DTPCari4.setOpaque(false);
-        DTPCari4.setPreferredSize(new java.awt.Dimension(100, 23));
-        DTPCari4.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DTPCari4ItemStateChanged(evt);
-            }
-        });
-        DTPCari4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPCari4KeyPressed(evt);
-            }
-        });
         panelCari.add(DTPCari4);
 
+        chkBaby.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         chkBaby.setText("Baby Rooming In");
         chkBaby.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkBaby.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         chkBaby.setName("chkBaby"); // NOI18N
-        chkBaby.setPreferredSize(new java.awt.Dimension(140, 18));
+        chkBaby.setPreferredSize(new java.awt.Dimension(130, 18));
         panelCari.add(chkBaby);
 
         PanelCariUtama.add(panelCari, java.awt.BorderLayout.PAGE_START);
@@ -4354,22 +4305,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
                 }
             } else if (R2.isSelected() == true) {
-                kmr = " kamar_inap.tgl_masuk between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' and reg_periksa.status_bayar like '%"
+                kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari2.getDate()) + "' and reg_periksa.status_bayar like '%"
                         + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
                 if (!BangsalCari.getText().equals("")) {
-                    kmr = " kamar_inap.tgl_masuk between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                            + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' and bangsal.nm_bangsal='"
+                    kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                            + Valid.SetDateToString(DTPCari2.getDate()) + "' and bangsal.nm_bangsal='"
                             + BangsalCari.getText() + "' and reg_periksa.status_bayar like '%"
                             + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
                 }
             } else if (R3.isSelected() == true) {
-                kmr = " kamar_inap.tgl_keluar between '" + Valid.SetTgl(DTPCari3.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari4.getSelectedItem() + "") + "' and reg_periksa.status_bayar like '%"
+                kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari4.getDate()) + "' and reg_periksa.status_bayar like '%"
                         + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
                 if (!BangsalCari.getText().equals("")) {
-                    kmr = " kamar_inap.tgl_keluar between '" + Valid.SetTgl(DTPCari3.getSelectedItem() + "") + "' and '"
-                            + Valid.SetTgl(DTPCari4.getSelectedItem() + "") + "' and bangsal.nm_bangsal='"
+                    kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
+                            + Valid.SetDateToString(DTPCari4.getDate()) + "' and bangsal.nm_bangsal='"
                             + BangsalCari.getText() + "' and reg_periksa.status_bayar like '%"
                             + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
                 }
@@ -4730,11 +4681,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
     }// GEN-LAST:event_DTPCari1ItemStateChanged
 
     private void DTPCari1KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_DTPCari1KeyPressed
-        Valid.pindah(evt, BangsalCari, DTPCari2);
+//        Valid.pindah(evt, BangsalCari, DTPCari2);
     }// GEN-LAST:event_DTPCari1KeyPressed
 
     private void DTPCari2KeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_DTPCari2KeyPressed
-        Valid.pindah(evt, DTPCari1, BangsalCari);
+//        Valid.pindah(evt, DTPCari1, BangsalCari);
     }// GEN-LAST:event_DTPCari2KeyPressed
 
     private void diagnosaawalKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_diagnosaawalKeyPressed
@@ -5114,7 +5065,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     }// GEN-LAST:event_btnBangsalCariActionPerformed
 
     private void btnBangsalCariKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_btnBangsalCariKeyPressed
-        Valid.pindah(evt, DTPCari2, TCari);
+//        Valid.pindah(evt, DTPCari2, TCari);
     }// GEN-LAST:event_btnBangsalCariKeyPressed
 
     private void BangsalCariKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_BangsalCariKeyPressed
@@ -6542,8 +6493,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
-            Valid.panggilUrl("billing/LaporanSensusHarian.php?tanggal1=" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                    + "&tanggal2=" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "&kamar="
+            Valid.panggilUrl("billing/LaporanSensusHarian.php?tanggal1=" + Valid.SetDateToString(DTPCari1.getDate())
+                    + "&tanggal2=" + Valid.SetDateToString(DTPCari2.getDate()) + "&kamar="
                     + BangsalCari.getText().replaceAll(" ", "_"));
         }
     }// GEN-LAST:event_MnSensusRanapActionPerformed
@@ -6962,7 +6913,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     }
                                     billing.reseppulang.inputresep.isCek();
                                     billing.reseppulang.inputresep.setNoRm(rs2.getString("no_rawat2"), "-",
-                                            DTPCari1.getSelectedItem().toString(),
+                                            Valid.SetDateToString(DTPCari1.getDate()),
                                             Sequel.cariIsi("select current_time()"));
                                     billing.reseppulang.inputresep.tampil();
                                     billing.reseppulang.inputresep.setSize(internalFrame1.getWidth() - 20,
@@ -7008,7 +6959,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         }
                         billing.reseppulang.inputresep.isCek();
                         billing.reseppulang.inputresep.setNoRm(norawat.getText(), "-",
-                                DTPCari1.getSelectedItem().toString(), Sequel.cariIsi("select current_time()"));
+                                Valid.SetDateToString(DTPCari1.getDate()), Sequel.cariIsi("select current_time()"));
                         billing.reseppulang.inputresep.tampil();
                         billing.reseppulang.inputresep.setSize(internalFrame1.getWidth() - 20,
                                 internalFrame1.getHeight() - 20);
@@ -10570,10 +10521,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.ComboBox CmbTgl;
     private widget.ComboBox CmbTglpindah;
     private widget.TextBox CrDokter3;
-    private widget.Tanggal DTPCari1;
-    private widget.Tanggal DTPCari2;
-    private widget.Tanggal DTPCari3;
-    private widget.Tanggal DTPCari4;
+    private widget.Tanggal1 DTPCari1;
+    private widget.Tanggal1 DTPCari2;
+    private widget.Tanggal1 DTPCari3;
+    private widget.Tanggal1 DTPCari4;
     private javax.swing.JDialog DlgCatatan;
     private javax.swing.JDialog DlgSakit2;
     private widget.TextBox JamMasuk;
@@ -10815,23 +10766,23 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
             }
         } else if (R2.isSelected() == true) {
-            kmr = " kamar_inap.tgl_masuk between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' and reg_periksa.status_bayar like '%"
+            kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari2.getDate()) + "' and reg_periksa.status_bayar like '%"
                     + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
             if (!BangsalCari.getText().equals("")) {
-                kmr = " kamar_inap.tgl_masuk between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' and bangsal.nm_bangsal='"
+                kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari2.getDate()) + "' and bangsal.nm_bangsal='"
                         + BangsalCari.getText() + "' and reg_periksa.status_bayar like '%"
                         + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
             }
         } else if (R3.isSelected() == true) {
-            kmr = " kamar_inap.tgl_keluar between '" + Valid.SetTgl(DTPCari3.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari4.getSelectedItem() + "") + "' and reg_periksa.status_bayar like '%"
+            kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari4.getDate()) + "' and reg_periksa.status_bayar like '%"
                     + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
                     + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' ";
             if (!BangsalCari.getText().equals("")) {
-                kmr = " kamar_inap.tgl_keluar between '" + Valid.SetTgl(DTPCari3.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari4.getSelectedItem() + "") + "' and bangsal.nm_bangsal='"
+                kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari4.getDate()) + "' and bangsal.nm_bangsal='"
                         + BangsalCari.getText() + "' and reg_periksa.status_bayar like '%"
                         + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
                         + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' ";
@@ -10938,23 +10889,23 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
             }
         } else if (R2.isSelected() == true) {
-            kmr = " kamar_inap.tgl_masuk between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' and reg_periksa.status_bayar like '%"
+            kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari2.getDate()) + "' and reg_periksa.status_bayar like '%"
                     + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
             if (!BangsalCari.getText().equals("")) {
-                kmr = " kamar_inap.tgl_masuk between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' and bangsal.kd_bangsal='B0063'"
+                kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari2.getDate()) + "' and bangsal.kd_bangsal='B0063'"
                         + " and reg_periksa.status_bayar like '%"
                         + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
             }
         } else if (R3.isSelected() == true) {
-            kmr = " kamar_inap.tgl_keluar between '" + Valid.SetTgl(DTPCari3.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari4.getSelectedItem() + "") + "' and reg_periksa.status_bayar like '%"
+            kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari4.getDate()) + "' and reg_periksa.status_bayar like '%"
                     + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
                     + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' ";
             if (!BangsalCari.getText().equals("")) {
-                kmr = " kamar_inap.tgl_keluar between '" + Valid.SetTgl(DTPCari3.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari4.getSelectedItem() + "") + "' and bangsal.kd_bangsal='B0063'"
+                kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari4.getDate()) + "' and bangsal.kd_bangsal='B0063'"
                         + " and reg_periksa.status_bayar like '%"
                         + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
                         + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' ";
