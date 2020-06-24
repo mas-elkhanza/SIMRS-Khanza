@@ -23,6 +23,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -51,6 +52,10 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
     public DlgPenelusuranLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        DTPCari1.setDate(new Date());
+        DTPCari2.setDate(new Date());
+        
         tabMode = new DefaultTableModel(null, new Object[]{"NIP", "Nama Pegawai", "Tanggal Login", "Jam Login"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -150,9 +155,9 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel19 = new widget.Label();
-        DTPCari1 = new widget.Tanggal();
+        DTPCari1 = new widget.Tanggal1();
         jLabel21 = new widget.Label();
-        DTPCari2 = new widget.Tanggal();
+        DTPCari2 = new widget.Tanggal1();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -171,7 +176,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penelusuran Login User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penelusuran Login User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -260,12 +265,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
         panelGlass9.add(jLabel19);
 
-        DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-05-2020" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari1);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -274,12 +274,7 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass9.add(jLabel21);
 
-        DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-05-2020" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass9.add(DTPCari2);
 
         jLabel6.setText("Key Word :");
@@ -494,8 +489,8 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
     private widget.Button BtnCari;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Tanggal DTPCari1;
-    private widget.Tanggal DTPCari2;
+    private widget.Tanggal1 DTPCari1;
+    private widget.Tanggal1 DTPCari2;
     private widget.Label LCount;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
@@ -520,8 +515,8 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
                     "select tracker.nip,tracker.tgl_login,tracker.jam_login from tracker  "
                     + "where tracker.tgl_login between ? and ? and tracker.nip like ? order by tracker.tgl_login");
             try {
-                ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(3, "%" + TCari.getText().trim() + "%");
                 rs = ps.executeQuery();
                 while (rs.next()) {
@@ -553,11 +548,11 @@ public class DlgPenelusuranLogin extends javax.swing.JDialog {
                     "select kd_track,tanggal,usere, replace(sqle,'|','\\',\\'') as sqle from trackersql where tanggal between ? and ? and usere like ? or "
                     + "tanggal between ? and ? and sqle like ? order by trackersql.tanggal");
             try {
-                ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
-                ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+                ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()) + " 00:00:00");
+                ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()) + " 23:59:59");
                 ps.setString(3, "%" + TCari.getText().trim() + "%");
-                ps.setString(4, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
-                ps.setString(5, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+                ps.setString(4, Valid.SetDateToString(DTPCari1.getDate()) + " 00:00:00");
+                ps.setString(5, Valid.SetDateToString(DTPCari2.getDate()) + " 23:59:59");
                 ps.setString(6, "%" + TCari.getText().trim() + "%");
                 rs = ps.executeQuery();
                 while (rs.next()) {

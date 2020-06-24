@@ -4919,7 +4919,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel9.setText("Jam :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(200, 70, 40, 23);
+        jLabel9.setBounds(170, 70, 40, 23);
 
         jLabel20.setText("Png. Jawab :");
         jLabel20.setName("jLabel20"); // NOI18N
@@ -4969,7 +4969,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbJam);
-        CmbJam.setBounds(240, 70, 50, 23);
+        CmbJam.setBounds(210, 70, 60, 23);
 
         CmbMenit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbMenit.setName("CmbMenit"); // NOI18N
@@ -4979,7 +4979,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbMenit);
-        CmbMenit.setBounds(290, 70, 50, 23);
+        CmbMenit.setBounds(270, 70, 60, 23);
 
         CmbDetik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbDetik.setName("CmbDetik"); // NOI18N
@@ -4989,7 +4989,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbDetik);
-        CmbDetik.setBounds(340, 70, 50, 23);
+        CmbDetik.setBounds(330, 70, 60, 23);
 
         jLabel7.setText("No.Rekam Medik :");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -5198,7 +5198,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         DTPReg.setName("DTPReg"); // NOI18N
         FormInput.add(DTPReg);
-        DTPReg.setBounds(80, 70, 120, 23);
+        DTPReg.setBounds(80, 70, 100, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
