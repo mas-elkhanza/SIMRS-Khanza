@@ -1399,7 +1399,7 @@ public final class DlgReg extends javax.swing.JDialog {
         AsalRujukan = new widget.TextBox();
         btnPenjab1 = new widget.Button();
         ChkTracker = new widget.CekBox();
-        DTPReg = new widget.Tanggal1();
+        DTPReg = new widget.Tanggal();
         ChkInput = new widget.CekBox();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
@@ -5196,9 +5196,22 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(ChkTracker);
         ChkTracker.setBounds(196, 12, 23, 23);
 
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-06-2020" }));
+        DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
+        DTPReg.setOpaque(false);
+        DTPReg.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DTPRegItemStateChanged(evt);
+            }
+        });
+        DTPReg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DTPRegKeyPressed(evt);
+            }
+        });
         FormInput.add(DTPReg);
-        DTPReg.setBounds(80, 70, 100, 23);
+        DTPReg.setBounds(74, 72, 90, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -5512,12 +5525,16 @@ public final class DlgReg extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnCariActionPerformed
 
+    private void DTPRegItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPRegItemStateChanged
+        isNumber();
+    }//GEN-LAST:event_DTPRegItemStateChanged
+
+    private void DTPRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPRegKeyPressed
+        Valid.pindah(evt,TNoRw,CmbJam);
+    }//GEN-LAST:event_DTPRegKeyPressed
+
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {
 //        Valid.pindah(evt, TNoReg, DTPReg);
-    }
-
-    private void DTPRegKeyPressed(java.awt.event.KeyEvent evt) {
-        Valid.pindah(evt, TNoRw, CmbJam);
     }
 
     private void TPngJwbKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_TPngJwbKeyPressed
@@ -7415,10 +7432,6 @@ public final class DlgReg extends javax.swing.JDialog {
             this.setCursor(Cursor.getDefaultCursor());
         }
     }// GEN-LAST:event_MnCetakRegisterActionPerformed
-
-    private void DTPRegItemStateChanged(java.awt.event.ItemEvent evt) {// GEN-FIRST:event_DTPRegItemStateChanged
-        isNumber();
-    }// GEN-LAST:event_DTPRegItemStateChanged
 
     private void MnPersetujuanMedisActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPersetujuanMedisActionPerformed
         if (TPasien.getText().trim().equals("")) {
@@ -9888,7 +9901,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private widget.TextBox CrPoli;
     private widget.Tanggal1 DTPCari1;
     private widget.Tanggal1 DTPCari2;
-    private widget.Tanggal1 DTPReg;
+    private widget.Tanggal DTPReg;
     private javax.swing.JDialog DlgCatatan;
     private javax.swing.JDialog DlgDemografi;
     private javax.swing.JDialog DlgSakit2;
