@@ -167,7 +167,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[R]Lantai Rumah Penerima Dankes","[R]Atap Rumah Penerima Dankes","[R]Kepemilikan Rumah Penerima Dankes","[R]Kamar Mandi Penerima Dankes",
                 "[R]Dapur Rumah Penerima Dankes","[R]Kursi Rumah Penerima Dankes","[R]Kategori PHBS Penerima Dankes","[R]Elektronik Penerima Dankes",
                 "[R]Ternak Penerima Dankes","[R]Jenis Simpanan Penerima Dankes","[L]Penilaian Awal Ralan Bayi/Anak","[R]Kategori Asnaf Penerima Dankes",
-                "[L]Master Masalah Keperawatan Bayi/Anak","[L]Master Imunisasi"
+                "[L]Master Masalah Keperawatan Bayi/Anak","[L]Master Imunisasi","[R]Patologis Penerima Dankes"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -357,7 +357,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 649;i++) {
+        for (i = 0; i < 650;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -1758,6 +1758,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 648:
                     column.setPreferredWidth(102);
                     break;
+                case 649:
+                    column.setPreferredWidth(154);
+                    break;
                 default:
                     column.setPreferredWidth(130);
                     break;
@@ -2254,7 +2257,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2945,7 +2948,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "penilaian_awal_keperawatan_anak='"+tbUser.getValueAt(i,645).toString()+"',"+
                     "zis_kategori_asnaf_penerima_dankes='"+tbUser.getValueAt(i,646).toString()+"',"+
                     "master_masalah_keperawatan_anak='"+tbUser.getValueAt(i,647).toString()+"',"+
-                    "master_imunisasi='"+tbUser.getValueAt(i,648).toString()+"'");
+                    "master_imunisasi='"+tbUser.getValueAt(i,648).toString()+"',"+
+                    "zis_patologis_penerima_dankes='"+tbUser.getValueAt(i,649).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3675,7 +3679,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "penilaian_awal_keperawatan_anak='"+tbUser.getValueAt(barisdicopy,645).toString()+"',"+
                                     "zis_kategori_asnaf_penerima_dankes='"+tbUser.getValueAt(barisdicopy,646).toString()+"',"+
                                     "master_masalah_keperawatan_anak='"+tbUser.getValueAt(barisdicopy,647).toString()+"',"+
-                                    "master_imunisasi='"+tbUser.getValueAt(barisdicopy,648).toString()+"'");
+                                    "master_imunisasi='"+tbUser.getValueAt(barisdicopy,648).toString()+"',"+
+                                    "zis_patologis_penerima_dankes='"+tbUser.getValueAt(barisdicopy,649).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3994,7 +3999,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "zis_ukuran_rumah_penerima_dankes,zis_dinding_rumah_penerima_dankes,zis_lantai_rumah_penerima_dankes,zis_atap_rumah_penerima_dankes,"+
                         "zis_kepemilikan_rumah_penerima_dankes,zis_kamar_mandi_penerima_dankes,zis_dapur_rumah_penerima_dankes,zis_kursi_rumah_penerima_dankes,"+
                         "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes,zis_ternak_penerima_dankes,zis_jenis_simpanan_penerima_dankes,"+
-                        "penilaian_awal_keperawatan_anak,zis_kategori_asnaf_penerima_dankes,master_masalah_keperawatan_anak,master_imunisasi from user order by AES_DECRYPT(id_user,'nur')");
+                        "penilaian_awal_keperawatan_anak,zis_kategori_asnaf_penerima_dankes,master_masalah_keperawatan_anak,master_imunisasi,"+
+                        "zis_patologis_penerima_dankes from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4655,7 +4661,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penilaian_awal_keperawatan_anak"),
                                rs.getBoolean("zis_kategori_asnaf_penerima_dankes"),
                                rs.getBoolean("master_masalah_keperawatan_anak"),
-                               rs.getBoolean("master_imunisasi")
+                               rs.getBoolean("master_imunisasi"),
+                               rs.getBoolean("zis_patologis_penerima_dankes")
                             });
                         }   
                     } catch (Exception e) {
@@ -5305,7 +5312,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penilaian_awal_keperawatan_anak"),
                            rs.getBoolean("zis_kategori_asnaf_penerima_dankes"),
                            rs.getBoolean("master_masalah_keperawatan_anak"),
-                           rs.getBoolean("master_imunisasi")
+                           rs.getBoolean("master_imunisasi"),
+                           rs.getBoolean("zis_patologis_penerima_dankes")
                         });
                     }                                             
                  }

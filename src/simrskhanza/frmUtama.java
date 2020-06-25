@@ -652,6 +652,7 @@ import ziscsr.ZISKategoriAsnafPenerimaDankes;
 import ziscsr.ZISKategoriPHBSPenerimaDankes;
 import ziscsr.ZISKursiRumahPenerimaDankes;
 import ziscsr.ZISLantaiRumahPenerimaDankes;
+import ziscsr.ZISPatologisPenerimaDankes;
 import ziscsr.ZISPengeluaranPenerimaDankes;
 import ziscsr.ZISPenghasilanPenerimaDankes;
 import ziscsr.ZISTernakPenerimaDankes;
@@ -12060,7 +12061,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
     private void btnPengaduanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPengaduanActionPerformed
         frmPengaduan pengaduan=new frmPengaduan();
-        pengaduan.setSize(850,650);
+        pengaduan.setSize(800, PanelUtama.getHeight()-40);
         pengaduan.setLocationRelativeTo(null);
         pengaduan.isCek();
         pengaduan.setVisible(true);
@@ -16176,6 +16177,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnZISPatologisPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ZISPatologisPenerimaDankes form=new ZISPatologisPenerimaDankes(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16780,7 +16794,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes,btnZISKepemilikanRumahPenerimaDankes,
             btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
             btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
-            btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi;
+            btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes;
     
     public void isWall(){
         try{            
@@ -20000,6 +20014,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getzis_kategori_asnaf_penerima_dankes()==true){
                 Panelmenu.add(btnZISKategoriAsnafPenerimaDankes);
+                jmlmenu++;
+            }
+            
+            if(akses.getzis_patologis_penerima_dankes()==true){
+                Panelmenu.add(btnZISPatologisPenerimaDankes);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==18){   
@@ -23222,6 +23241,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getzis_kategori_asnaf_penerima_dankes()==true){
             Panelmenu.add(btnZISKategoriAsnafPenerimaDankes);
+            jmlmenu++;
+        }
+        
+        if(akses.getzis_patologis_penerima_dankes()==true){
+            Panelmenu.add(btnZISPatologisPenerimaDankes);
             jmlmenu++;
         }
 
@@ -27683,6 +27707,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getzis_patologis_penerima_dankes()==true){
+            if(btnZISPatologisPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnZISPatologisPenerimaDankes);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -30121,6 +30152,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterImunisasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMasterImunisasiActionPerformed(evt);
+            }
+        });
+        
+        btnZISPatologisPenerimaDankes = new widget.ButtonBig();
+        btnZISPatologisPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_smoke-healthcare_and_medical-no_smoking-warming-signaling-cigarette-prohibition-forbidden-security_4394848.png"))); 
+        btnZISPatologisPenerimaDankes.setText("Patologis Penerima Dankes");
+        btnZISPatologisPenerimaDankes.setIconTextGap(0);
+        btnZISPatologisPenerimaDankes.setName("btnZISPatologisPenerimaDankes"); 
+        btnZISPatologisPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnZISPatologisPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZISPatologisPenerimaDankesActionPerformed(evt);
             }
         });
     }
