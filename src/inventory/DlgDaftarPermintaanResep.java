@@ -2622,7 +2622,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
      */
     public void tampil4() {
         Valid.tabelKosong(tabMode4);
-        String apotik = " ";
+        String apotik = "";
         if (!txtNmRuanganRanap.getText().equals("")) {
             apotik = " and detail_pemberian_obat.kd_bangsal like '" + kd_ruangan_ranap + "' ";
         }
@@ -2630,23 +2630,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             ps = koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,resep_obat.no_rawat,pasien.no_rkm_medis,"
                     + " pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter,if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status,"
                     + " bangsal.nm_bangsal,resep_obat.status as status_asal from resep_obat "
-                    + "inner join reg_periksa "
-                    + "inner join pasien "
-                    + "inner join dokter "
-                    + "inner join bangsal "
-                    + "inner join kamar "
-                    + "inner join penjab "
-                    + "inner join kamar_inap "
-                    + "left join detail_pemberian_obat "
-                    + "on resep_obat.no_rawat=reg_periksa.no_rawat "
-                    + "and kamar.kd_bangsal=bangsal.kd_bangsal "
-                    + "and reg_periksa.no_rawat=kamar_inap.no_rawat "
-                    + "and kamar_inap.kd_kamar=kamar.kd_kamar "
-                    + "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                    + "and reg_periksa.kd_pj=penjab.kd_pj "
-                    + "and resep_obat.kd_dokter=dokter.kd_dokter "
-                    + "and reg_periksa.no_rawat=detail_pemberian_obat.no_rawat "
-                    + "where "
+                    + "inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "
+                    + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                    + "inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "
+                    + "inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "
+                    + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "
+                    + "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
+                    + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "
+                    + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
+                    + "left join detail_pemberian_obat on reg_periksa.no_rawat=detail_pemberian_obat.no_rawat "
+                    + "where"
                     + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_resep like ? or "
                     + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_rawat like ? or "
                     + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.no_rkm_medis like ? or "
