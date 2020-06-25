@@ -2200,7 +2200,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 tbDetailResepObatRacikan.setValueAt(Valid.SetAngka8((Double.parseDouble(tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(), 4).toString())
                         * Double.parseDouble(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(), 12).toString()))
                         / Double.parseDouble(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(), 8).toString()), 1),
-                         tbDetailResepObatRacikan.getSelectedRow(), 13);
+                        tbDetailResepObatRacikan.getSelectedRow(), 13);
             } catch (Exception e) {
                 tbDetailResepObatRacikan.setValueAt(0, tbDetailResepObatRacikan.getSelectedRow(), 13);
             }
@@ -3209,8 +3209,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         }) == false) {
                             sukses = false;
                             System.out.println("Status simpan : " + sukses);
-                        }else{
-                            JOptionPane.showConfirmDialog(rootPane, kelas);
                         }
                     }
                 }
