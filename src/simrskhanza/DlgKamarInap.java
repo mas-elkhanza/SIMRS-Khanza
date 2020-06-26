@@ -1047,12 +1047,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
         ppPasienCorona = new javax.swing.JMenuItem();
         ppPerawatanCorona = new javax.swing.JMenuItem();
         MenuInputData = new javax.swing.JMenu();
+        ppBerkasDigital = new javax.swing.JMenuItem();
         ppCatatanPasien = new javax.swing.JMenuItem();
         ppDataHAIs = new javax.swing.JMenuItem();
-        ppBerkasDigital = new javax.swing.JMenuItem();
+        ppIKP = new javax.swing.JMenuItem();
+        ppInputCoderBpjs = new javax.swing.JMenuItem();
         ppSpri = new javax.swing.JMenuItem();
         ppSuratKematian = new javax.swing.JMenuItem();
-        ppIKP = new javax.swing.JMenuItem();
         MnTeridentifikasiTB = new javax.swing.JMenuItem();
         SetStatus = new javax.swing.JMenu();
         MnAtasPersetujuanDokter = new javax.swing.JMenuItem();
@@ -1155,6 +1156,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
         BtnSimpan6 = new widget.Button();
         jLabel42 = new widget.Label();
         DiagnosaAkhirSementara = new widget.TextBox();
+        WindowInputCoderBPJS = new javax.swing.JDialog();
+        internalFrame11 = new widget.InternalFrame();
+        BtnCloseCoder = new widget.Button();
+        BtnSimpanCoder = new widget.Button();
+        jLabel43 = new widget.Label();
+        Hak1 = new widget.TextBox();
+        jLabel44 = new widget.Label();
+        Hak2 = new widget.TextBox();
+        Hak3 = new widget.TextBox();
+        jLabel45 = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         PanelCariUtama = new javax.swing.JPanel();
         panelGlass10 = new widget.panelisi();
@@ -2873,6 +2884,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MenuInputData.setName("MenuInputData"); // NOI18N
         MenuInputData.setPreferredSize(new java.awt.Dimension(220, 26));
 
+        ppBerkasDigital.setBackground(new java.awt.Color(255, 255, 254));
+        ppBerkasDigital.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBerkasDigital.setForeground(new java.awt.Color(50, 50, 50));
+        ppBerkasDigital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBerkasDigital.setText("Berkas Digital Perawatan");
+        ppBerkasDigital.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBerkasDigital.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBerkasDigital.setName("ppBerkasDigital"); // NOI18N
+        ppBerkasDigital.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppBerkasDigital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBerkasDigitalBtnPrintActionPerformed(evt);
+            }
+        });
+        MenuInputData.add(ppBerkasDigital);
+
         ppCatatanPasien.setBackground(new java.awt.Color(255, 255, 254));
         ppCatatanPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppCatatanPasien.setForeground(new java.awt.Color(50, 50, 50));
@@ -2905,21 +2932,37 @@ public class DlgKamarInap extends javax.swing.JDialog {
         });
         MenuInputData.add(ppDataHAIs);
 
-        ppBerkasDigital.setBackground(new java.awt.Color(255, 255, 254));
-        ppBerkasDigital.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBerkasDigital.setForeground(new java.awt.Color(50, 50, 50));
-        ppBerkasDigital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppBerkasDigital.setText("Berkas Digital Perawatan");
-        ppBerkasDigital.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppBerkasDigital.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBerkasDigital.setName("ppBerkasDigital"); // NOI18N
-        ppBerkasDigital.setPreferredSize(new java.awt.Dimension(200, 26));
-        ppBerkasDigital.addActionListener(new java.awt.event.ActionListener() {
+        ppIKP.setBackground(new java.awt.Color(255, 255, 254));
+        ppIKP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppIKP.setForeground(new java.awt.Color(50, 50, 50));
+        ppIKP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppIKP.setText("Insiden Keselamatan Pasien");
+        ppIKP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppIKP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppIKP.setName("ppIKP"); // NOI18N
+        ppIKP.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppIKP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppBerkasDigitalBtnPrintActionPerformed(evt);
+                ppIKPBtnPrintActionPerformed(evt);
             }
         });
-        MenuInputData.add(ppBerkasDigital);
+        MenuInputData.add(ppIKP);
+
+        ppInputCoderBpjs.setBackground(new java.awt.Color(255, 255, 254));
+        ppInputCoderBpjs.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppInputCoderBpjs.setForeground(new java.awt.Color(50, 50, 50));
+        ppInputCoderBpjs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppInputCoderBpjs.setText("Input Coder BPJS");
+        ppInputCoderBpjs.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppInputCoderBpjs.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppInputCoderBpjs.setName("ppInputCoderBpjs"); // NOI18N
+        ppInputCoderBpjs.setPreferredSize(new java.awt.Dimension(200, 26));
+        ppInputCoderBpjs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppInputCoderBpjsBtnPrintActionPerformed(evt);
+            }
+        });
+        MenuInputData.add(ppInputCoderBpjs);
 
         ppSpri.setBackground(new java.awt.Color(255, 255, 254));
         ppSpri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -2946,22 +2989,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MenuInputData.add(ppSuratKematian);
-
-        ppIKP.setBackground(new java.awt.Color(255, 255, 254));
-        ppIKP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppIKP.setForeground(new java.awt.Color(50, 50, 50));
-        ppIKP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppIKP.setText("Insiden Keselamatan Pasien");
-        ppIKP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppIKP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppIKP.setName("ppIKP"); // NOI18N
-        ppIKP.setPreferredSize(new java.awt.Dimension(200, 26));
-        ppIKP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppIKPBtnPrintActionPerformed(evt);
-            }
-        });
-        MenuInputData.add(ppIKP);
 
         MnTeridentifikasiTB.setBackground(new java.awt.Color(255, 255, 254));
         MnTeridentifikasiTB.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -3929,6 +3956,116 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         WindowDiagnosaAkhir.getContentPane().add(internalFrame10, java.awt.BorderLayout.CENTER);
 
+        WindowInputCoderBPJS.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowInputCoderBPJS.setName("WindowInputCoderBPJS"); // NOI18N
+        WindowInputCoderBPJS.setUndecorated(true);
+        WindowInputCoderBPJS.setResizable(false);
+
+        internalFrame11.setBackground(new java.awt.Color(204, 255, 255));
+        internalFrame11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Input Coder BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame11.setName("internalFrame11"); // NOI18N
+        internalFrame11.setOpaque(false);
+
+        BtnCloseCoder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseCoder.setMnemonic('U');
+        BtnCloseCoder.setText("Tutup");
+        BtnCloseCoder.setToolTipText("Alt+U");
+        BtnCloseCoder.setName("BtnCloseCoder"); // NOI18N
+        BtnCloseCoder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseCoderActionPerformed(evt);
+            }
+        });
+
+        BtnSimpanCoder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpanCoder.setMnemonic('S');
+        BtnSimpanCoder.setText("Simpan");
+        BtnSimpanCoder.setToolTipText("Alt+S");
+        BtnSimpanCoder.setName("BtnSimpanCoder"); // NOI18N
+        BtnSimpanCoder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanCoderActionPerformed(evt);
+            }
+        });
+
+        jLabel43.setText("Hak Kelas 1 :");
+        jLabel43.setName("jLabel43"); // NOI18N
+
+        Hak1.setHighlighter(null);
+        Hak1.setName("Hak1"); // NOI18N
+        Hak1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Hak1KeyPressed(evt);
+            }
+        });
+
+        jLabel44.setText("Hak Kelas 2 :");
+        jLabel44.setName("jLabel44"); // NOI18N
+
+        Hak2.setHighlighter(null);
+        Hak2.setName("Hak2"); // NOI18N
+        Hak2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Hak2KeyPressed(evt);
+            }
+        });
+
+        Hak3.setHighlighter(null);
+        Hak3.setName("Hak3"); // NOI18N
+        Hak3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Hak3KeyPressed(evt);
+            }
+        });
+
+        jLabel45.setText("Hak Kelas 3 :");
+        jLabel45.setName("jLabel45"); // NOI18N
+
+        javax.swing.GroupLayout internalFrame11Layout = new javax.swing.GroupLayout(internalFrame11);
+        internalFrame11.setLayout(internalFrame11Layout);
+        internalFrame11Layout.setHorizontalGroup(
+            internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(internalFrame11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(internalFrame11Layout.createSequentialGroup()
+                        .addComponent(BtnSimpanCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtnCloseCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(internalFrame11Layout.createSequentialGroup()
+                        .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Hak1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Hak2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Hak3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(7, Short.MAX_VALUE))
+        );
+        internalFrame11Layout.setVerticalGroup(
+            internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(internalFrame11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hak1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hak2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hak3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnSimpanCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnCloseCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        WindowInputCoderBPJS.getContentPane().add(internalFrame11, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -4369,6 +4506,51 @@ public class DlgKamarInap extends javax.swing.JDialog {
         // TODO add your handling code here:
         Valid.pindah(evt, BtnCloseIn6, BtnSimpan6);
     }//GEN-LAST:event_DiagnosaAkhirSementaraKeyPressed
+
+    private void ppInputCoderBpjsBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppInputCoderBpjsBtnPrintActionPerformed
+        // TODO add your handling code here:
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(norawat.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+                tbKamIn.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()>-1){
+                WindowInputCoderBPJS.setSize(810,120);
+                WindowInputCoderBPJS.setLocationRelativeTo(internalFrame1);
+                WindowInputCoderBPJS.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_ppInputCoderBpjsBtnPrintActionPerformed
+
+    private void BtnCloseCoderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseCoderActionPerformed
+        // TODO add your handling code here:
+        WindowInputCoderBPJS.dispose();
+    }//GEN-LAST:event_BtnCloseCoderActionPerformed
+
+    private void BtnSimpanCoderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanCoderActionPerformed
+        // TODO add your handling code here:
+        if(norawat.getText().trim().equals("")){
+            Valid.textKosong(norawat,"No.Rawat");
+        }else{
+            Sequel.menyimpan("coderbpjs", "?,?,?,?,?,?", "coder bpjs", 6,
+            new String[]{null,Hak1.getText(),Hak2.getText(),Hak3.getText(),norawat.getText(), Valid.SetDateTimeToString(new Date())});
+            WindowInputCoderBPJS.dispose();
+        }
+    }//GEN-LAST:event_BtnSimpanCoderActionPerformed
+
+    private void Hak1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hak1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hak1KeyPressed
+
+    private void Hak2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hak2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hak2KeyPressed
+
+    private void Hak3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hak3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Hak3KeyPressed
 
     private void norawatKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_norawatKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
@@ -10772,6 +10954,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnCloseCoder;
     private widget.Button BtnCloseGabung;
     private widget.Button BtnCloseIn;
     private widget.Button BtnCloseIn4;
@@ -10790,6 +10973,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.Button BtnSimpan4;
     private widget.Button BtnSimpan5;
     private widget.Button BtnSimpan6;
+    private widget.Button BtnSimpanCoder;
     private widget.Button BtnSimpanGabung;
     private widget.Button BtnSimpanpindah;
     private widget.ComboBox CmbBln;
@@ -10807,6 +10991,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.TextBox DiagnosaAwalSementara;
     private javax.swing.JDialog DlgCatatan;
     private javax.swing.JDialog DlgSakit2;
+    private widget.TextBox Hak1;
+    private widget.TextBox Hak2;
+    private widget.TextBox Hak3;
     private widget.TextBox JamMasuk;
     private widget.Label LCount;
     private widget.Label LabelCatatan;
@@ -10938,6 +11125,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private javax.swing.JDialog WindowCaraBayar;
     private javax.swing.JDialog WindowDiagnosaAkhir;
     private javax.swing.JDialog WindowDiagnosaMasuk;
+    private javax.swing.JDialog WindowInputCoderBPJS;
     private javax.swing.JDialog WindowInputKamar;
     private javax.swing.JDialog WindowPindahKamar;
     private javax.swing.JDialog WindowRanapGabung;
@@ -10966,6 +11154,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.TextBox diagnosaawal;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame10;
+    private widget.InternalFrame internalFrame11;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame5;
@@ -11008,6 +11197,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.Label jLabel40;
     private widget.Label jLabel41;
     private widget.Label jLabel42;
+    private widget.Label jLabel43;
+    private widget.Label jLabel44;
+    private widget.Label jLabel45;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -11032,6 +11224,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private javax.swing.JMenuItem ppCatatanPasien;
     private javax.swing.JMenuItem ppDataHAIs;
     private javax.swing.JMenuItem ppIKP;
+    private javax.swing.JMenuItem ppInputCoderBpjs;
     private javax.swing.JMenuItem ppMonitoringAsuhanGizi;
     private javax.swing.JMenuItem ppPasienCorona;
     private javax.swing.JMenuItem ppPerawatanCorona;
