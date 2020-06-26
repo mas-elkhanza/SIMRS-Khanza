@@ -74,7 +74,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,43,0,0,4,-53"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,98,0,0,3,99"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -3105,28 +3105,28 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="TNoRw" pref="133" max="32767" attributes="0"/>
+                      <Component id="TNoRw" pref="21" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="TNoRM" max="32767" attributes="0"/>
+                      <Component id="TNoRM" pref="57" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="TPasien" max="32767" attributes="0"/>
+                      <Component id="TPasien" pref="71" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel29" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="TNamaKamar" pref="158" max="32767" attributes="0"/>
+                      <Component id="TNamaKamar" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel18" min="-2" pref="61" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="DTPTgl" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="cmbJam" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbJam" min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cmbMnt" min="-2" pref="62" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="cmbMnt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="cmbDtk" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="cmbDtk" min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="ChkJln" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3165,21 +3165,19 @@
                               <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                               <Component id="DTPTgl" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                              <Component id="cmbJam" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Component id="cmbJam" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                              <Component id="cmbMnt" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                              <Component id="cmbDtk" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
-                              <Component id="ChkJln" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="ChkJln" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cmbMnt" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="cmbDtk" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
