@@ -481,7 +481,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="23/06/2020"/>
+            <StringItem index="0" value="27/06/2020"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -3068,7 +3068,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSNik">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/family.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek NIK VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -3084,7 +3084,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSKartu">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/administrator.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek No.Kartu VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -3100,7 +3100,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSRiwayatRujukanPCare">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/doctor 3.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Riwayat Rujukan PCare di VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -3180,7 +3180,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSNomorRujukanPCare">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/checklist.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek No.Rujukan PCare di VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -3292,7 +3292,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSDiagnosa">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/Gnome-X-Office-Address-Book-48.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Diagnosa VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -3308,7 +3308,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSPoli">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/logout.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Poli VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -3420,7 +3420,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSFaskes">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/industry.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Faskes VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -3436,7 +3436,7 @@
     <Component class="widget.ButtonBig" name="btnBPJSSEP">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1481038237_Adobe_Bridge_CS.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Data Bridging SEP VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -3596,7 +3596,7 @@
     <Component class="widget.ButtonBig" name="btnMonitoringKlaim">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1360486845_23.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Monitoring Verifikasi Klaim BPJS"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -4012,7 +4012,7 @@
     <Component class="widget.ButtonBig" name="btnCekEligibilitasInhealth">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/receptionist.png"/>
+          <Image iconType="3" name="/48x48/inhealth.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek Eligibilitas Inhealth"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -4028,7 +4028,7 @@
     <Component class="widget.ButtonBig" name="btnReferensiKamarInhealth">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/Home.png"/>
+          <Image iconType="3" name="/48x48/inhealth.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Ruang Rawat Inhealth"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -4044,7 +4044,7 @@
     <Component class="widget.ButtonBig" name="btnCekInhealthPoli">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/logout.png"/>
+          <Image iconType="3" name="/48x48/inhealth.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Poli Inhealth"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -4060,7 +4060,7 @@
     <Component class="widget.ButtonBig" name="btnCekInhealthFaskes">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/industry.png"/>
+          <Image iconType="3" name="/48x48/inhealth.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Faskes Inhealth"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -4076,7 +4076,7 @@
     <Component class="widget.ButtonBig" name="btnInhealthSJP">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1481038237_Adobe_Bridge_CS.png"/>
+          <Image iconType="3" name="/48x48/inhealth.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Data Bridging SJP Inhealth"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -4684,7 +4684,7 @@
     <Component class="widget.ButtonBig" name="btnCekPCareDiagnosa">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/Gnome-X-Office-Address-Book-48.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Diagnosa PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -4780,7 +4780,7 @@
     <Component class="widget.ButtonBig" name="btnCekPCareKesadaran">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/doctor2.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Kesadaran PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -4908,7 +4908,7 @@
     <Component class="widget.ButtonBig" name="btnCekPCareRujukan">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_document-preview_23216.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek Rujukan PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5100,7 +5100,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiProsedurBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/stethoscope (1).png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Prosedur VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5116,7 +5116,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiKelasRawatBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/applications-office.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Kelas Rawat VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5132,7 +5132,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiDokterBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/user3.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Dokter VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5148,7 +5148,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiSpesialistikBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/teacher.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Spesialistik VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5164,7 +5164,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiRuangRawatBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1485357890_hospital.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Ruang Rawat VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5180,7 +5180,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiCaraKeluarBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1360485642_edit-notes.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Cara Keluar VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5196,7 +5196,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiPascaPulangBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/health.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Pasca Pulang VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5228,7 +5228,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSNomorRujukanRS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/checklist.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek No.Rujukan RS di VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5244,7 +5244,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSRujukanKartuPCare">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/checklist.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek Rujukan Kartu PCare di VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5260,7 +5260,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSRujukanKartuRS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/checklist.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek Rujukan Kartu RS di VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -5276,7 +5276,7 @@
     <Component class="widget.ButtonBig" name="btnRujukanKeluarBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1485357758_Doctor.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Data Rujukan Keluar VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6076,7 +6076,7 @@
     <Component class="widget.ButtonBig" name="btnMapingPoliBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_Pink_Time_Machine_B_66659.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mapping Poli VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6124,7 +6124,7 @@
     <Component class="widget.ButtonBig" name="btnSKDPBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_kde-document-open_23426.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="SKDP BPJS"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6156,7 +6156,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiPropinsiBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_map_299050.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Propinsi VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6172,7 +6172,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiKabupatenBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_map_285662.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Kabupaten VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6188,7 +6188,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiKecamatanBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_advantage_nearby_1034361.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Kecamatan VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6204,7 +6204,7 @@
     <Component class="widget.ButtonBig" name="btnCekReferensiDokterDPJPBPJS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/doctor_assistant.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Dokter DPJP VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6220,7 +6220,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSRiwayatRujukanRS">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/doctor 3.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Riwayat Rujukan RS di VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6236,7 +6236,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSTanggalRujukan">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1360485865_schedule.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tanggal Rujukan di VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6444,7 +6444,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiDokter">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/doctor (2).png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Dokter PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6460,7 +6460,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiPoli">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_house_home_61629.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Poli PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6476,7 +6476,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiProvider">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1485358067_administrator.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Provider PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6492,7 +6492,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiStatusPulang">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/edit-female-user.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Stts Pulang PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6508,7 +6508,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiSpesialis">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_surgeon_63160.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Spesialis PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6524,7 +6524,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiSubspesialis">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_Users_131982.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Subspesialis PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6540,7 +6540,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiSarana">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_Workstation_by_Artdesigner_60887.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Sarana PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6556,7 +6556,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiKhusus">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_status_63159.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Khusus PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6572,7 +6572,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiObat">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1360815676_pill.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Obat PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6588,7 +6588,7 @@
     <Component class="widget.ButtonBig" name="btnPCareReferensiTindakan">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_Documents_Black_63760.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Referensi Tindakan PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6604,7 +6604,7 @@
     <Component class="widget.ButtonBig" name="btnPCareFaskesSubspesialis">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_Office-Building_88869.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Faskes Subspesialis PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6620,7 +6620,7 @@
     <Component class="widget.ButtonBig" name="btnPCareFaskesAlihRawat">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_Two-storied_house_SH_131526.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Faskes Alih Rawat PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6636,7 +6636,7 @@
     <Component class="widget.ButtonBig" name="btnPCareFaskesThalasemia">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_Home_131971.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Faskes Thalasemia &amp; Hemofili PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6652,7 +6652,7 @@
     <Component class="widget.ButtonBig" name="btnPCareMapingObat">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1360815295_medical_case.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mapping Obat PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6668,7 +6668,7 @@
     <Component class="widget.ButtonBig" name="btnPCareMapingTindakan">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_address-book_111220.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tarif Ralan PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6684,7 +6684,7 @@
     <Component class="widget.ButtonBig" name="btnPCareClubProlanis">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_Teachers-24_103847.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Club Prolanis PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6700,7 +6700,7 @@
     <Component class="widget.ButtonBig" name="btnPCareMapingPoli">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_house_home_61629.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mapping Poli PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6716,7 +6716,7 @@
     <Component class="widget.ButtonBig" name="btnPCareKegiatanKelompok">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_Group_Meeting_Light_80844.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Kegiatan Kelompok PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6732,7 +6732,7 @@
     <Component class="widget.ButtonBig" name="btnPCareMapingTindakanRanap">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_book_285636.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tarif Ranap PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6748,7 +6748,7 @@
     <Component class="widget.ButtonBig" name="btnPCarePesertaKegiatanKelompok">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/Edit-Male-User.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Peserta Keg Kelompok PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6780,7 +6780,7 @@
     <Component class="widget.ButtonBig" name="btnPCarePendaftaran">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_todo_list_add_17451.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Data Pendaftaran PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6796,7 +6796,7 @@
     <Component class="widget.ButtonBig" name="btnPCareMapingDokter">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_surgeon_45573.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mapping Dokter PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -6908,7 +6908,7 @@
     <Component class="widget.ButtonBig" name="btnCekSEP">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_folder_search_48770.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek Nomor SEP"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -7260,7 +7260,7 @@
     <Component class="widget.ButtonBig" name="btnCekBPJSSKDP">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/if_document-preview_23216.png"/>
+          <Image iconType="3" name="/48x48/vclaim.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cek SKDP VClaim"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -7356,7 +7356,7 @@
     <Component class="widget.ButtonBig" name="btnPCareBeriObat">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/first_aid_kit.png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Pemberian Obat PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -7372,7 +7372,7 @@
     <Component class="widget.ButtonBig" name="btnPCareBeriTindakan">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/doctor (2).png"/>
+          <Image iconType="3" name="/48x48/pcare.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Pemberian Tindakan PCare"/>
         <Property name="iconTextGap" type="int" value="0"/>
