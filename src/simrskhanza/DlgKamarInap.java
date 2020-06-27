@@ -10430,11 +10430,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void MnPerkiraanBiayaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPerkiraanBiayaActionPerformed
         DlgPerkiraanBiayaRanap resep = new DlgPerkiraanBiayaRanap(null, false);
         resep.isCek();
-        resep.tampil();
         resep.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         resep.setLocationRelativeTo(internalFrame1);
         resep.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
+        
     }// GEN-LAST:event_MnPerkiraanBiayaActionPerformed
 
     private void ppResumeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppResumeBtnPrintActionPerformed
