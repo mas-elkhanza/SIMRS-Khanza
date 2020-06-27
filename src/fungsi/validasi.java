@@ -83,6 +83,7 @@ public final class validasi {
         "tujuh", "delapan", "sembilan", "sepuluh", "sebelas"};
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     private SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
+    private SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      *
@@ -1364,6 +1365,16 @@ public final class validasi {
         String tgl = "";
         try {
             tgl = sdf.format(date);
+        } catch (Exception e) {
+            System.out.println("Tanggal : " + e.toString());
+        }
+        return tgl;
+    }
+    
+public String SetDateTimeToString(Date date) {
+        String tgl = "";
+        try {
+            tgl = sdfDateTime.format(date);
         } catch (Exception e) {
             System.out.println("Tanggal : " + e.toString());
         }
