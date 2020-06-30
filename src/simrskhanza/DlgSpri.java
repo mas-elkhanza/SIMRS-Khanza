@@ -1515,7 +1515,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         // TODO add your handling code here:
         d = new Dokter();
         spri.setId(Integer.parseInt(txtId.getText()));
-        spri.setTanggal(Valid.SetTgl(DTPTgl.getDate().toString()));
+        spri.setTanggal(Valid.SetDateToString(DTPTgl.getDate()));
         spri.setJam(cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem());
         spri.setNorm(TNoRM.getText());
         spri.setDiagnosa(txtKdPenyakit.getText());
