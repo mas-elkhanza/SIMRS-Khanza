@@ -80,44 +80,16 @@ import rekammedis.RMRiwayatPerawatan;
  */
 public class DlgKamarInap extends javax.swing.JDialog {
 
-    private final DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode, tabModeCoder;
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
-
-    /**
-     *
-     */
     public DlgIKBBayi ikb = new DlgIKBBayi(null, false);
-
-    /**
-     *
-     */
     public DlgKamar kamar = new DlgKamar(null, false);
-
-    /**
-     *
-     */
     public DlgReg reg = new DlgReg(null, false);
-
-    /**
-     *
-     */
     public DlgSpri spri = new DlgSpri(null, false);
-
-    /**
-     *
-     */
     public DlgPasienMati pasienMeninggal = new DlgPasienMati(null, false);
-
-    /**
-     *
-     */
     public DlgBilingRanap billing = new DlgBilingRanap(null, false);
-
-    /**
-     *
-     */
     public DlgDiagnosaPenyakit diagnosa = new DlgDiagnosaPenyakit(null, false);
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
 
@@ -125,8 +97,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private Date date = new Date();
     private String now = dateFormat.format(date), kmr = "", key = "", tglmasuk, jammasuk, kd_pj, hariawal = "",
             pilihancetak = "", nonota = "", aktifkan_hapus_data_salah = "";
-    private PreparedStatement ps, pssetjam, pscaripiutang, psdiagnosa, psibu, psanak, pstarif, psdpjp, pscariumur;
-    private ResultSet rs, rs2, rssetjam;
+    private PreparedStatement ps, pssetjam, pscaripiutang, psdiagnosa, psibu, psanak, pstarif, psdpjp, pscariumur, ps_coder;
+    private ResultSet rs, rs2, rssetjam, rs_coder;
     private int i, row = 0;
     private double lama = 0, persenbayi = 0;
     private String gabungkan = "", norawatgabung = "", kamaryangdigabung = "", dokterranap = "", bangsal = "",
@@ -149,6 +121,51 @@ public class DlgKamarInap extends javax.swing.JDialog {
         DTPCari2.setDate(new Date());
         DTPCari3.setDate(new Date());
         DTPCari4.setDate(new Date());
+
+        tabModeCoder = new DefaultTableModel(null,
+                new Object[]{"Tanggal", "Diagnosa", "Hak Kelas 1", "Hak Kelas 2", "Hak Kelas 3",
+                    "Selisih", "Penjaminan"}) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
+        };
+        tableCoder.setModel(tabModeCoder);
+
+        // tbObat.setDefaultRenderer(Object.class, new
+        // WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+        tableCoder.setPreferredScrollableViewportSize(new Dimension(500, 500));
+//        tableCoder.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 7; i++) {
+            TableColumn column = tableCoder.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(105);
+                    break;
+                case 1:
+                    column.setPreferredWidth(180);
+                    break;
+                case 2:
+                    column.setPreferredWidth(80);
+                    break;
+                case 3:
+                    column.setPreferredWidth(80);
+                    break;
+                case 4:
+                    column.setPreferredWidth(80);
+                    break;
+                case 5:
+                    column.setPreferredWidth(80);
+                    break;
+                case 6:
+                    column.setPreferredWidth(80);
+                    break;
+                default:
+                    break;
+            }
+        }
+        tableCoder.setDefaultRenderer(Object.class, new WarnaTable());
 
         tabMode = new DefaultTableModel(null,
                 new Object[]{"No.Rawat", "Nomer RM", "Nama Pasien", "Alamat Pasien", "Penanggung Jawab",
@@ -1162,12 +1179,21 @@ public class DlgKamarInap extends javax.swing.JDialog {
         internalFrame11 = new widget.InternalFrame();
         BtnCloseCoder = new widget.Button();
         BtnSimpanCoder = new widget.Button();
+        scrollPane1 = new widget.ScrollPane();
+        tableCoder = new widget.Table();
+        label1 = new widget.Label();
+        jXTaskPane1 = new org.jdesktop.swingx.JXTaskPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabel43 = new widget.Label();
-        Hak1 = new widget.TextBox();
+        txtHak1 = new widget.TextBox();
         jLabel44 = new widget.Label();
-        Hak2 = new widget.TextBox();
-        Hak3 = new widget.TextBox();
+        txtHak2 = new widget.TextBox();
         jLabel45 = new widget.Label();
+        txtHak3 = new widget.TextBox();
+        jLabel46 = new widget.Label();
+        txtSelisih = new widget.TextBox();
+        jLabel47 = new widget.Label();
+        txtPenjaminan = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         PanelCariUtama = new javax.swing.JPanel();
         panelGlass10 = new widget.panelisi();
@@ -1217,7 +1243,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(null);
 
@@ -3312,7 +3338,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Pindah Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Pindah Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(null);
 
@@ -3545,7 +3571,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowCaraBayar.setUndecorated(true);
         WindowCaraBayar.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ganti Jenis Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ganti Jenis Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(null);
 
@@ -3614,7 +3640,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowRanapGabung.setUndecorated(true);
         WindowRanapGabung.setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ranap Gabung Ibu & Bayi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ranap Gabung Ibu & Bayi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(null);
 
@@ -3714,7 +3740,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         DlgSakit2.setUndecorated(true);
         DlgSakit2.setResizable(false);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Keterangan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Keterangan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
         internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -3824,7 +3850,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowDiagnosaMasuk.setUndecorated(true);
         WindowDiagnosaMasuk.setResizable(false);
 
-        internalFrame9.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Ganti Diagnosa Awal Sementara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame9.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Ganti Diagnosa Awal Sementara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame9.setName("internalFrame9"); // NOI18N
 
         BtnCloseIn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -3893,7 +3919,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowDiagnosaAkhir.setUndecorated(true);
         WindowDiagnosaAkhir.setResizable(false);
 
-        internalFrame10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Ganti Diagnosa Akhir Sementara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Ganti Diagnosa Akhir Sementara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame10.setName("internalFrame10"); // NOI18N
 
         BtnCloseIn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -3964,7 +3990,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowInputCoderBPJS.setResizable(false);
 
         internalFrame11.setBackground(new java.awt.Color(204, 255, 255));
-        internalFrame11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Input Coder BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Input Coder BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame11.setName("internalFrame11"); // NOI18N
         internalFrame11.setOpaque(false);
 
@@ -3990,50 +4016,158 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
+        scrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        scrollPane1.setName("scrollPane1"); // NOI18N
+
+        tableCoder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tableCoder.setName("tableCoder"); // NOI18N
+        scrollPane1.setViewportView(tableCoder);
+
+        label1.setText("Riwayat Coder BPJS");
+        label1.setName("label1"); // NOI18N
+
+        jXTaskPane1.setTitle("Tambah Data");
+        jXTaskPane1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jXTaskPane1.setName("jXTaskPane1"); // NOI18N
+        jXTaskPane1.getContentPane().setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setName("jPanel1"); // NOI18N
+        jPanel1.setOpaque(false);
+
         jLabel43.setText("Hak Kelas 1 :");
         jLabel43.setName("jLabel43"); // NOI18N
 
-        Hak1.setText("0");
-        Hak1.setHighlighter(null);
-        Hak1.setName("Hak1"); // NOI18N
-        Hak1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtHak1.setText("0");
+        txtHak1.setHighlighter(null);
+        txtHak1.setName("txtHak1"); // NOI18N
+        txtHak1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Hak1KeyPressed(evt);
+                txtHak1KeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                Hak1KeyReleased(evt);
+                txtHak1KeyReleased(evt);
             }
         });
 
         jLabel44.setText("Hak Kelas 2 :");
         jLabel44.setName("jLabel44"); // NOI18N
 
-        Hak2.setText("0");
-        Hak2.setHighlighter(null);
-        Hak2.setName("Hak2"); // NOI18N
-        Hak2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtHak2.setText("0");
+        txtHak2.setHighlighter(null);
+        txtHak2.setName("txtHak2"); // NOI18N
+        txtHak2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Hak2KeyPressed(evt);
+                txtHak2KeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                Hak2KeyReleased(evt);
-            }
-        });
-
-        Hak3.setText("0");
-        Hak3.setHighlighter(null);
-        Hak3.setName("Hak3"); // NOI18N
-        Hak3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Hak3KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Hak3KeyReleased(evt);
+                txtHak2KeyReleased(evt);
             }
         });
 
         jLabel45.setText("Hak Kelas 3 :");
         jLabel45.setName("jLabel45"); // NOI18N
+
+        txtHak3.setText("0");
+        txtHak3.setHighlighter(null);
+        txtHak3.setName("txtHak3"); // NOI18N
+        txtHak3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHak3KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtHak3KeyReleased(evt);
+            }
+        });
+
+        jLabel46.setText("Selisih :");
+        jLabel46.setName("jLabel46"); // NOI18N
+
+        txtSelisih.setText("0");
+        txtSelisih.setHighlighter(null);
+        txtSelisih.setName("txtSelisih"); // NOI18N
+        txtSelisih.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSelisihKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSelisihKeyReleased(evt);
+            }
+        });
+
+        jLabel47.setText("Penjaminan :");
+        jLabel47.setName("jLabel47"); // NOI18N
+
+        txtPenjaminan.setText("0");
+        txtPenjaminan.setHighlighter(null);
+        txtPenjaminan.setName("txtPenjaminan"); // NOI18N
+        txtPenjaminan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPenjaminanKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPenjaminanKeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtSelisih, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                    .addComponent(txtHak1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtHak2, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(txtPenjaminan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtHak3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHak1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHak2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHak3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSelisih, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPenjaminan, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jXTaskPane1.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout internalFrame11Layout = new javax.swing.GroupLayout(internalFrame11);
         internalFrame11.setLayout(internalFrame11Layout);
@@ -4041,37 +4175,25 @@ public class DlgKamarInap extends javax.swing.JDialog {
             internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(internalFrame11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(internalFrame11Layout.createSequentialGroup()
+                .addGroup(internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, internalFrame11Layout.createSequentialGroup()
                         .addComponent(BtnSimpanCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnCloseCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(internalFrame11Layout.createSequentialGroup()
-                        .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Hak1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Hak2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Hak3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                    .addComponent(label1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXTaskPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         internalFrame11Layout.setVerticalGroup(
             internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(internalFrame11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Hak1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Hak2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Hak3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jXTaskPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnSimpanCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnCloseCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -4352,7 +4474,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         DTPCari4.setName("DTPCari4"); // NOI18N
         panelCari.add(DTPCari4);
 
-        chkBaby.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         chkBaby.setText("Baby Rooming In");
         chkBaby.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkBaby.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -4531,9 +4652,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
-                WindowInputCoderBPJS.setSize(810, 120);
+                WindowInputCoderBPJS.setSize(810, 358);
                 WindowInputCoderBPJS.setLocationRelativeTo(internalFrame1);
                 WindowInputCoderBPJS.setVisible(true);
+                tampilCoder();
             }
         }
     }//GEN-LAST:event_ppInputCoderBpjsBtnPrintActionPerformed
@@ -4547,56 +4669,86 @@ public class DlgKamarInap extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (norawat.getText().trim().equals("")) {
             Valid.textKosong(norawat, "No.Rawat");
+        } else if (diagnosaakhir.getText().trim().equals("-")) {
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Diagnosa akhir masih kosong.");
         } else {
-            if(!Hak1.getText().trim().equals("0") || !Hak2.getText().trim().equals("0") || !Hak3.getText().trim().equals("0")){
-                Sequel.menyimpan("coderbpjs", "?,?,?,?,?,?", "coder bpjs", 6,
-                        new String[]{null, Hak1.getText().toString().replace(",", ""), Hak2.getText().toString().replace(",", ""), Hak3.getText().toString().replace(",", ""), norawat.getText(), Valid.SetDateTimeToString(new Date())});
-            
-            WindowInputCoderBPJS.dispose();
-            }else{
-                Hak1.requestFocus();
+            if (!txtHak1.getText().trim().equals("0") || !txtHak2.getText().trim().equals("0") || !txtHak3.getText().trim().equals("0")) {
+                Sequel.menyimpan("coderbpjs", "?,?,?,?,?,?,?,?,?", "coder bpjs", 9,
+                        new String[]{null, txtHak1.getText().toString().replace(",", ""), txtHak2.getText().toString().replace(",", ""),
+                            txtHak3.getText().toString().replace(",", ""), norawat.getText(), Valid.SetDateTimeToString(new Date()),
+                            diagnosaakhir.getText(), txtSelisih.getText().toString().replace(",", ""), txtPenjaminan.getText().toString().replace(",", "")});
+
+                WindowInputCoderBPJS.dispose();
+            } else {
+                txtHak1.requestFocus();
             }
         }
     }//GEN-LAST:event_BtnSimpanCoderActionPerformed
 
-    private void Hak1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hak1KeyPressed
+    private void txtHak1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHak1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Hak1KeyPressed
+    }//GEN-LAST:event_txtHak1KeyPressed
 
-    private void Hak2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hak2KeyPressed
+    private void txtHak2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHak2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Hak2KeyPressed
+    }//GEN-LAST:event_txtHak2KeyPressed
 
-    private void Hak3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hak3KeyPressed
+    private void txtHak3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHak3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Hak3KeyPressed
+    }//GEN-LAST:event_txtHak3KeyPressed
 
-    private void Hak1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hak1KeyReleased
+    private void txtHak1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHak1KeyReleased
         // TODO add your handling code here:
         double angka = 0;
-        if(!Hak1.getText().isBlank()){
-            angka = Double.parseDouble(Hak1.getText().replace(",", ""));
-            Hak1.setText(nf.format(angka));
+        if (!txtHak1.getText().isBlank()) {
+            angka = Double.parseDouble(txtHak1.getText().replace(",", ""));
+            txtHak1.setText(nf.format(angka));
         }
-    }//GEN-LAST:event_Hak1KeyReleased
+    }//GEN-LAST:event_txtHak1KeyReleased
 
-    private void Hak2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hak2KeyReleased
+    private void txtHak2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHak2KeyReleased
         // TODO add your handling code here:
         double angka = 0;
-        if(!Hak2.getText().isBlank()){
-            angka = Double.parseDouble(Hak2.getText().replace(",", ""));
-            Hak2.setText(nf.format(angka));
+        if (!txtHak2.getText().isBlank()) {
+            angka = Double.parseDouble(txtHak2.getText().replace(",", ""));
+            txtHak2.setText(nf.format(angka));
         }
-    }//GEN-LAST:event_Hak2KeyReleased
+    }//GEN-LAST:event_txtHak2KeyReleased
 
-    private void Hak3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hak3KeyReleased
+    private void txtHak3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHak3KeyReleased
         // TODO add your handling code here:
         double angka = 0;
-        if(!Hak3.getText().isBlank()){
-            angka = Double.parseDouble(Hak3.getText().replace(",", ""));
-            Hak3.setText(nf.format(angka));
+        if (!txtHak3.getText().isBlank()) {
+            angka = Double.parseDouble(txtHak3.getText().replace(",", ""));
+            txtHak3.setText(nf.format(angka));
         }
-    }//GEN-LAST:event_Hak3KeyReleased
+    }//GEN-LAST:event_txtHak3KeyReleased
+
+    private void txtSelisihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSelisihKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSelisihKeyPressed
+
+    private void txtSelisihKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSelisihKeyReleased
+        // TODO add your handling code here:
+        double angka = 0;
+        if (!txtSelisih.getText().isBlank()) {
+            angka = Double.parseDouble(txtSelisih.getText().replace(",", ""));
+            txtSelisih.setText(nf.format(angka));
+        }
+    }//GEN-LAST:event_txtSelisihKeyReleased
+
+    private void txtPenjaminanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPenjaminanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPenjaminanKeyPressed
+
+    private void txtPenjaminanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPenjaminanKeyReleased
+        // TODO add your handling code here:
+        double angka = 0;
+        if (!txtPenjaminan.getText().isBlank()) {
+            angka = Double.parseDouble(txtPenjaminan.getText().replace(",", ""));
+            txtPenjaminan.setText(nf.format(angka));
+        }
+    }//GEN-LAST:event_txtPenjaminanKeyReleased
 
     private void norawatKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_norawatKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
@@ -11036,9 +11188,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.TextBox DiagnosaAwalSementara;
     private javax.swing.JDialog DlgCatatan;
     private javax.swing.JDialog DlgSakit2;
-    private widget.TextBox Hak1;
-    private widget.TextBox Hak2;
-    private widget.TextBox Hak3;
     private widget.TextBox JamMasuk;
     private widget.Label LCount;
     private widget.Label LabelCatatan;
@@ -11245,17 +11394,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.Label jLabel43;
     private widget.Label jLabel44;
     private widget.Label jLabel45;
+    private widget.Label jLabel46;
+    private widget.Label jLabel47;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu.Separator jSeparator12;
     private javax.swing.JPopupMenu.Separator jSeparator13;
     private javax.swing.JPopupMenu.Separator jSeparator14;
+    private org.jdesktop.swingx.JXTaskPane jXTaskPane1;
     private widget.TextBox kdkamar;
     private widget.TextBox kdkamarpindah;
     private widget.TextBox kdpenjab;
     private widget.ComboBox kirimanDari;
+    private widget.Label label1;
     private widget.TextBox nmpenjab;
     private widget.TextBox norawat;
     private widget.TextBox norawatpindah;
@@ -11277,9 +11431,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private javax.swing.JMenuItem ppRiwayat;
     private javax.swing.JMenuItem ppSpri;
     private javax.swing.JMenuItem ppSuratKematian;
+    private widget.ScrollPane scrollPane1;
+    private widget.Table tableCoder;
     private widget.Table tbKamIn;
     private widget.TextBox ttlbiaya;
     private widget.TextBox ttlbiayapindah;
+    private widget.TextBox txtHak1;
+    private widget.TextBox txtHak2;
+    private widget.TextBox txtHak3;
+    private widget.TextBox txtPenjaminan;
+    private widget.TextBox txtSelisih;
     private widget.ComboBox upf;
     // End of variables declaration//GEN-END:variables
 
@@ -11528,6 +11689,28 @@ public class DlgKamarInap extends javax.swing.JDialog {
             System.out.println("Notifikasi : " + e);
         }
         LCount.setText("" + tabMode.getRowCount());
+    }
+
+    private void tampilCoder() {
+        try {
+            Valid.tabelKosong(tabModeCoder);
+            ps_coder = koneksi.prepareStatement("select * from coderbpjs "
+                    + "where no_rawat = ? order by id_coder desc");
+            ps_coder.setString(1, TNoRw1.getText());
+            rs_coder = ps_coder.executeQuery();
+            while (rs_coder.next()) {
+                tabModeCoder.addRow(new Object[]{rs_coder.getString("tanggal"),
+                    rs_coder.getString("diagnosa"),
+                    rs_coder.getString("hak_kelas_1"),
+                    rs_coder.getString("hak_kelas_2"),
+                    rs_coder.getString("hak_kelas_3"),
+                    rs_coder.getString("selisih"),
+                    rs_coder.getString("penjaminan")
+                });
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void emptTeks() {

@@ -5202,50 +5202,36 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="scrollPane1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="BtnSimpanCoder" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="BtnCloseCoder" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel43" min="-2" pref="88" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Hak1" min="-2" pref="139" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel44" min="-2" pref="88" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Hak2" min="-2" pref="139" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel45" min="-2" pref="88" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Hak3" min="-2" pref="139" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jXTaskPane1" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="7" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="jXTaskPane1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel43" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="Hak1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel44" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="Hak2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="jLabel45" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="Hak3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <Component id="label1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="scrollPane1" pref="135" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="BtnSimpanCoder" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="BtnCloseCoder" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -5279,63 +5265,222 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSimpanCoderActionPerformed"/>
               </Events>
             </Component>
-            <Component class="widget.Label" name="jLabel43">
+            <Container class="widget.ScrollPane" name="scrollPane1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Hak Kelas 1 :"/>
-                <Property name="name" type="java.lang.String" value="jLabel43" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="widget.TextBox" name="Hak1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="0"/>
-                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="null"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
                 </Property>
-                <Property name="name" type="java.lang.String" value="Hak1" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="scrollPane1" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Hak1KeyPressed"/>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Hak1KeyReleased"/>
-              </Events>
-            </Component>
-            <Component class="widget.Label" name="jLabel44">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="widget.Table" name="tableCoder">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="tableCoder" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="widget.Label" name="label1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Hak Kelas 2 :"/>
-                <Property name="name" type="java.lang.String" value="jLabel44" noResource="true"/>
+                <Property name="text" type="java.lang.String" value="Riwayat Coder BPJS"/>
+                <Property name="name" type="java.lang.String" value="label1" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="widget.TextBox" name="Hak2">
+            <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPane1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="0"/>
-                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="null"/>
+                <Property name="title" type="java.lang.String" value="Tambah Data"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="0"/>
                 </Property>
-                <Property name="name" type="java.lang.String" value="Hak2" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="jXTaskPane1" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Hak2KeyPressed"/>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Hak2KeyReleased"/>
-              </Events>
-            </Component>
-            <Component class="widget.TextBox" name="Hak3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="0"/>
-                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="null"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="Hak3" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Hak3KeyPressed"/>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Hak3KeyReleased"/>
-              </Events>
-            </Component>
-            <Component class="widget.Label" name="jLabel45">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Hak Kelas 3 :"/>
-                <Property name="name" type="java.lang.String" value="jLabel45" noResource="true"/>
-              </Properties>
-            </Component>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel1">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jPanel1" noResource="true"/>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                      <BorderConstraints direction="Center"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel46" max="32767" attributes="0"/>
+                                  <Component id="jLabel43" pref="74" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtSelisih" pref="109" max="32767" attributes="0"/>
+                                  <Component id="txtHak1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel44" pref="80" max="32767" attributes="0"/>
+                                  <Component id="jLabel47" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtHak2" pref="114" max="32767" attributes="0"/>
+                                  <Component id="txtPenjaminan" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel45" min="-2" pref="74" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtHak3" min="-2" pref="117" max="-2" attributes="0"/>
+                              <EmptySpace pref="92" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel43" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="txtHak1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jLabel44" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="txtHak2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jLabel45" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="txtHak3" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel46" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="txtSelisih" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jLabel47" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="txtPenjaminan" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="widget.Label" name="jLabel43">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Hak Kelas 1 :"/>
+                        <Property name="name" type="java.lang.String" value="jLabel43" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="widget.TextBox" name="txtHak1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="0"/>
+                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="null"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="txtHak1" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHak1KeyPressed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHak1KeyReleased"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.Label" name="jLabel44">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Hak Kelas 2 :"/>
+                        <Property name="name" type="java.lang.String" value="jLabel44" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="widget.TextBox" name="txtHak2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="0"/>
+                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="null"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="txtHak2" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHak2KeyPressed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHak2KeyReleased"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.Label" name="jLabel45">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Hak Kelas 3 :"/>
+                        <Property name="name" type="java.lang.String" value="jLabel45" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="widget.TextBox" name="txtHak3">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="0"/>
+                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="null"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="txtHak3" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHak3KeyPressed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtHak3KeyReleased"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.Label" name="jLabel46">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Selisih :"/>
+                        <Property name="name" type="java.lang.String" value="jLabel46" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="widget.TextBox" name="txtSelisih">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="0"/>
+                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="null"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="txtSelisih" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSelisihKeyPressed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSelisihKeyReleased"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.Label" name="jLabel47">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Penjaminan :"/>
+                        <Property name="name" type="java.lang.String" value="jLabel47" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="widget.TextBox" name="txtPenjaminan">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="0"/>
+                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="null"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="txtPenjaminan" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPenjaminanKeyPressed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPenjaminanKeyReleased"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -5791,9 +5936,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="chkBaby">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="11" style="0"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Baby Rooming In"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
