@@ -75,7 +75,7 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
 
         tabMode = new DefaultTableModel(null, new Object[]{
             "No.Rawat", "No.RM", "Nama Pasien", "Jenis Bayar", "Kamar/Bangsal", "Registrasi", "Tindakan", "Obt+Emb+Tsl", "Retur Obat",
-            "Resep Pulang", "Laborat", "Radiologi", "Potongan", "Tambahan", "Kamar", "Operasi", "Harian", "Total", "Deposit", "Hak Kelas 1", "Hak Kelas 2", "Hak Kelas 3"
+            "Resep Pulang", "Laborat", "Radiologi", "Potongan", "Tambahan", "Kamar", "Operasi", "Harian", "Total", "Deposit", "Hak Kelas 1", "Hak Kelas 2", "Hak Kelas 3","Selisih","Penjaminan"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -567,6 +567,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 String hak_kelas_1 = "0";
                 String hak_kelas_2 = "0";
                 String hak_kelas_3 = "0";
+                String selisih = "0";
+                String penjaminan = "0";
 
                 while (rs.next()) {
                     Registrasi = rs.getDouble("biaya_reg");
@@ -626,6 +628,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     hak_kelas_1 = Sequel.cariIsi("select hak_kelas_1 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
                     hak_kelas_2 = Sequel.cariIsi("select hak_kelas_2 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
                     hak_kelas_3 = Sequel.cariIsi("select hak_kelas_3 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
+                    selisih = Sequel.cariIsi("select selisih from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
+                    penjaminan = Sequel.cariIsi("select penjaminan from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
                     if (hak_kelas_1.isEmpty()) {
                         hak_kelas_1 = "0";
                     }else{
@@ -641,6 +645,16 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }else{
                          hak_kelas_3 = nf.format(Double.parseDouble(hak_kelas_3));
                     }
+                    if (selisih.isEmpty()) {
+                        selisih = "0";
+                    }else{
+                         selisih = nf.format(Double.parseDouble(selisih));
+                    }
+                    if (penjaminan.isEmpty()) {
+                        penjaminan = "0";
+                    }else{
+                         penjaminan = nf.format(Double.parseDouble(penjaminan));
+                    }
 
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"), rs.getString("no_rkm_medis"), rs.getString("nm_pasien"), rs.getString("png_jawab"), rs.getString("kd_kamar") + " " + rs.getString("nm_bangsal"),
@@ -648,7 +662,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         Valid.SetAngka(Obat), Valid.SetAngka(Retur_Obat), Valid.SetAngka(Resep_Pulang), Valid.SetAngka(Laborat), Valid.SetAngka(Radiologi), Valid.SetAngka(Potongan),
                         Valid.SetAngka(Tambahan), Valid.SetAngka(Kamar), Valid.SetAngka(Operasi), Valid.SetAngka(Harian), Valid.SetAngka(Laborat + Radiologi + Operasi + Obat + Ranap_Dokter
                         + Ranap_Dokter_Paramedis + Ranap_Paramedis + Ralan_Dokter + Ralan_Dokter_Paramedis + Ralan_Paramedis + Tambahan + Potongan + Kamar + Registrasi + Harian + Retur_Obat + Resep_Pulang),
-                        Valid.SetAngka(deposit), hak_kelas_1, hak_kelas_2, hak_kelas_3
+                        Valid.SetAngka(deposit), hak_kelas_1, hak_kelas_2, hak_kelas_3,selisih,penjaminan
                     });
 
                     all = all + Laborat + Radiologi + Operasi + Obat + Ranap_Dokter + Ranap_Dokter_Paramedis + Ranap_Paramedis + Ralan_Dokter + Ralan_Dokter_Paramedis + Ralan_Paramedis + Tambahan + Potongan + Kamar + Registrasi + Harian + Retur_Obat + Resep_Pulang;
