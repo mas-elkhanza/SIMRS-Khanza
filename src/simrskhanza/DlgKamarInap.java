@@ -95,7 +95,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
-    private String now = dateFormat.format(date), kmr = "", key = "", tglmasuk, jammasuk, kd_pj, hariawal = "",
+    private String now = dateFormat.format(date), kmr = "", key = "", tglmasuk, jammasuk, kd_pj, hariawal = "", norawat_coder = "",
             pilihancetak = "", nonota = "", aktifkan_hapus_data_salah = "";
     private PreparedStatement ps, pssetjam, pscaripiutang, psdiagnosa, psibu, psanak, pstarif, psdpjp, pscariumur, ps_coder;
     private ResultSet rs, rs2, rssetjam, rs_coder;
@@ -124,7 +124,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         tabModeCoder = new DefaultTableModel(null,
                 new Object[]{"Tanggal", "Diagnosa", "Hak Kelas 1", "Hak Kelas 2", "Hak Kelas 3",
-                    "Selisih", "Penjaminan"}) {
+                    "Selisih", "Penjaminan", "norawat"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -1194,6 +1194,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         txtSelisih = new widget.TextBox();
         jLabel47 = new widget.Label();
         txtPenjaminan = new widget.TextBox();
+        BtnSimpanCoder1 = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         PanelCariUtama = new javax.swing.JPanel();
         panelGlass10 = new widget.panelisi();
@@ -3985,6 +3986,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowDiagnosaAkhir.getContentPane().add(internalFrame10, java.awt.BorderLayout.CENTER);
 
         WindowInputCoderBPJS.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowInputCoderBPJS.setIconImage(null);
         WindowInputCoderBPJS.setName("WindowInputCoderBPJS"); // NOI18N
         WindowInputCoderBPJS.setUndecorated(true);
         WindowInputCoderBPJS.setResizable(false);
@@ -4031,6 +4033,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         ));
         tableCoder.setName("tableCoder"); // NOI18N
+        tableCoder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableCoderMouseClicked(evt);
+            }
+        });
         scrollPane1.setViewportView(tableCoder);
 
         label1.setText("Riwayat Coder BPJS");
@@ -4169,6 +4176,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         jXTaskPane1.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
+        BtnSimpanCoder1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/edittrash.png"))); // NOI18N
+        BtnSimpanCoder1.setMnemonic('S');
+        BtnSimpanCoder1.setText("Hapus");
+        BtnSimpanCoder1.setToolTipText("Alt+S");
+        BtnSimpanCoder1.setName("BtnSimpanCoder1"); // NOI18N
+        BtnSimpanCoder1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanCoder1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout internalFrame11Layout = new javax.swing.GroupLayout(internalFrame11);
         internalFrame11.setLayout(internalFrame11Layout);
         internalFrame11Layout.setHorizontalGroup(
@@ -4179,7 +4197,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, internalFrame11Layout.createSequentialGroup()
                         .addComponent(BtnSimpanCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(10, 10, 10)
+                        .addComponent(BtnSimpanCoder1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnCloseCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(label1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jXTaskPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -4196,7 +4216,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(internalFrame11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnSimpanCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnCloseCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnCloseCoder, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnSimpanCoder1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -4678,7 +4699,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             txtHak3.getText().toString().replace(",", ""), norawat.getText(), Valid.SetDateTimeToString(new Date()),
                             diagnosaakhir.getText(), txtSelisih.getText().toString().replace(",", ""), txtPenjaminan.getText().toString().replace(",", "")});
 
-                WindowInputCoderBPJS.dispose();
+                //WindowInputCoderBPJS.dispose();
+                emptyText();
+                tampilCoder();
             } else {
                 txtHak1.requestFocus();
             }
@@ -4749,6 +4772,33 @@ public class DlgKamarInap extends javax.swing.JDialog {
             txtPenjaminan.setText(nf.format(angka));
         }
     }//GEN-LAST:event_txtPenjaminanKeyReleased
+
+    private void BtnSimpanCoder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanCoder1ActionPerformed
+        // TODO add your handling code here:
+        if (!norawat_coder.isEmpty()) {
+            Sequel.meghapus("coderbpjs", "no_rawat", norawat_coder);
+            tampilCoder();
+            emptyText();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Pilih data yang akan di hapus.");
+        }
+    }//GEN-LAST:event_BtnSimpanCoder1ActionPerformed
+
+    private void tableCoderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCoderMouseClicked
+        // TODO add your handling code here:
+        getDataCoder();
+    }//GEN-LAST:event_tableCoderMouseClicked
+
+    private void getDataCoder() {
+        if (tableCoder.getSelectedRow() != -1) {
+            txtHak1.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 2).toString());
+            txtHak2.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 3).toString());
+            txtHak3.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 4).toString());
+            txtSelisih.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 5).toString());
+            txtPenjaminan.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 6).toString());
+            norawat_coder = tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString();
+        }
+    }
 
     private void norawatKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_norawatKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
@@ -11171,6 +11221,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.Button BtnSimpan5;
     private widget.Button BtnSimpan6;
     private widget.Button BtnSimpanCoder;
+    private widget.Button BtnSimpanCoder1;
     private widget.Button BtnSimpanGabung;
     private widget.Button BtnSimpanpindah;
     private widget.ComboBox CmbBln;
@@ -11705,11 +11756,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     rs_coder.getString("hak_kelas_2"),
                     rs_coder.getString("hak_kelas_3"),
                     rs_coder.getString("selisih"),
-                    rs_coder.getString("penjaminan")
+                    rs_coder.getString("penjaminan"),
+                    rs_coder.getString("no_rawat")
                 });
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DlgKamarInap.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DlgKamarInap.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -12085,5 +12138,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
             billing.beriobat.dlgobt.tampil();
             billing.beriobat.dlgobt.setVisible(true);
         }
+    }
+
+    private void emptyText() {
+        txtHak1.setText("0");
+        txtHak2.setText("0");
+        txtHak3.setText("0");
+        txtSelisih.setText("0");
+        txtPenjaminan.setText("0");
+        txtHak1.requestFocus();
     }
 }
