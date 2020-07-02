@@ -877,6 +877,9 @@ public class DlgSpri extends javax.swing.JDialog {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbSpriMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tbSpriMouseEntered(evt);
+            }
         });
         tbSpri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1291,8 +1294,7 @@ public class DlgSpri extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-
-        if (TCari.getText().trim().equals("") || TNoRM.getText().trim().equals("No. RM")) {
+        if (TNoRM.getText().equals("No. RM")) {
             JOptionPane.showMessageDialog(null, "Maaf, Pilih data yang akan dicetak dahulu.");
             BtnCariActionPerformed(evt);
         } else {
@@ -1301,7 +1303,7 @@ public class DlgSpri extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 BtnBatal.requestFocus();
             } else if (tabMode.getRowCount() != 0) {
-                if (!TNoRM.getText().trim().equals("No. RM")) {
+                if (!TNoRM.getText().equals("No. RM")) {
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars", akses.getnamars());
                     param.put("alamatrs", akses.getalamatrs());
@@ -1321,8 +1323,9 @@ public class DlgSpri extends javax.swing.JDialog {
                             + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
                             + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit "
                             + " WHERE temp_spri.norm = '" + TNoRM.getText().trim() + "' "
+                            + "and temp_spri.tanggal between '"+Valid.SetDateToString(DTPCari1.getDate())+"' and '"+Valid.SetDateToString(DTPCari2.getDate())+"' "
                             + " order by temp_spri.tanggal ", param);
-                } else if (TNoRM.getText().trim().equals("No. RM")) {
+                } else if (TNoRM.getText().equals("No. RM")) {
                     Map<String, Object> param = new HashMap<>();
                     param.put("namars", akses.getnamars());
                     param.put("alamatrs", akses.getalamatrs());
@@ -1605,6 +1608,10 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         BtnPrintActionPerformed(evt);
     }//GEN-LAST:event_MnCetakSpriActionPerformed
 
+    private void tbSpriMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSpriMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbSpriMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -1741,9 +1748,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
      *
      */
     public void tampil() {
+        spris = new ArrayList<>();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Valid.tabelKosong(tabMode);
-        spris = new ArrayList<>();
         if (TNoRM.getText().equals("No. RM")
                 && TCari.getText().equals("")
                 && TPasien.getText().equals("Nama Pasien")) {
@@ -1794,10 +1801,8 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         Valid.setPlaceHolder(txtKdPenyakit, "Kode Penyakit");
         Valid.setPlaceHolder(txtNmPenyakit, "Nama Penyakit");
         cmbUpf.setSelectedIndex(0);
-//        DTPTgl.setDate(new Date());
         DTPTgl.setDate(new Date());
         DTPTgl.requestFocus();
-
     }
 
     private void getData() {
@@ -1830,7 +1835,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
             }
             txtKdDokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(), 14).toString());
             txtNmDokter.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(), 12).toString());
-            TCari.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(), 2).toString());
+//            TCari.setText(tbSpri.getValueAt(tbSpri.getSelectedRow(), 2).toString());
         }
     }
 
