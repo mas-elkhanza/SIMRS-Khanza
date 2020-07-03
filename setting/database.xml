@@ -38,13 +38,13 @@
     <entry key="URLAPISISRUTE">https://api.sisrute.kemkes.go.id</entry>
     <entry key="IDSISRUTE">EXbXbvGwMp9CpQ1s9K748A==</entry>
     <entry key="PASSSISRUTE">gILNCSeqFSr4Hvjwkpqrow==</entry>
-    <entry key="URLAPISIRS">http://sirs.yankes.kemkes.go.id/sirsservice</entry>
+    <entry key="URLAPISIRS">http://sirs.kemkes.go.id/sirsservice</entry>
     <entry key="IDSIRS">EXbXbvGwMp9CpQ1s9K748A==</entry>
     <entry key="PASSSIRS">gILNCSeqFSr4Hvjwkpqrow==</entry>
-    <entry key="URLAPISITT">http://sirs.yankes.kemkes.go.id/sirsservice/sitb/sitb/senddata</entry>
+    <entry key="URLAPISITT">http://sirs.kemkes.go.id/sirsservice/sitb/sitb/senddata</entry>
     <entry key="IDSITT">e+txvupo3MKf+ksCxp06Sw==</entry>
     <entry key="PASSSITT">gILNCSeqFSr4Hvjwkpqrow==</entry>
-    <entry key="URLAPICORONA">http://sirs.yankes.kemkes.go.id/fo/index.php</entry>
+    <entry key="URLAPICORONA">http://sirs.kemkes.go.id/fo/index.php</entry>
     <entry key="IDCORONA">EXbXbvGwMp9CpQ1s9K748A==</entry>
     <entry key="PASSCORONA">wesRGhsjqnfiOoXWuqoTjw==</entry>
     <entry key="KABUPATENSITT">12345</entry>

@@ -192,7 +192,15 @@ public final class PilihanBridgingAsuransi extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCekBPJSRujukanKartuRSActionPerformed
 
     private void btnPCarePendaftaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCarePendaftaranActionPerformed
-        
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareCekKartu form=new PCareCekKartu(null,false);
+        form.isCek();
+        form.SetNoKartu(noka);
+        form.setSize(lebar,tinggi);
+        form.setLocationRelativeTo(internalFrame1);
+        this.dispose();
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPCarePendaftaranActionPerformed
 
     private void btnCekEligibilitasInhealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekEligibilitasInhealthActionPerformed

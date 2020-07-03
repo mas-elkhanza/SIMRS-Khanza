@@ -481,7 +481,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="27/06/2020"/>
+            <StringItem index="0" value="02/07/2020"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -1292,7 +1292,7 @@
     <Component class="widget.ButtonBig" name="btnDiet">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1360486936_pie-chart.png"/>
+          <Image iconType="3" name="/48x48/dietpasien.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Diet Pasien"/>
         <Property name="iconTextGap" type="int" value="0"/>
@@ -2012,7 +2012,7 @@
     <Component class="widget.ButtonBig" name="btnResepPulang">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/1360485642_edit-notes.png"/>
+          <Image iconType="3" name="/48x48/IconResepPulang.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Resep Pulang"/>
         <Property name="iconTextGap" type="int" value="0"/>

@@ -598,6 +598,7 @@ import smsui.frmSmsView;
 import surat.PengumumanEPasien;
 import surat.SuratAlmari;
 import surat.SuratBalas;
+import surat.SuratBebasNarkoba;
 import surat.SuratIndeks;
 import surat.SuratKeluar;
 import surat.SuratKlasifikasi;
@@ -1558,7 +1559,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/06/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/06/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -2113,7 +2114,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486936_pie-chart.png"))); // NOI18N
+        btnDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/dietpasien.png"))); // NOI18N
         btnDiet.setText("Diet Pasien");
         btnDiet.setIconTextGap(0);
         btnDiet.setName("btnDiet"); // NOI18N
@@ -2608,7 +2609,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        btnResepPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
+        btnResepPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/IconResepPulang.png"))); // NOI18N
         btnResepPulang.setText("Resep Pulang");
         btnResepPulang.setIconTextGap(0);
         btnResepPulang.setName("btnResepPulang"); // NOI18N
@@ -16203,6 +16204,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratBebasNarkobaActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratBebasNarkoba form=new SuratBebasNarkoba(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16807,7 +16821,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISDindingRumahPenerimaDankes,btnZISLantaiRumahPenerimaDankes,btnZISAtapRumahPenerimaDankes,btnZISKepemilikanRumahPenerimaDankes,
             btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
             btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
-            btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu;
+            btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
+            btnSuratBebasNarkoba;
     
     public void isWall(){
         try{            
@@ -19750,6 +19765,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_hamil()==true){
                 Panelmenu.add(btnSuratHamil);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_bebas_narkoba()==true){
+                Panelmenu.add(btnSuratBebasNarkoba);
                 jmlmenu++;
             }
             
@@ -22990,6 +23010,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_hamil()==true){
             Panelmenu.add(btnSuratHamil);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_bebas_narkoba()==true){
+            Panelmenu.add(btnSuratBebasNarkoba);
             jmlmenu++;
         }
         
@@ -27351,6 +27376,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_bebas_narkoba()==true){
+            if(btnSuratBebasNarkoba.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratBebasNarkoba);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengumuman_epasien()==true){
             if(btnPengumumanEPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengumumanEPasien);
@@ -30206,6 +30238,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPCareCekKartu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPCareCekKartuActionPerformed(evt);
+            }
+        });
+        
+        btnSuratBebasNarkoba = new widget.ButtonBig();
+        btnSuratBebasNarkoba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Capsule-drug-medicine-pill-tablet_5994864.png"))); 
+        btnSuratBebasNarkoba.setText("Surat Bebas Narkoba");
+        btnSuratBebasNarkoba.setIconTextGap(0);
+        btnSuratBebasNarkoba.setName("btnSuratBebasNarkoba"); 
+        btnSuratBebasNarkoba.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratBebasNarkoba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratBebasNarkobaActionPerformed(evt);
             }
         });
     }
