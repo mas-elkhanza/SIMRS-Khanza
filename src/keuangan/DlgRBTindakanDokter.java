@@ -680,6 +680,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
+            param.put("Tanggal", Tgl1.getSelectedItem());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReport("rptRBTindakanDr.jasper", "report", "[ Rekap Harian Dokter Rawat Jalan ]", param);
         }

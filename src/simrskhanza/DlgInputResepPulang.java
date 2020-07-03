@@ -902,7 +902,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     public void setNoRm(String norwt,String penyakit, String tanggal, String jam) {        
         TKdPny.setText(penyakit);
         TNoRw.setText(norwt);
-        Tanggal.setText(Valid.SetTgl(tanggal));
+        Tanggal.setText(tanggal);
         Jam.setText(jam);
         KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt));
         kelas.setText(Sequel.cariIsi(

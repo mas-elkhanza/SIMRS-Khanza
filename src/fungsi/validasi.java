@@ -4,6 +4,7 @@
  */
 package fungsi;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Dialog.ModalExclusionType;
@@ -53,6 +54,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
+import widget.Tanggal1;
 
 /**
  *
@@ -77,8 +79,11 @@ public final class validasi {
     private final Calendar now = Calendar.getInstance();
     private final int year = (now.get(Calendar.YEAR));
     private static final Properties prop = new Properties();
-    private String[] nomina={"","satu","dua","tiga","empat","lima","enam",
-                         "tujuh","delapan","sembilan","sepuluh","sebelas"};
+    private String[] nomina = {"", "satu", "dua", "tiga", "empat", "lima", "enam",
+        "tujuh", "delapan", "sembilan", "sepuluh", "sebelas"};
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm:ss");
+    private SimpleDateFormat sdfDateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      *
@@ -684,7 +689,7 @@ public final class validasi {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Error Report: "+e);
+            System.out.println("Error Report: " + e);
         }
     }
 
@@ -1080,6 +1085,38 @@ public final class validasi {
         }
     }
 
+    public void pindah(java.awt.event.KeyEvent evt, JDateChooser kiri, JTextField kanan) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            kanan.requestFocus();
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
+            kiri.requestFocus();
+        }
+    }
+
+    public void pindah(java.awt.event.KeyEvent evt, JTextField kiri, JDateChooser kanan) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            kanan.requestFocus();
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
+            kiri.requestFocus();
+        }
+    }
+
+    public void pindah(java.awt.event.KeyEvent evt, JDateChooser kiri, JComboBox kanan) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            kanan.requestFocus();
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
+            kiri.requestFocus();
+        }
+    }
+
+    public void pindah(java.awt.event.KeyEvent evt, JDateChooser kiri, JTextArea kanan) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            kanan.requestFocus();
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
+            kiri.requestFocus();
+        }
+    }
+
     /**
      *
      * @param evt
@@ -1237,8 +1274,8 @@ public final class validasi {
                 rt.exec("open " + "http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/"
                         + prop.getProperty("HYBRIDWEB") + "/" + url);
             } else if (os.contains("nix") || os.contains("nux")) {
-                String[] browsers = { "x-www-browser", "epiphany", "firefox", "mozilla", "konqueror", "chrome",
-                        "chromium", "netscape", "opera", "links", "lynx", "midori" };
+                String[] browsers = {"x-www-browser", "epiphany", "firefox", "mozilla", "konqueror", "chrome",
+                    "chromium", "netscape", "opera", "links", "lynx", "midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url"
                 // ||..."
                 StringBuilder cmd = new StringBuilder();
@@ -1247,7 +1284,7 @@ public final class validasi {
                             .append(koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB")).append("/")
                             .append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append("\" ");
                 }
-                rt.exec(new String[] { "sh", "-c", cmd.toString() });
+                rt.exec(new String[]{"sh", "-c", cmd.toString()});
             }
         } catch (Exception e) {
             System.out.println("Notif Browser : " + e);
@@ -1269,15 +1306,15 @@ public final class validasi {
             } else if (os.contains("mac")) {
                 rt.exec("open " + url);
             } else if (os.contains("nix") || os.contains("nux")) {
-                String[] browsers = { "x-www-browser", "epiphany", "firefox", "mozilla", "konqueror", "chrome",
-                        "chromium", "netscape", "opera", "links", "lynx", "midori" };
+                String[] browsers = {"x-www-browser", "epiphany", "firefox", "mozilla", "konqueror", "chrome",
+                    "chromium", "netscape", "opera", "links", "lynx", "midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url"
                 // ||..."
                 StringBuilder cmd = new StringBuilder();
                 for (i = 0; i < browsers.length; i++) {
                     cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append(url).append("\" ");
                 }
-                rt.exec(new String[] { "sh", "-c", cmd.toString() });
+                rt.exec(new String[]{"sh", "-c", cmd.toString()});
             }
         } catch (Exception e) {
             System.out.println("Notif Browser : " + e);
@@ -1290,12 +1327,12 @@ public final class validasi {
      * @throws URISyntaxException
      */
     public void printUrl(String url) throws URISyntaxException {
-        try{
-           Properties prop = new Properties();
-           prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-           desktop.print(new File(new java.net.URI("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+url)));  
-        }catch (Exception e) {
-           System.out.println(e);
+        try {
+            Properties prop = new Properties();
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            desktop.print(new File(new java.net.URI("http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + url)));
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
@@ -1312,6 +1349,46 @@ public final class validasi {
         } catch (Exception e) {
         }
         return s;
+    }
+
+    public String SetTimeToString(Date date) {
+        String tgl = "";
+        try {
+            tgl = sdfTime.format(date);
+        } catch (Exception e) {
+            System.out.println("Time : " + e.toString());
+        }
+        return tgl;
+    }
+
+    public String SetDateToString(Date date) {
+        String tgl = "";
+        try {
+            tgl = sdf.format(date);
+        } catch (Exception e) {
+            System.out.println("Tanggal : " + e.toString());
+        }
+        return tgl;
+    }
+    
+public String SetDateTimeToString(Date date) {
+        String tgl = "";
+        try {
+            tgl = sdfDateTime.format(date);
+        } catch (Exception e) {
+            System.out.println("Tanggal : " + e.toString());
+        }
+        return tgl;
+    }
+
+    public Date SetStringToDate(String date) {
+        Date tgl = null;
+        try {
+            tgl = sdf.parse(date);
+        } catch (Exception e) {
+            System.out.println("Tanggal : " + e.toString());
+        }
+        return tgl;
     }
 
     /**
@@ -1366,6 +1443,15 @@ public final class validasi {
      * @param tgl
      */
     public void SetTgl(JDateTimePicker dtp, String tgl) {
+        try {
+            Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'", ""));
+            dtp.setDate(dtpa);
+        } catch (ParseException ex) {
+            dtp.setDate(new Date());
+        }
+    }
+
+    public void SetTgl(JDateChooser dtp, String tgl) {
         try {
             Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl.replaceAll("'", ""));
             dtp.setDate(dtpa);
@@ -1600,53 +1686,45 @@ public final class validasi {
             }
         });
     }
-    
+
     /**
      *
      * @param angka
      * @return
      */
-    public String terbilang(double angka){
-        if(angka<12)
-        {
-          return nomina[(int)angka];
+    public String terbilang(double angka) {
+        if (angka < 12) {
+            return nomina[(int) angka];
         }
-        
-        if(angka>=12 && angka <=19)
-        {
-            return nomina[(int)angka%10] +" belas ";
+
+        if (angka >= 12 && angka <= 19) {
+            return nomina[(int) angka % 10] + " belas ";
         }
-        
-        if(angka>=20 && angka <=99)
-        {
-            return nomina[(int)angka/10] +" puluh "+nomina[(int)angka%10];
+
+        if (angka >= 20 && angka <= 99) {
+            return nomina[(int) angka / 10] + " puluh " + nomina[(int) angka % 10];
         }
-        
-        if(angka>=100 && angka <=199)
-        {
-            return "seratus "+ terbilang(angka%100);
+
+        if (angka >= 100 && angka <= 199) {
+            return "seratus " + terbilang(angka % 100);
         }
-        
-        if(angka>=200 && angka <=999)
-        {
-            return nomina[(int)angka/100]+" ratus "+terbilang(angka%100);
+
+        if (angka >= 200 && angka <= 999) {
+            return nomina[(int) angka / 100] + " ratus " + terbilang(angka % 100);
         }
-        
-        if(angka>=1000 && angka <=1999)
-        {
-            return "seribu "+ terbilang(angka%1000);
+
+        if (angka >= 1000 && angka <= 1999) {
+            return "seribu " + terbilang(angka % 1000);
         }
-        
-        if(angka >= 2000 && angka <=999999)
-        {
-            return terbilang((int)angka/1000)+" ribu "+ terbilang(angka%1000);
+
+        if (angka >= 2000 && angka <= 999999) {
+            return terbilang((int) angka / 1000) + " ribu " + terbilang(angka % 1000);
         }
-        
-        if(angka >= 1000000 && angka <=999999999)
-        {
-            return terbilang((int)angka/1000000)+" juta "+ terbilang(angka%1000000);
+
+        if (angka >= 1000000 && angka <= 999999999) {
+            return terbilang((int) angka / 1000000) + " juta " + terbilang(angka % 1000000);
         }
-        
+
         return "";
     }
 }

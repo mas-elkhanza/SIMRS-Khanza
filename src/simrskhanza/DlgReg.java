@@ -85,6 +85,7 @@ import laporan.DlgDiagnosaPenyakit;
 import laporan.DlgFrekuensiPenyakitRalan;
 import bridging.DlgDataTB;
 import bridging.INACBGPerawatanCorona;
+import java.awt.Toolkit;
 import rekammedis.RMDataResumePasien;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -218,8 +219,15 @@ public final class DlgReg extends javax.swing.JDialog {
         initComponents();
 
         this.setLocation(8, 1);
-        setSize(885, 674);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setSize(885, 660); // setSize(885, 674);
+//        setSize(screenSize.width, screenSize.height);
 
+        DTPReg.setDate(new Date());
+        DTPCari1.setDate(new Date());
+        DTPCari2.setDate(new Date());
+
+        System.out.println("Date = " + Valid.SetDateToString(DTPReg.getDate()));
         tabMode = new DefaultTableModel(null,
                 new Object[]{"P", "No.Reg", "No.Rawat", "Tanggal", "Jam", "Kd.Dokter", "Dokter Dituju", "Nomer RM",
                     "Pasien", "J.K.", "Umur", "Poliklinik", "Jenis Bayar", "Penanggung Jawab", "Alamat P.J.",
@@ -1340,17 +1348,17 @@ public final class DlgReg extends javax.swing.JDialog {
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
         panelGlass7 = new widget.panelisi();
-        jLabel15 = new widget.Label();
-        DTPCari1 = new widget.Tanggal();
-        jLabel17 = new widget.Label();
-        DTPCari2 = new widget.Tanggal();
+        jLabel14 = new widget.Label();
+        CrDokter = new widget.TextBox();
+        BtnSeek3 = new widget.Button();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         panelGlass8 = new widget.panelisi();
-        jLabel14 = new widget.Label();
-        CrDokter = new widget.TextBox();
-        BtnSeek3 = new widget.Button();
+        jLabel15 = new widget.Label();
+        DTPCari1 = new widget.Tanggal1();
+        jLabel17 = new widget.Label();
+        DTPCari2 = new widget.Tanggal1();
         jLabel16 = new widget.Label();
         CrPoli = new widget.TextBox();
         BtnSeek4 = new widget.Button();
@@ -1363,7 +1371,6 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel8 = new widget.Label();
         jLabel13 = new widget.Label();
         jLabel9 = new widget.Label();
-        DTPReg = new widget.Tanggal();
         jLabel20 = new widget.Label();
         TPngJwb = new widget.TextBox();
         TNoRM = new widget.TextBox();
@@ -1396,6 +1403,7 @@ public final class DlgReg extends javax.swing.JDialog {
         AsalRujukan = new widget.TextBox();
         btnPenjab1 = new widget.Button();
         ChkTracker = new widget.CekBox();
+        DTPReg = new widget.Tanggal();
         ChkInput = new widget.CekBox();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
@@ -3766,7 +3774,7 @@ public final class DlgReg extends javax.swing.JDialog {
         DlgDemografi.setUndecorated(true);
         DlgDemografi.setResizable(false);
 
-        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Demografi Pendaftar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Demografi Pendaftar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -3920,7 +3928,7 @@ public final class DlgReg extends javax.swing.JDialog {
         DlgSakit2.setUndecorated(true);
         DlgSakit2.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Keterangan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Keterangan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -4601,7 +4609,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Registrasi Periksa Hari Ini ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Registrasi Periksa Hari Ini ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -4609,6 +4617,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.BorderLayout(1, 1));
 
+        panelGlass6.setMinimumSize(new java.awt.Dimension(783, 55));
         panelGlass6.setName("panelGlass6"); // NOI18N
         panelGlass6.setPreferredSize(new java.awt.Dimension(55, 55));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
@@ -4754,37 +4763,29 @@ public final class DlgReg extends javax.swing.JDialog {
 
         panelGlass7.setName("panelGlass7"); // NOI18N
         panelGlass7.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel15.setText("Periode :");
-        jLabel15.setName("jLabel15"); // NOI18N
-        jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelGlass7.add(jLabel15);
+        jLabel14.setText("Dokter :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        jLabel14.setPreferredSize(new java.awt.Dimension(60, 23));
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2020" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
-        DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelGlass7.add(DTPCari1);
+        CrDokter.setEditable(false);
+        CrDokter.setName("CrDokter"); // NOI18N
+        CrDokter.setPreferredSize(new java.awt.Dimension(300, 23));
 
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("s.d.");
-        jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
-        panelGlass7.add(jLabel17);
-
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2020" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
-        DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelGlass7.add(DTPCari2);
+        BtnSeek3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSeek3.setMnemonic('6');
+        BtnSeek3.setToolTipText("ALt+6");
+        BtnSeek3.setName("BtnSeek3"); // NOI18N
+        BtnSeek3.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnSeek3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeek3ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(158, 23));
-        panelGlass7.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(376, 23));
@@ -4793,7 +4794,6 @@ public final class DlgReg extends javax.swing.JDialog {
                 TCariKeyPressed(evt);
             }
         });
-        panelGlass7.add(TCari);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('7');
@@ -4810,45 +4810,67 @@ public final class DlgReg extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelGlass7.add(BtnCari);
+
+        javax.swing.GroupLayout panelGlass7Layout = new javax.swing.GroupLayout(panelGlass7);
+        panelGlass7.setLayout(panelGlass7Layout);
+        panelGlass7Layout.setHorizontalGroup(
+            panelGlass7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CrDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnSeek3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelGlass7Layout.setVerticalGroup(
+            panelGlass7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass7Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(panelGlass7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelGlass7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(CrDokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnSeek3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelGlass7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 24, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
+        );
 
         jPanel2.add(panelGlass7, java.awt.BorderLayout.CENTER);
 
         panelGlass8.setName("panelGlass8"); // NOI18N
         panelGlass8.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel14.setText("Dokter :");
-        jLabel14.setName("jLabel14"); // NOI18N
-        jLabel14.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelGlass8.add(jLabel14);
+        jLabel15.setText("Periode :");
+        jLabel15.setName("jLabel15"); // NOI18N
+        jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
 
-        CrDokter.setEditable(false);
-        CrDokter.setName("CrDokter"); // NOI18N
-        CrDokter.setPreferredSize(new java.awt.Dimension(300, 23));
-        panelGlass8.add(CrDokter);
+        DTPCari1.setName("DTPCari1"); // NOI18N
 
-        BtnSeek3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnSeek3.setMnemonic('6');
-        BtnSeek3.setToolTipText("ALt+6");
-        BtnSeek3.setName("BtnSeek3"); // NOI18N
-        BtnSeek3.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnSeek3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSeek3ActionPerformed(evt);
-            }
-        });
-        panelGlass8.add(BtnSeek3);
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("s.d.");
+        jLabel17.setName("jLabel17"); // NOI18N
+        jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
+
+        DTPCari2.setName("DTPCari2"); // NOI18N
 
         jLabel16.setText("Unit :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setPreferredSize(new java.awt.Dimension(125, 23));
-        panelGlass8.add(jLabel16);
 
         CrPoli.setEditable(false);
         CrPoli.setName("CrPoli"); // NOI18N
         CrPoli.setPreferredSize(new java.awt.Dimension(300, 23));
-        panelGlass8.add(CrPoli);
 
         BtnSeek4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek4.setMnemonic('5');
@@ -4860,7 +4882,54 @@ public final class DlgReg extends javax.swing.JDialog {
                 BtnSeek4ActionPerformed(evt);
             }
         });
-        panelGlass8.add(BtnSeek4);
+
+        javax.swing.GroupLayout panelGlass8Layout = new javax.swing.GroupLayout(panelGlass8);
+        panelGlass8.setLayout(panelGlass8Layout);
+        panelGlass8Layout.setHorizontalGroup(
+            panelGlass8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(DTPCari1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(DTPCari2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CrPoli, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(BtnSeek4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+        panelGlass8Layout.setVerticalGroup(
+            panelGlass8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass8Layout.createSequentialGroup()
+                .addGroup(panelGlass8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGlass8Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass8Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(DTPCari2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass8Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass8Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(CrPoli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass8Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(BtnSeek4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass8Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(panelGlass8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTPCari1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(8, 8, 8))
+        );
 
         jPanel2.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
@@ -4923,29 +4992,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel9.setText("Jam :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(165, 72, 36, 23);
-
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2020" }));
-        DTPReg.setDisplayFormat("dd-MM-yyyy");
-        DTPReg.setName("DTPReg"); // NOI18N
-        DTPReg.setOpaque(false);
-        DTPReg.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DTPRegItemStateChanged(evt);
-            }
-        });
-        DTPReg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DTPRegActionPerformed(evt);
-            }
-        });
-        DTPReg.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPRegKeyPressed(evt);
-            }
-        });
-        FormInput.add(DTPReg);
-        DTPReg.setBounds(74, 72, 90, 23);
+        jLabel9.setBounds(170, 70, 40, 23);
 
         jLabel20.setText("Png. Jawab :");
         jLabel20.setName("jLabel20"); // NOI18N
@@ -4995,7 +5042,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbJam);
-        CmbJam.setBounds(205, 72, 62, 23);
+        CmbJam.setBounds(210, 70, 60, 23);
 
         CmbMenit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbMenit.setName("CmbMenit"); // NOI18N
@@ -5005,7 +5052,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbMenit);
-        CmbMenit.setBounds(270, 72, 62, 23);
+        CmbMenit.setBounds(270, 70, 60, 23);
 
         CmbDetik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbDetik.setName("CmbDetik"); // NOI18N
@@ -5015,7 +5062,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbDetik);
-        CmbDetik.setBounds(335, 72, 62, 23);
+        CmbDetik.setBounds(330, 70, 60, 23);
 
         jLabel7.setText("No.Rekam Medik :");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -5221,6 +5268,23 @@ public final class DlgReg extends javax.swing.JDialog {
         ChkTracker.setName("ChkTracker"); // NOI18N
         FormInput.add(ChkTracker);
         ChkTracker.setBounds(196, 12, 23, 23);
+
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-06-2020" }));
+        DTPReg.setDisplayFormat("dd-MM-yyyy");
+        DTPReg.setName("DTPReg"); // NOI18N
+        DTPReg.setOpaque(false);
+        DTPReg.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DTPRegItemStateChanged(evt);
+            }
+        });
+        DTPReg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DTPRegKeyPressed(evt);
+            }
+        });
+        FormInput.add(DTPReg);
+        DTPReg.setBounds(74, 72, 90, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -5534,12 +5598,16 @@ public final class DlgReg extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnCariActionPerformed
 
-    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {
-        Valid.pindah(evt, TNoReg, DTPReg);
-    }
+    private void DTPRegItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPRegItemStateChanged
+        isNumber();
+    }//GEN-LAST:event_DTPRegItemStateChanged
 
-    private void DTPRegKeyPressed(java.awt.event.KeyEvent evt) {
+    private void DTPRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPRegKeyPressed
         Valid.pindah(evt, TNoRw, CmbJam);
+    }//GEN-LAST:event_DTPRegKeyPressed
+
+    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {
+//        Valid.pindah(evt, TNoReg, DTPReg);
     }
 
     private void TPngJwbKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_TPngJwbKeyPressed
@@ -5582,7 +5650,7 @@ public final class DlgReg extends javax.swing.JDialog {
     }// GEN-LAST:event_TNoRegKeyPressed
 
     private void CmbJamKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_CmbJamKeyPressed
-        Valid.pindah(evt, DTPReg, CmbMenit);
+//        Valid.pindah(evt, DTPReg, CmbMenit);
     }// GEN-LAST:event_CmbJamKeyPressed
 
     private void CmbMenitKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_CmbMenitKeyPressed
@@ -5638,12 +5706,12 @@ public final class DlgReg extends javax.swing.JDialog {
             TNoRM.requestFocus();
         } else if (Sequel.cariInteger("select count(no_reg) from reg_periksa where no_reg='" + TNoReg.getText()
                 + "' and kd_dokter='" + kddokter.getText() + "' and tgl_registrasi='"
-                + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "' ") > 0) {
+                + Valid.SetDateToString(DTPReg.getDate()) + "' ") > 0) {
             JOptionPane.showMessageDialog(null, "Eiiits, Hayo no registrasi double nih!");
             TNoReg.requestFocus();
         } else if (Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.no_rkm_medis='"
                 + TNoRM.getText() + "' and kd_dokter='" + kddokter.getText() + "' and kd_pj='" + kdpnj.getText()
-                + "' and tgl_registrasi='" + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "' ") > 0) {
+                + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate()) + "' ") > 0) {
             JOptionPane.showMessageDialog(null, "Eiiits, Hayo pendaftaran double nih!");
             TNoRM.requestFocus();
         } else {
@@ -5653,7 +5721,7 @@ public final class DlgReg extends javax.swing.JDialog {
                 if (aktifjadwal.equals("aktif")) {
                     if (Sequel.cariInteger("select count(no_rawat) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and tgl_registrasi='"
-                            + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "' ") >= kuota) {
+                            + Valid.SetDateToString(DTPReg.getDate()) + "' ") >= kuota) {
                         JOptionPane.showMessageDialog(null, "Eiiits, Kuota registrasi penuh..!!!");
                         TCari.requestFocus();
                     } else {
@@ -5734,8 +5802,8 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where "
                         + "poliklinik.kd_poli<>'IGDK' and tgl_registrasi between '"
-                        + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' order by " + order,
+                        + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari2.getDate()) + "' order by " + order,
                         param);
             } else {
                 Valid.MyReportqry("rptReg.jasper", "report", "::[ Data Registrasi Periksa ]::",
@@ -5746,68 +5814,68 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.no_reg like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.no_rawat like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.tgl_registrasi like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.kd_dokter like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and dokter.nm_dokter like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.no_rkm_medis like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.stts_daftar like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and poliklinik.nm_poli like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.p_jawab like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.almt_pj like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and penjab.png_jawab like '%" + TCari.getText().trim() + "%' or "
                         + "poliklinik.kd_poli<>'IGDK' and dokter.nm_dokter like '%" + CrDokter.getText()
                         + "%' and poliklinik.nm_poli like '%" + CrPoli.getText()
-                        + "%' and tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + "%' and tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                        + "' and '" + Valid.SetDateToString(DTPCari2.getDate())
                         + "' and reg_periksa.hubunganpj like '%" + TCari.getText().trim() + "%' order by "
                         + order,
                         param);
@@ -5899,11 +5967,11 @@ public final class DlgReg extends javax.swing.JDialog {
             Valid.textKosong(TBiaya, "biaya regristrasi");
         } else if (Sequel.cariInteger("select count(no_reg) from reg_periksa where no_reg='" + TNoReg.getText()
                 + "' and no_rawat='" + TNoRw.getText() + "' and no_rkm_medis='" + TNoRM.getText() + "' and kd_dokter='"
-                + kddokter.getText() + "' and tgl_registrasi='" + Valid.SetTgl(DTPReg.getSelectedItem() + "")
+                + kddokter.getText() + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate())
                 + "' ") < 1) {
             if (Sequel.cariInteger("select count(no_reg) from reg_periksa where no_reg='" + TNoReg.getText()
                     + "' and kd_dokter='" + kddokter.getText() + "' and tgl_registrasi='"
-                    + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "' ") > 0) {
+                    + Valid.SetDateToString(DTPReg.getDate()) + "' ") > 0) {
                 JOptionPane.showMessageDialog(null, "Eiiits, Hayo no registrasi double nih!");
                 TNoReg.requestFocus();
             } else {
@@ -5914,7 +5982,7 @@ public final class DlgReg extends javax.swing.JDialog {
                                 + "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",
                                 16,
                                 new String[]{TNoRw.getText(), TNoReg.getText(),
-                                    Valid.SetTgl(DTPReg.getSelectedItem() + ""),
+                                    Valid.SetDateToString(DTPReg.getDate()),
                                     CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                     + CmbDetik.getSelectedItem(),
                                     kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
@@ -5941,7 +6009,7 @@ public final class DlgReg extends javax.swing.JDialog {
                                     + "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",
                                     16,
                                     new String[]{TNoRw.getText(), TNoReg.getText(),
-                                        Valid.SetTgl(DTPReg.getSelectedItem() + ""),
+                                        Valid.SetDateToString(DTPReg.getDate()),
                                         CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                         + CmbDetik.getSelectedItem(),
                                         kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
@@ -5963,7 +6031,7 @@ public final class DlgReg extends javax.swing.JDialog {
                             + "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",
                             16,
                             new String[]{TNoRw.getText(), TNoReg.getText(),
-                                Valid.SetTgl(DTPReg.getSelectedItem() + ""),
+                                Valid.SetDateToString(DTPReg.getDate()),
                                 CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                 + CmbDetik.getSelectedItem(),
                                 kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
@@ -5990,7 +6058,7 @@ public final class DlgReg extends javax.swing.JDialog {
                                 + "p_jawab=?,almt_pj=?,biaya_reg=?,hubunganpj=?,stts_daftar=?,kd_pj=?,umurdaftar=?,sttsumur=? where no_rawat=?",
                                 16,
                                 new String[]{TNoRw.getText(), TNoReg.getText(),
-                                    Valid.SetTgl(DTPReg.getSelectedItem() + ""),
+                                    Valid.SetDateToString(DTPReg.getDate()),
                                     CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                     + CmbDetik.getSelectedItem(),
                                     kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
@@ -6407,10 +6475,11 @@ public final class DlgReg extends javax.swing.JDialog {
     private void ppGrafikPerpoliActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppGrafikPerpoliActionPerformed
         tampil();
         grafikperiksaperpoli kas = new grafikperiksaperpoli(
-                "Grafik Periksa Per Unit/Poli Tanggal " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
-                "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' ");
+                "Grafik Periksa Per Unit/Poli Tanggal "
+                + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
+                "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                + Valid.SetDateToString(DTPCari2.getDate()) + "' ");
         kas.setSize(this.getWidth(), this.getHeight());
         kas.setLocationRelativeTo(this);
         kas.setVisible(true);
@@ -6419,10 +6488,10 @@ public final class DlgReg extends javax.swing.JDialog {
     private void ppGrafikPerdokterActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppGrafikPerdokterActionPerformed
         tampil();
         grafikperiksaperdokter kas = new grafikperiksaperdokter(
-                "Grafik Periksa Per Dokter Tanggal " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
-                "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' ");
+                "Grafik Periksa Per Dokter Tanggal " + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
+                "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                + Valid.SetDateToString(DTPCari2.getDate()) + "' ");
         kas.setSize(this.getWidth(), this.getHeight());
         kas.setLocationRelativeTo(this);
         kas.setVisible(true);
@@ -6431,10 +6500,10 @@ public final class DlgReg extends javax.swing.JDialog {
     private void ppGrafikPerJKActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppGrafikPerJKActionPerformed
         tampil();
         grafikperiksaperjk kas = new grafikperiksaperjk(
-                "Grafik Periksa Per Jenis Kelamin " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
-                "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' ");
+                "Grafik Periksa Per Jenis Kelamin " + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
+                "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                + Valid.SetDateToString(DTPCari2.getDate()) + "' ");
         kas.setSize(this.getWidth(), this.getHeight());
         kas.setLocationRelativeTo(this);
         kas.setVisible(true);
@@ -6443,10 +6512,10 @@ public final class DlgReg extends javax.swing.JDialog {
     private void ppGrafikPerPekerjaanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppGrafikPerPekerjaanActionPerformed
         tampil();
         grafikperiksaperpekerjaan kas = new grafikperiksaperpekerjaan(
-                "Grafik Periksa Per Pekerjaan " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
-                "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' ");
+                "Grafik Periksa Per Pekerjaan " + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
+                "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                + Valid.SetDateToString(DTPCari2.getDate()) + "' ");
         kas.setSize(this.getWidth(), this.getHeight());
         kas.setLocationRelativeTo(this);
         kas.setVisible(true);
@@ -6455,10 +6524,10 @@ public final class DlgReg extends javax.swing.JDialog {
     private void ppGrafikPerAgamaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppGrafikPerAgamaActionPerformed
         tampil();
         grafikperiksaperagama kas = new grafikperiksaperagama(
-                "Grafik Periksa Per Agama " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
-                "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' ");
+                "Grafik Periksa Per Agama " + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
+                "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                + Valid.SetDateToString(DTPCari2.getDate()) + "' ");
         kas.setSize(this.getWidth(), this.getHeight());
         kas.setLocationRelativeTo(this);
         kas.setVisible(true);
@@ -6467,10 +6536,10 @@ public final class DlgReg extends javax.swing.JDialog {
     private void ppGrafikPerTahunActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppGrafikPerTahunActionPerformed
         tampil();
         grafikperiksapertahun kas = new grafikperiksapertahun(
-                "Grafik Periksa Per Tahun " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
-                "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' ");
+                "Grafik Periksa Per Tahun " + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
+                "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                + Valid.SetDateToString(DTPCari2.getDate()) + "' ");
         kas.setSize(this.getWidth(), this.getHeight());
         kas.setLocationRelativeTo(this);
         kas.setVisible(true);
@@ -6479,10 +6548,10 @@ public final class DlgReg extends javax.swing.JDialog {
     private void ppGrafikPerBulanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppGrafikPerBulanActionPerformed
         tampil();
         grafikperiksaperbulan kas = new grafikperiksaperbulan(
-                "Grafik Periksa Per Bulan " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
-                "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' ");
+                "Grafik Periksa Per Bulan " + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
+                "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                + Valid.SetDateToString(DTPCari2.getDate()) + "' ");
         kas.setSize(this.getWidth(), this.getHeight());
         kas.setLocationRelativeTo(this);
         kas.setVisible(true);
@@ -6491,10 +6560,10 @@ public final class DlgReg extends javax.swing.JDialog {
     private void ppGrafikPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppGrafikPerTanggalActionPerformed
         tampil();
         grafikperiksaperhari kas = new grafikperiksaperhari(
-                "Grafik Periksa Per Hari " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
-                "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' ");
+                "Grafik Periksa Per Hari " + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
+                "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                + Valid.SetDateToString(DTPCari2.getDate()) + "' ");
         kas.setSize(this.getWidth(), this.getHeight());
         kas.setLocationRelativeTo(this);
         kas.setVisible(true);
@@ -6559,8 +6628,8 @@ public final class DlgReg extends javax.swing.JDialog {
                     + Kabupaten2.getText() + "' and kecamatan.nm_kec='" + Kecamatan2.getText()
                     + "' and kelurahan.nm_kel='" + Kelurahan2.getText()
                     + "'  and reg_periksa.tgl_registrasi between '"
-                    + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "'   ",
+                    + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari2.getDate()) + "'   ",
                     "pasien.alamat", "Area");
             kas.setSize(this.getWidth(), this.getHeight());
             kas.setLocationRelativeTo(this);
@@ -6575,8 +6644,8 @@ public final class DlgReg extends javax.swing.JDialog {
                     + "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where kabupaten.nm_kab='"
                     + Kabupaten2.getText() + "' and kecamatan.nm_kec='" + Kecamatan2.getText()
                     + "' and reg_periksa.tgl_registrasi between '"
-                    + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "'  ",
+                    + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari2.getDate()) + "'  ",
                     "kelurahan.nm_kel", "Kelurahan");
             kas.setSize(this.getWidth(), this.getHeight());
             kas.setLocationRelativeTo(this);
@@ -6587,8 +6656,8 @@ public final class DlgReg extends javax.swing.JDialog {
                     " reg_periksa inner join pasien inner join kabupaten inner join kecamatan on pasien.kd_kab=kabupaten.kd_kab "
                     + "and pasien.kd_kec=kecamatan.kd_kec and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where kabupaten.nm_kab='"
                     + Kabupaten2.getText() + "'  and reg_periksa.tgl_registrasi between '"
-                    + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "'  ",
+                    + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari2.getDate()) + "'  ",
                     "kecamatan.nm_kec", "Kecamatan");
             kas.setSize(this.getWidth(), this.getHeight());
             kas.setLocationRelativeTo(this);
@@ -6597,8 +6666,8 @@ public final class DlgReg extends javax.swing.JDialog {
             DlgDemografi.dispose();
             grafiksql kas = new grafiksql("::[ Data Demografi Per Kabupaten ]::",
                     " reg_periksa inner join pasien inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.tgl_registrasi between '"
-                    + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' ",
+                    + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari2.getDate()) + "' ",
                     "kabupaten.nm_kab", "Kabupaten");
             kas.setSize(this.getWidth(), this.getHeight());
             kas.setLocationRelativeTo(this);
@@ -6663,8 +6732,8 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "where kabupaten.nm_kab='" + Kabupaten2.getText() + "' and kecamatan.nm_kec='"
                         + Kecamatan2.getText() + "' " + "and kelurahan.nm_kel='" + Kelurahan2.getText()
                         + "' and reg_periksa.tgl_registrasi between '"
-                        + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari2.getDate())
                         + "' group by pasien.alamat order by pasien.alamat",
                         data);
             } else if (!Kecamatan2.getText().equals("")) {
@@ -6688,8 +6757,8 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kel=kelurahan.kd_kel and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "where kabupaten.nm_kab='" + Kabupaten2.getText() + "' and kecamatan.nm_kec='"
                         + Kecamatan2.getText() + "' and reg_periksa.tgl_registrasi between '"
-                        + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari2.getDate())
                         + "' group by kelurahan.nm_kel order by kelurahan.nm_kel",
                         data);
             } else if (!Kabupaten2.getText().equals("")) {
@@ -6710,8 +6779,8 @@ public final class DlgReg extends javax.swing.JDialog {
                         + "inner join kabupaten inner join kecamatan on pasien.kd_kab=kabupaten.kd_kab and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "and pasien.kd_kec=kecamatan.kd_kec where kabupaten.nm_kab='" + Kabupaten2.getText()
                         + "' and reg_periksa.tgl_registrasi between '"
-                        + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari2.getDate())
                         + "' group by kecamatan.nm_kec order by kecamatan.nm_kec",
                         data);
             } else if (Kabupaten2.getText().equals("")) {
@@ -6729,8 +6798,8 @@ public final class DlgReg extends javax.swing.JDialog {
                 Valid.MyReportqry("rptDemografi.jasper", "report", "::[ Data Demografi Per Kabupaten ]::",
                         "select kabupaten.nm_kab as area,count(kabupaten.nm_kab) as jumlah from reg_periksa inner join pasien "
                         + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.tgl_registrasi between '"
-                        + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                        + Valid.SetTgl(DTPCari2.getSelectedItem() + "")
+                        + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                        + Valid.SetDateToString(DTPCari2.getDate())
                         + "' group by kabupaten.nm_kab order by kabupaten.nm_kab",
                         data);
             }
@@ -6787,8 +6856,8 @@ public final class DlgReg extends javax.swing.JDialog {
             TNoReg.requestFocus();
         } else {
             Valid.panggilUrl(
-                    "billing/LaporanKunjunganPoli.php?tanggal1=" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                    + "&tanggal2=" + Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    "billing/LaporanKunjunganPoli.php?tanggal1=" + Valid.SetDateToString(DTPCari1.getDate())
+                    + "&tanggal2=" + Valid.SetDateToString(DTPCari2.getDate()));
         }
     }// GEN-LAST:event_MnLaporanRekapKunjunganPoliActionPerformed
 
@@ -6798,8 +6867,8 @@ public final class DlgReg extends javax.swing.JDialog {
             TNoReg.requestFocus();
         } else {
             Valid.panggilUrl(
-                    "billing/LaporanKunjunganDokter.php?tanggal1=" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                    + "&tanggal2=" + Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    "billing/LaporanKunjunganDokter.php?tanggal1=" + Valid.SetDateToString(DTPCari1.getDate())
+                    + "&tanggal2=" + Valid.SetDateToString(DTPCari2.getDate()));
         }
     }// GEN-LAST:event_MnLaporanRekapKunjunganDokterActionPerformed
 
@@ -6809,8 +6878,8 @@ public final class DlgReg extends javax.swing.JDialog {
             TNoReg.requestFocus();
         } else {
             Valid.panggilUrl(
-                    "billing/LaporanKunjunganJenisBayar.php?tanggal1=" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                    + "&tanggal2=" + Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    "billing/LaporanKunjunganJenisBayar.php?tanggal1=" + Valid.SetDateToString(DTPCari1.getDate())
+                    + "&tanggal2=" + Valid.SetDateToString(DTPCari2.getDate()));
         }
     }// GEN-LAST:event_MnLaporanRekapJenisBayarActionPerformed
 
@@ -6819,8 +6888,8 @@ public final class DlgReg extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
             TNoReg.requestFocus();
         } else {
-            Valid.panggilUrl("billing/LaporanRawatDarurat.php?tanggal1=" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                    + "&tanggal2=" + Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+            Valid.panggilUrl("billing/LaporanRawatDarurat.php?tanggal1=" + Valid.SetDateToString(DTPCari1.getDate())
+                    + "&tanggal2=" + Valid.SetDateToString(DTPCari2.getDate()));
         }
     }// GEN-LAST:event_MnLaporanRekapRawatDaruratActionPerformed
 
@@ -6830,8 +6899,8 @@ public final class DlgReg extends javax.swing.JDialog {
             TNoReg.requestFocus();
         } else {
             Valid.panggilUrl(
-                    "billing/LaporanKunjunganBulanan.php?tanggal1=" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                    + "&tanggal2=" + Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    "billing/LaporanKunjunganBulanan.php?tanggal1=" + Valid.SetDateToString(DTPCari1.getDate())
+                    + "&tanggal2=" + Valid.SetDateToString(DTPCari2.getDate()));
         }
     }// GEN-LAST:event_MnLaporanRekapKunjunganBulananActionPerformed
 
@@ -6841,8 +6910,8 @@ public final class DlgReg extends javax.swing.JDialog {
             TNoReg.requestFocus();
         } else {
             Valid.panggilUrl(
-                    "billing/LaporanKunjunganBulananPoli.php?tanggal1=" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                    + "&tanggal2=" + Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    "billing/LaporanKunjunganBulananPoli.php?tanggal1=" + Valid.SetDateToString(DTPCari1.getDate())
+                    + "&tanggal2=" + Valid.SetDateToString(DTPCari2.getDate()));
         }
     }// GEN-LAST:event_MnLaporanRekapKunjunganBulananPoliActionPerformed
 
@@ -7054,8 +7123,8 @@ public final class DlgReg extends javax.swing.JDialog {
         try {
             rs = koneksi.prepareStatement("select poliklinik.nm_poli,count(poliklinik.nm_poli) as jumlah "
                     + "from reg_periksa inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "
-                    + "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' group by poliklinik.nm_poli").executeQuery();
+                    + "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari2.getDate()) + "' group by poliklinik.nm_poli").executeQuery();
             while (rs.next()) {
                 dpd.setValue(rs.getString(1) + "(" + rs.getString(2) + ")", rs.getDouble(2));
             }
@@ -7064,8 +7133,8 @@ public final class DlgReg extends javax.swing.JDialog {
         }
 
         JFreeChart freeChart = ChartFactory
-                .createPieChart("Grafik Periksa Per Unit/Poli Tanggal " + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + " S.D. " + Valid.SetTgl(DTPCari2.getSelectedItem() + ""), dpd, true, true, false); // String
+                .createPieChart("Grafik Periksa Per Unit/Poli Tanggal " + Valid.SetDateToString(DTPCari1.getDate())
+                        + " S.D. " + Valid.SetDateToString(DTPCari2.getDate()), dpd, true, true, false); // String
         // title,PieDatasheet
         // datasheet,boolean
         // legends,boolean
@@ -7085,8 +7154,8 @@ public final class DlgReg extends javax.swing.JDialog {
         try {
             rs = koneksi.prepareStatement("select poliklinik.nm_poli,count(poliklinik.nm_poli) as jumlah "
                     + "from reg_periksa inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "
-                    + "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' group by poliklinik.nm_poli").executeQuery();
+                    + "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari2.getDate()) + "' group by poliklinik.nm_poli").executeQuery();
             while (rs.next()) {
                 dcd.setValue(rs.getDouble(2), rs.getString(1) + "(" + rs.getString(2) + ")", rs.getString(1));
             }
@@ -7094,8 +7163,8 @@ public final class DlgReg extends javax.swing.JDialog {
             Logger.getLogger(DlgReg.class.getName()).log(Level.SEVERE, null, e);
         }
         JFreeChart freeChart = ChartFactory.createBarChart(
-                "Grafik Periksa Per Unit/Poli Tanggal " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
+                "Grafik Periksa Per Unit/Poli Tanggal " + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
                 "Poliklinik/Unit", "Jumlah Pasien", dcd, PlotOrientation.VERTICAL, true, true, true);
         ChartFrame cf = new ChartFrame("Grafik Periksa Per Unit/Poli", freeChart);
         cf.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -7112,8 +7181,8 @@ public final class DlgReg extends javax.swing.JDialog {
             rs = koneksi
                     .prepareStatement("select dokter.nm_dokter,count(dokter.nm_dokter) as jumlah "
                             + "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
-                            + "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                            + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' group by dokter.nm_dokter")
+                            + "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                            + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' group by dokter.nm_dokter")
                     .executeQuery();
             while (rs.next()) {
                 dpd.setValue(rs.getString(1) + "(" + rs.getString(2) + ")", rs.getDouble(2));
@@ -7123,8 +7192,8 @@ public final class DlgReg extends javax.swing.JDialog {
         }
 
         JFreeChart freeChart = ChartFactory
-                .createPieChart("Grafik Periksa Per Dokter Tanggal " + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                        + " S.D. " + Valid.SetTgl(DTPCari2.getSelectedItem() + ""), dpd, true, true, false);
+                .createPieChart("Grafik Periksa Per Dokter Tanggal " + Valid.SetDateToString(DTPCari1.getDate())
+                        + " S.D. " + Valid.SetDateToString(DTPCari2.getDate()), dpd, true, true, false);
         ChartFrame cf = new ChartFrame("Grafik Periksa Per Dokter", freeChart);
         cf.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         cf.setLocationRelativeTo(internalFrame1);
@@ -7140,8 +7209,8 @@ public final class DlgReg extends javax.swing.JDialog {
             rs = koneksi
                     .prepareStatement("select dokter.nm_dokter,count(dokter.nm_dokter) as jumlah "
                             + "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
-                            + "where tgl_registrasi between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "")
-                            + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' group by dokter.nm_dokter")
+                            + "where tgl_registrasi between '" + Valid.SetDateToString(DTPCari1.getDate())
+                            + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' group by dokter.nm_dokter")
                     .executeQuery();
             while (rs.next()) {
                 dcd.setValue(rs.getDouble(2), rs.getString(1) + "(" + rs.getString(2) + ")", rs.getString(1));
@@ -7151,8 +7220,8 @@ public final class DlgReg extends javax.swing.JDialog {
         }
 
         JFreeChart freeChart = ChartFactory.createBarChart(
-                "Grafik Periksa Per Dokter Tanggal " + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " S.D. "
-                + Valid.SetTgl(DTPCari2.getSelectedItem() + ""),
+                "Grafik Periksa Per Dokter Tanggal " + Valid.SetDateToString(DTPCari1.getDate()) + " S.D. "
+                + Valid.SetDateToString(DTPCari2.getDate()),
                 "Dokter", "Jumlah Pasien", dcd, PlotOrientation.VERTICAL, true, true, true);
         ChartFrame cf = new ChartFrame("Grafik Periksa Per Dokter", freeChart);
         cf.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
@@ -7323,8 +7392,8 @@ public final class DlgReg extends javax.swing.JDialog {
                     + "sum(reg_periksa.biaya_reg) as jasarujuk "
                     + "from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat "
                     + "where reg_periksa.tgl_registrasi between '"
-                    + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '"
-                    + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' "
+                    + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
+                    + Valid.SetDateToString(DTPCari2.getDate()) + "' "
                     + "group by rujuk_masuk.perujuk order by count(reg_periksa.no_rawat) desc ",
                     param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -7437,10 +7506,6 @@ public final class DlgReg extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_MnCetakRegisterActionPerformed
 
-    private void DTPRegItemStateChanged(java.awt.event.ItemEvent evt) {// GEN-FIRST:event_DTPRegItemStateChanged
-        isNumber();
-    }// GEN-LAST:event_DTPRegItemStateChanged
-
     private void MnPersetujuanMedisActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPersetujuanMedisActionPerformed
         if (TPasien.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -7500,7 +7565,7 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
-            param.put("tanggal", DTPReg.getSelectedItem().toString());
+            param.put("tanggal", Valid.SetDateToString(DTPReg.getDate()));
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptBarcodeRM6.jasper", "report", "::[ Gelang Pasien ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
@@ -7533,7 +7598,7 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
-            param.put("tanggal", DTPReg.getSelectedItem().toString());
+            param.put("tanggal", Valid.SetDateToString(DTPReg.getDate()));
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptBarcodeRM7.jasper", "report", "::[ Gelang Pasien ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
@@ -7639,7 +7704,7 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
-            param.put("tanggal", DTPReg.getSelectedItem().toString());
+            param.put("tanggal", Valid.SetDateToString(DTPReg.getDate()));
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptBarcodeRM8.jasper", "report", "::[ Gelang Pasien ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
@@ -7672,7 +7737,7 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
-            param.put("tanggal", DTPReg.getSelectedItem().toString());
+            param.put("tanggal", Valid.SetDateToString(DTPReg.getDate()));
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptBarcodeRM10.jasper", "report", "::[ Gelang Pasien ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
@@ -7804,7 +7869,7 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
-            param.put("tanggal", DTPReg.getSelectedItem().toString());
+            param.put("tanggal", Valid.SetDateToString(DTPReg.getDate()));
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptBarcodeRM14.jasper", "report", "::[ Gelang Pasien ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
@@ -7924,7 +7989,7 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
-            param.put("tanggal", DTPReg.getSelectedItem().toString());
+            param.put("tanggal", Valid.SetDateToString(DTPReg.getDate()));
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptBarcodeRM16.jasper", "report", "::[ Gelang Pasien ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
@@ -9119,7 +9184,7 @@ public final class DlgReg extends javax.swing.JDialog {
             param.put("propinsirs", akses.getpropinsirs());
             param.put("kontakrs", akses.getkontakrs());
             param.put("emailrs", akses.getemailrs());
-            param.put("tanggal", DTPReg.getSelectedItem().toString());
+            param.put("tanggal", Valid.SetDateToString(DTPReg.getDate()));
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptBarcodeRM19.jasper", "report", "::[ Gelang Pasien ]::",
                     "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "
@@ -9832,7 +9897,7 @@ public final class DlgReg extends javax.swing.JDialog {
                     // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
                     // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
                     + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' and temp_spri.tanggal='"
-                    + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'" + " order by temp_spri.tanggal ",
+                    + Valid.SetDateToString(DTPReg.getDate()) + "'" + " order by temp_spri.tanggal ",
                     param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -9907,8 +9972,8 @@ public final class DlgReg extends javax.swing.JDialog {
     private widget.TextBox CrDokter;
     private widget.TextBox CrDokter3;
     private widget.TextBox CrPoli;
-    private widget.Tanggal DTPCari1;
-    private widget.Tanggal DTPCari2;
+    private widget.Tanggal1 DTPCari1;
+    private widget.Tanggal1 DTPCari2;
     private widget.Tanggal DTPReg;
     private javax.swing.JDialog DlgCatatan;
     private javax.swing.JDialog DlgDemografi;
@@ -10216,73 +10281,73 @@ public final class DlgReg extends javax.swing.JDialog {
 
             try {
                 if (CrPoli.getText().trim().equals("") && CrDokter.getText().equals("") && TCari.equals("")) {
-                    ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                 } else {
                     ps.setString(1, "%" + CrPoli.getText() + "%");
                     ps.setString(2, "%" + CrDokter.getText() + "%");
-                    ps.setString(3, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(4, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(3, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(4, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(5, "%" + TCari.getText().trim() + "%");
                     ps.setString(6, "%" + CrPoli.getText() + "%");
                     ps.setString(7, "%" + CrDokter.getText() + "%");
-                    ps.setString(8, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(9, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(8, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(9, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(10, "%" + TCari.getText().trim() + "%");
                     ps.setString(11, "%" + CrPoli.getText() + "%");
                     ps.setString(12, "%" + CrDokter.getText() + "%");
-                    ps.setString(13, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(14, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(15, "%" + TCari.getText().trim() + "%");
                     ps.setString(16, "%" + CrPoli.getText() + "%");
                     ps.setString(17, "%" + CrDokter.getText() + "%");
-                    ps.setString(18, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(19, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(18, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(19, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(20, "%" + TCari.getText().trim() + "%");
                     ps.setString(21, "%" + CrPoli.getText() + "%");
                     ps.setString(22, "%" + CrDokter.getText() + "%");
-                    ps.setString(23, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(24, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(23, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(24, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(25, "%" + TCari.getText().trim() + "%");
                     ps.setString(26, "%" + CrPoli.getText() + "%");
                     ps.setString(27, "%" + CrDokter.getText() + "%");
-                    ps.setString(28, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(29, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(28, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(29, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(30, "%" + TCari.getText().trim() + "%");
                     ps.setString(31, "%" + CrPoli.getText() + "%");
                     ps.setString(32, "%" + CrDokter.getText() + "%");
-                    ps.setString(33, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(34, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(33, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(34, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(35, "%" + TCari.getText().trim() + "%");
                     ps.setString(36, "%" + CrPoli.getText() + "%");
                     ps.setString(37, "%" + CrDokter.getText() + "%");
-                    ps.setString(38, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(39, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(38, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(39, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(40, "%" + TCari.getText().trim() + "%");
                     ps.setString(41, "%" + CrPoli.getText() + "%");
                     ps.setString(42, "%" + CrDokter.getText() + "%");
-                    ps.setString(43, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(44, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(43, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(44, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(45, "%" + TCari.getText().trim() + "%");
                     ps.setString(46, "%" + CrPoli.getText() + "%");
                     ps.setString(47, "%" + CrDokter.getText() + "%");
-                    ps.setString(48, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(49, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(48, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(49, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(50, "%" + TCari.getText().trim() + "%");
                     ps.setString(51, "%" + CrPoli.getText() + "%");
                     ps.setString(52, "%" + CrDokter.getText() + "%");
-                    ps.setString(53, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(54, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(53, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(54, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(55, "%" + TCari.getText().trim() + "%");
                     ps.setString(56, "%" + CrPoli.getText() + "%");
                     ps.setString(57, "%" + CrDokter.getText() + "%");
-                    ps.setString(58, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(59, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(58, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(59, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(60, "%" + TCari.getText().trim() + "%");
                     ps.setString(61, "%" + CrPoli.getText() + "%");
                     ps.setString(62, "%" + CrDokter.getText() + "%");
-                    ps.setString(63, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(64, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(63, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(64, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(65, "%" + TCari.getText().trim() + "%");
                 }
 
@@ -10353,68 +10418,68 @@ public final class DlgReg extends javax.swing.JDialog {
             try {
                 ps.setString(1, "%" + CrPoli.getText() + "%");
                 ps.setString(2, "%" + CrDokter.getText() + "%");
-                ps.setString(3, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(4, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(3, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(4, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(5, "%" + TCari.getText().trim() + "%");
                 ps.setString(6, "%" + CrPoli.getText() + "%");
                 ps.setString(7, "%" + CrDokter.getText() + "%");
-                ps.setString(8, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(9, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(8, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(9, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(10, "%" + TCari.getText().trim() + "%");
                 ps.setString(11, "%" + CrPoli.getText() + "%");
                 ps.setString(12, "%" + CrDokter.getText() + "%");
-                ps.setString(13, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(14, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(15, "%" + TCari.getText().trim() + "%");
                 ps.setString(16, "%" + CrPoli.getText() + "%");
                 ps.setString(17, "%" + CrDokter.getText() + "%");
-                ps.setString(18, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(19, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(18, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(19, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(20, "%" + TCari.getText().trim() + "%");
                 ps.setString(21, "%" + CrPoli.getText() + "%");
                 ps.setString(22, "%" + CrDokter.getText() + "%");
-                ps.setString(23, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(24, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(23, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(24, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(25, "%" + TCari.getText().trim() + "%");
                 ps.setString(26, "%" + CrPoli.getText() + "%");
                 ps.setString(27, "%" + CrDokter.getText() + "%");
-                ps.setString(28, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(29, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(28, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(29, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(30, "%" + TCari.getText().trim() + "%");
                 ps.setString(31, "%" + CrPoli.getText() + "%");
                 ps.setString(32, "%" + CrDokter.getText() + "%");
-                ps.setString(33, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(34, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(33, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(34, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(35, "%" + TCari.getText().trim() + "%");
                 ps.setString(36, "%" + CrPoli.getText() + "%");
                 ps.setString(37, "%" + CrDokter.getText() + "%");
-                ps.setString(38, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(39, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(38, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(39, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(40, "%" + TCari.getText().trim() + "%");
                 ps.setString(41, "%" + CrPoli.getText() + "%");
                 ps.setString(42, "%" + CrDokter.getText() + "%");
-                ps.setString(43, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(44, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(43, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(44, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(45, "%" + TCari.getText().trim() + "%");
                 ps.setString(46, "%" + CrPoli.getText() + "%");
                 ps.setString(47, "%" + CrDokter.getText() + "%");
-                ps.setString(48, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(49, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(48, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(49, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(50, "%" + TCari.getText().trim() + "%");
                 ps.setString(51, "%" + CrPoli.getText() + "%");
                 ps.setString(52, "%" + CrDokter.getText() + "%");
-                ps.setString(53, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(54, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(53, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(54, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(55, "%" + TCari.getText().trim() + "%");
                 ps.setString(56, "%" + CrPoli.getText() + "%");
                 ps.setString(57, "%" + CrDokter.getText() + "%");
-                ps.setString(58, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(59, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(58, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(59, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(60, "%" + TCari.getText().trim() + "%");
                 ps.setString(61, "%" + CrPoli.getText() + "%");
                 ps.setString(62, "%" + CrDokter.getText() + "%");
-                ps.setString(63, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps.setString(64, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(63, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(64, Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(65, "%" + TCari.getText().trim() + "%");
                 rs = ps.executeQuery();
                 while (rs.next()) {
@@ -10475,21 +10540,21 @@ public final class DlgReg extends javax.swing.JDialog {
             try {
                 if (!TCari.getText().equals("")) {
                     ps2.setString(1, "%" + TCari.getText().trim() + "%");
-                    ps2.setString(2, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(3, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(2, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(3, Valid.SetDateToString(DTPCari2.getDate()));
                     ps2.setString(4, "%" + TCari.getText().trim() + "%");
-                    ps2.setString(5, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(6, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(5, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(6, Valid.SetDateToString(DTPCari2.getDate()));
                     ps2.setString(7, "%" + TCari.getText().trim() + "%");
-                    ps2.setString(8, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(9, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(8, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(9, Valid.SetDateToString(DTPCari2.getDate()));
                 } else {
-                    ps2.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
-                    ps2.setString(3, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(4, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
-                    ps2.setString(5, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(6, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
+                    ps2.setString(3, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(4, Valid.SetDateToString(DTPCari2.getDate()));
+                    ps2.setString(5, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(6, Valid.SetDateToString(DTPCari2.getDate()));
                 }
                 rs3 = ps2.executeQuery();
                 while (rs3.next()) {
@@ -10672,7 +10737,7 @@ public final class DlgReg extends javax.swing.JDialog {
                     + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "
                     + "where pasien.no_rkm_medis=?");
             try {
-                ps3.setString(1, Valid.SetTgl(DTPReg.getSelectedItem() + ""));
+                ps3.setString(1, Valid.SetDateToString(DTPReg.getDate()));
                 ps3.setString(2, TNoRM.getText());
                 rs = ps3.executeQuery();
                 while (rs.next()) {
@@ -10831,39 +10896,39 @@ public final class DlgReg extends javax.swing.JDialog {
                     if (Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"
                             + kdpoli.getText() + "' and tanggal_periksa='"
-                            + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'") >= Sequel.cariInteger(
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'") >= Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
                             + kdpoli.getText() + "' and tgl_registrasi='"
-                            + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'")) {
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'")) {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"
                                 + kdpoli.getText() + "' and tanggal_periksa='"
-                                + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'",
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'",
                                 "", 3, TNoReg);
                     } else {
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
                                 + kdpoli.getText() + "' and tgl_registrasi='"
-                                + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'", "", 3, TNoReg);
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'", "", 3, TNoReg);
                     }
                     break;
                 case "dokter":
                     if (Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"
                             + kddokter.getText() + "' and tanggal_periksa='"
-                            + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'") >= Sequel.cariInteger(
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'") >= Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and tgl_registrasi='"
-                            + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'")) {
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'")) {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"
                                 + kddokter.getText() + "' and tanggal_periksa='"
-                                + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'",
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'",
                                 "", 3, TNoReg);
                     } else {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                                 + kddokter.getText() + "' and tgl_registrasi='"
-                                + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'",
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'",
                                 "", 3, TNoReg);
                     }
                     break;
@@ -10871,22 +10936,22 @@ public final class DlgReg extends javax.swing.JDialog {
                     if (Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"
                             + kddokter.getText() + "' and kd_poli='" + kdpoli.getText()
-                            + "' and tanggal_periksa='" + Valid.SetTgl(DTPReg.getSelectedItem() + "")
+                            + "' and tanggal_periksa='" + Valid.SetDateToString(DTPReg.getDate())
                             + "'") >= Sequel.cariInteger(
                                     "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                                     + kddokter.getText() + "' and kd_poli='" + kdpoli.getText()
                                     + "' and tgl_registrasi='"
-                                    + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'")) {
+                                    + Valid.SetDateToString(DTPReg.getDate()) + "'")) {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"
                                 + kddokter.getText() + "' and kd_poli='" + kdpoli.getText()
-                                + "' and tanggal_periksa='" + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'",
+                                + "' and tanggal_periksa='" + Valid.SetDateToString(DTPReg.getDate()) + "'",
                                 "", 3, TNoReg);
                     } else {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                                 + kddokter.getText() + "' and kd_poli='" + kdpoli.getText()
-                                + "' and tgl_registrasi='" + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'",
+                                + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate()) + "'",
                                 "", 3, TNoReg);
                     }
                     break;
@@ -10894,19 +10959,19 @@ public final class DlgReg extends javax.swing.JDialog {
                     if (Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"
                             + kdpoli.getText() + "' and tanggal_periksa='"
-                            + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'") >= Sequel.cariInteger(
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'") >= Sequel.cariInteger(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
                             + kdpoli.getText() + "' and tgl_registrasi='"
-                            + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'")) {
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'")) {
                         Valid.autoNomer3(
                                 "select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"
                                 + kdpoli.getText() + "' and tanggal_periksa='"
-                                + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'",
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'",
                                 "", 3, TNoReg);
                     } else {
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
                                 + kdpoli.getText() + "' and tgl_registrasi='"
-                                + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'", "", 3, TNoReg);
+                                + Valid.SetDateToString(DTPReg.getDate()) + "'", "", 3, TNoReg);
                     }
                     break;
             }
@@ -10914,32 +10979,32 @@ public final class DlgReg extends javax.swing.JDialog {
             switch (URUTNOREG) {
                 case "poli":
                     Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"
-                            + kdpoli.getText() + "' and tgl_registrasi='" + Valid.SetTgl(DTPReg.getSelectedItem() + "")
+                            + kdpoli.getText() + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate())
                             + "'", "", 3, TNoReg);
                     break;
                 case "dokter":
                     Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and tgl_registrasi='"
-                            + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'", "", 3, TNoReg);
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'", "", 3, TNoReg);
                     break;
                 case "dokter + poli":
                     Valid.autoNomer3(
                             "select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and kd_poli='" + kdpoli.getText()
-                            + "' and tgl_registrasi='" + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'",
+                            + "' and tgl_registrasi='" + Valid.SetDateToString(DTPReg.getDate()) + "'",
                             "", 3, TNoReg);
                     break;
                 default:
                     Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"
                             + kddokter.getText() + "' and tgl_registrasi='"
-                            + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'", "", 3, TNoReg);
+                            + Valid.SetDateToString(DTPReg.getDate()) + "'", "", 3, TNoReg);
                     break;
             }
         }
 
         Valid.autoNomer3(
                 "select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0) from reg_periksa where tgl_registrasi='"
-                + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "' ",
+                + Valid.SetDateToString(DTPReg.getDate()) + "' ",
                 dateformat.format(DTPReg.getDate()) + "/", 6, TNoRw);
 
     }
@@ -11075,7 +11140,7 @@ public final class DlgReg extends javax.swing.JDialog {
         }
 
         if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
-                new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetTgl(DTPReg.getSelectedItem() + ""),
+                new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetDateToString(DTPReg.getDate()),
                     CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
                     kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(), TAlmt.getText(),
                     THbngn.getText(), TBiaya.getText(), "Belum", TStatus.getText(), "Ralan", kdpnj.getText(), umur,
@@ -11084,7 +11149,7 @@ public final class DlgReg extends javax.swing.JDialog {
         } else {
             isNumber();
             if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
-                    new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetTgl(DTPReg.getSelectedItem() + ""),
+                    new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetDateToString(DTPReg.getDate()),
                         CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                         + CmbDetik.getSelectedItem(),
                         kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(), TAlmt.getText(),
@@ -11094,7 +11159,7 @@ public final class DlgReg extends javax.swing.JDialog {
             } else {
                 isNumber();
                 if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
-                        new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetTgl(DTPReg.getSelectedItem() + ""),
+                        new String[]{TNoReg.getText(), TNoRw.getText(), Valid.SetDateToString(DTPReg.getDate()),
                             CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                             + CmbDetik.getSelectedItem(),
                             kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
@@ -11105,7 +11170,7 @@ public final class DlgReg extends javax.swing.JDialog {
                     isNumber();
                     if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
                             new String[]{TNoReg.getText(), TNoRw.getText(),
-                                Valid.SetTgl(DTPReg.getSelectedItem() + ""),
+                                Valid.SetDateToString(DTPReg.getDate()),
                                 CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                 + CmbDetik.getSelectedItem(),
                                 kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
@@ -11116,7 +11181,7 @@ public final class DlgReg extends javax.swing.JDialog {
                         isNumber();
                         if (Sequel.menyimpantf("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 19,
                                 new String[]{TNoReg.getText(), TNoRw.getText(),
-                                    Valid.SetTgl(DTPReg.getSelectedItem() + ""),
+                                    Valid.SetDateToString(DTPReg.getDate()),
                                     CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":"
                                     + CmbDetik.getSelectedItem(),
                                     kddokter.getText(), TNoRM.getText(), kdpoli.getText(), TPngJwb.getText(),
@@ -11137,7 +11202,7 @@ public final class DlgReg extends javax.swing.JDialog {
             if (!AsalRujukan.getText().equals("")) {
                 Valid.autoNomer3(
                         "select ifnull(MAX(CONVERT(RIGHT(rujuk_masuk.no_rawat,4),signed)),0) from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat where reg_periksa.tgl_registrasi='"
-                        + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "' ",
+                        + Valid.SetDateToString(DTPReg.getDate()) + "' ",
                         "BR/" + dateformat.format(DTPReg.getDate()) + "/", 4, NoBalasan);
 
                 if (nosisrute.equals("")) {
@@ -11161,7 +11226,7 @@ public final class DlgReg extends javax.swing.JDialog {
             if (!txtIdSpri.getText().equals("")) {
                 Sequel.mengedit("temp_spri", "id='" + txtIdSpri.getText() + "'",
                         "norm='" + TNoRM.getText() + "', nama='" + TPasien.getText() + "', status='Sudah', tanggal='"
-                        + Valid.SetTgl(DTPReg.getSelectedItem() + "") + "'");
+                        + Valid.SetDateToString(DTPReg.getDate()) + "'");
             }
             emptTeks();
             if (TabRawat.getSelectedIndex() == 0) {

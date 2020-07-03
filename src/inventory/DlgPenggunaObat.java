@@ -70,22 +70,33 @@ public class DlgPenggunaObat extends javax.swing.JDialog {
 
         for (i = 0; i < 8; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(75);
-            } else if (i == 1) {
-                column.setPreferredWidth(450);
-            } else if (i == 2) {
-                column.setPreferredWidth(50);
-            } else if (i == 3) {
-                column.setPreferredWidth(150);
-            } else if (i == 4) {
-                column.setPreferredWidth(50);
-            } else if (i == 5) {
-                column.setPreferredWidth(230);
-            } else if (i == 6) {
-                column.setPreferredWidth(80);
-            } else if (i == 7) {
-                column.setPreferredWidth(170);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(75);
+                    break;
+                case 1:
+                    column.setPreferredWidth(450);
+                    break;
+                case 2:
+                    column.setPreferredWidth(50);
+                    break;
+                case 3:
+                    column.setPreferredWidth(150);
+                    break;
+                case 4:
+                    column.setPreferredWidth(50);
+                    break;
+                case 5:
+                    column.setPreferredWidth(230);
+                    break;
+                case 6:
+                    column.setPreferredWidth(80);
+                    break;
+                case 7:
+                    column.setPreferredWidth(170);
+                    break;
+                default:
+                    break;
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1009,7 +1020,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         pspasien = koneksi.prepareStatement(
                                 "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"
                                 + "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"
-                                + "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"
+                                + "ifnull(concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop),'-') as alamat,"
                                 + "detail_pemberian_obat.jml,detail_pemberian_obat.status,bangsal.nm_bangsal "
                                 + "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "
                                 + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
@@ -1025,7 +1036,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         pspasien = koneksi.prepareStatement(
                                 "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"
                                 + "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"
-                                + "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,"
+                                + "ifnull(concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop),'-') as alamat,"
                                 + "detail_pemberian_obat.jml,detail_pemberian_obat.status,bangsal.nm_bangsal "
                                 + "from detail_pemberian_obat inner join reg_periksa on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "
                                 + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
@@ -1083,6 +1094,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     psresep.close();
                                 }
                             }
+                            
                             tabMode.addRow(new Object[]{
                                 "", i + ". " + rspasien.getString("tgl_perawatan") + " " + rspasien.getString("jam") + "  "
                                 + rspasien.getString("no_rawat") + "  " + rspasien.getString("no_rkm_medis") + "  " + rspasien.getString("nm_pasien"),

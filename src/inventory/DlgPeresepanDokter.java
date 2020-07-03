@@ -2200,7 +2200,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 tbDetailResepObatRacikan.setValueAt(Valid.SetAngka8((Double.parseDouble(tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(), 4).toString())
                         * Double.parseDouble(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(), 12).toString()))
                         / Double.parseDouble(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(), 8).toString()), 1),
-                         tbDetailResepObatRacikan.getSelectedRow(), 13);
+                        tbDetailResepObatRacikan.getSelectedRow(), 13);
             } catch (Exception e) {
                 tbDetailResepObatRacikan.setValueAt(0, tbDetailResepObatRacikan.getSelectedRow(), 13);
             }
@@ -3172,6 +3172,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         pscarikapasitas = koneksi.prepareStatement("select IFNULL(kapasitas,1) from databarang where kode_brng=?");
                         try {
                             pscarikapasitas.setString(1, tbResep.getValueAt(i, 2).toString());
+                            System.out.println("Status pscarikapasitas : " + pscarikapasitas);
                             carikapasitas = pscarikapasitas.executeQuery();
                             if (carikapasitas.next()) {
                                 if (Sequel.menyimpantf2("resep_dokter", "?,?,?,?", "data", 4, new String[]{
@@ -3207,6 +3208,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             tbResep.getValueAt(i, 8).toString()
                         }) == false) {
                             sukses = false;
+                            System.out.println("Status simpan : " + sukses);
                         }
                     }
                 }

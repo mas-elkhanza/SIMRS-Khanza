@@ -29,15 +29,15 @@ public class SpriDao implements SpriInterface<Spri> {
 
     private final sekuel Sequel = new sekuel();
     private final java.sql.Connection connect = koneksiDB.condb();
-    private validasi Valid = new validasi();
-    PreparedStatement ps;
-    ResultSet rs;
-    Spri spri = new Spri();
-    Pasien p = new Pasien();
-    Dokter d = new Dokter();
-    List<Spri> spris = new ArrayList<>();
-    List<Pasien> pasiens = new ArrayList<>();
-    List<Dokter> dokters = new ArrayList<>();
+    private final validasi Valid = new validasi();
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private Spri spri = new Spri();
+    private Pasien p = new Pasien();
+    private Dokter d = new Dokter();
+    private List<Spri> spris = new ArrayList<>();
+    private List<Pasien> pasiens = new ArrayList<>();
+    private List<Dokter> dokters = new ArrayList<>();
 
     /**
      *

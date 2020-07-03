@@ -92,6 +92,8 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         this.setLocation(8, 1);
         setSize(885, 674);
 
+        DTPTgl.setDate(new Date());
+        
         tabModeDr = new DefaultTableModel(null, new Object[]{
             "P", "No.Rawat", "No.R.M.", "Nama Pasien", "Perawatan/Tindakan", "Kode Dokter",
             "Dokter Yg Menangani", "Tgl.Rawat", "Jam Rawat", "Biaya", "Kode", "Tarif Dokter", "KSO"}) {
@@ -115,8 +117,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 return types[columnIndex];
             }
         };
-        
-        
+
         tbRawatDr.setModel(tabModeDr);
         //tampilDr();
 
@@ -1054,9 +1055,9 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnKeluar = new widget.Button();
         panelGlass10 = new widget.panelisi();
         jLabel19 = new widget.Label();
-        DTPCari1 = new widget.Tanggal();
+        DTPCari1 = new widget.Tanggal1();
         jLabel21 = new widget.Label();
-        DTPCari2 = new widget.Tanggal();
+        DTPCari2 = new widget.Tanggal1();
         jLabel20 = new widget.Label();
         TCariPasien = new widget.TextBox();
         btnPasien = new widget.Button();
@@ -1236,14 +1237,14 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TNoRw = new widget.TextBox();
         TNoRM = new widget.TextBox();
         TPasien = new widget.TextBox();
-        DTPTgl = new widget.Tanggal();
+        jLabel29 = new widget.Label();
+        TNamaKamar = new widget.TextBox();
         jLabel18 = new widget.Label();
+        DTPTgl = new widget.Tanggal1();
         cmbJam = new widget.ComboBox();
         cmbMnt = new widget.ComboBox();
         cmbDtk = new widget.ComboBox();
         ChkJln = new widget.CekBox();
-        jLabel29 = new widget.Label();
-        TNamaKamar = new widget.TextBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
         ScrollMenu = new widget.ScrollPane();
@@ -1470,12 +1471,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(64, 23));
         panelGlass10.add(jLabel19);
 
-        DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass10.add(DTPCari1);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1484,12 +1480,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass10.add(jLabel21);
 
-        DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelGlass10.add(DTPCari2);
 
         jLabel20.setText("No.RM :");
@@ -1563,6 +1554,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2976,53 +2968,45 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(215, 225, 215));
         FormInput.setName("FormInput"); // NOI18N
         FormInput.setPreferredSize(new java.awt.Dimension(260, 43));
-        FormInput.setLayout(null);
 
         jLabel3.setText("No.Rawat :");
         jLabel3.setName("jLabel3"); // NOI18N
         jLabel3.setPreferredSize(null);
-        FormInput.add(jLabel3);
-        jLabel3.setBounds(0, 10, 70, 23);
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
+        TNoRw.setPreferredSize(new java.awt.Dimension(120, 24));
         TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TNoRwKeyPressed(evt);
             }
         });
-        FormInput.add(TNoRw);
-        TNoRw.setBounds(74, 10, 125, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
-        FormInput.add(TNoRM);
-        TNoRM.setBounds(201, 10, 80, 23);
+        TNoRM.setPreferredSize(new java.awt.Dimension(80, 24));
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
-        FormInput.add(TPasien);
-        TPasien.setBounds(283, 10, 260, 23);
+        TPasien.setPreferredSize(new java.awt.Dimension(180, 24));
 
-        DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2020" }));
-        DTPTgl.setDisplayFormat("dd-MM-yyyy");
-        DTPTgl.setName("DTPTgl"); // NOI18N
-        DTPTgl.setOpaque(false);
-        DTPTgl.addKeyListener(new java.awt.event.KeyAdapter() {
+        jLabel29.setText("Kamar :");
+        jLabel29.setName("jLabel29"); // NOI18N
+
+        TNamaKamar.setEditable(false);
+        TNamaKamar.setName("TNamaKamar"); // NOI18N
+        TNamaKamar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPTglKeyPressed(evt);
+                TNamaKamarKeyPressed(evt);
             }
         });
-        FormInput.add(DTPTgl);
-        DTPTgl.setBounds(830, 10, 90, 23);
 
         jLabel18.setText("Tanggal :");
         jLabel18.setName("jLabel18"); // NOI18N
-        FormInput.add(jLabel18);
-        jLabel18.setBounds(760, 10, 60, 23);
+
+        DTPTgl.setName("DTPTgl"); // NOI18N
 
         cmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam.setName("cmbJam"); // NOI18N
@@ -3032,8 +3016,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 cmbJamKeyPressed(evt);
             }
         });
-        FormInput.add(cmbJam);
-        cmbJam.setBounds(930, 10, 62, 23);
 
         cmbMnt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt.setName("cmbMnt"); // NOI18N
@@ -3043,8 +3025,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 cmbMntKeyPressed(evt);
             }
         });
-        FormInput.add(cmbMnt);
-        cmbMnt.setBounds(1000, 10, 62, 23);
 
         cmbDtk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk.setName("cmbDtk"); // NOI18N
@@ -3054,8 +3034,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 cmbDtkKeyPressed(evt);
             }
         });
-        FormInput.add(cmbDtk);
-        cmbDtk.setBounds(1070, 10, 62, 23);
 
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
         ChkJln.setSelected(true);
@@ -3070,23 +3048,77 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 ChkJlnActionPerformed(evt);
             }
         });
-        FormInput.add(ChkJln);
-        ChkJln.setBounds(1140, 10, 23, 23);
 
-        jLabel29.setText("Kamar :");
-        jLabel29.setName("jLabel29"); // NOI18N
-        FormInput.add(jLabel29);
-        jLabel29.setBounds(560, 10, 40, 23);
-
-        TNamaKamar.setEditable(false);
-        TNamaKamar.setName("TNamaKamar"); // NOI18N
-        TNamaKamar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNamaKamarKeyPressed(evt);
-            }
-        });
-        FormInput.add(TNamaKamar);
-        TNamaKamar.setBounds(610, 10, 140, 23);
+        javax.swing.GroupLayout FormInputLayout = new javax.swing.GroupLayout(FormInput);
+        FormInput.setLayout(FormInputLayout);
+        FormInputLayout.setHorizontalGroup(
+            FormInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FormInputLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TNoRw, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TNoRM, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TPasien, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TNamaKamar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(DTPTgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(cmbJam, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbMnt, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(cmbDtk, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ChkJln, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
+        );
+        FormInputLayout.setVerticalGroup(
+            FormInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FormInputLayout.createSequentialGroup()
+                .addGroup(FormInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FormInputLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FormInputLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(TNoRw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FormInputLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(TNoRM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FormInputLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(TPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FormInputLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FormInputLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(FormInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TNamaKamar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(FormInputLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(DTPTgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FormInputLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(cmbJam, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FormInputLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(FormInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ChkJln, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(FormInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmbMnt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbDtk, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(8, 8, 8))
+        );
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -3470,7 +3502,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                             TCari.requestFocus();
                         } else {
                             if (Sequel.menyimpantf("rawat_inap_dr", "?,?,?,?,?,?,?,?,?,?,?", "Data", 11, new String[]{
-                                TNoRw.getText(), TKdPrw.getText(), KdDok.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""),
+                                TNoRw.getText(), TKdPrw.getText(), KdDok.getText(), Valid.SetDateToString(DTPTgl.getDate()),
                                 cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                                 BagianRS.getText(), Bhp.getText(), JmDokter.getText(), KSO.getText(), Menejemen.getText(), TTnd.getText()
                             }) == true) {
@@ -3488,7 +3520,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                                     Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','" + KSO.getText() + "','0'", "Rekening");
                                     Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','0','" + KSO.getText() + "'", "Rekening");
                                 }
-                                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText() + " DIPOSTING OLEH " + akses.getkode());
+                                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText() + " DIPOSTING OLEH " + akses.getkode());
 
                                 tampilDr();
                                 BtnBatalActionPerformed(evt);
@@ -3507,7 +3539,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                             TCari.requestFocus();
                         } else {
                             if (Sequel.menyimpantf("rawat_inap_pr", "?,?,?,?,?,?,?,?,?,?,?", "Data", 11, new String[]{
-                                TNoRw.getText(), TKdPrw1.getText(), kdptg.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""),
+                                TNoRw.getText(), TKdPrw1.getText(), kdptg.getText(), Valid.SetDateToString(DTPTgl.getDate()),
                                 cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                                 BagianRS.getText(), Bhp.getText(), JmPerawat.getText(), KSO.getText(), Menejemen.getText(), TTnd.getText()
                             }) == true) {
@@ -3525,7 +3557,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                                     Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','" + KSO.getText() + "','0'", "Rekening");
                                     Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','0','" + KSO.getText() + "'", "Rekening");
                                 }
-                                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText() + " DIPOSTING OLEH " + akses.getkode());
+                                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText() + " DIPOSTING OLEH " + akses.getkode());
 
                                 tampilPr();
                                 BtnBatalActionPerformed(evt);
@@ -3546,7 +3578,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                             TCari.requestFocus();
                         } else {//TODO: insert to rawat_inap_drpr
                             if (Sequel.menyimpantf("rawat_inap_drpr", "?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 14, new String[]{
-                                TNoRw.getText(), TKdPrw2.getText(), KdDok2.getText(), kdptg2.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""),
+                                TNoRw.getText(), TKdPrw2.getText(), KdDok2.getText(), kdptg2.getText(), Valid.SetDateToString(DTPTgl.getDate()),
                                 cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                                 BagianRS.getText(), Bhp.getText(), JmDokter.getText(), JmPerawat.getText(), KSO.getText(), Menejemen.getText(),
                                 TTnd.getText(), TNamaKamar.getText()
@@ -3569,7 +3601,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                                     Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','" + KSO.getText() + "','0'", "Rekening");
                                     Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','0','" + KSO.getText() + "'", "Rekening");
                                 }
-                                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText() + " DIPOSTING OLEH " + akses.getkode());
+                                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText() + " DIPOSTING OLEH " + akses.getkode());
 
                                 tampilDrPr();
                                 BtnBatalActionPerformed(evt);
@@ -3585,7 +3617,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                             || (!TNadi.getText().trim().equals("")) || (!TGCS.getText().trim().equals(""))
                             || (!TPenilaian.getText().trim().equals("")) || (!TindakLanjut.getText().trim().equals(""))) {
                         Sequel.menyimpan("pemeriksaan_ranap", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 15, new String[]{
-                            TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
+                            TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                             TSuhu.getText(), TTensi.getText(), TNadi.getText(), TRespirasi.getText(), TTinggi.getText(),
                             TBerat.getText(), TGCS.getText(), TKeluhan.getText(), TPemeriksaan.getText(), TAlergi.getText(),
                             TPenilaian.getText(), TindakLanjut.getText()
@@ -3602,7 +3634,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                             || (!TPembukaan.getText().trim().equals("")) || (!TPenurunan.getText().trim().equals(""))
                             || (!TDenominator.getText().trim().equals(""))) {
                         Sequel.menyimpan("pemeriksaan_obstetri_ranap", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 23, new String[]{
-                            TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
+                            TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                             TTinggi_uteri.getText(), cmbJanin.getSelectedItem().toString(), TLetak.getText(), cmbPanggul.getSelectedItem().toString(), TDenyut.getText(),
                             cmbKontraksi.getSelectedItem().toString(), TKualitas_mnt.getText(), TKualitas_dtk.getText(), cmbFluksus.getSelectedItem().toString(),
                             cmbAlbus.getSelectedItem().toString(), TVulva.getText(), TPortio.getText(), cmbDalam.getSelectedItem().toString(), TTebal.getText(),
@@ -3622,7 +3654,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                             || (!TAdnexaKanan.getText().trim().equals("")) || (!TAdnexaKiri.getText().trim().equals(""))
                             || (!TCavumDouglas.getText().trim().equals(""))) {
                         Sequel.menyimpan("pemeriksaan_ginekologi_ranap", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 20, new String[]{
-                            TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
+                            TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                             TInspeksi.getText(), TInspeksiVulva.getText(), TInspekuloGine.getText(),
                             cmbFluxusGine.getSelectedItem().toString(), cmbFluorGine.getSelectedItem().toString(), TVulvaInspekulo.getText(),
                             TPortioInspekulo.getText(), TSondage.getText(), TPortioDalam.getText(),
@@ -3768,7 +3800,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                         Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','0','" + ttlkso + "'", "Rekening");
                         Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','" + ttlkso + "','0'", "Rekening");
                     }
-                    jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
+                    jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
 
                     tampilDr();
                 }
@@ -3814,7 +3846,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                         Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','0','" + ttlkso + "'", "Rekening");
                         Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','" + ttlkso + "','0'", "Rekening");
                     }
-                    jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
+                    jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
 
                     tampilPr();
                 }
@@ -3866,7 +3898,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                         Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','0','" + ttlkso + "'", "Rekening");
                         Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','" + ttlkso + "','0'", "Rekening");
                     }
-                    jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
+                    jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
 
                     tampilDrPr();
                 }
@@ -3953,7 +3985,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     String pas = " and reg_periksa.no_rkm_medis like '%" + TCariPasien.getText() + "%' ";
 
-                    String tgl = " rawat_inap_dr.tgl_perawatan between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' " + pas;
+                    String tgl = " rawat_inap_dr.tgl_perawatan between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' " + pas;
                     Valid.MyReportqry("rptInapDr.jasper", "report", "::[ Data Rawat Inap Yang Ditangani Dokter ]::",
                             "select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"
                             + "jns_perawatan_inap.nm_perawatan,rawat_inap_dr.kd_dokter,dokter.nm_dokter,"
@@ -3990,7 +4022,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     String pas = " and reg_periksa.no_rkm_medis like '%" + TCariPasien.getText() + "%' ";
 
-                    String tgl = " rawat_inap_pr.tgl_perawatan between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' " + pas;
+                    String tgl = " rawat_inap_pr.tgl_perawatan between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' " + pas;
                     Valid.MyReportqry("rptInapPr.jasper", "report", "::[ Data Rawat Inap Yang Ditangani Perawat ]::",
                             "select rawat_inap_pr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"
                             + "jns_perawatan_inap.nm_perawatan,rawat_inap_pr.nip,petugas.nama,"
@@ -4026,7 +4058,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     String pas = " and reg_periksa.no_rkm_medis like '%" + TCariPasien.getText() + "%' ";
 
-                    String tgl = " rawat_inap_drpr.tgl_perawatan between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' " + pas;
+                    String tgl = " rawat_inap_drpr.tgl_perawatan between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' " + pas;
                     Valid.MyReportqry("rptInapDrPr.jasper", "report", "::[ Data Rawat Inap Yang Ditangani Dokter ]::",
                             "select rawat_inap_drpr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"
                             + "jns_perawatan_inap.nm_perawatan,rawat_inap_drpr.kd_dokter,dokter.nm_dokter,rawat_inap_drpr.nip,petugas.nama,"
@@ -4065,7 +4097,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     String pas = " and reg_periksa.no_rkm_medis like '%" + TCariPasien.getText() + "%' ";
 
-                    String tgl = " pemeriksaan_ranap.tgl_perawatan between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' " + pas;
+                    String tgl = " pemeriksaan_ranap.tgl_perawatan between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' " + pas;
                     Valid.MyReportqry("rptInapPemeriksaan.jasper", "report", "::[ Data Pemeriksaan Rawat Inap ]::",
                             "select pemeriksaan_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"
                             + "pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi, "
@@ -4099,7 +4131,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     String pas = " and reg_periksa.no_rkm_medis like '%" + TCariPasien.getText() + "%' ";
 
-                    String tgl = " pemeriksaan_obstetri_ranap.tgl_perawatan between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' " + pas;
+                    String tgl = " pemeriksaan_obstetri_ranap.tgl_perawatan between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' " + pas;
                     Valid.MyReportqry("rptInapObstetri.jasper", "report", "::[ Data Pemeriksaan Obstetri Rawat Jalan ]::",
                             "select pemeriksaan_obstetri_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"
                             + "pemeriksaan_obstetri_ranap.tgl_perawatan,pemeriksaan_obstetri_ranap.jam_rawat,pemeriksaan_obstetri_ranap.tinggi_uteri,pemeriksaan_obstetri_ranap.janin,pemeriksaan_obstetri_ranap.letak, "
@@ -4132,7 +4164,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     String pas = " and reg_periksa.no_rkm_medis like '%" + TCariPasien.getText() + "%' ";
 
-                    String tgl = " pemeriksaan_ginekologi_ranap.tgl_perawatan between '" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "' and '" + Valid.SetTgl(DTPCari2.getSelectedItem() + "") + "' " + pas;
+                    String tgl = " pemeriksaan_ginekologi_ranap.tgl_perawatan between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '" + Valid.SetDateToString(DTPCari2.getDate()) + "' " + pas;
                     Valid.MyReportqry("rptInapGinekologi.jasper", "report", "::[ Data Pemeriksaan Ginekologi Rawat Inap ]::",
                             "select pemeriksaan_ginekologi_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"
                             + "pemeriksaan_ginekologi_ranap.tgl_perawatan,pemeriksaan_ginekologi_ranap.jam_rawat,pemeriksaan_ginekologi_ranap.inspeksi,pemeriksaan_ginekologi_ranap.inspeksi_vulva,pemeriksaan_ginekologi_ranap.inspekulo_gine, "
@@ -4265,10 +4297,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_TabRawatMouseClicked
 
-    private void DTPTglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPTglKeyPressed
-        Valid.pindah(evt, TKdPrw, cmbJam);
-}//GEN-LAST:event_DTPTglKeyPressed
-
     private void cmbJamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbJamKeyPressed
         Valid.pindah(evt, DTPTgl, cmbMnt);
 }//GEN-LAST:event_cmbJamKeyPressed
@@ -4291,7 +4319,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 }//GEN-LAST:event_btnPasienActionPerformed
 
     private void btnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPasienKeyPressed
-        Valid.pindah(evt, TCariPasien, DTPCari1);
+        Valid.pindah(evt, DTPCari1, TCariPasien);
 }//GEN-LAST:event_btnPasienKeyPressed
 
     private void tbRawatDrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRawatDrMouseClicked
@@ -4300,7 +4328,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 getDataDr();
             } catch (java.lang.NullPointerException e) {
             }
-
         }
 }//GEN-LAST:event_tbRawatDrMouseClicked
 
@@ -4342,7 +4369,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     "no_rawat='" + TNoRw.getText() + "',kd_jenis_prw='" + TKdPrw.getText()
                                     + "',kd_dokter='" + KdDok.getText() + "',material='" + BagianRS.getText()
                                     + "',bhp='" + Bhp.getText() + "',tarif_tindakandr='" + JmDokter.getText() + "',biaya_rawat='" + TTnd.getText()
-                                    + "',tgl_perawatan='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "',jam_rawat='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
+                                    + "',tgl_perawatan='" + Valid.SetDateToString(DTPTgl.getDate()) + "',jam_rawat='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
                                     + "kso='" + KSO.getText() + "',menejemen='" + Menejemen.getText() + "'") == true) {
 
                                 Sequel.queryu("delete from tampjurnal");
@@ -4358,7 +4385,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','0','" + tbRawatDr.getValueAt(tbRawatDr.getSelectedRow(), 12).toString() + "'", "Rekening");
                                     Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','" + tbRawatDr.getValueAt(tbRawatDr.getSelectedRow(), 12).toString() + "','0'", "Rekening");
                                 }
-                                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PERUBAHAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
+                                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PERUBAHAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
 
                                 Sequel.queryu("delete from tampjurnal");
                                 if (Valid.SetAngka(TTnd.getText()) > 0) {
@@ -4373,7 +4400,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','" + KSO.getText() + "','0'", "Rekening");
                                     Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','0','" + KSO.getText() + "'", "Rekening");
                                 }
-                                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PERUBAHAN TINDAKAN RAWAT INAP PASIEN " + TPasien.getText());
+                                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PERUBAHAN TINDAKAN RAWAT INAP PASIEN " + TPasien.getText());
 
                                 tampilDr();
                                 BtnBatalActionPerformed(evt);
@@ -4405,7 +4432,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     "no_rawat='" + TNoRw.getText() + "',kd_jenis_prw='" + TKdPrw1.getText()
                                     + "',nip='" + kdptg.getText() + "',material='" + BagianRS.getText()
                                     + "',bhp='" + Bhp.getText() + "',tarif_tindakanpr='" + JmPerawat.getText() + "',biaya_rawat='" + TTnd.getText()
-                                    + "',tgl_perawatan='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "',jam_rawat='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
+                                    + "',tgl_perawatan='" + Valid.SetDateToString(DTPTgl.getDate()) + "',jam_rawat='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
                                     + "kso='" + KSO.getText() + "',menejemen='" + Menejemen.getText() + "'") == true) {
 
                                 Sequel.queryu("delete from tampjurnal");
@@ -4421,7 +4448,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','0','" + tbRawatPr.getValueAt(tbRawatPr.getSelectedRow(), 12).toString() + "'", "Rekening");
                                     Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','" + tbRawatPr.getValueAt(tbRawatPr.getSelectedRow(), 12).toString() + "','0'", "Rekening");
                                 }
-                                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
+                                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
 
                                 Sequel.queryu("delete from tampjurnal");
                                 if (Valid.SetAngka(TTnd.getText()) > 0) {
@@ -4436,7 +4463,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','" + KSO.getText() + "','0'", "Rekening");
                                     Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','0','" + KSO.getText() + "'", "Rekening");
                                 }
-                                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText());
+                                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText());
 
                                 tampilPr();
                                 BtnBatalActionPerformed(evt);
@@ -4474,7 +4501,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     "no_rawat='" + TNoRw.getText() + "',kd_jenis_prw='" + TKdPrw2.getText()
                                     + "',nip='" + kdptg2.getText() + "',kd_dokter='" + KdDok2.getText() + "',material='" + BagianRS.getText()
                                     + "',bhp='" + Bhp.getText() + "',tarif_tindakanpr='" + JmPerawat.getText() + "',tarif_tindakandr='" + JmDokter.getText() + "',biaya_rawat='" + TTnd.getText()
-                                    + "',tgl_perawatan='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "',jam_rawat='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
+                                    + "',tgl_perawatan='" + Valid.SetDateToString(DTPTgl.getDate()) + "',jam_rawat='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
                                     + "kso='" + KSO.getText() + "',menejemen='" + Menejemen.getText() + "', kd_kamar='" + TNamaKamar.getText() + "'") == true) {
 
                                 Sequel.queryu("delete from tampjurnal");
@@ -4494,7 +4521,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','0','" + tbRawatDrPr.getValueAt(tbRawatDrPr.getSelectedRow(), 16).toString() + "'", "Rekening");
                                     Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','" + tbRawatDrPr.getValueAt(tbRawatDrPr.getSelectedRow(), 16).toString() + "','0'", "Rekening");
                                 }
-                                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
+                                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "PEMBATALAN TINDAKAN RAWAT INAP PASIEN OLEH " + akses.getkode());
 
                                 Sequel.queryu("delete from tampjurnal");
                                 if (Valid.SetAngka(TTnd.getText()) > 0) {
@@ -4513,7 +4540,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     Sequel.menyimpan("tampjurnal", "'" + Beban_KSO_Tindakan_Ranap + "','Beban KSO Tindakan Ranap','" + KSO.getText() + "','0'", "Rekening");
                                     Sequel.menyimpan("tampjurnal", "'" + Utang_KSO_Tindakan_Ranap + "','Utang KSO Tindakan Ranap','0','" + KSO.getText() + "'", "Rekening");
                                 }
-                                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText());
+                                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(DTPTgl.getDate()), "U", "TINDAKAN RAWAT INAP PASIEN " + TPasien.getText());
 
                                 tampilDrPr();
                                 BtnBatalActionPerformed(evt);
@@ -4536,7 +4563,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 "no_rawat='" + TNoRw.getText() + "',suhu_tubuh='" + TSuhu.getText() + "',tensi='" + TTensi.getText() + "',"
                                 + "keluhan='" + TKeluhan.getText() + "',pemeriksaan='" + TPemeriksaan.getText() + "',"
                                 + "nadi='" + TNadi.getText() + "',respirasi='" + TRespirasi.getText() + "',tinggi='" + TTinggi.getText() + "',berat='" + TBerat.getText() + "',"
-                                + "gcs='" + TGCS.getText() + "',alergi='" + TAlergi.getText() + "',tgl_perawatan='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "',"
+                                + "gcs='" + TGCS.getText() + "',alergi='" + TAlergi.getText() + "',tgl_perawatan='" + Valid.SetDateToString(DTPTgl.getDate()) + "',"
                                 + "jam_rawat='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
                                 + "rtl='" + TindakLanjut.getText() + "',penilaian='" + TPenilaian.getText() + "'");
                         tampilPemeriksaan();
@@ -4558,7 +4585,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         Sequel.mengedit("pemeriksaan_obstetri_ranap", "no_rawat='" + tbPemeriksaanObstetri.getValueAt(tbPemeriksaanObstetri.getSelectedRow(), 1)
                                 + "' and tgl_perawatan='" + tbPemeriksaanObstetri.getValueAt(tbPemeriksaanObstetri.getSelectedRow(), 4)
                                 + "' and jam_rawat='" + tbPemeriksaanObstetri.getValueAt(tbPemeriksaanObstetri.getSelectedRow(), 5) + "'",
-                                "no_rawat='" + TNoRw.getText() + "', tgl_perawatan='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "', "
+                                "no_rawat='" + TNoRw.getText() + "', tgl_perawatan='" + Valid.SetDateToString(DTPTgl.getDate()) + "', "
                                 + "jam_rawat='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "', "
                                 + "tinggi_uteri='" + TTinggi_uteri.getText() + "', janin='" + cmbJanin.getSelectedItem() + "', letak='" + TLetak.getText() + "', "
                                 + "panggul='" + cmbPanggul.getSelectedItem() + "', denyut='" + TDenyut.getText() + "', kontraksi='" + cmbKontraksi.getSelectedItem() + "', "
@@ -4587,7 +4614,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         Sequel.mengedit("pemeriksaan_ginekologi_ranap", "no_rawat='" + tbPemeriksaanGinekologi.getValueAt(tbPemeriksaanGinekologi.getSelectedRow(), 1)
                                 + "' and tgl_perawatan='" + tbPemeriksaanGinekologi.getValueAt(tbPemeriksaanGinekologi.getSelectedRow(), 4)
                                 + "' and jam_rawat='" + tbPemeriksaanGinekologi.getValueAt(tbPemeriksaanGinekologi.getSelectedRow(), 5) + "'",
-                                "no_rawat='" + TNoRw.getText() + "', tgl_perawatan='" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "', "
+                                "no_rawat='" + TNoRw.getText() + "', tgl_perawatan='" + Valid.SetDateToString(DTPTgl.getDate()) + "', "
                                 + "jam_rawat='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "', "
                                 + "inspeksi='" + TInspeksi.getText() + "', inspeksi_vulva='" + TInspeksiVulva.getText() + "', inspekulo_gine='" + TInspekuloGine.getText() + "', "
                                 + "fluxus_gine='" + cmbFluxusGine.getSelectedItem() + "', fluor_gine='" + cmbFluorGine.getSelectedItem() + "', "
@@ -5615,9 +5642,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.CekBox ChkInput1;
     private widget.CekBox ChkInput2;
     private widget.CekBox ChkJln;
-    private widget.Tanggal DTPCari1;
-    private widget.Tanggal DTPCari2;
-    private widget.Tanggal DTPTgl;
+    private widget.Tanggal1 DTPCari1;
+    private widget.Tanggal1 DTPCari2;
+    private widget.Tanggal1 DTPTgl;
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormMenu;
     private javax.swing.JTextField JmDokter;
@@ -5852,35 +5879,35 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             try {
                 if (TCari.getText().equals("") && TCariPasien.getText().equals("")) {
-                    ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                 } else {
-                    ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(3, "%" + TCariPasien.getText() + "%");
                     ps.setString(4, "%" + TCari.getText().trim() + "%");
-                    ps.setString(5, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(6, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(5, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(6, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(7, "%" + TCariPasien.getText() + "%");
                     ps.setString(8, "%" + TCari.getText().trim() + "%");
-                    ps.setString(9, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(10, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(9, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(10, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(11, "%" + TCariPasien.getText() + "%");
                     ps.setString(12, "%" + TCari.getText().trim() + "%");
-                    ps.setString(13, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(14, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(15, "%" + TCariPasien.getText() + "%");
                     ps.setString(16, "%" + TCari.getText().trim() + "%");
-                    ps.setString(17, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(18, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(17, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(18, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(19, "%" + TCariPasien.getText() + "%");
                     ps.setString(20, "%" + TCari.getText().trim() + "%");
-                    ps.setString(21, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(22, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(21, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(22, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(23, "%" + TCariPasien.getText() + "%");
                     ps.setString(24, "%" + TCari.getText().trim() + "%");
-                    ps.setString(25, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps.setString(26, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps.setString(25, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps.setString(26, Valid.SetDateToString(DTPCari2.getDate()));
                     ps.setString(27, "%" + TCariPasien.getText() + "%");
                     ps.setString(28, "%" + TCari.getText().trim() + "%");
                 }
@@ -5961,35 +5988,35 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             try {
                 if (TCari.getText().equals("") && TCariPasien.getText().equals("")) {
-                    ps2.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                 } else {
-                    ps2.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                     ps2.setString(3, "%" + TCariPasien.getText() + "%");
                     ps2.setString(4, "%" + TCari.getText().trim() + "%");
-                    ps2.setString(5, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(6, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(5, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(6, Valid.SetDateToString(DTPCari2.getDate()));
                     ps2.setString(7, "%" + TCariPasien.getText() + "%");
                     ps2.setString(8, "%" + TCari.getText().trim() + "%");
-                    ps2.setString(9, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(10, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(9, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(10, Valid.SetDateToString(DTPCari2.getDate()));
                     ps2.setString(11, "%" + TCariPasien.getText() + "%");
                     ps2.setString(12, "%" + TCari.getText().trim() + "%");
-                    ps2.setString(13, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(14, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
                     ps2.setString(15, "%" + TCariPasien.getText() + "%");
                     ps2.setString(16, "%" + TCari.getText().trim() + "%");
-                    ps2.setString(17, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(18, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(17, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(18, Valid.SetDateToString(DTPCari2.getDate()));
                     ps2.setString(19, "%" + TCariPasien.getText() + "%");
                     ps2.setString(20, "%" + TCari.getText().trim() + "%");
-                    ps2.setString(21, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(22, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(21, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(22, Valid.SetDateToString(DTPCari2.getDate()));
                     ps2.setString(23, "%" + TCariPasien.getText() + "%");
                     ps2.setString(24, "%" + TCari.getText().trim() + "%");
-                    ps2.setString(25, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps2.setString(26, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps2.setString(25, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps2.setString(26, Valid.SetDateToString(DTPCari2.getDate()));
                     ps2.setString(27, "%" + TCariPasien.getText() + "%");
                     ps2.setString(28, "%" + TCari.getText().trim() + "%");
                 }
@@ -6067,14 +6094,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         + "rawat_inap_drpr.tarif_tindakandr,"
                         + "rawat_inap_drpr.tarif_tindakanpr,"
                         + "rawat_inap_drpr.kso "
-                        
                         + "from pasien "
                         + "inner join reg_periksa "
                         + "inner join jns_perawatan_inap "
                         + "inner join dokter "
                         + "inner join rawat_inap_drpr "
                         + "inner join petugas "
-                        
                         + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
                         + "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "and rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw"
@@ -6099,14 +6124,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         + "rawat_inap_drpr.tarif_tindakandr,"
                         + "rawat_inap_drpr.tarif_tindakanpr,"
                         + "rawat_inap_drpr.kso "
-                        
                         + "from pasien "
                         + "inner join reg_periksa "
                         + "inner join jns_perawatan_inap "
                         + "inner join dokter "
                         + "inner join rawat_inap_drpr "
                         + "inner join petugas "
-                        
                         + "on rawat_inap_drpr.no_rawat=reg_periksa.no_rawat "
                         + "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                         + "and rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "
@@ -6126,43 +6149,43 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             try {
                 if (TCari.getText().equals("") && TCariPasien.getText().equals("")) {
-                    ps3.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                 } else {
-                    ps3.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                     ps3.setString(3, "%" + TCariPasien.getText() + "%");
                     ps3.setString(4, "%" + TCari.getText().trim() + "%");
-                    ps3.setString(5, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(6, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(5, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(6, Valid.SetDateToString(DTPCari2.getDate()));
                     ps3.setString(7, "%" + TCariPasien.getText() + "%");
                     ps3.setString(8, "%" + TCari.getText().trim() + "%");
-                    ps3.setString(9, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(10, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(9, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(10, Valid.SetDateToString(DTPCari2.getDate()));
                     ps3.setString(11, "%" + TCariPasien.getText() + "%");
                     ps3.setString(12, "%" + TCari.getText().trim() + "%");
-                    ps3.setString(13, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(14, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
                     ps3.setString(15, "%" + TCariPasien.getText() + "%");
                     ps3.setString(16, "%" + TCari.getText().trim() + "%");
-                    ps3.setString(17, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(18, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(17, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(18, Valid.SetDateToString(DTPCari2.getDate()));
                     ps3.setString(19, "%" + TCariPasien.getText() + "%");
                     ps3.setString(20, "%" + TCari.getText().trim() + "%");
-                    ps3.setString(21, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(22, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(21, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(22, Valid.SetDateToString(DTPCari2.getDate()));
                     ps3.setString(23, "%" + TCariPasien.getText() + "%");
                     ps3.setString(24, "%" + TCari.getText().trim() + "%");
-                    ps3.setString(25, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(26, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(25, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(26, Valid.SetDateToString(DTPCari2.getDate()));
                     ps3.setString(27, "%" + TCariPasien.getText() + "%");
                     ps3.setString(28, "%" + TCari.getText().trim() + "%");
-                    ps3.setString(29, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(30, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(29, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(30, Valid.SetDateToString(DTPCari2.getDate()));
                     ps3.setString(31, "%" + TCariPasien.getText() + "%");
                     ps3.setString(32, "%" + TCari.getText().trim() + "%");
-                    ps3.setString(33, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps3.setString(34, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps3.setString(33, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps3.setString(34, Valid.SetDateToString(DTPCari2.getDate()));
                     ps3.setString(35, "%" + TCariPasien.getText() + "%");
                     ps3.setString(36, "%" + TCari.getText().trim() + "%");
                 }
@@ -6425,39 +6448,39 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             try {
                 if (TCari.getText().equals("") && TCariPasien.getText().equals("")) {
-                    ps4.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps4.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps4.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps4.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                 } else {
-                    ps4.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps4.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps4.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps4.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                     ps4.setString(3, "%" + TCariPasien.getText() + "%");
                     ps4.setString(4, "%" + TCari.getText().trim() + "%");
-                    ps4.setString(5, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps4.setString(6, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps4.setString(5, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps4.setString(6, Valid.SetDateToString(DTPCari2.getDate()));
                     ps4.setString(7, "%" + TCariPasien.getText() + "%");
                     ps4.setString(8, "%" + TCari.getText().trim() + "%");
-                    ps4.setString(9, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps4.setString(10, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps4.setString(9, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps4.setString(10, Valid.SetDateToString(DTPCari2.getDate()));
                     ps4.setString(11, "%" + TCariPasien.getText() + "%");
                     ps4.setString(12, "%" + TCari.getText().trim() + "%");
-                    ps4.setString(13, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps4.setString(14, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps4.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps4.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
                     ps4.setString(15, "%" + TCariPasien.getText() + "%");
                     ps4.setString(16, "%" + TCari.getText().trim() + "%");
-                    ps4.setString(17, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps4.setString(18, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps4.setString(17, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps4.setString(18, Valid.SetDateToString(DTPCari2.getDate()));
                     ps4.setString(19, "%" + TCariPasien.getText() + "%");
                     ps4.setString(20, "%" + TCari.getText().trim() + "%");
-                    ps4.setString(21, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps4.setString(22, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps4.setString(21, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps4.setString(22, Valid.SetDateToString(DTPCari2.getDate()));
                     ps4.setString(23, "%" + TCariPasien.getText() + "%");
                     ps4.setString(24, "%" + TCari.getText().trim() + "%");
-                    ps4.setString(25, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps4.setString(26, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps4.setString(25, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps4.setString(26, Valid.SetDateToString(DTPCari2.getDate()));
                     ps4.setString(27, "%" + TCariPasien.getText() + "%");
                     ps4.setString(28, "%" + TCari.getText().trim() + "%");
-                    ps4.setString(29, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps4.setString(30, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps4.setString(29, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps4.setString(30, Valid.SetDateToString(DTPCari2.getDate()));
                     ps4.setString(31, "%" + TCariPasien.getText() + "%");
                     ps4.setString(32, "%" + TCari.getText().trim() + "%");
                 }
@@ -6545,31 +6568,31 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             try {
                 if (TCari.getText().equals("") && TCariPasien.getText().equals("")) {
-                    ps5.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps5.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps5.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps5.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                 } else {
-                    ps5.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps5.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps5.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps5.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                     ps5.setString(3, "%" + TCariPasien.getText() + "%");
                     ps5.setString(4, "%" + TCari.getText().trim() + "%");
-                    ps5.setString(5, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps5.setString(6, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps5.setString(5, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps5.setString(6, Valid.SetDateToString(DTPCari2.getDate()));
                     ps5.setString(7, "%" + TCariPasien.getText() + "%");
                     ps5.setString(8, "%" + TCari.getText().trim() + "%");
-                    ps5.setString(9, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps5.setString(10, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps5.setString(9, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps5.setString(10, Valid.SetDateToString(DTPCari2.getDate()));
                     ps5.setString(11, "%" + TCariPasien.getText() + "%");
                     ps5.setString(12, "%" + TCari.getText().trim() + "%");
-                    ps5.setString(13, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps5.setString(14, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps5.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps5.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
                     ps5.setString(15, "%" + TCariPasien.getText() + "%");
                     ps5.setString(16, "%" + TCari.getText().trim() + "%");
-                    ps5.setString(17, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps5.setString(18, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps5.setString(17, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps5.setString(18, Valid.SetDateToString(DTPCari2.getDate()));
                     ps5.setString(19, "%" + TCariPasien.getText() + "%");
                     ps5.setString(20, "%" + TCari.getText().trim() + "%");
-                    ps5.setString(21, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                    ps5.setString(22, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                    ps5.setString(21, Valid.SetDateToString(DTPCari1.getDate()));
+                    ps5.setString(22, Valid.SetDateToString(DTPCari2.getDate()));
                     ps5.setString(23, "%" + TCariPasien.getText() + "%");
                     ps5.setString(24, "%" + TCari.getText().trim() + "%");
                 }
@@ -6669,28 +6692,28 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     + "pemeriksaan_ginekologi_ranap.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_ginekologi_ranap.inspekulo_gine like ? "
                     + "order by pemeriksaan_ginekologi_ranap.no_rawat desc");
             try {
-                ps6.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps6.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps6.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
+                ps6.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
                 ps6.setString(3, "%" + TCariPasien.getText() + "%");
                 ps6.setString(4, "%" + TCari.getText().trim() + "%");
-                ps6.setString(5, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps6.setString(6, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps6.setString(5, Valid.SetDateToString(DTPCari1.getDate()));
+                ps6.setString(6, Valid.SetDateToString(DTPCari2.getDate()));
                 ps6.setString(7, "%" + TCariPasien.getText() + "%");
                 ps6.setString(8, "%" + TCari.getText().trim() + "%");
-                ps6.setString(9, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps6.setString(10, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps6.setString(9, Valid.SetDateToString(DTPCari1.getDate()));
+                ps6.setString(10, Valid.SetDateToString(DTPCari2.getDate()));
                 ps6.setString(11, "%" + TCariPasien.getText() + "%");
                 ps6.setString(12, "%" + TCari.getText().trim() + "%");
-                ps6.setString(13, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps6.setString(14, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps6.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
+                ps6.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
                 ps6.setString(15, "%" + TCariPasien.getText() + "%");
                 ps6.setString(16, "%" + TCari.getText().trim() + "%");
-                ps6.setString(17, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps6.setString(18, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps6.setString(17, Valid.SetDateToString(DTPCari1.getDate()));
+                ps6.setString(18, Valid.SetDateToString(DTPCari2.getDate()));
                 ps6.setString(19, "%" + TCariPasien.getText() + "%");
                 ps6.setString(20, "%" + TCari.getText().trim() + "%");
-                ps6.setString(21, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
-                ps6.setString(22, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps6.setString(21, Valid.SetDateToString(DTPCari1.getDate()));
+                ps6.setString(22, Valid.SetDateToString(DTPCari2.getDate()));
                 ps6.setString(23, "%" + TCariPasien.getText() + "%");
                 ps6.setString(24, "%" + TCari.getText().trim() + "%");
 

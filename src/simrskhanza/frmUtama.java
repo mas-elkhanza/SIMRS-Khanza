@@ -616,6 +616,7 @@ import bridging.InhealthTindakanRalan;
 import bridging.InhealthTindakanRanap;
 import bridging.CoronaPasien;
 import bridging.INACBGPerawatanCorona;
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import grafikanalisa.GrafikInventarisPerJenis;
 import grafikanalisa.GrafikInventarisPerRuang;
 import grafikanalisa.GrafikItemApotekPerGolongan;
@@ -701,6 +702,8 @@ import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSReturBeli;
 import ipsrs.IPSRSRiwayatBarang;
 import java.net.InetAddress;
+import javax.swing.UIManager;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 import kepegawaian.DlgDokter;
 import kepegawaian.DlgPetugas;
 import kepegawaian.K3RSBagianTubuh;
@@ -881,7 +884,8 @@ public class frmUtama extends javax.swing.JFrame {
         initKhanza();
         setIconImage(new ImageIcon(super.getClass().getResource("/picture/rsuiha24.png")).getImage());
 
-        this.setSize(screen.width, screen.height);
+        setExtendedState(frmUtama.MAXIMIZED_BOTH);
+//        this.setSize(screen.width, screen.height);
         // desktop.setPreferredSize(new Dimension(800,1000));
         // desktop.setAutoscrolls(true);
         edAdmin.setDocument(new batasInput((byte) 100).getKata(edAdmin));
@@ -8352,7 +8356,7 @@ public class frmUtama extends javax.swing.JFrame {
         isTutup();
         kasirralan.kamarinap.reg.emptTeks();
         kasirralan.kamarinap.reg.isCek();
-        kasirralan.kamarinap.reg.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        kasirralan.kamarinap.reg.setSize(PanelUtama.getWidth(), PanelUtama.getHeight() - 20);
         kasirralan.kamarinap.reg.setLocationRelativeTo(PanelUtama);
         kasirralan.kamarinap.reg.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
@@ -15349,32 +15353,32 @@ public class frmUtama extends javax.swing.JFrame {
     private void btnPendonorDarahActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        UTDPendonor form=new UTDPendonor(this,false);
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        UTDPendonor form = new UTDPendonor(this, false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnSuplierTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoSuplier suplier=new TokoSuplier(this,false);
+        TokoSuplier suplier = new TokoSuplier(this, false);
         suplier.isCek();
         suplier.emptTeks();
-        suplier.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        suplier.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         suplier.setLocationRelativeTo(PanelUtama);
         suplier.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnJenisTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoJenis aplikasi=new TokoJenis(this,false);
+        TokoJenis aplikasi = new TokoJenis(this, false);
         aplikasi.isCek();
         aplikasi.emptTeks();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
@@ -15382,24 +15386,24 @@ public class frmUtama extends javax.swing.JFrame {
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnSetHargaTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSetHargaToko aplikasi=new DlgSetHargaToko(this,false);
+        DlgSetHargaToko aplikasi = new DlgSetHargaToko(this, false);
         aplikasi.emptTeks();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoBarang form=new TokoBarang(this,false);
+        TokoBarang form = new TokoBarang(this, false);
         form.emptTeks();
         form.onCari();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
@@ -15407,19 +15411,19 @@ public class frmUtama extends javax.swing.JFrame {
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnPenagihanPiutangPasienActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KeuanganPenagihanPiutangPasien form=new KeuanganPenagihanPiutangPasien(this,false);
+        KeuanganPenagihanPiutangPasien form = new KeuanganPenagihanPiutangPasien(this, false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnGrafikItemApotekPerGolonganActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();

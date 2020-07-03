@@ -59,6 +59,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
     private DlgCariBangsal kamar=new DlgCariBangsal(null,false);
     private DlgKecamatan kecamatan=new DlgKecamatan(null,false);
     private DlgKelurahan kelurahan=new DlgKelurahan(null,false);
+    private String kdKab="", kdKec="";
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -236,6 +237,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(kabupaten.getTable().getSelectedRow()!= -1){
                     nmkabupaten.setText(kabupaten.getTable().getValueAt(kabupaten.getTable().getSelectedRow(),0).toString());
+                    kdKab = kabupaten.getTable().getValueAt(kabupaten.getTable().getSelectedRow(),1).toString();
                 }      
                 nmkabupaten.requestFocus();
             }
@@ -271,6 +273,7 @@ public final class DlgKunjunganRanap extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(kecamatan.getTable().getSelectedRow()!= -1){
                     nmkecamatan.setText(kecamatan.getTable().getValueAt(kecamatan.getTable().getSelectedRow(),0).toString());
+                    kdKec = kecamatan.getTable().getValueAt(kecamatan.getTable().getSelectedRow(),1).toString();
                 }      
                 nmkecamatan.requestFocus();
             }
@@ -1147,6 +1150,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnSeek6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek6ActionPerformed
         kecamatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kecamatan.setLocationRelativeTo(internalFrame1);
+        kecamatan.setData(kdKab);
         kecamatan.setAlwaysOnTop(false);
         kecamatan.setVisible(true);
     }//GEN-LAST:event_BtnSeek6ActionPerformed
@@ -1158,6 +1162,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnSeek7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek7ActionPerformed
         kelurahan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kelurahan.setLocationRelativeTo(internalFrame1);
+        kelurahan.setData(kdKec);
         kelurahan.setAlwaysOnTop(false);
         kelurahan.setVisible(true);
     }//GEN-LAST:event_BtnSeek7ActionPerformed
@@ -1384,7 +1389,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.tabelKosong(tabMode2);   
             ps3=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.tgl_daftar,"+
-                    "kamar_inap.kd_kamar,bangsal.nm_bangsal,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab)as almt_pj,kamar_inap.stts_pulang,kamar_inap.tgl_keluar, dokter.nm_dokter, kamar_inap.daignosa_akhir "+
+                    "kamar_inap.kd_kamar,bangsal.nm_bangsal,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab)as almt_pj,kamar_inap.stts_pulang,kamar_inap.tgl_keluar, dokter.nm_dokter, kamar_inap.diagnosa_akhir "+
                     "from reg_periksa "
                             + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                             + "inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "
