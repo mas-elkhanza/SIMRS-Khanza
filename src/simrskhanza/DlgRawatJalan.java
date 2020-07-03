@@ -84,15 +84,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
 
-    /** Creates new form DlgPerawatan
-     * @param frame
-     * @param bln */
     public DlgRawatJalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
         this.setLocation(8,1);
-        setSize(885,674);
+//        setSize(885,620);
         DTPCari1.setDate(new Date());
         DTPCari2.setDate(new Date());
         DTPTgl.setDate(new Date());
@@ -1514,6 +1511,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(64, 23));
         panelGlass9.add(jLabel19);
 
+        DTPCari1.setAutoscrolls(false);
+        DTPCari1.setFocusCycleRoot(true);
+        DTPCari1.setInheritsPopupMenu(true);
         DTPCari1.setName("DTPCari1"); // NOI18N
         panelGlass9.add(DTPCari1);
 
@@ -1610,7 +1610,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1665,7 +1664,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TabRawatTindakanDokter.setBackground(new java.awt.Color(255, 255, 253));
         TabRawatTindakanDokter.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawatTindakanDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatTindakanDokter.setName("TabRawatTindakanDokter"); // NOI18N
         TabRawatTindakanDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1760,7 +1758,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TabRawatTindakanPetugas.setBackground(new java.awt.Color(255, 255, 253));
         TabRawatTindakanPetugas.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawatTindakanPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatTindakanPetugas.setName("TabRawatTindakanPetugas"); // NOI18N
         TabRawatTindakanPetugas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1888,7 +1885,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         TabRawatTindakanDokterPetugas.setBackground(new java.awt.Color(255, 255, 253));
         TabRawatTindakanDokterPetugas.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawatTindakanDokterPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatTindakanDokterPetugas.setName("TabRawatTindakanDokterPetugas"); // NOI18N
         TabRawatTindakanDokterPetugas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2954,7 +2950,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TabRawat.addTab("Pemeriksaan Ginekologi", internalFrame7);
 
         panelResume1.setBorder(null);
-        panelResume1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         panelResume1.setName("panelResume1"); // NOI18N
         TabRawat.addTab("Riwayat Pasien", panelResume1);
 
@@ -3167,7 +3162,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPTgl.setName("DTPTgl"); // NOI18N
         FormInput.add(DTPTgl);
-        DTPTgl.setBounds(620, 10, 117, 28);
+        DTPTgl.setBounds(620, 10, 88, 20);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 

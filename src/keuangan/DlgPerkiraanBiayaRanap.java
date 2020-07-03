@@ -625,11 +625,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     deposit = Sequel.cariIsiAngka("select sum(besar_deposit) from deposit where no_rawat=? ", rs.getString("no_rawat"));
                     ttlDeposit += deposit;
 
-                    hak_kelas_1 = Sequel.cariIsi("select hak_kelas_1 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
-                    hak_kelas_2 = Sequel.cariIsi("select hak_kelas_2 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
-                    hak_kelas_3 = Sequel.cariIsi("select hak_kelas_3 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
-                    selisih = Sequel.cariIsi("select selisih from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
-                    penjaminan = Sequel.cariIsi("select penjaminan from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
+                    hak_kelas_1 = Sequel.cariIsi("select hak_kelas_1 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
+                    hak_kelas_2 = Sequel.cariIsi("select hak_kelas_2 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
+                    hak_kelas_3 = Sequel.cariIsi("select hak_kelas_3 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
+                    selisih = Sequel.cariIsi("select selisih from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
+                    penjaminan = Sequel.cariIsi("select penjaminan from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
                     if (hak_kelas_1.isEmpty()) {
                         hak_kelas_1 = "0";
                     }else{

@@ -5168,6 +5168,9 @@
     <Container class="javax.swing.JDialog" name="WindowInputCoderBPJS">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="null"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="WindowInputCoderBPJS" noResource="true"/>
         <Property name="undecorated" type="boolean" value="true"/>
         <Property name="resizable" type="boolean" value="false"/>
@@ -5208,7 +5211,9 @@
                           <Component id="scrollPane1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="BtnSimpanCoder" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="BtnSimpanCoder1" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="BtnCloseCoder" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <Component id="label1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -5230,6 +5235,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="BtnSimpanCoder" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="BtnCloseCoder" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="BtnSimpanCoder1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -5289,6 +5295,9 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="tableCoder" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableCoderMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -5481,6 +5490,20 @@
                 </Container>
               </SubComponents>
             </Container>
+            <Component class="widget.Button" name="BtnSimpanCoder1">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/edittrash.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="83"/>
+                <Property name="text" type="java.lang.String" value="Hapus"/>
+                <Property name="toolTipText" type="java.lang.String" value="Alt+S"/>
+                <Property name="name" type="java.lang.String" value="BtnSimpanCoder1" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSimpanCoder1ActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
