@@ -52,9 +52,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBilingRanap;
@@ -129,12 +131,27 @@ public class DlgKamarInap extends javax.swing.JDialog {
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
             }
+            Class[] types = new Class[]{
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
         };
         tableCoder.setModel(tabModeCoder);
 
         // tbObat.setDefaultRenderer(Object.class, new
         // WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tableCoder.setPreferredScrollableViewportSize(new Dimension(500, 500));
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
 //        tableCoder.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 7; i++) {
@@ -142,26 +159,39 @@ public class DlgKamarInap extends javax.swing.JDialog {
             switch (i) {
                 case 0:
                     column.setPreferredWidth(105);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 1:
                     column.setPreferredWidth(180);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 2:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 3:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 4:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 5:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 6:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
+                    break;
+                case 7:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 default:
+                    column.setCellRenderer(leftRenderer);
                     break;
             }
         }
@@ -176,6 +206,20 @@ public class DlgKamarInap extends javax.swing.JDialog {
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
             }
+
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                java.lang.String.class
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
         };
         tbKamIn.setModel(tabMode);
 
@@ -189,66 +233,87 @@ public class DlgKamarInap extends javax.swing.JDialog {
             switch (i) {
                 case 0:
                     column.setPreferredWidth(105);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 1:
                     column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 2:
                     column.setPreferredWidth(170);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 3:
                     column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 4:
                     column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 5:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 6:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 7:
                     column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 8:
                     column.setPreferredWidth(75);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 9:
                     column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 10:
                     column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 11:
                     column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 12:
                     column.setPreferredWidth(60);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 13:
                     column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 14:
                     column.setPreferredWidth(60);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 15:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 16:
                     column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 17:
                     column.setPreferredWidth(40);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 18:
                     column.setPreferredWidth(130);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 19:
                     column.setMinWidth(0);
                     column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 default:
+                    column.setCellRenderer(leftRenderer);
                     break;
             }
         }
@@ -4779,7 +4844,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             Sequel.meghapus("coderbpjs", "no_rawat", norawat_coder);
             tampilCoder();
             emptyText();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Pilih data yang akan di hapus.");
         }
     }//GEN-LAST:event_BtnSimpanCoder1ActionPerformed
@@ -11752,11 +11817,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
             while (rs_coder.next()) {
                 tabModeCoder.addRow(new Object[]{rs_coder.getString("tanggal"),
                     rs_coder.getString("diagnosa"),
-                    rs_coder.getString("hak_kelas_1"),
-                    rs_coder.getString("hak_kelas_2"),
-                    rs_coder.getString("hak_kelas_3"),
-                    rs_coder.getString("selisih"),
-                    rs_coder.getString("penjaminan"),
+                    Valid.SetAngka(rs_coder.getDouble("hak_kelas_1")),
+                    Valid.SetAngka(rs_coder.getDouble("hak_kelas_2")),
+                    Valid.SetAngka(rs_coder.getDouble("hak_kelas_3")),
+                    Valid.SetAngka(rs_coder.getDouble("selisih")),
+                    Valid.SetAngka(rs_coder.getDouble("penjaminan")),
                     rs_coder.getString("no_rawat")
                 });
             }
