@@ -1,4 +1,8 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+
     $btnBooking=isset($_POST['btnBooking'])?$_POST['btnBooking']:NULL;
     if (isset($btnBooking)) {
         $nama         = trim(isset($_POST['nama']))?trim($_POST['nama']):NULL;
@@ -50,7 +54,7 @@
                                             </b>
                                             <br>
                                          </div>
-                                         <a href='pages/CetakBooking.php?&nobooking=$no_urut' target=_blank class='form-control btn btn-success wow fadeInUp'> Cetak </a>
+                                         <a href='pages/CetakBooking.php?iyem=".encrypt_decrypt("{\"nobooking\":\"$no_urut\"}","e")."' target=_blank class='form-control btn btn-success wow fadeInUp'> Cetak </a>
                                          <br><br>
                                          Catatan : Nomor booking wajib anda ingat. Nomor booking bukan merupakan nomor pendaftaran poliklinik/unit. Kami akan melakukan pengecekan terhadap jadwal & kuota dokter yang tersedia berdasarkan booking Anda. Konfirmasi booking periksa akan Kami sampaikan melalui E-Mail atau Nomor HP/Telp Anda. Atau <a href='index.php?act=CekBooking' class='btn btn-danger'>Cek Booking</a> untuk melihat status booking Anda
                                      </div>

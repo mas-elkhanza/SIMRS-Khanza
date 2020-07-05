@@ -1,5 +1,8 @@
 <?php
-    require_once('conf/conf.php');
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+
     $besok                  = date("Y-m-d", strtotime("+1 day"));
     $thnbesok               = substr($besok,0,4);
     $blnbesok               = substr($besok,5,2);
@@ -141,7 +144,6 @@
          </div>
     </div>
  </section>
-
 
  <!-- MAKE AN APPOINTMENT -->
  <section id="appointment" data-stellar-background-ratio="3">

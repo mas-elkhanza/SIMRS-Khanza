@@ -357,6 +357,13 @@
         list($result) = mysqli_fetch_array($hasil);
         return $result;
     }
+    
+    function getOne3($sql,$string) {
+        $hasil=bukaquery($sql);
+        list($result) =mysqli_fetch_array($hasil);
+        if(empty($result)) $result=$string;
+        return $result;
+    }
 
     function cekKosong($sql) {
         $jum = mysqli_num_rows($sql);

@@ -1,5 +1,10 @@
 <?php
-    $norawat=isset($_GET['token'])?encrypt_decrypt($_GET['token'],"d"):NULL;
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+    $norawat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
+    $norawat = json_decode(encrypt_decrypt($norawat,"d"),true); 
+    $norawat = $norawat["norawat"];
     if (isset($norawat)) {
         $queryresume = bukaquery("select resume_pasien.kd_dokter,dokter.nm_dokter,resume_pasien.kondisi_pulang,resume_pasien.keluhan_utama, 
             resume_pasien.jalannya_penyakit,resume_pasien.pemeriksaan_penunjang,resume_pasien.hasil_laborat,resume_pasien.diagnosa_utama,resume_pasien.kd_diagnosa_utama, 
@@ -145,7 +150,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <center><a href='index.php?act=RiwayatPeriksa' class='btn btn-danger'>Kembali</a></center>
+                                <center><a href='index.php?act=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                     </div>

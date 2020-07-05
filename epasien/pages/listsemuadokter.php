@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <section id="team" data-stellar-background-ratio="1">
       <div class="container">
            <div class="row">

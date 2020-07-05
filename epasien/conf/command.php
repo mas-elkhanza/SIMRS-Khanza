@@ -34,7 +34,8 @@
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiPasien()) {
             $form = array ('HomeUser','FasilitasKamarUser','InformasiKamarUser','FasilitasRadiologiUser','FasilitasLaboratUser','FasilitasOperasiUser',
-                           'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling');
+                           'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling','Pengaduan',
+                           'BookingRegistrasi','SuratSakit');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -81,6 +82,10 @@
                 case "RiwayatPeriksa"                          : include_once("pages/listriwayatperiksa.php"); break;
                 case "CekResume"                               : include_once("pages/listresume.php"); break;
                 case "CekBilling"                              : include_once("pages/listbilling.php"); break;
+                case "Pengaduan"                               : include_once("pages/listpengaduan.php"); break;
+                case "BookingRegistrasi"                       : include_once("pages/listbookingregistrasi.php"); break;
+                case "SuratSakit"                              : include_once("pages/listsuratsakit.php"); break;
+                case "TampilSuratSakit"                        : include_once("pages/listtampilsuratsakit.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }

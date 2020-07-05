@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <div class="block-header">
     <h2><center>TARIF KONSULTASI ONLINE</center></h2>
 </div>

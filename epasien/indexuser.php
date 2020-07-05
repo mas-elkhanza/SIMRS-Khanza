@@ -293,11 +293,40 @@
                             <span>Beranda</span>
                         </a>
                     </li>
+                    <li <?=$halaman=="Booking"?"class='active'":""?>>
+                        <a href="index.php?act=BookingRegistrasi&hal=Booking">
+                            <i class="material-icons">library_books</i>
+                            <span>Booking Registrasi</span>
+                        </a>
+                    </li>
                     <li <?=$halaman=="RiwayatPeriksa"?"class='active'":""?>>
                         <a href="index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa">
                             <i class="material-icons">local_pharmacy</i>
                             <span>Riwayat Periksa</span>
                         </a>
+                    </li>
+                    <li <?=$halaman=="Surat"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">layers</i>
+                            <span>Permintaan Surat</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="SuratSakit"?"class='active'":""?>>
+                                <a href="index.php?act=SuratSakit&hal=Surat">Surat Cuti Sakit</a>
+                            </li>
+                            <li <?=$subhalaman=="SuratHamil"?"class='active'":""?>>
+                                <a href="index.php?act=SuratHamil&hal=Surat">Surat Hamil</a>
+                            </li>
+                            <li <?=$subhalaman=="SuratBebasNarkoba"?"class='active'":""?>>
+                                <a href="index.php?act=SuratBebasNarkoba&hal=Surat">Surat Bebas Narkoba</a>
+                            </li>
+                            <li <?=$subhalaman=="SuratKontrol"?"class='active'":""?>>
+                                <a href="index.php?act=SuratKontrol&hal=Surat">Surat Kontrol/SKDP</a>
+                            </li>
+                            <li <?=$subhalaman=="SuratRujuk"?"class='active'":""?>>
+                                <a href="index.php?act=SuratRujuk&hal=Surat">Surat Rujukan</a>
+                            </li>
+                        </ul>
                     </li>
                     <li <?=$halaman=="Fasilitas"?"class='active'":""?>>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -342,7 +371,7 @@
                     </li>
                     <li <?=$halaman=="Pengaduan"?"class='active'":""?>>
                         <a href="index.php?act=Pengaduan&hal=Pengaduan">
-                            <i class="material-icons">add_alert</i>
+                            <i class="material-icons">message</i>
                             <span>Pengaduan</span>
                         </a>
                     </li>
@@ -392,6 +421,7 @@
     <script src="js/pages/tables/jquery-datatable.js"></script>
     <script src="js/pages/index.js"></script>
     <script src="js/demo.js"></script>
+    <script src="conf/validator.js" type="text/javascript"></script>
 </body>
 </html>
 

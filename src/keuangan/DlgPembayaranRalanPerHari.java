@@ -690,7 +690,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);            
-            Total=0;ttlLaborat=0;ttlRadiologi=0;ttlObat=0;ttlRalan_Dokter=0;ttlRalan_Paramedis=0;ttlTambahan=0;ttlPotongan=0;ttlRegistrasi=0;
+            Total=0;ttlLaborat=0;ttlRadiologi=0;ttlObat=0;ttlRalan_Dokter=0;ttlRalan_Paramedis=0;ttlTambahan=0;ttlPotongan=0;ttlRegistrasi=0;ttlOperasi=0;
             pstanggal=koneksi.prepareStatement(
                     "select reg_periksa.tgl_registrasi "+
                     "from reg_periksa where reg_periksa.tgl_registrasi between ? and ? "+
@@ -701,7 +701,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 rstanggal=pstanggal.executeQuery();
                 while(rstanggal.next()){
                     Laborat=0;Radiologi=0;Obat=0;Ralan_Dokter=0;Ralan_Dokter_Paramedis=0;
-                    Ralan_Paramedis=0;Tambahan=0;Potongan=0;Registrasi=0;
+                    Ralan_Paramedis=0;Tambahan=0;Potongan=0;Registrasi=0;Operasi=0;
                     if(NmPoli.getText().equals("")&&NmCaraBayar.getText().equals("")&&NmDokter.getText().equals("")){
                         ps= koneksi.prepareStatement(
                             "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.tgl_registrasi,dokter.nm_dokter,penjab.png_jawab "+
