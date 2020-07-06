@@ -86,6 +86,8 @@ import laporan.DlgFrekuensiPenyakitRalan;
 import bridging.DlgDataTB;
 import bridging.INACBGPerawatanCorona;
 import java.awt.Toolkit;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import rekammedis.RMDataResumePasien;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -220,12 +222,19 @@ public final class DlgReg extends javax.swing.JDialog {
 
         this.setLocation(8, 1);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(885, 660); // setSize(885, 674);
+//        setSize(885, 660); // setSize(885, 674);
 //        setSize(screenSize.width, screenSize.height);
 
         DTPReg.setDate(new Date());
         DTPCari1.setDate(new Date());
         DTPCari2.setDate(new Date());
+        DTPReg.setDate(new Date());
+
+        DTPReg.addPropertyChangeListener("date", new PropertyChangeListener() {
+            public void propertyChange(PropertyChangeEvent e) {
+                isNumber();
+            }
+        });
 
         System.out.println("Date = " + Valid.SetDateToString(DTPReg.getDate()));
         tabMode = new DefaultTableModel(null,
@@ -256,59 +265,114 @@ public final class DlgReg extends javax.swing.JDialog {
         };
         tbPetugas.setModel(tabMode);
 
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
         tbPetugas.setPreferredScrollableViewportSize(new Dimension(800, 800));
         tbPetugas.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 23; i++) {
             TableColumn column = tbPetugas.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(20);
-            } else if (i == 1) {
-                column.setPreferredWidth(50);
-            } else if (i == 2) {
-                column.setPreferredWidth(120);
-            } else if (i == 3) {
-                column.setPreferredWidth(70);
-            } else if (i == 4) {
-                column.setPreferredWidth(50);
-            } else if (i == 5) {
-                column.setPreferredWidth(70);
-            } else if (i == 6) {
-                column.setPreferredWidth(200);
-            } else if (i == 7) {
-                column.setPreferredWidth(70);
-            } else if (i == 8) {
-                column.setPreferredWidth(200);
-            } else if (i == 9) {
-                column.setPreferredWidth(30);
-            } else if (i == 10) {
-                column.setPreferredWidth(50);
-            } else if (i == 11) {
-                column.setPreferredWidth(140);
-            } else if (i == 12) {
-                column.setPreferredWidth(140);
-            } else if (i == 13) {
-                column.setPreferredWidth(200);
-            } else if (i == 14) {
-                column.setPreferredWidth(140);
-            } else if (i == 15) {
-                column.setPreferredWidth(90);
-            } else if (i == 16) {
-                column.setPreferredWidth(100);
-            } else if (i == 17) {
-                column.setPreferredWidth(80);
-            } else if (i == 18) {
-                column.setPreferredWidth(80);
-            } else if (i == 19) {
-                column.setPreferredWidth(70);
-            } else if (i == 20) {
-                column.setPreferredWidth(60);
-            } else if (i == 21) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 22) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(20);
+                    break;
+                case 1:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(120);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 4:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 5:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 6:
+                    column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 7:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 8:
+                    column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 9:
+                    column.setPreferredWidth(30);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 10:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 11:
+                    column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 12:
+                    column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 13:
+                    column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 14:
+                    column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 15:
+                    column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 16:
+                    column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 17:
+                    column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 18:
+                    column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 19:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 20:
+                    column.setPreferredWidth(60);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 21:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 22:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
         tbPetugas.setDefaultRenderer(Object.class, new WarnaTable());
@@ -345,48 +409,91 @@ public final class DlgReg extends javax.swing.JDialog {
 
         for (i = 0; i < 20; i++) {
             TableColumn column = tbPetugas2.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(20);
-            } else if (i == 1) {
-                column.setPreferredWidth(120);
-            } else if (i == 2) {
-                column.setPreferredWidth(70);
-            } else if (i == 3) {
-                column.setPreferredWidth(50);
-            } else if (i == 4) {
-                column.setPreferredWidth(70);
-            } else if (i == 5) {
-                column.setPreferredWidth(200);
-            } else if (i == 6) {
-                column.setPreferredWidth(70);
-            } else if (i == 7) {
-                column.setPreferredWidth(200);
-            } else if (i == 8) {
-                column.setPreferredWidth(30);
-            } else if (i == 9) {
-                column.setPreferredWidth(50);
-            } else if (i == 10) {
-                column.setPreferredWidth(140);
-            } else if (i == 11) {
-                column.setPreferredWidth(140);
-            } else if (i == 12) {
-                column.setPreferredWidth(200);
-            } else if (i == 13) {
-                column.setPreferredWidth(140);
-            } else if (i == 14) {
-                column.setPreferredWidth(90);
-            } else if (i == 15) {
-                column.setPreferredWidth(80);
-            } else if (i == 16) {
-                column.setPreferredWidth(80);
-            } else if (i == 17) {
-                column.setPreferredWidth(70);
-            } else if (i == 18) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 19) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(20);
+                    break;
+                case 1:
+                    column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 4:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 5:
+                    column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 6:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 7:
+                    column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 8:
+                    column.setPreferredWidth(30);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 9:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 10:
+                    column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 11:
+                    column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 12:
+                    column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 13:
+                    column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 14:
+                    column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 15:
+                    column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 16:
+                    column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 17:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 18:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 19:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
         tbPetugas2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -424,48 +531,74 @@ public final class DlgReg extends javax.swing.JDialog {
 
         for (int i = 0; i < 12; i++) {
             TableColumn column = tbSpri.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(75);// tanggal
-            } else if (i == 1) {
-                column.setPreferredWidth(60);// jam
-            } else if (i == 2) {
-                column.setPreferredWidth(80);// norm
-            } else if (i == 3) {
-                column.setPreferredWidth(190);// nama
-                // } else if (i == 4) {
-                // column.setPreferredWidth(30);//jk
-                // } else if (i == 5) {
-                // column.setPreferredWidth(120);//ttl
-                // } else if (i == 6) {
-                // column.setPreferredWidth(75);//tgllahir
-                // } else if (i == 7) {
-                // column.setPreferredWidth(30);//gd
-                // } else if (i == 8) {
-                // column.setPreferredWidth(90);//stt nikah
-                // } else if (i == 9) {
-                // column.setPreferredWidth(90);//agama
-            } else if (i == 4) {
-                column.setPreferredWidth(150);// rencana perawatan
-            } else if (i == 5) {
-                column.setPreferredWidth(120);// ruangan
-            } else if (i == 6) {
-                column.setPreferredWidth(120);// dokter
-            } else if (i == 7) {
-                column.setPreferredWidth(220);// diagnosa
-            } else if (i == 8) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 9) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-
-            } else if (i == 10) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-
-            } else if (i == 11) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(75);// tanggal
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 1:
+                    column.setPreferredWidth(60);// jam
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(80);// norm
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(190);// nama
+                    column.setCellRenderer(leftRenderer);
+                    // } else if (i == 4) {
+                    // column.setPreferredWidth(30);//jk
+                    // } else if (i == 5) {
+                    // column.setPreferredWidth(120);//ttl
+                    // } else if (i == 6) {
+                    // column.setPreferredWidth(75);//tgllahir
+                    // } else if (i == 7) {
+                    // column.setPreferredWidth(30);//gd
+                    // } else if (i == 8) {
+                    // column.setPreferredWidth(90);//stt nikah
+                    // } else if (i == 9) {
+                    // column.setPreferredWidth(90);//agama
+                    break;
+                case 4:
+                    column.setPreferredWidth(150);// rencana perawatan
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 5:
+                    column.setPreferredWidth(120);// ruangan
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 6:
+                    column.setPreferredWidth(120);// dokter
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 7:
+                    column.setPreferredWidth(220);// diagnosa
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 8:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 9:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 10:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 11:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
 
@@ -1403,7 +1536,7 @@ public final class DlgReg extends javax.swing.JDialog {
         AsalRujukan = new widget.TextBox();
         btnPenjab1 = new widget.Button();
         ChkTracker = new widget.CekBox();
-        DTPReg = new widget.Tanggal();
+        DTPReg = new widget.Tanggal1();
         ChkInput = new widget.CekBox();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
@@ -4982,7 +5115,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jLabel8.setText("Tgl. Reg. :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(0, 72, 70, 23);
+        jLabel8.setBounds(0, 70, 70, 23);
 
         jLabel13.setText("Dr Dituju :");
         jLabel13.setName("jLabel13"); // NOI18N
@@ -5042,7 +5175,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbJam);
-        CmbJam.setBounds(210, 70, 60, 23);
+        CmbJam.setBounds(210, 70, 50, 23);
 
         CmbMenit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbMenit.setName("CmbMenit"); // NOI18N
@@ -5052,7 +5185,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         FormInput.add(CmbMenit);
-        CmbMenit.setBounds(270, 70, 60, 23);
+        CmbMenit.setBounds(270, 70, 50, 23);
 
         CmbDetik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbDetik.setName("CmbDetik"); // NOI18N
@@ -5269,22 +5402,14 @@ public final class DlgReg extends javax.swing.JDialog {
         FormInput.add(ChkTracker);
         ChkTracker.setBounds(196, 12, 23, 23);
 
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-06-2020" }));
-        DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
-        DTPReg.setOpaque(false);
-        DTPReg.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DTPRegItemStateChanged(evt);
-            }
-        });
         DTPReg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DTPRegKeyPressed(evt);
             }
         });
         FormInput.add(DTPReg);
-        DTPReg.setBounds(74, 72, 90, 23);
+        DTPReg.setBounds(80, 70, 100, 20);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -5598,11 +5723,8 @@ public final class DlgReg extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnCariActionPerformed
 
-    private void DTPRegItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPRegItemStateChanged
-        isNumber();
-    }//GEN-LAST:event_DTPRegItemStateChanged
-
     private void DTPRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPRegKeyPressed
+        // TODO add your handling code here:
         Valid.pindah(evt, TNoRw, CmbJam);
     }//GEN-LAST:event_DTPRegKeyPressed
 
@@ -9974,7 +10096,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private widget.TextBox CrPoli;
     private widget.Tanggal1 DTPCari1;
     private widget.Tanggal1 DTPCari2;
-    private widget.Tanggal DTPReg;
+    private widget.Tanggal1 DTPReg;
     private javax.swing.JDialog DlgCatatan;
     private javax.swing.JDialog DlgDemografi;
     private javax.swing.JDialog DlgSakit2;

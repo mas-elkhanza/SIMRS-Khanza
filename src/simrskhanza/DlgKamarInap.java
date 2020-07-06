@@ -52,9 +52,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBilingRanap;
@@ -95,7 +97,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
-    private String now = dateFormat.format(date), kmr = "", key = "", tglmasuk, jammasuk, kd_pj, hariawal = "", norawat_coder = "",
+    private String now = dateFormat.format(date), kmr = "", key = "", tglmasuk, jammasuk, kd_pj, hariawal = "",
             pilihancetak = "", nonota = "", aktifkan_hapus_data_salah = "";
     private PreparedStatement ps, pssetjam, pscaripiutang, psdiagnosa, psibu, psanak, pstarif, psdpjp, pscariumur, ps_coder;
     private ResultSet rs, rs2, rssetjam, rs_coder;
@@ -124,10 +126,19 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         tabModeCoder = new DefaultTableModel(null,
                 new Object[]{"Tanggal", "Diagnosa", "Hak Kelas 1", "Hak Kelas 2", "Hak Kelas 3",
-                    "Selisih", "Penjaminan", "norawat"}) {
+                    "Selisih", "Penjaminan", "id_coder"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
+            }
+            Class[] types = new Class[]{
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
             }
         };
         tableCoder.setModel(tabModeCoder);
@@ -135,6 +146,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
         // tbObat.setDefaultRenderer(Object.class, new
         // WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tableCoder.setPreferredScrollableViewportSize(new Dimension(500, 500));
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
 //        tableCoder.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 7; i++) {
@@ -142,26 +159,37 @@ public class DlgKamarInap extends javax.swing.JDialog {
             switch (i) {
                 case 0:
                     column.setPreferredWidth(105);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 1:
                     column.setPreferredWidth(180);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 2:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 3:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 4:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 5:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 6:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
+                    break;
+                case 7:
+                    column.setCellRenderer(leftRenderer);
                     break;
                 default:
+                    column.setCellRenderer(leftRenderer);
                     break;
             }
         }
@@ -176,6 +204,20 @@ public class DlgKamarInap extends javax.swing.JDialog {
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
             }
+
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
         };
         tbKamIn.setModel(tabMode);
 
@@ -189,66 +231,87 @@ public class DlgKamarInap extends javax.swing.JDialog {
             switch (i) {
                 case 0:
                     column.setPreferredWidth(105);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 1:
                     column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 2:
                     column.setPreferredWidth(170);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 3:
                     column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 4:
                     column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 5:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 6:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 7:
                     column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 8:
                     column.setPreferredWidth(75);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 9:
                     column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 10:
                     column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 11:
                     column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 12:
                     column.setPreferredWidth(60);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 13:
                     column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 14:
                     column.setPreferredWidth(60);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 15:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 16:
                     column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 17:
                     column.setPreferredWidth(40);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 18:
                     column.setPreferredWidth(130);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 19:
                     column.setMinWidth(0);
                     column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 default:
+                    column.setCellRenderer(leftRenderer);
                     break;
             }
         }
@@ -687,6 +750,46 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
             @Override
             public void windowActivated(WindowEvent e) {
+                if (akses.getform().equals("DlgKamarInap")) {
+                    try {
+                        key = "";
+                        psdiagnosa = koneksi.prepareStatement(
+                                "select kd_penyakit from diagnosa_pasien where no_rawat=? order by prioritas asc");
+                        try {
+                            psdiagnosa.setString(1, norawat.getText());
+                            rs = psdiagnosa.executeQuery();
+                            while (rs.next()) {
+                                key = rs.getString(1) + ", " + key;
+                            }
+                        } catch (Exception ex) {
+                            System.out.println("Notifikasi : " + ex.toString());
+                        } finally {
+                            if (rs != null) {
+                                rs.close();
+                            }
+                            if (psdiagnosa != null) {
+                                psdiagnosa.close();
+                            }
+                        }
+                    } catch (Exception ex) {
+                        System.out.println(ex.toString());
+                    }
+
+                    if (WindowInputKamar.isVisible() == true) {
+                        diagnosaakhir.setText(key);
+                        diagnosaakhir.requestFocus();
+                    } else if (WindowInputKamar.isVisible() == false) {
+                        Sequel.mengedit("kamar_inap",
+                                "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
+                                + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                                + "'",
+                                "diagnosa_akhir='" + key + "'");
+                        tampil();
+                        if (chkBaby.isSelected()) {
+                            tampilBaby();
+                        }
+                    }
+                }
             }
 
             @Override
@@ -1195,6 +1298,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel47 = new widget.Label();
         txtPenjaminan = new widget.TextBox();
         BtnSimpanCoder1 = new widget.Button();
+        txtIdCoder = new javax.swing.JTextField();
         internalFrame1 = new widget.InternalFrame();
         PanelCariUtama = new javax.swing.JPanel();
         panelGlass10 = new widget.panelisi();
@@ -4223,6 +4327,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         WindowInputCoderBPJS.getContentPane().add(internalFrame11, java.awt.BorderLayout.CENTER);
 
+        txtIdCoder.setName("txtIdCoder"); // NOI18N
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -4649,9 +4755,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void BtnSimpan6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan6ActionPerformed
         // TODO add your handling code here:
+        DiagnosaAkhirSementara.setText(diagnosaakhir.getText());
         if (norawat.getText().trim().equals("")) {
             Valid.textKosong(norawat, "No.Rawat");
         } else {
+//            String string = diagnosaakhir.getText();
+//            String[] parts = string.split(",");
+//            for (int j = 0; j < parts.length; j++) {
+//                Sequel.mengedit("diagnosa_pasien", "no_rawat=? and kd_penyakit=?", " kd_penyakit=?", 3, new String[]{parts[j],parts[j], norawat.getText()});
+//            }
+
             Sequel.mengedit("kamar_inap", "no_rawat=?", " diagnosa_akhir=?", 2, new String[]{DiagnosaAkhirSementara.getText(), norawat.getText()});
             tampil();
             WindowDiagnosaAkhir.dispose();
@@ -4690,14 +4803,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (norawat.getText().trim().equals("")) {
             Valid.textKosong(norawat, "No.Rawat");
-        } else if (diagnosaakhir.getText().trim().equals("-")) {
+        } else if (diagnosaakhir.getText().trim().equals("-") || diagnosaakhir.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, Diagnosa akhir masih kosong.");
         } else {
             if (!txtHak1.getText().trim().equals("0") || !txtHak2.getText().trim().equals("0") || !txtHak3.getText().trim().equals("0")) {
                 Sequel.menyimpan("coderbpjs", "?,?,?,?,?,?,?,?,?", "coder bpjs", 9,
-                        new String[]{null, txtHak1.getText().toString().replace(",", ""), txtHak2.getText().toString().replace(",", ""),
-                            txtHak3.getText().toString().replace(",", ""), norawat.getText(), Valid.SetDateTimeToString(new Date()),
-                            diagnosaakhir.getText(), txtSelisih.getText().toString().replace(",", ""), txtPenjaminan.getText().toString().replace(",", "")});
+                        new String[]{null, txtHak1.getText().toString(), txtHak2.getText().toString(),
+                            txtHak3.getText().toString(), norawat.getText(), Valid.SetDateTimeToString(new Date()),
+                            diagnosaakhir.getText(), txtSelisih.getText().toString(), txtPenjaminan.getText().toString()});
 
                 //WindowInputCoderBPJS.dispose();
                 emptyText();
@@ -4722,29 +4835,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void txtHak1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHak1KeyReleased
         // TODO add your handling code here:
-        double angka = 0;
-        if (!txtHak1.getText().isBlank()) {
-            angka = Double.parseDouble(txtHak1.getText().replace(",", ""));
-            txtHak1.setText(nf.format(angka));
-        }
     }//GEN-LAST:event_txtHak1KeyReleased
 
     private void txtHak2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHak2KeyReleased
         // TODO add your handling code here:
-        double angka = 0;
-        if (!txtHak2.getText().isBlank()) {
-            angka = Double.parseDouble(txtHak2.getText().replace(",", ""));
-            txtHak2.setText(nf.format(angka));
-        }
     }//GEN-LAST:event_txtHak2KeyReleased
 
     private void txtHak3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHak3KeyReleased
         // TODO add your handling code here:
-        double angka = 0;
-        if (!txtHak3.getText().isBlank()) {
-            angka = Double.parseDouble(txtHak3.getText().replace(",", ""));
-            txtHak3.setText(nf.format(angka));
-        }
     }//GEN-LAST:event_txtHak3KeyReleased
 
     private void txtSelisihKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSelisihKeyPressed
@@ -4753,11 +4851,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void txtSelisihKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSelisihKeyReleased
         // TODO add your handling code here:
-        double angka = 0;
-        if (!txtSelisih.getText().isBlank()) {
-            angka = Double.parseDouble(txtSelisih.getText().replace(",", ""));
-            txtSelisih.setText(nf.format(angka));
-        }
     }//GEN-LAST:event_txtSelisihKeyReleased
 
     private void txtPenjaminanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPenjaminanKeyPressed
@@ -4766,20 +4859,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void txtPenjaminanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPenjaminanKeyReleased
         // TODO add your handling code here:
-        double angka = 0;
-        if (!txtPenjaminan.getText().isBlank()) {
-            angka = Double.parseDouble(txtPenjaminan.getText().replace(",", ""));
-            txtPenjaminan.setText(nf.format(angka));
-        }
     }//GEN-LAST:event_txtPenjaminanKeyReleased
 
     private void BtnSimpanCoder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanCoder1ActionPerformed
         // TODO add your handling code here:
-        if (!norawat_coder.isEmpty()) {
-            Sequel.meghapus("coderbpjs", "no_rawat", norawat_coder);
+        if (!txtIdCoder.getText().isEmpty()) {
+            Sequel.meghapus("coderbpjs", "id_coder", txtIdCoder.getText());
             tampilCoder();
             emptyText();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Pilih data yang akan di hapus.");
         }
     }//GEN-LAST:event_BtnSimpanCoder1ActionPerformed
@@ -4796,7 +4884,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
             txtHak3.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 4).toString());
             txtSelisih.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 5).toString());
             txtPenjaminan.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 6).toString());
-            norawat_coder = tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString();
+            txtIdCoder.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString());
+            JOptionPane.showMessageDialog(rootPane, tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString());
         }
     }
 
@@ -4811,18 +4900,25 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_norawatKeyPressed
 
-    private void kdkamarKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_kdkamarKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
-            i = 1;
-            isKmr();
-        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            CmbTahun.requestFocus();
-            isKmr();
-        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
-            norawat.requestFocus();
-            isKmr();
-        } else if (evt.getKeyCode() == KeyEvent.VK_UP) {
-            btnKamarActionPerformed(null);
+    private void kdkamarKeyPressed(java.awt.event.KeyEvent evt) { // GEN-FIRST:event_kdkamarKeyPressed
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_PAGE_DOWN:
+                i = 1;
+                isKmr();
+                break;
+            case KeyEvent.VK_ENTER:
+                CmbTahun.requestFocus();
+                isKmr();
+                break;
+            case KeyEvent.VK_PAGE_UP:
+                norawat.requestFocus();
+                isKmr();
+                break;
+            case KeyEvent.VK_UP:
+                btnKamarActionPerformed(null);
+                break;
+            default:
+                break;
         }
     }// GEN-LAST:event_kdkamarKeyPressed
 
@@ -7575,7 +7671,50 @@ public class DlgKamarInap extends javax.swing.JDialog {
         if (chkBaby.isSelected()) {
             tampilBaby();
         }
+        loadDiagnosa();
     }// GEN-LAST:event_formWindowOpened
+
+    private void loadDiagnosa() {
+
+        try {
+            key = "";
+            psdiagnosa = koneksi.prepareStatement(
+                    "select kd_penyakit from diagnosa_pasien where no_rawat=? order by prioritas asc");
+            try {
+                psdiagnosa.setString(1, norawat.getText());
+                rs = psdiagnosa.executeQuery();
+                while (rs.next()) {
+                    key = rs.getString(1) + ", " + key;
+                }
+            } catch (Exception ex) {
+                System.out.println("Notifikasi : " + ex.toString());
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (psdiagnosa != null) {
+                    psdiagnosa.close();
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+
+        if (WindowInputKamar.isVisible() == true) {
+            diagnosaakhir.setText(key);
+            diagnosaakhir.requestFocus();
+        } else if (WindowInputKamar.isVisible() == false) {
+            Sequel.mengedit("kamar_inap",
+                    "no_rawat='" + norawat.getText() + "' and kd_kamar='" + kdkamar.getText()
+                    + "' and tgl_masuk='" + TIn.getText() + "' and jam_masuk='" + JamMasuk.getText()
+                    + "'",
+                    "diagnosa_akhir='" + key + "'");
+            tampil();
+            if (chkBaby.isSelected()) {
+                tampilBaby();
+            }
+        }
+    }
 
     private void MnInputResepActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnInputResepActionPerformed
         if (tabMode.getRowCount() == 0) {
@@ -11490,6 +11629,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.TextBox txtHak1;
     private widget.TextBox txtHak2;
     private widget.TextBox txtHak3;
+    private javax.swing.JTextField txtIdCoder;
     private widget.TextBox txtPenjaminan;
     private widget.TextBox txtSelisih;
     private widget.ComboBox upf;
@@ -11752,12 +11892,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
             while (rs_coder.next()) {
                 tabModeCoder.addRow(new Object[]{rs_coder.getString("tanggal"),
                     rs_coder.getString("diagnosa"),
-                    rs_coder.getString("hak_kelas_1"),
-                    rs_coder.getString("hak_kelas_2"),
-                    rs_coder.getString("hak_kelas_3"),
-                    rs_coder.getString("selisih"),
-                    rs_coder.getString("penjaminan"),
-                    rs_coder.getString("no_rawat")
+                    Valid.SetAngka(rs_coder.getDouble("hak_kelas_1")),
+                    Valid.SetAngka(rs_coder.getDouble("hak_kelas_2")),
+                    Valid.SetAngka(rs_coder.getDouble("hak_kelas_3")),
+                    Valid.SetAngka(rs_coder.getDouble("selisih")),
+                    Valid.SetAngka(rs_coder.getDouble("penjaminan")),
+                    rs_coder.getInt("id_coder")
                 });
             }
         } catch (SQLException ex) {
@@ -12147,5 +12287,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         txtSelisih.setText("0");
         txtPenjaminan.setText("0");
         txtHak1.requestFocus();
+        txtIdCoder.setText("");
     }
 }
