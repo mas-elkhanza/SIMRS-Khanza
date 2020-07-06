@@ -5508,6 +5508,11 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JTextField" name="txtIdCoder">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="txtIdCoder" noResource="true"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
