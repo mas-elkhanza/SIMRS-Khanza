@@ -50,9 +50,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import rekammedis.RMRiwayatPerawatan;
@@ -227,6 +229,12 @@ public class DlgPasien extends javax.swing.JDialog {
         //tbPetugas.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPetugas.getBackground()));
         tbPasien.setPreferredScrollableViewportSize(new Dimension(800, 800));
         tbPasien.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
 
         for (z = 0; z < 34; z++) {
             TableColumn column = tbPasien.getColumnModel().getColumn(z);
@@ -234,62 +242,91 @@ public class DlgPasien extends javax.swing.JDialog {
                 column.setPreferredWidth(20);
             } else if (z == 1) {
                 column.setPreferredWidth(85);
+                    column.setCellRenderer(centerRenderer);
             } else if (z == 2) {
                 column.setPreferredWidth(190);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 3) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 4) {
                 column.setPreferredWidth(25);
+                    column.setCellRenderer(centerRenderer);
             } else if (z == 5) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 6) {
                 column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 7) {
                 column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 8) {
                 column.setPreferredWidth(190);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 9) {
                 column.setPreferredWidth(30);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 10) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 11) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 12) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 13) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 14) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 15) {
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 16) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 17) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 18) {
                 column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 19) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 20) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 21) {
                 column.setPreferredWidth(60);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 22) {
                 column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 23) {
                 column.setPreferredWidth(160);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 25) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 27) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 29) {
                 column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 30) {
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 31) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 33) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if ((z == 24) || (z == 26) || (z == 28) || (z == 32)) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -343,73 +380,107 @@ public class DlgPasien extends javax.swing.JDialog {
                 column.setPreferredWidth(20);
             } else if (z == 1) {
                 column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 2) {
+                    column.setCellRenderer(leftRenderer);
                 column.setPreferredWidth(190);
             } else if (z == 3) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 4) {
                 column.setPreferredWidth(35);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 5) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 6) {
                 column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 7) {
                 column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 8) {
                 column.setPreferredWidth(190);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 9) {
                 column.setPreferredWidth(35);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 10) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 11) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 12) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 13) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 14) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 15) {
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 16) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 17) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 18) {
                 column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 19) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 20) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 21) {
                 column.setPreferredWidth(60);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 22) {
                 column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 23) {
                 column.setPreferredWidth(160);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 25) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 27) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 29) {
                 column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
             } else if ((z == 24) || (z == 26) || (z == 28) || (z == 30) || (z == 32) || (z == 34) || (z == 36) || (z == 40)) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 31) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 33) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 35) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 37) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 38) {
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 39) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 41) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             }
         }
         tbPasien2.setDefaultRenderer(Object.class, new WarnaTable());
