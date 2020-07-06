@@ -55,7 +55,7 @@
                                         <td width='100%' colspan='2'>&nbsp;</td>
                                     </tr>
                                     <tr>
-                                        <td width='100%' align='justify' colspan='2'>Telah diperiksa kesehatan badannya dan sekarang dalam keadaan sakit dan perlu istirahat ".$rsquerysuratsakit["lamasakit"]." hari dari tanggal ".$rsquerysuratsakit["tanggalawal"]." sampai dengan ".$rsquerysuratsakit["tanggalakhir"].". Demikian Surat Keterangan ini dibuat dengan benar dan untuk dapat digunakan sebagaimana mestinya.</td>
+                                        <td width='100%' align='justify' colspan='2'>Telah diperiksa kesehatan badannya dan sekarang dalam keadaan sakit dan perlu istirahat ".$rsquerysuratsakit["lamasakit"]." hari dari tanggal ".$rsquerysuratsakit["tanggalawal"]." sampai dengan ".$rsquerysuratsakit["tanggalakhir"].". Demikian surat keterangan ini dibuat dengan benar dan untuk dapat digunakan sebagaimana mestinya.</td>
                                     </tr>
                                     <tr>
                                         <td width='100%' colspan='2'>&nbsp;</td>
@@ -65,7 +65,7 @@
                                         <td width='50%' align='center'>".$_SESSION["kabupaten"].", ".$rsquerysuratsakit["tanggalawal"]."<br/>".$_SESSION["nama_instansi"]."<br/>Dokter,<br/><img src='pages/".$PNG_WEB_DIR.basename($filename)."'/><br/>( <u>".$rsquerysuratsakit["nm_dokter"]."</u> )</td>
                                     </tr>
                                 </table><br>
-                                <center><a href='index.php?act=SuratSakit' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                <center><a href='index.php?act=SuratSakit&hal=Surat' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>";
-            JSRedirect2("index.php?act=RiwayatPeriksa",7);
+            JSRedirect2("index.php?act=SuratSakit",7);
         }
     }else{
         echo "<div class='block-header'>
@@ -98,6 +98,6 @@
                     </div>
                  </div>
               </div>";
-        JSRedirect2("index.php?act=RiwayatPeriksa",4);
+        JSRedirect2("index.php?act=SuratSakit",4);
     }
 ?>

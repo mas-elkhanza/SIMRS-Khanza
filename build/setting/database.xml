@@ -29,22 +29,22 @@
     <entry key="SECRETKEYAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="CONSIDAPIAPLICARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="URLAPIPCARE">https://new-api.bpjs-kesehatan.go.id/pcare-rest-v3.0</entry>
-    <entry key="SECRETKEYAPIPCARE">xPueBzRlvk1+TYL7i0Vhjg==</entry>
-    <entry key="CONSIDAPIPCARE">rgnbQ0aMwwOA4xHf2utJZQ==</entry>
-    <entry key="PASSPCARE">H1gLHDy9DhZH3buT/M/c0Q==</entry>
-    <entry key="USERPCARE">wNqHuRjy0jfHzYcnxabsKA==</entry>
+    <entry key="SECRETKEYAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="CONSIDAPIPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="PASSPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="USERPCARE">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="DIVREGPCARE">REGIONAL V-JAWA TENGAH</entry>
     <entry key="KACABPCARE">SURAKARTA</entry>
     <entry key="URLAPISISRUTE">https://api.sisrute.kemkes.go.id</entry>
     <entry key="IDSISRUTE">EXbXbvGwMp9CpQ1s9K748A==</entry>
     <entry key="PASSSISRUTE">gILNCSeqFSr4Hvjwkpqrow==</entry>
-    <entry key="URLAPISIRS">http://sirs.yankes.kemkes.go.id/sirsservice</entry>
+    <entry key="URLAPISIRS">http://sirs.kemkes.go.id/sirsservice</entry>
     <entry key="IDSIRS">EXbXbvGwMp9CpQ1s9K748A==</entry>
     <entry key="PASSSIRS">gILNCSeqFSr4Hvjwkpqrow==</entry>
-    <entry key="URLAPISITT">http://sirs.yankes.kemkes.go.id/sirsservice/sitb/sitb/senddata</entry>
+    <entry key="URLAPISITT">http://sirs.kemkes.go.id/sirsservice/sitb/sitb/senddata</entry>
     <entry key="IDSITT">e+txvupo3MKf+ksCxp06Sw==</entry>
     <entry key="PASSSITT">gILNCSeqFSr4Hvjwkpqrow==</entry>
-    <entry key="URLAPICORONA">http://sirs.yankes.kemkes.go.id/fo/index.php</entry>
+    <entry key="URLAPICORONA">http://sirs.kemkes.go.id/fo/index.php</entry>
     <entry key="IDCORONA">EXbXbvGwMp9CpQ1s9K748A==</entry>
     <entry key="PASSCORONA">wesRGhsjqnfiOoXWuqoTjw==</entry>
     <entry key="KABUPATENSITT">12345</entry>

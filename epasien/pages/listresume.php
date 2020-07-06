@@ -150,7 +150,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <center><a href='index.php?act=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                <center><a href='index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                     </div>

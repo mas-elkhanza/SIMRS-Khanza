@@ -35,7 +35,7 @@
         if (!cekSessiPasien()) {
             $form = array ('HomeUser','FasilitasKamarUser','InformasiKamarUser','FasilitasRadiologiUser','FasilitasLaboratUser','FasilitasOperasiUser',
                            'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling','Pengaduan',
-                           'BookingRegistrasi','SuratSakit');
+                           'BookingRegistrasi','SuratSakit','TampilSuratSakit','SuratHamil','TampilSuratHamil','SuratBebasNarkoba','TampilSuratBebasNarkoba');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -86,6 +86,10 @@
                 case "BookingRegistrasi"                       : include_once("pages/listbookingregistrasi.php"); break;
                 case "SuratSakit"                              : include_once("pages/listsuratsakit.php"); break;
                 case "TampilSuratSakit"                        : include_once("pages/listtampilsuratsakit.php"); break;
+                case "SuratHamil"                              : include_once("pages/listsurathamil.php"); break;
+                case "TampilSuratHamil"                        : include_once("pages/listtampilsurathamil.php"); break;
+                case "SuratBebasNarkoba"                       : include_once("pages/listsuratbebasnarkoba.php"); break;
+                case "TampilSuratBebasNarkoba"                 : include_once("pages/listtampilsuratbebasnarkoba.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }

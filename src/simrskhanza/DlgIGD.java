@@ -636,6 +636,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnLabelTracker3 = new javax.swing.JMenuItem();
         MnBarcode1 = new javax.swing.JMenuItem();
         MnBarcode2 = new javax.swing.JMenuItem();
+        MnBarcode3 = new javax.swing.JMenuItem();
         MnBarcode = new javax.swing.JMenuItem();
         MnBarcodeRM9 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -1904,6 +1905,22 @@ public final class DlgIGD extends javax.swing.JDialog {
         });
         MnGelang.add(MnBarcode2);
 
+        MnBarcode3.setBackground(new java.awt.Color(255, 255, 254));
+        MnBarcode3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnBarcode3.setForeground(new java.awt.Color(50, 50, 50));
+        MnBarcode3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnBarcode3.setText("Barcode RM");
+        MnBarcode3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnBarcode3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnBarcode3.setName("MnBarcode3"); // NOI18N
+        MnBarcode3.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnBarcode3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnBarcode3ActionPerformed(evt);
+            }
+        });
+        MnGelang.add(MnBarcode3);
+
         MnBarcode.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBarcode.setForeground(new java.awt.Color(50, 50, 50));
@@ -3036,7 +3053,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel15);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3050,7 +3067,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         panelGlass7.add(jLabel17);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3142,7 +3159,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel9.setBounds(165, 72, 36, 23);
 
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2020" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2020" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -6132,6 +6149,25 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPCareActionPerformed
 
+    private void MnBarcode3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBarcode3ActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("no_rawat",TNoRw.getText());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptBarcodeRawat3.jasper",param,"::[ Barcode No.Rawat ]::");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnBarcode3ActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -6190,6 +6226,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnBarcode;
     private javax.swing.JMenuItem MnBarcode1;
     private javax.swing.JMenuItem MnBarcode2;
+    private javax.swing.JMenuItem MnBarcode3;
     private javax.swing.JMenuItem MnBarcodeRM9;
     private javax.swing.JMenuItem MnBatal;
     private javax.swing.JMenuItem MnBelum;

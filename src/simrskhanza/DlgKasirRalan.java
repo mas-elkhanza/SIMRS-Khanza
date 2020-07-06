@@ -504,6 +504,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnLabelTracker3 = new javax.swing.JMenuItem();
         MnBarcode = new javax.swing.JMenuItem();
         MnBarcode1 = new javax.swing.JMenuItem();
+        MnBarcode2 = new javax.swing.JMenuItem();
         MnBarcodeRM9 = new javax.swing.JMenuItem();
         MnGelang1 = new javax.swing.JMenuItem();
         MnGelang2 = new javax.swing.JMenuItem();
@@ -1493,6 +1494,22 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         jMenu6.add(MnBarcode1);
+
+        MnBarcode2.setBackground(new java.awt.Color(255, 255, 254));
+        MnBarcode2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnBarcode2.setForeground(new java.awt.Color(50, 50, 50));
+        MnBarcode2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnBarcode2.setText("Barcode RM");
+        MnBarcode2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnBarcode2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnBarcode2.setName("MnBarcode2"); // NOI18N
+        MnBarcode2.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnBarcode2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnBarcode2ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(MnBarcode2);
 
         MnBarcodeRM9.setBackground(new java.awt.Color(255, 255, 254));
         MnBarcodeRM9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -4128,7 +4145,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2020" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2020" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -4175,7 +4192,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel32.setBounds(176, 10, 20, 23);
 
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2020" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2020" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -4447,7 +4464,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass8.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4460,7 +4477,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass8.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-07-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-07-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -8238,6 +8255,25 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_MnPCareActionPerformed
 
+    private void MnBarcode2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBarcode2ActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("no_rawat",TNoRw.getText());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptBarcodeRawat3.jasper",param,"::[ Barcode No.Rawat ]::");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnBarcode2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8291,6 +8327,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenu MenuInputData1;
     private javax.swing.JMenuItem MnBarcode;
     private javax.swing.JMenuItem MnBarcode1;
+    private javax.swing.JMenuItem MnBarcode2;
     private javax.swing.JMenuItem MnBarcodeRM9;
     private javax.swing.JMenuItem MnBatal;
     private javax.swing.JMenuItem MnBelum;

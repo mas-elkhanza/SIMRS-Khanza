@@ -315,7 +315,7 @@
                                 <a href="index.php?act=SuratSakit&hal=Surat">Surat Cuti Sakit</a>
                             </li>
                             <li <?=$subhalaman=="SuratHamil"?"class='active'":""?>>
-                                <a href="index.php?act=SuratHamil&hal=Surat">Surat Hamil</a>
+                                <a href="index.php?act=SuratHamil&hal=Surat">Surat Hamil/Tidak</a>
                             </li>
                             <li <?=$subhalaman=="SuratBebasNarkoba"?"class='active'":""?>>
                                 <a href="index.php?act=SuratBebasNarkoba&hal=Surat">Surat Bebas Narkoba</a>
