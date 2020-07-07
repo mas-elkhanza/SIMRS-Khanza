@@ -4879,17 +4879,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void getDataCoder() {
         if (tableCoder.getSelectedRow() != -1) {
-            txtHak1.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 2).toString());
-            txtHak2.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 3).toString());
-            txtHak3.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 4).toString());
-            txtSelisih.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 5).toString());
-            txtPenjaminan.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 6).toString());
+            txtHak1.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 2).toString().replace(".", ""));
+            txtHak2.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 3).toString().replace(".", ""));
+            txtHak3.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 4).toString().replace(".", ""));
+            txtSelisih.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 5).toString().replace(".", ""));
+            txtPenjaminan.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 6).toString().replace(".", ""));
             txtIdCoder.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString());
-            JOptionPane.showMessageDialog(rootPane, tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString());
+            //JOptionPane.showMessageDialog(rootPane, tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString());
         }
     }
 
-    private void norawatKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_norawatKeyPressed
+    private void norawatKeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ", TNoRM, norawat.getText());
             Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ", TPasien, TNoRM.getText());
@@ -4898,9 +4898,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } else {
             Valid.pindah(evt, BtnCloseIn, kdkamar);
         }
-    }// GEN-LAST:event_norawatKeyPressed
+    }
 
-    private void kdkamarKeyPressed(java.awt.event.KeyEvent evt) { // GEN-FIRST:event_kdkamarKeyPressed
+    private void kdkamarKeyPressed(java.awt.event.KeyEvent evt) {
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_PAGE_DOWN:
                 i = 1;
@@ -4920,11 +4920,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
             default:
                 break;
         }
-    }// GEN-LAST:event_kdkamarKeyPressed
+    }
 
-    private void ttlbiayaKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_ttlbiayaKeyPressed
+    private void ttlbiayaKeyPressed(java.awt.event.KeyEvent evt) {
         // Valid.pindah(evt,TKdOb,BtnSimpan);
-    }// GEN-LAST:event_ttlbiayaKeyPressed
+    }
 
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRegActionPerformed
         akses.setform("DlgKamarInap");
@@ -6112,7 +6112,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_MnRujukActionPerformed
 
-    private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPemberianObatActionPerformed
+    private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {
         if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
