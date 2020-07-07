@@ -45,6 +45,8 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         initComponents();
         this.setLocation(8,1);
         setSize(885,674);
+        DTPCari1.setDate(new Date());
+        DTPCari2.setDate(new Date());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));     
@@ -54,7 +56,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
                         panelDiagnosa1.pilihTab();
                         LCount.setText(panelDiagnosa1.getRecord()+"");
                     }                        
@@ -62,7 +64,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
                         panelDiagnosa1.pilihTab();
                         LCount.setText(panelDiagnosa1.getRecord()+"");
                     } 
@@ -70,7 +72,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
                         panelDiagnosa1.pilihTab();
                         LCount.setText(panelDiagnosa1.getRecord()+"");
                     } 
@@ -218,7 +220,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
     //private DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
     
-
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -241,13 +242,12 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel14 = new widget.Label();
-        DTPCari1 = new widget.Tanggal();
+        DTPCari1 = new widget.Tanggal1();
         jLabel19 = new widget.Label();
-        DTPCari2 = new widget.Tanggal();
+        DTPCari2 = new widget.Tanggal1();
         jLabel16 = new widget.Label();
         TCariPasien = new widget.TextBox();
         BtnSeek4 = new widget.Button();
-        jSeparator5 = new javax.swing.JSeparator();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -272,13 +272,13 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(44, 100));
+        jPanel3.setPreferredSize(new java.awt.Dimension(44, 144));
         jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass8.setName("panelGlass8"); // NOI18N
@@ -407,37 +407,23 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         jPanel3.add(panelGlass8, java.awt.BorderLayout.CENTER);
 
         panelGlass9.setName("panelGlass9"); // NOI18N
-        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 10));
+        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 88));
 
         jLabel14.setText("Tgl.Rawat :");
         jLabel14.setName("jLabel14"); // NOI18N
         jLabel14.setPreferredSize(new java.awt.Dimension(63, 23));
-        panelGlass9.add(jLabel14);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2018" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelGlass9.add(DTPCari1);
 
         jLabel19.setText("s.d");
         jLabel19.setName("jLabel19"); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(18, 23));
-        panelGlass9.add(jLabel19);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2018" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelGlass9.add(DTPCari2);
 
         jLabel16.setText("No.RM :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass9.add(jLabel16);
 
         TCariPasien.setName("TCariPasien"); // NOI18N
         TCariPasien.setPreferredSize(new java.awt.Dimension(130, 23));
@@ -446,7 +432,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 TCariPasienKeyPressed(evt);
             }
         });
-        panelGlass9.add(TCariPasien);
 
         BtnSeek4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek4.setMnemonic('5');
@@ -463,20 +448,10 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 BtnSeek4KeyPressed(evt);
             }
         });
-        panelGlass9.add(BtnSeek4);
-
-        jSeparator5.setBackground(new java.awt.Color(220, 225, 215));
-        jSeparator5.setForeground(new java.awt.Color(220, 225, 215));
-        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator5.setName("jSeparator5"); // NOI18N
-        jSeparator5.setOpaque(true);
-        jSeparator5.setPreferredSize(new java.awt.Dimension(1, 23));
-        panelGlass9.add(jSeparator5);
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(190, 23));
@@ -485,7 +460,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 TCariKeyPressed(evt);
             }
         });
-        panelGlass9.add(TCari);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('6');
@@ -502,7 +476,69 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelGlass9.add(BtnCari);
+
+        javax.swing.GroupLayout panelGlass9Layout = new javax.swing.GroupLayout(panelGlass9);
+        panelGlass9.setLayout(panelGlass9Layout);
+        panelGlass9Layout.setHorizontalGroup(
+            panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass9Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addComponent(DTPCari1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(DTPCari2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(TCariPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(BtnSeek4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGlass9Layout.createSequentialGroup()
+                        .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(502, 502, 502))
+        );
+        panelGlass9Layout.setVerticalGroup(
+            panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass9Layout.createSequentialGroup()
+                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(DTPCari1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(DTPCari2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(TCariPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(BtnSeek4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -562,19 +598,25 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
-            panelDiagnosa1.pilihTab();
-            LCount.setText(panelDiagnosa1.getRecord()+"");
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            BtnCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            BtnKeluar.requestFocus();
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_ENTER:
+                panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
+                panelDiagnosa1.pilihTab();
+                LCount.setText(panelDiagnosa1.getRecord()+"");
+                break;
+            case KeyEvent.VK_PAGE_DOWN:
+                BtnCari.requestFocus();
+                break;
+            case KeyEvent.VK_PAGE_UP:
+                BtnKeluar.requestFocus();
+                break;
+            default:
+                break;
         }
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
         panelDiagnosa1.pilihTab();
         LCount.setText(panelDiagnosa1.getRecord()+"");
 }//GEN-LAST:event_BtnCariActionPerformed
@@ -595,7 +637,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");
         }else{ 
-            panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+            panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
             panelDiagnosa1.simpan();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -622,7 +664,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         if(TPasien.getText().trim().equals("")){
              JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(!(TPasien.getText().trim().equals(""))){
-            panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+            panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
             panelDiagnosa1.hapus();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -660,7 +702,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         TCariPasien.setText("");
-        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
         panelDiagnosa1.pilihTab();
         LCount.setText(panelDiagnosa1.getRecord()+"");
 }//GEN-LAST:event_BtnAllActionPerformed
@@ -674,14 +716,20 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnAllKeyPressed
 
     private void TCariPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariPasienKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
-            panelDiagnosa1.pilihTab();
-            LCount.setText(panelDiagnosa1.getRecord()+"");
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            BtnSeek4.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            DTPCari2.requestFocus();
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_ENTER:
+                panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
+                panelDiagnosa1.pilihTab();
+                LCount.setText(panelDiagnosa1.getRecord()+"");
+                break;
+            case KeyEvent.VK_PAGE_DOWN:
+                BtnSeek4.requestFocus();
+                break;
+            case KeyEvent.VK_PAGE_UP:
+                DTPCari2.requestFocus();
+                break;
+            default:
+                break;
         }
     }//GEN-LAST:event_TCariPasienKeyPressed
 
@@ -698,7 +746,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnSeek4KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
         panelDiagnosa1.pilihTab();
         LCount.setText(panelDiagnosa1.getRecord()+"");
     }//GEN-LAST:event_formWindowOpened
@@ -749,8 +797,8 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     private widget.Button BtnPrint;
     private widget.Button BtnSeek4;
     private widget.Button BtnSimpan;
-    private widget.Tanggal DTPCari1;
-    private widget.Tanggal DTPCari2;
+    private widget.Tanggal1 DTPCari1;
+    private widget.Tanggal1 DTPCari2;
     private widget.PanelBiasa FormInput;
     private widget.Label LCount;
     private widget.ComboBox Status;
@@ -768,7 +816,6 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     private widget.Label jLabel3;
     private widget.Label jLabel6;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator5;
     public laporan.PanelDiagnosa panelDiagnosa1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -799,7 +846,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         isPsien();   
         DTPCari1.setDate(tgl1);
         DTPCari2.setDate(tgl2);
-        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),Status.getSelectedItem().toString(),TCari.getText().trim());
+        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetDateToString(DTPCari1.getDate()),Valid.SetDateToString(DTPCari2.getDate()),Status.getSelectedItem().toString(),TCari.getText().trim());
     }
     
     /**

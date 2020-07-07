@@ -4698,10 +4698,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void MnDiagnosaMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDiagnosaMasukActionPerformed
         // TODO add your handling code here:
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -4714,10 +4714,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void MnDiagnosaAkhirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDiagnosaAkhirActionPerformed
         // TODO add your handling code here:
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -4779,10 +4779,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void ppInputCoderBpjsBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppInputCoderBpjsBtnPrintActionPerformed
         // TODO add your handling code here:
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -4879,17 +4879,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void getDataCoder() {
         if (tableCoder.getSelectedRow() != -1) {
-            txtHak1.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 2).toString());
-            txtHak2.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 3).toString());
-            txtHak3.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 4).toString());
-            txtSelisih.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 5).toString());
-            txtPenjaminan.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 6).toString());
+            txtHak1.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 2).toString().replace(".", ""));
+            txtHak2.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 3).toString().replace(".", ""));
+            txtHak3.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 4).toString().replace(".", ""));
+            txtSelisih.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 5).toString().replace(".", ""));
+            txtPenjaminan.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 6).toString().replace(".", ""));
             txtIdCoder.setText(tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString());
-            JOptionPane.showMessageDialog(rootPane, tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString());
+            //JOptionPane.showMessageDialog(rootPane, tableCoder.getValueAt(tableCoder.getSelectedRow(), 7).toString());
         }
     }
 
-    private void norawatKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_norawatKeyPressed
+    private void norawatKeyPressed(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ", TNoRM, norawat.getText());
             Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ", TPasien, TNoRM.getText());
@@ -4898,9 +4898,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } else {
             Valid.pindah(evt, BtnCloseIn, kdkamar);
         }
-    }// GEN-LAST:event_norawatKeyPressed
+    }
 
-    private void kdkamarKeyPressed(java.awt.event.KeyEvent evt) { // GEN-FIRST:event_kdkamarKeyPressed
+    private void kdkamarKeyPressed(java.awt.event.KeyEvent evt) {
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_PAGE_DOWN:
                 i = 1;
@@ -4920,11 +4920,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
             default:
                 break;
         }
-    }// GEN-LAST:event_kdkamarKeyPressed
+    }
 
-    private void ttlbiayaKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_ttlbiayaKeyPressed
+    private void ttlbiayaKeyPressed(java.awt.event.KeyEvent evt) {
         // Valid.pindah(evt,TKdOb,BtnSimpan);
-    }// GEN-LAST:event_ttlbiayaKeyPressed
+    }
 
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRegActionPerformed
         akses.setform("DlgKamarInap");
@@ -4985,14 +4985,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void BtnOutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnOutActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data kamar inap pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data kamar inap pasien sudah habis...!!!!");
             BtnIn.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(rootPane,
                     "Maaf, Silahkan anda pilih dulu data inap pasien yang mau pulang dengan menklik data pada table...!!!");
             tbKamIn.requestFocus();
         } else if (TOut.getText().trim().length() > 0) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(rootPane,
                     "Maaf, pasien ini sudah pulang pada tanggal " + TOut.getText() + " ...!!!");
             emptTeks();
             tbKamIn.requestFocus();
@@ -5752,7 +5752,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     if (akses.getberi_obat() == true) {
                         // MnPemberianObatActionPerformed(null);
                         if (tabMode.getRowCount() == 0) {
-                            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+                            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
                             TCari.requestFocus();
                         } else if (tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString().equals("")) {
                             try {
@@ -5792,7 +5792,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                             panggilobat(rs2.getString("no_rawat2"));
                                         }
                                     } else {
-                                        JOptionPane.showMessageDialog(null,
+                                        JOptionPane.showMessageDialog(rootPane,
                                                 "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                         tbKamIn.requestFocus();
                                     }
@@ -5885,7 +5885,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnRawatInapActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -5929,7 +5929,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                             DTPCari2.getDate());
                                     billing.rawatinap.setVisible(true);
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
@@ -5973,7 +5973,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnResepPulangActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -6011,7 +6011,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 billing.reseppulang.setLocationRelativeTo(internalFrame1);
                                 billing.reseppulang.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -6056,7 +6056,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnRujukActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -6080,7 +6080,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 dlgrjk.tampil();
                                 dlgrjk.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -6112,9 +6112,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_MnRujukActionPerformed
 
-    private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPemberianObatActionPerformed
+    private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -6153,7 +6153,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 billing.beriobat.tampilPO();
                                 billing.beriobat.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -6293,7 +6293,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnDietActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnDietActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -6317,7 +6317,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 rawatinap.tampil();
                                 rawatinap.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -6364,7 +6364,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPeriksaLabActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -6393,7 +6393,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     billing.periksalab.isCek();
                                     billing.periksalab.setVisible(true);
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
@@ -6430,7 +6430,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnOperasiActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -6457,7 +6457,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                             rs2.getString("no_rkm_medis") + ", " + rs2.getString("nm_pasien"), "Ranap");
                                     dlgro.setVisible(true);
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
@@ -6489,7 +6489,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnHapusTagihanOperasiActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -6516,7 +6516,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                             + rs2.getString("no_rawat2") + "'");
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -6553,7 +6553,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnHapusObatOperasiActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -6579,7 +6579,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 }
 
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -6613,7 +6613,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnRujukMasukActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -6639,7 +6639,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 rujukmasuk.tampil();
                                 rujukmasuk.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -6674,14 +6674,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void btnPindahActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnPindahActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data kamar inap pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data kamar inap pasien sudah habis...!!!!");
             BtnIn.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(rootPane,
                     "Maaf, Silahkan anda pilih dulu data inap pasien yang mau pindah dengan menklik data pada table...!!!");
             tbKamIn.requestFocus();
         } else if (TOut.getText().trim().length() > 0) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(rootPane,
                     "Maaf, pasien ini sudah pulang pada tanggal " + TOut.getText() + " ...!!!");
             emptTeks();
             tbKamIn.requestFocus();
@@ -6768,7 +6768,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } else {
             switch (TSttsKamarpindah.getText().trim()) {
                 case "ISI":
-                    JOptionPane.showMessageDialog(null,
+                    JOptionPane.showMessageDialog(rootPane,
                             "Maaf, Status kamar sudah terisi silahkan pilih kamar kosong..!!!!");
                     kdkamar.requestFocus();
                     break;
@@ -6978,10 +6978,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnHapusDataSalahActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnHapusDataSalahActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data sudah habis...!!!!");
             norawat.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(rootPane,
                     "Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus. Klik data pada table untuk memilih.\nUntuk menghapus pasien bayi lewat ranap gabung!!!!");
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -7017,7 +7017,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnStokObatPasienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnStokObatPasienActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -7040,7 +7040,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 dlgrjk.tampil();
                                 dlgrjk.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -7120,10 +7120,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnPenjabActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPenjabActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -7135,15 +7135,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnAtasPersetujuanDokterActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnAtasPersetujuanDokterActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
                 if (norawat.getText().trim().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                     tbKamIn.requestFocus();
                 } else if (TOut.getText().trim().length() == 0) {
-                    JOptionPane.showMessageDialog(null, "Maaf, pasien ini belum dipulangkan ...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, pasien ini belum dipulangkan ...!!!");
                     emptTeks();
                     tbKamIn.requestFocus();
                 } else {
@@ -7166,15 +7166,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnStatusRujukActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnStatusRujukActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
                 if (norawat.getText().trim().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                     tbKamIn.requestFocus();
                 } else if (TOut.getText().trim().length() == 0) {
-                    JOptionPane.showMessageDialog(null, "Maaf, pasien ini belum dipulangkan ...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, pasien ini belum dipulangkan ...!!!");
                     emptTeks();
                     tbKamIn.requestFocus();
                 } else {
@@ -7197,15 +7197,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnStatusAPSActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnStatusAPSActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
                 if (norawat.getText().trim().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                     tbKamIn.requestFocus();
                 } else if (TOut.getText().trim().length() == 0) {
-                    JOptionPane.showMessageDialog(null, "Maaf, pasien ini belum dipulangkan ...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, pasien ini belum dipulangkan ...!!!");
                     emptTeks();
                     tbKamIn.requestFocus();
                 } else {
@@ -7228,15 +7228,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnStatusMeninggalActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnStatusMeninggalActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
                 if (norawat.getText().trim().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                     tbKamIn.requestFocus();
                 } else if (TOut.getText().trim().length() == 0) {
-                    JOptionPane.showMessageDialog(null, "Maaf, pasien ini belum dipulangkan ...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, pasien ini belum dipulangkan ...!!!");
                     emptTeks();
                     tbKamIn.requestFocus();
                 } else {
@@ -7259,15 +7259,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnKaburActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnKaburActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
                 if (norawat.getText().trim().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                     tbKamIn.requestFocus();
                 } else if (TOut.getText().trim().length() == 0) {
-                    JOptionPane.showMessageDialog(null, "Maaf, pasien ini belum dipulangkan ...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, pasien ini belum dipulangkan ...!!!");
                     emptTeks();
                     tbKamIn.requestFocus();
                 } else {
@@ -7290,7 +7290,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnSensusRanapActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnSensusRanapActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             Valid.panggilUrl("billing/LaporanSensusHarian.php?tanggal1=" + Valid.SetDateToString(DTPCari1.getDate())
@@ -7305,7 +7305,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnDepositActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnDepositActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -7329,7 +7329,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 billing.deposit.tampil();
                                 billing.deposit.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -7359,7 +7359,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnNoResepActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnNoResepActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -7384,7 +7384,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 resep.tampil();
                                 resep.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -7419,7 +7419,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnRM2DActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnRM2DActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -7538,7 +7538,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                                 Valid.MyReport("rptRM2D.jasper", "report", "::[ Lembar Assasmen ]::", param);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -7718,7 +7718,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnInputResepActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnInputResepActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -7764,7 +7764,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     billing.reseppulang.inputresep.setLocationRelativeTo(internalFrame1);
                                     billing.reseppulang.inputresep.setVisible(true);
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
@@ -7816,7 +7816,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnPeriksaRadiologiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPeriksaRadiologiActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -7845,7 +7845,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     billing.periksarad.isCek();
                                     billing.periksarad.setVisible(true);
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
@@ -7886,7 +7886,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnTilikBedahActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnTilikBedahActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -7926,7 +7926,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 Valid.MyReportqry("rptTilikBedah.jasper", "report", "::[ Lembar Tilik Bedah ]::",
                                         "select current_date() as tanggal, current_time() as jam", param);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -7975,7 +7975,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnUpdateHariActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnUpdateHariActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (R1.isSelected() == false) {
             JOptionPane.showMessageDialog(rootPane, "Tampilkan data yang belum pulang terlebih dahulu");
@@ -7986,7 +7986,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnAsuhanGiziActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnAsuhanGiziActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8028,7 +8028,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         "select current_date() as tanggal, current_time() as jam", param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -8078,7 +8078,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void btnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDiagnosaActionPerformed
         if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKamIn.requestFocus();
         } else {
             akses.setform("DlgKamarInap");
@@ -8219,10 +8219,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnRanapGabungActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnRanapGabungActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8239,10 +8239,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnStatusBelumPulangActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnStatusBelumPulangActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8267,7 +8267,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnDiagnosaActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8296,7 +8296,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 diagnosa.panelDiagnosa1.tampil();
                                 diagnosa.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -8341,7 +8341,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnDPJPActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnDPJPActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8371,7 +8371,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 dpjp.tampil();
                                 dpjp.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -8419,7 +8419,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void MnReturJualActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnReturJualActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8464,7 +8464,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     returjual.setLocationRelativeTo(internalFrame1);
                                     returjual.setVisible(true);
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
@@ -8519,10 +8519,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang1ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data kamar inap pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data kamar inap pasien sudah habis...!!!!");
             BtnIn.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data pada table...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8555,15 +8555,15 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnStatusBelumLengkapActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnStatusBelumLengkapActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
                 if (TOut.getText().trim().length() == 0) {
-                    JOptionPane.showMessageDialog(null, "Maaf, pasien ini belum dipulangkan ...!!!");
+                    JOptionPane.showMessageDialog(rootPane, "Maaf, pasien ini belum dipulangkan ...!!!");
                     emptTeks();
                     tbKamIn.requestFocus();
                 } else {
@@ -8583,7 +8583,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnRincianObatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnRincianObatActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8619,7 +8619,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         "::[ Rincian Penggunaan Obat ]::", "select * from temporary", param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -8666,10 +8666,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang2ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data kamar inap pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data kamar inap pasien sudah habis...!!!!");
             BtnIn.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data pada table...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8732,7 +8732,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnSEPActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnSEPActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8759,7 +8759,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 dlgki.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -8794,10 +8794,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void ppRiwayatBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppRiwayatBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data pasien sudah habis...!!!!");
             TCari.requestFocus();
         } else if (tbKamIn.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data kamar inap pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data kamar inap pada table...!!!");
             TCari.requestFocus();
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8813,10 +8813,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void ppCatatanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppCatatanPasienBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data pasien sudah habis...!!!!");
             TCari.requestFocus();
         } else if (tbKamIn.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data kamar inap pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data kamar inap pada table...!!!");
             TCari.requestFocus();
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8831,7 +8831,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void ppDataHAIsBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppDataHAIsBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8855,7 +8855,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 hais.tampil();
                                 hais.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -8897,7 +8897,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnPengantarPulangActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPengantarPulangActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -8939,7 +8939,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         "::[ Surat Pengantar Pulang ]::");
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -8989,17 +8989,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGabungkanRanapActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGabungkanRanapActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data kamar inap pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data kamar inap pasien sudah habis...!!!!");
             BtnIn.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data pasien yang mau digabung...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data pasien yang mau digabung...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
                 gabungkan = "gabung";
                 norawatgabung = norawat.getText();
                 kamaryangdigabung = kdkamar.getText();
-                JOptionPane.showMessageDialog(null, "Silahkan pilih No.Rawat Ibu/No.Rawat Tujuan");
+                JOptionPane.showMessageDialog(rootPane, "Silahkan pilih No.Rawat Ibu/No.Rawat Tujuan");
             }
         }
 
@@ -9007,7 +9007,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void ppBerkasDigitalBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppBerkasDigitalBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9039,7 +9039,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 berkas.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -9079,7 +9079,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnRawatJalanActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9110,7 +9110,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     dlgrwjl.setNoRm(rs2.getString("no_rawat2"), DTPCari1.getDate(), new Date());
                                     dlgrwjl.setVisible(true);
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                    JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                     tbKamIn.requestFocus();
                                 }
                             } catch (Exception ex) {
@@ -9145,10 +9145,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang3ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data kamar inap pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data kamar inap pasien sudah habis...!!!!");
             BtnIn.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data pada table...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9184,10 +9184,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang4ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data kamar inap pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data kamar inap pasien sudah habis...!!!!");
             BtnIn.requestFocus();
         } else if (norawat.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data pada table...!!!");
             tbKamIn.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9232,7 +9232,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             } else {
-                JOptionPane.showMessageDialog(null, "Maaf, Nomor kepesertaan kosong...!!!");
+                JOptionPane.showMessageDialog(rootPane, "Maaf, Nomor kepesertaan kosong...!!!");
             }
         }
     }// GEN-LAST:event_MnCekKepesertaanActionPerformed
@@ -9248,7 +9248,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             } else {
-                JOptionPane.showMessageDialog(null, "Maaf, NIK KTP kosong...!!!");
+                JOptionPane.showMessageDialog(rootPane, "Maaf, NIK KTP kosong...!!!");
             }
         }
 
@@ -9256,7 +9256,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnFormulirPenerimaanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnFormulirPenerimaanActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9305,7 +9305,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         "::[ Formulir Penerimaan Pasien ]::");
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -9362,7 +9362,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void ppIKPBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppIKPBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9388,7 +9388,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 aplikasi.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -9422,7 +9422,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnJadwalOperasiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnJadwalOperasiActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9446,7 +9446,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 7).toString(), "Ranap");
                                 form.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -9477,7 +9477,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnLabelTrackerActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnLabelTrackerActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9505,7 +9505,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 Valid.MyReport("rptLabelTracker.jasper", param, "::[ Label Tracker ]::");
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -9541,7 +9541,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnLabelTracker1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnLabelTracker1ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9569,7 +9569,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 Valid.MyReport("rptLabelTracker2.jasper", param, "::[ Label Tracker ]::");
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -9605,7 +9605,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnLabelTracker2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnLabelTracker2ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9640,7 +9640,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -9683,7 +9683,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnLabelTracker3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnLabelTracker3ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9718,7 +9718,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -9761,7 +9761,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnBarcodeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnBarcodeActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString().equals("")) {
             try {
@@ -9800,7 +9800,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 param);
                         this.setCursor(Cursor.getDefaultCursor());
                     } else {
-                        JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                        JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                         tbKamIn.requestFocus();
                     }
                 } catch (Exception ex) {
@@ -9842,7 +9842,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnBarcode1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnBarcode1ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9877,7 +9877,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -9920,10 +9920,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnBarcodeRM9ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnBarcodeRM9ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data pasien sudah habis...!!!!");
             TNoRM.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(rootPane,
                     "Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbKamIn.requestFocus();
         } else {
@@ -9955,10 +9955,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang5ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data registrasi sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data registrasi sudah habis...!!!!");
             TCari.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -9990,10 +9990,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang6ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data registrasi sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data registrasi sudah habis...!!!!");
             TCari.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10025,10 +10025,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang7ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data registrasi sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data registrasi sudah habis...!!!!");
             TCari.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10060,10 +10060,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang8ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data registrasi sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data registrasi sudah habis...!!!!");
             TCari.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10095,10 +10095,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang9ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang9ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data registrasi sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data registrasi sudah habis...!!!!");
             TCari.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10130,10 +10130,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang10ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang10ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data registrasi sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data registrasi sudah habis...!!!!");
             TCari.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10165,10 +10165,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnGelang11ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnGelang11ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data registrasi sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data registrasi sudah habis...!!!!");
             TCari.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data registrasi pada table...!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10200,7 +10200,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnSKDPBPJSActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnSKDPBPJSActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10223,7 +10223,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 form.setNoRm(rs2.getString("no_rkm_medis"), rs2.getString("nm_pasien"));
                                 form.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -10254,7 +10254,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnPermintaanLabActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPermintaanLabActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10279,7 +10279,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 dlgro.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -10312,7 +10312,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnPermintaanRadiologiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPermintaanRadiologiActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10337,7 +10337,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 dlgro.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -10370,7 +10370,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnResepDOkterActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnResepDOkterActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else if (tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 0).toString().equals("")) {
             if (Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow() - 1, 0).toString()) > 0) {
@@ -10410,7 +10410,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             resep.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
                         } else {
-                            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                             tbKamIn.requestFocus();
                         }
                     } catch (Exception ex) {
@@ -10462,7 +10462,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnRujukSisruteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnRujukSisruteActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10487,7 +10487,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 dlgki.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -10520,7 +10520,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnFormulirPenerimaan1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnFormulirPenerimaan1ActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10563,7 +10563,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         "::[ Formulir Penerimaan Pasien ]::");
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -10619,7 +10619,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void BtnPrint5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnPrint5ActionPerformed
         if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
@@ -10661,7 +10661,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnTeridentifikasiTBActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnTeridentifikasiTBActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10686,7 +10686,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 resep.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -10719,7 +10719,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnSuratJaminanPelayananActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnSuratJaminanPelayananActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10764,7 +10764,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                         param);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -10814,18 +10814,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     }// GEN-LAST:event_MnSuratJaminanPelayananActionPerformed
 
-    private void MnPerkiraanBiayaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnPerkiraanBiayaActionPerformed
-        DlgPerkiraanBiayaRanap resep = new DlgPerkiraanBiayaRanap(null, false);
-        resep.isCek();
-        resep.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
-        resep.setLocationRelativeTo(internalFrame1);
-        resep.setVisible(true);
-
-    }// GEN-LAST:event_MnPerkiraanBiayaActionPerformed
+    private void MnPerkiraanBiayaActionPerformed(java.awt.event.ActionEvent evt) {
+        if (!TNoRw1.getText().isBlank()) {
+            DlgPerkiraanBiayaRanap resep = new DlgPerkiraanBiayaRanap(null, true);
+            resep.isCek();
+            resep.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+            resep.setLocationRelativeTo(internalFrame1);
+            resep.setRM(TNoRw1.getText());
+            resep.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Pilih Data Pasien Dahulu!");
+        }
+    }
 
     private void ppResumeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppResumeBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10850,7 +10854,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 resume.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -10884,7 +10888,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void ppAsuhanGiziBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppAsuhanGiziBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -10909,7 +10913,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 form.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -10950,7 +10954,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnLembarMasukKeluarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnLembarMasukKeluarActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data registrasi sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data registrasi sudah habis...!!!!");
             TNoRM.requestFocus();
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -10997,7 +11001,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void ppMonitoringAsuhanGiziBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppMonitoringAsuhanGiziBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -11022,7 +11026,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 form.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -11055,7 +11059,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnSuratPernyataanActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnSuratPernyataanActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data registrasi sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data registrasi sudah habis...!!!!");
             TNoRM.requestFocus();
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -11095,10 +11099,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void detailRawatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_detailRawatActionPerformed
         // TODO add your handling code here:
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data pasien sudah habis...!!!!");
             TCari.requestFocus();
         } else if (tbKamIn.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu data kamar inap pada table...!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu data kamar inap pada table...!!!");
             TCari.requestFocus();
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -11115,7 +11119,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void ppSuratKematianActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppSuratKematianActionPerformed
         // TODO add your handling code here:
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -11138,7 +11142,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 pasienMeninggal.tampil();
                                 pasienMeninggal.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -11168,7 +11172,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void ppSpriActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppSpriActionPerformed
         // TODO add your handling code here:
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
         } else {
             if (tbKamIn.getSelectedRow() > -1) {
@@ -11190,7 +11194,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 spri.tampil();
                                 spri.setVisible(true);
                             } else {
-                                JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!");
                                 tbKamIn.requestFocus();
                             }
                         } catch (Exception ex) {
@@ -11231,7 +11235,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             BtnCariActionPerformed(evt);
         }
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         } else if (tabMode.getRowCount() != 0) {
             Map<String, Object> param = new HashMap<>();
@@ -11279,10 +11283,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void ppPasienCoronaBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppPasienCoronaBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data pasien sudah habis...!!!!");
             TNoRM.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(rootPane,
                     "Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbKamIn.requestFocus();
         } else {
@@ -11299,10 +11303,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void ppPerawatanCoronaBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ppPerawatanCoronaBtnPrintActionPerformed
         if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data pasien sudah habis...!!!!");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, data pasien sudah habis...!!!!");
             TNoRM.requestFocus();
         } else if (TPasien.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null,
+            JOptionPane.showMessageDialog(rootPane,
                     "Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
             tbKamIn.requestFocus();
         } else {

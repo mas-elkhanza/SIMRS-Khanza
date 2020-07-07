@@ -44,11 +44,13 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -155,6 +157,12 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         };
         tbKasirRalan.setModel(tabModekasir);
 
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
         tbKasirRalan.setPreferredScrollableViewportSize(new Dimension(800, 800));
         tbKasirRalan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -163,54 +171,71 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             switch (i) {
                 case 0:
                     column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 1:
                     column.setPreferredWidth(180);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 2:
                     column.setPreferredWidth(65);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 3:
                     column.setPreferredWidth(180);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 4:
                     column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 5:
                     column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 6:
                     column.setPreferredWidth(170);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 7:
                     column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 8:
                     column.setPreferredWidth(70);
+                    column.setCellRenderer(rightRenderer);
                     break;
                 case 9:
                     column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 10:
                     column.setPreferredWidth(55);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 11:
                     column.setPreferredWidth(105);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 12:
                     column.setPreferredWidth(65);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 13:
                     column.setPreferredWidth(55);
+                    column.setCellRenderer(centerRenderer);
                     break;
                 case 14:
                     column.setPreferredWidth(47);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 15:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 16:
                     column.setPreferredWidth(60);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 17:
                     column.setMinWidth(0);
@@ -221,6 +246,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     column.setMaxWidth(0);
                     break;
                 default:
+                    column.setCellRenderer(leftRenderer);
                     break;
             }
         }
@@ -242,38 +268,70 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
 
         for (i = 0; i < 15; i++) {
             TableColumn column = tbKasirRalan2.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(70);
-            } else if (i == 1) {
-                column.setPreferredWidth(180);
-            } else if (i == 2) {
-                column.setPreferredWidth(70);
-            } else if (i == 3) {
-                column.setPreferredWidth(180);
-            } else if (i == 4) {
-                column.setPreferredWidth(140);
-            } else if (i == 5) {
-                column.setPreferredWidth(140);
-            } else if (i == 6) {
-                column.setPreferredWidth(180);
-            } else if (i == 7) {
-                column.setPreferredWidth(90);
-            } else if (i == 8) {
-                column.setPreferredWidth(100);
-            } else if (i == 9) {
-                column.setPreferredWidth(70);
-            } else if (i == 10) {
-                column.setPreferredWidth(105);
-            } else if (i == 11) {
-                column.setPreferredWidth(65);
-            } else if (i == 12) {
-                column.setPreferredWidth(55);
-            } else if (i == 13) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 14) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 1:
+                    column.setPreferredWidth(180);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(180);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 4:
+                    column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 5:
+                    column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 6:
+                    column.setPreferredWidth(180);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 7:
+                    column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 8:
+                    column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 9:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 10:
+                    column.setPreferredWidth(105);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 11:
+                    column.setPreferredWidth(65);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 12:
+                    column.setPreferredWidth(55);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 13:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    break;
+                case 14:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
         tbKasirRalan2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -4195,7 +4253,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2020" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2020" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -4242,7 +4300,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel32.setBounds(176, 10, 20, 23);
 
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2020" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-07-2020" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -4483,7 +4541,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
 
         jLabel16.setText("Poliklinik :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(140, 23));
+        jLabel16.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass7.add(jLabel16);
 
         CrPoli.setEditable(false);
@@ -4588,7 +4646,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -17,6 +17,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -198,6 +199,9 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
 
     }
 
+    public void setRM(String no_rekamedis){
+        TCari.setText(no_rekamedis);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
