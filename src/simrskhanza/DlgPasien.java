@@ -37,6 +37,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,9 +50,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import rekammedis.RMRiwayatPerawatan;
@@ -184,6 +188,10 @@ public class DlgPasien extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
+        DTPLahir.setDate(new Date());
+        DTPDaftar.setDate(new Date());
+        DTPLahirItemStateChanged(null);
+
         tabMode = new DefaultTableModel(null, new Object[]{
             "P", "No.R.M", "Nama Pasien", "No.SIM/KTP", "J.K.", "Tmp.Lahir", "Tgl.Lahir", "Nama Ibu", "Alamat",
             "G.D.", "Pekerjaan", "Stts.Nikah", "Agama", "Tgl.Daftar", "No.Telp/HP", "Umur", "Pendidikan",
@@ -221,6 +229,12 @@ public class DlgPasien extends javax.swing.JDialog {
         //tbPetugas.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPetugas.getBackground()));
         tbPasien.setPreferredScrollableViewportSize(new Dimension(800, 800));
         tbPasien.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
 
         for (z = 0; z < 34; z++) {
             TableColumn column = tbPasien.getColumnModel().getColumn(z);
@@ -228,62 +242,91 @@ public class DlgPasien extends javax.swing.JDialog {
                 column.setPreferredWidth(20);
             } else if (z == 1) {
                 column.setPreferredWidth(85);
+                    column.setCellRenderer(centerRenderer);
             } else if (z == 2) {
                 column.setPreferredWidth(190);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 3) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 4) {
                 column.setPreferredWidth(25);
+                    column.setCellRenderer(centerRenderer);
             } else if (z == 5) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 6) {
                 column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 7) {
                 column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 8) {
                 column.setPreferredWidth(190);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 9) {
                 column.setPreferredWidth(30);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 10) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 11) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 12) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 13) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 14) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 15) {
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 16) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 17) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 18) {
                 column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 19) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 20) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 21) {
                 column.setPreferredWidth(60);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 22) {
                 column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 23) {
                 column.setPreferredWidth(160);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 25) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 27) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 29) {
                 column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 30) {
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 31) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 33) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if ((z == 24) || (z == 26) || (z == 28) || (z == 32)) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -337,73 +380,107 @@ public class DlgPasien extends javax.swing.JDialog {
                 column.setPreferredWidth(20);
             } else if (z == 1) {
                 column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 2) {
+                    column.setCellRenderer(leftRenderer);
                 column.setPreferredWidth(190);
             } else if (z == 3) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 4) {
                 column.setPreferredWidth(35);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 5) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 6) {
                 column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 7) {
                 column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 8) {
                 column.setPreferredWidth(190);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 9) {
                 column.setPreferredWidth(35);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 10) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 11) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 12) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 13) {
                 column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 14) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 15) {
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 16) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 17) {
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 18) {
                 column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 19) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 20) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 21) {
                 column.setPreferredWidth(60);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 22) {
                 column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 23) {
                 column.setPreferredWidth(160);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 25) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 27) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 29) {
                 column.setPreferredWidth(140);
+                    column.setCellRenderer(leftRenderer);
             } else if ((z == 24) || (z == 26) || (z == 28) || (z == 30) || (z == 32) || (z == 34) || (z == 36) || (z == 40)) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 31) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 33) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 35) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 37) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 38) {
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 39) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             } else if (z == 41) {
                 column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
             }
         }
         tbPasien2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1815,7 +1892,6 @@ public class DlgPasien extends javax.swing.JDialog {
         CMbGd = new widget.ComboBox();
         jLabel9 = new widget.Label();
         jLabel13 = new widget.Label();
-        DTPLahir = new widget.Tanggal();
         jLabel18 = new widget.Label();
         cmbAgama = new widget.ComboBox();
         jLabel19 = new widget.Label();
@@ -1829,7 +1905,6 @@ public class DlgPasien extends javax.swing.JDialog {
         TNo = new widget.TextBox();
         jLabel15 = new widget.Label();
         TKtp = new widget.TextBox();
-        DTPDaftar = new widget.Tanggal();
         jLabel22 = new widget.Label();
         jLabel17 = new widget.Label();
         jLabel23 = new widget.Label();
@@ -1922,6 +1997,8 @@ public class DlgPasien extends javax.swing.JDialog {
         EMail = new widget.TextBox();
         jLabel40 = new widget.Label();
         NIP = new widget.TextBox();
+        DTPLahir = new widget.Tanggal1();
+        DTPDaftar = new widget.Tanggal1();
         internalFrame4 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbPasien = new widget.Table();
@@ -3405,23 +3482,6 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-05-2020" }));
-        DTPLahir.setDisplayFormat("dd-MM-yyyy");
-        DTPLahir.setName("DTPLahir"); // NOI18N
-        DTPLahir.setOpaque(false);
-        DTPLahir.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DTPLahirItemStateChanged(evt);
-            }
-        });
-        DTPLahir.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPLahirKeyPressed(evt);
-            }
-        });
-        FormInput.add(DTPLahir);
-        DTPLahir.setBounds(292, 102, 100, 23);
-
         jLabel18.setText("Agama :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
@@ -3537,22 +3597,10 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(712, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-05-2020" }));
-        DTPDaftar.setDisplayFormat("dd-MM-yyyy");
-        DTPDaftar.setName("DTPDaftar"); // NOI18N
-        DTPDaftar.setOpaque(false);
-        DTPDaftar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPDaftarKeyPressed(evt);
-            }
-        });
-        FormInput.add(DTPDaftar);
-        DTPDaftar.setBounds(753, 102, 93, 23);
-
         jLabel22.setText("Pertama Daftar :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(649, 102, 100, 23);
+        jLabel22.setBounds(650, 100, 90, 23);
 
         jLabel17.setText("Umur :");
         jLabel17.setName("jLabel17"); // NOI18N
@@ -4429,6 +4477,19 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(NIP);
         NIP.setBounds(753, 342, 120, 23);
 
+        DTPLahir.setName("DTPLahir"); // NOI18N
+        DTPLahir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DTPLahirKeyPressed(evt);
+            }
+        });
+        FormInput.add(DTPLahir);
+        DTPLahir.setBounds(300, 100, 90, 20);
+
+        DTPDaftar.setName("DTPDaftar"); // NOI18N
+        FormInput.add(DTPDaftar);
+        DTPDaftar.setBounds(748, 100, 100, 20);
+
         Scroll1.setViewportView(FormInput);
 
         internalFrame2.add(Scroll1, java.awt.BorderLayout.CENTER);
@@ -4700,9 +4761,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 //        System.out.println("kdkel,kdkec,kdkab,kdprop>>>" + kdkel + ", " + kdkec + ", " + kdkab + ", " + kdprop);
         if (Sequel.menyimpantf2("pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rekam Medis Pasien", 36, new String[]{
             TNo.getText(), TNm.getText(), TKtp.getText(), CmbJk.getSelectedItem().toString().substring(0, 1), TTmp.getText(),
-            Valid.SetTgl(DTPLahir.getSelectedItem() + ""), NmIbu.getText(),
+            Valid.SetDateToString(DTPLahir.getDate()), NmIbu.getText(),
             Alamat.getText().replaceAll("ALAMAT", ""), CMbGd.getSelectedItem().toString(), Pekerjaan.getText(), CmbStts.getSelectedItem().toString(), cmbAgama.getSelectedItem().toString(),
-            DTPDaftar.getSelectedItem().toString().substring(6, 10) + "-" + DTPDaftar.getSelectedItem().toString().substring(3, 5) + "-" + DTPDaftar.getSelectedItem().toString().substring(0, 2),
+            Valid.SetDateToString(DTPDaftar.getDate()),
             TTlp.getText(), TUmurTh.getText() + " Th " + TUmurBl.getText() + " Bl " + TUmurHr.getText() + " Hr", CMbPnd.getSelectedItem().toString(), klg, Saudara.getText(), Kdpnj.getText(), TNoPeserta.getText(),
             kdkel, kdkec, kdkab, PekerjaanPj.getText(), AlamatPj.getText(), KelurahanPj.getText(), KecamatanPj.getText(), KabupatenPj.getText(), kdperusahaan.getText(),
             kdsuku.getText(), kdbahasa.getText(), kdcacat.getText(), EMail.getText(), NIP.getText(), kdprop, PropinsiPj.getText()
@@ -4732,9 +4793,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             autoNomor();
             if (Sequel.menyimpantf2("pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rekam Medis Pasien", 36, new String[]{
                 TNo.getText(), TNm.getText(), TKtp.getText(), CmbJk.getSelectedItem().toString().substring(0, 1), TTmp.getText(),
-                Valid.SetTgl(DTPLahir.getSelectedItem() + ""), NmIbu.getText(),
+                Valid.SetDateToString(DTPLahir.getDate()), NmIbu.getText(),
                 Alamat.getText().replaceAll("ALAMAT", ""), CMbGd.getSelectedItem().toString(), Pekerjaan.getText(), CmbStts.getSelectedItem().toString(), cmbAgama.getSelectedItem().toString(),
-                DTPDaftar.getSelectedItem().toString().substring(6, 10) + "-" + DTPDaftar.getSelectedItem().toString().substring(3, 5) + "-" + DTPDaftar.getSelectedItem().toString().substring(0, 2),
+                Valid.SetDateToString(DTPDaftar.getDate()),
                 TTlp.getText(), TUmurTh.getText() + " Th " + TUmurBl.getText() + " Bl " + TUmurHr.getText() + " Hr", CMbPnd.getSelectedItem().toString(), klg, Saudara.getText(), Kdpnj.getText(), TNoPeserta.getText(),
                 kdkel, kdkec, kdkab, PekerjaanPj.getText(), AlamatPj.getText(), KelurahanPj.getText(), KecamatanPj.getText(), KabupatenPj.getText(), kdperusahaan.getText(),
                 kdsuku.getText(), kdbahasa.getText(), kdcacat.getText(), EMail.getText(), NIP.getText(), kdprop, PropinsiPj.getText()
@@ -4764,9 +4825,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 autoNomor();
                 if (Sequel.menyimpantf2("pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rekam Medis Pasien", 36, new String[]{
                     TNo.getText(), TNm.getText(), TKtp.getText(), CmbJk.getSelectedItem().toString().substring(0, 1), TTmp.getText(),
-                    Valid.SetTgl(DTPLahir.getSelectedItem() + ""), NmIbu.getText(),
+                    Valid.SetDateToString(DTPLahir.getDate()), NmIbu.getText(),
                     Alamat.getText().replaceAll("ALAMAT", ""), CMbGd.getSelectedItem().toString(), Pekerjaan.getText(), CmbStts.getSelectedItem().toString(), cmbAgama.getSelectedItem().toString(),
-                    DTPDaftar.getSelectedItem().toString().substring(6, 10) + "-" + DTPDaftar.getSelectedItem().toString().substring(3, 5) + "-" + DTPDaftar.getSelectedItem().toString().substring(0, 2),
+                    Valid.SetDateToString(DTPDaftar.getDate()),
                     TTlp.getText(), TUmurTh.getText() + " Th " + TUmurBl.getText() + " Bl " + TUmurHr.getText() + " Hr", CMbPnd.getSelectedItem().toString(), klg, Saudara.getText(), Kdpnj.getText(), TNoPeserta.getText(),
                     kdkel, kdkec, kdkab, PekerjaanPj.getText(), AlamatPj.getText(), KelurahanPj.getText(), KecamatanPj.getText(), KabupatenPj.getText(), kdperusahaan.getText(),
                     kdsuku.getText(), kdbahasa.getText(), kdcacat.getText(), EMail.getText(), NIP.getText(), kdprop, PropinsiPj.getText()
@@ -4796,9 +4857,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     autoNomor();
                     if (Sequel.menyimpantf2("pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rekam Medis Pasien", 36, new String[]{
                         TNo.getText(), TNm.getText(), TKtp.getText(), CmbJk.getSelectedItem().toString().substring(0, 1), TTmp.getText(),
-                        Valid.SetTgl(DTPLahir.getSelectedItem() + ""), NmIbu.getText(),
+                        Valid.SetDateToString(DTPLahir.getDate()), NmIbu.getText(),
                         Alamat.getText().replaceAll("ALAMAT", ""), CMbGd.getSelectedItem().toString(), Pekerjaan.getText(), CmbStts.getSelectedItem().toString(), cmbAgama.getSelectedItem().toString(),
-                        DTPDaftar.getSelectedItem().toString().substring(6, 10) + "-" + DTPDaftar.getSelectedItem().toString().substring(3, 5) + "-" + DTPDaftar.getSelectedItem().toString().substring(0, 2),
+                        Valid.SetDateToString(DTPDaftar.getDate()),
                         TTlp.getText(), TUmurTh.getText() + " Th " + TUmurBl.getText() + " Bl " + TUmurHr.getText() + " Hr", CMbPnd.getSelectedItem().toString(), klg, Saudara.getText(), Kdpnj.getText(), TNoPeserta.getText(),
                         kdkel, kdkec, kdkab, PekerjaanPj.getText(), AlamatPj.getText(), KelurahanPj.getText(), KecamatanPj.getText(), KabupatenPj.getText(), kdperusahaan.getText(),
                         kdsuku.getText(), kdbahasa.getText(), kdcacat.getText(), EMail.getText(), NIP.getText(), kdprop, PropinsiPj.getText()
@@ -4828,9 +4889,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         autoNomor();
                         if (Sequel.menyimpantf2("pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rekam Medis Pasien", 36, new String[]{
                             TNo.getText(), TNm.getText(), TKtp.getText(), CmbJk.getSelectedItem().toString().substring(0, 1), TTmp.getText(),
-                            Valid.SetTgl(DTPLahir.getSelectedItem() + ""), NmIbu.getText(),
+                            Valid.SetDateToString(DTPLahir.getDate()), NmIbu.getText(),
                             Alamat.getText().replaceAll("ALAMAT", ""), CMbGd.getSelectedItem().toString(), Pekerjaan.getText(), CmbStts.getSelectedItem().toString(), cmbAgama.getSelectedItem().toString(),
-                            DTPDaftar.getSelectedItem().toString().substring(6, 10) + "-" + DTPDaftar.getSelectedItem().toString().substring(3, 5) + "-" + DTPDaftar.getSelectedItem().toString().substring(0, 2),
+                            Valid.SetDateToString(DTPDaftar.getDate()),
                             TTlp.getText(), TUmurTh.getText() + " Th " + TUmurBl.getText() + " Bl " + TUmurHr.getText() + " Hr", CMbPnd.getSelectedItem().toString(), klg, Saudara.getText(), Kdpnj.getText(), TNoPeserta.getText(),
                             kdkel, kdkec, kdkab, PekerjaanPj.getText(), AlamatPj.getText(), KelurahanPj.getText(), KecamatanPj.getText(), KabupatenPj.getText(), kdperusahaan.getText(),
                             kdsuku.getText(), kdbahasa.getText(), kdcacat.getText(), EMail.getText(), NIP.getText(), kdprop, PropinsiPj.getText()
@@ -5038,9 +5099,9 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 + "alamatpj=?,kelurahanpj=?,kecamatanpj=?,kabupatenpj=?,perusahaan_pasien=?,suku_bangsa=?,bahasa_pasien=?,"
                 + "cacat_fisik=?,email=?,nip=?,kd_prop=?,propinsipj=?", 37,
                 new String[]{TNo.getText(), TNm.getText(), TKtp.getText(), CmbJk.getSelectedItem().toString().substring(0, 1), TTmp.getText(),
-                    Valid.SetTgl(DTPLahir.getSelectedItem() + ""),
+                    Valid.SetDateToString(DTPLahir.getDate()),
                     Alamat.getText(), CMbGd.getSelectedItem().toString(), Pekerjaan.getText(), CmbStts.getSelectedItem().toString(), cmbAgama.getSelectedItem().toString(),
-                    DTPDaftar.getSelectedItem().toString().substring(6, 10) + "-" + DTPDaftar.getSelectedItem().toString().substring(3, 5) + "-" + DTPDaftar.getSelectedItem().toString().substring(0, 2),
+                    Valid.SetDateToString(DTPDaftar.getDate()),
                     TTlp.getText(), TUmurTh.getText() + " Th " + TUmurBl.getText() + " Bl " + TUmurHr.getText() + " Hr", CMbPnd.getSelectedItem().toString(), klg, Saudara.getText(), Kdpnj.getText(), TNoPeserta.getText(),
                     Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?", Kelurahan.getText()),
                     Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?", Kecamatan.getText()),
@@ -5549,7 +5610,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 }//GEN-LAST:event_BtnCariKeyPressed
 
 private void TTmpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTmpKeyPressed
-    Valid.pindah(evt, CMbGd, DTPLahir);
+    Valid.pindah(evt, DTPLahir, CMbGd);
 }//GEN-LAST:event_TTmpKeyPressed
 
 private void CmbJkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJkKeyPressed
@@ -5638,10 +5699,6 @@ private void TKtpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKtp
     }
 }//GEN-LAST:event_TKtpKeyPressed
 
-private void DTPDaftarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPDaftarKeyPressed
-    Valid.pindah2(evt, Pekerjaan, BtnSimpan);
-}//GEN-LAST:event_DTPDaftarKeyPressed
-
 private void CMbPndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CMbPndKeyPressed
     if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         NmIbu.requestFocus();
@@ -5679,15 +5736,6 @@ private void MnKartuStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         this.setCursor(Cursor.getDefaultCursor());
     }
 }//GEN-LAST:event_MnKartuStatusActionPerformed
-
-private void DTPLahirItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPLahirItemStateChanged
-    lahir = DTPLahir.getDate();
-    birthday = lahir.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    p = Period.between(birthday, today);
-    TUmurTh.setText(String.valueOf(p.getYears()));
-    TUmurBl.setText(String.valueOf(p.getMonths()));
-    TUmurHr.setText(String.valueOf(p.getDays()));
-}//GEN-LAST:event_DTPLahirItemStateChanged
 
 private void KdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdpnjKeyPressed
     if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
@@ -6354,9 +6402,9 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
 
     private void ChkDaftarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkDaftarItemStateChanged
         if (ChkDaftar.isSelected() == true) {
-            DTPDaftar.setEditable(true);
+            DTPDaftar.setEnabled(true);
         } else if (ChkDaftar.isSelected() == false) {
-            DTPDaftar.setEditable(false);
+            DTPDaftar.setEnabled(false);
         }
         DTPDaftar.requestFocus();
     }//GEN-LAST:event_ChkDaftarItemStateChanged
@@ -7217,7 +7265,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             //       CmbUmur.requestFocus();
             try {
-                Valid.SetTgl(DTPLahir, Sequel.cariIsi("select DATE_SUB('" + Valid.SetTgl(DTPLahir.getSelectedItem() + "") + "', interval " + TUmurTh.getText() + " year)"));
+                Valid.SetTgl(DTPLahir, Sequel.cariIsi("select DATE_SUB('" + Valid.SetDateToString(DTPLahir.getDate()) + "', interval " + TUmurTh.getText() + " year)"));
             } catch (Exception e) {
                 System.out.println(e);
                 Logger.getLogger(DlgPasien.class.getName()).log(Level.SEVERE, null, e);
@@ -7243,14 +7291,6 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             TUmurBl.requestFocus();
         }
     }//GEN-LAST:event_TUmurHrKeyPressed
-
-    private void DTPLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahirKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            TUmurTh.requestFocus();
-        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
-            TTmp.requestFocus();
-        }
-    }//GEN-LAST:event_DTPLahirKeyPressed
 
     private void MnKartu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKartu5ActionPerformed
         if (tabMode.getRowCount() == 0) {
@@ -8125,6 +8165,28 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         // TODO add your handling code here:
     }//GEN-LAST:event_TAlamatKeyPressed
 
+    private void DTPLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahirKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            TUmurTh.requestFocus();
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
+            TTmp.requestFocus();
+        }
+    }//GEN-LAST:event_DTPLahirKeyPressed
+
+    private void DTPLahirItemStateChanged(java.awt.event.KeyEvent evt) {
+        DTPLahir.addPropertyChangeListener("date", new PropertyChangeListener() {
+            public void propertyChange(PropertyChangeEvent e) {
+                lahir = DTPLahir.getDate();
+                birthday = lahir.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                p = Period.between(birthday, today);
+                TUmurTh.setText(String.valueOf(p.getYears()));
+                TUmurBl.setText(String.valueOf(p.getMonths()));
+                TUmurHr.setText(String.valueOf(p.getDays()));
+            }
+        });
+    }
+
     /**
      * @param args
      * @data args the command line arguments
@@ -8216,8 +8278,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.CekBox ChkRM;
     private widget.ComboBox CmbJk;
     private widget.ComboBox CmbStts;
-    private widget.Tanggal DTPDaftar;
-    private widget.Tanggal DTPLahir;
+    private widget.Tanggal1 DTPDaftar;
+    private widget.Tanggal1 DTPLahir;
     private javax.swing.JDialog DlgDemografi;
     private widget.TextBox EMail;
     private widget.PanelBiasa FormInput;
@@ -9912,13 +9974,13 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         if (Kd2.getText().equals("")) {
             if (ChkRM.isSelected() == true) {
                 if (tahun.equals("Yes")) {
-                    awalantahun = DTPDaftar.getSelectedItem().toString().substring(8, 10);
+                    awalantahun = Valid.SetDateToString(DTPDaftar.getDate()).substring(8, 10);
                 } else {
                     awalantahun = "";
                 }
 
                 if (bulan.equals("Yes")) {
-                    awalanbulan = DTPDaftar.getSelectedItem().toString().substring(3, 5);
+                    awalanbulan = Valid.SetDateToString(DTPDaftar.getDate()).substring(3, 5);
                 } else {
                     awalanbulan = "";
                 }
