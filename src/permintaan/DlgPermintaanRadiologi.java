@@ -74,6 +74,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
+        Tanggal.setDate(new Date());
         Object[] row = {"P", "Kode Periksa", "Nama Pemeriksaan"};
         tabMode = new DefaultTableModel(null, row) {
             @Override
@@ -256,7 +257,6 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         TNoRM = new widget.TextBox();
         TPasien = new widget.TextBox();
         jLabel9 = new widget.Label();
-        Tanggal = new widget.Tanggal();
         CmbJam = new widget.ComboBox();
         CmbMenit = new widget.ComboBox();
         CmbDetik = new widget.ComboBox();
@@ -271,6 +271,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         jLabel5 = new widget.Label();
         DiagnosisKlinis = new widget.TextBox();
         jLabel6 = new widget.Label();
+        Tanggal = new widget.Tanggal1();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         panelisi5 = new widget.panelisi();
@@ -474,32 +475,20 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 42, 92, 23);
 
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-01-2020" }));
-        Tanggal.setDisplayFormat("dd-MM-yyyy");
-        Tanggal.setName("Tanggal"); // NOI18N
-        Tanggal.setOpaque(false);
-        Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TanggalKeyPressed(evt);
-            }
-        });
-        PanelInput.add(Tanggal);
-        Tanggal.setBounds(95, 72, 90, 23);
-
         CmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         CmbJam.setName("CmbJam"); // NOI18N
         PanelInput.add(CmbJam);
-        CmbJam.setBounds(189, 72, 62, 23);
+        CmbJam.setBounds(200, 70, 62, 23);
 
         CmbMenit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbMenit.setName("CmbMenit"); // NOI18N
         PanelInput.add(CmbMenit);
-        CmbMenit.setBounds(254, 72, 62, 23);
+        CmbMenit.setBounds(270, 70, 62, 23);
 
         CmbDetik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         CmbDetik.setName("CmbDetik"); // NOI18N
         PanelInput.add(CmbDetik);
-        CmbDetik.setBounds(319, 72, 62, 23);
+        CmbDetik.setBounds(340, 70, 62, 23);
 
         ChkJln.setBorder(null);
         ChkJln.setSelected(true);
@@ -513,7 +502,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
             }
         });
         PanelInput.add(ChkJln);
-        ChkJln.setBounds(384, 72, 23, 23);
+        ChkJln.setBounds(400, 70, 23, 23);
 
         KodePerujuk.setName("KodePerujuk"); // NOI18N
         KodePerujuk.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -550,7 +539,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         jLabel4.setText("No.Permintaan :");
         jLabel4.setName("jLabel4"); // NOI18N
         PanelInput.add(jLabel4);
-        jLabel4.setBounds(409, 72, 90, 23);
+        jLabel4.setBounds(430, 70, 80, 23);
 
         TNoPermintaan.setHighlighter(null);
         TNoPermintaan.setName("TNoPermintaan"); // NOI18N
@@ -560,7 +549,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
             }
         });
         PanelInput.add(TNoPermintaan);
-        TNoPermintaan.setBounds(502, 72, 130, 23);
+        TNoPermintaan.setBounds(512, 72, 120, 23);
 
         InformasiTambahan.setHighlighter(null);
         InformasiTambahan.setName("InformasiTambahan"); // NOI18N
@@ -591,6 +580,10 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         jLabel6.setName("jLabel6"); // NOI18N
         PanelInput.add(jLabel6);
         jLabel6.setBounds(0, 132, 209, 23);
+
+        Tanggal.setName("Tanggal"); // NOI18N
+        PanelInput.add(Tanggal);
+        Tanggal.setBounds(100, 70, 88, 20);
 
         FormInput.add(PanelInput, java.awt.BorderLayout.CENTER);
 
@@ -734,10 +727,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private void PenjabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenjabKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_PenjabKeyPressed
-
-    private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        Valid.pindah(evt, KodePerujuk, TCariPeriksa);
-    }//GEN-LAST:event_TanggalKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
@@ -928,7 +917,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             param.put("umur", Umur.getText());
             param.put("lahir", Sequel.cariIsi("select DATE_FORMAT(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis=? ", TNoRM.getText()));
             param.put("pengirim", NmPerujuk.getText());
-            param.put("tanggal", Tanggal.getSelectedItem());
+            param.put("tanggal", Tanggal.getDate());
             param.put("alamat", Alamat.getText());
             param.put("kamar", kamar);
             param.put("namakamar", namakamar);
@@ -1017,7 +1006,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private widget.Tanggal Tanggal;
+    private widget.Tanggal1 Tanggal;
     private widget.TextBox Umur;
     private widget.Button btnCariPeriksa;
     private widget.Button btnDokter;
@@ -1348,7 +1337,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }
 
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_radiologi where tgl_permintaan='" + Valid.SetTgl(Tanggal.getSelectedItem() + "") + "' ", "PR" + Valid.SetTgl(Tanggal.getSelectedItem() + "").replaceAll("-", ""), 4, TNoPermintaan);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_radiologi where tgl_permintaan='" + Valid.SetDateToString(Tanggal.getDate()) + "' ", "PR" + Valid.SetDateToString(Tanggal.getDate()).replaceAll("-", ""), 4, TNoPermintaan);
     }
 
     private void simpan() {
@@ -1359,7 +1348,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 koneksi.setAutoCommit(false);
                 //autoNomor();
                 if (Sequel.menyimpantf2("permintaan_radiologi", "?,?,?,?,?,?,?,?,?,?,?,?", "No.Permintaan", 12, new String[]{
-                    TNoPermintaan.getText(), TNoRw.getText(), Valid.SetTgl(Tanggal.getSelectedItem() + ""),
+                    TNoPermintaan.getText(), TNoRw.getText(), Valid.SetDateToString(Tanggal.getDate()),
                     CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
                     "0000-00-00", "00:00:00", "0000-00-00", "00:00:00", KodePerujuk.getText(), status.replaceAll("R", "r"),
                     InformasiTambahan.getText(), DiagnosisKlinis.getText()
@@ -1376,7 +1365,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 } else {
                     autoNomor();
                     if (Sequel.menyimpantf2("permintaan_radiologi", "?,?,?,?,?,?,?,?,?,?,?,?", "No.Permintaan", 12, new String[]{
-                        TNoPermintaan.getText(), TNoRw.getText(), Valid.SetTgl(Tanggal.getSelectedItem() + ""),
+                        TNoPermintaan.getText(), TNoRw.getText(), Valid.SetDateToString(Tanggal.getDate()),
                         CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
                         "0000-00-00", "00:00:00", "0000-00-00", "00:00:00", KodePerujuk.getText(), status.replaceAll("R", "r"),
                         InformasiTambahan.getText(), DiagnosisKlinis.getText()
@@ -1393,7 +1382,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     } else {
                         autoNomor();
                         if (Sequel.menyimpantf2("permintaan_radiologi", "?,?,?,?,?,?,?,?,?,?,?,?", "No.Permintaan", 12, new String[]{
-                            TNoPermintaan.getText(), TNoRw.getText(), Valid.SetTgl(Tanggal.getSelectedItem() + ""),
+                            TNoPermintaan.getText(), TNoRw.getText(), Valid.SetDateToString(Tanggal.getDate()),
                             CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
                             "0000-00-00", "00:00:00", "0000-00-00", "00:00:00", KodePerujuk.getText(), status.replaceAll("R", "r"),
                             InformasiTambahan.getText(), DiagnosisKlinis.getText()
@@ -1410,7 +1399,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         } else {
                             autoNomor();
                             if (Sequel.menyimpantf2("permintaan_radiologi", "?,?,?,?,?,?,?,?,?,?,?,?", "No.Permintaan", 12, new String[]{
-                                TNoPermintaan.getText(), TNoRw.getText(), Valid.SetTgl(Tanggal.getSelectedItem() + ""),
+                                TNoPermintaan.getText(), TNoRw.getText(), Valid.SetDateToString(Tanggal.getDate()),
                                 CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(),
                                 "0000-00-00", "00:00:00", "0000-00-00", "00:00:00", KodePerujuk.getText(), status.replaceAll("R", "r"),
                                 InformasiTambahan.getText(), DiagnosisKlinis.getText()

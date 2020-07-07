@@ -26,7 +26,7 @@ public final class Tanggal1 extends JDateChooser {
         setBackground(new Color(255,255,255));
         setFont(new java.awt.Font("Tahoma", 0, 11));
         //setBorder(javax.swing.BorderFactory.createLineBorder(new Color(212,212,152)));
-        setSize(WIDTH,23);
+        setSize(WIDTH,24);
         setDateFormatString("dd-MM-yyyy");
         setAutoscrolls(true);
         setOpaque(false);
