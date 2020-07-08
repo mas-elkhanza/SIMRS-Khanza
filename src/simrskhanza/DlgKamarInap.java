@@ -4808,10 +4808,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } else {
             if (!txtHak1.getText().trim().equals("0") || !txtHak2.getText().trim().equals("0") || !txtHak3.getText().trim().equals("0")) {
                 Sequel.menyimpan("coderbpjs", "?,?,?,?,?,?,?,?,?", "coder bpjs", 9,
-                        new String[]{null, txtHak1.getText().toString(), txtHak2.getText().toString(),
-                            txtHak3.getText().toString(), norawat.getText(), Valid.SetDateTimeToString(new Date()),
-                            diagnosaakhir.getText(), txtSelisih.getText().toString(), txtPenjaminan.getText().toString()});
-
+                        new String[]{null, txtHak1.getText().replace(".", "").replace(",", ""), txtHak2.getText().replace(".", "").replace(",", ""),
+                            txtHak3.getText().replace(".", "").replace(",", ""), norawat.getText(), Valid.SetDateTimeToString(new Date()),
+                            diagnosaakhir.getText(), txtSelisih.getText().replace(".", "").replace(",", ""), txtPenjaminan.getText().replace(".", "").replace(",", "")});
                 //WindowInputCoderBPJS.dispose();
                 emptyText();
                 tampilCoder();
@@ -10822,7 +10821,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             resep.setLocationRelativeTo(internalFrame1);
             resep.setRM(TNoRw1.getText());
             resep.setVisible(true);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Maaf, Pilih Data Pasien Dahulu!");
         }
     }
