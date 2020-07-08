@@ -3,7 +3,7 @@
   biaya apapun.  Hal yang tidak boleh dilakukan adalah memperjualbelikan/mengambil 
   keuntungan dari Software ini dalam bentuk apapun tanpa seijin pembuat 
   software  (Khanza.Soft Media).  Bagi yang sengaja memperjualbelikan/
-  mengambil keuntangan dari softaware ini tanpa ijin, kami  sumpahi sial 
+  mengambil keuntungan dari softaware ini tanpa ijin, kami  sumpahi sial 
   1000 turunan, miskin sampai 500 turunan. Selalu mendapat kecelakaan 
   sampai 400 turunan. Anak pertamanya cacat tidak punya kaki sampai 300 
   turunan. Susah cari jodoh sampai umur 50 tahun sampai 200 turunan.
