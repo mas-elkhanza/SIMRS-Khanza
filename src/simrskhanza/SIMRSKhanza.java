@@ -39,17 +39,17 @@ public class SIMRSKhanza {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
+//        try {
             System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
-            UIManager.setLookAndFeel(new WindowsLookAndFeel());
+//            UIManager.setLookAndFeel(new WindowsLookAndFeel());
             WidgetUtilities.invokeLater(() -> {
 
                 frmUtama utama = frmUtama.getInstance();
                 utama.isWall();
                 utama.setVisible(true);
             });
-        } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(SIMRSKhanza.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        } catch (UnsupportedLookAndFeelException ex) {
+//            Logger.getLogger(SIMRSKhanza.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }
