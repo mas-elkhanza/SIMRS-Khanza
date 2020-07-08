@@ -8919,7 +8919,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             param.put("emailrs",akses.getemailrs());
             param.put("no_rawat",TNoRw.getText());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptBarcodeRawat3.jasper",param,"::[ Barcode No.Rawat ]::");
+            Valid.MyReport("rptBarcodeRawat3.jasper",param,"::[ Barcode No.RM ]::");
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnBarcode2ActionPerformed
