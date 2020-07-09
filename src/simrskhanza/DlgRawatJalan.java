@@ -6466,7 +6466,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 while (rs.next()) {
                     tabModeDrPr.addRow(new Object[]{
                         false, rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
-                        rs.getString(8), rs.getString(9), rs.getString(10), rs.getDouble(11), rs.getString("kd_jenis_prw"),
+                        rs.getString(8), rs.getString(9), rs.getString(10), Valid.SetAngkaNew(rs.getDouble(11)), rs.getString("kd_jenis_prw"),
                         rs.getString("tarif_tindakandr"), rs.getString("tarif_tindakanpr"), rs.getString("kso")
                     });
                 }
@@ -7561,7 +7561,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 while (rstindakan.next()) {
                     TabModeTindakan3.addRow(new Object[]{
                         false, rstindakan.getString(1), rstindakan.getString(2), rstindakan.getString(3),
-                        Valid.SetAngka(rstindakan.getDouble("total_byrdrpr")), rstindakan.getDouble("material"),
+                        Valid.SetAngkaNew(rstindakan.getDouble("total_byrdrpr")), rstindakan.getDouble("material"),
                         rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"),
                         rstindakan.getDouble("tarif_tindakanpr"), rstindakan.getDouble("kso"),
                         rstindakan.getDouble("menejemen")
@@ -7687,7 +7687,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         Valid.SetDateToString(DTPTgl.getDate()), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                         tbTindakan3.getValueAt(i, 5).toString(), tbTindakan3.getValueAt(i, 6).toString(), tbTindakan3.getValueAt(i, 7).toString(),
                         tbTindakan3.getValueAt(i, 8).toString(), tbTindakan3.getValueAt(i, 9).toString(), tbTindakan3.getValueAt(i, 10).toString(),
-                        tbTindakan3.getValueAt(i, 4).toString()
+                        tbTindakan3.getValueAt(i, 4).toString().replace(".", "").replace(",", "")
                     }) == true) {
                         tbTindakan3.setValueAt(false, i, 0);
                         JOptionPane.showMessageDialog(rootPane, "Alhamdulillah berhasil simpan ^_^ .");
