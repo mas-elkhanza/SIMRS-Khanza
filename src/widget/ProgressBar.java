@@ -23,8 +23,8 @@ public class ProgressBar extends JProgressBar {
     private int percent;
     private final Color light = new Color(1F, 1F, 1F, 0.4F);
     private final Color dark = new Color(1F, 1F, 1F, 0.4F);
-    private final Color black = Color.darkGray;
-    private final Color warna = Color.magenta;
+    private final Color black = new Color(116,67,62);
+    private final Color warna = new Color(254,231,181);
 
     /**
      * 
