@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -74,6 +75,7 @@ public final class validasi {
     private final DecimalFormat df3 = new DecimalFormat("######");
     private final DecimalFormat df6 = new DecimalFormat("######.###");
     private final DecimalFormat df7 = new DecimalFormat("######.#");
+    private final NumberFormat nf = NumberFormat.getNumberInstance();
     private PreparedStatement ps;
     private ResultSet rs;
     private final Calendar now = Calendar.getInstance();
@@ -1554,6 +1556,10 @@ public String SetDateTimeToString(Date date) {
      */
     public String SetAngka(double nilai) {
         return df2.format(nilai);
+    }
+    
+    public String SetAngkaNew(double nilai) {
+        return nf.format(nilai);
     }
 
     /**
