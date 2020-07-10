@@ -601,6 +601,7 @@ import surat.SuratBalas;
 import surat.SuratBebasNarkoba;
 import surat.SuratIndeks;
 import surat.SuratKeluar;
+import surat.SuratKeteranganCovid;
 import surat.SuratKlasifikasi;
 import surat.SuratMap;
 import surat.SuratMasuk;
@@ -1559,7 +1560,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/06/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/07/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -16217,6 +16218,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratKeteranganCovidActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratKeteranganCovid form=new SuratKeteranganCovid(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16822,7 +16836,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
             btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
-            btnSuratBebasNarkoba;
+            btnSuratBebasNarkoba,btnSuratKeteranganCovid;
     
     public void isWall(){
         try{            
@@ -19770,6 +19784,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_bebas_narkoba()==true){
                 Panelmenu.add(btnSuratBebasNarkoba);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_keterangan_covid()==true){
+                Panelmenu.add(btnSuratKeteranganCovid);
                 jmlmenu++;
             }
             
@@ -23015,6 +23034,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_bebas_narkoba()==true){
             Panelmenu.add(btnSuratBebasNarkoba);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_keterangan_covid()==true){
+            Panelmenu.add(btnSuratKeteranganCovid);
             jmlmenu++;
         }
         
@@ -27383,6 +27407,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_keterangan_covid()==true){
+            if(btnSuratKeteranganCovid.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratKeteranganCovid);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengumuman_epasien()==true){
             if(btnPengumumanEPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengumumanEPasien);
@@ -30250,6 +30281,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratBebasNarkoba.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuratBebasNarkobaActionPerformed(evt);
+            }
+        });
+        
+        btnSuratKeteranganCovid = new widget.ButtonBig();
+        btnSuratKeteranganCovid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Microscope-Scientific-Laboratory-Test-Chemistry_5958964.png"))); 
+        btnSuratKeteranganCovid.setText("Surat Keterangan Covid");
+        btnSuratKeteranganCovid.setIconTextGap(0);
+        btnSuratKeteranganCovid.setName("btnSuratKeteranganCovid"); 
+        btnSuratKeteranganCovid.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratKeteranganCovid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratKeteranganCovidActionPerformed(evt);
             }
         });
     }

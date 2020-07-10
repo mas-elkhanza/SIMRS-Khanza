@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="144" pageHeight="165" columnWidth="134" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="6a03bcef-cde7-4861-8117-d67a8948b929">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
@@ -15,11 +15,10 @@
 	<parameter name="kontakrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir, 
-pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,
+		<![CDATA[select penjualan.nota_jual,penjualan.tgl_jual,
+penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,
 detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan 
 from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual 
-inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis 
 inner join databarang on detailjual.kode_brng=databarang.kode_brng 
 inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat 
 where detailjual.aturan_pakai<>'']]>
@@ -32,18 +31,14 @@ where detailjual.aturan_pakai<>'']]>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_jual"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="penjualan"/>
 	</field>
-	<field name="tgl_lahir" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
-	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penjualan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_pasien" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penjualan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_brng" class="java.lang.String">
@@ -70,7 +65,9 @@ where detailjual.aturan_pakai<>'']]>
 	<detail>
 		<band height="155" splitType="Stretch">
 			<componentElement>
-				<reportElement x="2" y="64" width="130" height="10" uuid="eea1bdc5-b910-464c-8516-ad933782faaf"/>
+				<reportElement x="2" y="63" width="130" height="15" uuid="eea1bdc5-b910-464c-8516-ad933782faaf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barWidth="1" barHeight="0">
 					<jr:codeExpression><![CDATA[$F{nota_jual}]]></jr:codeExpression>
 				</jr:barbecue>
@@ -88,7 +85,7 @@ where detailjual.aturan_pakai<>'']]>
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="2" y="46" width="130" height="17" uuid="91e17ca2-6d01-41c9-98c5-a09e263c516b"/>
+				<reportElement x="2" y="46" width="130" height="15" uuid="91e17ca2-6d01-41c9-98c5-a09e263c516b"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="6" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -101,14 +98,6 @@ where detailjual.aturan_pakai<>'']]>
 					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement x="3" y="81" width="25" height="9" uuid="4029622a-3f40-4f93-9526-bcdc434b4f78"/>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="6" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[No. RM]]></text>
-			</staticText>
 			<line>
 				<reportElement x="1" y="154" width="132" height="1" forecolor="#006666" uuid="e4d7f6aa-ce22-40cc-8e88-d1434fc8967b"/>
 				<graphicElement>
@@ -144,15 +133,7 @@ where detailjual.aturan_pakai<>'']]>
 				<text><![CDATA[INSTALASI FARMASI]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="27" y="81" width="4" height="9" uuid="5bc3e9be-4732-48dd-8fad-d3efdd06c542"/>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="6" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="27" y="89" width="4" height="9" uuid="fb4775fd-b645-4461-b668-ec23329a09b1"/>
+				<reportElement x="27" y="80" width="4" height="9" uuid="fb4775fd-b645-4461-b668-ec23329a09b1"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="6" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -160,15 +141,7 @@ where detailjual.aturan_pakai<>'']]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="30" y="81" width="60" height="9" uuid="68cf36eb-3a7f-4ed7-8fc0-57ffcb8c80c5"/>
-				<textElement>
-					<font fontName="Tahoma" size="6" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="30" y="89" width="102" height="15" uuid="cad5f77b-99f0-4c62-8927-25d037b8a513"/>
+				<reportElement x="30" y="80" width="102" height="15" uuid="cad5f77b-99f0-4c62-8927-25d037b8a513"/>
 				<textElement>
 					<font fontName="Tahoma" size="6" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -176,7 +149,7 @@ where detailjual.aturan_pakai<>'']]>
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="2" y="107" width="131" height="1" forecolor="#006666" uuid="5c5adf66-319b-48c8-9ff6-30ab4812d1a4"/>
+				<reportElement x="2" y="96" width="131" height="1" forecolor="#006666" uuid="5c5adf66-319b-48c8-9ff6-30ab4812d1a4"/>
 				<graphicElement>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 				</graphicElement>
@@ -190,7 +163,7 @@ where detailjual.aturan_pakai<>'']]>
 				<textFieldExpression><![CDATA[$F{aturan_pakai}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="109" width="130" height="15" uuid="f80f2466-a283-4309-a671-085d315304b9"/>
+				<reportElement x="2" y="98" width="130" height="26" uuid="f80f2466-a283-4309-a671-085d315304b9"/>
 				<textElement>
 					<font fontName="Tahoma" size="6" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -205,14 +178,8 @@ where detailjual.aturan_pakai<>'']]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jumlah}+" "+$F{satuan}]]></textFieldExpression>
 			</textField>
-			<line direction="BottomUp">
-				<reportElement x="133" y="1" width="1" height="153" forecolor="#006666" uuid="4d09725e-0708-480f-8a6c-e382f07f90c2"/>
-				<graphicElement>
-					<pen lineStyle="Solid"/>
-				</graphicElement>
-			</line>
 			<staticText>
-				<reportElement x="3" y="89" width="25" height="9" uuid="b037dafb-90f6-4088-8d94-ed6c658f3cee"/>
+				<reportElement x="3" y="80" width="25" height="9" uuid="b037dafb-90f6-4088-8d94-ed6c658f3cee"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="6" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -227,14 +194,12 @@ where detailjual.aturan_pakai<>'']]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="94" y="81" width="38" height="9" uuid="e99d7b17-1f97-42eb-9d4e-1bbd8be84269"/>
-				<textElement textAlignment="Right" verticalAlignment="Top">
-					<font fontName="Tahoma" size="6"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
-			</textField>
+			<line direction="BottomUp">
+				<reportElement x="133" y="1" width="1" height="153" forecolor="#006666" uuid="ff9aaab5-6688-4a4b-89ef-6119e0ce6dee"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<summary>
