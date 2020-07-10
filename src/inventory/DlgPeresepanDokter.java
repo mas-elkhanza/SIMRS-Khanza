@@ -3366,7 +3366,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if (tbResep.getSelectedRow() != -1) {
             try {
                 if (Double.parseDouble(tbResep.getValueAt(tbResep.getSelectedRow(), 1).toString()) > 0) {
-                    if (Valid.SetAngka(tbResep.getValueAt(tbResep.getSelectedRow(), 1).toString()) > Valid.SetAngka(tbResep.getValueAt(tbResep.getSelectedRow(), 11).toString())) {
+                    if (Valid.SetAngka(tbResep.getValueAt(tbResep.getSelectedRow(), 1).toString()) > Valid.SetAngka(tbResep.getValueAt(tbResep.getSelectedRow(), 11).toString().replace(".", "").replace(",", ""))) {
                         JOptionPane.showMessageDialog(rootPane, "Maaf stok tidak mencukupi..!!");
                         tbResep.setValueAt("", tbResep.getSelectedRow(), 1);
                     }
