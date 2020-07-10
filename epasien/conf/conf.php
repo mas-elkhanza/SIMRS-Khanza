@@ -8,12 +8,12 @@
     define('SIGNUP', 'DISABLE'); // ENABLE atau DISABLE pendaftaran pasien baru
     define('KODE_BERKAS', '002'); // Kode katergori berkas digital. Sesuaikan dengan kode yang ada di SIMRS.
     define('UKURAN_BERKAS', '5000000'); // Ukuran berkas digital dalam byte
-    define('PENGADUAN', 'ENABLE'); // ENABLE atau DISABLE fitur pengaduan pasien.
     define('URUTNOREG', 'DOKTER'); // DOKTER or POLI.
     $month          = date('Y-m');
     $date           = date('Y-m-d');
     $time           = date('H:i:s');
     $date_time      = date('Y-m-d H:i:s');
+    $stokdarah      = "aktif";
     
     function host(){
         global $db_hostname;
@@ -306,6 +306,20 @@
         return $bulan;
     }
 
+    function konversiHari($hari){
+        switch($hari) {
+            case "Sunday"       : $namahari="Akhad"; break;
+            case "Monday"       : $namahari="Senin"; break;
+            case "Tuesday"      : $namahari="Salasa"; break;
+            case "Wednesday"    : $namahari="Rabu"; break;
+            case "Thursday"     : $namahari="Kamis"; break;
+            case "Friday"       : $namahari="Jumat"; break;
+            case "Saturday"     : $namahari="Sabtu"; break;
+            default             : $namahari="Tidak Boleh";
+        }
+        return $namahari;
+    }
+    
     function konversiTanggal($tanggal){
         list($thn,$bln,$tgl)=explode('-',$tanggal);
         $tmp = $tgl." ".konversiBulan($bln)." ".$thn;
@@ -341,6 +355,13 @@
     function getOne2($sql) {
         $hasil = bukaquery2($sql);
         list($result) = mysqli_fetch_array($hasil);
+        return $result;
+    }
+    
+    function getOne3($sql,$string) {
+        $hasil=bukaquery($sql);
+        list($result) =mysqli_fetch_array($hasil);
+        if(empty($result)) $result=$string;
         return $result;
     }
 

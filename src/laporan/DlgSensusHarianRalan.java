@@ -53,7 +53,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private ResultSet rs;
     private int i=0,jkl=0,jkp=0,rujukan=0,pengunjungbaru=0,pengunjunglama=0,statuspolibaru=0,statuspolilama=0;
-    private String diagnosautama="",diagnosasekunder="",perujuk="";
+    private String diagnosautama="",diagnosasekunder="",perujuk="",status="";
     
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -364,6 +364,9 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppTampilkanBaru = new javax.swing.JMenuItem();
+        ppTampilkanLama = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         label11 = new widget.Label();
@@ -404,11 +407,45 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppTampilkanBaru.setBackground(new java.awt.Color(255, 255, 254));
+        ppTampilkanBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTampilkanBaru.setForeground(java.awt.Color.darkGray);
+        ppTampilkanBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppTampilkanBaru.setText("Tampilkan Pasien Baru");
+        ppTampilkanBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppTampilkanBaru.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppTampilkanBaru.setName("ppTampilkanBaru"); // NOI18N
+        ppTampilkanBaru.setPreferredSize(new java.awt.Dimension(175, 25));
+        ppTampilkanBaru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppTampilkanBaruBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppTampilkanBaru);
+
+        ppTampilkanLama.setBackground(new java.awt.Color(255, 255, 254));
+        ppTampilkanLama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTampilkanLama.setForeground(java.awt.Color.darkGray);
+        ppTampilkanLama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppTampilkanLama.setText("Tampilkan Pasien Lama");
+        ppTampilkanLama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppTampilkanLama.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppTampilkanLama.setName("ppTampilkanLama"); // NOI18N
+        ppTampilkanLama.setPreferredSize(new java.awt.Dimension(175, 25));
+        ppTampilkanLama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppTampilkanLamaBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppTampilkanLama);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -688,7 +725,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -703,9 +740,11 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
+        table.setComponentPopupMenu(jPopupMenu1);
         table.setName("table"); // NOI18N
         Scroll.setViewportView(table);
 
@@ -719,9 +758,11 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll1.setComponentPopupMenu(jPopupMenu1);
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
+        table2.setComponentPopupMenu(jPopupMenu1);
         table2.setName("table2"); // NOI18N
         Scroll1.setViewportView(table2);
 
@@ -899,6 +940,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         kddokter.setText("");
         nmdokter.setText("");
         nmkabupaten.setText("");
+        status="";
         if(TabRawat.getSelectedIndex()==0){
             tampil();
         }else if(TabRawat.getSelectedIndex()==1){
@@ -947,6 +989,16 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnSeek5KeyPressed
 
+    private void ppTampilkanBaruBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanBaruBtnPrintActionPerformed
+        status="Baru";
+        BtnCariActionPerformed(null);
+    }//GEN-LAST:event_ppTampilkanBaruBtnPrintActionPerformed
+
+    private void ppTampilkanLamaBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanLamaBtnPrintActionPerformed
+        status="Lama";
+        BtnCariActionPerformed(null);
+    }//GEN-LAST:event_ppTampilkanLamaBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -984,6 +1036,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame3;
     private widget.Label jLabel6;
     private widget.Label jLabel8;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kddokter;
     private widget.TextBox kdpenjab;
     private widget.TextBox kdpoli;
@@ -999,6 +1052,8 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private widget.TextBox nmpoli;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelisi4;
+    private javax.swing.JMenuItem ppTampilkanBaru;
+    private javax.swing.JMenuItem ppTampilkanLama;
     private widget.Table table;
     private widget.Table table2;
     // End of variables declaration//GEN-END:variables
@@ -1018,9 +1073,9 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                        "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                        "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
                        "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where "+
-                       "reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and reg_periksa.no_rkm_medis like ? or "+
-                       "reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and pasien.nm_pasien like ? or "+
-                       "reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? order by reg_periksa.tgl_registrasi");
+                       "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and reg_periksa.no_rkm_medis like ? or "+
+                       "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and pasien.nm_pasien like ? or "+
+                       "reg_periksa.stts_daftar like '%"+status+"%' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? order by reg_periksa.tgl_registrasi");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -1126,9 +1181,9 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                        "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                        "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
                        "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where "+
-                       "stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and reg_periksa.no_rkm_medis like ? or "+
-                       "stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and pasien.nm_pasien like ? or "+
-                       "stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? order by reg_periksa.tgl_registrasi");
+                       "reg_periksa.stts_daftar like '%"+status+"%' and stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and reg_periksa.no_rkm_medis like ? or "+
+                       "reg_periksa.stts_daftar like '%"+status+"%' and stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and pasien.nm_pasien like ? or "+
+                       "reg_periksa.stts_daftar like '%"+status+"%' and stts<>'Batal' and reg_periksa.tgl_registrasi between ? and ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and penjab.png_jawab like ? and kabupaten.nm_kab like ? and kecamatan.nm_kec like ? order by reg_periksa.tgl_registrasi");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));

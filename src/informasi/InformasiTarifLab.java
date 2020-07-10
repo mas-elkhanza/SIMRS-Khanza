@@ -2,7 +2,6 @@ package informasi;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -21,7 +20,6 @@ import javax.swing.table.TableColumn;
  */
 public final class InformasiTarifLab extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
@@ -82,18 +80,6 @@ public final class InformasiTarifLab extends javax.swing.JDialog {
                 }
             });
         }
-        
-        try {            
-            ps=koneksi.prepareStatement(
-                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,penjab.png_jawab "+
-                    "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
-                    " jns_perawatan_lab.kd_jenis_prw like ? or  jns_perawatan_lab.nm_perawatan like ? or "+
-                    " penjab.png_jawab like ? or jns_perawatan_lab.total_byr like ?  "+
-                    "order by jns_perawatan_lab.kd_jenis_prw");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    
     }
     
 
@@ -307,20 +293,34 @@ public final class InformasiTarifLab extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");    
-
-            rs=ps.executeQuery();
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               Valid.SetAngka(rs.getDouble(3)),
-                               rs.getString(4)};
-                tabMode.addRow(data);
+            ps=koneksi.prepareStatement(
+                    "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,penjab.png_jawab "+
+                    "from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
+                    " jns_perawatan_lab.kd_jenis_prw like ? or  jns_perawatan_lab.nm_perawatan like ? or "+
+                    " penjab.png_jawab like ? or jns_perawatan_lab.total_byr like ?  "+
+                    "order by jns_perawatan_lab.kd_jenis_prw");
+            try {            
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");  
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2),Valid.SetAngka(rs.getDouble(3)),rs.getString(4)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());

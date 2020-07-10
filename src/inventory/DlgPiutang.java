@@ -1413,11 +1413,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             if(Sequel.cariInteger(
                                     "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",NoNota.getText())>0){
                                 Valid.MyReportqry("rptItemResepPiutang.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                                    "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                    "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
                                     "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
                                     "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                    "inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
                                     "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                                     "where piutang.nota_piutang='"+NoNota.getText()+"' and detailpiutang.aturan_pakai<>''",param);
@@ -1429,11 +1428,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             if(Sequel.cariInteger(
                                     "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",NoNota.getText())>0){
                                 Valid.MyReportqry("rptItemResepPiutang2.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                                    "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                    "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
                                     "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan,jenis.nama as jenis "+
                                     "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                    "inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
                                     "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                                     "inner join jenis on databarang.kdjns=jenis.kdjns "+
@@ -1446,11 +1444,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             if(Sequel.cariInteger(
                                     "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",NoNota.getText())>0){
                                 Valid.MyReportqry("rptItemResepPiutang3.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                                    "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                    "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
                                     "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
                                     "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                    "inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
                                     "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                                     "where piutang.nota_piutang='"+NoNota.getText()+"' and detailpiutang.aturan_pakai<>''",param);

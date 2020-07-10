@@ -1,13 +1,22 @@
 <?php 
     if(isset($_SESSION["ses_pasien"])){
-        $halaman                       = isset($_GET["hal"])?$_GET["hal"]:NULL;
-        $subhalaman                    = isset($_GET["act"])?$_GET["act"]:NULL;
+        $halaman                            = isset($_GET["hal"])?$_GET["hal"]:NULL;
+        $subhalaman                         = isset($_GET["act"])?$_GET["act"]:NULL;
         if(!isset($_SESSION["nm_pasien"])){
-            $queryuser                 = @bukaquery2("select pasien.nm_pasien,pasien.email,personal_pasien.gambar from pasien inner join personal_pasien on personal_pasien.no_rkm_medis=pasien.no_rkm_medis where pasien.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
+            $queryuser                      = @bukaquery2("select pasien.nm_pasien,pasien.email,pasien.jk,personal_pasien.gambar from pasien inner join personal_pasien on personal_pasien.no_rkm_medis=pasien.no_rkm_medis where pasien.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
             while($rsqueryuser = mysqli_fetch_array($queryuser)) {
-                $_SESSION["nm_pasien"] = $rsqueryuser["nm_pasien"];
-                $_SESSION["email"]     = $rsqueryuser["email"];
-                $_SESSION["photo"]     = host()."/webapps/photopasien/".$rsqueryuser["gambar"];
+                $_SESSION["nm_pasien"]      = $rsqueryuser["nm_pasien"];
+                $_SESSION["email"]          = $rsqueryuser["email"];
+                $_SESSION["photo"]          = "";
+                if(($rsqueryuser["gambar"]=="")||($rsqueryuser["gambar"]=="-")){
+                    if($rsqueryuser["jk"]=="L"){
+                        $_SESSION["photo"]  = "images/userlaki.png";
+                    }else{
+                        $_SESSION["photo"]  = "images/userperempuan.png";
+                    }
+                }else{
+                    $_SESSION["photo"]      = "http://".host()."/webapps/photopasien/".$rsqueryuser["gambar"];
+                }
             }
         }
     }else{
@@ -32,7 +41,7 @@
     <link href="css/style2.css" rel="stylesheet">
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 </head>
-<body class="theme-red">
+<body class="theme-pink">
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -251,7 +260,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
                 </ul>
             </div>
         </div>
@@ -261,7 +269,7 @@
         <aside id="leftsidebar" class="sidebar">
             <div class="user-info">
                 <div class="image">
-                    <img src="http://<?=$_SESSION["photo"];?>" width="55" height="48" alt="Photo" />&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#DDFF55">No.RM : <?=encrypt_decrypt($_SESSION["ses_pasien"],"d");?></font></b>
+                    <img src="<?=$_SESSION["photo"];?>" width="55" height="48" alt="Photo" />&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#DDFF55">No.RM : <?=encrypt_decrypt($_SESSION["ses_pasien"],"d");?></font></b>
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?=$_SESSION["nm_pasien"];?></div>
@@ -285,11 +293,40 @@
                             <span>Beranda</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="riwayat-periksa.php">
+                    <li <?=$halaman=="Booking"?"class='active'":""?>>
+                        <a href="index.php?act=BookingRegistrasi&hal=Booking">
+                            <i class="material-icons">library_books</i>
+                            <span>Booking Registrasi</span>
+                        </a>
+                    </li>
+                    <li <?=$halaman=="RiwayatPeriksa"?"class='active'":""?>>
+                        <a href="index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa">
                             <i class="material-icons">local_pharmacy</i>
                             <span>Riwayat Periksa</span>
                         </a>
+                    </li>
+                    <li <?=$halaman=="Surat"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">layers</i>
+                            <span>Permintaan Surat</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="SuratSakit"?"class='active'":""?>>
+                                <a href="index.php?act=SuratSakit&hal=Surat">Surat Cuti Sakit</a>
+                            </li>
+                            <li <?=$subhalaman=="SuratHamil"?"class='active'":""?>>
+                                <a href="index.php?act=SuratHamil&hal=Surat">Surat Hamil/Tidak</a>
+                            </li>
+                            <li <?=$subhalaman=="SuratBebasNarkoba"?"class='active'":""?>>
+                                <a href="index.php?act=SuratBebasNarkoba&hal=Surat">Surat Bebas Narkoba</a>
+                            </li>
+                            <li <?=$subhalaman=="SuratKontrol"?"class='active'":""?>>
+                                <a href="index.php?act=SuratKontrol&hal=Surat">Surat Kontrol/SKDP</a>
+                            </li>
+                            <li <?=$subhalaman=="SuratRujuk"?"class='active'":""?>>
+                                <a href="index.php?act=SuratRujuk&hal=Surat">Surat Rujukan</a>
+                            </li>
+                        </ul>
                     </li>
                     <li <?=$halaman=="Fasilitas"?"class='active'":""?>>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -332,6 +369,12 @@
                             <span>Ketersediaan Kamar</span>
                         </a>
                     </li>
+                    <li <?=$halaman=="Pengaduan"?"class='active'":""?>>
+                        <a href="index.php?act=Pengaduan&hal=Pengaduan">
+                            <i class="material-icons">message</i>
+                            <span>Pengaduan</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
@@ -343,150 +386,6 @@
             </div>
             <!-- #Footer -->
         </aside>
-        <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-        <aside id="rightsidebar" class="right-sidebar">
-            <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                <li role="presentation" class="active"><a href="#skins" data-toggle="tab">SKINS</a></li>
-                <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>
-            </ul>
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
-                    <ul class="demo-choose-skin">
-                        <li data-theme="red" class="active">
-                            <div class="red"></div>
-                            <span>Red</span>
-                        </li>
-                        <li data-theme="pink">
-                            <div class="pink"></div>
-                            <span>Pink</span>
-                        </li>
-                        <li data-theme="purple">
-                            <div class="purple"></div>
-                            <span>Purple</span>
-                        </li>
-                        <li data-theme="deep-purple">
-                            <div class="deep-purple"></div>
-                            <span>Deep Purple</span>
-                        </li>
-                        <li data-theme="indigo">
-                            <div class="indigo"></div>
-                            <span>Indigo</span>
-                        </li>
-                        <li data-theme="blue">
-                            <div class="blue"></div>
-                            <span>Blue</span>
-                        </li>
-                        <li data-theme="light-blue">
-                            <div class="light-blue"></div>
-                            <span>Light Blue</span>
-                        </li>
-                        <li data-theme="cyan">
-                            <div class="cyan"></div>
-                            <span>Cyan</span>
-                        </li>
-                        <li data-theme="teal">
-                            <div class="teal"></div>
-                            <span>Teal</span>
-                        </li>
-                        <li data-theme="green">
-                            <div class="green"></div>
-                            <span>Green</span>
-                        </li>
-                        <li data-theme="light-green">
-                            <div class="light-green"></div>
-                            <span>Light Green</span>
-                        </li>
-                        <li data-theme="lime">
-                            <div class="lime"></div>
-                            <span>Lime</span>
-                        </li>
-                        <li data-theme="yellow">
-                            <div class="yellow"></div>
-                            <span>Yellow</span>
-                        </li>
-                        <li data-theme="amber">
-                            <div class="amber"></div>
-                            <span>Amber</span>
-                        </li>
-                        <li data-theme="orange">
-                            <div class="orange"></div>
-                            <span>Orange</span>
-                        </li>
-                        <li data-theme="deep-orange">
-                            <div class="deep-orange"></div>
-                            <span>Deep Orange</span>
-                        </li>
-                        <li data-theme="brown">
-                            <div class="brown"></div>
-                            <span>Brown</span>
-                        </li>
-                        <li data-theme="grey">
-                            <div class="grey"></div>
-                            <span>Grey</span>
-                        </li>
-                        <li data-theme="blue-grey">
-                            <div class="blue-grey"></div>
-                            <span>Blue Grey</span>
-                        </li>
-                        <li data-theme="black">
-                            <div class="black"></div>
-                            <span>Black</span>
-                        </li>
-                    </ul>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="settings">
-                    <div class="demo-settings">
-                        <p>GENERAL SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Report Panel Usage</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Email Redirect</span>
-                                <div class="switch">
-                                    <label><input type="checkbox"><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                        <p>SYSTEM SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Notifications</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Auto Updates</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                        <p>ACCOUNT SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Offline</span>
-                                <div class="switch">
-                                    <label><input type="checkbox"><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Location Permission</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <!-- #END# Right Sidebar -->
     </section>
 
     <section class="content">
@@ -520,7 +419,9 @@
     <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/pages/tables/jquery-datatable.js"></script>
+    <script src="js/pages/index.js"></script>
     <script src="js/demo.js"></script>
+    <script src="conf/validator.js" type="text/javascript"></script>
 </body>
 </html>
 

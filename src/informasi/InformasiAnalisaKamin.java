@@ -5,7 +5,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -17,18 +16,15 @@ import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
 
 public class InformasiAnalisaKamin extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private int i=0;
 
@@ -99,14 +95,6 @@ public class InformasiAnalisaKamin extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
-        try {
-            ps=koneksi.prepareStatement("select kd_bangsal,nm_bangsal from bangsal where status='1' and kd_bangsal in (select kd_bangsal from kamar group by kd_bangsal) and kd_bangsal like ? order by nm_bangsal");
-            ps2=koneksi.prepareStatement("select kd_kamar,trf_kamar,kelas from kamar where kamar.statusdata='1' and kd_bangsal=? and status='ISI'");
-            ps3=koneksi.prepareStatement("select kd_kamar,trf_kamar from kamar where kamar.statusdata='1' and kd_bangsal=? and status='KOSONG'");   
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
      
     }
 
@@ -381,35 +369,70 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void prosesCari() {
        Valid.tabelKosong(tabMode);      
        try{   
-            ps.setString(1,"%"+kdbangsal.getText()+"%");
-            rs=ps.executeQuery();
-            i=1;
-            tabMode.addRow(new Object[]{"Kondisi kamar saat ini : ","Isi : "+Sequel.cariInteger("select count(kd_bangsal) from kamar where kamar.statusdata='1' and status='ISI'"),"Kosong : "+Sequel.cariInteger("select count(kd_bangsal) from kamar where kamar.statusdata='1' and status='KOSONG'")});
-            tabMode.addRow(new Object[]{"","",""});
-            while(rs.next()){               
-               tabMode.addRow(new Object[]{i+". Kamar : "+rs.getString("nm_bangsal"),"",""});
-               tabMode.addRow(new Object[]{"","Isi : "+Sequel.cariInteger("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal=? and status='ISI' ",rs.getString("kd_bangsal"))});
-               
-               ps2.setString(1,rs.getString("kd_bangsal"));
-               rs2=ps2.executeQuery();
-               while(rs2.next()){
-                   tabMode.addRow(new Object[]{"",rs2.getString("kd_kamar")+" "+rs2.getString("kelas"),Valid.SetAngka(rs2.getDouble("trf_kamar"))});
+           ps=koneksi.prepareStatement("select kd_bangsal,nm_bangsal from bangsal where status='1' and kd_bangsal in (select kd_bangsal from kamar group by kd_bangsal) and kd_bangsal like ? order by nm_bangsal");
+           try {
+                ps.setString(1,"%"+kdbangsal.getText()+"%");
+                rs=ps.executeQuery();
+                i=1;
+                tabMode.addRow(new Object[]{"Kondisi kamar saat ini : ","Isi : "+Sequel.cariInteger("select count(kd_bangsal) from kamar where kamar.statusdata='1' and status='ISI'"),"Kosong : "+Sequel.cariInteger("select count(kd_bangsal) from kamar where kamar.statusdata='1' and status='KOSONG'")});
+                tabMode.addRow(new Object[]{"","",""});
+                while(rs.next()){               
+                   tabMode.addRow(new Object[]{i+". Kamar : "+rs.getString("nm_bangsal"),"",""});
+                   tabMode.addRow(new Object[]{"","Isi : "+Sequel.cariInteger("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal=? and status='ISI' ",rs.getString("kd_bangsal"))});
+
+                   ps2=koneksi.prepareStatement("select kd_kamar,trf_kamar,kelas from kamar where kamar.statusdata='1' and kd_bangsal=? and status='ISI'");
+                   try {
+                        ps2.setString(1,rs.getString("kd_bangsal"));
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            tabMode.addRow(new Object[]{"",rs2.getString("kd_kamar")+" "+rs2.getString("kelas"),Valid.SetAngka(rs2.getDouble("trf_kamar"))});
+                        }
+                   } catch (Exception e) {
+                       System.out.println("Notifikasi : "+e);
+                   } finally{
+                       if(rs2!=null){
+                           rs2.close();
+                       }
+                       if(ps2!=null){
+                           ps2.close();
+                       }
+                   }
+                   
+                   tabMode.addRow(new Object[]{"","Kosong : "+Sequel.cariInteger("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal=? and status='KOSONG' ",rs.getString("kd_bangsal")),""});
+
+                   ps3=koneksi.prepareStatement("select kd_kamar,trf_kamar from kamar where kamar.statusdata='1' and kd_bangsal=? and status='KOSONG'");
+                   try {
+                        ps3.setString(1,rs.getString("kd_bangsal"));
+                        rs2=ps3.executeQuery();
+                        while(rs2.next()){
+                            tabMode.addRow(new Object[]{"",rs2.getString("kd_kamar"),Valid.SetAngka(rs2.getDouble("trf_kamar"))});
+                        } 
+                   } catch (Exception e) {
+                       System.out.println("Notifikasi : "+e);
+                   } finally{
+                       if(rs2!=null){
+                           rs2.close();
+                       }
+                       if(ps3!=null){
+                           ps3.close();
+                       }
+                   }
+                                         
+                   i++;
+                }    
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+               if(rs!=null){
+                   rs.close();
                }
-               
-               tabMode.addRow(new Object[]{"","Kosong : "+Sequel.cariInteger("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal=? and status='KOSONG' ",rs.getString("kd_bangsal")),""});
-               
-               ps3.setString(1,rs.getString("kd_bangsal"));
-               rs2=ps3.executeQuery();
-               while(rs2.next()){
-                   tabMode.addRow(new Object[]{"",rs2.getString("kd_kamar"),Valid.SetAngka(rs2.getDouble("trf_kamar"))});
-               }                  
-               i++;
-            } 
-                        
+               if(ps!=null){
+                   ps.close();
+               }
+           }          
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
     }
     
 }

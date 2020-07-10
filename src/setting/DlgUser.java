@@ -165,7 +165,9 @@ public class DlgUser extends javax.swing.JDialog {
                 "[A]Booking Periksa","[Q]Sirkulasi Barang Toko","[Q]Retur Jual Toko","[Q]Retur Jual Piutang","[Q]Sirkulasi Barang Toko 2","[Q]Keuntungan Barang Toko",
                 "[R]Ket Pengeluaran Penerima Dankes","[R]Ket Penghasilan Penerima Dankes","[R]Ukuran Rumah Penerima Dankes","[R]Dinding Rumah Penerima Dankes",
                 "[R]Lantai Rumah Penerima Dankes","[R]Atap Rumah Penerima Dankes","[R]Kepemilikan Rumah Penerima Dankes","[R]Kamar Mandi Penerima Dankes",
-                "[R]Dapur Rumah Penerima Dankes","[R]Kursi Rumah Penerima Dankes","[R]Kategori PHBS Penerima Dankes","[R]Elektronik Penerima Dankes"
+                "[R]Dapur Rumah Penerima Dankes","[R]Kursi Rumah Penerima Dankes","[R]Kategori PHBS Penerima Dankes","[R]Elektronik Penerima Dankes",
+                "[R]Ternak Penerima Dankes","[R]Jenis Simpanan Penerima Dankes","[L]Penilaian Awal Ralan Bayi/Anak","[R]Kategori Asnaf Penerima Dankes",
+                "[L]Master Masalah Keperawatan Bayi/Anak","[L]Master Imunisasi","[R]Patologis Penerima Dankes","[K]Cek No.Kartu PCare","[O]Surat Bebas Narkoba"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -341,6 +343,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -354,7 +357,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 643;i++) {
+        for (i = 0; i < 652;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -1737,6 +1740,33 @@ public class DlgUser extends javax.swing.JDialog {
                 case 642:
                     column.setPreferredWidth(157);
                     break;
+                case 643:
+                    column.setPreferredWidth(142);
+                    break;
+                case 644:
+                    column.setPreferredWidth(185);
+                    break;
+                case 645:
+                    column.setPreferredWidth(174);
+                    break;
+                case 646:
+                    column.setPreferredWidth(181);
+                    break;
+                case 647:
+                    column.setPreferredWidth(214);
+                    break;
+                case 648:
+                    column.setPreferredWidth(102);
+                    break;
+                case 649:
+                    column.setPreferredWidth(154);
+                    break;
+                case 650:
+                    column.setPreferredWidth(116);
+                    break;
+                case 651:
+                    column.setPreferredWidth(124);
+                    break;
                 default:
                     column.setPreferredWidth(130);
                     break;
@@ -2232,7 +2262,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2917,7 +2948,16 @@ public class DlgUser extends javax.swing.JDialog {
                     "zis_dapur_rumah_penerima_dankes='"+tbUser.getValueAt(i,639).toString()+"',"+
                     "zis_kursi_rumah_penerima_dankes='"+tbUser.getValueAt(i,640).toString()+"',"+
                     "zis_kategori_phbs_penerima_dankes='"+tbUser.getValueAt(i,641).toString()+"',"+
-                    "zis_elektronik_penerima_dankes='"+tbUser.getValueAt(i,642).toString()+"'");
+                    "zis_elektronik_penerima_dankes='"+tbUser.getValueAt(i,642).toString()+"',"+
+                    "zis_ternak_penerima_dankes='"+tbUser.getValueAt(i,643).toString()+"',"+
+                    "zis_jenis_simpanan_penerima_dankes='"+tbUser.getValueAt(i,644).toString()+"',"+
+                    "penilaian_awal_keperawatan_anak='"+tbUser.getValueAt(i,645).toString()+"',"+
+                    "zis_kategori_asnaf_penerima_dankes='"+tbUser.getValueAt(i,646).toString()+"',"+
+                    "master_masalah_keperawatan_anak='"+tbUser.getValueAt(i,647).toString()+"',"+
+                    "master_imunisasi='"+tbUser.getValueAt(i,648).toString()+"',"+
+                    "zis_patologis_penerima_dankes='"+tbUser.getValueAt(i,649).toString()+"',"+
+                    "pcare_cek_kartu='"+tbUser.getValueAt(i,650).toString()+"',"+
+                    "surat_bebas_narkoba='"+tbUser.getValueAt(i,651).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3641,7 +3681,16 @@ public class DlgUser extends javax.swing.JDialog {
                                     "zis_dapur_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,639).toString()+"',"+
                                     "zis_kursi_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,640).toString()+"',"+
                                     "zis_kategori_phbs_penerima_dankes='"+tbUser.getValueAt(barisdicopy,641).toString()+"',"+
-                                    "zis_elektronik_penerima_dankes='"+tbUser.getValueAt(barisdicopy,642).toString()+"'");
+                                    "zis_elektronik_penerima_dankes='"+tbUser.getValueAt(barisdicopy,642).toString()+"',"+
+                                    "zis_ternak_penerima_dankes='"+tbUser.getValueAt(barisdicopy,643).toString()+"',"+
+                                    "zis_jenis_simpanan_penerima_dankes='"+tbUser.getValueAt(barisdicopy,644).toString()+"',"+
+                                    "penilaian_awal_keperawatan_anak='"+tbUser.getValueAt(barisdicopy,645).toString()+"',"+
+                                    "zis_kategori_asnaf_penerima_dankes='"+tbUser.getValueAt(barisdicopy,646).toString()+"',"+
+                                    "master_masalah_keperawatan_anak='"+tbUser.getValueAt(barisdicopy,647).toString()+"',"+
+                                    "master_imunisasi='"+tbUser.getValueAt(barisdicopy,648).toString()+"',"+
+                                    "zis_patologis_penerima_dankes='"+tbUser.getValueAt(barisdicopy,649).toString()+"',"+
+                                    "pcare_cek_kartu='"+tbUser.getValueAt(barisdicopy,650).toString()+"',"+
+                                    "surat_bebas_narkoba='"+tbUser.getValueAt(barisdicopy,651).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3959,7 +4008,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "toko_sirkulasi2,toko_keuntungan_barang,zis_pengeluaran_penerima_dankes,zis_penghasilan_penerima_dankes,"+
                         "zis_ukuran_rumah_penerima_dankes,zis_dinding_rumah_penerima_dankes,zis_lantai_rumah_penerima_dankes,zis_atap_rumah_penerima_dankes,"+
                         "zis_kepemilikan_rumah_penerima_dankes,zis_kamar_mandi_penerima_dankes,zis_dapur_rumah_penerima_dankes,zis_kursi_rumah_penerima_dankes,"+
-                        "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes from user order by AES_DECRYPT(id_user,'nur')");
+                        "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes,zis_ternak_penerima_dankes,zis_jenis_simpanan_penerima_dankes,"+
+                        "penilaian_awal_keperawatan_anak,zis_kategori_asnaf_penerima_dankes,master_masalah_keperawatan_anak,master_imunisasi,"+
+                        "zis_patologis_penerima_dankes,pcare_cek_kartu,surat_bebas_narkoba from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4614,7 +4665,16 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("zis_dapur_rumah_penerima_dankes"),
                                rs.getBoolean("zis_kursi_rumah_penerima_dankes"),
                                rs.getBoolean("zis_kategori_phbs_penerima_dankes"),
-                               rs.getBoolean("zis_elektronik_penerima_dankes")
+                               rs.getBoolean("zis_elektronik_penerima_dankes"),
+                               rs.getBoolean("zis_ternak_penerima_dankes"),
+                               rs.getBoolean("zis_jenis_simpanan_penerima_dankes"),
+                               rs.getBoolean("penilaian_awal_keperawatan_anak"),
+                               rs.getBoolean("zis_kategori_asnaf_penerima_dankes"),
+                               rs.getBoolean("master_masalah_keperawatan_anak"),
+                               rs.getBoolean("master_imunisasi"),
+                               rs.getBoolean("zis_patologis_penerima_dankes"),
+                               rs.getBoolean("pcare_cek_kartu"),
+                               rs.getBoolean("surat_bebas_narkoba")
                             });
                         }   
                     } catch (Exception e) {
@@ -5258,7 +5318,16 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("zis_dapur_rumah_penerima_dankes"),
                            rs.getBoolean("zis_kursi_rumah_penerima_dankes"),
                            rs.getBoolean("zis_kategori_phbs_penerima_dankes"),
-                           rs.getBoolean("zis_elektronik_penerima_dankes")
+                           rs.getBoolean("zis_elektronik_penerima_dankes"),
+                           rs.getBoolean("zis_ternak_penerima_dankes"),
+                           rs.getBoolean("zis_jenis_simpanan_penerima_dankes"),
+                           rs.getBoolean("penilaian_awal_keperawatan_anak"),
+                           rs.getBoolean("zis_kategori_asnaf_penerima_dankes"),
+                           rs.getBoolean("master_masalah_keperawatan_anak"),
+                           rs.getBoolean("master_imunisasi"),
+                           rs.getBoolean("zis_patologis_penerima_dankes"),
+                           rs.getBoolean("pcare_cek_kartu"),
+                           rs.getBoolean("surat_bebas_narkoba")
                         });
                     }                                             
                  }

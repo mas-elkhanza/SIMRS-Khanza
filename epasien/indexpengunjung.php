@@ -79,8 +79,16 @@
                               <h4 class="wow fadeInUp" data-wow-delay="0.4s">Pengumuman/Informasi</h4>
                               <div class="latest-stories">
                                    <div class="stories-info">
-                                       <p><i class="fa fa-bell"></i> <?=$isipengumuman;?></p>
-                                       <span><?=$tanggalpengumuman;?>, oleh <?=$namapegawai;?></span>
+                                       <?php
+                                            $querypengumuman = bukaquery("select pegawai.nama,date_format(pengumuman_epasien.tanggal,'%d/%m/%Y')as tanggal,pengumuman_epasien.pengumuman from pengumuman_epasien inner join pegawai on pengumuman_epasien.nik=pegawai.nik order by pengumuman_epasien.tanggal desc limit 1");
+                                            if($pengumuman = mysqli_fetch_array($querypengumuman)) {
+                                                echo "<p><i class='fa fa-bell'></i> ".$pengumuman["pengumuman"]."</p>
+                                                      <span>".$pengumuman["tanggal"].", oleh ".$pengumuman["nama"]."</span>";
+                                            }else{
+                                                echo "<p><i class='fa fa-bell'></i> Tidak ada pengumuman</p>
+                                                      <span>".date('d/m/Y').", oleh Admin</span>";
+                                            }
+                                       ?>
                                    </div>
                               </div>
                          </div>
@@ -106,7 +114,7 @@
                     <div class="col-md-12 col-sm-12 border-top">
                          <div class="col-md-4 col-sm-6">
                               <div class="copyright-text"> 
-                                   <p>Copyright &copy; 2020 <?=$_SESSION["nama_instansi"];?> | SIMKES Khanza</p>
+                                   <p>Copyright &copy; 2020 <?=$_SESSION["nama_instansi"];?> | <a href="http://www.yaski.or.id">www.yaski.or.id</a></p>
                               </div>
                          </div>
                          <div class="col-md-6 col-sm-6">
@@ -114,6 +122,7 @@
                                   <center>
                                      <a href="index.php?act=CekPoli">Poli/Unit Tersedia</a>
                                      <a href="index.php?act=CekAsuransi">Kerja Sama Asuransi</a>
+                                     <?=$stokdarah=="aktif"?"<a href=\"index.php?act=CekStokDarah\">Ketersediaan Darah</a>":"";?>
                                   </center>
                               </div>
                          </div>
