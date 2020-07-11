@@ -616,6 +616,7 @@ import bridging.InhealthTindakanRalan;
 import bridging.InhealthTindakanRanap;
 import bridging.CoronaPasien;
 import bridging.INACBGPerawatanCorona;
+import fungsi.VersionKhanza;
 import grafikanalisa.GrafikInventarisPerJenis;
 import grafikanalisa.GrafikInventarisPerRuang;
 import grafikanalisa.GrafikItemApotekPerGolongan;
@@ -8149,14 +8150,16 @@ public class frmUtama extends javax.swing.JFrame {
     }// GEN-LAST:event_BtnLogActionPerformed
 
     private void BtnLoginActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnLoginActionPerformed
-        if (edAdmin.getText().trim().equals("")) {
-            Valid.textKosong(edAdmin, "ID User");
-        } else if (edPwd.getText().trim().equals("")) {
-            Valid.textKosong(edPwd, "Password");
-        } else {
-            try {
-                akses.setData(edAdmin.getText(), edPwd.getText());
-                /*
+        String versi = Sequel.cariIsi("select version from version_control");
+        if (versi.equals(VersionKhanza.VERSION)) {
+            if (edAdmin.getText().trim().equals("")) {
+                Valid.textKosong(edAdmin, "ID User");
+            } else if (edPwd.getText().trim().equals("")) {
+                Valid.textKosong(edPwd, "Password");
+            } else {
+                try {
+                    akses.setData(edAdmin.getText(), edPwd.getText());
+                    /*
                  * if(edAdmin.getText().equals("admin") &&
                  * edPwd.getText().equals("akusayangsamakamu122456")){ BtnMenu.setEnabled(true);
                  * BtnToolReg.setEnabled(true); BtnToolKamnap.setEnabled(true);
@@ -8166,119 +8169,122 @@ public class frmUtama extends javax.swing.JFrame {
                  * 
                  * DlgLogin.dispose(); BtnLog.setText("Log Out"); MnLogin.setText("Log Out");
                  * lblStts.setText("Admin : "); lblUser.setText("Admin Utama"); }else
-                 */
-                if (akses.getjml1() >= 1) {
-                    BtnMenu.setEnabled(true);
-                    BtnToolReg.setEnabled(true);
-                    BtnToolKamnap.setEnabled(true);
-                    BtnToolKasir.setEnabled(true);
-                    btnToolIGD.setEnabled(true);
-                    btnSpri.setEnabled(true);
-                    btnToolBcdRalan.setEnabled(true);
-                    btnToolBcdRanap.setEnabled(true);
-                    btnPermintaanLab.setEnabled(true);
-                    btnLaboratorium.setEnabled(true);
-                    btnPermintaanRadiologi.setEnabled(true);
-                    btnPeriksaRadiologi.setEnabled(true);
-                    btnInputPenjualan.setEnabled(true);
-                    btnDataPenjualan.setEnabled(true);
-                    btnDataPenyerahanDarah.setEnabled(true);
-                    btnDaftarPermintaanResep.setEnabled(true);
-                    btnResepObatDepan.setEnabled(true);
-                    MnGantiPassword.setEnabled(false);
-
-                    DlgLogin.dispose();
-                    BtnLog.setText("Log Out");
-                    MnLogin.setText("Log Out");
-                    lblStts.setText("Admin : ");
-                    lblUser.setText("Admin Utama");
-                    if (AKTIFKANTRACKSQL.equals("yes")) {
-                        Sequel.menyimpan("tracker", "'Admin Utama',current_date(),current_time()", "Login");
-                    }
-                } else if (akses.getjml2() >= 1) {
-                    BtnMenu.setEnabled(true);
-                    DlgLogin.dispose();
-                    BtnLog.setText("Log Out");
-                    MnLogin.setText("Log Out");
-                    lblStts.setText("Admin : ");
-                    lblUser.setText(akses.getkode());
-                    MnGantiPassword.setEnabled(true);
-                    BtnToolReg.setEnabled(akses.getregistrasi());
-                    if ((akses.getkamar_inap() == true) || (akses.getbilling_ranap() == true)
-                            || (akses.gettindakan_ranap() == true)) {
+                     */
+                    if (akses.getjml1() >= 1) {
+                        BtnMenu.setEnabled(true);
+                        BtnToolReg.setEnabled(true);
                         BtnToolKamnap.setEnabled(true);
-                    } else {
-                        BtnToolKamnap.setEnabled(akses.getkamar_inap());
-                    }
-
-                    if ((akses.getkasir_ralan() == true) || (akses.getbilling_ralan() == true)) {
                         BtnToolKasir.setEnabled(true);
-                    } else {
-                        BtnToolKasir.setEnabled(akses.getkasir_ralan());
-                    }
-
-                    if ((akses.getpermintaan_radiologi() == true) || (akses.getperiksa_radiologi() == true)) {
-                        btnPermintaanRadiologi.setEnabled(true);
-                    } else {
-                        btnPermintaanRadiologi.setEnabled(akses.getpermintaan_radiologi());
-                    }
-
-                    if ((akses.getpermintaan_lab() == true) || (akses.getperiksa_lab() == true)) {
+                        btnToolIGD.setEnabled(true);
+                        btnSpri.setEnabled(true);
+                        btnToolBcdRalan.setEnabled(true);
+                        btnToolBcdRanap.setEnabled(true);
                         btnPermintaanLab.setEnabled(true);
-                    } else {
-                        btnPermintaanLab.setEnabled(akses.getpermintaan_lab());
+                        btnLaboratorium.setEnabled(true);
+                        btnPermintaanRadiologi.setEnabled(true);
+                        btnPeriksaRadiologi.setEnabled(true);
+                        btnInputPenjualan.setEnabled(true);
+                        btnDataPenjualan.setEnabled(true);
+                        btnDataPenyerahanDarah.setEnabled(true);
+                        btnDaftarPermintaanResep.setEnabled(true);
+                        btnResepObatDepan.setEnabled(true);
+                        MnGantiPassword.setEnabled(false);
+
+                        DlgLogin.dispose();
+                        BtnLog.setText("Log Out");
+                        MnLogin.setText("Log Out");
+                        lblStts.setText("Admin : ");
+                        lblUser.setText("Admin Utama");
+                        if (AKTIFKANTRACKSQL.equals("yes")) {
+                            Sequel.menyimpan("tracker", "'Admin Utama',current_date(),current_time()", "Login");
+                        }
+                    } else if (akses.getjml2() >= 1) {
+                        BtnMenu.setEnabled(true);
+                        DlgLogin.dispose();
+                        BtnLog.setText("Log Out");
+                        MnLogin.setText("Log Out");
+                        lblStts.setText("Admin : ");
+                        lblUser.setText(akses.getkode());
+                        MnGantiPassword.setEnabled(true);
+                        BtnToolReg.setEnabled(akses.getregistrasi());
+                        if ((akses.getkamar_inap() == true) || (akses.getbilling_ranap() == true)
+                                || (akses.gettindakan_ranap() == true)) {
+                            BtnToolKamnap.setEnabled(true);
+                        } else {
+                            BtnToolKamnap.setEnabled(akses.getkamar_inap());
+                        }
+
+                        if ((akses.getkasir_ralan() == true) || (akses.getbilling_ralan() == true)) {
+                            BtnToolKasir.setEnabled(true);
+                        } else {
+                            BtnToolKasir.setEnabled(akses.getkasir_ralan());
+                        }
+
+                        if ((akses.getpermintaan_radiologi() == true) || (akses.getperiksa_radiologi() == true)) {
+                            btnPermintaanRadiologi.setEnabled(true);
+                        } else {
+                            btnPermintaanRadiologi.setEnabled(akses.getpermintaan_radiologi());
+                        }
+
+                        if ((akses.getpermintaan_lab() == true) || (akses.getperiksa_lab() == true)) {
+                            btnPermintaanLab.setEnabled(true);
+                        } else {
+                            btnPermintaanLab.setEnabled(akses.getpermintaan_lab());
+                        }
+
+                        btnToolIGD.setEnabled(akses.getigd());
+                        btnSpri.setEnabled(akses.getigd());
+                        btnToolBcdRalan.setEnabled(akses.getbarcoderalan());
+                        btnToolBcdRanap.setEnabled(akses.getbarcoderanap());
+                        btnLaboratorium.setEnabled(akses.getperiksa_lab());
+                        btnPeriksaRadiologi.setEnabled(akses.getperiksa_radiologi());
+                        btnInputPenjualan.setEnabled(akses.getpenjualan_obat());
+                        btnDataPenjualan.setEnabled(akses.getpenjualan_obat());
+                        btnDataPenyerahanDarah.setEnabled(akses.getutd_penyerahan_darah());
+                        btnDaftarPermintaanResep.setEnabled(akses.getresep_dokter());
+                        btnResepObatDepan.setEnabled(akses.getresep_obat());
+                        if (AKTIFKANTRACKSQL.equals("yes")) {
+                            Sequel.menyimpan("tracker", "'" + edAdmin.getText() + "',current_date(),current_time()",
+                                    "Login");
+                        }
+                    } else if ((akses.getjml1() == 0) && (akses.getjml2() == 0)) {
+                        JOptionPane.showMessageDialog(null, "Maaf, Gagal login. ID User atau password ada yang salah ...!");
+                        BtnToolReg.setEnabled(false);
+                        BtnToolKamnap.setEnabled(false);
+                        BtnToolKasir.setEnabled(false);
+                        MnGantiPassword.setEnabled(false);
+                        btnToolIGD.setEnabled(false);
+                        btnSpri.setEnabled(false);
+                        btnToolBcdRalan.setEnabled(false);
+                        btnToolBcdRanap.setEnabled(false);
+                        btnPermintaanLab.setEnabled(false);
+                        btnLaboratorium.setEnabled(false);
+                        btnPermintaanRadiologi.setEnabled(false);
+                        btnPeriksaRadiologi.setEnabled(false);
+                        btnInputPenjualan.setEnabled(false);
+                        btnDataPenjualan.setEnabled(false);
+                        btnDataPenyerahanDarah.setEnabled(false);
+                        btnDaftarPermintaanResep.setEnabled(false);
+                        btnResepObatDepan.setEnabled(false);
+                        edAdmin.setText("");
+                        edPwd.setText("");
+
+                        BtnMenu.setEnabled(false);
+
+                        edAdmin.requestFocus();
+                        BtnLog.setText("Log In");
+                        MnLogin.setText("Log In");
+                        lblStts.setText("Status Admin : ");
+                        lblUser.setText("Log Out");
                     }
-
-                    btnToolIGD.setEnabled(akses.getigd());
-                    btnSpri.setEnabled(akses.getigd());
-                    btnToolBcdRalan.setEnabled(akses.getbarcoderalan());
-                    btnToolBcdRanap.setEnabled(akses.getbarcoderanap());
-                    btnLaboratorium.setEnabled(akses.getperiksa_lab());
-                    btnPeriksaRadiologi.setEnabled(akses.getperiksa_radiologi());
-                    btnInputPenjualan.setEnabled(akses.getpenjualan_obat());
-                    btnDataPenjualan.setEnabled(akses.getpenjualan_obat());
-                    btnDataPenyerahanDarah.setEnabled(akses.getutd_penyerahan_darah());
-                    btnDaftarPermintaanResep.setEnabled(akses.getresep_dokter());
-                    btnResepObatDepan.setEnabled(akses.getresep_obat());
-                    if (AKTIFKANTRACKSQL.equals("yes")) {
-                        Sequel.menyimpan("tracker", "'" + edAdmin.getText() + "',current_date(),current_time()",
-                                "Login");
-                    }
-                } else if ((akses.getjml1() == 0) && (akses.getjml2() == 0)) {
-                    JOptionPane.showMessageDialog(null, "Maaf, Gagal login. ID User atau password ada yang salah ...!");
-                    BtnToolReg.setEnabled(false);
-                    BtnToolKamnap.setEnabled(false);
-                    BtnToolKasir.setEnabled(false);
-                    MnGantiPassword.setEnabled(false);
-                    btnToolIGD.setEnabled(false);
-                    btnSpri.setEnabled(false);
-                    btnToolBcdRalan.setEnabled(false);
-                    btnToolBcdRanap.setEnabled(false);
-                    btnPermintaanLab.setEnabled(false);
-                    btnLaboratorium.setEnabled(false);
-                    btnPermintaanRadiologi.setEnabled(false);
-                    btnPeriksaRadiologi.setEnabled(false);
-                    btnInputPenjualan.setEnabled(false);
-                    btnDataPenjualan.setEnabled(false);
-                    btnDataPenyerahanDarah.setEnabled(false);
-                    btnDaftarPermintaanResep.setEnabled(false);
-                    btnResepObatDepan.setEnabled(false);
-                    edAdmin.setText("");
-                    edPwd.setText("");
-
-                    BtnMenu.setEnabled(false);
-
-                    edAdmin.requestFocus();
-                    BtnLog.setText("Log In");
-                    MnLogin.setText("Log In");
-                    lblStts.setText("Status Admin : ");
-                    lblUser.setText("Log Out");
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
                 }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
             }
+        }else{
+            JOptionPane.showMessageDialog(this, "ASTAGHFIRULLAH\nSIMRSKhanza Anda Belum Update, mohon Restart Komputer Dahulu, Terima Kasih.","PERINGATAN",JOptionPane.ERROR_MESSAGE);
         }
-    }// GEN-LAST:event_BtnLoginActionPerformed
+    }
 
     private void BtnToolKamnapActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnToolKamnapActionPerformed
         isTutup();
@@ -15352,32 +15358,32 @@ public class frmUtama extends javax.swing.JFrame {
     private void btnPendonorDarahActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        UTDPendonor form=new UTDPendonor(this,false);
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        UTDPendonor form = new UTDPendonor(this, false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnSuplierTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoSuplier suplier=new TokoSuplier(this,false);
+        TokoSuplier suplier = new TokoSuplier(this, false);
         suplier.isCek();
         suplier.emptTeks();
-        suplier.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        suplier.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         suplier.setLocationRelativeTo(PanelUtama);
         suplier.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnJenisTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoJenis aplikasi=new TokoJenis(this,false);
+        TokoJenis aplikasi = new TokoJenis(this, false);
         aplikasi.isCek();
         aplikasi.emptTeks();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
@@ -15385,24 +15391,24 @@ public class frmUtama extends javax.swing.JFrame {
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnSetHargaTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSetHargaToko aplikasi=new DlgSetHargaToko(this,false);
+        DlgSetHargaToko aplikasi = new DlgSetHargaToko(this, false);
         aplikasi.emptTeks();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnBarangTokoActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        TokoBarang form=new TokoBarang(this,false);
+        TokoBarang form = new TokoBarang(this, false);
         form.emptTeks();
         form.onCari();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
@@ -15410,19 +15416,19 @@ public class frmUtama extends javax.swing.JFrame {
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnPenagihanPiutangPasienActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        KeuanganPenagihanPiutangPasien form=new KeuanganPenagihanPiutangPasien(this,false);
+        KeuanganPenagihanPiutangPasien form = new KeuanganPenagihanPiutangPasien(this, false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
-    
+
     private void btnGrafikItemApotekPerGolonganActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         DlgHome.dispose();
@@ -16947,6 +16953,7 @@ public class frmUtama extends javax.swing.JFrame {
      *
      */
     public void isWall() {
+        String versi = Sequel.cariIsi("select version from version_control");
         try {
             ps = koneksi.prepareStatement(
                     "select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo from setting");
@@ -16954,7 +16961,7 @@ public class frmUtama extends javax.swing.JFrame {
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     jLabel8.setText(rs.getString(1));
-                    this.setTitle("SIM " + rs.getString("nama_instansi"));
+                    this.setTitle("SIM " + rs.getString("nama_instansi")+" Versi "+versi);
                     jLabel11.setText(rs.getString(2) + ", " + rs.getString(3) + ", " + rs.getString(4) + " ");
                     akses.setnamars(rs.getString("nama_instansi"));
                     akses.setalamatrs(rs.getString("alamat_instansi"));
