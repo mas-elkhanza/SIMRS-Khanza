@@ -623,7 +623,6 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         kamar.bangsal.emptTeks();
         kamar.bangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         kamar.bangsal.setLocationRelativeTo(internalFrame1);
-        kamar.bangsal.setAlwaysOnTop(rootPaneCheckingEnabled);
         kamar.bangsal.setVisible(true);
     }//GEN-LAST:event_BtnSeek2ActionPerformed
 
@@ -693,7 +692,6 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         carabayar.isCek();
         carabayar.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         carabayar.setLocationRelativeTo(internalFrame1);
-        kamar.bangsal.setAlwaysOnTop(rootPaneCheckingEnabled);
         carabayar.setVisible(true);
     }//GEN-LAST:event_BtnSeek3ActionPerformed
 
