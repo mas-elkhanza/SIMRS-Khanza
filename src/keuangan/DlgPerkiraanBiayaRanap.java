@@ -56,7 +56,7 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
     private PreparedStatement ps, ps2;
     private ResultSet rs, rs2;
     private final Properties prop = new Properties();
-    public DlgKamar kamar = new DlgKamar(null, true);
+    public DlgCariBangsal bangsal = new DlgCariBangsal(null, true);
     private DlgPenanggungJawab carabayar = new DlgPenanggungJawab(null, true);
     private double all = 0, Laborat = 0, Radiologi = 0, Operasi = 0, Obat = 0, Ranap_Dokter = 0, Ranap_Paramedis = 0, Ranap_Dokter_Paramedis = 0, Ralan_Dokter = 0,
             Ralan_Paramedis = 0, Ralan_Dokter_Paramedis = 0, Tambahan = 0, Potongan = 0, Kamar = 0, Registrasi = 0, Harian = 0, Retur_Obat = 0, Resep_Pulang = 0,
@@ -148,18 +148,16 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
             });
         }
 
-        kamar.getTable().addKeyListener(new KeyListener() {
+        bangsal.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if (akses.getform().equals("DlgKamarInap")) {
                     if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                        kamar.dispose();
+                        bangsal.dispose();
                     }
-                }
             }
 
             @Override
@@ -167,7 +165,7 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
             }
         });
 
-        kamar.bangsal.addWindowListener(new WindowListener() {
+        bangsal.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
             }
@@ -178,15 +176,11 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
 
             @Override
             public void windowClosed(WindowEvent e) {
-                if (akses.getform().equals("DlgKamarInap")) {
-                    if (kamar.bangsal.getTable().getSelectedRow() != -1) {
-                        txtKdBangsal.setText(kamar.bangsal.getTable()
-                                .getValueAt(kamar.bangsal.getTable().getSelectedRow(), 0).toString());
-                        NmBangsal.setText(kamar.bangsal.getTable()
-                                .getValueAt(kamar.bangsal.getTable().getSelectedRow(), 1).toString());
-                    }
-                    TCari.requestFocus();
+                if (bangsal.getTable().getSelectedRow() != -1) {
+                    txtKdBangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 0).toString());
+                    NmBangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 1).toString());
                 }
+                txtKdBangsal.requestFocus();
             }
 
             @Override
@@ -618,12 +612,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
-        akses.setform("DlgKamarInap");
-        kamar.bangsal.isCek();
-        kamar.bangsal.emptTeks();
-        kamar.bangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
-        kamar.bangsal.setLocationRelativeTo(internalFrame1);
-        kamar.bangsal.setVisible(true);
+//        akses.setform("DlgKamarInap");
+        bangsal.isCek();
+        bangsal.emptTeks();
+        bangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        bangsal.setLocationRelativeTo(internalFrame1);
+        bangsal.setVisible(true);
     }//GEN-LAST:event_BtnSeek2ActionPerformed
 
     private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek2KeyPressed
