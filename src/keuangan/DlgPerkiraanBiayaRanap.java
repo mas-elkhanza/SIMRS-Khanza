@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -55,8 +56,8 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
     private PreparedStatement ps, ps2;
     private ResultSet rs, rs2;
     private final Properties prop = new Properties();
-    public DlgKamar kamar = new DlgKamar(null, false);
-    private DlgPenanggungJawab carabayar = new DlgPenanggungJawab(null, false);
+    public DlgKamar kamar = new DlgKamar(null, true);
+    private DlgPenanggungJawab carabayar = new DlgPenanggungJawab(null, true);
     private double all = 0, Laborat = 0, Radiologi = 0, Operasi = 0, Obat = 0, Ranap_Dokter = 0, Ranap_Paramedis = 0, Ranap_Dokter_Paramedis = 0, Ralan_Dokter = 0,
             Ralan_Paramedis = 0, Ralan_Dokter_Paramedis = 0, Tambahan = 0, Potongan = 0, Kamar = 0, Registrasi = 0, Harian = 0, Retur_Obat = 0, Resep_Pulang = 0,
             ttlLaborat = 0, ttlRadiologi = 0, ttlOperasi = 0, ttlObat = 0, ttlRanap_Dokter = 0, ttlRanap_Paramedis = 0, ttlRalan_Dokter = 0,
@@ -622,6 +623,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         kamar.bangsal.emptTeks();
         kamar.bangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         kamar.bangsal.setLocationRelativeTo(internalFrame1);
+        kamar.bangsal.setAlwaysOnTop(rootPaneCheckingEnabled);
         kamar.bangsal.setVisible(true);
     }//GEN-LAST:event_BtnSeek2ActionPerformed
 
@@ -691,6 +693,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         carabayar.isCek();
         carabayar.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         carabayar.setLocationRelativeTo(internalFrame1);
+        kamar.bangsal.setAlwaysOnTop(rootPaneCheckingEnabled);
         carabayar.setVisible(true);
     }//GEN-LAST:event_BtnSeek3ActionPerformed
 
