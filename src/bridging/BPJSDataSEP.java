@@ -4383,16 +4383,16 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             jasaraharja="";BPJS="";Taspen="";Asabri="";
             penjamin="";
             if(ChkJasaRaharja.isSelected()==true){
-                jasaraharja="1,";
+                jasaraharja="Jasa Raharja PT";
             }
             if(ChkBPJSTenaga.isSelected()==true){
-                BPJS="2,";
+                BPJS="BPJS Ketenagakerjaan";
             }
             if(ChkTaspen.isSelected()==true){
-                Taspen="3,";
+                Taspen="TASPEN PT";
             }
             if(ChkAsa.isSelected()==true){
-                Asabri="4,";
+                Asabri="ASABRI PT";
             }
             
             if((ChkJasaRaharja.isSelected()==true)||(ChkBPJSTenaga.isSelected()==true)||(ChkTaspen.isSelected()==true)||(ChkAsa.isSelected()==true)){

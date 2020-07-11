@@ -2,8 +2,10 @@
 <!--
 *** GENERATED FROM project.xml - DO NOT EDIT  ***
 ***         EDIT ../build.xml INSTEAD         ***
+
 For the purpose of easier reading the script
 is divided into following sections:
+
   - initialization
   - compilation
   - jar
@@ -15,6 +17,7 @@ is divided into following sections:
   - test debugging
   - applet
   - cleanup
+
         -->
 <project xmlns:if="ant:if" xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxrpc="http://www.netbeans.org/ns/j2se-project/jax-rpc" xmlns:unless="ant:unless" basedir=".." default="default" name="SIMRSKhanza-impl">
     <import file="build-native.xml"/>
