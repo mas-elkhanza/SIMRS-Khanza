@@ -655,7 +655,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "zis_kepemilikan_rumah_penerima_dankes,zis_kamar_mandi_penerima_dankes,zis_dapur_rumah_penerima_dankes,zis_kursi_rumah_penerima_dankes,"+
                         "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes,zis_ternak_penerima_dankes,zis_jenis_simpanan_penerima_dankes,"+
                         "penilaian_awal_keperawatan_anak,zis_kategori_asnaf_penerima_dankes,master_masalah_keperawatan_anak,master_imunisasi,"+
-                        "zis_patologis_penerima_dankes,pcare_cek_kartu,surat_bebas_narkoba,surat_keterangan_covid from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "zis_patologis_penerima_dankes,pcare_cek_kartu,surat_bebas_narkoba,surat_keterangan_covid,pemakaian_air_tanah from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1318,6 +1318,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[F]Asal Hibah".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[F]Asal Hibah",rs.getBoolean("asal_hibah")});
+                    }
+                    
+                    if("[F]Pemakaian Air Tanah".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[F]Pemakaian Air Tanah",rs.getBoolean("pemakaian_air_tanah")});
                     }
                     
                     if("[G]Jenis Parkir".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -3941,6 +3945,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[F]Asal Hibah".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","asal_hibah='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[F]Pemakaian Air Tanah".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pemakaian_air_tanah='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[G]Jenis Parkir".equals(tbUser.getValueAt(i,1).toString())){

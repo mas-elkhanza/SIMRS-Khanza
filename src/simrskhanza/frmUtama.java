@@ -495,6 +495,7 @@ import inventaris.KeslingLimbahB3Medis;
 import inventaris.KeslingLimbahDomestik;
 import inventaris.KeslingMutuAirLimbah;
 import inventaris.KeslingPemakaiaanAirPDAM;
+import inventaris.KeslingPemakaiaanAirTanah;
 import inventaris.KeslingPestControl;
 import inventaris.PengajuanInventaris;
 import inventaris.RekapPengajuanInventarisDepartemen;
@@ -588,6 +589,7 @@ import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDeteksiDiniCorona;
+import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
 import rekammedis.RMPenilaianAwalKeperawatanRalan;
@@ -16140,7 +16142,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnPenilaianAwalRalanBayiActionPerformed(java.awt.event.ActionEvent evt) {
-        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianAwalKeperawatanBayiAnak aplikasi=new RMPenilaianAwalKeperawatanBayiAnak(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     private void btnZISKategoriAsnafPenerimaDankesActionPerformed(java.awt.event.ActionEvent evt) {
@@ -16228,6 +16240,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPemakaianAirTanahActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeslingPemakaiaanAirTanah form=new KeslingPemakaiaanAirTanah(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
     
@@ -16836,7 +16861,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
             btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
-            btnSuratBebasNarkoba,btnSuratKeteranganCovid;
+            btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah;
     
     public void isWall(){
         try{            
@@ -17725,6 +17750,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpemakaian_air_pdam()==true){
                 Panelmenu.add(btnPemakaianAirPDAM);
+                jmlmenu++;
+            }
+            
+            if(akses.getpemakaian_air_tanah()==true){
+                Panelmenu.add(btnPemakaianAirTanah);
                 jmlmenu++;
             } 
             
@@ -20989,6 +21019,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpemakaian_air_pdam()==true){
             Panelmenu.add(btnPemakaianAirPDAM);
+            jmlmenu++;
+        }
+        
+        if(akses.getpemakaian_air_tanah()==true){
+            Panelmenu.add(btnPemakaianAirTanah);
             jmlmenu++;
         }
         
@@ -24543,6 +24578,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpemakaian_air_pdam()==true){
             if(btnPemakaianAirPDAM.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPemakaianAirPDAM);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(akses.getpemakaian_air_tanah()==true){
+            if(btnPemakaianAirTanah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemakaianAirTanah);
                 jmlmenu++;
             }                
         } 
@@ -30293,6 +30335,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratKeteranganCovid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuratKeteranganCovidActionPerformed(evt);
+            }
+        });
+        
+        btnPemakaianAirTanah = new widget.ButtonBig();
+        btnPemakaianAirTanah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Ecology_tap_water_2992443.png"))); 
+        btnPemakaianAirTanah.setText("Pemakaian Air Tanah");
+        btnPemakaianAirTanah.setIconTextGap(0);
+        btnPemakaianAirTanah.setName("btnPemakaianAirTanah"); 
+        btnPemakaianAirTanah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemakaianAirTanah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPemakaianAirTanahActionPerformed(evt);
             }
         });
     }
