@@ -673,7 +673,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         // TODO add your handling code here:
         switch (evt.getKeyCode()) {
             case KeyEvent.VK_ENTER:
-                Sequel.cariIsi("select nm_penjab from penjab where kd_penjab=?", nmPenjab, kdPenjab.getText());
+                Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmPenjab, kdPenjab.getText());
                 BtnAll.requestFocus();
                 break;
             default:
@@ -743,20 +743,33 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     + "from kamar_inap inner join reg_periksa inner join pasien inner join bangsal inner join kamar inner join penjab "
                     + "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                     + "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and reg_periksa.kd_pj=penjab.kd_pj "
-                    + "where kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and kamar_inap.no_rawat like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and reg_periksa.no_rkm_medis like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and kamar.kd_kamar like ? "
+                    + "where "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and kamar_inap.no_rawat like ? or "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and reg_periksa.no_rkm_medis like ? or "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and pasien.nm_pasien like ? or "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and kamar.kd_kamar like ? or "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and penjab.png_jawab like ? "
                     + "order by bangsal.nm_bangsal");
             try {
                 ps.setString(1, "%" + NmBangsal.getText() + "%");
-                ps.setString(2, "%" + TCari.getText() + "%");
-                ps.setString(3, "%" + NmBangsal.getText() + "%");
-                ps.setString(4, "%" + TCari.getText() + "%");
-                ps.setString(5, "%" + NmBangsal.getText() + "%");
+                ps.setString(2, "%" + kdPenjab.getText() + "%");
+                ps.setString(3, "%" + TCari.getText() + "%");
+                
+                ps.setString(4, "%" + NmBangsal.getText() + "%");
+                ps.setString(5, "%" + kdPenjab.getText() + "%");
                 ps.setString(6, "%" + TCari.getText() + "%");
+                
                 ps.setString(7, "%" + NmBangsal.getText() + "%");
-                ps.setString(8, "%" + TCari.getText() + "%");
+                ps.setString(8, "%" + kdPenjab.getText() + "%");
+                ps.setString(9, "%" + TCari.getText() + "%");
+                
+                ps.setString(10, "%" + NmBangsal.getText() + "%");
+                ps.setString(11, "%" + kdPenjab.getText() + "%");
+                ps.setString(12, "%" + TCari.getText() + "%");
+                
+                ps.setString(13, "%" + NmBangsal.getText() + "%");
+                ps.setString(14, "%" + kdPenjab.getText() + "%");
+                ps.setString(15, "%" + TCari.getText() + "%");
                 rs = ps.executeQuery();
                 all = 0;
                 ttlLaborat = 0;
