@@ -3583,7 +3583,11 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 golongan[z]=tbDetailObatRacikan.getValueAt(i,15).toString();
                 nobatch[z]=tbDetailObatRacikan.getValueAt(i,16).toString();
                 nofaktur[z]=tbDetailObatRacikan.getValueAt(i,17).toString();
-                kadaluarsa[z]=tbDetailObatRacikan.getValueAt(i,18).toString();
+                try {
+                    kadaluarsa[z]=tbObat.getValueAt(i,18).toString();
+                } catch (Exception e) {
+                    kadaluarsa[z]="0000-00-00";
+                }
                 z++;
             }
         }

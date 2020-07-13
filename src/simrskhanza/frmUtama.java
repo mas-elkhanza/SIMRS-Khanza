@@ -442,6 +442,8 @@ import grafikanalisa.GrafikKeslingLimbahDomestikBulan;
 import grafikanalisa.GrafikKeslingLimbahDomestikPertanggal;
 import grafikanalisa.GrafikKeslingPDAMPerBulan;
 import grafikanalisa.GrafikKeslingPDAMPertanggal;
+import grafikanalisa.GrafikKeslingTanahPerBulan;
+import grafikanalisa.GrafikKeslingTanahPertanggal;
 import grafikanalisa.GrafikKunjunganRanapPerBulan;
 import grafikanalisa.GrafikKunjunganRanapPerRuang;
 import grafikanalisa.GrafikKunjunganRanapPerTanggal;
@@ -16256,6 +16258,28 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnGrafikPemakaianAirTanahPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {                                                                    
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingTanahPertanggal aplikasi=new GrafikKeslingTanahPertanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }                                                                   
+
+    private void btnGrafikPemakaianAirTanahPerBulanActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKeslingTanahPerBulan aplikasi=new GrafikKeslingTanahPerBulan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16861,7 +16885,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISKamarMandiPenerimaDankes,btnZISDapurRumahPenerimaDankes,btnZISKursiRumahPenerimaDankes,btnZISKategoriPHBSPenerimaDankes,
             btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
-            btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah;
+            btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan;
     
     public void isWall(){
         try{            
@@ -19518,6 +19542,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getgrafik_air_pdam_perbulan()==true){
                 Panelmenu.add(btnGrafikPemakaianAirPDAMPerBulan);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_air_tanah_pertanggal()==true){
+                Panelmenu.add(btnGrafikPemakaianAirTanahPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_air_tanah_perbulan()==true){
+                Panelmenu.add(btnGrafikPemakaianAirTanahPerBulan);
                 jmlmenu++;
             }
             
@@ -22774,6 +22808,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getgrafik_air_pdam_perbulan()==true){
             Panelmenu.add(btnGrafikPemakaianAirPDAMPerBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_air_tanah_pertanggal()==true){
+            Panelmenu.add(btnGrafikPemakaianAirTanahPerTanggal);
+            jmlmenu++;
+        }
+
+        if(akses.getgrafik_air_tanah_perbulan()==true){
+            Panelmenu.add(btnGrafikPemakaianAirTanahPerBulan);
             jmlmenu++;
         }
         
@@ -27036,6 +27080,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_air_tanah_pertanggal()==true){
+            if(btnGrafikPemakaianAirTanahPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPemakaianAirTanahPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_air_tanah_perbulan()==true){
+            if(btnGrafikPemakaianAirTanahPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikPemakaianAirTanahPerBulan);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getgrafik_limbahb3_pertanggal()==true){
             if(btnGrafikLimbahB3MedisPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikLimbahB3MedisPerTanggal);
@@ -30347,6 +30405,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPemakaianAirTanah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPemakaianAirTanahActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikPemakaianAirTanahPerTanggal= new widget.ButtonBig();
+        btnGrafikPemakaianAirTanahPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikPemakaianAirTanahPerTanggal.setText("Pemakaian Air Tanah Per Tanggal");
+        btnGrafikPemakaianAirTanahPerTanggal.setIconTextGap(0);
+        btnGrafikPemakaianAirTanahPerTanggal.setName("btnGrafikPemakaianAirTanahPerTanggal"); 
+        btnGrafikPemakaianAirTanahPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPemakaianAirTanahPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikPemakaianAirTanahPerTanggalActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikPemakaianAirTanahPerBulan= new widget.ButtonBig();
+        btnGrafikPemakaianAirTanahPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikPemakaianAirTanahPerBulan.setText("Pemakaian Air Tanah Per Bulan");
+        btnGrafikPemakaianAirTanahPerBulan.setIconTextGap(0);
+        btnGrafikPemakaianAirTanahPerBulan.setName("btnGrafikPemakaianAirTanahPerBulan"); 
+        btnGrafikPemakaianAirTanahPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikPemakaianAirTanahPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikPemakaianAirTanahPerBulanActionPerformed(evt);
             }
         });
     }
