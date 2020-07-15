@@ -312,19 +312,22 @@
                         </a>
                         <ul class="ml-menu">
                             <li <?=$subhalaman=="SuratSakit"?"class='active'":""?>>
-                                <a href="index.php?act=SuratSakit&hal=Surat">Surat Cuti Sakit</a>
+                                <a href="index.php?act=SuratSakit&hal=Surat">Cuti Sakit</a>
                             </li>
                             <li <?=$subhalaman=="SuratHamil"?"class='active'":""?>>
-                                <a href="index.php?act=SuratHamil&hal=Surat">Surat Hamil/Tidak</a>
+                                <a href="index.php?act=SuratHamil&hal=Surat">Hamil/Tidak</a>
                             </li>
                             <li <?=$subhalaman=="SuratBebasNarkoba"?"class='active'":""?>>
-                                <a href="index.php?act=SuratBebasNarkoba&hal=Surat">Surat Bebas Narkoba</a>
+                                <a href="index.php?act=SuratBebasNarkoba&hal=Surat">Bebas Narkoba</a>
                             </li>
                             <li <?=$subhalaman=="SuratKontrol"?"class='active'":""?>>
-                                <a href="index.php?act=SuratKontrol&hal=Surat">Surat Kontrol/SKDP</a>
+                                <a href="index.php?act=SuratKontrol&hal=Surat">Kontrol/SKDP</a>
                             </li>
                             <li <?=$subhalaman=="SuratRujuk"?"class='active'":""?>>
-                                <a href="index.php?act=SuratRujuk&hal=Surat">Surat Rujukan</a>
+                                <a href="index.php?act=SuratRujuk&hal=Surat">Rujukan</a>
+                            </li>
+                            <li <?=$subhalaman=="SuratCovid"?"class='active'":""?>>
+                                <a href="index.php?act=SuratCovid&hal=Surat">Keterangan Covid</a>
                             </li>
                         </ul>
                     </li>

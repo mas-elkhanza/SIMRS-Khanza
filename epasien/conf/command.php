@@ -35,7 +35,8 @@
         if (!cekSessiPasien()) {
             $form = array ('HomeUser','FasilitasKamarUser','InformasiKamarUser','FasilitasRadiologiUser','FasilitasLaboratUser','FasilitasOperasiUser',
                            'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling','Pengaduan',
-                           'BookingRegistrasi','SuratSakit','TampilSuratSakit','SuratHamil','TampilSuratHamil','SuratBebasNarkoba','TampilSuratBebasNarkoba');
+                           'BookingRegistrasi','SuratSakit','TampilSuratSakit','SuratHamil','TampilSuratHamil','SuratBebasNarkoba','TampilSuratBebasNarkoba',
+                           'SuratRujuk','TampilSuratRujuk','SuratCovid','TampilSuratCovid');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -90,6 +91,10 @@
                 case "TampilSuratHamil"                        : include_once("pages/listtampilsurathamil.php"); break;
                 case "SuratBebasNarkoba"                       : include_once("pages/listsuratbebasnarkoba.php"); break;
                 case "TampilSuratBebasNarkoba"                 : include_once("pages/listtampilsuratbebasnarkoba.php"); break;
+                case "SuratRujuk"                              : include_once("pages/listsuratrujuk.php"); break;
+                case "TampilSuratRujuk"                        : include_once("pages/listtampilsuratrujuk.php"); break;
+                case "SuratCovid"                              : include_once("pages/listsuratcovid.php"); break;
+                case "TampilSuratCovod"                        : include_once("pages/listtampilsuratcovid.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }
