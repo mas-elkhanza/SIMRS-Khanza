@@ -430,6 +430,7 @@
             Hapus2("perkiraan_biaya_ranap", "no_rawat='".$nomor_sep."'");
             $cbg = validangka($msg['response']['cbg']['tariff']);
             InsertData2("perkiraan_biaya_ranap","'$nomor_sep','$penyakit','$cbg'");
+            echo"<meta http-equiv='refresh' content='1;URL=?aksi=Tampil'>";
         }
     }
     
