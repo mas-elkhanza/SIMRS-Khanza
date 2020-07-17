@@ -5,10 +5,24 @@
  */
 package rekammedis;
 
+import fungsi.WarnaTable;
+import fungsi.koneksiDB;
+import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 import kepegawaian.DlgCariDokter;
+import simrskhanza.DlgCariPoli;
+import fungsi.sekuel;
+import java.awt.Dimension;
+import java.sql.ResultSet;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -16,7 +30,14 @@ import kepegawaian.DlgCariDokter;
  */
 public class DlgMutasiBerkasRM extends javax.swing.JDialog {
 
+    private validasi valid = new validasi();
     public DlgCariDokter dokter = new DlgCariDokter(null, false);
+    private DlgCariPoli poli = new DlgCariPoli(null, false);
+    private DefaultTableModel tabMode;
+    private Connection koneksi = koneksiDB.condb();
+    private sekuel Sequel = new sekuel();
+    private PreparedStatement ps;
+    private ResultSet rs;
 //    public DlgCari dokter = new DlgCariDokter(null, false);
 
     /**
@@ -26,6 +47,7 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         startUp();
+        tampil();
     }
 
     /**
@@ -37,9 +59,9 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
-        table1 = new widget.Table();
+        tblMutasi = new widget.Table();
         jPanel2 = new javax.swing.JPanel();
         btnCetak = new widget.Button();
         btnKirim = new widget.Button();
@@ -57,7 +79,6 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
         txtKeyword = new widget.TextBox();
         btnUnit = new widget.Button();
         btnAll = new widget.Button();
-        panelWT1 = new widget.PanelWT();
         jPanel4 = new javax.swing.JPanel();
         label4 = new widget.Label();
         txtKdDokter = new widget.TextBox();
@@ -73,11 +94,11 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Mutasi Berkas Rekam Medis"));
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder("Mutasi Berkas RM"));
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        table1.setModel(new javax.swing.table.DefaultTableModel(
+        tblMutasi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -88,7 +109,7 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        scrollPane1.setViewportView(table1);
+        scrollPane1.setViewportView(tblMutasi);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -111,6 +132,11 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/101.png"))); // NOI18N
         btnKeluar.setText("Keluar");
         btnKeluar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
 
         label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label1.setText("Record : ");
@@ -159,10 +185,20 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
         label2.setText("Unit/Poli : ");
 
         btnCek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        btnCek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekActionPerformed(evt);
+            }
+        });
 
         label3.setText("Keyword :");
 
         btnUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnUnit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnitActionPerformed(evt);
+            }
+        });
 
         btnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
 
@@ -205,17 +241,6 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
                         .addComponent(txtKdUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtNmUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6))
-        );
-
-        javax.swing.GroupLayout panelWT1Layout = new javax.swing.GroupLayout(panelWT1);
-        panelWT1.setLayout(panelWT1Layout);
-        panelWT1Layout.setHorizontalGroup(
-            panelWT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelWT1Layout.setVerticalGroup(
-            panelWT1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -263,7 +288,7 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
                 .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,25 +311,26 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout internalFrame1Layout = new javax.swing.GroupLayout(internalFrame1);
+        internalFrame1.setLayout(internalFrame1Layout);
+        internalFrame1Layout.setHorizontalGroup(
+            internalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(internalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(internalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(scrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        internalFrame1Layout.setVerticalGroup(
+            internalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(internalFrame1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -316,13 +342,11 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(internalFrame1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(internalFrame1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -330,11 +354,29 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
 
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
         // TODO add your handling code here:
-        dokter.setSize(jPanel1.getWidth() - 20, jPanel1.getHeight() - 20);
+        dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         dokter.isCek();
-        dokter.setLocationRelativeTo(jPanel1);
+        dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btnDokterActionPerformed
+
+    private void btnUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnitActionPerformed
+        // TODO add your handling code here:
+        poli.isCek();
+        poli.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        poli.setLocationRelativeTo(internalFrame1);
+        poli.setVisible(true);
+    }//GEN-LAST:event_btnUnitActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void btnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekActionPerformed
+        // TODO add your handling code here:
+        tampil();
+    }//GEN-LAST:event_btnCekActionPerformed
 
     /**
      * @param args the command line arguments
@@ -389,7 +431,7 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
     private widget.Button btnTidakAda;
     private widget.Button btnUnit;
     private widget.ComboBox cmbStatus;
-    private javax.swing.JPanel jPanel1;
+    private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -401,9 +443,8 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
     private widget.Label label6;
     private widget.Label label7;
     private widget.Label lblRecord;
-    private widget.PanelWT panelWT1;
     private widget.ScrollPane scrollPane1;
-    private widget.Table table1;
+    private widget.Table tblMutasi;
     private widget.Tanggal1 tglAkhir;
     private widget.Tanggal1 tglAwal;
     private widget.TextBox txtKdDokter;
@@ -416,6 +457,59 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
     private void startUp() {
         tglAwal.setDate(new Date());
         tglAkhir.setDate(new Date());
+
+        this.setLocation(10, 2);
+        setSize(628, 674);
+        
+        Object[] row = {"No.RM", "Pasien", "Registrasi", "Dokter", "Cara Bayar"};
+
+        tabMode = new DefaultTableModel(null, row) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
+        };
+        tblMutasi.setModel(tabMode);
+
+        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+        tblMutasi.setPreferredScrollableViewportSize(new Dimension(500, 500));
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
+//        tbSpri.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 5; i++) {
+            TableColumn column = tblMutasi.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(75);//RM
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 1:
+                    column.setPreferredWidth(60);//reg
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(80);//pasien
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(150);//dokter
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 4:
+                    column.setPreferredWidth(30);//cara bayar
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        tblMutasi.setDefaultRenderer(Object.class, new WarnaTable());
 
         dokter.addWindowListener(new WindowListener() {
             @Override
@@ -451,5 +545,115 @@ public class DlgMutasiBerkasRM extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {
             }
         });
+
+        poli.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (poli.getTable().getSelectedRow() != -1) {
+                    txtKdUnit.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString());
+                    txtNmUnit.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 1).toString());
+
+                    txtKdUnit.requestFocus();
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+
+    }
+
+    private void tampil() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        valid.tabelKosong(tabMode);
+        try {
+            ps = koneksi.prepareStatement(
+                    "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"
+                    + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.umur,poliklinik.nm_poli,"
+                    + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
+                    + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
+                    + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                    + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where "
+                    + "poliklinik.kd_poli like ? and  dokter.kd_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.no_reg like ? or "
+                    + "poliklinik.nm_poli like ? and  dokter.kd_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.no_rawat like ? or "
+                    + "poliklinik.nm_poli like ? and  dokter.kd_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.no_rkm_medis like ? or "
+                    + "poliklinik.nm_poli like ? and  dokter.kd_dokter like ? and tgl_registrasi between ? and ? and  reg_periksa.stts_daftar like ? or "
+                    + "poliklinik.nm_poli like ? and  dokter.kd_dokter like ? and tgl_registrasi between ? and ? and  pasien.nm_pasien like ? or "
+                    + "poliklinik.nm_poli like ? and  dokter.kd_dokter like ? and tgl_registrasi between ? and ? and  penjab.png_jawab like ? order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc ");
+            try {
+                ps.setString(1, "%" + txtKdUnit.getText() + "%");
+                ps.setString(2, "%" + txtKdDokter.getText() + "%");
+                ps.setString(3, "%" + valid.SetDateToString(tglAwal.getDate()) + "%");
+                ps.setString(4, "%" + valid.SetDateToString(tglAkhir.getDate()) + "%");
+                ps.setString(5, "%" + txtKeyword.getText() + "%");
+                ps.setString(6, "%" + txtKdUnit.getText() + "%");
+                ps.setString(7, "%" + txtKdDokter.getText() + "%");
+                ps.setString(8, "%" + valid.SetDateToString(tglAwal.getDate()) + "%");
+                ps.setString(9, "%" + valid.SetDateToString(tglAkhir.getDate()) + "%");
+                ps.setString(10, "%" + txtKeyword.getText() + "%");
+                ps.setString(11, "%" + txtKdUnit.getText() + "%");
+                ps.setString(12, "%" + txtKdDokter.getText() + "%");
+                ps.setString(13, "%" + valid.SetDateToString(tglAwal.getDate()) + "%");
+                ps.setString(14, "%" + valid.SetDateToString(tglAkhir.getDate()) + "%");
+                ps.setString(15, "%" + txtKeyword.getText() + "%");
+                ps.setString(16, "%" + txtKdUnit.getText() + "%");
+                ps.setString(17, "%" + txtKdDokter.getText() + "%");
+                ps.setString(18, "%" + valid.SetDateToString(tglAwal.getDate()) + "%");
+                ps.setString(19, "%" + valid.SetDateToString(tglAkhir.getDate()) + "%");
+                ps.setString(20, "%" + txtKeyword.getText() + "%");
+                ps.setString(21, "%" + txtKdUnit.getText() + "%");
+                ps.setString(22, "%" + txtKdDokter.getText() + "%");
+                ps.setString(23, "%" + valid.SetDateToString(tglAwal.getDate()) + "%");
+                ps.setString(24, "%" + valid.SetDateToString(tglAkhir.getDate()) + "%");
+                ps.setString(25, "%" + txtKeyword.getText() + "%");
+                ps.setString(26, "%" + txtKdUnit.getText() + "%");
+                ps.setString(27, "%" + txtKdDokter.getText() + "%");
+                ps.setString(28, "%" + valid.SetDateToString(tglAwal.getDate()) + "%");
+                ps.setString(29, "%" + valid.SetDateToString(tglAkhir.getDate()) + "%");
+                ps.setString(30, "%" + txtKeyword.getText() + "%");
+                
+                rs = ps.executeQuery();
+                
+                while (rs.next()) {
+                    tabMode.addRow(new Object[]{
+                        rs.getString("reg_periksa.no_rkm_medis"), rs.getString("pasien.nm_pasien"), rs.getString("pasien.nm_pasien"), rs.getString("dokter.nm_dokter"), rs.getString("penjab.png_jawab")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif 1 : " + e);
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+
+            this.setCursor(Cursor.getDefaultCursor());
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
     }
 }

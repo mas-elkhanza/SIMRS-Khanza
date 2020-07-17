@@ -46,7 +46,7 @@ public final class RMCariKeluhan extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Tanggal","Jam","Keluhan"};
+        Object[] row={"Tanggal","Jam","Keluhan","Pemeriksaan"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -54,14 +54,16 @@ public final class RMCariKeluhan extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (z= 0; z < 3; z++) {
+        for (z= 0; z < 4; z++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(z);
             if(z==0){
                 column.setPreferredWidth(65);
             }else if(z==1){
                 column.setPreferredWidth(50);
             }else if(z==2){
-                column.setPreferredWidth(750);
+                column.setPreferredWidth(350);
+            }else if(z==3){
+                column.setPreferredWidth(350);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -335,7 +337,7 @@ public final class RMCariKeluhan extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select tgl_perawatan, jam_rawat, keluhan from pemeriksaan_ralan where "+
+                    "select tgl_perawatan, jam_rawat, keluhan,pemeriksaan from pemeriksaan_ralan where "+
                     "no_rawat=? and tgl_perawatan like ? or "+
                     "no_rawat=? and keluhan like ? order by tgl_perawatan, jam_rawat");
             try{
@@ -346,7 +348,7 @@ public final class RMCariKeluhan extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[] {
-                        rs.getString(1),rs.getString(2),rs.getString(3)
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)
                     });
                 }
             }catch(Exception ex){
@@ -365,7 +367,7 @@ public final class RMCariKeluhan extends javax.swing.JDialog {
         
         try{
             ps=koneksi.prepareStatement(
-                    "select tgl_perawatan, jam_rawat, keluhan from pemeriksaan_ranap where "+
+                    "select tgl_perawatan, jam_rawat, keluhan,pemeriksaan from pemeriksaan_ranap where "+
                     "no_rawat=? and tgl_perawatan like ? or "+
                     "no_rawat=? and keluhan like ? order by tgl_perawatan, jam_rawat");
             try{
@@ -376,7 +378,7 @@ public final class RMCariKeluhan extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[] {
-                        rs.getString(1),rs.getString(2),rs.getString(3)
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)
                     });
                 }
             }catch(Exception ex){
