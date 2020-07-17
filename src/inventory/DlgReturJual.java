@@ -16,9 +16,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgPasien;
@@ -85,29 +87,57 @@ public class DlgReturJual extends javax.swing.JDialog {
         };
         tbDokter.setModel(tabMode);
 
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800, 800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (int i = 0; i < 9; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(100);
-            } else if (i == 1) {
-                column.setPreferredWidth(90);
-            } else if (i == 2) {
-                column.setPreferredWidth(200);
-            } else if (i == 3) {
-                column.setPreferredWidth(60);
-            } else if (i == 4) {
-                column.setPreferredWidth(90);
-            } else if (i == 5) {
-                column.setPreferredWidth(60);
-            } else if (i == 6) {
-                column.setPreferredWidth(90);
-            } else if (i == 7) {
-                column.setPreferredWidth(70);
-            } else if (i == 8) {
-                column.setPreferredWidth(100);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 1:
+                    column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(60);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 4:
+                    column.setPreferredWidth(90);
+                    column.setCellRenderer(rightRenderer);
+                    break;
+                case 5:
+                    column.setPreferredWidth(60);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 6:
+                    column.setPreferredWidth(90);
+                    column.setCellRenderer(rightRenderer);
+                    break;
+                case 7:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 8:
+                    column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1479,8 +1509,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ttlretur = ttlretur + rs.getDouble(9);
                     tabMode.addRow(new Object[]{
                         rs.getString(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getDouble(7),
-                        rs.getDouble(8), rs.getDouble(9),
+                        rs.getString(4), Valid.SetAngka(rs.getDouble(7)),
+                        Valid.SetAngka(rs.getDouble(8)), Valid.SetAngka(rs.getDouble(9)),
                         rs.getString(10), rs.getString(11)
                     });
                 }

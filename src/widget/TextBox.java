@@ -17,7 +17,7 @@ public class TextBox extends TextBoxGlass {
     public TextBox() {
         super();
         setFont(new java.awt.Font("Tahoma", 0, 11));        
-        setSelectionColor(new Color(255,255,255));
+        setSelectionColor(Thema.COKLAT_TUA);
         setSelectedTextColor(Thema.COKLAT_TUA);
         setForeground(new Color(50,50,50));
         setBackground(new Color(255,255,255));

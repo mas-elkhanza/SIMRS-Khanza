@@ -4347,7 +4347,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         PanelCariUtama.setName("PanelCariUtama"); // NOI18N
         PanelCariUtama.setOpaque(false);
-        PanelCariUtama.setPreferredSize(new java.awt.Dimension(100, 143));
+        PanelCariUtama.setPreferredSize(new java.awt.Dimension(100, 150));
         PanelCariUtama.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass10.setName("panelGlass10"); // NOI18N
@@ -4458,7 +4458,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         PanelCariUtama.add(panelGlass10, java.awt.BorderLayout.PAGE_END);
 
         panelGlass11.setName("panelGlass11"); // NOI18N
-        panelGlass11.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass11.setPreferredSize(new java.awt.Dimension(50, 50));
         panelGlass11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 2, 9));
 
         jLabel21.setText("Kamar :");
@@ -4543,7 +4543,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         PanelCariUtama.add(panelGlass11, java.awt.BorderLayout.CENTER);
 
         panelCari.setName("panelCari"); // NOI18N
-        panelCari.setPreferredSize(new java.awt.Dimension(44, 43));
+        panelCari.setPreferredSize(new java.awt.Dimension(44, 45));
         panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 2, 9));
 
         R1.setBackground(new java.awt.Color(240, 250, 230));
@@ -10815,7 +10815,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void MnPerkiraanBiayaActionPerformed(java.awt.event.ActionEvent evt) {
         if (!TNoRw1.getText().isBlank()) {
-            DlgPerkiraanBiayaRanap resep = new DlgPerkiraanBiayaRanap(null, true);
+            DlgPerkiraanBiayaRanap resep = new DlgPerkiraanBiayaRanap(null, false);
             resep.isCek();
             resep.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
             resep.setLocationRelativeTo(internalFrame1);

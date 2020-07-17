@@ -1567,6 +1567,58 @@ public final class sekuel {
 
         }
     }
+    public void cariIsi(String sql, JTextField txt1, JTextField txt2) {
+        try {
+            ps = connect.prepareStatement(sql);
+            try {
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    txt1.setText(rs.getString(1));
+                    txt2.setText(rs.getString(2));
+                } else {
+                    txt1.setText("");
+                    txt2.setText("");
+                }
+            } catch (Exception e) {
+
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    public void cariIsi(String sql, JTextArea txt) {
+        try {
+            ps = connect.prepareStatement(sql);
+            try {
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    txt.setText(rs.getString(1));
+                } else {
+                    txt.setText("");
+                }
+            } catch (Exception e) {
+
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
 
     /**
      *

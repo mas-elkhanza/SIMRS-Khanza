@@ -2938,7 +2938,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             try {
                                 psdetailpriksa.setString(1, TNoRw.getText());
                                 psdetailpriksa.setString(2, rscari.getString(1));
-                                psdetailpriksa.setString(3, Valid.SetTgl(Tanggal.getDate() + ""));
+                                psdetailpriksa.setString(3, Valid.SetDateToString(Tanggal.getDate()));
                                 psdetailpriksa.setString(4, CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem());
                                 psdetailpriksa.setString(5, tbPemeriksaan.getValueAt(i, 6).toString());
                                 psdetailpriksa.setString(6, tbPemeriksaan.getValueAt(i, 2).toString());
@@ -2987,7 +2987,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
             if (!noorder.equals("")) {
                 Sequel.mengedit("permintaan_lab", "noorder=?", "tgl_hasil=?,jam_hasil=?", 3, new String[]{
-                    Valid.SetTgl(Tanggal.getDate() + ""), CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(), noorder
+                    Valid.SetDateToString(Tanggal.getDate()), CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem(), noorder
                 });
             }
 
@@ -3013,7 +3013,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     Sequel.menyimpan("tampjurnal", "'" + Beban_Kso_Laborat_Ranap + "','Beban KSO Laborat Ranap','" + ttlkso + "','0'", "Rekening");
                     Sequel.menyimpan("tampjurnal", "'" + Utang_Kso_Laborat_Ranap + "','Utang KSO Laborat Ranap','0','" + ttlkso + "'", "Rekening");
                 }
-                jur.simpanJurnal(TNoRw.getText(), Valid.SetTgl(Tanggal.getDate() + ""), "U", "PEMERIKSAAN LABORAT RAWAT INAP PASIEN " + TPasien.getText() + " DIPOSTING OLEH " + akses.getkode());
+                jur.simpanJurnal(TNoRw.getText(), Valid.SetDateToString(Tanggal.getDate()), "U", "PEMERIKSAAN LABORAT RAWAT INAP PASIEN " + TPasien.getText() + " DIPOSTING OLEH " + akses.getkode());
             }
 
             koneksi.setAutoCommit(true);
