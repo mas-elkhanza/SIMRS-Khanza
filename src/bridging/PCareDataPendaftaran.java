@@ -76,7 +76,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0,pilihan=1;
-    private final Properties prop = new Properties();
     private PCareCekReferensiPoli poli=new PCareCekReferensiPoli(null,false); 
     private PCareCekReferensiKesadaran kesadaran=new PCareCekReferensiKesadaran(null,false);
     private PCareCekReferensiStatusPulang statuspulang=new PCareCekReferensiStatusPulang(null,false);
@@ -627,11 +626,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
             otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
-            URL=prop.getProperty("URLAPIPCARE");
-            divreg=prop.getProperty("DIVREGPCARE");
-            kacab=prop.getProperty("KACABPCARE");
+            URL=koneksiDB.URLAPIPCARE(); 
+            divreg=koneksiDB.DIVREGPCARE();
+            kacab=koneksiDB.KACABPCARE();
             userpcare=koneksiDB.USERPCARE();
         } catch (Exception e) {
             System.out.println("E : "+e);
@@ -3163,11 +3161,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     headers.add("X-Signature",api.getHmac());
                     headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                     requestEntity = new HttpEntity(headers);
-                    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                    /*System.out.println("URL : "+URL);
+                    System.out.println(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
+                    System.out.println("No.Kartu : "+NoKartu.getText());*/
                     root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
                     nameNode = root.path("metaData");
-                    //System.out.println("code : "+nameNode.path("code").asText());
-                    //System.out.println("message : "+nameNode.path("message").asText());
                     if(nameNode.path("message").asText().equals("OK")){
                         response = root.path("response");
                         if(response.path("ketAktif").asText().equals("AKTIF")){
@@ -3200,6 +3198,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                     }else if(ex.toString().contains("204")){
                         JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+                    }else if(ex.toString().contains("refused")){
+                        JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
                     }
                 }                 
             } 
@@ -3654,6 +3654,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                         }else if(ex.toString().contains("204")){
                             JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+                        }else if(ex.toString().contains("refused")){
+                            JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
                         }
                     }                 
                 } 
@@ -4250,6 +4252,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
                     }else if(ex.toString().contains("204")){
                         JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+                    }else if(ex.toString().contains("refused")){
+                        JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
                     }
                 }
             }
@@ -5259,6 +5263,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(ex.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+            }else if(ex.toString().contains("refused")){
+                JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
             }
         }                         
     }
@@ -5340,6 +5346,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(e.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+            }else if(e.toString().contains("refused")){
+                JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
             }
         }
     }
@@ -5404,6 +5412,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(e.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+            }else if(e.toString().contains("refused")){
+                JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
             }
         }
     }
@@ -5468,6 +5478,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(e.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+            }else if(e.toString().contains("refused")){
+                JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
             }
         }
     }

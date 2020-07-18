@@ -3702,6 +3702,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
 
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        akses.setform("PCareCekKartu");
         PCareDataPendaftaran form=new PCareDataPendaftaran(null,false);
         form.isCek();
         form.tampil();   
@@ -4572,6 +4573,8 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(ex.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+            }else if(ex.toString().contains("refused")){
+                JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
             }
         }
     }  
@@ -5409,6 +5412,8 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Tidak sesuai kondisi. Aku, kamu end...!");
             }else if(ex.toString().contains("204")){
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
+            }else if(ex.toString().contains("refused")){
+                JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
             }
         }
     }
