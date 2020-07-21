@@ -1004,7 +1004,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     break;
                 case 4:
                     column.setPreferredWidth(150);
-                    column.setCellRenderer(rightRenderer);
                     break;
                 case 5:
                     column.setMinWidth(0);
@@ -7561,9 +7560,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 while (rstindakan.next()) {
                     TabModeTindakan3.addRow(new Object[]{
                         false, rstindakan.getString(1), rstindakan.getString(2), rstindakan.getString(3),
-                        Valid.SetAngkaNew(rstindakan.getDouble("total_byrdrpr")), rstindakan.getDouble("material"),
-                        rstindakan.getDouble("bhp"), rstindakan.getDouble("tarif_tindakandr"),
-                        rstindakan.getDouble("tarif_tindakanpr"), rstindakan.getDouble("kso"),
+                        rstindakan.getDouble("total_byrdrpr"), 
+                        rstindakan.getDouble("material"),
+                        rstindakan.getDouble("bhp"), 
+                        rstindakan.getDouble("tarif_tindakandr"),
+                        rstindakan.getDouble("tarif_tindakanpr"), 
+                        rstindakan.getDouble("kso"),
                         rstindakan.getDouble("menejemen")
                     });
                 }
@@ -7687,7 +7689,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         Valid.SetDateToString(DTPTgl.getDate()), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                         tbTindakan3.getValueAt(i, 5).toString(), tbTindakan3.getValueAt(i, 6).toString(), tbTindakan3.getValueAt(i, 7).toString(),
                         tbTindakan3.getValueAt(i, 8).toString(), tbTindakan3.getValueAt(i, 9).toString(), tbTindakan3.getValueAt(i, 10).toString(),
-                        tbTindakan3.getValueAt(i, 4).toString().replace(".", "").replace(",", "")
+                        tbTindakan3.getValueAt(i, 4).toString()
                     }) == true) {
                         tbTindakan3.setValueAt(false, i, 0);
                         JOptionPane.showMessageDialog(rootPane, "Alhamdulillah berhasil simpan ^_^ .");
