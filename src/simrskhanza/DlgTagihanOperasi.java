@@ -3371,35 +3371,35 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     tabMode.addRow(new Object[]{false,rs.getString("kode_paket"),
                                    rs.getString("nm_perawatan"),
                                    rs.getString("kategori"), 
-                                   rs.getDouble("operator1"), 
-                                   rs.getDouble("operator2"), 
-                                   rs.getDouble("operator3"), 
-                                   rs.getDouble("asisten_operator1"), 
-                                   rs.getDouble("asisten_operator2"), 
-                                   rs.getDouble("asisten_operator3"), 
-                                   rs.getDouble("instrumen"), 
-                                   rs.getDouble("dokter_anak"), 
-                                   rs.getDouble("perawaat_resusitas"), 
-                                   rs.getDouble("dokter_anestesi"), 
-                                   rs.getDouble("asisten_anestesi"), 
-                                   rs.getDouble("asisten_anestesi2"), 
-                                   rs.getDouble("bidan"), 
-                                   rs.getDouble("bidan2"), 
-                                   rs.getDouble("bidan3"), 
-                                   rs.getDouble("perawat_luar"), 
-                                   rs.getDouble("alat"), 
-                                   rs.getDouble("sewa_ok"), 
-                                   rs.getDouble("akomodasi"), 
-                                   rs.getDouble("bagian_rs"), 
-                                   rs.getDouble("omloop"), 
-                                   rs.getDouble("omloop2"), 
-                                   rs.getDouble("omloop3"), 
-                                   rs.getDouble("omloop4"), 
-                                   rs.getDouble("omloop5"), 
-                                   rs.getDouble("sarpras"), 
-                                   rs.getDouble("dokter_pjanak"), 
-                                   rs.getDouble("dokter_umum"), 
-                                   rs.getDouble("jumlah")});
+                                   Valid.SetAngkaNew(rs.getDouble("operator1")), 
+                                   Valid.SetAngkaNew(rs.getDouble("operator2")), 
+                                   Valid.SetAngkaNew(rs.getDouble("operator3")), 
+                                   Valid.SetAngkaNew(rs.getDouble("asisten_operator1")), 
+                                   Valid.SetAngkaNew(rs.getDouble("asisten_operator2")), 
+                                   Valid.SetAngkaNew(rs.getDouble("asisten_operator3")), 
+                                   Valid.SetAngkaNew(rs.getDouble("instrumen")), 
+                                   Valid.SetAngkaNew(rs.getDouble("dokter_anak")), 
+                                   Valid.SetAngkaNew(rs.getDouble("perawaat_resusitas")), 
+                                   Valid.SetAngkaNew(rs.getDouble("dokter_anestesi")), 
+                                   Valid.SetAngkaNew(rs.getDouble("asisten_anestesi")), 
+                                   Valid.SetAngkaNew(rs.getDouble("asisten_anestesi2")), 
+                                   Valid.SetAngkaNew(rs.getDouble("bidan")), 
+                                   Valid.SetAngkaNew(rs.getDouble("bidan2")), 
+                                   Valid.SetAngkaNew(rs.getDouble("bidan3")), 
+                                   Valid.SetAngkaNew(rs.getDouble("perawat_luar")), 
+                                   Valid.SetAngkaNew(rs.getDouble("alat")), 
+                                   Valid.SetAngkaNew(rs.getDouble("sewa_ok")), 
+                                   Valid.SetAngkaNew(rs.getDouble("akomodasi")), 
+                                   Valid.SetAngkaNew(rs.getDouble("bagian_rs")), 
+                                   Valid.SetAngkaNew(rs.getDouble("omloop")), 
+                                   Valid.SetAngkaNew(rs.getDouble("omloop2")), 
+                                   Valid.SetAngkaNew(rs.getDouble("omloop3")), 
+                                   Valid.SetAngkaNew(rs.getDouble("omloop4")), 
+                                   Valid.SetAngkaNew(rs.getDouble("omloop5")), 
+                                   Valid.SetAngkaNew(rs.getDouble("sarpras")), 
+                                   Valid.SetAngkaNew(rs.getDouble("dokter_pjanak")), 
+                                   Valid.SetAngkaNew(rs.getDouble("dokter_umum")), 
+                                   Valid.SetAngkaNew(rs.getDouble("jumlah"))});
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -3541,34 +3541,34 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(row!= -1){         
             if(tbtindakan.getValueAt(tbtindakan.getSelectedRow(),0).toString().equals("true")){
                 try {
-                    tbtindakan.setValueAt(Double.parseDouble(tbtindakan.getValueAt(row,4).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,5).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,6).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,7).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,8).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,9).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,10).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,11).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,12).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,13).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,14).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,15).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,16).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,17).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,18).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,19).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,20).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,21).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,22).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,23).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,24).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,25).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,26).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,27).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,28).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,29).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,30).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,31).toString()), row,32);
+                    tbtindakan.setValueAt(Double.parseDouble(tbtindakan.getValueAt(row,4).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,5).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,6).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,7).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,8).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,9).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,10).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,11).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,12).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,13).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,14).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,15).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,16).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,17).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,18).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,19).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,20).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,21).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,22).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,23).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,24).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,25).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,26).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,27).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,28).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,29).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,30).toString().replace(",","").replace(".",""))+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,31).toString().replace(",","").replace(".","")), row,32);
                 } catch (Exception e) {
                     tbtindakan.setValueAt(0, row,32);
                 }                    
