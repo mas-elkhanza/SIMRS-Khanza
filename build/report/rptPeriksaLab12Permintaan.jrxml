@@ -32,6 +32,7 @@
 	<parameter name="lahir" class="java.lang.String"/>
 	<parameter name="saran" class="java.lang.String"/>
 	<parameter name="kesan" class="java.lang.String"/>
+	<parameter name="klinis" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15, temp16 from temporary_lab order by no asc]]>
 	</queryString>
@@ -483,6 +484,32 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Penanggung Jawab]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="375" y="174" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="ad9f27b6-3104-4f92-a802-7fd5cf5fc3ef"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="174" width="136" height="15" uuid="7013a16c-fa4d-4a16-9a85-5e340953905f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{klinis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="284" y="174" width="91" height="15" uuid="d8618512-1fea-405b-9521-ea298681791b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Diagnosa/Ket.Klinis]]></text>
 			</staticText>
 		</band>
 	</title>
