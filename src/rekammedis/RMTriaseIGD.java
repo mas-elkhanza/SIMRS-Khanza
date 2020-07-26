@@ -355,8 +355,8 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
         SekunderSuhu.setDocument(new batasInput((byte)5).getKata(SekunderSuhu));
         PrimerNyeri.setDocument(new batasInput((byte)5).getKata(PrimerNyeri));
         SekunderNyeri.setDocument(new batasInput((byte)5).getKata(SekunderNyeri));
-        PrimerTensi.setDocument(new batasInput((byte)7).getKata(PrimerTensi));
-        SekunderTensi.setDocument(new batasInput((byte)7).getKata(SekunderTensi));
+        PrimerTensi.setDocument(new batasInput((byte)8).getKata(PrimerTensi));
+        SekunderTensi.setDocument(new batasInput((byte)8).getKata(SekunderTensi));
         PrimerNadi.setDocument(new batasInput((byte)3).getKata(PrimerNadi));
         SekunderNadi.setDocument(new batasInput((byte)3).getKata(SekunderNadi));
         PrimerSaturasi.setDocument(new batasInput((byte)3).getKata(PrimerSaturasi));

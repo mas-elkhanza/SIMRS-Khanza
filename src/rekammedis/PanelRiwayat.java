@@ -2454,7 +2454,7 @@ public class PanelRiwayat extends widget.panelisi {
                             try {
                                 rs3=koneksi.prepareStatement(
                                         "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
-                                        "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, "+
+                                        "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan, "+
                                         "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl,"+
                                         "pemeriksaan_ralan.penilaian from pemeriksaan_ralan where "+
                                         "pemeriksaan_ralan.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat").executeQuery();
@@ -2466,16 +2466,17 @@ public class PanelRiwayat extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
                                                 "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tensi</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Imunisasi Ke</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Tensi</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Kesadaran</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Imunisasi Ke</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -2492,6 +2493,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top'>"+rs3.getString("tinggi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("berat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("gcs")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kesadaran")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("imun_ke")+"</td>"+
                                              "</tr>"); 
                                         if(!rs3.getString("keluhan").equals("")){
@@ -2500,7 +2502,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Subjek</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -2510,7 +2512,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Objek</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -2520,7 +2522,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Asesmen</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -2530,7 +2532,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Plan</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -2540,7 +2542,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Alergi</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("alergi")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("alergi")+"</td>"+
                                                  "</tr>");
                                         }
                                             
@@ -2788,7 +2790,7 @@ public class PanelRiwayat extends widget.panelisi {
                             try {
                                 rs3=koneksi.prepareStatement(
                                         "select pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi,pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi," +
-                                        "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl," +
+                                        "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl," +
                                         "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat "+
                                         "from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat").executeQuery();
                                 if(rs3.next()){
@@ -2803,11 +2805,12 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tensi</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kesadaran</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -2824,6 +2827,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top'>"+rs3.getString("tinggi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("berat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("gcs")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kesadaran")+"</td>"+
                                              "</tr>");   
                                         
                                         if(!rs3.getString("keluhan").equals("")){
@@ -2832,7 +2836,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Subjek</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -2842,7 +2846,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Objek</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -2852,7 +2856,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Asesmen</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -2862,7 +2866,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Plan</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -2872,7 +2876,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Alergi</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("alergi")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("alergi")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -9418,7 +9422,7 @@ public class PanelRiwayat extends widget.panelisi {
                             try {
                                 rs3=koneksi.prepareStatement(
                                         "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
-                                        "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, "+
+                                        "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan, "+
                                         "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl,"+
                                         "pemeriksaan_ralan.penilaian from pemeriksaan_ralan where "+
                                         "pemeriksaan_ralan.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat").executeQuery();
@@ -9430,16 +9434,17 @@ public class PanelRiwayat extends widget.panelisi {
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>No.</td>"+
+                                                "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
                                                 "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tensi</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Imunisasi Ke</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Tensi</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Kesadaran</td>"+
+                                                "<td valign='top' width='9%' bgcolor='#FFFAF8'>Imunisasi Ke</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -9456,6 +9461,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top'>"+rs3.getString("tinggi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("berat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("gcs")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kesadaran")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("imun_ke")+"</td>"+
                                              "</tr>"); 
                                         if(!rs3.getString("keluhan").equals("")){
@@ -9464,7 +9470,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Subjek</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -9474,7 +9480,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Objek</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -9484,7 +9490,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Asesmen</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -9494,7 +9500,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Plan</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -9504,7 +9510,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Alergi</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("alergi")+"</td>"+
+                                                    "<td valign='top' colspan='7'> : "+rs3.getString("alergi")+"</td>"+
                                                  "</tr>");
                                         }
                                             
@@ -9749,10 +9755,11 @@ public class PanelRiwayat extends widget.panelisi {
                             }
                             
                             //menampilkan riwayat pemeriksaan ranap
+                            //menampilkan riwayat pemeriksaan ranap
                             try {
                                 rs3=koneksi.prepareStatement(
                                         "select pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.tensi,pemeriksaan_ranap.nadi,pemeriksaan_ranap.respirasi," +
-                                        "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl," +
+                                        "pemeriksaan_ranap.tinggi,pemeriksaan_ranap.berat,pemeriksaan_ranap.gcs,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.keluhan,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.rtl," +
                                         "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.alergi,pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat "+
                                         "from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat='"+rs2.getString("no_rawat")+"' order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat").executeQuery();
                                 if(rs3.next()){
@@ -9767,11 +9774,12 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>Suhu(C)</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tensi</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Respirasi(/menit)</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>Tinggi(Cm)</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>Berat(Kg)</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#FFFAF8'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#FFFAF8'>Kesadaran</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -9788,6 +9796,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "<td valign='top'>"+rs3.getString("tinggi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("berat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("gcs")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kesadaran")+"</td>"+
                                              "</tr>");   
                                         
                                         if(!rs3.getString("keluhan").equals("")){
@@ -9796,7 +9805,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Subjek</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -9806,7 +9815,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Objek</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -9816,7 +9825,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Asesmen</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -9826,7 +9835,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Plan</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -9836,7 +9845,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Alergi</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("alergi")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("alergi")+"</td>"+
                                                  "</tr>");
                                         }
                                         

@@ -9478,7 +9478,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         THbngn.setText("");
         TAlmt.setText("");
         TStatus.setText("");
-        AsalRujukan.setText("");        
+        AsalRujukan.setText("");   
+        NoKa.setText("");        
         alamatperujuk="";
         isNumber();       
         TNoRM.requestFocus();
@@ -9696,65 +9697,102 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         DTPReg.setDate(new Date());
         DTPCari1.setDate(new Date());
         DTPCari2.setDate(new Date());
-        BtnSimpan.setEnabled(akses.getregistrasi());
-        BtnHapus.setEnabled(akses.getregistrasi());
-        BtnEdit.setEnabled(akses.getregistrasi());
-        BtnPrint.setEnabled(akses.getregistrasi());
-        MnOperasi.setEnabled(akses.getoperasi());
-        MnOperasi1.setEnabled(akses.getoperasi());
-        MnKamarInap.setEnabled(akses.getkamar_inap());
-        MnKamarInap1.setEnabled(akses.getkamar_inap());
-        MnRawatJalan.setEnabled(akses.gettindakan_ralan());
-        MnRawatJalan1.setEnabled(akses.gettindakan_ralan());
-        MnPemberianObat.setEnabled(akses.getberi_obat());
-        MnPemberianObat1.setEnabled(akses.getberi_obat());
-        MnBilling.setEnabled(akses.getbilling_ralan());
-        MnPeriksaLab.setEnabled(akses.getperiksa_lab());
-        MnPeriksaLab1.setEnabled(akses.getperiksa_lab());
-        MnPeriksaRadiologi.setEnabled(akses.getperiksa_radiologi());
-        MnPeriksaRadiologi1.setEnabled(akses.getperiksa_radiologi());
-        MnNoResep.setEnabled(akses.getresep_obat());
-        MnRujuk.setEnabled(akses.getrujukan_keluar());
-        MnRujukMasuk.setEnabled(akses.getrujukan_masuk());
-        MnDiagnosa.setEnabled(akses.getdiagnosa_pasien());
-        MnHapusTagihanOperasi.setEnabled(akses.getoperasi());
-        MnHapusObatOperasi.setEnabled(akses.getoperasi());  
-        MnSEP.setEnabled(akses.getbpjs_sep());  
-        MnPCare.setEnabled(akses.getbridging_pcare_daftar());  
-        MnSJP.setEnabled(akses.getinhealth_sjp());  
-        ppRiwayat.setEnabled(akses.getresume_pasien());
-        ppCatatanPasien.setEnabled(akses.getcatatan_pasien());
-        MnPoliInternal.setEnabled(akses.getrujukan_poli_internal());
-        MnHapusRujukan.setEnabled(akses.getrujukan_poli_internal());        
-        ppIKP.setEnabled(akses.getinsiden_keselamatan_pasien());
-        ppIKP1.setEnabled(akses.getinsiden_keselamatan_pasien());   
-        ppBerkasDigital.setEnabled(akses.getberkas_digital_perawatan());        
-        ppBerkasDigital1.setEnabled(akses.getberkas_digital_perawatan());  
-        MnJadwalOperasi.setEnabled(akses.getbooking_operasi());  
-        MnBillingParsial.setEnabled(akses.getbilling_parsial()); 
-        MnSKDPBPJS.setEnabled(akses.getskdp_bpjs());  
-        MnPermintaanLab.setEnabled(akses.getpermintaan_lab());
-        MnPermintaanRadiologi.setEnabled(akses.getpermintaan_radiologi());
-        MnJadwalOperasi1.setEnabled(akses.getbooking_operasi());   
-        MnSKDPBPJS1.setEnabled(akses.getskdp_bpjs());  
-        MnPermintaanLab1.setEnabled(akses.getpermintaan_lab());
-        MnPermintaanRadiologi1.setEnabled(akses.getpermintaan_radiologi());
-        MnTeridentifikasiTB.setEnabled(akses.getkemenkes_sitt());
-        MnResepDOkter.setEnabled(akses.getresep_dokter());
-        MnResepDOkter1.setEnabled(akses.getresep_dokter());
-        MnDataTriaseIGD.setEnabled(akses.getdata_triase_igd());
-        ppResume.setEnabled(akses.getdata_resume_pasien());
-        MnCetakSuratSakit.setEnabled(akses.getsurat_sakit());
-        MnCetakSuratHamil.setEnabled(akses.getsurat_hamil());
-        MnCetakSuratCovid.setEnabled(akses.getsurat_keterangan_covid());
-        MnCetakBebasNarkoba.setEnabled(akses.getsurat_bebas_narkoba());
-        ppPasienCorona.setEnabled(akses.getpasien_corona());
-        ppPerawatanCorona.setEnabled(akses.getpasien_corona());
-        MnPeniliaianAwalKeperawatanRalan.setEnabled(akses.getpenilaian_awal_keperawatan_ralan());
-        MnPeniliaianAwalKeperawatanGigi.setEnabled(akses.getpenilaian_awal_keperawatan_gigi());
-        MnPeniliaianAwalKeperawatanKebidanan.setEnabled(akses.getpenilaian_awal_keperawatan_kebidanan());
-        MnPeniliaianAwalKeperawatanBayiAnak.setEnabled(akses.getpenilaian_awal_keperawatan_anak());
-        ppDeteksiDIniCorona.setEnabled(akses.getdeteksi_corona());
+        BtnSimpan.setVisible(akses.getregistrasi());
+        BtnHapus.setVisible(akses.getregistrasi());
+        BtnEdit.setVisible(akses.getregistrasi());
+        BtnPrint.setVisible(akses.getregistrasi());
+        MnOperasi.setVisible(akses.getoperasi());
+        MnOperasi1.setVisible(akses.getoperasi());
+        MnKamarInap.setVisible(akses.getkamar_inap());
+        MnKamarInap1.setVisible(akses.getkamar_inap());
+        MnRawatJalan.setVisible(akses.gettindakan_ralan());
+        MnRawatJalan1.setVisible(akses.gettindakan_ralan());
+        MnPemberianObat.setVisible(akses.getberi_obat());
+        MnPemberianObat1.setVisible(akses.getberi_obat());
+        MnBilling.setVisible(akses.getbilling_ralan());
+        MnPeriksaLab.setVisible(akses.getperiksa_lab());
+        MnPeriksaLab1.setVisible(akses.getperiksa_lab());
+        MnPeriksaRadiologi.setVisible(akses.getperiksa_radiologi());
+        MnPeriksaRadiologi1.setVisible(akses.getperiksa_radiologi());
+        MnNoResep.setVisible(akses.getresep_obat());
+        MnRujuk.setVisible(akses.getrujukan_keluar());
+        MnRujukMasuk.setVisible(akses.getrujukan_masuk());
+        MnDiagnosa.setVisible(akses.getdiagnosa_pasien());
+        MnHapusTagihanOperasi.setVisible(akses.getoperasi());
+        MnHapusObatOperasi.setVisible(akses.getoperasi());  
+        MnSEP.setVisible(akses.getbpjs_sep());  
+        MnPCare.setVisible(akses.getbridging_pcare_daftar());  
+        MnSJP.setVisible(akses.getinhealth_sjp());  
+        ppRiwayat.setVisible(akses.getresume_pasien());
+        ppCatatanPasien.setVisible(akses.getcatatan_pasien());
+        MnPoliInternal.setVisible(akses.getrujukan_poli_internal());
+        MnHapusRujukan.setVisible(akses.getrujukan_poli_internal());        
+        ppIKP.setVisible(akses.getinsiden_keselamatan_pasien());
+        ppIKP1.setVisible(akses.getinsiden_keselamatan_pasien());   
+        ppBerkasDigital.setVisible(akses.getberkas_digital_perawatan());        
+        ppBerkasDigital1.setVisible(akses.getberkas_digital_perawatan());  
+        MnJadwalOperasi.setVisible(akses.getbooking_operasi());  
+        MnBillingParsial.setVisible(akses.getbilling_parsial()); 
+        MnSKDPBPJS.setVisible(akses.getskdp_bpjs());  
+        MnPermintaanLab.setVisible(akses.getpermintaan_lab());
+        MnPermintaanRadiologi.setVisible(akses.getpermintaan_radiologi());
+        MnJadwalOperasi1.setVisible(akses.getbooking_operasi());   
+        MnSKDPBPJS1.setVisible(akses.getskdp_bpjs());  
+        MnPermintaanLab1.setVisible(akses.getpermintaan_lab());
+        MnPermintaanRadiologi1.setVisible(akses.getpermintaan_radiologi());
+        MnTeridentifikasiTB.setVisible(akses.getkemenkes_sitt());
+        MnResepDOkter.setVisible(akses.getresep_dokter());
+        MnResepDOkter1.setVisible(akses.getresep_dokter());
+        MnDataTriaseIGD.setVisible(akses.getdata_triase_igd());
+        ppResume.setVisible(akses.getdata_resume_pasien());
+        MnCetakSuratSakit.setVisible(akses.getsurat_sakit());
+        MnCetakSuratHamil.setVisible(akses.getsurat_hamil());
+        MnCetakSuratCovid.setVisible(akses.getsurat_keterangan_covid());
+        MnCetakBebasNarkoba.setVisible(akses.getsurat_bebas_narkoba());
+        ppPasienCorona.setVisible(akses.getpasien_corona());
+        ppPerawatanCorona.setVisible(akses.getpasien_corona());
+        MnRujukSisrute.setVisible(akses.getsisrute_rujukan_keluar());
+        MnPeniliaianAwalKeperawatanRalan.setVisible(akses.getpenilaian_awal_keperawatan_ralan());
+        MnPeniliaianAwalKeperawatanGigi.setVisible(akses.getpenilaian_awal_keperawatan_gigi());
+        MnPeniliaianAwalKeperawatanKebidanan.setVisible(akses.getpenilaian_awal_keperawatan_kebidanan());
+        MnPeniliaianAwalKeperawatanBayiAnak.setVisible(akses.getpenilaian_awal_keperawatan_anak());
+        ppDeteksiDIniCorona.setVisible(akses.getdeteksi_corona());
+        
+        if(MnDataTriaseIGD.isVisible()==false){
+            MnRMIGD.setVisible(false);
+        }
+        
+        if((MnPeniliaianAwalKeperawatanRalan.isVisible()==false)&&(MnPeniliaianAwalKeperawatanGigi.isVisible()==false)&&(MnPeniliaianAwalKeperawatanKebidanan.isVisible()==false)&&(MnPeniliaianAwalKeperawatanBayiAnak.isVisible()==false)){
+            MnRMRawatJalan.setVisible(false);
+        }
+        
+        if((MnRMIGD.isVisible()==false)&&(MnRMRawatJalan.isVisible()==false)&&(ppResume.isVisible()==false)&&(MnDiagnosa.isVisible()==false)&&(ppRiwayat.isVisible()==false)&&(ppDeteksiDIniCorona.isVisible()==false)){
+            MnDataRM.setVisible(false);
+        }
+        
+        if((MnJadwalOperasi.isVisible()==false)&&(MnSKDPBPJS.isVisible()==false)&&(MnPermintaanLab.isVisible()==false)&&(MnPermintaanRadiologi.isVisible()==false)){
+            MnPermintaan.setVisible(false);
+        }
+        
+        if((MnRawatJalan.isVisible()==false)&&(MnPeriksaLab.isVisible()==false)&&(MnPeriksaRadiologi.isVisible()==false)&&(MnOperasi.isVisible()==false)){
+            MnTindakan.setVisible(false);
+        }
+        
+        if((MnPemberianObat.isVisible()==false)&&(MnResepDOkter.isVisible()==false)&&(MnNoResep.isVisible()==false)){
+            MnObat.setVisible(false);
+        }
+        
+        if((MnBilling.isVisible()==false)&&(MnBillingParsial.isVisible()==false)){
+            MnPilihBilling.setVisible(false);
+        }
+        
+        if((MnRujuk.isVisible()==false)&&(MnRujukMasuk.isVisible()==false)&&(MnPoliInternal.isVisible()==false)){
+            MnRujukan.setVisible(false);
+        }
+        
+        if((MnSEP.isVisible()==false)&&(MnSJP.isVisible()==false)&&(MnPCare.isVisible()==false)&&(MnRujukSisrute.isVisible()==false)&&(ppPasienCorona.isVisible()==false)&&(ppPerawatanCorona.isVisible()==false)&&(MnTeridentifikasiTB.isVisible()==false)){
+            MnBridging.setVisible(false);
+        }
     }
     
     private void isNumber(){         

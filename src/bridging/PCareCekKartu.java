@@ -5333,11 +5333,11 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                             (!Heartrate.getText().trim().equals(""))||(!TinggiBadan.getText().trim().equals(""))||
                             (!BeratBadan.getText().trim().equals(""))||(!Sistole.getText().trim().equals(""))||
                             (!Diastole.getText().trim().equals(""))){
-                        Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
+                        Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
                             TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                             "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                            BeratBadan.getText(),"", Keluhan.getText(),"","","-","",""
-                        });        
+                            BeratBadan.getText(),"", Keluhan.getText(),"Compos Mentis","","","-","",""
+                        });      
                     }          
                     emptTeks();
                 }                     
@@ -5355,11 +5355,11 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                             (!Heartrate.getText().trim().equals(""))||(!TinggiBadan.getText().trim().equals(""))||
                             (!BeratBadan.getText().trim().equals(""))||(!Sistole.getText().trim().equals(""))||
                             (!Diastole.getText().trim().equals(""))){
-                        Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
+                        Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
                             TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                             "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                            BeratBadan.getText(),"", Keluhan.getText(),"","","-","",""
-                        });        
+                            BeratBadan.getText(),"", Keluhan.getText(),"Compos Mentis","","","-","",""
+                        });         
                     }          
                     emptTeks();
                 }
@@ -5375,11 +5375,11 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                             (!Heartrate.getText().trim().equals(""))||(!TinggiBadan.getText().trim().equals(""))||
                             (!BeratBadan.getText().trim().equals(""))||(!Sistole.getText().trim().equals(""))||
                             (!Diastole.getText().trim().equals(""))){
-                        Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
+                        Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
                             TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                             "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                            BeratBadan.getText(),"", Keluhan.getText(),"","","-","",""
-                        });        
+                            BeratBadan.getText(),"", Keluhan.getText(),"Compos Mentis","","","-","",""
+                        });         
                     }          
                     emptTeks();
                 }
@@ -5397,11 +5397,11 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                             (!Heartrate.getText().trim().equals(""))||(!TinggiBadan.getText().trim().equals(""))||
                             (!BeratBadan.getText().trim().equals(""))||(!Sistole.getText().trim().equals(""))||
                             (!Diastole.getText().trim().equals(""))){
-                        Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
+                        Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
                             TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
                             "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                            BeratBadan.getText(),"", Keluhan.getText(),"","","-","",""
-                        });        
+                            BeratBadan.getText(),"", Keluhan.getText(),"Compos Mentis","","","-","",""
+                        });         
                     }          
                     emptTeks();
                 }
