@@ -10875,6 +10875,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     resume.isCek();
                     resume.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
                     resume.setLocationRelativeTo(internalFrame1);
+                    resume.setPj(tbKamIn.getValueAt(tbKamIn.getSelectedRow(), 18).toString());
                     resume.setNoRm(norawat.getText(), DTPCari2.getDate());
                     resume.tampil();
                     resume.setVisible(true);
