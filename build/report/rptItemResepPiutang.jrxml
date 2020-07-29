@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="184" pageHeight="113" columnWidth="174" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="662d5359-f1cb-4a1f-b4a1-29dfb5df5c10">
 	<property name="ireport.zoom" value="4.0"/>
 	<property name="ireport.x" value="0"/>
@@ -15,11 +15,10 @@
 	<parameter name="kontakrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, 
-pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,
+		<![CDATA[select piutang.nota_piutang,piutang.tgl_piutang,
+piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,
 detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan
 from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang 
-inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis 
 inner join databarang on detailpiutang.kode_brng=databarang.kode_brng 
 inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat 
 where detailpiutang.aturan_pakai<>'']]>
@@ -32,18 +31,14 @@ where detailpiutang.aturan_pakai<>'']]>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_piutang"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="piutang"/>
 	</field>
-	<field name="tgl_lahir" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
-	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="piutang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_pasien" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="piutang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_brng" class="java.lang.String">
@@ -71,10 +66,10 @@ where detailpiutang.aturan_pakai<>'']]>
 		<band height="103" splitType="Stretch">
 			<componentElement>
 				<reportElement x="3" y="33" width="21" height="38" uuid="a8e84cbb-bc92-4e8b-a09b-1d80df33cf4f">
-					<property name="com.jaspersoft.studio.unit.barHeight" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.barHeight" value="px"/>
 				</reportElement>
-				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false" barWidth="1" barHeight="37" rotation="Left">
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barWidth="1" barHeight="55" rotation="Left">
 					<jr:codeExpression><![CDATA[$F{nota_piutang}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
@@ -104,7 +99,7 @@ where detailpiutang.aturan_pakai<>'']]>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[No.RM]]></text>
+				<text><![CDATA[Nota]]></text>
 			</staticText>
 			<line>
 				<reportElement x="1" y="102" width="172" height="1" forecolor="#006666" uuid="e72acbc4-f9e2-4589-a0f6-1e0ba17a66b0"/>
@@ -181,12 +176,12 @@ where detailpiutang.aturan_pakai<>'']]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="52" y="44" width="50" height="9" uuid="ac7b1946-497d-4797-a93e-67a369fb5913"/>
+				<reportElement x="52" y="44" width="120" height="9" uuid="ac7b1946-497d-4797-a93e-67a369fb5913"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nota_piutang}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="52" y="54" width="120" height="17" uuid="93255e91-74f0-4727-bec4-36b54c229b73"/>
@@ -226,25 +221,6 @@ where detailpiutang.aturan_pakai<>'']]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jumlah}+" "+$F{satuan}]]></textFieldExpression>
 			</textField>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="134" y="44" width="38" height="9" uuid="72bc0a78-0ccb-4053-9e1a-01b7f2a21f3a"/>
-				<textElement textAlignment="Right" verticalAlignment="Top">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="102" y="44" width="33" height="9" uuid="3e7b3a48-0feb-4a01-a7bf-a24acead8fd7">
-					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Top">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[Tgl.Lahir :]]></text>
-			</staticText>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="24" y="36" width="126" height="8" uuid="010d1a68-6307-4551-9003-7a4302c621b5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>

@@ -1988,7 +1988,11 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 golongan[jml]=tbObat.getValueAt(i,15).toString();
                 nobatch[jml]=tbObat.getValueAt(i,16).toString();
                 nofaktur[jml]=tbObat.getValueAt(i,17).toString();
-                kadaluarsa[jml]=tbObat.getValueAt(i,18).toString();
+                try {
+                    kadaluarsa[jml]=tbObat.getValueAt(i,18).toString();
+                } catch (Exception e) {
+                    kadaluarsa[jml]="0000-00-00";
+                }
                 jml++;
             }
         }
@@ -2914,7 +2918,11 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 golongan[z]=tbDetailObatRacikan.getValueAt(i,15).toString();
                 nobatch[z]=tbDetailObatRacikan.getValueAt(i,16).toString();
                 nofaktur[z]=tbDetailObatRacikan.getValueAt(i,17).toString();
-                kadaluarsa[z]=tbDetailObatRacikan.getValueAt(i,18).toString();
+                try {
+                    kadaluarsa[z]=tbObat.getValueAt(i,18).toString();
+                } catch (Exception e) {
+                    kadaluarsa[z]="0000-00-00";
+                }
                 z++;
             }
         }

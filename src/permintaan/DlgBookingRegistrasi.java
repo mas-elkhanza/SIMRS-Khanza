@@ -1133,7 +1133,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
                 "select booking_registrasi.tanggal_booking,booking_registrasi.jam_booking,booking_registrasi.no_rkm_medis, "+
                     "pasien.nm_pasien,booking_registrasi.tanggal_periksa,booking_registrasi.kd_dokter,"+
                     "dokter.nm_dokter,booking_registrasi.kd_poli,poliklinik.nm_poli,booking_registrasi.no_reg, "+
-                    "pasien.namakeluarga,pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.no_tlp,"+
+                    "pasien.namakeluarga,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab)as alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.no_tlp,"+
                     "pasien.kabupatenpj,pasien.propinsipj,pasien.keluarga,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun, "+
                     "(TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12)) as bulan, "+
                     "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(pasien.tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari, "+
@@ -1142,6 +1142,9 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
                     "inner join dokter on booking_registrasi.kd_dokter=dokter.kd_dokter "+
                     "inner join poliklinik on booking_registrasi.kd_poli=poliklinik.kd_poli "+
                     "inner join penjab on booking_registrasi.kd_pj=penjab.kd_pj "+
+                    "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                    "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                    "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
                     "where "+status+" and booking_registrasi.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
                     status+" and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
                     status+" and poliklinik.nm_poli like '%"+TCari.getText().trim()+"%' or "+
@@ -1598,7 +1601,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "select booking_registrasi.tanggal_booking,booking_registrasi.jam_booking,booking_registrasi.no_rkm_medis, "+
                     "pasien.nm_pasien,booking_registrasi.tanggal_periksa,booking_registrasi.kd_dokter,"+
                     "dokter.nm_dokter,booking_registrasi.kd_poli,poliklinik.nm_poli,booking_registrasi.no_reg, "+
-                    "pasien.namakeluarga,pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.no_tlp,"+
+                    "pasien.namakeluarga,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.no_tlp,"+
                     "pasien.kabupatenpj,pasien.propinsipj,pasien.keluarga,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun, "+
                     "(TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12)) as bulan, "+
                     "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(pasien.tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari, "+
@@ -1607,6 +1610,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "inner join dokter on booking_registrasi.kd_dokter=dokter.kd_dokter "+
                     "inner join poliklinik on booking_registrasi.kd_poli=poliklinik.kd_poli "+
                     "inner join penjab on booking_registrasi.kd_pj=penjab.kd_pj "+
+                    "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                    "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                    "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
                     "where "+status+" and booking_registrasi.no_rkm_medis like ? or "+
                     status+" and pasien.nm_pasien like ? or "+
                     status+" and poliklinik.nm_poli like ? or "+

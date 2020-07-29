@@ -3338,7 +3338,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                 nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
                 DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
-                dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","-","-");
                 dlgrwjl.isCek();
                 dlgrwjl.tampil();
                 dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());

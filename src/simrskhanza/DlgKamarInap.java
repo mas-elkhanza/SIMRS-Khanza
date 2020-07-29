@@ -9221,6 +9221,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     }//GEN-LAST:event_MnSuratJaminanPelayananActionPerformed
 
     private void MnPerkiraanBiayaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPerkiraanBiayaActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgPerkiraanBiayaRanap resep=new DlgPerkiraanBiayaRanap(null,false);
         resep.isCek();
         resep.tampil();

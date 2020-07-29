@@ -1,5 +1,3 @@
-
-
 <div id="post">
     <div align="center" class="link">
         <a href=?act=InputBank&action=TAMBAH>| Input Data |</a>
