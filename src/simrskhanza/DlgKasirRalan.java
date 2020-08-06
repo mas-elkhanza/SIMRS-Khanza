@@ -8897,6 +8897,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnCetakSuratCovid.setVisible(akses.getsurat_keterangan_covid());
         MnRujukSisrute.setVisible(akses.getsisrute_rujukan_keluar());
         MnTeridentifikasiTB.setVisible(akses.getkemenkes_sitt());
+        ppCatatanPasien.setVisible(akses.getcatatan_pasien());
+        MnBilling1.setVisible(akses.getbilling_ralan());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusData.setVisible(true);
@@ -8989,6 +8991,22 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         
         if((ppCatatanPasien.isVisible()==false)&&(ppBerkasDigital.isVisible()==false)&&(ppIKP.isVisible()==false)){
             MenuInputData.setVisible(false);
+        }
+        
+        if((MnJadwalOperasi1.isVisible()==false)&&(MnSKDPBPJS1.isVisible()==false)&&(MnPermintaanLab1.isVisible()==false)&&(MnPermintaanRadiologi1.isVisible()==false)){
+            MnPermintaan1.setVisible(false);
+        }
+        
+        if((MnRawatJalan1.isVisible()==false)&&(MnPeriksaLab1.isVisible()==false)&&(MnPeriksaRadiologi1.isVisible()==false)&&(MnOperasi1.isVisible()==false)){
+            MnTindakan1.setVisible(false);
+        }
+        
+        if((MnPemberianObat1.isVisible()==false)&&(MnResepDOkter1.isVisible()==false)&&(MnNoResep1.isVisible()==false)){
+            MnObat1.setVisible(false);
+        }
+        
+        if((MnDiagnosa1.isVisible()==false)&&(ppBerkasDigital1.isVisible()==false)&&(ppIKP1.isVisible()==false)){
+            MenuInputData1.setVisible(false);
         }
     }
 
