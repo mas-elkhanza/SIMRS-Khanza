@@ -52,7 +52,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private Date now;
     private boolean aktif=false,semua;
     private ApiLICA lica=new ApiLICA();
-    private ApiLICA2 lica2=new ApiLICA2();
+    private ApiLICA2 lica2=new ApiLICA2(); 
     private String pilihan="",alarm="",formalarm="",nol_detik,detik,tglsampel="",tglhasil="",norm="",kamar="",namakamar="",la="",ld="",pa="",pd="",InformasiTambahan,DiagnosaKlinis,
                     NoPermintaan="",NoRawat="",Pasien="",Permintaan="",JamPermintaan="",Sampel="",JamSampel="",Hasil="",JamHasil="",KodeDokter="",DokterPerujuk="",Ruang="";
     
@@ -413,6 +413,8 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         MnAmbilSysmex = new javax.swing.JMenuItem();
         MnKirimLISELIMS = new javax.swing.JMenuItem();
         MnAmbilLISELIMS = new javax.swing.JMenuItem();
+        MnKirimLISTeras = new javax.swing.JMenuItem();
+        MnAmbilLISTeras = new javax.swing.JMenuItem();
         WindowAmbilSampel = new javax.swing.JDialog();
         internalFrame5 = new widget.InternalFrame();
         BtnCloseIn4 = new widget.Button();
@@ -594,6 +596,34 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnAmbilLISELIMS);
 
+        MnKirimLISTeras.setBackground(new java.awt.Color(255, 255, 254));
+        MnKirimLISTeras.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKirimLISTeras.setForeground(new java.awt.Color(50, 50, 50));
+        MnKirimLISTeras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKirimLISTeras.setText("Kirim Permintaan ke LIS TERAS");
+        MnKirimLISTeras.setName("MnKirimLISTeras"); // NOI18N
+        MnKirimLISTeras.setPreferredSize(new java.awt.Dimension(210, 28));
+        MnKirimLISTeras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKirimLISTerasActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnKirimLISTeras);
+
+        MnAmbilLISTeras.setBackground(new java.awt.Color(255, 255, 254));
+        MnAmbilLISTeras.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnAmbilLISTeras.setForeground(new java.awt.Color(50, 50, 50));
+        MnAmbilLISTeras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnAmbilLISTeras.setText("Ambil Hasil dari LIS TERAS");
+        MnAmbilLISTeras.setName("MnAmbilLISTeras"); // NOI18N
+        MnAmbilLISTeras.setPreferredSize(new java.awt.Dimension(210, 28));
+        MnAmbilLISTeras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnAmbilLISTerasActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnAmbilLISTeras);
+
         WindowAmbilSampel.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowAmbilSampel.setName("WindowAmbilSampel"); // NOI18N
         WindowAmbilSampel.setUndecorated(true);
@@ -634,7 +664,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-04-2020 22:27:14" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-08-2020 00:06:49" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -2761,6 +2791,42 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         } 
     }//GEN-LAST:event_MnAmbilLISELIMSActionPerformed
 
+    private void MnKirimLISTerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKirimLISTerasActionPerformed
+        if(TabPilihRawat.getSelectedIndex()==0){
+            if(!NoRawat.equals("")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(NoPermintaan.trim().equals("")){
+                    Valid.textKosong(TCari,"No.Permintaan");
+                }else{   
+                    
+                }
+                TeksKosong();
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{            
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                TCari.requestFocus();
+            } 
+        }else if(TabPilihRawat.getSelectedIndex()==1){
+            if(!NoRawat.equals("")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if(NoPermintaan.trim().equals("")){
+                    Valid.textKosong(TCari,"No.Permintaan");
+                }else{   
+                    
+                }
+                TeksKosong();
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{            
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                TCari.requestFocus();
+            } 
+        }
+    }//GEN-LAST:event_MnKirimLISTerasActionPerformed
+
+    private void MnAmbilLISTerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnAmbilLISTerasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnAmbilLISTerasActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2797,12 +2863,14 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private widget.TextBox Kamar;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnAmbilLISELIMS;
+    private javax.swing.JMenuItem MnAmbilLISTeras;
     private javax.swing.JMenuItem MnAmbilLica;
     private javax.swing.JMenuItem MnAmbilSysmex;
     private javax.swing.JMenuItem MnBarcodePermintaan;
     private javax.swing.JMenuItem MnBarcodePermintaan1;
     private javax.swing.JMenuItem MnCetakHasilLab;
     private javax.swing.JMenuItem MnKirimLISELIMS;
+    private javax.swing.JMenuItem MnKirimLISTeras;
     private javax.swing.JMenuItem MnKirimLica;
     private javax.swing.JMenuItem MnKirimSysmex;
     private widget.TextBox TCari;
@@ -3103,6 +3171,8 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         MnAmbilLica.setEnabled(akses.getperiksa_lab());
         MnKirimSysmex.setEnabled(akses.getpermintaan_lab());
         MnAmbilSysmex.setEnabled(akses.getperiksa_lab());
+        MnKirimLISTeras.setEnabled(akses.getpermintaan_lab());
+        MnAmbilLISTeras.setEnabled(akses.getperiksa_lab());
     }
     
     public void setPasien(String pasien){

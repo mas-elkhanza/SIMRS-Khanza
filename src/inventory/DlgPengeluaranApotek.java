@@ -38,7 +38,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
     public boolean tampilkanpermintaan=false;
     private double stok_asal=0;
     private boolean sukses=true;
-    private String aktifkanbatch="no";
+    private String aktifkanbatch="no",DEPOAKTIFOBAT="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -203,9 +203,11 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
         
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
+            DEPOAKTIFOBAT = koneksiDB.DEPOAKTIFOBAT();
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
+            DEPOAKTIFOBAT = "";
         }
         
     }
@@ -1238,6 +1240,11 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             BtnTambah.setEnabled(akses.getobat());
             kdptg.setText(akses.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+            if(!DEPOAKTIFOBAT.equals("")){
+                kdgudang.setText(DEPOAKTIFOBAT);
+                nmgudang.setText(Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",DEPOAKTIFOBAT));
+                BtnGudang.setEnabled(false);
+            }
         }    
         
     }

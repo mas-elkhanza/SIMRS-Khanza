@@ -782,4 +782,13 @@ public class koneksiDB {
         return var;
     }
     
+    public static String DEPOAKTIFOBAT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("DEPOAKTIFOBAT"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }

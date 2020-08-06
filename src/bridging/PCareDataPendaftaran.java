@@ -806,7 +806,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
-        LCount = new widget.Label();
+        LCountPendaftaran = new widget.Label();
         internalFrame5 = new widget.InternalFrame();
         Scroll2 = new widget.ScrollPane();
         tbKunjungan = new widget.Table();
@@ -819,7 +819,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         TCari1 = new widget.TextBox();
         BtnCari1 = new widget.Button();
         jLabel10 = new widget.Label();
-        LCount1 = new widget.Label();
+        LCountKunjungan = new widget.Label();
         internalFrame6 = new widget.InternalFrame();
         Scroll3 = new widget.ScrollPane();
         PesanKirim = new widget.TextArea();
@@ -1174,7 +1174,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-07-2020 01:57:04" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020 20:16:03" }));
         tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -1336,7 +1336,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel22.setBounds(0, 102, 90, 23);
 
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-07-2020" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1652,7 +1652,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel26.setBounds(30, 270, 97, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-07-2020" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
@@ -1757,7 +1757,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnStatusPulang.setBounds(354, 360, 28, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-07-2020" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
@@ -1964,7 +1964,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel32.setBounds(90, 410, 95, 23);
 
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-07-2020" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
@@ -2314,7 +2314,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-07-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2328,7 +2328,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-07-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2371,11 +2371,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass9.add(jLabel7);
 
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass9.add(LCount);
+        LCountPendaftaran.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCountPendaftaran.setText("0");
+        LCountPendaftaran.setName("LCountPendaftaran"); // NOI18N
+        LCountPendaftaran.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass9.add(LCountPendaftaran);
 
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
@@ -2418,7 +2418,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel42);
 
         DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-07-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -2432,7 +2432,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel43);
 
         DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-07-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -2475,11 +2475,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel10.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass10.add(jLabel10);
 
-        LCount1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount1.setText("0");
-        LCount1.setName("LCount1"); // NOI18N
-        LCount1.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass10.add(LCount1);
+        LCountKunjungan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCountKunjungan.setText("0");
+        LCountKunjungan.setName("LCountKunjungan"); // NOI18N
+        LCountKunjungan.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass10.add(LCountKunjungan);
 
         internalFrame5.add(panelGlass10, java.awt.BorderLayout.PAGE_END);
 
@@ -2496,6 +2496,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         PesanKirim.setColumns(20);
         PesanKirim.setRows(5);
+        PesanKirim.setText("Sinkronisasi/pengiriman data ke server BPJS PCare akan dilakukan setiap jam, pada menit 01 detik 01\n\n");
         PesanKirim.setName("PesanKirim"); // NOI18N
         Scroll3.setViewportView(PesanKirim);
 
@@ -5034,8 +5035,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.TextBox KdSubSpesialis;
     private widget.TextBox KdTenagaMedis;
     private widget.TextBox Keluhan;
-    private widget.Label LCount;
-    private widget.Label LCount1;
+    private widget.Label LCountKunjungan;
+    private widget.Label LCountPendaftaran;
     private widget.Label LabelPoli;
     private widget.Label LabelPoli10;
     private widget.Label LabelPoli11;
@@ -5236,6 +5237,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     ps.close();
                 }
             }
+            LCountPendaftaran.setText(""+tabMode.getRowCount());
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
@@ -5316,6 +5318,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     ps.close();
                 }
             }
+            LCountKunjungan.setText(""+tabMode2.getRowCount());
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
@@ -6649,7 +6652,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     String jam = nol_jam + Integer.toString(nilai_jam);
                     String menit = nol_menit + Integer.toString(nilai_menit);
                     String detik = nol_detik + Integer.toString(nilai_detik);
-                    PesanKirim.append(jam+":"+menit+":"+detik+"\n");
                     if(menit.equals("01")&&detik.equals("01")){
                         if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
                             PesanKirim.setText("");
