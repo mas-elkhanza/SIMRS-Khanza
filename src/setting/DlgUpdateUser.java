@@ -656,7 +656,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes,zis_ternak_penerima_dankes,zis_jenis_simpanan_penerima_dankes,"+
                         "penilaian_awal_keperawatan_anak,zis_kategori_asnaf_penerima_dankes,master_masalah_keperawatan_anak,master_imunisasi,"+
                         "zis_patologis_penerima_dankes,pcare_cek_kartu,surat_bebas_narkoba,surat_keterangan_covid,pemakaian_air_tanah,"+
-                        "grafik_air_tanah_pertanggal,grafik_air_tanah_perbulan,lama_pelayanan_poli from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "grafik_air_tanah_pertanggal,grafik_air_tanah_perbulan,lama_pelayanan_poli,hemodialisa from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -2479,6 +2479,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[L]Master Imunisasi".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[L]Master Imunisasi",rs.getBoolean("master_imunisasi")});
+                    }
+                    
+                    if("[L]Hemodialisa".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[L]Hemodialisa",rs.getBoolean("hemodialisa")});
                     }
                     
                     if("[M]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -5124,6 +5128,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_imunisasi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
+            if("[L]Hemodialisa".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","hemodialisa='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
             if("[M]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pengambilan_utd2='"+tbUser.getValueAt(i,2).toString()+"'");
             }

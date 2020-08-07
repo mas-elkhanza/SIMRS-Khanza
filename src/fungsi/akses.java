@@ -143,7 +143,7 @@ public final class akses {
             zis_elektronik_penerima_dankes=false,zis_ternak_penerima_dankes=false,zis_jenis_simpanan_penerima_dankes=false,penilaian_awal_keperawatan_anak=false,
             zis_kategori_asnaf_penerima_dankes=false,master_masalah_keperawatan_anak=false,master_imunisasi=false,zis_patologis_penerima_dankes=false,
             pcare_cek_kartu=false,surat_bebas_narkoba=false,surat_keterangan_covid=false,pemakaian_air_tanah=false,grafik_air_tanah_pertanggal=false,
-            grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false;
+            grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false,hemodialisa=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -820,6 +820,7 @@ public final class akses {
                         akses.grafik_air_tanah_pertanggal=true;
                         akses.grafik_air_tanah_perbulan=true;
                         akses.lama_pelayanan_poli=true;
+                        akses.hemodialisa=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1480,6 +1481,7 @@ public final class akses {
                         akses.grafik_air_tanah_pertanggal=rs2.getBoolean("grafik_air_tanah_pertanggal");
                         akses.grafik_air_tanah_perbulan=rs2.getBoolean("grafik_air_tanah_perbulan");
                         akses.lama_pelayanan_poli=rs2.getBoolean("lama_pelayanan_poli");
+                        akses.hemodialisa=rs2.getBoolean("hemodialisa");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2138,6 +2140,7 @@ public final class akses {
                         akses.grafik_air_tanah_pertanggal=false;
                         akses.grafik_air_tanah_perbulan=false;
                         akses.lama_pelayanan_poli=false;
+                        akses.hemodialisa=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2850,4 +2853,5 @@ public final class akses {
     public static boolean getgrafik_air_tanah_pertanggal(){return akses.grafik_air_tanah_pertanggal;}
     public static boolean getgrafik_air_tanah_perbulan(){return akses.grafik_air_tanah_perbulan;}
     public static boolean getlama_pelayanan_poli(){return akses.lama_pelayanan_poli;}
+    public static boolean gethemodialisa(){return akses.hemodialisa;}
 }   

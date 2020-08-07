@@ -169,7 +169,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[R]Ternak Penerima Dankes","[R]Jenis Simpanan Penerima Dankes","[L]Penilaian Awal Ralan Bayi/Anak","[R]Kategori Asnaf Penerima Dankes",
                 "[L]Master Masalah Keperawatan Bayi/Anak","[L]Master Imunisasi","[R]Patologis Penerima Dankes","[K]Cek No.Kartu PCare","[O]Surat Bebas Narkoba",
                 "[O]Surat Keterangan Covid","[F]Pemakaian Air Tanah","[N]Pemakaian Air Tanah Per Tanggal","[N]Pemakaian Air Tanah Per Bulan",
-                "[I]Lama Pelayanan Poli"
+                "[I]Lama Pelayanan Poli","[L]Hemodialisa"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -348,6 +348,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -361,7 +362,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 657;i++) {
+        for (i = 0; i < 658;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -1786,6 +1787,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 656:
                     column.setPreferredWidth(119);
                     break;
+                case 657:
+                    column.setPreferredWidth(80);
+                    break;
                 default:
                     column.setPreferredWidth(130);
                     break;
@@ -2282,7 +2286,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2981,7 +2985,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "pemakaian_air_tanah='"+tbUser.getValueAt(i,653).toString()+"',"+
                     "grafik_air_tanah_pertanggal='"+tbUser.getValueAt(i,654).toString()+"',"+
                     "grafik_air_tanah_perbulan='"+tbUser.getValueAt(i,655).toString()+"',"+
-                    "lama_pelayanan_poli='"+tbUser.getValueAt(i,656).toString()+"'");
+                    "lama_pelayanan_poli='"+tbUser.getValueAt(i,656).toString()+"',"+
+                    "hemodialisa='"+tbUser.getValueAt(i,657).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3719,7 +3724,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "pemakaian_air_tanah='"+tbUser.getValueAt(barisdicopy,653).toString()+"',"+
                                     "grafik_air_tanah_pertanggal='"+tbUser.getValueAt(barisdicopy,654).toString()+"',"+
                                     "grafik_air_tanah_perbulan='"+tbUser.getValueAt(barisdicopy,655).toString()+"',"+
-                                    "lama_pelayanan_poli='"+tbUser.getValueAt(barisdicopy,656).toString()+"'");
+                                    "lama_pelayanan_poli='"+tbUser.getValueAt(barisdicopy,656).toString()+"',"+
+                                    "hemodialisa='"+tbUser.getValueAt(barisdicopy,657).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4040,7 +4046,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes,zis_ternak_penerima_dankes,zis_jenis_simpanan_penerima_dankes,"+
                         "penilaian_awal_keperawatan_anak,zis_kategori_asnaf_penerima_dankes,master_masalah_keperawatan_anak,master_imunisasi,"+
                         "zis_patologis_penerima_dankes,pcare_cek_kartu,surat_bebas_narkoba,surat_keterangan_covid,pemakaian_air_tanah,"+
-                        "grafik_air_tanah_pertanggal,grafik_air_tanah_perbulan,lama_pelayanan_poli from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_air_tanah_pertanggal,grafik_air_tanah_perbulan,lama_pelayanan_poli,hemodialisa from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4709,7 +4715,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("pemakaian_air_tanah"),
                                rs.getBoolean("grafik_air_tanah_pertanggal"),
                                rs.getBoolean("grafik_air_tanah_perbulan"),
-                               rs.getBoolean("lama_pelayanan_poli")
+                               rs.getBoolean("lama_pelayanan_poli"),
+                               rs.getBoolean("hemodialisa")
                             });
                         }   
                     } catch (Exception e) {
@@ -5367,7 +5374,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("pemakaian_air_tanah"),
                            rs.getBoolean("grafik_air_tanah_pertanggal"),
                            rs.getBoolean("grafik_air_tanah_perbulan"),
-                           rs.getBoolean("lama_pelayanan_poli")
+                           rs.getBoolean("lama_pelayanan_poli"),
+                           rs.getBoolean("hemodialisa")
                         });
                     }                                             
                  }

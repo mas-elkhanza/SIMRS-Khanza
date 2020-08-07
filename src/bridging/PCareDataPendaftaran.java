@@ -24,11 +24,12 @@ import inventory.DlgCariObat;
 import inventory.DlgCariObat2;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.net.URI;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
@@ -36,14 +37,15 @@ import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -73,8 +75,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private PreparedStatement ps,pscari;
+    private ResultSet rs,rscari;
     private int i=0,pilihan=1;
     private PCareCekReferensiPoli poli=new PCareCekReferensiPoli(null,false); 
     private PCareCekReferensiKesadaran kesadaran=new PCareCekReferensiKesadaran(null,false);
@@ -93,7 +95,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
-    private String kdptg,nmptg,status="";
+    private String kdptg,nmptg,status="",signa1="1",signa2="1",kdObatSK="";
     private String[] arrSplit;
     /** Creates new form DlgRujuk
      * @param parent
@@ -633,7 +635,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             userpcare=koneksiDB.USERPCARE();
         } catch (Exception e) {
             System.out.println("E : "+e);
-        }        
+        }  
+        
+        jam();
     }
 
 
@@ -668,6 +672,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnTIndakan1 = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
         ppBuktiKunjungan = new javax.swing.JMenuItem();
+        ppKirimTindakanObat = new javax.swing.JMenuItem();
         tanggal = new widget.Tanggal();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         ppFilterTerkirim = new javax.swing.JMenuItem();
@@ -801,7 +806,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
-        LCount = new widget.Label();
+        LCountPendaftaran = new widget.Label();
         internalFrame5 = new widget.InternalFrame();
         Scroll2 = new widget.ScrollPane();
         tbKunjungan = new widget.Table();
@@ -814,7 +819,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         TCari1 = new widget.TextBox();
         BtnCari1 = new widget.Button();
         jLabel10 = new widget.Label();
-        LCount1 = new widget.Label();
+        LCountKunjungan = new widget.Label();
+        internalFrame6 = new widget.InternalFrame();
+        Scroll3 = new widget.ScrollPane();
+        PesanKirim = new widget.TextArea();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -839,7 +847,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnGelang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnGelang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnGelang.setName("MnGelang"); // NOI18N
-        MnGelang.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnGelang.setPreferredSize(new java.awt.Dimension(230, 26));
         MnGelang.setRequestFocusEnabled(false);
 
         MnGelang1.setBackground(new java.awt.Color(255, 255, 254));
@@ -1060,7 +1068,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnPemberianObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPemberianObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPemberianObat.setName("MnPemberianObat"); // NOI18N
-        MnPemberianObat.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnPemberianObat.setPreferredSize(new java.awt.Dimension(230, 26));
         MnPemberianObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPemberianObatActionPerformed(evt);
@@ -1076,7 +1084,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnPemberianObat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPemberianObat1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPemberianObat1.setName("MnPemberianObat1"); // NOI18N
-        MnPemberianObat1.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnPemberianObat1.setPreferredSize(new java.awt.Dimension(230, 26));
         MnPemberianObat1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPemberianObat1ActionPerformed(evt);
@@ -1092,7 +1100,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnTIndakan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnTIndakan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnTIndakan.setName("MnTIndakan"); // NOI18N
-        MnTIndakan.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnTIndakan.setPreferredSize(new java.awt.Dimension(230, 26));
         MnTIndakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnTIndakanActionPerformed(evt);
@@ -1108,7 +1116,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         MnTIndakan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnTIndakan1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnTIndakan1.setName("MnTIndakan1"); // NOI18N
-        MnTIndakan1.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnTIndakan1.setPreferredSize(new java.awt.Dimension(230, 26));
         MnTIndakan1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnTIndakan1ActionPerformed(evt);
@@ -1124,7 +1132,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppRiwayat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppRiwayat.setName("ppRiwayat"); // NOI18N
-        ppRiwayat.setPreferredSize(new java.awt.Dimension(190, 26));
+        ppRiwayat.setPreferredSize(new java.awt.Dimension(230, 26));
         ppRiwayat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppRiwayatBtnPrintActionPerformed(evt);
@@ -1140,7 +1148,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ppBuktiKunjungan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBuktiKunjungan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBuktiKunjungan.setName("ppBuktiKunjungan"); // NOI18N
-        ppBuktiKunjungan.setPreferredSize(new java.awt.Dimension(190, 26));
+        ppBuktiKunjungan.setPreferredSize(new java.awt.Dimension(230, 26));
         ppBuktiKunjungan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBuktiKunjunganBtnPrintActionPerformed(evt);
@@ -1148,9 +1156,25 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppBuktiKunjungan);
 
+        ppKirimTindakanObat.setBackground(new java.awt.Color(255, 255, 254));
+        ppKirimTindakanObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppKirimTindakanObat.setForeground(new java.awt.Color(50, 50, 50));
+        ppKirimTindakanObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppKirimTindakanObat.setText("Kirimkan Mapping Tindakan & Obat");
+        ppKirimTindakanObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppKirimTindakanObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppKirimTindakanObat.setName("ppKirimTindakanObat"); // NOI18N
+        ppKirimTindakanObat.setPreferredSize(new java.awt.Dimension(230, 26));
+        ppKirimTindakanObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppKirimTindakanObatBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppKirimTindakanObat);
+
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020 11:33:05" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020 20:16:03" }));
         tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -1312,7 +1336,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel22.setBounds(0, 102, 90, 23);
 
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1628,7 +1652,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel26.setBounds(30, 270, 97, 23);
 
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
         TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
@@ -1733,7 +1757,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnStatusPulang.setBounds(354, 360, 28, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
@@ -1940,7 +1964,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel32.setBounds(90, 410, 95, 23);
 
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
@@ -2290,7 +2314,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2304,7 +2328,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2347,11 +2371,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass9.add(jLabel7);
 
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass9.add(LCount);
+        LCountPendaftaran.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCountPendaftaran.setText("0");
+        LCountPendaftaran.setName("LCountPendaftaran"); // NOI18N
+        LCountPendaftaran.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass9.add(LCountPendaftaran);
 
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
@@ -2362,6 +2386,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll2.setComponentPopupMenu(jPopupMenu1);
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
@@ -2393,7 +2418,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel42);
 
         DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -2407,7 +2432,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         panelGlass10.add(jLabel43);
 
         DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2020" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -2450,15 +2475,34 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel10.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass10.add(jLabel10);
 
-        LCount1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount1.setText("0");
-        LCount1.setName("LCount1"); // NOI18N
-        LCount1.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass10.add(LCount1);
+        LCountKunjungan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCountKunjungan.setText("0");
+        LCountKunjungan.setName("LCountKunjungan"); // NOI18N
+        LCountKunjungan.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass10.add(LCountKunjungan);
 
         internalFrame5.add(panelGlass10, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.addTab("Data Kunjungan", internalFrame5);
+
+        internalFrame6.setBorder(null);
+        internalFrame6.setName("internalFrame6"); // NOI18N
+        internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll3.setComponentPopupMenu(jPopupMenu1);
+        Scroll3.setName("Scroll3"); // NOI18N
+        Scroll3.setOpaque(true);
+
+        PesanKirim.setColumns(20);
+        PesanKirim.setRows(5);
+        PesanKirim.setText("Sinkronisasi/pengiriman data ke server BPJS PCare akan dilakukan setiap jam, pada menit 01 detik 01\n\n");
+        PesanKirim.setName("PesanKirim"); // NOI18N
+        Scroll3.setViewportView(PesanKirim);
+
+        internalFrame6.add(Scroll3, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Pengiriman Otomatis", internalFrame6);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -2676,11 +2720,20 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                             Perawatan.getSelectedItem().toString(),response.asText()
                         })==true){  
-                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
-                                TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
-                                "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"", Keluhan.getText(),"Compos Mentis","","","-","",""
-                            });                        
+                            if(Perawatan.getSelectedIndex()==0){
+                                Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
+                                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                    "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                    BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","-","",""
+                                });     
+                            }else{
+                                Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
+                                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                    "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                    BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","",""
+                                });     
+                            }
+                                                    
                             simpanKunjungan();
                             emptTeks();
                         }                     
@@ -2694,11 +2747,20 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                             Perawatan.getSelectedItem().toString(),""
                         })==true){
-                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
-                                TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
-                                "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"", Keluhan.getText(),"Compos Mentis","","","-","",""
-                            });                         
+                            if(Perawatan.getSelectedIndex()==0){
+                                Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
+                                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                    "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                    BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","-","",""
+                                });     
+                            }else{
+                                Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
+                                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                    "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                    BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","",""
+                                });     
+                            }
+                            
                             simpanKunjungan();
                             emptTeks();
                         }
@@ -2710,11 +2772,20 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                             Perawatan.getSelectedItem().toString(),""
                         })==true){
-                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
-                                TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
-                                "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"", Keluhan.getText(),"Compos Mentis","","","-","",""
-                            });                         
+                            if(Perawatan.getSelectedIndex()==0){
+                                Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
+                                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                    "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                    BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","-","",""
+                                });     
+                            }else{
+                                Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
+                                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                    "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                    BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","",""
+                                });     
+                            }
+                            
                             simpanKunjungan();
                             emptTeks();
                         }
@@ -2728,11 +2799,20 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                             Perawatan.getSelectedItem().toString(),""
                         })==true){
-                            Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
-                                TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
-                                "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                BeratBadan.getText(),"", Keluhan.getText(),"Compos Mentis","","","-","",""
-                            });                       
+                            if(Perawatan.getSelectedIndex()==0){
+                                Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
+                                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                    "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                    BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","-","",""
+                                });     
+                            }else{
+                                Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
+                                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                    "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                    BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","",""
+                                });     
+                            }
+                            
                             simpanKunjungan();
                             emptTeks();
                         }
@@ -2868,11 +2948,19 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                 Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),"0",
                                 Perawatan.getSelectedItem().toString(),response.asText()
                             })==true){  
-                                Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
-                                    TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
-                                    "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
-                                    BeratBadan.getText(),"", Keluhan.getText(),"Compos Mentis","","","-","",""
-                                });  
+                                if(Perawatan.getSelectedIndex()==0){
+                                    Sequel.menyimpan2("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",17,new String[]{
+                                        TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                        "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                        BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","-","",""
+                                    });     
+                                }else{
+                                    Sequel.menyimpan2("pemeriksaan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",16,new String[]{
+                                        TNoRw.getText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),Sequel.cariIsi("select current_time()"),
+                                        "",Sistole.getText()+"/"+Diastole.getText(),Heartrate.getText(),Respiratory.getText(),TinggiBadan.getText(), 
+                                        BeratBadan.getText(),"","Compos Mentis", Keluhan.getText(),"","","",""
+                                    });     
+                                } 
                                 emptTeks();   
                             }                     
                         }else{
@@ -4295,10 +4383,591 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void ppJadikanKunjunganBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppJadikanKunjunganBtnPrintActionPerformed
         for(i=0;i<tbPendaftaran.getRowCount();i++){
             if(tbPendaftaran.getValueAt(i,19).toString().equals("Terkirim")){
-                
+                NoKartu.setText(tbPendaftaran.getValueAt(i,5).toString());
+                TPasien.setText(tbPendaftaran.getValueAt(i,3).toString());
+                setNoRm2(tbPendaftaran.getValueAt(i,0).toString());  
+                if(TinggiBadan.getText().equals("")||TinggiBadan.getText().equals("0")||BeratBadan.getText().equals("")||BeratBadan.getText().equals("0")||Sistole.getText().equals("")||Sistole.getText().equals("0")||
+                    Keluhan.getText().equals("")||Keluhan.getText().equals("0")||Diastole.getText().equals("")||Diastole.getText().equals("0")||Respiratory.getText().equals("")||Respiratory.getText().equals("0")||
+                    Heartrate.getText().equals("")||Heartrate.getText().equals("0")||KdSadar.getText().equals("")||NmSadar.getText().equals("")){
+                        System.out.println("Notif 1 : "+"No.Pendaftaran "+tbPendaftaran.getValueAt(i,0).toString()+" / No.RM "+tbPendaftaran.getValueAt(i,2).toString()+" / Pasien "+tbPendaftaran.getValueAt(i,3).toString()+" dilewati karena data pemeriksaan fisik tidak ditemukan...!!");
+                }else{
+                    if(KdDiagnosa1.getText().equals("")||NmDiagnosa1.getText().equals("")){
+                        System.out.println("Notif 2 : "+"No.Pendaftaran "+tbPendaftaran.getValueAt(i,0).toString()+" / No.RM "+tbPendaftaran.getValueAt(i,2).toString()+" / Pasien "+tbPendaftaran.getValueAt(i,3).toString()+" dilewati karena data diagnosa tidak ditemukan...!!");
+                    }else{
+                        if(KdTenagaMedis.getText().equals("")||NmTenagaMedis.getText().equals("")){
+                            System.out.println("Notif 3 : "+"No.Pendaftaran "+tbPendaftaran.getValueAt(i,0).toString()+" / No.RM "+tbPendaftaran.getValueAt(i,2).toString()+" / Pasien "+tbPendaftaran.getValueAt(i,3).toString()+" dilewati karena mapping tenaga medis tidak ditemukan...!!");
+                        }else{
+                            simpanKunjungan(tbPendaftaran.getValueAt(i,0).toString());
+                        }
+                    }
+                }
             }
         }
     }//GEN-LAST:event_ppJadikanKunjunganBtnPrintActionPerformed
+
+    private void ppKirimTindakanObatBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppKirimTindakanObatBtnPrintActionPerformed
+        for(i=0;i<tbKunjungan.getRowCount();i++){
+            if(tbKunjungan.getValueAt(i,29).toString().equals("Terkirim")){
+                try {
+                    System.out.println("Mencoba mencari data mapping obat No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!");
+                    pscari=koneksi.prepareStatement(
+                        "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,detail_pemberian_obat.kode_brng,detail_pemberian_obat.jml,detail_pemberian_obat.no_rawat,maping_obat_pcare.kode_brng_pcare,detail_pemberian_obat.no_batch,"+
+                        "detail_pemberian_obat.no_faktur from detail_pemberian_obat inner join maping_obat_pcare on maping_obat_pcare.kode_brng=detail_pemberian_obat.kode_brng where detail_pemberian_obat.no_rawat=?");
+                    try {
+                        pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                        rscari=pscari.executeQuery();
+                        while(rscari.next()){
+                            if(Sequel.cariInteger("select count(kode_brng) from pcare_obat_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kode_brng='"+rscari.getString("kode_brng")+"'")==0){
+                                arrSplit = Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kode_brng='"+rscari.getString("kode_brng")+"'").toLowerCase().split("x");
+                                signa1="1";
+                                try {
+                                    if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                        signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                    }
+                                } catch (Exception e) {
+                                    signa1="1";
+                                }
+                                
+                                signa2="1";
+                                try {
+                                    if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                        signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                    }
+                                } catch (Exception e) {
+                                    signa2="1";
+                                }  
+                                
+                                try {
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                    headers.add("X-Signature",api.getHmac());
+                                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                    requestJson ="{" +
+                                        "\"kdObatSK\": 0," +
+                                        "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                        "\"racikan\": false," +
+                                        "\"kdRacikan\": null," +
+                                        "\"obatDPHO\": true," +
+                                        "\"kdObat\": \""+rscari.getString("kode_brng_pcare")+"\"," +
+                                        "\"signa1\": "+signa1+"," +
+                                        "\"signa2\": "+signa2+"," +
+                                        "\"jmlObat\": "+rscari.getString("jml")+"," +
+                                        "\"jmlPermintaan\": 0," +
+                                        "\"nmObatNonDPHO\": \"-\"" +
+                                     "}";
+                                    System.out.println(requestJson);
+                                    requestEntity = new HttpEntity(requestJson,headers);
+                                    requestJson=api.getRest().exchange(URL+"/obat/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    System.out.println(requestJson);
+                                    root = mapper.readTree(requestJson);
+                                    nameNode = root.path("metaData");
+                                    System.out.println("code : "+nameNode.path("code").asText());
+                                    System.out.println("message : "+nameNode.path("message").asText()); 
+                                    if(nameNode.path("code").asText().equals("201")){
+                                        response = root.path("response");
+                                        kdObatSK="";
+                                        if(response.isArray()){
+                                            for(JsonNode list:response){
+                                                if(list.path("field").asText().equals("kdObatSK")){
+                                                    kdObatSK=list.path("message").asText();
+                                                }
+                                            }
+                                        }
+                                        Sequel.menyimpan2("pcare_obat_diberikan","?,?,?,?,?,?,?,?",8,new String[]{
+                                            tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(),kdObatSK,rscari.getString("tgl_perawatan"),rscari.getString("jam"),rscari.getString("kode_brng"),rscari.getString("no_batch"),rscari.getString("no_faktur")
+                                        });
+                                    }
+                                }catch (Exception ex) {
+                                    System.out.println("Notifikasi Bridging : "+ex);
+                                    if(ex.toString().contains("UnknownHostException")){
+                                        System.out.println("Koneksi ke server PCare terputus...!");
+                                    }else if(ex.toString().contains("500")){
+                                        System.out.println("Server PCare baru ngambek broooh...!");
+                                    }else if(ex.toString().contains("401")){
+                                        System.out.println("Username/Password salah. Lupa password? Wani piro...!");
+                                    }else if(ex.toString().contains("408")){
+                                        System.out.println("Time out, hayati lelah baaaang...!");
+                                    }else if(ex.toString().contains("424")){
+                                        System.out.println("Ambil data masternya yang bener dong coy...!");
+                                    }else if(ex.toString().contains("412")){
+                                        System.out.println("Tidak sesuai kondisi. Aku, kamu end...!");
+                                    }else if(ex.toString().contains("204")){
+                                        System.out.println("Data tidak ditemukan...!");
+                                    }
+                                } 
+                            }
+                        }
+                        if(rscari.getRow()==0){
+                            System.out.println("Mapping obat No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rscari!=null){
+                            rscari.close();
+                        }
+                        if(pscari!=null){
+                            pscari.close();
+                        }
+                    }
+                    
+                    System.out.println("Mencoba mencari data mapping tindakan dokter rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!");
+                    pscari=koneksi.prepareStatement(
+                        "select rawat_jl_dr.kd_jenis_prw,rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat,rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat, "+
+                        "maping_tindakan_pcare.kd_tindakan_pcare from rawat_jl_dr inner join maping_tindakan_pcare on maping_tindakan_pcare.kd_jenis_prw=rawat_jl_dr.kd_jenis_prw where rawat_jl_dr.no_rawat=?");
+                    try {
+                        pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                        rscari=pscari.executeQuery();
+                        while(rscari.next()){
+                            if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ralan_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                try {
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                    headers.add("X-Signature",api.getHmac());
+                                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                    requestJson ="{" +
+                                        "\"kdTindakanSK\": 0," +
+                                        "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                        "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                        "\"biaya\": 0," +
+                                        "\"keterangan\": null," +
+                                        "\"hasil\": 0" +
+                                    "}";
+                                    System.out.println(requestJson);
+                                    requestEntity = new HttpEntity(requestJson,headers);
+                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    System.out.println(requestJson);
+                                    root = mapper.readTree(requestJson);
+                                    nameNode = root.path("metaData");
+                                    System.out.println("code : "+nameNode.path("code").asText());
+                                    System.out.println("message : "+nameNode.path("message").asText()); 
+                                    if(nameNode.path("code").asText().equals("201")){
+                                        response = root.path("response");
+                                        Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                            tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                            rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                            rscari.getString("bhp"),rscari.getString("tarif_tindakandr"),"0",rscari.getString("kso"), 
+                                            rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                        });
+                                    }
+                                }catch (Exception ex) {
+                                    System.out.println("Notifikasi Bridging : "+ex);
+                                    if(ex.toString().contains("UnknownHostException")){
+                                        System.out.println("Koneksi ke server PCare terputus...!");
+                                    }else if(ex.toString().contains("500")){
+                                        System.out.println("Server PCare baru ngambek broooh...!");
+                                    }else if(ex.toString().contains("401")){
+                                        System.out.println("Username/Password salah. Lupa password? Wani piro...!");
+                                    }else if(ex.toString().contains("408")){
+                                        System.out.println("Time out, hayati lelah baaaang...!");
+                                    }else if(ex.toString().contains("424")){
+                                        System.out.println("Ambil data masternya yang bener dong coy...!");
+                                    }else if(ex.toString().contains("412")){
+                                        System.out.println("Tidak sesuai kondisi. Aku, kamu end...!");
+                                    }else if(ex.toString().contains("204")){
+                                        System.out.println("Data tidak ditemukan...!");
+                                    }
+                                } 
+                            }
+                        }
+                        if(rscari.getRow()==0){
+                            System.out.println("Mapping tindakan dokter rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rscari!=null){
+                            rscari.close();
+                        }
+                        if(pscari!=null){
+                            pscari.close();
+                        }
+                    }
+                    
+                    System.out.println("Mencoba mencari data mapping tindakan paramedis rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!");
+                    pscari=koneksi.prepareStatement(
+                        "select rawat_jl_pr.kd_jenis_prw,rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat,rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat, "+
+                        "maping_tindakan_pcare.kd_tindakan_pcare from rawat_jl_pr inner join maping_tindakan_pcare on maping_tindakan_pcare.kd_jenis_prw=rawat_jl_pr.kd_jenis_prw where rawat_jl_pr.no_rawat=?");
+                    try {
+                        pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                        rscari=pscari.executeQuery();
+                        while(rscari.next()){
+                            if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ralan_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                try {
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                    headers.add("X-Signature",api.getHmac());
+                                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                    requestJson ="{" +
+                                        "\"kdTindakanSK\": 0," +
+                                        "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                        "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                        "\"biaya\": 0," +
+                                        "\"keterangan\": null," +
+                                        "\"hasil\": 0" +
+                                    "}";
+                                    System.out.println(requestJson);
+                                    requestEntity = new HttpEntity(requestJson,headers);
+                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    System.out.println(requestJson);
+                                    root = mapper.readTree(requestJson);
+                                    nameNode = root.path("metaData");
+                                    System.out.println("code : "+nameNode.path("code").asText());
+                                    System.out.println("message : "+nameNode.path("message").asText()); 
+                                    if(nameNode.path("code").asText().equals("201")){
+                                        response = root.path("response");
+                                        Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                            tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                            rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                            rscari.getString("bhp"),"0",rscari.getString("tarif_tindakanpr"),rscari.getString("kso"), 
+                                            rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                        });
+                                    }
+                                }catch (Exception ex) {
+                                    System.out.println("Notifikasi Bridging : "+ex);
+                                    if(ex.toString().contains("UnknownHostException")){
+                                        System.out.println("Koneksi ke server PCare terputus...!");
+                                    }else if(ex.toString().contains("500")){
+                                        System.out.println("Server PCare baru ngambek broooh...!");
+                                    }else if(ex.toString().contains("401")){
+                                        System.out.println("Username/Password salah. Lupa password? Wani piro...!");
+                                    }else if(ex.toString().contains("408")){
+                                        System.out.println("Time out, hayati lelah baaaang...!");
+                                    }else if(ex.toString().contains("424")){
+                                        System.out.println("Ambil data masternya yang bener dong coy...!");
+                                    }else if(ex.toString().contains("412")){
+                                        System.out.println("Tidak sesuai kondisi. Aku, kamu end...!");
+                                    }else if(ex.toString().contains("204")){
+                                        System.out.println("Data tidak ditemukan...!");
+                                    }
+                                } 
+                            }
+                        }
+                        if(rscari.getRow()==0){
+                            System.out.println("Mapping tindakan paramedis rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rscari!=null){
+                            rscari.close();
+                        }
+                        if(pscari!=null){
+                            pscari.close();
+                        }
+                    }
+                    
+                    System.out.println("Mencoba mencari data mapping tindakan dokter & paramedis rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!");
+                    pscari=koneksi.prepareStatement(
+                        "select rawat_jl_drpr.kd_jenis_prw,rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat,rawat_jl_drpr.material,rawat_jl_drpr.bhp,rawat_jl_drpr.tarif_tindakandr,rawat_jl_drpr.tarif_tindakanpr,rawat_jl_drpr.kso,rawat_jl_drpr.menejemen, "+
+                        "rawat_jl_drpr.biaya_rawat,maping_tindakan_pcare.kd_tindakan_pcare from rawat_jl_drpr inner join maping_tindakan_pcare on maping_tindakan_pcare.kd_jenis_prw=rawat_jl_drpr.kd_jenis_prw where rawat_jl_drpr.no_rawat=?");
+                    try {
+                        pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                        rscari=pscari.executeQuery();
+                        while(rscari.next()){
+                            if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ralan_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                try {
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                    headers.add("X-Signature",api.getHmac());
+                                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                    requestJson ="{" +
+                                        "\"kdTindakanSK\": 0," +
+                                        "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                        "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                        "\"biaya\": 0," +
+                                        "\"keterangan\": null," +
+                                        "\"hasil\": 0" +
+                                    "}";
+                                    System.out.println(requestJson);
+                                    requestEntity = new HttpEntity(requestJson,headers);
+                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    System.out.println(requestJson);
+                                    root = mapper.readTree(requestJson);
+                                    nameNode = root.path("metaData");
+                                    System.out.println("code : "+nameNode.path("code").asText());
+                                    System.out.println("message : "+nameNode.path("message").asText()); 
+                                    if(nameNode.path("code").asText().equals("201")){
+                                        response = root.path("response");
+                                        Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                            tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                            rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                            rscari.getString("bhp"),rscari.getString("tarif_tindakandr"),rscari.getString("tarif_tindakanpr"),rscari.getString("kso"), 
+                                            rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                        });
+                                    }
+                                }catch (Exception ex) {
+                                    System.out.println("Notifikasi Bridging : "+ex);
+                                    if(ex.toString().contains("UnknownHostException")){
+                                        System.out.println("Koneksi ke server PCare terputus...!");
+                                    }else if(ex.toString().contains("500")){
+                                        System.out.println("Server PCare baru ngambek broooh...!");
+                                    }else if(ex.toString().contains("401")){
+                                        System.out.println("Username/Password salah. Lupa password? Wani piro...!");
+                                    }else if(ex.toString().contains("408")){
+                                        System.out.println("Time out, hayati lelah baaaang...!");
+                                    }else if(ex.toString().contains("424")){
+                                        System.out.println("Ambil data masternya yang bener dong coy...!");
+                                    }else if(ex.toString().contains("412")){
+                                        System.out.println("Tidak sesuai kondisi. Aku, kamu end...!");
+                                    }else if(ex.toString().contains("204")){
+                                        System.out.println("Data tidak ditemukan...!");
+                                    }
+                                } 
+                            }
+                        }
+                        if(rscari.getRow()==0){
+                            System.out.println("Mapping tindakan dokter & paramedis rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rscari!=null){
+                            rscari.close();
+                        }
+                        if(pscari!=null){
+                            pscari.close();
+                        }
+                    }
+                    
+                    System.out.println("Mencoba mencari data mapping tindakan dokter rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!");
+                    pscari=koneksi.prepareStatement(
+                        "select rawat_inap_dr.kd_jenis_prw,rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat,rawat_inap_dr.material,rawat_inap_dr.bhp,rawat_inap_dr.tarif_tindakandr,rawat_inap_dr.kso,rawat_inap_dr.menejemen,rawat_inap_dr.biaya_rawat, "+
+                        "maping_tindakan_ranap_pcare.kd_tindakan_pcare from rawat_inap_dr inner join maping_tindakan_ranap_pcare on maping_tindakan_ranap_pcare.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where rawat_inap_dr.no_rawat=?");
+                    try {
+                        pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                        rscari=pscari.executeQuery();
+                        while(rscari.next()){
+                            if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                try {
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                    headers.add("X-Signature",api.getHmac());
+                                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                    requestJson ="{" +
+                                        "\"kdTindakanSK\": 0," +
+                                        "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                        "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                        "\"biaya\": 0," +
+                                        "\"keterangan\": null," +
+                                        "\"hasil\": 0" +
+                                    "}";
+                                    System.out.println(requestJson);
+                                    requestEntity = new HttpEntity(requestJson,headers);
+                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    System.out.println(requestJson);
+                                    root = mapper.readTree(requestJson);
+                                    nameNode = root.path("metaData");
+                                    System.out.println("code : "+nameNode.path("code").asText());
+                                    System.out.println("message : "+nameNode.path("message").asText()); 
+                                    if(nameNode.path("code").asText().equals("201")){
+                                        response = root.path("response");
+                                        Sequel.menyimpan2("pcare_tindakan_ranap_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                            tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                            rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                            rscari.getString("bhp"),rscari.getString("tarif_tindakandr"),"0",rscari.getString("kso"), 
+                                            rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                        });
+                                    }
+                                }catch (Exception ex) {
+                                    System.out.println("Notifikasi Bridging : "+ex);
+                                    if(ex.toString().contains("UnknownHostException")){
+                                        System.out.println("Koneksi ke server PCare terputus...!");
+                                    }else if(ex.toString().contains("500")){
+                                        System.out.println("Server PCare baru ngambek broooh...!");
+                                    }else if(ex.toString().contains("401")){
+                                        System.out.println("Username/Password salah. Lupa password? Wani piro...!");
+                                    }else if(ex.toString().contains("408")){
+                                        System.out.println("Time out, hayati lelah baaaang...!");
+                                    }else if(ex.toString().contains("424")){
+                                        System.out.println("Ambil data masternya yang bener dong coy...!");
+                                    }else if(ex.toString().contains("412")){
+                                        System.out.println("Tidak sesuai kondisi. Aku, kamu end...!");
+                                    }else if(ex.toString().contains("204")){
+                                        System.out.println("Data tidak ditemukan...!");
+                                    }
+                                } 
+                            }
+                        }
+                        if(rscari.getRow()==0){
+                            System.out.println("Mapping tindakan dokter rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rscari!=null){
+                            rscari.close();
+                        }
+                        if(pscari!=null){
+                            pscari.close();
+                        }
+                    }
+                    
+                    System.out.println("Mencoba mencari data mapping tindakan paramedis rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!");
+                    pscari=koneksi.prepareStatement(
+                        "select rawat_inap_pr.kd_jenis_prw,rawat_inap_pr.tgl_perawatan,rawat_inap_pr.jam_rawat,rawat_inap_pr.material,rawat_inap_pr.bhp,rawat_inap_pr.tarif_tindakanpr,rawat_inap_pr.kso,rawat_inap_pr.menejemen,rawat_inap_pr.biaya_rawat, "+
+                        "maping_tindakan_ranap_pcare.kd_tindakan_pcare from rawat_inap_pr inner join maping_tindakan_ranap_pcare on maping_tindakan_ranap_pcare.kd_jenis_prw=rawat_inap_pr.kd_jenis_prw where rawat_inap_pr.no_rawat=?");
+                    try {
+                        pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                        rscari=pscari.executeQuery();
+                        while(rscari.next()){
+                            if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                try {
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                    headers.add("X-Signature",api.getHmac());
+                                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                    requestJson ="{" +
+                                        "\"kdTindakanSK\": 0," +
+                                        "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                        "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                        "\"biaya\": 0," +
+                                        "\"keterangan\": null," +
+                                        "\"hasil\": 0" +
+                                    "}";
+                                    System.out.println(requestJson);
+                                    requestEntity = new HttpEntity(requestJson,headers);
+                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    System.out.println(requestJson);
+                                    root = mapper.readTree(requestJson);
+                                    nameNode = root.path("metaData");
+                                    System.out.println("code : "+nameNode.path("code").asText());
+                                    System.out.println("message : "+nameNode.path("message").asText()); 
+                                    if(nameNode.path("code").asText().equals("201")){
+                                        response = root.path("response");
+                                        Sequel.menyimpan2("pcare_tindakan_ranap_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                            tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                            rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                            rscari.getString("bhp"),"0",rscari.getString("tarif_tindakanpr"),rscari.getString("kso"), 
+                                            rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                        });
+                                    }
+                                }catch (Exception ex) {
+                                    System.out.println("Notifikasi Bridging : "+ex);
+                                    if(ex.toString().contains("UnknownHostException")){
+                                        System.out.println("Koneksi ke server PCare terputus...!");
+                                    }else if(ex.toString().contains("500")){
+                                        System.out.println("Server PCare baru ngambek broooh...!");
+                                    }else if(ex.toString().contains("401")){
+                                        System.out.println("Username/Password salah. Lupa password? Wani piro...!");
+                                    }else if(ex.toString().contains("408")){
+                                        System.out.println("Time out, hayati lelah baaaang...!");
+                                    }else if(ex.toString().contains("424")){
+                                        System.out.println("Ambil data masternya yang bener dong coy...!");
+                                    }else if(ex.toString().contains("412")){
+                                        System.out.println("Tidak sesuai kondisi. Aku, kamu end...!");
+                                    }else if(ex.toString().contains("204")){
+                                        System.out.println("Data tidak ditemukan...!");
+                                    }
+                                } 
+                            }
+                        }
+                        if(rscari.getRow()==0){
+                            System.out.println("Mapping tindakan paramedis rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rscari!=null){
+                            rscari.close();
+                        }
+                        if(pscari!=null){
+                            pscari.close();
+                        }
+                    }
+                    
+                    System.out.println("Mencoba mencari data mapping tindakan dokter & paramedis rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!");
+                    pscari=koneksi.prepareStatement(
+                        "select rawat_inap_drpr.kd_jenis_prw,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,rawat_inap_drpr.kso,rawat_inap_drpr.menejemen, "+
+                        "rawat_inap_drpr.biaya_rawat,maping_tindakan_ranap_pcare.kd_tindakan_pcare from rawat_inap_drpr inner join maping_tindakan_ranap_pcare on maping_tindakan_ranap_pcare.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where rawat_inap_drpr.no_rawat=?");
+                    try {
+                        pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                        rscari=pscari.executeQuery();
+                        while(rscari.next()){
+                            if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                try {
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                    headers.add("X-Signature",api.getHmac());
+                                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                    requestJson ="{" +
+                                        "\"kdTindakanSK\": 0," +
+                                        "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                        "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                        "\"biaya\": 0," +
+                                        "\"keterangan\": null," +
+                                        "\"hasil\": 0" +
+                                    "}";
+                                    System.out.println(requestJson);
+                                    requestEntity = new HttpEntity(requestJson,headers);
+                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    System.out.println(requestJson);
+                                    root = mapper.readTree(requestJson);
+                                    nameNode = root.path("metaData");
+                                    System.out.println("code : "+nameNode.path("code").asText());
+                                    System.out.println("message : "+nameNode.path("message").asText()); 
+                                    if(nameNode.path("code").asText().equals("201")){
+                                        response = root.path("response");
+                                        Sequel.menyimpan2("pcare_tindakan_ranap_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                            tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                            rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                            rscari.getString("bhp"),rscari.getString("tarif_tindakandr"),rscari.getString("tarif_tindakanpr"),rscari.getString("kso"), 
+                                            rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                        });
+                                    }
+                                }catch (Exception ex) {
+                                    System.out.println("Notifikasi Bridging : "+ex);
+                                    if(ex.toString().contains("UnknownHostException")){
+                                        System.out.println("Koneksi ke server PCare terputus...!");
+                                    }else if(ex.toString().contains("500")){
+                                        System.out.println("Server PCare baru ngambek broooh...!");
+                                    }else if(ex.toString().contains("401")){
+                                        System.out.println("Username/Password salah. Lupa password? Wani piro...!");
+                                    }else if(ex.toString().contains("408")){
+                                        System.out.println("Time out, hayati lelah baaaang...!");
+                                    }else if(ex.toString().contains("424")){
+                                        System.out.println("Ambil data masternya yang bener dong coy...!");
+                                    }else if(ex.toString().contains("412")){
+                                        System.out.println("Tidak sesuai kondisi. Aku, kamu end...!");
+                                    }else if(ex.toString().contains("204")){
+                                        System.out.println("Data tidak ditemukan...!");
+                                    }
+                                } 
+                            }
+                        }
+                        if(rscari.getRow()==0){
+                            System.out.println("Mapping tindakan dokter & paramedis rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rscari!=null){
+                            rscari.close();
+                        }
+                        if(pscari!=null){
+                            pscari.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                }
+            }
+        }
+    }//GEN-LAST:event_ppKirimTindakanObatBtnPrintActionPerformed
 
     /**
     * @param args the command line arguments
@@ -4366,8 +5035,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.TextBox KdSubSpesialis;
     private widget.TextBox KdTenagaMedis;
     private widget.TextBox Keluhan;
-    private widget.Label LCount;
-    private widget.Label LCount1;
+    private widget.Label LCountKunjungan;
+    private widget.Label LCountPendaftaran;
     private widget.Label LabelPoli;
     private widget.Label LabelPoli10;
     private widget.Label LabelPoli11;
@@ -4413,11 +5082,13 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.TextBox NmTenagaMedis;
     private widget.TextBox NoKartu;
     private widget.ComboBox Perawatan;
+    private widget.TextArea PesanKirim;
     private widget.TextBox ProviderPeserta;
     private widget.TextBox Respiratory;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
+    private widget.ScrollPane Scroll3;
     private widget.TextBox Sistole;
     private widget.TextBox Status;
     private widget.ComboBox TACC;
@@ -4443,6 +5114,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
+    private widget.InternalFrame internalFrame6;
     private widget.Label jLabel10;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
@@ -4489,6 +5161,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private javax.swing.JMenuItem ppFilterGagal;
     private javax.swing.JMenuItem ppFilterTerkirim;
     private javax.swing.JMenuItem ppJadikanKunjungan;
+    private javax.swing.JMenuItem ppKirimTindakanObat;
     private javax.swing.JMenuItem ppRiwayat;
     private javax.swing.JMenuItem ppSinkronGagal;
     private widget.Tanggal tanggal;
@@ -4564,6 +5237,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     ps.close();
                 }
             }
+            LCountPendaftaran.setText(""+tabMode.getRowCount());
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
@@ -4644,6 +5318,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     ps.close();
                 }
             }
+            LCountKunjungan.setText(""+tabMode2.getRowCount());
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
@@ -4829,7 +5504,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             if(Perawatan.getSelectedIndex()==0){
                 TanggalPulang.setDate(TanggalKunjungan.getDate());
                 ps=koneksi.prepareStatement(
-                        "select tensi, nadi, respirasi, tinggi, berat,kesadaran keluhan from pemeriksaan_ralan where no_rawat=? order by tgl_perawatan,jam_rawat desc limit 1");
+                        "select tensi, nadi, respirasi, tinggi, berat,kesadaran,keluhan from pemeriksaan_ralan where no_rawat=? order by tgl_perawatan,jam_rawat desc limit 1");
                 try{
                     ps.setString(1,norwt);
                     rs=ps.executeQuery();
@@ -4985,6 +5660,289 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }          
     }
       
+    public void setNoRm2(String norwt) {
+        TNoRw.setText(norwt);
+        try{
+            ps=koneksi.prepareStatement(
+                    "select kd_poli,kd_dokter,no_rkm_medis,status_lanjut,tgl_registrasi,stts from reg_periksa where no_rawat=?");
+            try{
+                ps.setString(1,norwt);
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    KdTenagaMedis.setText(rs.getString("kd_dokter"));
+                    KdPoliTujuan.setText(rs.getString("kd_poli"));
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    if(rs.getString("status_lanjut").equals("Ralan")){
+                        Perawatan.setSelectedIndex(0);
+                    }else{
+                        Perawatan.setSelectedIndex(1);
+                    }
+                    TanggalDaftar.setDate(rs.getDate("tgl_registrasi"));
+                    TanggalKunjungan.setDate(rs.getDate("tgl_registrasi"));
+                    if(rs.getString("stts").equals("Dirujuk")){
+                        KdStatusPulang.setText("4");
+                        NmStatusPulang.setText("Rujuk Vertikal");
+                    }else if(rs.getString("stts").equals("Meninggal")){
+                        KdStatusPulang.setText("1");
+                        NmStatusPulang.setText("Meninggal");
+                    }else if(rs.getString("stts").equals("Pulang Paksa")){
+                        KdStatusPulang.setText("2");
+                        NmStatusPulang.setText("Pulang Paksa");
+                    }else if(rs.getString("stts").equals("Sudah")){
+                        KdStatusPulang.setText("0");
+                        NmStatusPulang.setText("Sembuh");
+                    }else{
+                        KdStatusPulang.setText("9");
+                        NmStatusPulang.setText("Lain-lain");
+                    }
+                }
+            }catch(Exception ex){
+                System.out.println(ex);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                    "select kd_poli_pcare,nm_poli_pcare from maping_poliklinik_pcare where kd_poli_rs=?");
+            try{
+                ps.setString(1,KdPoliTujuan.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    KdPoliTujuan.setText(rs.getString("kd_poli_pcare"));
+                    NmPoliTujuan.setText(rs.getString("nm_poli_pcare"));
+                }else{
+                    JOptionPane.showMessageDialog(null,"Mapping poli tidak ditemukan...!!");
+                }
+            }catch(Exception ex){
+                System.out.println(ex);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                    "select kd_dokter_pcare,nm_dokter_pcare from maping_dokter_pcare where kd_dokter=?");
+            try{
+                ps.setString(1,KdTenagaMedis.getText());
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    KdTenagaMedis.setText(rs.getString("kd_dokter_pcare"));
+                    NmTenagaMedis.setText(rs.getString("nm_dokter_pcare"));
+                }else{
+                    JOptionPane.showMessageDialog(null,"Mapping dokter tidak ditemukan...!!");
+                }
+            }catch(Exception ex){
+                System.out.println(ex);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                    "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit,diagnosa_pasien.prioritas "+
+                    "from diagnosa_pasien inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
+                    "where diagnosa_pasien.no_rawat=? order by diagnosa_pasien.prioritas ");
+            try {
+                ps.setString(1,norwt);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    if(rs.getInt("prioritas")==1){
+                        KdDiagnosa1.setText(rs.getString("kd_penyakit"));
+                        NmDiagnosa1.setText(rs.getString("nm_penyakit"));
+                    }
+                    
+                    if(rs.getInt("prioritas")==2){
+                        KdDiagnosa2.setText(rs.getString("kd_penyakit"));
+                        NmDiagnosa2.setText(rs.getString("nm_penyakit"));
+                    }
+                    
+                    if(rs.getInt("prioritas")==3){
+                        KdDiagnosa3.setText(rs.getString("kd_penyakit"));
+                        NmDiagnosa3.setText(rs.getString("nm_penyakit"));
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            if(Perawatan.getSelectedIndex()==0){
+                TanggalPulang.setDate(TanggalKunjungan.getDate());
+                ps=koneksi.prepareStatement(
+                        "select tensi, nadi, respirasi, tinggi, berat,kesadaran,keluhan from pemeriksaan_ralan where no_rawat=? order by tgl_perawatan,jam_rawat desc limit 1");
+                try{
+                    ps.setString(1,norwt);
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        arrSplit = rs.getString("tensi").split("/");
+                        try {
+                            if(!arrSplit[0].equals("")){
+                                Sistole.setText(arrSplit[0]);
+                            }
+                        } catch (Exception e) {
+                            Sistole.setText("0");
+                        }
+                        
+                        try {
+                            if(!arrSplit[1].equals("")){
+                                Diastole.setText(arrSplit[1]);
+                            }
+                        } catch (Exception e) {
+                            Diastole.setText("0");
+                        }
+                        Heartrate.setText(rs.getString("nadi"));
+                        Respiratory.setText(rs.getString("respirasi"));
+                        TinggiBadan.setText(rs.getString("tinggi"));
+                        BeratBadan.setText(rs.getString("berat"));
+                        Keluhan.setText(rs.getString("keluhan"));
+                        NmSadar.setText(rs.getString("kesadaran"));
+                        if(rs.getString("kesadaran").equals("Compos Mentis")){
+                            KdSadar.setText("01");
+                        }else if(rs.getString("kesadaran").equals("Somnolence")){
+                            KdSadar.setText("02");
+                        }else if(rs.getString("kesadaran").equals("Sopor")){
+                            KdSadar.setText("03");
+                        }else if(rs.getString("kesadaran").equals("Coma")){
+                            KdSadar.setText("04");
+                        }
+                    }else{
+                        Sistole.setText("0");
+                        Diastole.setText("0");
+                        Heartrate.setText("0");
+                        Respiratory.setText("0");
+                        TinggiBadan.setText("0");
+                        BeratBadan.setText("0");
+                        Keluhan.setText("0");
+                        KdSadar.setText("");
+                        NmSadar.setText("");
+                    }
+                }catch(Exception ex){
+                    System.out.println(ex);
+                }finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            }else if(Perawatan.getSelectedIndex()==1){
+                ps=koneksi.prepareStatement("select if(tgl_keluar='0000-00-00',CURRENT_DATE(),tgl_keluar) as tgl_keluar,stts_pulang from kamar_inap where no_rawat=? order by tgl_masuk,jam_masuk desc limit 1 ");
+                try{
+                    ps.setString(1,norwt);
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        TanggalPulang.setDate(rs.getDate("tgl_keluar"));
+                        if(rs.getString("stts_pulang").equals("Sehat")||rs.getString("stts_pulang").equals("Sembuh")||rs.getString("stts_pulang").equals("Membaik")||rs.getString("stts_pulang").equals("Atas Persetujuan Dokter")){
+                            KdStatusPulang.setText("0");
+                            NmStatusPulang.setText("Sembuh");
+                        }else if(rs.getString("stts_pulang").equals("Rujuk")){
+                            KdStatusPulang.setText("4");
+                            NmStatusPulang.setText("Rujuk Vertikal");
+                        }else if(rs.getString("stts_pulang").equals("Meninggal")||rs.getString("stts_pulang").equals("+")){
+                            KdStatusPulang.setText("1");
+                            NmStatusPulang.setText("Meninggal");
+                        }else if(rs.getString("stts_pulang").equals("Pulang Paksa")||rs.getString("stts_pulang").equals("Atas Permintaan Sendiri")||rs.getString("stts_pulang").equals("APS")){
+                            KdStatusPulang.setText("2");
+                            NmStatusPulang.setText("Pulang Paksa");
+                        }else{
+                            KdStatusPulang.setText("9");
+                            NmStatusPulang.setText("Lain-lain");
+                        }
+                    }
+                }catch(Exception ex){
+                    System.out.println(ex);
+                }finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+                
+                ps=koneksi.prepareStatement(
+                        "select tensi, nadi, respirasi, tinggi, berat, keluhan,kesadaran from pemeriksaan_ranap where no_rawat=? order by tgl_perawatan,jam_rawat desc limit 1");
+                try{
+                    ps.setString(1,norwt);
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        arrSplit = rs.getString("tensi").split("/");
+                        try {
+                            if(!arrSplit[0].equals("")){
+                                Sistole.setText(arrSplit[0]);
+                            }
+                        } catch (Exception e) {
+                            Sistole.setText("0");
+                        }
+                        
+                        try {
+                            if(!arrSplit[1].equals("")){
+                                Diastole.setText(arrSplit[1]);
+                            }
+                        } catch (Exception e) {
+                            Diastole.setText("0");
+                        }
+                        Heartrate.setText(rs.getString("nadi"));
+                        Respiratory.setText(rs.getString("respirasi"));
+                        TinggiBadan.setText(rs.getString("tinggi"));
+                        BeratBadan.setText(rs.getString("berat"));
+                        Keluhan.setText(rs.getString("keluhan"));
+                        NmSadar.setText(rs.getString("kesadaran"));
+                        if(rs.getString("kesadaran").equals("Compos Mentis")){
+                            KdSadar.setText("01");
+                        }else if(rs.getString("kesadaran").equals("Somnolence")){
+                            KdSadar.setText("02");
+                        }else if(rs.getString("kesadaran").equals("Sopor")){
+                            KdSadar.setText("03");
+                        }else if(rs.getString("kesadaran").equals("Coma")){
+                            KdSadar.setText("04");
+                        }
+                    }else{
+                        Sistole.setText("0");
+                        Diastole.setText("0");
+                        Heartrate.setText("0");
+                        Respiratory.setText("0");
+                        TinggiBadan.setText("0");
+                        BeratBadan.setText("0");
+                        Keluhan.setText("0");
+                        KdSadar.setText("");
+                        NmSadar.setText("");
+                    }
+                }catch(Exception ex){
+                    System.out.println(ex);
+                }finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            }   
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }          
+    }
     
     public void isCek(){
         BtnSimpan.setEnabled(akses.getbridging_pcare_daftar());
@@ -5333,6 +6291,118 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         }                         
     }
     
+    private void simpanKunjungan(String norawat) {
+        System.out.println("Mencari data No.Rawat : "+norawat);
+        if(Sequel.cariInteger("select count(no_rawat) from pcare_kunjungan_umum where no_rawat=?",norawat)==0){
+            System.out.println("No.Rawat : "+norawat+" ditemukan, proses mengirim ke server PCare BPJS.. ");
+            try {
+                headers2 = new HttpHeaders();
+                headers2.setContentType(MediaType.APPLICATION_JSON);
+                headers2.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                headers2.add("X-Signature",api.getHmac());
+                headers2.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                if(ChkRujukLanjut.isSelected()==false){
+                    diagnosa2="null";
+                    if(!KdDiagnosa2.getText().equals("")){
+                        diagnosa2="\""+KdDiagnosa2.getText()+"\"";
+                    }
+                    diagnosa3="null";
+                    if(!KdDiagnosa3.getText().equals("")){
+                        diagnosa3="\""+KdDiagnosa3.getText()+"\"";
+                    }
+                    requestJson ="{" +
+                                    "\"noKunjungan\": null," +
+                                    "\"noKartu\": \""+NoKartu.getText()+"\"," +
+                                    "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem()+"\"," +
+                                    "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
+                                    "\"keluhan\": \""+Keluhan.getText()+"\"," +
+                                    "\"kdSadar\": \""+KdSadar.getText()+"\"," +
+                                    "\"sistole\": "+Sistole.getText()+"," +
+                                    "\"diastole\": "+Diastole.getText()+"," +
+                                    "\"beratBadan\": "+BeratBadan.getText()+"," +
+                                    "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
+                                    "\"respRate\": "+Respiratory.getText()+"," +
+                                    "\"heartRate\": "+Heartrate.getText()+"," +
+                                    "\"terapi\": \""+Terapi.getText()+"\"," +
+                                    "\"kdStatusPulang\": \"3\"," +
+                                    "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
+                                    "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
+                                    "\"kdDiag1\": \""+KdDiagnosa1.getText()+"\"," +
+                                    "\"kdDiag2\": "+diagnosa2+"," +
+                                    "\"kdDiag3\": "+diagnosa3+"," +
+                                    "\"kdPoliRujukInternal\":null," +
+                                    "\"rujukLanjut\": null," +
+                                    "\"kdTacc\": 0," +
+                                    "\"alasanTacc\": null" +
+                                  "}";
+                    System.out.println(requestJson);
+                    requestEntity = new HttpEntity(requestJson,headers2);
+                    requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                    System.out.println(requestJson);
+                    root = mapper.readTree(requestJson);
+                    nameNode = root.path("metaData");
+                    System.out.println("code : "+nameNode.path("code").asText());
+                    System.out.println("message : "+nameNode.path("message").asText());
+                    if(nameNode.path("code").asText().equals("201")){
+                        response = root.path("response").path("message");
+                        Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",29,new String[]{
+                            TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
+                            NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
+                            Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),
+                            Valid.MaxTeks(Terapi.getText(),400),"3","Berobat Jalan",Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
+                            KdTenagaMedis.getText(),Valid.MaxTeks(NmTenagaMedis.getText(),50),KdDiagnosa1.getText(),Valid.MaxTeks(NmDiagnosa1.getText(),400),KdDiagnosa2.getText(),
+                            Valid.MaxTeks(NmDiagnosa2.getText(),400),KdDiagnosa3.getText(),Valid.MaxTeks(NmDiagnosa3.getText(),400)
+                        });
+                    }
+                }
+            }catch (Exception ex) {
+                System.out.println(ex);
+                if(ex.toString().contains("UnknownHostException")){
+                    Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",29,new String[]{
+                        TNoRw.getText(),"",Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
+                        NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
+                        Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),
+                        Valid.MaxTeks(Terapi.getText(),400),"3","Berobat Jalan",Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
+                        KdTenagaMedis.getText(),Valid.MaxTeks(NmTenagaMedis.getText(),50),KdDiagnosa1.getText(),Valid.MaxTeks(NmDiagnosa1.getText(),400),KdDiagnosa2.getText(),
+                        Valid.MaxTeks(NmDiagnosa2.getText(),400),KdDiagnosa3.getText(),Valid.MaxTeks(NmDiagnosa3.getText(),400)
+                    });
+                    System.out.println("Koneksi ke server PCare terputus. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!");
+                }else if(ex.toString().contains("500")){
+                    Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",29,new String[]{
+                        TNoRw.getText(),"",Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
+                        NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
+                        Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),
+                        Valid.MaxTeks(Terapi.getText(),400),"3","Berobat Jalan",Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
+                        KdTenagaMedis.getText(),Valid.MaxTeks(NmTenagaMedis.getText(),50),KdDiagnosa1.getText(),Valid.MaxTeks(NmDiagnosa1.getText(),400),KdDiagnosa2.getText(),
+                        Valid.MaxTeks(NmDiagnosa2.getText(),400),KdDiagnosa3.getText(),Valid.MaxTeks(NmDiagnosa3.getText(),400)
+                    });
+                    System.out.println("Server PCare baru ngambek broooh. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!");
+                }else if(ex.toString().contains("401")){
+                    System.out.println("Username/Password salah. Lupa password? Wani piro...!");
+                }else if(ex.toString().contains("408")){
+                    Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",29,new String[]{
+                        TNoRw.getText(),"",Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
+                        NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
+                        Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),
+                        Valid.MaxTeks(Terapi.getText(),400),"3","Berobat Jalan",Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
+                        KdTenagaMedis.getText(),Valid.MaxTeks(NmTenagaMedis.getText(),50),KdDiagnosa1.getText(),Valid.MaxTeks(NmDiagnosa1.getText(),400),KdDiagnosa2.getText(),
+                        Valid.MaxTeks(NmDiagnosa2.getText(),400),KdDiagnosa3.getText(),Valid.MaxTeks(NmDiagnosa3.getText(),400)
+                    });
+                    System.out.println("Time out, hayati lelah baaaang. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!");
+                }else if(ex.toString().contains("424")){
+                    System.out.println("Ambil data masternya yang bener dong coy...!");
+                }else if(ex.toString().contains("412")){
+                    System.out.println("Tidak sesuai kondisi. Aku, kamu end...!");
+                }else if(ex.toString().contains("204")){
+                    System.out.println("Data tidak ditemukan...!");
+                }else if(ex.toString().contains("refused")){
+                    System.out.println("BPJSe ngelu...!");
+                }
+            }         
+        }                
+    }
+    
     public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
         public HttpEntityEnclosingDeleteRequest(final URI uri) {
             super();
@@ -5546,6 +6616,815 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"BPJSe ngelu...!");
             }
         }
+    }
+    
+    private void jam(){
+        ActionListener taskPerformer = new ActionListener(){
+            private int nilai_jam;
+            private int nilai_menit;
+            private int nilai_detik;
+            public void actionPerformed(ActionEvent e) {
+                if(TabRawat.getSelectedIndex()==3){
+                    String nol_jam = "";
+                    String nol_menit = "";
+                    String nol_detik = "";
+                    Date now = Calendar.getInstance().getTime();
+                    // Mengambil nilaj JAM, MENIT, dan DETIK Sekarang
+                    nilai_jam = now.getHours();
+                    nilai_menit = now.getMinutes();
+                    nilai_detik = now.getSeconds();
+                    // Jika nilai JAM lebih kecil dari 10 (hanya 1 digit)
+                    if (nilai_jam <= 9) {
+                        // Tambahkan "0" didepannya
+                        nol_jam = "0";
+                    }
+                    // Jika nilai MENIT lebih kecil dari 10 (hanya 1 digit)
+                    if (nilai_menit <= 9) {
+                        // Tambahkan "0" didepannya
+                        nol_menit = "0";
+                    }
+                    // Jika nilai DETIK lebih kecil dari 10 (hanya 1 digit)
+                    if (nilai_detik <= 9) {
+                        // Tambahkan "0" didepannya
+                        nol_detik = "0";
+                    }
+                    // Membuat String JAM, MENIT, DETIK
+                    String jam = nol_jam + Integer.toString(nilai_jam);
+                    String menit = nol_menit + Integer.toString(nilai_menit);
+                    String detik = nol_detik + Integer.toString(nilai_detik);
+                    if(menit.equals("01")&&detik.equals("01")){
+                        if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
+                            PesanKirim.setText("");
+                        }
+
+                        try {
+                            PesanKirim.append("MEMULAI PENGIRIMAN DATA\n");
+                            tampil();
+                            PesanKirim.append("Pengiriman data pendaftaran PCare dimulai\n");
+                            for(i=0;i<tbPendaftaran.getRowCount();i++){
+                                if(tbPendaftaran.getValueAt(i,19).toString().equals("Gagal")){
+                                    try {
+                                        headers = new HttpHeaders();
+                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                        headers.add("X-Signature",api.getHmac());
+                                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                        requestJson ="{" +
+                                                        "\"kdProviderPeserta\": \""+tbPendaftaran.getValueAt(i,4).toString()+"\"," +
+                                                        "\"tglDaftar\": \""+Valid.SetTgl3(tbPendaftaran.getValueAt(i,1).toString())+"\"," +
+                                                        "\"noKartu\": \""+tbPendaftaran.getValueAt(i,5).toString()+"\"," +
+                                                        "\"kdPoli\": \""+tbPendaftaran.getValueAt(i,6).toString()+"\"," +
+                                                        "\"keluhan\": \""+tbPendaftaran.getValueAt(i,8).toString()+"\"," +
+                                                        "\"kunjSakit\": "+(tbPendaftaran.getValueAt(i,9).toString().equals("Kunjungan Sakit")?"true":"false")+"," +
+                                                        "\"sistole\": "+tbPendaftaran.getValueAt(i,10).toString()+"," +
+                                                        "\"diastole\": "+tbPendaftaran.getValueAt(i,11).toString()+"," +
+                                                        "\"beratBadan\": "+tbPendaftaran.getValueAt(i,12).toString()+"," +
+                                                        "\"tinggiBadan\": "+tbPendaftaran.getValueAt(i,13).toString()+"," +
+                                                        "\"respRate\": "+tbPendaftaran.getValueAt(i,14).toString()+"," +
+                                                        "\"heartRate\": "+tbPendaftaran.getValueAt(i,15).toString()+"," +
+                                                        "\"rujukBalik\": 0," +
+                                                        "\"kdTkp\": \""+tbPendaftaran.getValueAt(i,17).toString().substring(0,2)+"\"" +
+                                                     "}";
+                                        PesanKirim.append(requestJson+"\n");
+                                        requestEntity = new HttpEntity(requestJson,headers);
+                                        requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
+                                        root = mapper.readTree(requestJson);
+                                        nameNode = root.path("metaData");
+                                        PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
+                                        PesanKirim.append("message : "+nameNode.path("message").asText()+"\n");
+                                        if(nameNode.path("code").asText().equals("201")){
+                                            response = root.path("response").path("message");   
+                                            Sequel.mengedit("pcare_pendaftaran","no_rawat=?","noUrut=?,status='Terkirim'",2,new String[]{response.asText(),tbPendaftaran.getValueAt(i,0).toString()});
+                                        }
+                                    }catch (Exception ex) {
+                                        PesanKirim.append("Notifikasi Bridging : "+ex+"\n");
+                                        if(ex.toString().contains("UnknownHostException")||ex.toString().contains("unreachable")){
+                                            PesanKirim.append("Koneksi ke server PCare terputus. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!"+"\n");
+                                        }else if(ex.toString().contains("500")){
+                                            PesanKirim.append("Server PCare baru ngambek broooh. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!"+"\n");
+                                        }else if(ex.toString().contains("401")){
+                                            PesanKirim.append("Username/Password salah. Lupa password? Wani piro...!"+"\n");
+                                        }else if(ex.toString().contains("408")){
+                                            PesanKirim.append("Time out, hayati lelah baaaang. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!"+"\n");
+                                        }else if(ex.toString().contains("424")){
+                                            PesanKirim.append("Ambil data masternya yang bener dong coy...!"+"\n");
+                                        }else if(ex.toString().contains("412")){
+                                            PesanKirim.append("Tidak sesuai kondisi. Aku, kamu end...!"+"\n");
+                                        }else if(ex.toString().contains("204")){
+                                            PesanKirim.append("Data tidak ditemukan...!"+"\n");
+                                        }else if(ex.toString().contains("refused")){
+                                            PesanKirim.append("BPJSe ngelu...!"+"\n");
+                                        }
+                                    }
+                                }
+                            }
+                            PesanKirim.append("Pengiriman data pendaftaran PCare selesai\n");
+                            PesanKirim.append("Pengiriman data kunjungan PCare dimulai\n");
+                            for(i=0;i<tbPendaftaran.getRowCount();i++){
+                                if(tbPendaftaran.getValueAt(i,19).toString().equals("Terkirim")){
+                                    NoKartu.setText(tbPendaftaran.getValueAt(i,5).toString());
+                                    TPasien.setText(tbPendaftaran.getValueAt(i,3).toString());
+                                    setNoRm2(tbPendaftaran.getValueAt(i,0).toString());  
+                                    if(TinggiBadan.getText().equals("")||TinggiBadan.getText().equals("0")||BeratBadan.getText().equals("")||BeratBadan.getText().equals("0")||Sistole.getText().equals("")||Sistole.getText().equals("0")||
+                                        Keluhan.getText().equals("")||Keluhan.getText().equals("0")||Diastole.getText().equals("")||Diastole.getText().equals("0")||Respiratory.getText().equals("")||Respiratory.getText().equals("0")||
+                                        Heartrate.getText().equals("")||Heartrate.getText().equals("0")||KdSadar.getText().equals("")||NmSadar.getText().equals("")){
+                                            PesanKirim.append("Notif 1 : "+"No.Pendaftaran "+tbPendaftaran.getValueAt(i,0).toString()+" / No.RM "+tbPendaftaran.getValueAt(i,2).toString()+" / Pasien "+tbPendaftaran.getValueAt(i,3).toString()+" dilewati karena data pemeriksaan fisik tidak ditemukan...!!"+"\n");
+                                    }else{
+                                        if(KdDiagnosa1.getText().equals("")||NmDiagnosa1.getText().equals("")){
+                                            PesanKirim.append("Notif 2 : "+"No.Pendaftaran "+tbPendaftaran.getValueAt(i,0).toString()+" / No.RM "+tbPendaftaran.getValueAt(i,2).toString()+" / Pasien "+tbPendaftaran.getValueAt(i,3).toString()+" dilewati karena data diagnosa tidak ditemukan...!!"+"\n");
+                                        }else{
+                                            if(KdTenagaMedis.getText().equals("")||NmTenagaMedis.getText().equals("")){
+                                                PesanKirim.append("Notif 3 : "+"No.Pendaftaran "+tbPendaftaran.getValueAt(i,0).toString()+" / No.RM "+tbPendaftaran.getValueAt(i,2).toString()+" / Pasien "+tbPendaftaran.getValueAt(i,3).toString()+" dilewati karena mapping tenaga medis tidak ditemukan...!!"+"\n");
+                                            }else{
+                                                PesanKirim.append("Mencari data No.Rawat : "+tbPendaftaran.getValueAt(i,0).toString()+"\n");
+                                                if(Sequel.cariInteger("select count(no_rawat) from pcare_kunjungan_umum where no_rawat=?",tbPendaftaran.getValueAt(i,0).toString())==0){
+                                                    PesanKirim.append("No.Rawat : "+tbPendaftaran.getValueAt(i,0).toString()+" ditemukan, proses mengirim kunjungan ke server PCare BPJS.. "+"\n");
+                                                    try {
+                                                        headers2 = new HttpHeaders();
+                                                        headers2.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers2.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        headers2.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                                        headers2.add("X-Signature",api.getHmac());
+                                                        headers2.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        if(ChkRujukLanjut.isSelected()==false){
+                                                            diagnosa2="null";
+                                                            if(!KdDiagnosa2.getText().equals("")){
+                                                                diagnosa2="\""+KdDiagnosa2.getText()+"\"";
+                                                            }
+                                                            diagnosa3="null";
+                                                            if(!KdDiagnosa3.getText().equals("")){
+                                                                diagnosa3="\""+KdDiagnosa3.getText()+"\"";
+                                                            }
+                                                            requestJson ="{" +
+                                                                            "\"noKunjungan\": null," +
+                                                                            "\"noKartu\": \""+NoKartu.getText()+"\"," +
+                                                                            "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem()+"\"," +
+                                                                            "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
+                                                                            "\"keluhan\": \""+Keluhan.getText()+"\"," +
+                                                                            "\"kdSadar\": \""+KdSadar.getText()+"\"," +
+                                                                            "\"sistole\": "+Sistole.getText()+"," +
+                                                                            "\"diastole\": "+Diastole.getText()+"," +
+                                                                            "\"beratBadan\": "+BeratBadan.getText()+"," +
+                                                                            "\"tinggiBadan\": "+TinggiBadan.getText()+"," +
+                                                                            "\"respRate\": "+Respiratory.getText()+"," +
+                                                                            "\"heartRate\": "+Heartrate.getText()+"," +
+                                                                            "\"terapi\": \""+Terapi.getText()+"\"," +
+                                                                            "\"kdStatusPulang\": \"3\"," +
+                                                                            "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
+                                                                            "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
+                                                                            "\"kdDiag1\": \""+KdDiagnosa1.getText()+"\"," +
+                                                                            "\"kdDiag2\": "+diagnosa2+"," +
+                                                                            "\"kdDiag3\": "+diagnosa3+"," +
+                                                                            "\"kdPoliRujukInternal\":null," +
+                                                                            "\"rujukLanjut\": null," +
+                                                                            "\"kdTacc\": 0," +
+                                                                            "\"alasanTacc\": null" +
+                                                                          "}";
+                                                            PesanKirim.append(requestJson+"\n");
+                                                            requestEntity = new HttpEntity(requestJson,headers2);
+                                                            requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                            PesanKirim.append(requestJson+"\n");
+                                                            root = mapper.readTree(requestJson);
+                                                            nameNode = root.path("metaData");
+                                                            PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
+                                                            PesanKirim.append("message : "+nameNode.path("message").asText()+"\n");
+                                                            if(nameNode.path("code").asText().equals("201")){
+                                                                response = root.path("response").path("message");
+                                                                Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Terkirim'","No.Urut",29,new String[]{
+                                                                    TNoRw.getText(),response.asText(),Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
+                                                                    NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
+                                                                    Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),
+                                                                    Valid.MaxTeks(Terapi.getText(),400),"3","Berobat Jalan",Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
+                                                                    KdTenagaMedis.getText(),Valid.MaxTeks(NmTenagaMedis.getText(),50),KdDiagnosa1.getText(),Valid.MaxTeks(NmDiagnosa1.getText(),400),KdDiagnosa2.getText(),
+                                                                    Valid.MaxTeks(NmDiagnosa2.getText(),400),KdDiagnosa3.getText(),Valid.MaxTeks(NmDiagnosa3.getText(),400)
+                                                                });
+                                                            }
+                                                        }
+                                                    }catch (Exception ex) {
+                                                        PesanKirim.append(ex+"\n");
+                                                        if(ex.toString().contains("UnknownHostException")){
+                                                            Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",29,new String[]{
+                                                                TNoRw.getText(),"",Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
+                                                                NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
+                                                                Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),
+                                                                Valid.MaxTeks(Terapi.getText(),400),"3","Berobat Jalan",Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
+                                                                KdTenagaMedis.getText(),Valid.MaxTeks(NmTenagaMedis.getText(),50),KdDiagnosa1.getText(),Valid.MaxTeks(NmDiagnosa1.getText(),400),KdDiagnosa2.getText(),
+                                                                Valid.MaxTeks(NmDiagnosa2.getText(),400),KdDiagnosa3.getText(),Valid.MaxTeks(NmDiagnosa3.getText(),400)
+                                                            });
+                                                            PesanKirim.append("Koneksi ke server PCare terputus. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!\n");
+                                                        }else if(ex.toString().contains("500")){
+                                                            Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",29,new String[]{
+                                                                TNoRw.getText(),"",Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
+                                                                NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
+                                                                Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),
+                                                                Valid.MaxTeks(Terapi.getText(),400),"3","Berobat Jalan",Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
+                                                                KdTenagaMedis.getText(),Valid.MaxTeks(NmTenagaMedis.getText(),50),KdDiagnosa1.getText(),Valid.MaxTeks(NmDiagnosa1.getText(),400),KdDiagnosa2.getText(),
+                                                                Valid.MaxTeks(NmDiagnosa2.getText(),400),KdDiagnosa3.getText(),Valid.MaxTeks(NmDiagnosa3.getText(),400)
+                                                            });
+                                                            PesanKirim.append("Server PCare baru ngambek broooh. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!\n");
+                                                        }else if(ex.toString().contains("401")){
+                                                            PesanKirim.append("Username/Password salah. Lupa password? Wani piro...!\n");
+                                                        }else if(ex.toString().contains("408")){
+                                                            Sequel.menyimpan2("pcare_kunjungan_umum","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Gagal'","No.Urut",29,new String[]{
+                                                                TNoRw.getText(),"",Valid.SetTgl(TanggalDaftar.getSelectedItem()+""),TNoRM.getText(),TPasien.getText(),
+                                                                NoKartu.getText(),KdPoliTujuan.getText(),NmPoliTujuan.getText(),Valid.MaxTeks(Keluhan.getText(),400),KdSadar.getText(),NmSadar.getText(),
+                                                                Sistole.getText(),Diastole.getText(),BeratBadan.getText(),TinggiBadan.getText(),Respiratory.getText(),Heartrate.getText(),
+                                                                Valid.MaxTeks(Terapi.getText(),400),"3","Berobat Jalan",Valid.SetTgl(TanggalPulang.getSelectedItem()+""),
+                                                                KdTenagaMedis.getText(),Valid.MaxTeks(NmTenagaMedis.getText(),50),KdDiagnosa1.getText(),Valid.MaxTeks(NmDiagnosa1.getText(),400),KdDiagnosa2.getText(),
+                                                                Valid.MaxTeks(NmDiagnosa2.getText(),400),KdDiagnosa3.getText(),Valid.MaxTeks(NmDiagnosa3.getText(),400)
+                                                            });
+                                                            PesanKirim.append("Time out, hayati lelah baaaang. Data disimpan secara lokal, dan dapat dikirimkan kembali ke server PCare..!!\n");
+                                                        }else if(ex.toString().contains("424")){
+                                                            PesanKirim.append("Ambil data masternya yang bener dong coy...!\n");
+                                                        }else if(ex.toString().contains("412")){
+                                                            PesanKirim.append("Tidak sesuai kondisi. Aku, kamu end...!\n");
+                                                        }else if(ex.toString().contains("204")){
+                                                            PesanKirim.append("Data tidak ditemukan...!\n");
+                                                        }else if(ex.toString().contains("refused")){
+                                                            PesanKirim.append("BPJSe ngelu...!\n");
+                                                        }
+                                                    }         
+                                                }      
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            PesanKirim.append("Pengiriman data kunjungan PCare selesai\n");
+                            PesanKirim.append("Pengiriman data obat & tindakan PCare dimulai\n");
+                            for(i=0;i<tbKunjungan.getRowCount();i++){
+                                if(tbKunjungan.getValueAt(i,29).toString().equals("Terkirim")){
+                                    try {
+                                        PesanKirim.append("Mencoba mencari data mapping obat No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!\n");
+                                        pscari=koneksi.prepareStatement(
+                                            "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,detail_pemberian_obat.kode_brng,detail_pemberian_obat.jml,detail_pemberian_obat.no_rawat,maping_obat_pcare.kode_brng_pcare,detail_pemberian_obat.no_batch,"+
+                                            "detail_pemberian_obat.no_faktur from detail_pemberian_obat inner join maping_obat_pcare on maping_obat_pcare.kode_brng=detail_pemberian_obat.kode_brng where detail_pemberian_obat.no_rawat=?");
+                                        try {
+                                            pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                                            rscari=pscari.executeQuery();
+                                            while(rscari.next()){
+                                                if(Sequel.cariInteger("select count(kode_brng) from pcare_obat_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kode_brng='"+rscari.getString("kode_brng")+"'")==0){
+                                                    arrSplit = Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kode_brng='"+rscari.getString("kode_brng")+"'").toLowerCase().split("x");
+                                                    signa1="1";
+                                                    try {
+                                                        if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
+                                                            signa1=arrSplit[0].replaceAll("[^0-9.]+", "");
+                                                        }
+                                                    } catch (Exception a) {
+                                                        signa1="1";
+                                                    }
+
+                                                    signa2="1";
+                                                    try {
+                                                        if(!arrSplit[1].replaceAll("[^0-9.]+", "").equals("")){
+                                                            signa2=arrSplit[1].replaceAll("[^0-9.]+", "");
+                                                        }
+                                                    } catch (Exception a) {
+                                                        signa2="1";
+                                                    }  
+
+                                                    try {
+                                                        headers = new HttpHeaders();
+                                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                                        headers.add("X-Signature",api.getHmac());
+                                                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        requestJson ="{" +
+                                                            "\"kdObatSK\": 0," +
+                                                            "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                                            "\"racikan\": false," +
+                                                            "\"kdRacikan\": null," +
+                                                            "\"obatDPHO\": true," +
+                                                            "\"kdObat\": \""+rscari.getString("kode_brng_pcare")+"\"," +
+                                                            "\"signa1\": "+signa1+"," +
+                                                            "\"signa2\": "+signa2+"," +
+                                                            "\"jmlObat\": "+rscari.getString("jml")+"," +
+                                                            "\"jmlPermintaan\": 0," +
+                                                            "\"nmObatNonDPHO\": \"-\"" +
+                                                         "}";
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        requestEntity = new HttpEntity(requestJson,headers);
+                                                        requestJson=api.getRest().exchange(URL+"/obat/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        root = mapper.readTree(requestJson);
+                                                        nameNode = root.path("metaData");
+                                                        PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
+                                                        PesanKirim.append("message : "+nameNode.path("message").asText()+"\n"); 
+                                                        if(nameNode.path("code").asText().equals("201")){
+                                                            response = root.path("response");
+                                                            kdObatSK="";
+                                                            if(response.isArray()){
+                                                                for(JsonNode list:response){
+                                                                    if(list.path("field").asText().equals("kdObatSK")){
+                                                                        kdObatSK=list.path("message").asText();
+                                                                    }
+                                                                }
+                                                            }
+                                                            Sequel.menyimpan2("pcare_obat_diberikan","?,?,?,?,?,?,?,?",8,new String[]{
+                                                                tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(),kdObatSK,rscari.getString("tgl_perawatan"),rscari.getString("jam"),rscari.getString("kode_brng"),rscari.getString("no_batch"),rscari.getString("no_faktur")
+                                                            });
+                                                        }
+                                                    }catch (Exception ex) {
+                                                        PesanKirim.append("Notifikasi Bridging : "+ex+"\n");
+                                                        if(ex.toString().contains("UnknownHostException")){
+                                                            PesanKirim.append("Koneksi ke server PCare terputus...!\n");
+                                                        }else if(ex.toString().contains("500")){
+                                                            PesanKirim.append("Server PCare baru ngambek broooh...!\n");
+                                                        }else if(ex.toString().contains("401")){
+                                                            PesanKirim.append("Username/Password salah. Lupa password? Wani piro...!\n");
+                                                        }else if(ex.toString().contains("408")){
+                                                            PesanKirim.append("Time out, hayati lelah baaaang...!\n");
+                                                        }else if(ex.toString().contains("424")){
+                                                            PesanKirim.append("Ambil data masternya yang bener dong coy...!\n");
+                                                        }else if(ex.toString().contains("412")){
+                                                            PesanKirim.append("Tidak sesuai kondisi. Aku, kamu end...!\n");
+                                                        }else if(ex.toString().contains("204")){
+                                                            PesanKirim.append("Data tidak ditemukan...!\n");
+                                                        }
+                                                    } 
+                                                }
+                                            }
+                                            if(rscari.getRow()==0){
+                                                PesanKirim.append("Mapping obat No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!");
+                                            }
+                                        } catch (Exception a) {
+                                            PesanKirim.append("Notif : "+a+"\n");
+                                        } finally{
+                                            if(rscari!=null){
+                                                rscari.close();
+                                            }
+                                            if(pscari!=null){
+                                                pscari.close();
+                                            }
+                                        }
+
+                                        PesanKirim.append("Mencoba mencari data mapping tindakan dokter rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!\n");
+                                        pscari=koneksi.prepareStatement(
+                                            "select rawat_jl_dr.kd_jenis_prw,rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat,rawat_jl_dr.material,rawat_jl_dr.bhp,rawat_jl_dr.tarif_tindakandr,rawat_jl_dr.kso,rawat_jl_dr.menejemen,rawat_jl_dr.biaya_rawat, "+
+                                            "maping_tindakan_pcare.kd_tindakan_pcare from rawat_jl_dr inner join maping_tindakan_pcare on maping_tindakan_pcare.kd_jenis_prw=rawat_jl_dr.kd_jenis_prw where rawat_jl_dr.no_rawat=?");
+                                        try {
+                                            pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                                            rscari=pscari.executeQuery();
+                                            while(rscari.next()){
+                                                if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ralan_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                                    try {
+                                                        headers = new HttpHeaders();
+                                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                                        headers.add("X-Signature",api.getHmac());
+                                                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        requestJson ="{" +
+                                                            "\"kdTindakanSK\": 0," +
+                                                            "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                                            "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                                            "\"biaya\": 0," +
+                                                            "\"keterangan\": null," +
+                                                            "\"hasil\": 0" +
+                                                        "}";
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        requestEntity = new HttpEntity(requestJson,headers);
+                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        root = mapper.readTree(requestJson);
+                                                        nameNode = root.path("metaData");
+                                                        PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
+                                                        PesanKirim.append("message : "+nameNode.path("message").asText()+"\n"); 
+                                                        if(nameNode.path("code").asText().equals("201")){
+                                                            response = root.path("response");
+                                                            Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                                                tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                                                rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                                                rscari.getString("bhp"),rscari.getString("tarif_tindakandr"),"0",rscari.getString("kso"), 
+                                                                rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                                            });
+                                                        }
+                                                    }catch (Exception ex) {
+                                                        PesanKirim.append("Notifikasi Bridging : "+ex+"\n");
+                                                        if(ex.toString().contains("UnknownHostException")){
+                                                            PesanKirim.append("Koneksi ke server PCare terputus...!\n");
+                                                        }else if(ex.toString().contains("500")){
+                                                            PesanKirim.append("Server PCare baru ngambek broooh...!\n");
+                                                        }else if(ex.toString().contains("401")){
+                                                            PesanKirim.append("Username/Password salah. Lupa password? Wani piro...!\n");
+                                                        }else if(ex.toString().contains("408")){
+                                                            PesanKirim.append("Time out, hayati lelah baaaang...!\n");
+                                                        }else if(ex.toString().contains("424")){
+                                                            PesanKirim.append("Ambil data masternya yang bener dong coy...!\n");
+                                                        }else if(ex.toString().contains("412")){
+                                                            PesanKirim.append("Tidak sesuai kondisi. Aku, kamu end...!\n");
+                                                        }else if(ex.toString().contains("204")){
+                                                            PesanKirim.append("Data tidak ditemukan...!\n");
+                                                        }
+                                                    } 
+                                                }
+                                            }
+                                            if(rscari.getRow()==0){
+                                                PesanKirim.append("Mapping tindakan dokter rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!\n");
+                                            }
+                                        } catch (Exception a) {
+                                            PesanKirim.append("Notif : "+a+"\n");
+                                        } finally{
+                                            if(rscari!=null){
+                                                rscari.close();
+                                            }
+                                            if(pscari!=null){
+                                                pscari.close();
+                                            }
+                                        }
+
+                                        PesanKirim.append("Mencoba mencari data mapping tindakan paramedis rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!\n");
+                                        pscari=koneksi.prepareStatement(
+                                            "select rawat_jl_pr.kd_jenis_prw,rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat,rawat_jl_pr.material,rawat_jl_pr.bhp,rawat_jl_pr.tarif_tindakanpr,rawat_jl_pr.kso,rawat_jl_pr.menejemen,rawat_jl_pr.biaya_rawat, "+
+                                            "maping_tindakan_pcare.kd_tindakan_pcare from rawat_jl_pr inner join maping_tindakan_pcare on maping_tindakan_pcare.kd_jenis_prw=rawat_jl_pr.kd_jenis_prw where rawat_jl_pr.no_rawat=?");
+                                        try {
+                                            pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                                            rscari=pscari.executeQuery();
+                                            while(rscari.next()){
+                                                if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ralan_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                                    try {
+                                                        headers = new HttpHeaders();
+                                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                                        headers.add("X-Signature",api.getHmac());
+                                                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        requestJson ="{" +
+                                                            "\"kdTindakanSK\": 0," +
+                                                            "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                                            "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                                            "\"biaya\": 0," +
+                                                            "\"keterangan\": null," +
+                                                            "\"hasil\": 0" +
+                                                        "}";
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        requestEntity = new HttpEntity(requestJson,headers);
+                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        root = mapper.readTree(requestJson);
+                                                        nameNode = root.path("metaData");
+                                                        PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
+                                                        PesanKirim.append("message : "+nameNode.path("message").asText()+"\n"); 
+                                                        if(nameNode.path("code").asText().equals("201")){
+                                                            response = root.path("response");
+                                                            Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                                                tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                                                rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                                                rscari.getString("bhp"),"0",rscari.getString("tarif_tindakanpr"),rscari.getString("kso"), 
+                                                                rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                                            });
+                                                        }
+                                                    }catch (Exception ex) {
+                                                        PesanKirim.append("Notifikasi Bridging : "+ex+"\n");
+                                                        if(ex.toString().contains("UnknownHostException")){
+                                                            PesanKirim.append("Koneksi ke server PCare terputus...!\n");
+                                                        }else if(ex.toString().contains("500")){
+                                                            PesanKirim.append("Server PCare baru ngambek broooh...!\n");
+                                                        }else if(ex.toString().contains("401")){
+                                                            PesanKirim.append("Username/Password salah. Lupa password? Wani piro...!\n");
+                                                        }else if(ex.toString().contains("408")){
+                                                            PesanKirim.append("Time out, hayati lelah baaaang...!\n");
+                                                        }else if(ex.toString().contains("424")){
+                                                            PesanKirim.append("Ambil data masternya yang bener dong coy...!\n");
+                                                        }else if(ex.toString().contains("412")){
+                                                            PesanKirim.append("Tidak sesuai kondisi. Aku, kamu end...!\n");
+                                                        }else if(ex.toString().contains("204")){
+                                                            PesanKirim.append("Data tidak ditemukan...!\n");
+                                                        }
+                                                    } 
+                                                }
+                                            }
+                                            if(rscari.getRow()==0){
+                                                PesanKirim.append("Mapping tindakan paramedis rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!\n");
+                                            }
+                                        } catch (Exception a) {
+                                            PesanKirim.append("Notif : "+a+"\n");
+                                        } finally{
+                                            if(rscari!=null){
+                                                rscari.close();
+                                            }
+                                            if(pscari!=null){
+                                                pscari.close();
+                                            }
+                                        }
+
+                                        PesanKirim.append("Mencoba mencari data mapping tindakan dokter & paramedis rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!\n");
+                                        pscari=koneksi.prepareStatement(
+                                            "select rawat_jl_drpr.kd_jenis_prw,rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat,rawat_jl_drpr.material,rawat_jl_drpr.bhp,rawat_jl_drpr.tarif_tindakandr,rawat_jl_drpr.tarif_tindakanpr,rawat_jl_drpr.kso,rawat_jl_drpr.menejemen, "+
+                                            "rawat_jl_drpr.biaya_rawat,maping_tindakan_pcare.kd_tindakan_pcare from rawat_jl_drpr inner join maping_tindakan_pcare on maping_tindakan_pcare.kd_jenis_prw=rawat_jl_drpr.kd_jenis_prw where rawat_jl_drpr.no_rawat=?");
+                                        try {
+                                            pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                                            rscari=pscari.executeQuery();
+                                            while(rscari.next()){
+                                                if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ralan_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                                    try {
+                                                        headers = new HttpHeaders();
+                                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                                        headers.add("X-Signature",api.getHmac());
+                                                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        requestJson ="{" +
+                                                            "\"kdTindakanSK\": 0," +
+                                                            "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                                            "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                                            "\"biaya\": 0," +
+                                                            "\"keterangan\": null," +
+                                                            "\"hasil\": 0" +
+                                                        "}";
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        requestEntity = new HttpEntity(requestJson,headers);
+                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        root = mapper.readTree(requestJson);
+                                                        nameNode = root.path("metaData");
+                                                        PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
+                                                        PesanKirim.append("message : "+nameNode.path("message").asText()+"\n"); 
+                                                        if(nameNode.path("code").asText().equals("201")){
+                                                            response = root.path("response");
+                                                            Sequel.menyimpan2("pcare_tindakan_ralan_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                                                tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                                                rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                                                rscari.getString("bhp"),rscari.getString("tarif_tindakandr"),rscari.getString("tarif_tindakanpr"),rscari.getString("kso"), 
+                                                                rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                                            });
+                                                        }
+                                                    }catch (Exception ex) {
+                                                        PesanKirim.append("Notifikasi Bridging : "+ex+"\n");
+                                                        if(ex.toString().contains("UnknownHostException")){
+                                                            PesanKirim.append("Koneksi ke server PCare terputus...!\n");
+                                                        }else if(ex.toString().contains("500")){
+                                                            PesanKirim.append("Server PCare baru ngambek broooh...!\n");
+                                                        }else if(ex.toString().contains("401")){
+                                                            PesanKirim.append("Username/Password salah. Lupa password? Wani piro...!\n");
+                                                        }else if(ex.toString().contains("408")){
+                                                            PesanKirim.append("Time out, hayati lelah baaaang...!\n");
+                                                        }else if(ex.toString().contains("424")){
+                                                            PesanKirim.append("Ambil data masternya yang bener dong coy...!\n");
+                                                        }else if(ex.toString().contains("412")){
+                                                            PesanKirim.append("Tidak sesuai kondisi. Aku, kamu end...!\n");
+                                                        }else if(ex.toString().contains("204")){
+                                                            PesanKirim.append("Data tidak ditemukan...!\n");
+                                                        }
+                                                    } 
+                                                }
+                                            }
+                                            if(rscari.getRow()==0){
+                                                PesanKirim.append("Mapping tindakan dokter & paramedis rawat jalan, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!\n");
+                                            }
+                                        } catch (Exception a) {
+                                            PesanKirim.append("Notif : "+a+"\n");
+                                        } finally{
+                                            if(rscari!=null){
+                                                rscari.close();
+                                            }
+                                            if(pscari!=null){
+                                                pscari.close();
+                                            }
+                                        }
+
+                                        PesanKirim.append("Mencoba mencari data mapping tindakan dokter rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!\n");
+                                        pscari=koneksi.prepareStatement(
+                                            "select rawat_inap_dr.kd_jenis_prw,rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat,rawat_inap_dr.material,rawat_inap_dr.bhp,rawat_inap_dr.tarif_tindakandr,rawat_inap_dr.kso,rawat_inap_dr.menejemen,rawat_inap_dr.biaya_rawat, "+
+                                            "maping_tindakan_ranap_pcare.kd_tindakan_pcare from rawat_inap_dr inner join maping_tindakan_ranap_pcare on maping_tindakan_ranap_pcare.kd_jenis_prw=rawat_inap_dr.kd_jenis_prw where rawat_inap_dr.no_rawat=?");
+                                        try {
+                                            pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                                            rscari=pscari.executeQuery();
+                                            while(rscari.next()){
+                                                if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                                    try {
+                                                        headers = new HttpHeaders();
+                                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                                        headers.add("X-Signature",api.getHmac());
+                                                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        requestJson ="{" +
+                                                            "\"kdTindakanSK\": 0," +
+                                                            "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                                            "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                                            "\"biaya\": 0," +
+                                                            "\"keterangan\": null," +
+                                                            "\"hasil\": 0" +
+                                                        "}";
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        requestEntity = new HttpEntity(requestJson,headers);
+                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        root = mapper.readTree(requestJson);
+                                                        nameNode = root.path("metaData");
+                                                        PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
+                                                        PesanKirim.append("message : "+nameNode.path("message").asText()+"\n"); 
+                                                        if(nameNode.path("code").asText().equals("201")){
+                                                            response = root.path("response");
+                                                            Sequel.menyimpan2("pcare_tindakan_ranap_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                                                tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                                                rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                                                rscari.getString("bhp"),rscari.getString("tarif_tindakandr"),"0",rscari.getString("kso"), 
+                                                                rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                                            });
+                                                        }
+                                                    }catch (Exception ex) {
+                                                        PesanKirim.append("Notifikasi Bridging : "+ex+"\n");
+                                                        if(ex.toString().contains("UnknownHostException")){
+                                                            PesanKirim.append("Koneksi ke server PCare terputus...!\n");
+                                                        }else if(ex.toString().contains("500")){
+                                                            PesanKirim.append("Server PCare baru ngambek broooh...!\n");
+                                                        }else if(ex.toString().contains("401")){
+                                                            PesanKirim.append("Username/Password salah. Lupa password? Wani piro...!\n");
+                                                        }else if(ex.toString().contains("408")){
+                                                            PesanKirim.append("Time out, hayati lelah baaaang...!\n");
+                                                        }else if(ex.toString().contains("424")){
+                                                            PesanKirim.append("Ambil data masternya yang bener dong coy...!\n");
+                                                        }else if(ex.toString().contains("412")){
+                                                            PesanKirim.append("Tidak sesuai kondisi. Aku, kamu end...!\n");
+                                                        }else if(ex.toString().contains("204")){
+                                                            PesanKirim.append("Data tidak ditemukan...!\n");
+                                                        }
+                                                    } 
+                                                }
+                                            }
+                                            if(rscari.getRow()==0){
+                                                PesanKirim.append("Mapping tindakan dokter rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!\n");
+                                            }
+                                        } catch (Exception a) {
+                                            PesanKirim.append("Notif : "+a+"\n");
+                                        } finally{
+                                            if(rscari!=null){
+                                                rscari.close();
+                                            }
+                                            if(pscari!=null){
+                                                pscari.close();
+                                            }
+                                        }
+
+                                        PesanKirim.append("Mencoba mencari data mapping tindakan paramedis rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!\n");
+                                        pscari=koneksi.prepareStatement(
+                                            "select rawat_inap_pr.kd_jenis_prw,rawat_inap_pr.tgl_perawatan,rawat_inap_pr.jam_rawat,rawat_inap_pr.material,rawat_inap_pr.bhp,rawat_inap_pr.tarif_tindakanpr,rawat_inap_pr.kso,rawat_inap_pr.menejemen,rawat_inap_pr.biaya_rawat, "+
+                                            "maping_tindakan_ranap_pcare.kd_tindakan_pcare from rawat_inap_pr inner join maping_tindakan_ranap_pcare on maping_tindakan_ranap_pcare.kd_jenis_prw=rawat_inap_pr.kd_jenis_prw where rawat_inap_pr.no_rawat=?");
+                                        try {
+                                            pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                                            rscari=pscari.executeQuery();
+                                            while(rscari.next()){
+                                                if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                                    try {
+                                                        headers = new HttpHeaders();
+                                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                                        headers.add("X-Signature",api.getHmac());
+                                                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        requestJson ="{" +
+                                                            "\"kdTindakanSK\": 0," +
+                                                            "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                                            "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                                            "\"biaya\": 0," +
+                                                            "\"keterangan\": null," +
+                                                            "\"hasil\": 0" +
+                                                        "}";
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        requestEntity = new HttpEntity(requestJson,headers);
+                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        root = mapper.readTree(requestJson);
+                                                        nameNode = root.path("metaData");
+                                                        PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
+                                                        PesanKirim.append("message : "+nameNode.path("message").asText()+"\n"); 
+                                                        if(nameNode.path("code").asText().equals("201")){
+                                                            response = root.path("response");
+                                                            Sequel.menyimpan2("pcare_tindakan_ranap_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                                                tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                                                rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                                                rscari.getString("bhp"),"0",rscari.getString("tarif_tindakanpr"),rscari.getString("kso"), 
+                                                                rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                                            });
+                                                        }
+                                                    }catch (Exception ex) {
+                                                        PesanKirim.append("Notifikasi Bridging : "+ex+"\n");
+                                                        if(ex.toString().contains("UnknownHostException")){
+                                                            PesanKirim.append("Koneksi ke server PCare terputus...!\n");
+                                                        }else if(ex.toString().contains("500")){
+                                                            PesanKirim.append("Server PCare baru ngambek broooh...!\n");
+                                                        }else if(ex.toString().contains("401")){
+                                                            PesanKirim.append("Username/Password salah. Lupa password? Wani piro...!\n");
+                                                        }else if(ex.toString().contains("408")){
+                                                            PesanKirim.append("Time out, hayati lelah baaaang...!\n");
+                                                        }else if(ex.toString().contains("424")){
+                                                            PesanKirim.append("Ambil data masternya yang bener dong coy...!\n");
+                                                        }else if(ex.toString().contains("412")){
+                                                            PesanKirim.append("Tidak sesuai kondisi. Aku, kamu end...!\n");
+                                                        }else if(ex.toString().contains("204")){
+                                                            PesanKirim.append("Data tidak ditemukan...!\n");
+                                                        }
+                                                    } 
+                                                }
+                                            }
+                                            if(rscari.getRow()==0){
+                                                PesanKirim.append("Mapping tindakan paramedis rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!\n");
+                                            }
+                                        } catch (Exception a) {
+                                            PesanKirim.append("Notif : "+a+"\n");
+                                        } finally{
+                                            if(rscari!=null){
+                                                rscari.close();
+                                            }
+                                            if(pscari!=null){
+                                                pscari.close();
+                                            }
+                                        }
+
+                                        PesanKirim.append("Mencoba mencari data mapping tindakan dokter & paramedis rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" dan mengirimkan ke server PCare BPJS...!!\n");
+                                        pscari=koneksi.prepareStatement(
+                                            "select rawat_inap_drpr.kd_jenis_prw,rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat,rawat_inap_drpr.material,rawat_inap_drpr.bhp,rawat_inap_drpr.tarif_tindakandr,rawat_inap_drpr.tarif_tindakanpr,rawat_inap_drpr.kso,rawat_inap_drpr.menejemen, "+
+                                            "rawat_inap_drpr.biaya_rawat,maping_tindakan_ranap_pcare.kd_tindakan_pcare from rawat_inap_drpr inner join maping_tindakan_ranap_pcare on maping_tindakan_ranap_pcare.kd_jenis_prw=rawat_inap_drpr.kd_jenis_prw where rawat_inap_drpr.no_rawat=?");
+                                        try {
+                                            pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
+                                            rscari=pscari.executeQuery();
+                                            while(rscari.next()){
+                                                if(Sequel.cariInteger("select count(kd_jenis_prw) from pcare_tindakan_ranap_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kd_jenis_prw='"+rscari.getString("kd_jenis_prw")+"'")==0){
+                                                    try {
+                                                        headers = new HttpHeaders();
+                                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                                        headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
+                                                        headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                                                        headers.add("X-Signature",api.getHmac());
+                                                        headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                                                        requestJson ="{" +
+                                                            "\"kdTindakanSK\": 0," +
+                                                            "\"noKunjungan\": \""+tbKunjungan.getValueAt(i,1).toString()+"\"," +
+                                                            "\"kdTindakan\": \""+rscari.getString("kd_tindakan_pcare")+"\"," +
+                                                            "\"biaya\": 0," +
+                                                            "\"keterangan\": null," +
+                                                            "\"hasil\": 0" +
+                                                        "}";
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        requestEntity = new HttpEntity(requestJson,headers);
+                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        PesanKirim.append(requestJson+"\n");
+                                                        root = mapper.readTree(requestJson);
+                                                        nameNode = root.path("metaData");
+                                                        PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
+                                                        PesanKirim.append("message : "+nameNode.path("message").asText()+"\n"); 
+                                                        if(nameNode.path("code").asText().equals("201")){
+                                                            response = root.path("response");
+                                                            Sequel.menyimpan2("pcare_tindakan_ranap_diberikan","?,?,?,?,?,?,?,?,?,?,?,?,?",13,new String[]{
+                                                                tbKunjungan.getValueAt(i,0).toString(),tbKunjungan.getValueAt(i,1).toString(), response.path("message").asText(),
+                                                                rscari.getString("tgl_perawatan"),rscari.getString("jam_rawat"),rscari.getString("kd_jenis_prw"),rscari.getString("material"), 
+                                                                rscari.getString("bhp"),rscari.getString("tarif_tindakandr"),rscari.getString("tarif_tindakanpr"),rscari.getString("kso"), 
+                                                                rscari.getString("menejemen"),rscari.getString("biaya_rawat")
+                                                            });
+                                                        }
+                                                    }catch (Exception ex) {
+                                                        PesanKirim.append("Notifikasi Bridging : "+ex+"\n");
+                                                        if(ex.toString().contains("UnknownHostException")){
+                                                            PesanKirim.append("Koneksi ke server PCare terputus...!\n");
+                                                        }else if(ex.toString().contains("500")){
+                                                            PesanKirim.append("Server PCare baru ngambek broooh...!\n");
+                                                        }else if(ex.toString().contains("401")){
+                                                            PesanKirim.append("Username/Password salah. Lupa password? Wani piro...!\n");
+                                                        }else if(ex.toString().contains("408")){
+                                                            PesanKirim.append("Time out, hayati lelah baaaang...!\n");
+                                                        }else if(ex.toString().contains("424")){
+                                                            PesanKirim.append("Ambil data masternya yang bener dong coy...!\n");
+                                                        }else if(ex.toString().contains("412")){
+                                                            PesanKirim.append("Tidak sesuai kondisi. Aku, kamu end...!\n");
+                                                        }else if(ex.toString().contains("204")){
+                                                            PesanKirim.append("Data tidak ditemukan...!\n");
+                                                        }
+                                                    } 
+                                                }
+                                            }
+                                            if(rscari.getRow()==0){
+                                                PesanKirim.append("Mapping tindakan dokter & paramedis rawat inap, No.Kunjungan "+tbKunjungan.getValueAt(i,1).toString()+" / No.Rawat "+tbKunjungan.getValueAt(i,1).toString()+" / No.RM "+tbKunjungan.getValueAt(i,3).toString()+" / Pasien "+tbKunjungan.getValueAt(i,3).toString()+" tidak ditemukan...!!\n");
+                                            }
+                                        } catch (Exception a) {
+                                            PesanKirim.append("Notif : "+a+"\n");
+                                        } finally{
+                                            if(rscari!=null){
+                                                rscari.close();
+                                            }
+                                            if(pscari!=null){
+                                                pscari.close();
+                                            }
+                                        }
+                                    } catch (Exception a) {
+                                        PesanKirim.append("Notif : "+e+"\n");
+                                    }
+                                }
+                            }
+                            PesanKirim.append("Pengiriman data obat & tindakan PCare selesai\n");
+                            PesanKirim.append("PROSES KIRIM SELESAI\n");
+                        } catch (Exception ez) {
+                            System.out.println("Notif : "+ez);
+                        }
+                    }
+                }
+            }
+        };
+        // Timer
+        new Timer(1000, taskPerformer).start();
     }
 
     

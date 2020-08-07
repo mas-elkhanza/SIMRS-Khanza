@@ -65,6 +65,7 @@ import laporan.DlgDataInsidenKeselamatan;
 import rekammedis.RMDataResumePasien;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
+import rekammedis.RMHemodialisa;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 
@@ -739,6 +740,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         ppResume = new javax.swing.JMenuItem();
         MnDiagnosa = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
+        MnHemodialisa = new javax.swing.JMenuItem();
         MnPermintaan = new javax.swing.JMenu();
         MnJadwalOperasi = new javax.swing.JMenuItem();
         MnSKDPBPJS = new javax.swing.JMenuItem();
@@ -1462,6 +1464,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MnDataRM.add(ppRiwayat);
+
+        MnHemodialisa.setBackground(new java.awt.Color(255, 255, 254));
+        MnHemodialisa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnHemodialisa.setForeground(new java.awt.Color(50, 50, 50));
+        MnHemodialisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnHemodialisa.setText("Hemodialisa");
+        MnHemodialisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnHemodialisa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnHemodialisa.setName("MnHemodialisa"); // NOI18N
+        MnHemodialisa.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnHemodialisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnHemodialisaActionPerformed(evt);
+            }
+        });
+        MnDataRM.add(MnHemodialisa);
 
         jPopupMenu1.add(MnDataRM);
 
@@ -3856,7 +3874,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelCari.add(R2);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3879,7 +3897,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel22);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3906,7 +3924,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         R3.setPreferredSize(new java.awt.Dimension(75, 23));
         panelCari.add(R3);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2020" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2020" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -3929,7 +3947,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2020" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2020" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -9608,6 +9626,28 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     }//GEN-LAST:event_MnBarcode2ActionPerformed
 
+    private void MnHemodialisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnHemodialisaActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKamIn.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMHemodialisa resume=new RMHemodialisa(null,false);
+                resume.emptTeks();
+                resume.setNoRm(TNoRw1.getText());
+                resume.isCek();
+                resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resume.setLocationRelativeTo(internalFrame1);
+                resume.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }//GEN-LAST:event_MnHemodialisaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9705,6 +9745,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private javax.swing.JMenuItem MnHapusDataSalah;
     private javax.swing.JMenuItem MnHapusObatOperasi;
     private javax.swing.JMenuItem MnHapusTagihanOperasi;
+    private javax.swing.JMenuItem MnHemodialisa;
     private javax.swing.JMenuItem MnInputResep;
     private javax.swing.JMenuItem MnJadwalOperasi;
     private javax.swing.JMenuItem MnLabelTracker;
@@ -10266,64 +10307,106 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         BtnSimpan.setEnabled(akses.getkamar_inap());
         BtnSimpanpindah.setEnabled(akses.getkamar_inap());
         BtnPrint.setEnabled(akses.getkamar_inap());
-        MnRawatInap.setEnabled(akses.gettindakan_ranap());
-        MnRawatJalan.setEnabled(akses.gettindakan_ralan());
-        MnPemberianObat.setEnabled(akses.getberi_obat());
-        MnReturJual.setEnabled(akses.getretur_dari_pembeli());
-        MnInputResep.setEnabled(akses.getresep_pulang());
-        MnNoResep.setEnabled(akses.getresep_obat());
-        MnDiet.setEnabled(akses.getdiet_pasien());
-        MnPeriksaLab.setEnabled(akses.getperiksa_lab());
-        MnPeriksaRadiologi.setEnabled(akses.getperiksa_radiologi());
-        MnOperasi.setEnabled(akses.getoperasi());
-        MnDeposit.setEnabled(akses.getdeposit_pasien());
-        MnStokObatPasien.setEnabled(akses.getstok_obat_pasien());
-        MnResepPulang.setEnabled(akses.getresep_pulang());
-        MnRujuk.setEnabled(akses.getrujukan_keluar());
-        MnRujukMasuk.setEnabled(akses.getrujukan_masuk());
-        MnHapusTagihanOperasi.setEnabled(akses.getoperasi());
-        MnHapusObatOperasi.setEnabled(akses.getoperasi());
-        MnPenjab.setEnabled(akses.getkamar_inap());
-        MnSehat.setEnabled(akses.getkamar_inap());
-        MnStatusRujuk.setEnabled(akses.getkamar_inap());
-        MnStatusAPS.setEnabled(akses.getkamar_inap());
-        MnStatusPlus.setEnabled(akses.getkamar_inap());
-        MnRanapGabung.setEnabled(akses.getkamar_inap());
-        MnStatusMeninggal.setEnabled(akses.getkamar_inap()); 
-        MnStatusSembuh.setEnabled(akses.getkamar_inap());
-        MnStatusMembaik.setEnabled(akses.getkamar_inap());
-        MnStatusPulangPaksa.setEnabled(akses.getkamar_inap());
-        MnStatusMin.setEnabled(akses.getkamar_inap());
-        MnUpdateHari.setEnabled(akses.getkamar_inap());
-        MnPerkiraanBiaya.setEnabled(akses.getkamar_inap());
-        MnDiagnosa.setEnabled(akses.getdiagnosa_pasien());
-        MnDPJP.setEnabled(akses.getdpjp_ranap()); 
-        ppRiwayat.setEnabled(akses.getresume_pasien()); 
-        ppCatatanPasien.setEnabled(akses.getcatatan_pasien()); 
-        ppDataHAIs.setEnabled(akses.getdata_HAIs()); 
-        MnSEP.setEnabled(akses.getbpjs_sep());
-        ppBerkasDigital.setEnabled(akses.getberkas_digital_perawatan());    
-        ppIKP.setEnabled(akses.getinsiden_keselamatan_pasien());
-        MnJadwalOperasi.setEnabled(akses.getbooking_operasi());  
-        MnSKDPBPJS.setEnabled(akses.getskdp_bpjs());
-        MnPermintaanLab.setEnabled(akses.getpermintaan_lab());
-        MnPermintaanRadiologi.setEnabled(akses.getpermintaan_radiologi());
-        MnResepDOkter.setEnabled(akses.getresep_dokter());
-        ppResume.setEnabled(akses.getdata_resume_pasien());
-        MnPerkiraanBiaya.setEnabled(akses.getperkiraan_biaya_ranap());
-        ppAsuhanGizi.setEnabled(akses.getasuhan_gizi());
-        ppPasienCorona.setEnabled(akses.getpasien_corona());
-        ppPerawatanCorona.setEnabled(akses.getpasien_corona());
-        MnPCare.setEnabled(akses.getbridging_pcare_daftar()); 
+        MnRawatInap.setVisible(akses.gettindakan_ranap());
+        MnRawatJalan.setVisible(akses.gettindakan_ralan());
+        MnPemberianObat.setVisible(akses.getberi_obat());
+        MnReturJual.setVisible(akses.getretur_dari_pembeli());
+        MnInputResep.setVisible(akses.getresep_pulang());
+        MnNoResep.setVisible(akses.getresep_obat());
+        MnDiet.setVisible(akses.getdiet_pasien());
+        MnPeriksaLab.setVisible(akses.getperiksa_lab());
+        MnPeriksaRadiologi.setVisible(akses.getperiksa_radiologi());
+        MnOperasi.setVisible(akses.getoperasi());
+        MnDeposit.setVisible(akses.getdeposit_pasien());
+        MnStokObatPasien.setVisible(akses.getstok_obat_pasien());
+        MnResepPulang.setVisible(akses.getresep_pulang());
+        MnRujuk.setVisible(akses.getrujukan_keluar());
+        MnRujukMasuk.setVisible(akses.getrujukan_masuk());
+        MnHapusTagihanOperasi.setVisible(akses.getoperasi());
+        MnHapusObatOperasi.setVisible(akses.getoperasi());
+        MnPenjab.setVisible(akses.getkamar_inap());
+        MnSehat.setVisible(akses.getkamar_inap());
+        MnStatusRujuk.setVisible(akses.getkamar_inap());
+        MnStatusAPS.setVisible(akses.getkamar_inap());
+        MnStatusPlus.setVisible(akses.getkamar_inap());
+        MnRanapGabung.setVisible(akses.getkamar_inap());
+        MnGabungkanRanap.setVisible(akses.getkamar_inap());
+        MnStatusMeninggal.setVisible(akses.getkamar_inap()); 
+        MnStatusSembuh.setVisible(akses.getkamar_inap());
+        MnStatusMembaik.setVisible(akses.getkamar_inap());
+        MnStatusPulangPaksa.setVisible(akses.getkamar_inap());
+        MnStatusMin.setVisible(akses.getkamar_inap());
+        MnUpdateHari.setVisible(akses.getkamar_inap());
+        MnPerkiraanBiaya.setVisible(akses.getkamar_inap());
+        MnDiagnosa.setVisible(akses.getdiagnosa_pasien());
+        MnDPJP.setVisible(akses.getdpjp_ranap()); 
+        ppRiwayat.setVisible(akses.getresume_pasien()); 
+        ppCatatanPasien.setVisible(akses.getcatatan_pasien()); 
+        ppDataHAIs.setVisible(akses.getdata_HAIs()); 
+        MnSEP.setVisible(akses.getbpjs_sep());
+        ppBerkasDigital.setVisible(akses.getberkas_digital_perawatan());    
+        ppIKP.setVisible(akses.getinsiden_keselamatan_pasien());
+        MnJadwalOperasi.setVisible(akses.getbooking_operasi());  
+        MnSKDPBPJS.setVisible(akses.getskdp_bpjs());
+        MnPermintaanLab.setVisible(akses.getpermintaan_lab());
+        MnPermintaanRadiologi.setVisible(akses.getpermintaan_radiologi());
+        MnResepDOkter.setVisible(akses.getresep_dokter());
+        ppResume.setVisible(akses.getdata_resume_pasien());
+        MnPerkiraanBiaya.setVisible(akses.getperkiraan_biaya_ranap());
+        ppAsuhanGizi.setVisible(akses.getasuhan_gizi());
+        ppPasienCorona.setVisible(akses.getpasien_corona());
+        ppPerawatanCorona.setVisible(akses.getpasien_corona());
+        MnPCare.setVisible(akses.getbridging_pcare_daftar()); 
+        ppMonitoringAsuhanGizi.setVisible(akses.getmonitoring_asuhan_gizi()); 
+        MnHemodialisa.setVisible(akses.gethemodialisa()); 
+        MnPenjualan1.setVisible(akses.getpenjualan_obat()); 
+        MnBilling.setVisible(akses.getbilling_ranap()); 
+        MnCekKepesertaan.setVisible(akses.getbpjs_cek_kartu());
+        MnCekNIK.setVisible(akses.getbpjs_cek_nik());
+        MnRujukSisrute.setVisible(akses.getsisrute_rujukan_keluar());
+        MnTeridentifikasiTB.setVisible(akses.getkemenkes_sitt());
+        
         if(akses.getkode().equals("Admin Utama")){
-            MnHapusDataSalah.setEnabled(true);
+            MnHapusDataSalah.setVisible(true);
         }else{
             if(aktifkan_hapus_data_salah.equals("Yes")){
-                MnHapusDataSalah.setEnabled(true);
+                MnHapusDataSalah.setVisible(true);
             }else{
-                MnHapusDataSalah.setEnabled(false);
+                MnHapusDataSalah.setVisible(false);
             }                
         } 
+        
+        if((MnHemodialisa.isVisible()==false)&&(ppAsuhanGizi.isVisible()==false)&&(ppMonitoringAsuhanGizi.isVisible()==false)&&(ppResume.isVisible()==false)&&(MnDiagnosa.isVisible()==false)&&(ppRiwayat.isVisible()==false)){
+            MnDataRM.setVisible(false);
+        }
+        
+        if((MnJadwalOperasi.isVisible()==false)&&(MnSKDPBPJS.isVisible()==false)&&(MnPermintaanLab.isVisible()==false)&&(MnPermintaanRadiologi.isVisible()==false)){
+            MnPermintaan.setVisible(false);
+        }
+        
+        if((MnRawatJalan.isVisible()==false)&&(MnRawatInap.isVisible()==false)&&(MnPeriksaLab.isVisible()==false)&&(MnPeriksaRadiologi.isVisible()==false)&&(MnOperasi.isVisible()==false)&&(MnDiet.isVisible()==false)){
+            MnTindakan.setVisible(false);
+        }
+        
+        if((MnPemberianObat.isVisible()==false)&&(MnInputResep.isVisible()==false)&&(MnResepDOkter.isVisible()==false)&&(MnNoResep.isVisible()==false)&&(MnStokObatPasien.isVisible()==false)&&(MnReturJual.isVisible()==false)&&(MnResepPulang.isVisible()==false)&&(MnPenjualan1.isVisible()==false)){
+            MnObat.setVisible(false);
+        }
+        
+        if((MnRujukMasuk.isVisible()==false)&&(MnRujuk.isVisible()==false)){
+            MnRujukan.setVisible(false);
+        }
+        
+        if((MnCekKepesertaan.isVisible()==false)&&(MnCekNIK.isVisible()==false)&&(MnSEP.isVisible()==false)&&(MnPCare.isVisible()==false)&&(MnRujukSisrute.isVisible()==false)&&(ppPasienCorona.isVisible()==false)&&(ppPerawatanCorona.isVisible()==false)&&(MnTeridentifikasiTB.isVisible()==false)){
+            MenuBPJS.setVisible(false);
+        }
+        
+        if((ppCatatanPasien.isVisible()==false)&&(ppDataHAIs.isVisible()==false)&&(ppBerkasDigital.isVisible()==false)&&(ppIKP.isVisible()==false)){
+            MenuInputData.setVisible(false);
+        }
+        
+        if((MnHapusTagihanOperasi.isVisible()==false)&&(MnHapusObatOperasi.isVisible()==false)){
+            MnHapusData.setVisible(false);
+        }
    }
     
     private void updateHari(){
