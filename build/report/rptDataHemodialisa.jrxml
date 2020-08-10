@@ -21,9 +21,9 @@
 pasien.jk,hemodialisa.tanggal,hemodialisa.lama,hemodialisa.akses,hemodialisa.dialist,hemodialisa.transfusi,hemodialisa.penarikan, 
 hemodialisa.qb,hemodialisa.qd,hemodialisa.ureum,hemodialisa.hb,hemodialisa.hbsag,creatinin,hemodialisa.hiv,hemodialisa.hcv,hemodialisa.lain, 
 hemodialisa.kd_dokter,dokter.nm_dokter,hemodialisa.kd_penyakit,penyakit.nm_penyakit 
-from hemodialisa inner join reg_periksa on hemodialisa.no_rawat=reg_periksa.no_rawat 
+from hemodialisa inner join reg_periksa on hemodialisa.no_rawat=reg_periksa.no_rawat
 inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
-inner join dokter on hemodialisa.kd_dokter=dokter.kd_dokter 
+inner join dokter on hemodialisa.kd_dokter=dokter.kd_dokter
 inner join penyakit on hemodialisa.kd_penyakit=penyakit.kd_penyakit]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
@@ -62,14 +62,6 @@ inner join penyakit on hemodialisa.kd_penyakit=penyakit.kd_penyakit]]>
 		<property name="com.jaspersoft.studio.field.label" value="akses"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="hemodialisa"/>
 	</field>
-	<field name="kd_dokter" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="kd_dokter"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="hemodialisa"/>
-	</field>
-	<field name="nm_dokter" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="nm_dokter"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
-	</field>
 	<field name="dialist" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="dialist"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="hemodialisa"/>
@@ -80,6 +72,14 @@ inner join penyakit on hemodialisa.kd_penyakit=penyakit.kd_penyakit]]>
 	</field>
 	<field name="penarikan" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="penarikan"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="hemodialisa"/>
+	</field>
+	<field name="qb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="qb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="hemodialisa"/>
+	</field>
+	<field name="qd" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="qd"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="hemodialisa"/>
 	</field>
 	<field name="ureum" class="java.lang.String">
@@ -110,9 +110,21 @@ inner join penyakit on hemodialisa.kd_penyakit=penyakit.kd_penyakit]]>
 		<property name="com.jaspersoft.studio.field.label" value="lain"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="hemodialisa"/>
 	</field>
+	<field name="kd_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="kd_dokter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="hemodialisa"/>
+	</field>
+	<field name="nm_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
+	</field>
 	<field name="kd_penyakit" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="kd_penyakit"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="hemodialisa"/>
+	</field>
+	<field name="nm_penyakit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nm_penyakit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penyakit"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -125,7 +137,7 @@ inner join penyakit on hemodialisa.kd_penyakit=penyakit.kd_penyakit]]>
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[DATA MONITORING HEMODIALISIS]]></text>
+				<text><![CDATA[DATA MONITORING HEMODIALISA]]></text>
 			</staticText>
 			<image scaleImage="FillFrame" onErrorType="Blank">
 				<reportElement x="0" y="2" width="48" height="45" uuid="0b5ac850-d047-49b2-9a74-6249b9e226e8"/>
