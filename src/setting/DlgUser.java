@@ -169,7 +169,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[R]Ternak Penerima Dankes","[R]Jenis Simpanan Penerima Dankes","[L]Penilaian Awal Ralan Bayi/Anak","[R]Kategori Asnaf Penerima Dankes",
                 "[L]Master Masalah Keperawatan Bayi/Anak","[L]Master Imunisasi","[R]Patologis Penerima Dankes","[K]Cek No.Kartu PCare","[O]Surat Bebas Narkoba",
                 "[O]Surat Keterangan Covid","[F]Pemakaian Air Tanah","[N]Pemakaian Air Tanah Per Tanggal","[N]Pemakaian Air Tanah Per Bulan",
-                "[I]Lama Pelayanan Poli","[L]Hemodialisa","[I]Laporan Tahunan IRJ","[N]Hemodialisa Per Tanggal"
+                "[I]Lama Pelayanan Poli","[L]Hemodialisa","[I]Laporan Tahunan IRJ","[N]Hemodialisa Per Tanggal","[N]Hemodialisa Per Bulan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -349,6 +349,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -362,7 +363,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 660;i++) {
+        for (i = 0; i < 661;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -1796,6 +1797,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 659:
                     column.setPreferredWidth(143);
                     break;
+                case 660:
+                    column.setPreferredWidth(131);
+                    break;
                 default:
                     column.setPreferredWidth(130);
                     break;
@@ -2292,7 +2296,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2994,7 +2998,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "lama_pelayanan_poli='"+tbUser.getValueAt(i,656).toString()+"',"+
                     "hemodialisa='"+tbUser.getValueAt(i,657).toString()+"',"+
                     "laporan_tahunan_irj='"+tbUser.getValueAt(i,658).toString()+"',"+
-                    "grafik_harian_hemodialisa='"+tbUser.getValueAt(i,659).toString()+"'");
+                    "grafik_harian_hemodialisa='"+tbUser.getValueAt(i,659).toString()+"',"+
+                    "grafik_bulanan_hemodialisa='"+tbUser.getValueAt(i,660).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3735,7 +3740,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "lama_pelayanan_poli='"+tbUser.getValueAt(barisdicopy,656).toString()+"',"+
                                     "hemodialisa='"+tbUser.getValueAt(barisdicopy,657).toString()+"',"+
                                     "laporan_tahunan_irj='"+tbUser.getValueAt(barisdicopy,658).toString()+"',"+
-                                    "grafik_harian_hemodialisa='"+tbUser.getValueAt(barisdicopy,659).toString()+"'");
+                                    "grafik_harian_hemodialisa='"+tbUser.getValueAt(barisdicopy,659).toString()+"',"+
+                                    "grafik_bulanan_hemodialisa='"+tbUser.getValueAt(barisdicopy,660).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4056,7 +4062,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes,zis_ternak_penerima_dankes,zis_jenis_simpanan_penerima_dankes,"+
                         "penilaian_awal_keperawatan_anak,zis_kategori_asnaf_penerima_dankes,master_masalah_keperawatan_anak,master_imunisasi,"+
                         "zis_patologis_penerima_dankes,pcare_cek_kartu,surat_bebas_narkoba,surat_keterangan_covid,pemakaian_air_tanah,"+
-                        "grafik_air_tanah_pertanggal,grafik_air_tanah_perbulan,lama_pelayanan_poli,hemodialisa,laporan_tahunan_irj,grafik_harian_hemodialisa from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_air_tanah_pertanggal,grafik_air_tanah_perbulan,lama_pelayanan_poli,hemodialisa,laporan_tahunan_irj,"+
+                        "grafik_harian_hemodialisa,grafik_bulanan_hemodialisa from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4728,7 +4735,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("lama_pelayanan_poli"),
                                rs.getBoolean("hemodialisa"),
                                rs.getBoolean("laporan_tahunan_irj"),
-                               rs.getBoolean("grafik_harian_hemodialisa")
+                               rs.getBoolean("grafik_harian_hemodialisa"),
+                               rs.getBoolean("grafik_bulanan_hemodialisa")
                             });
                         }   
                     } catch (Exception e) {
@@ -5389,7 +5397,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("lama_pelayanan_poli"),
                            rs.getBoolean("hemodialisa"),
                            rs.getBoolean("laporan_tahunan_irj"),
-                           rs.getBoolean("grafik_harian_hemodialisa")
+                           rs.getBoolean("grafik_harian_hemodialisa"),
+                           rs.getBoolean("grafik_bulanan_hemodialisa")
                         });
                     }                                             
                  }
