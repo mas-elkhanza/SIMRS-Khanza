@@ -430,6 +430,7 @@ import bridging.InhealthTindakanRanap;
 import bridging.CoronaPasien;
 import bridging.INACBGPerawatanCorona;
 import bridging.PCareCekKartu;
+import grafikanalisa.GrafikHemodialisaPerTanggal;
 import grafikanalisa.GrafikInventarisPerJenis;
 import grafikanalisa.GrafikInventarisPerRuang;
 import grafikanalisa.GrafikItemApotekPerGolongan;
@@ -16305,6 +16306,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }  
     
+    private void btnGrafikHemodialisaPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikHemodialisaPerTanggal aplikasi=new GrafikHemodialisaPerTanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }   
+    
     /**
     * @param args the command line arguments
     */
@@ -16911,7 +16923,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
-            btnLamaPelayananPoli,btnHemodialisa;
+            btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal;
     
     public void isWall(){
         try{            
@@ -19813,6 +19825,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenerimaan_obat_perbulan()==true){
                 Panelmenu.add(btnGrafikPenerimaanObatPerBulan);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_harian_hemodialisa()==true){
+                Panelmenu.add(btnGrafikHemodialisaPerTanggal);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==14){
@@ -23089,6 +23106,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenerimaan_obat_perbulan()==true){
             Panelmenu.add(btnGrafikPenerimaanObatPerBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_harian_hemodialisa()==true){
+            Panelmenu.add(btnGrafikHemodialisaPerTanggal);
             jmlmenu++;
         }
 
@@ -27469,6 +27491,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getgrafik_harian_hemodialisa()==true){
+            if(btnGrafikHemodialisaPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikHemodialisaPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_indeks()==true){
             if(btnSuratIndeks.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratIndeks);
@@ -30513,6 +30542,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHemodialisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHemodialisaActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikHemodialisaPerTanggal = new widget.ButtonBig();
+        btnGrafikHemodialisaPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikHemodialisaPerTanggal.setText("Hemodialisa Per Tanggal");
+        btnGrafikHemodialisaPerTanggal.setIconTextGap(0);
+        btnGrafikHemodialisaPerTanggal.setName("btnGrafikHemodialisaPerTanggal"); 
+        btnGrafikHemodialisaPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikHemodialisaPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikHemodialisaPerTanggalActionPerformed(evt);
             }
         });
     }
