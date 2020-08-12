@@ -1846,7 +1846,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         TCari.requestFocus();
                     }                
                 }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
-                    if((i==9)||(i==10)){
+                    if((i==9)||(i==10)||(i==11)||(i==12)){
                         try {
                             if(!tabModeDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString().equals("")){
                                 tbDetailObatRacikan.setValueAt(

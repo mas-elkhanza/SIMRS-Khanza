@@ -1306,7 +1306,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(tbDetailResepObatRacikan.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_RIGHT)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 i=tbDetailResepObatRacikan.getSelectedColumn();
-                if((i==11)||(i==9)){
+                if((i==11)||(i==9)||(i==13)||(i==14)){
                     try {
                         if(!tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),11).toString().equals(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),9).toString())){
                             if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),8).toString())==0){
@@ -1329,6 +1329,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     }  
                     getCekStokRacikan();
                 }
+                hitungResep();
             }
         }
     }//GEN-LAST:event_tbDetailResepObatRacikanKeyPressed
