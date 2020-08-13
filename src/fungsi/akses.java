@@ -144,7 +144,7 @@ public final class akses {
             zis_kategori_asnaf_penerima_dankes=false,master_masalah_keperawatan_anak=false,master_imunisasi=false,zis_patologis_penerima_dankes=false,
             pcare_cek_kartu=false,surat_bebas_narkoba=false,surat_keterangan_covid=false,pemakaian_air_tanah=false,grafik_air_tanah_pertanggal=false,
             grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false,hemodialisa=false,grafik_harian_hemodialisa=false,grafik_bulanan_hemodialisa=false,
-            grafik_tahunan_hemodialisa=false;
+            grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -825,6 +825,7 @@ public final class akses {
                         akses.grafik_harian_hemodialisa=true;
                         akses.grafik_bulanan_hemodialisa=true;
                         akses.grafik_tahunan_hemodialisa=true;
+                        akses.grafik_bulanan_meninggal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1489,6 +1490,7 @@ public final class akses {
                         akses.grafik_harian_hemodialisa=rs2.getBoolean("grafik_harian_hemodialisa");
                         akses.grafik_bulanan_hemodialisa=rs2.getBoolean("grafik_bulanan_hemodialisa");
                         akses.grafik_tahunan_hemodialisa=rs2.getBoolean("grafik_tahunan_hemodialisa");
+                        akses.grafik_bulanan_meninggal=rs2.getBoolean("grafik_bulanan_meninggal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2151,6 +2153,7 @@ public final class akses {
                         akses.grafik_harian_hemodialisa=false;
                         akses.grafik_bulanan_hemodialisa=false;
                         akses.grafik_tahunan_hemodialisa=false;
+                        akses.grafik_bulanan_meninggal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2867,4 +2870,5 @@ public final class akses {
     public static boolean getgrafik_harian_hemodialisa(){return akses.grafik_harian_hemodialisa;}
     public static boolean getgrafik_bulanan_hemodialisa(){return akses.grafik_bulanan_hemodialisa;}
     public static boolean getgrafik_tahunan_hemodialisa(){return akses.grafik_tahunan_hemodialisa;}
+    public static boolean getgrafik_bulanan_meninggal(){return akses.grafik_bulanan_meninggal;}
 }   
