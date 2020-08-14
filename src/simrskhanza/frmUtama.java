@@ -562,6 +562,7 @@ import laporan.LaporanKedatanganPasienPerJam;
 import laporan.LaporanRegistrasiPoliPerTanggal;
 import laporan.LaporanRekapKunjunganRuangPerTahun;
 import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
+import laporan.LaporanTahunanIRJ;
 import permintaan.DlgBookingPeriksa;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
@@ -16352,6 +16353,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     } 
     
+    private void btnLaporanTahunanIRJActionPerformed(java.awt.event.ActionEvent evt) {   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LaporanTahunanIRJ aplikasi=new LaporanTahunanIRJ(this,true);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16959,7 +16972,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
-            btnGrafikMeninggalPerBulan;
+            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ;
     
     public void isWall(){
         try{            
@@ -18473,6 +18486,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getregistrasi_poli_per_tanggal()==true){  
                 Panelmenu.add(btnRegistrasiPoliPerTanggal);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlaporan_tahunan_irj()==true){  
+                Panelmenu.add(btnLaporanTahunanIRJ);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -21774,6 +21792,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getregistrasi_poli_per_tanggal()==true){  
             Panelmenu.add(btnRegistrasiPoliPerTanggal);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getlaporan_tahunan_irj()==true){  
+            Panelmenu.add(btnLaporanTahunanIRJ);                 
             jmlmenu++;
         }
 
@@ -25619,6 +25642,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getregistrasi_poli_per_tanggal()==true){  
             if(btnRegistrasiPoliPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRegistrasiPoliPerTanggal);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlaporan_tahunan_irj()==true){  
+            if(btnLaporanTahunanIRJ.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLaporanTahunanIRJ);                 
                 jmlmenu++;
             }                
         }
@@ -30677,6 +30707,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikMeninggalPerBulan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGrafikMeninggalPerBulanActionPerformed(evt);
+            }
+        });
+        
+        btnLaporanTahunanIRJ = new widget.ButtonBig();
+        btnLaporanTahunanIRJ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laporantahunanIRJ.png"))); 
+        btnLaporanTahunanIRJ.setText("Laporan Tahunan IRJ");
+        btnLaporanTahunanIRJ.setIconTextGap(0);
+        btnLaporanTahunanIRJ.setName("btnLaporanTahunanIRJ"); 
+        btnLaporanTahunanIRJ.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaporanTahunanIRJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaporanTahunanIRJActionPerformed(evt);
             }
         });
     }
