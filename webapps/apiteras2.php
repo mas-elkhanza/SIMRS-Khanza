@@ -16,10 +16,10 @@
       CURLOPT_CUSTOMREQUEST => "POST",
       CURLOPT_POSTFIELDS => array('no_lab' => $nopermintaan),
       CURLOPT_HTTPHEADER => array(
-        "x-cid: 5309202024070000",
-        "x-user: HIS_CILINCING",
-        "x-secret: $3c!r3t",
-        "x-token: 75E3128346CA72462BE7C3B6F4F5BA75"
+        "x-cid: mintavendor",
+        "x-user: mintavendor",
+        "x-secret: mintavendor",
+        "x-token: mintavendor"
       ),
     ));
 

@@ -3,10 +3,10 @@
     $nopermintaan = isset($_GET["nopermintaan"])?$_GET["nopermintaan"]:NULL;
     $session      = curl_init ( "api.terassekawanbersama.co.id/add_order/" );			
     $arrheader    = array (
-        'x-cid:5309202024070000',
-        'x-user:HIS_CILINCING',
-        'x-secret:$3c!r3t',
-        'x-token:75E3128346CA72462BE7C3B6F4F5BA75',
+        'x-cid:mintavendor',
+        'x-user:mintavendor',
+        'x-secret:mintavendor',
+        'x-token:mintavendor',
         'Content-Type:text/html; charset=UTF-8'
     );
   
