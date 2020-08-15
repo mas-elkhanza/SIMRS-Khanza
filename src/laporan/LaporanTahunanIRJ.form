@@ -206,8 +206,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Jumlah Pasien Per Poli">
-                    <Property name="tabTitle" type="java.lang.String" value="Jumlah Pasien Per Poli"/>
+                  <JTabbedPaneConstraints tabName="Pasien Per Poli">
+                    <Property name="tabTitle" type="java.lang.String" value="Pasien Per Poli"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -234,8 +234,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Jumlah Pasien Per Dokter">
-                    <Property name="tabTitle" type="java.lang.String" value="Jumlah Pasien Per Dokter"/>
+                  <JTabbedPaneConstraints tabName="Pasien Per Dokter">
+                    <Property name="tabTitle" type="java.lang.String" value="Pasien Per Dokter"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -262,8 +262,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Jumlah Pasien Lama &amp; Baru">
-                    <Property name="tabTitle" type="java.lang.String" value="Jumlah Pasien Lama &amp; Baru"/>
+                  <JTabbedPaneConstraints tabName="Pasien Lama &amp; Baru">
+                    <Property name="tabTitle" type="java.lang.String" value="Pasien Lama &amp; Baru"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -276,6 +276,62 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="name" type="java.lang.String" value="LoadHTML2" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="widget.ScrollPane" name="Scroll3">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="Scroll3" noResource="true"/>
+                <Property name="opaque" type="boolean" value="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Pasien Laki-laki &amp; Perempuan">
+                    <Property name="tabTitle" type="java.lang.String" value="Pasien Laki-laki &amp; Perempuan"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="widget.editorpane" name="LoadHTML3">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="LoadHTML3" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="widget.ScrollPane" name="Scroll4">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="Scroll4" noResource="true"/>
+                <Property name="opaque" type="boolean" value="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Jenis Pasien">
+                    <Property name="tabTitle" type="java.lang.String" value="Jenis Pasien"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="widget.editorpane" name="LoadHTML4">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="LoadHTML4" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>

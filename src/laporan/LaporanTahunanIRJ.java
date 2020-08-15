@@ -46,6 +46,10 @@ public class LaporanTahunanIRJ extends javax.swing.JDialog {
         LoadHTML1.setEditorKit(kit);
         LoadHTML2.setEditable(true);
         LoadHTML2.setEditorKit(kit);
+        LoadHTML3.setEditable(true);
+        LoadHTML3.setEditorKit(kit);
+        LoadHTML4.setEditable(true);
+        LoadHTML4.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
@@ -58,6 +62,8 @@ public class LaporanTahunanIRJ extends javax.swing.JDialog {
         LoadHTML.setDocument(doc);
         LoadHTML1.setDocument(doc);
         LoadHTML2.setDocument(doc);
+        LoadHTML3.setDocument(doc);
+        LoadHTML4.setDocument(doc);
         
         Valid.LoadTahun(ThnCari);
     }
@@ -89,6 +95,10 @@ public class LaporanTahunanIRJ extends javax.swing.JDialog {
         LoadHTML1 = new widget.editorpane();
         Scroll2 = new widget.ScrollPane();
         LoadHTML2 = new widget.editorpane();
+        Scroll3 = new widget.ScrollPane();
+        LoadHTML3 = new widget.editorpane();
+        Scroll4 = new widget.ScrollPane();
+        LoadHTML4 = new widget.editorpane();
 
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -198,7 +208,7 @@ public class LaporanTahunanIRJ extends javax.swing.JDialog {
         LoadHTML.setName("LoadHTML"); // NOI18N
         Scroll.setViewportView(LoadHTML);
 
-        TabRawat.addTab("Jumlah Pasien Per Poli", Scroll);
+        TabRawat.addTab("Pasien Per Poli", Scroll);
 
         Scroll1.setBorder(null);
         Scroll1.setName("Scroll1"); // NOI18N
@@ -208,7 +218,7 @@ public class LaporanTahunanIRJ extends javax.swing.JDialog {
         LoadHTML1.setName("LoadHTML1"); // NOI18N
         Scroll1.setViewportView(LoadHTML1);
 
-        TabRawat.addTab("Jumlah Pasien Per Dokter", Scroll1);
+        TabRawat.addTab("Pasien Per Dokter", Scroll1);
 
         Scroll2.setBorder(null);
         Scroll2.setName("Scroll2"); // NOI18N
@@ -218,7 +228,27 @@ public class LaporanTahunanIRJ extends javax.swing.JDialog {
         LoadHTML2.setName("LoadHTML2"); // NOI18N
         Scroll2.setViewportView(LoadHTML2);
 
-        TabRawat.addTab("Jumlah Pasien Lama & Baru", Scroll2);
+        TabRawat.addTab("Pasien Lama & Baru", Scroll2);
+
+        Scroll3.setBorder(null);
+        Scroll3.setName("Scroll3"); // NOI18N
+        Scroll3.setOpaque(true);
+
+        LoadHTML3.setBorder(null);
+        LoadHTML3.setName("LoadHTML3"); // NOI18N
+        Scroll3.setViewportView(LoadHTML3);
+
+        TabRawat.addTab("Pasien Laki-laki & Perempuan", Scroll3);
+
+        Scroll4.setBorder(null);
+        Scroll4.setName("Scroll4"); // NOI18N
+        Scroll4.setOpaque(true);
+
+        LoadHTML4.setBorder(null);
+        LoadHTML4.setName("LoadHTML4"); // NOI18N
+        Scroll4.setViewportView(LoadHTML4);
+
+        TabRawat.addTab("Jenis Pasien", Scroll4);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -291,7 +321,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             "</table>")
                 );
                 bw.close();
-            }                
+            }else if(TabRawat.getSelectedIndex()==3){
+                bw.write(LoadHTML3.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi5'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>LAPORAN TAHUNAN INSTALASI RAWAT JALAN PERIODE "+ThnCari.getSelectedItem()+"<br><br></font>"+      
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();
+            }else if(TabRawat.getSelectedIndex()==4){
+                bw.write(LoadHTML4.getText().replaceAll("<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi5'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>LAPORAN TAHUNAN INSTALASI RAWAT JALAN PERIODE "+ThnCari.getSelectedItem()+"<br><br></font>"+      
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();
+            }                     
             Desktop.getDesktop().browse(f.toURI());
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
@@ -345,6 +403,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             prosesCari2();
         }else if(TabRawat.getSelectedIndex()==2){
             prosesCari3();
+        }else if(TabRawat.getSelectedIndex()==3){
+            prosesCari4();
+        }else if(TabRawat.getSelectedIndex()==4){
+            prosesCari5();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -371,9 +433,13 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML1;
     private widget.editorpane LoadHTML2;
+    private widget.editorpane LoadHTML3;
+    private widget.editorpane LoadHTML4;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
+    private widget.ScrollPane Scroll3;
+    private widget.ScrollPane Scroll4;
     private javax.swing.JTabbedPane TabRawat;
     private widget.ComboBox ThnCari;
     private widget.Button btnCari;
@@ -410,7 +476,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nov "+ThnCari.getSelectedItem()+"</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>Des "+ThnCari.getSelectedItem()+"</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW IV "+ThnCari.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TOTAL</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
                 "</tr>"
             );            
             i=1;
@@ -488,7 +554,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 if(i>1){
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' align='right' colspan='2'>TOTAL PASIEN : </td>"+
+                            "<td valign='middle' align='right' colspan='2'>JUMLAH : </td>"+
                             "<td valign='middle' align='center'>"+ttljan+"</td>"+
                             "<td valign='middle' align='center'>"+ttlfeb+"</td>"+
                             "<td valign='middle' align='center'>"+ttlmar+"</td>"+
@@ -558,7 +624,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nov "+ThnCari.getSelectedItem()+"</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>Des "+ThnCari.getSelectedItem()+"</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW IV "+ThnCari.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TOTAL</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
                 "</tr>"
             );            
             i=1;
@@ -701,7 +767,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 if(i>1){
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>TOTAL PASIEN : </td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>JUMLAH : </td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttljan+"</td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlfeb+"</td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlmar+"</td>"+
@@ -778,7 +844,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nov "+ThnCari.getSelectedItem()+"</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>Des "+ThnCari.getSelectedItem()+"</td>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW IV "+ThnCari.getSelectedItem()+"</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TOTAL</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
                 "</tr>"
             );            
             i=1;
@@ -967,7 +1033,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 if(i>1){
                     htmlContent.append(
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>TOTAL PASIEN : </td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>JUMLAH : </td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttljan+"</td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlfeb+"</td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlmar+"</td>"+
@@ -987,7 +1053,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+"</td>"+
                         "</tr>"+
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>TOTAL PASIEN LAMA : </td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>JUMLAH LAMA : </td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljan-ttljanbaru)+"</td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlfeb-ttlfebbaru)+"</td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlmar-ttlmarbaru)+"</td>"+
@@ -1007,7 +1073,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes-ttljanbaru-ttlfebbaru-ttlmarbaru-ttlaprbaru-ttlmeibaru-ttljunbaru-ttljulbaru-ttlagubaru-ttlsepbaru-ttloktbaru-ttlnovbaru-ttldesbaru)+"</td>"+
                         "</tr>"+
                         "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>TOTAL PASIEN BARU : </td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>JUMLAH BARU : </td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttljanbaru+"</td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlfebbaru+"</td>"+
                             "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlmarbaru+"</td>"+
@@ -1039,7 +1105,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     ps.close();
                 }
             }
-            LoadHTML1.setText(
+            LoadHTML2.setText(
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
@@ -1049,6 +1115,455 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             System.out.println("Notif : "+e);
         } 
         this.setCursor(Cursor.getDefaultCursor());   
+    }
+    
+    private void prosesCari4() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%' rowspan='2'>Jenis Cakupan Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='78%' colspan='17'>Jumlah Pasien</td>"+
+                "</tr>"+                            
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jan "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Feb "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mar "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW I "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Apr "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mei "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jun "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW II "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jul "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Agus "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sep "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW III "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Okt "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nov "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Des "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW IV "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                "</tr>"
+            );            
+            i=1;
+            ps=koneksi.prepareStatement("select reg_periksa.kd_poli,poliklinik.nm_poli from reg_periksa inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    "where reg_periksa.kd_poli<>'IGDK' and year(reg_periksa.tgl_registrasi)=? group by reg_periksa.kd_poli order by reg_periksa.kd_poli");
+            try {
+                ps.setString(1,ThnCari.getSelectedItem().toString());
+                rs=ps.executeQuery();
+                ttljan=0;ttlfeb=0;ttlmar=0;ttlapr=0;ttlmei=0;ttljun=0;ttljul=0;ttlagu=0;ttlsep=0;ttlokt=0;ttlnov=0;ttldes=0;
+                ttljanbaru=0;ttlfebbaru=0;ttlmarbaru=0;ttlaprbaru=0;ttlmeibaru=0;ttljunbaru=0;ttljulbaru=0;ttlagubaru=0;ttlsepbaru=0;ttloktbaru=0;ttlnovbaru=0;ttldesbaru=0;
+                while(rs.next()){
+                    jan=0;
+                    jan=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    feb=0;
+                    feb=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    mar=0;
+                    mar=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    apr=0;
+                    apr=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    mei=0;
+                    mei=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    jun=0;
+                    jun=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    jul=0;
+                    jul=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    agu=0;
+                    agu=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    sep=0;
+                    sep=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    okt=0;
+                    okt=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    nov=0;
+                    nov=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    des=0;
+                    des=Sequel.cariInteger("select count(no_rawat) from reg_periksa where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and kd_poli='"+rs.getString("kd_poli")+"'");
+                    
+                    ttljan=ttljan+jan;
+                    ttlfeb=ttlfeb+feb;
+                    ttlmar=ttlmar+mar;
+                    ttlapr=ttlapr+apr;
+                    ttlmei=ttlmei+mei;
+                    ttljun=ttljun+jun;
+                    ttljul=ttljul+jul;
+                    ttlagu=ttlagu+agu;
+                    ttlsep=ttlsep+sep;
+                    ttlokt=ttlokt+okt;
+                    ttlnov=ttlnov+nov;
+                    ttldes=ttldes+des;
+                    
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+i+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='left'>"+rs.getString("nm_poli")+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+jan+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+feb+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+mar+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(jan+feb+mar)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+apr+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+mei+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+jun+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(apr+mei+jun)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+jul+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+agu+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+sep+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(jul+agu+sep)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+okt+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+nov+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+des+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(okt+nov+des)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                        "</tr>"
+                    );
+                    
+                    jan=0;
+                    jan=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    feb=0;
+                    feb=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    mar=0;
+                    mar=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    apr=0;
+                    apr=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    mei=0;
+                    mei=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    jun=0;
+                    jun=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    jul=0;
+                    jul=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    agu=0;
+                    agu=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    sep=0;
+                    sep=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    okt=0;
+                    okt=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    nov=0;
+                    nov=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    des=0;
+                    des=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='L'");
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'></td>"+
+                            "<td valign='middle' align='left'>Laki-laki</td>"+
+                            "<td valign='middle' align='center'>"+jan+"</td>"+
+                            "<td valign='middle' align='center'>"+feb+"</td>"+
+                            "<td valign='middle' align='center'>"+mar+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                            "<td valign='middle' align='center'>"+apr+"</td>"+
+                            "<td valign='middle' align='center'>"+mei+"</td>"+
+                            "<td valign='middle' align='center'>"+jun+"</td>"+
+                            "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                            "<td valign='middle' align='center'>"+jul+"</td>"+
+                            "<td valign='middle' align='center'>"+agu+"</td>"+
+                            "<td valign='middle' align='center'>"+sep+"</td>"+
+                            "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                            "<td valign='middle' align='center'>"+okt+"</td>"+
+                            "<td valign='middle' align='center'>"+nov+"</td>"+
+                            "<td valign='middle' align='center'>"+des+"</td>"+
+                            "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                        "</tr>"
+                    );
+                    
+                    jan=0;
+                    jan=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    feb=0;
+                    feb=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    mar=0;
+                    mar=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    apr=0;
+                    apr=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    mei=0;
+                    mei=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    jun=0;
+                    jun=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    jul=0;
+                    jul=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    agu=0;
+                    agu=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    sep=0;
+                    sep=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    okt=0;
+                    okt=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    nov=0;
+                    nov=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    des=0;
+                    des=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and reg_periksa.kd_poli='"+rs.getString("kd_poli")+"' and pasien.jk='P'");
+                    
+                    
+                    ttljanbaru=ttljanbaru+jan;
+                    ttlfebbaru=ttlfebbaru+feb;
+                    ttlmarbaru=ttlmarbaru+mar;
+                    ttlaprbaru=ttlaprbaru+apr;
+                    ttlmeibaru=ttlmeibaru+mei;
+                    ttljunbaru=ttljunbaru+jun;
+                    ttljulbaru=ttljulbaru+jul;
+                    ttlagubaru=ttlagubaru+agu;
+                    ttlsepbaru=ttlsepbaru+sep;
+                    ttloktbaru=ttloktbaru+okt;
+                    ttlnovbaru=ttlnovbaru+nov;
+                    ttldesbaru=ttldesbaru+des;
+                    
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'></td>"+
+                            "<td valign='middle' align='left'>Perempuan</td>"+
+                            "<td valign='middle' align='center'>"+jan+"</td>"+
+                            "<td valign='middle' align='center'>"+feb+"</td>"+
+                            "<td valign='middle' align='center'>"+mar+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                            "<td valign='middle' align='center'>"+apr+"</td>"+
+                            "<td valign='middle' align='center'>"+mei+"</td>"+
+                            "<td valign='middle' align='center'>"+jun+"</td>"+
+                            "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                            "<td valign='middle' align='center'>"+jul+"</td>"+
+                            "<td valign='middle' align='center'>"+agu+"</td>"+
+                            "<td valign='middle' align='center'>"+sep+"</td>"+
+                            "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                            "<td valign='middle' align='center'>"+okt+"</td>"+
+                            "<td valign='middle' align='center'>"+nov+"</td>"+
+                            "<td valign='middle' align='center'>"+des+"</td>"+
+                            "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                        "</tr>"
+                    );
+                    
+                    i++;
+                }
+                if(i>1){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>JUMLAH : </td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttljan+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlfeb+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlmar+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljan+ttlfeb+ttlmar)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlapr+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlmei+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttljun+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlapr+ttlmei+ttljun)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttljul+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlagu+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlsep+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljul+ttlagu+ttlsep)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlokt+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlnov+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttldes+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlokt+ttlnov+ttldes)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>JUMLAH LAKI-LAKI : </td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljan-ttljanbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlfeb-ttlfebbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlmar-ttlmarbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljan+ttlfeb+ttlmar-ttljanbaru-ttlfebbaru-ttlmarbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlapr-ttlaprbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlmei-ttlmeibaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljun-ttljunbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlapr+ttlmei+ttljun-ttlaprbaru-ttlmeibaru-ttljunbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljul-ttljulbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlagu-ttlagubaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlsep-ttlsepbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljul+ttlagu+ttlsep-ttljulbaru-ttlagubaru-ttlsepbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlokt-ttloktbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlnov-ttlnovbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttldes-ttldesbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlokt+ttlnov+ttldes-ttloktbaru-ttlnovbaru-ttldesbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes-ttljanbaru-ttlfebbaru-ttlmarbaru-ttlaprbaru-ttlmeibaru-ttljunbaru-ttljulbaru-ttlagubaru-ttlsepbaru-ttloktbaru-ttlnovbaru-ttldesbaru)+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='right' colspan='2'>JUMLAH PEREMPUAN : </td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttljanbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlfebbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlmarbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljanbaru+ttlfebbaru+ttlmarbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlaprbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlmeibaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttljunbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttlaprbaru+ttlmeibaru+ttljunbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttljulbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlagubaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlsepbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljulbaru+ttlagubaru+ttlsepbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttloktbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttlnovbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+ttldesbaru+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttloktbaru+ttlnovbaru+ttldesbaru)+"</td>"+
+                            "<td valign='middle' bgcolor='#FFFCFC' align='center'>"+(ttljanbaru+ttlfebbaru+ttlmarbaru+ttlaprbaru+ttlmeibaru+ttljunbaru+ttljulbaru+ttlagubaru+ttlsepbaru+ttloktbaru+ttlnovbaru+ttldesbaru)+"</td>"+
+                        "</tr>"
+                    );
+                }
+                    
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LoadHTML3.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        } 
+        this.setCursor(Cursor.getDefaultCursor());   
+    }
+    
+    private void prosesCari5() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%' rowspan='2'>Uraian</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='78%' colspan='17'>Jumlah Pasien</td>"+
+                "</tr>"+                            
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jan "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Feb "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mar "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW I "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Apr "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Mei "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jun "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW II "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Jul "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Agus "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Sep "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW III "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Okt "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Nov "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Des "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>TW IV "+ThnCari.getSelectedItem()+"</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center'>Total</td>"+
+                "</tr>"
+            );            
+            i=1;
+            ps=koneksi.prepareStatement("select reg_periksa.kd_pj,penjab.png_jawab from reg_periksa inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                    "where reg_periksa.kd_poli<>'IGDK' and year(reg_periksa.tgl_registrasi)=? group by reg_periksa.kd_pj order by reg_periksa.kd_pj");
+            try {
+                ps.setString(1,ThnCari.getSelectedItem().toString());
+                rs=ps.executeQuery();
+                ttljan=0;ttlfeb=0;ttlmar=0;ttlapr=0;ttlmei=0;ttljun=0;ttljul=0;ttlagu=0;ttlsep=0;ttlokt=0;ttlnov=0;ttldes=0;
+                while(rs.next()){
+                    jan=0;
+                    jan=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-01' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    feb=0;
+                    feb=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-02' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    mar=0;
+                    mar=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-03' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    apr=0;
+                    apr=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-04' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    mei=0;
+                    mei=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-05' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    jun=0;
+                    jun=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-06' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    jul=0;
+                    jul=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-07' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    agu=0;
+                    agu=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-08' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    sep=0;
+                    sep=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-09' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    okt=0;
+                    okt=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-10' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    nov=0;
+                    nov=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-11' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    des=0;
+                    des=Sequel.cariInteger("select count(no_rawat) from reg_periksa where reg_periksa.kd_poli<>'IGDK' and DATE_FORMAT(tgl_registrasi, '%Y-%m')='"+ThnCari.getSelectedItem()+"-12' and kd_pj='"+rs.getString("kd_pj")+"'");
+                    
+                    ttljan=ttljan+jan;
+                    ttlfeb=ttlfeb+feb;
+                    ttlmar=ttlmar+mar;
+                    ttlapr=ttlapr+apr;
+                    ttlmei=ttlmei+mei;
+                    ttljun=ttljun+jun;
+                    ttljul=ttljul+jul;
+                    ttlagu=ttlagu+agu;
+                    ttlsep=ttlsep+sep;
+                    ttlokt=ttlokt+okt;
+                    ttlnov=ttlnov+nov;
+                    ttldes=ttldes+des;
+                    
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+i+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("png_jawab")+"</td>"+
+                            "<td valign='middle' align='center'>"+jan+"</td>"+
+                            "<td valign='middle' align='center'>"+feb+"</td>"+
+                            "<td valign='middle' align='center'>"+mar+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar)+"</td>"+
+                            "<td valign='middle' align='center'>"+apr+"</td>"+
+                            "<td valign='middle' align='center'>"+mei+"</td>"+
+                            "<td valign='middle' align='center'>"+jun+"</td>"+
+                            "<td valign='middle' align='center'>"+(apr+mei+jun)+"</td>"+
+                            "<td valign='middle' align='center'>"+jul+"</td>"+
+                            "<td valign='middle' align='center'>"+agu+"</td>"+
+                            "<td valign='middle' align='center'>"+sep+"</td>"+
+                            "<td valign='middle' align='center'>"+(jul+agu+sep)+"</td>"+
+                            "<td valign='middle' align='center'>"+okt+"</td>"+
+                            "<td valign='middle' align='center'>"+nov+"</td>"+
+                            "<td valign='middle' align='center'>"+des+"</td>"+
+                            "<td valign='middle' align='center'>"+(okt+nov+des)+"</td>"+
+                            "<td valign='middle' align='center'>"+(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+"</td>"+
+                        "</tr>"
+                    );
+                    i++;
+                }
+                
+                if(i>1){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='right' colspan='2'>JUMLAH : </td>"+
+                            "<td valign='middle' align='center'>"+ttljan+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlfeb+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlmar+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljan+ttlfeb+ttlmar)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlapr+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlmei+"</td>"+
+                            "<td valign='middle' align='center'>"+ttljun+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttlapr+ttlmei+ttljun)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttljul+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlagu+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlsep+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljul+ttlagu+ttlsep)+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlokt+"</td>"+
+                            "<td valign='middle' align='center'>"+ttlnov+"</td>"+
+                            "<td valign='middle' align='center'>"+ttldes+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttlokt+ttlnov+ttldes)+"</td>"+
+                            "<td valign='middle' align='center'>"+(ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+"</td>"+
+                        "</tr>"
+                    );
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LoadHTML4.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        } 
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
 }
