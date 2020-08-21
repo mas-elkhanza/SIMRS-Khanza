@@ -4413,7 +4413,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                     Kdpnj.setText("BPJ");
                     nmpnj.setText("BPJS");
                     Pekerjaan.setText(response.path("jnsPeserta").path("nama").asText());
-                    Valid.SetTgl(DTPLahir,response.path("tglLahir").asText());
+                    Valid.SetTgl(DTPLahir,Valid.SetTgl(response.path("tglLahir").asText()));
                     TUmur.setText("0 Tahun");
                     ps=koneksi.prepareStatement(
                        "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+

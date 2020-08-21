@@ -495,6 +495,7 @@ import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import informasi.InformasiStokDarah;
 import inventaris.AsalHibah;
+import inventaris.InventarisPerbaikan;
 import inventaris.InventarisPermintaanPerbaikan;
 import inventaris.KeslingLimbahB3Medis;
 import inventaris.KeslingLimbahDomestik;
@@ -16365,6 +16366,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPerbaikanInventarisActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventarisPerbaikan aplikasi=new InventarisPerbaikan(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16972,7 +16985,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
-            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ;
+            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris;
     
     public void isWall(){
         try{            
@@ -17841,6 +17854,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpermintaan_perbaikan_inventaris()==true){
                 Panelmenu.add(btnPermintaanPerbaikanInventaris);
+                jmlmenu++;
+            }
+            
+            if(akses.getperbaikan_inventaris()==true){
+                Panelmenu.add(btnPerbaikanInventaris);
                 jmlmenu++;
             }
             
@@ -21155,6 +21173,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpermintaan_perbaikan_inventaris()==true){
             Panelmenu.add(btnPermintaanPerbaikanInventaris);
+            jmlmenu++;
+        }
+        
+        if(akses.getperbaikan_inventaris()==true){
+            Panelmenu.add(btnPerbaikanInventaris);
             jmlmenu++;
         }
         
@@ -24751,6 +24774,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpermintaan_perbaikan_inventaris()==true){
             if(btnPermintaanPerbaikanInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanPerbaikanInventaris);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(akses.getperbaikan_inventaris()==true){
+            if(btnPerbaikanInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPerbaikanInventaris);
                 jmlmenu++;
             }                
         } 
@@ -30721,6 +30751,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 btnLaporanTahunanIRJActionPerformed(evt);
             }
         });
+        
+        btnPerbaikanInventaris = new widget.ButtonBig();
+        btnPerbaikanInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_package_utilities_3557.png"))); 
+        btnPerbaikanInventaris.setText("Perbaikan Inventaris");
+        btnPerbaikanInventaris.setIconTextGap(0);
+        btnPerbaikanInventaris.setName("btnPerbaikanInventaris"); 
+        btnPerbaikanInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPerbaikanInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerbaikanInventarisActionPerformed(evt);
+            }
+        }); 
     }
 
     

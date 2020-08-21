@@ -144,7 +144,7 @@ public final class akses {
             zis_kategori_asnaf_penerima_dankes=false,master_masalah_keperawatan_anak=false,master_imunisasi=false,zis_patologis_penerima_dankes=false,
             pcare_cek_kartu=false,surat_bebas_narkoba=false,surat_keterangan_covid=false,pemakaian_air_tanah=false,grafik_air_tanah_pertanggal=false,
             grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false,hemodialisa=false,grafik_harian_hemodialisa=false,grafik_bulanan_hemodialisa=false,
-            grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false;
+            grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false,perbaikan_inventaris=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -827,6 +827,7 @@ public final class akses {
                         akses.grafik_tahunan_hemodialisa=true;
                         akses.grafik_bulanan_meninggal=true;
                         akses.laporan_tahunan_irj=true;
+                        akses.perbaikan_inventaris=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1493,6 +1494,7 @@ public final class akses {
                         akses.grafik_tahunan_hemodialisa=rs2.getBoolean("grafik_tahunan_hemodialisa");
                         akses.grafik_bulanan_meninggal=rs2.getBoolean("grafik_bulanan_meninggal");
                         akses.laporan_tahunan_irj=rs2.getBoolean("laporan_tahunan_irj");
+                        akses.perbaikan_inventaris=rs2.getBoolean("perbaikan_inventaris");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2157,6 +2159,7 @@ public final class akses {
                         akses.grafik_tahunan_hemodialisa=false;
                         akses.grafik_bulanan_meninggal=false;
                         akses.laporan_tahunan_irj=false;
+                        akses.perbaikan_inventaris=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2875,4 +2878,5 @@ public final class akses {
     public static boolean getgrafik_tahunan_hemodialisa(){return akses.grafik_tahunan_hemodialisa;}
     public static boolean getgrafik_bulanan_meninggal(){return akses.grafik_bulanan_meninggal;}
     public static boolean getlaporan_tahunan_irj(){return akses.laporan_tahunan_irj;}
+    public static boolean getperbaikan_inventaris(){return akses.perbaikan_inventaris;}
 }   
