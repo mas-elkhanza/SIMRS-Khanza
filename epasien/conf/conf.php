@@ -3,12 +3,7 @@
     $db_username            = "root";
     $db_password            = "";
     $db_name                = "sik";
-    define('HARIDAFTAR', '03'); // Batasi hari pendaftaran 3 hari kedepan
-    define('LIMITJAM', '21:00:00'); // Batasi jam pendaftaran
-    define('SIGNUP', 'DISABLE'); // ENABLE atau DISABLE pendaftaran pasien baru
-    define('KODE_BERKAS', '002'); // Kode katergori berkas digital. Sesuaikan dengan kode yang ada di SIMRS.
-    define('UKURAN_BERKAS', '5000000'); // Ukuran berkas digital dalam byte
-    define('URUTNOREG', 'DOKTER'); // DOKTER or POLI.
+    define('URUTNOREG', 'dokter'); // dokter / poli / dokter + poli
     $month          = date('Y-m');
     $date           = date('Y-m-d');
     $time           = date('H:i:s');

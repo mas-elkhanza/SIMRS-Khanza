@@ -1777,7 +1777,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
              Valid.SetTgl(TanggalPeriksa.getSelectedItem()+""),KdDokter.getText(),
              KdPoli.getText(),NoReg.getText(),kdpnj.getText(),"0",
              Valid.SetTgl(TanggalPeriksa.getSelectedItem()+"")+" "+TanggalBooking.getSelectedItem().toString().substring(11,19),
-             "belum"
+             "Belum"
            })==true){
             emptTeks();
             tampil();

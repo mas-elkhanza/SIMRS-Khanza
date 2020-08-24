@@ -36,7 +36,7 @@
             $form = array ('HomeUser','FasilitasKamarUser','InformasiKamarUser','FasilitasRadiologiUser','FasilitasLaboratUser','FasilitasOperasiUser',
                            'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling','Pengaduan',
                            'BookingRegistrasi','SuratSakit','TampilSuratSakit','SuratHamil','TampilSuratHamil','SuratBebasNarkoba','TampilSuratBebasNarkoba',
-                           'SuratRujuk','TampilSuratRujuk','SuratCovid','TampilSuratCovid');
+                           'SuratRujuk','TampilSuratRujuk','SuratCovid','TampilSuratCovid','SuratKontrol','TampilSuratKontrol','SimpanBookingRegistrasi');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -85,6 +85,7 @@
                 case "CekBilling"                              : include_once("pages/listbilling.php"); break;
                 case "Pengaduan"                               : include_once("pages/listpengaduan.php"); break;
                 case "BookingRegistrasi"                       : include_once("pages/listbookingregistrasi.php"); break;
+                case "SimpanBookingRegistrasi"                 : include_once("pages/simpanbookingregistrasi.php"); break;
                 case "SuratSakit"                              : include_once("pages/listsuratsakit.php"); break;
                 case "TampilSuratSakit"                        : include_once("pages/listtampilsuratsakit.php"); break;
                 case "SuratHamil"                              : include_once("pages/listsurathamil.php"); break;
@@ -95,6 +96,8 @@
                 case "TampilSuratRujuk"                        : include_once("pages/listtampilsuratrujuk.php"); break;
                 case "SuratCovid"                              : include_once("pages/listsuratcovid.php"); break;
                 case "TampilSuratCovod"                        : include_once("pages/listtampilsuratcovid.php"); break;
+                case "SuratKontrol"                            : include_once("pages/listsuratkontrol.php"); break;
+                case "TampilSuratKontrol"                      : include_once("pages/listtampilsuratkontrol.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }

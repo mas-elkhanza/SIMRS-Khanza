@@ -430,6 +430,8 @@ import bridging.InhealthTindakanRanap;
 import bridging.CoronaPasien;
 import bridging.INACBGPerawatanCorona;
 import bridging.PCareCekKartu;
+import grafikanalisa.GrafikHemodialisaPerBulan;
+import grafikanalisa.GrafikHemodialisaPerTanggal;
 import grafikanalisa.GrafikInventarisPerJenis;
 import grafikanalisa.GrafikInventarisPerRuang;
 import grafikanalisa.GrafikItemApotekPerGolongan;
@@ -453,6 +455,7 @@ import grafikanalisa.GrafikLajuHAIsILOPerRuang;
 import grafikanalisa.GrafikLajuHAIsISKPerRuang;
 import grafikanalisa.GrafikLajuHAIsPlebPerRuang;
 import grafikanalisa.GrafikLajuHAIsVAPPerRuang;
+import grafikanalisa.GrafikMeninggalPerBulan;
 import grafikanalisa.GrafikPasienHAIsBulan;
 import grafikanalisa.GrafikPasienHAIsRuang;
 import grafikanalisa.GrafikPegawaiPerBidang;
@@ -492,6 +495,7 @@ import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import informasi.InformasiStokDarah;
 import inventaris.AsalHibah;
+import inventaris.InventarisPerbaikan;
 import inventaris.InventarisPermintaanPerbaikan;
 import inventaris.KeslingLimbahB3Medis;
 import inventaris.KeslingLimbahDomestik;
@@ -559,6 +563,7 @@ import laporan.LaporanKedatanganPasienPerJam;
 import laporan.LaporanRegistrasiPoliPerTanggal;
 import laporan.LaporanRekapKunjunganRuangPerTahun;
 import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
+import laporan.LaporanTahunanIRJ;
 import permintaan.DlgBookingPeriksa;
 import perpustakaan.PerpustakaanAnggota;
 import perpustakaan.PerpustakaanBayarDenda;
@@ -16305,6 +16310,74 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }  
     
+    private void btnGrafikHemodialisaPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikHemodialisaPerTanggal aplikasi=new GrafikHemodialisaPerTanggal(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
+    private void btnGrafikHemodialisaPerBulanActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikHemodialisaPerBulan aplikasi=new GrafikHemodialisaPerBulan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
+    private void btnGrafikHemodialisaPerTahunActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikHemodialisaPerBulan aplikasi=new GrafikHemodialisaPerBulan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
+    private void btnGrafikMeninggalPerBulanActionPerformed(java.awt.event.ActionEvent evt) {                                                                  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikMeninggalPerBulan aplikasi=new GrafikMeninggalPerBulan(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
+    private void btnLaporanTahunanIRJActionPerformed(java.awt.event.ActionEvent evt) {   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LaporanTahunanIRJ aplikasi=new LaporanTahunanIRJ(this,true);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnPerbaikanInventarisActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventarisPerbaikan aplikasi=new InventarisPerbaikan(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16911,7 +16984,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISElektronikPenerimaDankes,btnZISTernakPenerimaDankes,btnZISJenisSimpananPenerimaDankes,btnPenilaianAwalRalanBayi,
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
-            btnLamaPelayananPoli,btnHemodialisa;
+            btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
+            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris;
     
     public void isWall(){
         try{            
@@ -17783,6 +17857,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getperbaikan_inventaris()==true){
+                Panelmenu.add(btnPerbaikanInventaris);
+                jmlmenu++;
+            }
+            
             if(akses.getpengajuan_asetinventaris()==true){
                 Panelmenu.add(btnPengajuanAsetInventaris);
                 jmlmenu++;
@@ -18425,6 +18504,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getregistrasi_poli_per_tanggal()==true){  
                 Panelmenu.add(btnRegistrasiPoliPerTanggal);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlaporan_tahunan_irj()==true){  
+                Panelmenu.add(btnLaporanTahunanIRJ);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -19815,6 +19899,26 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnGrafikPenerimaanObatPerBulan);
                 jmlmenu++;
             }
+            
+            if(akses.getgrafik_harian_hemodialisa()==true){
+                Panelmenu.add(btnGrafikHemodialisaPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_bulanan_hemodialisa()==true){
+                Panelmenu.add(btnGrafikHemodialisaPerBulan);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_tahunan_hemodialisa()==true){
+                Panelmenu.add(btnGrafikHemodialisaPerTahun);
+                jmlmenu++;
+            }
+            
+            if(akses.getgrafik_bulanan_meninggal()==true){
+                Panelmenu.add(btnGrafikMeninggalPerBulan);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){
             jmlmenu=0;
             if(akses.getsurat_indeks()==true){
@@ -21072,6 +21176,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getperbaikan_inventaris()==true){
+            Panelmenu.add(btnPerbaikanInventaris);
+            jmlmenu++;
+        }
+        
         if(akses.getpengajuan_asetinventaris()==true){
             Panelmenu.add(btnPengajuanAsetInventaris);
             jmlmenu++;
@@ -21706,6 +21815,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getregistrasi_poli_per_tanggal()==true){  
             Panelmenu.add(btnRegistrasiPoliPerTanggal);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getlaporan_tahunan_irj()==true){  
+            Panelmenu.add(btnLaporanTahunanIRJ);                 
             jmlmenu++;
         }
 
@@ -23089,6 +23203,26 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenerimaan_obat_perbulan()==true){
             Panelmenu.add(btnGrafikPenerimaanObatPerBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_harian_hemodialisa()==true){
+            Panelmenu.add(btnGrafikHemodialisaPerTanggal);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_bulanan_hemodialisa()==true){
+            Panelmenu.add(btnGrafikHemodialisaPerBulan);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_tahunan_hemodialisa()==true){
+            Panelmenu.add(btnGrafikHemodialisaPerTahun);
+            jmlmenu++;
+        }
+        
+        if(akses.getgrafik_bulanan_meninggal()==true){
+            Panelmenu.add(btnGrafikMeninggalPerBulan);
             jmlmenu++;
         }
 
@@ -24644,6 +24778,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         } 
         
+        if(akses.getperbaikan_inventaris()==true){
+            if(btnPerbaikanInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPerbaikanInventaris);
+                jmlmenu++;
+            }                
+        } 
+        
         if(akses.getpengajuan_asetinventaris()==true){
             if(btnPengajuanAsetInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengajuanAsetInventaris);
@@ -25531,6 +25672,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getregistrasi_poli_per_tanggal()==true){  
             if(btnRegistrasiPoliPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRegistrasiPoliPerTanggal);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlaporan_tahunan_irj()==true){  
+            if(btnLaporanTahunanIRJ.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLaporanTahunanIRJ);                 
                 jmlmenu++;
             }                
         }
@@ -27465,6 +27613,34 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenerimaan_obat_perbulan()==true){
             if(btnGrafikPenerimaanObatPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikPenerimaanObatPerBulan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_harian_hemodialisa()==true){
+            if(btnGrafikHemodialisaPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikHemodialisaPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_bulanan_hemodialisa()==true){
+            if(btnGrafikHemodialisaPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikHemodialisaPerBulan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_tahunan_hemodialisa()==true){
+            if(btnGrafikHemodialisaPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikHemodialisaPerTahun);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getgrafik_bulanan_meninggal()==true){
+            if(btnGrafikMeninggalPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikMeninggalPerBulan);
                 jmlmenu++;
             }                
         }
@@ -30515,6 +30691,78 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 btnHemodialisaActionPerformed(evt);
             }
         });
+        
+        btnGrafikHemodialisaPerTanggal = new widget.ButtonBig();
+        btnGrafikHemodialisaPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikHemodialisaPerTanggal.setText("Hemodialisa Per Tanggal");
+        btnGrafikHemodialisaPerTanggal.setIconTextGap(0);
+        btnGrafikHemodialisaPerTanggal.setName("btnGrafikHemodialisaPerTanggal"); 
+        btnGrafikHemodialisaPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikHemodialisaPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikHemodialisaPerTanggalActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikHemodialisaPerBulan = new widget.ButtonBig();
+        btnGrafikHemodialisaPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikHemodialisaPerBulan.setText("Hemodialisa Per Bulan");
+        btnGrafikHemodialisaPerBulan.setIconTextGap(0);
+        btnGrafikHemodialisaPerBulan.setName("btnGrafikHemodialisaPerBulan"); 
+        btnGrafikHemodialisaPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikHemodialisaPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikHemodialisaPerBulanActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikHemodialisaPerTahun = new widget.ButtonBig();
+        btnGrafikHemodialisaPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
+        btnGrafikHemodialisaPerTahun.setText("Hemodialisa Per Tahun");
+        btnGrafikHemodialisaPerTahun.setIconTextGap(0);
+        btnGrafikHemodialisaPerTahun.setName("btnGrafikHemodialisaPerTahun"); 
+        btnGrafikHemodialisaPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikHemodialisaPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikHemodialisaPerTahunActionPerformed(evt);
+            }
+        });
+        
+        btnGrafikMeninggalPerBulan = new widget.ButtonBig();
+        btnGrafikMeninggalPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
+        btnGrafikMeninggalPerBulan.setText("Pasien Meninggal Per Bulan");
+        btnGrafikMeninggalPerBulan.setIconTextGap(0);
+        btnGrafikMeninggalPerBulan.setName("btnGrafikMeninggalPerBulan"); 
+        btnGrafikMeninggalPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikMeninggalPerBulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikMeninggalPerBulanActionPerformed(evt);
+            }
+        });
+        
+        btnLaporanTahunanIRJ = new widget.ButtonBig();
+        btnLaporanTahunanIRJ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laporantahunanIRJ.png"))); 
+        btnLaporanTahunanIRJ.setText("Laporan Tahunan IRJ");
+        btnLaporanTahunanIRJ.setIconTextGap(0);
+        btnLaporanTahunanIRJ.setName("btnLaporanTahunanIRJ"); 
+        btnLaporanTahunanIRJ.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLaporanTahunanIRJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaporanTahunanIRJActionPerformed(evt);
+            }
+        });
+        
+        btnPerbaikanInventaris = new widget.ButtonBig();
+        btnPerbaikanInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_package_utilities_3557.png"))); 
+        btnPerbaikanInventaris.setText("Perbaikan Inventaris");
+        btnPerbaikanInventaris.setIconTextGap(0);
+        btnPerbaikanInventaris.setName("btnPerbaikanInventaris"); 
+        btnPerbaikanInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPerbaikanInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerbaikanInventarisActionPerformed(evt);
+            }
+        }); 
     }
 
     

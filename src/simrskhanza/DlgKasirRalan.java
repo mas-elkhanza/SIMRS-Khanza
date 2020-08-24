@@ -4526,7 +4526,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel12.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass8.add(jLabel12);
 
-        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Belum", "Sudah", "Batal", "Berkas Diterima", "Dirujuk", "Meninggal", "Dirawat" }));
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Belum", "Sudah", "Batal", "Berkas Diterima", "Dirujuk", "Meninggal", "Dirawat", "Pulang Paksa" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
         cmbStatus.setPreferredSize(new java.awt.Dimension(150, 23));
         panelGlass8.add(cmbStatus);
@@ -5435,6 +5435,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             }else{ 
                 Sequel.queryu("delete from operasi where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from laporan_operasi where no_rawat='"+TNoRw.getText()+"'");
             }   
         }
     }//GEN-LAST:event_MnHapusTagihanOperasiActionPerformed
@@ -5869,6 +5870,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{ 
                 Sequel.queryu("delete from operasi where no_rawat='"+TNoRw.getText()+"'");
+                Sequel.queryu("delete from laporan_operasi where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from saran_kesan_lab where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
                 Sequel.queryu("delete from billing where no_rawat='"+TNoRw.getText()+"'");
@@ -5967,6 +5969,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             tbKasirRalan.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Valid.editTable(tabModekasir,"reg_periksa","no_rawat",TNoRw,"stts='Dirujuk'");
             DlgRujuk dlgrjk=new DlgRujuk(null,false);
             dlgrjk.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
             dlgrjk.setLocationRelativeTo(internalFrame1);

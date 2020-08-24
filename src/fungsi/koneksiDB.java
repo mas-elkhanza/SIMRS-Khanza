@@ -785,7 +785,7 @@ public class koneksiDB {
     public static String DEPOAKTIFOBAT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=EnkripsiAES.decrypt(prop.getProperty("DEPOAKTIFOBAT"));
+            var=prop.getProperty("DEPOAKTIFOBAT");
         }catch(Exception e){
             var=""; 
         }

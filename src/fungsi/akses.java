@@ -143,7 +143,8 @@ public final class akses {
             zis_elektronik_penerima_dankes=false,zis_ternak_penerima_dankes=false,zis_jenis_simpanan_penerima_dankes=false,penilaian_awal_keperawatan_anak=false,
             zis_kategori_asnaf_penerima_dankes=false,master_masalah_keperawatan_anak=false,master_imunisasi=false,zis_patologis_penerima_dankes=false,
             pcare_cek_kartu=false,surat_bebas_narkoba=false,surat_keterangan_covid=false,pemakaian_air_tanah=false,grafik_air_tanah_pertanggal=false,
-            grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false,hemodialisa=false;
+            grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false,hemodialisa=false,grafik_harian_hemodialisa=false,grafik_bulanan_hemodialisa=false,
+            grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false,perbaikan_inventaris=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -821,6 +822,12 @@ public final class akses {
                         akses.grafik_air_tanah_perbulan=true;
                         akses.lama_pelayanan_poli=true;
                         akses.hemodialisa=true;
+                        akses.grafik_harian_hemodialisa=true;
+                        akses.grafik_bulanan_hemodialisa=true;
+                        akses.grafik_tahunan_hemodialisa=true;
+                        akses.grafik_bulanan_meninggal=true;
+                        akses.laporan_tahunan_irj=true;
+                        akses.perbaikan_inventaris=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1482,6 +1489,12 @@ public final class akses {
                         akses.grafik_air_tanah_perbulan=rs2.getBoolean("grafik_air_tanah_perbulan");
                         akses.lama_pelayanan_poli=rs2.getBoolean("lama_pelayanan_poli");
                         akses.hemodialisa=rs2.getBoolean("hemodialisa");
+                        akses.grafik_harian_hemodialisa=rs2.getBoolean("grafik_harian_hemodialisa");
+                        akses.grafik_bulanan_hemodialisa=rs2.getBoolean("grafik_bulanan_hemodialisa");
+                        akses.grafik_tahunan_hemodialisa=rs2.getBoolean("grafik_tahunan_hemodialisa");
+                        akses.grafik_bulanan_meninggal=rs2.getBoolean("grafik_bulanan_meninggal");
+                        akses.laporan_tahunan_irj=rs2.getBoolean("laporan_tahunan_irj");
+                        akses.perbaikan_inventaris=rs2.getBoolean("perbaikan_inventaris");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2141,6 +2154,12 @@ public final class akses {
                         akses.grafik_air_tanah_perbulan=false;
                         akses.lama_pelayanan_poli=false;
                         akses.hemodialisa=false;
+                        akses.grafik_harian_hemodialisa=false;
+                        akses.grafik_bulanan_hemodialisa=false;
+                        akses.grafik_tahunan_hemodialisa=false;
+                        akses.grafik_bulanan_meninggal=false;
+                        akses.laporan_tahunan_irj=false;
+                        akses.perbaikan_inventaris=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2854,4 +2873,10 @@ public final class akses {
     public static boolean getgrafik_air_tanah_perbulan(){return akses.grafik_air_tanah_perbulan;}
     public static boolean getlama_pelayanan_poli(){return akses.lama_pelayanan_poli;}
     public static boolean gethemodialisa(){return akses.hemodialisa;}
+    public static boolean getgrafik_harian_hemodialisa(){return akses.grafik_harian_hemodialisa;}
+    public static boolean getgrafik_bulanan_hemodialisa(){return akses.grafik_bulanan_hemodialisa;}
+    public static boolean getgrafik_tahunan_hemodialisa(){return akses.grafik_tahunan_hemodialisa;}
+    public static boolean getgrafik_bulanan_meninggal(){return akses.grafik_bulanan_meninggal;}
+    public static boolean getlaporan_tahunan_irj(){return akses.laporan_tahunan_irj;}
+    public static boolean getperbaikan_inventaris(){return akses.perbaikan_inventaris;}
 }   
