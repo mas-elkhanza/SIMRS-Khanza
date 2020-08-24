@@ -165,7 +165,7 @@
                     break;
             }
             
-            $insert = Tambah4("booking_registrasi","CURRENT_DATE(),CURRENT_TIME(),'".encrypt_decrypt($_SESSION["ses_pasien"],"d")."','$tanggal','$kd_dokter','$kd_poli','$nourut','$penjab','0','$tanggal 00:00:00','Belum'");
+            $insert = Tambah4("booking_registrasi","CURRENT_DATE(),CURRENT_TIME(),'".encrypt_decrypt($_SESSION["ses_pasien"],"d")."','$tanggal','$kd_dokter','$kd_poli','$nourut','$penjab','1','$tanggal 00:00:00','Belum'");
             if($insert){
                 echo "<div class='block-header'>
                             <h2><center>Proses booking berhasil</center></h2>

@@ -223,6 +223,11 @@
         $command = bukaquery("UPDATE ".$tabelname." SET ".$attrib." ");
         return $command;
     }
+    
+    function Ubah3($tabelname,$attrib) {
+        $command = bukaquery2("UPDATE ".$tabelname." SET ".$attrib." ");
+        return $command;
+    }
 
     function Hapus($tabelname,$param,$hal) {
         $sql ="DELETE FROM ".$tabelname." WHERE ".$param." ";

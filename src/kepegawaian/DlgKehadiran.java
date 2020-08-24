@@ -636,7 +636,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                     }   
                     
                     ps2=koneksi.prepareStatement(
-                        "select concat(round((sum(TIME_TO_SEC(`keterlambatan`))-mod(sum(TIME_TO_SEC(`keterlambatan`)),3600))/3600),'J ',round((mod(sum(TIME_TO_SEC(`keterlambatan`)),3600)-mod(mod(sum(TIME_TO_SEC(`keterlambatan`)),3600),60))/60),'M ',round(mod(mod(sum(TIME_TO_SEC(`keterlambatan`)),3600),60)),'D') from rekap_presensi where rekap_presensi.id=? and rekap_presensi.jam_datang like ?");
+                        "select concat(round((sum(TIME_TO_SEC(`keterlambatan`))-mod(sum(TIME_TO_SEC(`keterlambatan`)),3600))/3600),':',round((mod(sum(TIME_TO_SEC(`keterlambatan`)),3600)-mod(mod(sum(TIME_TO_SEC(`keterlambatan`)),3600),60))/60),':',round(mod(mod(sum(TIME_TO_SEC(`keterlambatan`)),3600),60))) from rekap_presensi where rekap_presensi.id=? and rekap_presensi.jam_datang like ?");
                     try {
                         ps2.setString(1,rs.getString(4));
                         ps2.setString(2,"%"+ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"%");                
@@ -647,7 +647,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                         }
                         
                         if(keterlambatan==null){
-                            keterlambatan="0J 0M 0D";
+                            keterlambatan="00:00:00";
                         }
                     } catch (Exception e) {
                         System.out.println("Notif 2 : "+e);
@@ -661,7 +661,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                     }
 
                     ps2=koneksi.prepareStatement(
-                        "select concat(round((sum(TIME_TO_SEC(`durasi`))-mod(sum(TIME_TO_SEC(`durasi`)),3600))/3600),'J ',round((mod(sum(TIME_TO_SEC(`durasi`)),3600)-mod(mod(sum(TIME_TO_SEC(`durasi`)),3600),60))/60),'M ',round(mod(mod(sum(TIME_TO_SEC(`durasi`)),3600),60)),'D') from rekap_presensi where rekap_presensi.id=? and rekap_presensi.jam_datang like ?");
+                        "select concat(round((sum(TIME_TO_SEC(`durasi`))-mod(sum(TIME_TO_SEC(`durasi`)),3600))/3600),':',round((mod(sum(TIME_TO_SEC(`durasi`)),3600)-mod(mod(sum(TIME_TO_SEC(`durasi`)),3600),60))/60),':',round(mod(mod(sum(TIME_TO_SEC(`durasi`)),3600),60))) from rekap_presensi where rekap_presensi.id=? and rekap_presensi.jam_datang like ?");
                     try {
                         ps2.setString(1,rs.getString(4));
                         ps2.setString(2,"%"+ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"%");                
@@ -672,7 +672,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                         }
                         
                         if(durasi==null){
-                            durasi="0J 0M 0D";
+                            durasi="00:00:00";
                         }
                     } catch (Exception e) {
                         System.out.println("Notif 2 : "+e);
