@@ -3,20 +3,16 @@
         exit(header("Location:../index.php"));
     }
 
-    
-    $json       = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
-    $json       = json_decode(encrypt_decrypt($json,"d"),true);
-    $kd_dokter  = $json["kd_dokter"];
-    if (isset($kd_dokter)) {
-        $kd_poli    = $json["kd_poli"];
-        $tanggal    = $json["tanggal"];
+    $norawat = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
+    $norawat = json_decode(encrypt_decrypt($norawat,"d"),true); 
+    $norawat = $norawat["norawat"];
+    if (isset($norawat)) {
         $queryregistrasi = bukaquery2("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_tlp,
                reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur as umur,poliklinik.nm_poli,
                reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab 
                from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab on reg_periksa.kd_dokter=dokter.kd_dokter 
                and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli 
-               where reg_periksa.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' and reg_periksa.kd_dokter='$kd_dokter' 
-               and reg_periksa.kd_poli='$kd_poli' and reg_periksa.tgl_registrasi='$tanggal'");
+               where reg_periksa.no_rawat='$norawat'");
         if($rsqueryregistrasi = mysqli_fetch_array($queryregistrasi)) {
             echo "<div class='block-header'>
                     <h2><center>BUKTI REGISTRASI PENDAFTARAN</center></h2>
@@ -81,7 +77,7 @@
                                         </tr>
                                    </table>
                                 </div>
-                                <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                     </div>
@@ -95,12 +91,12 @@
                         <div class='card'>
                             <div class='body'>
                                 <center>Kami tidak menemukan data pendaftaran Anda, kemungkinan ada perubahan pada data pendaftaran Anda</center><br/>
-                                <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                      </div>
                   </div>";
-            JSRedirect2("index.php?act=BookingRegistrasi",10);
+            JSRedirect2("index.php?act=HomeUser&hal=Beranda",10);
         }
     }else{
         echo "<div class='block-header'>
@@ -111,12 +107,12 @@
                         <div class='card'>
                             <div class='body'>
                                 <center>Kami tidak menemukan data pendaftaran anda</center><br/>
-                                <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                      </div>
                   </div>";
-            JSRedirect2("index.php?act=BookingRegistrasi",5);
+            JSRedirect2("index.php?act=HomeUser&hal=Beranda",5);
     }
         
 ?>

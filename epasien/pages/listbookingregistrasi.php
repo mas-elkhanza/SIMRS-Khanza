@@ -69,7 +69,7 @@
                                                         <td align='center'>".$rsqueryjadwal["jam_selesai"]."</td>
                                                         <td align='center'>".$rsqueryjadwal["kuota"]."</td>
                                                         <td align='center'>".$daftar."</td>
-                                                        <td align='center' valign='middle'><b>Terdaftar</b></td>
+                                                        <td align='center' valign='middle'><p class='col-pink'>Terdaftar</p></td>
                                                       </tr>";
                                             }else{
                                                 echo "<tr>
@@ -79,7 +79,7 @@
                                                         <td align='center'>".$rsqueryjadwal["jam_selesai"]."</td>
                                                         <td align='center'>".$rsqueryjadwal["kuota"]."</td>
                                                         <td align='center'>".$daftar."</td>
-                                                        <td align='center' valign='middle'><b>Penuh</b></td>
+                                                        <td align='center' valign='middle'><p class='col-pink'>Penuh</p></td>
                                                       </tr>";
                                             }   
                                         }else{
@@ -91,7 +91,7 @@
                                                         <td align='center'>".$rsqueryjadwal["jam_selesai"]."</td>
                                                         <td align='center'>".$rsqueryjadwal["kuota"]."</td>
                                                         <td align='center'>".$daftar."</td>
-                                                        <td align='center' valign='middle'><b>Terdaftar</b></td>
+                                                        <td align='center' valign='middle'><p class='col-pink'>Terdaftar</p></td>
                                                       </tr>";
                                             }else{
                                                 echo "<tr>
@@ -158,7 +158,7 @@
                                                      <td align='left' valign='middle'>".$rsqueryriwayat["nm_poli"]."</td>
                                                      <td align='center' valign='middle'>".$rsqueryriwayat["no_reg"]."</td>
                                                      <td align='left' valign='middle'>".$rsqueryriwayat["png_jawab"]."</td>
-                                                     <td align='center' valign='middle'><b>".$rsqueryriwayat["status"]."</b></td>
+                                                     <td align='center' valign='middle'><p class='col-pink'>".$rsqueryriwayat["status"]."<p></td>
                                                   </tr>";
                                        }
                                             

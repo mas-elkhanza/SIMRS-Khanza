@@ -26,12 +26,12 @@
                             <div class='card'>
                                 <div class='body'>
                                     <center>Riwayat booking Anda akan tetap tercatat dan statusnya menjadi batal</center><br/>
-                                    <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                    <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                                 </div>
                             </div>
                          </div>
                       </div>";
-                JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",7);
+                JSRedirect2("index.php?act=HomeUser&hal=Beranda",7);
             }else{
                 echo "<div class='block-header'>
                             <h2><center>Pembatalan booking gagal</center></h2>
@@ -41,12 +41,12 @@
                             <div class='card'>
                                 <div class='body'>
                                     <center>Terjadi kesalahan, silahkan kontak admin</center><br/>
-                                    <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                    <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                                 </div>
                             </div>
                          </div>
                       </div>";
-                JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",4);
+                JSRedirect2("index.php?act=HomeUser&hal=Beranda",4);
             }
         }else{
             if($interval<0){
@@ -58,12 +58,12 @@
                             <div class='card'>
                                 <div class='body'>
                                     <center>Booking Anda sudah kadaluarsa</center><br/>
-                                    <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                    <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                                 </div>
                             </div>
                          </div>
                       </div>";
-                JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",5);
+                JSRedirect2("index.php?act=HomeUser&hal=Beranda",5);
             }else if($interval>1){
                 echo "<div class='block-header'>
                             <h2><center>Gagal melakukan cekin</center></h2>
@@ -73,12 +73,12 @@
                             <div class='card'>
                                 <div class='body'>
                                     <center>Cekin hanya bisa dilakukan 24 jam sebelum pemeriksaan</center><br/>
-                                    <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                    <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                                 </div>
                             </div>
                          </div>
                       </div>";
-                JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",7);
+                JSRedirect2("index.php?act=HomeUser&hal=Beranda",7);
             }else{
                 Ubah2("pasien","umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr')) where no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
                 $statuspoli  = getOne2("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' and kd_poli='$kd_poli')>0,'Lama','Baru' )");
@@ -116,12 +116,12 @@
                                     <div class='card'>
                                         <div class='body'>
                                             <center>Silahkan tunjukkan bukti registerasi/pendaftaran kepada petugas kami jika dibutuhkan</center><br/>
-                                            <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                            <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                                         </div>
                                     </div>
                                  </div>
                               </div>";
-                        JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",7);
+                        JSRedirect2("index.php?act=HomeUser&hal=Beranda",7);
                     }else{
                         echo "<div class='block-header'>
                                     <h2><center>Proses cekin gagal</center></h2>
@@ -131,12 +131,12 @@
                                     <div class='card'>
                                         <div class='body'>
                                             <center>Terjadi kesalahan, silahkan kontak admin</center><br/>
-                                            <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                            <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                                         </div>
                                     </div>
                                  </div>
                               </div>";
-                        JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",4); 
+                        JSRedirect2("index.php?act=HomeUser&hal=Beranda",4); 
                     }
                 }else{
                     echo "<div class='block-header'>
@@ -147,12 +147,12 @@
                                 <div class='card'>
                                     <div class='body'>
                                         <center>Pasien tidak ditemukan</center><br/>
-                                        <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                        <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                                     </div>
                                 </div>
                              </div>
                           </div>";
-                    JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",5);
+                    JSRedirect2("index.php?act=HomeUser&hal=Beranda",5);
                 }   
             }
         }
@@ -165,12 +165,12 @@
                         <div class='card'>
                             <div class='body'>
                                 <center>Kami tidak menemukan data booking Anda</center><br/>
-                                <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                <center><a href='index.php?act=HomeUser&hal=Beranda' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                      </div>
                   </div>";
-            JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",5);
+            JSRedirect2("index.php?act=HomeUser&hal=Beranda",5);
     }
         
 ?>
