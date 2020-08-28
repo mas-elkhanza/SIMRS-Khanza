@@ -362,7 +362,7 @@ where bridging_rujukan_bpjs.no_rujukan=$P{norujuk}]]>
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Nganjuk, "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRujukan})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{kotars}+", "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format($F{tglRujukan})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="1" y="146" width="338" height="14" uuid="9b9edd07-8e7b-4f3b-9c12-db1ac0784bdc"/>

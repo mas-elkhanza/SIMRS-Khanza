@@ -13,12 +13,12 @@
                         <div class='card'>
                             <div class='body'>
                                 <center>Pasien sedang dalam masa perawatan di kamar inap..!!</center><br/>
-                                    <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                    <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                      </div>
                   </div>";
-            JSRedirect2("index.php?act=BookingRegistrasi",5);
+            JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",5);
         }else{
             $json       = trim(isset($_GET['iyem']))?trim($_GET['iyem']):NULL;
             $json       = json_decode(encrypt_decrypt($json,"d"),true);
@@ -44,12 +44,12 @@
                                     <div class='card'>
                                         <div class='body'>
                                             <center>Kuota sudah terpenuhi</center><br/>
-                                            <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                            <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
                                         </div>
                                     </div>
                                  </div>
                               </div>";
-                        JSRedirect2("index.php?act=BookingRegistrasi",5);
+                        JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",5);
                     }else{
                         if(!isset($_SESSION["penjab"])){
                             $datapenjab   = "";
@@ -96,7 +96,7 @@
                                                 <input type='hidden' name='kd_poli' value='$kd_poli' />
                                                 <input type='hidden' name='tanggal' value='$tanggal' />
                                                 <input type='hidden' name='kd_dokter' value='$kd_dokter' />
-                                                <center><button class='btn btn-danger waves-effect' type='submit' name='BtnSimpan'>Sudah Benar</button>&nbsp;&nbsp;<a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                                <center><button class='btn btn-danger waves-effect' type='submit' name='BtnSimpan'>Sudah Benar</button>&nbsp;&nbsp;<a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
                                             </form>
                                         </div>
                                     </div>
@@ -112,12 +112,12 @@
                                 <div class='card'>
                                     <div class='body'>
                                         <center>Batas booking 1 hari sebelum periksa</center><br/>
-                                        <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                        <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
                                     </div>
                                 </div>
                              </div>
                           </div>";
-                    JSRedirect2("index.php?act=BookingRegistrasi",5);
+                    JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",5);
                 }
             }else{
                 echo "<div class='block-header'>
@@ -128,12 +128,12 @@
                                 <div class='card'>
                                     <div class='body'>
                                         <center>Kami tidak menemukan data booking Anda</center><br/>
-                                        <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                        <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
                                     </div>
                                 </div>
                              </div>
                           </div>";
-                    JSRedirect2("index.php?act=BookingRegistrasi",5);
+                    JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",5);
             }
         }
     }
@@ -165,7 +165,7 @@
                     break;
             }
             
-            $insert = Tambah4("booking_registrasi","CURRENT_DATE(),CURRENT_TIME(),'".encrypt_decrypt($_SESSION["ses_pasien"],"d")."','$tanggal','$kd_dokter','$kd_poli','$nourut','$penjab','0','$tanggal 00:00:00','Belum'");
+            $insert = Tambah4("booking_registrasi","CURRENT_DATE(),CURRENT_TIME(),'".encrypt_decrypt($_SESSION["ses_pasien"],"d")."','$tanggal','$kd_dokter','$kd_poli','$nourut','$penjab','1','$tanggal 00:00:00','Belum'");
             if($insert){
                 echo "<div class='block-header'>
                             <h2><center>Proses booking berhasil</center></h2>
@@ -175,12 +175,12 @@
                             <div class='card'>
                                 <div class='body'>
                                     <center>Anda dapat melakukan cekin 1 x 24 jam sebelum pemeriksaan. Silahkan buka riwayat booking untuk melakukan cekin </center><br/>
-                                    <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                    <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
                                 </div>
                             </div>
                          </div>
                       </div>";
-                JSRedirect2("index.php?act=BookingRegistrasi",7);
+                JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",7);
             }else{
                 echo "<div class='block-header'>
                             <h2><center>Gagal melakukan booking</center></h2>
@@ -190,12 +190,12 @@
                             <div class='card'>
                                 <div class='body'>
                                     <center>Terjadi kesalahan, silahkan kontak admin. Pendaftaran booking registrasi hanya diijinkan satu kali per tanggal pemeriksaan</center><br/>
-                                    <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                    <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
                                 </div>
                             </div>
                          </div>
                       </div>";
-                JSRedirect2("index.php?act=BookingRegistrasi",7);
+                JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",7);
             }
         }else{
             echo "<div class='block-header'>
@@ -206,7 +206,7 @@
                         <div class='card'>
                             <div class='body'>
                                 <center>Semua field wajib diisi</center><br/>
-                                <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                      </div>
@@ -225,12 +225,12 @@
                             <div class='card'>
                                 <div class='body'>
                                     <center>Maaf, No.RM Anda pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak admin.. !!</center><br/>
-                                    <center><a href='index.php?act=BookingRegistrasi' class='btn btn-danger waves-effect'>Kembali</a></center>
+                                    <center><a href='index.php?act=BookingRegistrasi&hal=Booking' class='btn btn-danger waves-effect'>Kembali</a></center>
                                 </div>
                             </div>
                          </div>
                       </div>";
-                JSRedirect2("index.php?act=BookingRegistrasi",9);
+                JSRedirect2("index.php?act=BookingRegistrasi&hal=Booking",9);
             }else{
                 Proses();
             }

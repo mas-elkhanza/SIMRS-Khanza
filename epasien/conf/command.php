@@ -34,9 +34,10 @@
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiPasien()) {
             $form = array ('HomeUser','FasilitasKamarUser','InformasiKamarUser','FasilitasRadiologiUser','FasilitasLaboratUser','FasilitasOperasiUser',
-                           'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling','Pengaduan',
-                           'BookingRegistrasi','SuratSakit','TampilSuratSakit','SuratHamil','TampilSuratHamil','SuratBebasNarkoba','TampilSuratBebasNarkoba',
-                           'SuratRujuk','TampilSuratRujuk','SuratCovid','TampilSuratCovid','SuratKontrol','TampilSuratKontrol','SimpanBookingRegistrasi');
+                           'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling','BuktiRegistrasi',
+                           'CekBilling2','Pengaduan','BookingRegistrasi','SuratSakit','TampilSuratSakit','SuratHamil','TampilSuratHamil','SuratBebasNarkoba',
+                           'TampilSuratBebasNarkoba','SuratRujuk','TampilSuratRujuk','SuratCovid','TampilSuratCovid','SuratKontrol','TampilSuratKontrol',
+                           'SimpanBookingRegistrasi','CekinRegistrasi','CekinRegistrasi2','BuktiRegistrasi2');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -83,9 +84,14 @@
                 case "RiwayatPeriksa"                          : include_once("pages/listriwayatperiksa.php"); break;
                 case "CekResume"                               : include_once("pages/listresume.php"); break;
                 case "CekBilling"                              : include_once("pages/listbilling.php"); break;
+                case "CekBilling2"                             : include_once("pages/listbilling2.php"); break;
                 case "Pengaduan"                               : include_once("pages/listpengaduan.php"); break;
                 case "BookingRegistrasi"                       : include_once("pages/listbookingregistrasi.php"); break;
                 case "SimpanBookingRegistrasi"                 : include_once("pages/simpanbookingregistrasi.php"); break;
+                case "CekinRegistrasi"                         : include_once("pages/cekinregistrasi.php"); break;
+                case "CekinRegistrasi2"                        : include_once("pages/cekinregistrasi2.php"); break;
+                case "BuktiRegistrasi"                         : include_once("pages/buktiregistrasi.php"); break;
+                case "BuktiRegistrasi2"                        : include_once("pages/buktiregistrasi2.php"); break;
                 case "SuratSakit"                              : include_once("pages/listsuratsakit.php"); break;
                 case "TampilSuratSakit"                        : include_once("pages/listtampilsuratsakit.php"); break;
                 case "SuratHamil"                              : include_once("pages/listsurathamil.php"); break;
