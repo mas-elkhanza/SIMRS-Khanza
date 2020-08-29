@@ -10093,6 +10093,10 @@ public class DlgPasien extends javax.swing.JDialog {
         BtnSatuanTNI.setEnabled(false);
         BtnJabatanTNI.setEnabled(false);
         BtnPangkatTNI.setEnabled(false);
+        kdprop="";
+        kdkab="";
+        kdkec="";
+        kdkel="";
         autoNomor();
         TNm.requestFocus();
     }
