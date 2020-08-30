@@ -610,6 +610,7 @@ import surat.PengumumanEPasien;
 import surat.SuratAlmari;
 import surat.SuratBalas;
 import surat.SuratBebasNarkoba;
+import surat.SuratCutiHamil;
 import surat.SuratIndeks;
 import surat.SuratKeluar;
 import surat.SuratKeteranganCovid;
@@ -16378,6 +16379,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSuratCutiHamilActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SuratCutiHamil aplikasi=new SuratCutiHamil(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -16985,7 +16997,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
-            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris;
+            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil;
     
     public void isWall(){
         try{            
@@ -19983,6 +19995,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsurat_hamil()==true){
                 Panelmenu.add(btnSuratHamil);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_cuti_hamil()==true){
+                Panelmenu.add(btnSuratCutiHamil);
                 jmlmenu++;
             }
             
@@ -23288,6 +23305,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsurat_hamil()==true){
             Panelmenu.add(btnSuratHamil);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_cuti_hamil()==true){
+            Panelmenu.add(btnSuratCutiHamil);
             jmlmenu++;
         }
         
@@ -27736,6 +27758,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsurat_cuti_hamil()==true){
+            if(btnSuratCutiHamil.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratCutiHamil);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getsurat_bebas_narkoba()==true){
             if(btnSuratBebasNarkoba.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratBebasNarkoba);
@@ -30761,6 +30790,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPerbaikanInventaris.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPerbaikanInventarisActionPerformed(evt);
+            }
+        }); 
+        
+        btnSuratCutiHamil = new widget.ButtonBig();
+        btnSuratCutiHamil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_contact_37110.png"))); 
+        btnSuratCutiHamil.setText("Surat Cuti Hamil");
+        btnSuratCutiHamil.setIconTextGap(0);
+        btnSuratCutiHamil.setName("btnSuratCutiHamil"); 
+        btnSuratCutiHamil.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratCutiHamil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratCutiHamilActionPerformed(evt);
             }
         }); 
     }

@@ -1,4 +1,8 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"conf")){
+        exit(header("Location:../index.php"));
+    }
+    
     $db_hostname            = "localhost";
     $db_username            = "root";
     $db_password            = "";

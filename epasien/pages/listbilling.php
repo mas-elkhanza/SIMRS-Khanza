@@ -65,12 +65,13 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='body'>
-                                <center>Maaf billing perawatan dengan No.Rawat $norawat belum keluar, masih menunggu dikeluarkan oleh kasir.</center>
+                                <center>Maaf billing perawatan dengan No.Rawat $norawat belum keluar, masih menunggu dikeluarkan oleh kasir.</center><br/>
+                                <center><a href='index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                     </div>
                 </div>";
-            JSRedirect2("index.php?act=RiwayatPeriksa",7);
+            JSRedirect2("index.php?act=RiwayatPeriksa",9);
         }
     }else{
         echo "<div class='block-header'>
@@ -80,11 +81,12 @@
                  <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                     <div class='card'>
                         <div class='body'>
-                            <center>Maaf billing perawatan tidak ditemukan</center>
+                            <center>Maaf billing perawatan tidak ditemukan</center><br/>
+                            <center><a href='index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
                         </div>
                     </div>
                  </div>
               </div>";
-        JSRedirect2("index.php?act=RiwayatPeriksa",4);
+        JSRedirect2("index.php?act=RiwayatPeriksa",7);
     }
 ?>

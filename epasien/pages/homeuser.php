@@ -173,6 +173,15 @@
     
     $queryregistrasi = bukaquery("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.kd_poli,poliklinik.nm_poli,reg_periksa.stts_daftar,penjab.png_jawab from reg_periksa inner join dokter inner join poliklinik inner join penjab on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."' and reg_periksa.tgl_registrasi=current_date()");
     if($rsqueryregistrasi = mysqli_fetch_array($queryregistrasi)) {
+        $PNG_TEMP_DIR           = dirname(__FILE__).DIRECTORY_SEPARATOR.'temp'.DIRECTORY_SEPARATOR;
+        $PNG_WEB_DIR            = 'temp/';
+        include_once "plugins/phpqrcode/qrlib.php"; 
+        if (!file_exists($PNG_TEMP_DIR)) mkdir($PNG_TEMP_DIR);
+        $filename               = $PNG_TEMP_DIR.str_replace("/","",$rsqueryregistrasi["no_rawat"]).'.png';
+        $errorCorrectionLevel   = 'L';
+        $matrixPointSize        = 4;
+        QRcode::png($rsqueryregistrasi["no_rawat"], $filename, $errorCorrectionLevel, $matrixPointSize, 2); 
+
         $_SESSION["kd_poli"]        = $rsqueryregistrasi["kd_poli"];
         $_SESSION["kd_dokter"]      = $rsqueryregistrasi["kd_dokter"];
         $_SESSION["tgl_registrasi"] = $rsqueryregistrasi["tgl_registrasi"];
@@ -195,9 +204,17 @@
                                        <td> : ".$rsqueryregistrasi["no_rawat"]."</td>
                                     </tr>
                                     <tr>
-                                       <td>No. Antri Poli</td>
-                                       <td> : <div class='font-50'>".$rsqueryregistrasi["no_reg"]."</div>
-                                           <br><div id='screen' />  Antrian Lagi
+                                       <td colspan='2'>
+                                            <table width='100%'>
+                                                <tr>
+                                                    <td width='40%' align='right'><img src='pages/".$PNG_WEB_DIR.basename($filename)."'/></td>
+                                                    <td width='60%' align='left'>
+                                                        <div class='font-50'>".$rsqueryregistrasi["no_reg"]."</div>
+                                                        <br>
+                                                        <div id='screen' />  Antrian Lagi
+                                                    </td>
+                                                </tr>
+                                            </table>
                                        </td>
                                     </tr>
                                     <tr>
@@ -213,7 +230,14 @@
                                        <td> : ".$rsqueryregistrasi["nm_dokter"]."</td>
                                     </tr>
                                     <tr>
-                                       <td colspan='2'><center><a href='index.php?act=BuktiRegistrasi2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-warning waves-effect'>Detail</a>&nbsp;&nbsp;<a href='index.php?act=CekBilling2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-danger waves-effect' >Billing</a></center></td>
+                                       <td colspan='2'>
+                                            <center>
+                                                <a href='index.php?act=BuktiRegistrasi2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-success waves-effect'>Lapar?</a>
+                                                <a href='index.php?act=BuktiRegistrasi2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-primary waves-effect'>Bosan?</a>
+                                                <a href='index.php?act=BuktiRegistrasi2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-warning waves-effect'>Detail</a>
+                                                <a href='index.php?act=CekBilling2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-danger waves-effect' >Billing</a>
+                                            </center>
+                                       </td>
                                     </tr>
                                </table>
                             </div>
@@ -228,7 +252,7 @@
 <script type="text/javascript">
     $(document).ready(my_function());
     
-    setInterval("my_function();",5000); 
+    setInterval("my_function();",6000); 
     
     function my_function(){
         $("#screen").load("pages/daftarantrian.php");
