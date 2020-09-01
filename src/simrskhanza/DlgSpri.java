@@ -1757,16 +1757,14 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         spris = new ArrayList<>();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Valid.tabelKosong(tabMode);
-        if (TNoRM.getText().equals("No. RM")
-                && TCari.getText().equals("")
-                && TPasien.getText().equals("Nama Pasien")) {
+        if (TCari.getText().equals("")) {
             spris = spriDao.findByDate(Valid.SetDateToString(DTPCari1.getDate()), Valid.SetDateToString(DTPCari2.getDate()));
         } else {
             if (!TNoRM.getText().equals("No. RM")) {
                 spris = spriDao.search(TNoRM.getText());
-            } else if (!txtKdDokter.getText().equals("Kode Dokter")) {
+            } else if (!txtKdDokter.getText().equals("Kode Dokter")||!txtKdDokter.getText().equals("")) {
                 spris = spriDao.search(txtKdDokter.getText());
-            } else if (!txtKdPenyakit.getText().equals("Kode Penyakit")) {
+            } else if (!txtKdPenyakit.getText().equals("Kode Penyakit")||txtKdPenyakit.getText().equals("")) {
                 spris = spriDao.search(txtKdPenyakit.getText());
             } else if (!TCari.getText().trim().equals("")) {
                 spris = spriDao.search(TCari.getText());
@@ -1806,6 +1804,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         Valid.setPlaceHolder(txtNmDokter, "Nama Dokter");
         Valid.setPlaceHolder(txtKdPenyakit, "Kode Penyakit");
         Valid.setPlaceHolder(txtNmPenyakit, "Nama Penyakit");
+        TCari.setText("");
         cmbUpf.setSelectedIndex(0);
         DTPTgl.setDate(new Date());
         DTPTgl.requestFocus();
