@@ -50,7 +50,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
     private double ttl=0,y=0,ttlhpp=0,ttljual=0,ppnobat=0,stokobat;
     private int jml=0,i=0,index=0;
     private String Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="",
-                   tampilkan_ppnobat_ralan="",aktifkanbatch="no";
+                   tampilkan_ppnobat_ranap="",aktifkanbatch="no";
     private String[] keranap,kodebarang,namabarang,kategori,satuan,nobatch,nofaktur;
     private Double[] kapasitas,stok,harga,hargabeli,subtotal;
     private boolean sukses=false;
@@ -192,7 +192,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
                     psrekening.close();
                 }
             }    
-            tampilkan_ppnobat_ralan=Sequel.cariIsi("select tampilkan_ppnobat_ralan from set_nota"); 
+            tampilkan_ppnobat_ranap=Sequel.cariIsi("select tampilkan_ppnobat_ranap from set_nota"); 
             
             try {
                 aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
@@ -625,72 +625,77 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
-                i= JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                if (i == JOptionPane.YES_OPTION) {
-                    Sequel.AutoComitFalse();
-                    sukses=true;
-                    ttlhpp=0;ttljual=0;
-                    for(i=0;i<tbDokter.getRowCount();i++){  
-                       if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                            if(Sequel.menyimpantf2("stok_obat_pasien","?,?,?,?,?,?,?","Stok Obat Pasien",7,new String[]{                            
-                                Valid.SetTgl(Tgl.getSelectedItem()+""),norawat.getText(),tabMode.getValueAt(i,1).toString(),
-                                tabMode.getValueAt(i,0).toString(),kdgudang.getText(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString()
-                            })==true){
-                                ttlhpp=ttlhpp+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,8).toString()));
-                                ttljual=ttljual+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,7).toString()));
-                                
-                                if(aktifkanbatch.equals("yes")){
-                                    Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa-?",4,new String[]{
-                                        ""+tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,11).toString()
-                                    });
-                                    Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",akses.getkode(),kdgudang.getText(),"Simpan",tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString());
-                                    Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"','"+tabMode.getValueAt(i,10).toString()+"','"+tabMode.getValueAt(i,11).toString()+"'", 
-                                                    "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='"+tabMode.getValueAt(i,10).toString()+"' and no_faktur='"+tabMode.getValueAt(i,11).toString()+"'");
+                if(ttl>0){
+                    i= JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    if (i == JOptionPane.YES_OPTION) {
+                        Sequel.AutoComitFalse();
+                        sukses=true;
+                        ttlhpp=0;ttljual=0;
+                        for(i=0;i<tbDokter.getRowCount();i++){  
+                           if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
+                                if(Sequel.menyimpantf2("stok_obat_pasien","?,?,?,?,?,?,?","Stok Obat Pasien",7,new String[]{                            
+                                    Valid.SetTgl(Tgl.getSelectedItem()+""),norawat.getText(),tabMode.getValueAt(i,1).toString(),
+                                    tabMode.getValueAt(i,0).toString(),kdgudang.getText(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString()
+                                })==true){
+                                    ttlhpp=ttlhpp+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,8).toString()));
+                                    ttljual=ttljual+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,7).toString()));
+
+                                    if(aktifkanbatch.equals("yes")){
+                                        Sequel.mengedit3("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa-?",4,new String[]{
+                                            ""+tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,11).toString()
+                                        });
+                                        Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",akses.getkode(),kdgudang.getText(),"Simpan",tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString());
+                                        Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"','"+tabMode.getValueAt(i,10).toString()+"','"+tabMode.getValueAt(i,11).toString()+"'", 
+                                                        "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='"+tabMode.getValueAt(i,10).toString()+"' and no_faktur='"+tabMode.getValueAt(i,11).toString()+"'");
+                                    }else{
+                                        Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",akses.getkode(),kdgudang.getText(),"Simpan","","");
+                                        Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"','',''", 
+                                                        "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='' and no_faktur=''");
+                                    }   
                                 }else{
-                                    Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",akses.getkode(),kdgudang.getText(),"Simpan","","");
-                                    Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"','',''", 
-                                                    "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"' and no_batch='' and no_faktur=''");
-                                }   
-                            }else{
-                                sukses=false;
-                            }                            
-                       }
-                    }  
+                                    sukses=false;
+                                }                            
+                           }
+                        }  
 
-                    if(sukses==true){
-                        Sequel.queryu("delete from tampjurnal");    
-                        if(ttljual>0){
-                            Sequel.menyimpan2("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
-                            Sequel.menyimpan2("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
-                        }
-                        if(ttlhpp>0){
-                            Sequel.menyimpan2("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
-                            Sequel.menyimpan2("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
-                        }
-                        sukses=jur.simpanJurnal(norawat.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+akses.getkode());  
-                    }                                                 
+                        if(sukses==true){
+                            Sequel.queryu("delete from tampjurnal");    
+                            if(ttljual>0){
+                                Sequel.menyimpan2("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
+                                Sequel.menyimpan2("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
+                            }
+                            if(ttlhpp>0){
+                                Sequel.menyimpan2("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
+                                Sequel.menyimpan2("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
+                            }
+                            sukses=jur.simpanJurnal(norawat.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+akses.getkode());  
+                        }                                                 
 
-                    if(sukses==true){
-                        Sequel.Commit();
-                    }else{
-                        sukses=false;
-                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                        Sequel.RollBack();
-                    }   
-                    Sequel.AutoComitTrue();
-                    
-                    if(sukses==true){
-                        for(index=0;index<tbDokter.getRowCount();index++){   
-                            tbDokter.setValueAt("",index,0); 
-                            tbDokter.setValueAt(0,index,9);  
+                        if(sukses==true){
+                            Sequel.Commit();
+                        }else{
+                            sukses=false;
+                            JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                            Sequel.RollBack();
+                        }   
+                        Sequel.AutoComitTrue();
+
+                        if(sukses==true){
+                            for(index=0;index<tbDokter.getRowCount();index++){   
+                                tbDokter.setValueAt("",index,0); 
+                                tbDokter.setValueAt(0,index,9);  
+                            }
+                            ttl=0;
+                            ttlhpp=0;
+                            ttljual=0;
+                            LTotal.setText("0");
+                            LPpn.setText("0");
+                            LTotalTagihan.setText("0");
                         }
-                        ttl=0;
-                        ttlhpp=0;
-                        ttljual=0;
-                        LTotal.setText("0");
-                        LPpn.setText("0");
-                        LTotalTagihan.setText("0");
                     }
+                }else{
+                    JOptionPane.showMessageDialog(null,"Silahkan masukkan obat yang mau diberikan...!!!");
+                    TCari.requestFocus();
                 }
             }
         }
@@ -1310,12 +1315,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
              }
              LTotal.setText(Valid.SetAngka(ttl));
              ppnobat=0;
-             if(tampilkan_ppnobat_ralan.equals("Yes")){
+             if(tampilkan_ppnobat_ranap.equals("Yes")){
                  ppnobat=ttl*0.1;
                  ttl=ttl+ppnobat;
                  LPpn.setText(Valid.SetAngka(ppnobat));
-                 LTotalTagihan.setText(Valid.SetAngka(ttl));
              }
+             LTotalTagihan.setText(Valid.SetAngka(ttl));
         }
     }
     

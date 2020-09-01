@@ -1063,7 +1063,6 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 Sequel.AutoComitFalse();
                 sukses=true;
                 if(ubah==false){
-                    emptTeksobat();
                     if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
                         NoResep.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                         cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
@@ -1090,6 +1089,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 })==true){
                                     simpandata();
                             }else{
+                                emptTeksobat();
                                 sukses=false;
                             }
                         }
@@ -1722,7 +1722,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         KdDokter.setText(KodeDokter);
         NmDokter.setText(NamaDokter);
         KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt));
-        kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?",KdPj.getText());
         TCari.requestFocus();
         this.status=status;
         SetHarga();
@@ -1736,7 +1735,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         KdDokter.setText(KodeDokter);
         NmDokter.setText(NamaDokter);
         KdPj.setText(kodepj);
-        kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?",KdPj.getText());
         TCari.requestFocus();
         this.status=status;
         SetHarga();
@@ -1757,7 +1755,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",NmDokter,KdDokter.getText());
         
         KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt));
-        kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?",KdPj.getText());
         TCari.requestFocus();
         this.status=status;
         SetHarga();
@@ -3173,8 +3170,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }else if(kelas.equals("Kelas VVIP")){
                 Jeniskelas.setSelectedItem("VVIP");
             } 
+            kenaikan=Sequel.cariIsiAngka2("select (hargajual/100) from  set_harga_obat_ranap where kd_pj=? and kelas=?",KdPj.getText(),kelas);
         }else if(status.equals("ralan")){
             kelas="Rawat Jalan";
+            kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?",KdPj.getText());
         }
     }
     

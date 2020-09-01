@@ -4567,7 +4567,7 @@ public final class PCareCekKartu extends javax.swing.JDialog {
                     }
                 }
 
-                if(response.path("kdProviderPst").path("kdProvider").asText().equals(KdPPK.getText())){
+                if(!response.path("kdProviderPst").path("kdProvider").asText().equals(KdPPK.getText())){
                     pilih=JOptionPane.showConfirmDialog(null, "Bukan peserta Anda, apa mau dibatalkan...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
                     if(pilih==JOptionPane.YES_OPTION){
                         emptTeks();
