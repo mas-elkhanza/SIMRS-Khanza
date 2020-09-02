@@ -323,10 +323,10 @@ public class DlgCopyResep extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
         }else if(tbPemisahan.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter..!!");
         }else{
             if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
-                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep yang mau dicopy ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep..!!");
             }else {
                 jmlparsial=0;
                 if(aktifkanparsial.equals("yes")){
@@ -366,10 +366,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
         }else if(tbPemisahan.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter..!!");
         }else{
             if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
-                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep yang mau dicopy ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep ..!!");
             }else {
                 jmlparsial=0;
                 if(aktifkanparsial.equals("yes")){
@@ -400,10 +400,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
         }else if(tbPemisahan.getSelectedRow()<= -1){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter..!!");
         }else{
             if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
-                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep yang mau dicopy ..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep..!!");
             }else {
                 Sequel.meghapus("resep_obat","no_resep",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString()); 
                 tampil();               

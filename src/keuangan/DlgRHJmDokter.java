@@ -770,7 +770,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                  "inner join rawat_jl_dr on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
                                  "inner join jns_perawatan on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
                                  "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                                 "where concat(rawat_jl_dr.tgl_perawatan,' ',rawat_jl_dr.jam_rawat) between ? and ? and rawat_jl_dr.kd_dokter=? "+
+                                 "where concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? and rawat_jl_dr.kd_dokter=? "+
                                  "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_dr.tarif_tindakandr>0 order by reg_periksa.tgl_registrasi,jns_perawatan.nm_perawatan");
                              psrawatjalandrpr=koneksi.prepareStatement("select pasien.nm_pasien,rawat_jl_drpr.tarif_tindakandr,"+
                                  "jns_perawatan.nm_perawatan,rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat,reg_periksa.kd_pj,rawat_jl_drpr.kd_jenis_prw "+
@@ -778,7 +778,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                  "inner join rawat_jl_drpr on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
                                  "inner join jns_perawatan on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
                                  "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                                 "where concat(rawat_jl_drpr.tgl_perawatan,' ',rawat_jl_drpr.jam_rawat) between ? and ? and rawat_jl_drpr.kd_dokter=? "+
+                                 "where concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) between ? and ? and rawat_jl_drpr.kd_dokter=? "+
                                  "and concat(reg_periksa.kd_pj,penjab.png_jawab) like ? and rawat_jl_drpr.tarif_tindakandr>0 order by reg_periksa.tgl_registrasi,jns_perawatan.nm_perawatan");
                              try {
                                  psrawatjalandr.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
