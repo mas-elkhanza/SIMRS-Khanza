@@ -4310,269 +4310,271 @@ public final class PCareCekKartu extends javax.swing.JDialog {
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
                 response = root.path("response");
-                if(response.path("kdProviderPst").path("kdProvider").asText().equals(KdPPK.getText())){
-                    tabMode.addRow(new Object[]{
-                        "No.Kartu",": "+response.path("noKartu").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Nama",": "+response.path("nama").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Hubungan Keluarga",": "+response.path("hubunganKeluarga").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Jenis Kelamin",": "+response.path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Tanggal Lahir",": "+response.path("tglLahir").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Mulai Aktif",": "+response.path("tglMulaiAktif").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Akhir Berlaku",": "+response.path("tglAkhirBerlaku").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Provider Umum",":"
-                    });
-                    tabMode.addRow(new Object[]{
-                        "       Kode Provider",": "+response.path("kdProviderPst").path("kdProvider").asText()
-                    });                
-                    tabMode.addRow(new Object[]{
-                        "       Nama Provider",": "+response.path("kdProviderPst").path("nmProvider").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Provider Gigi",":"
-                    });
-                    tabMode.addRow(new Object[]{
-                        "       Kode Provider",": "+response.path("kdProviderGigi").path("kdProvider").asText()
-                    });                
-                    tabMode.addRow(new Object[]{
-                        "       Nama Provider",": "+response.path("kdProviderGigi").path("nmProvider").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Kelas Tanggungan",":"
-                    });
-                    tabMode.addRow(new Object[]{
-                        "       Kode Kelas",": "+response.path("jnsKelas").path("kode").asText()
-                    });                
-                    tabMode.addRow(new Object[]{
-                        "       Nama Kelas",": "+response.path("jnsKelas").path("nama").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Jenis Peserta",":"
-                    });
-                    tabMode.addRow(new Object[]{
-                        "       Kode Jenis",": "+response.path("jnsPeserta").path("kode").asText()
-                    });                
-                    tabMode.addRow(new Object[]{
-                        "       Nama Jenis",": "+response.path("jnsPeserta").path("nama").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Golongan Darah",": "+response.path("golDarah").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Nomor HP",": "+response.path("noHP").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Nomor KTP",": "+response.path("noKTP").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Peserta Prolanis",": "+response.path("pstProl").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Peserta PRB",": "+response.path("pstPrb").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Status",": "+response.path("ketAktif").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Asuransi/COB",":"
-                    });
-                    tabMode.addRow(new Object[]{
-                        "       Kode Asuransi",": "+response.path("asuransi").path("kdAsuransi").asText()
-                    });                
-                    tabMode.addRow(new Object[]{
-                        "       Nama Asuransi",": "+response.path("asuransi").path("nmAsuransi").asText()
-                    });              
-                    tabMode.addRow(new Object[]{
-                        "       Nomer Asuransi",": "+response.path("asuransi").path("noAsuransi").asText()
-                    });              
-                    tabMode.addRow(new Object[]{
-                        "       COB",": "+response.path("asuransi").path("cob").asText()
-                    });
-                    tabMode.addRow(new Object[]{
-                        "Tunggakan",": "+response.path("tunggakan").asText()
-                    });
+                tabMode.addRow(new Object[]{
+                    "No.Kartu",": "+response.path("noKartu").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Nama",": "+response.path("nama").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Hubungan Keluarga",": "+response.path("hubunganKeluarga").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Jenis Kelamin",": "+response.path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")
+                });
+                tabMode.addRow(new Object[]{
+                    "Tanggal Lahir",": "+response.path("tglLahir").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Mulai Aktif",": "+response.path("tglMulaiAktif").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Akhir Berlaku",": "+response.path("tglAkhirBerlaku").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Provider Umum",":"
+                });
+                tabMode.addRow(new Object[]{
+                    "       Kode Provider",": "+response.path("kdProviderPst").path("kdProvider").asText()
+                });                
+                tabMode.addRow(new Object[]{
+                    "       Nama Provider",": "+response.path("kdProviderPst").path("nmProvider").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Provider Gigi",":"
+                });
+                tabMode.addRow(new Object[]{
+                    "       Kode Provider",": "+response.path("kdProviderGigi").path("kdProvider").asText()
+                });                
+                tabMode.addRow(new Object[]{
+                    "       Nama Provider",": "+response.path("kdProviderGigi").path("nmProvider").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Kelas Tanggungan",":"
+                });
+                tabMode.addRow(new Object[]{
+                    "       Kode Kelas",": "+response.path("jnsKelas").path("kode").asText()
+                });                
+                tabMode.addRow(new Object[]{
+                    "       Nama Kelas",": "+response.path("jnsKelas").path("nama").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Jenis Peserta",":"
+                });
+                tabMode.addRow(new Object[]{
+                    "       Kode Jenis",": "+response.path("jnsPeserta").path("kode").asText()
+                });                
+                tabMode.addRow(new Object[]{
+                    "       Nama Jenis",": "+response.path("jnsPeserta").path("nama").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Golongan Darah",": "+response.path("golDarah").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Nomor HP",": "+response.path("noHP").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Nomor KTP",": "+response.path("noKTP").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Peserta Prolanis",": "+response.path("pstProl").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Peserta PRB",": "+response.path("pstPrb").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Status",": "+response.path("ketAktif").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Asuransi/COB",":"
+                });
+                tabMode.addRow(new Object[]{
+                    "       Kode Asuransi",": "+response.path("asuransi").path("kdAsuransi").asText()
+                });                
+                tabMode.addRow(new Object[]{
+                    "       Nama Asuransi",": "+response.path("asuransi").path("nmAsuransi").asText()
+                });              
+                tabMode.addRow(new Object[]{
+                    "       Nomer Asuransi",": "+response.path("asuransi").path("noAsuransi").asText()
+                });              
+                tabMode.addRow(new Object[]{
+                    "       COB",": "+response.path("asuransi").path("cob").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Tunggakan",": "+response.path("tunggakan").asText()
+                });
 
-                    TNm.setText(response.path("nama").asText());
-                    TKtp.setText(response.path("noKTP").asText());
-                    TNoPeserta.setText(response.path("noKartu").asText());
-                    TTlp.setText(response.path("noHP").asText());
-                    CmbJk.setSelectedItem(response.path("sex").asText());
-                    Kdpnj.setText("BPJ");
-                    nmpnj.setText("BPJS");
-                    Pekerjaan.setText(response.path("jnsPeserta").path("nama").asText());
-                    Valid.SetTgl(DTPLahir,Valid.SetTgl(response.path("tglLahir").asText()));
-                    TUmur.setText("0 Tahun");
-                    ps=koneksi.prepareStatement(
-                       "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
-                       "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,"+
-                       "pasien.gol_darah, pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
-                       "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
-                       "pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj,"+
-                       "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"+
-                       "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "+
-                       "inner join kelurahan inner join kecamatan inner join kabupaten inner join perusahaan_pasien inner join cacat_fisik inner join propinsi "+
-                       "inner join bahasa_pasien inner join suku_bangsa inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.cacat_fisik=cacat_fisik.id "+
-                       "and pasien.kd_kel=kelurahan.kd_kel and perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien and pasien.kd_prop=propinsi.kd_prop "+
-                       "and bahasa_pasien.id=pasien.bahasa_pasien and suku_bangsa.id=pasien.suku_bangsa and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
-                       "where pasien.no_peserta=?");
-                    try {
-                        ps.setString(1,nomorpeserta);
-                        rs=ps.executeQuery();
-                        if(rs.next()){
-                            statuspasien="Lama";                        
-                            TNo.setText(rs.getString("no_rkm_medis"));
-                            TNm.setText(rs.getString("nm_pasien"));
-                            CMbGd.setSelectedItem(rs.getString("gol_darah"));
-                            TTmp.setText(rs.getString("tmp_lahir"));
-                            cmbAgama.setSelectedItem(rs.getString("agama"));
-                            CmbStts.setSelectedItem(rs.getString("stts_nikah"));
-                            Alamat.setText(rs.getString("alamat"));
-                            AlamatPj.setText(rs.getString("alamatpj"));
-                            Pekerjaan.setText(rs.getString("pekerjaan"));
-                            PekerjaanPj.setText(rs.getString("pekerjaanpj"));
-                            TTlp.setText(rs.getString("no_tlp"));
-                            Saudara.setText(rs.getString("namakeluarga"));     
-                            NmIbu.setText(rs.getString("nm_ibu"));
-                            Kelurahan.setText(rs.getString("nm_kel"));      
-                            Kecamatan.setText(rs.getString("nm_kec"));      
-                            Kabupaten.setText(rs.getString("nm_kab"));      
-                            Propinsi.setText(rs.getString("nm_prop")); 
-                            KelurahanPj.setText(rs.getString("kelurahanpj"));      
-                            KecamatanPj.setText(rs.getString("kecamatanpj"));      
-                            KabupatenPj.setText(rs.getString("kabupatenpj"));      
-                            PropinsiPj.setText(rs.getString("propinsipj")); 
-                            EMail.setText(rs.getString("email"));
-                            NIP.setText(rs.getString("nip"));
-                            kdsuku.setText(rs.getString("suku_bangsa"));
-                            nmsukubangsa.setText(rs.getString("nama_suku_bangsa"));
-                            kdbahasa.setText(rs.getString("bahasa_pasien"));
-                            nmbahasa.setText(rs.getString("nama_bahasa"));
-                            kdcacat.setText(rs.getString("cacat_fisik"));
-                            nmcacat.setText(rs.getString("nama_cacat"));
-                            kdperusahaan.setText(rs.getString("kode_perusahaan"));
-                            nmperusahaan.setText(rs.getString("nama_perusahaan"));                        
-                            switch (rs.getString("namakeluarga")) {
-                                case "AYAH":
-                                    R1.setSelected(true);
-                                    break;
-                                case "IBU":
-                                    R2.setSelected(true);
-                                    break;
-                                case "ISTRI":
-                                    R3.setSelected(true);
-                                    break;
-                                case "SUAMI":  
-                                    R4.setSelected(true);
-                                    break;
-                                case "SAUDARA":
-                                    R5.setSelected(true);
-                                    break;
-                                case "ANAK":
-                                    R6.setSelected(true);
-                                    break;
-                            } 
-                            if(tampilkantni.equals("Yes")){
-                                pstni=koneksi.prepareStatement(
-                                    "select pasien_tni.no_rkm_medis,pasien_tni.golongan_tni,golongan_tni.nama_golongan,"+
-                                    "pasien_tni.satuan_tni,satuan_tni.nama_satuan,pasien_tni.pangkat_tni,"+
-                                    "pangkat_tni.nama_pangkat,pasien_tni.jabatan_tni,jabatan_tni.nama_jabatan "+
-                                    "from pasien_tni inner join golongan_tni inner join satuan_tni "+
-                                    "inner join pangkat_tni inner join jabatan_tni on pasien_tni.golongan_tni=golongan_tni.id "+
-                                    "and pasien_tni.pangkat_tni=pangkat_tni.id and pasien_tni.satuan_tni=satuan_tni.id "+
-                                    "and pasien_tni.jabatan_tni=jabatan_tni.id where pasien_tni.no_rkm_medis=?");
-                                try {
-                                    pstni.setString(1,rs.getString("no_rkm_medis"));
-                                    rs2=pstni.executeQuery();
-                                    if(rs2.next()){
-                                        kdgolongantni.setText(rs2.getString("golongan_tni"));
-                                        nmgolongantni.setText(rs2.getString("nama_golongan"));
-                                        kdsatuantni.setText(rs2.getString("satuan_tni"));
-                                        nmsatuantni.setText(rs2.getString("nama_satuan"));
-                                        kdpangkattni.setText(rs2.getString("pangkat_tni"));
-                                        nmpangkattni.setText(rs2.getString("nama_pangkat"));
-                                        kdjabatantni.setText(rs2.getString("jabatan_tni"));
-                                        nmjabatantni.setText(rs2.getString("nama_jabatan"));
-                                        chkTNI.setSelected(true);
-                                        chkTNIActionPerformed(null);
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notif TNI : "+e);
-                                } finally{
-                                    if(rs2!=null){
-                                        rs2.close();
-                                    }
-                                    if(pstni!=null){
-                                        pstni.close();
-                                    }
+                TNm.setText(response.path("nama").asText());
+                TKtp.setText(response.path("noKTP").asText());
+                TNoPeserta.setText(response.path("noKartu").asText());
+                TTlp.setText(response.path("noHP").asText());
+                CmbJk.setSelectedItem(response.path("sex").asText());
+                Kdpnj.setText("BPJ");
+                nmpnj.setText("BPJS");
+                Pekerjaan.setText(response.path("jnsPeserta").path("nama").asText());
+                Valid.SetTgl(DTPLahir,Valid.SetTgl(response.path("tglLahir").asText()));
+                TUmur.setText("0 Tahun");
+                ps=koneksi.prepareStatement(
+                   "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                   "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,"+
+                   "pasien.gol_darah, pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
+                   "pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj,"+
+                   "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"+
+                   "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "+
+                   "inner join kelurahan inner join kecamatan inner join kabupaten inner join perusahaan_pasien inner join cacat_fisik inner join propinsi "+
+                   "inner join bahasa_pasien inner join suku_bangsa inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.cacat_fisik=cacat_fisik.id "+
+                   "and pasien.kd_kel=kelurahan.kd_kel and perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien and pasien.kd_prop=propinsi.kd_prop "+
+                   "and bahasa_pasien.id=pasien.bahasa_pasien and suku_bangsa.id=pasien.suku_bangsa and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
+                   "where pasien.no_peserta=?");
+                try {
+                    ps.setString(1,nomorpeserta);
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        statuspasien="Lama";                        
+                        TNo.setText(rs.getString("no_rkm_medis"));
+                        TNm.setText(rs.getString("nm_pasien"));
+                        CMbGd.setSelectedItem(rs.getString("gol_darah"));
+                        TTmp.setText(rs.getString("tmp_lahir"));
+                        cmbAgama.setSelectedItem(rs.getString("agama"));
+                        CmbStts.setSelectedItem(rs.getString("stts_nikah"));
+                        Alamat.setText(rs.getString("alamat"));
+                        AlamatPj.setText(rs.getString("alamatpj"));
+                        Pekerjaan.setText(rs.getString("pekerjaan"));
+                        PekerjaanPj.setText(rs.getString("pekerjaanpj"));
+                        TTlp.setText(rs.getString("no_tlp"));
+                        Saudara.setText(rs.getString("namakeluarga"));     
+                        NmIbu.setText(rs.getString("nm_ibu"));
+                        Kelurahan.setText(rs.getString("nm_kel"));      
+                        Kecamatan.setText(rs.getString("nm_kec"));      
+                        Kabupaten.setText(rs.getString("nm_kab"));      
+                        Propinsi.setText(rs.getString("nm_prop")); 
+                        KelurahanPj.setText(rs.getString("kelurahanpj"));      
+                        KecamatanPj.setText(rs.getString("kecamatanpj"));      
+                        KabupatenPj.setText(rs.getString("kabupatenpj"));      
+                        PropinsiPj.setText(rs.getString("propinsipj")); 
+                        EMail.setText(rs.getString("email"));
+                        NIP.setText(rs.getString("nip"));
+                        kdsuku.setText(rs.getString("suku_bangsa"));
+                        nmsukubangsa.setText(rs.getString("nama_suku_bangsa"));
+                        kdbahasa.setText(rs.getString("bahasa_pasien"));
+                        nmbahasa.setText(rs.getString("nama_bahasa"));
+                        kdcacat.setText(rs.getString("cacat_fisik"));
+                        nmcacat.setText(rs.getString("nama_cacat"));
+                        kdperusahaan.setText(rs.getString("kode_perusahaan"));
+                        nmperusahaan.setText(rs.getString("nama_perusahaan"));                        
+                        switch (rs.getString("namakeluarga")) {
+                            case "AYAH":
+                                R1.setSelected(true);
+                                break;
+                            case "IBU":
+                                R2.setSelected(true);
+                                break;
+                            case "ISTRI":
+                                R3.setSelected(true);
+                                break;
+                            case "SUAMI":  
+                                R4.setSelected(true);
+                                break;
+                            case "SAUDARA":
+                                R5.setSelected(true);
+                                break;
+                            case "ANAK":
+                                R6.setSelected(true);
+                                break;
+                        } 
+                        if(tampilkantni.equals("Yes")){
+                            pstni=koneksi.prepareStatement(
+                                "select pasien_tni.no_rkm_medis,pasien_tni.golongan_tni,golongan_tni.nama_golongan,"+
+                                "pasien_tni.satuan_tni,satuan_tni.nama_satuan,pasien_tni.pangkat_tni,"+
+                                "pangkat_tni.nama_pangkat,pasien_tni.jabatan_tni,jabatan_tni.nama_jabatan "+
+                                "from pasien_tni inner join golongan_tni inner join satuan_tni "+
+                                "inner join pangkat_tni inner join jabatan_tni on pasien_tni.golongan_tni=golongan_tni.id "+
+                                "and pasien_tni.pangkat_tni=pangkat_tni.id and pasien_tni.satuan_tni=satuan_tni.id "+
+                                "and pasien_tni.jabatan_tni=jabatan_tni.id where pasien_tni.no_rkm_medis=?");
+                            try {
+                                pstni.setString(1,rs.getString("no_rkm_medis"));
+                                rs2=pstni.executeQuery();
+                                if(rs2.next()){
+                                    kdgolongantni.setText(rs2.getString("golongan_tni"));
+                                    nmgolongantni.setText(rs2.getString("nama_golongan"));
+                                    kdsatuantni.setText(rs2.getString("satuan_tni"));
+                                    nmsatuantni.setText(rs2.getString("nama_satuan"));
+                                    kdpangkattni.setText(rs2.getString("pangkat_tni"));
+                                    nmpangkattni.setText(rs2.getString("nama_pangkat"));
+                                    kdjabatantni.setText(rs2.getString("jabatan_tni"));
+                                    nmjabatantni.setText(rs2.getString("nama_jabatan"));
+                                    chkTNI.setSelected(true);
+                                    chkTNIActionPerformed(null);
                                 }
-
-                                pspolri=koneksi.prepareStatement(
-                                    "select pasien_polri.no_rkm_medis,pasien_polri.golongan_polri,golongan_polri.nama_golongan,"+
-                                    "pasien_polri.satuan_polri,satuan_polri.nama_satuan,pasien_polri.pangkat_polri,"+
-                                    "pangkat_polri.nama_pangkat,pasien_polri.jabatan_polri,jabatan_polri.nama_jabatan "+
-                                    "from pasien_polri inner join golongan_polri inner join satuan_polri "+
-                                    "inner join pangkat_polri inner join jabatan_polri on pasien_polri.golongan_polri=golongan_polri.id "+
-                                    "and pasien_polri.pangkat_polri=pangkat_polri.id and pasien_polri.satuan_polri=satuan_polri.id "+
-                                    "and pasien_polri.jabatan_polri=jabatan_polri.id where pasien_polri.no_rkm_medis=?");
-                                try {
-                                    pspolri.setString(1,rs.getString("no_rkm_medis"));
-                                    rs2=pspolri.executeQuery();
-                                    if(rs2.next()){
-                                        kdgolonganpolri.setText(rs2.getString("golongan_polri"));
-                                        nmgolonganpolri.setText(rs2.getString("nama_golongan"));
-                                        kdsatuanpolri.setText(rs2.getString("satuan_polri"));
-                                        nmsatuanpolri.setText(rs2.getString("nama_satuan"));
-                                        kdpangkatpolri.setText(rs2.getString("pangkat_polri"));
-                                        nmpangkatpolri.setText(rs2.getString("nama_pangkat"));
-                                        kdjabatanpolri.setText(rs2.getString("jabatan_polri"));
-                                        nmjabatanpolri.setText(rs2.getString("nama_jabatan"));
-                                        chkPolri.setSelected(true);
-                                        chkPolriActionPerformed(null);
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notif TNI : "+e);
-                                } finally{
-                                    if(rs2!=null){
-                                        rs2.close();
-                                    }
-                                    if(pspolri!=null){
-                                        pspolri.close();
-                                    }
+                            } catch (Exception e) {
+                                System.out.println("Notif TNI : "+e);
+                            } finally{
+                                if(rs2!=null){
+                                    rs2.close();
+                                }
+                                if(pstni!=null){
+                                    pstni.close();
                                 }
                             }
-                        }else{
-                            statuspasien="Baru";
-                            autoNomor();
+
+                            pspolri=koneksi.prepareStatement(
+                                "select pasien_polri.no_rkm_medis,pasien_polri.golongan_polri,golongan_polri.nama_golongan,"+
+                                "pasien_polri.satuan_polri,satuan_polri.nama_satuan,pasien_polri.pangkat_polri,"+
+                                "pangkat_polri.nama_pangkat,pasien_polri.jabatan_polri,jabatan_polri.nama_jabatan "+
+                                "from pasien_polri inner join golongan_polri inner join satuan_polri "+
+                                "inner join pangkat_polri inner join jabatan_polri on pasien_polri.golongan_polri=golongan_polri.id "+
+                                "and pasien_polri.pangkat_polri=pangkat_polri.id and pasien_polri.satuan_polri=satuan_polri.id "+
+                                "and pasien_polri.jabatan_polri=jabatan_polri.id where pasien_polri.no_rkm_medis=?");
+                            try {
+                                pspolri.setString(1,rs.getString("no_rkm_medis"));
+                                rs2=pspolri.executeQuery();
+                                if(rs2.next()){
+                                    kdgolonganpolri.setText(rs2.getString("golongan_polri"));
+                                    nmgolonganpolri.setText(rs2.getString("nama_golongan"));
+                                    kdsatuanpolri.setText(rs2.getString("satuan_polri"));
+                                    nmsatuanpolri.setText(rs2.getString("nama_satuan"));
+                                    kdpangkatpolri.setText(rs2.getString("pangkat_polri"));
+                                    nmpangkatpolri.setText(rs2.getString("nama_pangkat"));
+                                    kdjabatanpolri.setText(rs2.getString("jabatan_polri"));
+                                    nmjabatanpolri.setText(rs2.getString("nama_jabatan"));
+                                    chkPolri.setSelected(true);
+                                    chkPolriActionPerformed(null);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif TNI : "+e);
+                            } finally{
+                                if(rs2!=null){
+                                    rs2.close();
+                                }
+                                if(pspolri!=null){
+                                    pspolri.close();
+                                }
+                            }
                         }
-                    } catch (Exception e) {
-                        System.out.println("Notif Cari Pasien : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
+                    }else{
+                        statuspasien="Baru";
+                        autoNomor();
                     }
-                }else{
-                    emptTeks();
-                    ChkCari.setSelected(false);
-                    isForm();
-                    JOptionPane.showMessageDialog(null,"Bukan peserta Anda...!!!!!!!!");  
+                } catch (Exception e) {
+                    System.out.println("Notif Cari Pasien : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
                 }
+
+                if(!response.path("kdProviderPst").path("kdProvider").asText().equals(KdPPK.getText())){
+                    pilih=JOptionPane.showConfirmDialog(null, "Bukan peserta Anda, apa mau dibatalkan...?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    if(pilih==JOptionPane.YES_OPTION){
+                        emptTeks();
+                        ChkCari.setSelected(false);
+                        isForm();
+                    } 
+                }  
             }else {
                 emptTeks();
                 ChkCari.setSelected(false);

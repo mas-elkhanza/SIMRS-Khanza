@@ -15,6 +15,7 @@ import fungsi.akses;
 import inventory.DlgCariObat2;
 import inventory.DlgCopyResep;
 import inventory.DlgPeresepanDokter;
+import inventory.DlgPermintaanStokPasien;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -1140,6 +1141,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         FormMenu = new widget.PanelBiasa();
         BtnResepObat = new widget.Button();
         BtnCopyResep = new widget.Button();
+        BtnPermintaanStok = new widget.Button();
         BtnInputObat = new widget.Button();
         BtnObatBhp = new widget.Button();
         BtnBerkasDigital = new widget.Button();
@@ -1361,7 +1363,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-09-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1375,7 +1377,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass10.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-09-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2913,7 +2915,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TPasien.setBounds(283, 10, 260, 23);
 
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-07-2020" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-09-2020" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -3029,11 +3031,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 BtnResepObatActionPerformed(evt);
             }
         });
-        BtnResepObat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnResepObatKeyPressed(evt);
-            }
-        });
         FormMenu.add(BtnResepObat);
 
         BtnCopyResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
@@ -3051,12 +3048,24 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 BtnCopyResepActionPerformed(evt);
             }
         });
-        BtnCopyResep.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCopyResepKeyPressed(evt);
+        FormMenu.add(BtnCopyResep);
+
+        BtnPermintaanStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPermintaanStok.setText("Permintaan Stok");
+        BtnPermintaanStok.setFocusPainted(false);
+        BtnPermintaanStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPermintaanStok.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPermintaanStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPermintaanStok.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPermintaanStok.setName("BtnPermintaanStok"); // NOI18N
+        BtnPermintaanStok.setPreferredSize(new java.awt.Dimension(120, 23));
+        BtnPermintaanStok.setRoundRect(false);
+        BtnPermintaanStok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPermintaanStokActionPerformed(evt);
             }
         });
-        FormMenu.add(BtnCopyResep);
+        FormMenu.add(BtnPermintaanStok);
 
         BtnInputObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnInputObat.setText("Input Obat & BHP");
@@ -3071,11 +3080,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnInputObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnInputObatActionPerformed(evt);
-            }
-        });
-        BtnInputObat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnInputObatKeyPressed(evt);
             }
         });
         FormMenu.add(BtnInputObat);
@@ -3095,11 +3099,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 BtnObatBhpActionPerformed(evt);
             }
         });
-        BtnObatBhp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnObatBhpKeyPressed(evt);
-            }
-        });
         FormMenu.add(BtnObatBhp);
 
         BtnBerkasDigital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
@@ -3115,11 +3114,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnBerkasDigital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBerkasDigitalActionPerformed(evt);
-            }
-        });
-        BtnBerkasDigital.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnBerkasDigitalKeyPressed(evt);
             }
         });
         FormMenu.add(BtnBerkasDigital);
@@ -3139,11 +3133,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 BtnPermintaanLabActionPerformed(evt);
             }
         });
-        BtnPermintaanLab.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPermintaanLabKeyPressed(evt);
-            }
-        });
         FormMenu.add(BtnPermintaanLab);
 
         BtnPermintaanRad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
@@ -3159,11 +3148,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnPermintaanRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnPermintaanRadActionPerformed(evt);
-            }
-        });
-        BtnPermintaanRad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPermintaanRadKeyPressed(evt);
             }
         });
         FormMenu.add(BtnPermintaanRad);
@@ -5080,10 +5064,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnResepObatActionPerformed
 
-    private void BtnResepObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnResepObatKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnResepObatKeyPressed
-
     private void BtnCopyResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCopyResepActionPerformed
         if(TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
@@ -5100,10 +5080,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnCopyResepActionPerformed
-
-    private void BtnCopyResepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCopyResepKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCopyResepKeyPressed
 
     private void BtnInputObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnInputObatActionPerformed
         if(TNoRw.getText().trim().equals("")){
@@ -5124,10 +5100,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnInputObatActionPerformed
 
-    private void BtnInputObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnInputObatKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnInputObatKeyPressed
-
     private void BtnObatBhpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnObatBhpActionPerformed
         if(TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
@@ -5144,10 +5116,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnObatBhpActionPerformed
-
-    private void BtnObatBhpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnObatBhpKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnObatBhpKeyPressed
 
     private void BtnBerkasDigitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBerkasDigitalActionPerformed
         if(TNoRw.getText().trim().equals("")){
@@ -5170,10 +5138,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnBerkasDigitalActionPerformed
 
-    private void BtnBerkasDigitalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBerkasDigitalKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnBerkasDigitalKeyPressed
-
     private void BtnPermintaanLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPermintaanLabActionPerformed
         if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
@@ -5191,10 +5155,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnPermintaanLabActionPerformed
 
-    private void BtnPermintaanLabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPermintaanLabKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnPermintaanLabKeyPressed
-
     private void BtnPermintaanRadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPermintaanRadActionPerformed
         if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
@@ -5211,10 +5171,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnPermintaanRadActionPerformed
-
-    private void BtnPermintaanRadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPermintaanRadKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnPermintaanRadKeyPressed
 
     private void BtnSKDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSKDPActionPerformed
         if(TNoRw.getText().trim().equals("")){
@@ -5350,6 +5306,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(BtnCopyResep.isVisible()==true){
             tinggitombol=tinggitombol+23;
         }
+        if(BtnPermintaanStok.isVisible()==true){
+            tinggitombol=tinggitombol+23;
+        }
         if(BtnInputObat.isVisible()==true){
             tinggitombol=tinggitombol+23;
         }
@@ -5422,6 +5381,25 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Valid.pindah(evt,TGCS,TAlergi);
     }//GEN-LAST:event_cmbKesadaranKeyPressed
 
+    private void BtnPermintaanStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPermintaanStokActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{            
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+            }else{
+                DlgPermintaanStokPasien resep=new DlgPermintaanStokPasien(null,false);
+                resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                resep.setLocationRelativeTo(internalFrame1);
+                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate());
+                resep.isCek();
+                resep.tampil();
+                resep.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_BtnPermintaanStokActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -5457,6 +5435,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnObatBhp;
     private widget.Button BtnPermintaanLab;
     private widget.Button BtnPermintaanRad;
+    private widget.Button BtnPermintaanStok;
     private widget.Button BtnPrint;
     private widget.Button BtnResepObat;
     private widget.Button BtnResume;
@@ -6103,6 +6082,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnRiwayat.setVisible(akses.getresume_pasien());    
         BtnResepObat.setVisible(akses.getresep_dokter());
         BtnCopyResep.setVisible(akses.getresep_dokter());
+        BtnPermintaanStok.setVisible(akses.getpermintaan_stok_obat_pasien());
         BtnObatBhp.setVisible(akses.getberi_obat());  
         BtnInputObat.setVisible(akses.getberi_obat());   
         BtnPermintaanLab.setVisible(akses.getpermintaan_lab());     

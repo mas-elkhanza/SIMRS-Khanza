@@ -163,7 +163,8 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='body'>
-                                <center>Maaf resume perawatan dengan No.Rawat $norawat belum keluar, masih menunggu dikeluarkan oleh dokter DPJP.</center>
+                                <center>Maaf resume perawatan dengan No.Rawat $norawat belum keluar, masih menunggu dikeluarkan oleh dokter DPJP.</center><br/>
+                                <center><a href='index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                     </div>
@@ -178,7 +179,8 @@
                  <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                     <div class='card'>
                         <div class='body'>
-                            <center>Maaf resume perawatan tidak ditemukan</center>
+                            <center>Maaf resume perawatan tidak ditemukan</center><br/>
+                            <center><a href='index.php?act=RiwayatPeriksa&hal=RiwayatPeriksa' class='btn btn-danger waves-effect'>Kembali</a></center>
                         </div>
                     </div>
                  </div>
