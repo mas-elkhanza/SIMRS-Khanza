@@ -379,6 +379,10 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         tbResepRanap = new widget.Table();
         scrollPane4 = new widget.ScrollPane();
         tbDetailResepRanap = new widget.Table();
+        scrollPane5 = new widget.ScrollPane();
+        tbPermintaanStok = new widget.Table();
+        scrollPane6 = new widget.ScrollPane();
+        tbDetailPermintaanStok = new widget.Table();
         panelGlass9 = new widget.panelisi();
         jLabel15 = new widget.Label();
         CrDokter2 = new widget.TextBox();
@@ -391,14 +395,14 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
             public void windowDeactivated(java.awt.event.WindowEvent evt) {
                 formWindowDeactivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -422,7 +426,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel20);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-09-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -436,7 +440,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-01-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-09-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -824,6 +828,66 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
         TabRawatInap.addTab("Detail Resep Rawat Inap", scrollPane4);
 
+        scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        scrollPane5.setName("scrollPane5"); // NOI18N
+        scrollPane5.setOpaque(true);
+
+        tbPermintaanStok.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbPermintaanStok.setName("tbPermintaanStok"); // NOI18N
+        tbPermintaanStok.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbPermintaanStokMouseClicked(evt);
+            }
+        });
+        tbPermintaanStok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbPermintaanStokKeyPressed(evt);
+            }
+        });
+        scrollPane5.setViewportView(tbPermintaanStok);
+
+        TabRawatInap.addTab("Daftar Permintaan Stok", scrollPane5);
+
+        scrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        scrollPane6.setName("scrollPane6"); // NOI18N
+        scrollPane6.setOpaque(true);
+
+        tbDetailPermintaanStok.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbDetailPermintaanStok.setName("tbDetailPermintaanStok"); // NOI18N
+        tbDetailPermintaanStok.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDetailPermintaanStokMouseClicked(evt);
+            }
+        });
+        tbDetailPermintaanStok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbDetailPermintaanStokKeyPressed(evt);
+            }
+        });
+        scrollPane6.setViewportView(tbDetailPermintaanStok);
+
+        TabRawatInap.addTab("Detail Permintaan Stok", scrollPane6);
+
         internalFrame3.add(TabRawatInap, java.awt.BorderLayout.CENTER);
 
         panelGlass9.setBorder(null);
@@ -1084,55 +1148,65 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         if(TabPilihRawat.getSelectedIndex()==0){
-            if(TabRawatJalan.getSelectedIndex()==0){
-                if(tabMode.getRowCount()==0){
-                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-                    TCari.requestFocus();
-                }else if(NoRawat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
-                }else{
-                    if(Status.equals("Sudah Terlayani")){
-                        JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
-                    }else {
-                        jmlparsial=0;
-                        if(aktifkanparsial.equals("yes")){
-                            jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",NoRawat));
+            if(akses.getberi_obat()==true){
+                if(TabRawatJalan.getSelectedIndex()==0){
+                    if(tabMode.getRowCount()==0){
+                        JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+                        TCari.requestFocus();
+                    }else if(NoRawat.equals("")){
+                        JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
+                    }else{
+                        if(Status.equals("Sudah Terlayani")){
+                            JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
+                        }else {
+                            jmlparsial=0;
+                            if(aktifkanparsial.equals("yes")){
+                                jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",NoRawat));
+                            }
+                            if(jmlparsial>0){
+                                panggilform();
+                            }else{
+                                if(Sequel.cariRegistrasi(NoRawat)>0){
+                                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                                }else{ 
+                                    panggilform();                             
+                                }
+                            }               
                         }
-                        if(jmlparsial>0){
-                            panggilform();
-                        }else{
+                    }
+                }else if(TabRawatJalan.getSelectedIndex()==1){
+                    JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
+                    TCari.requestFocus();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Anda tidak punya hak akses untuk mengvalidasi...!!!!");
+                TCari.requestFocus();
+            }    
+        }else if(TabPilihRawat.getSelectedIndex()==1){
+            if(akses.getberi_obat()==true){
+                if(TabRawatInap.getSelectedIndex()==0){
+                    if(tabMode3.getRowCount()==0){
+                        JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+                        TCari.requestFocus();
+                    }else if(NoRawat.equals("")){
+                        JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
+                    }else{
+                        if(Status.equals("Sudah Terlayani")){
+                            JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
+                        }else {                           
                             if(Sequel.cariRegistrasi(NoRawat)>0){
                                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
                             }else{ 
-                                panggilform();                             
-                            }
-                        }               
+                                panggilform2();                             
+                            }                
+                        }
                     }
-                }
-            }else if(TabRawatJalan.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
-                TCari.requestFocus();
-            } 
-        }else if(TabPilihRawat.getSelectedIndex()==1){
-            if(TabRawatInap.getSelectedIndex()==0){
-                if(tabMode3.getRowCount()==0){
-                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+                }else if(TabRawatInap.getSelectedIndex()==1){
+                    JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
                     TCari.requestFocus();
-                }else if(NoRawat.equals("")){
-                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
-                }else{
-                    if(Status.equals("Sudah Terlayani")){
-                        JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
-                    }else {                           
-                        if(Sequel.cariRegistrasi(NoRawat)>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
-                        }else{ 
-                            panggilform2();                             
-                        }                
-                    }
                 }
-            }else if(TabRawatInap.getSelectedIndex()==1){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan buka Daftar Resep...!!!!");
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Anda tidak punya hak akses untuk mengvalidasi...!!!!");
                 TCari.requestFocus();
             }
         }            
@@ -1379,6 +1453,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         aktif=false;
     }//GEN-LAST:event_formWindowDeactivated
 
+    private void tbPermintaanStokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPermintaanStokMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbPermintaanStokMouseClicked
+
+    private void tbPermintaanStokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPermintaanStokKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbPermintaanStokKeyPressed
+
+    private void tbDetailPermintaanStokMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDetailPermintaanStokMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbDetailPermintaanStokMouseClicked
+
+    private void tbDetailPermintaanStokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDetailPermintaanStokKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbDetailPermintaanStokKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1441,8 +1531,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane3;
     private widget.ScrollPane scrollPane4;
+    private widget.ScrollPane scrollPane5;
+    private widget.ScrollPane scrollPane6;
+    private widget.Table tbDetailPermintaanStok;
     private widget.Table tbDetailResepRalan;
     private widget.Table tbDetailResepRanap;
+    private widget.Table tbPermintaanStok;
     private widget.Table tbResepRalan;
     private widget.Table tbResepRanap;
     // End of variables declaration//GEN-END:variables
@@ -1555,7 +1649,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(akses.getberi_obat());
         BtnEdit.setEnabled(akses.getresep_dokter());
         BtnPrint.setEnabled(akses.getresep_dokter());
         BtnRekap.setEnabled(akses.getresep_obat());
