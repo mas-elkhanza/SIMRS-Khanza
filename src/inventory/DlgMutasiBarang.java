@@ -38,7 +38,7 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampilkanpermintaan=false;
     private boolean sukses=false;
-    private String aktifkanbatch="no";
+    private String aktifkanbatch="no",DEPOAKTIFOBAT="";
     private DlgPindahGudang pindah=new DlgPindahGudang(null,false);
 
     /** Creates new form DlgProgramStudi
@@ -160,9 +160,11 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
         
         try {
             aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
+            DEPOAKTIFOBAT = koneksiDB.DEPOAKTIFOBAT();
         } catch (Exception e) {
             System.out.println("E : "+e);
             aktifkanbatch = "no";
+            DEPOAKTIFOBAT = "";
         }
     }
 
@@ -1241,6 +1243,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     public void isCek(){
         BtnSimpan.setEnabled(akses.getmutasi_barang());
+        if(!akses.getkode().equals("Admin Utama")){
+            if(!DEPOAKTIFOBAT.equals("")){
+                kddari.setText(DEPOAKTIFOBAT);
+                nmdari.setText(Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",DEPOAKTIFOBAT));
+                btnDari.setEnabled(false);
+            }
+        }
     }
 
     private void getData() {

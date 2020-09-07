@@ -690,7 +690,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[II. RIWAYAT KESEHATAN]]></text>
+				<text><![CDATA[III. RIWAYAT KESEHATAN]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="3" y="174" width="552" height="11" uuid="9bcf465b-a46b-49e5-842f-48dbb011585f">

@@ -2,17 +2,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "a8680b94a1fb248af3dc9a7ebeccbc6786f8a817b536ddb58c8b5dedae3b6d09";   
+       $keyRS = "52eab0d187258e97219ae323c42f12e62e3eab204a6063fbfdce6ccd8b3b768f";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.88.88/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.62.3/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "CS";
+        $kelasRS = "BP";
         return $kelasRS;
     }
 
@@ -477,7 +477,11 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage1", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".($msg['response']['cbg']['tariff']+$msg['response']['sub_acute']['tariff']+$msg['response']['chronic']['tariff']+$msg['response']['add_payment_amt'])."'");
+            $cbg                = validangka($msg['response']['cbg']['tariff']);
+            $sub_acute          = validangka($msg['response']['sub_acute']['tariff']);
+            $chronic            = validangka($msg['response']['chronic']['tariff']);
+            $add_payment_amt    = validangka($msg['response']['add_payment_amt']);
+            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".($cbg+$sub_acute+$chronic+$add_payment_amt)."'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }
@@ -495,7 +499,11 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage12", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".($msg['response']['cbg']['tariff']+$msg['response']['sub_acute']['tariff']+$msg['response']['chronic']['tariff']+$msg['response']['add_payment_amt'])."'");
+            $cbg                = validangka($msg['response']['cbg']['tariff']);
+            $sub_acute          = validangka($msg['response']['sub_acute']['tariff']);
+            $chronic            = validangka($msg['response']['chronic']['tariff']);
+            $add_payment_amt    = validangka($msg['response']['add_payment_amt']);
+            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".($cbg+$sub_acute+$chronic+$add_payment_amt)."'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }
@@ -513,7 +521,11 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage12", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".($msg['response']['cbg']['tariff']+$msg['response']['sub_acute']['tariff']+$msg['response']['chronic']['tariff']+$msg['response']['add_payment_amt']+$msg['response']['covid19_data']['episodes'][0]['tariff']+$msg['response']['covid19_data']['episodes'][1]['tariff']+$msg['response']['covid19_data']['episodes'][2]['tariff']+$msg['response']['covid19_data']['episodes'][3]['tariff']+$msg['response']['covid19_data']['episodes'][4]['tariff']+$msg['response']['covid19_data']['episodes'][5]['tariff']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['pemulasaraan']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['kantong']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['peti']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['plastik']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['desinfektan_jenazah']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['mobil']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['desinfektan_mobil']+$msg['response']['covid19_data']['top_up_rawat_gross']+$msg['response']['covid19_data']['top_up_rawat']+$msg['response']['covid19_data']['top_up_jenazah'])."'");
+            $cbg                = validangka($msg['response']['cbg']['tariff']);
+            $sub_acute          = validangka($msg['response']['sub_acute']['tariff']);
+            $chronic            = validangka($msg['response']['chronic']['tariff']);
+            $add_payment_amt    = validangka($msg['response']['add_payment_amt']);
+            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".($cbg+$sub_acute+$chronic+$add_payment_amt+$msg['response']['covid19_data']['episodes'][0]['tariff']+$msg['response']['covid19_data']['episodes'][1]['tariff']+$msg['response']['covid19_data']['episodes'][2]['tariff']+$msg['response']['covid19_data']['episodes'][3]['tariff']+$msg['response']['covid19_data']['episodes'][4]['tariff']+$msg['response']['covid19_data']['episodes'][5]['tariff']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['pemulasaraan']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['kantong']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['peti']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['plastik']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['desinfektan_jenazah']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['mobil']+$msg['response']['covid19_data']['pemulasaraan_jenazah']['desinfektan_mobil']+$msg['response']['covid19_data']['top_up_rawat_gross']+$msg['response']['covid19_data']['top_up_rawat']+$msg['response']['covid19_data']['top_up_jenazah'])."'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }

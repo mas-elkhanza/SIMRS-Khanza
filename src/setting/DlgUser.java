@@ -59,108 +59,118 @@ public class DlgUser extends javax.swing.JDialog {
         initComponents();
         
         Object[] row={"ID User","Nama User","Jabatan","Password","[I]ICD 10","[I]Obat Penyakit","[C]Dokter","[A]Jadwal Praktek","[C]Petugas","[L]Pasien","[A]Registrasi","[A]Tindakan Ralan",
-                    "[A]Rawat Inap","[A]Tindakan Ranap","[A]Operasi","[A]Rujukan Keluar","[A]Rujukan Masuk","[A]Beri Obat, Alkes & BHP","[A]Resep Pulang",
-                    "[L]Pasien Meninggal","[A]Diet Pasien","[L]Kelahiran Bayi","[A]Periksa Lab","[A]Periksa Radiologi","[A]Rawat Jalan",
-                    "[J]Deposit Pasien","[J]Piutang Pasien","[L]Peminjaman Berkas RM","[C]Barcode Presensi","[C]Presensi Harian","[C]Presensi Bulanan",
-                    "[C]Pegawai Admin","[C]Pegawai User","[D]Suplier Obat/Alkes/BHP","[D]Satuan Barang","[D]Konversi Satuan","[D]Jenis Obat/Alkes/BHP","[D]Obat, Alkes & BHP",
-                    "[D]Stok Opname Apotek","[D]Stok Obat Pasien","[D]Pengadaan Obat, Alkes & BHP","[D]Penerimaan Obat, Alkes & BHP","[D]Penjualan Obat, Alkes & BHP","[D]Piutang Obat, Alkes & BHP",
-                    "[D]Retur Ke Suplier","[D]Retur Dari Pembeli","[D]Retur Obat, Alkes & BHP Ranap","[D]Retur Piutang Pembeli","[D]Keuntungan Penjualan",
-                    "[D]Keuntungan Beri Obat, Alkes & BHP","[D]Sirkulasi Obat, Alkes & BHP","[E]Barang Non Medis","[E]Pengadaan Barang Nonmedis","[E]Stok Keluar Non Medis",
-                    "[E]Rekap Pengadaan Non Medis","[E]Rekap Stok Keluar Non Medis","[E]Biaya Pengadaan Non Medis","[F]Jenis Inventaris",
-                    "[F]Kategori Inventaris","[F]Merk Inventaris","[F]Ruang Inventaris","[F]Produsen Inventaris","[F]Koleksi Inventaris",
-                    "[F]Inventaris","[F]Sirkulasi Inventaris","[G]Jenis Parkir","[G]Parkir Masuk","[G]Parkir Keluar","[G]Rekap Parkir Harian",
-                    "[G]Rekap Parkir Bulanan","[A]Informasi Kamar","[H]Harian Dokter Poli","[H]Obat Per Poli","[H]Obat Per Kamar",
-                    "[H]Obat Per Dokter Ralan","[H]Obat Per Dokter Ranap","[H]Harian Dokter","[H]Bulanan Dokter","[H]Harian Paramedis",
-                    "[H]Bulanan Paramedis","[H]Pembayaran Ralan","[H]Pembayaran Ranap","[H]Rekap Pembayaran Ralan","[H]Rekap Pembayaran Ranap",
-                    "[H]Tagihan Masuk","[H]Tambahan Biaya","[H]Potongan Biaya","[A]No.Resep","[L]Riwayat Perawatan","[I]Frekuensi Penyakit Ralan","[I]Frekuensi Penyakit Ranap",
-                    "[J]Kamar","[J]Tarif Ralan","[J]Tarif Ranap","[J]Tarif Lab","[J]Tarif Radiologi","[J]Tarif Operasi","[J]Akun Rekening","[J]Rekening Tahun",
-                    "[J]Posting Jurnal","[J]Buku Besar","[J]Cash Flow","[J]Keuangan","[J]Pengeluaran Harian","[R]Set P.J. Unit Penunjang","[R]Set Oto Lokasi","[R]Set Kamar Inap",
-                    "[R]Set Embalase & Tuslah","[R]Tracer Login","[R]Display Antrian Registrasi & Poli","[R]Set Harga Obat","[R]Set Penggunaan Tarif","[R]Set Oto Ralan","[R]Biaya Harian Kamar",
-                    "[R]Biaya Masuk Sekali","[R]Set RM","[A]Billing Ralan","[A]Billing Ranap","[H]Detail JM Dokter","[A]IGD","[B]Barcode Ralan","[B]Barcode Ranap",
-                    "[R]Set Harga Obat Ralan","[R]Set Harga Obat Ranap","[I]Penyakit AFP & PD3I","[I]Surveilans AFP & PD3I","[I]Surveilans Ralan","[L]Diagnosa Pasien",
-                    "[I]Surveilans Ranap","[I]Pny.Tdk Menular Ranap","[I]Pny.Tdk Menular Ralan","[I]Kunjungan Ralan","[I]RL 3.2 Rawat Darurat","[I]RL 3.3 Gigi dan Mulut","[I]RL 3.7 Radiologi","[I]RL 3.8 Laboratorium","[H]Harian Dokter Ralan",
-                    "[C]SMS Gateway","[C]Sidik Jari","[C]Jam Presensi","[C]Jadwal Pegawai","[G]Barcode Parkir","[R]Set Billing","[A]DPJP Ranap","[D]Mutasi Obat/Alkes/BHP","[I]RL 3.4 Kebidanan","[I]RL 3.6 Pembedahan",
-                    "[H]Fee Visit Dokter","[H]Fee Bacaan EKG","[H]Fee Rujukan Rontgen","[H]Fee Rujukan Ranap","[H]Fee Periksa Ralan","[J]Akun Bayar","[J]Bayar Pesan Obat",
-                    "[H]Obat Per Dokter Peresep","[E]Jenis Barang IPSRS","[J]Pemasukkan Lain-Lain","[J]Pengaturan Rekening","[R]Closing Kasir","[R]Set Keterlambatan Presensi",
-                    "[R]Set Harga Kamar","[H]Rekap Per Shift","[K]Cek NIK","[K]Cek No.Kartu","[K]Riwayat Rujukan PCare di VClaim","[H]Obat Per Cara Bayar","[I]Kunjungan Ranap",
-                    "[J]Bayar Piutang","[H]Payment Point","[K]Cek No.Rujukan PCare di VClaim","[I]ICD 9","[D]Darurat Stok","[L]Retensi Data R.M.","[C]Temporary Presensi",
-                    "[J]Jurnal Harian","[D]Sirkulasi Obat, Alkes & BHP 2","[A]Edit Registrasi","[K]Referensi Diagnosa VClaim","[K]Referensi Poli VClaim","[D]Industri Farmasi",
-                    "[H]Harian J.S.","[H]Bulanan J.S.","[H]Harian BHP Medis/Paket Obat","[H]Bulanan BHP Medis/Paket Obat","[J]Piutang Belum Lunas","[K]Referensi Faskes VClaim",
-                    "[K]Data Bridging SEP VClaim","[D]Pengambilan BHP UTD","[J]Tarif UTD","[M]Pengambilan BHP Medis","[M]BHP Medis Rusak","[E]Pengambilan UTD","[M]Pengambilan BHP Non Medis",
-                    "[M]BHP Non Medis Rusak","[E]Suplier Non Medis","[M]Donor Darah","[K]Monitoring Verifikasi Klaim","[M]Cekal Darah","[M]Komponen Darah","[M]Stok Darah","[M]Pemisahan Darah",
-                    "[H]Harian Kamar","[J]Rincian Piutang Pasien","[D]Keuntungan Beri Obat, Alkes & BHP 2","[K]Reklasifikasi Ralan","[K]Reklasifikasi Ranap","[M]Penyerahan Darah",
-                    "[J]Hutang Obat & BHP","[D]Riwayat Obat, Alkes & BHP","[I]Sensus Harian Poli","[I]RL 4A Sebab Morbiditas Ranap","[K]Referensi Kamar Aplicare","[K]Ketersediaan Kamar Aplicare",
-                    "[K]Klaim Baru Otomatis INACBG","[K]Klaim Baru Manual INACBG","[K]Coder NIK INACBG","[L]Mutasi Berkas RM","[J]Akun Piutang","[H]Harian KSO","[H]Bulanan KSO",
-                    "[H]Harian Menejemen","[H]Bulanan Menejemen","[K]Cek Eligibilitas Inhealth","[K]Referensi Ruang Rawat Inhealth","[K]Referensi Poli Inhealth","[K]Referensi Faskes Inhealth",
-                    "[K]Data Bridging SJP Inhealth","[H]Piutang Ralan","[H]Piutang Ranap","[J]Piutang Per Cara Bayar","[I]Lama Pelayanan Ralan","[L]Catatan Pasien","[I]RL 4B Sebab Morbiditas Ralan",
-                    "[I]RL 4A Morbiditas Ralan","[I]RL 4B Morbiditas Ralan","[L]Data HAIs","[I]Harian HAIs","[I]Bulanan HAIs","[I]Hitung BOR","[L]Instansi/Perusahaan Pasien","[D]Resep Dokter",
-                    "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Registrasi Per Poli","[N]Registrasi Per Dokter",
-                    "[N]Registrasi Per Pekerjaan","[N]Registrasi Per Pendidikan","[N]Registrasi Per Tahun","[L]Berkas Digital Perawatan","[I]Pny Menular Ranap","[I]Pny Menular Ralan",
-                    "[N]Registrasi Per Bulan","[N]Registrasi Per Tanggal","[N]Demografi Registrasi","[N]Reg Lama Per Tahun","[N]Reg Baru Per Tahun","[N]Reg Lama Per Bulan","[N]Reg Baru Per Bulan",
-                    "[N]Reg Lama Per Tanggal","[N]Reg Baru Per Tanggal","[N]Batal Periksa Per Tahun","[N]Batal Periksa Per Bulan","[K]Referensi Diagnosa Pcare","[N]Batal Periksa Per Tanggal",
-                    "[D]Kategori Obat/Alkes/BHP","[D]Golongan Obat/Alkes/BHP","[D]Obat/Alkes/BHP Per Tanggal","[D]Penjualan Bebas Per Tanggal","[K]Referensi Kesadaran Pcare","[I]Pembatalan Periksa Per Dokter",
-                    "[H]Pembayaran Per Unit","[H]Rekap Pembayaran Per Unit","[N]Registrasi Per Cara Bayar","[E]Pengadaan Non Medis Per Tanggal","[E]Stok Keluar Non Medis Per Tanggal",
-                    "[N]Kunjungan Ranap Per Tahun","[K]Cek Rujukan PCare","[N]Kunjungan Lab Ralan Per Tahun","[N]Kunjungan Rad Ralan Per Tahun","[I]Cek Entry Ralan","[K]Klaim Baru Manual INACBG 2",
-                    "[D]Permintaan Obat & BHP","[D]Rekap Permintaan Obat & BHP","[D]Surat Pemesanan Obat & BHP","[E]Permintaan Barang Non Medis","[E]Rekap Permintaan Barang Non Medis",
-                    "[E]Surat Pemesanan Barang Non Medis","[N]Registrasi Per Perujuk","[K]Referensi Prosedur VClaim","[K]Referensi Kelas Rawat VClaim","[K]Referensi Dokter VClaim",
-                    "[K]Referensi Spesialistik VClaim","[K]Referensi Ruang Rawat VClaim","[K]Referensi Cara Keluar VClaim","[K]Referensi Pasca Pulang VClaim","[H]Detail VK/OK","[A]Billing Parsial",
-                    "[K]Cek No.Rujukan RS di VClaim","[K]Cek Rujukan Kartu PCare di VClaim","[K]Cek Rujukan Kartu RS di VClaim","[A]Akses Depo Obat/BHP","[K]Pembuatan Rujukan VClaim",
-                    "[N]Kunjungan Lab Ralan Per Bulan","[D]Stok Keluar Medis","[N]Kunjungan Rad Ralan Per Bulan","[H]Detail JM Dokter 2","[L]Pengaduan/Chat","[N]Kunjungan Lab Ralan Per Tanggal",
-                    "[N]Kunjungan Rad Ralan Per Tanggal","[I]Sensus Harian Ralan","[D]Metode Racik","[H]Pembayaran Per Akun Bayar","[D]Pengguna Obat/Alkes/BHP Resep","[D]Rekap Penerimaan Obat & BHP",
-                    "[C]Master Berkas Pegawai","[C]Berkas Kepegawaian","[C]Riwayat Jabatan","[C]Riwayat Pendidikan","[C]Riwayat Naik Gaji","[C]Kegiatan Ilmiah & Pelatihan","[C]Riwayat Penghargaan",
-                    "[C]Riwayat Penelitian","[E]Penerimaan Barang Non Medis","[J]Bayar Pesan Non Medis","[J]Hutang Barang Non Medis","[E]Rekap Penerimaan Non Medis","[I]Insiden Keselamatan",
-                    "[L]Insiden Keselamatan Pasien","[N]Kejadian IKP Per Tahun","[N]Kejadian IKP Per Bulan","[N]Kejadian IKP Per Tanggal","[D]Riwayat Batch","[N]Kejadian IKP Per Jenis",
-                    "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Registrasi Per Agama","[N]Registrasi Per Umur","[L]Suku/Bangsa Pasien","[L]Bahasa Pasien","[L]Golongan TNI",
-                    "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik","[N]Registrasi Per Suku/Bangsa",
-                    "[N]Registrasi Per Bahasa","[A]Jadwal Operasi","[K]Mapping Poli VClaim","[N]Registrasi Per Cacat Fisik","[F]Barang CSSD","[K]SKDP BPJS","[A]Booking Registrasi",
-                    "[K]Referensi Propinsi VClaim","[K]Referensi Kabupaten VClaim","[K]Referensi Kecamatan VClaim","[K]Referensi Dokter DPJP VClaim","[K]Riwayat Rujukan RS di VClaim",
-                    "[K]Tanggal Rujukan di VClaim","[A]Permintaan Lab","[A]Permintaan Radiologi","[O]Indeks Surat","[O]Map Surat","[O]Almari Surat","[O]Rak Surat","[O]Ruang Surat",
-                    "[O]Klasifikasi Surat","[O]Status Surat","[O]Sifat Surat","[O]Stts Balas Surat","[O]Surat Masuk","[K]Referensi Dokter PCare","[K]Referensi Poli PCare",
-                    "[K]Referensi Provider PCare","[K]Referensi Stts Pulang PCare","[K]Referensi Spesialis PCare","[K]Referensi Subspesialis PCare","[K]Referensi Sarana PCare",
-                    "[K]Referensi Khusus PCare","[K]Referensi Obat PCare","[K]Referensi Tindakan PCare","[K]Faskes Subspesialis PCare","[K]Faskes Alih Rawat PCare",
-                    "[K]Faskes Thalasemia & Hemofili PCare","[K]Mapping Obat PCare","[K]Tarif Ralan RS & PCare","[K]Club Prolanis PCare","[K]Mapping Poli PCare",
-                    "[K]Kegiatan Kelompok PCare","[K]Tarif Ranap RS & PCare","[K]Peserta Keg Kelompok PCare","[D]Sirkulasi Obat, Alkes & BHP 3","[K]Data Pendafataran PCare",
-                    "[K]Mapping Dokter PCare","[I]Ranap Per Ruang","[I]Penyakit Ranap Per Cara Bayar","[I]Anggota TNI Dirawat","[R]Set Input Parsial",
-                    "[I]Lama Pelayanan Radiologi","[I]Lama Pelayanan Lab","[K]Cek Nomor SEP","[A]Catatan Dokter","[O]Surat Keluar","[D]Kegiatan Farmasi",
-                    "[E]Stok Opname Non Medis","[E]Sirkulasi Non Medis","[I]Rekap Lab Per Tahun","[I]Perujuk Lab Per Tahun","[I]Rekap Radiologi Per Tahun",
-                    "[I]Perujuk Radiologi Per Tahun","[I]Rekap Bulanan Porsi Diet","[I]Rekap Bulanan Macam Diet","[H]Payment Point 2","[H]Pembayaran Per Akun Bayar 2",
-                    "[H]Hapus Nota Salah","[A]Asesmen Awal Rawat Inap","[L]HAIs Per Kamar/Bangsal","[D]PPN Obat","[J]Saldo Akun Per Bulan","[R]Display Antrian Apotek",
-                    "[K]Referensi Faskes Sisrute","[K]Referensi Alasan Rujuk Sisrute","[K]Referensi Diagnosa Sisrute","[K]Rujukan Masuk Sisrute","[K]Rujukan Keluar Sisrute",
-                    "[K]Cek SKDP VClaim","[D]Data Batch","[I]Kunjungan Lab Ralan","[I]Kunjungan Lab Ranap","[I]Kunjungan Radiologi Ralan","[I]Kunjungan Radiologi Ranap",
-                    "[K]Pemberian Obat PCare","[K]Pemberian Tindakan PCare","[H]Pembayaran Per Akun Bayar 3","[R]Password Asuransi","[I]Data TB","[K]Ketersediaan Kamar SIRANAP",
-                    "[N]Periode Laporan TB","[N]Rujukan TB","[N]Riwayat TB","[N]Tipe Diagnosis TB","[N]Status HIV TB","[N]Skoring Anak TB","[N]Konfirmasi Skoring 5 TB",
-                    "[N]Konfirmasi Skoring 6 TB","[N]Sumber Obat TB","[N]Hasil Akhir Pengobatan TB","[N]Hasil Tes HIV TB","[D]Kadaluarsa Batch","[D]Sisa Stok",
-                    "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis","[N]Pemakaian Air PDAM Per Tanggal","[N]Pemakaian Air PDAM Per Bulan",
-                    "[N]Limbah B3 Medis Per Tanggal","[N]Limbah B3 Medis Per Bulan","[F]Limbah Padat Domestik","[N]Limbah Padat Domestik Per Tanggal",
-                    "[N]Limbah Padat Domestik Per Bulan","[F]Mutu Air Limbah","[F]Pest Control","[P]Ruang Perpustakaan","[P]Kategori Koleksi","[P]Jenis Koleksi",
-                    "[P]Pengarang/Penulis","[P]Penerbit Koleksi","[P]Koleksi Perpustakaan","[P]Inventaris Perpustakaan","[P]Pengaturan Peminjaman","[P]Denda Perpustakaan",
-                    "[P]Anggota Perpustakaan","[P]Peminjaman Koleksi Perpustakaan","[P]Bayar Denda Perpustakaan","[P]Data Koleksi Ebook","[C]Jenis Cidera K3",
-                    "[C]Penyebab Kecelakaan K3","[C]Jenis Luka K3","[C]Lokasi Kejadian K3","[C]Dampak Cidera K3","[C]Jenis Pekerjaan K3","[C]Bagian Tubuh K3",
-                    "[C]Peristiwa K3","[N]K3 Per Tahun","[N]K3 Per Bulan","[N]K3 Per Tanggal","[N]K3 Per Jenis Cidera","[N]K3 Per Penyebab Kecelakaan","[N]K3 Per Jenis Luka",
-                    "[N]K3 Per Lokasi Kejadian","[N]K3 Per Dampak Cidera","[N]K3 Per Jenis Pekerjaan","[N]K3 Per Bagian Tubuh","[C]Jenis Cidera K3 Per Tahun",
-                    "[C]Penyebab Kecelakaan K3 Per Tahun","[C]Jenis Luka K3 Per Tahun","[C]Lokasi Kejadian K3 Per Tahun","[C]Dampak Cidera K3 Per Tahun",
-                    "[C]Jenis Pekerjaan K3 Per Tahun","[C]Bagian Tubuh K3 Per Tahun","[A]Skrining Rawat Jalan","[K]Histori Pelayanan BPJS","[I]Rekap Mutasi Berkas",
-                    "[I]Skrining Pernapasan Ralan Per Tahun","[D]Pengajuan Obat & BHP","[E]Pengajuan Barang Non Medis","[N]Kunjungan Ranap Per Bulan","[N]Kunjungan Ranap Per Tanggal",
-                    "[N]Kunjungan Ranap Per Ruang","[I]Masuk Ruang Per Tahun","[N]Pegawai Per Jenjang Jabatan","[N]Pegawai Per Bidang/Bagian","[N]Pegawai Per Departemen",
-                    "[N]Pegawai Per Pendidikan","[N]Pegawai Per Status WP","[N]Pegawai Per Status Kerja","[N]Status Pulang Ranap","[I]KIP Pasien Ranap","[I]KIP Pasien Ralan",
-                    "[K]Mapping Dokter DPJP VClaim","[L]Data Triase IGD","[L]Master Triase Skala 1","[L]Master Triase Skala 2","[L]Master Triase Skala 3","[L]Master Triase Skala 4",
-                    "[L]Master Triase Skala 5","[L]Master Triase Pemeriksaan","[L]Master Triase Macam Kasus","[I]Rekap Permintaan Diet","[I]Daftar Pasien Ranap",
-                    "[I]Daftar Pasien Ranap TNI","[F]Pengajuan Aset/Inventaris","[N]Item Apotek Per Jenis","[N]Item Apotek Per Kategori","[N]Item Apotek Per Golongan",
-                    "[N]Item Apotek Per Industri Farmasi","[D]10 Obat Terbanyak Poli","[N]Pengajuan Aset Per Urgensi","[N]Pengajuan Aset Per Status",
-                    "[N]Pengajuan Aset Per Departemen","[F]Rekap Pengajuan Aset Departemen","[N]Pegawai Per Kelompok Jabatan","[N]Pegawai Per Resiko Kerja",
-                    "[N]Pegawai Per Emergency Index","[N]Jumlah Inventaris Per Ruang","[I]Harian HAIs 2","[N]Jumlah Inventaris Per Jenis","[L]Resume Pasien",
-                    "[A]Perkiraan Biaya Ranap","[D]Rekap Obat Per Poli","[D]Rekap Obat Per Pasien","[F]Permintaan Perbaikan Inventaris","[N]Pasien HAIs Per Ruang",
-                    "[N]Pasien HAIs Per Bulan","[N]Laju HAIs VAP Per Ruang","[N]Laju HAIs IAD Per Ruang","[N]Laju HAIs Plebitis Per Ruang","[N]Laju HAIs ISK Per Ruang",
-                    "[N]Laju HAIs ILO Per Ruang","[N]Laju HAIs HAP Per Ruang","[K]Mapping Poli Inhealth","[K]Mapping Dokter Inhealth","[K]Tarif Ralan Inhealth",
-                    "[K]Tarif Ranap Inhealth","[K]Tarif Radiologi Inhealth","[K]Tarif Laborat Inhealth","[K]Tarif Operasi Inhealth","[D]Hibah Obat & BHP","[F]Asal Hibah",
-                    "[L]Asuhan Gizi","[K]Tagihan Inhealth","[D]Sirkulasi Obat, Alkes & BHP 4","[D]Sirkulasi Obat, Alkes & BHP 5","[E]Sirkulasi Non Medis 2",
-                    "[L]Monitoring Asuhan Gizi","[N]Penerimaan Obat, Alkes & BHP Per Bulan","[I]Rekap Kunjungan","[O]Surat Keterangan Sakit","[L]Penilaian Awal Keperawatan Ralan",
-                    "[A]Permintaan Diet","[L]Master Masalah Keperawatan","[C]Pengajuan Cuti","[I]Kedatangan Pasien Per Jam","[M]Data Pendonor","[Q]Suplier Toko",
-                    "[Q]Jenis Barang Toko","[R]Set Harga Toko","[Q]Barang Toko","[J]Penagihan Piutang Pasien","[J]Akun Penagihan Piutang","[Q]Stok Opname Toko",
-                    "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko","[J]Hutang Toko",
-                    "[J]Bayar Pesan Toko","[Q]Member Toko","[Q]Penjualan Toko","[I]Registrasi Poli Per Tanggal","[Q]Piutang Toko","[Q]Retur Ke Suplier Toko",
-                    "[E]Retur Ke Suplier Non Medis","[E]Riwayat Barang Non Medis","[K]Pasien Corona","[Q]Pendapatan Harian Toko","[K]Diagnosa Pasien Corona",
-                    "[K]Perawatan Pasien Corona","[L]Penilaian Awal Keperawatan Gigi","[L]Master Masalah Keperawatan Gigi","[Q]Bayar Piutang Toko","[Q]Piutang Harian Toko"
+                "[A]Rawat Inap","[A]Tindakan Ranap","[A]Operasi","[A]Rujukan Keluar","[A]Rujukan Masuk","[A]Beri Obat, Alkes & BHP","[A]Resep Pulang",
+                "[L]Pasien Meninggal","[A]Diet Pasien","[L]Kelahiran Bayi","[A]Periksa Lab","[A]Periksa Radiologi","[A]Rawat Jalan",
+                "[J]Deposit Pasien","[J]Piutang Pasien","[L]Peminjaman Berkas RM","[C]Barcode Presensi","[C]Presensi Harian","[C]Presensi Bulanan",
+                "[C]Pegawai Admin","[C]Pegawai User","[D]Suplier Obat/Alkes/BHP","[D]Satuan Barang","[D]Konversi Satuan","[D]Jenis Obat/Alkes/BHP","[D]Obat, Alkes & BHP",
+                "[D]Stok Opname Apotek","[D]Stok Obat Pasien","[D]Pengadaan Obat, Alkes & BHP","[D]Penerimaan Obat, Alkes & BHP","[D]Penjualan Obat, Alkes & BHP","[D]Piutang Obat, Alkes & BHP",
+                "[D]Retur Ke Suplier","[D]Retur Dari Pembeli","[D]Retur Obat, Alkes & BHP Ranap","[D]Retur Piutang Pembeli","[D]Keuntungan Penjualan",
+                "[D]Keuntungan Beri Obat, Alkes & BHP","[D]Sirkulasi Obat, Alkes & BHP","[E]Barang Non Medis","[E]Pengadaan Barang Nonmedis","[E]Stok Keluar Non Medis",
+                "[E]Rekap Pengadaan Non Medis","[E]Rekap Stok Keluar Non Medis","[E]Biaya Pengadaan Non Medis","[F]Jenis Inventaris",
+                "[F]Kategori Inventaris","[F]Merk Inventaris","[F]Ruang Inventaris","[F]Produsen Inventaris","[F]Koleksi Inventaris",
+                "[F]Inventaris","[F]Sirkulasi Inventaris","[G]Jenis Parkir","[G]Parkir Masuk","[G]Parkir Keluar","[G]Rekap Parkir Harian",
+                "[G]Rekap Parkir Bulanan","[A]Informasi Kamar","[H]Harian Dokter Poli","[H]Obat Per Poli","[H]Obat Per Kamar",
+                "[H]Obat Per Dokter Ralan","[H]Obat Per Dokter Ranap","[H]Harian Dokter","[H]Bulanan Dokter","[H]Harian Paramedis",
+                "[H]Bulanan Paramedis","[H]Pembayaran Ralan","[H]Pembayaran Ranap","[H]Rekap Pembayaran Ralan","[H]Rekap Pembayaran Ranap",
+                "[H]Tagihan Masuk","[H]Tambahan Biaya","[H]Potongan Biaya","[A]No.Resep","[L]Riwayat Perawatan","[I]Frekuensi Penyakit Ralan","[I]Frekuensi Penyakit Ranap",
+                "[J]Kamar","[J]Tarif Ralan","[J]Tarif Ranap","[J]Tarif Lab","[J]Tarif Radiologi","[J]Tarif Operasi","[J]Akun Rekening","[J]Rekening Tahun",
+                "[J]Posting Jurnal","[J]Buku Besar","[J]Cash Flow","[J]Keuangan","[J]Pengeluaran Harian","[S]Set P.J. Unit Penunjang","[S]Set Oto Lokasi","[S]Set Kamar Inap",
+                "[S]Set Embalase & Tuslah","[S]Tracer Login","[S]Display Antrian Registrasi & Poli","[S]Set Harga Obat","[S]Set Penggunaan Tarif","[S]Set Oto Ralan","[S]Biaya Harian Kamar",
+                "[S]Biaya Masuk Sekali","[S]Set RM","[A]Billing Ralan","[A]Billing Ranap","[H]Detail JM Dokter","[A]IGD","[B]Barcode Ralan","[B]Barcode Ranap",
+                "[S]Set Harga Obat Ralan","[S]Set Harga Obat Ranap","[I]Penyakit AFP & PD3I","[I]Surveilans AFP & PD3I","[I]Surveilans Ralan","[L]Diagnosa Pasien",
+                "[I]Surveilans Ranap","[I]Pny.Tdk Menular Ranap","[I]Pny.Tdk Menular Ralan","[I]Kunjungan Ralan","[I]RL 3.2 Rawat Darurat","[I]RL 3.3 Gigi dan Mulut","[I]RL 3.7 Radiologi","[I]RL 3.8 Laboratorium","[H]Harian Dokter Ralan",
+                "[C]SMS Gateway","[C]Sidik Jari","[C]Jam Presensi","[C]Jadwal Pegawai","[G]Barcode Parkir","[S]Set Billing","[A]DPJP Ranap","[D]Mutasi Obat/Alkes/BHP","[I]RL 3.4 Kebidanan","[I]RL 3.6 Pembedahan",
+                "[H]Fee Visit Dokter","[H]Fee Bacaan EKG","[H]Fee Rujukan Rontgen","[H]Fee Rujukan Ranap","[H]Fee Periksa Ralan","[J]Akun Bayar","[J]Bayar Pesan Obat",
+                "[H]Obat Per Dokter Peresep","[E]Jenis Barang IPSRS","[J]Pemasukkan Lain-Lain","[J]Pengaturan Rekening","[S]Closing Kasir","[S]Set Keterlambatan Presensi",
+                "[S]Set Harga Kamar","[H]Rekap Per Shift","[K]Cek NIK","[K]Cek No.Kartu","[K]Riwayat Rujukan PCare di VClaim","[H]Obat Per Cara Bayar","[I]Kunjungan Ranap",
+                "[J]Bayar Piutang","[H]Payment Point","[K]Cek No.Rujukan PCare di VClaim","[I]ICD 9","[D]Darurat Stok","[L]Retensi Data R.M.","[C]Temporary Presensi",
+                "[J]Jurnal Harian","[D]Sirkulasi Obat, Alkes & BHP 2","[A]Edit Registrasi","[K]Referensi Diagnosa VClaim","[K]Referensi Poli VClaim","[D]Industri Farmasi",
+                "[H]Harian J.S.","[H]Bulanan J.S.","[H]Harian BHP Medis/Paket Obat","[H]Bulanan BHP Medis/Paket Obat","[J]Piutang Belum Lunas","[K]Referensi Faskes VClaim",
+                "[K]Data Bridging SEP VClaim","[D]Pengambilan BHP UTD","[J]Tarif UTD","[M]Pengambilan BHP Medis","[M]BHP Medis Rusak","[E]Pengambilan UTD","[M]Pengambilan BHP Non Medis",
+                "[M]BHP Non Medis Rusak","[E]Suplier Non Medis","[M]Donor Darah","[K]Monitoring Verifikasi Klaim","[M]Cekal Darah","[M]Komponen Darah","[M]Stok Darah","[M]Pemisahan Darah",
+                "[H]Harian Kamar","[J]Rincian Piutang Pasien","[D]Keuntungan Beri Obat, Alkes & BHP 2","[K]Reklasifikasi Ralan","[K]Reklasifikasi Ranap","[M]Penyerahan Darah",
+                "[J]Hutang Obat & BHP","[D]Riwayat Obat, Alkes & BHP","[I]Sensus Harian Poli","[I]RL 4A Sebab Morbiditas Ranap","[K]Referensi Kamar Aplicare","[K]Ketersediaan Kamar Aplicare",
+                "[K]Klaim Baru Otomatis INACBG","[K]Klaim Baru Manual INACBG","[K]Coder NIK INACBG","[L]Mutasi Berkas RM","[J]Akun Piutang","[H]Harian KSO","[H]Bulanan KSO",
+                "[H]Harian Menejemen","[H]Bulanan Menejemen","[K]Cek Eligibilitas Inhealth","[K]Referensi Ruang Rawat Inhealth","[K]Referensi Poli Inhealth","[K]Referensi Faskes Inhealth",
+                "[K]Data Bridging SJP Inhealth","[H]Piutang Ralan","[H]Piutang Ranap","[J]Piutang Per Cara Bayar","[I]Lama Pelayanan Ralan","[L]Catatan Pasien","[I]RL 4B Sebab Morbiditas Ralan",
+                "[I]RL 4A Morbiditas Ralan","[I]RL 4B Morbiditas Ralan","[L]Data HAIs","[I]Harian HAIs","[I]Bulanan HAIs","[I]Hitung BOR","[L]Instansi/Perusahaan Pasien","[D]Resep Dokter",
+                "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Registrasi Per Poli","[N]Registrasi Per Dokter",
+                "[N]Registrasi Per Pekerjaan","[N]Registrasi Per Pendidikan","[N]Registrasi Per Tahun","[L]Berkas Digital Perawatan","[I]Pny Menular Ranap","[I]Pny Menular Ralan",
+                "[N]Registrasi Per Bulan","[N]Registrasi Per Tanggal","[N]Demografi Registrasi","[N]Reg Lama Per Tahun","[N]Reg Baru Per Tahun","[N]Reg Lama Per Bulan","[N]Reg Baru Per Bulan",
+                "[N]Reg Lama Per Tanggal","[N]Reg Baru Per Tanggal","[N]Batal Periksa Per Tahun","[N]Batal Periksa Per Bulan","[K]Referensi Diagnosa Pcare","[N]Batal Periksa Per Tanggal",
+                "[D]Kategori Obat/Alkes/BHP","[D]Golongan Obat/Alkes/BHP","[D]Obat/Alkes/BHP Per Tanggal","[D]Penjualan Bebas Per Tanggal","[K]Referensi Kesadaran Pcare","[I]Pembatalan Periksa Per Dokter",
+                "[H]Pembayaran Per Unit","[H]Rekap Pembayaran Per Unit","[N]Registrasi Per Cara Bayar","[E]Pengadaan Non Medis Per Tanggal","[E]Stok Keluar Non Medis Per Tanggal",
+                "[N]Kunjungan Ranap Per Tahun","[K]Cek Rujukan PCare","[N]Kunjungan Lab Ralan Per Tahun","[N]Kunjungan Rad Ralan Per Tahun","[I]Cek Entry Ralan","[K]Klaim Baru Manual INACBG 2",
+                "[D]Permintaan Obat & BHP","[D]Rekap Permintaan Obat & BHP","[D]Surat Pemesanan Obat & BHP","[E]Permintaan Barang Non Medis","[E]Rekap Permintaan Barang Non Medis",
+                "[E]Surat Pemesanan Barang Non Medis","[N]Registrasi Per Perujuk","[K]Referensi Prosedur VClaim","[K]Referensi Kelas Rawat VClaim","[K]Referensi Dokter VClaim",
+                "[K]Referensi Spesialistik VClaim","[K]Referensi Ruang Rawat VClaim","[K]Referensi Cara Keluar VClaim","[K]Referensi Pasca Pulang VClaim","[H]Detail VK/OK","[A]Billing Parsial",
+                "[K]Cek No.Rujukan RS di VClaim","[K]Cek Rujukan Kartu PCare di VClaim","[K]Cek Rujukan Kartu RS di VClaim","[A]Akses Depo Obat/BHP","[K]Pembuatan Rujukan VClaim",
+                "[N]Kunjungan Lab Ralan Per Bulan","[D]Stok Keluar Medis","[N]Kunjungan Rad Ralan Per Bulan","[H]Detail JM Dokter 2","[L]Pengaduan/Chat","[N]Kunjungan Lab Ralan Per Tanggal",
+                "[N]Kunjungan Rad Ralan Per Tanggal","[I]Sensus Harian Ralan","[D]Metode Racik","[H]Pembayaran Per Akun Bayar","[D]Pengguna Obat/Alkes/BHP Resep","[D]Rekap Penerimaan Obat & BHP",
+                "[C]Master Berkas Pegawai","[C]Berkas Kepegawaian","[C]Riwayat Jabatan","[C]Riwayat Pendidikan","[C]Riwayat Naik Gaji","[C]Kegiatan Ilmiah & Pelatihan","[C]Riwayat Penghargaan",
+                "[C]Riwayat Penelitian","[E]Penerimaan Barang Non Medis","[J]Bayar Pesan Non Medis","[J]Hutang Barang Non Medis","[E]Rekap Penerimaan Non Medis","[I]Insiden Keselamatan",
+                "[L]Insiden Keselamatan Pasien","[N]Kejadian IKP Per Tahun","[N]Kejadian IKP Per Bulan","[N]Kejadian IKP Per Tanggal","[D]Riwayat Batch","[N]Kejadian IKP Per Jenis",
+                "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Registrasi Per Agama","[N]Registrasi Per Umur","[L]Suku/Bangsa Pasien","[L]Bahasa Pasien","[L]Golongan TNI",
+                "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik","[N]Registrasi Per Suku/Bangsa",
+                "[N]Registrasi Per Bahasa","[A]Jadwal Operasi","[K]Mapping Poli VClaim","[N]Registrasi Per Cacat Fisik","[F]Barang CSSD","[K]SKDP BPJS","[A]Booking Registrasi",
+                "[K]Referensi Propinsi VClaim","[K]Referensi Kabupaten VClaim","[K]Referensi Kecamatan VClaim","[K]Referensi Dokter DPJP VClaim","[K]Riwayat Rujukan RS di VClaim",
+                "[K]Tanggal Rujukan di VClaim","[A]Permintaan Lab","[A]Permintaan Radiologi","[O]Indeks Surat","[O]Map Surat","[O]Almari Surat","[O]Rak Surat","[O]Ruang Surat",
+                "[O]Klasifikasi Surat","[O]Status Surat","[O]Sifat Surat","[O]Stts Balas Surat","[O]Surat Masuk","[K]Referensi Dokter PCare","[K]Referensi Poli PCare",
+                "[K]Referensi Provider PCare","[K]Referensi Stts Pulang PCare","[K]Referensi Spesialis PCare","[K]Referensi Subspesialis PCare","[K]Referensi Sarana PCare",
+                "[K]Referensi Khusus PCare","[K]Referensi Obat PCare","[K]Referensi Tindakan PCare","[K]Faskes Subspesialis PCare","[K]Faskes Alih Rawat PCare",
+                "[K]Faskes Thalasemia & Hemofili PCare","[K]Mapping Obat PCare","[K]Tarif Ralan RS & PCare","[K]Club Prolanis PCare","[K]Mapping Poli PCare",
+                "[K]Kegiatan Kelompok PCare","[K]Tarif Ranap RS & PCare","[K]Peserta Keg Kelompok PCare","[D]Sirkulasi Obat, Alkes & BHP 3","[K]Data Pendafataran PCare",
+                "[K]Mapping Dokter PCare","[I]Ranap Per Ruang","[I]Penyakit Ranap Per Cara Bayar","[I]Anggota TNI Dirawat","[S]Set Input Parsial",
+                "[I]Lama Pelayanan Radiologi","[I]Lama Pelayanan Lab","[K]Cek Nomor SEP","[A]Catatan Dokter","[O]Surat Keluar","[D]Kegiatan Farmasi",
+                "[E]Stok Opname Non Medis","[E]Sirkulasi Non Medis","[I]Rekap Lab Per Tahun","[I]Perujuk Lab Per Tahun","[I]Rekap Radiologi Per Tahun",
+                "[I]Perujuk Radiologi Per Tahun","[I]Rekap Bulanan Porsi Diet","[I]Rekap Bulanan Macam Diet","[H]Payment Point 2","[H]Pembayaran Per Akun Bayar 2",
+                "[H]Hapus Nota Salah","[A]Asesmen Awal Rawat Inap","[L]HAIs Per Kamar/Bangsal","[D]PPN Obat","[J]Saldo Akun Per Bulan","[S]Display Antrian Apotek",
+                "[K]Referensi Faskes Sisrute","[K]Referensi Alasan Rujuk Sisrute","[K]Referensi Diagnosa Sisrute","[K]Rujukan Masuk Sisrute","[K]Rujukan Keluar Sisrute",
+                "[K]Cek SKDP VClaim","[D]Data Batch","[I]Kunjungan Lab Ralan","[I]Kunjungan Lab Ranap","[I]Kunjungan Radiologi Ralan","[I]Kunjungan Radiologi Ranap",
+                "[K]Pemberian Obat PCare","[K]Pemberian Tindakan PCare","[H]Pembayaran Per Akun Bayar 3","[S]Password Asuransi","[I]Data TB","[K]Ketersediaan Kamar SIRANAP",
+                "[N]Periode Laporan TB","[N]Rujukan TB","[N]Riwayat TB","[N]Tipe Diagnosis TB","[N]Status HIV TB","[N]Skoring Anak TB","[N]Konfirmasi Skoring 5 TB",
+                "[N]Konfirmasi Skoring 6 TB","[N]Sumber Obat TB","[N]Hasil Akhir Pengobatan TB","[N]Hasil Tes HIV TB","[D]Kadaluarsa Batch","[D]Sisa Stok",
+                "[D]Obat Per Resep","[F]Pemakaian Air PDAM","[F]Limbah Padat B3 Medis","[N]Pemakaian Air PDAM Per Tanggal","[N]Pemakaian Air PDAM Per Bulan",
+                "[N]Limbah B3 Medis Per Tanggal","[N]Limbah B3 Medis Per Bulan","[F]Limbah Padat Domestik","[N]Limbah Padat Domestik Per Tanggal",
+                "[N]Limbah Padat Domestik Per Bulan","[F]Mutu Air Limbah","[F]Pest Control","[P]Ruang Perpustakaan","[P]Kategori Koleksi","[P]Jenis Koleksi",
+                "[P]Pengarang/Penulis","[P]Penerbit Koleksi","[P]Koleksi Perpustakaan","[P]Inventaris Perpustakaan","[P]Pengaturan Peminjaman","[P]Denda Perpustakaan",
+                "[P]Anggota Perpustakaan","[P]Peminjaman Koleksi Perpustakaan","[P]Bayar Denda Perpustakaan","[P]Data Koleksi Ebook","[C]Jenis Cidera K3",
+                "[C]Penyebab Kecelakaan K3","[C]Jenis Luka K3","[C]Lokasi Kejadian K3","[C]Dampak Cidera K3","[C]Jenis Pekerjaan K3","[C]Bagian Tubuh K3",
+                "[C]Peristiwa K3","[N]K3 Per Tahun","[N]K3 Per Bulan","[N]K3 Per Tanggal","[N]K3 Per Jenis Cidera","[N]K3 Per Penyebab Kecelakaan","[N]K3 Per Jenis Luka",
+                "[N]K3 Per Lokasi Kejadian","[N]K3 Per Dampak Cidera","[N]K3 Per Jenis Pekerjaan","[N]K3 Per Bagian Tubuh","[C]Jenis Cidera K3 Per Tahun",
+                "[C]Penyebab Kecelakaan K3 Per Tahun","[C]Jenis Luka K3 Per Tahun","[C]Lokasi Kejadian K3 Per Tahun","[C]Dampak Cidera K3 Per Tahun",
+                "[C]Jenis Pekerjaan K3 Per Tahun","[C]Bagian Tubuh K3 Per Tahun","[A]Skrining Rawat Jalan","[K]Histori Pelayanan BPJS","[I]Rekap Mutasi Berkas",
+                "[I]Skrining Pernapasan Ralan Per Tahun","[D]Pengajuan Obat & BHP","[E]Pengajuan Barang Non Medis","[N]Kunjungan Ranap Per Bulan","[N]Kunjungan Ranap Per Tanggal",
+                "[N]Kunjungan Ranap Per Ruang","[I]Masuk Ruang Per Tahun","[N]Pegawai Per Jenjang Jabatan","[N]Pegawai Per Bidang/Bagian","[N]Pegawai Per Departemen",
+                "[N]Pegawai Per Pendidikan","[N]Pegawai Per Status WP","[N]Pegawai Per Status Kerja","[N]Status Pulang Ranap","[I]KIP Pasien Ranap","[I]KIP Pasien Ralan",
+                "[K]Mapping Dokter DPJP VClaim","[L]Data Triase IGD","[L]Master Triase Skala 1","[L]Master Triase Skala 2","[L]Master Triase Skala 3","[L]Master Triase Skala 4",
+                "[L]Master Triase Skala 5","[L]Master Triase Pemeriksaan","[L]Master Triase Macam Kasus","[I]Rekap Permintaan Diet","[I]Daftar Pasien Ranap",
+                "[I]Daftar Pasien Ranap TNI","[F]Pengajuan Aset/Inventaris","[N]Item Apotek Per Jenis","[N]Item Apotek Per Kategori","[N]Item Apotek Per Golongan",
+                "[N]Item Apotek Per Industri Farmasi","[D]10 Obat Terbanyak Poli","[N]Pengajuan Aset Per Urgensi","[N]Pengajuan Aset Per Status",
+                "[N]Pengajuan Aset Per Departemen","[F]Rekap Pengajuan Aset Departemen","[N]Pegawai Per Kelompok Jabatan","[N]Pegawai Per Resiko Kerja",
+                "[N]Pegawai Per Emergency Index","[N]Jumlah Inventaris Per Ruang","[I]Harian HAIs 2","[N]Jumlah Inventaris Per Jenis","[L]Resume Pasien",
+                "[A]Perkiraan Biaya Ranap","[D]Rekap Obat Per Poli","[D]Rekap Obat Per Pasien","[F]Permintaan Perbaikan Inventaris","[N]Pasien HAIs Per Ruang",
+                "[N]Pasien HAIs Per Bulan","[N]Laju HAIs VAP Per Ruang","[N]Laju HAIs IAD Per Ruang","[N]Laju HAIs Plebitis Per Ruang","[N]Laju HAIs ISK Per Ruang",
+                "[N]Laju HAIs ILO Per Ruang","[N]Laju HAIs HAP Per Ruang","[K]Mapping Poli Inhealth","[K]Mapping Dokter Inhealth","[K]Tarif Ralan Inhealth",
+                "[K]Tarif Ranap Inhealth","[K]Tarif Radiologi Inhealth","[K]Tarif Laborat Inhealth","[K]Tarif Operasi Inhealth","[D]Hibah Obat & BHP","[F]Asal Hibah",
+                "[L]Asuhan Gizi","[K]Tagihan Inhealth","[D]Sirkulasi Obat, Alkes & BHP 4","[D]Sirkulasi Obat, Alkes & BHP 5","[E]Sirkulasi Non Medis 2",
+                "[L]Monitoring Asuhan Gizi","[N]Penerimaan Obat, Alkes & BHP Per Bulan","[I]Rekap Kunjungan","[O]Surat Keterangan Sakit","[L]Penilaian Awal Keperawatan Ralan",
+                "[A]Permintaan Diet","[L]Master Masalah Keperawatan","[C]Pengajuan Cuti","[I]Kedatangan Pasien Per Jam","[M]Data Pendonor","[Q]Suplier Toko",
+                "[Q]Jenis Barang Toko","[S]Set Harga Toko","[Q]Barang Toko","[J]Penagihan Piutang Pasien","[J]Akun Penagihan Piutang","[Q]Stok Opname Toko",
+                "[Q]Riwayat Barang Toko","[Q]Surat Pemesanan Toko","[Q]Pengajuan Barang Toko","[Q]Penerimaan Barang Toko","[Q]Pengadaan Barang Toko","[Q]Hutang Toko",
+                "[Q]Bayar Pesan Toko","[Q]Member Toko","[Q]Penjualan Toko","[I]Registrasi Poli Per Tanggal","[Q]Piutang Toko","[Q]Retur Ke Suplier Toko",
+                "[E]Retur Ke Suplier Non Medis","[E]Riwayat Barang Non Medis","[K]Pasien Corona","[Q]Pendapatan Harian Toko","[K]Diagnosa Pasien Corona",
+                "[K]Perawatan Pasien Corona","[L]Penilaian Awal Keperawatan Gigi","[L]Master Masalah Keperawatan Gigi","[Q]Bayar Piutang Toko","[Q]Piutang Harian Toko",
+                "[Q]Penjualan Harian Toko","[A]Deteksi Dini Corona","[L]Penilaian Awal Ralan Kebidanan","[O]Pengumuman E-Pasien","[O]Surat Hamil","[J]Set Tarif Online",
+                "[A]Booking Periksa","[Q]Sirkulasi Barang Toko","[Q]Retur Jual Toko","[Q]Retur Jual Piutang","[Q]Sirkulasi Barang Toko 2","[Q]Keuntungan Barang Toko",
+                "[R]Ket Pengeluaran Penerima Dankes","[R]Ket Penghasilan Penerima Dankes","[R]Ukuran Rumah Penerima Dankes","[R]Dinding Rumah Penerima Dankes",
+                "[R]Lantai Rumah Penerima Dankes","[R]Atap Rumah Penerima Dankes","[R]Kepemilikan Rumah Penerima Dankes","[R]Kamar Mandi Penerima Dankes",
+                "[R]Dapur Rumah Penerima Dankes","[R]Kursi Rumah Penerima Dankes","[R]Kategori PHBS Penerima Dankes","[R]Elektronik Penerima Dankes",
+                "[R]Ternak Penerima Dankes","[R]Jenis Simpanan Penerima Dankes","[L]Penilaian Awal Ralan Bayi/Anak","[R]Kategori Asnaf Penerima Dankes",
+                "[L]Master Masalah Keperawatan Bayi/Anak","[L]Master Imunisasi","[R]Patologis Penerima Dankes","[K]Cek No.Kartu PCare","[O]Surat Bebas Narkoba",
+                "[O]Surat Keterangan Covid","[F]Pemakaian Air Tanah","[N]Pemakaian Air Tanah Per Tanggal","[N]Pemakaian Air Tanah Per Bulan",
+                "[I]Lama Pelayanan Poli","[L]Hemodialisa","[I]Laporan Tahunan IRJ","[N]Hemodialisa Per Tanggal","[N]Hemodialisa Per Bulan","[N]Hemodialisa Per Tahun",
+                "[N]Pasien Meninggal Per Bulan","[F]Perbaikan Inventaris","[O]Surat Cuti Hamil","[D]Permintaan Stok Obat Pasien"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -329,6 +339,19 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -342,882 +365,1461 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 619;i++) {
+        for (i = 0; i < 666;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(130);
-            }else if(i==1){
-                column.setPreferredWidth(180);
-            }else if(i==2){
-                column.setPreferredWidth(100);
-            }else if(i==3){
-                column.setPreferredWidth(130);
-            }else if(i==4){
-                column.setPreferredWidth(55);
-            }else if(i==5){
-                column.setPreferredWidth(88);
-            }else if(i==6){
-                column.setPreferredWidth(55);
-            }else if(i==7){
-                column.setPreferredWidth(95);
-            }else if(i==8){
-                column.setPreferredWidth(63);
-            }else if(i==9){
-                column.setPreferredWidth(53);
-            }else if(i==10){
-                column.setPreferredWidth(73);
-            }else if(i==11){
-                column.setPreferredWidth(95);
-            }else if(i==12){
-                column.setPreferredWidth(84);
-            }else if(i==13){
-                column.setPreferredWidth(103);
-            }else if(i==14){
-                column.setPreferredWidth(66);
-            }else if(i==15){
-                column.setPreferredWidth(100);
-            }else if(i==16){
-                column.setPreferredWidth(100);
-            }else if(i==17){
-                column.setPreferredWidth(135);
-            }else if(i==18){
-                column.setPreferredWidth(94);
-            }else if(i==19){
-                column.setPreferredWidth(110);
-            }else if(i==20){
-                column.setPreferredWidth(82);
-            }else if(i==21){
-                column.setPreferredWidth(93);
-            }else if(i==22){
-                column.setPreferredWidth(82);
-            }else if(i==23){
-                column.setPreferredWidth(107);
-            }else if(i==24){
-                column.setPreferredWidth(81);
-            }else if(i==25){
-                column.setPreferredWidth(95);
-            }else if(i==26){
-                column.setPreferredWidth(95);
-            }else if(i==27){
-                column.setPreferredWidth(135);
-            }else if(i==28){
-                column.setPreferredWidth(110);
-            }else if(i==29){
-                column.setPreferredWidth(103);
-            }else if(i==30){
-                column.setPreferredWidth(108);
-            }else if(i==31){
-                column.setPreferredWidth(100);
-            }else if(i==32){
-                column.setPreferredWidth(92);
-            }else if(i==33){
-                column.setPreferredWidth(136);
-            }else if(i==34){
-                column.setPreferredWidth(98);
-            }else if(i==35){
-                column.setPreferredWidth(105);
-            }else if(i==36){
-                column.setPreferredWidth(87);
-            }else if(i==37){
-                column.setPreferredWidth(114);
-            }else if(i==38){
-                column.setPreferredWidth(127);
-            }else if(i==39){
-                column.setPreferredWidth(110);
-            }else if(i==40){
-                column.setPreferredWidth(170);
-            }else if(i==41){
-                column.setPreferredWidth(170);
-            }else if(i==42){
-                column.setPreferredWidth(163);
-            }else if(i==43){
-                column.setPreferredWidth(153);
-            }else if(i==44){
-                column.setPreferredWidth(101);
-            }else if(i==45){
-                column.setPreferredWidth(115);
-            }else if(i==46){
-                column.setPreferredWidth(178);
-            }else if(i==230){
-                column.setPreferredWidth(125);
-            }else if(i==231){
-                column.setPreferredWidth(100);
-            }else if(i==232){
-                column.setPreferredWidth(165);
-            }else if(i==233){
-                column.setPreferredWidth(133);
-            }else if(i==234){
-                column.setPreferredWidth(133);
-            }else if(i==235){
-                column.setPreferredWidth(73);
-            }else if(i==236){
-                column.setPreferredWidth(80);
-            }else if(i==237){
-                column.setPreferredWidth(82);
-            }else if(i==238){
-                column.setPreferredWidth(75);
-            }else if(i==239){
-                column.setPreferredWidth(155);
-            }else if(i==240){
-                column.setPreferredWidth(90);
-            }else if(i==241){
-                column.setPreferredWidth(135);
-            }else if(i==242){
-                column.setPreferredWidth(80);
-            }else if(i==243){
-                column.setPreferredWidth(96);
-            }else if(i==244){
-                column.setPreferredWidth(120);
-            }else if(i==245){
-                column.setPreferredWidth(98);
-            }else if(i==246){
-                column.setPreferredWidth(133);
-            }else if(i==247){
-                column.setPreferredWidth(149);
-            }else if(i==248){
-                column.setPreferredWidth(165);
-            }else if(i==249){
-                column.setPreferredWidth(167);
-            }else if(i==250){
-                column.setPreferredWidth(147);
-            }else if(i==251){
-                column.setPreferredWidth(139);
-            }else if(i==252){
-                column.setPreferredWidth(110);
-            }else if(i==253){
-                column.setPreferredWidth(107);
-            }else if(i==254){
-                column.setPreferredWidth(142);
-            }else if(i==255){
-                column.setPreferredWidth(155);
-            }else if(i==256){
-                column.setPreferredWidth(120);
-            }else if(i==257){
-                column.setPreferredWidth(120);
-            }else if(i==258){
-                column.setPreferredWidth(116);
-            }else if(i==259){
-                column.setPreferredWidth(116);
-            }else if(i==260){
-                column.setPreferredWidth(113);
-            }else if(i==261){
-                column.setPreferredWidth(128);
-            }else if(i==262){
-                column.setPreferredWidth(125);
-            }else if(i==263){
-                column.setPreferredWidth(134);
-            }else if(i==264){
-                column.setPreferredWidth(130);
-            }else if(i==265){
-                column.setPreferredWidth(143);
-            }else if(i==266){
-                column.setPreferredWidth(142);
-            }else if(i==267){
-                column.setPreferredWidth(140);
-            }else if(i==268){
-                column.setPreferredWidth(144);
-            }else if(i==269){
-                column.setPreferredWidth(157);
-            }else if(i==270){
-                column.setPreferredWidth(160);
-            }else if(i==271){
-                column.setPreferredWidth(150);
-            }else if(i==272){
-                column.setPreferredWidth(165);
-            }else if(i==273){
-                column.setPreferredWidth(123);
-            }else if(i==274){
-                column.setPreferredWidth(154);
-            }else if(i==275){
-                column.setPreferredWidth(170);
-            }else if(i==276){
-                column.setPreferredWidth(186);
-            }else if(i==277){
-                column.setPreferredWidth(186);
-            }else if(i==278){
-                column.setPreferredWidth(159);
-            }else if(i==279){
-                column.setPreferredWidth(112);
-            }else if(i==280){
-                column.setPreferredWidth(175);
-            }else if(i==281){
-                column.setPreferredWidth(176);
-            }else if(i==282){
-                column.setPreferredWidth(94);
-            }else if(i==283){
-                column.setPreferredWidth(156);
-            }else if(i==284){
-                column.setPreferredWidth(134);
-            }else if(i==285){
-                column.setPreferredWidth(166);
-            }else if(i==286){
-                column.setPreferredWidth(164);
-            }else if(i==287){
-                column.setPreferredWidth(163);
-            }else if(i==288){
-                column.setPreferredWidth(196);
-            }else if(i==289){
-                column.setPreferredWidth(192);
-            }else if(i==290){
-                column.setPreferredWidth(131);
-            }else if(i==291){
-                column.setPreferredWidth(146);
-            }else if(i==292){
-                column.setPreferredWidth(162);
-            }else if(i==293){
-                column.setPreferredWidth(134);
-            }else if(i==294){
-                column.setPreferredWidth(154);
-            }else if(i==295){
-                column.setPreferredWidth(168);
-            }else if(i==296){
-                column.setPreferredWidth(158);
-            }else if(i==297){
-                column.setPreferredWidth(166);
-            }else if(i==298){
-                column.setPreferredWidth(80);
-            }else if(i==299){
-                column.setPreferredWidth(81);
-            }else if(i==300){
-                column.setPreferredWidth(158);
-            }else if(i==301){
-                column.setPreferredWidth(186);
-            }else if(i==302){
-                column.setPreferredWidth(170);
-            }else if(i==303){
-                column.setPreferredWidth(127);
-            }else if(i==304){
-                column.setPreferredWidth(150);
-            }else if(i==305){
-                column.setPreferredWidth(170);
-            }else if(i==306){
-                column.setPreferredWidth(105);
-            }else if(i==307){
-                column.setPreferredWidth(172);
-            }else if(i==308){
-                column.setPreferredWidth(108);
-            }else if(i==309){
-                column.setPreferredWidth(100);
-            }else if(i==310){
-                column.setPreferredWidth(182);
-            }else if(i==311){
-                column.setPreferredWidth(185);
-            }else if(i==312){
-                column.setPreferredWidth(116);
-            }else if(i==313){
-                column.setPreferredWidth(85);
-            }else if(i==314){
-                column.setPreferredWidth(158);
-            }else if(i==315){
-                column.setPreferredWidth(180);
-            }else if(i==316){
-                column.setPreferredWidth(168);
-            }else if(i==317){
-                column.setPreferredWidth(132);
-            }else if(i==318){
-                column.setPreferredWidth(120);
-            }else if(i==319){
-                column.setPreferredWidth(102);
-            }else if(i==320){
-                column.setPreferredWidth(114);
-            }else if(i==321){
-                column.setPreferredWidth(104);
-            }else if(i==322){
-                column.setPreferredWidth(150);
-            }else if(i==323){
-                column.setPreferredWidth(127);
-            }else if(i==324){
-                column.setPreferredWidth(108);
-            }else if(i==325){
-                column.setPreferredWidth(165);
-            }else if(i==326){
-                column.setPreferredWidth(130);
-            }else if(i==327){
-                column.setPreferredWidth(143);
-            }else if(i==328){
-                column.setPreferredWidth(160);
-            }else if(i==329){
-                column.setPreferredWidth(116);
-            }else if(i==330){
-                column.setPreferredWidth(152);
-            }else if(i==331){
-                column.setPreferredWidth(132);
-            }else if(i==332){
-                column.setPreferredWidth(128);
-            }else if(i==333){
-                column.setPreferredWidth(141);
-            }else if(i==334){
-                column.setPreferredWidth(90);
-            }else if(i==335){
-                column.setPreferredWidth(127);
-            }else if(i==336){
-                column.setPreferredWidth(140);
-            }else if(i==337){
-                column.setPreferredWidth(142);
-            }else if(i==338){
-                column.setPreferredWidth(148);
-            }else if(i==339){
-                column.setPreferredWidth(140);
-            }else if(i==340){
-                column.setPreferredWidth(115);
-            }else if(i==341){
-                column.setPreferredWidth(88);
-            }else if(i==342){
-                column.setPreferredWidth(85);
-            }else if(i==343){
-                column.setPreferredWidth(73);
-            }else if(i==344){
-                column.setPreferredWidth(79);
-            }else if(i==345){
-                column.setPreferredWidth(79);
-            }else if(i==346){
-                column.setPreferredWidth(96);
-            }else if(i==347){
-                column.setPreferredWidth(86);
-            }else if(i==348){
-                column.setPreferredWidth(90);
-            }else if(i==349){
-                column.setPreferredWidth(90);
-            }else if(i==350){
-                column.setPreferredWidth(70);
-            }else if(i==351){
-                column.setPreferredWidth(178);
-            }else if(i==352){
-                column.setPreferredWidth(150);
-            }else if(i==353){
-                column.setPreferredWidth(95);
-            }else if(i==354){
-                column.setPreferredWidth(130);
-            }else if(i==355){
-                column.setPreferredWidth(167);
-            }else if(i==356){
-                column.setPreferredWidth(83);
-            }else if(i==357){
-                column.setPreferredWidth(71);
-            }else if(i==358){
-                column.setPreferredWidth(109);
-            }else if(i==359){
-                column.setPreferredWidth(140);
-            }else if(i==360){
-                column.setPreferredWidth(155);
-            }else if(i==361){
-                column.setPreferredWidth(157);
-            }else if(i==362){
-                column.setPreferredWidth(163);
-            }else if(i==363){
-                column.setPreferredWidth(163);
-            }else if(i==364){
-                column.setPreferredWidth(144);
-            }else if(i==365){
-                column.setPreferredWidth(94);
-            }else if(i==366){
-                column.setPreferredWidth(120);
-            }else if(i==367){
-                column.setPreferredWidth(82);
-            }else if(i==368){
-                column.setPreferredWidth(70);
-            }else if(i==369){
-                column.setPreferredWidth(81);
-            }else if(i==370){
-                column.setPreferredWidth(69);
-            }else if(i==371){
-                column.setPreferredWidth(82);
-            }else if(i==372){
-                column.setPreferredWidth(96);
-            }else if(i==373){
-                column.setPreferredWidth(83);
-            }else if(i==374){
-                column.setPreferredWidth(73);
-            }else if(i==375){
-                column.setPreferredWidth(99);
-            }else if(i==376){
-                column.setPreferredWidth(80);
-            }else if(i==377){
-                column.setPreferredWidth(132);
-            }else if(i==378){
-                column.setPreferredWidth(117);
-            }else if(i==379){
-                column.setPreferredWidth(140);
-            }else if(i==380){
-                column.setPreferredWidth(155);
-            }else if(i==381){
-                column.setPreferredWidth(140);
-            }else if(i==382){
-                column.setPreferredWidth(158);
-            }else if(i==383){
-                column.setPreferredWidth(134);
-            }else if(i==384){
-                column.setPreferredWidth(134);
-            }else if(i==385){
-                column.setPreferredWidth(124);
-            }else if(i==386){
-                column.setPreferredWidth(145);
-            }else if(i==387){
-                column.setPreferredWidth(145);
-            }else if(i==388){
-                column.setPreferredWidth(139);
-            }else if(i==389){
-                column.setPreferredWidth(190);
-            }else if(i==390){
-                column.setPreferredWidth(119);
-            }else if(i==391){
-                column.setPreferredWidth(130);
-            }else if(i==392){
-                column.setPreferredWidth(113);
-            }else if(i==393){
-                column.setPreferredWidth(110);
-            }else if(i==394){
-                column.setPreferredWidth(142);
-            }else if(i==395){
-                column.setPreferredWidth(135);
-            }else if(i==396){
-                column.setPreferredWidth(158);
-            }else if(i==397){
-                column.setPreferredWidth(158);
-            }else if(i==398){
-                column.setPreferredWidth(145);
-            }else if(i==399){
-                column.setPreferredWidth(127);
-            }else if(i==400){
-                column.setPreferredWidth(103);
-            }else if(i==401){
-                column.setPreferredWidth(169);
-            }else if(i==402){
-                column.setPreferredWidth(131);
-            }else if(i==403){
-                column.setPreferredWidth(99);
-            }else if(i==404){
-                column.setPreferredWidth(142);
-            }else if(i==405){
-                column.setPreferredWidth(117);
-            }else if(i==406){
-                column.setPreferredWidth(92);
-            }else if(i==407){
-                column.setPreferredWidth(94);
-            }else if(i==408){
-                column.setPreferredWidth(80);
-            }else if(i==409){
-                column.setPreferredWidth(102);
-            }else if(i==410){
-                column.setPreferredWidth(137);
-            }else if(i==411){
-                column.setPreferredWidth(110);
-            }else if(i==412){
-                column.setPreferredWidth(120);
-            }else if(i==413){
-                column.setPreferredWidth(126);
-            }else if(i==414){
-                column.setPreferredWidth(147);
-            }else if(i==415){
-                column.setPreferredWidth(153);
-            }else if(i==416){
-                column.setPreferredWidth(137);
-            }else if(i==417){
-                column.setPreferredWidth(146);
-            }else if(i==418){
-                column.setPreferredWidth(98);
-            }else if(i==419){
-                column.setPreferredWidth(166);
-            }else if(i==420){
-                column.setPreferredWidth(106);
-            }else if(i==421){
-                column.setPreferredWidth(148);
-            }else if(i==422){
-                column.setPreferredWidth(135);
-            }else if(i==423){
-                column.setPreferredWidth(67);
-            }else if(i==424){
-                column.setPreferredWidth(120);
-            }else if(i==425){
-                column.setPreferredWidth(129);
-            }else if(i==426){
-                column.setPreferredWidth(139);
-            }else if(i==427){
-                column.setPreferredWidth(167);
-            }else if(i==428){
-                column.setPreferredWidth(149);
-            }else if(i==429){
-                column.setPreferredWidth(129);
-            }else if(i==430){
-                column.setPreferredWidth(129);
-            }else if(i==431){
-                column.setPreferredWidth(100);
-            }else if(i==432){
-                column.setPreferredWidth(75);
-            }else if(i==433){
-                column.setPreferredWidth(118);
-            }else if(i==434){
-                column.setPreferredWidth(123);
-            }else if(i==435){
-                column.setPreferredWidth(150);
-            }else if(i==436){
-                column.setPreferredWidth(152);
-            }else if(i==437){
-                column.setPreferredWidth(133);
-            }else if(i==438){
-                column.setPreferredWidth(154);
-            }else if(i==439){
-                column.setPreferredWidth(170);
-            }else if(i==440){
-                column.setPreferredWidth(113);
-            }else if(i==441){
-                column.setPreferredWidth(60);
-            }else if(i==442){
-                column.setPreferredWidth(168);
-            }else if(i==443){
-                column.setPreferredWidth(118);
-            }else if(i==444){
-                column.setPreferredWidth(78);
-            }else if(i==445){
-                column.setPreferredWidth(78);
-            }else if(i==446){
-                column.setPreferredWidth(110);
-            }else if(i==447){
-                column.setPreferredWidth(90);
-            }else if(i==448){
-                column.setPreferredWidth(102);
-            }else if(i==449){
-                column.setPreferredWidth(139);
-            }else if(i==450){
-                column.setPreferredWidth(139);
-            }else if(i==451){
-                column.setPreferredWidth(102);
-            }else if(i==452){
-                column.setPreferredWidth(152);
-            }else if(i==453){
-                column.setPreferredWidth(103);
-            }else if(i==454){
-                column.setPreferredWidth(107);
-            }else if(i==455){
-                column.setPreferredWidth(67);
-            }else if(i==456){
-                column.setPreferredWidth(98);
-            }else if(i==457){
-                column.setPreferredWidth(122);
-            }else if(i==458){
-                column.setPreferredWidth(133);
-            }else if(i==459){
-                column.setPreferredWidth(184);
-            }else if(i==460){
-                column.setPreferredWidth(172);
-            }else if(i==461){
-                column.setPreferredWidth(164);
-            }else if(i==462){
-                column.setPreferredWidth(152);
-            }else if(i==463){
-                column.setPreferredWidth(136);
-            }else if(i==464){
-                column.setPreferredWidth(197);
-            }else if(i==465){
-                column.setPreferredWidth(186);
-            }else if(i==466){
-                column.setPreferredWidth(101);
-            }else if(i==467){
-                column.setPreferredWidth(82);
-            }else if(i==468){
-                column.setPreferredWidth(121);
-            }else if(i==469){
-                column.setPreferredWidth(99);
-            }else if(i==470){
-                column.setPreferredWidth(83);
-            }else if(i==471){
-                column.setPreferredWidth(113);
-            }else if(i==472){
-                column.setPreferredWidth(99);
-            }else if(i==473){
-                column.setPreferredWidth(125);
-            }else if(i==474){
-                column.setPreferredWidth(140);
-            }else if(i==475){
-                column.setPreferredWidth(141);
-            }else if(i==476){
-                column.setPreferredWidth(122);
-            }else if(i==477){
-                column.setPreferredWidth(132);
-            }else if(i==478){
-                column.setPreferredWidth(188);
-            }else if(i==479){
-                column.setPreferredWidth(152);
-            }else if(i==480){
-                column.setPreferredWidth(114);
-            }else if(i==481){
-                column.setPreferredWidth(97);
-            }else if(i==482){
-                column.setPreferredWidth(142);
-            }else if(i==483){
-                column.setPreferredWidth(87);
-            }else if(i==484){
-                column.setPreferredWidth(112);
-            }else if(i==485){
-                column.setPreferredWidth(111);
-            }else if(i==486){
-                column.setPreferredWidth(113);
-            }else if(i==487){
-                column.setPreferredWidth(103);
-            }else if(i==488){
-                column.setPreferredWidth(82);
-            }else if(i==489){
-                column.setPreferredWidth(86);
-            }else if(i==490){
-                column.setPreferredWidth(83);
-            }else if(i==491){
-                column.setPreferredWidth(95);
-            }else if(i==492){
-                column.setPreferredWidth(116);
-            }else if(i==493){
-                column.setPreferredWidth(161);
-            }else if(i==494){
-                column.setPreferredWidth(106);
-            }else if(i==495){
-                column.setPreferredWidth(131);
-            }else if(i==496){
-                column.setPreferredWidth(130);
-            }else if(i==497){
-                column.setPreferredWidth(132);
-            }else if(i==498){
-                column.setPreferredWidth(122);
-            }else if(i==499){
-                column.setPreferredWidth(149);
-            }else if(i==500){
-                column.setPreferredWidth(194);
-            }else if(i==501){
-                column.setPreferredWidth(139);
-            }else if(i==502){
-                column.setPreferredWidth(164);
-            }else if(i==503){
-                column.setPreferredWidth(163);
-            }else if(i==504){
-                column.setPreferredWidth(165);
-            }else if(i==505){
-                column.setPreferredWidth(155);
-            }else if(i==506){
-                column.setPreferredWidth(124);
-            }else if(i==507){
-                column.setPreferredWidth(132);
-            }else if(i==508){
-                column.setPreferredWidth(119);
-            }else if(i==509){
-                column.setPreferredWidth(200);
-            }else if(i==510){
-                column.setPreferredWidth(132);
-            }else if(i==511){
-                column.setPreferredWidth(162);
-            }else if(i==512){
-                column.setPreferredWidth(156);
-            }else if(i==513){
-                column.setPreferredWidth(168);
-            }else if(i==514){
-                column.setPreferredWidth(160);
-            }else if(i==515){
-                column.setPreferredWidth(135);
-            }else if(i==516){
-                column.setPreferredWidth(165);
-            }else if(i==517){
-                column.setPreferredWidth(155);
-            }else if(i==518){
-                column.setPreferredWidth(145);
-            }else if(i==519){
-                column.setPreferredWidth(138);
-            }else if(i==520){
-                column.setPreferredWidth(135);
-            }else if(i==521){
-                column.setPreferredWidth(143);
-            }else if(i==522){
-                column.setPreferredWidth(123);
-            }else if(i==523){
-                column.setPreferredWidth(104);
-            }else if(i==524){
-                column.setPreferredWidth(101);
-            }else if(i==525){
-                column.setPreferredWidth(162);
-            }else if(i==526){
-                column.setPreferredWidth(97);
-            }else if(i==527){
-                column.setPreferredWidth(123);
-            }else if(i==528){
-                column.setPreferredWidth(123);
-            }else if(i==529){
-                column.setPreferredWidth(123);
-            }else if(i==530){
-                column.setPreferredWidth(123);
-            }else if(i==531){
-                column.setPreferredWidth(123);
-            }else if(i==532){
-                column.setPreferredWidth(150);
-            }else if(i==533){
-                column.setPreferredWidth(154);
-            }else if(i==534){
-                column.setPreferredWidth(130);
-            }else if(i==535){
-                column.setPreferredWidth(119);
-            }else if(i==536){
-                column.setPreferredWidth(139);
-            }else if(i==537){
-                column.setPreferredWidth(150);
-            }else if(i==538){
-                column.setPreferredWidth(128);
-            }else if(i==539){
-                column.setPreferredWidth(144);
-            }else if(i==540){
-                column.setPreferredWidth(150);
-            }else if(i==541){
-                column.setPreferredWidth(184);
-            }else if(i==542){
-                column.setPreferredWidth(135);
-            }else if(i==543){
-                column.setPreferredWidth(157);
-            }else if(i==544){
-                column.setPreferredWidth(151);
-            }else if(i==545){
-                column.setPreferredWidth(180);
-            }else if(i==546){
-                column.setPreferredWidth(193);
-            }else if(i==547){
-                column.setPreferredWidth(174);
-            }else if(i==548){
-                column.setPreferredWidth(145);
-            }else if(i==549){
-                column.setPreferredWidth(169);
-            }else if(i==550){
-                column.setPreferredWidth(162);
-            }else if(i==551){
-                column.setPreferredWidth(86);
-            }else if(i==552){
-                column.setPreferredWidth(156);
-            }else if(i==553){
-                column.setPreferredWidth(95);
-            }else if(i==554){
-                column.setPreferredWidth(132);
-            }else if(i==555){
-                column.setPreferredWidth(119);
-            }else if(i==556){
-                column.setPreferredWidth(133);
-            }else if(i==557){
-                column.setPreferredWidth(180);
-            }else if(i==558){
-                column.setPreferredWidth(133);
-            }else if(i==559){
-                column.setPreferredWidth(129);
-            }else if(i==560){
-                column.setPreferredWidth(144);
-            }else if(i==561){
-                column.setPreferredWidth(142);
-            }else if(i==562){
-                column.setPreferredWidth(160);
-            }else if(i==563){
-                column.setPreferredWidth(140);
-            }else if(i==564){
-                column.setPreferredWidth(141);
-            }else if(i==565){
-                column.setPreferredWidth(144);
-            }else if(i==566){
-                column.setPreferredWidth(127);
-            }else if(i==567){
-                column.setPreferredWidth(141);
-            }else if(i==568){
-                column.setPreferredWidth(119);
-            }else if(i==569){
-                column.setPreferredWidth(122);
-            }else if(i==570){
-                column.setPreferredWidth(137);
-            }else if(i==571){
-                column.setPreferredWidth(128);
-            }else if(i==572){
-                column.setPreferredWidth(129);
-            }else if(i==573){
-                column.setPreferredWidth(110);
-            }else if(i==574){
-                column.setPreferredWidth(73);
-            }else if(i==575){
-                column.setPreferredWidth(77);
-            }else if(i==576){
-                column.setPreferredWidth(104);
-            }else if(i==577){
-                column.setPreferredWidth(162);
-            }else if(i==578){
-                column.setPreferredWidth(163);
-            }else if(i==579){
-                column.setPreferredWidth(124);
-            }else if(i==580){
-                column.setPreferredWidth(132);
-            }else if(i==581){
-                column.setPreferredWidth(220);
-            }else if(i==582){
-                column.setPreferredWidth(103);
-            }else if(i==583){
-                column.setPreferredWidth(135);
-            }else if(i==584){
-                column.setPreferredWidth(190);
-            }else if(i==585){
-                column.setPreferredWidth(101);
-            }else if(i==586){
-                column.setPreferredWidth(163);
-            }else if(i==587){
-                column.setPreferredWidth(96);
-            }else if(i==588){
-                column.setPreferredWidth(154);
-            }else if(i==589){
-                column.setPreferredWidth(95);
-            }else if(i==590){
-                column.setPreferredWidth(83);
-            }else if(i==591){
-                column.setPreferredWidth(111);
-            }else if(i==592){
-                column.setPreferredWidth(96);
-            }else if(i==593){
-                column.setPreferredWidth(83);
-            }else if(i==594){
-                column.setPreferredWidth(146);
-            }else if(i==595){
-                column.setPreferredWidth(138);
-            }else if(i==596){
-                column.setPreferredWidth(114);
-            }else if(i==597){
-                column.setPreferredWidth(125);
-            }else if(i==598){
-                column.setPreferredWidth(134);
-            }else if(i==599){
-                column.setPreferredWidth(138);
-            }else if(i==600){
-                column.setPreferredWidth(144);
-            }else if(i==601){
-                column.setPreferredWidth(140);
-            }else if(i==602){
-                column.setPreferredWidth(81);
-            }else if(i==603){
-                column.setPreferredWidth(105);
-            }else if(i==604){
-                column.setPreferredWidth(88);
-            }else if(i==605){
-                column.setPreferredWidth(97);
-            }else if(i==606){
-                column.setPreferredWidth(149);
-            }else if(i==607){
-                column.setPreferredWidth(86);
-            }else if(i==608){
-                column.setPreferredWidth(128);
-            }else if(i==609){
-                column.setPreferredWidth(153);
-            }else if(i==610){
-                column.setPreferredWidth(150);
-            }else if(i==611){
-                column.setPreferredWidth(90);
-            }else if(i==612){
-                column.setPreferredWidth(142);
-            }else if(i==613){
-                column.setPreferredWidth(139);
-            }else if(i==614){
-                column.setPreferredWidth(146);
-            }else if(i==615){
-                column.setPreferredWidth(181);
-            }else if(i==616){
-                column.setPreferredWidth(185);
-            }else if(i==617){
-                column.setPreferredWidth(116);
-            }else if(i==618){
-                column.setPreferredWidth(121);
-            }else{
-                column.setPreferredWidth(130);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(130);
+                    break;
+                case 1:
+                    column.setPreferredWidth(180);
+                    break;
+                case 2:
+                    column.setPreferredWidth(100);
+                    break;
+                case 3:
+                    column.setPreferredWidth(130);
+                    break;
+                case 4:
+                    column.setPreferredWidth(55);
+                    break;
+                case 5:
+                    column.setPreferredWidth(88);
+                    break;
+                case 6:
+                    column.setPreferredWidth(55);
+                    break;
+                case 7:
+                    column.setPreferredWidth(95);
+                    break;
+                case 8:
+                    column.setPreferredWidth(63);
+                    break;
+                case 9:
+                    column.setPreferredWidth(53);
+                    break;
+                case 10:
+                    column.setPreferredWidth(73);
+                    break;
+                case 11:
+                    column.setPreferredWidth(95);
+                    break;
+                case 12:
+                    column.setPreferredWidth(84);
+                    break;
+                case 13:
+                    column.setPreferredWidth(103);
+                    break;
+                case 14:
+                    column.setPreferredWidth(66);
+                    break;
+                case 15:
+                    column.setPreferredWidth(100);
+                    break;
+                case 16:
+                    column.setPreferredWidth(100);
+                    break;
+                case 17:
+                    column.setPreferredWidth(135);
+                    break;
+                case 18:
+                    column.setPreferredWidth(94);
+                    break;
+                case 19:
+                    column.setPreferredWidth(110);
+                    break;
+                case 20:
+                    column.setPreferredWidth(82);
+                    break;
+                case 21:
+                    column.setPreferredWidth(93);
+                    break;
+                case 22:
+                    column.setPreferredWidth(82);
+                    break;
+                case 23:
+                    column.setPreferredWidth(107);
+                    break;
+                case 24:
+                    column.setPreferredWidth(81);
+                    break;
+                case 25:
+                    column.setPreferredWidth(95);
+                    break;
+                case 26:
+                    column.setPreferredWidth(95);
+                    break;
+                case 27:
+                    column.setPreferredWidth(135);
+                    break;
+                case 28:
+                    column.setPreferredWidth(110);
+                    break;
+                case 29:
+                    column.setPreferredWidth(103);
+                    break;
+                case 30:
+                    column.setPreferredWidth(108);
+                    break;
+                case 31:
+                    column.setPreferredWidth(100);
+                    break;
+                case 32:
+                    column.setPreferredWidth(92);
+                    break;
+                case 33:
+                    column.setPreferredWidth(136);
+                    break;
+                case 34:
+                    column.setPreferredWidth(98);
+                    break;
+                case 35:
+                    column.setPreferredWidth(105);
+                    break;
+                case 36:
+                    column.setPreferredWidth(87);
+                    break;
+                case 37:
+                    column.setPreferredWidth(114);
+                    break;
+                case 38:
+                    column.setPreferredWidth(127);
+                    break;
+                case 39:
+                    column.setPreferredWidth(110);
+                    break;
+                case 40:
+                    column.setPreferredWidth(170);
+                    break;
+                case 41:
+                    column.setPreferredWidth(170);
+                    break;
+                case 42:
+                    column.setPreferredWidth(163);
+                    break;
+                case 43:
+                    column.setPreferredWidth(153);
+                    break;
+                case 44:
+                    column.setPreferredWidth(101);
+                    break;
+                case 45:
+                    column.setPreferredWidth(115);
+                    break;
+                case 46:
+                    column.setPreferredWidth(178);
+                    break;
+                case 230:
+                    column.setPreferredWidth(125);
+                    break;
+                case 231:
+                    column.setPreferredWidth(100);
+                    break;
+                case 232:
+                    column.setPreferredWidth(165);
+                    break;
+                case 233:
+                    column.setPreferredWidth(133);
+                    break;
+                case 234:
+                    column.setPreferredWidth(133);
+                    break;
+                case 235:
+                    column.setPreferredWidth(73);
+                    break;
+                case 236:
+                    column.setPreferredWidth(80);
+                    break;
+                case 237:
+                    column.setPreferredWidth(82);
+                    break;
+                case 238:
+                    column.setPreferredWidth(75);
+                    break;
+                case 239:
+                    column.setPreferredWidth(155);
+                    break;
+                case 240:
+                    column.setPreferredWidth(90);
+                    break;
+                case 241:
+                    column.setPreferredWidth(135);
+                    break;
+                case 242:
+                    column.setPreferredWidth(80);
+                    break;
+                case 243:
+                    column.setPreferredWidth(96);
+                    break;
+                case 244:
+                    column.setPreferredWidth(120);
+                    break;
+                case 245:
+                    column.setPreferredWidth(98);
+                    break;
+                case 246:
+                    column.setPreferredWidth(133);
+                    break;
+                case 247:
+                    column.setPreferredWidth(149);
+                    break;
+                case 248:
+                    column.setPreferredWidth(165);
+                    break;
+                case 249:
+                    column.setPreferredWidth(167);
+                    break;
+                case 250:
+                    column.setPreferredWidth(147);
+                    break;
+                case 251:
+                    column.setPreferredWidth(139);
+                    break;
+                case 252:
+                    column.setPreferredWidth(110);
+                    break;
+                case 253:
+                    column.setPreferredWidth(107);
+                    break;
+                case 254:
+                    column.setPreferredWidth(142);
+                    break;
+                case 255:
+                    column.setPreferredWidth(155);
+                    break;
+                case 256:
+                    column.setPreferredWidth(120);
+                    break;
+                case 257:
+                    column.setPreferredWidth(120);
+                    break;
+                case 258:
+                    column.setPreferredWidth(116);
+                    break;
+                case 259:
+                    column.setPreferredWidth(116);
+                    break;
+                case 260:
+                    column.setPreferredWidth(113);
+                    break;
+                case 261:
+                    column.setPreferredWidth(128);
+                    break;
+                case 262:
+                    column.setPreferredWidth(125);
+                    break;
+                case 263:
+                    column.setPreferredWidth(134);
+                    break;
+                case 264:
+                    column.setPreferredWidth(130);
+                    break;
+                case 265:
+                    column.setPreferredWidth(143);
+                    break;
+                case 266:
+                    column.setPreferredWidth(142);
+                    break;
+                case 267:
+                    column.setPreferredWidth(140);
+                    break;
+                case 268:
+                    column.setPreferredWidth(144);
+                    break;
+                case 269:
+                    column.setPreferredWidth(157);
+                    break;
+                case 270:
+                    column.setPreferredWidth(160);
+                    break;
+                case 271:
+                    column.setPreferredWidth(150);
+                    break;
+                case 272:
+                    column.setPreferredWidth(165);
+                    break;
+                case 273:
+                    column.setPreferredWidth(123);
+                    break;
+                case 274:
+                    column.setPreferredWidth(154);
+                    break;
+                case 275:
+                    column.setPreferredWidth(170);
+                    break;
+                case 276:
+                    column.setPreferredWidth(186);
+                    break;
+                case 277:
+                    column.setPreferredWidth(186);
+                    break;
+                case 278:
+                    column.setPreferredWidth(159);
+                    break;
+                case 279:
+                    column.setPreferredWidth(112);
+                    break;
+                case 280:
+                    column.setPreferredWidth(175);
+                    break;
+                case 281:
+                    column.setPreferredWidth(176);
+                    break;
+                case 282:
+                    column.setPreferredWidth(94);
+                    break;
+                case 283:
+                    column.setPreferredWidth(156);
+                    break;
+                case 284:
+                    column.setPreferredWidth(134);
+                    break;
+                case 285:
+                    column.setPreferredWidth(166);
+                    break;
+                case 286:
+                    column.setPreferredWidth(164);
+                    break;
+                case 287:
+                    column.setPreferredWidth(163);
+                    break;
+                case 288:
+                    column.setPreferredWidth(196);
+                    break;
+                case 289:
+                    column.setPreferredWidth(192);
+                    break;
+                case 290:
+                    column.setPreferredWidth(131);
+                    break;
+                case 291:
+                    column.setPreferredWidth(146);
+                    break;
+                case 292:
+                    column.setPreferredWidth(162);
+                    break;
+                case 293:
+                    column.setPreferredWidth(134);
+                    break;
+                case 294:
+                    column.setPreferredWidth(154);
+                    break;
+                case 295:
+                    column.setPreferredWidth(168);
+                    break;
+                case 296:
+                    column.setPreferredWidth(158);
+                    break;
+                case 297:
+                    column.setPreferredWidth(166);
+                    break;
+                case 298:
+                    column.setPreferredWidth(80);
+                    break;
+                case 299:
+                    column.setPreferredWidth(81);
+                    break;
+                case 300:
+                    column.setPreferredWidth(158);
+                    break;
+                case 301:
+                    column.setPreferredWidth(186);
+                    break;
+                case 302:
+                    column.setPreferredWidth(170);
+                    break;
+                case 303:
+                    column.setPreferredWidth(127);
+                    break;
+                case 304:
+                    column.setPreferredWidth(150);
+                    break;
+                case 305:
+                    column.setPreferredWidth(170);
+                    break;
+                case 306:
+                    column.setPreferredWidth(105);
+                    break;
+                case 307:
+                    column.setPreferredWidth(172);
+                    break;
+                case 308:
+                    column.setPreferredWidth(108);
+                    break;
+                case 309:
+                    column.setPreferredWidth(100);
+                    break;
+                case 310:
+                    column.setPreferredWidth(182);
+                    break;
+                case 311:
+                    column.setPreferredWidth(185);
+                    break;
+                case 312:
+                    column.setPreferredWidth(116);
+                    break;
+                case 313:
+                    column.setPreferredWidth(85);
+                    break;
+                case 314:
+                    column.setPreferredWidth(158);
+                    break;
+                case 315:
+                    column.setPreferredWidth(180);
+                    break;
+                case 316:
+                    column.setPreferredWidth(168);
+                    break;
+                case 317:
+                    column.setPreferredWidth(132);
+                    break;
+                case 318:
+                    column.setPreferredWidth(120);
+                    break;
+                case 319:
+                    column.setPreferredWidth(102);
+                    break;
+                case 320:
+                    column.setPreferredWidth(114);
+                    break;
+                case 321:
+                    column.setPreferredWidth(104);
+                    break;
+                case 322:
+                    column.setPreferredWidth(150);
+                    break;
+                case 323:
+                    column.setPreferredWidth(127);
+                    break;
+                case 324:
+                    column.setPreferredWidth(108);
+                    break;
+                case 325:
+                    column.setPreferredWidth(165);
+                    break;
+                case 326:
+                    column.setPreferredWidth(130);
+                    break;
+                case 327:
+                    column.setPreferredWidth(143);
+                    break;
+                case 328:
+                    column.setPreferredWidth(160);
+                    break;
+                case 329:
+                    column.setPreferredWidth(116);
+                    break;
+                case 330:
+                    column.setPreferredWidth(152);
+                    break;
+                case 331:
+                    column.setPreferredWidth(132);
+                    break;
+                case 332:
+                    column.setPreferredWidth(128);
+                    break;
+                case 333:
+                    column.setPreferredWidth(141);
+                    break;
+                case 334:
+                    column.setPreferredWidth(90);
+                    break;
+                case 335:
+                    column.setPreferredWidth(127);
+                    break;
+                case 336:
+                    column.setPreferredWidth(140);
+                    break;
+                case 337:
+                    column.setPreferredWidth(142);
+                    break;
+                case 338:
+                    column.setPreferredWidth(148);
+                    break;
+                case 339:
+                    column.setPreferredWidth(140);
+                    break;
+                case 340:
+                    column.setPreferredWidth(115);
+                    break;
+                case 341:
+                    column.setPreferredWidth(88);
+                    break;
+                case 342:
+                    column.setPreferredWidth(85);
+                    break;
+                case 343:
+                    column.setPreferredWidth(73);
+                    break;
+                case 344:
+                    column.setPreferredWidth(79);
+                    break;
+                case 345:
+                    column.setPreferredWidth(79);
+                    break;
+                case 346:
+                    column.setPreferredWidth(96);
+                    break;
+                case 347:
+                    column.setPreferredWidth(86);
+                    break;
+                case 348:
+                    column.setPreferredWidth(90);
+                    break;
+                case 349:
+                    column.setPreferredWidth(90);
+                    break;
+                case 350:
+                    column.setPreferredWidth(70);
+                    break;
+                case 351:
+                    column.setPreferredWidth(178);
+                    break;
+                case 352:
+                    column.setPreferredWidth(150);
+                    break;
+                case 353:
+                    column.setPreferredWidth(95);
+                    break;
+                case 354:
+                    column.setPreferredWidth(130);
+                    break;
+                case 355:
+                    column.setPreferredWidth(167);
+                    break;
+                case 356:
+                    column.setPreferredWidth(83);
+                    break;
+                case 357:
+                    column.setPreferredWidth(71);
+                    break;
+                case 358:
+                    column.setPreferredWidth(109);
+                    break;
+                case 359:
+                    column.setPreferredWidth(140);
+                    break;
+                case 360:
+                    column.setPreferredWidth(155);
+                    break;
+                case 361:
+                    column.setPreferredWidth(157);
+                    break;
+                case 362:
+                    column.setPreferredWidth(163);
+                    break;
+                case 363:
+                    column.setPreferredWidth(163);
+                    break;
+                case 364:
+                    column.setPreferredWidth(144);
+                    break;
+                case 365:
+                    column.setPreferredWidth(94);
+                    break;
+                case 366:
+                    column.setPreferredWidth(120);
+                    break;
+                case 367:
+                    column.setPreferredWidth(82);
+                    break;
+                case 368:
+                    column.setPreferredWidth(70);
+                    break;
+                case 369:
+                    column.setPreferredWidth(81);
+                    break;
+                case 370:
+                    column.setPreferredWidth(69);
+                    break;
+                case 371:
+                    column.setPreferredWidth(82);
+                    break;
+                case 372:
+                    column.setPreferredWidth(96);
+                    break;
+                case 373:
+                    column.setPreferredWidth(83);
+                    break;
+                case 374:
+                    column.setPreferredWidth(73);
+                    break;
+                case 375:
+                    column.setPreferredWidth(99);
+                    break;
+                case 376:
+                    column.setPreferredWidth(80);
+                    break;
+                case 377:
+                    column.setPreferredWidth(132);
+                    break;
+                case 378:
+                    column.setPreferredWidth(117);
+                    break;
+                case 379:
+                    column.setPreferredWidth(140);
+                    break;
+                case 380:
+                    column.setPreferredWidth(155);
+                    break;
+                case 381:
+                    column.setPreferredWidth(140);
+                    break;
+                case 382:
+                    column.setPreferredWidth(158);
+                    break;
+                case 383:
+                    column.setPreferredWidth(134);
+                    break;
+                case 384:
+                    column.setPreferredWidth(134);
+                    break;
+                case 385:
+                    column.setPreferredWidth(124);
+                    break;
+                case 386:
+                    column.setPreferredWidth(145);
+                    break;
+                case 387:
+                    column.setPreferredWidth(145);
+                    break;
+                case 388:
+                    column.setPreferredWidth(139);
+                    break;
+                case 389:
+                    column.setPreferredWidth(190);
+                    break;
+                case 390:
+                    column.setPreferredWidth(119);
+                    break;
+                case 391:
+                    column.setPreferredWidth(130);
+                    break;
+                case 392:
+                    column.setPreferredWidth(113);
+                    break;
+                case 393:
+                    column.setPreferredWidth(110);
+                    break;
+                case 394:
+                    column.setPreferredWidth(142);
+                    break;
+                case 395:
+                    column.setPreferredWidth(135);
+                    break;
+                case 396:
+                    column.setPreferredWidth(158);
+                    break;
+                case 397:
+                    column.setPreferredWidth(158);
+                    break;
+                case 398:
+                    column.setPreferredWidth(145);
+                    break;
+                case 399:
+                    column.setPreferredWidth(127);
+                    break;
+                case 400:
+                    column.setPreferredWidth(103);
+                    break;
+                case 401:
+                    column.setPreferredWidth(169);
+                    break;
+                case 402:
+                    column.setPreferredWidth(131);
+                    break;
+                case 403:
+                    column.setPreferredWidth(99);
+                    break;
+                case 404:
+                    column.setPreferredWidth(142);
+                    break;
+                case 405:
+                    column.setPreferredWidth(117);
+                    break;
+                case 406:
+                    column.setPreferredWidth(92);
+                    break;
+                case 407:
+                    column.setPreferredWidth(94);
+                    break;
+                case 408:
+                    column.setPreferredWidth(80);
+                    break;
+                case 409:
+                    column.setPreferredWidth(102);
+                    break;
+                case 410:
+                    column.setPreferredWidth(137);
+                    break;
+                case 411:
+                    column.setPreferredWidth(110);
+                    break;
+                case 412:
+                    column.setPreferredWidth(120);
+                    break;
+                case 413:
+                    column.setPreferredWidth(126);
+                    break;
+                case 414:
+                    column.setPreferredWidth(147);
+                    break;
+                case 415:
+                    column.setPreferredWidth(153);
+                    break;
+                case 416:
+                    column.setPreferredWidth(137);
+                    break;
+                case 417:
+                    column.setPreferredWidth(146);
+                    break;
+                case 418:
+                    column.setPreferredWidth(98);
+                    break;
+                case 419:
+                    column.setPreferredWidth(166);
+                    break;
+                case 420:
+                    column.setPreferredWidth(106);
+                    break;
+                case 421:
+                    column.setPreferredWidth(148);
+                    break;
+                case 422:
+                    column.setPreferredWidth(135);
+                    break;
+                case 423:
+                    column.setPreferredWidth(67);
+                    break;
+                case 424:
+                    column.setPreferredWidth(120);
+                    break;
+                case 425:
+                    column.setPreferredWidth(129);
+                    break;
+                case 426:
+                    column.setPreferredWidth(139);
+                    break;
+                case 427:
+                    column.setPreferredWidth(167);
+                    break;
+                case 428:
+                    column.setPreferredWidth(149);
+                    break;
+                case 429:
+                    column.setPreferredWidth(129);
+                    break;
+                case 430:
+                    column.setPreferredWidth(129);
+                    break;
+                case 431:
+                    column.setPreferredWidth(100);
+                    break;
+                case 432:
+                    column.setPreferredWidth(75);
+                    break;
+                case 433:
+                    column.setPreferredWidth(118);
+                    break;
+                case 434:
+                    column.setPreferredWidth(123);
+                    break;
+                case 435:
+                    column.setPreferredWidth(150);
+                    break;
+                case 436:
+                    column.setPreferredWidth(152);
+                    break;
+                case 437:
+                    column.setPreferredWidth(133);
+                    break;
+                case 438:
+                    column.setPreferredWidth(154);
+                    break;
+                case 439:
+                    column.setPreferredWidth(170);
+                    break;
+                case 440:
+                    column.setPreferredWidth(113);
+                    break;
+                case 441:
+                    column.setPreferredWidth(60);
+                    break;
+                case 442:
+                    column.setPreferredWidth(168);
+                    break;
+                case 443:
+                    column.setPreferredWidth(118);
+                    break;
+                case 444:
+                    column.setPreferredWidth(78);
+                    break;
+                case 445:
+                    column.setPreferredWidth(78);
+                    break;
+                case 446:
+                    column.setPreferredWidth(110);
+                    break;
+                case 447:
+                    column.setPreferredWidth(90);
+                    break;
+                case 448:
+                    column.setPreferredWidth(102);
+                    break;
+                case 449:
+                    column.setPreferredWidth(139);
+                    break;
+                case 450:
+                    column.setPreferredWidth(139);
+                    break;
+                case 451:
+                    column.setPreferredWidth(102);
+                    break;
+                case 452:
+                    column.setPreferredWidth(152);
+                    break;
+                case 453:
+                    column.setPreferredWidth(103);
+                    break;
+                case 454:
+                    column.setPreferredWidth(107);
+                    break;
+                case 455:
+                    column.setPreferredWidth(67);
+                    break;
+                case 456:
+                    column.setPreferredWidth(98);
+                    break;
+                case 457:
+                    column.setPreferredWidth(122);
+                    break;
+                case 458:
+                    column.setPreferredWidth(133);
+                    break;
+                case 459:
+                    column.setPreferredWidth(184);
+                    break;
+                case 460:
+                    column.setPreferredWidth(172);
+                    break;
+                case 461:
+                    column.setPreferredWidth(164);
+                    break;
+                case 462:
+                    column.setPreferredWidth(152);
+                    break;
+                case 463:
+                    column.setPreferredWidth(136);
+                    break;
+                case 464:
+                    column.setPreferredWidth(197);
+                    break;
+                case 465:
+                    column.setPreferredWidth(186);
+                    break;
+                case 466:
+                    column.setPreferredWidth(101);
+                    break;
+                case 467:
+                    column.setPreferredWidth(82);
+                    break;
+                case 468:
+                    column.setPreferredWidth(121);
+                    break;
+                case 469:
+                    column.setPreferredWidth(99);
+                    break;
+                case 470:
+                    column.setPreferredWidth(83);
+                    break;
+                case 471:
+                    column.setPreferredWidth(113);
+                    break;
+                case 472:
+                    column.setPreferredWidth(99);
+                    break;
+                case 473:
+                    column.setPreferredWidth(125);
+                    break;
+                case 474:
+                    column.setPreferredWidth(140);
+                    break;
+                case 475:
+                    column.setPreferredWidth(141);
+                    break;
+                case 476:
+                    column.setPreferredWidth(122);
+                    break;
+                case 477:
+                    column.setPreferredWidth(132);
+                    break;
+                case 478:
+                    column.setPreferredWidth(188);
+                    break;
+                case 479:
+                    column.setPreferredWidth(152);
+                    break;
+                case 480:
+                    column.setPreferredWidth(114);
+                    break;
+                case 481:
+                    column.setPreferredWidth(97);
+                    break;
+                case 482:
+                    column.setPreferredWidth(142);
+                    break;
+                case 483:
+                    column.setPreferredWidth(87);
+                    break;
+                case 484:
+                    column.setPreferredWidth(112);
+                    break;
+                case 485:
+                    column.setPreferredWidth(111);
+                    break;
+                case 486:
+                    column.setPreferredWidth(113);
+                    break;
+                case 487:
+                    column.setPreferredWidth(103);
+                    break;
+                case 488:
+                    column.setPreferredWidth(82);
+                    break;
+                case 489:
+                    column.setPreferredWidth(86);
+                    break;
+                case 490:
+                    column.setPreferredWidth(83);
+                    break;
+                case 491:
+                    column.setPreferredWidth(95);
+                    break;
+                case 492:
+                    column.setPreferredWidth(116);
+                    break;
+                case 493:
+                    column.setPreferredWidth(161);
+                    break;
+                case 494:
+                    column.setPreferredWidth(106);
+                    break;
+                case 495:
+                    column.setPreferredWidth(131);
+                    break;
+                case 496:
+                    column.setPreferredWidth(130);
+                    break;
+                case 497:
+                    column.setPreferredWidth(132);
+                    break;
+                case 498:
+                    column.setPreferredWidth(122);
+                    break;
+                case 499:
+                    column.setPreferredWidth(149);
+                    break;
+                case 500:
+                    column.setPreferredWidth(194);
+                    break;
+                case 501:
+                    column.setPreferredWidth(139);
+                    break;
+                case 502:
+                    column.setPreferredWidth(164);
+                    break;
+                case 503:
+                    column.setPreferredWidth(163);
+                    break;
+                case 504:
+                    column.setPreferredWidth(165);
+                    break;
+                case 505:
+                    column.setPreferredWidth(155);
+                    break;
+                case 506:
+                    column.setPreferredWidth(124);
+                    break;
+                case 507:
+                    column.setPreferredWidth(132);
+                    break;
+                case 508:
+                    column.setPreferredWidth(119);
+                    break;
+                case 509:
+                    column.setPreferredWidth(200);
+                    break;
+                case 510:
+                    column.setPreferredWidth(132);
+                    break;
+                case 511:
+                    column.setPreferredWidth(162);
+                    break;
+                case 512:
+                    column.setPreferredWidth(156);
+                    break;
+                case 513:
+                    column.setPreferredWidth(168);
+                    break;
+                case 514:
+                    column.setPreferredWidth(160);
+                    break;
+                case 515:
+                    column.setPreferredWidth(135);
+                    break;
+                case 516:
+                    column.setPreferredWidth(165);
+                    break;
+                case 517:
+                    column.setPreferredWidth(155);
+                    break;
+                case 518:
+                    column.setPreferredWidth(145);
+                    break;
+                case 519:
+                    column.setPreferredWidth(138);
+                    break;
+                case 520:
+                    column.setPreferredWidth(135);
+                    break;
+                case 521:
+                    column.setPreferredWidth(143);
+                    break;
+                case 522:
+                    column.setPreferredWidth(123);
+                    break;
+                case 523:
+                    column.setPreferredWidth(104);
+                    break;
+                case 524:
+                    column.setPreferredWidth(101);
+                    break;
+                case 525:
+                    column.setPreferredWidth(162);
+                    break;
+                case 526:
+                    column.setPreferredWidth(97);
+                    break;
+                case 527:
+                    column.setPreferredWidth(123);
+                    break;
+                case 528:
+                    column.setPreferredWidth(123);
+                    break;
+                case 529:
+                    column.setPreferredWidth(123);
+                    break;
+                case 530:
+                    column.setPreferredWidth(123);
+                    break;
+                case 531:
+                    column.setPreferredWidth(123);
+                    break;
+                case 532:
+                    column.setPreferredWidth(150);
+                    break;
+                case 533:
+                    column.setPreferredWidth(154);
+                    break;
+                case 534:
+                    column.setPreferredWidth(130);
+                    break;
+                case 535:
+                    column.setPreferredWidth(119);
+                    break;
+                case 536:
+                    column.setPreferredWidth(139);
+                    break;
+                case 537:
+                    column.setPreferredWidth(150);
+                    break;
+                case 538:
+                    column.setPreferredWidth(128);
+                    break;
+                case 539:
+                    column.setPreferredWidth(144);
+                    break;
+                case 540:
+                    column.setPreferredWidth(150);
+                    break;
+                case 541:
+                    column.setPreferredWidth(184);
+                    break;
+                case 542:
+                    column.setPreferredWidth(135);
+                    break;
+                case 543:
+                    column.setPreferredWidth(157);
+                    break;
+                case 544:
+                    column.setPreferredWidth(151);
+                    break;
+                case 545:
+                    column.setPreferredWidth(180);
+                    break;
+                case 546:
+                    column.setPreferredWidth(193);
+                    break;
+                case 547:
+                    column.setPreferredWidth(174);
+                    break;
+                case 548:
+                    column.setPreferredWidth(145);
+                    break;
+                case 549:
+                    column.setPreferredWidth(169);
+                    break;
+                case 550:
+                    column.setPreferredWidth(162);
+                    break;
+                case 551:
+                    column.setPreferredWidth(86);
+                    break;
+                case 552:
+                    column.setPreferredWidth(156);
+                    break;
+                case 553:
+                    column.setPreferredWidth(95);
+                    break;
+                case 554:
+                    column.setPreferredWidth(132);
+                    break;
+                case 555:
+                    column.setPreferredWidth(119);
+                    break;
+                case 556:
+                    column.setPreferredWidth(133);
+                    break;
+                case 557:
+                    column.setPreferredWidth(180);
+                    break;
+                case 558:
+                    column.setPreferredWidth(133);
+                    break;
+                case 559:
+                    column.setPreferredWidth(129);
+                    break;
+                case 560:
+                    column.setPreferredWidth(144);
+                    break;
+                case 561:
+                    column.setPreferredWidth(142);
+                    break;
+                case 562:
+                    column.setPreferredWidth(160);
+                    break;
+                case 563:
+                    column.setPreferredWidth(140);
+                    break;
+                case 564:
+                    column.setPreferredWidth(141);
+                    break;
+                case 565:
+                    column.setPreferredWidth(144);
+                    break;
+                case 566:
+                    column.setPreferredWidth(127);
+                    break;
+                case 567:
+                    column.setPreferredWidth(141);
+                    break;
+                case 568:
+                    column.setPreferredWidth(119);
+                    break;
+                case 569:
+                    column.setPreferredWidth(122);
+                    break;
+                case 570:
+                    column.setPreferredWidth(137);
+                    break;
+                case 571:
+                    column.setPreferredWidth(128);
+                    break;
+                case 572:
+                    column.setPreferredWidth(129);
+                    break;
+                case 573:
+                    column.setPreferredWidth(110);
+                    break;
+                case 574:
+                    column.setPreferredWidth(73);
+                    break;
+                case 575:
+                    column.setPreferredWidth(77);
+                    break;
+                case 576:
+                    column.setPreferredWidth(104);
+                    break;
+                case 577:
+                    column.setPreferredWidth(162);
+                    break;
+                case 578:
+                    column.setPreferredWidth(163);
+                    break;
+                case 579:
+                    column.setPreferredWidth(124);
+                    break;
+                case 580:
+                    column.setPreferredWidth(132);
+                    break;
+                case 581:
+                    column.setPreferredWidth(220);
+                    break;
+                case 582:
+                    column.setPreferredWidth(103);
+                    break;
+                case 583:
+                    column.setPreferredWidth(135);
+                    break;
+                case 584:
+                    column.setPreferredWidth(190);
+                    break;
+                case 585:
+                    column.setPreferredWidth(101);
+                    break;
+                case 586:
+                    column.setPreferredWidth(163);
+                    break;
+                case 587:
+                    column.setPreferredWidth(96);
+                    break;
+                case 588:
+                    column.setPreferredWidth(154);
+                    break;
+                case 589:
+                    column.setPreferredWidth(95);
+                    break;
+                case 590:
+                    column.setPreferredWidth(83);
+                    break;
+                case 591:
+                    column.setPreferredWidth(111);
+                    break;
+                case 592:
+                    column.setPreferredWidth(96);
+                    break;
+                case 593:
+                    column.setPreferredWidth(83);
+                    break;
+                case 594:
+                    column.setPreferredWidth(146);
+                    break;
+                case 595:
+                    column.setPreferredWidth(138);
+                    break;
+                case 596:
+                    column.setPreferredWidth(114);
+                    break;
+                case 597:
+                    column.setPreferredWidth(125);
+                    break;
+                case 598:
+                    column.setPreferredWidth(134);
+                    break;
+                case 599:
+                    column.setPreferredWidth(138);
+                    break;
+                case 600:
+                    column.setPreferredWidth(144);
+                    break;
+                case 601:
+                    column.setPreferredWidth(140);
+                    break;
+                case 602:
+                    column.setPreferredWidth(81);
+                    break;
+                case 603:
+                    column.setPreferredWidth(105);
+                    break;
+                case 604:
+                    column.setPreferredWidth(88);
+                    break;
+                case 605:
+                    column.setPreferredWidth(97);
+                    break;
+                case 606:
+                    column.setPreferredWidth(149);
+                    break;
+                case 607:
+                    column.setPreferredWidth(86);
+                    break;
+                case 608:
+                    column.setPreferredWidth(128);
+                    break;
+                case 609:
+                    column.setPreferredWidth(153);
+                    break;
+                case 610:
+                    column.setPreferredWidth(150);
+                    break;
+                case 611:
+                    column.setPreferredWidth(90);
+                    break;
+                case 612:
+                    column.setPreferredWidth(142);
+                    break;
+                case 613:
+                    column.setPreferredWidth(139);
+                    break;
+                case 614:
+                    column.setPreferredWidth(146);
+                    break;
+                case 615:
+                    column.setPreferredWidth(181);
+                    break;
+                case 616:
+                    column.setPreferredWidth(185);
+                    break;
+                case 617:
+                    column.setPreferredWidth(116);
+                    break;
+                case 618:
+                    column.setPreferredWidth(121);
+                    break;
+                case 619:
+                    column.setPreferredWidth(132);
+                    break;
+                case 620:
+                    column.setPreferredWidth(118);
+                    break;
+                case 621:
+                    column.setPreferredWidth(177);
+                    break;
+                case 622:
+                    column.setPreferredWidth(134);
+                    break;
+                case 623:
+                    column.setPreferredWidth(79);
+                    break;
+                case 624:
+                    column.setPreferredWidth(97);
+                    break;
+                case 625:
+                    column.setPreferredWidth(98);
+                    break;
+                case 626:
+                    column.setPreferredWidth(127);
+                    break;
+                case 627:
+                    column.setPreferredWidth(99);
+                    break;
+                case 628:
+                    column.setPreferredWidth(113);
+                    break;
+                case 629:
+                    column.setPreferredWidth(136);
+                    break;
+                case 630:
+                    column.setPreferredWidth(144);
+                    break;
+                case 631:
+                    column.setPreferredWidth(189);
+                    break;
+                case 632:
+                    column.setPreferredWidth(187);
+                    break;
+                case 633:
+                    column.setPreferredWidth(180);
+                    break;
+                case 634:
+                    column.setPreferredWidth(183);
+                    break;
+                case 635:
+                    column.setPreferredWidth(176);
+                    break;
+                case 636:
+                    column.setPreferredWidth(169);
+                    break;
+                case 637:
+                    column.setPreferredWidth(205);
+                    break;
+                case 638:
+                    column.setPreferredWidth(172);
+                    break;
+                case 639:
+                    column.setPreferredWidth(175);
+                    break;
+                case 640:
+                    column.setPreferredWidth(170);
+                    break;
+                case 641:
+                    column.setPreferredWidth(178);
+                    break;
+                case 642:
+                    column.setPreferredWidth(157);
+                    break;
+                case 643:
+                    column.setPreferredWidth(142);
+                    break;
+                case 644:
+                    column.setPreferredWidth(185);
+                    break;
+                case 645:
+                    column.setPreferredWidth(174);
+                    break;
+                case 646:
+                    column.setPreferredWidth(181);
+                    break;
+                case 647:
+                    column.setPreferredWidth(214);
+                    break;
+                case 648:
+                    column.setPreferredWidth(102);
+                    break;
+                case 649:
+                    column.setPreferredWidth(154);
+                    break;
+                case 650:
+                    column.setPreferredWidth(116);
+                    break;
+                case 651:
+                    column.setPreferredWidth(124);
+                    break;
+                case 652:
+                    column.setPreferredWidth(138);
+                    break;
+                case 653:
+                    column.setPreferredWidth(124);
+                    break;
+                case 654:
+                    column.setPreferredWidth(186);
+                    break;
+                case 655:
+                    column.setPreferredWidth(174);
+                    break;
+                case 656:
+                    column.setPreferredWidth(119);
+                    break;
+                case 657:
+                    column.setPreferredWidth(80);
+                    break;
+                case 658:
+                    column.setPreferredWidth(122);
+                    break;
+                case 659:
+                    column.setPreferredWidth(143);
+                    break;
+                case 660:
+                    column.setPreferredWidth(131);
+                    break;
+                case 661:
+                    column.setPreferredWidth(134);
+                    break;
+                case 662:
+                    column.setPreferredWidth(156);
+                    break;
+                case 663:
+                    column.setPreferredWidth(121);
+                    break;
+                case 664:
+                    column.setPreferredWidth(103);
+                    break;
+                case 665:
+                    column.setPreferredWidth(164);
+                    break;
+                default:
+                    column.setPreferredWidth(130);
+                    break;
             }
         }
         tbUser.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1710,7 +2312,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -2371,7 +2974,54 @@ public class DlgUser extends javax.swing.JDialog {
                     "penilaian_awal_keperawatan_gigi='"+tbUser.getValueAt(i,615).toString()+"',"+
                     "master_masalah_keperawatan_gigi='"+tbUser.getValueAt(i,616).toString()+"',"+
                     "toko_bayar_piutang='"+tbUser.getValueAt(i,617).toString()+"',"+
-                    "toko_piutang_harian='"+tbUser.getValueAt(i,618).toString()+"'");
+                    "toko_piutang_harian='"+tbUser.getValueAt(i,618).toString()+"',"+
+                    "toko_penjualan_harian='"+tbUser.getValueAt(i,619).toString()+"',"+
+                    "deteksi_corona='"+tbUser.getValueAt(i,620).toString()+"',"+
+                    "penilaian_awal_keperawatan_kebidanan='"+tbUser.getValueAt(i,621).toString()+"',"+
+                    "pengumuman_epasien='"+tbUser.getValueAt(i,622).toString()+"',"+
+                    "surat_hamil='"+tbUser.getValueAt(i,623).toString()+"',"+
+                    "set_tarif_online='"+tbUser.getValueAt(i,624).toString()+"',"+
+                    "booking_periksa='"+tbUser.getValueAt(i,625).toString()+"',"+
+                    "toko_sirkulasi='"+tbUser.getValueAt(i,626).toString()+"',"+
+                    "toko_retur_jual='"+tbUser.getValueAt(i,627).toString()+"',"+
+                    "toko_retur_piutang='"+tbUser.getValueAt(i,628).toString()+"',"+
+                    "toko_sirkulasi2='"+tbUser.getValueAt(i,629).toString()+"',"+
+                    "toko_keuntungan_barang='"+tbUser.getValueAt(i,630).toString()+"',"+
+                    "zis_pengeluaran_penerima_dankes='"+tbUser.getValueAt(i,631).toString()+"',"+
+                    "zis_penghasilan_penerima_dankes='"+tbUser.getValueAt(i,632).toString()+"',"+
+                    "zis_ukuran_rumah_penerima_dankes='"+tbUser.getValueAt(i,633).toString()+"',"+
+                    "zis_dinding_rumah_penerima_dankes='"+tbUser.getValueAt(i,634).toString()+"',"+
+                    "zis_lantai_rumah_penerima_dankes='"+tbUser.getValueAt(i,635).toString()+"',"+
+                    "zis_atap_rumah_penerima_dankes='"+tbUser.getValueAt(i,636).toString()+"',"+
+                    "zis_kepemilikan_rumah_penerima_dankes='"+tbUser.getValueAt(i,637).toString()+"',"+
+                    "zis_kamar_mandi_penerima_dankes='"+tbUser.getValueAt(i,638).toString()+"',"+
+                    "zis_dapur_rumah_penerima_dankes='"+tbUser.getValueAt(i,639).toString()+"',"+
+                    "zis_kursi_rumah_penerima_dankes='"+tbUser.getValueAt(i,640).toString()+"',"+
+                    "zis_kategori_phbs_penerima_dankes='"+tbUser.getValueAt(i,641).toString()+"',"+
+                    "zis_elektronik_penerima_dankes='"+tbUser.getValueAt(i,642).toString()+"',"+
+                    "zis_ternak_penerima_dankes='"+tbUser.getValueAt(i,643).toString()+"',"+
+                    "zis_jenis_simpanan_penerima_dankes='"+tbUser.getValueAt(i,644).toString()+"',"+
+                    "penilaian_awal_keperawatan_anak='"+tbUser.getValueAt(i,645).toString()+"',"+
+                    "zis_kategori_asnaf_penerima_dankes='"+tbUser.getValueAt(i,646).toString()+"',"+
+                    "master_masalah_keperawatan_anak='"+tbUser.getValueAt(i,647).toString()+"',"+
+                    "master_imunisasi='"+tbUser.getValueAt(i,648).toString()+"',"+
+                    "zis_patologis_penerima_dankes='"+tbUser.getValueAt(i,649).toString()+"',"+
+                    "pcare_cek_kartu='"+tbUser.getValueAt(i,650).toString()+"',"+
+                    "surat_bebas_narkoba='"+tbUser.getValueAt(i,651).toString()+"',"+
+                    "surat_keterangan_covid='"+tbUser.getValueAt(i,652).toString()+"',"+
+                    "pemakaian_air_tanah='"+tbUser.getValueAt(i,653).toString()+"',"+
+                    "grafik_air_tanah_pertanggal='"+tbUser.getValueAt(i,654).toString()+"',"+
+                    "grafik_air_tanah_perbulan='"+tbUser.getValueAt(i,655).toString()+"',"+
+                    "lama_pelayanan_poli='"+tbUser.getValueAt(i,656).toString()+"',"+
+                    "hemodialisa='"+tbUser.getValueAt(i,657).toString()+"',"+
+                    "laporan_tahunan_irj='"+tbUser.getValueAt(i,658).toString()+"',"+
+                    "grafik_harian_hemodialisa='"+tbUser.getValueAt(i,659).toString()+"',"+
+                    "grafik_bulanan_hemodialisa='"+tbUser.getValueAt(i,660).toString()+"',"+
+                    "grafik_tahunan_hemodialisa='"+tbUser.getValueAt(i,661).toString()+"',"+
+                    "grafik_bulanan_meninggal='"+tbUser.getValueAt(i,662).toString()+"',"+
+                    "perbaikan_inventaris='"+tbUser.getValueAt(i,663).toString()+"',"+
+                    "surat_cuti_hamil='"+tbUser.getValueAt(i,664).toString()+"',"+
+                    "permintaan_stok_obat_pasien='"+tbUser.getValueAt(i,665).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3071,7 +3721,54 @@ public class DlgUser extends javax.swing.JDialog {
                                     "penilaian_awal_keperawatan_gigi='"+tbUser.getValueAt(barisdicopy,615).toString()+"',"+
                                     "master_masalah_keperawatan_gigi='"+tbUser.getValueAt(barisdicopy,616).toString()+"',"+
                                     "toko_bayar_piutang='"+tbUser.getValueAt(barisdicopy,617).toString()+"',"+
-                                    "toko_piutang_harian='"+tbUser.getValueAt(barisdicopy,618).toString()+"'");
+                                    "toko_piutang_harian='"+tbUser.getValueAt(barisdicopy,618).toString()+"',"+
+                                    "toko_penjualan_harian='"+tbUser.getValueAt(barisdicopy,619).toString()+"',"+
+                                    "deteksi_corona='"+tbUser.getValueAt(barisdicopy,620).toString()+"',"+
+                                    "penilaian_awal_keperawatan_kebidanan='"+tbUser.getValueAt(barisdicopy,621).toString()+"',"+
+                                    "pengumuman_epasien='"+tbUser.getValueAt(barisdicopy,622).toString()+"',"+
+                                    "surat_hamil='"+tbUser.getValueAt(barisdicopy,623).toString()+"',"+
+                                    "set_tarif_online='"+tbUser.getValueAt(barisdicopy,624).toString()+"',"+
+                                    "booking_periksa='"+tbUser.getValueAt(barisdicopy,625).toString()+"',"+
+                                    "toko_sirkulasi='"+tbUser.getValueAt(barisdicopy,626).toString()+"',"+
+                                    "toko_retur_jual='"+tbUser.getValueAt(barisdicopy,627).toString()+"',"+
+                                    "toko_retur_piutang='"+tbUser.getValueAt(barisdicopy,628).toString()+"',"+
+                                    "toko_sirkulasi2='"+tbUser.getValueAt(barisdicopy,629).toString()+"',"+
+                                    "toko_keuntungan_barang='"+tbUser.getValueAt(barisdicopy,630).toString()+"',"+
+                                    "zis_pengeluaran_penerima_dankes='"+tbUser.getValueAt(barisdicopy,631).toString()+"',"+
+                                    "zis_penghasilan_penerima_dankes='"+tbUser.getValueAt(barisdicopy,632).toString()+"',"+
+                                    "zis_ukuran_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,633).toString()+"',"+
+                                    "zis_dinding_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,634).toString()+"',"+
+                                    "zis_lantai_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,635).toString()+"',"+
+                                    "zis_atap_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,636).toString()+"',"+
+                                    "zis_kepemilikan_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,637).toString()+"',"+
+                                    "zis_kamar_mandi_penerima_dankes='"+tbUser.getValueAt(barisdicopy,638).toString()+"',"+
+                                    "zis_dapur_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,639).toString()+"',"+
+                                    "zis_kursi_rumah_penerima_dankes='"+tbUser.getValueAt(barisdicopy,640).toString()+"',"+
+                                    "zis_kategori_phbs_penerima_dankes='"+tbUser.getValueAt(barisdicopy,641).toString()+"',"+
+                                    "zis_elektronik_penerima_dankes='"+tbUser.getValueAt(barisdicopy,642).toString()+"',"+
+                                    "zis_ternak_penerima_dankes='"+tbUser.getValueAt(barisdicopy,643).toString()+"',"+
+                                    "zis_jenis_simpanan_penerima_dankes='"+tbUser.getValueAt(barisdicopy,644).toString()+"',"+
+                                    "penilaian_awal_keperawatan_anak='"+tbUser.getValueAt(barisdicopy,645).toString()+"',"+
+                                    "zis_kategori_asnaf_penerima_dankes='"+tbUser.getValueAt(barisdicopy,646).toString()+"',"+
+                                    "master_masalah_keperawatan_anak='"+tbUser.getValueAt(barisdicopy,647).toString()+"',"+
+                                    "master_imunisasi='"+tbUser.getValueAt(barisdicopy,648).toString()+"',"+
+                                    "zis_patologis_penerima_dankes='"+tbUser.getValueAt(barisdicopy,649).toString()+"',"+
+                                    "pcare_cek_kartu='"+tbUser.getValueAt(barisdicopy,650).toString()+"',"+
+                                    "surat_bebas_narkoba='"+tbUser.getValueAt(barisdicopy,651).toString()+"',"+
+                                    "surat_keterangan_covid='"+tbUser.getValueAt(barisdicopy,652).toString()+"',"+
+                                    "pemakaian_air_tanah='"+tbUser.getValueAt(barisdicopy,653).toString()+"',"+
+                                    "grafik_air_tanah_pertanggal='"+tbUser.getValueAt(barisdicopy,654).toString()+"',"+
+                                    "grafik_air_tanah_perbulan='"+tbUser.getValueAt(barisdicopy,655).toString()+"',"+
+                                    "lama_pelayanan_poli='"+tbUser.getValueAt(barisdicopy,656).toString()+"',"+
+                                    "hemodialisa='"+tbUser.getValueAt(barisdicopy,657).toString()+"',"+
+                                    "laporan_tahunan_irj='"+tbUser.getValueAt(barisdicopy,658).toString()+"',"+
+                                    "grafik_harian_hemodialisa='"+tbUser.getValueAt(barisdicopy,659).toString()+"',"+
+                                    "grafik_bulanan_hemodialisa='"+tbUser.getValueAt(barisdicopy,660).toString()+"',"+
+                                    "grafik_tahunan_hemodialisa='"+tbUser.getValueAt(barisdicopy,661).toString()+"',"+
+                                    "grafik_bulanan_meninggal='"+tbUser.getValueAt(barisdicopy,662).toString()+"',"+
+                                    "perbaikan_inventaris='"+tbUser.getValueAt(barisdicopy,663).toString()+"',"+
+                                    "surat_cuti_hamil='"+tbUser.getValueAt(barisdicopy,664).toString()+"',"+
+                                    "permintaan_stok_obat_pasien='"+tbUser.getValueAt(barisdicopy,665).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -3384,7 +4081,17 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "toko_pengadaan_barang,toko_hutang,toko_bayar_pemesanan,toko_member,toko_penjualan,registrasi_poli_per_tanggal,"+
                         "toko_piutang,toko_retur_beli,ipsrs_returbeli,ipsrs_riwayat_barang,pasien_corona,toko_pendapatan_harian,"+
                         "diagnosa_pasien_corona,perawatan_pasien_corona,penilaian_awal_keperawatan_gigi,master_masalah_keperawatan_gigi,"+
-                        "toko_bayar_piutang,toko_piutang_harian from user order by AES_DECRYPT(id_user,'nur')");
+                        "toko_bayar_piutang,toko_piutang_harian,toko_penjualan_harian,deteksi_corona,penilaian_awal_keperawatan_kebidanan,"+
+                        "pengumuman_epasien,surat_hamil,set_tarif_online,booking_periksa,toko_sirkulasi,toko_retur_jual,toko_retur_piutang,"+
+                        "toko_sirkulasi2,toko_keuntungan_barang,zis_pengeluaran_penerima_dankes,zis_penghasilan_penerima_dankes,"+
+                        "zis_ukuran_rumah_penerima_dankes,zis_dinding_rumah_penerima_dankes,zis_lantai_rumah_penerima_dankes,zis_atap_rumah_penerima_dankes,"+
+                        "zis_kepemilikan_rumah_penerima_dankes,zis_kamar_mandi_penerima_dankes,zis_dapur_rumah_penerima_dankes,zis_kursi_rumah_penerima_dankes,"+
+                        "zis_kategori_phbs_penerima_dankes,zis_elektronik_penerima_dankes,zis_ternak_penerima_dankes,zis_jenis_simpanan_penerima_dankes,"+
+                        "penilaian_awal_keperawatan_anak,zis_kategori_asnaf_penerima_dankes,master_masalah_keperawatan_anak,master_imunisasi,"+
+                        "zis_patologis_penerima_dankes,pcare_cek_kartu,surat_bebas_narkoba,surat_keterangan_covid,pemakaian_air_tanah,"+
+                        "grafik_air_tanah_pertanggal,grafik_air_tanah_perbulan,lama_pelayanan_poli,hemodialisa,laporan_tahunan_irj,"+
+                        "grafik_harian_hemodialisa,grafik_bulanan_hemodialisa,grafik_tahunan_hemodialisa,grafik_bulanan_meninggal,"+
+                        "perbaikan_inventaris,surat_cuti_hamil,permintaan_stok_obat_pasien from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4015,7 +4722,54 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penilaian_awal_keperawatan_gigi"),
                                rs.getBoolean("master_masalah_keperawatan_gigi"),
                                rs.getBoolean("toko_bayar_piutang"),
-                               rs.getBoolean("toko_piutang_harian")
+                               rs.getBoolean("toko_piutang_harian"),
+                               rs.getBoolean("toko_penjualan_harian"),
+                               rs.getBoolean("deteksi_corona"),
+                               rs.getBoolean("penilaian_awal_keperawatan_kebidanan"),
+                               rs.getBoolean("pengumuman_epasien"),
+                               rs.getBoolean("surat_hamil"),
+                               rs.getBoolean("set_tarif_online"),
+                               rs.getBoolean("booking_periksa"),
+                               rs.getBoolean("toko_sirkulasi"),
+                               rs.getBoolean("toko_retur_jual"),
+                               rs.getBoolean("toko_retur_piutang"),
+                               rs.getBoolean("toko_sirkulasi2"),
+                               rs.getBoolean("toko_keuntungan_barang"),
+                               rs.getBoolean("zis_pengeluaran_penerima_dankes"),
+                               rs.getBoolean("zis_penghasilan_penerima_dankes"),
+                               rs.getBoolean("zis_ukuran_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_dinding_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_lantai_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_atap_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_kepemilikan_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_kamar_mandi_penerima_dankes"),
+                               rs.getBoolean("zis_dapur_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_kursi_rumah_penerima_dankes"),
+                               rs.getBoolean("zis_kategori_phbs_penerima_dankes"),
+                               rs.getBoolean("zis_elektronik_penerima_dankes"),
+                               rs.getBoolean("zis_ternak_penerima_dankes"),
+                               rs.getBoolean("zis_jenis_simpanan_penerima_dankes"),
+                               rs.getBoolean("penilaian_awal_keperawatan_anak"),
+                               rs.getBoolean("zis_kategori_asnaf_penerima_dankes"),
+                               rs.getBoolean("master_masalah_keperawatan_anak"),
+                               rs.getBoolean("master_imunisasi"),
+                               rs.getBoolean("zis_patologis_penerima_dankes"),
+                               rs.getBoolean("pcare_cek_kartu"),
+                               rs.getBoolean("surat_bebas_narkoba"),
+                               rs.getBoolean("surat_keterangan_covid"),
+                               rs.getBoolean("pemakaian_air_tanah"),
+                               rs.getBoolean("grafik_air_tanah_pertanggal"),
+                               rs.getBoolean("grafik_air_tanah_perbulan"),
+                               rs.getBoolean("lama_pelayanan_poli"),
+                               rs.getBoolean("hemodialisa"),
+                               rs.getBoolean("laporan_tahunan_irj"),
+                               rs.getBoolean("grafik_harian_hemodialisa"),
+                               rs.getBoolean("grafik_bulanan_hemodialisa"),
+                               rs.getBoolean("grafik_tahunan_hemodialisa"),
+                               rs.getBoolean("grafik_bulanan_meninggal"),
+                               rs.getBoolean("perbaikan_inventaris"),
+                               rs.getBoolean("surat_cuti_hamil"),
+                               rs.getBoolean("permintaan_stok_obat_pasien")
                             });
                         }   
                     } catch (Exception e) {
@@ -4635,7 +5389,54 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penilaian_awal_keperawatan_gigi"),
                            rs.getBoolean("master_masalah_keperawatan_gigi"),
                            rs.getBoolean("toko_bayar_piutang"),
-                           rs.getBoolean("toko_piutang_harian")
+                           rs.getBoolean("toko_piutang_harian"),
+                           rs.getBoolean("toko_penjualan_harian"),
+                           rs.getBoolean("deteksi_corona"),
+                           rs.getBoolean("penilaian_awal_keperawatan_kebidanan"),
+                           rs.getBoolean("pengumuman_epasien"),
+                           rs.getBoolean("surat_hamil"),
+                           rs.getBoolean("set_tarif_online"),
+                           rs.getBoolean("booking_periksa"),
+                           rs.getBoolean("toko_sirkulasi"),
+                           rs.getBoolean("toko_retur_jual"),
+                           rs.getBoolean("toko_retur_piutang"),
+                           rs.getBoolean("toko_sirkulasi2"),
+                           rs.getBoolean("toko_keuntungan_barang"),
+                           rs.getBoolean("zis_pengeluaran_penerima_dankes"),
+                           rs.getBoolean("zis_penghasilan_penerima_dankes"),
+                           rs.getBoolean("zis_ukuran_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_dinding_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_lantai_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_atap_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_kepemilikan_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_kamar_mandi_penerima_dankes"),
+                           rs.getBoolean("zis_dapur_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_kursi_rumah_penerima_dankes"),
+                           rs.getBoolean("zis_kategori_phbs_penerima_dankes"),
+                           rs.getBoolean("zis_elektronik_penerima_dankes"),
+                           rs.getBoolean("zis_ternak_penerima_dankes"),
+                           rs.getBoolean("zis_jenis_simpanan_penerima_dankes"),
+                           rs.getBoolean("penilaian_awal_keperawatan_anak"),
+                           rs.getBoolean("zis_kategori_asnaf_penerima_dankes"),
+                           rs.getBoolean("master_masalah_keperawatan_anak"),
+                           rs.getBoolean("master_imunisasi"),
+                           rs.getBoolean("zis_patologis_penerima_dankes"),
+                           rs.getBoolean("pcare_cek_kartu"),
+                           rs.getBoolean("surat_bebas_narkoba"),
+                           rs.getBoolean("surat_keterangan_covid"),
+                           rs.getBoolean("pemakaian_air_tanah"),
+                           rs.getBoolean("grafik_air_tanah_pertanggal"),
+                           rs.getBoolean("grafik_air_tanah_perbulan"),
+                           rs.getBoolean("lama_pelayanan_poli"),
+                           rs.getBoolean("hemodialisa"),
+                           rs.getBoolean("laporan_tahunan_irj"),
+                           rs.getBoolean("grafik_harian_hemodialisa"),
+                           rs.getBoolean("grafik_bulanan_hemodialisa"),
+                           rs.getBoolean("grafik_tahunan_hemodialisa"),
+                           rs.getBoolean("grafik_bulanan_meninggal"),
+                           rs.getBoolean("perbaikan_inventaris"),
+                           rs.getBoolean("surat_cuti_hamil"),
+                           rs.getBoolean("permintaan_stok_obat_pasien")
                         });
                     }                                             
                  }

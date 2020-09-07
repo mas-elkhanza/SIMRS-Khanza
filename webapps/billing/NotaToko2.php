@@ -116,57 +116,54 @@
                      </td>
                  </tr>
                  <tr class='isi14'>
-                       <td colspan=4 height='100%' valign=top>
-                            <table width=100% cellpadding='0' cellspacing='0'>
-                               <tr class=isi>
-                                   <td width='5%' align=center><font color='000000' size='2'  face='Tahoma'>No</font></td>
-                                   <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Jml</font></td>
-                                   <td width='55%' align=center><font color='000000' size='2'  face='Tahoma'>Nama Barang</font></td>
-                                   <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Total</font></td>
-                               </tr>";
-                                      $ttlpesan=0;
-                                      $i=1;
-                                      while($barispesan = mysqli_fetch_array($hasil)) { 
-                                          $ttlpesan=$ttlpesan+$barispesan["total"];
-                                          echo "
-                                            <tr class='isi'>
-                                                <td><font color='000000' size='2'  face='Tahoma'>$i</font></td>
-                                                <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["jumlah"]." ".$barispesan["satuan"]."</font></td>
-                                                <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["nama_brng"]."</font></td>
-                                                <td align=right><font color='000000' size='2'  face='Tahoma'>".formatDuit2($barispesan["total"])."</font></td>
-                                           </tr>";$i++;
-                                      }    
-                             echo " <tr class='isi14'>
-                                      <td colspan=2></td>
-                                      <td align='right'><font color='000000' size='2'  face='Tahoma'>Jumlah Total</font></td>
-                                      <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ttlpesan)."</font></td>
-                                      <td></td>
-                                    </tr>  
-                                    <tr class='isi14'>
-                                      <td colspan=2></td>
-                                      <td align='right'><font color='000000' size='2'  face='Tahoma'>PPN</font></td>
-                                      <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($besarppn)."</font></td>
-                                      <td></td>
-                                    </tr>  
-                                    <tr class='isi14'>
-                                      <td colspan=2></td>
-                                      <td align='right'><font color='000000' size='2'  face='Tahoma'>Ongkir</font></td>
-                                      <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ongkir)."</font></td>
-                                      <td></td>
-                                    </tr>  
-                                    <tr class='isi14'>
-                                      <td colspan=2></td>
-                                      <td align='right'><font color='000000' size='2'  face='Tahoma'>Jumlah Total+Ongkir+PPN</font></td>
-                                      <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ttlpesan+$besarppn)."</font></td>
-                                      <td></td>
-                                    </tr>  
-                          </table>
-                      </td>
-                    </tr>
-                 </table>";
-            
-        
+                   <td colspan=4 height='100%' valign=top>
+                        <table width=100% cellpadding='0' cellspacing='0'>
+                           <tr class=isi>
+                               <td width='5%' align=center><font color='000000' size='2'  face='Tahoma'>No</font></td>
+                               <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Jml</font></td>
+                               <td width='55%' align=center><font color='000000' size='2'  face='Tahoma'>Nama Barang</font></td>
+                               <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Total</font></td>
+                           </tr>";
+                                  $ttlpesan=0;
+                                  $i=1;
+                                  while($barispesan = mysqli_fetch_array($hasil)) { 
+                                      $ttlpesan=$ttlpesan+$barispesan["total"];
+                                      echo "
+                                        <tr class='isi'>
+                                            <td><font color='000000' size='2'  face='Tahoma'>$i</font></td>
+                                            <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["jumlah"]." ".$barispesan["satuan"]."</font></td>
+                                            <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["nama_brng"]."</font></td>
+                                            <td align=right><font color='000000' size='2'  face='Tahoma'>".formatDuit2($barispesan["total"])."</font></td>
+                                       </tr>";$i++;
+                                  }    
+                         echo " <tr class='isi14'>
+                                  <td colspan=2></td>
+                                  <td align='right'><font color='000000' size='2'  face='Tahoma'>Jumlah Total</font></td>
+                                  <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ttlpesan)."</font></td>
+                                  <td></td>
+                                </tr>  
+                                <tr class='isi14'>
+                                  <td colspan=2></td>
+                                  <td align='right'><font color='000000' size='2'  face='Tahoma'>PPN</font></td>
+                                  <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($besarppn)."</font></td>
+                                  <td></td>
+                                </tr>  
+                                <tr class='isi14'>
+                                  <td colspan=2></td>
+                                  <td align='right'><font color='000000' size='2'  face='Tahoma'>Ongkir</font></td>
+                                  <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ongkir)."</font></td>
+                                  <td></td>
+                                </tr>  
+                                <tr class='isi14'>
+                                  <td colspan=2></td>
+                                  <td align='right'><font color='000000' size='2'  face='Tahoma'>Jumlah Total+Ongkir+PPN</font></td>
+                                  <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ttlpesan+$besarppn)."</font></td>
+                                  <td></td>
+                                </tr>  
+                      </table>
+                  </td>
+                </tr>
+             </table>";
     ?>
-
     </body>
 </html>

@@ -18,22 +18,22 @@
     <title>Layar Informasi RSIA</title>
 
     <!-- Meta START -->
-    <link rel="icon" href="asset/img/rs.png" type="image/x-icon">
+    <link rel="icon" href="assets/img/rs.png" type="image/x-icon">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <!-- Meta END -->
 
     <!-- Global style START -->
-    <link type="text/css" rel="stylesheet" href="asset/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="asset/css/jquery-ui.css"  media="screen,projection"/>
-    <link rel="stylesheet" href="asset/css/marquee.css" />
-    <link rel="stylesheet" href="asset/css/example.css" />
-    <link rel="stylesheet" href="asset/css/ok.css" />
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/jquery-ui.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="assets/css/marquee.css" />
+    <link rel="stylesheet" href="assets/css/example.css" />
+    <link rel="stylesheet" href="assets/css/ok.css" />
     <style type="text/css">
         .bg::before {
             content: '';
-            background-image: url('./asset/img/operasi.jpg');
+            background-image: url('./assets/img/operasi.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: scroll;
@@ -159,12 +159,12 @@
 <!-- Footer END -->
 
 <!-- Javascript START -->
-<script type="text/javascript" src="asset/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="asset/js/materialize.min.js"></script>
-<script type="text/javascript" src="asset/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
-<script data-pace-options='{ "ajax": false }' src='asset/js/pace.min.js'></script>
-<script type="text/javascript" src="asset/js/marquee.js"></script>
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="assets/js/materialize.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script data-pace-options='{ "ajax": false }' src='assets/js/pace.min.js'></script>
+<script type="text/javascript" src="assets/js/marquee.js"></script>
 <script type="text/javascript">
    window.onload = function() { jam(); }
 
@@ -186,7 +186,7 @@
   }
 </script>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script> 
+<script type="text/javascript" src="assets/js/jquery.js"></script> 
 <script type="text/javascript"> 
     var auto_refresh = setInterval( function() { 
         $('#data').load('data_operasi.php').fadeIn("slow"); }, 5000); 

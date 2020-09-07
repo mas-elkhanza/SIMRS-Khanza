@@ -61,7 +61,7 @@
                         echo "<tr class='isi'>
                                 <td align='center'>
                                    <a href=?act=List2&action=HAPUS&no_urut=".$baris["no_urut"]."&file_url=".$baris["file_url"]."&tgl1=".$_GET["tgl1"]."&tgl2=".$_GET["tgl2"]."&ruang=".$_GET["ruang"]."&sttssurat=".$_GET["sttssurat"]."&sttsbalas=".$_GET["sttsbalas"]."&keyword=".$_GET["keyword"].">[Hapus]</a>
-                                   <a target=_blank href=../surat/".$baris["file_url"].">[Berkas]</a>
+                                   <a target=_blank href=../surat/pages/upload/".$baris["file_url"].">[Berkas]</a>
                                 </td>
                                 <td align='left'>".$baris["no_urut"]."</td>
                                 <td align='left'>".$baris["no_surat"]."</td>
