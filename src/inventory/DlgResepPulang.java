@@ -231,6 +231,8 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
+        jLabel9 = new widget.Label();
+        LCount2 = new widget.Label();
         jLabel8 = new widget.Label();
         LCount1 = new widget.Label();
         BtnKeluar = new widget.Button();
@@ -276,7 +278,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -374,6 +376,17 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         LCount.setPreferredSize(new java.awt.Dimension(52, 30));
         panelGlass8.add(LCount);
 
+        jLabel9.setText("Jml. Resep :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel9.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelGlass8.add(jLabel9);
+
+        LCount2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount2.setText("0");
+        LCount2.setName("LCount2"); // NOI18N
+        LCount2.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelGlass8.add(LCount2);
+
         jLabel8.setText("Jml. Total :");
         jLabel8.setName("jLabel8"); // NOI18N
         jLabel8.setPreferredSize(new java.awt.Dimension(60, 30));
@@ -470,7 +483,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                         .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(591, Short.MAX_VALUE))
         );
         panelGlass9Layout.setVerticalGroup(
             panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -812,6 +825,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox KdBarang;
     private widget.Label LCount;
     private widget.Label LCount1;
+    private widget.Label LCount2;
     private widget.TextBox NmBarang;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Satuan;
@@ -828,6 +842,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
+    private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
@@ -841,7 +856,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
      */
     public void tampil() {
         Valid.tabelKosong(tabMode);
-        try{      
+        try{     
+            int jumlahresep = 0;
+            
             ps=koneksi.prepareStatement("select resep_pulang.no_rawat,resep_pulang.tanggal,resep_pulang.jam,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien),"+
                     "concat(resep_pulang.kode_brng,' ',databarang.nama_brng),resep_pulang.jml_barang,resep_pulang.harga,resep_pulang.total,resep_pulang.aturan_pakai, "+
                     "resep_pulang.no_batch,resep_pulang.no_faktur from resep_pulang inner join reg_periksa inner join pasien inner join databarang "+
@@ -879,7 +896,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ps.setString(21,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 jumlahtotal=0;
-                double jumlahtotal_pasien = 0;
+                
                 String no_rawat = "";
                 while(rs.next()){
                     if(!no_rawat.isEmpty() && no_rawat.equals(rs.getString(1))){
@@ -890,9 +907,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         tabMode.addRow(new Object[]{
                             rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),Valid.SetAngka(rs.getDouble(6)),Valid.SetAngka(rs.getDouble(7)),Valid.SetAngka(rs.getDouble(8)),rs.getString(9),rs.getString(10),rs.getString(11)
                         });
+                        jumlahresep += 1;
                     }
                     no_rawat = rs.getString(1);
-                    jumlahtotal_pasien += rs.getDouble("total");
                     
                     jumlahtotal=jumlahtotal+rs.getDouble("total");
                 }
@@ -908,6 +925,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
             LCount.setText(""+tabMode.getRowCount());
             LCount1.setText(""+Valid.SetAngka(jumlahtotal));
+            LCount2.setText(""+ String.valueOf(jumlahresep));
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }        
