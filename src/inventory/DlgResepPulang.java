@@ -50,7 +50,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
     public DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
     private double jumlahtotal=0;
     private riwayatobat Trackobat=new riwayatobat();
-    private String aktifkanbatch="no";
+    private String aktifkanbatch="no",bangsal="",lokasistok="";
     private int i=0;
 
     /** Creates new form DlgResepObat 
@@ -670,6 +670,19 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
         }else{
+            bangsal=Sequel.cariIsi(
+                "select bangsal.kd_bangsal from bangsal inner join kamar inner join kamar_inap "+
+                "on bangsal.kd_bangsal=kamar.kd_bangsal and kamar.kd_kamar=kamar_inap.kd_kamar "+
+                "where kamar_inap.no_rawat=? and kamar_inap.stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
+            lokasistok=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",bangsal));
+            if(lokasistok.equals("")){
+                if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                    lokasistok=bangsal;
+                }else{
+                    lokasistok=Sequel.cariIsi("select kd_bangsal from set_lokasi");
+                }
+            }
+            akses.setkdbangsal(lokasistok);
             inputresep.setNoRm(TNoRw.getText(),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
             inputresep.tampil();
             inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

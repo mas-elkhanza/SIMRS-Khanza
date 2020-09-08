@@ -1100,7 +1100,6 @@ public final class DlgResepObat extends javax.swing.JDialog {
            Sequel.meghapus("resep_obat","no_resep",NoResep.getText());
            Sequel.meghapus("resep_dokter","no_resep",NoResep.getText());
            tampil();
-           emptTeks();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 

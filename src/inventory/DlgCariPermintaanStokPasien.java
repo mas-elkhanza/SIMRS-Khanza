@@ -6,7 +6,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -102,12 +101,12 @@ public class DlgCariPermintaanStokPasien extends javax.swing.JDialog {
         panelisi1.setPreferredSize(new java.awt.Dimension(55, 55));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        ChkTanggal.setText("Tgl.Resep :");
+        ChkTanggal.setText("Tanggal :");
         ChkTanggal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setName("ChkTanggal"); // NOI18N
         ChkTanggal.setOpaque(false);
-        ChkTanggal.setPreferredSize(new java.awt.Dimension(90, 23));
+        ChkTanggal.setPreferredSize(new java.awt.Dimension(80, 23));
         ChkTanggal.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ChkTanggalItemStateChanged(evt);
