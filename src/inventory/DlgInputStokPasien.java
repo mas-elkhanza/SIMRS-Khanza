@@ -749,7 +749,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }  
                         
                         if(!nopermintaan.equals("")){
-                            Sequel.mengedit("permintaan_stok_obat_pasien","no_permintaan='"+nopermintaan+"'","tgl_validasi='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"',jam_validasi='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
+                            Sequel.mengedit("permintaan_stok_obat_pasien","no_permintaan='"+nopermintaan+"'","tgl_validasi='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"',jam_validasi='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"',status='Sudah'");
                         }
 
                         if(sukses==true){
@@ -1801,7 +1801,28 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }
                     }   
                 }
-            }           
+            } 
+            
+            ttl=0;
+            for(int r=0;r<tabMode.getRowCount();r++){ 
+                 y=0;
+                 try {
+                     y=Double.parseDouble(tabMode.getValueAt(r,0).toString())*
+                       Double.parseDouble(tabMode.getValueAt(r,7).toString());
+                 } catch (Exception e) {
+                     y=0;
+                 }
+                 tbDokter.setValueAt(y,r,9);
+                 ttl=ttl+y;
+            }
+            LTotal.setText(Valid.SetAngka(ttl));
+            ppnobat=0;
+            if(tampilkan_ppnobat_ranap.equals("Yes")){
+                 ppnobat=ttl*0.1;
+                 ttl=ttl+ppnobat;
+                 LPpn.setText(Valid.SetAngka(ppnobat));
+            }
+            LTotalTagihan.setText(Valid.SetAngka(ttl));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
