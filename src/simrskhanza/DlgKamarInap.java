@@ -11642,42 +11642,33 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private void tampil() {
         if (R1.isSelected() == true) {
             kmr = " stts_pulang='-' and reg_periksa.status_bayar like '%"
-                    + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
+                    + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' and bangsal.nm_bangsal like'%" + BangsalCari.getText() + "%' ";
             if (!BangsalCari.getText().equals("")) {
-                kmr = " stts_pulang='-' and bangsal.nm_bangsal='" + BangsalCari.getText()
-                        + "' and reg_periksa.status_bayar like '%"
-                        + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
+                kmr = kmr + " and bangsal.nm_bangsal='" + BangsalCari.getText() + "' ";
             }
         } else if (R2.isSelected() == true) {
             kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
                     + Valid.SetDateToString(DTPCari2.getDate()) + "' and reg_periksa.status_bayar like '%"
-                    + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
+                    + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' and bangsal.nm_bangsal like'%" + BangsalCari.getText() + "%' ";
             if (!BangsalCari.getText().equals("")) {
-                kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
-                        + Valid.SetDateToString(DTPCari2.getDate()) + "' and bangsal.nm_bangsal='"
-                        + BangsalCari.getText() + "' and reg_periksa.status_bayar like '%"
-                        + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
+                kmr = kmr + " and bangsal.nm_bangsal='" + BangsalCari.getText() + "' ";
             }
         } else if (R3.isSelected() == true) {
             kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
                     + Valid.SetDateToString(DTPCari4.getDate()) + "' and reg_periksa.status_bayar like '%"
                     + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
-                    + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' ";
+                    + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' and bangsal.nm_bangsal like'%" + BangsalCari.getText() + "%' ";
             if (!BangsalCari.getText().equals("")) {
-                kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
-                        + Valid.SetDateToString(DTPCari4.getDate()) + "' and bangsal.nm_bangsal='"
-                        + BangsalCari.getText() + "' and reg_periksa.status_bayar like '%"
-                        + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
-                        + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' ";
+                kmr = kmr + " and bangsal.nm_bangsal='" + BangsalCari.getText() + "' ";
             }
         }
 
         key = kmr + " ";
         if (!TCari.getText().equals("")) {
-            key = kmr + "and kamar_inap.no_rawat like '%" + TCari.getText().trim() + "%' or " + kmr
-                    + "and reg_periksa.no_rkm_medis like '%" + TCari.getText().trim() + "%' or " + kmr
-                    + "and pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or " + kmr
-                    + "and concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like '%" + TCari.getText().trim() + "%' or " + kmr
+            key = kmr + "and kamar_inap.no_rawat like '%" + TCari.getText().trim() + "%' or "
+                    + kmr + "and reg_periksa.no_rkm_medis like '%" + TCari.getText().trim() + "%' or "
+                    + kmr + "and pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
+                    + kmr + "and concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like '%" + TCari.getText().trim() + "%' or " + kmr
                     + "and kamar_inap.kd_kamar like '%" + TCari.getText().trim() + "%' or " + kmr
                     + "and bangsal.nm_bangsal like '%" + TCari.getText().trim() + "%' or " + kmr
                     + "and kamar_inap.diagnosa_awal like '%" + TCari.getText().trim() + "%' or " + kmr
@@ -11765,34 +11756,25 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void tampilBaby() {
         if (R1.isSelected() == true) {
+//            kmr = " stts_pulang='-' and reg_periksa.status_bayar like '%"
+//                    + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' and bangsal.nm_bangsal like'%" + BangsalCari.getText() + "%' ";
+
             kmr = " stts_pulang='-' and reg_periksa.status_bayar like '%"
-                    + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
-            if (!BangsalCari.getText().equals("")) {
-                kmr = " stts_pulang='-' and bangsal.kd_bangsal='B0063' and reg_periksa.status_bayar like '%"
-                        + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
-            }
+                    + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' and bangsal.kd_bangsal like'%B0063%' "; //" and bangsal.kd_bangsal='B0063' ";
+
         } else if (R2.isSelected() == true) {
+//           
             kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
                     + Valid.SetDateToString(DTPCari2.getDate()) + "' and reg_periksa.status_bayar like '%"
-                    + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
-            if (!BangsalCari.getText().equals("")) {
-                kmr = " kamar_inap.tgl_masuk between '" + Valid.SetDateToString(DTPCari1.getDate()) + "' and '"
-                        + Valid.SetDateToString(DTPCari2.getDate()) + "' and bangsal.kd_bangsal='B0063'"
-                        + " and reg_periksa.status_bayar like '%"
-                        + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' ";
-            }
+                    + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "") + "%' and bangsal.kd_bangsal like'%B0063%' ";// + " and bangsal.kd_bangsal='B0063' ";
+
         } else if (R3.isSelected() == true) {
+//          
             kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
                     + Valid.SetDateToString(DTPCari4.getDate()) + "' and reg_periksa.status_bayar like '%"
                     + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
-                    + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' ";
-            if (!BangsalCari.getText().equals("")) {
-                kmr = " kamar_inap.tgl_keluar between '" + Valid.SetDateToString(DTPCari3.getDate()) + "' and '"
-                        + Valid.SetDateToString(DTPCari4.getDate()) + "' and bangsal.kd_bangsal='B0063'"
-                        + " and reg_periksa.status_bayar like '%"
-                        + cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua", "")
-                        + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' ";
-            }
+                    + "%' and kamar_inap.stts_pulang not like '%Pindah Kamar%' and bangsal.kd_bangsal like'%B0063%' ";// + " and bangsal.kd_bangsal='B0063' ";
+
         }
 
         key = kmr + " ";
@@ -11884,6 +11866,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             System.out.println("Notifikasi : " + e);
         }
         LCount.setText("" + tabMode.getRowCount());
+        System.out.println("Kamar Baby=" + kmr);
     }
 
     private void tampilCoder() {
