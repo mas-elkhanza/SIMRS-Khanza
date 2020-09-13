@@ -45,6 +45,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private String lokasi="",tglopname="";
+    private String qrystok="",aktifkanbatch="no";
 
     /** 
      * @param parent
@@ -174,6 +175,11 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         });
         
         
+        try {
+            aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
+        } catch (Exception e) {
+            aktifkanbatch = "no";
+        }
     }    
     /** This method is called from within the constructor to
      * initialize the form.
@@ -841,7 +847,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
                 ps.setString(5,"%"+nmbar.getText()+"%");
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();            
+                rs=ps.executeQuery();    
+                
+                if(aktifkanbatch.equals("yes")){
+                    qrystok="select sum(stok),(sum(stok)*dasar) as aset "+
+                            "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                            "where gudangbarang.kode_brng=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
+                }else{
+                    qrystok="select sum(stok),(sum(stok)*dasar) as aset "+
+                            "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                            "where gudangbarang.kode_brng=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
+                }
                 while(rs.next()){
                     jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;jumlahpesan=0;jumlahretbeli=0;jumlahretjual=0;
                     jumlahretpiut=0;jumlahpasin=0;stok=0;stokawal=0;jumlahutd=0;jumlahkeluar=0;jumlahrespulang=0;
@@ -852,7 +868,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"");
                     }
                     
-                    ps2=koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=?");
+                    ps2=koneksi.prepareStatement(qrystok);
                     try {
                         ps2.setString(1,rs.getString(1));
                         rs2=ps2.executeQuery();
@@ -1276,7 +1292,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
                 ps.setString(5,"%"+nmbar.getText()+"%");
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();            
+                rs=ps.executeQuery();   
+                
+                if(aktifkanbatch.equals("yes")){
+                    qrystok="select sum(stok),(sum(stok)*dasar) as aset "+
+                            "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                            "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
+                }else{
+                    qrystok="select sum(stok),(sum(stok)*dasar) as aset "+
+                            "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                            "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
+                }
+                
                 while(rs.next()){
                     jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;jumlahpesan=0;jumlahretbeli=0;
                     jumlahretjual=0;jumlahretpiut=0;jumlahpasin=0;stok=0;stokawal=0;jumlahutd=0;
@@ -1288,7 +1315,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         tglopname=Valid.SetTgl(Tgl1.getSelectedItem()+"");
                     }
 
-                    ps2=koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=? and kd_bangsal=?");
+                    ps2=koneksi.prepareStatement(qrystok);
                     try {
                         ps2.setString(1,rs.getString(1));
                         ps2.setString(2,lokasi);

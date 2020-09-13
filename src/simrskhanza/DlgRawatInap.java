@@ -13,6 +13,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import inventory.DlgCariObat2;
+import inventory.DlgCariObat3;
 import inventory.DlgCopyResep;
 import inventory.DlgPeresepanDokter;
 import inventory.DlgPermintaanStokPasien;
@@ -5089,13 +5090,21 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
             }else{
-                DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
-                dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate());
-                dlgobt.isCek();
-                dlgobt.tampil();
-                dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                dlgobt.setLocationRelativeTo(internalFrame1);
-                dlgobt.setVisible(true);
+                if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",TNoRw.getText())>0){
+                    DlgCariObat3 dlgobt=new DlgCariObat3(null,false);
+                    dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate());
+                    dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    dlgobt.setLocationRelativeTo(internalFrame1);
+                    dlgobt.setVisible(true);
+                }else{
+                    DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
+                    dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate());
+                    dlgobt.isCek();
+                    dlgobt.tampil();
+                    dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    dlgobt.setLocationRelativeTo(internalFrame1);
+                    dlgobt.setVisible(true);
+                }
             }
         }
     }//GEN-LAST:event_BtnInputObatActionPerformed
