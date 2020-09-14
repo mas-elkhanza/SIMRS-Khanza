@@ -17,10 +17,10 @@
                          <form id="cariKamar" name="frmCariOnline" method="post" action="" enctype=multipart/form-data>
                            <table width="100%" border='0' align="center">
                                <tr class="head">
-                                  <td width="15%" align="right"><label for="online">Keyword</label></td>
+                                  <td width="20%" align="right"><label for="online">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="online" type="text" id="online" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_ (Maksimal 65 karakter)" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
-                                  <td width="15%" align="left">&nbsp;<input name="BtnOnline" type=submit class="btn btn-warning" value="Cari" /></td>
+                                  <td width="60%"><input name="online" type="text" id="online" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_ (Maksimal 65 karakter)" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="19%" align="left">&nbsp;<input name="BtnOnline" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>
                          </form>

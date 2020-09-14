@@ -495,6 +495,7 @@ import grafikanalisa.GrafikTBSumberObat;
 import grafikanalisa.GrafikTBTipeDiagnosis;
 import informasi.InformasiStokDarah;
 import inventaris.AsalHibah;
+import inventaris.InventarisPemeliharaan;
 import inventaris.InventarisPerbaikan;
 import inventaris.InventarisPermintaanPerbaikan;
 import inventaris.KeslingLimbahB3Medis;
@@ -16404,6 +16405,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnPemeliharaanInventarisActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventarisPemeliharaan aplikasi=new InventarisPemeliharaan(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     /**
     * @param args the command line arguments
     */
@@ -17011,7 +17024,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
-            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien;
+            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris;
     
     public void isWall(){
         try{            
@@ -17890,6 +17903,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getperbaikan_inventaris()==true){
                 Panelmenu.add(btnPerbaikanInventaris);
+                jmlmenu++;
+            }
+            
+            if(akses.getpemeliharaan_inventaris()==true){
+                Panelmenu.add(btnPemeliharaanInventaris);
                 jmlmenu++;
             }
             
@@ -21219,6 +21237,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getperbaikan_inventaris()==true){
             Panelmenu.add(btnPerbaikanInventaris);
+            jmlmenu++;
+        }
+        
+        if(akses.getpemeliharaan_inventaris()==true){
+            Panelmenu.add(btnPemeliharaanInventaris);
             jmlmenu++;
         }
         
@@ -24837,6 +24860,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         } 
+        
+        if(akses.getpemeliharaan_inventaris()==true){
+            if(btnPemeliharaanInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPemeliharaanInventaris);
+                jmlmenu++;
+            }                
+        }
         
         if(akses.getpengajuan_asetinventaris()==true){
             if(btnPengajuanAsetInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -30845,6 +30875,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPermintaanStokObatPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPermintaanStokObatPasienActionPerformed(evt);
+            }
+        }); 
+        
+        btnPemeliharaanInventaris = new widget.ButtonBig();
+        btnPemeliharaanInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_preferences_6586102.png"))); 
+        btnPemeliharaanInventaris.setText("Pemeliharaan Inventaris");
+        btnPemeliharaanInventaris.setIconTextGap(0);
+        btnPemeliharaanInventaris.setName("btnPemeliharaanInventaris"); 
+        btnPemeliharaanInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPemeliharaanInventaris.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPemeliharaanInventarisActionPerformed(evt);
             }
         }); 
     }
