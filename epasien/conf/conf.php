@@ -314,7 +314,7 @@
         switch($hari) {
             case "Sunday"       : $namahari="Akhad"; break;
             case "Monday"       : $namahari="Senin"; break;
-            case "Tuesday"      : $namahari="Salasa"; break;
+            case "Tuesday"      : $namahari="Selasa"; break;
             case "Wednesday"    : $namahari="Rabu"; break;
             case "Thursday"     : $namahari="Kamis"; break;
             case "Friday"       : $namahari="Jumat"; break;

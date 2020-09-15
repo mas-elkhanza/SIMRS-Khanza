@@ -17,10 +17,10 @@
                          <form id="cariKamar" name="frmCariDarah" method="post" action="" enctype=multipart/form-data>
                            <table width="100%" border='0' align="center">
                                <tr class="head">
-                                  <td width="15%" align="right"><label for="darah">Keyword</label></td>
+                                  <td width="20%" align="right"><label for="darah">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="darah" type="text" id="darah" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
-                                  <td width="15%" align="left">&nbsp;<input name="BtnDarah" type=submit class="btn btn-warning" value="Cari" /></td>
+                                  <td width="60%"><input name="darah" type="text" id="darah" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="19%" align="left">&nbsp;<input name="BtnDarah" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>
                          </form>

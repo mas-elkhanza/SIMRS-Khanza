@@ -5844,6 +5844,16 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             psanak.setString(1,tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString());
                             rs2=psanak.executeQuery();
                             if(rs2.next()){
+                                bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",kdkamar.getText()));
+                                if(bangsal.equals("")){
+                                    if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                                        akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",kdkamar.getText()));
+                                    }else{
+                                        akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
+                                    }
+                                }else{
+                                    akses.setkdbangsal(bangsal);
+                                }
                                 DlgInputStokPasien dlgrjk=new DlgInputStokPasien(null,false);
                                 dlgrjk.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 dlgrjk.setLocationRelativeTo(internalFrame1);
@@ -5869,13 +5879,23 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         System.out.println(e);
                     }
                 }else{
-                        DlgInputStokPasien dlgrjk=new DlgInputStokPasien(null,false);
-                        dlgrjk.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        dlgrjk.setLocationRelativeTo(internalFrame1);
-                        dlgrjk.isCek();
-                        dlgrjk.setNoRm(norawat.getText(),TNoRM.getText()+" "+TPasien.getText()); 
-                        dlgrjk.tampil();
-                        dlgrjk.setVisible(true);
+                    bangsal=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",kdkamar.getText()));
+                    if(bangsal.equals("")){
+                        if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                            akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",kdkamar.getText()));
+                        }else{
+                            akses.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
+                        }
+                    }else{
+                        akses.setkdbangsal(bangsal);
+                    }
+                    DlgInputStokPasien dlgrjk=new DlgInputStokPasien(null,false);
+                    dlgrjk.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    dlgrjk.setLocationRelativeTo(internalFrame1);
+                    dlgrjk.isCek();
+                    dlgrjk.setNoRm(norawat.getText(),TNoRM.getText()+" "+TPasien.getText()); 
+                    dlgrjk.tampil();
+                    dlgrjk.setVisible(true);
                         //this.dispose();
                 }
             }
