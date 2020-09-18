@@ -233,7 +233,7 @@
                                        <td colspan='2'>
                                             <center>
                                                 <a href='index.php?act=BuktiRegistrasi2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-success waves-effect'>Lapar?</a>
-                                                <a href='index.php?act=BuktiRegistrasi2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-primary waves-effect'>Bosan?</a>
+                                                <a href='index.php?act=Perpustakaan' class='btn btn-primary waves-effect'>Bosan?</a>
                                                 <a href='index.php?act=BuktiRegistrasi2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-warning waves-effect'>Detail</a>
                                                 <a href='index.php?act=CekBilling2&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryregistrasi["no_rawat"]."\"}","e")."' class='btn btn-danger waves-effect' >Billing</a>
                                             </center>
