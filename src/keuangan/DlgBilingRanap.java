@@ -719,10 +719,26 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     Resep_Pulang_Ranap=rsrekening.getString("Resep_Pulang_Ranap");
                     Kamar_Inap=rsrekening.getString("Kamar_Inap");
                     Operasi_Ranap=rsrekening.getString("Operasi_Ranap");
+                    Service_Ranap=rsrekening.getString("Service_Ranap");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rsrekening!=null){
+                    rsrekening.close();
+                }
+                if(psrekening!=null){
+                    psrekening.close();
+                }
+            }
+            
+            psrekening=koneksi.prepareStatement("select * from set_akun_ranap2");
+            try {
+                rsrekening=psrekening.executeQuery();
+                if(rsrekening.next()){
                     Harian_Ranap=rsrekening.getString("Harian_Ranap");
                     Uang_Muka_Ranap=rsrekening.getString("Uang_Muka_Ranap");
                     Piutang_Pasien_Ranap=rsrekening.getString("Piutang_Pasien_Ranap");
-                    Service_Ranap=rsrekening.getString("Service_Ranap");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);

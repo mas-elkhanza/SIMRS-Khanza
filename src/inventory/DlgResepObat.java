@@ -60,6 +60,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
     private Properties prop = new Properties();
     private DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
     private int i=0,pilihan=0,getno=0;
+    private DateFormat format=new SimpleDateFormat("yyyy-MM-dd");
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -801,7 +802,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020 00:11:20" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -815,7 +816,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-09-2020 00:11:20" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2070,10 +2071,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         TNoRw.setText(norwt);
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRm,TNoRw.getText());
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRm.getText());
-        TCari.setText(norwt);        
+        TCari.setText(norwt); 
         DTPBeri.setDate(tgl1);
-        DTPCari1.setDate(tgl1);
-        DTPCari2.setDate(tgl2);   
+        Valid.SetTgl2(DTPCari1,format.format(tgl1)+" 00:00:00");
+        Valid.SetTgl2(DTPCari2,format.format(tgl2)+" 23:59:59"); 
         cmbJam.setSelectedItem(jam);
         cmbMnt.setSelectedItem(menit);
         cmbDtk.setSelectedItem(detik);
@@ -2088,8 +2089,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRm.getText());
         TCari.setText(norwt);        
         DTPBeri.setDate(tgl1);
-        DTPCari1.setDate(tgl1);
-        DTPCari2.setDate(tgl2);   
+        Valid.SetTgl2(DTPCari1,format.format(tgl1)+" 00:00:00");
+        Valid.SetTgl2(DTPCari2,format.format(tgl2)+" 23:59:59"); 
         cmbJam.setSelectedItem(jam);
         cmbMnt.setSelectedItem(menit);
         cmbDtk.setSelectedItem(detik);

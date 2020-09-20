@@ -646,9 +646,9 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         jLabel158 = new widget.Label();
         jLabel159 = new widget.Label();
         jLabel160 = new widget.Label();
-        SG4 = new widget.ComboBox();
+        Wajah = new widget.ComboBox();
         jLabel162 = new widget.Label();
-        TotalHasil = new widget.TextBox();
+        NilaiGizi1 = new widget.TextBox();
         jSeparator11 = new javax.swing.JSeparator();
         jLabel163 = new widget.Label();
         jLabel164 = new widget.Label();
@@ -657,12 +657,12 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         jLabel167 = new widget.Label();
         jLabel168 = new widget.Label();
         jLabel169 = new widget.Label();
-        SG5 = new widget.ComboBox();
-        TotalHasil1 = new widget.TextBox();
-        TotalHasil2 = new widget.TextBox();
-        TotalHasil3 = new widget.TextBox();
+        SG4 = new widget.ComboBox();
+        NilaiGizi2 = new widget.TextBox();
+        NilaiGizi3 = new widget.TextBox();
+        NilaiGizi4 = new widget.TextBox();
         TotalHasil4 = new widget.TextBox();
-        TotalHasil5 = new widget.TextBox();
+        TotalNilaiGizi = new widget.TextBox();
         SG6 = new widget.ComboBox();
         TotalHasil6 = new widget.TextBox();
         SG7 = new widget.ComboBox();
@@ -1217,7 +1217,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2020 18:25:06" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-09-2020 06:45:53" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1943,7 +1943,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         FormInput.add(HubunganKeluarga);
         HubunganKeluarga.setBounds(249, 760, 100, 23);
 
-        TinggalDengan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Orang Tua", "Kakek / Nenek", "Keluarga Lainnya" }));
+        TinggalDengan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Orang Tua", "Kakek/Nenek", "Keluarga Lainnya" }));
         TinggalDengan.setName("TinggalDengan"); // NOI18N
         TinggalDengan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2013,7 +2013,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         FormInput.add(jLabel139);
         jLabel139.setBounds(226, 820, 140, 23);
 
-        Edukasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Orang Tua", "Keluarga, Hubungan" }));
+        Edukasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Orang Tua", "Keluarga" }));
         Edukasi.setName("Edukasi"); // NOI18N
         Edukasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2021,7 +2021,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
             }
         });
         FormInput.add(Edukasi);
-        Edukasi.setBounds(370, 820, 150, 23);
+        Edukasi.setBounds(370, 820, 110, 23);
 
         KetEdukasi.setFocusTraversalPolicyProvider(true);
         KetEdukasi.setName("KetEdukasi"); // NOI18N
@@ -2031,7 +2031,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
             }
         });
         FormInput.add(KetEdukasi);
-        KetEdukasi.setBounds(524, 820, 330, 23);
+        KetEdukasi.setBounds(484, 820, 370, 23);
 
         jLabel140.setText("Agama :");
         jLabel140.setName("jLabel140"); // NOI18N
@@ -2263,38 +2263,38 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         FormInput.add(jLabel160);
         jLabel160.setBounds(40, 1120, 610, 23);
 
-        SG4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tersenyum/tidak ada ekspresi khusus", "Terkadang meringis/menarik diri", "Sering menggetarkan dagu dan mengatupkan rahang" }));
-        SG4.setName("SG4"); // NOI18N
-        SG4.addItemListener(new java.awt.event.ItemListener() {
+        Wajah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tersenyum/tidak ada ekspresi khusus", "Terkadang meringis/menarik diri", "Sering menggetarkan dagu dan mengatupkan rahang" }));
+        Wajah.setName("Wajah"); // NOI18N
+        Wajah.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG4ItemStateChanged(evt);
+                WajahItemStateChanged(evt);
             }
         });
-        SG4.addKeyListener(new java.awt.event.KeyAdapter() {
+        Wajah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG4KeyPressed(evt);
+                WajahKeyPressed(evt);
             }
         });
-        FormInput.add(SG4);
-        SG4.setBounds(108, 1220, 310, 23);
+        FormInput.add(Wajah);
+        Wajah.setBounds(108, 1220, 310, 23);
 
         jLabel162.setText("Total Skor :");
         jLabel162.setName("jLabel162"); // NOI18N
         FormInput.add(jLabel162);
         jLabel162.setBounds(680, 1150, 90, 23);
 
-        TotalHasil.setEditable(false);
-        TotalHasil.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        TotalHasil.setText("0");
-        TotalHasil.setFocusTraversalPolicyProvider(true);
-        TotalHasil.setName("TotalHasil"); // NOI18N
-        TotalHasil.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiGizi1.setEditable(false);
+        NilaiGizi1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        NilaiGizi1.setText("0");
+        NilaiGizi1.setFocusTraversalPolicyProvider(true);
+        NilaiGizi1.setName("NilaiGizi1"); // NOI18N
+        NilaiGizi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TotalHasilKeyPressed(evt);
+                NilaiGizi1KeyPressed(evt);
             }
         });
-        FormInput.add(TotalHasil);
-        TotalHasil.setBounds(794, 1000, 60, 23);
+        FormInput.add(NilaiGizi1);
+        NilaiGizi1.setBounds(794, 1000, 60, 23);
 
         jSeparator11.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator11.setForeground(new java.awt.Color(239, 244, 234));
@@ -2340,59 +2340,59 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         FormInput.add(jLabel169);
         jLabel169.setBounds(480, 1250, 60, 23);
 
-        SG5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SG5.setName("SG5"); // NOI18N
-        SG5.addItemListener(new java.awt.event.ItemListener() {
+        SG4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SG4.setName("SG4"); // NOI18N
+        SG4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG5ItemStateChanged(evt);
+                SG4ItemStateChanged(evt);
             }
         });
-        SG5.addKeyListener(new java.awt.event.KeyAdapter() {
+        SG4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG5KeyPressed(evt);
+                SG4KeyPressed(evt);
             }
         });
-        FormInput.add(SG5);
-        SG5.setBounds(700, 1120, 80, 23);
+        FormInput.add(SG4);
+        SG4.setBounds(700, 1120, 80, 23);
 
-        TotalHasil1.setEditable(false);
-        TotalHasil1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        TotalHasil1.setText("0");
-        TotalHasil1.setFocusTraversalPolicyProvider(true);
-        TotalHasil1.setName("TotalHasil1"); // NOI18N
-        TotalHasil1.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiGizi2.setEditable(false);
+        NilaiGizi2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        NilaiGizi2.setText("0");
+        NilaiGizi2.setFocusTraversalPolicyProvider(true);
+        NilaiGizi2.setName("NilaiGizi2"); // NOI18N
+        NilaiGizi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TotalHasil1KeyPressed(evt);
+                NilaiGizi2KeyPressed(evt);
             }
         });
-        FormInput.add(TotalHasil1);
-        TotalHasil1.setBounds(794, 1037, 60, 23);
+        FormInput.add(NilaiGizi2);
+        NilaiGizi2.setBounds(794, 1037, 60, 23);
 
-        TotalHasil2.setEditable(false);
-        TotalHasil2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        TotalHasil2.setText("0");
-        TotalHasil2.setFocusTraversalPolicyProvider(true);
-        TotalHasil2.setName("TotalHasil2"); // NOI18N
-        TotalHasil2.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiGizi3.setEditable(false);
+        NilaiGizi3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        NilaiGizi3.setText("0");
+        NilaiGizi3.setFocusTraversalPolicyProvider(true);
+        NilaiGizi3.setName("NilaiGizi3"); // NOI18N
+        NilaiGizi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TotalHasil2KeyPressed(evt);
+                NilaiGizi3KeyPressed(evt);
             }
         });
-        FormInput.add(TotalHasil2);
-        TotalHasil2.setBounds(794, 1077, 60, 23);
+        FormInput.add(NilaiGizi3);
+        NilaiGizi3.setBounds(794, 1077, 60, 23);
 
-        TotalHasil3.setEditable(false);
-        TotalHasil3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        TotalHasil3.setText("0");
-        TotalHasil3.setFocusTraversalPolicyProvider(true);
-        TotalHasil3.setName("TotalHasil3"); // NOI18N
-        TotalHasil3.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiGizi4.setEditable(false);
+        NilaiGizi4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        NilaiGizi4.setText("0");
+        NilaiGizi4.setFocusTraversalPolicyProvider(true);
+        NilaiGizi4.setName("NilaiGizi4"); // NOI18N
+        NilaiGizi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TotalHasil3KeyPressed(evt);
+                NilaiGizi4KeyPressed(evt);
             }
         });
-        FormInput.add(TotalHasil3);
-        TotalHasil3.setBounds(794, 1120, 60, 23);
+        FormInput.add(NilaiGizi4);
+        NilaiGizi4.setBounds(794, 1120, 60, 23);
 
         TotalHasil4.setEditable(false);
         TotalHasil4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -2407,18 +2407,18 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         FormInput.add(TotalHasil4);
         TotalHasil4.setBounds(422, 1220, 40, 23);
 
-        TotalHasil5.setEditable(false);
-        TotalHasil5.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        TotalHasil5.setText("0");
-        TotalHasil5.setFocusTraversalPolicyProvider(true);
-        TotalHasil5.setName("TotalHasil5"); // NOI18N
-        TotalHasil5.addKeyListener(new java.awt.event.KeyAdapter() {
+        TotalNilaiGizi.setEditable(false);
+        TotalNilaiGizi.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        TotalNilaiGizi.setText("0");
+        TotalNilaiGizi.setFocusTraversalPolicyProvider(true);
+        TotalNilaiGizi.setName("TotalNilaiGizi"); // NOI18N
+        TotalNilaiGizi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TotalHasil5KeyPressed(evt);
+                TotalNilaiGiziKeyPressed(evt);
             }
         });
-        FormInput.add(TotalHasil5);
-        TotalHasil5.setBounds(774, 1150, 80, 23);
+        FormInput.add(TotalNilaiGizi);
+        TotalNilaiGizi.setBounds(774, 1150, 80, 23);
 
         SG6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gerakan normal/relaksasi", "Tidak tenang/tegang", "Kaki dibuat menendang/menarik" }));
         SG6.setName("SG6"); // NOI18N
@@ -2628,7 +2628,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         FormInput.add(jLabel89);
         jLabel89.setBounds(370, 1375, 93, 23);
 
-        NyeriHilang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Minum Obat", "Istirahat", "Mendengar Music", "Berubah Posisi/Tidur", "Lain-lain", " ", " " }));
+        NyeriHilang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Minum Obat", "Istirahat", "Mendengar Music", "Berubah Posisi/Tidur", "Lain-lain" }));
         NyeriHilang.setName("NyeriHilang"); // NOI18N
         NyeriHilang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2820,7 +2820,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2020" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-09-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2834,7 +2834,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2020" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-09-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3860,6 +3860,10 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
             JOptionPane.showMessageDialog(null,"Pilih terlebih dahulu pasien yang mau dimasukkan data riwayat imunisasinya...");
             Informasi.requestFocus();
         }else{
+            KdImunisasi.setText("");
+            NmImunisasi.setText("");
+            ImunisasiKe.setSelectedIndex(0);
+            BtnImunisasi.setEnabled(true);
             BtnSimpanImunisasi.setVisible(true);
             BtnHapusImunisasi.setVisible(false);
             DlgRiwayatImunisasi.setLocationRelativeTo(internalFrame1);
@@ -4000,8 +4004,8 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
     }//GEN-LAST:event_KetLaporKeyPressed
 
     private void SG1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG1ItemStateChanged
-        //Nilai1.setSelectedIndex(SG1.getSelectedIndex());
-        //TotalHasil.setText(""+(Integer.parseInt(Nilai1.getSelectedItem().toString())+Integer.parseInt(Nilai2.getSelectedItem().toString())));
+        NilaiGizi1.setText(SG1.getSelectedIndex()+"");
+        TotalNilaiGizi.setText(""+(Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText())+Integer.parseInt(NilaiGizi4.getText())));
     }//GEN-LAST:event_SG1ItemStateChanged
 
     private void SG1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG1KeyPressed
@@ -4009,7 +4013,8 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
     }//GEN-LAST:event_SG1KeyPressed
 
     private void SG2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG2ItemStateChanged
-        // TODO add your handling code here:
+        NilaiGizi2.setText(SG2.getSelectedIndex()+"");
+        TotalNilaiGizi.setText(""+(Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText())+Integer.parseInt(NilaiGizi4.getText())));
     }//GEN-LAST:event_SG2ItemStateChanged
 
     private void SG2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG2KeyPressed
@@ -4017,52 +4022,54 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
     }//GEN-LAST:event_SG2KeyPressed
 
     private void SG3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG3ItemStateChanged
-        // TODO add your handling code here:
+        NilaiGizi3.setText(SG3.getSelectedIndex()+"");
+        TotalNilaiGizi.setText(""+(Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText())+Integer.parseInt(NilaiGizi4.getText())));
     }//GEN-LAST:event_SG3ItemStateChanged
 
     private void SG3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG3KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_SG3KeyPressed
 
-    private void SG4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG4ItemStateChanged
+    private void WajahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_WajahItemStateChanged
         // TODO add your handling code here:
+    }//GEN-LAST:event_WajahItemStateChanged
+
+    private void WajahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WajahKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_WajahKeyPressed
+
+    private void NilaiGizi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NilaiGizi1KeyPressed
+
+    private void SG4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG4ItemStateChanged
+        NilaiGizi4.setText(SG4.getSelectedIndex()+"");
+        TotalNilaiGizi.setText(""+(Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText())+Integer.parseInt(NilaiGizi4.getText())));
     }//GEN-LAST:event_SG4ItemStateChanged
 
     private void SG4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG4KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_SG4KeyPressed
 
-    private void TotalHasilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalHasilKeyPressed
+    private void NilaiGizi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TotalHasilKeyPressed
+    }//GEN-LAST:event_NilaiGizi2KeyPressed
 
-    private void SG5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG5ItemStateChanged
+    private void NilaiGizi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG5ItemStateChanged
+    }//GEN-LAST:event_NilaiGizi3KeyPressed
 
-    private void SG5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG5KeyPressed
+    private void NilaiGizi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG5KeyPressed
-
-    private void TotalHasil1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalHasil1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TotalHasil1KeyPressed
-
-    private void TotalHasil2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalHasil2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TotalHasil2KeyPressed
-
-    private void TotalHasil3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalHasil3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TotalHasil3KeyPressed
+    }//GEN-LAST:event_NilaiGizi4KeyPressed
 
     private void TotalHasil4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalHasil4KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_TotalHasil4KeyPressed
 
-    private void TotalHasil5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalHasil5KeyPressed
+    private void TotalNilaiGiziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalNilaiGiziKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TotalHasil5KeyPressed
+    }//GEN-LAST:event_TotalNilaiGiziKeyPressed
 
     private void SG6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG6ItemStateChanged
         // TODO add your handling code here:
@@ -4219,7 +4226,9 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
     }//GEN-LAST:event_ImunisasiKeKeyPressed
 
     private void BtnHapusImunisasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusImunisasiActionPerformed
-        // TODO add your handling code here:
+        Sequel.queryu2("delete from riwayat_imunisasi where no_rkm_medis=? and kode_imunisasi=? and no_imunisasi=?",3,new String[]{TNoRM.getText(),KdImunisasi.getText(),ImunisasiKe.getSelectedItem().toString()});
+        DlgRiwayatImunisasi.dispose();
+        tampilImunisasi();
     }//GEN-LAST:event_BtnHapusImunisasiActionPerformed
 
     private void BtnHapusImunisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusImunisasiKeyPressed
@@ -4232,6 +4241,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 JOptionPane.showMessageDialog(null,"Pilih terlebih dahulu pasien yang mau dihapus data riwayat imunisasinya...");
                 Informasi.requestFocus();
             }else{
+                BtnImunisasi.setEnabled(false);
                 KdImunisasi.setText(tbImunisasi.getValueAt(tbImunisasi.getSelectedRow(),0).toString());
                 NmImunisasi.setText(tbImunisasi.getValueAt(tbImunisasi.getSelectedRow(),1).toString());
                 BtnSimpanImunisasi.setVisible(false);
@@ -4340,6 +4350,10 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
     private widget.editorpane LoadHTML;
     private widget.TextBox Lokasi;
     private widget.TextBox Nadi;
+    private widget.TextBox NilaiGizi1;
+    private widget.TextBox NilaiGizi2;
+    private widget.TextBox NilaiGizi3;
+    private widget.TextBox NilaiGizi4;
     private widget.TextBox NmImunisasi;
     private widget.TextBox NmPetugas;
     private widget.ComboBox Nyeri;
@@ -4360,7 +4374,6 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
     private widget.ComboBox SG2;
     private widget.ComboBox SG3;
     private widget.ComboBox SG4;
-    private widget.ComboBox SG5;
     private widget.ComboBox SG6;
     private widget.ComboBox SG7;
     private widget.ComboBox SG8;
@@ -4385,17 +4398,14 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
     private widget.ComboBox TinggalDengan;
-    private widget.TextBox TotalHasil;
-    private widget.TextBox TotalHasil1;
     private widget.TextBox TotalHasil10;
-    private widget.TextBox TotalHasil2;
-    private widget.TextBox TotalHasil3;
     private widget.TextBox TotalHasil4;
-    private widget.TextBox TotalHasil5;
     private widget.TextBox TotalHasil6;
     private widget.TextBox TotalHasil7;
     private widget.TextBox TotalHasil8;
     private widget.TextBox TotalHasil9;
+    private widget.TextBox TotalNilaiGizi;
+    private widget.ComboBox Wajah;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
