@@ -73,11 +73,11 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
     private int jml=0,i=0,index=0;
     public  DlgCariDokter dokter=new DlgCariDokter(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private double ttljmdokter=0,ttljmperawat=0,ttlkso=0,ttlpendapatan=0;
-    private String Suspen_Piutang_Tindakan_Ranap="",Tindakan_Ranap="",Beban_Jasa_Medik_Dokter_Tindakan_Ranap="",
-            Utang_Jasa_Medik_Dokter_Tindakan_Ranap="",Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="",
-            Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="",Beban_KSO_Tindakan_Ranap="",
-            Utang_KSO_Tindakan_Ranap="",norawatibu="";
+    private double ttljmdokter=0,ttljmperawat=0,ttlkso=0,ttljasasarana=0,ttlbhp=0,ttlmenejemen=0,ttlpendapatan=0;
+    private String Suspen_Piutang_Tindakan_Ranap="",Tindakan_Ranap="",Beban_Jasa_Medik_Dokter_Tindakan_Ranap="",Utang_Jasa_Medik_Dokter_Tindakan_Ranap="",
+            Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="",Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="",Beban_KSO_Tindakan_Ranap="",Utang_KSO_Tindakan_Ranap="",
+            Beban_Jasa_Sarana_Tindakan_Ranap="",Utang_Jasa_Sarana_Tindakan_Ranap="",Beban_Jasa_Menejemen_Tindakan_Ranap="",Utang_Jasa_Menejemen_Tindakan_Ranap="",
+            HPP_BHP_Tindakan_Ranap="",Persediaan_BHP_Tindakan_Ranap="",norawatibu="";
     public DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -297,6 +297,12 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
                     Utang_Jasa_Medik_Paramedis_Tindakan_Ranap=rsrekening.getString("Utang_Jasa_Medik_Paramedis_Tindakan_Ranap");
                     Beban_KSO_Tindakan_Ranap=rsrekening.getString("Beban_KSO_Tindakan_Ranap");
                     Utang_KSO_Tindakan_Ranap=rsrekening.getString("Utang_KSO_Tindakan_Ranap");
+                    Beban_Jasa_Sarana_Tindakan_Ranap=rsrekening.getString("Beban_Jasa_Sarana_Tindakan_Ranap");
+                    Utang_Jasa_Sarana_Tindakan_Ranap=rsrekening.getString("Utang_Jasa_Sarana_Tindakan_Ranap");
+                    Beban_Jasa_Menejemen_Tindakan_Ranap=rsrekening.getString("Beban_Jasa_Menejemen_Tindakan_Ranap");
+                    Utang_Jasa_Menejemen_Tindakan_Ranap=rsrekening.getString("Utang_Jasa_Menejemen_Tindakan_Ranap");
+                    HPP_BHP_Tindakan_Ranap=rsrekening.getString("HPP_BHP_Tindakan_Ranap");
+                    Persediaan_BHP_Tindakan_Ranap=rsrekening.getString("Persediaan_BHP_Tindakan_Ranap");
                 }
             } catch (Exception e) {
                 System.out.println("Notif Rekening : "+e);
@@ -890,7 +896,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             try {          
                 if(pilihtable.equals("rawat_inap_dr")||pilihtable.equals("rawat_inap_pr")||pilihtable.equals("rawat_inap_drpr")){
                     koneksi.setAutoCommit(false);  
-                    ttljmdokter=0;ttljmperawat=0;ttlkso=0;ttlpendapatan=0;
+                    ttljmdokter=0;ttljmperawat=0;ttlkso=0;ttlpendapatan=0;ttljasasarana=0;ttlbhp=0;ttlmenejemen=0;
                     for(i=0;i<tbKamar.getRowCount();i++){ 
                         if(tbKamar.getValueAt(i,0).toString().equals("true")){
                                 try {
@@ -925,6 +931,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 ttljmdokter=ttljmdokter+Double.parseDouble(tbKamar.getValueAt(i,7).toString());
                                                 ttlkso=ttlkso+Double.parseDouble(tbKamar.getValueAt(i,9).toString());
                                                 ttlpendapatan=ttlpendapatan+Double.parseDouble(tbKamar.getValueAt(i,4).toString());
+                                                ttljasasarana=ttljasasarana+Double.parseDouble(tbKamar.getValueAt(i,5).toString());
+                                                ttlbhp=ttlbhp+Double.parseDouble(tbKamar.getValueAt(i,6).toString());
+                                                ttlmenejemen=ttlmenejemen+Double.parseDouble(tbKamar.getValueAt(i,10).toString());
                                                 
                                                 if(aktifpcare.equals("yes")){
                                                     simpanTindakanPCare(
@@ -966,6 +975,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 ttljmperawat=ttljmperawat+Double.parseDouble(tbKamar.getValueAt(i,8).toString());
                                                 ttlkso=ttlkso+Double.parseDouble(tbKamar.getValueAt(i,9).toString());
                                                 ttlpendapatan=ttlpendapatan+Double.parseDouble(tbKamar.getValueAt(i,4).toString());
+                                                ttljasasarana=ttljasasarana+Double.parseDouble(tbKamar.getValueAt(i,5).toString());
+                                                ttlbhp=ttlbhp+Double.parseDouble(tbKamar.getValueAt(i,6).toString());
+                                                ttlmenejemen=ttlmenejemen+Double.parseDouble(tbKamar.getValueAt(i,10).toString());
                                                 
                                                 if(aktifpcare.equals("yes")){
                                                     simpanTindakanPCare(
@@ -1010,6 +1022,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 ttljmperawat=ttljmperawat+Double.parseDouble(tbKamar.getValueAt(i,8).toString());
                                                 ttlkso=ttlkso+Double.parseDouble(tbKamar.getValueAt(i,9).toString());
                                                 ttlpendapatan=ttlpendapatan+Double.parseDouble(tbKamar.getValueAt(i,4).toString());
+                                                ttljasasarana=ttljasasarana+Double.parseDouble(tbKamar.getValueAt(i,5).toString());
+                                                ttlbhp=ttlbhp+Double.parseDouble(tbKamar.getValueAt(i,6).toString());
+                                                ttlmenejemen=ttlmenejemen+Double.parseDouble(tbKamar.getValueAt(i,10).toString());
                                                 
                                                 if(aktifpcare.equals("yes")){
                                                     simpanTindakanPCare(
@@ -1044,6 +1059,18 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     if(ttlkso>0){
                         Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','"+ttlkso+"','0'","Rekening");    
                         Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','0','"+ttlkso+"'","Rekening");                              
+                    }
+                    if(ttljasasarana>0){
+                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Sarana_Tindakan_Ranap+"','Beban Jasa Sarana Tindakan Ranap','"+ttljasasarana+"','0'","Rekening");    
+                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Sarana_Tindakan_Ranap+"','Utang Jasa Sarana Tindakan Ranap','0','"+ttljasasarana+"'","Rekening");                              
+                    }
+                    if(ttlbhp>0){
+                        Sequel.menyimpan("tampjurnal","'"+HPP_BHP_Tindakan_Ranap+"','HPP BHP Tindakan Ranap','"+ttlbhp+"','0'","Rekening");    
+                        Sequel.menyimpan("tampjurnal","'"+Persediaan_BHP_Tindakan_Ranap+"','Persediaan BHP Tindakan Ranap','0','"+ttlbhp+"'","Rekening");                              
+                    }
+                    if(ttlmenejemen>0){
+                        Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ranap+"','Beban Jasa Menejemen Tindakan Ranap','"+ttlmenejemen+"','0'","Rekening");    
+                        Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ranap+"','Utang Jasa Menejemen Tindakan Ranap','0','"+ttlmenejemen+"'","Rekening");                              
                     }
                     jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+akses.getkode());                                                
                     koneksi.setAutoCommit(true);
