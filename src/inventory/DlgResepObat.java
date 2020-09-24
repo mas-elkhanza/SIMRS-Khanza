@@ -1657,7 +1657,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         });
                     }
                 } catch (Exception e) {
-                    System.out.println("Notif 2 : "+e);
+                    System.out.println("Notif 1 : "+e);
                 } finally{
                     if(rs!=null){
                         rs.close();
@@ -1685,7 +1685,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             "0",rs.getString("nama_racik"),rs.getString("aturan_pakai"),rs.getString("jml_dr"),rs.getString("nm_racik"),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                         });
                     }
-                    System.out.println("Data "+rs.getString("nama_racik"));
                 } catch (Exception e) {
                     System.out.println("Notif 2 : "+e);
                 } finally{
