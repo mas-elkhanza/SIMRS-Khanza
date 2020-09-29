@@ -1042,7 +1042,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       }
                   }
 
-                  if(sukses=true){
+                  if(sukses==true){
                         ttljual=rs.getDouble("total");
                         ttlhpp=Sequel.cariIsiAngka("select sum(h_beli*jumlah) from toko_detail_jual where nota_jual=?",rs.getString("nota_jual"));
 
