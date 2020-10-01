@@ -70,7 +70,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             biaya="",tambahan="",totals="",sqlpsrekening="select * from set_akun_ralan",
             cara_bayar_radiologi="No",kelas_radiologi="No",tampilkan_ppnobat_ralan="",
             Tindakan_Ralan="",Laborat_Ralan="",Radiologi_Ralan="",Obat_Ralan="",
-            Registrasi_Ralan="",Tambahan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",
+            Registrasi_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",
             Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",Beban_Jasa_Medik_Paramedis_Tindakan_Ralan="",
             Utang_Jasa_Medik_Paramedis_Tindakan_Ralan="",Beban_KSO_Tindakan_Ralan="",
             Utang_KSO_Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Laborat_Ralan="",
@@ -82,16 +82,25 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             Utang_Jasa_Medik_Petugas_Radiologi_Ralan="",Beban_Kso_Radiologi_Ralan="",
             Utang_Kso_Radiologi_Ralan="",HPP_Persediaan_Radiologi_Rawat_Jalan="",
             Persediaan_BHP_Radiologi_Rawat_Jalan="",HPP_Obat_Rawat_Jalan="",
-            Persediaan_Obat_Rawat_Jalan="";
+            Persediaan_Obat_Rawat_Jalan="",Beban_Jasa_Sarana_Tindakan_Ralan,
+            Utang_Jasa_Sarana_Tindakan_Ralan,Beban_Jasa_Menejemen_Tindakan_Ralan,
+            Utang_Jasa_Menejemen_Tindakan_Ralan,HPP_BHP_Tindakan_Ralan,
+            Persediaan_BHP_Tindakan_Ralan,Beban_Jasa_Sarana_Laborat_Ralan,
+            Utang_Jasa_Sarana_Laborat_Ralan,Beban_Jasa_Perujuk_Laborat_Ralan,
+            Utang_Jasa_Perujuk_Laborat_Ralan,Beban_Jasa_Menejemen_Laborat_Ralan,
+            Utang_Jasa_Menejemen_Laborat_Ralan,Beban_Jasa_Sarana_Radiologi_Ralan,
+            Utang_Jasa_Sarana_Radiologi_Ralan,Beban_Jasa_Perujuk_Radiologi_Ralan,
+            Utang_Jasa_Perujuk_Radiologi_Ralan,Beban_Jasa_Menejemen_Radiologi_Ralan,
+            Utang_Jasa_Menejemen_Radiologi_Ralan;
     private double ppnobat=0,ttl=0,y=0,ttlLaborat=0,ttlRadiologi=0,
             ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,ttlRegistrasi=0,
             ttlRalan_Dokter_Param=0,bayar=0,total=0,ppn=0,besarppn=0,subttl=0,
-            tagihanppn=0,kekurangan=0,Jasa_Medik_Dokter_Tindakan_Ralan=0,
-            Jasa_Medik_Paramedis_Tindakan_Ralan=0,KSO_Tindakan_Ralan=0,
-            Jasa_Medik_Dokter_Laborat_Ralan=0,Jasa_Medik_Petugas_Laborat_Ralan=0,
-            Kso_Laborat_Ralan=0,Persediaan_Laborat_Rawat_Jalan=0,itembayar=0,
-            Jasa_Medik_Dokter_Radiologi_Ralan=0,Jasa_Medik_Petugas_Radiologi_Ralan=0,
-            Kso_Radiologi_Ralan=0,Persediaan_Radiologi_Rawat_Jalan=0,Obat_Rawat_Jalan=0;
+            tagihanppn=0,kekurangan=0,itembayar=0,Jasa_Medik_Dokter_Tindakan_Ralan=0,Jasa_Medik_Paramedis_Tindakan_Ralan=0,
+            KSO_Tindakan_Ralan=0,Jasa_Sarana_Tindakan_Ralan=0,BHP_Tindakan_Ralan=0,Jasa_Menejemen_Tindakan_Ralan=0,
+            Jasa_Medik_Dokter_Laborat_Ralan=0,Jasa_Medik_Petugas_Laborat_Ralan=0,Kso_Laborat_Ralan=0,Persediaan_Laborat_Rawat_Jalan=0,
+            Jasa_Sarana_Laborat_Ralan=0,Jasa_Perujuk_Laborat_Ralan=0,Jasa_Menejemen_Laborat_Ralan=0,Jasa_Medik_Dokter_Radiologi_Ralan=0,
+            Jasa_Medik_Petugas_Radiologi_Ralan=0,Kso_Radiologi_Ralan=0,Persediaan_Radiologi_Rawat_Jalan=0,Jasa_Sarana_Radiologi_Ralan=0,
+            Jasa_Perujuk_Radiologi_Ralan=0,Jasa_Menejemen_Radiologi_Ralan=0,Obat_Rawat_Jalan=0;
     /**
      * Creates new form DlgBillingParsialRalan
      */
@@ -1093,33 +1102,49 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 rsrekening=psrekening.executeQuery();
                 while(rsrekening.next()){
                     Tindakan_Ralan=rsrekening.getString("Tindakan_Ralan");
-                    Laborat_Ralan=rsrekening.getString("Laborat_Ralan");
-                    Radiologi_Ralan=rsrekening.getString("Radiologi_Ralan");
-                    Obat_Ralan=rsrekening.getString("Obat_Ralan");
-                    Registrasi_Ralan=rsrekening.getString("Registrasi_Ralan");
-                    Tambahan_Ralan=rsrekening.getString("Tambahan_Ralan");
                     Beban_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ralan");
-                    Utang_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ralan"); 
+                    Utang_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ralan");
                     Beban_Jasa_Medik_Paramedis_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Medik_Paramedis_Tindakan_Ralan");
-                    Utang_Jasa_Medik_Paramedis_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Medik_Paramedis_Tindakan_Ralan"); 
+                    Utang_Jasa_Medik_Paramedis_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Medik_Paramedis_Tindakan_Ralan");
                     Beban_KSO_Tindakan_Ralan=rsrekening.getString("Beban_KSO_Tindakan_Ralan");
                     Utang_KSO_Tindakan_Ralan=rsrekening.getString("Utang_KSO_Tindakan_Ralan");
-                    Beban_Jasa_Medik_Dokter_Laborat_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Laborat_Ralan"); 
+                    Beban_Jasa_Sarana_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Sarana_Tindakan_Ralan");
+                    Utang_Jasa_Sarana_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Sarana_Tindakan_Ralan");
+                    Beban_Jasa_Menejemen_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Menejemen_Tindakan_Ralan");
+                    Utang_Jasa_Menejemen_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Menejemen_Tindakan_Ralan");
+                    HPP_BHP_Tindakan_Ralan=rsrekening.getString("HPP_BHP_Tindakan_Ralan");
+                    Persediaan_BHP_Tindakan_Ralan=rsrekening.getString("Persediaan_BHP_Tindakan_Ralan");
+                    Laborat_Ralan=rsrekening.getString("Laborat_Ralan");
+                    Beban_Jasa_Medik_Dokter_Laborat_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Laborat_Ralan");
                     Utang_Jasa_Medik_Dokter_Laborat_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Laborat_Ralan");
-                    Beban_Jasa_Medik_Petugas_Laborat_Ralan=rsrekening.getString("Beban_Jasa_Medik_Petugas_Laborat_Ralan"); 
+                    Beban_Jasa_Medik_Petugas_Laborat_Ralan=rsrekening.getString("Beban_Jasa_Medik_Petugas_Laborat_Ralan");
                     Utang_Jasa_Medik_Petugas_Laborat_Ralan=rsrekening.getString("Utang_Jasa_Medik_Petugas_Laborat_Ralan");
                     Beban_Kso_Laborat_Ralan=rsrekening.getString("Beban_Kso_Laborat_Ralan");
-                    Utang_Kso_Laborat_Ralan=rsrekening.getString("Utang_Kso_Laborat_Ralan"); 
+                    Utang_Kso_Laborat_Ralan=rsrekening.getString("Utang_Kso_Laborat_Ralan");
                     HPP_Persediaan_Laborat_Rawat_Jalan=rsrekening.getString("HPP_Persediaan_Laborat_Rawat_Jalan");
                     Persediaan_BHP_Laborat_Rawat_Jalan=rsrekening.getString("Persediaan_BHP_Laborat_Rawat_Jalan");
+                    Beban_Jasa_Sarana_Laborat_Ralan=rsrekening.getString("Beban_Jasa_Sarana_Laborat_Ralan");
+                    Utang_Jasa_Sarana_Laborat_Ralan=rsrekening.getString("Utang_Jasa_Sarana_Laborat_Ralan");
+                    Beban_Jasa_Perujuk_Laborat_Ralan=rsrekening.getString("Beban_Jasa_Perujuk_Laborat_Ralan");
+                    Utang_Jasa_Perujuk_Laborat_Ralan=rsrekening.getString("Utang_Jasa_Perujuk_Laborat_Ralan");
+                    Beban_Jasa_Menejemen_Laborat_Ralan=rsrekening.getString("Beban_Jasa_Menejemen_Laborat_Ralan");
+                    Utang_Jasa_Menejemen_Laborat_Ralan=rsrekening.getString("Utang_Jasa_Menejemen_Laborat_Ralan");
+                    Radiologi_Ralan=rsrekening.getString("Radiologi_Ralan");
                     Beban_Jasa_Medik_Dokter_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Radiologi_Ralan");
-                    Utang_Jasa_Medik_Dokter_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ralan"); 
+                    Utang_Jasa_Medik_Dokter_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ralan");
                     Beban_Jasa_Medik_Petugas_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Medik_Petugas_Radiologi_Ralan");
-                    Utang_Jasa_Medik_Petugas_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Medik_Petugas_Radiologi_Ralan"); 
+                    Utang_Jasa_Medik_Petugas_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Medik_Petugas_Radiologi_Ralan");
                     Beban_Kso_Radiologi_Ralan=rsrekening.getString("Beban_Kso_Radiologi_Ralan");
                     Utang_Kso_Radiologi_Ralan=rsrekening.getString("Utang_Kso_Radiologi_Ralan");
-                    HPP_Persediaan_Radiologi_Rawat_Jalan=rsrekening.getString("HPP_Persediaan_Radiologi_Rawat_Jalan"); 
+                    HPP_Persediaan_Radiologi_Rawat_Jalan=rsrekening.getString("HPP_Persediaan_Radiologi_Rawat_Jalan");
                     Persediaan_BHP_Radiologi_Rawat_Jalan=rsrekening.getString("Persediaan_BHP_Radiologi_Rawat_Jalan");
+                    Beban_Jasa_Sarana_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Sarana_Radiologi_Ralan");
+                    Utang_Jasa_Sarana_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Sarana_Radiologi_Ralan");
+                    Beban_Jasa_Perujuk_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Perujuk_Radiologi_Ralan");
+                    Utang_Jasa_Perujuk_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Perujuk_Radiologi_Ralan");
+                    Beban_Jasa_Menejemen_Radiologi_Ralan=rsrekening.getString("Beban_Jasa_Menejemen_Radiologi_Ralan");
+                    Utang_Jasa_Menejemen_Radiologi_Ralan=rsrekening.getString("Utang_Jasa_Menejemen_Radiologi_Ralan");
+                    Obat_Ralan=rsrekening.getString("Obat_Ralan");
                     HPP_Obat_Rawat_Jalan=rsrekening.getString("HPP_Obat_Rawat_Jalan");
                     Persediaan_Obat_Rawat_Jalan=rsrekening.getString("Persediaan_Obat_Rawat_Jalan");
                 }
@@ -1298,7 +1323,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanTindakanDr.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanTindakanDr.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanTindakanDr.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanTindakanDr.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanTindakanDr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanTindakanDr.setText("Bersihkan Pilihan");
         ppBersihkanTindakanDr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1313,7 +1338,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaTindakanDr.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaTindakanDr.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaTindakanDr.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaTindakanDr.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaTindakanDr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaTindakanDr.setText("Pilih Semua");
         ppSemuaTindakanDr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1330,7 +1355,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanTindakanDrBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanTindakanDrBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanTindakanDrBayar.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanTindakanDrBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanTindakanDrBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanTindakanDrBayar.setText("Bersihkan Pilihan");
         ppBersihkanTindakanDrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1345,7 +1370,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaTindakanDrBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaTindakanDrBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaTindakanDrBayar.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaTindakanDrBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaTindakanDrBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaTindakanDrBayar.setText("Pilih Semua");
         ppSemuaTindakanDrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1362,7 +1387,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanTindakanPr.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanTindakanPr.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanTindakanPr.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanTindakanPr.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanTindakanPr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanTindakanPr.setText("Bersihkan Pilihan");
         ppBersihkanTindakanPr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1377,7 +1402,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaTindakanPr.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaTindakanPr.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaTindakanPr.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaTindakanPr.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaTindakanPr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaTindakanPr.setText("Pilih Semua");
         ppSemuaTindakanPr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1394,7 +1419,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanTindakanPrBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanTindakanPrBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanTindakanPrBayar.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanTindakanPrBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanTindakanPrBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanTindakanPrBayar.setText("Bersihkan Pilihan");
         ppBersihkanTindakanPrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1409,7 +1434,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaTindakanPrBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaTindakanPrBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaTindakanPrBayar.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaTindakanPrBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaTindakanPrBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaTindakanPrBayar.setText("Pilih Semua");
         ppSemuaTindakanPrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1426,7 +1451,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanTindakanDrPr.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanTindakanDrPr.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanTindakanDrPr.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanTindakanDrPr.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanTindakanDrPr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanTindakanDrPr.setText("Bersihkan Pilihan");
         ppBersihkanTindakanDrPr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1441,7 +1466,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaTindakanDrPr.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaTindakanDrPr.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaTindakanDrPr.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaTindakanDrPr.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaTindakanDrPr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaTindakanDrPr.setText("Pilih Semua");
         ppSemuaTindakanDrPr.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1458,7 +1483,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanTindakanDrPrBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanTindakanDrPrBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanTindakanDrPrBayar.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanTindakanDrPrBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanTindakanDrPrBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanTindakanDrPrBayar.setText("Bersihkan Pilihan");
         ppBersihkanTindakanDrPrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1473,7 +1498,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaTindakanDrPrBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaTindakanDrPrBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaTindakanDrPrBayar.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaTindakanDrPrBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaTindakanDrPrBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaTindakanDrPrBayar.setText("Pilih Semua");
         ppSemuaTindakanDrPrBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1490,7 +1515,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanRadiologi.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanRadiologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanRadiologi.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanRadiologi.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanRadiologi.setText("Bersihkan Pilihan");
         ppBersihkanRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1505,7 +1530,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaRadiologi.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaRadiologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaRadiologi.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaRadiologi.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaRadiologi.setText("Pilih Semua");
         ppSemuaRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1522,7 +1547,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanRadiologiBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanRadiologiBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanRadiologiBayar.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanRadiologiBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanRadiologiBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanRadiologiBayar.setText("Bersihkan Pilihan");
         ppBersihkanRadiologiBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1537,7 +1562,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaRadiologiBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaRadiologiBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaRadiologiBayar.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaRadiologiBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaRadiologiBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaRadiologiBayar.setText("Pilih Semua");
         ppSemuaRadiologiBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1554,7 +1579,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanLaborat.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanLaborat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanLaborat.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanLaborat.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanLaborat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanLaborat.setText("Bersihkan Pilihan");
         ppBersihkanLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1569,7 +1594,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaLaborat.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaLaborat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaLaborat.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaLaborat.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaLaborat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaLaborat.setText("Pilih Semua");
         ppSemuaLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1586,7 +1611,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanDetailLaborat.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanDetailLaborat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanDetailLaborat.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanDetailLaborat.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanDetailLaborat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanDetailLaborat.setText("Bersihkan Pilihan");
         ppBersihkanDetailLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1601,7 +1626,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaDetailLaborat.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaDetailLaborat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaDetailLaborat.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaDetailLaborat.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaDetailLaborat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaDetailLaborat.setText("Pilih Semua");
         ppSemuaDetailLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1618,7 +1643,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanLaboratBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanLaboratBayar.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanLaboratBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanLaboratBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanLaboratBayar.setText("Bersihkan Pilihan");
         ppBersihkanLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1633,7 +1658,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaLaboratBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaLaboratBayar.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaLaboratBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaLaboratBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaLaboratBayar.setText("Pilih Semua");
         ppSemuaLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1650,7 +1675,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanDetailLaboratBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanDetailLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanDetailLaboratBayar.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanDetailLaboratBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanDetailLaboratBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanDetailLaboratBayar.setText("Bersihkan Pilihan");
         ppBersihkanDetailLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1665,7 +1690,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaDetailLaboratBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaDetailLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaDetailLaboratBayar.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaDetailLaboratBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaDetailLaboratBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaDetailLaboratBayar.setText("Pilih Semua");
         ppSemuaDetailLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1682,7 +1707,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanObat.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanObat.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanObat.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanObat.setText("Bersihkan Pilihan");
         ppBersihkanObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1697,7 +1722,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaObat.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaObat.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaObat.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaObat.setText("Pilih Semua");
         ppSemuaObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1714,7 +1739,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppBersihkanObatBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkanObatBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanObatBayar.setForeground(new java.awt.Color(50,50,50));
+        ppBersihkanObatBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppBersihkanObatBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanObatBayar.setText("Bersihkan Pilihan");
         ppBersihkanObatBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1729,7 +1754,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         ppSemuaObatBayar.setBackground(new java.awt.Color(255, 255, 254));
         ppSemuaObatBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemuaObatBayar.setForeground(new java.awt.Color(50,50,50));
+        ppSemuaObatBayar.setForeground(new java.awt.Color(50, 50, 50));
         ppSemuaObatBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemuaObatBayar.setText("Pilih Semua");
         ppSemuaObatBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1751,7 +1776,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Billing/Pembayaran Parsial Rawat Jalan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Billing/Pembayaran Parsial Rawat Jalan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass1.setPreferredSize(new java.awt.Dimension(100, 45));
@@ -1800,7 +1825,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2019 16:59:22" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2020 23:07:49" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setOpaque(false);
         DTPTgl.setPreferredSize(new java.awt.Dimension(135, 23));
@@ -2052,7 +2077,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2061,7 +2086,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         });
 
         internalFrame2.setBorder(null);
-        internalFrame2.setForeground(new java.awt.Color(50,50,50));
+        internalFrame2.setForeground(new java.awt.Color(50, 50, 50));
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass7.setBorder(null);
@@ -2100,7 +2125,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame2.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
-        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll3.setComponentPopupMenu(PopupTindakanDr);
         Scroll3.setOpaque(true);
         Scroll3.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2110,7 +2135,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll3, java.awt.BorderLayout.WEST);
 
-        Scroll4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll4.setComponentPopupMenu(PopupTindakanDrBayar);
         Scroll4.setOpaque(true);
         Scroll4.setPreferredSize(new java.awt.Dimension(400, 404));
@@ -2167,7 +2192,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_START);
 
-        Scroll5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll5.setComponentPopupMenu(PopupTindakanPr);
         Scroll5.setOpaque(true);
         Scroll5.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2187,7 +2212,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame3.add(Scroll5, java.awt.BorderLayout.WEST);
 
-        Scroll6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll6.setComponentPopupMenu(PopupTindakanPrBayar);
         Scroll6.setOpaque(true);
         Scroll6.setPreferredSize(new java.awt.Dimension(400, 404));
@@ -2274,7 +2299,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame4.add(panelGlass11, java.awt.BorderLayout.PAGE_START);
 
-        Scroll7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll7.setComponentPopupMenu(PopupTindakanDrPr);
         Scroll7.setOpaque(true);
         Scroll7.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2284,7 +2309,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame4.add(Scroll7, java.awt.BorderLayout.WEST);
 
-        Scroll8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll8.setComponentPopupMenu(PopupTindakanDrPrBayar);
         Scroll8.setOpaque(true);
         Scroll8.setPreferredSize(new java.awt.Dimension(400, 404));
@@ -2304,7 +2329,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame5.setBorder(null);
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll10.setComponentPopupMenu(PopupRadiologi);
         Scroll10.setOpaque(true);
         Scroll10.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2314,7 +2339,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame5.add(Scroll10, java.awt.BorderLayout.WEST);
 
-        Scroll11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll11.setComponentPopupMenu(PopupRadiologiBayar);
         Scroll11.setOpaque(true);
         Scroll11.setPreferredSize(new java.awt.Dimension(400, 404));
@@ -2406,11 +2431,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame6.add(panelGlass12, java.awt.BorderLayout.PAGE_START);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawatLaborat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatLaborat.setForeground(new java.awt.Color(50,50,50));
+        TabRawatLaborat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawatLaborat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatLaborat.setPreferredSize(new java.awt.Dimension(540, 500));
         TabRawatLaborat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2443,11 +2468,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame6.add(internalFrame7, java.awt.BorderLayout.WEST);
 
-        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame8.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawatLaboratBayar.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatLaboratBayar.setForeground(new java.awt.Color(50,50,50));
+        TabRawatLaboratBayar.setForeground(new java.awt.Color(50, 50, 50));
         TabRawatLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatLaboratBayar.setPreferredSize(new java.awt.Dimension(540, 500));
         TabRawatLaboratBayar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2493,10 +2518,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         TabRawat.addTab("Laboratorium", internalFrame6);
 
         internalFrame9.setBorder(null);
-        internalFrame9.setForeground(new java.awt.Color(50,50,50));
+        internalFrame9.setForeground(new java.awt.Color(50, 50, 50));
         internalFrame9.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Obat ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Obat ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll13.setComponentPopupMenu(PopupObat);
         Scroll13.setOpaque(true);
         Scroll13.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2511,7 +2536,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame9.add(Scroll13, java.awt.BorderLayout.WEST);
 
-        Scroll17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        Scroll17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         Scroll17.setComponentPopupMenu(PopupObatBayar);
         Scroll17.setOpaque(true);
         Scroll17.setPreferredSize(new java.awt.Dimension(400, 404));
@@ -5242,14 +5267,23 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     Jasa_Medik_Dokter_Tindakan_Ralan=0;
                     Jasa_Medik_Paramedis_Tindakan_Ralan=0;
                     KSO_Tindakan_Ralan=0;
+                    Jasa_Sarana_Tindakan_Ralan=0;
+                    BHP_Tindakan_Ralan=0;
+                    Jasa_Menejemen_Tindakan_Ralan=0;
                     Jasa_Medik_Dokter_Laborat_Ralan=0;
                     Jasa_Medik_Petugas_Laborat_Ralan=0;
                     Kso_Laborat_Ralan=0;
                     Persediaan_Laborat_Rawat_Jalan=0;
+                    Jasa_Sarana_Laborat_Ralan=0;
+                    Jasa_Perujuk_Laborat_Ralan=0;
+                    Jasa_Menejemen_Laborat_Ralan=0;
                     Jasa_Medik_Dokter_Radiologi_Ralan=0;
                     Jasa_Medik_Petugas_Radiologi_Ralan=0;
                     Kso_Radiologi_Ralan=0;
                     Persediaan_Radiologi_Rawat_Jalan=0;
+                    Jasa_Sarana_Radiologi_Ralan=0;
+                    Jasa_Perujuk_Radiologi_Ralan=0;
+                    Jasa_Menejemen_Radiologi_Ralan=0;
                     Obat_Rawat_Jalan=0;
                     subttl=0;
                     ppnobat=0;
@@ -5274,6 +5308,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                 if((!KdDok.getText().equals(""))&&(!TDokter.getText().equals(""))){
                                     Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,7).toString());
                                     KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,9).toString());
+                                    Jasa_Sarana_Tindakan_Ralan=Jasa_Sarana_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,5).toString());
+                                    BHP_Tindakan_Ralan=BHP_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,6).toString());
+                                    Jasa_Menejemen_Tindakan_Ralan=Jasa_Menejemen_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,10).toString());
                                     tabModeBilling.addRow(new Object[]{
                                         "",tbTindakanDr.getValueAt(i,2).toString(),":",
                                         Double.parseDouble(tbTindakanDr.getValueAt(i,4).toString()),1,
@@ -5283,6 +5320,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                             }else{
                                 Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,7).toString());
                                 KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,9).toString());
+                                Jasa_Sarana_Tindakan_Ralan=Jasa_Sarana_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,5).toString());
+                                BHP_Tindakan_Ralan=BHP_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,6).toString());
+                                Jasa_Menejemen_Tindakan_Ralan=Jasa_Menejemen_Tindakan_Ralan+Double.parseDouble(tbTindakanDr.getValueAt(i,10).toString());
                                 tabModeBilling.addRow(new Object[]{
                                     "",tbTindakanDr.getValueAt(i,2).toString(),":",
                                     Double.parseDouble(tbTindakanDr.getValueAt(i,4).toString()),1,
@@ -5298,6 +5338,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                 if((!kdptg.getText().equals(""))&&(!TPerawat.getText().equals(""))){
                                     Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,8).toString());
                                     KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,9).toString());
+                                    Jasa_Sarana_Tindakan_Ralan=Jasa_Sarana_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,5).toString());
+                                    BHP_Tindakan_Ralan=BHP_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,6).toString());
+                                    Jasa_Menejemen_Tindakan_Ralan=Jasa_Menejemen_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,10).toString());
                                     tabModeBilling.addRow(new Object[]{
                                         "",tbTindakanPr.getValueAt(i,2).toString(),":",
                                         Double.parseDouble(tbTindakanPr.getValueAt(i,4).toString()),1,
@@ -5307,6 +5350,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                             }else{
                                 Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,8).toString());
                                 KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,9).toString());
+                                Jasa_Sarana_Tindakan_Ralan=Jasa_Sarana_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,5).toString());
+                                BHP_Tindakan_Ralan=BHP_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,6).toString());
+                                Jasa_Menejemen_Tindakan_Ralan=Jasa_Menejemen_Tindakan_Ralan+Double.parseDouble(tbTindakanPr.getValueAt(i,10).toString());
                                 tabModeBilling.addRow(new Object[]{
                                     "",tbTindakanPr.getValueAt(i,2).toString(),":",
                                     Double.parseDouble(tbTindakanPr.getValueAt(i,4).toString()),1,
@@ -5323,6 +5369,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                     Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,7).toString());
                                     Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,8).toString());
                                     KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,9).toString());
+                                    Jasa_Sarana_Tindakan_Ralan=Jasa_Sarana_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,5).toString());
+                                    BHP_Tindakan_Ralan=BHP_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,6).toString());
+                                    Jasa_Menejemen_Tindakan_Ralan=Jasa_Menejemen_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,10).toString());
                                     tabModeBilling.addRow(new Object[]{
                                         "",tbTindakanDrPr.getValueAt(i,2).toString(),":",
                                         Double.parseDouble(tbTindakanDrPr.getValueAt(i,4).toString()),1,
@@ -5333,6 +5382,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                 Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,7).toString());
                                 Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,8).toString());
                                 KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,9).toString());
+                                Jasa_Sarana_Tindakan_Ralan=Jasa_Sarana_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,5).toString());
+                                BHP_Tindakan_Ralan=BHP_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,6).toString());
+                                Jasa_Menejemen_Tindakan_Ralan=Jasa_Menejemen_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPr.getValueAt(i,10).toString());
                                 tabModeBilling.addRow(new Object[]{
                                     "",tbTindakanDrPr.getValueAt(i,2).toString(),":",
                                     Double.parseDouble(tbTindakanDrPr.getValueAt(i,4).toString()),1,
@@ -5346,9 +5398,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                         if(tbRadiologi.getValueAt(i,0).toString().equals("true")){
                             if(tbRadiologi.getValueAt(i,11).toString().equals("0000-00-00")){
                                 if((!KdDokPerujukRad.getText().equals(""))&&(!TDokterPerujukRad.getText().equals(""))){
+                                    Jasa_Medik_Dokter_Radiologi_Ralan=Jasa_Medik_Dokter_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,7).toString());
                                     Jasa_Medik_Petugas_Radiologi_Ralan=Jasa_Medik_Petugas_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,8).toString());
                                     Kso_Radiologi_Ralan=Kso_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,9).toString());
-                                    Jasa_Medik_Dokter_Radiologi_Ralan=Jasa_Medik_Dokter_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,6).toString())+Double.parseDouble(tbRadiologi.getValueAt(i,7).toString());
+                                    Persediaan_Radiologi_Rawat_Jalan=Persediaan_Radiologi_Rawat_Jalan+Double.parseDouble(tbRadiologi.getValueAt(i,5).toString());
+                                    Jasa_Sarana_Radiologi_Ralan=Jasa_Sarana_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,4).toString());
+                                    Jasa_Perujuk_Radiologi_Ralan=Jasa_Perujuk_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,6).toString());
+                                    Jasa_Menejemen_Radiologi_Ralan=Jasa_Menejemen_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,10).toString());
                                     tabModeBilling.addRow(new Object[]{
                                         "",tbRadiologi.getValueAt(i,2).toString(),":",
                                         Double.parseDouble(tbRadiologi.getValueAt(i,3).toString()),1,
@@ -5356,9 +5412,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                     });
                                 }
                             }else{
+                                Jasa_Medik_Dokter_Radiologi_Ralan=Jasa_Medik_Dokter_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,7).toString());
                                 Jasa_Medik_Petugas_Radiologi_Ralan=Jasa_Medik_Petugas_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,8).toString());
                                 Kso_Radiologi_Ralan=Kso_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,9).toString());
-                                Jasa_Medik_Dokter_Radiologi_Ralan=Jasa_Medik_Dokter_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,6).toString())+Double.parseDouble(tbRadiologi.getValueAt(i,7).toString());
+                                Persediaan_Radiologi_Rawat_Jalan=Persediaan_Radiologi_Rawat_Jalan+Double.parseDouble(tbRadiologi.getValueAt(i,5).toString());
+                                Jasa_Sarana_Radiologi_Ralan=Jasa_Sarana_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,4).toString());
+                                Jasa_Perujuk_Radiologi_Ralan=Jasa_Perujuk_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,6).toString());
+                                Jasa_Menejemen_Radiologi_Ralan=Jasa_Menejemen_Radiologi_Ralan+Double.parseDouble(tbRadiologi.getValueAt(i,10).toString());
                                 tabModeBilling.addRow(new Object[]{
                                     "",tbRadiologi.getValueAt(i,2).toString(),":",
                                     Double.parseDouble(tbRadiologi.getValueAt(i,3).toString()),1,
@@ -5372,9 +5432,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                         if(tbLaborat.getValueAt(i,0).toString().equals("true")){
                             if(tbLaborat.getValueAt(i,11).toString().equals("0000-00-00")){
                                 if((!KdDokPerujukLab.getText().equals(""))&&(!TDokterPerujukLab.getText().equals(""))){
+                                    Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,7).toString());
                                     Jasa_Medik_Petugas_Laborat_Ralan=Jasa_Medik_Petugas_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,8).toString());
                                     Kso_Laborat_Ralan=Kso_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,9).toString());
-                                    Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,6).toString())+Double.parseDouble(tbLaborat.getValueAt(i,7).toString());
+                                    Persediaan_Laborat_Rawat_Jalan=Persediaan_Laborat_Rawat_Jalan+Double.parseDouble(tbLaborat.getValueAt(i,5).toString());
+                                    Jasa_Sarana_Laborat_Ralan=Jasa_Sarana_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,4).toString());
+                                    Jasa_Perujuk_Laborat_Ralan=Jasa_Perujuk_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,6).toString());
+                                    Jasa_Menejemen_Laborat_Ralan=Jasa_Menejemen_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,10).toString());
                                     tabModeBilling.addRow(new Object[]{
                                         "",tbLaborat.getValueAt(i,2).toString(),":",
                                         Double.parseDouble(tbLaborat.getValueAt(i,3).toString()),1,
@@ -5382,9 +5446,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                     });
                                 }
                             }else{
+                                Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,7).toString());
                                 Jasa_Medik_Petugas_Laborat_Ralan=Jasa_Medik_Petugas_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,8).toString());
                                 Kso_Laborat_Ralan=Kso_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,9).toString());
-                                Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,6).toString())+Double.parseDouble(tbLaborat.getValueAt(i,7).toString());
+                                Persediaan_Laborat_Rawat_Jalan=Persediaan_Laborat_Rawat_Jalan+Double.parseDouble(tbLaborat.getValueAt(i,5).toString());
+                                Jasa_Sarana_Laborat_Ralan=Jasa_Sarana_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,4).toString());
+                                Jasa_Perujuk_Laborat_Ralan=Jasa_Perujuk_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,6).toString());
+                                Jasa_Menejemen_Laborat_Ralan=Jasa_Menejemen_Laborat_Ralan+Double.parseDouble(tbLaborat.getValueAt(i,10).toString());
                                 tabModeBilling.addRow(new Object[]{
                                     "",tbLaborat.getValueAt(i,2).toString(),":",
                                     Double.parseDouble(tbLaborat.getValueAt(i,3).toString()),1,
@@ -5399,9 +5467,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                             if(tbDetailLaborat.getValueAt(i,11).toString().equals("0000-00-00")){
                                 if(!tbDetailLaborat.getValueAt(i,1).toString().equals("")){
                                     if((!KdDokPerujukLab.getText().equals(""))&&(!TDokterPerujukLab.getText().equals(""))){
+                                        Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,7).toString());
                                         Jasa_Medik_Petugas_Laborat_Ralan=Jasa_Medik_Petugas_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,8).toString());
                                         Kso_Laborat_Ralan=Kso_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,9).toString());
-                                        Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,6).toString())+Double.parseDouble(tbDetailLaborat.getValueAt(i,7).toString());
+                                        Persediaan_Laborat_Rawat_Jalan=Persediaan_Laborat_Rawat_Jalan+Double.parseDouble(tbDetailLaborat.getValueAt(i,5).toString());
+                                        Jasa_Sarana_Laborat_Ralan=Jasa_Sarana_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,4).toString());
+                                        Jasa_Perujuk_Laborat_Ralan=Jasa_Perujuk_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,6).toString());
+                                        Jasa_Menejemen_Laborat_Ralan=Jasa_Menejemen_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,10).toString());
                                         tabModeBilling.addRow(new Object[]{
                                                 "",tbDetailLaborat.getValueAt(i,2).toString().replaceAll("   ",""),":",
                                                 Double.parseDouble(tbDetailLaborat.getValueAt(i,3).toString()),1,
@@ -5410,9 +5482,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                     }
                                 }
                             }else{
+                                Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,7).toString());
                                 Jasa_Medik_Petugas_Laborat_Ralan=Jasa_Medik_Petugas_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,8).toString());
                                 Kso_Laborat_Ralan=Kso_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,9).toString());
-                                Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,6).toString())+Double.parseDouble(tbDetailLaborat.getValueAt(i,7).toString());
+                                Persediaan_Laborat_Rawat_Jalan=Persediaan_Laborat_Rawat_Jalan+Double.parseDouble(tbDetailLaborat.getValueAt(i,5).toString());
+                                Jasa_Sarana_Laborat_Ralan=Jasa_Sarana_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,4).toString());
+                                Jasa_Perujuk_Laborat_Ralan=Jasa_Perujuk_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,6).toString());
+                                Jasa_Menejemen_Laborat_Ralan=Jasa_Menejemen_Laborat_Ralan+Double.parseDouble(tbDetailLaborat.getValueAt(i,10).toString());
                                 tabModeBilling.addRow(new Object[]{
                                     "",tbDetailLaborat.getValueAt(i,2).toString(),":",
                                     Double.parseDouble(tbDetailLaborat.getValueAt(i,3).toString()),1,
@@ -5742,28 +5818,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     }
                 }
             
-                Sequel.menyimpan("nota_jalan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",19,new String[]{
-                        TNoRw.getText(),Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RJ/",6),
-                        Valid.SetTgl(DTPTgl.getSelectedItem()+""),DTPTgl.getSelectedItem().toString().substring(11,19),
-                        Jasa_Medik_Dokter_Tindakan_Ralan+"",Jasa_Medik_Paramedis_Tindakan_Ralan+"",KSO_Tindakan_Ralan+"",
-                        Jasa_Medik_Dokter_Laborat_Ralan+"",Jasa_Medik_Petugas_Laborat_Ralan+"",Kso_Laborat_Ralan+"",
-                        Persediaan_Laborat_Rawat_Jalan+"",Jasa_Medik_Dokter_Radiologi_Ralan+"",Jasa_Medik_Petugas_Radiologi_Ralan+"",
-                        Kso_Radiologi_Ralan+"",Persediaan_Radiologi_Rawat_Jalan+"",Obat_Rawat_Jalan+"",0+"",0+"",0+""
-                    },"no_rawat=?","Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+?,"+
-                    "Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+?,KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+?,"+
-                    "Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+?,"+
-                    "Jasa_Medik_Petugas_Laborat_Ralan=Jasa_Medik_Petugas_Laborat_Ralan+?,"+
-                    "Kso_Laborat_Ralan=Kso_Laborat_Ralan+?,Persediaan_Laborat_Rawat_Jalan=Persediaan_Laborat_Rawat_Jalan+?,"+
-                    "Jasa_Medik_Dokter_Radiologi_Ralan=Jasa_Medik_Dokter_Radiologi_Ralan+?,"+
-                    "Jasa_Medik_Petugas_Radiologi_Ralan=Jasa_Medik_Petugas_Radiologi_Ralan+?,"+
-                    "Kso_Radiologi_Ralan=Kso_Radiologi_Ralan+?,Persediaan_Radiologi_Rawat_Jalan=Persediaan_Radiologi_Rawat_Jalan+?,"+
-                    "Obat_Rawat_Jalan=Obat_Rawat_Jalan+?",13,new String[]{
-                        Jasa_Medik_Dokter_Tindakan_Ralan+"",Jasa_Medik_Paramedis_Tindakan_Ralan+"",KSO_Tindakan_Ralan+"",
-                        Jasa_Medik_Dokter_Laborat_Ralan+"",Jasa_Medik_Petugas_Laborat_Ralan+"",Kso_Laborat_Ralan+"",
-                        Persediaan_Laborat_Rawat_Jalan+"",Jasa_Medik_Dokter_Radiologi_Ralan+"",Jasa_Medik_Petugas_Radiologi_Ralan+"",
-                        Kso_Radiologi_Ralan+"",Persediaan_Radiologi_Rawat_Jalan+"",Obat_Rawat_Jalan+"",TNoRw.getText()
-                    }
-                );
+                Sequel.menyimpan2("nota_jalan","?,?,?,?",4,new String[]{
+                    TNoRw.getText(),Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RJ/",6),
+                    Valid.SetTgl(DTPTgl.getSelectedItem()+""),DTPTgl.getSelectedItem().toString().substring(11,19)
+                });
                 //simpan billing
                 for(i=8;i<tbBilling.getRowCount();i++){  
                     psbiling=koneksi.prepareStatement(sqlpsbiling);
@@ -5878,6 +5936,21 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ralan+"','Operasi Ralan','"+KSO_Tindakan_Ralan+"','0'","debet=debet+'"+(KSO_Tindakan_Ralan)+"'","kd_rek='"+Beban_KSO_Tindakan_Ralan+"'");  
                     Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ralan+"','Operasi Ralan','0','"+KSO_Tindakan_Ralan+"'","kredit=kredit+'"+(KSO_Tindakan_Ralan)+"'","kd_rek='"+Utang_KSO_Tindakan_Ralan+"'");  
                 }
+                
+                if(Jasa_Sarana_Tindakan_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Sarana_Tindakan_Ralan+"','Operasi Ralan','"+Jasa_Sarana_Tindakan_Ralan+"','0'","debet=debet+'"+Jasa_Sarana_Tindakan_Ralan+"'","kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Sarana_Tindakan_Ralan+"','Operasi Ralan','0','"+Jasa_Sarana_Tindakan_Ralan+"'","kredit=kredit+'"+Jasa_Sarana_Tindakan_Ralan+"'","kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ralan+"'");  
+                }
+                
+                if(BHP_Tindakan_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+HPP_BHP_Tindakan_Ralan+"','Operasi Ralan','"+BHP_Tindakan_Ralan+"','0'","debet=debet+'"+BHP_Tindakan_Ralan+"'","kd_rek='"+HPP_BHP_Tindakan_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Persediaan_BHP_Tindakan_Ralan+"','Operasi Ralan','0','"+BHP_Tindakan_Ralan+"'","kredit=kredit+'"+BHP_Tindakan_Ralan+"'","kd_rek='"+Persediaan_BHP_Tindakan_Ralan+"'");  
+                }
+                
+                if(Jasa_Menejemen_Tindakan_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Operasi Ralan','"+Jasa_Menejemen_Tindakan_Ralan+"','0'","debet=debet+'"+Jasa_Menejemen_Tindakan_Ralan+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Operasi Ralan','0','"+Jasa_Menejemen_Tindakan_Ralan+"'","kredit=kredit+'"+Jasa_Menejemen_Tindakan_Ralan+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"'");  
+                }
 
                 if(Jasa_Medik_Dokter_Laborat_Ralan>0){
                     Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Laborat_Ralan+"','Operasi Ralan','"+Jasa_Medik_Dokter_Laborat_Ralan+"','0'","debet=debet+'"+(Jasa_Medik_Dokter_Laborat_Ralan)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Laborat_Ralan+"'");  
@@ -5899,6 +5972,21 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     Sequel.menyimpan("tampjurnal","'"+Persediaan_BHP_Laborat_Rawat_Jalan+"','Operasi Ralan','0','"+Persediaan_Laborat_Rawat_Jalan+"'","kredit=kredit+'"+(Persediaan_Laborat_Rawat_Jalan)+"'","kd_rek='"+Persediaan_BHP_Laborat_Rawat_Jalan+"'");  
                 }
 
+                if(Jasa_Sarana_Laborat_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Sarana_Laborat_Ralan+"','Operasi Ralan','"+Jasa_Sarana_Laborat_Ralan+"','0'","debet=debet+'"+Jasa_Sarana_Laborat_Ralan+"'","kd_rek='"+Beban_Jasa_Sarana_Laborat_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Sarana_Laborat_Ralan+"','Operasi Ralan','0','"+Jasa_Sarana_Laborat_Ralan+"'","kredit=kredit+'"+Jasa_Sarana_Laborat_Ralan+"'","kd_rek='"+Utang_Jasa_Sarana_Laborat_Ralan+"'");  
+                }
+                
+                if(Jasa_Perujuk_Laborat_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Perujuk_Laborat_Ralan+"','Operasi Ralan','"+Jasa_Perujuk_Laborat_Ralan+"','0'","debet=debet+'"+Jasa_Perujuk_Laborat_Ralan+"'","kd_rek='"+Beban_Jasa_Perujuk_Laborat_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Perujuk_Laborat_Ralan+"','Operasi Ralan','0','"+Jasa_Perujuk_Laborat_Ralan+"'","kredit=kredit+'"+Jasa_Perujuk_Laborat_Ralan+"'","kd_rek='"+Utang_Jasa_Perujuk_Laborat_Ralan+"'");  
+                }
+                
+                if(Jasa_Menejemen_Laborat_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Laborat_Ralan+"','Operasi Ralan','"+Jasa_Menejemen_Laborat_Ralan+"','0'","debet=debet+'"+Jasa_Menejemen_Laborat_Ralan+"'","kd_rek='"+Beban_Jasa_Menejemen_Laborat_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Laborat_Ralan+"','Operasi Ralan','0','"+Jasa_Menejemen_Laborat_Ralan+"'","kredit=kredit+'"+Jasa_Menejemen_Laborat_Ralan+"'","kd_rek='"+Utang_Jasa_Menejemen_Laborat_Ralan+"'");  
+                }
+                
                 if(Jasa_Medik_Dokter_Radiologi_Ralan>0){
                     Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Radiologi_Ralan+"','Operasi Ralan','"+Jasa_Medik_Dokter_Radiologi_Ralan+"','0'","debet=debet+'"+(Jasa_Medik_Dokter_Radiologi_Ralan)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Radiologi_Ralan+"'");  
                     Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Radiologi_Ralan+"','Operasi Ralan','0','"+Jasa_Medik_Dokter_Radiologi_Ralan+"'","kredit=kredit+'"+(Jasa_Medik_Dokter_Radiologi_Ralan)+"'","kd_rek='"+Utang_Jasa_Medik_Dokter_Radiologi_Ralan+"'");  
@@ -5917,6 +6005,21 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 if(Persediaan_Radiologi_Rawat_Jalan>0){
                     Sequel.menyimpan("tampjurnal","'"+HPP_Persediaan_Radiologi_Rawat_Jalan+"','Operasi Ralan','"+Persediaan_Radiologi_Rawat_Jalan+"','0'","debet=debet+'"+(Persediaan_Radiologi_Rawat_Jalan)+"'","kd_rek='"+HPP_Persediaan_Radiologi_Rawat_Jalan+"'");  
                     Sequel.menyimpan("tampjurnal","'"+Persediaan_BHP_Radiologi_Rawat_Jalan+"','Operasi Ralan','0','"+Persediaan_Radiologi_Rawat_Jalan+"'","kredit=kredit+'"+(Persediaan_Radiologi_Rawat_Jalan)+"'","kd_rek='"+Persediaan_BHP_Radiologi_Rawat_Jalan+"'");  
+                }
+                
+                if(Jasa_Sarana_Radiologi_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Sarana_Radiologi_Ralan+"','Operasi Ralan','"+Jasa_Sarana_Radiologi_Ralan+"','0'","debet=debet+'"+Jasa_Sarana_Radiologi_Ralan+"'","kd_rek='"+Beban_Jasa_Sarana_Radiologi_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Sarana_Radiologi_Ralan+"','Operasi Ralan','0','"+Jasa_Sarana_Radiologi_Ralan+"'","kredit=kredit+'"+Jasa_Sarana_Radiologi_Ralan+"'","kd_rek='"+Utang_Jasa_Sarana_Radiologi_Ralan+"'");  
+                }
+                
+                if(Jasa_Perujuk_Radiologi_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Perujuk_Radiologi_Ralan+"','Operasi Ralan','"+Jasa_Perujuk_Radiologi_Ralan+"','0'","debet=debet+'"+Jasa_Perujuk_Radiologi_Ralan+"'","kd_rek='"+Beban_Jasa_Perujuk_Radiologi_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Perujuk_Radiologi_Ralan+"','Operasi Ralan','0','"+Jasa_Perujuk_Radiologi_Ralan+"'","kredit=kredit+'"+Jasa_Perujuk_Radiologi_Ralan+"'","kd_rek='"+Utang_Jasa_Perujuk_Radiologi_Ralan+"'");  
+                }
+                
+                if(Jasa_Menejemen_Radiologi_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Radiologi_Ralan+"','Operasi Ralan','"+Jasa_Menejemen_Radiologi_Ralan+"','0'","debet=debet+'"+Jasa_Menejemen_Radiologi_Ralan+"'","kd_rek='"+Beban_Jasa_Menejemen_Radiologi_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Radiologi_Ralan+"','Operasi Ralan','0','"+Jasa_Menejemen_Radiologi_Ralan+"'","kredit=kredit+'"+Jasa_Menejemen_Radiologi_Ralan+"'","kd_rek='"+Utang_Jasa_Menejemen_Radiologi_Ralan+"'");  
                 }
 
                 if(Obat_Rawat_Jalan>0){
@@ -5949,20 +6052,32 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Jasa_Medik_Dokter_Tindakan_Ralan=0;
         Jasa_Medik_Paramedis_Tindakan_Ralan=0;
         KSO_Tindakan_Ralan=0;
+        Jasa_Sarana_Tindakan_Ralan=0;
+        BHP_Tindakan_Ralan=0;
+        Jasa_Menejemen_Tindakan_Ralan=0;
         Jasa_Medik_Dokter_Laborat_Ralan=0;
         Jasa_Medik_Petugas_Laborat_Ralan=0;
         Kso_Laborat_Ralan=0;
         Persediaan_Laborat_Rawat_Jalan=0;
+        Jasa_Sarana_Laborat_Ralan=0;
+        Jasa_Perujuk_Laborat_Ralan=0;
+        Jasa_Menejemen_Laborat_Ralan=0;
         Jasa_Medik_Dokter_Radiologi_Ralan=0;
         Jasa_Medik_Petugas_Radiologi_Ralan=0;
         Kso_Radiologi_Ralan=0;
         Persediaan_Radiologi_Rawat_Jalan=0;
+        Jasa_Sarana_Radiologi_Ralan=0;
+        Jasa_Perujuk_Radiologi_Ralan=0;
+        Jasa_Menejemen_Radiologi_Ralan=0;
         Obat_Rawat_Jalan=0;
 
         for(i=0;i<tbTindakanDrBayar.getRowCount();i++){
             if(tbTindakanDrBayar.getValueAt(i,0).toString().equals("true")){
                 Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+Double.parseDouble(tbTindakanDrBayar.getValueAt(i,7).toString());
                 KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+Double.parseDouble(tbTindakanDrBayar.getValueAt(i,9).toString());
+                Jasa_Sarana_Tindakan_Ralan=Jasa_Sarana_Tindakan_Ralan+Double.parseDouble(tbTindakanDrBayar.getValueAt(i,5).toString());
+                BHP_Tindakan_Ralan=BHP_Tindakan_Ralan+Double.parseDouble(tbTindakanDrBayar.getValueAt(i,6).toString());
+                Jasa_Menejemen_Tindakan_Ralan=Jasa_Menejemen_Tindakan_Ralan+Double.parseDouble(tbTindakanDrBayar.getValueAt(i,10).toString());
             }
         }
         
@@ -5970,6 +6085,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             if(tbTindakanPrBayar.getValueAt(i,0).toString().equals("true")){
                 Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+Double.parseDouble(tbTindakanPrBayar.getValueAt(i,8).toString());
                 KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+Double.parseDouble(tbTindakanPrBayar.getValueAt(i,9).toString());
+                Jasa_Sarana_Tindakan_Ralan=Jasa_Sarana_Tindakan_Ralan+Double.parseDouble(tbTindakanPrBayar.getValueAt(i,5).toString());
+                BHP_Tindakan_Ralan=BHP_Tindakan_Ralan+Double.parseDouble(tbTindakanPrBayar.getValueAt(i,6).toString());
+                Jasa_Menejemen_Tindakan_Ralan=Jasa_Menejemen_Tindakan_Ralan+Double.parseDouble(tbTindakanPrBayar.getValueAt(i,10).toString());
             }
         }
         
@@ -5978,30 +6096,45 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,7).toString());
                 Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,8).toString());
                 KSO_Tindakan_Ralan=KSO_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,9).toString());
+                Jasa_Sarana_Tindakan_Ralan=Jasa_Sarana_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,5).toString());
+                BHP_Tindakan_Ralan=BHP_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,6).toString());
+                Jasa_Menejemen_Tindakan_Ralan=Jasa_Menejemen_Tindakan_Ralan+Double.parseDouble(tbTindakanDrPrBayar.getValueAt(i,10).toString());
             }
         }
         
         for(i=0;i<tbRadiologiBayar.getRowCount();i++){
             if(tbRadiologiBayar.getValueAt(i,0).toString().equals("true")){
+                Jasa_Medik_Dokter_Radiologi_Ralan=Jasa_Medik_Dokter_Radiologi_Ralan+Double.parseDouble(tbRadiologiBayar.getValueAt(i,7).toString());
                 Jasa_Medik_Petugas_Radiologi_Ralan=Jasa_Medik_Petugas_Radiologi_Ralan+Double.parseDouble(tbRadiologiBayar.getValueAt(i,8).toString());
                 Kso_Radiologi_Ralan=Kso_Radiologi_Ralan+Double.parseDouble(tbRadiologiBayar.getValueAt(i,9).toString());
-                Jasa_Medik_Dokter_Radiologi_Ralan=Jasa_Medik_Dokter_Radiologi_Ralan+Double.parseDouble(tbRadiologiBayar.getValueAt(i,6).toString())+Double.parseDouble(tbRadiologiBayar.getValueAt(i,7).toString());
+                Persediaan_Radiologi_Rawat_Jalan=Persediaan_Radiologi_Rawat_Jalan+Double.parseDouble(tbRadiologiBayar.getValueAt(i,5).toString());
+                Jasa_Sarana_Radiologi_Ralan=Jasa_Sarana_Radiologi_Ralan+Double.parseDouble(tbRadiologiBayar.getValueAt(i,4).toString());
+                Jasa_Perujuk_Radiologi_Ralan=Jasa_Perujuk_Radiologi_Ralan+Double.parseDouble(tbRadiologiBayar.getValueAt(i,6).toString());
+                Jasa_Menejemen_Radiologi_Ralan=Jasa_Menejemen_Radiologi_Ralan+Double.parseDouble(tbRadiologiBayar.getValueAt(i,10).toString());
             }
         }
         
         for(i=0;i<tbLaboratBayar.getRowCount();i++){
             if(tbLaboratBayar.getValueAt(i,0).toString().equals("true")){
+                Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbLaboratBayar.getValueAt(i,7).toString());
                 Jasa_Medik_Petugas_Laborat_Ralan=Jasa_Medik_Petugas_Laborat_Ralan+Double.parseDouble(tbLaboratBayar.getValueAt(i,8).toString());
                 Kso_Laborat_Ralan=Kso_Laborat_Ralan+Double.parseDouble(tbLaboratBayar.getValueAt(i,9).toString());
-                Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbLaboratBayar.getValueAt(i,6).toString())+Double.parseDouble(tbLaboratBayar.getValueAt(i,7).toString());
+                Persediaan_Laborat_Rawat_Jalan=Persediaan_Laborat_Rawat_Jalan+Double.parseDouble(tbLaboratBayar.getValueAt(i,5).toString());
+                Jasa_Sarana_Laborat_Ralan=Jasa_Sarana_Laborat_Ralan+Double.parseDouble(tbLaboratBayar.getValueAt(i,4).toString());
+                Jasa_Perujuk_Laborat_Ralan=Jasa_Perujuk_Laborat_Ralan+Double.parseDouble(tbLaboratBayar.getValueAt(i,6).toString());
+                Jasa_Menejemen_Laborat_Ralan=Jasa_Menejemen_Laborat_Ralan+Double.parseDouble(tbLaboratBayar.getValueAt(i,10).toString());
             }
         }
         
         for(i=0;i<tbDetailLaboratBayar.getRowCount();i++){
             if(tbDetailLaboratBayar.getValueAt(i,0).toString().equals("true")){
+                Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,7).toString());
                 Jasa_Medik_Petugas_Laborat_Ralan=Jasa_Medik_Petugas_Laborat_Ralan+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,8).toString());
                 Kso_Laborat_Ralan=Kso_Laborat_Ralan+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,9).toString());
-                Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,6).toString())+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,7).toString());
+                Persediaan_Laborat_Rawat_Jalan=Persediaan_Laborat_Rawat_Jalan+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,5).toString());
+                Jasa_Sarana_Laborat_Ralan=Jasa_Sarana_Laborat_Ralan+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,4).toString());
+                Jasa_Perujuk_Laborat_Ralan=Jasa_Perujuk_Laborat_Ralan+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,6).toString());
+                Jasa_Menejemen_Laborat_Ralan=Jasa_Menejemen_Laborat_Ralan+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,10).toString());
             }
         }
         
@@ -6558,22 +6691,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     }                        
                 }
                 
-                
-                Sequel.queryu2("update nota_jalan set Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan-?,"+
-                    "Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan-?,KSO_Tindakan_Ralan=KSO_Tindakan_Ralan-?,"+
-                    "Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan-?,"+
-                    "Jasa_Medik_Petugas_Laborat_Ralan=Jasa_Medik_Petugas_Laborat_Ralan-?,"+
-                    "Kso_Laborat_Ralan=Kso_Laborat_Ralan-?,Persediaan_Laborat_Rawat_Jalan=Persediaan_Laborat_Rawat_Jalan-?,"+
-                    "Jasa_Medik_Dokter_Radiologi_Ralan=Jasa_Medik_Dokter_Radiologi_Ralan-?,"+
-                    "Jasa_Medik_Petugas_Radiologi_Ralan=Jasa_Medik_Petugas_Radiologi_Ralan-?,"+
-                    "Kso_Radiologi_Ralan=Kso_Radiologi_Ralan-?,Persediaan_Radiologi_Rawat_Jalan=Persediaan_Radiologi_Rawat_Jalan-?,"+
-                    "Obat_Rawat_Jalan=Obat_Rawat_Jalan-? where no_rawat=?",13,new String[]{
-                    Jasa_Medik_Dokter_Tindakan_Ralan+"",Jasa_Medik_Paramedis_Tindakan_Ralan+"",KSO_Tindakan_Ralan+"",
-                    Jasa_Medik_Dokter_Laborat_Ralan+"",Jasa_Medik_Petugas_Laborat_Ralan+"",Kso_Laborat_Ralan+"",
-                    Persediaan_Laborat_Rawat_Jalan+"",Jasa_Medik_Dokter_Radiologi_Ralan+"",Jasa_Medik_Petugas_Radiologi_Ralan+"",
-                    Kso_Radiologi_Ralan+"",Persediaan_Radiologi_Rawat_Jalan+"",Obat_Rawat_Jalan+"",TNoRw.getText()
-                });
-
                 Sequel.queryu2("delete from tampjurnal");
                 itembayar=0;besarppn=0;
                 row2=tbAkunBayar.getRowCount();                
@@ -6647,6 +6764,21 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ralan+"','Operasi Ralan','0','"+KSO_Tindakan_Ralan+"'","debet=debet-'"+(KSO_Tindakan_Ralan)+"'","kd_rek='"+Beban_KSO_Tindakan_Ralan+"'");  
                     Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ralan+"','Operasi Ralan','"+KSO_Tindakan_Ralan+"','0'","kredit=kredit-'"+(KSO_Tindakan_Ralan)+"'","kd_rek='"+Utang_KSO_Tindakan_Ralan+"'");  
                 }
+                
+                if(Jasa_Sarana_Tindakan_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Sarana_Tindakan_Ralan+"','Operasi Ralan','0','"+Jasa_Sarana_Tindakan_Ralan+"'","debet=debet-'"+Jasa_Sarana_Tindakan_Ralan+"'","kd_rek='"+Beban_Jasa_Sarana_Tindakan_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Sarana_Tindakan_Ralan+"','Operasi Ralan','"+Jasa_Sarana_Tindakan_Ralan+"','0'","kredit=kredit-'"+Jasa_Sarana_Tindakan_Ralan+"'","kd_rek='"+Utang_Jasa_Sarana_Tindakan_Ralan+"'");  
+                }
+                
+                if(BHP_Tindakan_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+HPP_BHP_Tindakan_Ralan+"','Operasi Ralan','0','"+BHP_Tindakan_Ralan+"'","debet=debet-'"+BHP_Tindakan_Ralan+"'","kd_rek='"+HPP_BHP_Tindakan_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Persediaan_BHP_Tindakan_Ralan+"','Operasi Ralan','"+BHP_Tindakan_Ralan+"','0'","kredit=kredit-'"+BHP_Tindakan_Ralan+"'","kd_rek='"+Persediaan_BHP_Tindakan_Ralan+"'");  
+                }
+                
+                if(Jasa_Menejemen_Tindakan_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Tindakan_Ralan+"','Operasi Ralan','0','"+Jasa_Menejemen_Tindakan_Ralan+"'","debet=debet-'"+(Jasa_Menejemen_Tindakan_Ralan)+"'","kd_rek='"+Beban_Jasa_Menejemen_Tindakan_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Tindakan_Ralan+"','Operasi Ralan','"+Jasa_Menejemen_Tindakan_Ralan+"','0'","kredit=kredit-'"+(Jasa_Menejemen_Tindakan_Ralan)+"'","kd_rek='"+Utang_Jasa_Menejemen_Tindakan_Ralan+"'");  
+                }
 
                 if(Jasa_Medik_Dokter_Laborat_Ralan>0){
                     Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Laborat_Ralan+"','Operasi Ralan','0','"+Jasa_Medik_Dokter_Laborat_Ralan+"'","debet=debet-'"+(Jasa_Medik_Dokter_Laborat_Ralan)+"'","kd_rek='"+Beban_Jasa_Medik_Dokter_Laborat_Ralan+"'");  
@@ -6666,6 +6798,21 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 if(Persediaan_Laborat_Rawat_Jalan>0){
                     Sequel.menyimpan("tampjurnal","'"+HPP_Persediaan_Laborat_Rawat_Jalan+"','Operasi Ralan','0','"+Persediaan_Laborat_Rawat_Jalan+"'","debet=debet-'"+(Persediaan_Laborat_Rawat_Jalan)+"'","kd_rek='"+HPP_Persediaan_Laborat_Rawat_Jalan+"'");  
                     Sequel.menyimpan("tampjurnal","'"+Persediaan_BHP_Laborat_Rawat_Jalan+"','Operasi Ralan','"+Persediaan_Laborat_Rawat_Jalan+"','0'","kredit=kredit-'"+(Persediaan_Laborat_Rawat_Jalan)+"'","kd_rek='"+Persediaan_BHP_Laborat_Rawat_Jalan+"'");  
+                }
+                
+                if(Jasa_Sarana_Laborat_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Sarana_Laborat_Ralan+"','Operasi Ralan','0','"+Jasa_Sarana_Laborat_Ralan+"'","debet=debet-'"+(Jasa_Sarana_Laborat_Ralan)+"'","kd_rek='"+Beban_Jasa_Sarana_Laborat_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Sarana_Laborat_Ralan+"','Operasi Ralan','"+Jasa_Sarana_Laborat_Ralan+"','0'","kredit=kredit-'"+(Jasa_Sarana_Laborat_Ralan)+"'","kd_rek='"+Utang_Jasa_Sarana_Laborat_Ralan+"'");  
+                }
+                
+                if(Jasa_Perujuk_Laborat_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Perujuk_Laborat_Ralan+"','Operasi Ralan','0','"+Jasa_Perujuk_Laborat_Ralan+"'","debet=debet-'"+(Jasa_Perujuk_Laborat_Ralan)+"'","kd_rek='"+Beban_Jasa_Perujuk_Laborat_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Perujuk_Laborat_Ralan+"','Operasi Ralan','"+Jasa_Perujuk_Laborat_Ralan+"','0'","kredit=kredit-'"+(Jasa_Perujuk_Laborat_Ralan)+"'","kd_rek='"+Utang_Jasa_Perujuk_Laborat_Ralan+"'");  
+                }
+                
+                if(Jasa_Menejemen_Laborat_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Laborat_Ralan+"','Operasi Ralan','0','"+Jasa_Menejemen_Laborat_Ralan+"'","debet=debet-'"+(Jasa_Menejemen_Laborat_Ralan)+"'","kd_rek='"+Beban_Jasa_Menejemen_Laborat_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Laborat_Ralan+"','Operasi Ralan','"+Jasa_Menejemen_Laborat_Ralan+"','0'","kredit=kredit-'"+(Jasa_Menejemen_Laborat_Ralan)+"'","kd_rek='"+Utang_Jasa_Menejemen_Laborat_Ralan+"'");  
                 }
 
                 if(Jasa_Medik_Dokter_Radiologi_Ralan>0){
@@ -6687,6 +6834,21 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     Sequel.menyimpan("tampjurnal","'"+HPP_Persediaan_Radiologi_Rawat_Jalan+"','Operasi Ralan','0','"+Persediaan_Radiologi_Rawat_Jalan+"'","debet=debet-'"+(Persediaan_Radiologi_Rawat_Jalan)+"'","kd_rek='"+HPP_Persediaan_Radiologi_Rawat_Jalan+"'");  
                     Sequel.menyimpan("tampjurnal","'"+Persediaan_BHP_Radiologi_Rawat_Jalan+"','Operasi Ralan','"+Persediaan_Radiologi_Rawat_Jalan+"','0'","kredit=kredit-'"+(Persediaan_Radiologi_Rawat_Jalan)+"'","kd_rek='"+Persediaan_BHP_Radiologi_Rawat_Jalan+"'");  
                 }
+                
+                if(Jasa_Sarana_Radiologi_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Sarana_Radiologi_Ralan+"','Operasi Ralan','0','"+Jasa_Sarana_Radiologi_Ralan+"'","debet=debet-'"+(Jasa_Sarana_Radiologi_Ralan)+"'","kd_rek='"+Beban_Jasa_Sarana_Radiologi_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Sarana_Radiologi_Ralan+"','Operasi Ralan','"+Jasa_Sarana_Radiologi_Ralan+"','0'","kredit=kredit-'"+(Jasa_Sarana_Radiologi_Ralan)+"'","kd_rek='"+Utang_Jasa_Sarana_Radiologi_Ralan+"'");  
+                }
+                
+                if(Jasa_Perujuk_Radiologi_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Perujuk_Radiologi_Ralan+"','Operasi Ralan','0','"+Jasa_Perujuk_Radiologi_Ralan+"'","debet=debet-'"+(Jasa_Perujuk_Radiologi_Ralan)+"'","kd_rek='"+Beban_Jasa_Perujuk_Radiologi_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Perujuk_Radiologi_Ralan+"','Operasi Ralan','"+Jasa_Perujuk_Radiologi_Ralan+"','0'","kredit=kredit-'"+(Jasa_Perujuk_Radiologi_Ralan)+"'","kd_rek='"+Utang_Jasa_Perujuk_Radiologi_Ralan+"'");  
+                }
+                
+                if(Jasa_Menejemen_Radiologi_Ralan>0){
+                    Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Menejemen_Radiologi_Ralan+"','Operasi Ralan','0','"+Jasa_Menejemen_Radiologi_Ralan+"'","debet=debet-'"+(Jasa_Menejemen_Radiologi_Ralan)+"'","kd_rek='"+Beban_Jasa_Menejemen_Radiologi_Ralan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Menejemen_Radiologi_Ralan+"','Operasi Ralan','"+Jasa_Menejemen_Radiologi_Ralan+"','0'","kredit=kredit-'"+(Jasa_Menejemen_Radiologi_Ralan)+"'","kd_rek='"+Utang_Jasa_Menejemen_Radiologi_Ralan+"'");  
+                }
 
                 if(Obat_Rawat_Jalan>0){
                     Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Jalan+"','Operasi Ralan','0','"+Obat_Rawat_Jalan+"'","debet=debet-'"+(Obat_Rawat_Jalan)+"'","kd_rek='"+HPP_Obat_Rawat_Jalan+"'");  
@@ -6696,10 +6858,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN PEMBAYARAN PASIEN RAWAT JALAN, DIPOSTING OLEH "+akses.getkode());
                 Sequel.mengedit("tagihan_sadewa","no_nota='"+TNoRw.getText()+"'","jumlah_tagihan=jumlah_tagihan-'"+total+"',jumlah_bayar=jumlah_bayar-'"+total+"'");
                 Sequel.queryu2("delete from tagihan_sadewa where no_nota=? and jumlah_tagihan='0'",1,new String[]{TNoRw.getText()});
-                Sequel.queryu2("delete from nota_jalan where no_rawat=? and Jasa_Medik_Dokter_Tindakan_Ralan='0' and Jasa_Medik_Paramedis_Tindakan_Ralan='0' and KSO_Tindakan_Ralan='0' and Jasa_Medik_Dokter_Laborat_Ralan='0' and Jasa_Medik_Petugas_Laborat_Ralan='0' and Kso_Laborat_Ralan='0' and Persediaan_Laborat_Rawat_Jalan='0' and Jasa_Medik_Dokter_Radiologi_Ralan='0' and Jasa_Medik_Petugas_Radiologi_Ralan='0' and Kso_Radiologi_Ralan='0' and Persediaan_Radiologi_Rawat_Jalan='0' and Obat_Rawat_Jalan='0' and Jasa_Medik_Dokter_Operasi_Ralan='0' and Jasa_Medik_Paramedis_Operasi_Ralan='0' and Obat_Operasi_Ralan='0'",1,new String[]{TNoRw.getText()});
                 Sequel.queryu2("delete from detail_nota_jalan where no_rawat=? and besar_bayar='0'",1,new String[]{TNoRw.getText()});
                 if(Sequel.cariIsiAngka("select sum(totalbiaya) from billing where no_rawat=?",TNoRw.getText())==0){
                     Sequel.queryu2("delete from billing where no_rawat=?",1,new String[]{TNoRw.getText()});
+                    Sequel.queryu2("delete from nota_jalan where no_rawat=?",1,new String[]{TNoRw.getText()});
                 }
                 koneksi.setAutoCommit(true);
                 for(r=0;r<row2;r++){

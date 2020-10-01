@@ -2944,7 +2944,6 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             }
         }
         if(i>0){
-            
             Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Belum Bayar'");
             
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -3070,12 +3069,12 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             Sequel.queryu2("delete from detail_nota_inap where no_rawat='"+TNoRw.getText()+"'");
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");
-           this.setCursor(Cursor.getDefaultCursor());
+            this.setCursor(Cursor.getDefaultCursor());
            
-           JOptionPane.showMessageDialog(rootPane,"Proses hapus data Nota Salah selesai..!!");
-           Valid.tabelKosong(tabModeAkunBayar);
-           Valid.tabelKosong(tabModeAkunPiutang);
-           isRawat();
+            JOptionPane.showMessageDialog(rootPane,"Proses hapus data Nota Salah selesai..!!");
+            Valid.tabelKosong(tabModeAkunBayar);
+            Valid.tabelKosong(tabModeAkunPiutang);
+            isRawat();
         }else if(i<=0){
             JOptionPane.showMessageDialog(rootPane,"Data belum pernah disimpan/diverifikasi.\n"+
                     "Tidak perlu ada penghapusan data salah..!!");
@@ -6396,7 +6395,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             String alamat=Sequel.cariIsi("select alamat from pasien where no_rkm_medis=? ",TNoRM.getText());
             
-            //lakukan jurnal
             Sequel.queryu2("delete from tampjurnal");
 
             itembayar=0;besarppn=0;
