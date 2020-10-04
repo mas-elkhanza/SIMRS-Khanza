@@ -43,7 +43,7 @@ import simrskhanza.DlgTagihanOperasi;
 public class DlgBilingRalan extends javax.swing.JDialog {
     private DefaultTableModel tabModeRwJlDr;
     private final DefaultTableModel tabModeTambahan,tabModePotongan,tabModeAkunBayar,tabModeAkunPiutang,tabModeLab,tabModeRad,tabModeApotek;
-    
+    private boolean sukses=false;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
@@ -2672,8 +2672,8 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             }
         }
         if(i>0){
-             Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Belum Bayar'");
-
+             Sequel.AutoComitFalse();
+             sukses=true;
              this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));            
             
              Sequel.queryu2("delete from tampjurnal");
@@ -2720,6 +2720,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
                     Sequel.menyimpan("tampjurnal","'"+rsakunbayar.getString("kd_rek")+"','"+rsakunbayar.getString("nama_bayar")+"','0','"+rsakunbayar.getString("besar_bayar")+"'","Rekening");
                  } 
              }catch (Exception e) {
+                 sukses=false;
                  System.out.println("Notifikasi Akun Bayar Tersimpan : "+e);
              } finally{
                  if(rsakunbayar != null){
@@ -2742,6 +2743,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
                      Sequel.menyimpan("tampjurnal","'"+rsakunpiutang.getString("kd_rek")+"','"+rsakunpiutang.getString("nama_bayar")+"','0','"+rsakunpiutang.getString("totalpiutang")+"'","Rekening");
                  } 
              }catch (Exception e) {
+                 sukses=false;
                  System.out.println("Notifikasi Akun Piutang Tersimpan : "+e);
              } finally{
                  if(rsakunpiutang != null){
@@ -2752,24 +2754,34 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
                  } 
              }
              
-             if(piutang>0){
-                jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN PIUTANG PASIEN RAWAT JALAN, DIBATALKAN OLEH "+akses.getkode());    
-             }else if(piutang<=0){
-                jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN PEMBAYARAN PASIEN RAWAT JALAN, DIBATALKAN OLEH "+akses.getkode());    
+             if(sukses==true){
+                 if(piutang>0){
+                    sukses=jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN PIUTANG PASIEN RAWAT JALAN, DIBATALKAN OLEH "+akses.getkode());    
+                 }else if(piutang<=0){
+                    sukses=jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBATALAN PEMBAYARAN PASIEN RAWAT JALAN, DIBATALKAN OLEH "+akses.getkode());    
+                 } 
              }
+             
+             if(sukses==true){
+                 Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Belum Bayar'");
+                 Sequel.queryu2("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
+                 Sequel.queryu2("delete from detail_piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
+                 Sequel.queryu2("delete from nota_jalan where no_rawat='"+TNoRw.getText()+"'");            
+                 Sequel.queryu2("delete from detail_nota_jalan where no_rawat='"+TNoRw.getText()+"'");
+                 Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");
+                 Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");
+                 Sequel.Commit();
+                 JOptionPane.showMessageDialog(rootPane,"Proses hapus data Nota Salah selesai..!!");
+                 Valid.tabelKosong(tabModeAkunBayar);
+                 Valid.tabelKosong(tabModeAkunPiutang);
+                 isRawat();
+             }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                Sequel.RollBack();
+            }
 
-            Sequel.queryu2("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu2("delete from detail_piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu2("delete from nota_jalan where no_rawat='"+TNoRw.getText()+"'");            
-            Sequel.queryu2("delete from detail_nota_jalan where no_rawat='"+TNoRw.getText()+"'");
-            Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");
-            Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");
+            Sequel.AutoComitTrue();
             this.setCursor(Cursor.getDefaultCursor());
-            
-            JOptionPane.showMessageDialog(rootPane,"Proses hapus data Nota Salah selesai..!!");
-            Valid.tabelKosong(tabModeAkunBayar);
-            Valid.tabelKosong(tabModeAkunPiutang);
-            isRawat();
         }else if(i<=0){
             JOptionPane.showMessageDialog(rootPane,"Data belum pernah disimpan/diverifikasi.\n"+
                     "Tidak perlu ada penghapusan data salah..!!");
@@ -5074,7 +5086,8 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     } 
                 }
 
-                koneksi.setAutoCommit(false);  
+                Sequel.AutoComitFalse();
+                sukses=true; 
                 for(i=0;i<tbBilling.getRowCount();i++){  
                     psbiling=koneksi.prepareStatement(sqlpsbiling);
                     try {
@@ -5126,6 +5139,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         psbiling.setString(11,tbBilling.getValueAt(i,8).toString());
                         psbiling.executeUpdate();
                     } catch (Exception e) {
+                        sukses=false;
                         System.out.println("Notifikasi : "+e);
                     } finally{
                         if(psbiling != null){
@@ -5134,124 +5148,143 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
                 }
 
-                String alamat=Sequel.cariIsi("select almt_pj from reg_periksa where no_rawat=? ",TNoRw.getText());
-
-                Sequel.queryu2("delete from tampjurnal");
-
-                itembayar=0;besarppn=0;
-                row2=tbAkunBayar.getRowCount();                
-                for(r=0;r<row2;r++){
-                    if(Valid.SetAngka(tbAkunBayar.getValueAt(r,2).toString())>0){
-                        try {
-                            itembayar=Double.parseDouble(tbAkunBayar.getValueAt(r,2).toString()); 
-                        } catch (Exception e) {
-                            itembayar=0;
-                        }    
-                        
-                        if(!tbAkunBayar.getValueAt(r,4).toString().equals("")){
+                if(sukses==true){
+                    Sequel.queryu2("delete from tampjurnal");
+                    itembayar=0;besarppn=0;
+                    row2=tbAkunBayar.getRowCount();                
+                    for(r=0;r<row2;r++){
+                        if(Valid.SetAngka(tbAkunBayar.getValueAt(r,2).toString())>0){
                             try {
-                                besarppn=Valid.roundUp(Double.parseDouble(tbAkunBayar.getValueAt(r,4).toString()),100); 
+                                itembayar=Double.parseDouble(tbAkunBayar.getValueAt(r,2).toString()); 
                             } catch (Exception e) {
-                                besarppn=0;
-                            }               
-                        }  
-                        
-                        if(countbayar>1){
-                            if(Sequel.menyimpantf2("detail_nota_jalan","?,?,?,?","Akun bayar",4,new String[]{
-                                    TNoRw.getText(),tbAkunBayar.getValueAt(r,0).toString(),Double.toString(besarppn),Double.toString(itembayar)
-                                })==true){
-                                    Sequel.menyimpan("tampjurnal","'"+tbAkunBayar.getValueAt(r,1).toString()+"','"+tbAkunBayar.getValueAt(r,0).toString()+"','"+Double.toString(itembayar)+"','0'","Rekening");                 
-                            }
-                        }else if(countbayar==1){
-                            if(piutang<=0){
-                                if(Sequel.menyimpantf2("detail_nota_jalan","?,?,?,?","Akun bayar",4,new String[]{
-                                        TNoRw.getText(),tbAkunBayar.getValueAt(r,0).toString(),Double.toString(besarppn),Double.toString(total)
-                                    })==true){
-                                        Sequel.menyimpan("tampjurnal","'"+tbAkunBayar.getValueAt(r,1).toString()+"','"+tbAkunBayar.getValueAt(r,0).toString()+"','"+Double.toString(total)+"','0'","Rekening");                 
-                                } 
-                            }else{
+                                itembayar=0;
+                            }    
+
+                            if(!tbAkunBayar.getValueAt(r,4).toString().equals("")){
+                                try {
+                                    besarppn=Valid.roundUp(Double.parseDouble(tbAkunBayar.getValueAt(r,4).toString()),100); 
+                                } catch (Exception e) {
+                                    besarppn=0;
+                                }               
+                            }  
+
+                            if(countbayar>1){
                                 if(Sequel.menyimpantf2("detail_nota_jalan","?,?,?,?","Akun bayar",4,new String[]{
                                         TNoRw.getText(),tbAkunBayar.getValueAt(r,0).toString(),Double.toString(besarppn),Double.toString(itembayar)
                                     })==true){
                                         Sequel.menyimpan("tampjurnal","'"+tbAkunBayar.getValueAt(r,1).toString()+"','"+tbAkunBayar.getValueAt(r,0).toString()+"','"+Double.toString(itembayar)+"','0'","Rekening");                 
+                                }else{
+                                    sukses=false;
+                                }
+                            }else if(countbayar==1){
+                                if(piutang<=0){
+                                    if(Sequel.menyimpantf2("detail_nota_jalan","?,?,?,?","Akun bayar",4,new String[]{
+                                            TNoRw.getText(),tbAkunBayar.getValueAt(r,0).toString(),Double.toString(besarppn),Double.toString(total)
+                                        })==true){
+                                            Sequel.menyimpan("tampjurnal","'"+tbAkunBayar.getValueAt(r,1).toString()+"','"+tbAkunBayar.getValueAt(r,0).toString()+"','"+Double.toString(total)+"','0'","Rekening");                 
+                                    }else{
+                                        sukses=false;
+                                    } 
+                                }else{
+                                    if(Sequel.menyimpantf2("detail_nota_jalan","?,?,?,?","Akun bayar",4,new String[]{
+                                            TNoRw.getText(),tbAkunBayar.getValueAt(r,0).toString(),Double.toString(besarppn),Double.toString(itembayar)
+                                        })==true){
+                                            Sequel.menyimpan("tampjurnal","'"+tbAkunBayar.getValueAt(r,1).toString()+"','"+tbAkunBayar.getValueAt(r,0).toString()+"','"+Double.toString(itembayar)+"','0'","Rekening");                 
+                                    }else{
+                                        sukses=false;
+                                    }                                
                                 }                                
-                            }                                
-                        }                        
-                    }  
-                             
-                }
-                
-                itempiutang=0;
-                row2=tabModeAkunPiutang.getRowCount();
-                for(r=0;r<row2;r++){ 
-                    if(!tabModeAkunPiutang.getValueAt(r,3).toString().equals("")){
-                        try {
-                            itempiutang=Double.parseDouble(tabModeAkunPiutang.getValueAt(r,3).toString()); 
-                        } catch (Exception e) {
-                            itempiutang=0;
+                            }                        
                         } 
-                        
-                        if(Sequel.menyimpantf2("detail_piutang_pasien","?,?,?,?,?,?","Aku Piutang",6,new String[]{
-                                TNoRw.getText(),tabModeAkunPiutang.getValueAt(r,0).toString(),tabModeAkunPiutang.getValueAt(r,2).toString(),
-                                Double.toString(itempiutang),Double.toString(itempiutang),Valid.SetTgl(tabModeAkunPiutang.getValueAt(r,4).toString())
-                            })==true){
-                                Sequel.menyimpan("tampjurnal","'"+tabModeAkunPiutang.getValueAt(r,1).toString()+"','"+tabModeAkunPiutang.getValueAt(r,0).toString()+"','"+Double.toString(itempiutang)+"','0'","Rekening");                 
-                        }
-                    }             
-                }
-                
-                if((-1*ttlPotongan)>0){
-                    Sequel.menyimpan("tampjurnal","'"+Potongan_Ralan+"','Potongan_Ralan','"+(-1*ttlPotongan)+"','0'","debet=debet+'"+(-1*ttlPotongan)+"'","kd_rek='"+Potongan_Ralan+"'");    
-                }
-
-                if((ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)>0){
-                    Sequel.menyimpan("tampjurnal","'"+Tindakan_Ralan+"','Tindakan Ralan','0','"+(ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)+"'","kredit=kredit+'"+(ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)+"'","kd_rek='"+Tindakan_Ralan+"'");    
-                }
-
-                if(ttlLaborat>0){
-                    Sequel.menyimpan("tampjurnal","'"+Laborat_Ralan+"','Laborat Ralan','0','"+ttlLaborat+"'","kredit=kredit+'"+(ttlLaborat)+"'","kd_rek='"+Laborat_Ralan+"'");    
-                }
-
-                if(ttlRadiologi>0){
-                    Sequel.menyimpan("tampjurnal","'"+Radiologi_Ralan+"','Radiologi Ralan','0','"+ttlRadiologi+"'","kredit=kredit+'"+(ttlRadiologi)+"'","kd_rek='"+Radiologi_Ralan+"'");    
-                }
-
-                if(ttlObat>0){
-                    Sequel.menyimpan("tampjurnal","'"+Obat_Ralan+"','Obat Ralan','0','"+ttlObat+"'","kredit=kredit+'"+(ttlObat)+"'","kd_rek='"+Obat_Ralan+"'");    
-                }
-
-                if(ttlRegistrasi>0){
-                    Sequel.menyimpan("tampjurnal","'"+Registrasi_Ralan+"','Registrasi Ralan','0','"+ttlRegistrasi+"'","kredit=kredit+'"+(ttlRegistrasi)+"'","kd_rek='"+Registrasi_Ralan+"'");    
-                }
-
-                if(ttlTambahan>0){
-                    Sequel.menyimpan("tampjurnal","'"+Tambahan_Ralan+"','Tambahan Ralan','0','"+ttlTambahan+"'","kredit=kredit+'"+(ttlTambahan)+"'","kd_rek='"+Tambahan_Ralan+"'");    
-                }
-
-                if(ttlOperasi>0){
-                    Sequel.menyimpan("tampjurnal","'"+Operasi_Ralan+"','Operasi Ralan','0','"+ttlOperasi+"'","kredit=kredit+'"+(ttlOperasi)+"'","kd_rek='"+Operasi_Ralan+"'");    
-                }
-
-                if(piutang>0){
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PIUTANG PASIEN RAWAT JALAN, DIPOSTING OLEH "+akses.getkode());
-                    if(bayar>0){
-                        Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText().replaceAll("'","")+"','"+alamat.replaceAll("'","")+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
-                                "',' ',CURTIME()),'Uang Muka','"+total+"','"+bayar+"','Belum','"+akses.getkode()+"'","No.Rawat");
                     }
-                    Sequel.queryu2("insert into piutang_pasien values ('"+TNoRw.getText()+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"','"+
-                            TNoRM.getText()+"','Belum Lunas','"+total+"','"+bayar+"','"+piutang+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"')");
-                }else if(piutang<=0){
-                    jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBAYARAN PASIEN RAWAT JALAN, DIPOSTING OLEH "+akses.getkode());
-                    Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText().replaceAll("'","")+"','"+alamat.replaceAll("'","")+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
-                                "',' ',CURTIME()),'Pelunasan','"+total+"','"+total+"','Sudah','"+akses.getkode()+"'","No.Rawat");
-                }
 
-                Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Sudah Bayar'");
-                Sequel.meghapus("temporary_tambahan_potongan","no_rawat",TNoRw.getText());
-                koneksi.setAutoCommit(true);
-                JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");     
-                if(notaralan.equals("Yes")){
-                    this.dispose();
+                    itempiutang=0;
+                    row2=tabModeAkunPiutang.getRowCount();
+                    for(r=0;r<row2;r++){ 
+                        if(!tabModeAkunPiutang.getValueAt(r,3).toString().equals("")){
+                            try {
+                                itempiutang=Double.parseDouble(tabModeAkunPiutang.getValueAt(r,3).toString()); 
+                            } catch (Exception e) {
+                                itempiutang=0;
+                            } 
+
+                            if(Sequel.menyimpantf2("detail_piutang_pasien","?,?,?,?,?,?","Aku Piutang",6,new String[]{
+                                    TNoRw.getText(),tabModeAkunPiutang.getValueAt(r,0).toString(),tabModeAkunPiutang.getValueAt(r,2).toString(),
+                                    Double.toString(itempiutang),Double.toString(itempiutang),Valid.SetTgl(tabModeAkunPiutang.getValueAt(r,4).toString())
+                                })==true){
+                                    Sequel.menyimpan("tampjurnal","'"+tabModeAkunPiutang.getValueAt(r,1).toString()+"','"+tabModeAkunPiutang.getValueAt(r,0).toString()+"','"+Double.toString(itempiutang)+"','0'","Rekening");                 
+                            }else{
+                                sukses=false;
+                            }
+                        }             
+                    }
+                    
+                    if(sukses==true){
+                        if((-1*ttlPotongan)>0){
+                            Sequel.menyimpan("tampjurnal","'"+Potongan_Ralan+"','Potongan_Ralan','"+(-1*ttlPotongan)+"','0'","debet=debet+'"+(-1*ttlPotongan)+"'","kd_rek='"+Potongan_Ralan+"'");    
+                        }
+
+                        if((ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)>0){
+                            Sequel.menyimpan("tampjurnal","'"+Tindakan_Ralan+"','Tindakan Ralan','0','"+(ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)+"'","kredit=kredit+'"+(ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis)+"'","kd_rek='"+Tindakan_Ralan+"'");    
+                        }
+
+                        if(ttlLaborat>0){
+                            Sequel.menyimpan("tampjurnal","'"+Laborat_Ralan+"','Laborat Ralan','0','"+ttlLaborat+"'","kredit=kredit+'"+(ttlLaborat)+"'","kd_rek='"+Laborat_Ralan+"'");    
+                        }
+
+                        if(ttlRadiologi>0){
+                            Sequel.menyimpan("tampjurnal","'"+Radiologi_Ralan+"','Radiologi Ralan','0','"+ttlRadiologi+"'","kredit=kredit+'"+(ttlRadiologi)+"'","kd_rek='"+Radiologi_Ralan+"'");    
+                        }
+
+                        if(ttlObat>0){
+                            Sequel.menyimpan("tampjurnal","'"+Obat_Ralan+"','Obat Ralan','0','"+ttlObat+"'","kredit=kredit+'"+(ttlObat)+"'","kd_rek='"+Obat_Ralan+"'");    
+                        }
+
+                        if(ttlRegistrasi>0){
+                            Sequel.menyimpan("tampjurnal","'"+Registrasi_Ralan+"','Registrasi Ralan','0','"+ttlRegistrasi+"'","kredit=kredit+'"+(ttlRegistrasi)+"'","kd_rek='"+Registrasi_Ralan+"'");    
+                        }
+
+                        if(ttlTambahan>0){
+                            Sequel.menyimpan("tampjurnal","'"+Tambahan_Ralan+"','Tambahan Ralan','0','"+ttlTambahan+"'","kredit=kredit+'"+(ttlTambahan)+"'","kd_rek='"+Tambahan_Ralan+"'");    
+                        }
+
+                        if(ttlOperasi>0){
+                            Sequel.menyimpan("tampjurnal","'"+Operasi_Ralan+"','Operasi Ralan','0','"+ttlOperasi+"'","kredit=kredit+'"+(ttlOperasi)+"'","kd_rek='"+Operasi_Ralan+"'");    
+                        }
+
+                        String alamat=Sequel.cariIsi("select almt_pj from reg_periksa where no_rawat=? ",TNoRw.getText());
+
+                        if(piutang>0){
+                            sukses=jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PIUTANG PASIEN RAWAT JALAN, DIPOSTING OLEH "+akses.getkode());
+                            if(bayar>0){
+                                Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText().replaceAll("'","")+"','"+alamat.replaceAll("'","")+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
+                                        "',' ',CURTIME()),'Uang Muka','"+total+"','"+bayar+"','Belum','"+akses.getkode()+"'","No.Rawat");
+                            }
+                            Sequel.queryu2("insert into piutang_pasien values ('"+TNoRw.getText()+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"','"+
+                                    TNoRM.getText()+"','Belum Lunas','"+total+"','"+bayar+"','"+piutang+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"')");
+                        }else if(piutang<=0){
+                            sukses=jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBAYARAN PASIEN RAWAT JALAN, DIPOSTING OLEH "+akses.getkode());
+                            Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText().replaceAll("'","")+"','"+alamat.replaceAll("'","")+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
+                                        "',' ',CURTIME()),'Pelunasan','"+total+"','"+total+"','Sudah','"+akses.getkode()+"'","No.Rawat");
+                        }
+                    }
+                }
+                    
+                if(sukses==true){
+                    Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Sudah Bayar'");
+                    Sequel.meghapus("temporary_tambahan_potongan","no_rawat",TNoRw.getText());
+                    Sequel.Commit();
+                    JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");     
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue();
+                
+                if(sukses==true){
+                    if(notaralan.equals("Yes")){
+                        this.dispose();
+                    }
                 }
             }catch (SQLException ex) {
                 System.out.println("Notifikasi : "+ex);            

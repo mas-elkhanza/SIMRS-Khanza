@@ -39,6 +39,7 @@ public class IPSRSCariPemesanan extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
+    private boolean sukses=false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -915,10 +916,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       Valid.textKosong(TCari,"No.Faktur");
   }else{
      try {
-         
          pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
          rs=pscaripesan.executeQuery();
          while(rs.next()){
+             Sequel.AutoComitFalse();
+             sukses=true;
              psipsrsdetailpesan.setString(1,rs.getString(1));
              rs2=psipsrsdetailpesan.executeQuery();
              while(rs2.next()){
@@ -934,11 +936,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                  Sequel.cariIsi("select Kontra_Penerimaan_NonMedis from set_akun"),"HUTANG BARANG NON MEDIS",rs.getString("tagihan"),"0"
              }); 
-             jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
+             sukses=jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
+             
+             if(sukses==true){
+                Sequel.queryu2("delete from ipsrspemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
+                Sequel.Commit();
+                tampil();
+             }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                Sequel.RollBack();
+             }
+
+             Sequel.AutoComitTrue();
          }          
-         Sequel.queryu2("delete from ipsrspemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-         
-         tampil();
      } catch (SQLException ex) {
          System.out.println(ex);
      }      

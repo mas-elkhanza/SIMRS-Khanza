@@ -38,6 +38,7 @@ public class IPSRSCariPembelian extends javax.swing.JDialog {
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
     private String akunpengadaan=Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun");
+    private boolean sukses=false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -859,6 +860,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
             rs=pscaribeli.executeQuery();
             if(rs.next()){
+                Sequel.AutoComitFalse();
+                sukses=true;
                 psipsrsdetailbeli=koneksi.prepareStatement("select kode_brng,jumlah from ipsrsdetailbeli where no_faktur=? ");
                 try {
                     psipsrsdetailbeli.setString(1,rs.getString(1));
@@ -887,8 +890,17 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                     Sequel.cariIsi("select kd_rek from ipsrspembelian where no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("tagihan"),"0"
                 }); 
-                jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGADAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
-                Sequel.queryu2("delete from ipsrspembelian where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
+                sukses=jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGADAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)"+", OLEH "+akses.getkode());
+                if(sukses==true){
+                    Sequel.queryu2("delete from ipsrspembelian where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
+                    Sequel.Commit();
+                    tampil();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+
+                Sequel.AutoComitTrue();
             }   
          } catch (Exception e) {
              System.out.println("Notif : "+e);
@@ -900,7 +912,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                  pscaribeli.close();
              }
          }
-         tampil();
      } catch (Exception ex) {
          System.out.println(ex);
      }      
