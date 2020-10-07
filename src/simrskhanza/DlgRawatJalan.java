@@ -12,17 +12,15 @@
 package simrskhanza;
 
 import bridging.DlgSKDPBPJS;
-import kepegawaian.DlgCariDokter;
-import kepegawaian.DlgCariPetugas;
-import inventory.DlgPemberianObat;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import inventory.DlgCariObat;
 import inventory.DlgCopyResep;
+import inventory.DlgPemberianObat;
 import inventory.DlgPeresepanDokter;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -51,11 +49,13 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 import keuangan.DlgJnsPerawatanRalan;
 import laporan.DlgBerkasRawat;
-import rekammedis.RMDataResumePasien;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
+import rekammedis.RMDataResumePasien;
 import rekammedis.RMTriaseIGD;
 
 /**
@@ -72,7 +72,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private validasi Valid = new validasi();
     private DlgPasien pasien = new DlgPasien(null, false);
     private DlgCariDokter dokter = new DlgCariDokter(null, false);
-
+    private DlgCariPoli poli = new DlgCariPoli(null, false);
     /**
      *
      */
@@ -80,7 +80,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private PreparedStatement ps, ps2, ps3, ps4, ps5, ps6, pstindakan, psset_tarif;
     private ResultSet rs, rstindakan, rsset_tarif;
     private int i = 0, jmlparsial = 0, jml = 0, index = 0;
-    private String aktifkanparsial = "no", kode_poli = "", kd_pj = "", poli_ralan = "No", cara_bayar_ralan = "No";
+    private String aktifkanparsial = "no", kode_poli = "", kd_pj = "", poli_ralan = "No", cara_bayar_ralan = "No", form = "";
     private final Properties prop = new Properties();
     private boolean[] pilih;
     private String[] kode, nama, kategori;
@@ -1275,6 +1275,43 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
 
+        poli.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (poli.getTable().getSelectedRow() != -1) {
+                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString());
+                    TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 1).toString());
+                    kode_poli = poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString();
+                    kdpoli.requestFocus();
+                    tampilkanPenangananDokterPetugas();
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+
         dokter.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -1526,6 +1563,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         }
     }
 
+    private void unit() {
+        kode_poli = Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?", TNoRw.getText());
+        kdpoli.setText(kode_poli);
+        TPoli.setText(Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", kode_poli));
+        String status = Sequel.cariIsi("select status_lanjut from reg_periksa where no_rawat=?", TNoRw.getText());
+//        System.out.println("Kd Poli=" + kode_poli + ", status=" + status);
+        if (status.equals("Ranap")) {
+            kdpoli.setEnabled(true);
+            TPoli.setEnabled(true);
+            BtnUnit.setEnabled(true);
+        } else if (status.equals("Ralan")) {
+            kdpoli.setEnabled(false);
+            TPoli.setEnabled(false);
+            BtnUnit.setEnabled(false);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1592,6 +1646,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         KdDok2 = new widget.TextBox();
         TDokter2 = new widget.TextBox();
         BtnSeekDokter2 = new widget.Button();
+        jLabel29 = new widget.Label();
+        kdpoli = new widget.TextBox();
+        TPoli = new widget.TextBox();
+        BtnUnit = new widget.Button();
         TabRawatTindakanDokterPetugas = new javax.swing.JTabbedPane();
         Scroll9 = new widget.ScrollPane();
         tbTindakan3 = new widget.Table();
@@ -1770,7 +1828,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perawatan/Tindakan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perawatan/Tindakan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -2278,7 +2336,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         panelGlass11.setBorder(null);
         panelGlass11.setName("panelGlass11"); // NOI18N
-        panelGlass11.setPreferredSize(new java.awt.Dimension(44, 74));
+        panelGlass11.setPreferredSize(new java.awt.Dimension(44, 100));
         panelGlass11.setLayout(null);
 
         jLabel14.setText("Petugas :");
@@ -2347,6 +2405,46 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
         panelGlass11.add(BtnSeekDokter2);
         BtnSeekDokter2.setBounds(580, 10, 28, 23);
+
+        jLabel29.setText("Unit :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        panelGlass11.add(jLabel29);
+        jLabel29.setBounds(10, 70, 56, 23);
+
+        kdpoli.setHighlighter(null);
+        kdpoli.setName("kdpoli"); // NOI18N
+        kdpoli.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                kdpoliFocusLost(evt);
+            }
+        });
+        kdpoli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdpoliKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                kdpoliKeyTyped(evt);
+            }
+        });
+        panelGlass11.add(kdpoli);
+        kdpoli.setBounds(70, 70, 130, 23);
+
+        TPoli.setEditable(false);
+        TPoli.setName("TPoli"); // NOI18N
+        panelGlass11.add(TPoli);
+        TPoli.setBounds(200, 70, 210, 23);
+
+        BtnUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnUnit.setMnemonic('4');
+        BtnUnit.setToolTipText("ALt+4");
+        BtnUnit.setName("BtnUnit"); // NOI18N
+        BtnUnit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnUnitActionPerformed(evt);
+            }
+        });
+        panelGlass11.add(BtnUnit);
+        BtnUnit.setBounds(420, 70, 28, 23);
 
         internalFrame4.add(panelGlass11, java.awt.BorderLayout.PAGE_START);
 
@@ -3629,7 +3727,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPTgl.setName("DTPTgl"); // NOI18N
         FormInput.add(DTPTgl);
-        DTPTgl.setBounds(590, 10, 88, 20);
+        DTPTgl.setBounds(590, 10, 103, 22);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -3949,7 +4047,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             isRawat();
             isPsien();
             kd_pj = Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?", TNoRw.getText());
-            kode_poli = Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?", TNoRw.getText());
         } else {
             switch (TabRawat.getSelectedIndex()) {
                 case 0:
@@ -5972,6 +6069,26 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnResumeActionPerformed
 
+    private void kdpoliFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_kdpoliFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdpoliFocusLost
+
+    private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdpoliKeyPressed
+
+    private void kdpoliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdpoliKeyTyped
+
+    private void BtnUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUnitActionPerformed
+        // TODO add your handling code here:
+        poli.isCek();
+        poli.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        poli.setLocationRelativeTo(internalFrame1);
+        poli.setVisible(true);
+    }//GEN-LAST:event_BtnUnitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -6017,6 +6134,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnSimpan;
     private widget.Button BtnTambahTindakan;
     private widget.Button BtnTriaseIGD;
+    private widget.Button BtnUnit;
     private widget.TextArea Catatan;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
@@ -6080,6 +6198,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox TPenurunan;
     private widget.TextBox TPerawat;
     private widget.TextBox TPerawat2;
+    private widget.TextBox TPoli;
     private widget.TextBox TPortio;
     private widget.TextBox TPortioDalam;
     private widget.TextBox TPortioInspekulo;
@@ -6143,6 +6262,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label jLabel26;
     private widget.Label jLabel27;
     private widget.Label jLabel28;
+    private widget.Label jLabel29;
     private widget.Label jLabel3;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
@@ -6191,6 +6311,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label jLabel83;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
+    private widget.TextBox kdpoli;
     private widget.TextBox kdptg;
     private widget.TextBox kdptg2;
     private laporan.PanelDiagnosa panelDiagnosa1;
@@ -6538,6 +6659,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         ChkInput3.setSelected(true);
         isForm4();
         TabRawatMouseClicked(null);
+        unit();
     }
 
     private void isForm() {
@@ -6986,6 +7108,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
      */
     public void SetPoli(String KodePoli) {
         this.kode_poli = KodePoli;
+        kdpoli.setText(KodePoli);
     }
 
     /**
@@ -7560,11 +7683,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 while (rstindakan.next()) {
                     TabModeTindakan3.addRow(new Object[]{
                         false, rstindakan.getString(1), rstindakan.getString(2), rstindakan.getString(3),
-                        rstindakan.getDouble("total_byrdrpr"), 
+                        rstindakan.getDouble("total_byrdrpr"),
                         rstindakan.getDouble("material"),
-                        rstindakan.getDouble("bhp"), 
+                        rstindakan.getDouble("bhp"),
                         rstindakan.getDouble("tarif_tindakandr"),
-                        rstindakan.getDouble("tarif_tindakanpr"), 
+                        rstindakan.getDouble("tarif_tindakanpr"),
                         rstindakan.getDouble("kso"),
                         rstindakan.getDouble("menejemen")
                     });
