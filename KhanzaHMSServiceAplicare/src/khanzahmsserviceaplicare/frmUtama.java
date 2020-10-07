@@ -178,6 +178,7 @@ public class frmUtama extends javax.swing.JFrame {
                     }
                         
                     try {
+                        koneksi=koneksiDB.condb();
                         TeksArea.append("Memulai update aplicare\n");
                         ps=koneksi.prepareStatement(
                                 "select aplicare_ketersediaan_kamar.kode_kelas_aplicare,aplicare_ketersediaan_kamar.kd_bangsal," +

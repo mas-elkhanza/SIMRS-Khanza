@@ -1,8 +1,18 @@
 <?php
+    if(strpos($_SERVER['REQUEST_URI'],"conf")){
+        exit(header("Location:../index.php"));
+    }
+    
     $db_hostname            = "localhost";
     $db_username            = "root";
     $db_password            = "";
     $db_name                = "sik";
+    define('URUTNOREG', 'dokter'); // dokter / poli / dokter + poli
+    $month          = date('Y-m');
+    $date           = date('Y-m-d');
+    $time           = date('H:i:s');
+    $date_time      = date('Y-m-d H:i:s');
+    $stokdarah      = "aktif";
     
     function host(){
         global $db_hostname;
@@ -26,7 +36,18 @@
             $clean = mysqli_real_escape_string($konektor,$dirty);	
 	} 
          mysqli_close($konektor);
-	return preg_replace('/[^a-zA-Z0-9\s_ ]/', '',$clean);
+	return preg_replace('/[^a-zA-Z0-9\s_,@. ]/', '',$clean);
+    }
+    
+    function cleankar2($dirty){
+         $konektor=bukakoneksi();
+	if (get_magic_quotes_gpc()) {
+            $clean = mysqli_real_escape_string($konektor,stripslashes($dirty));	 
+	}else{
+            $clean = mysqli_real_escape_string($konektor,$dirty);	
+	} 
+         mysqli_close($konektor);
+	return $clean;
     }
     
     function antisqlinjection(){
@@ -112,7 +133,7 @@
     function bukaquery($sql){    
         $konektor=bukakoneksi();
         $result=mysqli_query($konektor, $sql)
-        or die (mysqli_error($konektor)."<br/><font color=red><b>hmmmmmmm.....??????????</b>");
+        or die (/*mysqli_error($konektor)*/"<br/><font color=red><b>Terjadi Kesalahan</b></font>".JSRedirect2("index.php?act=Home",4));
         mysqli_close($konektor);
         return $result;
     }
@@ -206,6 +227,11 @@
         $command = bukaquery("UPDATE ".$tabelname." SET ".$attrib." ");
         return $command;
     }
+    
+    function Ubah3($tabelname,$attrib) {
+        $command = bukaquery2("UPDATE ".$tabelname." SET ".$attrib." ");
+        return $command;
+    }
 
     function Hapus($tabelname,$param,$hal) {
         $sql ="DELETE FROM ".$tabelname." WHERE ".$param." ";
@@ -284,6 +310,20 @@
         return $bulan;
     }
 
+    function konversiHari($hari){
+        switch($hari) {
+            case "Sunday"       : $namahari="Akhad"; break;
+            case "Monday"       : $namahari="Senin"; break;
+            case "Tuesday"      : $namahari="Selasa"; break;
+            case "Wednesday"    : $namahari="Rabu"; break;
+            case "Thursday"     : $namahari="Kamis"; break;
+            case "Friday"       : $namahari="Jumat"; break;
+            case "Saturday"     : $namahari="Sabtu"; break;
+            default             : $namahari="Tidak Boleh";
+        }
+        return $namahari;
+    }
+    
     function konversiTanggal($tanggal){
         list($thn,$bln,$tgl)=explode('-',$tanggal);
         $tmp = $tgl." ".konversiBulan($bln)." ".$thn;
@@ -321,6 +361,13 @@
         list($result) = mysqli_fetch_array($hasil);
         return $result;
     }
+    
+    function getOne3($sql,$string) {
+        $hasil=bukaquery($sql);
+        list($result) =mysqli_fetch_array($hasil);
+        if(empty($result)) $result=$string;
+        return $result;
+    }
 
     function cekKosong($sql) {
         $jum = mysqli_num_rows($sql);
@@ -355,7 +402,6 @@
 
 
     function loadTgl2(){
-        //echo "<option>-&nbsp</option>";
         for($tgl=1; $tgl<=31; $tgl++){
             $tgl_leng=strlen($tgl);
             if ($tgl_leng==1)
@@ -392,7 +438,6 @@
     }
 
     function loadBln2(){
-        //echo "<option>-&nbsp</option>";
         for($bln=1; $bln<=12; $bln++){
             $bln_leng=strlen($bln);
             if ($bln_leng==1)
@@ -444,7 +489,6 @@
     }
     function loadThn3(){
         $thnini=date('Y');
-        //echo "<option>-&nbsp</option>";
         for($thn=$thnini+30; $thn>=1960; $thn--){
             $thn_leng=strlen($thn);
             if ($thn_leng==1)
@@ -457,8 +501,7 @@
 
     function loadThn4(){
         $thnini=date('Y');
-        //echo "<option>-&nbsp</option>";
-        for($thn=$thnini; $thn>=1960; $thn--){
+        for($thn=$thnini+4; $thn>=$thnini; $thn--){
             $thn_leng=strlen($thn);
             if ($thn_leng==1)
             $i="0".$thn;
@@ -483,12 +526,12 @@
     function loadMenit(){
         //echo "<option selected>-----&nbsp</option>";
         for($menit=0; $menit<=60; $menit++){
-                $menit_leng=strlen($menit);
-                if ($menit_leng==1)
-                $i="0".$menit;
-                else
-                $i=$menit;                        
-                echo "<option value=$i>$i</option>";
+            $menit_leng=strlen($menit);
+            if ($menit_leng==1)
+            $i="0".$menit;
+            else
+            $i=$menit;                        
+            echo "<option value=$i>$i</option>";
         }
     }
 
@@ -522,6 +565,26 @@
           return Terbilang($x / 1000) . " ribu" . Terbilang($x % 1000);
         elseif ($x < 1000000000)
           return Terbilang($x / 1000000) . " juta" . Terbilang($x % 1000000);
+    }
+    
+    function encrypt_decrypt($string,$action){
+        $secret_key     = 'Bar12345Bar12345'; 
+        $secret_iv      = 'sayangsamakhanza';
+        $output         = FALSE;
+        $encrypt_method = "AES-256-CBC";
+        $key            = hash('sha256', $secret_key);
+        $iv             = substr(hash('sha256', $secret_iv), 0, 16);
+ 
+        switch ($action){
+             case "e":
+                $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
+                break;
+             case "d":
+                $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+                break;
+        }
+        
+        return $output;
     }
         
 ?>

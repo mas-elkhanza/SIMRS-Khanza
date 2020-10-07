@@ -24,10 +24,8 @@ import fungsi.akses;
 import fungsi.koneksiDB;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
@@ -40,7 +38,6 @@ import org.springframework.http.HttpMethod;
  */
 public final class PCarePeserta extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private ApiPcare api=new ApiPcare();
@@ -83,9 +80,8 @@ public final class PCarePeserta extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
             otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
-            URL=prop.getProperty("URLAPIPCARE")+"/peserta/";
+            URL=koneksiDB.URLAPIPCARE()+"/peserta/";
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -238,11 +234,11 @@ public final class PCarePeserta extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.add("X-cons-id",koneksiDB.CONSIDAPIPCARE());
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
+	   headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+	   headers.add("X-Signature",api.getHmac());
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-	    requestEntity = new HttpEntity(headers);
-	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+	   requestEntity = new HttpEntity(headers);
+             //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             root = mapper.readTree(api.getRest().exchange(URL+nopeserta, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             //System.out.println("code : "+nameNode.path("code").asText());

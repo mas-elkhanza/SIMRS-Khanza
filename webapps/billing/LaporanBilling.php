@@ -31,7 +31,7 @@
 				<td colspan='7' padding='0'>
 					   <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
 							<tr>
-								<td  width='20%'>
+							  <td  width='20%'>
                                                                     <img width='45' height='45' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
                                                                 </td>
                                                                 <td>

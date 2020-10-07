@@ -13,7 +13,6 @@ package setting;
 
 import fungsi.WarnaTable;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -77,6 +76,9 @@ public class DlgVakum extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Popup = new javax.swing.JPopupMenu();
+        ppBersihkan = new javax.swing.JMenuItem();
+        ppCentang = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbAdmin = new widget.Table();
@@ -95,6 +97,40 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnHapus = new widget.Button();
         jLabel13 = new widget.Label();
 
+        Popup.setName("Popup"); // NOI18N
+
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        ppBersihkan.setText("Hilangkan Centang");
+        ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkan.setName("ppBersihkan"); // NOI18N
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBersihkan);
+
+        ppCentang.setBackground(new java.awt.Color(255, 255, 254));
+        ppCentang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppCentang.setForeground(new java.awt.Color(50, 50, 50));
+        ppCentang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppCentang.setText("Centang Semua");
+        ppCentang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppCentang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppCentang.setName("ppCentang"); // NOI18N
+        ppCentang.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppCentang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppCentangActionPerformed(evt);
+            }
+        });
+        Popup.add(ppCentang);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -109,10 +145,12 @@ public class DlgVakum extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(Popup);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbAdmin.setComponentPopupMenu(Popup);
         tbAdmin.setName("tbAdmin"); // NOI18N
         Scroll.setViewportView(tbAdmin);
 
@@ -337,6 +375,18 @@ public class DlgVakum extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
+    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        for(i=0;i<tbAdmin.getRowCount();i++){
+            tbAdmin.setValueAt(false,i,0);
+        }
+    }//GEN-LAST:event_ppBersihkanActionPerformed
+
+    private void ppCentangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppCentangActionPerformed
+        for(i=0;i<tbAdmin.getRowCount();i++){
+            tbAdmin.setValueAt(true,i,0);
+        }
+    }//GEN-LAST:event_ppCentangActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -359,6 +409,7 @@ public class DlgVakum extends javax.swing.JDialog {
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Label LCount;
+    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
@@ -370,6 +421,8 @@ public class DlgVakum extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private widget.panelisi panelGlass1;
     private widget.panelisi panelGlass7;
+    private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppCentang;
     private widget.Table tbAdmin;
     // End of variables declaration//GEN-END:variables
 

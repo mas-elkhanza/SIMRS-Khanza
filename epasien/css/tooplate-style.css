@@ -6,7 +6,7 @@ http://www.tooplate.com/view/2098-health
 
 */
 
-  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600');
+  @import url(tooplate.css);
 
   body {
     background: #ffffff;

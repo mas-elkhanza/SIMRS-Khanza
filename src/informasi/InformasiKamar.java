@@ -12,7 +12,6 @@
 package informasi;
 
 import simrskhanza.DlgCariBangsal;
-import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -106,24 +105,7 @@ public final class InformasiKamar extends javax.swing.JDialog {
                 }
             });
         }
-        
-        try {
-            ps=koneksi.prepareStatement("select kamar.kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
-                   "kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar "+
-                   "on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' and kamar.kd_kamar like ? or "+
-                   " kamar.statusdata='1' and kamar.kd_bangsal like ? or "+
-                   " kamar.statusdata='1' and bangsal.nm_bangsal like ? or "+
-                   " kamar.statusdata='1' and kamar.kelas like ? or "+
-                   " kamar.statusdata='1' and kamar.trf_kamar like ? or "+
-                   " kamar.statusdata='1' and kamar.status like ? "+
-                   "order by bangsal.nm_bangsal");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
-    
-    public DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
-    private int pilihan=0;
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -336,22 +318,42 @@ public final class InformasiKamar extends javax.swing.JDialog {
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");
-            ps.setString(5,"%"+TCari.getText().trim()+"%");
-            ps.setString(6,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new String[]{rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               Valid.SetAngka(rs.getDouble(5)),
-                               rs.getString(6)});
-            }
+        try{    
+            ps=koneksi.prepareStatement("select kamar.kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
+                   "kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar "+
+                   "on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' and kamar.kd_kamar like ? or "+
+                   " kamar.statusdata='1' and kamar.kd_bangsal like ? or "+
+                   " kamar.statusdata='1' and bangsal.nm_bangsal like ? or "+
+                   " kamar.statusdata='1' and kamar.kelas like ? or "+
+                   " kamar.statusdata='1' and kamar.trf_kamar like ? or "+
+                   " kamar.statusdata='1' and kamar.status like ? "+
+                   "order by bangsal.nm_bangsal");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{rs.getString(1),
+                                   rs.getString(2),
+                                   rs.getString(3),
+                                   rs.getString(4),
+                                   Valid.SetAngka(rs.getDouble(5)),
+                                   rs.getString(6)});
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }   
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

@@ -19,7 +19,6 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -57,7 +56,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
-import simrskhanza.DlgPilihanCetakDokumen;
 
 /**
  *
@@ -72,15 +70,12 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
 
     private final JTextField txtURL = new JTextField();
     private final JProgressBar progressBar = new JProgressBar();
-    private final Properties prop = new Properties(); 
     private final validasi Valid=new validasi();
-    private sekuel Sequel=new sekuel();
+    private final sekuel Sequel=new sekuel();
     private String halaman="",norawat="";
     private PreparedStatement ps;
     private ResultSet rs;
-    private final validasi validasi=new validasi();
     private final Connection koneksi=koneksiDB.condb();
-    private final DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     public DlgBerkasRawat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -164,15 +159,14 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
                     public void changed(ObservableValue ov, State oldState, State newState) {
                         if (newState == State.SUCCEEDED) {
                             try {
-                                prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("berkasrawat/pages")){
+                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("berkasrawat/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/pages/upload/","berkasrawat/").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/pages/upload/","berkasrawat/"));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/pages/upload/","berkasrawat/").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/pages/upload/","berkasrawat/"));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("Keluar")){
                                     dispose();
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("GABUNG")){
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("GABUNG")){
                                     norawat=Sequel.cariIsi("select no_rawat from temppanggilnorawat");
                                     ps=koneksi.prepareStatement("SELECT berkas_digital_perawatan.lokasi_file "+
                                                   "from berkas_digital_perawatan inner join master_berkas_digital "+
@@ -184,7 +178,7 @@ public class DlgBerkasRawat extends javax.swing.JDialog {
                                         ps.setString(1,norawat);
                                         rs=ps.executeQuery();
                                         while(rs.next()){
-                                            url = new URL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/"+rs.getString("lokasi_file"));
+                                            url = new URL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/berkasrawat/"+rs.getString("lokasi_file"));
                                             InputStream is = url.openStream();
                                             ut.addSource(is);
                                         }

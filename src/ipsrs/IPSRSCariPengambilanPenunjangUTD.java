@@ -46,6 +46,7 @@ public final class IPSRSCariPengambilanPenunjangUTD extends javax.swing.JDialog 
     private riwayatnonmedis Trackbarang=new riwayatnonmedis();
     private double total=0;
     private Jurnal jur=new Jurnal();
+    private boolean sukses=false;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -350,24 +351,39 @@ public final class IPSRSCariPengambilanPenunjangUTD extends javax.swing.JDialog 
         }else if(tbKamar.getSelectedRow()<= -1){ 
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data yang mau dihapus..!!");
         }else{
-            
-            Sequel.queryu("delete from utd_pengambilan_penunjang where kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' "+
+            Sequel.AutoComitFalse();
+            sukses=true;
+            if(Sequel.queryutf("delete from utd_pengambilan_penunjang where kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"' "+
                           "and nip='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
                           "and tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"' "+
-                          "and jml='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"'");
-            Trackbarang.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan UTD", akses.getkode(),"Hapus");
-            Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok+?",2,new String[]{
-                                tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString(),
-                                tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()
-                            });
-            Sequel.menyimpan("utd_stok_penunjang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"'", 
-                             "stok=stok-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),"kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"'");            
-            Sequel.queryu("delete from tampjurnal");
-            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Penunjang_Utd from set_akun"),"PENGAMBILAN BARANG NON MEDIS UTD","0",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4)});
-            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Penunjang_Utd from set_akun"),"PERSEDIAAN BARANG NON MEDIS",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"}); 
-            jur.simpanJurnal(DTPCari1.getSelectedItem().toString().replaceAll("-","/"),Valid.SetTgl(DTPCari1.getSelectedItem()+""),"U","PEMBATALAN PENGAMBILAN BARANG NON MEDIS UTD"+", OLEH "+akses.getkode());
-            BtnCariActionPerformed(evt);
-            
+                          "and jml='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"'")==true){
+                Trackbarang.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan UTD", akses.getkode(),"Hapus");
+                Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok+?",2,new String[]{
+                                    tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString(),
+                                    tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()
+                                });
+                Sequel.menyimpan("utd_stok_penunjang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString()+"'", 
+                                 "stok=stok-"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2),"kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"'");  
+            }else{
+                sukses=false;
+            }
+                          
+            if(sukses==true){
+                Sequel.queryu("delete from tampjurnal");
+                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Penunjang_Utd from set_akun"),"PENGAMBILAN BARANG NON MEDIS UTD","0",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4)});
+                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Penunjang_Utd from set_akun"),"PERSEDIAAN BARANG NON MEDIS",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"}); 
+                sukses=jur.simpanJurnal(DTPCari1.getSelectedItem().toString().replaceAll("-","/"),Valid.SetTgl(DTPCari1.getSelectedItem()+""),"U","PEMBATALAN PENGAMBILAN BARANG NON MEDIS UTD"+", OLEH "+akses.getkode());
+            }
+                
+            if(sukses==true){
+                Sequel.Commit();
+                BtnCariActionPerformed(evt);
+            }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                Sequel.RollBack();
+            }
+
+            Sequel.AutoComitTrue();
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 

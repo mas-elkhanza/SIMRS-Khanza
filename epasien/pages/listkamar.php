@@ -1,3 +1,8 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
 <section id="news" data-stellar-background-ratio="2.5">
       <div class="container">
            <div class="row">
@@ -8,19 +13,17 @@
                 </div>
                        
                 <div class="col-md-12 col-sm-12">
-                     <div class="news-thumb wow fadeInUp" data-wow-delay="0.2s">
+                     <div class="news-thumb wow fadeInUp" data-wow-delay="0.3s">
                          <form id="cariKamar" name="frmCariKamar" method="post" action="" enctype=multipart/form-data>
                            <table width="100%" border='0' align="center">
                                <tr class="head">
-                                  <td width="15%" align="right"><label for="kamar">Keyword</label></td>
+                                  <td width="20%" align="right"><label for="kamar">Keyword</label></td>
                                   <td width="1%"><label for=":">&nbsp;:&nbsp;</label></td>
-                                  <td width="69%"><input name="kamar" type="text" id="kamar" class="form-control" value="" size="65" maxlength="250" autocomplete="off"/></td>
-                                  <td width="15%" align="left">&nbsp;<input name="BtnKamar" type=submit class="btn btn-warning" value="Cari"></td>
+                                  <td width="60%"><input name="kamar" type="text" id="kamar" pattern="[a-zA-Z0-9, ./@_]{1,65}" title=" a-zA-Z0-9, ./@_ (Maksimal 65 karakter)" class="form-control" value="" size="65" maxlength="250" autocomplete="off" autofocus/></td>
+                                  <td width="19%" align="left">&nbsp;<input name="BtnKamar" type=submit class="btn btn-warning" value="Cari" /></td>
                                </tr>
                            </table>
                          </form>
-                      </div>
-                      <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
                          <table class="table table-hover" >
                             <tr>
                                 <th width="15%"><center>Nomer Bed</center></th>
@@ -43,7 +46,7 @@
                                          </tr>";
                                }
                            ?>
-                        </table>
+                         </table>
                      </div>
                 </div>
            </div>
