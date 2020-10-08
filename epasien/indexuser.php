@@ -3,10 +3,16 @@
         $halaman                            = isset($_GET["hal"])?$_GET["hal"]:NULL;
         $subhalaman                         = isset($_GET["act"])?$_GET["act"]:NULL;
         if(!isset($_SESSION["nm_pasien"])){
-            $queryuser                      = @bukaquery2("select pasien.nm_pasien,pasien.email,pasien.jk,personal_pasien.gambar from pasien inner join personal_pasien on personal_pasien.no_rkm_medis=pasien.no_rkm_medis where pasien.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
+            $queryuser                      = @bukaquery2("select pasien.nm_pasien,pasien.email,pasien.jk,personal_pasien.gambar,pasien.no_tlp,pasien.no_peserta,pasien.no_ktp,pasien.tmp_lahir,date_format(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir from pasien inner join personal_pasien on personal_pasien.no_rkm_medis=pasien.no_rkm_medis where pasien.no_rkm_medis='".encrypt_decrypt($_SESSION["ses_pasien"],"d")."'");
             while($rsqueryuser = mysqli_fetch_array($queryuser)) {
                 $_SESSION["nm_pasien"]      = $rsqueryuser["nm_pasien"];
                 $_SESSION["email"]          = $rsqueryuser["email"];
+                $_SESSION["jk"]             = $rsqueryuser["jk"];
+                $_SESSION["no_tlp"]         = $rsqueryuser["no_tlp"];
+                $_SESSION["no_peserta"]     = $rsqueryuser["no_peserta"];
+                $_SESSION["no_ktp"]         = $rsqueryuser["no_ktp"];
+                $_SESSION["tmp_lahir"]      = $rsqueryuser["tmp_lahir"];
+                $_SESSION["tgl_lahir"]      = $rsqueryuser["tgl_lahir"];
                 $_SESSION["photo"]          = "";
                 if(($rsqueryuser["gambar"]=="")||($rsqueryuser["gambar"]=="-")){
                     if($rsqueryuser["jk"]=="L"){
@@ -377,6 +383,12 @@
                         <a href="index.php?act=Pengaduan&hal=Pengaduan">
                             <i class="material-icons">message</i>
                             <span>Pengaduan</span>
+                        </a>
+                    </li>
+                    <li <?=$halaman=="KartuPasien"?"class='active'":""?>>
+                        <a href="index.php?act=KartuPasien&hal=KartuPasien">
+                            <i class="material-icons">card_membership</i>
+                            <span>Kartu Pasien</span>
                         </a>
                     </li>
                 </ul>
