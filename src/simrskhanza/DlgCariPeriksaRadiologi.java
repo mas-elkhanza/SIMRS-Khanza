@@ -1493,7 +1493,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps2.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
                     rs2=ps2.executeQuery();
                     while(rs2.next()){
-                        pemeriksaan=rs2.getString("nm_perawatan")+" dengan Proyeksi : "+rs2.getString("proyeksi")+", kV : "+rs2.getString("kV")+", mAS : "+rs2.getString("mAS")+", FFD : "+rs2.getString("FFD")+", BSF : "+rs2.getString("BSF")+", Inak : "+rs2.getString("inak")+", Jml Penyinaran : "+rs2.getString("jml_penyinaran")+", Dosis Radiasi : "+rs2.getString("dosis")+", "+pemeriksaan;
+                        pemeriksaan=rs2.getString("nm_perawatan")+", "+pemeriksaan;
                         kdpenjab=rs2.getString("kd_dokter");
                         kdpetugas=rs2.getString("nip");
                     }

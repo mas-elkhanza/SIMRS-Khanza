@@ -149,9 +149,31 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
             }else if(i==29){
                 column.setPreferredWidth(85);
             }else if(i==30){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(90);
             }else if(i==31){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(130);
+            }else if(i==32){
+                column.setPreferredWidth(70);
+            }else if(i==33){
+                column.setPreferredWidth(70);
+            }else if(i==34){
+                column.setPreferredWidth(70);
+            }else if(i==35){
+                column.setPreferredWidth(70);
+            }else if(i==36){
+                column.setPreferredWidth(70);
+            }else if(i==37){
+                column.setPreferredWidth(70);
+            }else if(i==38){
+                column.setPreferredWidth(70);
+            }else if(i==39){
+                column.setPreferredWidth(70);
+            }else if(i==40){
+                column.setPreferredWidth(120);
+            }else if(i==41){
+                column.setPreferredWidth(60);
+            }else if(i==42){
+                column.setPreferredWidth(120);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
