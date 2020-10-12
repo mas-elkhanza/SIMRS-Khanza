@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="184" pageHeight="113" columnWidth="174" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="47ff644c-0f7e-4ff8-9a5b-471993fcb9e1">
 	<property name="ireport.zoom" value="4.0"/>
 	<property name="ireport.x" value="0"/>
@@ -17,7 +17,8 @@
 	<queryString>
 		<![CDATA[select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,pasien.tgl_lahir,
 resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan.nama_racik,
-obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik 
+obat_racikan.aturan_pakai,obat_racikan.jml_dr,metode_racik.nm_racik,
+pasien.jk,reg_periksa.umurdaftar,reg_periksa.sttsumur 
 from resep_obat inner join reg_periksa inner join pasien inner join
 obat_racikan inner join metode_racik on resep_obat.no_rawat=reg_periksa.no_rawat 
 and reg_periksa.no_rkm_medis=pasien.no_rkm_medis
@@ -79,6 +80,18 @@ resep_obat.jam=obat_racikan.jam and resep_obat.no_rawat=obat_racikan.no_rawat]]>
 		<property name="com.jaspersoft.studio.field.label" value="nm_racik"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="metode_racik"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="jk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
+	<field name="umurdaftar" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="umurdaftar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
+	</field>
+	<field name="sttsumur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sttsumur"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -152,7 +165,7 @@ resep_obat.jam=obat_racikan.jam and resep_obat.no_rawat=obat_racikan.no_rawat]]>
 			<textField>
 				<reportElement x="3" y="82" width="169" height="20" uuid="797dc0a5-5e7d-4e05-98ef-45adc4b9b015"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="7"/>
+					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{aturan_pakai}]]></textFieldExpression>
@@ -240,7 +253,7 @@ resep_obat.jam=obat_racikan.jam and resep_obat.no_rawat=obat_racikan.no_rawat]]>
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nm_pasien}+" / "+$F{jk}+" / "+$F{umurdaftar}+" "+$F{sttsumur}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="110" y="36" width="62" height="8" uuid="e24981c2-6290-4b07-986f-3ce56f8c0b3b"/>

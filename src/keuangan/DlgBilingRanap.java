@@ -3069,6 +3069,9 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
                 
              if(sukses==true){
                  Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Belum Bayar'");
+                 if(!norawatbayi.equals("")){
+                    Sequel.mengedit("reg_periksa","no_rawat='"+norawatbayi+"'","status_bayar='Belum Bayar'");
+                 }
                  Sequel.queryu2("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
                  Sequel.queryu2("delete from detail_piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
                  Sequel.queryu2("delete from nota_inap where no_rawat='"+TNoRw.getText()+"'");            
@@ -6566,6 +6569,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 
             if(sukses==true){
                 Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Sudah Bayar'");
+                if(!norawatbayi.equals("")){
+                    Sequel.mengedit("reg_periksa","no_rawat='"+norawatbayi+"'","status_bayar='Sudah Bayar'");
+                }  
                 Sequel.meghapus("temporary_tambahan_potongan","no_rawat",TNoRw.getText());
                 Sequel.Commit();
                 JOptionPane.showMessageDialog(null,"Proses simpan selesai...!"); 

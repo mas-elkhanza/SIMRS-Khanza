@@ -24,29 +24,31 @@
                                </tr>
                            </table>
                          </form>
-                         <table class="table table-hover" >
-                            <tr>
-                                <th width="15%"><center>Nomer Bed</center></th>
-                                <th width="40%"><center>Nama Kamar</center></th>
-                                <th width="15%"><center>Kelas</center></th>
-                                <th width="15%"><center>Tarif Kamar</center></th>
-                                <th width="15%"><center>Status Kamar</center></th>
-                            </tr>
-                            <?php 
-                               $kamar      = trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
-                               $kamar      = cleankar($kamar);
-                               $querykamar = bukaquery("select kamar.kd_kamar,bangsal.nm_bangsal,kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' ".(isset($kamar)?" and (kamar.kd_kamar like '%$kamar%' or bangsal.nm_bangsal like '%$kamar%' or kamar.kelas like '%$kamar%' or kamar.status like '%$kamar%')":"")." order by kamar.kelas");
-                               while($rsquerykamar = mysqli_fetch_array($querykamar)) {
-                                   echo "<tr>
-                                           <td align='left'>".$rsquerykamar["kd_kamar"]."</td>
-                                           <td align='left'>".$rsquerykamar["nm_bangsal"]."</td>
-                                           <td align='center'>".$rsquerykamar["kelas"]."</td>
-                                           <td align='center'>".formatDuit($rsquerykamar["trf_kamar"])."</td>
-                                           <td align='center'>".$rsquerykamar["status"]."</td>
-                                         </tr>";
-                               }
-                           ?>
-                         </table>
+                         <div class="table-responsive">
+                            <table class="table table-hover" >
+                               <tr>
+                                   <th width="15%"><center>Nomer Bed</center></th>
+                                   <th width="40%"><center>Nama Kamar</center></th>
+                                   <th width="15%"><center>Kelas</center></th>
+                                   <th width="15%"><center>Tarif Kamar</center></th>
+                                   <th width="15%"><center>Status Kamar</center></th>
+                               </tr>
+                               <?php 
+                                  $kamar      = trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
+                                  $kamar      = cleankar($kamar);
+                                  $querykamar = bukaquery("select kamar.kd_kamar,bangsal.nm_bangsal,kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar on kamar.kd_bangsal=bangsal.kd_bangsal where kamar.statusdata='1' ".(isset($kamar)?" and (kamar.kd_kamar like '%$kamar%' or bangsal.nm_bangsal like '%$kamar%' or kamar.kelas like '%$kamar%' or kamar.status like '%$kamar%')":"")." order by kamar.kelas");
+                                  while($rsquerykamar = mysqli_fetch_array($querykamar)) {
+                                      echo "<tr>
+                                              <td align='left'>".$rsquerykamar["kd_kamar"]."</td>
+                                              <td align='left'>".$rsquerykamar["nm_bangsal"]."</td>
+                                              <td align='center'>".$rsquerykamar["kelas"]."</td>
+                                              <td align='center'>".formatDuit($rsquerykamar["trf_kamar"])."</td>
+                                              <td align='center'>".$rsquerykamar["status"]."</td>
+                                            </tr>";
+                                  }
+                              ?>
+                            </table> 
+                         </div>
                      </div>
                 </div>
            </div>

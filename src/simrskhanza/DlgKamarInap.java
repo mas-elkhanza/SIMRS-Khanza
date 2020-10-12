@@ -4574,10 +4574,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             if(Sequel.menyimpantf("ranap_gabung","?,?","Data Ranap Gabung",2,new String[]{
                                     norawat.getText(),norawatgabung
                                 })==true){
-                                Sequel.queryu("delete from kamar_inap where no_rawat='"+norawatgabung+"'");
+                                Sequel.mengedit("kamar_inap","no_rawat='"+norawatgabung+"'","stts_pulang='Pindah Kamar'");
                                 Sequel.mengedit("kamar","kd_kamar='"+kamaryangdigabung+"'","status='KOSONG'");                
                                 Sequel.mengedit("kamar_inap","no_rawat='"+norawatgabung+"'","no_rawat='"+norawat.getText()+"'"); 
-                                Sequel.mengedit("reg_periksa","no_rawat='"+norawatgabung+"'","status_bayar='Sudah Bayar'");                
+                                Sequel.mengedit("reg_periksa","no_rawat='"+norawatgabung+"'","status_lanjut='Ranap'");                
                                 gabungkan="";
                                 norawatgabung="";
                                 tampil();
@@ -6871,6 +6871,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     }//GEN-LAST:event_btnPasienRanapGabungActionPerformed
 
     private void BtnHapusGabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusGabungActionPerformed
+        Sequel.mengedit("reg_periksa","no_rawat='"+Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",norawat.getText())+"'","status_lanjut='Ralan'"); 
         Sequel.meghapus("ranap_gabung","no_rawat",norawat.getText());
         NoRawatGabung.setText("");
         NoRmBayi.setText("");
@@ -6887,12 +6888,17 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 tbKamIn.requestFocus();
         }else{
             if(tbKamIn.getSelectedRow()>-1){
-                NoRawatGabung.setText("");
-                Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",NoRawatGabung,norawat.getText());
-                Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",NoRmBayi,NoRawatGabung.getText());
-                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmBayi,NoRmBayi.getText());
-                WindowRanapGabung.setLocationRelativeTo(internalFrame1);
-                WindowRanapGabung.setVisible(true);
+                if(Sequel.cariRegistrasi(norawat.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCari.requestFocus();
+                }else{
+                    NoRawatGabung.setText("");
+                    Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",NoRawatGabung,norawat.getText());
+                    Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",NoRmBayi,NoRawatGabung.getText());
+                    Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",NmBayi,NoRmBayi.getText());
+                    WindowRanapGabung.setLocationRelativeTo(internalFrame1);
+                    WindowRanapGabung.setVisible(true);
+                }
             }
         }        
     }//GEN-LAST:event_MnRanapGabungActionPerformed
@@ -7603,10 +7609,15 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             tbKamIn.requestFocus();
         }else{
             if(tbKamIn.getSelectedRow()>-1){
-                gabungkan="gabung";
-                norawatgabung=norawat.getText();
-                kamaryangdigabung=kdkamar.getText();
-                JOptionPane.showMessageDialog(null,"Silahkan pilih No.Rawat Ibu/No.Rawat Tujuan");   
+                if(Sequel.cariRegistrasi(norawat.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCari.requestFocus();
+                }else{
+                    gabungkan="gabung";
+                    norawatgabung=norawat.getText();
+                    kamaryangdigabung=kdkamar.getText();
+                    JOptionPane.showMessageDialog(null,"Silahkan pilih No.Rawat Ibu/No.Rawat Tujuan");   
+                }
             }         
         }
         

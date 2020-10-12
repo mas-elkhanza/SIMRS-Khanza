@@ -24,27 +24,29 @@
                                </tr>
                            </table>
                          </form>
-                         <table class="table table-hover" >
-                            <tr>
-                                <th width="25%"><center>Nama Asuransi</center></th>
-                                <th width="30%"><center>Perusahaan</center></th>
-                                <th width="35%"><center>Alamat Perusahaan</center></th>
-                                <th width="10%"><center>No.Telp</center></th>
-                            </tr>
-                            <?php 
-                               $asuransi      = trim(isset($_POST['asuransi']))?trim($_POST['asuransi']):NULL;
-                               $asuransi      = cleankar($asuransi);
-                               $queryasuransi = bukaquery("select png_jawab, nama_perusahaan, alamat_asuransi, no_telp from penjab where png_jawab <>'-' and png_jawab not like '%umum%' ".(isset($asuransi)?" and (png_jawab like '%$asuransi%' or nama_perusahaan like '%$asuransi%')":"")." order by png_jawab");
-                               while($rsqueryasuransi = mysqli_fetch_array($queryasuransi)) {
-                                   echo "<tr>
-                                           <td align='left'>".$rsqueryasuransi["png_jawab"]."</td>
-                                           <td align='left'>".$rsqueryasuransi["nama_perusahaan"]."</td>
-                                           <td align='left'>".$rsqueryasuransi["alamat_asuransi"]."</td>
-                                           <td align='center'>".$rsqueryasuransi["no_telp"]."</td>
-                                         </tr>";
-                               }
-                           ?>
-                        </table>
+                         <div class="table-responsive">
+                            <table class="table table-hover" >
+                               <tr>
+                                   <th width="25%"><center>Nama Asuransi</center></th>
+                                   <th width="30%"><center>Perusahaan</center></th>
+                                   <th width="35%"><center>Alamat Perusahaan</center></th>
+                                   <th width="10%"><center>No.Telp</center></th>
+                               </tr>
+                               <?php 
+                                  $asuransi      = trim(isset($_POST['asuransi']))?trim($_POST['asuransi']):NULL;
+                                  $asuransi      = cleankar($asuransi);
+                                  $queryasuransi = bukaquery("select png_jawab, nama_perusahaan, alamat_asuransi, no_telp from penjab where png_jawab <>'-' and png_jawab not like '%umum%' ".(isset($asuransi)?" and (png_jawab like '%$asuransi%' or nama_perusahaan like '%$asuransi%')":"")." order by png_jawab");
+                                  while($rsqueryasuransi = mysqli_fetch_array($queryasuransi)) {
+                                      echo "<tr>
+                                              <td align='left'>".$rsqueryasuransi["png_jawab"]."</td>
+                                              <td align='left'>".$rsqueryasuransi["nama_perusahaan"]."</td>
+                                              <td align='left'>".$rsqueryasuransi["alamat_asuransi"]."</td>
+                                              <td align='center'>".$rsqueryasuransi["no_telp"]."</td>
+                                            </tr>";
+                                  }
+                              ?>
+                           </table> 
+                         </div>
                      </div>
                 </div>
            </div>

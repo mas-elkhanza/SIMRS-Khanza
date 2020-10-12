@@ -24,25 +24,27 @@
                                </tr>
                            </table>
                          </form>
-                         <table class="table table-hover" >
-                            <tr>
-                                <th width="50%"><center>Nama Poliklinik/Unit</center></th>
-                                <th width="25%"><center>Registrasi Pasien Baru</center></th>
-                                <th width="25%"><center>Registrasi Pasien Lama</center></th>
-                            </tr>
-                            <?php 
-                               $poli      = trim(isset($_POST['poli']))?trim($_POST['poli']):NULL;
-                               $poli      = cleankar($poli);
-                               $querypoli = bukaquery("select nm_poli,registrasi,registrasilama from poliklinik where status='1' ".(isset($poli)?" and (nm_poli like '%$poli%')":"")." order by nm_poli");
-                               while($rsquerypoli = mysqli_fetch_array($querypoli)) {
-                                   echo "<tr>
-                                           <td align='left'>".$rsquerypoli["nm_poli"]."</td>
-                                           <td align='center'>".formatDuit($rsquerypoli["registrasi"])."</td>
-                                           <td align='center'>".formatDuit($rsquerypoli["registrasilama"])."</td>
-                                         </tr>";
-                               }
-                           ?>
-                        </table>
+                         <div class="table-responsive">
+                            <table class="table table-hover" >
+                               <tr>
+                                   <th width="50%"><center>Nama Poliklinik/Unit</center></th>
+                                   <th width="25%"><center>Registrasi Pasien Baru</center></th>
+                                   <th width="25%"><center>Registrasi Pasien Lama</center></th>
+                               </tr>
+                               <?php 
+                                  $poli      = trim(isset($_POST['poli']))?trim($_POST['poli']):NULL;
+                                  $poli      = cleankar($poli);
+                                  $querypoli = bukaquery("select nm_poli,registrasi,registrasilama from poliklinik where status='1' ".(isset($poli)?" and (nm_poli like '%$poli%')":"")." order by nm_poli");
+                                  while($rsquerypoli = mysqli_fetch_array($querypoli)) {
+                                      echo "<tr>
+                                              <td align='left'>".$rsquerypoli["nm_poli"]."</td>
+                                              <td align='center'>".formatDuit($rsquerypoli["registrasi"])."</td>
+                                              <td align='center'>".formatDuit($rsquerypoli["registrasilama"])."</td>
+                                            </tr>";
+                                  }
+                              ?>
+                           </table> 
+                         </div>
                      </div>
                 </div>
            </div>
