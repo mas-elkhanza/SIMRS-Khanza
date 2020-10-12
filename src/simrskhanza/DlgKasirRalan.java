@@ -365,10 +365,10 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgKasirRalan")){
                     if(billing.penjab.getTable().getSelectedRow()!= -1){
-                        if(filter=="no"){
+                        if(filter.equals("no")){
                             kdpenjab.setText(billing.penjab.getTable().getValueAt(billing.penjab.getTable().getSelectedRow(),1).toString());
                             nmpenjab.setText(billing.penjab.getTable().getValueAt(billing.penjab.getTable().getSelectedRow(),2).toString());
-                        }else if(filter=="yes"){
+                        }else if(filter.equals("yes")){
                             caripenjab=billing.penjab.getTable().getValueAt(billing.penjab.getTable().getSelectedRow(),1).toString();
                             TabRawatMouseClicked(null);
                         }                            

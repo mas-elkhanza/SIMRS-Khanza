@@ -2132,7 +2132,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                       "</tr>"+
                                                       "<tr class='isi'>"+
                                                           "<td width='20%'>Riwayat Kehamilan Tetap</td>"+
-                                                          "<td width='80%'>HPHT : "+rs3.getString("hpht")+", Usia Kehamilan : "+rs3.getString("usia_kehamilan")+" bln/mgg, TP : "+rs3.getString("tp")+". Riwayat Imunisasi : "+rs3.getString("imunisasi")+(rs3.getString("ket_imunisasi")==""?"":", "+rs3.getString("ket_imunisasi")+" kali")+". G : "+rs3.getString("g")+", P : "+rs3.getString("p")+", A : "+rs3.getString("a")+", Hidup : "+rs3.getString("hidup")+"</td>"+
+                                                          "<td width='80%'>HPHT : "+rs3.getString("hpht")+", Usia Kehamilan : "+rs3.getString("usia_kehamilan")+" bln/mgg, TP : "+rs3.getString("tp")+". Riwayat Imunisasi : "+rs3.getString("imunisasi")+(rs3.getString("ket_imunisasi").equals("")?"":", "+rs3.getString("ket_imunisasi")+" kali")+". G : "+rs3.getString("g")+", P : "+rs3.getString("p")+", A : "+rs3.getString("a")+", Hidup : "+rs3.getString("hidup")+"</td>"+
                                                       "</tr>"+
                                                    "</table>"+
                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
@@ -2186,11 +2186,11 @@ public class PanelRiwayat extends widget.panelisi {
                                                       "</tr>"+
                                                       "<tr class='isi'>"+
                                                           "<td width='20%'>Riwayat Kebiasaan</td>"+
-                                                          "<td width='80%'>Obat/Vitamin : "+rs3.getString("kebiasaan")+(rs3.getString("ket_kebiasaan")==""?"":", "+rs3.getString("ket_kebiasaan"))+". Merokok : "+rs3.getString("kebiasaan1")+(rs3.getString("ket_kebiasaan1")==""?"":", "+rs3.getString("ket_kebiasaan1")+" batang/hari")+". Alkohol : "+rs3.getString("kebiasaan2")+(rs3.getString("ket_kebiasaan2")==""?"":" "+rs3.getString("ket_kebiasaan2")+" gelas/hari")+". Obat Tidur/Narkoba : "+rs3.getString("kebiasaan3")+"</td>"+
+                                                          "<td width='80%'>Obat/Vitamin : "+rs3.getString("kebiasaan")+(rs3.getString("ket_kebiasaan").equals("")?"":", "+rs3.getString("ket_kebiasaan"))+". Merokok : "+rs3.getString("kebiasaan1")+(rs3.getString("ket_kebiasaan1").equals("")?"":", "+rs3.getString("ket_kebiasaan1")+" batang/hari")+". Alkohol : "+rs3.getString("kebiasaan2")+(rs3.getString("ket_kebiasaan2").equals("")?"":" "+rs3.getString("ket_kebiasaan2")+" gelas/hari")+". Obat Tidur/Narkoba : "+rs3.getString("kebiasaan3")+"</td>"+
                                                       "</tr>"+
                                                       "<tr class='isi'>"+
                                                           "<td width='20%'>Riwayat K.B.</td>"+
-                                                          "<td width='80%'>"+rs3.getString("kb")+", Lamanya : "+rs3.getString("ket_kb")+". Komplikasi KB : "+rs3.getString("komplikasi")+(rs3.getString("ket_komplikasi")==""?"":", "+rs3.getString("ket_komplikasi"))+". Berhenti KB : "+rs3.getString("berhenti")+", Alasan : "+rs3.getString("alasan")+"</td>"+
+                                                          "<td width='80%'>"+rs3.getString("kb")+", Lamanya : "+rs3.getString("ket_kb")+". Komplikasi KB : "+rs3.getString("komplikasi")+(rs3.getString("ket_komplikasi").equals("")?"":", "+rs3.getString("ket_komplikasi"))+". Berhenti KB : "+rs3.getString("berhenti")+", Alasan : "+rs3.getString("alasan")+"</td>"+
                                                       "</tr>"+
                                                    "</table>"+
                                                 "</td>"+
@@ -9169,7 +9169,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                       "</tr>"+
                                                       "<tr class='isi'>"+
                                                           "<td width='20%'>Riwayat Kehamilan Tetap</td>"+
-                                                          "<td width='80%'>HPHT : "+rs3.getString("hpht")+", Usia Kehamilan : "+rs3.getString("usia_kehamilan")+" bln/mgg, TP : "+rs3.getString("tp")+". Riwayat Imunisasi : "+rs3.getString("imunisasi")+(rs3.getString("ket_imunisasi")==""?"":", "+rs3.getString("ket_imunisasi")+" kali")+". G : "+rs3.getString("g")+", P : "+rs3.getString("p")+", A : "+rs3.getString("a")+", Hidup : "+rs3.getString("hidup")+"</td>"+
+                                                          "<td width='80%'>HPHT : "+rs3.getString("hpht")+", Usia Kehamilan : "+rs3.getString("usia_kehamilan")+" bln/mgg, TP : "+rs3.getString("tp")+". Riwayat Imunisasi : "+rs3.getString("imunisasi")+(rs3.getString("ket_imunisasi").equals("")?"":", "+rs3.getString("ket_imunisasi")+" kali")+". G : "+rs3.getString("g")+", P : "+rs3.getString("p")+", A : "+rs3.getString("a")+", Hidup : "+rs3.getString("hidup")+"</td>"+
                                                       "</tr>"+
                                                    "</table>"+
                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
@@ -9223,11 +9223,11 @@ public class PanelRiwayat extends widget.panelisi {
                                                       "</tr>"+
                                                       "<tr class='isi'>"+
                                                           "<td width='20%'>Riwayat Kebiasaan</td>"+
-                                                          "<td width='80%'>Obat/Vitamin : "+rs3.getString("kebiasaan")+(rs3.getString("ket_kebiasaan")==""?"":", "+rs3.getString("ket_kebiasaan"))+". Merokok : "+rs3.getString("kebiasaan1")+(rs3.getString("ket_kebiasaan1")==""?"":", "+rs3.getString("ket_kebiasaan1")+" batang/hari")+". Alkohol : "+rs3.getString("kebiasaan2")+(rs3.getString("ket_kebiasaan2")==""?"":" "+rs3.getString("ket_kebiasaan2")+" gelas/hari")+". Obat Tidur/Narkoba : "+rs3.getString("kebiasaan3")+"</td>"+
+                                                          "<td width='80%'>Obat/Vitamin : "+rs3.getString("kebiasaan")+(rs3.getString("ket_kebiasaan").equals("")?"":", "+rs3.getString("ket_kebiasaan"))+". Merokok : "+rs3.getString("kebiasaan1")+(rs3.getString("ket_kebiasaan1").equals("")?"":", "+rs3.getString("ket_kebiasaan1")+" batang/hari")+". Alkohol : "+rs3.getString("kebiasaan2")+(rs3.getString("ket_kebiasaan2").equals("")?"":" "+rs3.getString("ket_kebiasaan2")+" gelas/hari")+". Obat Tidur/Narkoba : "+rs3.getString("kebiasaan3")+"</td>"+
                                                       "</tr>"+
                                                       "<tr class='isi'>"+
                                                           "<td width='20%'>Riwayat K.B.</td>"+
-                                                          "<td width='80%'>"+rs3.getString("kb")+", Lamanya : "+rs3.getString("ket_kb")+". Komplikasi KB : "+rs3.getString("komplikasi")+(rs3.getString("ket_komplikasi")==""?"":", "+rs3.getString("ket_komplikasi"))+". Berhenti KB : "+rs3.getString("berhenti")+", Alasan : "+rs3.getString("alasan")+"</td>"+
+                                                          "<td width='80%'>"+rs3.getString("kb")+", Lamanya : "+rs3.getString("ket_kb")+". Komplikasi KB : "+rs3.getString("komplikasi")+(rs3.getString("ket_komplikasi").equals("")?"":", "+rs3.getString("ket_komplikasi"))+". Berhenti KB : "+rs3.getString("berhenti")+", Alasan : "+rs3.getString("alasan")+"</td>"+
                                                       "</tr>"+
                                                    "</table>"+
                                                 "</td>"+
@@ -13591,7 +13591,7 @@ public class PanelRiwayat extends widget.panelisi {
                                                       "</tr>"+
                                                       "<tr class='isi'>"+
                                                           "<td width='20%'>Riwayat Kehamilan Tetap</td>"+
-                                                          "<td width='80%'>HPHT : "+rs3.getString("hpht")+", Usia Kehamilan : "+rs3.getString("usia_kehamilan")+" bln/mgg, TP : "+rs3.getString("tp")+". Riwayat Imunisasi : "+rs3.getString("imunisasi")+(rs3.getString("ket_imunisasi")==""?"":", "+rs3.getString("ket_imunisasi")+" kali")+". G : "+rs3.getString("g")+", P : "+rs3.getString("p")+", A : "+rs3.getString("a")+", Hidup : "+rs3.getString("hidup")+"</td>"+
+                                                          "<td width='80%'>HPHT : "+rs3.getString("hpht")+", Usia Kehamilan : "+rs3.getString("usia_kehamilan")+" bln/mgg, TP : "+rs3.getString("tp")+". Riwayat Imunisasi : "+rs3.getString("imunisasi")+(rs3.getString("ket_imunisasi").equals("")?"":", "+rs3.getString("ket_imunisasi")+" kali")+". G : "+rs3.getString("g")+", P : "+rs3.getString("p")+", A : "+rs3.getString("a")+", Hidup : "+rs3.getString("hidup")+"</td>"+
                                                       "</tr>"+
                                                    "</table>"+
                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
@@ -13645,11 +13645,11 @@ public class PanelRiwayat extends widget.panelisi {
                                                       "</tr>"+
                                                       "<tr class='isi'>"+
                                                           "<td width='20%'>Riwayat Kebiasaan</td>"+
-                                                          "<td width='80%'>Obat/Vitamin : "+rs3.getString("kebiasaan")+(rs3.getString("ket_kebiasaan")==""?"":", "+rs3.getString("ket_kebiasaan"))+". Merokok : "+rs3.getString("kebiasaan1")+(rs3.getString("ket_kebiasaan1")==""?"":", "+rs3.getString("ket_kebiasaan1")+" batang/hari")+". Alkohol : "+rs3.getString("kebiasaan2")+(rs3.getString("ket_kebiasaan2")==""?"":" "+rs3.getString("ket_kebiasaan2")+" gelas/hari")+". Obat Tidur/Narkoba : "+rs3.getString("kebiasaan3")+"</td>"+
+                                                          "<td width='80%'>Obat/Vitamin : "+rs3.getString("kebiasaan")+(rs3.getString("ket_kebiasaan").equals("")?"":", "+rs3.getString("ket_kebiasaan"))+". Merokok : "+rs3.getString("kebiasaan1")+(rs3.getString("ket_kebiasaan1").equals("")?"":", "+rs3.getString("ket_kebiasaan1")+" batang/hari")+". Alkohol : "+rs3.getString("kebiasaan2")+(rs3.getString("ket_kebiasaan2").equals("")?"":" "+rs3.getString("ket_kebiasaan2")+" gelas/hari")+". Obat Tidur/Narkoba : "+rs3.getString("kebiasaan3")+"</td>"+
                                                       "</tr>"+
                                                       "<tr class='isi'>"+
                                                           "<td width='20%'>Riwayat K.B.</td>"+
-                                                          "<td width='80%'>"+rs3.getString("kb")+", Lamanya : "+rs3.getString("ket_kb")+". Komplikasi KB : "+rs3.getString("komplikasi")+(rs3.getString("ket_komplikasi")==""?"":", "+rs3.getString("ket_komplikasi"))+". Berhenti KB : "+rs3.getString("berhenti")+", Alasan : "+rs3.getString("alasan")+"</td>"+
+                                                          "<td width='80%'>"+rs3.getString("kb")+", Lamanya : "+rs3.getString("ket_kb")+". Komplikasi KB : "+rs3.getString("komplikasi")+(rs3.getString("ket_komplikasi").equals("")?"":", "+rs3.getString("ket_komplikasi"))+". Berhenti KB : "+rs3.getString("berhenti")+", Alasan : "+rs3.getString("alasan")+"</td>"+
                                                       "</tr>"+
                                                    "</table>"+
                                                 "</td>"+
