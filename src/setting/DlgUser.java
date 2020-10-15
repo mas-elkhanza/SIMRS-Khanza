@@ -170,7 +170,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Master Masalah Keperawatan Bayi/Anak","[L]Master Imunisasi","[R]Patologis Penerima Dankes","[K]Cek No.Kartu PCare","[O]Surat Bebas Narkoba",
                 "[O]Surat Keterangan Covid","[F]Pemakaian Air Tanah","[N]Pemakaian Air Tanah Per Tanggal","[N]Pemakaian Air Tanah Per Bulan",
                 "[I]Lama Pelayanan Poli","[L]Hemodialisa","[I]Laporan Tahunan IRJ","[N]Hemodialisa Per Tanggal","[N]Hemodialisa Per Bulan","[N]Hemodialisa Per Tahun",
-                "[N]Pasien Meninggal Per Bulan","[F]Perbaikan Inventaris","[O]Surat Cuti Hamil","[D]Permintaan Stok Obat Pasien","[F]Pemeliharaan Inventaris"
+                "[N]Pasien Meninggal Per Bulan","[F]Perbaikan Inventaris","[O]Surat Cuti Hamil","[D]Permintaan Stok Obat Pasien","[F]Pemeliharaan Inventaris",
+                "[I]Klasifikasi Pasien Ranap"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -366,7 +367,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 667;i++) {
+        for (i = 0; i < 668;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -1821,6 +1822,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 666:
                     column.setPreferredWidth(140);
                     break;
+                case 667:
+                    column.setPreferredWidth(137);
+                    break;
                 default:
                     column.setPreferredWidth(130);
                     break;
@@ -2317,7 +2321,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -3026,7 +3030,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "perbaikan_inventaris='"+tbUser.getValueAt(i,663).toString()+"',"+
                     "surat_cuti_hamil='"+tbUser.getValueAt(i,664).toString()+"',"+
                     "permintaan_stok_obat_pasien='"+tbUser.getValueAt(i,665).toString()+"',"+
-                    "pemeliharaan_inventaris='"+tbUser.getValueAt(i,666).toString()+"'");
+                    "pemeliharaan_inventaris='"+tbUser.getValueAt(i,666).toString()+"',"+
+                    "klasifikasi_pasien_ranap='"+tbUser.getValueAt(i,667).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -3774,7 +3779,8 @@ public class DlgUser extends javax.swing.JDialog {
                                     "perbaikan_inventaris='"+tbUser.getValueAt(barisdicopy,663).toString()+"',"+
                                     "surat_cuti_hamil='"+tbUser.getValueAt(barisdicopy,664).toString()+"',"+
                                     "permintaan_stok_obat_pasien='"+tbUser.getValueAt(barisdicopy,665).toString()+"',"+
-                                    "pemeliharaan_inventaris='"+tbUser.getValueAt(barisdicopy,666).toString()+"'");
+                                    "pemeliharaan_inventaris='"+tbUser.getValueAt(barisdicopy,666).toString()+"',"+
+                                    "klasifikasi_pasien_ranap='"+tbUser.getValueAt(barisdicopy,667).toString()+"'");
                             }    
                             userdicopy="";
                             copyhakakses="";
@@ -4097,7 +4103,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "zis_patologis_penerima_dankes,pcare_cek_kartu,surat_bebas_narkoba,surat_keterangan_covid,pemakaian_air_tanah,"+
                         "grafik_air_tanah_pertanggal,grafik_air_tanah_perbulan,lama_pelayanan_poli,hemodialisa,laporan_tahunan_irj,"+
                         "grafik_harian_hemodialisa,grafik_bulanan_hemodialisa,grafik_tahunan_hemodialisa,grafik_bulanan_meninggal,"+
-                        "perbaikan_inventaris,surat_cuti_hamil,permintaan_stok_obat_pasien,pemeliharaan_inventaris from user order by AES_DECRYPT(id_user,'nur')");
+                        "perbaikan_inventaris,surat_cuti_hamil,permintaan_stok_obat_pasien,pemeliharaan_inventaris,klasifikasi_pasien_ranap from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -4776,7 +4782,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("perbaikan_inventaris"),
                                rs.getBoolean("surat_cuti_hamil"),
                                rs.getBoolean("permintaan_stok_obat_pasien"),
-                               rs.getBoolean("pemeliharaan_inventaris")
+                               rs.getBoolean("pemeliharaan_inventaris"),
+                               rs.getBoolean("klasifikasi_pasien_ranap")
                             });
                         }   
                     } catch (Exception e) {
@@ -5444,7 +5451,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("perbaikan_inventaris"),
                            rs.getBoolean("surat_cuti_hamil"),
                            rs.getBoolean("permintaan_stok_obat_pasien"),
-                           rs.getBoolean("pemeliharaan_inventaris")
+                           rs.getBoolean("pemeliharaan_inventaris"),
+                           rs.getBoolean("klasifikasi_pasien_ranap")
                         });
                     }                                             
                  }
