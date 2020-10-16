@@ -40,6 +40,7 @@ public class TokoCariReturBeli extends javax.swing.JDialog {
     private double tagihan=0,subtotal=0;
     private Jurnal jur=new Jurnal();
     private String carifaktur,carisuplier,caripetugas,carijenis,caribarang;
+    private boolean sukses=false;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -891,6 +892,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                 rs=pscaripesan.executeQuery();
                 if(rs.next()){
+                    Sequel.AutoComitFalse();
+                    sukses=true;
                     pstoko_detail_returbeli=koneksi.prepareStatement("select kode_brng,jml_retur from toko_detail_returbeli where no_retur_beli=? ");
                     try {
                         pstoko_detail_returbeli.setString(1,rs.getString(1));
@@ -919,9 +922,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         Sequel.cariIsi("select Kontra_Retur_Beli_Toko from set_akun"),"KONTRA RETUR BELI TOKO","0",rs.getString("total")
                     }); 
-                    jur.simpanJurnal(rs.getString("no_retur_beli"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI RETUR BELI TOKO"+", OLEH "+akses.getkode());
-                    Sequel.queryu2("delete from tokoreturbeli where no_retur_beli=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-                    tampil();
+                    sukses=jur.simpanJurnal(rs.getString("no_retur_beli"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI RETUR BELI TOKO"+", OLEH "+akses.getkode());
+                    
+                    if(sukses==true){
+                        Sequel.queryu2("delete from tokoreturbeli where no_retur_beli=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
+                        Sequel.Commit();
+                        tampil();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
+                    }
+
+                    Sequel.AutoComitTrue();
                 }
              } catch (Exception e) {
                 System.out.println(e);

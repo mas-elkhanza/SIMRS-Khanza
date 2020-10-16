@@ -41,7 +41,7 @@
                            'FasilitasOnlineUser','JadwalDokterUser','CekPoliUser','CekAsuransiUser','RiwayatPeriksa','CekResume','CekBilling','BuktiRegistrasi',
                            'CekBilling2','Pengaduan','BookingRegistrasi','SuratSakit','TampilSuratSakit','SuratHamil','TampilSuratHamil','SuratBebasNarkoba',
                            'TampilSuratBebasNarkoba','SuratRujuk','TampilSuratRujuk','SuratCovid','TampilSuratCovid','SuratKontrol','TampilSuratKontrol',
-                           'SimpanBookingRegistrasi','CekinRegistrasi','CekinRegistrasi2','BuktiRegistrasi2','Perpustakaan');
+                           'SimpanBookingRegistrasi','CekinRegistrasi','CekinRegistrasi2','BuktiRegistrasi2','Perpustakaan','KartuPasien');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -109,6 +109,7 @@
                 case "SuratKontrol"                            : include_once("pages/listsuratkontrol.php"); break;
                 case "TampilSuratKontrol"                      : include_once("pages/listtampilsuratkontrol.php"); break;
                 case "Perpustakaan"                            : include_once("pages/listperpustakaan.php"); break;
+                case "KartuPasien"                             : include_once("pages/listkartu.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }

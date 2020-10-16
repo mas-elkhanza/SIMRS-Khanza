@@ -551,8 +551,10 @@ import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganPenagihanPiutangPasien;
 import keuangan.KeuanganSetTarifOnline;
+import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
+import laporan.DlgDataKlasifikasiPasienRanap;
 import rekammedis.RMDataResumePasien;
 import laporan.DlgHarianHAIs2;
 import laporan.DlgKIPPasienRalan;
@@ -703,8 +705,6 @@ public class frmUtama extends javax.swing.JFrame {
         setIconImage(new ImageIcon(super.getClass().getResource("/picture/yaski24.png")).getImage());
         
         this.setSize(screen.width,screen.height);
-        //desktop.setPreferredSize(new Dimension(800,1000));
-        //desktop.setAutoscrolls(true);
         edAdmin.setDocument(new batasInput((byte)100).getKata(edAdmin));
         edPwd.setDocument(new batasInput((byte)100).getKata(edPwd));
         DlgLogin.setSize(299,180);
@@ -7751,24 +7751,6 @@ public class frmUtama extends javax.swing.JFrame {
         }else {
             try {                               
                 akses.setData(edAdmin.getText(),edPwd.getText());        
-                /*if(edAdmin.getText().equals("admin") && edPwd.getText().equals("akusayangsamakamu122456")){       
-                    BtnMenu.setEnabled(true);             
-                    BtnToolReg.setEnabled(true);
-                    BtnToolKamnap.setEnabled(true);
-                    BtnToolKasir.setEnabled(true);                    
-                    btnToolLab.setEnabled(true);               
-                    btnToolIGD.setEnabled(true);
-                    btnToolBcdRalan.setEnabled(true);
-                    btnToolBcdRanap.setEnabled(true);
-                    MnGantiPassword.setEnabled(false);
-                    MnPengajuanCutiPegawai.setEnabled(false);
-
-                    DlgLogin.dispose();
-                    BtnLog.setText("Log Out");
-                    MnLogin.setText("Log Out");
-                    lblStts.setText("Admin : ");
-                    lblUser.setText("Admin Utama");
-                }else */
                 if(akses.getjml1()>=1){    
                     BtnMenu.setEnabled(true);
                     BtnToolReg.setEnabled(true);
@@ -16417,6 +16399,30 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnKlasifikasiPasienRanapActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDataKlasifikasiPasienRanap aplikasi=new DlgDataKlasifikasiPasienRanap(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnBulananKlasifikasiPasienRanapActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBulananKlasifikasiPasienRanap aplikasi=new DlgBulananKlasifikasiPasienRanap(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17024,7 +17030,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnZISKategoriAsnafPenerimaDankes,btnMasterMasalahKeperawatanAnak,btnMasterImunisasi,btnZISPatologisPenerimaDankes,btnPCareCekKartu,
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
-            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris;
+            btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
+            btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap;
     
     public void isWall(){
         try{            
@@ -18558,6 +18565,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlaporan_tahunan_irj()==true){  
                 Panelmenu.add(btnLaporanTahunanIRJ);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getklasifikasi_pasien_ranap()==true){  
+                Panelmenu.add(btnKlasifikasiPasienRanap);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getbulanan_klasifikasi_pasien_ranap()==true){  
+                Panelmenu.add(btnBulananKlasifikasiPasienRanap);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -21884,6 +21901,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getlaporan_tahunan_irj()==true){  
             Panelmenu.add(btnLaporanTahunanIRJ);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getklasifikasi_pasien_ranap()==true){  
+            Panelmenu.add(btnKlasifikasiPasienRanap);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getbulanan_klasifikasi_pasien_ranap()==true){  
+            Panelmenu.add(btnBulananKlasifikasiPasienRanap);                 
             jmlmenu++;
         }
 
@@ -25766,6 +25793,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getklasifikasi_pasien_ranap()==true){  
+            if(btnKlasifikasiPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKlasifikasiPasienRanap);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbulanan_klasifikasi_pasien_ranap()==true){  
+            if(btnBulananKlasifikasiPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBulananKlasifikasiPasienRanap);                 
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getkamar()==true){
             if(btnKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKamar);
@@ -28423,11 +28464,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKategoriPerpustakaan.setIconTextGap(0);
         btnKategoriPerpustakaan.setName("btnKategoriPerpustakaan");
         btnKategoriPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKategoriPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKategoriPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnKategoriPerpustakaan.addActionListener(this::btnKategoriPerpustakaanActionPerformed);
         
         btnJenisPerpustakaan = new widget.ButtonBig();
         btnJenisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Untitled-1-02_3775448.png")));
@@ -28435,11 +28472,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJenisPerpustakaan.setIconTextGap(0);
         btnJenisPerpustakaan.setName("btnJenisPerpustakaan");
         btnJenisPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJenisPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJenisPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnJenisPerpustakaan.addActionListener(this::btnJenisPerpustakaanActionPerformed);
         
         btnRuangPerpustakaan = new widget.ButtonBig();
         btnRuangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_City_728922.png"))); 
@@ -28447,11 +28480,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRuangPerpustakaan.setIconTextGap(0);
         btnRuangPerpustakaan.setName("btnRuangPerpustakaan"); 
         btnRuangPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnRuangPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRuangPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnRuangPerpustakaan.addActionListener(this::btnRuangPerpustakaanActionPerformed);
         
         btnPengarangPerpustakaan = new widget.ButtonBig();
         btnPengarangPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Teacher_131497.png")));
@@ -28459,11 +28488,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPengarangPerpustakaan.setIconTextGap(0);
         btnPengarangPerpustakaan.setName("btnPengarangPerpustakaan"); 
         btnPengarangPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengarangPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengarangPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnPengarangPerpustakaan.addActionListener(this::btnPengarangPerpustakaanActionPerformed);
         
         btnPenerbitPerpustakaan = new widget.ButtonBig();
         btnPenerbitPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_package_editors_109.png")));
@@ -28471,11 +28496,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenerbitPerpustakaan.setIconTextGap(0);
         btnPenerbitPerpustakaan.setName("btnPenerbitPerpustakaan"); 
         btnPenerbitPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenerbitPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenerbitPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnPenerbitPerpustakaan.addActionListener(this::btnPenerbitPerpustakaanActionPerformed);
         
         btnKoleksiPerpustakaan = new widget.ButtonBig();
         btnKoleksiPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_General_Office_61_3592836.png")));
@@ -28483,11 +28504,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKoleksiPerpustakaan.setIconTextGap(0);
         btnKoleksiPerpustakaan.setName("btnKoleksiPerpustakaan"); 
         btnKoleksiPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKoleksiPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKoleksiPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnKoleksiPerpustakaan.addActionListener(this::btnKoleksiPerpustakaanActionPerformed);
         
         btnInventarisPerpustakaan = new widget.ButtonBig();
         btnInventarisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_library_47990.png")));
@@ -28495,11 +28512,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnInventarisPerpustakaan.setIconTextGap(0);
         btnInventarisPerpustakaan.setName("btnInventarisPerpustakaan"); 
         btnInventarisPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnInventarisPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInventarisPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnInventarisPerpustakaan.addActionListener(this::btnInventarisPerpustakaanActionPerformed);
         
         btnPengaturanPeminjamanPerpustakaan = new widget.ButtonBig();
         btnPengaturanPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_EditDocument_728933.png")));
@@ -28507,11 +28520,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPengaturanPeminjamanPerpustakaan.setIconTextGap(0);
         btnPengaturanPeminjamanPerpustakaan.setName("btnPengaturanPeminjamanPerpustakaan"); 
         btnPengaturanPeminjamanPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPengaturanPeminjamanPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPengaturanPeminjamanPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnPengaturanPeminjamanPerpustakaan.addActionListener(this::btnPengaturanPeminjamanPerpustakaanActionPerformed);
         
         btnDendaPerpustakaan = new widget.ButtonBig();
         btnDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Wallet_3387286.png")));
@@ -28519,11 +28528,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDendaPerpustakaan.setIconTextGap(0);
         btnDendaPerpustakaan.setName("btnDendaPerpustakaan"); 
         btnDendaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDendaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDendaPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnDendaPerpustakaan.addActionListener(this::btnDendaPerpustakaanActionPerformed);
         
         btnAnggotaPerpustakaan = new widget.ButtonBig();
         btnAnggotaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_male_user_3440844.png")));
@@ -28531,11 +28536,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnAnggotaPerpustakaan.setIconTextGap(0);
         btnAnggotaPerpustakaan.setName("btnAnggotaPerpustakaan"); 
         btnAnggotaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAnggotaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnggotaPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnAnggotaPerpustakaan.addActionListener(this::btnAnggotaPerpustakaanActionPerformed);
         
         btnPeminjamanPerpustakaan = new widget.ButtonBig();
         btnPeminjamanPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_diagram-07_35577.png")));
@@ -28543,11 +28544,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPeminjamanPerpustakaan.setIconTextGap(0);
         btnPeminjamanPerpustakaan.setName("btnPeminjamanPerpustakaan"); 
         btnPeminjamanPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPeminjamanPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPeminjamanPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnPeminjamanPerpustakaan.addActionListener(this::btnPeminjamanPerpustakaanActionPerformed);
         
         btnBayarDendaPerpustakaan = new widget.ButtonBig();
         btnBayarDendaPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_money_sale_shop_4177574.png")));
@@ -28555,11 +28552,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBayarDendaPerpustakaan.setIconTextGap(0);
         btnBayarDendaPerpustakaan.setName("btnBayarDendaPerpustakaan"); 
         btnBayarDendaPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBayarDendaPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBayarDendaPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnBayarDendaPerpustakaan.addActionListener(this::btnBayarDendaPerpustakaanActionPerformed);
         
         btnPenelitianPerpustakaan = new widget.ButtonBig();
         btnPenelitianPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_research_87460.png")));
@@ -28567,11 +28560,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenelitianPerpustakaan.setIconTextGap(0);
         btnPenelitianPerpustakaan.setName("btnPenelitianPerpustakaan"); 
         btnPenelitianPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenelitianPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenelitianPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnPenelitianPerpustakaan.addActionListener(this::btnPenelitianPerpustakaanActionPerformed);
         
         btnEbookPerpustakaan = new widget.ButtonBig();
         btnEbookPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_website_-_bookmark_3440843.png")));
@@ -28579,11 +28568,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnEbookPerpustakaan.setIconTextGap(0);
         btnEbookPerpustakaan.setName("btnEbookPerpustakaan"); 
         btnEbookPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnEbookPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEbookPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnEbookPerpustakaan.addActionListener(this::btnEbookPerpustakaanActionPerformed);
         
         btnCariEbook = new widget.ButtonBig();
         btnCariEbook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Book_728912.png")));
@@ -28591,11 +28576,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCariEbook.setIconTextGap(0);
         btnCariEbook.setName("btnCariEbook"); 
         btnCariEbook.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCariEbook.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCariEbookActionPerformed(evt);
-            }
-        });
+        btnCariEbook.addActionListener(this::btnCariEbookActionPerformed);
         
         btnPestControl = new widget.ButtonBig();
         btnPestControl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_world_eco_leaves_2992451.png"))); 
@@ -28603,11 +28584,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPestControl.setIconTextGap(0);
         btnPestControl.setName("btnPestControl"); 
         btnPestControl.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPestControl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPestControlActionPerformed(evt);
-            }
-        });
+        btnPestControl.addActionListener(this::btnPestControlActionPerformed);
         
         btnMutuAirLimbah = new widget.ButtonBig();
         btnMutuAirLimbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Care_ecology_water_hand_2992434.png")));
@@ -28615,11 +28592,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMutuAirLimbah.setIconTextGap(0);
         btnMutuAirLimbah.setName("btnMutuAirLimbah"); 
         btnMutuAirLimbah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMutuAirLimbah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMutuAirLimbahActionPerformed(evt);
-            }
-        });
+        btnMutuAirLimbah.addActionListener(this::btnMutuAirLimbahActionPerformed);
         
         btnCariInventarisPerpustakaan = new widget.ButtonBig();
         btnCariInventarisPerpustakaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_data_1421637.png")));
@@ -28627,11 +28600,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCariInventarisPerpustakaan.setIconTextGap(0);
         btnCariInventarisPerpustakaan.setName("btnCariInventarisPerpustakaan"); 
         btnCariInventarisPerpustakaan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCariInventarisPerpustakaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCariInventarisPerpustakaanActionPerformed(evt);
-            }
-        });
+        btnCariInventarisPerpustakaan.addActionListener(this::btnCariInventarisPerpustakaanActionPerformed);
         
         btnJenisCideraK3 = new widget.ButtonBig();
         btnJenisCideraK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ruber.png")));
@@ -28639,11 +28608,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJenisCideraK3.setIconTextGap(0);
         btnJenisCideraK3.setName("btnJenisCideraK3"); 
         btnJenisCideraK3.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJenisCideraK3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJenisCideraK3ActionPerformed(evt);
-            }
-        });
+        btnJenisCideraK3.addActionListener(this::btnJenisCideraK3ActionPerformed);
         
         btnPenyebabKecelakaanK3 = new widget.ButtonBig();
         btnPenyebabKecelakaanK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_sponge_2___331505.png")));
@@ -28651,11 +28616,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenyebabKecelakaanK3.setIconTextGap(0);
         btnPenyebabKecelakaanK3.setName("btnPenyebabKecelakaanK3"); 
         btnPenyebabKecelakaanK3.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenyebabKecelakaanK3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenyebabKecelakaanK3ActionPerformed(evt);
-            }
-        });
+        btnPenyebabKecelakaanK3.addActionListener(this::btnPenyebabKecelakaanK3ActionPerformed);
         
         btnJenisLukaK3 = new widget.ButtonBig();
         btnJenisLukaK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_h3_19725.png")));
@@ -28663,11 +28624,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJenisLukaK3.setIconTextGap(0);
         btnJenisLukaK3.setName("btnJenisLukaK3"); 
         btnJenisLukaK3.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnJenisLukaK3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJenisLukaK3ActionPerformed(evt);
-            }
-        });
+        btnJenisLukaK3.addActionListener(this::btnJenisLukaK3ActionPerformed);
         
         btnLokasiKejadianK3 = new widget.ButtonBig();
         btnLokasiKejadianK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_arrows_blue_61552.png")));
@@ -28675,11 +28632,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLokasiKejadianK3.setIconTextGap(0);
         btnLokasiKejadianK3.setName("btnLokasiKejadianK3"); 
         btnLokasiKejadianK3.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLokasiKejadianK3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLokasiKejadianK3ActionPerformed(evt);
-            }
-        });
+        btnLokasiKejadianK3.addActionListener(this::btnLokasiKejadianK3ActionPerformed);
         
         btnDampakCideraK3 = new widget.ButtonBig();
         btnDampakCideraK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ambulance_45490.png")));
@@ -28687,11 +28640,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDampakCideraK3.setIconTextGap(0);
         btnDampakCideraK3.setName("btnDampakCideraK3"); 
         btnDampakCideraK3.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnDampakCideraK3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDampakCideraK3ActionPerformed(evt);
-            }
-        });
+        btnDampakCideraK3.addActionListener(this::btnDampakCideraK3ActionPerformed);
         
         btnGrafikLimbahDomestikPerBulan = new widget.ButtonBig();
         btnGrafikLimbahDomestikPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
@@ -28699,11 +28648,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikLimbahDomestikPerBulan.setIconTextGap(0);
         btnGrafikLimbahDomestikPerBulan.setName("btnGrafikLimbahDomestikPerBulan"); 
         btnGrafikLimbahDomestikPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikLimbahDomestikPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikLimbahDomestikPerBulanActionPerformed(evt);
-            }
-        });
+        btnGrafikLimbahDomestikPerBulan.addActionListener(this::btnGrafikLimbahDomestikPerBulanActionPerformed);
         
         btnJenisPekerjaanK3 = new widget.ButtonBig();
         btnJenisPekerjaanK3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_applications-engineering_8830.png"))); 
@@ -30392,11 +30337,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBookingPeriksa.setIconTextGap(0);
         btnBookingPeriksa.setName("btnBookingPeriksa"); 
         btnBookingPeriksa.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBookingPeriksa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBookingPeriksaActionPerformed(evt);
-            }
-        });
+        btnBookingPeriksa.addActionListener(this::btnBookingPeriksaActionPerformed);
         
         btnSirkulasiBarangToko = new widget.ButtonBig();
         btnSirkulasiBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); 
@@ -30404,11 +30345,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSirkulasiBarangToko.setIconTextGap(0);
         btnSirkulasiBarangToko.setName("btnSirkulasiBarangToko"); 
         btnSirkulasiBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSirkulasiBarangToko.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSirkulasiBarangTokoActionPerformed(evt);
-            }
-        });    
+        btnSirkulasiBarangToko.addActionListener(this::btnSirkulasiBarangTokoActionPerformed);    
         
         btnReturJualToko = new widget.ButtonBig();
         btnReturJualToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486142_shopping_cart.png"))); 
@@ -30416,11 +30353,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnReturJualToko.setIconTextGap(0);
         btnReturJualToko.setName("btnReturJualToko"); 
         btnReturJualToko.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnReturJualToko.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReturJualTokoActionPerformed(evt);
-            }
-        }); 
+        btnReturJualToko.addActionListener(this::btnReturJualTokoActionPerformed); 
         
         btnReturPiutangToko = new widget.ButtonBig();
         btnReturPiutangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); 
@@ -30428,11 +30361,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnReturPiutangToko.setIconTextGap(0);
         btnReturPiutangToko.setName("btnReturPiutangToko"); 
         btnReturPiutangToko.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnReturPiutangToko.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReturPiutangTokoActionPerformed(evt);
-            }
-        }); 
+        btnReturPiutangToko.addActionListener(this::btnReturPiutangTokoActionPerformed); 
         
         btnSirkulasiBarangToko2 = new widget.ButtonBig();
         btnSirkulasiBarangToko2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); 
@@ -30440,11 +30369,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSirkulasiBarangToko2.setIconTextGap(0);
         btnSirkulasiBarangToko2.setName("btnSirkulasiBarangToko2"); 
         btnSirkulasiBarangToko2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSirkulasiBarangToko2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSirkulasiBarangToko2ActionPerformed(evt);
-            }
-        }); 
+        btnSirkulasiBarangToko2.addActionListener(this::btnSirkulasiBarangToko2ActionPerformed); 
         
         btnKeuntunganBarangToko = new widget.ButtonBig();
         btnKeuntunganBarangToko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); 
@@ -30452,11 +30377,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKeuntunganBarangToko.setIconTextGap(0);
         btnKeuntunganBarangToko.setName("btnKeuntunganBarangToko"); 
         btnKeuntunganBarangToko.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnKeuntunganBarangToko.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKeuntunganBarangTokoActionPerformed(evt);
-            }
-        }); 
+        btnKeuntunganBarangToko.addActionListener(this::btnKeuntunganBarangTokoActionPerformed); 
         
         btnZISPengeluaranPenerimaDankes = new widget.ButtonBig();
         btnZISPengeluaranPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_vector_65_04_473782.png"))); 
@@ -30464,11 +30385,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISPengeluaranPenerimaDankes.setIconTextGap(0);
         btnZISPengeluaranPenerimaDankes.setName("btnZISPengeluaranPenerimaDankes"); 
         btnZISPengeluaranPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISPengeluaranPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISPengeluaranPenerimaDankesActionPerformed(evt);
-            }
-        }); 
+        btnZISPengeluaranPenerimaDankes.addActionListener(this::btnZISPengeluaranPenerimaDankesActionPerformed); 
         
         btnZISPenghasilanPenerimaDankes = new widget.ButtonBig();
         btnZISPenghasilanPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_phonebook_17015.png"))); 
@@ -30476,11 +30393,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISPenghasilanPenerimaDankes.setIconTextGap(0);
         btnZISPenghasilanPenerimaDankes.setName("btnZISPenghasilanPenerimaDankes"); 
         btnZISPenghasilanPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISPenghasilanPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISPenghasilanPenerimaDankesActionPerformed(evt);
-            }
-        }); 
+        btnZISPenghasilanPenerimaDankes.addActionListener(this::btnZISPenghasilanPenerimaDankesActionPerformed); 
         
         btnZISUkuranRumahPenerimaDankes = new widget.ButtonBig();
         btnZISUkuranRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Home_34226.png"))); 
@@ -30488,11 +30401,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISUkuranRumahPenerimaDankes.setIconTextGap(0);
         btnZISUkuranRumahPenerimaDankes.setName("btnZISUkuranRumahPenerimaDankes"); 
         btnZISUkuranRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISUkuranRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISUkuranRumahPenerimaDankesActionPerformed(evt);
-            }
-        }); 
+        btnZISUkuranRumahPenerimaDankes.addActionListener(this::btnZISUkuranRumahPenerimaDankesActionPerformed); 
         
         btnZISDindingRumahPenerimaDankes = new widget.ButtonBig();
         btnZISDindingRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_building_17020.png"))); 
@@ -30500,11 +30409,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISDindingRumahPenerimaDankes.setIconTextGap(0);
         btnZISDindingRumahPenerimaDankes.setName("btnZISDindingRumahPenerimaDankes"); 
         btnZISDindingRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISDindingRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISDindingRumahPenerimaDankesActionPerformed(evt);
-            }
-        }); 
+        btnZISDindingRumahPenerimaDankes.addActionListener(this::btnZISDindingRumahPenerimaDankesActionPerformed); 
         
         btnZISLantaiRumahPenerimaDankes = new widget.ButtonBig();
         btnZISLantaiRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_fence-picket-garden-yard-farm-barrier-wooden_2189586.png"))); 
@@ -30512,11 +30417,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISLantaiRumahPenerimaDankes.setIconTextGap(0);
         btnZISLantaiRumahPenerimaDankes.setName("btnZISLantaiRumahPenerimaDankes"); 
         btnZISLantaiRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISLantaiRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISLantaiRumahPenerimaDankesActionPerformed(evt);
-            }
-        }); 
+        btnZISLantaiRumahPenerimaDankes.addActionListener(this::btnZISLantaiRumahPenerimaDankesActionPerformed); 
         
         btnZISAtapRumahPenerimaDankes = new widget.ButtonBig();
         btnZISAtapRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_home_17008.png"))); 
@@ -30524,11 +30425,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISAtapRumahPenerimaDankes.setIconTextGap(0);
         btnZISAtapRumahPenerimaDankes.setName("btnZISAtapRumahPenerimaDankes"); 
         btnZISAtapRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISAtapRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISAtapRumahPenerimaDankesActionPerformed(evt);
-            }
-        }); 
+        btnZISAtapRumahPenerimaDankes.addActionListener(this::btnZISAtapRumahPenerimaDankesActionPerformed); 
         
         btnZISKepemilikanRumahPenerimaDankes = new widget.ButtonBig();
         btnZISKepemilikanRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Locked_Cell_Door_128415.png"))); 
@@ -30536,11 +30433,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISKepemilikanRumahPenerimaDankes.setIconTextGap(0);
         btnZISKepemilikanRumahPenerimaDankes.setName("btnZISKepemilikanRumahPenerimaDankes"); 
         btnZISKepemilikanRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISKepemilikanRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISKepemilikanRumahPenerimaDankesActionPerformed(evt);
-            }
-        }); 
+        btnZISKepemilikanRumahPenerimaDankes.addActionListener(this::btnZISKepemilikanRumahPenerimaDankesActionPerformed); 
         
         btnZISKamarMandiPenerimaDankes = new widget.ButtonBig();
         btnZISKamarMandiPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_13-Shower_6027796.png"))); 
@@ -30548,11 +30441,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISKamarMandiPenerimaDankes.setIconTextGap(0);
         btnZISKamarMandiPenerimaDankes.setName("btnZISKamarMandiPenerimaDankes"); 
         btnZISKamarMandiPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISKamarMandiPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISKamarMandiPenerimaDankesActionPerformed(evt);
-            }
-        }); 
+        btnZISKamarMandiPenerimaDankes.addActionListener(this::btnZISKamarMandiPenerimaDankesActionPerformed); 
         
         btnZISDapurRumahPenerimaDankes = new widget.ButtonBig();
         btnZISDapurRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_25-Hot_cooking_5929219.png"))); 
@@ -30560,11 +30449,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISDapurRumahPenerimaDankes.setIconTextGap(0);
         btnZISDapurRumahPenerimaDankes.setName("btnZISDapurRumahPenerimaDankes"); 
         btnZISDapurRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISDapurRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISDapurRumahPenerimaDankesActionPerformed(evt);
-            }
-        });
+        btnZISDapurRumahPenerimaDankes.addActionListener(this::btnZISDapurRumahPenerimaDankesActionPerformed);
         
         btnZISKursiRumahPenerimaDankes = new widget.ButtonBig();
         btnZISKursiRumahPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_education-school-chair-seat-computer-study-office_5854055.png"))); 
@@ -30572,11 +30457,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISKursiRumahPenerimaDankes.setIconTextGap(0);
         btnZISKursiRumahPenerimaDankes.setName("btnZISKursiRumahPenerimaDankes"); 
         btnZISKursiRumahPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISKursiRumahPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISKursiRumahPenerimaDankesActionPerformed(evt);
-            }
-        });
+        btnZISKursiRumahPenerimaDankes.addActionListener(this::btnZISKursiRumahPenerimaDankesActionPerformed);
         
         btnZISKategoriPHBSPenerimaDankes = new widget.ButtonBig();
         btnZISKategoriPHBSPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_house_sink_1378831.png"))); 
@@ -30584,11 +30465,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISKategoriPHBSPenerimaDankes.setIconTextGap(0);
         btnZISKategoriPHBSPenerimaDankes.setName("btnZISKategoriPHBSPenerimaDankes"); 
         btnZISKategoriPHBSPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISKategoriPHBSPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISKategoriPHBSPenerimaDankesActionPerformed(evt);
-            }
-        });
+        btnZISKategoriPHBSPenerimaDankes.addActionListener(this::btnZISKategoriPHBSPenerimaDankesActionPerformed);
         
         btnZISElektronikPenerimaDankes = new widget.ButtonBig();
         btnZISElektronikPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Eco_bulb_energy_light_2992437.png"))); 
@@ -30596,11 +30473,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISElektronikPenerimaDankes.setIconTextGap(0);
         btnZISElektronikPenerimaDankes.setName("btnZISElektronikPenerimaDankes"); 
         btnZISElektronikPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISElektronikPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISElektronikPenerimaDankesActionPerformed(evt);
-            }
-        });
+        btnZISElektronikPenerimaDankes.addActionListener(this::btnZISElektronikPenerimaDankesActionPerformed);
         
         btnZISTernakPenerimaDankes = new widget.ButtonBig();
         btnZISTernakPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_chicken-chickling-easter-egg-shell-spring_2189581.png"))); 
@@ -30608,11 +30481,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISTernakPenerimaDankes.setIconTextGap(0);
         btnZISTernakPenerimaDankes.setName("btnZISTernakPenerimaDankes"); 
         btnZISTernakPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISTernakPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISTernakPenerimaDankesActionPerformed(evt);
-            }
-        });
+        btnZISTernakPenerimaDankes.addActionListener(this::btnZISTernakPenerimaDankesActionPerformed);
         
         btnZISJenisSimpananPenerimaDankes = new widget.ButtonBig();
         btnZISJenisSimpananPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_gold_61617.png"))); 
@@ -30620,11 +30489,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISJenisSimpananPenerimaDankes.setIconTextGap(0);
         btnZISJenisSimpananPenerimaDankes.setName("btnZISJenisSimpananPenerimaDankes"); 
         btnZISJenisSimpananPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISJenisSimpananPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISJenisSimpananPenerimaDankesActionPerformed(evt);
-            }
-        });
+        btnZISJenisSimpananPenerimaDankes.addActionListener(this::btnZISJenisSimpananPenerimaDankesActionPerformed);
         
         btnPenilaianAwalRalanBayi = new widget.ButtonBig();
         btnPenilaianAwalRalanBayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/baby-cot.png"))); 
@@ -30632,11 +30497,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalRalanBayi.setIconTextGap(0);
         btnPenilaianAwalRalanBayi.setName("btnPenilaianAwalRalanBayi"); 
         btnPenilaianAwalRalanBayi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPenilaianAwalRalanBayi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPenilaianAwalRalanBayiActionPerformed(evt);
-            }
-        });
+        btnPenilaianAwalRalanBayi.addActionListener(this::btnPenilaianAwalRalanBayiActionPerformed);
         
         btnZISKategoriAsnafPenerimaDankes = new widget.ButtonBig();
         btnZISKategoriAsnafPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_4_2716419.png"))); 
@@ -30644,11 +30505,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISKategoriAsnafPenerimaDankes.setIconTextGap(0);
         btnZISKategoriAsnafPenerimaDankes.setName("btnZISKategoriAsnafPenerimaDankes"); 
         btnZISKategoriAsnafPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISKategoriAsnafPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISKategoriAsnafPenerimaDankesActionPerformed(evt);
-            }
-        });
+        btnZISKategoriAsnafPenerimaDankes.addActionListener(this::btnZISKategoriAsnafPenerimaDankesActionPerformed);
         
         btnMasterMasalahKeperawatanAnak = new widget.ButtonBig();
         btnMasterMasalahKeperawatanAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/baby-boy.png"))); 
@@ -30656,11 +30513,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterMasalahKeperawatanAnak.setIconTextGap(0);
         btnMasterMasalahKeperawatanAnak.setName("btnMasterMasalahKeperawatanAnak"); 
         btnMasterMasalahKeperawatanAnak.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMasterMasalahKeperawatanAnak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMasterMasalahKeperawatanAnakActionPerformed(evt);
-            }
-        });
+        btnMasterMasalahKeperawatanAnak.addActionListener(this::btnMasterMasalahKeperawatanAnakActionPerformed);
         
         btnMasterImunisasi = new widget.ButtonBig();
         btnMasterImunisasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_19-tube_5980344.png"))); 
@@ -30668,11 +30521,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMasterImunisasi.setIconTextGap(0);
         btnMasterImunisasi.setName("btnMasterImunisasi"); 
         btnMasterImunisasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnMasterImunisasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMasterImunisasiActionPerformed(evt);
-            }
-        });
+        btnMasterImunisasi.addActionListener(this::btnMasterImunisasiActionPerformed);
         
         btnZISPatologisPenerimaDankes = new widget.ButtonBig();
         btnZISPatologisPenerimaDankes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_smoke-healthcare_and_medical-no_smoking-warming-signaling-cigarette-prohibition-forbidden-security_4394848.png"))); 
@@ -30680,11 +30529,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnZISPatologisPenerimaDankes.setIconTextGap(0);
         btnZISPatologisPenerimaDankes.setName("btnZISPatologisPenerimaDankes"); 
         btnZISPatologisPenerimaDankes.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnZISPatologisPenerimaDankes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnZISPatologisPenerimaDankesActionPerformed(evt);
-            }
-        });
+        btnZISPatologisPenerimaDankes.addActionListener(this::btnZISPatologisPenerimaDankesActionPerformed);
         
         btnPCareCekKartu = new widget.ButtonBig();
         btnPCareCekKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pcare.png"))); 
@@ -30692,11 +30537,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPCareCekKartu.setIconTextGap(0);
         btnPCareCekKartu.setName("btnPCareCekKartu"); 
         btnPCareCekKartu.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPCareCekKartu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPCareCekKartuActionPerformed(evt);
-            }
-        });
+        btnPCareCekKartu.addActionListener(this::btnPCareCekKartuActionPerformed);
         
         btnSuratBebasNarkoba = new widget.ButtonBig();
         btnSuratBebasNarkoba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Capsule-drug-medicine-pill-tablet_5994864.png"))); 
@@ -30704,11 +30545,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratBebasNarkoba.setIconTextGap(0);
         btnSuratBebasNarkoba.setName("btnSuratBebasNarkoba"); 
         btnSuratBebasNarkoba.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratBebasNarkoba.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratBebasNarkobaActionPerformed(evt);
-            }
-        });
+        btnSuratBebasNarkoba.addActionListener(this::btnSuratBebasNarkobaActionPerformed);
         
         btnSuratKeteranganCovid = new widget.ButtonBig();
         btnSuratKeteranganCovid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Microscope-Scientific-Laboratory-Test-Chemistry_5958964.png"))); 
@@ -30716,11 +30553,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratKeteranganCovid.setIconTextGap(0);
         btnSuratKeteranganCovid.setName("btnSuratKeteranganCovid"); 
         btnSuratKeteranganCovid.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratKeteranganCovid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratKeteranganCovidActionPerformed(evt);
-            }
-        });
+        btnSuratKeteranganCovid.addActionListener(this::btnSuratKeteranganCovidActionPerformed);
         
         btnPemakaianAirTanah = new widget.ButtonBig();
         btnPemakaianAirTanah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Ecology_tap_water_2992443.png"))); 
@@ -30728,11 +30561,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPemakaianAirTanah.setIconTextGap(0);
         btnPemakaianAirTanah.setName("btnPemakaianAirTanah"); 
         btnPemakaianAirTanah.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPemakaianAirTanah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPemakaianAirTanahActionPerformed(evt);
-            }
-        });
+        btnPemakaianAirTanah.addActionListener(this::btnPemakaianAirTanahActionPerformed);
         
         btnGrafikPemakaianAirTanahPerTanggal= new widget.ButtonBig();
         btnGrafikPemakaianAirTanahPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
@@ -30740,11 +30569,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikPemakaianAirTanahPerTanggal.setIconTextGap(0);
         btnGrafikPemakaianAirTanahPerTanggal.setName("btnGrafikPemakaianAirTanahPerTanggal"); 
         btnGrafikPemakaianAirTanahPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikPemakaianAirTanahPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikPemakaianAirTanahPerTanggalActionPerformed(evt);
-            }
-        });
+        btnGrafikPemakaianAirTanahPerTanggal.addActionListener(this::btnGrafikPemakaianAirTanahPerTanggalActionPerformed);
         
         btnGrafikPemakaianAirTanahPerBulan= new widget.ButtonBig();
         btnGrafikPemakaianAirTanahPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
@@ -30752,11 +30577,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikPemakaianAirTanahPerBulan.setIconTextGap(0);
         btnGrafikPemakaianAirTanahPerBulan.setName("btnGrafikPemakaianAirTanahPerBulan"); 
         btnGrafikPemakaianAirTanahPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikPemakaianAirTanahPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikPemakaianAirTanahPerBulanActionPerformed(evt);
-            }
-        });
+        btnGrafikPemakaianAirTanahPerBulan.addActionListener(this::btnGrafikPemakaianAirTanahPerBulanActionPerformed);
         
         btnLamaPelayananPoli = new widget.ButtonBig();
         btnLamaPelayananPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); 
@@ -30764,11 +30585,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLamaPelayananPoli.setIconTextGap(0);
         btnLamaPelayananPoli.setName("btnLamaPelayananPoli"); 
         btnLamaPelayananPoli.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLamaPelayananPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamaPelayananPoliActionPerformed(evt);
-            }
-        });
+        btnLamaPelayananPoli.addActionListener(this::btnLamaPelayananPoliActionPerformed);
         
         btnHemodialisa = new widget.ButtonBig();
         btnHemodialisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_32_Disease_infected_infection_kidney_6088186.png"))); 
@@ -30776,11 +30593,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHemodialisa.setIconTextGap(0);
         btnHemodialisa.setName("btnHemodialisa"); 
         btnHemodialisa.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnHemodialisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHemodialisaActionPerformed(evt);
-            }
-        });
+        btnHemodialisa.addActionListener(this::btnHemodialisaActionPerformed);
         
         btnGrafikHemodialisaPerTanggal = new widget.ButtonBig();
         btnGrafikHemodialisaPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
@@ -30788,11 +30601,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikHemodialisaPerTanggal.setIconTextGap(0);
         btnGrafikHemodialisaPerTanggal.setName("btnGrafikHemodialisaPerTanggal"); 
         btnGrafikHemodialisaPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikHemodialisaPerTanggal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikHemodialisaPerTanggalActionPerformed(evt);
-            }
-        });
+        btnGrafikHemodialisaPerTanggal.addActionListener(this::btnGrafikHemodialisaPerTanggalActionPerformed);
         
         btnGrafikHemodialisaPerBulan = new widget.ButtonBig();
         btnGrafikHemodialisaPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
@@ -30800,11 +30609,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikHemodialisaPerBulan.setIconTextGap(0);
         btnGrafikHemodialisaPerBulan.setName("btnGrafikHemodialisaPerBulan"); 
         btnGrafikHemodialisaPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikHemodialisaPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikHemodialisaPerBulanActionPerformed(evt);
-            }
-        });
+        btnGrafikHemodialisaPerBulan.addActionListener(this::btnGrafikHemodialisaPerBulanActionPerformed);
         
         btnGrafikHemodialisaPerTahun = new widget.ButtonBig();
         btnGrafikHemodialisaPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); 
@@ -30812,11 +30617,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikHemodialisaPerTahun.setIconTextGap(0);
         btnGrafikHemodialisaPerTahun.setName("btnGrafikHemodialisaPerTahun"); 
         btnGrafikHemodialisaPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikHemodialisaPerTahun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikHemodialisaPerTahunActionPerformed(evt);
-            }
-        });
+        btnGrafikHemodialisaPerTahun.addActionListener(this::btnGrafikHemodialisaPerTahunActionPerformed);
         
         btnGrafikMeninggalPerBulan = new widget.ButtonBig();
         btnGrafikMeninggalPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); 
@@ -30824,11 +30625,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnGrafikMeninggalPerBulan.setIconTextGap(0);
         btnGrafikMeninggalPerBulan.setName("btnGrafikMeninggalPerBulan"); 
         btnGrafikMeninggalPerBulan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnGrafikMeninggalPerBulan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrafikMeninggalPerBulanActionPerformed(evt);
-            }
-        });
+        btnGrafikMeninggalPerBulan.addActionListener(this::btnGrafikMeninggalPerBulanActionPerformed);
         
         btnLaporanTahunanIRJ = new widget.ButtonBig();
         btnLaporanTahunanIRJ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/laporantahunanIRJ.png"))); 
@@ -30836,11 +30633,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLaporanTahunanIRJ.setIconTextGap(0);
         btnLaporanTahunanIRJ.setName("btnLaporanTahunanIRJ"); 
         btnLaporanTahunanIRJ.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnLaporanTahunanIRJ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLaporanTahunanIRJActionPerformed(evt);
-            }
-        });
+        btnLaporanTahunanIRJ.addActionListener(this::btnLaporanTahunanIRJActionPerformed);
         
         btnPerbaikanInventaris = new widget.ButtonBig();
         btnPerbaikanInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_package_utilities_3557.png"))); 
@@ -30848,11 +30641,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPerbaikanInventaris.setIconTextGap(0);
         btnPerbaikanInventaris.setName("btnPerbaikanInventaris"); 
         btnPerbaikanInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPerbaikanInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerbaikanInventarisActionPerformed(evt);
-            }
-        }); 
+        btnPerbaikanInventaris.addActionListener(this::btnPerbaikanInventarisActionPerformed); 
         
         btnSuratCutiHamil = new widget.ButtonBig();
         btnSuratCutiHamil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_contact_37110.png"))); 
@@ -30860,11 +30649,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratCutiHamil.setIconTextGap(0);
         btnSuratCutiHamil.setName("btnSuratCutiHamil"); 
         btnSuratCutiHamil.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnSuratCutiHamil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuratCutiHamilActionPerformed(evt);
-            }
-        }); 
+        btnSuratCutiHamil.addActionListener(this::btnSuratCutiHamilActionPerformed); 
         
         btnPermintaanStokObatPasien = new widget.ButtonBig();
         btnPermintaanStokObatPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/IconPermintaanStokObatPasien.png"))); 
@@ -30872,11 +30657,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPermintaanStokObatPasien.setIconTextGap(0);
         btnPermintaanStokObatPasien.setName("btnPermintaanStokObatPasien"); 
         btnPermintaanStokObatPasien.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPermintaanStokObatPasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPermintaanStokObatPasienActionPerformed(evt);
-            }
-        }); 
+        btnPermintaanStokObatPasien.addActionListener(this::btnPermintaanStokObatPasienActionPerformed); 
         
         btnPemeliharaanInventaris = new widget.ButtonBig();
         btnPemeliharaanInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_preferences_6586102.png"))); 
@@ -30884,11 +30665,23 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPemeliharaanInventaris.setIconTextGap(0);
         btnPemeliharaanInventaris.setName("btnPemeliharaanInventaris"); 
         btnPemeliharaanInventaris.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnPemeliharaanInventaris.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPemeliharaanInventarisActionPerformed(evt);
-            }
-        }); 
+        btnPemeliharaanInventaris.addActionListener(this::btnPemeliharaanInventarisActionPerformed); 
+        
+        btnKlasifikasiPasienRanap = new widget.ButtonBig();
+        btnKlasifikasiPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_clipboard_6586111.png"))); 
+        btnKlasifikasiPasienRanap.setText("Klasifikasi Pasien Ranap");
+        btnKlasifikasiPasienRanap.setIconTextGap(0);
+        btnKlasifikasiPasienRanap.setName("btnKlasifikasiPasienRanap"); 
+        btnKlasifikasiPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKlasifikasiPasienRanap.addActionListener(this::btnKlasifikasiPasienRanapActionPerformed); 
+        
+        btnBulananKlasifikasiPasienRanap = new widget.ButtonBig();
+        btnBulananKlasifikasiPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Letter_Printing_Paper_Sizes_1977178.png"))); 
+        btnBulananKlasifikasiPasienRanap.setText("Bulanan Klasifikasi Pasien Ranap");
+        btnBulananKlasifikasiPasienRanap.setIconTextGap(0);
+        btnBulananKlasifikasiPasienRanap.setName("btnBulananKlasifikasiPasienRanap"); 
+        btnBulananKlasifikasiPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBulananKlasifikasiPasienRanap.addActionListener(this::btnBulananKlasifikasiPasienRanapActionPerformed); 
     }
 
     

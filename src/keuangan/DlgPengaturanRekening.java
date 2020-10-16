@@ -78,7 +78,21 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             nama_utang_jasa_dokter,kode_beban_jasa_paramedis,nama_beban_jasa_paramedis,kode_utang_jasa_paramedis,nama_utang_jasa_paramedis, 
             kode_beban_kso,nama_beban_kso,kode_utang_kso,nama_utang_kso,kode_hpp_persediaan,nama_hpp_persediaan,kode_persediaan_bhp,
             nama_persediaan_bhp,kode_beban_jasa_sarana,nama_beban_jasa_sarana,kode_utang_jasa_sarana,nama_utang_jasa_sarana,
-            kode_beban_menejemen,nama_beban_menejemen,kode_utang_menejemen,nama_utang_menejemen;
+            kode_beban_menejemen,nama_beban_menejemen,kode_utang_menejemen,nama_utang_menejemen,
+            Suspen_Piutang_Tindakan_Ralan,Beban_Jasa_Sarana_Tindakan_Ralan,Utang_Jasa_Sarana_Tindakan_Ralan,
+            HPP_BHP_Tindakan_Ralan,Persediaan_BHP_Tindakan_Ralan,Beban_Jasa_Menejemen_Tindakan_Ralan,
+            Utang_Jasa_Menejemen_Tindakan_Ralan,Suspen_Piutang_Laborat_Ralan,Beban_Jasa_Sarana_Laborat_Ralan,
+            Utang_Jasa_Sarana_Laborat_Ralan,Beban_Jasa_Perujuk_Laborat_Ralan,Utang_Jasa_Perujuk_Laborat_Ralan,
+            Beban_Jasa_Menejemen_Laborat_Ralan,Utang_Jasa_Menejemen_Laborat_Ralan,Suspen_Piutang_Radiologi_Ralan,
+            Beban_Jasa_Sarana_Radiologi_Ralan,Utang_Jasa_Sarana_Radiologi_Ralan,Beban_Jasa_Perujuk_Radiologi_Ralan,
+            Utang_Jasa_Perujuk_Radiologi_Ralan,Beban_Jasa_Menejemen_Radiologi_Ralan,Utang_Jasa_Menejemen_Radiologi_Ralan,
+            Suspen_Piutang_Obat_Ralan,Suspen_Piutang_Operasi_Ralan,Beban_Jasa_Sarana_Tindakan_Ranap,
+            Utang_Jasa_Sarana_Tindakan_Ranap,Beban_Jasa_Menejemen_Tindakan_Ranap,Utang_Jasa_Menejemen_Tindakan_Ranap,
+            HPP_BHP_Tindakan_Ranap,Persediaan_BHP_Tindakan_Ranap,Beban_Jasa_Sarana_Laborat_Ranap,
+            Utang_Jasa_Sarana_Laborat_Ranap,Beban_Jasa_Perujuk_Laborat_Ranap,Utang_Jasa_Perujuk_Laborat_Ranap,
+            Beban_Jasa_Menejemen_Laborat_Ranap,Utang_Jasa_Menejemen_Laborat_Ranap,Beban_Jasa_Sarana_Radiologi_Ranap,
+            Utang_Jasa_Sarana_Radiologi_Ranap,Beban_Jasa_Perujuk_Radiologi_Ranap,Utang_Jasa_Perujuk_Radiologi_Ranap,
+            Beban_Jasa_Menejemen_Radiologi_Ranap,Utang_Jasa_Menejemen_Radiologi_Ranap;
     private String copyakun="";
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
 
@@ -597,231 +611,263 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TabRawat.getSelectedIndex()==0){
-            Tindakan_Ralan=tbPengaturan.getValueAt(0,1).toString();
-            Beban_Jasa_Medik_Dokter_Tindakan_Ralan=tbPengaturan.getValueAt(1,1).toString();
-            Utang_Jasa_Medik_Dokter_Tindakan_Ralan=tbPengaturan.getValueAt(2,1).toString();
-            Beban_Jasa_Medik_Paramedis_Tindakan_Ralan=tbPengaturan.getValueAt(3,1).toString();
-            Utang_Jasa_Medik_Paramedis_Tindakan_Ralan=tbPengaturan.getValueAt(4,1).toString();
-            Beban_KSO_Tindakan_Ralan=tbPengaturan.getValueAt(5,1).toString();
-            Utang_KSO_Tindakan_Ralan=tbPengaturan.getValueAt(6,1).toString();
-            Laborat_Ralan=tbPengaturan.getValueAt(7,1).toString();
-            Beban_Jasa_Medik_Dokter_Laborat_Ralan=tbPengaturan.getValueAt(8,1).toString();
-            Utang_Jasa_Medik_Dokter_Laborat_Ralan=tbPengaturan.getValueAt(9,1).toString();
-            Beban_Jasa_Medik_Petugas_Laborat_Ralan=tbPengaturan.getValueAt(10,1).toString();
-            Utang_Jasa_Medik_Petugas_Laborat_Ralan=tbPengaturan.getValueAt(11,1).toString();
-            Beban_Kso_Laborat_Ralan=tbPengaturan.getValueAt(12,1).toString();
-            Utang_Kso_Laborat_Ralan=tbPengaturan.getValueAt(13,1).toString();
-            HPP_Persediaan_Laborat_Rawat_Jalan=tbPengaturan.getValueAt(14,1).toString();
-            Persediaan_BHP_Laborat_Rawat_Jalan=tbPengaturan.getValueAt(15,1).toString();
-            Radiologi_Ralan=tbPengaturan.getValueAt(16,1).toString();
-            Beban_Jasa_Medik_Dokter_Radiologi_Ralan=tbPengaturan.getValueAt(17,1).toString();
-            Utang_Jasa_Medik_Dokter_Radiologi_Ralan=tbPengaturan.getValueAt(18,1).toString();
-            Beban_Jasa_Medik_Petugas_Radiologi_Ralan=tbPengaturan.getValueAt(19,1).toString();
-            Utang_Jasa_Medik_Petugas_Radiologi_Ralan=tbPengaturan.getValueAt(20,1).toString();
-            Beban_Kso_Radiologi_Ralan=tbPengaturan.getValueAt(21,1).toString();
-            Utang_Kso_Radiologi_Ralan=tbPengaturan.getValueAt(22,1).toString();
-            HPP_Persediaan_Radiologi_Rawat_Jalan=tbPengaturan.getValueAt(23,1).toString();
-            Persediaan_BHP_Radiologi_Rawat_Jalan=tbPengaturan.getValueAt(24,1).toString();
-            Obat_Ralan=tbPengaturan.getValueAt(25,1).toString();
-            HPP_Obat_Rawat_Jalan=tbPengaturan.getValueAt(26,1).toString();
-            Persediaan_Obat_Rawat_Jalan=tbPengaturan.getValueAt(27,1).toString();
-            Registrasi_Ralan=tbPengaturan.getValueAt(28,1).toString();
-            Operasi_Ralan=tbPengaturan.getValueAt(29,1).toString();
-            Beban_Jasa_Medik_Dokter_Operasi_Ralan=tbPengaturan.getValueAt(30,1).toString();
-            Utang_Jasa_Medik_Dokter_Operasi_Ralan=tbPengaturan.getValueAt(31,1).toString();
-            Beban_Jasa_Medik_Paramedis_Operasi_Ralan=tbPengaturan.getValueAt(32,1).toString();
-            Utang_Jasa_Medik_Paramedis_Operasi_Ralan=tbPengaturan.getValueAt(33,1).toString();
-            HPP_Obat_Operasi_Ralan=tbPengaturan.getValueAt(34,1).toString();
-            Persediaan_Obat_Kamar_Operasi_Ralan=tbPengaturan.getValueAt(35,1).toString();
-            Tambahan_Ralan=tbPengaturan.getValueAt(36,1).toString();
-            Potongan_Ralan=tbPengaturan.getValueAt(37,1).toString();
-            Suspen_Piutang_Tindakan_Ranap=tbPengaturan.getValueAt(38,1).toString();
-            Tindakan_Ranap=tbPengaturan.getValueAt(39,1).toString();
-            Beban_Jasa_Medik_Dokter_Tindakan_Ranap=tbPengaturan.getValueAt(40,1).toString();
-            Utang_Jasa_Medik_Dokter_Tindakan_Ranap=tbPengaturan.getValueAt(41,1).toString(); 
-            Beban_Jasa_Medik_Paramedis_Tindakan_Ranap=tbPengaturan.getValueAt(42,1).toString();
-            Utang_Jasa_Medik_Paramedis_Tindakan_Ranap=tbPengaturan.getValueAt(43,1).toString();
-            Beban_KSO_Tindakan_Ranap=tbPengaturan.getValueAt(44,1).toString(); 
-            Utang_KSO_Tindakan_Ranap=tbPengaturan.getValueAt(45,1).toString(); 
-            Suspen_Piutang_Laborat_Ranap=tbPengaturan.getValueAt(46,1).toString();
-            Laborat_Ranap=tbPengaturan.getValueAt(47,1).toString();
-            Beban_Jasa_Medik_Dokter_Laborat_Ranap=tbPengaturan.getValueAt(48,1).toString();
-            Utang_Jasa_Medik_Dokter_Laborat_Ranap=tbPengaturan.getValueAt(49,1).toString();
-            Beban_Jasa_Medik_Petugas_Laborat_Ranap=tbPengaturan.getValueAt(50,1).toString();
-            Utang_Jasa_Medik_Petugas_Laborat_Ranap=tbPengaturan.getValueAt(51,1).toString();
-            Beban_Kso_Laborat_Ranap=tbPengaturan.getValueAt(52,1).toString();
-            Utang_Kso_Laborat_Ranap=tbPengaturan.getValueAt(53,1).toString();
-            HPP_Persediaan_Laborat_Rawat_inap=tbPengaturan.getValueAt(54,1).toString();
-            Persediaan_BHP_Laborat_Rawat_Inap=tbPengaturan.getValueAt(55,1).toString();        
-            Suspen_Piutang_Radiologi_Ranap=tbPengaturan.getValueAt(56,1).toString();
-            Radiologi_Ranap=tbPengaturan.getValueAt(57,1).toString();
-            Beban_Jasa_Medik_Dokter_Radiologi_Ranap=tbPengaturan.getValueAt(58,1).toString(); 
-            Utang_Jasa_Medik_Dokter_Radiologi_Ranap=tbPengaturan.getValueAt(59,1).toString();
-            Beban_Jasa_Medik_Petugas_Radiologi_Ranap=tbPengaturan.getValueAt(60,1).toString();
-            Utang_Jasa_Medik_Petugas_Radiologi_Ranap=tbPengaturan.getValueAt(61,1).toString();
-            Beban_Kso_Radiologi_Ranap=tbPengaturan.getValueAt(62,1).toString();
-            Utang_Kso_Radiologi_Ranap=tbPengaturan.getValueAt(63,1).toString();
-            HPP_Persediaan_Radiologi_Rawat_Inap=tbPengaturan.getValueAt(64,1).toString();
-            Persediaan_BHP_Radiologi_Rawat_Inap=tbPengaturan.getValueAt(65,1).toString();
-            Suspen_Piutang_Obat_Ranap=tbPengaturan.getValueAt(66,1).toString();
-            Obat_Ranap=tbPengaturan.getValueAt(67,1).toString();            
-            HPP_Obat_Rawat_Inap=tbPengaturan.getValueAt(68,1).toString();  
-            Persediaan_Obat_Rawat_Inap=tbPengaturan.getValueAt(69,1).toString();
-            Registrasi_Ranap=tbPengaturan.getValueAt(70,1).toString();
-            Service_Ranap=tbPengaturan.getValueAt(71,1).toString();
-            Tambahan_Ranap=tbPengaturan.getValueAt(72,1).toString();
-            Potongan_Ranap=tbPengaturan.getValueAt(73,1).toString();
-            Retur_Obat_Ranap=tbPengaturan.getValueAt(74,1).toString();
-            Resep_Pulang_Ranap=tbPengaturan.getValueAt(75,1).toString();
-            Kamar_Inap=tbPengaturan.getValueAt(76,1).toString();
-            Suspen_Piutang_Operasi_Ranap=tbPengaturan.getValueAt(77,1).toString();
-            Operasi_Ranap=tbPengaturan.getValueAt(78,1).toString();
-            Beban_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(79,1).toString();
-            Utang_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(80,1).toString();
-            Beban_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(81,1).toString();
-            Utang_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(82,1).toString();
-            HPP_Obat_Operasi_Ranap=tbPengaturan.getValueAt(83,1).toString();
-            Persediaan_Obat_Kamar_Operasi_Ranap=tbPengaturan.getValueAt(84,1).toString();  
-            Harian_Ranap=tbPengaturan.getValueAt(85,1).toString();
-            Uang_Muka_Ranap=tbPengaturan.getValueAt(86,1).toString();
-            Piutang_Pasien_Ranap=tbPengaturan.getValueAt(87,1).toString();
-            Pengadaan_Obat=tbPengaturan.getValueAt(88,1).toString();
-            Pemesanan_Obat=tbPengaturan.getValueAt(89,1).toString();
-            Kontra_Pemesanan_Obat=tbPengaturan.getValueAt(90,1).toString();
-            Bayar_Pemesanan_Obat=tbPengaturan.getValueAt(91,1).toString();
-            Penjualan_Obat=tbPengaturan.getValueAt(92,1).toString();
-            Piutang_Obat=tbPengaturan.getValueAt(93,1).toString();
-            Kontra_Piutang_Obat=tbPengaturan.getValueAt(94,1).toString();
-            Retur_Ke_Suplayer=tbPengaturan.getValueAt(95,1).toString();
-            Kontra_Retur_Ke_Suplayer=tbPengaturan.getValueAt(96,1).toString();
-            Retur_Dari_pembeli=tbPengaturan.getValueAt(97,1).toString();
-            Kontra_Retur_Dari_Pembeli=tbPengaturan.getValueAt(98,1).toString();
-            Retur_Piutang_Obat=tbPengaturan.getValueAt(99,1).toString();
-            Kontra_Retur_Piutang_Obat=tbPengaturan.getValueAt(100,1).toString();
-            Pengadaan_Ipsrs=tbPengaturan.getValueAt(101,1).toString();
-            Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(102,1).toString();
-            Kontra_Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(103,1).toString();
-            Bayar_Piutang_Pasien=tbPengaturan.getValueAt(104,1).toString();
-            Pengambilan_Utd=tbPengaturan.getValueAt(105,1).toString();
-            Kontra_Pengambilan_Utd=tbPengaturan.getValueAt(106,1).toString();        
-            Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(107,1).toString();
-            Kontra_Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(108,1).toString();
-            Penyerahan_Darah=tbPengaturan.getValueAt(109,1).toString();
-            Stok_Keluar_Medis=tbPengaturan.getValueAt(110,1).toString();
-            Kontra_Stok_Keluar_Medis=tbPengaturan.getValueAt(111,1).toString();
-            HPP_Obat_Jual_Bebas=tbPengaturan.getValueAt(112,1).toString();
-            Persediaan_Obat_Jual_Bebas=tbPengaturan.getValueAt(113,1).toString();
-            Penerimaan_NonMedis=tbPengaturan.getValueAt(114,1).toString();
-            Kontra_Penerimaan_NonMedis=tbPengaturan.getValueAt(115,1).toString();
-            Bayar_Pemesanan_Non_Medis=tbPengaturan.getValueAt(116,1).toString();
-            Hibah_Obat=tbPengaturan.getValueAt(117,1).toString();
-            Kontra_Hibah_Obat=tbPengaturan.getValueAt(118,1).toString();
-            Penerimaan_Toko=tbPengaturan.getValueAt(119,1).toString();
-            Kontra_Penerimaan_Toko=tbPengaturan.getValueAt(120,1).toString();
-            Pengadaan_Toko=tbPengaturan.getValueAt(121,1).toString();
-            Bayar_Pemesanan_Toko=tbPengaturan.getValueAt(122,1).toString();
-            Penjualan_Toko=tbPengaturan.getValueAt(123,1).toString();
-            HPP_Barang_Toko=tbPengaturan.getValueAt(124,1).toString();
-            Persediaan_Barang_Toko=tbPengaturan.getValueAt(125,1).toString();
-            Piutang_Toko=tbPengaturan.getValueAt(126,1).toString();
-            Kontra_Piutang_Toko=tbPengaturan.getValueAt(127,1).toString();
-            Retur_Beli_Toko=tbPengaturan.getValueAt(128,1).toString();
-            Kontra_Retur_Beli_Toko=tbPengaturan.getValueAt(129,1).toString();
-            Retur_Beli_Non_Medis=tbPengaturan.getValueAt(130,1).toString();
-            Kontra_Retur_Beli_Non_Medis=tbPengaturan.getValueAt(131,1).toString();
-            Retur_Jual_Toko=tbPengaturan.getValueAt(132,1).toString();
-            Kontra_Retur_Jual_Toko=tbPengaturan.getValueAt(133,1).toString();
-            Retur_Piutang_Toko=tbPengaturan.getValueAt(134,1).toString();
-            Kontra_Retur_Piutang_Toko=tbPengaturan.getValueAt(135,1).toString();
+            Suspen_Piutang_Tindakan_Ralan=tbPengaturan.getValueAt(0,1).toString();
+            Tindakan_Ralan=tbPengaturan.getValueAt(1,1).toString();
+            Beban_Jasa_Medik_Dokter_Tindakan_Ralan=tbPengaturan.getValueAt(2,1).toString();
+            Utang_Jasa_Medik_Dokter_Tindakan_Ralan=tbPengaturan.getValueAt(3,1).toString();
+            Beban_Jasa_Medik_Paramedis_Tindakan_Ralan=tbPengaturan.getValueAt(4,1).toString();
+            Utang_Jasa_Medik_Paramedis_Tindakan_Ralan=tbPengaturan.getValueAt(5,1).toString();
+            Beban_KSO_Tindakan_Ralan=tbPengaturan.getValueAt(6,1).toString();
+            Utang_KSO_Tindakan_Ralan=tbPengaturan.getValueAt(7,1).toString();
+            Beban_Jasa_Sarana_Tindakan_Ralan=tbPengaturan.getValueAt(8,1).toString();
+            Utang_Jasa_Sarana_Tindakan_Ralan=tbPengaturan.getValueAt(9,1).toString();
+            HPP_BHP_Tindakan_Ralan=tbPengaturan.getValueAt(10,1).toString();
+            Persediaan_BHP_Tindakan_Ralan=tbPengaturan.getValueAt(11,1).toString();
+            Beban_Jasa_Menejemen_Tindakan_Ralan=tbPengaturan.getValueAt(12,1).toString();
+            Utang_Jasa_Menejemen_Tindakan_Ralan=tbPengaturan.getValueAt(13,1).toString();
+            Suspen_Piutang_Laborat_Ralan=tbPengaturan.getValueAt(14,1).toString();
+            Laborat_Ralan=tbPengaturan.getValueAt(15,1).toString();
+            Beban_Jasa_Medik_Dokter_Laborat_Ralan=tbPengaturan.getValueAt(16,1).toString();
+            Utang_Jasa_Medik_Dokter_Laborat_Ralan=tbPengaturan.getValueAt(17,1).toString();
+            Beban_Jasa_Medik_Petugas_Laborat_Ralan=tbPengaturan.getValueAt(18,1).toString();
+            Utang_Jasa_Medik_Petugas_Laborat_Ralan=tbPengaturan.getValueAt(19,1).toString();
+            Beban_Kso_Laborat_Ralan=tbPengaturan.getValueAt(20,1).toString();
+            Utang_Kso_Laborat_Ralan=tbPengaturan.getValueAt(21,1).toString();
+            HPP_Persediaan_Laborat_Rawat_Jalan=tbPengaturan.getValueAt(22,1).toString();
+            Persediaan_BHP_Laborat_Rawat_Jalan=tbPengaturan.getValueAt(23,1).toString();
+            Beban_Jasa_Sarana_Laborat_Ralan=tbPengaturan.getValueAt(24,1).toString();
+            Utang_Jasa_Sarana_Laborat_Ralan=tbPengaturan.getValueAt(25,1).toString();
+            Beban_Jasa_Perujuk_Laborat_Ralan=tbPengaturan.getValueAt(26,1).toString();
+            Utang_Jasa_Perujuk_Laborat_Ralan=tbPengaturan.getValueAt(27,1).toString();
+            Beban_Jasa_Menejemen_Laborat_Ralan=tbPengaturan.getValueAt(28,1).toString();
+            Utang_Jasa_Menejemen_Laborat_Ralan=tbPengaturan.getValueAt(29,1).toString();
+            Suspen_Piutang_Radiologi_Ralan=tbPengaturan.getValueAt(30,1).toString();
+            Radiologi_Ralan=tbPengaturan.getValueAt(31,1).toString();
+            Beban_Jasa_Medik_Dokter_Radiologi_Ralan=tbPengaturan.getValueAt(32,1).toString();
+            Utang_Jasa_Medik_Dokter_Radiologi_Ralan=tbPengaturan.getValueAt(33,1).toString();
+            Beban_Jasa_Medik_Petugas_Radiologi_Ralan=tbPengaturan.getValueAt(34,1).toString();
+            Utang_Jasa_Medik_Petugas_Radiologi_Ralan=tbPengaturan.getValueAt(35,1).toString();
+            Beban_Kso_Radiologi_Ralan=tbPengaturan.getValueAt(36,1).toString();
+            Utang_Kso_Radiologi_Ralan=tbPengaturan.getValueAt(37,1).toString();
+            HPP_Persediaan_Radiologi_Rawat_Jalan=tbPengaturan.getValueAt(38,1).toString();
+            Persediaan_BHP_Radiologi_Rawat_Jalan=tbPengaturan.getValueAt(39,1).toString();
+            Beban_Jasa_Sarana_Radiologi_Ralan=tbPengaturan.getValueAt(40,1).toString();
+            Utang_Jasa_Sarana_Radiologi_Ralan=tbPengaturan.getValueAt(41,1).toString();
+            Beban_Jasa_Perujuk_Radiologi_Ralan=tbPengaturan.getValueAt(42,1).toString();
+            Utang_Jasa_Perujuk_Radiologi_Ralan=tbPengaturan.getValueAt(43,1).toString();
+            Beban_Jasa_Menejemen_Radiologi_Ralan=tbPengaturan.getValueAt(44,1).toString();
+            Utang_Jasa_Menejemen_Radiologi_Ralan=tbPengaturan.getValueAt(45,1).toString();
+            Suspen_Piutang_Obat_Ralan=tbPengaturan.getValueAt(46,1).toString();
+            Obat_Ralan=tbPengaturan.getValueAt(47,1).toString();
+            HPP_Obat_Rawat_Jalan=tbPengaturan.getValueAt(48,1).toString();
+            Persediaan_Obat_Rawat_Jalan=tbPengaturan.getValueAt(49,1).toString();
+            Registrasi_Ralan=tbPengaturan.getValueAt(50,1).toString();
+            Suspen_Piutang_Operasi_Ralan=tbPengaturan.getValueAt(51,1).toString();
+            Operasi_Ralan=tbPengaturan.getValueAt(52,1).toString();
+            Beban_Jasa_Medik_Dokter_Operasi_Ralan=tbPengaturan.getValueAt(53,1).toString();
+            Utang_Jasa_Medik_Dokter_Operasi_Ralan=tbPengaturan.getValueAt(54,1).toString();
+            Beban_Jasa_Medik_Paramedis_Operasi_Ralan=tbPengaturan.getValueAt(55,1).toString();
+            Utang_Jasa_Medik_Paramedis_Operasi_Ralan=tbPengaturan.getValueAt(56,1).toString();
+            HPP_Obat_Operasi_Ralan=tbPengaturan.getValueAt(57,1).toString();
+            Persediaan_Obat_Kamar_Operasi_Ralan=tbPengaturan.getValueAt(58,1).toString();
+            Tambahan_Ralan=tbPengaturan.getValueAt(59,1).toString();
+            Potongan_Ralan=tbPengaturan.getValueAt(60,1).toString();
+            Suspen_Piutang_Tindakan_Ranap=tbPengaturan.getValueAt(61,1).toString();
+            Tindakan_Ranap=tbPengaturan.getValueAt(62,1).toString();
+            Beban_Jasa_Medik_Dokter_Tindakan_Ranap=tbPengaturan.getValueAt(63,1).toString();
+            Utang_Jasa_Medik_Dokter_Tindakan_Ranap=tbPengaturan.getValueAt(64,1).toString();
+            Beban_Jasa_Medik_Paramedis_Tindakan_Ranap=tbPengaturan.getValueAt(65,1).toString();
+            Utang_Jasa_Medik_Paramedis_Tindakan_Ranap=tbPengaturan.getValueAt(66,1).toString();
+            Beban_KSO_Tindakan_Ranap=tbPengaturan.getValueAt(67,1).toString();
+            Utang_KSO_Tindakan_Ranap=tbPengaturan.getValueAt(68,1).toString();
+            Beban_Jasa_Sarana_Tindakan_Ranap=tbPengaturan.getValueAt(69,1).toString();
+            Utang_Jasa_Sarana_Tindakan_Ranap=tbPengaturan.getValueAt(70,1).toString();
+            Beban_Jasa_Menejemen_Tindakan_Ranap=tbPengaturan.getValueAt(71,1).toString();
+            Utang_Jasa_Menejemen_Tindakan_Ranap=tbPengaturan.getValueAt(72,1).toString();
+            HPP_BHP_Tindakan_Ranap=tbPengaturan.getValueAt(73,1).toString();
+            Persediaan_BHP_Tindakan_Ranap=tbPengaturan.getValueAt(74,1).toString();
+            Suspen_Piutang_Laborat_Ranap=tbPengaturan.getValueAt(75,1).toString();
+            Laborat_Ranap=tbPengaturan.getValueAt(76,1).toString();
+            Beban_Jasa_Medik_Dokter_Laborat_Ranap=tbPengaturan.getValueAt(77,1).toString();
+            Utang_Jasa_Medik_Dokter_Laborat_Ranap=tbPengaturan.getValueAt(78,1).toString();
+            Beban_Jasa_Medik_Petugas_Laborat_Ranap=tbPengaturan.getValueAt(79,1).toString();
+            Utang_Jasa_Medik_Petugas_Laborat_Ranap=tbPengaturan.getValueAt(80,1).toString();
+            Beban_Kso_Laborat_Ranap=tbPengaturan.getValueAt(81,1).toString();
+            Utang_Kso_Laborat_Ranap=tbPengaturan.getValueAt(82,1).toString();
+            HPP_Persediaan_Laborat_Rawat_inap=tbPengaturan.getValueAt(83,1).toString();
+            Persediaan_BHP_Laborat_Rawat_Inap=tbPengaturan.getValueAt(84,1).toString();
+            Beban_Jasa_Sarana_Laborat_Ranap=tbPengaturan.getValueAt(85,1).toString();
+            Utang_Jasa_Sarana_Laborat_Ranap=tbPengaturan.getValueAt(86,1).toString();
+            Beban_Jasa_Perujuk_Laborat_Ranap=tbPengaturan.getValueAt(87,1).toString();
+            Utang_Jasa_Perujuk_Laborat_Ranap=tbPengaturan.getValueAt(88,1).toString();
+            Beban_Jasa_Menejemen_Laborat_Ranap=tbPengaturan.getValueAt(89,1).toString();
+            Utang_Jasa_Menejemen_Laborat_Ranap=tbPengaturan.getValueAt(90,1).toString();
+            Suspen_Piutang_Radiologi_Ranap=tbPengaturan.getValueAt(91,1).toString();
+            Radiologi_Ranap=tbPengaturan.getValueAt(92,1).toString();
+            Beban_Jasa_Medik_Dokter_Radiologi_Ranap=tbPengaturan.getValueAt(93,1).toString();
+            Utang_Jasa_Medik_Dokter_Radiologi_Ranap=tbPengaturan.getValueAt(94,1).toString();
+            Beban_Jasa_Medik_Petugas_Radiologi_Ranap=tbPengaturan.getValueAt(95,1).toString();
+            Utang_Jasa_Medik_Petugas_Radiologi_Ranap=tbPengaturan.getValueAt(96,1).toString();
+            Beban_Kso_Radiologi_Ranap=tbPengaturan.getValueAt(97,1).toString();
+            Utang_Kso_Radiologi_Ranap=tbPengaturan.getValueAt(98,1).toString();
+            HPP_Persediaan_Radiologi_Rawat_Inap=tbPengaturan.getValueAt(99,1).toString();
+            Persediaan_BHP_Radiologi_Rawat_Inap=tbPengaturan.getValueAt(100,1).toString();
+            Beban_Jasa_Sarana_Radiologi_Ranap=tbPengaturan.getValueAt(101,1).toString();
+            Utang_Jasa_Sarana_Radiologi_Ranap=tbPengaturan.getValueAt(102,1).toString();
+            Beban_Jasa_Perujuk_Radiologi_Ranap=tbPengaturan.getValueAt(103,1).toString();
+            Utang_Jasa_Perujuk_Radiologi_Ranap=tbPengaturan.getValueAt(104,1).toString();
+            Beban_Jasa_Menejemen_Radiologi_Ranap=tbPengaturan.getValueAt(105,1).toString();
+            Utang_Jasa_Menejemen_Radiologi_Ranap=tbPengaturan.getValueAt(106,1).toString();
+            Suspen_Piutang_Obat_Ranap=tbPengaturan.getValueAt(107,1).toString();
+            Obat_Ranap=tbPengaturan.getValueAt(108,1).toString();
+            HPP_Obat_Rawat_Inap=tbPengaturan.getValueAt(109,1).toString();
+            Persediaan_Obat_Rawat_Inap=tbPengaturan.getValueAt(110,1).toString();
+            Registrasi_Ranap=tbPengaturan.getValueAt(111,1).toString();
+            Service_Ranap=tbPengaturan.getValueAt(112,1).toString();
+            Tambahan_Ranap=tbPengaturan.getValueAt(113,1).toString();
+            Potongan_Ranap=tbPengaturan.getValueAt(114,1).toString();
+            Retur_Obat_Ranap=tbPengaturan.getValueAt(115,1).toString();
+            Resep_Pulang_Ranap=tbPengaturan.getValueAt(116,1).toString();
+            Kamar_Inap=tbPengaturan.getValueAt(117,1).toString();
+            Suspen_Piutang_Operasi_Ranap=tbPengaturan.getValueAt(118,1).toString();
+            Operasi_Ranap=tbPengaturan.getValueAt(119,1).toString();
+            Beban_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(120,1).toString();
+            Utang_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(121,1).toString();
+            Beban_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(122,1).toString();
+            Utang_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(123,1).toString();
+            HPP_Obat_Operasi_Ranap=tbPengaturan.getValueAt(124,1).toString();
+            Persediaan_Obat_Kamar_Operasi_Ranap=tbPengaturan.getValueAt(125,1).toString();
+            Harian_Ranap=tbPengaturan.getValueAt(126,1).toString();
+            Uang_Muka_Ranap=tbPengaturan.getValueAt(127,1).toString();
+            Piutang_Pasien_Ranap=tbPengaturan.getValueAt(128,1).toString();
+            Pengadaan_Obat=tbPengaturan.getValueAt(129,1).toString();
+            Pemesanan_Obat=tbPengaturan.getValueAt(130,1).toString();
+            Kontra_Pemesanan_Obat=tbPengaturan.getValueAt(131,1).toString();
+            Bayar_Pemesanan_Obat=tbPengaturan.getValueAt(132,1).toString();
+            Penjualan_Obat=tbPengaturan.getValueAt(133,1).toString();
+            Piutang_Obat=tbPengaturan.getValueAt(134,1).toString();
+            Kontra_Piutang_Obat=tbPengaturan.getValueAt(135,1).toString();
+            Retur_Ke_Suplayer=tbPengaturan.getValueAt(136,1).toString();
+            Kontra_Retur_Ke_Suplayer=tbPengaturan.getValueAt(137,1).toString();
+            Retur_Dari_pembeli=tbPengaturan.getValueAt(138,1).toString();
+            Kontra_Retur_Dari_Pembeli=tbPengaturan.getValueAt(139,1).toString();
+            Retur_Piutang_Obat=tbPengaturan.getValueAt(140,1).toString();
+            Kontra_Retur_Piutang_Obat=tbPengaturan.getValueAt(141,1).toString();
+            Pengadaan_Ipsrs=tbPengaturan.getValueAt(142,1).toString();
+            Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(143,1).toString();
+            Kontra_Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(144,1).toString();
+            Bayar_Piutang_Pasien=tbPengaturan.getValueAt(145,1).toString();
+            Pengambilan_Utd=tbPengaturan.getValueAt(146,1).toString();
+            Kontra_Pengambilan_Utd=tbPengaturan.getValueAt(147,1).toString();        
+            Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(148,1).toString();
+            Kontra_Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(149,1).toString();
+            Penyerahan_Darah=tbPengaturan.getValueAt(150,1).toString();
+            Stok_Keluar_Medis=tbPengaturan.getValueAt(151,1).toString();
+            Kontra_Stok_Keluar_Medis=tbPengaturan.getValueAt(152,1).toString();
+            HPP_Obat_Jual_Bebas=tbPengaturan.getValueAt(153,1).toString();
+            Persediaan_Obat_Jual_Bebas=tbPengaturan.getValueAt(154,1).toString();
+            Penerimaan_NonMedis=tbPengaturan.getValueAt(155,1).toString();
+            Kontra_Penerimaan_NonMedis=tbPengaturan.getValueAt(156,1).toString();
+            Bayar_Pemesanan_Non_Medis=tbPengaturan.getValueAt(157,1).toString();
+            Hibah_Obat=tbPengaturan.getValueAt(158,1).toString();
+            Kontra_Hibah_Obat=tbPengaturan.getValueAt(159,1).toString();
+            Penerimaan_Toko=tbPengaturan.getValueAt(160,1).toString();
+            Kontra_Penerimaan_Toko=tbPengaturan.getValueAt(161,1).toString();
+            Pengadaan_Toko=tbPengaturan.getValueAt(162,1).toString();
+            Bayar_Pemesanan_Toko=tbPengaturan.getValueAt(163,1).toString();
+            Penjualan_Toko=tbPengaturan.getValueAt(164,1).toString();
+            HPP_Barang_Toko=tbPengaturan.getValueAt(165,1).toString();
+            Persediaan_Barang_Toko=tbPengaturan.getValueAt(166,1).toString();
+            Piutang_Toko=tbPengaturan.getValueAt(167,1).toString();
+            Kontra_Piutang_Toko=tbPengaturan.getValueAt(168,1).toString();
+            Retur_Beli_Toko=tbPengaturan.getValueAt(169,1).toString();
+            Kontra_Retur_Beli_Toko=tbPengaturan.getValueAt(170,1).toString();
+            Retur_Beli_Non_Medis=tbPengaturan.getValueAt(171,1).toString();
+            Kontra_Retur_Beli_Non_Medis=tbPengaturan.getValueAt(172,1).toString();
+            Retur_Jual_Toko=tbPengaturan.getValueAt(173,1).toString();
+            Kontra_Retur_Jual_Toko=tbPengaturan.getValueAt(174,1).toString();
+            Retur_Piutang_Toko=tbPengaturan.getValueAt(175,1).toString();
+            Kontra_Retur_Piutang_Toko=tbPengaturan.getValueAt(176,1).toString();
             
-            if(Tindakan_Ralan.equals("")||Laborat_Ralan.equals("")||Radiologi_Ralan.equals("")||Obat_Ralan.equals("")||
-                Registrasi_Ralan.equals("")||Tambahan_Ralan.equals("")||Potongan_Ralan.equals("")||Tindakan_Ranap.equals("")||
-                Laborat_Ranap.equals("")||Radiologi_Ranap.equals("")||
-                Obat_Ranap.equals("")||Registrasi_Ranap.equals("")||Tambahan_Ranap.equals("")||Potongan_Ranap.equals("")||
-                Retur_Obat_Ranap.equals("")||Resep_Pulang_Ranap.equals("")||Kamar_Inap.equals("")||Operasi_Ranap.equals("")||
-                Harian_Ranap.equals("")||Uang_Muka_Ranap.equals("")||Piutang_Pasien_Ranap.equals("")||Pengadaan_Obat.equals("")||
-                Pemesanan_Obat.equals("")||Kontra_Pemesanan_Obat.equals("")||Bayar_Pemesanan_Obat.equals("")||Penjualan_Obat.equals("")||
-                Piutang_Obat.equals("")||Kontra_Piutang_Obat.equals("")||Retur_Ke_Suplayer.equals("")||Retur_Dari_pembeli.equals("")||
-                Retur_Piutang_Obat.equals("")||Kontra_Retur_Piutang_Obat.equals("")||Pengadaan_Ipsrs.equals("")||
-                Stok_Keluar_Ipsrs.equals("")||Kontra_Stok_Keluar_Ipsrs.equals("")||Bayar_Piutang_Pasien.equals("")||
-                Kontra_Retur_Ke_Suplayer.equals("")||Kontra_Retur_Dari_Pembeli.equals("")||Service_Ranap.equals("")||
-                Pengambilan_Utd.equals("")||Kontra_Pengambilan_Utd.equals("")||Pengambilan_Penunjang_Utd.equals("")||
-                Kontra_Pengambilan_Penunjang_Utd.equals("")||Operasi_Ralan.equals("")||Penyerahan_Darah.equals("")||
-                Beban_Jasa_Medik_Dokter_Tindakan_Ralan.equals("")||Utang_Jasa_Medik_Dokter_Tindakan_Ralan.equals("")||
-                Beban_Jasa_Medik_Paramedis_Tindakan_Ralan.equals("")||Utang_Jasa_Medik_Paramedis_Tindakan_Ralan.equals("")||
-                Beban_KSO_Tindakan_Ralan.equals("")||Utang_KSO_Tindakan_Ralan.equals("")||Beban_Jasa_Medik_Dokter_Laborat_Ralan.equals("")||
-                Utang_Jasa_Medik_Dokter_Laborat_Ralan.equals("")||Beban_Jasa_Medik_Petugas_Laborat_Ralan.equals("")||
-                Utang_Jasa_Medik_Petugas_Laborat_Ralan.equals("")||Beban_Kso_Laborat_Ralan.equals("")||Utang_Kso_Laborat_Ralan.equals("")||
-                HPP_Persediaan_Laborat_Rawat_Jalan.equals("")||Persediaan_BHP_Laborat_Rawat_Jalan.equals("")||
-                Beban_Jasa_Medik_Dokter_Radiologi_Ralan.equals("")||Utang_Jasa_Medik_Dokter_Radiologi_Ralan.equals("")||
-                Beban_Jasa_Medik_Petugas_Radiologi_Ralan.equals("")||Utang_Jasa_Medik_Petugas_Radiologi_Ralan.equals("")||
-                Beban_Kso_Radiologi_Ralan.equals("")||Utang_Kso_Radiologi_Ralan.equals("")||HPP_Persediaan_Radiologi_Rawat_Jalan.equals("")||
-                Persediaan_BHP_Radiologi_Rawat_Jalan.equals("")||HPP_Obat_Rawat_Jalan.equals("")||Persediaan_Obat_Rawat_Jalan.equals("")||
-                Beban_Jasa_Medik_Dokter_Operasi_Ralan.equals("")||Utang_Jasa_Medik_Dokter_Operasi_Ralan.equals("")||
-                Beban_Jasa_Medik_Paramedis_Operasi_Ralan.equals("")||Utang_Jasa_Medik_Paramedis_Operasi_Ralan.equals("")||
-                HPP_Obat_Operasi_Ralan.equals("")||Persediaan_Obat_Kamar_Operasi_Ralan.equals("")||Suspen_Piutang_Tindakan_Ranap.equals("")||
-                Beban_Jasa_Medik_Dokter_Tindakan_Ranap.equals("")||Utang_Jasa_Medik_Dokter_Tindakan_Ranap.equals("")|| 
-                Beban_Jasa_Medik_Paramedis_Tindakan_Ranap.equals("")||Utang_Jasa_Medik_Paramedis_Tindakan_Ranap.equals("")||
-                Beban_KSO_Tindakan_Ranap.equals("")||Utang_KSO_Tindakan_Ranap.equals("")||Suspen_Piutang_Laborat_Ranap.equals("")||
-                Beban_Jasa_Medik_Dokter_Laborat_Ranap.equals("")||Utang_Jasa_Medik_Dokter_Laborat_Ranap.equals("")||
-                Beban_Jasa_Medik_Petugas_Laborat_Ranap.equals("")||Utang_Jasa_Medik_Petugas_Laborat_Ranap.equals("")||
-                Beban_Kso_Laborat_Ranap.equals("")||Utang_Kso_Laborat_Ranap.equals("")||HPP_Persediaan_Laborat_Rawat_inap.equals("")||
-                Persediaan_BHP_Laborat_Rawat_Inap.equals("")||Suspen_Piutang_Radiologi_Ranap.equals("")||
-                Beban_Jasa_Medik_Dokter_Radiologi_Ranap.equals("")||Utang_Jasa_Medik_Dokter_Radiologi_Ranap.equals("")||
-                Beban_Jasa_Medik_Petugas_Radiologi_Ranap.equals("")||Utang_Jasa_Medik_Petugas_Radiologi_Ranap.equals("")||
-                Beban_Kso_Radiologi_Ranap.equals("")||Utang_Kso_Radiologi_Ranap.equals("")||HPP_Persediaan_Radiologi_Rawat_Inap.equals("")||
-                Persediaan_BHP_Radiologi_Rawat_Inap.equals("")||HPP_Obat_Rawat_Inap.equals("")||Persediaan_Obat_Rawat_Inap.equals("")||
-                Suspen_Piutang_Obat_Ranap.equals("")||Suspen_Piutang_Operasi_Ranap.equals("")||Beban_Jasa_Medik_Dokter_Operasi_Ranap.equals("")||
-                Utang_Jasa_Medik_Dokter_Operasi_Ranap.equals("")||Beban_Jasa_Medik_Paramedis_Operasi_Ranap.equals("")||
-                Utang_Jasa_Medik_Paramedis_Operasi_Ranap.equals("")||HPP_Obat_Operasi_Ranap.equals("")||Persediaan_Obat_Kamar_Operasi_Ranap.equals("")||
-                Stok_Keluar_Medis.equals("")||Kontra_Stok_Keluar_Medis.equals("")||HPP_Obat_Jual_Bebas.equals("")||
-                Persediaan_Obat_Jual_Bebas.equals("")||Penerimaan_NonMedis.equals("")||Kontra_Penerimaan_NonMedis.equals("")||
-                Bayar_Pemesanan_Non_Medis.equals("")||Hibah_Obat.equals("")||Kontra_Hibah_Obat.equals("")||Penerimaan_Toko.equals("")||
-                Kontra_Penerimaan_Toko.equals("")||Pengadaan_Toko.equals("")||Bayar_Pemesanan_Toko.equals("")||Penjualan_Toko.equals("")||
-                HPP_Barang_Toko.equals("")||Persediaan_Barang_Toko.equals("")||Piutang_Toko.equals("")||Kontra_Piutang_Toko.equals("")||
-                Retur_Beli_Toko.equals("")||Kontra_Retur_Beli_Toko.equals("")||Retur_Beli_Non_Medis.equals("")||Kontra_Retur_Beli_Non_Medis.equals("")||
-                Retur_Jual_Toko.equals("")||Kontra_Retur_Jual_Toko.equals("")||Retur_Piutang_Toko.equals("")||Kontra_Retur_Piutang_Toko.equals("")){
+            if(Pengadaan_Obat.equals("")||Pemesanan_Obat.equals("")||Kontra_Pemesanan_Obat.equals("")||Bayar_Pemesanan_Obat.equals("")||Penjualan_Obat.equals("")||
+                    Piutang_Obat.equals("")||Kontra_Piutang_Obat.equals("")||Retur_Ke_Suplayer.equals("")||Kontra_Retur_Ke_Suplayer.equals("")||
+                    Retur_Dari_pembeli.equals("")||Kontra_Retur_Dari_Pembeli.equals("")||Retur_Piutang_Obat.equals("")||Kontra_Retur_Piutang_Obat.equals("")||
+                    Pengadaan_Ipsrs.equals("")||Stok_Keluar_Ipsrs.equals("")||Kontra_Stok_Keluar_Ipsrs.equals("")||Bayar_Piutang_Pasien.equals("")||
+                    Pengambilan_Utd.equals("")||Kontra_Pengambilan_Utd.equals("")||Pengambilan_Penunjang_Utd.equals("")||
+                    Kontra_Pengambilan_Penunjang_Utd.equals("")||Penyerahan_Darah.equals("")||Stok_Keluar_Medis.equals("")||Kontra_Stok_Keluar_Medis.equals("")||
+                    HPP_Obat_Jual_Bebas.equals("")||Persediaan_Obat_Jual_Bebas.equals("")||Penerimaan_NonMedis.equals("")||Kontra_Penerimaan_NonMedis.equals("")||
+                    Bayar_Pemesanan_Non_Medis.equals("")||Hibah_Obat.equals("")||Kontra_Hibah_Obat.equals("")||Penerimaan_Toko.equals("")||Kontra_Penerimaan_Toko.equals("")||
+                    Pengadaan_Toko.equals("")||Bayar_Pemesanan_Toko.equals("")||Penjualan_Toko.equals("")||HPP_Barang_Toko.equals("")||Persediaan_Barang_Toko.equals("")||
+                    Piutang_Toko.equals("")||Kontra_Piutang_Toko.equals("")||Retur_Beli_Toko.equals("")||Kontra_Retur_Beli_Toko.equals("")||Retur_Beli_Non_Medis.equals("")||
+                    Kontra_Retur_Beli_Non_Medis.equals("")||Retur_Jual_Toko.equals("")||Kontra_Retur_Jual_Toko.equals("")||Retur_Piutang_Toko.equals("")||
+                    Kontra_Retur_Piutang_Toko.equals("")||Suspen_Piutang_Tindakan_Ralan.equals("")||Tindakan_Ralan.equals("")||Beban_Jasa_Medik_Dokter_Tindakan_Ralan.equals("")||
+                    Utang_Jasa_Medik_Dokter_Tindakan_Ralan.equals("")||Beban_Jasa_Medik_Paramedis_Tindakan_Ralan.equals("")||Utang_Jasa_Medik_Paramedis_Tindakan_Ralan.equals("")||
+                    Beban_KSO_Tindakan_Ralan.equals("")||Utang_KSO_Tindakan_Ralan.equals("")||Beban_Jasa_Sarana_Tindakan_Ralan.equals("")||Utang_Jasa_Sarana_Tindakan_Ralan.equals("")||
+                    HPP_BHP_Tindakan_Ralan.equals("")||Persediaan_BHP_Tindakan_Ralan.equals("")||Beban_Jasa_Menejemen_Tindakan_Ralan.equals("")||
+                    Utang_Jasa_Menejemen_Tindakan_Ralan.equals("")||Suspen_Piutang_Laborat_Ralan.equals("")||Laborat_Ralan.equals("")||
+                    Beban_Jasa_Medik_Dokter_Laborat_Ralan.equals("")||Utang_Jasa_Medik_Dokter_Laborat_Ralan.equals("")||Beban_Jasa_Medik_Petugas_Laborat_Ralan.equals("")||
+                    Utang_Jasa_Medik_Petugas_Laborat_Ralan.equals("")||Beban_Kso_Laborat_Ralan.equals("")||Utang_Kso_Laborat_Ralan.equals("")||
+                    HPP_Persediaan_Laborat_Rawat_Jalan.equals("")||Persediaan_BHP_Laborat_Rawat_Jalan.equals("")||Beban_Jasa_Sarana_Laborat_Ralan.equals("")||
+                    Utang_Jasa_Sarana_Laborat_Ralan.equals("")||Beban_Jasa_Perujuk_Laborat_Ralan.equals("")||Utang_Jasa_Perujuk_Laborat_Ralan.equals("")||
+                    Beban_Jasa_Menejemen_Laborat_Ralan.equals("")||Utang_Jasa_Menejemen_Laborat_Ralan.equals("")||Suspen_Piutang_Radiologi_Ralan.equals("")||
+                    Radiologi_Ralan.equals("")||Beban_Jasa_Medik_Dokter_Radiologi_Ralan.equals("")||Utang_Jasa_Medik_Dokter_Radiologi_Ralan.equals("")||
+                    Beban_Jasa_Medik_Petugas_Radiologi_Ralan.equals("")||Utang_Jasa_Medik_Petugas_Radiologi_Ralan.equals("")||Beban_Kso_Radiologi_Ralan.equals("")||
+                    Utang_Kso_Radiologi_Ralan.equals("")||HPP_Persediaan_Radiologi_Rawat_Jalan.equals("")||Persediaan_BHP_Radiologi_Rawat_Jalan.equals("")||
+                    Beban_Jasa_Sarana_Radiologi_Ralan.equals("")||Utang_Jasa_Sarana_Radiologi_Ralan.equals("")||Beban_Jasa_Perujuk_Radiologi_Ralan.equals("")||
+                    Utang_Jasa_Perujuk_Radiologi_Ralan.equals("")||Beban_Jasa_Menejemen_Radiologi_Ralan.equals("")||Utang_Jasa_Menejemen_Radiologi_Ralan.equals("")||
+                    Suspen_Piutang_Obat_Ralan.equals("")||Obat_Ralan.equals("")||HPP_Obat_Rawat_Jalan.equals("")||Persediaan_Obat_Rawat_Jalan.equals("")||
+                    Registrasi_Ralan.equals("")||Suspen_Piutang_Operasi_Ralan.equals("")||Operasi_Ralan.equals("")||Beban_Jasa_Medik_Dokter_Operasi_Ralan.equals("")||
+                    Utang_Jasa_Medik_Dokter_Operasi_Ralan.equals("")||Beban_Jasa_Medik_Paramedis_Operasi_Ralan.equals("")||Utang_Jasa_Medik_Paramedis_Operasi_Ralan.equals("")||
+                    HPP_Obat_Operasi_Ralan.equals("")||Persediaan_Obat_Kamar_Operasi_Ralan.equals("")||Tambahan_Ralan.equals("")||Potongan_Ralan.equals("")||
+                    Suspen_Piutang_Tindakan_Ranap.equals("")||Tindakan_Ranap.equals("")||Beban_Jasa_Medik_Dokter_Tindakan_Ranap.equals("")||
+                    Utang_Jasa_Medik_Dokter_Tindakan_Ranap.equals("")||Beban_Jasa_Medik_Paramedis_Tindakan_Ranap.equals("")||Utang_Jasa_Medik_Paramedis_Tindakan_Ranap.equals("")||
+                    Beban_KSO_Tindakan_Ranap.equals("")||Utang_KSO_Tindakan_Ranap.equals("")||Beban_Jasa_Sarana_Tindakan_Ranap.equals("")||
+                    Utang_Jasa_Sarana_Tindakan_Ranap.equals("")||Beban_Jasa_Menejemen_Tindakan_Ranap.equals("")||Utang_Jasa_Menejemen_Tindakan_Ranap.equals("")||
+                    HPP_BHP_Tindakan_Ranap.equals("")||Persediaan_BHP_Tindakan_Ranap.equals("")||Suspen_Piutang_Laborat_Ranap.equals("")||Laborat_Ranap.equals("")||
+                    Beban_Jasa_Medik_Dokter_Laborat_Ranap.equals("")||Utang_Jasa_Medik_Dokter_Laborat_Ranap.equals("")||Beban_Jasa_Medik_Petugas_Laborat_Ranap.equals("")||
+                    Utang_Jasa_Medik_Petugas_Laborat_Ranap.equals("")||Beban_Kso_Laborat_Ranap.equals("")||Utang_Kso_Laborat_Ranap.equals("")||
+                    HPP_Persediaan_Laborat_Rawat_inap.equals("")||Persediaan_BHP_Laborat_Rawat_Inap.equals("")||Beban_Jasa_Sarana_Laborat_Ranap.equals("")||
+                    Utang_Jasa_Sarana_Laborat_Ranap.equals("")||Beban_Jasa_Perujuk_Laborat_Ranap.equals("")||Utang_Jasa_Perujuk_Laborat_Ranap.equals("")||
+                    Beban_Jasa_Menejemen_Laborat_Ranap.equals("")||Utang_Jasa_Menejemen_Laborat_Ranap.equals("")||Suspen_Piutang_Radiologi_Ranap.equals("")||
+                    Radiologi_Ranap.equals("")||Beban_Jasa_Medik_Dokter_Radiologi_Ranap.equals("")||Utang_Jasa_Medik_Dokter_Radiologi_Ranap.equals("")||
+                    Beban_Jasa_Medik_Petugas_Radiologi_Ranap.equals("")||Utang_Jasa_Medik_Petugas_Radiologi_Ranap.equals("")||Beban_Kso_Radiologi_Ranap.equals("")||
+                    Utang_Kso_Radiologi_Ranap.equals("")||HPP_Persediaan_Radiologi_Rawat_Inap.equals("")||Persediaan_BHP_Radiologi_Rawat_Inap.equals("")||Beban_Jasa_Sarana_Radiologi_Ranap.equals("")||Utang_Jasa_Sarana_Radiologi_Ranap.equals("")||Beban_Jasa_Perujuk_Radiologi_Ranap.equals("")||Utang_Jasa_Perujuk_Radiologi_Ranap.equals("")||Beban_Jasa_Menejemen_Radiologi_Ranap.equals("")||Utang_Jasa_Menejemen_Radiologi_Ranap.equals("")||Suspen_Piutang_Obat_Ranap.equals("")||Obat_Ranap.equals("")||HPP_Obat_Rawat_Inap.equals("")||Persediaan_Obat_Rawat_Inap.equals("")||Registrasi_Ranap.equals("")||Service_Ranap.equals("")||Tambahan_Ranap.equals("")||Potongan_Ranap.equals("")||Retur_Obat_Ranap.equals("")||Resep_Pulang_Ranap.equals("")||Kamar_Inap.equals("")||Suspen_Piutang_Operasi_Ranap.equals("")||Operasi_Ranap.equals("")||Beban_Jasa_Medik_Dokter_Operasi_Ranap.equals("")||Utang_Jasa_Medik_Dokter_Operasi_Ranap.equals("")||Beban_Jasa_Medik_Paramedis_Operasi_Ranap.equals("")||Utang_Jasa_Medik_Paramedis_Operasi_Ranap.equals("")||HPP_Obat_Operasi_Ranap.equals("")||Persediaan_Obat_Kamar_Operasi_Ranap.equals("")||Harian_Ranap.equals("")||Uang_Muka_Ranap.equals("")||Piutang_Pasien_Ranap.equals("")){
                     JOptionPane.showMessageDialog(null,"Silahkan lengkapi seluruh data Akun...!!!!");
                     tbPengaturan.requestFocus();
             }else{
                 Sequel.queryu("delete from set_akun_ralan");
-                Sequel.menyimpan("set_akun_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                    Tindakan_Ralan,Beban_Jasa_Medik_Dokter_Tindakan_Ralan,Utang_Jasa_Medik_Dokter_Tindakan_Ralan,
-                    Beban_Jasa_Medik_Paramedis_Tindakan_Ralan,Utang_Jasa_Medik_Paramedis_Tindakan_Ralan,
-                    Beban_KSO_Tindakan_Ralan,Utang_KSO_Tindakan_Ralan,
-                    Laborat_Ralan,Beban_Jasa_Medik_Dokter_Laborat_Ralan, 
-                    Utang_Jasa_Medik_Dokter_Laborat_Ralan, Beban_Jasa_Medik_Petugas_Laborat_Ralan, 
-                    Utang_Jasa_Medik_Petugas_Laborat_Ralan, Beban_Kso_Laborat_Ralan, 
-                    Utang_Kso_Laborat_Ralan, HPP_Persediaan_Laborat_Rawat_Jalan, 
-                    Persediaan_BHP_Laborat_Rawat_Jalan,Radiologi_Ralan,Beban_Jasa_Medik_Dokter_Radiologi_Ralan, 
-                    Utang_Jasa_Medik_Dokter_Radiologi_Ralan, Beban_Jasa_Medik_Petugas_Radiologi_Ralan, 
-                    Utang_Jasa_Medik_Petugas_Radiologi_Ralan, Beban_Kso_Radiologi_Ralan, Utang_Kso_Radiologi_Ralan, 
-                    HPP_Persediaan_Radiologi_Rawat_Jalan, Persediaan_BHP_Radiologi_Rawat_Jalan,
-                    Obat_Ralan,HPP_Obat_Rawat_Jalan,Persediaan_Obat_Rawat_Jalan,Registrasi_Ralan,Operasi_Ralan,
-                    Beban_Jasa_Medik_Dokter_Operasi_Ralan,Utang_Jasa_Medik_Dokter_Operasi_Ralan,
-                    Beban_Jasa_Medik_Paramedis_Operasi_Ralan,Utang_Jasa_Medik_Paramedis_Operasi_Ralan,
-                    HPP_Obat_Operasi_Ralan,Persediaan_Obat_Kamar_Operasi_Ralan,Tambahan_Ralan,
-                    Potongan_Ralan
+                Sequel.menyimpan("set_akun_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",61,new String[]{
+                    Suspen_Piutang_Tindakan_Ralan,Tindakan_Ralan,Beban_Jasa_Medik_Dokter_Tindakan_Ralan,Utang_Jasa_Medik_Dokter_Tindakan_Ralan,Beban_Jasa_Medik_Paramedis_Tindakan_Ralan,
+                    Utang_Jasa_Medik_Paramedis_Tindakan_Ralan,Beban_KSO_Tindakan_Ralan,Utang_KSO_Tindakan_Ralan,Beban_Jasa_Sarana_Tindakan_Ralan,Utang_Jasa_Sarana_Tindakan_Ralan,
+                    HPP_BHP_Tindakan_Ralan,Persediaan_BHP_Tindakan_Ralan,Beban_Jasa_Menejemen_Tindakan_Ralan,Utang_Jasa_Menejemen_Tindakan_Ralan,Suspen_Piutang_Laborat_Ralan,Laborat_Ralan,
+                    Beban_Jasa_Medik_Dokter_Laborat_Ralan,Utang_Jasa_Medik_Dokter_Laborat_Ralan,Beban_Jasa_Medik_Petugas_Laborat_Ralan,Utang_Jasa_Medik_Petugas_Laborat_Ralan,
+                    Beban_Kso_Laborat_Ralan,Utang_Kso_Laborat_Ralan,HPP_Persediaan_Laborat_Rawat_Jalan,Persediaan_BHP_Laborat_Rawat_Jalan,Beban_Jasa_Sarana_Laborat_Ralan,
+                    Utang_Jasa_Sarana_Laborat_Ralan,Beban_Jasa_Perujuk_Laborat_Ralan,Utang_Jasa_Perujuk_Laborat_Ralan,Beban_Jasa_Menejemen_Laborat_Ralan,Utang_Jasa_Menejemen_Laborat_Ralan,
+                    Suspen_Piutang_Radiologi_Ralan,Radiologi_Ralan,Beban_Jasa_Medik_Dokter_Radiologi_Ralan,Utang_Jasa_Medik_Dokter_Radiologi_Ralan,Beban_Jasa_Medik_Petugas_Radiologi_Ralan,
+                    Utang_Jasa_Medik_Petugas_Radiologi_Ralan,Beban_Kso_Radiologi_Ralan,Utang_Kso_Radiologi_Ralan,HPP_Persediaan_Radiologi_Rawat_Jalan,Persediaan_BHP_Radiologi_Rawat_Jalan,
+                    Beban_Jasa_Sarana_Radiologi_Ralan,Utang_Jasa_Sarana_Radiologi_Ralan,Beban_Jasa_Perujuk_Radiologi_Ralan,Utang_Jasa_Perujuk_Radiologi_Ralan,Beban_Jasa_Menejemen_Radiologi_Ralan,
+                    Utang_Jasa_Menejemen_Radiologi_Ralan,Suspen_Piutang_Obat_Ralan,Obat_Ralan,HPP_Obat_Rawat_Jalan,Persediaan_Obat_Rawat_Jalan,Registrasi_Ralan,Suspen_Piutang_Operasi_Ralan,
+                    Operasi_Ralan,Beban_Jasa_Medik_Dokter_Operasi_Ralan,Utang_Jasa_Medik_Dokter_Operasi_Ralan,Beban_Jasa_Medik_Paramedis_Operasi_Ralan,Utang_Jasa_Medik_Paramedis_Operasi_Ralan,
+                    HPP_Obat_Operasi_Ralan,Persediaan_Obat_Kamar_Operasi_Ralan,Tambahan_Ralan,Potongan_Ralan
                 });
                 Sequel.queryu("delete from set_akun_ranap");
-                Sequel.menyimpan("set_akun_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"
-                        + "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",50,new String[]{
-                    Suspen_Piutang_Tindakan_Ranap, Tindakan_Ranap, Beban_Jasa_Medik_Dokter_Tindakan_Ranap, 
-                    Utang_Jasa_Medik_Dokter_Tindakan_Ranap, Beban_Jasa_Medik_Paramedis_Tindakan_Ranap, 
-                    Utang_Jasa_Medik_Paramedis_Tindakan_Ranap, Beban_KSO_Tindakan_Ranap, Utang_KSO_Tindakan_Ranap, 
-                    Suspen_Piutang_Laborat_Ranap, Laborat_Ranap, Beban_Jasa_Medik_Dokter_Laborat_Ranap, 
-                    Utang_Jasa_Medik_Dokter_Laborat_Ranap, Beban_Jasa_Medik_Petugas_Laborat_Ranap, 
-                    Utang_Jasa_Medik_Petugas_Laborat_Ranap, Beban_Kso_Laborat_Ranap, Utang_Kso_Laborat_Ranap, 
-                    HPP_Persediaan_Laborat_Rawat_inap, Persediaan_BHP_Laborat_Rawat_Inap, Suspen_Piutang_Radiologi_Ranap, 
-                    Radiologi_Ranap, Beban_Jasa_Medik_Dokter_Radiologi_Ranap, Utang_Jasa_Medik_Dokter_Radiologi_Ranap, 
-                    Beban_Jasa_Medik_Petugas_Radiologi_Ranap, Utang_Jasa_Medik_Petugas_Radiologi_Ranap, Beban_Kso_Radiologi_Ranap, 
-                    Utang_Kso_Radiologi_Ranap, HPP_Persediaan_Radiologi_Rawat_Inap, Persediaan_BHP_Radiologi_Rawat_Inap, 
-                    Suspen_Piutang_Obat_Ranap, Obat_Ranap, HPP_Obat_Rawat_Inap, Persediaan_Obat_Rawat_Inap, Registrasi_Ranap, 
-                    Service_Ranap, Tambahan_Ranap, Potongan_Ranap, Retur_Obat_Ranap, Resep_Pulang_Ranap, Kamar_Inap, 
-                    Suspen_Piutang_Operasi_Ranap, Operasi_Ranap, Beban_Jasa_Medik_Dokter_Operasi_Ranap, 
-                    Utang_Jasa_Medik_Dokter_Operasi_Ranap, Beban_Jasa_Medik_Paramedis_Operasi_Ranap, 
-                    Utang_Jasa_Medik_Paramedis_Operasi_Ranap, HPP_Obat_Operasi_Ranap, Persediaan_Obat_Kamar_Operasi_Ranap, 
-                    Harian_Ranap, Uang_Muka_Ranap, Piutang_Pasien_Ranap
+                Sequel.menyimpan("set_akun_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",64,new String[]{
+                    Suspen_Piutang_Tindakan_Ranap,Tindakan_Ranap,Beban_Jasa_Medik_Dokter_Tindakan_Ranap,Utang_Jasa_Medik_Dokter_Tindakan_Ranap,Beban_Jasa_Medik_Paramedis_Tindakan_Ranap,
+                    Utang_Jasa_Medik_Paramedis_Tindakan_Ranap,Beban_KSO_Tindakan_Ranap,Utang_KSO_Tindakan_Ranap,Beban_Jasa_Sarana_Tindakan_Ranap,Utang_Jasa_Sarana_Tindakan_Ranap,
+                    Beban_Jasa_Menejemen_Tindakan_Ranap,Utang_Jasa_Menejemen_Tindakan_Ranap,HPP_BHP_Tindakan_Ranap,Persediaan_BHP_Tindakan_Ranap,Suspen_Piutang_Laborat_Ranap,Laborat_Ranap,
+                    Beban_Jasa_Medik_Dokter_Laborat_Ranap,Utang_Jasa_Medik_Dokter_Laborat_Ranap,Beban_Jasa_Medik_Petugas_Laborat_Ranap,Utang_Jasa_Medik_Petugas_Laborat_Ranap,
+                    Beban_Kso_Laborat_Ranap,Utang_Kso_Laborat_Ranap,HPP_Persediaan_Laborat_Rawat_inap,Persediaan_BHP_Laborat_Rawat_Inap,Beban_Jasa_Sarana_Laborat_Ranap,
+                    Utang_Jasa_Sarana_Laborat_Ranap,Beban_Jasa_Perujuk_Laborat_Ranap,Utang_Jasa_Perujuk_Laborat_Ranap,Beban_Jasa_Menejemen_Laborat_Ranap,Utang_Jasa_Menejemen_Laborat_Ranap,
+                    Suspen_Piutang_Radiologi_Ranap,Radiologi_Ranap,Beban_Jasa_Medik_Dokter_Radiologi_Ranap,Utang_Jasa_Medik_Dokter_Radiologi_Ranap,Beban_Jasa_Medik_Petugas_Radiologi_Ranap,
+                    Utang_Jasa_Medik_Petugas_Radiologi_Ranap,Beban_Kso_Radiologi_Ranap,Utang_Kso_Radiologi_Ranap,HPP_Persediaan_Radiologi_Rawat_Inap,Persediaan_BHP_Radiologi_Rawat_Inap,
+                    Beban_Jasa_Sarana_Radiologi_Ranap,Utang_Jasa_Sarana_Radiologi_Ranap,Beban_Jasa_Perujuk_Radiologi_Ranap,Utang_Jasa_Perujuk_Radiologi_Ranap,Beban_Jasa_Menejemen_Radiologi_Ranap,
+                    Utang_Jasa_Menejemen_Radiologi_Ranap,Suspen_Piutang_Obat_Ranap,Obat_Ranap,HPP_Obat_Rawat_Inap,Persediaan_Obat_Rawat_Inap,Registrasi_Ranap,Service_Ranap,Tambahan_Ranap,
+                    Potongan_Ranap,Retur_Obat_Ranap,Resep_Pulang_Ranap,Kamar_Inap,Suspen_Piutang_Operasi_Ranap,Operasi_Ranap,Beban_Jasa_Medik_Dokter_Operasi_Ranap,Utang_Jasa_Medik_Dokter_Operasi_Ranap,
+                    Beban_Jasa_Medik_Paramedis_Operasi_Ranap,Utang_Jasa_Medik_Paramedis_Operasi_Ranap,HPP_Obat_Operasi_Ranap
+                });
+                Sequel.queryu("delete from set_akun_ranap2");
+                Sequel.menyimpan("set_akun_ranap2","?,?,?,?",4,new String[]{
+                   Persediaan_Obat_Kamar_Operasi_Ranap,Harian_Ranap,Uang_Muka_Ranap,Piutang_Pasien_Ranap
                 });
                 Sequel.queryu("delete from set_akun");
                 Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",48,new String[]{
@@ -1112,24 +1158,132 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{    
+            Suspen_Piutang_Tindakan_Ralan="";
             Tindakan_Ralan="";
+            Beban_Jasa_Medik_Dokter_Tindakan_Ralan="";
+            Utang_Jasa_Medik_Dokter_Tindakan_Ralan="";
+            Beban_Jasa_Medik_Paramedis_Tindakan_Ralan="";
+            Utang_Jasa_Medik_Paramedis_Tindakan_Ralan="";
+            Beban_KSO_Tindakan_Ralan="";
+            Utang_KSO_Tindakan_Ralan="";
+            Beban_Jasa_Sarana_Tindakan_Ralan="";
+            Utang_Jasa_Sarana_Tindakan_Ralan="";
+            HPP_BHP_Tindakan_Ralan="";
+            Persediaan_BHP_Tindakan_Ralan="";
+            Beban_Jasa_Menejemen_Tindakan_Ralan="";
+            Utang_Jasa_Menejemen_Tindakan_Ralan="";
+            Suspen_Piutang_Laborat_Ralan="";
             Laborat_Ralan="";
+            Beban_Jasa_Medik_Dokter_Laborat_Ralan="";
+            Utang_Jasa_Medik_Dokter_Laborat_Ralan="";
+            Beban_Jasa_Medik_Petugas_Laborat_Ralan="";
+            Utang_Jasa_Medik_Petugas_Laborat_Ralan="";
+            Beban_Kso_Laborat_Ralan="";
+            Utang_Kso_Laborat_Ralan="";
+            HPP_Persediaan_Laborat_Rawat_Jalan="";
+            Persediaan_BHP_Laborat_Rawat_Jalan="";
+            Beban_Jasa_Sarana_Laborat_Ralan="";
+            Utang_Jasa_Sarana_Laborat_Ralan="";
+            Beban_Jasa_Perujuk_Laborat_Ralan="";
+            Utang_Jasa_Perujuk_Laborat_Ralan="";
+            Beban_Jasa_Menejemen_Laborat_Ralan="";
+            Utang_Jasa_Menejemen_Laborat_Ralan="";
+            Suspen_Piutang_Radiologi_Ralan="";
             Radiologi_Ralan="";
+            Beban_Jasa_Medik_Dokter_Radiologi_Ralan="";
+            Utang_Jasa_Medik_Dokter_Radiologi_Ralan="";
+            Beban_Jasa_Medik_Petugas_Radiologi_Ralan="";
+            Utang_Jasa_Medik_Petugas_Radiologi_Ralan="";
+            Beban_Kso_Radiologi_Ralan="";
+            Utang_Kso_Radiologi_Ralan="";
+            HPP_Persediaan_Radiologi_Rawat_Jalan="";
+            Persediaan_BHP_Radiologi_Rawat_Jalan="";
+            Beban_Jasa_Sarana_Radiologi_Ralan="";
+            Utang_Jasa_Sarana_Radiologi_Ralan="";
+            Beban_Jasa_Perujuk_Radiologi_Ralan="";
+            Utang_Jasa_Perujuk_Radiologi_Ralan="";
+            Beban_Jasa_Menejemen_Radiologi_Ralan="";
+            Utang_Jasa_Menejemen_Radiologi_Ralan="";
+            Suspen_Piutang_Obat_Ralan="";
             Obat_Ralan="";
+            HPP_Obat_Rawat_Jalan="";
+            Persediaan_Obat_Rawat_Jalan="";
             Registrasi_Ralan="";
+            Suspen_Piutang_Operasi_Ralan="";
+            Operasi_Ralan="";
+            Beban_Jasa_Medik_Dokter_Operasi_Ralan="";
+            Utang_Jasa_Medik_Dokter_Operasi_Ralan="";
+            Beban_Jasa_Medik_Paramedis_Operasi_Ralan="";
+            Utang_Jasa_Medik_Paramedis_Operasi_Ralan="";
+            HPP_Obat_Operasi_Ralan="";
+            Persediaan_Obat_Kamar_Operasi_Ralan="";
             Tambahan_Ralan="";
             Potongan_Ralan="";
+            Suspen_Piutang_Tindakan_Ranap="";
             Tindakan_Ranap="";
+            Beban_Jasa_Medik_Dokter_Tindakan_Ranap="";
+            Utang_Jasa_Medik_Dokter_Tindakan_Ranap="";
+            Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="";
+            Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="";
+            Beban_KSO_Tindakan_Ranap="";
+            Utang_KSO_Tindakan_Ranap="";
+            Beban_Jasa_Sarana_Tindakan_Ranap="";
+            Utang_Jasa_Sarana_Tindakan_Ranap="";
+            Beban_Jasa_Menejemen_Tindakan_Ranap="";
+            Utang_Jasa_Menejemen_Tindakan_Ranap="";
+            HPP_BHP_Tindakan_Ranap="";
+            Persediaan_BHP_Tindakan_Ranap="";
+            Suspen_Piutang_Laborat_Ranap="";
             Laborat_Ranap="";
+            Beban_Jasa_Medik_Dokter_Laborat_Ranap="";
+            Utang_Jasa_Medik_Dokter_Laborat_Ranap="";
+            Beban_Jasa_Medik_Petugas_Laborat_Ranap="";
+            Utang_Jasa_Medik_Petugas_Laborat_Ranap="";
+            Beban_Kso_Laborat_Ranap="";
+            Utang_Kso_Laborat_Ranap="";
+            HPP_Persediaan_Laborat_Rawat_inap="";
+            Persediaan_BHP_Laborat_Rawat_Inap="";
+            Beban_Jasa_Sarana_Laborat_Ranap="";
+            Utang_Jasa_Sarana_Laborat_Ranap="";
+            Beban_Jasa_Perujuk_Laborat_Ranap="";
+            Utang_Jasa_Perujuk_Laborat_Ranap="";
+            Beban_Jasa_Menejemen_Laborat_Ranap="";
+            Utang_Jasa_Menejemen_Laborat_Ranap="";
+            Suspen_Piutang_Radiologi_Ranap="";
             Radiologi_Ranap="";
+            Beban_Jasa_Medik_Dokter_Radiologi_Ranap="";
+            Utang_Jasa_Medik_Dokter_Radiologi_Ranap="";
+            Beban_Jasa_Medik_Petugas_Radiologi_Ranap="";
+            Utang_Jasa_Medik_Petugas_Radiologi_Ranap="";
+            Beban_Kso_Radiologi_Ranap="";
+            Utang_Kso_Radiologi_Ranap="";
+            HPP_Persediaan_Radiologi_Rawat_Inap="";
+            Persediaan_BHP_Radiologi_Rawat_Inap="";
+            Beban_Jasa_Sarana_Radiologi_Ranap="";
+            Utang_Jasa_Sarana_Radiologi_Ranap="";
+            Beban_Jasa_Perujuk_Radiologi_Ranap="";
+            Utang_Jasa_Perujuk_Radiologi_Ranap="";
+            Beban_Jasa_Menejemen_Radiologi_Ranap="";
+            Utang_Jasa_Menejemen_Radiologi_Ranap="";
+            Suspen_Piutang_Obat_Ranap="";
             Obat_Ranap="";
+            HPP_Obat_Rawat_Inap="";
+            Persediaan_Obat_Rawat_Inap="";
             Registrasi_Ranap="";
+            Service_Ranap="";
             Tambahan_Ranap="";
             Potongan_Ranap="";
             Retur_Obat_Ranap="";
             Resep_Pulang_Ranap="";
             Kamar_Inap="";
+            Suspen_Piutang_Operasi_Ranap="";
             Operasi_Ranap="";
+            Beban_Jasa_Medik_Dokter_Operasi_Ranap="";
+            Utang_Jasa_Medik_Dokter_Operasi_Ranap="";
+            Beban_Jasa_Medik_Paramedis_Operasi_Ranap="";
+            Utang_Jasa_Medik_Paramedis_Operasi_Ranap="";
+            HPP_Obat_Operasi_Ranap="";
+            Persediaan_Obat_Kamar_Operasi_Ranap="";
             Harian_Ranap="";
             Uang_Muka_Ranap="";
             Piutang_Pasien_Ranap="";
@@ -1150,78 +1304,13 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Stok_Keluar_Ipsrs="";
             Kontra_Stok_Keluar_Ipsrs="";
             Bayar_Piutang_Pasien="";
-            Service_Ranap="";
             Pengambilan_Utd="";
             Kontra_Pengambilan_Utd="";
             Pengambilan_Penunjang_Utd="";
             Kontra_Pengambilan_Penunjang_Utd="";
-            Operasi_Ralan="";
             Penyerahan_Darah="";
-            Beban_Jasa_Medik_Dokter_Tindakan_Ralan="";
-            Utang_Jasa_Medik_Dokter_Tindakan_Ralan="";                    
-            Beban_Jasa_Medik_Paramedis_Tindakan_Ralan="";
-            Utang_Jasa_Medik_Paramedis_Tindakan_Ralan="";
-            Beban_KSO_Tindakan_Ralan="";
-            Utang_KSO_Tindakan_Ralan="";
-            Beban_Jasa_Medik_Dokter_Laborat_Ralan="";
-            Utang_Jasa_Medik_Dokter_Laborat_Ralan="";
-            Beban_Jasa_Medik_Petugas_Laborat_Ralan="";
-            Utang_Jasa_Medik_Petugas_Laborat_Ralan="";
-            Beban_Kso_Laborat_Ralan="";
-            Utang_Kso_Laborat_Ralan="";
-            HPP_Persediaan_Laborat_Rawat_Jalan="";
-            Persediaan_BHP_Laborat_Rawat_Jalan="";
-            Beban_Jasa_Medik_Dokter_Radiologi_Ralan="";
-            Utang_Jasa_Medik_Dokter_Radiologi_Ralan="";
-            Beban_Jasa_Medik_Petugas_Radiologi_Ralan="";
-            Utang_Jasa_Medik_Petugas_Radiologi_Ralan="";
-            Beban_Kso_Radiologi_Ralan="";
-            Utang_Kso_Radiologi_Ralan="";
-            HPP_Persediaan_Radiologi_Rawat_Jalan="";
-            Persediaan_BHP_Radiologi_Rawat_Jalan="";    
-            HPP_Obat_Rawat_Jalan="";
-            Persediaan_Obat_Rawat_Jalan="";
-            Beban_Jasa_Medik_Dokter_Operasi_Ralan="";
-            Utang_Jasa_Medik_Dokter_Operasi_Ralan="";
-            Beban_Jasa_Medik_Paramedis_Operasi_Ralan="";
-            Utang_Jasa_Medik_Paramedis_Operasi_Ralan="";
-            HPP_Obat_Operasi_Ralan="";
-            Persediaan_Obat_Kamar_Operasi_Ralan="";
-            Suspen_Piutang_Tindakan_Ranap="";
-            Beban_Jasa_Medik_Dokter_Tindakan_Ranap="";
-            Utang_Jasa_Medik_Dokter_Tindakan_Ranap="";
-            Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="";
-            Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="";
-            Beban_KSO_Tindakan_Ranap="";
-            Utang_KSO_Tindakan_Ranap="";
-            Suspen_Piutang_Laborat_Ranap="";
-            Beban_Jasa_Medik_Dokter_Laborat_Ranap="";
-            Utang_Jasa_Medik_Dokter_Laborat_Ranap="";
-            Beban_Jasa_Medik_Petugas_Laborat_Ranap="";
-            Utang_Jasa_Medik_Petugas_Laborat_Ranap="";
-            Beban_Kso_Laborat_Ranap="";
-            Utang_Kso_Laborat_Ranap="";
-            HPP_Persediaan_Laborat_Rawat_inap="";
-            Persediaan_BHP_Laborat_Rawat_Inap="";
-            Suspen_Piutang_Radiologi_Ranap="";
-            Beban_Jasa_Medik_Dokter_Radiologi_Ranap="";
-            Utang_Jasa_Medik_Dokter_Radiologi_Ranap="";
-            Beban_Jasa_Medik_Petugas_Radiologi_Ranap="";
-            Utang_Jasa_Medik_Petugas_Radiologi_Ranap="";
-            Beban_Kso_Radiologi_Ranap="";
-            Utang_Kso_Radiologi_Ranap="";
-            HPP_Persediaan_Radiologi_Rawat_Inap="";
-            Persediaan_BHP_Radiologi_Rawat_Inap="";  
-            HPP_Obat_Rawat_Inap="";
-            Persediaan_Obat_Rawat_Inap="";
-            Suspen_Piutang_Obat_Ranap="";
-            Suspen_Piutang_Operasi_Ranap="";
-            Beban_Jasa_Medik_Dokter_Operasi_Ranap="";
-            Utang_Jasa_Medik_Dokter_Operasi_Ranap="";
-            Beban_Jasa_Medik_Paramedis_Operasi_Ranap="";
-            Utang_Jasa_Medik_Paramedis_Operasi_Ranap="";
-            HPP_Obat_Operasi_Ranap="";
-            Persediaan_Obat_Kamar_Operasi_Ranap="";
+            Stok_Keluar_Medis="";
+            Kontra_Stok_Keluar_Medis="";
             HPP_Obat_Jual_Bebas="";
             Persediaan_Obat_Jual_Bebas="";
             Penerimaan_NonMedis="";
@@ -1251,44 +1340,67 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
+                    Suspen_Piutang_Tindakan_Ralan=rs.getString("Suspen_Piutang_Tindakan_Ralan");                    
                     Tindakan_Ralan=rs.getString("Tindakan_Ralan");                    
-                    Beban_Jasa_Medik_Dokter_Tindakan_Ralan=rs.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ralan");
-                    Utang_Jasa_Medik_Dokter_Tindakan_Ralan=rs.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ralan");
-                    Beban_Jasa_Medik_Paramedis_Tindakan_Ralan=rs.getString("Beban_Jasa_Medik_Paramedis_Tindakan_Ralan");
-                    Utang_Jasa_Medik_Paramedis_Tindakan_Ralan=rs.getString("Utang_Jasa_Medik_Paramedis_Tindakan_Ralan");
-                    Beban_KSO_Tindakan_Ralan=rs.getString("Beban_KSO_Tindakan_Ralan");
-                    Utang_KSO_Tindakan_Ralan=rs.getString("Utang_KSO_Tindakan_Ralan");
-                    Beban_Jasa_Medik_Dokter_Laborat_Ralan=rs.getString("Beban_Jasa_Medik_Dokter_Laborat_Ralan");
-                    Utang_Jasa_Medik_Dokter_Laborat_Ralan=rs.getString("Utang_Jasa_Medik_Dokter_Laborat_Ralan"); 
-                    Beban_Jasa_Medik_Petugas_Laborat_Ralan=rs.getString("Beban_Jasa_Medik_Petugas_Laborat_Ralan");
-                    Utang_Jasa_Medik_Petugas_Laborat_Ralan=rs.getString("Utang_Jasa_Medik_Petugas_Laborat_Ralan");
-                    Beban_Kso_Laborat_Ralan=rs.getString("Beban_Kso_Laborat_Ralan");
-                    Utang_Kso_Laborat_Ralan=rs.getString("Utang_Kso_Laborat_Ralan");
-                    HPP_Persediaan_Laborat_Rawat_Jalan=rs.getString("HPP_Persediaan_Laborat_Rawat_Jalan");
-                    Persediaan_BHP_Laborat_Rawat_Jalan=rs.getString("Persediaan_BHP_Laborat_Rawat_Jalan");
-                    Beban_Jasa_Medik_Dokter_Radiologi_Ralan=rs.getString("Beban_Jasa_Medik_Dokter_Radiologi_Ralan");
-                    Utang_Jasa_Medik_Dokter_Radiologi_Ralan=rs.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ralan");
-                    Beban_Jasa_Medik_Petugas_Radiologi_Ralan=rs.getString("Beban_Jasa_Medik_Petugas_Radiologi_Ralan");
-                    Utang_Jasa_Medik_Petugas_Radiologi_Ralan=rs.getString("Utang_Jasa_Medik_Petugas_Radiologi_Ralan");
-                    Beban_Kso_Radiologi_Ralan=rs.getString("Beban_Kso_Radiologi_Ralan");
-                    Utang_Kso_Radiologi_Ralan=rs.getString("Utang_Kso_Radiologi_Ralan");
-                    Operasi_Ralan=rs.getString("Operasi_Ralan");
-                    HPP_Persediaan_Radiologi_Rawat_Jalan=rs.getString("HPP_Persediaan_Radiologi_Rawat_Jalan");
-                    Persediaan_BHP_Radiologi_Rawat_Jalan=rs.getString("Persediaan_BHP_Radiologi_Rawat_Jalan");
-                    HPP_Obat_Rawat_Jalan=rs.getString("HPP_Obat_Rawat_Jalan");
-                    Persediaan_Obat_Rawat_Jalan=rs.getString("Persediaan_Obat_Rawat_Jalan");
-                    Beban_Jasa_Medik_Dokter_Operasi_Ralan=rs.getString("Beban_Jasa_Medik_Dokter_Operasi_Ralan");
-                    Utang_Jasa_Medik_Dokter_Operasi_Ralan=rs.getString("Utang_Jasa_Medik_Dokter_Operasi_Ralan");
-                    Beban_Jasa_Medik_Paramedis_Operasi_Ralan=rs.getString("Beban_Jasa_Medik_Paramedis_Operasi_Ralan");
-                    Utang_Jasa_Medik_Paramedis_Operasi_Ralan=rs.getString("Utang_Jasa_Medik_Paramedis_Operasi_Ralan");
-                    HPP_Obat_Operasi_Ralan=rs.getString("HPP_Obat_Operasi_Ralan");
-                    Persediaan_Obat_Kamar_Operasi_Ralan=rs.getString("Persediaan_Obat_Kamar_Operasi_Ralan");
-                    Laborat_Ralan=rs.getString("Laborat_Ralan");
-                    Radiologi_Ralan=rs.getString("Radiologi_Ralan");
-                    Obat_Ralan=rs.getString("Obat_Ralan");
-                    Registrasi_Ralan=rs.getString("Registrasi_Ralan");
-                    Tambahan_Ralan=rs.getString("Tambahan_Ralan");
-                    Potongan_Ralan=rs.getString("Potongan_Ralan");
+                    Beban_Jasa_Medik_Dokter_Tindakan_Ralan=rs.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ralan");                    
+                    Utang_Jasa_Medik_Dokter_Tindakan_Ralan=rs.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ralan");                    
+                    Beban_Jasa_Medik_Paramedis_Tindakan_Ralan=rs.getString("Beban_Jasa_Medik_Paramedis_Tindakan_Ralan");                    
+                    Utang_Jasa_Medik_Paramedis_Tindakan_Ralan=rs.getString("Utang_Jasa_Medik_Paramedis_Tindakan_Ralan");                    
+                    Beban_KSO_Tindakan_Ralan=rs.getString("Beban_KSO_Tindakan_Ralan");                    
+                    Utang_KSO_Tindakan_Ralan=rs.getString("Utang_KSO_Tindakan_Ralan");                    
+                    Beban_Jasa_Sarana_Tindakan_Ralan=rs.getString("Beban_Jasa_Sarana_Tindakan_Ralan");                    
+                    Utang_Jasa_Sarana_Tindakan_Ralan=rs.getString("Utang_Jasa_Sarana_Tindakan_Ralan");                    
+                    HPP_BHP_Tindakan_Ralan=rs.getString("HPP_BHP_Tindakan_Ralan");                    
+                    Persediaan_BHP_Tindakan_Ralan=rs.getString("Persediaan_BHP_Tindakan_Ralan");                    
+                    Beban_Jasa_Menejemen_Tindakan_Ralan=rs.getString("Beban_Jasa_Menejemen_Tindakan_Ralan");                    
+                    Utang_Jasa_Menejemen_Tindakan_Ralan=rs.getString("Utang_Jasa_Menejemen_Tindakan_Ralan");                    
+                    Suspen_Piutang_Laborat_Ralan=rs.getString("Suspen_Piutang_Laborat_Ralan");                    
+                    Laborat_Ralan=rs.getString("Laborat_Ralan");                    
+                    Beban_Jasa_Medik_Dokter_Laborat_Ralan=rs.getString("Beban_Jasa_Medik_Dokter_Laborat_Ralan");                    
+                    Utang_Jasa_Medik_Dokter_Laborat_Ralan=rs.getString("Utang_Jasa_Medik_Dokter_Laborat_Ralan");                    
+                    Beban_Jasa_Medik_Petugas_Laborat_Ralan=rs.getString("Beban_Jasa_Medik_Petugas_Laborat_Ralan");                    
+                    Utang_Jasa_Medik_Petugas_Laborat_Ralan=rs.getString("Utang_Jasa_Medik_Petugas_Laborat_Ralan");                    
+                    Beban_Kso_Laborat_Ralan=rs.getString("Beban_Kso_Laborat_Ralan");                    
+                    Utang_Kso_Laborat_Ralan=rs.getString("Utang_Kso_Laborat_Ralan");                    
+                    HPP_Persediaan_Laborat_Rawat_Jalan=rs.getString("HPP_Persediaan_Laborat_Rawat_Jalan");                    
+                    Persediaan_BHP_Laborat_Rawat_Jalan=rs.getString("Persediaan_BHP_Laborat_Rawat_Jalan");                    
+                    Beban_Jasa_Sarana_Laborat_Ralan=rs.getString("Beban_Jasa_Sarana_Laborat_Ralan");                    
+                    Utang_Jasa_Sarana_Laborat_Ralan=rs.getString("Utang_Jasa_Sarana_Laborat_Ralan");                    
+                    Beban_Jasa_Perujuk_Laborat_Ralan=rs.getString("Beban_Jasa_Perujuk_Laborat_Ralan");                    
+                    Utang_Jasa_Perujuk_Laborat_Ralan=rs.getString("Utang_Jasa_Perujuk_Laborat_Ralan");                    
+                    Beban_Jasa_Menejemen_Laborat_Ralan=rs.getString("Beban_Jasa_Menejemen_Laborat_Ralan");                    
+                    Utang_Jasa_Menejemen_Laborat_Ralan=rs.getString("Utang_Jasa_Menejemen_Laborat_Ralan");                    
+                    Suspen_Piutang_Radiologi_Ralan=rs.getString("Suspen_Piutang_Radiologi_Ralan");                    
+                    Radiologi_Ralan=rs.getString("Radiologi_Ralan");                    
+                    Beban_Jasa_Medik_Dokter_Radiologi_Ralan=rs.getString("Beban_Jasa_Medik_Dokter_Radiologi_Ralan");                    
+                    Utang_Jasa_Medik_Dokter_Radiologi_Ralan=rs.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ralan");                    
+                    Beban_Jasa_Medik_Petugas_Radiologi_Ralan=rs.getString("Beban_Jasa_Medik_Petugas_Radiologi_Ralan");                    
+                    Utang_Jasa_Medik_Petugas_Radiologi_Ralan=rs.getString("Utang_Jasa_Medik_Petugas_Radiologi_Ralan");                    
+                    Beban_Kso_Radiologi_Ralan=rs.getString("Beban_Kso_Radiologi_Ralan");                    
+                    Utang_Kso_Radiologi_Ralan=rs.getString("Utang_Kso_Radiologi_Ralan");                    
+                    HPP_Persediaan_Radiologi_Rawat_Jalan=rs.getString("HPP_Persediaan_Radiologi_Rawat_Jalan");                    
+                    Persediaan_BHP_Radiologi_Rawat_Jalan=rs.getString("Persediaan_BHP_Radiologi_Rawat_Jalan");                    
+                    Beban_Jasa_Sarana_Radiologi_Ralan=rs.getString("Beban_Jasa_Sarana_Radiologi_Ralan");                    
+                    Utang_Jasa_Sarana_Radiologi_Ralan=rs.getString("Utang_Jasa_Sarana_Radiologi_Ralan");                    
+                    Beban_Jasa_Perujuk_Radiologi_Ralan=rs.getString("Beban_Jasa_Perujuk_Radiologi_Ralan");                    
+                    Utang_Jasa_Perujuk_Radiologi_Ralan=rs.getString("Utang_Jasa_Perujuk_Radiologi_Ralan");                    
+                    Beban_Jasa_Menejemen_Radiologi_Ralan=rs.getString("Beban_Jasa_Menejemen_Radiologi_Ralan");                    
+                    Utang_Jasa_Menejemen_Radiologi_Ralan=rs.getString("Utang_Jasa_Menejemen_Radiologi_Ralan");                    
+                    Suspen_Piutang_Obat_Ralan=rs.getString("Suspen_Piutang_Obat_Ralan");                    
+                    Obat_Ralan=rs.getString("Obat_Ralan");                    
+                    HPP_Obat_Rawat_Jalan=rs.getString("HPP_Obat_Rawat_Jalan");                    
+                    Persediaan_Obat_Rawat_Jalan=rs.getString("Persediaan_Obat_Rawat_Jalan");                    
+                    Registrasi_Ralan=rs.getString("Registrasi_Ralan");                    
+                    Suspen_Piutang_Operasi_Ralan=rs.getString("Suspen_Piutang_Operasi_Ralan");                    
+                    Operasi_Ralan=rs.getString("Operasi_Ralan");                    
+                    Beban_Jasa_Medik_Dokter_Operasi_Ralan=rs.getString("Beban_Jasa_Medik_Dokter_Operasi_Ralan");                    
+                    Utang_Jasa_Medik_Dokter_Operasi_Ralan=rs.getString("Utang_Jasa_Medik_Dokter_Operasi_Ralan");                    
+                    Beban_Jasa_Medik_Paramedis_Operasi_Ralan=rs.getString("Beban_Jasa_Medik_Paramedis_Operasi_Ralan");                    
+                    Utang_Jasa_Medik_Paramedis_Operasi_Ralan=rs.getString("Utang_Jasa_Medik_Paramedis_Operasi_Ralan");                    
+                    HPP_Obat_Operasi_Ralan=rs.getString("HPP_Obat_Operasi_Ralan");                    
+                    Persediaan_Obat_Kamar_Operasi_Ralan=rs.getString("Persediaan_Obat_Kamar_Operasi_Ralan");                    
+                    Tambahan_Ralan=rs.getString("Tambahan_Ralan");                    
+                    Potongan_Ralan=rs.getString("Potongan_Ralan"); 
                 }                 
             } catch (Exception e) {
                 System.out.println(e);
@@ -1305,56 +1417,70 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){                    
-                    Tindakan_Ranap=rs.getString("Tindakan_Ranap");
-                    Laborat_Ranap=rs.getString("Laborat_Ranap");
-                    Radiologi_Ranap=rs.getString("Radiologi_Ranap");
-                    Obat_Ranap=rs.getString("Obat_Ranap");
-                    Registrasi_Ranap=rs.getString("Registrasi_Ranap");
-                    Tambahan_Ranap=rs.getString("Tambahan_Ranap");
-                    Potongan_Ranap=rs.getString("Potongan_Ranap");
-                    Retur_Obat_Ranap=rs.getString("Retur_Obat_Ranap");
-                    Resep_Pulang_Ranap=rs.getString("Resep_Pulang_Ranap");
-                    Kamar_Inap=rs.getString("Kamar_Inap");
-                    Operasi_Ranap=rs.getString("Operasi_Ranap");
-                    Harian_Ranap=rs.getString("Harian_Ranap");
-                    Uang_Muka_Ranap=rs.getString("Uang_Muka_Ranap");
-                    Piutang_Pasien_Ranap=rs.getString("Piutang_Pasien_Ranap"); 
-                    Service_Ranap=rs.getString("Service_Ranap");
-                    Suspen_Piutang_Tindakan_Ranap=rs.getString("Suspen_Piutang_Tindakan_Ranap");
-                    Beban_Jasa_Medik_Dokter_Tindakan_Ranap=rs.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ranap");
-                    Utang_Jasa_Medik_Dokter_Tindakan_Ranap=rs.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ranap");
-                    Beban_Jasa_Medik_Paramedis_Tindakan_Ranap=rs.getString("Beban_Jasa_Medik_Paramedis_Tindakan_Ranap");
-                    Utang_Jasa_Medik_Paramedis_Tindakan_Ranap=rs.getString("Utang_Jasa_Medik_Paramedis_Tindakan_Ranap");
-                    Beban_KSO_Tindakan_Ranap=rs.getString("Beban_KSO_Tindakan_Ranap");
-                    Utang_KSO_Tindakan_Ranap=rs.getString("Utang_KSO_Tindakan_Ranap");
-                    Suspen_Piutang_Laborat_Ranap=rs.getString("Suspen_Piutang_Laborat_Ranap");
-                    Beban_Jasa_Medik_Dokter_Laborat_Ranap=rs.getString("Beban_Jasa_Medik_Dokter_Laborat_Ranap");
-                    Utang_Jasa_Medik_Dokter_Laborat_Ranap=rs.getString("Utang_Jasa_Medik_Dokter_Laborat_Ranap");
-                    Beban_Jasa_Medik_Petugas_Laborat_Ranap=rs.getString("Beban_Jasa_Medik_Petugas_Laborat_Ranap");
-                    Utang_Jasa_Medik_Petugas_Laborat_Ranap=rs.getString("Utang_Jasa_Medik_Petugas_Laborat_Ranap");
-                    Beban_Kso_Laborat_Ranap=rs.getString("Beban_Kso_Laborat_Ranap");
-                    Utang_Kso_Laborat_Ranap=rs.getString("Utang_Kso_Laborat_Ranap");
-                    HPP_Persediaan_Laborat_Rawat_inap=rs.getString("HPP_Persediaan_Laborat_Rawat_inap");
-                    Persediaan_BHP_Laborat_Rawat_Inap=rs.getString("Persediaan_BHP_Laborat_Rawat_Inap");
-                    Suspen_Piutang_Radiologi_Ranap=rs.getString("Suspen_Piutang_Radiologi_Ranap");
-                    Beban_Jasa_Medik_Dokter_Radiologi_Ranap=rs.getString("Beban_Jasa_Medik_Dokter_Radiologi_Ranap");
-                    Utang_Jasa_Medik_Dokter_Radiologi_Ranap=rs.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ranap");
-                    Beban_Jasa_Medik_Petugas_Radiologi_Ranap=rs.getString("Beban_Jasa_Medik_Petugas_Radiologi_Ranap");
-                    Utang_Jasa_Medik_Petugas_Radiologi_Ranap=rs.getString("Utang_Jasa_Medik_Petugas_Radiologi_Ranap");
-                    Beban_Kso_Radiologi_Ranap=rs.getString("Beban_Kso_Radiologi_Ranap");
-                    Utang_Kso_Radiologi_Ranap=rs.getString("Utang_Kso_Radiologi_Ranap");
-                    HPP_Persediaan_Radiologi_Rawat_Inap=rs.getString("HPP_Persediaan_Radiologi_Rawat_Inap");
-                    Persediaan_BHP_Radiologi_Rawat_Inap=rs.getString("Persediaan_BHP_Radiologi_Rawat_Inap");
-                    HPP_Obat_Rawat_Inap=rs.getString("HPP_Obat_Rawat_Inap");
-                    Persediaan_Obat_Rawat_Inap=rs.getString("Persediaan_Obat_Rawat_Inap");
-                    Suspen_Piutang_Obat_Ranap=rs.getString("Suspen_Piutang_Obat_Ranap");
-                    Suspen_Piutang_Operasi_Ranap=rs.getString("Suspen_Piutang_Operasi_Ranap");
-                    Beban_Jasa_Medik_Dokter_Operasi_Ranap=rs.getString("Beban_Jasa_Medik_Dokter_Operasi_Ranap");
-                    Utang_Jasa_Medik_Dokter_Operasi_Ranap=rs.getString("Utang_Jasa_Medik_Dokter_Operasi_Ranap");
-                    Beban_Jasa_Medik_Paramedis_Operasi_Ranap=rs.getString("Beban_Jasa_Medik_Paramedis_Operasi_Ranap");
-                    Utang_Jasa_Medik_Paramedis_Operasi_Ranap=rs.getString("Utang_Jasa_Medik_Paramedis_Operasi_Ranap");
-                    HPP_Obat_Operasi_Ranap=rs.getString("HPP_Obat_Operasi_Ranap");
-                    Persediaan_Obat_Kamar_Operasi_Ranap=rs.getString("Persediaan_Obat_Kamar_Operasi_Ranap");
+                    Suspen_Piutang_Tindakan_Ranap=rs.getString("Suspen_Piutang_Tindakan_Ranap");                    
+                    Tindakan_Ranap=rs.getString("Tindakan_Ranap");                    
+                    Beban_Jasa_Medik_Dokter_Tindakan_Ranap=rs.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ranap");                    
+                    Utang_Jasa_Medik_Dokter_Tindakan_Ranap=rs.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ranap");                    
+                    Beban_Jasa_Medik_Paramedis_Tindakan_Ranap=rs.getString("Beban_Jasa_Medik_Paramedis_Tindakan_Ranap");                    
+                    Utang_Jasa_Medik_Paramedis_Tindakan_Ranap=rs.getString("Utang_Jasa_Medik_Paramedis_Tindakan_Ranap");                    
+                    Beban_KSO_Tindakan_Ranap=rs.getString("Beban_KSO_Tindakan_Ranap");                    
+                    Utang_KSO_Tindakan_Ranap=rs.getString("Utang_KSO_Tindakan_Ranap");                    
+                    Beban_Jasa_Sarana_Tindakan_Ranap=rs.getString("Beban_Jasa_Sarana_Tindakan_Ranap");                    
+                    Utang_Jasa_Sarana_Tindakan_Ranap=rs.getString("Utang_Jasa_Sarana_Tindakan_Ranap");                    
+                    Beban_Jasa_Menejemen_Tindakan_Ranap=rs.getString("Beban_Jasa_Menejemen_Tindakan_Ranap");                    
+                    Utang_Jasa_Menejemen_Tindakan_Ranap=rs.getString("Utang_Jasa_Menejemen_Tindakan_Ranap");                    
+                    HPP_BHP_Tindakan_Ranap=rs.getString("HPP_BHP_Tindakan_Ranap");                    
+                    Persediaan_BHP_Tindakan_Ranap=rs.getString("Persediaan_BHP_Tindakan_Ranap");                    
+                    Suspen_Piutang_Laborat_Ranap=rs.getString("Suspen_Piutang_Laborat_Ranap");                    
+                    Laborat_Ranap=rs.getString("Laborat_Ranap");                    
+                    Beban_Jasa_Medik_Dokter_Laborat_Ranap=rs.getString("Beban_Jasa_Medik_Dokter_Laborat_Ranap");                    
+                    Utang_Jasa_Medik_Dokter_Laborat_Ranap=rs.getString("Utang_Jasa_Medik_Dokter_Laborat_Ranap");                    
+                    Beban_Jasa_Medik_Petugas_Laborat_Ranap=rs.getString("Beban_Jasa_Medik_Petugas_Laborat_Ranap");                    
+                    Utang_Jasa_Medik_Petugas_Laborat_Ranap=rs.getString("Utang_Jasa_Medik_Petugas_Laborat_Ranap");                    
+                    Beban_Kso_Laborat_Ranap=rs.getString("Beban_Kso_Laborat_Ranap");                    
+                    Utang_Kso_Laborat_Ranap=rs.getString("Utang_Kso_Laborat_Ranap");                    
+                    HPP_Persediaan_Laborat_Rawat_inap=rs.getString("HPP_Persediaan_Laborat_Rawat_inap");                    
+                    Persediaan_BHP_Laborat_Rawat_Inap=rs.getString("Persediaan_BHP_Laborat_Rawat_Inap");                    
+                    Beban_Jasa_Sarana_Laborat_Ranap=rs.getString("Beban_Jasa_Sarana_Laborat_Ranap");                    
+                    Utang_Jasa_Sarana_Laborat_Ranap=rs.getString("Utang_Jasa_Sarana_Laborat_Ranap");                    
+                    Beban_Jasa_Perujuk_Laborat_Ranap=rs.getString("Beban_Jasa_Perujuk_Laborat_Ranap");                    
+                    Utang_Jasa_Perujuk_Laborat_Ranap=rs.getString("Utang_Jasa_Perujuk_Laborat_Ranap");                    
+                    Beban_Jasa_Menejemen_Laborat_Ranap=rs.getString("Beban_Jasa_Menejemen_Laborat_Ranap");                    
+                    Utang_Jasa_Menejemen_Laborat_Ranap=rs.getString("Utang_Jasa_Menejemen_Laborat_Ranap");                    
+                    Suspen_Piutang_Radiologi_Ranap=rs.getString("Suspen_Piutang_Radiologi_Ranap");                    
+                    Radiologi_Ranap=rs.getString("Radiologi_Ranap");                    
+                    Beban_Jasa_Medik_Dokter_Radiologi_Ranap=rs.getString("Beban_Jasa_Medik_Dokter_Radiologi_Ranap");                    
+                    Utang_Jasa_Medik_Dokter_Radiologi_Ranap=rs.getString("Utang_Jasa_Medik_Dokter_Radiologi_Ranap");                    
+                    Beban_Jasa_Medik_Petugas_Radiologi_Ranap=rs.getString("Beban_Jasa_Medik_Petugas_Radiologi_Ranap");                    
+                    Utang_Jasa_Medik_Petugas_Radiologi_Ranap=rs.getString("Utang_Jasa_Medik_Petugas_Radiologi_Ranap");                    
+                    Beban_Kso_Radiologi_Ranap=rs.getString("Beban_Kso_Radiologi_Ranap");                    
+                    Utang_Kso_Radiologi_Ranap=rs.getString("Utang_Kso_Radiologi_Ranap");                    
+                    HPP_Persediaan_Radiologi_Rawat_Inap=rs.getString("HPP_Persediaan_Radiologi_Rawat_Inap");                    
+                    Persediaan_BHP_Radiologi_Rawat_Inap=rs.getString("Persediaan_BHP_Radiologi_Rawat_Inap");                    
+                    Beban_Jasa_Sarana_Radiologi_Ranap=rs.getString("Beban_Jasa_Sarana_Radiologi_Ranap");                    
+                    Utang_Jasa_Sarana_Radiologi_Ranap=rs.getString("Utang_Jasa_Sarana_Radiologi_Ranap");                    
+                    Beban_Jasa_Perujuk_Radiologi_Ranap=rs.getString("Beban_Jasa_Perujuk_Radiologi_Ranap");                    
+                    Utang_Jasa_Perujuk_Radiologi_Ranap=rs.getString("Utang_Jasa_Perujuk_Radiologi_Ranap");                    
+                    Beban_Jasa_Menejemen_Radiologi_Ranap=rs.getString("Beban_Jasa_Menejemen_Radiologi_Ranap");                    
+                    Utang_Jasa_Menejemen_Radiologi_Ranap=rs.getString("Utang_Jasa_Menejemen_Radiologi_Ranap");                    
+                    Suspen_Piutang_Obat_Ranap=rs.getString("Suspen_Piutang_Obat_Ranap");                    
+                    Obat_Ranap=rs.getString("Obat_Ranap");                    
+                    HPP_Obat_Rawat_Inap=rs.getString("HPP_Obat_Rawat_Inap");                    
+                    Persediaan_Obat_Rawat_Inap=rs.getString("Persediaan_Obat_Rawat_Inap");                    
+                    Registrasi_Ranap=rs.getString("Registrasi_Ranap");                    
+                    Service_Ranap=rs.getString("Service_Ranap");                    
+                    Tambahan_Ranap=rs.getString("Tambahan_Ranap");                    
+                    Potongan_Ranap=rs.getString("Potongan_Ranap");                    
+                    Retur_Obat_Ranap=rs.getString("Retur_Obat_Ranap");                    
+                    Resep_Pulang_Ranap=rs.getString("Resep_Pulang_Ranap");                    
+                    Kamar_Inap=rs.getString("Kamar_Inap");                    
+                    Suspen_Piutang_Operasi_Ranap=rs.getString("Suspen_Piutang_Operasi_Ranap");                    
+                    Operasi_Ranap=rs.getString("Operasi_Ranap");                    
+                    Beban_Jasa_Medik_Dokter_Operasi_Ranap=rs.getString("Beban_Jasa_Medik_Dokter_Operasi_Ranap");                    
+                    Utang_Jasa_Medik_Dokter_Operasi_Ranap=rs.getString("Utang_Jasa_Medik_Dokter_Operasi_Ranap");                    
+                    Beban_Jasa_Medik_Paramedis_Operasi_Ranap=rs.getString("Beban_Jasa_Medik_Paramedis_Operasi_Ranap");                    
+                    Utang_Jasa_Medik_Paramedis_Operasi_Ranap=rs.getString("Utang_Jasa_Medik_Paramedis_Operasi_Ranap");                    
+                    HPP_Obat_Operasi_Ranap=rs.getString("HPP_Obat_Operasi_Ranap");       
                 }            
             } catch (Exception e) {
                 System.out.println(e);
@@ -1366,6 +1492,26 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     ps.close();
                 }
             }    
+            
+            ps=koneksi.prepareStatement("select * from set_akun_ranap2");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){                    
+                    Persediaan_Obat_Kamar_Operasi_Ranap=rs.getString("Persediaan_Obat_Kamar_Operasi_Ranap");                    
+                    Harian_Ranap=rs.getString("Harian_Ranap");                    
+                    Uang_Muka_Ranap=rs.getString("Uang_Muka_Ranap");                    
+                    Piutang_Pasien_Ranap=rs.getString("Piutang_Pasien_Ranap");  
+                }            
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }  
             
             ps=koneksi.prepareStatement("select * from set_akun");
             try {
@@ -1431,6 +1577,11 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 }
             }    
             
+            tabMode.addRow(new Object[]{" [Debet] Akun Suspen Piutang Tindakan Rawat Jalan",Suspen_Piutang_Tindakan_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Suspen_Piutang_Tindakan_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Suspen_Piutang_Tindakan_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Suspen_Piutang_Tindakan_Ralan)
+            });
             tabMode.addRow(new Object[]{" [Kredit] Akun Pendapatan Tindakan pada menu Billing Rawat Jalan",Tindakan_Ralan,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Tindakan_Ralan),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Tindakan_Ralan),
@@ -1465,6 +1616,41 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_KSO_Tindakan_Ralan),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_KSO_Tindakan_Ralan),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_KSO_Tindakan_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Sarana Tindakan Rawat Jalan",Beban_Jasa_Sarana_Tindakan_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Sarana_Tindakan_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Sarana_Tindakan_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Sarana_Tindakan_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Sarana Tindakan Rawat Jalan",Utang_Jasa_Sarana_Tindakan_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Sarana_Tindakan_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Sarana_Tindakan_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Sarana_Tindakan_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun HPP BHP Tindakan Rawat Jalan",HPP_BHP_Tindakan_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",HPP_BHP_Tindakan_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",HPP_BHP_Tindakan_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",HPP_BHP_Tindakan_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Persediaan BHP Tindakan Rawat Jalan",Persediaan_BHP_Tindakan_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Persediaan_BHP_Tindakan_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Persediaan_BHP_Tindakan_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Persediaan_BHP_Tindakan_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Menejemen Tindakan Rawat Jalan",Beban_Jasa_Menejemen_Tindakan_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Menejemen_Tindakan_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Menejemen_Tindakan_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Menejemen_Tindakan_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Menejemen Tindakan Rawat Jalan",Utang_Jasa_Menejemen_Tindakan_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Menejemen_Tindakan_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Menejemen_Tindakan_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Menejemen_Tindakan_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Suspen Piutang Laborat Ralan",Suspen_Piutang_Laborat_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Suspen_Piutang_Laborat_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Suspen_Piutang_Laborat_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Suspen_Piutang_Laborat_Ralan)
             });
             tabMode.addRow(new Object[]{" [Kredit] Akun Pendapatan Laborat pada menu Billing Rawat Jalan",Laborat_Ralan,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Laborat_Ralan),
@@ -1511,6 +1697,41 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Persediaan_BHP_Laborat_Rawat_Jalan),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Persediaan_BHP_Laborat_Rawat_Jalan)
             });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Sarana Laborat Rawat Jalan",Beban_Jasa_Sarana_Laborat_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Sarana_Laborat_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Sarana_Laborat_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Sarana_Laborat_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Sarana Laborat Rawat Jalan",Utang_Jasa_Sarana_Laborat_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Sarana_Laborat_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Sarana_Laborat_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Sarana_Laborat_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Perujuk Laborat Rawat Jalan",Beban_Jasa_Perujuk_Laborat_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Perujuk_Laborat_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Perujuk_Laborat_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Perujuk_Laborat_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Perujuk Laborat Rawat Jalan",Utang_Jasa_Perujuk_Laborat_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Perujuk_Laborat_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Perujuk_Laborat_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Perujuk_Laborat_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Menejemen Laborat Rawat Jalan",Beban_Jasa_Menejemen_Laborat_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Menejemen_Laborat_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Menejemen_Laborat_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Menejemen_Laborat_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Menejemen Laborat Rawat Jalan",Utang_Jasa_Menejemen_Laborat_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Menejemen_Laborat_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Menejemen_Laborat_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Menejemen_Laborat_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Suspen Piutang Radiologi Rawat Jalan",Suspen_Piutang_Radiologi_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Suspen_Piutang_Radiologi_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Suspen_Piutang_Radiologi_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Suspen_Piutang_Radiologi_Ralan)
+            });
             tabMode.addRow(new Object[]{" [Kredit] Akun Pendapatan Radiologi pada menu Billing Rawat Jalan",Radiologi_Ralan,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Radiologi_Ralan),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Radiologi_Ralan),
@@ -1556,6 +1777,41 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Persediaan_BHP_Radiologi_Rawat_Jalan),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Persediaan_BHP_Radiologi_Rawat_Jalan)
             });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Sarana Radiologi Rawat Jalan",Beban_Jasa_Sarana_Radiologi_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Sarana_Radiologi_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Sarana_Radiologi_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Sarana_Radiologi_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Sarana Radiologi Rawat Jalan",Utang_Jasa_Sarana_Radiologi_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Sarana_Radiologi_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Sarana_Radiologi_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Sarana_Radiologi_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Perujuk Radiologi Rawat Jalan",Beban_Jasa_Perujuk_Radiologi_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Perujuk_Radiologi_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Perujuk_Radiologi_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Perujuk_Radiologi_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Perujuk Radiologi Rawat Jalan",Utang_Jasa_Perujuk_Radiologi_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Perujuk_Radiologi_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Perujuk_Radiologi_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Perujuk_Radiologi_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Menejemen Radiologi Rawat Jalan",Beban_Jasa_Menejemen_Radiologi_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Menejemen_Radiologi_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Menejemen_Radiologi_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Menejemen_Radiologi_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Menejemen Radiologi Rawat Jalan",Utang_Jasa_Menejemen_Radiologi_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Menejemen_Radiologi_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Menejemen_Radiologi_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Menejemen_Radiologi_Ralan)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Suspen Piutang Obat Rawat Jalan",Suspen_Piutang_Obat_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Suspen_Piutang_Obat_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Suspen_Piutang_Obat_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Suspen_Piutang_Obat_Ralan)
+            });
             tabMode.addRow(new Object[]{" [Kredit] Akun Pendapatan Obat pada menu Billing Rawat Jalan",Obat_Ralan,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Obat_Ralan),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Obat_Ralan),
@@ -1575,7 +1831,12 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Registrasi_Ralan),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Registrasi_Ralan),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Registrasi_Ralan)
-            });            
+            });   
+            tabMode.addRow(new Object[]{" [Debet] Akun Suspen Piutang Operasi Rawat Jalan",Suspen_Piutang_Operasi_Ralan,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Suspen_Piutang_Operasi_Ralan),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Suspen_Piutang_Operasi_Ralan),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Suspen_Piutang_Operasi_Ralan)
+            });   
             tabMode.addRow(new Object[]{" [Kredit] Akun Pendapatan Operasi pada menu Billing Rawat Jalan",Operasi_Ralan,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Operasi_Ralan),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Operasi_Ralan),
@@ -1661,7 +1922,36 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_KSO_Tindakan_Ranap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_KSO_Tindakan_Ranap)
             });
-            
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Sarana Tindakan Ranap",Beban_Jasa_Sarana_Tindakan_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Sarana_Tindakan_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Sarana_Tindakan_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Sarana_Tindakan_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Sarana Tindakan Ranap",Utang_Jasa_Sarana_Tindakan_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Sarana_Tindakan_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Sarana_Tindakan_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Sarana_Tindakan_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Menejemen Tindakan Ranap",Beban_Jasa_Menejemen_Tindakan_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Menejemen_Tindakan_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Menejemen_Tindakan_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Menejemen_Tindakan_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Menejemen Tindakan Ranap",Utang_Jasa_Menejemen_Tindakan_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Menejemen_Tindakan_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Menejemen_Tindakan_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Menejemen_Tindakan_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun HPP BHP Tindakan Ranap",HPP_BHP_Tindakan_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",HPP_BHP_Tindakan_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",HPP_BHP_Tindakan_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",HPP_BHP_Tindakan_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Persediaan BHP Tindakan Ranap",Persediaan_BHP_Tindakan_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Persediaan_BHP_Tindakan_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Persediaan_BHP_Tindakan_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Persediaan_BHP_Tindakan_Ranap)
+            });
             tabMode.addRow(new Object[]{" [Debet] Akun Suspen Piutang Laborat Ranap",Suspen_Piutang_Laborat_Ranap,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Suspen_Piutang_Laborat_Ranap),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Suspen_Piutang_Laborat_Ranap),
@@ -1711,6 +2001,36 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Persediaan_BHP_Laborat_Rawat_Inap),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Persediaan_BHP_Laborat_Rawat_Inap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Persediaan_BHP_Laborat_Rawat_Inap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Sarana Laborat Ranap",Beban_Jasa_Sarana_Laborat_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Sarana_Laborat_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Sarana_Laborat_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Sarana_Laborat_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Sarana Laborat Ranap",Utang_Jasa_Sarana_Laborat_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Sarana_Laborat_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Sarana_Laborat_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Sarana_Laborat_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Perujuk Laborat Ranap",Beban_Jasa_Perujuk_Laborat_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Perujuk_Laborat_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Perujuk_Laborat_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Perujuk_Laborat_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Perujuk Laborat Ranap",Utang_Jasa_Perujuk_Laborat_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Perujuk_Laborat_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Perujuk_Laborat_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Perujuk_Laborat_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Menejemen Laborat Ranap",Beban_Jasa_Menejemen_Laborat_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Menejemen_Laborat_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Menejemen_Laborat_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Menejemen_Laborat_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Menejemen Laborat Ranap",Utang_Jasa_Menejemen_Laborat_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Menejemen_Laborat_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Menejemen_Laborat_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Menejemen_Laborat_Ranap)
             });
             tabMode.addRow(new Object[]{" [Debet] Akun Suspen Piutang Radiologi Ranap",Suspen_Piutang_Radiologi_Ranap,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Suspen_Piutang_Radiologi_Ranap),
@@ -1762,7 +2082,36 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Persediaan_BHP_Radiologi_Rawat_Inap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Persediaan_BHP_Radiologi_Rawat_Inap)
             });
-            
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Sarana Radiologi Ranap",Beban_Jasa_Sarana_Radiologi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Sarana_Radiologi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Sarana_Radiologi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Sarana_Radiologi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Sarana Radiologi Ranap",Utang_Jasa_Sarana_Radiologi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Sarana_Radiologi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Sarana_Radiologi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Sarana_Radiologi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Perujuk Radiologi Ranap",Beban_Jasa_Perujuk_Radiologi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Perujuk_Radiologi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Perujuk_Radiologi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Perujuk_Radiologi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Perujuk Radiologi Ranap",Utang_Jasa_Perujuk_Radiologi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Perujuk_Radiologi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Perujuk_Radiologi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Perujuk_Radiologi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Menejemen Radiologi Ranap",Beban_Jasa_Menejemen_Radiologi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Menejemen_Radiologi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Menejemen_Radiologi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Menejemen_Radiologi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Menejemen Radiologi Ranap",Utang_Jasa_Menejemen_Radiologi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Menejemen_Radiologi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Menejemen_Radiologi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Menejemen_Radiologi_Ranap)
+            });
             tabMode.addRow(new Object[]{" [Debet] Akun Suspen Piutang Obat Ranap",Suspen_Piutang_Obat_Ranap,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Suspen_Piutang_Obat_Ranap),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Suspen_Piutang_Obat_Ranap),
