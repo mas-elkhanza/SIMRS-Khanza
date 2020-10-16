@@ -145,7 +145,8 @@ public final class akses {
             pcare_cek_kartu=false,surat_bebas_narkoba=false,surat_keterangan_covid=false,pemakaian_air_tanah=false,grafik_air_tanah_pertanggal=false,
             grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false,hemodialisa=false,grafik_harian_hemodialisa=false,grafik_bulanan_hemodialisa=false,
             grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false,perbaikan_inventaris=false,surat_cuti_hamil=false,
-            permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap;
+            permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap,
+            harian_klasifikasi_pasien_ranap=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -834,6 +835,7 @@ public final class akses {
                         akses.pemeliharaan_inventaris=true;
                         akses.klasifikasi_pasien_ranap=true;
                         akses.bulanan_klasifikasi_pasien_ranap=true;
+                        akses.harian_klasifikasi_pasien_ranap=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1506,6 +1508,7 @@ public final class akses {
                         akses.pemeliharaan_inventaris=rs2.getBoolean("pemeliharaan_inventaris");
                         akses.klasifikasi_pasien_ranap=rs2.getBoolean("klasifikasi_pasien_ranap");
                         akses.bulanan_klasifikasi_pasien_ranap=rs2.getBoolean("bulanan_klasifikasi_pasien_ranap");
+                        akses.harian_klasifikasi_pasien_ranap=rs2.getBoolean("harian_klasifikasi_pasien_ranap");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2176,6 +2179,7 @@ public final class akses {
                         akses.pemeliharaan_inventaris=false;
                         akses.klasifikasi_pasien_ranap=false;
                         akses.bulanan_klasifikasi_pasien_ranap=false;
+                        akses.harian_klasifikasi_pasien_ranap=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2900,4 +2904,5 @@ public final class akses {
     public static boolean getpemeliharaan_inventaris(){return akses.pemeliharaan_inventaris;}
     public static boolean getklasifikasi_pasien_ranap(){return akses.klasifikasi_pasien_ranap;}
     public static boolean getbulanan_klasifikasi_pasien_ranap(){return akses.bulanan_klasifikasi_pasien_ranap;}
+    public static boolean getharian_klasifikasi_pasien_ranap(){return akses.harian_klasifikasi_pasien_ranap;}
 }   
