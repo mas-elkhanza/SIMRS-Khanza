@@ -199,7 +199,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 new Object[]{"No.Rawat", "Nomer RM", "Nama Pasien", "Alamat Pasien", "Penanggung Jawab",
                     "Hubungan P.J.", "Jenis Bayar", "Kamar", "Tarif Kamar", "Diagnosa Awal", "Diagnosa Akhir",
                     "Tgl.Masuk", "Jam Masuk", "Tgl.Keluar", "Jam Keluar", "Ttl.Biaya", "Stts.Pulang", "Lama",
-                    "Dokter P.J.", "Kamar", "Status Bayar"}) {
+                    "Dokter P.J.", "Kamar", "Status Bayar", "Asal Unit"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -211,7 +211,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
-                java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
 
             @Override
@@ -226,7 +226,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         tbKamIn.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbKamIn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 21; i++) {
+        for (i = 0; i < 22; i++) {
             TableColumn column = tbKamIn.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -11251,12 +11251,12 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     TNoRM.getText());
             param.put("ttd", Sequel.cariGambar("select ttd from ttd_dokter where kd_dokter ='" + kd_dokter + "'"));
             Valid.MyReportqry("rptSpri.jasper", "report", "::[ Surat Laporan Rawat Inap ]::",
-                    "SELECT temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
+                    "SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,if(temp_spri.norm='',temp_spri.nama,pasien.nm_pasien) as nm_pasien,pasien.alamat, "
                     + "CASE WHEN pasien.jk='' THEN '' WHEN pasien.jk='L' THEN 'Laki-laki' WHEN pasien.jk='P' THEN 'Perempuan' END as jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
                     + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.keluhan "
                     + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis "
                     + "left join dokter on temp_spri.kd_dokter=dokter.kd_dokter "
-                    + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit " + " WHERE"
+                    + "left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit WHERE"
                     // + " spri.tanggal like '%" + TCari.getText().trim() + "%' or "
                     // + " spri.norm like '%" + TCari.getText().trim() + "%' or "
                     // + " pasien.nm_pasien like '%" + TCari.getText().trim() + "%' or "
@@ -11266,9 +11266,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     // + " pasien.stts_nikah like '%" + TCari.getText().trim() + "%' or "
                     // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
                     // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
-                    + " temp_spri.norm like '%" + TNoRM.getText().trim() + "%' "
+                    + " temp_spri.norm = '" + TNoRM1.getText().trim() + "' "
+                   // + " and temp_spri.tanggal between " + TIn.getText() + " and " + TIn.getText() + " "
                     + " order by temp_spri.tanggal ",
                     param);
+            System.out.println("Tgl="+TIn.getText());
         }
         this.setCursor(Cursor.getDefaultCursor());
     }// GEN-LAST:event_MnSpriActionPerformed
@@ -11688,12 +11690,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,reg_periksa.p_jawab,reg_periksa.hubunganpj,"
                     + "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,"
                     + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,"
-                    + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar "
+                    + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar,nm_poli "
                     + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                     + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
                     + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
                     + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
-                    + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where " + key
+                    + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
+                    + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli where " + key
                     + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk");
             try {
                 rs = ps.executeQuery();
@@ -11706,12 +11709,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         rs.getString("jam_masuk"), rs.getString("tgl_keluar"), rs.getString("jam_keluar"),
                         Valid.SetAngka(rs.getDouble("ttl_biaya")), rs.getString("stts_pulang"),
                         rs.getString("lama"), rs.getString("nm_dokter"), rs.getString("kd_kamar"),
-                        rs.getString("status_bayar")});
+                        rs.getString("status_bayar"), rs.getString("nm_poli")});
                     psanak = koneksi.prepareStatement(
                             "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
-                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
-                            + "from reg_periksa inner join pasien inner join ranap_gabung on "
-                            + "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
+                            + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat,nm_poli "
+                            + "from reg_periksa inner join pasien inner join ranap_gabung inner join poliklinik "
+                            + "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "
+                            + "and ranap_gabung.no_rawat2=reg_periksa.no_rawat "
+                            + "and poliklinik.kd_poli=reg_periksa.kd_poli where ranap_gabung.no_rawat=?");
                     try {
                         psanak.setString(1, rs.getString(1));
                         rs2 = psanak.executeQuery();
@@ -11725,7 +11730,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 rs.getString("jam_keluar"),
                                 Valid.SetAngka(rs.getDouble("ttl_biaya") * (persenbayi / 100)),
                                 rs.getString("stts_pulang"), rs.getString("lama"), rs.getString("nm_dokter"),
-                                rs.getString("kd_kamar"), rs.getString("status_bayar")});
+                                rs.getString("kd_kamar"), rs.getString("status_bayar"), rs.getString("nm_poli")});
                         }
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : " + ex);
@@ -11802,12 +11807,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,reg_periksa.p_jawab,reg_periksa.hubunganpj,"
                     + "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,"
                     + "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,"
-                    + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar "
+                    + "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar,nm_poli "
                     + "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                     + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
                     + "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "
                     + "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "
-                    + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where " + key
+                    + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
+                    + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli where " + key
                     + " order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk");
             try {
                 rs = ps.executeQuery();
@@ -11820,7 +11826,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         rs.getString("jam_masuk"), rs.getString("tgl_keluar"), rs.getString("jam_keluar"),
                         Valid.SetAngka(rs.getDouble("ttl_biaya")), rs.getString("stts_pulang"),
                         rs.getString("lama"), rs.getString("nm_dokter"), rs.getString("kd_kamar"),
-                        rs.getString("status_bayar")});
+                        rs.getString("status_bayar"), rs.getString("nm_poli")});
                     psanak = koneksi.prepareStatement(
                             "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "
                             + "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "
@@ -11839,7 +11845,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 rs.getString("jam_keluar"),
                                 Valid.SetAngka(rs.getDouble("ttl_biaya") * (persenbayi / 100)),
                                 rs.getString("stts_pulang"), rs.getString("lama"), rs.getString("nm_dokter"),
-                                rs.getString("kd_kamar"), rs.getString("status_bayar")});
+                                rs.getString("kd_kamar"), rs.getString("status_bayar"), rs.getString("nm_poli")});
                         }
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : " + ex);

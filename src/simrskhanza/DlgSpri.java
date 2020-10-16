@@ -19,7 +19,6 @@ import fungsi.validasi;
 import interfaces.SpriDao;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -39,15 +38,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.Accordion;
-import javafx.scene.control.TitledPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.Timer;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -55,7 +49,6 @@ import javax.swing.table.TableColumn;
 import keuangan.DlgCariPerawatanRanap;
 import model.Dokter;
 import model.Spri;
-import setting.DlgUser;
 
 /**
  *
@@ -1437,8 +1430,8 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                 "select tanggal,jam,spri.norm,pasien.nm_pasien, "
                 + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "
                 + "agama,keterangan from pasien_mati,pasien "
-                + "where spri.norm=pasien.no_rkm_medis "
-                + "and spri.norm='" + TNoRM.getText() + "' ", param);
+                + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
+                + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' ", param);
     }
 }//GEN-LAST:event_MnCetakSuratMatiActionPerformed
 
@@ -1462,8 +1455,8 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                     "select tanggal,jam,spri.norm,pasien.nm_pasien,pasien.pekerjaan, "
                     + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "
                     + "agama,keterangan from pasien_mati,pasien "
-                    + "where spri.norm=pasien.no_rkm_medis "
-                    + "and spri.norm='" + TNoRM.getText() + "' ", param);
+                    + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
+                    + "and pasien_mati.no_rkm_medis='" + TNoRM.getText() + "' ", param);
         }
     }//GEN-LAST:event_MnAngkutJenazahActionPerformed
 
