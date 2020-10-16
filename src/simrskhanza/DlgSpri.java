@@ -1427,7 +1427,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         param.put("emailrs", akses.getemailrs());
         param.put("logo", Sequel.cariGambar("select logo from setting"));
         Valid.MyReportqry("rptSuratKematian.jasper", "report", "::[ Surat Kematian ]::",
-                "select tanggal,jam,spri.norm,pasien.nm_pasien, "
+                "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, "
                 + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "
                 + "agama,keterangan from pasien_mati,pasien "
                 + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
@@ -1452,7 +1452,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
             param.put("emailrs", akses.getemailrs());
             param.put("logo", Sequel.cariGambar("select logo from setting"));
             Valid.MyReportqry("rptAngkutJenazah.jasper", "report", "::[ Surat Angkut Jenazah ]::",
-                    "select tanggal,jam,spri.norm,pasien.nm_pasien,pasien.pekerjaan, "
+                    "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien,pasien.pekerjaan, "
                     + "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "
                     + "agama,keterangan from pasien_mati,pasien "
                     + "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "
