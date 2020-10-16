@@ -296,14 +296,14 @@ public class DlgInputStok extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
             public void windowDeactivated(java.awt.event.WindowEvent evt) {
                 formWindowDeactivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -499,7 +499,7 @@ public class DlgInputStok extends javax.swing.JDialog {
             }
         });
         panelisi3.add(catatan);
-        catatan.setBounds(114, 40, 528, 23);
+        catatan.setBounds(114, 40, 500, 23);
 
         label11.setText("Tanggal Opname :");
         label11.setName("label11"); // NOI18N
