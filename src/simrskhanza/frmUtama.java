@@ -560,6 +560,7 @@ import laporan.DlgHarianHAIs2;
 import laporan.DlgHarianKlasifikasiPasienRanap;
 import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
+import laporan.DlgKlasifikasiPasienPerBangsal;
 import laporan.DlgPelayananPoli;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
@@ -16435,6 +16436,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnKlasifikasiPasienPerRuangActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgKlasifikasiPasienPerBangsal aplikasi=new DlgKlasifikasiPasienPerBangsal(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17043,7 +17055,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
-            btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap;
+            btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang;
     
     public void isWall(){
         try{            
@@ -18580,11 +18592,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
-            if(akses.getklasifikasi_pasien_ranap()==true){  
-                Panelmenu.add(btnKlasifikasiPasienRanap);                 
-                jmlmenu++;
-            }
-            
             if(akses.getbulanan_klasifikasi_pasien_ranap()==true){  
                 Panelmenu.add(btnBulananKlasifikasiPasienRanap);                 
                 jmlmenu++;
@@ -18592,6 +18599,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getharian_klasifikasi_pasien_ranap()==true){  
                 Panelmenu.add(btnHarianKlasifikasiPasienRanap);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getklasifikasi_pasien_perbangsal()==true){  
+                Panelmenu.add(btnKlasifikasiPasienPerRuang);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -19308,6 +19320,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdata_HAIs()==true){
                 Panelmenu.add(btnDataHAIs); 
+                jmlmenu++;
+            }
+            
+            if(akses.getklasifikasi_pasien_ranap()==true){
+                Panelmenu.add(btnKlasifikasiPasienRanap); 
                 jmlmenu++;
             }
             
@@ -21921,11 +21938,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
-        if(akses.getklasifikasi_pasien_ranap()==true){  
-            Panelmenu.add(btnKlasifikasiPasienRanap);                 
-            jmlmenu++;
-        }
-        
         if(akses.getbulanan_klasifikasi_pasien_ranap()==true){  
             Panelmenu.add(btnBulananKlasifikasiPasienRanap);                 
             jmlmenu++;
@@ -21933,6 +21945,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getharian_klasifikasi_pasien_ranap()==true){  
             Panelmenu.add(btnHarianKlasifikasiPasienRanap);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getklasifikasi_pasien_perbangsal()==true){  
+            Panelmenu.add(btnKlasifikasiPasienPerRuang);                 
             jmlmenu++;
         }
 
@@ -22646,6 +22663,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdata_HAIs()==true){
             Panelmenu.add(btnDataHAIs); 
+            jmlmenu++;
+        }
+        
+        if(akses.getklasifikasi_pasien_ranap()==true){
+            Panelmenu.add(btnKlasifikasiPasienRanap); 
             jmlmenu++;
         }
 
@@ -25815,13 +25837,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
-        if(akses.getklasifikasi_pasien_ranap()==true){  
-            if(btnKlasifikasiPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnKlasifikasiPasienRanap);                 
-                jmlmenu++;
-            }                
-        }
-        
         if(akses.getbulanan_klasifikasi_pasien_ranap()==true){  
             if(btnBulananKlasifikasiPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBulananKlasifikasiPasienRanap);                 
@@ -25832,6 +25847,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getharian_klasifikasi_pasien_ranap()==true){  
             if(btnHarianKlasifikasiPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHarianKlasifikasiPasienRanap);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getklasifikasi_pasien_perbangsal()==true){  
+            if(btnKlasifikasiPasienPerRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKlasifikasiPasienPerRuang);                 
                 jmlmenu++;
             }                
         }
@@ -26828,6 +26850,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdata_HAIs()==true){
             if(btnDataHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDataHAIs); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getklasifikasi_pasien_ranap()==true){
+            if(btnKlasifikasiPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKlasifikasiPasienRanap); 
                 jmlmenu++;
             }                
         }
@@ -30159,6 +30188,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHarianKlasifikasiPasienRanap.setName("btnHarianKlasifikasiPasienRanap"); 
         btnHarianKlasifikasiPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHarianKlasifikasiPasienRanap.addActionListener(this::btnHarianKlasifikasiPasienRanapActionPerformed);
+        
+        btnKlasifikasiPasienPerRuang = new widget.ButtonBig();
+        btnKlasifikasiPasienPerRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Letter_Printing_Paper_Sizes_1977178.png"))); 
+        btnKlasifikasiPasienPerRuang.setText("Klasifikasi Pasien Per Ruang");
+        btnKlasifikasiPasienPerRuang.setIconTextGap(0);
+        btnKlasifikasiPasienPerRuang.setName("btnKlasifikasiPasienPerRuang"); 
+        btnKlasifikasiPasienPerRuang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKlasifikasiPasienPerRuang.addActionListener(this::btnKlasifikasiPasienPerRuangActionPerformed);
     }
 
     
