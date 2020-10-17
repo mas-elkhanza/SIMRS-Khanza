@@ -1308,7 +1308,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 System.out.println("Notif : "+e);
             }
         }
-
     }//GEN-LAST:event_BtnPrint5ActionPerformed
 
     private void BtnKeluar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluar4ActionPerformed
@@ -1632,6 +1631,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         ppHapus.setEnabled(akses.getsurat_pemesanan_medis());
         ppDatang.setEnabled(akses.getpemesanan_obat());
         ppProses.setEnabled(akses.getsurat_pemesanan_medis());
+        ppSuratPemesanan.setEnabled(akses.getsurat_pemesanan_medis());
     }
     
 }
