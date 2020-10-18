@@ -152,21 +152,21 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(65);
             }else if(i==3){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(170);
             }else if(i==4){
                 column.setPreferredWidth(140);
             }else if(i==5){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(130);
             }else if(i==6){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(160);
             }else if(i==7){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==8){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
             }else if(i==9){
                 column.setPreferredWidth(100);
             }else if(i==10){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(75);
             }else if(i==11){
                 column.setPreferredWidth(105);
             }else if(i==12){
@@ -176,9 +176,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(47);
             }else if(i==15){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==16){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             }else if(i==17){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -186,7 +186,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==19){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(95);
             }
         }
         tbKasirRalan.setDefaultRenderer(Object.class, new WarnaTable());

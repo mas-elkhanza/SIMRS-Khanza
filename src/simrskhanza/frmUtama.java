@@ -565,6 +565,7 @@ import laporan.DlgPelayananPoli;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.DlgRekapPermintaanDiet;
+import rekammedis.DlgSOAPPerawatan;
 import laporan.LaporanKedatanganPasienPerJam;
 import laporan.LaporanRegistrasiPoliPerTanggal;
 import laporan.LaporanRekapKunjunganRuangPerTahun;
@@ -16447,6 +16448,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSOAPPerawatanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSOAPPerawatan aplikasi=new DlgSOAPPerawatan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17055,7 +17067,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
-            btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang;
+            btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan;
     
     public void isWall(){
         try{            
@@ -19325,6 +19337,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getklasifikasi_pasien_ranap()==true){
                 Panelmenu.add(btnKlasifikasiPasienRanap); 
+                jmlmenu++;
+            }
+            
+            if(akses.getsoap_perawatan()==true){
+                Panelmenu.add(btnSOAPPerawatan); 
                 jmlmenu++;
             }
             
@@ -22668,6 +22685,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getklasifikasi_pasien_ranap()==true){
             Panelmenu.add(btnKlasifikasiPasienRanap); 
+            jmlmenu++;
+        }
+        
+        if(akses.getsoap_perawatan()==true){
+            Panelmenu.add(btnSOAPPerawatan); 
             jmlmenu++;
         }
 
@@ -26861,6 +26883,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getsoap_perawatan()==true){
+            if(btnSOAPPerawatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSOAPPerawatan); 
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getinsiden_keselamatan_pasien()==true){
             if(btnInsidenKeselamatanPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnInsidenKeselamatanPasien); 
@@ -30196,6 +30225,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKlasifikasiPasienPerRuang.setName("btnKlasifikasiPasienPerRuang"); 
         btnKlasifikasiPasienPerRuang.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKlasifikasiPasienPerRuang.addActionListener(this::btnKlasifikasiPasienPerRuangActionPerformed);
+        
+        btnSOAPPerawatan = new widget.ButtonBig();
+        btnSOAPPerawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_patient-health_report-graph-coronavirus_6000116.png"))); 
+        btnSOAPPerawatan.setText("SOAP Perawatan");
+        btnSOAPPerawatan.setIconTextGap(0);
+        btnSOAPPerawatan.setName("btnSOAPPerawatan"); 
+        btnSOAPPerawatan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSOAPPerawatan.addActionListener(this::btnSOAPPerawatanActionPerformed);
     }
 
     
