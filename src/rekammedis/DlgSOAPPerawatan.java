@@ -396,7 +396,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                             "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+" / "+rs.getString("jk")+" / "+rs.getString("umur")+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("status_lanjut")+"</td>"+
                             "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0'>");
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0'>");
                     try {
                         rs2=koneksi.prepareStatement(
                                 "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.keluhan,"+
@@ -433,6 +433,41 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     }
                     
+                    try {
+                        rs2=koneksi.prepareStatement(
+                                "select pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.keluhan,"+
+                                "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.rtl,pemeriksaan_ranap.penilaian "+
+                                "from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat='"+rs.getString("no_rawat")+"' "+
+                                "order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat").executeQuery();
+                        if(rs2.next()){
+                            htmlContent.append(
+                                    "<tr class='isi'>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='7%'>Tanggal</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='23%'>Subjek</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='24%'>Objek</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='23%'>Asesmen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='23%'>Plan</td>"+
+                                    "</tr>");
+                            rs2.beforeFirst();
+                            while(rs2.next()){
+                                 htmlContent.append(                             
+                                    "<tr class='isi'>"+
+                                        "<td align='center'>"+rs2.getString("tgl_perawatan")+"<br>"+rs2.getString("jam_rawat")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("keluhan")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("pemeriksaan")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("penilaian")+"</td>"+
+                                        "<td align='left'>"+rs2.getString("rtl")+"</td>"+
+                                    "</tr>"
+                                 ); 
+                            } 
+                        }       
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
                     htmlContent.append(
                                 "</table>"+
                             "</td>"+
