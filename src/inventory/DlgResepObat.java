@@ -256,6 +256,9 @@ public final class DlgResepObat extends javax.swing.JDialog {
         } catch (Exception ex) {
             lembarobat="";
         }
+        
+        Valid.SetTgl2(DTPCari1,format.format(new Date())+" 00:00:00");
+        Valid.SetTgl2(DTPCari2,format.format(new Date())+" 23:59:59"); 
     }
 
     /** This method is called from within the constructor to
