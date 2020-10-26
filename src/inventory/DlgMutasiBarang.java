@@ -2,11 +2,11 @@ package inventory;
 
 
 import fungsi.WarnaTable2;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -48,6 +48,7 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
     private boolean sukses=false;
     private String aktifkanbatch="no";
     private DlgPindahGudang pindah=new DlgPindahGudang(null,false);
+    private String nopermintaan;
 
     /** Creates new form DlgProgramStudi
      * @param frame
@@ -596,6 +597,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     Trackobat.catatRiwayat(tbDokter.getValueAt(i,3).toString(),Valid.SetAngka(tbDokter.getValueAt(i,0).toString()),0,"Mutasi",akses.getkode(),kdke.getText(),"Simpan","","");
                                     Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,3).toString()+"','"+kdke.getText()+"','"+tbDokter.getValueAt(i,0).toString()+"','',''", 
                                         "stok=stok+"+tbDokter.getValueAt(i,0).toString()+"","kode_brng='"+tbDokter.getValueAt(i,3).toString()+"' and kd_bangsal='"+kdke.getText()+"' and no_batch='' and no_faktur=''");
+                                    //TODO update Status Permintaan
+                                    System.out.println("Nopermintaan in method Simpan "+nopermintaan);
+                                    Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?", nopermintaan);
+            
                                 }
                                     
                             }else{
@@ -1252,6 +1257,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         
     }
 
+    public void updateStatus(String nopermintaan){
+        this.nopermintaan = nopermintaan;
+        System.out.println("nopermintaan in method updatestatus="+nopermintaan);
+            
+    }
     /**
      *
      */

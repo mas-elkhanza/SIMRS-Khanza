@@ -1,11 +1,11 @@
 package simrskhanza;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1209,7 +1209,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
     private void isRawat() {
          Sequel.cariIsi("select pasien.nm_pasien from reg_periksa inner join pasien "+
                         "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis where reg_periksa.no_rawat=? ",TPasien,TNoRw.getText());
-         Sequel.cariIsi("select kd_kamar from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",Kamar,TNoRw.getText());
+         Sequel.cariIsi("select kd_kamar from kamar_inap where no_rawat=?  and stts_pulang='-' order by tgl_masuk ",Kamar,TNoRw.getText());
     }
     
     /**

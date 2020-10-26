@@ -1,11 +1,11 @@
 package inventory;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -22,8 +22,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariBangsal;
 import kepegawaian.DlgCariPegawai;
+import simrskhanza.DlgCariBangsal;
 
 /**
  *
@@ -1175,10 +1175,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if (tbDokter.getValueAt(tbDokter.getSelectedRow(), 0).toString().trim().equals("")) {
             Valid.textKosong(TCari, "pilihan data");
         } else {
-            Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?", tbDokter.getValueAt(tbDokter.getSelectedRow(), 1).toString().trim());
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             aplikasi.tampilkanpermintaan = false;
             aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(), 1).toString().trim());
+            aplikasi.updateStatus(tbDokter.getValueAt(tbDokter.getSelectedRow(), 1).toString().trim());
             aplikasi.isCek();
             aplikasi.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
             aplikasi.setLocationRelativeTo(internalFrame1);

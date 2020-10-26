@@ -33,9 +33,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -323,6 +321,7 @@ public final class sekuel {
      */
     public boolean menyimpantf(String table, String value, String sama, int i, String[] a) {
         try {
+            System.out.println("Query: "+"insert into " + table + " values(" + value + ")");
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             for (angka = 1; angka <= i; angka++) {
                 ps.setString(angka, a[angka - 1]);
