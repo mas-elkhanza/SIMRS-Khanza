@@ -549,6 +549,7 @@ import keuangan.KeuanganHutangToko;
 import keuangan.DlgJnsPerawatanRanap;
 import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuanganBayarPesanToko;
+import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPenagihanPiutangPasien;
 import keuangan.KeuanganSetTarifOnline;
 import laporan.DlgBulananKlasifikasiPasienRanap;
@@ -16459,6 +16460,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnKlaimRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganKlaimRalan billing=new KeuanganKlaimRalan(this,false);
+        billing.tampil();
+        billing.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        billing.setLocationRelativeTo(PanelUtama);
+        billing.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17067,7 +17080,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratBebasNarkoba,btnSuratKeteranganCovid,btnPemakaianAirTanah,btnGrafikPemakaianAirTanahPerTanggal,btnGrafikPemakaianAirTanahPerBulan,
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
-            btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan;
+            btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
+            btnKlaimRawatJalan;
     
     public void isWall(){
         try{            
@@ -18732,6 +18746,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenagihan_piutang_pasien()==true){
                Panelmenu.add(btnPenagihanPiutangPasien); 
+               jmlmenu++;
+            }
+            
+            if(akses.getklaim_rawat_jalan()==true){
+               Panelmenu.add(btnKlaimRawatJalan); 
                jmlmenu++;
             }
 
@@ -22082,6 +22101,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenagihan_piutang_pasien()==true){
            Panelmenu.add(btnPenagihanPiutangPasien); 
+           jmlmenu++;
+        }
+        
+        if(akses.getklaim_rawat_jalan()==true){
+           Panelmenu.add(btnKlaimRawatJalan); 
            jmlmenu++;
         }
 
@@ -26037,6 +26061,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenagihan_piutang_pasien()==true){
             if(btnPenagihanPiutangPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                Panelmenu.add(btnPenagihanPiutangPasien); 
+               jmlmenu++; 
+            }               
+        }
+        
+        if(akses.getklaim_rawat_jalan()==true){
+            if(btnKlaimRawatJalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+               Panelmenu.add(btnKlaimRawatJalan); 
                jmlmenu++; 
             }               
         }
@@ -30233,6 +30264,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSOAPPerawatan.setName("btnSOAPPerawatan"); 
         btnSOAPPerawatan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSOAPPerawatan.addActionListener(this::btnSOAPPerawatanActionPerformed);
+        
+        btnKlaimRawatJalan = new widget.ButtonBig();
+        btnKlaimRawatJalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_PriorityTasks-task-document-paper-descending_6071856.png"))); 
+        btnKlaimRawatJalan.setText("Klaim Rawat Jalan");
+        btnKlaimRawatJalan.setIconTextGap(0);
+        btnKlaimRawatJalan.setName("btnKlaimRawatJalan"); 
+        btnKlaimRawatJalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKlaimRawatJalan.addActionListener(this::btnKlaimRawatJalanActionPerformed);
     }
 
     
