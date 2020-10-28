@@ -1189,6 +1189,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnPenjab = new javax.swing.JMenuItem();
         MnDiagnosaMasuk = new javax.swing.JMenuItem();
         MnDiagnosaAkhir = new javax.swing.JMenuItem();
+        MnWaktuMasuk = new javax.swing.JMenuItem();
         MnHapusData = new javax.swing.JMenu();
         MnHapusTagihanOperasi = new javax.swing.JMenuItem();
         MnHapusObatOperasi = new javax.swing.JMenuItem();
@@ -1299,6 +1300,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
         txtPenjaminan = new widget.TextBox();
         BtnSimpanCoder1 = new widget.Button();
         txtIdCoder = new javax.swing.JTextField();
+        WindowWaktuMasuk = new javax.swing.JDialog();
+        internalFrame12 = new widget.InternalFrame();
+        BtnCloseIn7 = new widget.Button();
+        BtnSimpan7 = new widget.Button();
+        jLabel8 = new widget.Label();
+        dateMasuk = new widget.Tanggal1();
+        jLabel9 = new widget.Label();
+        ComboJam = new widget.ComboBox();
+        ComboMenit = new widget.ComboBox();
+        ComboDetik = new widget.ComboBox();
         internalFrame1 = new widget.InternalFrame();
         PanelCariUtama = new javax.swing.JPanel();
         panelGlass10 = new widget.panelisi();
@@ -1348,7 +1359,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Input Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(null);
 
@@ -3290,7 +3301,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         });
         MnGanti.add(MnPenjab);
 
-        MnDiagnosaMasuk.setBackground(new java.awt.Color(255, 255, 254));
+        MnDiagnosaMasuk.setBackground(new java.awt.Color(255, 255, 204));
         MnDiagnosaMasuk.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDiagnosaMasuk.setForeground(new java.awt.Color(50, 50, 50));
         MnDiagnosaMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -3321,6 +3332,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MnGanti.add(MnDiagnosaAkhir);
+
+        MnWaktuMasuk.setBackground(new java.awt.Color(255, 255, 204));
+        MnWaktuMasuk.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnWaktuMasuk.setForeground(new java.awt.Color(50, 50, 50));
+        MnWaktuMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnWaktuMasuk.setText("Tanggal & Jam Masuk");
+        MnWaktuMasuk.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnWaktuMasuk.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnWaktuMasuk.setName("MnWaktuMasuk"); // NOI18N
+        MnWaktuMasuk.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnWaktuMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnWaktuMasukActionPerformed(evt);
+            }
+        });
+        MnGanti.add(MnWaktuMasuk);
 
         jPopupMenu1.add(MnGanti);
 
@@ -3443,7 +3470,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Pindah Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Pindah Kamar Inap Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(null);
 
@@ -3676,7 +3703,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowCaraBayar.setUndecorated(true);
         WindowCaraBayar.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ganti Jenis Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ganti Jenis Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(null);
 
@@ -3745,7 +3772,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowRanapGabung.setUndecorated(true);
         WindowRanapGabung.setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ranap Gabung Ibu & Bayi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ranap Gabung Ibu & Bayi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(null);
 
@@ -3845,7 +3872,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         DlgSakit2.setUndecorated(true);
         DlgSakit2.setResizable(false);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Keterangan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Keterangan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 70, 50))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
         internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -3955,7 +3982,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowDiagnosaMasuk.setUndecorated(true);
         WindowDiagnosaMasuk.setResizable(false);
 
-        internalFrame9.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Ganti Diagnosa Awal Sementara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame9.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Ganti Diagnosa Awal Sementara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame9.setName("internalFrame9"); // NOI18N
 
         BtnCloseIn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -4024,7 +4051,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowDiagnosaAkhir.setUndecorated(true);
         WindowDiagnosaAkhir.setResizable(false);
 
-        internalFrame10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Ganti Diagnosa Akhir Sementara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Ganti Diagnosa Akhir Sementara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame10.setName("internalFrame10"); // NOI18N
 
         BtnCloseIn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -4096,7 +4123,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowInputCoderBPJS.setResizable(false);
 
         internalFrame11.setBackground(new java.awt.Color(204, 255, 255));
-        internalFrame11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Input Coder BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Input Coder BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame11.setName("internalFrame11"); // NOI18N
         internalFrame11.setOpaque(false);
 
@@ -4328,6 +4355,121 @@ public class DlgKamarInap extends javax.swing.JDialog {
         WindowInputCoderBPJS.getContentPane().add(internalFrame11, java.awt.BorderLayout.CENTER);
 
         txtIdCoder.setName("txtIdCoder"); // NOI18N
+
+        WindowWaktuMasuk.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowWaktuMasuk.setName("WindowWaktuMasuk"); // NOI18N
+        WindowWaktuMasuk.setUndecorated(true);
+        WindowWaktuMasuk.setResizable(false);
+
+        internalFrame12.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "::[ Ganti Tanggal & Waktu Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame12.setName("internalFrame12"); // NOI18N
+
+        BtnCloseIn7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseIn7.setMnemonic('U');
+        BtnCloseIn7.setText("Tutup");
+        BtnCloseIn7.setToolTipText("Alt+U");
+        BtnCloseIn7.setName("BtnCloseIn7"); // NOI18N
+        BtnCloseIn7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseIn7ActionPerformed(evt);
+            }
+        });
+
+        BtnSimpan7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/edit_f2.png"))); // NOI18N
+        BtnSimpan7.setMnemonic('S');
+        BtnSimpan7.setText("Ganti");
+        BtnSimpan7.setToolTipText("Alt+S");
+        BtnSimpan7.setName("BtnSimpan7"); // NOI18N
+        BtnSimpan7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan7ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Tgl. Reg. :");
+        jLabel8.setName("jLabel8"); // NOI18N
+
+        dateMasuk.setName("dateMasuk"); // NOI18N
+        dateMasuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dateMasukKeyPressed(evt);
+            }
+        });
+
+        jLabel9.setText("Jam :");
+        jLabel9.setName("jLabel9"); // NOI18N
+
+        ComboJam.setEditable(true);
+        ComboJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        ComboJam.setName("ComboJam"); // NOI18N
+        ComboJam.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ComboJamKeyPressed(evt);
+            }
+        });
+
+        ComboMenit.setEditable(true);
+        ComboMenit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        ComboMenit.setName("ComboMenit"); // NOI18N
+        ComboMenit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ComboMenitKeyPressed(evt);
+            }
+        });
+
+        ComboDetik.setEditable(true);
+        ComboDetik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        ComboDetik.setName("ComboDetik"); // NOI18N
+        ComboDetik.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ComboDetikKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout internalFrame12Layout = new javax.swing.GroupLayout(internalFrame12);
+        internalFrame12.setLayout(internalFrame12Layout);
+        internalFrame12Layout.setHorizontalGroup(
+            internalFrame12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(internalFrame12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(internalFrame12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(internalFrame12Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(dateMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ComboJam, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(ComboMenit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(ComboDetik, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(internalFrame12Layout.createSequentialGroup()
+                        .addComponent(BtnSimpan7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtnCloseIn7, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        internalFrame12Layout.setVerticalGroup(
+            internalFrame12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(internalFrame12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(internalFrame12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboJam, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboMenit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboDetik, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(internalFrame12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnSimpan7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnCloseIn7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        WindowWaktuMasuk.getContentPane().add(internalFrame12, java.awt.BorderLayout.CENTER);
+        internalFrame12.getAccessibleContext().setAccessibleName("::[ Ganti Tanggal & Jam Masuk ]::");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -4875,6 +5017,69 @@ public class DlgKamarInap extends javax.swing.JDialog {
         // TODO add your handling code here:
         getDataCoder();
     }//GEN-LAST:event_tableCoderMouseClicked
+
+    private void MnWaktuMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnWaktuMasukActionPerformed
+        // TODO add your handling code here:
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Maaf, table masih kosong...!!!!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+            TCari.requestFocus();
+        } else if (norawat.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih dulu pasien...!!!", "Peringatan", JOptionPane.ERROR_MESSAGE);
+            tbKamIn.requestFocus();
+        } else {
+            if (tbKamIn.getSelectedRow() > -1) {
+                DecimalFormat formatter = new DecimalFormat("00");
+                Date cal = new Date();
+                dateMasuk.setDate(cal);
+                String jam = formatter.format(cal.getHours());
+                String menit = formatter.format(cal.getMinutes());
+                String detik = formatter.format(cal.getSeconds());
+                ComboJam.setSelectedItem(jam);
+                ComboMenit.setSelectedItem(menit);
+                ComboDetik.setSelectedItem(detik);
+                WindowWaktuMasuk.setSize(450, 120);
+                WindowWaktuMasuk.setLocationRelativeTo(internalFrame1);
+                WindowWaktuMasuk.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_MnWaktuMasukActionPerformed
+
+    private void BtnCloseIn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn7ActionPerformed
+        // TODO add your handling code here:
+        WindowWaktuMasuk.dispose();
+    }//GEN-LAST:event_BtnCloseIn7ActionPerformed
+
+    private void BtnSimpan7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan7ActionPerformed
+        // TODO add your handling code here:
+        if (norawat.getText().trim().equals("")) {
+            Valid.textKosong(norawat, "No.Rawat");
+        } else {
+            Sequel.mengedit("kamar_inap", "no_rawat=?", " tgl_masuk=?, jam_masuk=?", 3,
+                    new String[]{
+                        Valid.SetDateToString(dateMasuk.getDate()),
+                        ComboJam.getSelectedItem() + ":" + ComboMenit.getSelectedItem() + ":" + ComboDetik.getSelectedItem(),
+                        norawat.getText()
+                    });
+            tampil();
+            WindowWaktuMasuk.dispose();
+        }
+    }//GEN-LAST:event_BtnSimpan7ActionPerformed
+
+    private void dateMasukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dateMasukKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateMasukKeyPressed
+
+    private void ComboJamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComboJamKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboJamKeyPressed
+
+    private void ComboMenitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComboMenitKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboMenitKeyPressed
+
+    private void ComboDetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComboDetikKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboDetikKeyPressed
 
     private void getDataCoder() {
         if (tableCoder.getSelectedRow() != -1) {
@@ -11267,10 +11472,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     // + " pasien.agama like '%" + TCari.getText().trim() + "%' or "
                     // + " spri.rencana_perawatan like '%" + TCari.getText().trim() + "%' "
                     + " temp_spri.norm = '" + TNoRM1.getText().trim() + "' "
-                   // + " and temp_spri.tanggal between " + TIn.getText() + " and " + TIn.getText() + " "
+                    // + " and temp_spri.tanggal between " + TIn.getText() + " and " + TIn.getText() + " "
                     + " order by temp_spri.tanggal ",
                     param);
-            System.out.println("Tgl="+TIn.getText());
+            System.out.println("Tgl=" + TIn.getText());
         }
         this.setCursor(Cursor.getDefaultCursor());
     }// GEN-LAST:event_MnSpriActionPerformed
@@ -11352,6 +11557,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.Button BtnCloseIn4;
     private widget.Button BtnCloseIn5;
     private widget.Button BtnCloseIn6;
+    private widget.Button BtnCloseIn7;
     private widget.Button BtnCloseInpindah;
     private widget.Button BtnHapusGabung;
     private widget.Button BtnIn;
@@ -11365,6 +11571,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.Button BtnSimpan4;
     private widget.Button BtnSimpan5;
     private widget.Button BtnSimpan6;
+    private widget.Button BtnSimpan7;
     private widget.Button BtnSimpanCoder;
     private widget.Button BtnSimpanCoder1;
     private widget.Button BtnSimpanGabung;
@@ -11375,6 +11582,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.ComboBox CmbTahunpindah;
     private widget.ComboBox CmbTgl;
     private widget.ComboBox CmbTglpindah;
+    private widget.ComboBox ComboDetik;
+    private widget.ComboBox ComboJam;
+    private widget.ComboBox ComboMenit;
     private widget.TextBox CrDokter3;
     private widget.Tanggal1 DTPCari1;
     private widget.Tanggal1 DTPCari2;
@@ -11478,6 +11688,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnTilikBedah;
     private javax.swing.JMenu MnTindakan;
     private javax.swing.JMenuItem MnUpdateHari;
+    private javax.swing.JMenuItem MnWaktuMasuk;
     private widget.TextBox NmBayi;
     private widget.TextBox NoRawatGabung;
     private widget.TextBox NoRmBayi;
@@ -11519,6 +11730,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private javax.swing.JDialog WindowInputKamar;
     private javax.swing.JDialog WindowPindahKamar;
     private javax.swing.JDialog WindowRanapGabung;
+    private javax.swing.JDialog WindowWaktuMasuk;
     private widget.Button btnBangsalCari;
     private widget.Button btnBayar;
     private widget.Button btnDiagnosa;
@@ -11539,12 +11751,14 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.ComboBox cmbMntpindah;
     private widget.ComboBox cmbStatus;
     private widget.ComboBox cmbStatusBayar;
+    private widget.Tanggal1 dateMasuk;
     private javax.swing.JMenuItem detailRawat;
     private widget.TextBox diagnosaakhir;
     private widget.TextBox diagnosaawal;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame10;
     private widget.InternalFrame internalFrame11;
+    private widget.InternalFrame internalFrame12;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame5;
@@ -11595,6 +11809,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
+    private widget.Label jLabel8;
+    private widget.Label jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu.Separator jSeparator12;
