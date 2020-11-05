@@ -1,27 +1,23 @@
 package simrskhanza;
 
-import rekammedis.RMRiwayatPerawatan;
 import bridging.BPJSDataSEP;
 import bridging.CoronaPasien;
 import bridging.DlgDataTB;
-import permintaan.DlgBookingOperasi;
 import bridging.DlgSKDPBPJS;
 import bridging.INACBGPerawatanCorona;
 import bridging.InhealthDataSJP;
 import bridging.SisruteRujukanKeluar;
-import inventory.DlgResepObat;
-import inventory.DlgPemberianObat;
-import laporan.DlgDiagnosaPenyakit;
-import keuangan.DlgBilingRalan;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
+import inventory.DlgPemberianObat;
 import inventory.DlgPenjualan;
 import inventory.DlgPeresepanDokter;
 import inventory.DlgPiutang;
+import inventory.DlgResepObat;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -39,8 +35,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -55,22 +49,26 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBilingParsialRalan;
+import keuangan.DlgBilingRalan;
 import keuangan.DlgLhtPiutang;
-import keuangan.DlgRBObatPoli;
 import keuangan.DlgRBJmDokter;
 import keuangan.DlgRBJmParamedis;
+import keuangan.DlgRBObatPoli;
 import keuangan.DlgRBTindakanPoli;
 import keuangan.DlgRHJmDokter;
 import keuangan.DlgRHJmParamedis;
 import laporan.DlgBerkasRawat;
 import laporan.DlgDataInsidenKeselamatan;
-import rekammedis.RMDataResumePasien;
+import laporan.DlgDiagnosaPenyakit;
+import permintaan.DlgBookingOperasi;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
+import rekammedis.RMDataResumePasien;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
 import rekammedis.RMPenilaianAwalKeperawatanRalan;
+import rekammedis.RMRiwayatPerawatan;
 import rekammedis.RMTriaseIGD;
 import surat.SuratSakit;
 import surat.SuratTidakHamil;
@@ -145,7 +143,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
 
         DTPCari1.setDate(new Date());
         DTPCari2.setDate(new Date());
-        
+
         tabModekasir = new DefaultTableModel(null,
                 new String[]{"Kd.Dokter", "Dokter Dituju", "No.RM", "Pasien", "Poliklinik", "Penanggung Jawab",
                     "Alamat P.J.", "Hubungan P.J.", "Biaya Reg", "Jenis Bayar", "Status", "No.Rawat",
@@ -8238,18 +8236,18 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             dlgki.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
             dlgki.setLocationRelativeTo(internalFrame1);
             dlgki.isCek();
-            dlgki.setNoRm(TNoRw.getText(), Valid.SetTgl2(Tanggal.getText()), "2. Ralan", "IGDK", "Unit IGD/UGD");
+            dlgki.setNoRm(TNoRw.getText(), Valid.SetTgl2(Tanggal.getText()), "2. Ralan", "U0076", "INSTALASI GAWAT DARURAT");
             dlgki.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }// GEN-LAST:event_MnSEPActionPerformed
 
-    private void MnSJPActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnSJPActionPerformed
+    private void MnSJPActionPerformed(java.awt.event.ActionEvent evt) {
         if (tabModekasir.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, table masih kosong...!!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, Data pada table masih kosong.", ".:: Informasi ::.", JOptionPane.OK_OPTION);
             TCari.requestFocus();
         } else if (TNoRw.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu dengan klik data pada table...", ".:: Panduan ::.", JOptionPane.OK_OPTION);
             tbKasirRalan.requestFocus();
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8259,11 +8257,11 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             dlgki.setLocationRelativeTo(internalFrame1);
             dlgki.isCek();
             dlgki.setNoRm(TNoRw.getText(), Valid.SetTgl2(Tanggal.getText()), "1 RJTP RAWAT JALAN TINGKAT PERTAMA",
-                    "IGDK", "Unit IGD/UGD");
+                    "U0076", "INSTALASI GAWAT DARURAT");
             dlgki.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
-    }// GEN-LAST:event_MnSJPActionPerformed
+    }
 
     private void MnRujukSisruteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnRujukSisruteActionPerformed
         if (tabModekasir.getRowCount() == 0) {

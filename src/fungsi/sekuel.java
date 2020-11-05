@@ -155,6 +155,7 @@ public final class sekuel {
      */
     public boolean menyimpantf2(String table, String value, String sama) {
         try {
+            System.out.println("Query : \ninsert into " + table + " \nvalues(\n" + value + "\n)\n");
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             ps.executeUpdate();
             if (ps != null) {
@@ -164,8 +165,7 @@ public final class sekuel {
             SimpanTrack("insert into " + table + " values(" + value + ")");
             return true;
         } catch (Exception e) {
-
-            System.out.println(sekuel.class.getName() + ", " + e);
+            System.out.println(sekuel.class.getName() + ", " + e.toString());
             return false;
         }
     }
@@ -1454,6 +1454,7 @@ public final class sekuel {
         try {
             connect.commit();
         } catch (Exception e) {
+            System.err.println("Comit Connect Error : " + e.toString());
         }
     }
 
@@ -1463,8 +1464,9 @@ public final class sekuel {
     public void RollBack() {
         try {
             connect.rollback();
+            System.out.println("Rollback success, Cancel Transactions");
         } catch (Exception e) {
-            System.out.println("Notif : " + e);
+            System.err.println("Rollback Error : " + e.toString());
             JOptionPane.showMessageDialog(null, "Gagal melakukan rollback..!");
         }
     }

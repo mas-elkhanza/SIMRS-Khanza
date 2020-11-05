@@ -11,20 +11,17 @@
 
 package bridging;
 
-import fungsi.WarnaTable;
-import java.awt.Dimension;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -43,14 +40,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import kepegawaian.DlgCariDokter;
+import laporan.DlgCariPenyakit;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
-import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgBahasa;
 import simrskhanza.DlgCacatFisik;
-import laporan.DlgCariPenyakit;
 import simrskhanza.DlgGolonganPolri;
 import simrskhanza.DlgGolonganTNI;
 import simrskhanza.DlgJabatanPolri;
@@ -4614,16 +4614,17 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             headers.add("Content-Type","application/json");
 	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
                             "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
-                            "\"nokainhealth\": \""+NoKartu.getText()+"\"," +
+                            "\"nokainhealth\": \""+nomorpeserta+"\"," +
                             "\"tglpelayanan\": \""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"\"," +
-                            "\"jenispelayanan\": \"3\"," +
+                            "\"jenispelayanan\": \""+JenisPelayanan.getSelectedItem().toString().substring(0,2)+"\"," +
                             "\"poli\": \"UMU\"" +
                          "}";
+            System.out.println("request JSON :"+requestJson.toString());
             HttpEntity requestEntity = new HttpEntity(requestJson,headers);
             RestTemplate rest = new RestTemplate();
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-            //System.out.println("JSON : "+rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            System.out.println("JSON : "+rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
             if(root.path("ERRORCODE").asText().equals("00")){
                 Valid.tabelKosong(tabMode);
                 tabMode.addRow(new Object[]{
