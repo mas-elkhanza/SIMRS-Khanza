@@ -663,6 +663,34 @@ public final class validasi {
         }
     }
 
+    public void loadCombo2(JComboBox cmb, String field, String field2, String table) {
+        cmb.removeAllItems();
+        try {
+            ps = connect.prepareStatement("select " + field + " from " + table + " order by " + field2);
+            try {
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    String item = rs.getString(1);
+                    String item2 = rs.getString(2);
+                    cmb.addItem(item +" - "+item2);
+                    a++;
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+    
     /**
      *
      * @param cmb

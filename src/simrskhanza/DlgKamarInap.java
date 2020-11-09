@@ -1163,6 +1163,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnRujukSisrute = new javax.swing.JMenuItem();
         ppPasienCorona = new javax.swing.JMenuItem();
         ppPerawatanCorona = new javax.swing.JMenuItem();
+        MnSJP = new javax.swing.JMenuItem();
         MenuInputData = new javax.swing.JMenu();
         ppBerkasDigital = new javax.swing.JMenuItem();
         ppCatatanPasien = new javax.swing.JMenuItem();
@@ -3028,6 +3029,22 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MenuBPJS.add(ppPerawatanCorona);
+
+        MnSJP.setBackground(new java.awt.Color(255, 255, 204));
+        MnSJP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSJP.setForeground(new java.awt.Color(50, 50, 50));
+        MnSJP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSJP.setText("Bridging SJP Inhealth");
+        MnSJP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSJP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSJP.setName("MnSJP"); // NOI18N
+        MnSJP.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnSJP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSJPActionPerformed(evt);
+            }
+        });
+        MenuBPJS.add(MnSJP);
 
         jPopupMenu1.add(MenuBPJS);
 
@@ -5100,7 +5117,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             BtnCariActionPerformed(evt);
         }
         if (!tabMode.getValueAt(i, 16).equals("Meninggal")) {
-            JOptionPane.showMessageDialog(rootPane, "Status Pasien Belum meninggal","Informasi",JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(rootPane, "Status Pasien Belum meninggal", "Informasi", JOptionPane.OK_OPTION);
         } else if (tabMode.getRowCount() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
@@ -5134,6 +5151,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnSuratKematianActionPerformed
+
+    private void MnSJPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSJPActionPerformed
+        // TODO add your handling code here: ini nanti setelah rawat jalan
+        
+    }//GEN-LAST:event_MnSJPActionPerformed
 
     private void getDataCoder() {
         if (tableCoder.getSelectedRow() != -1) {
@@ -11730,6 +11752,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnRujukSisrute;
     private javax.swing.JMenu MnRujukan;
     private javax.swing.JMenuItem MnSEP;
+    private javax.swing.JMenuItem MnSJP;
     private javax.swing.JMenuItem MnSKDPBPJS;
     private javax.swing.JMenuItem MnSensusRanap;
     private javax.swing.JMenuItem MnSpri;

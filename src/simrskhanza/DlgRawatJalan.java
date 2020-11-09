@@ -12,6 +12,8 @@
 package simrskhanza;
 
 import bridging.DlgSKDPBPJS;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.akses;
 import fungsi.batasInput;
@@ -33,6 +35,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,6 +45,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -53,6 +59,10 @@ import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import keuangan.DlgJnsPerawatanRalan;
 import laporan.DlgBerkasRawat;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.client.RestTemplate;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
 import rekammedis.RMDataResumePasien;
@@ -73,6 +83,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private DlgPasien pasien = new DlgPasien(null, false);
     private DlgCariDokter dokter = new DlgCariDokter(null, false);
     private DlgCariPoli poli = new DlgCariPoli(null, false);
+
+    private final Properties prop = new Properties();
+    String requestJson = "";
     /**
      *
      */
@@ -81,7 +94,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private ResultSet rs, rstindakan, rsset_tarif;
     private int i = 0, jmlparsial = 0, jml = 0, index = 0;
     private String aktifkanparsial = "no", kode_poli = "", kd_pj = "", poli_ralan = "No", cara_bayar_ralan = "No", form = "";
-    private final Properties prop = new Properties();
+
     private boolean[] pilih;
     private String[] kode, nama, kategori;
     private double[] totaltnd, bagianrs, bhp, jmdokter, jmperawat, kso, menejemen;
@@ -1589,6 +1602,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtPenjab = new javax.swing.JTextField();
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
@@ -1824,11 +1838,13 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnTriaseIGD = new widget.Button();
         BtnResume = new widget.Button();
 
+        txtPenjab.setName("txtPenjab"); // NOI18N
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perawatan/Tindakan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perawatan/Tindakan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -2087,7 +2103,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGlass9Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
                         .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(BtnTambahTindakan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -3685,7 +3701,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbJam);
-        cmbJam.setBounds(690, 10, 62, 23);
+        cmbJam.setBounds(720, 10, 62, 23);
 
         cmbMnt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt.setName("cmbMnt"); // NOI18N
@@ -3696,7 +3712,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbMnt);
-        cmbMnt.setBounds(760, 10, 62, 23);
+        cmbMnt.setBounds(790, 10, 62, 23);
 
         cmbDtk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk.setName("cmbDtk"); // NOI18N
@@ -3707,7 +3723,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbDtk);
-        cmbDtk.setBounds(830, 10, 62, 23);
+        cmbDtk.setBounds(860, 10, 62, 23);
 
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
         ChkJln.setSelected(true);
@@ -3723,11 +3739,11 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormInput.add(ChkJln);
-        ChkJln.setBounds(900, 10, 23, 23);
+        ChkJln.setBounds(930, 10, 23, 23);
 
         DTPTgl.setName("DTPTgl"); // NOI18N
         FormInput.add(DTPTgl);
-        DTPTgl.setBounds(590, 10, 103, 22);
+        DTPTgl.setBounds(590, 10, 117, 28);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -4145,7 +4161,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                     JOptionPane.showMessageDialog(rootPane, "Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                     TCari.requestFocus();
                                 } else {
-                                    SimpanPenangananDokterPetugas();
+                                SimpanPenangananDokterPetugas();
                                 }
                             }
                         } catch (Exception e) {
@@ -6340,6 +6356,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbTindakan;
     private widget.Table tbTindakan2;
     private widget.Table tbTindakan3;
+    private javax.swing.JTextField txtPenjab;
     // End of variables declaration//GEN-END:variables
 
     private void tampilDr() {
@@ -7106,6 +7123,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
      *
      * @param KodePoli
      */
+    public void SetPoli(String KodePoli, String penjab) {
+        this.kode_poli = KodePoli;
+        kdpoli.setText(KodePoli);
+        txtPenjab.setText(penjab);
+    }
+
     public void SetPoli(String KodePoli) {
         this.kode_poli = KodePoli;
         kdpoli.setText(KodePoli);
@@ -7807,14 +7830,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             koneksi.setAutoCommit(false);
             for (i = 0; i < tbTindakan3.getRowCount(); i++) {
                 if (tbTindakan3.getValueAt(i, 0).toString().equals("true")) {
-                    if (Sequel.menyimpantf("rawat_jl_drpr", "?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum'", "Tindakan", 13, new String[]{
-                        TNoRw.getText(), tbTindakan3.getValueAt(i, 1).toString(), KdDok2.getText(), kdptg2.getText(),
-                        Valid.SetDateToString(DTPTgl.getDate()), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
-                        tbTindakan3.getValueAt(i, 5).toString(), tbTindakan3.getValueAt(i, 6).toString(), tbTindakan3.getValueAt(i, 7).toString(),
-                        tbTindakan3.getValueAt(i, 8).toString(), tbTindakan3.getValueAt(i, 9).toString(), tbTindakan3.getValueAt(i, 10).toString(),
-                        tbTindakan3.getValueAt(i, 4).toString()
-                    }) == true) {
-                        tbTindakan3.setValueAt(false, i, 0);
+                    if (simpanRawatJlDrpr() == true) {
+                        System.out.println("Kd_pj : " + txtPenjab.getText().equals("364"));
+                        if (txtPenjab.getText().equals("364")) {//TODO: kode madiri inhealth 
+                            simpanTindakanInhealth();
+                        }
                         JOptionPane.showMessageDialog(rootPane, "Alhamdulillah berhasil simpan ^_^ .");
                     }
                 }
@@ -7822,6 +7842,63 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             koneksi.setAutoCommit(true);
         } catch (Exception e) {
             System.out.println("Notif : " + e);
+        }
+    }
+
+    private boolean simpanRawatJlDrpr() {
+        return Sequel.menyimpantf("rawat_jl_drpr", "?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum'", "Tindakan", 13, new String[]{
+            TNoRw.getText(), tbTindakan3.getValueAt(i, 1).toString(), KdDok2.getText(), kdptg2.getText(),
+            Valid.SetDateToString(DTPTgl.getDate()), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
+            tbTindakan3.getValueAt(i, 5).toString(), tbTindakan3.getValueAt(i, 6).toString(), tbTindakan3.getValueAt(i, 7).toString(),
+            tbTindakan3.getValueAt(i, 8).toString(), tbTindakan3.getValueAt(i, 9).toString(), tbTindakan3.getValueAt(i, 10).toString(),
+            tbTindakan3.getValueAt(i, 4).toString()
+        });
+    }
+
+    private void simpanTindakanInhealth() {
+        try {
+            String kodeProvider = Sequel.cariIsi("select kode_ppkinhealth from setting");
+            String jnsPelayanan = Sequel.cariIsi("select jnspelayanan from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
+            String noSjp = Sequel.cariIsi("select no_sjp from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
+            String tglMasukRawat = Sequel.cariIsi("select tgl_registrasi from bridging_inhealth inner join reg_periksa on reg_periksa.no_rawat=bridging_inhealth.no_rawat where bridging_inhealth.no_rawat='" + TNoRw.getText() + "'");
+            String kodeTindakan = Sequel.cariIsi("select kd_inhealth from inhealth_tindakan_ralan where kd_jenis_prw='" + tbTindakan3.getValueAt(i, 1).toString() + "'");
+            String poli = Sequel.cariIsi("select kd_poli_inhealth from inhealth_maping_poli where kd_poli_rs='" + kdpoli.getText() + "'");
+            String kodeDokter = Sequel.cariIsi("select kd_inhealth from inhealth_maping_dokter where kd_dokter='" + KdDok2.getText() + "'");
+            String tarip = Sequel.cariIsi("select tarif from tarif_inhealth where kode_jenpel='" + kodeTindakan + "' and kode_kelas='000'");
+
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+
+            String URL = prop.getProperty("URLAPIINHEALTH") + "/api/SimpanTindakan";
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Type", "application/json; utf-8");
+            requestJson = "{ \"token\": \"" + prop.getProperty("TOKENINHEALTH") + "\","
+                    + "\"kodeprovider\": \"" + kodeProvider + "\","
+                    + "\"jenispelayanan\": \"" + jnsPelayanan + "\","
+                    + "\"nosjp\": \"" + noSjp + "\","
+                    + "\"tglmasukrawat\": \"" + tglMasukRawat + "\","
+                    + "\"tanggalpelayanan\": \"" + Valid.SetDateToString(DTPTgl.getDate()) + "\","
+                    + "\"kodetindakan\": \"" + kodeTindakan + "\","
+                    + "\"poli\": \"" + poli + "\","
+                    + "\"kodedokter\": \"" + kodeDokter + "\","
+                    + "\"biayaaju\": \"" + tarip + "\""
+                    + "}";
+
+            System.out.println("Request: " + requestJson);
+            HttpEntity requestEntity = new HttpEntity(requestJson, headers);
+            RestTemplate rest = new RestTemplate();
+            ObjectMapper mapper = new ObjectMapper();
+//            System.out.println("Data : "+rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            if (root.path("ERRORCODE").asText().equals("00")) {
+                System.out.println("Response :" + root.path("ERRORCODE").asText());
+                tbTindakan3.setValueAt(false, i, 0);
+            } else {
+                JOptionPane.showMessageDialog(null, root.path("ERRORDESC").asText());
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DlgRawatJalan.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DlgRawatJalan.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
