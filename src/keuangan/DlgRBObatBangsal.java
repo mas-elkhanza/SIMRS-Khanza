@@ -84,7 +84,7 @@ public class DlgRBObatBangsal extends javax.swing.JDialog {
 
         kdbangsal.setDocument(new batasInput((byte) 5).getKata(kdbangsal));
 
-        Object[] row1 = {"No.", "Bangsal", "Jml", "Nama Obat"};
+        Object[] row1 = {"No.", "Bangsal", "Jml", "Nama Obat", "Biaya Obat", "Embalase", "Tuslah", "Total"};
         tabMode1 = new DefaultTableModel(null, row1) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -93,11 +93,11 @@ public class DlgRBObatBangsal extends javax.swing.JDialog {
         };
         tbDokter1.setModel(tabMode1);
 
-        tbDokter.setPreferredScrollableViewportSize(new Dimension(800, 800));
-        tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbDokter1.setPreferredScrollableViewportSize(new Dimension(800, 800));
+        tbDokter1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 4; i++) {
-            TableColumn column = tbDokter.getColumnModel().getColumn(i);
+        for (i = 0; i < 8; i++) {
+            TableColumn column = tbDokter1.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(35);
             } else if (i == 1) {
@@ -110,7 +110,7 @@ public class DlgRBObatBangsal extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        tbDokter1.setDefaultRenderer(Object.class, new WarnaTable());
 
         bangsal.addWindowListener(new WindowListener() {
             @Override
@@ -727,31 +727,40 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Valid.tabelKosong(tabMode1);
             psobat1 = koneksi.prepareStatement(
-                    "select databarang.nama_brng,bangsal.nm_bangsal,detail_pemberian_obat.jml select databarang.nama_brng,bangsal.nm_bangsal,detail_pemberian_obat.jml from detail_pemberian_obat inner join reg_periksa inner join kamar_inap inner join kamar inner join bangsal " +
-"                    inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng and reg_periksa.no_rawat=kamar_inap.no_rawat and  " +
-"                    kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat " +
- "                    where bangsal.kd_bangsal like ? and detail_pemberian_obat.tgl_perawatan between ? and ? group by detail_pemberian_obat.kode_brng order by databarang.nama_brng");
+                    "select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,"
+                    + "(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as biaya,"
+                    + "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah,sum(detail_pemberian_obat.total) as total, bangsal.nm_bangsal "
+                    + "from detail_pemberian_obat inner join reg_periksa inner join kamar_inap inner join kamar inner join bangsal "
+                    + "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng and reg_periksa.no_rawat=kamar_inap.no_rawat and  "
+                    + "kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "
+                    + "where bangsal.kd_bangsal like ? and detail_pemberian_obat.tgl_perawatan between ? and ? group by detail_pemberian_obat.kode_brng order by databarang.nama_brng");
 
             psobat1.setString(1, "%" + kdbangsal.getText() + "%");
             psobat1.setString(2, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
             psobat1.setString(3, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
             rsobat1 = psobat1.executeQuery();
             int x = 0;
+            jmlbiaya = 0;
+            jmlembalase = 0;
+            jmltotal = 0;
+            jmltuslah = 0;
             while (rsobat1.next()) {
                 x += 1;
+                //"No.", "Bangsal", "Jml", "Nama Obat", "Biaya Obat", "Embalase", "Tuslah", "Total"
                 tabMode1.addRow(new Object[]{
-                    x, rsobat1.getString(2), rsobat1.getString(3) + " " + rsobat1.getString(1)
+                    x, rsobat1.getString(8), rsobat1.getString(3), rsobat1.getString(1) + " " + rsobat1.getString("nama_brng"), Valid.SetAngka(rsobat1.getDouble("biaya")),
+                    Valid.SetAngka(rsobat1.getDouble(5)), Valid.SetAngka(rsobat1.getDouble(6)), Valid.SetAngka(rsobat1.getDouble(7))
                 });
-//                jmlbiaya = jmlbiaya + rsobat.getDouble(4);
-//                ttlbiaya = ttlbiaya + rsobat.getDouble(4);
-//                jmlembalase = jmlembalase + rsobat.getDouble(5);
-//                ttlembalase = ttlembalase + rsobat.getDouble(5);
-//                jmltuslah = jmltuslah + rsobat.getDouble(6);
-//                ttltuslah = ttltuslah + rsobat.getDouble(6);
-//                jmltotal = jmltotal + rsobat.getDouble(7);
-//                ttltotal = ttltotal + rsobat.getDouble(7);
+                jmlbiaya = jmlbiaya + rsobat1.getDouble(4);
+                ttlbiaya = ttlbiaya + rsobat1.getDouble(4);
+                jmlembalase = jmlembalase + rsobat1.getDouble(5);
+                ttlembalase = ttlembalase + rsobat1.getDouble(5);
+                jmltuslah = jmltuslah + rsobat1.getDouble(6);
+                ttltuslah = ttltuslah + rsobat1.getDouble(6);
+                jmltotal = jmltotal + rsobat1.getDouble(7);
+                ttltotal = ttltotal + rsobat1.getDouble(7);
             }
-//            tabMode1.addRow(new Object[]{">>", "Total ", ":", "", Valid.SetAngka(ttlbiaya), Valid.SetAngka(ttlembalase), Valid.SetAngka(ttltuslah), Valid.SetAngka(ttltotal)});
+            tabMode1.addRow(new Object[]{">>", "Total ", ":", "", Valid.SetAngka(ttlbiaya), Valid.SetAngka(ttlembalase), Valid.SetAngka(ttltuslah), Valid.SetAngka(ttltotal)});
             this.setCursor(Cursor.getDefaultCursor());
         } catch (Exception e) {
             System.out.println("Catatan  " + e);
