@@ -2203,7 +2203,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                     + "\"kelasrawat\": \"" + Kelas.getSelectedItem().toString().substring(0, 3) + "\","
                     + "\"kodejenpelruangrawat\": \"" + KdJenpel.getText() + "\""
                     + "}";
-//            System.out.println("request :"+requestJson);
+            System.out.println("request :"+requestJson);
             HttpEntity requestEntity = new HttpEntity(requestJson, headers);
             RestTemplate rest = new RestTemplate();
             ObjectMapper mapper = new ObjectMapper();

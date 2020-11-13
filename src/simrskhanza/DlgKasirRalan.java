@@ -5093,7 +5093,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     dlgrwjl2.isCek();
                     dlgrwjl2.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 40);
                     dlgrwjl2.setLocationRelativeTo(internalFrame1);
-                    dlgrwjl2.SetPoli(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 18).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 17).toString());
+                    dlgrwjl2.SetPoli(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 18).toString(), tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 17).toString());
                     dlgrwjl2.SetPj(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 17).toString());
                     dlgrwjl2.setNoRm(TNoRw.getText(), DTPCari1.getDate(), DTPCari2.getDate());
                     dlgrwjl2.setVisible(true);
@@ -5279,6 +5279,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             } else {
                 kamarinap.billing.periksalab.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
                 kamarinap.billing.periksalab.setLocationRelativeTo(internalFrame1);
+                kamarinap.billing.periksalab.SetPoli(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 18).toString(), tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 17).toString());
                 kamarinap.billing.periksalab.emptTeks();
                 kamarinap.billing.periksalab.setNoRm(TNoRw.getText(), "Ralan");
                 kamarinap.billing.periksalab.isCek();
@@ -5435,6 +5436,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 kamarinap.billing.periksarad.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
                 kamarinap.billing.periksarad.setLocationRelativeTo(internalFrame1);
                 kamarinap.billing.periksarad.emptTeks();
+                kamarinap.billing.periksarad.setPoli(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 18).toString(), tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 17).toString());
                 kamarinap.billing.periksarad.setNoRm(TNoRw.getText(), "Ralan");
                 kamarinap.billing.periksarad.tampil();
                 kamarinap.billing.periksarad.isCek();
@@ -6534,7 +6536,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     dlgrwjl2.isCek();
                     dlgrwjl2.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
                     dlgrwjl2.setLocationRelativeTo(internalFrame1);
-                    dlgrwjl2.SetPoli(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(), 13).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 17).toString());
+                    dlgrwjl2.SetPoli(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(), 13).toString(), tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 17).toString());
                     dlgrwjl2.SetPj(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(), 14).toString());
                     dlgrwjl2.setNoRm(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(), 10).toString(),
                             DTPCari1.getDate(), DTPCari2.getDate(),
