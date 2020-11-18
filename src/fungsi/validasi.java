@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -54,7 +55,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
-import widget.Tanggal1;
 
 /**
  *
@@ -74,6 +74,7 @@ public final class validasi {
     private final DecimalFormat df3 = new DecimalFormat("######");
     private final DecimalFormat df6 = new DecimalFormat("######.###");
     private final DecimalFormat df7 = new DecimalFormat("######.#");
+    private final NumberFormat nf = NumberFormat.getNumberInstance();
     private PreparedStatement ps;
     private ResultSet rs;
     private final Calendar now = Calendar.getInstance();
@@ -206,6 +207,35 @@ public final class validasi {
                     s1 = s1 + "0";
                 }
                 teks.setText(strAwal + s1 + s);
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+                JOptionPane.showMessageDialog(null, "Maaf, Query tidak bisa dijalankan...!!!!");
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+
+    public void newAutoNomer3(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
+        try {
+            int s;
+            ps = connect.prepareStatement(sql);
+            try {
+                rs = ps.executeQuery();
+                s = 1;
+                while (rs.next()) {
+                    s = rs.getInt(1) + 1;
+                }
+                String no = String.format("%04d", s);
+                teks.setText(strAwal + no);
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);
                 JOptionPane.showMessageDialog(null, "Maaf, Query tidak bisa dijalankan...!!!!");
@@ -1101,6 +1131,14 @@ public final class validasi {
         }
     }
 
+    public void pindah(java.awt.event.KeyEvent evt, JButton kiri, JDateChooser kanan) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            kanan.requestFocus();
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
+            kiri.requestFocus();
+        }
+    }
+
     public void pindah(java.awt.event.KeyEvent evt, JDateChooser kiri, JComboBox kanan) {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             kanan.requestFocus();
@@ -1370,8 +1408,8 @@ public final class validasi {
         }
         return tgl;
     }
-    
-public String SetDateTimeToString(Date date) {
+
+    public String SetDateTimeToString(Date date) {
         String tgl = "";
         try {
             tgl = sdfDateTime.format(date);
@@ -1546,6 +1584,10 @@ public String SetDateTimeToString(Date date) {
      */
     public String SetAngka(double nilai) {
         return df2.format(nilai);
+    }
+
+    public String SetAngkaNew(double nilai) {
+        return nf.format(nilai);
     }
 
     /**
@@ -1725,6 +1767,53 @@ public String SetDateTimeToString(Date date) {
             return terbilang((int) angka / 1000000) + " juta " + terbilang(angka % 1000000);
         }
 
+        return "";
+    }
+
+    public String RomanNumerals(int number) {
+        if (number < 0 || number > 3999) {
+            return "This number cannot be converted";
+        }
+
+        String romanOnes = romanDigit(number % 10, "I", "V", "X");
+        number /= 10;
+
+        String romanTens = romanDigit(number % 10, "X", "L", "C");
+        number /= 10;
+
+        String romanHundreds = romanDigit(number % 10, "C", "D", "M");
+        number /= 10;
+
+        String romanThousands = romanDigit(number % 10, "M", "", "");
+        number /= 10;
+
+        String result = romanThousands + romanHundreds + romanTens + romanOnes;
+        return result;
+    }
+
+    public static String romanDigit(int n, String one, String five, String ten) {
+        if (n >= 1) {
+            if (n == 1) {
+                return one;
+            } else if (n == 2) {
+                return one + one;
+            } else if (n == 3) {
+                return one + one + one;
+            } else if (n == 4) {
+                return one + five;
+            } else if (n == 5) {
+                return five;
+            } else if (n == 6) {
+                return five + one;
+            } else if (n == 7) {
+                return five + one + one;
+            } else if (n == 8) {
+                return five + one + one + one;
+            } else if (n == 9) {
+                return one + ten;
+            }
+
+        }
         return "";
     }
 }

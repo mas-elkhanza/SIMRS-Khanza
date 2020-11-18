@@ -33,9 +33,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
@@ -83,17 +85,27 @@ public final class DlgResepObat extends javax.swing.JDialog {
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbResep.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
 
         for (i = 0; i < 4; i++) {
             TableColumn column = tbResep.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
             }else if(i==1){
                 column.setPreferredWidth(200);
+                    column.setCellRenderer(centerRenderer);
             }else if(i==2){
                 column.setPreferredWidth(300);
+                    column.setCellRenderer(leftRenderer);
             }else if(i==3){
                 column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
             }
         }
         tbResep.setDefaultRenderer(Object.class, new WarnaTable());
@@ -128,10 +140,13 @@ public final class DlgResepObat extends javax.swing.JDialog {
                 column.setMaxWidth(0);
             }else if(i==3){
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             }else if(i==4){
                 column.setPreferredWidth(250);
+                    column.setCellRenderer(leftRenderer);
             }else if(i==5){
                 column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
             }
         }
         tbTambahan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -166,10 +181,13 @@ public final class DlgResepObat extends javax.swing.JDialog {
                 column.setMaxWidth(0);
             }else if(i==3){
                 column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
             }else if(i==4){
                 column.setPreferredWidth(250);
+                    column.setCellRenderer(leftRenderer);
             }else if(i==5){
                 column.setPreferredWidth(200);
+                    column.setCellRenderer(leftRenderer);
             }
         }
         tbTambahan1.setDefaultRenderer(Object.class, new WarnaTable());

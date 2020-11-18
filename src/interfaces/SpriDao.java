@@ -59,7 +59,6 @@ public class SpriDao implements SpriInterface<Spri> {
                 + domain.getStatus() + "'", "spri");
 
     }
-
     /**
      *
      * @param a
@@ -82,10 +81,9 @@ public class SpriDao implements SpriInterface<Spri> {
         try {
             ps = connect.prepareStatement("SELECT temp_spri.id,temp_spri.tanggal,temp_spri.jam,temp_spri.norm,temp_spri.nama,"
                     + "pasien.jk,pasien.tmp_lahir,pasien.tgl_lahir,pasien.gol_darah,pasien.stts_nikah,"
-                    + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,penyakit.kd_penyakit,penyakit.nm_penyakit,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
+                    + "pasien.agama,temp_spri.rencana_perawatan,temp_spri.upf,dokter.nm_dokter,temp_spri.kd_dokter,temp_spri.diagnosa,temp_spri.keluhan "
                     + " FROM temp_spri left join pasien on temp_spri.norm=pasien.no_rkm_medis"
-                    + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter"
-                    + " left join penyakit on temp_spri.diagnosa=penyakit.kd_penyakit where"
+                    + " left join dokter on temp_spri.kd_dokter=dokter.kd_dokter where"
                     + " temp_spri.norm like ? or temp_spri.kd_dokter like ? or temp_spri.nama like ?"
                     + " order by temp_spri.tanggal ");
             ps.setString(1, "%" + domain + "%");

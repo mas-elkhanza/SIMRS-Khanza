@@ -27,8 +27,8 @@ public class InternalFrame extends JPanel{
     private BufferedImage gradientImage;
     //private Color warnaAtas = new Color(245,170,245) ;
     //private Color warnaBawah = new Color(245,170,245) ;
-    private Color warnaAtas = new Color(255,255,255) ;
-    private Color warnaBawah = new Color(255,255,255) ;
+    private Color warnaAtas = new Color(254,231,181) ;
+    private Color warnaBawah = new Color(172,141,77) ;
 
     //private Color warnaAtas = new Color(255,194,255);
     //private Color warnaBawah = new Color(255,194,255);

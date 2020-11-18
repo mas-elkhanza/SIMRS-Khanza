@@ -19,9 +19,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
@@ -74,48 +76,94 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbObat.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
 
         for (i = 0; i < 18; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 1) {
-                column.setPreferredWidth(80);
-            } else if (i == 2) {
-                column.setPreferredWidth(150);
-            } else if (i == 3) {
-                column.setPreferredWidth(150);
-            } else if (i == 4) {
-                column.setPreferredWidth(150);
-            } else if (i == 5) {
-                column.setPreferredWidth(150);
-            } else if (i == 6) {
-                column.setPreferredWidth(150);
-            } else if (i == 7) {
-                column.setPreferredWidth(150);
-            } else if (i == 8) {
-                column.setPreferredWidth(150);
-            } else if (i == 9) {
-                column.setPreferredWidth(82);
-            } else if (i == 10) {
-                column.setPreferredWidth(75);
-            } else if (i == 11) {
-                column.setPreferredWidth(52);
-            } else if (i == 12) {
-                column.setPreferredWidth(45);
-            } else if (i == 13) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 14) {
-                column.setPreferredWidth(150);
-            } else if (i == 15) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
-            } else if (i == 16) {
-                column.setPreferredWidth(150);
-            } else if (i == 17) {
-                column.setPreferredWidth(90);
+            switch (i) {
+                case 0:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 1:
+                    column.setPreferredWidth(80);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 4:
+                    column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 5:
+                    column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 6:
+                    column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 7:
+                    column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 8:
+                    column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 9:
+                    column.setPreferredWidth(82);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 10:
+                    column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 11:
+                    column.setPreferredWidth(52);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 12:
+                    column.setPreferredWidth(45);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 13:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 14:
+                    column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 15:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 16:
+                    column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 17:
+                    column.setPreferredWidth(90);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

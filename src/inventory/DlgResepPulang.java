@@ -28,9 +28,11 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgInputResepPulang;
@@ -64,7 +66,11 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocation(8,1);
-        setSize(628,674);        
+        setSize(628,674);   
+        
+        DTPCari1.setDate(new Date());
+        DTPCari2.setDate(new Date());
+        
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","Tgl.Resep","Jam","Pasien","Obat","Jml","Harga","Total","Aturan Pakai","No.Batch","No.Faktur"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -80,33 +86,65 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         };
         tbResep.setModel(tabMode);
 
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
         tbResep.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 11; i++) {
             TableColumn column = tbResep.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(110);
-            }else if(i==1){
-                column.setPreferredWidth(70);
-            }else if(i==2){
-                column.setPreferredWidth(60);
-            }else if(i==3){
-                column.setPreferredWidth(180);
-            }else if(i==4){
-                column.setPreferredWidth(230);
-            }else if(i==5){
-                column.setPreferredWidth(30);
-            }else if(i==6){
-                column.setPreferredWidth(70);
-            }else if(i==7){
-                column.setPreferredWidth(80);
-            }else if(i==8){
-                column.setPreferredWidth(180);
-            }else if(i==9){
-                column.setPreferredWidth(100);
-            }else if(i==10){
-                column.setPreferredWidth(100);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(110);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 1:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(60);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(180);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 4:
+                    column.setPreferredWidth(230);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 5:
+                    column.setPreferredWidth(30);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 6:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(rightRenderer);
+                    break;
+                case 7:
+                    column.setPreferredWidth(80);
+                    column.setCellRenderer(rightRenderer);
+                    break;
+                case 8:
+                    column.setPreferredWidth(180);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 9:
+                    column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 10:
+                    column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
         tbResep.setDefaultRenderer(Object.class, new WarnaTable());
@@ -193,17 +231,19 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
+        jLabel9 = new widget.Label();
+        LCount2 = new widget.Label();
         jLabel8 = new widget.Label();
         LCount1 = new widget.Label();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
         jLabel19 = new widget.Label();
-        DTPCari1 = new widget.Tanggal();
         jLabel21 = new widget.Label();
-        DTPCari2 = new widget.Tanggal();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
+        DTPCari1 = new widget.Tanggal1();
+        DTPCari2 = new widget.Tanggal1();
         PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
         TNoRw = new widget.TextBox();
@@ -238,7 +278,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -264,7 +304,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
 
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(44, 100));
+        jPanel3.setPreferredSize(new java.awt.Dimension(44, 144));
         jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass8.setName("panelGlass8"); // NOI18N
@@ -336,6 +376,17 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         LCount.setPreferredSize(new java.awt.Dimension(52, 30));
         panelGlass8.add(LCount);
 
+        jLabel9.setText("Jml. Resep :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel9.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelGlass8.add(jLabel9);
+
+        LCount2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount2.setText("0");
+        LCount2.setName("LCount2"); // NOI18N
+        LCount2.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelGlass8.add(LCount2);
+
         jLabel8.setText("Jml. Total :");
         jLabel8.setName("jLabel8"); // NOI18N
         jLabel8.setPreferredSize(new java.awt.Dimension(60, 30));
@@ -368,40 +419,20 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         jPanel3.add(panelGlass8, java.awt.BorderLayout.CENTER);
 
         panelGlass9.setName("panelGlass9"); // NOI18N
-        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 88));
 
         jLabel19.setText("Tgl.Resep :");
         jLabel19.setName("jLabel19"); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
-        panelGlass9.add(jLabel19);
-
-        DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2020" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
-        DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelGlass9.add(DTPCari1);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("s.d.");
         jLabel21.setName("jLabel21"); // NOI18N
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
-        panelGlass9.add(jLabel21);
-
-        DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2020" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
-        DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelGlass9.add(DTPCari2);
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(80, 23));
-        panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(300, 23));
@@ -410,7 +441,6 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 TCariKeyPressed(evt);
             }
         });
-        panelGlass9.add(TCari);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('4');
@@ -427,7 +457,51 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelGlass9.add(BtnCari);
+
+        DTPCari1.setName("DTPCari1"); // NOI18N
+
+        DTPCari2.setName("DTPCari2"); // NOI18N
+
+        javax.swing.GroupLayout panelGlass9Layout = new javax.swing.GroupLayout(panelGlass9);
+        panelGlass9.setLayout(panelGlass9Layout);
+        panelGlass9Layout.setHorizontalGroup(
+            panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass9Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addComponent(DTPCari1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DTPCari2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
+                        .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(591, Short.MAX_VALUE))
+        );
+        panelGlass9Layout.setVerticalGroup(
+            panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass9Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DTPCari1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DTPCari2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -598,7 +672,8 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 Sequel.menyimpan("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                     "0", tabMode.getValueAt(i,0).toString(), tabMode.getValueAt(i,1).toString(), tabMode.getValueAt(i,2).toString(),
                     tabMode.getValueAt(i,3).toString(), tabMode.getValueAt(i,4).toString(), tabMode.getValueAt(i,5).toString(),
-                    Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString())), Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString())),
+                    Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString().replace(".", "").replace(",", ""))), 
+                    Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString().replace(".", "").replace(",", ""))),
                     tabMode.getValueAt(i,8).toString(), tabMode.getValueAt(i,9).toString(), tabMode.getValueAt(i,10).toString(),"","","","","","","","","","",
                     "","","","","","","","","","","","","","","","",""
                 });
@@ -698,7 +773,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
         }else{
-            inputresep.setNoRm(TNoRw.getText(),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
+            inputresep.setNoRm(TNoRw.getText(),"-",Valid.SetDateToString(DTPCari1.getDate()),Sequel.cariIsi("select current_time()"));
             inputresep.tampil();
             inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             inputresep.setLocationRelativeTo(internalFrame1);
@@ -744,12 +819,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.CekBox ChkInput;
-    private widget.Tanggal DTPCari1;
-    private widget.Tanggal DTPCari2;
+    private widget.Tanggal1 DTPCari1;
+    private widget.Tanggal1 DTPCari2;
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdBarang;
     private widget.Label LCount;
     private widget.Label LCount1;
+    private widget.Label LCount2;
     private widget.TextBox NmBarang;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Satuan;
@@ -766,6 +842,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
+    private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
@@ -779,7 +856,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
      */
     public void tampil() {
         Valid.tabelKosong(tabMode);
-        try{      
+        try{     
+            int jumlahresep = 0;
+            
             ps=koneksi.prepareStatement("select resep_pulang.no_rawat,resep_pulang.tanggal,resep_pulang.jam,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien),"+
                     "concat(resep_pulang.kode_brng,' ',databarang.nama_brng),resep_pulang.jml_barang,resep_pulang.harga,resep_pulang.total,resep_pulang.aturan_pakai, "+
                     "resep_pulang.no_batch,resep_pulang.no_faktur from resep_pulang inner join reg_periksa inner join pasien inner join databarang "+
@@ -794,43 +873,43 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "resep_pulang.tanggal between ? and ? and databarang.nama_brng like ? "+
                     "order by resep_pulang.tanggal");
             try {
-                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(1,Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(2,Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(4,Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(5,Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(7,Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(8,Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(10,Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(11,Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(13,Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(14,Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(15,"%"+TCari.getText().trim()+"%");
-                ps.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(16,Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(17,Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(18,"%"+TCari.getText().trim()+"%");
-                ps.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                ps.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(19,Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(20,Valid.SetDateToString(DTPCari2.getDate()));
                 ps.setString(21,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 jumlahtotal=0;
-                double jumlahtotal_pasien = 0;
+                
                 String no_rawat = "";
                 while(rs.next()){
                     if(!no_rawat.isEmpty() && no_rawat.equals(rs.getString(1))){
                         tabMode.addRow(new Object[]{
-                            "","","","",rs.getString(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),rs.getString(9),rs.getString(10),rs.getString(11)
+                            "","","","",rs.getString(5),Valid.SetAngka(rs.getDouble(6)),Valid.SetAngka(rs.getDouble(7)),Valid.SetAngka(rs.getDouble(8)),rs.getString(9),rs.getString(10),rs.getString(11)
                         });
                     } else{
                         tabMode.addRow(new Object[]{
-                            rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),rs.getString(9),rs.getString(10),rs.getString(11)
+                            rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),Valid.SetAngka(rs.getDouble(6)),Valid.SetAngka(rs.getDouble(7)),Valid.SetAngka(rs.getDouble(8)),rs.getString(9),rs.getString(10),rs.getString(11)
                         });
+                        jumlahresep += 1;
                     }
                     no_rawat = rs.getString(1);
-                    jumlahtotal_pasien += rs.getDouble("total");
                     
                     jumlahtotal=jumlahtotal+rs.getDouble("total");
                 }
@@ -846,6 +925,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
             LCount.setText(""+tabMode.getRowCount());
             LCount1.setText(""+Valid.SetAngka(jumlahtotal));
+            LCount2.setText(""+ String.valueOf(jumlahresep));
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }        

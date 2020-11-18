@@ -3,7 +3,7 @@
 <properties>
     <comment>KhanzaHMS</comment> 
     <entry key="HOST">5k7+C7EnUw9nUv2Nix+DBA==</entry>
-    <entry key="DATABASE">JQaP+LYE5t2ClrKPgi1wgQ==</entry>
+    <entry key="DATABASE">vSxiU3Y+QWpA/2MMqHK94A==</entry>
     <entry key="PORT">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USER">kMR3WfAwUK6MbhCyydxa0g==</entry>
     <entry key="PAS"></entry>
@@ -65,6 +65,10 @@
     <entry key="URLDUKCAPILTEGAL">51rEe9CAnieVPGeEXwH6O3QK+1Ct7aFkL5nIOVeRLkxYDt9bI06QA5C9b9GgqC7HSiQXGyNBgyF0LivCR6ZmKA==</entry>
     <entry key="USERDUKCAPILTEGAL">93IuiE931tAeLDgpaHUK1Q==</entry>
     <entry key="PASSDUKCAPILTEGAL">tY2dA3+plUyOOIsd8E6jXg==</entry>
+    <entry key="URLDUKCAPIL">lJ1KbGKvPMfuY5BXVy+fSlP4qUnX+GxSIeTxPxnSh6pwGkJGgbV/i5e8K+Go9/7D7RNPr0an6YjQ4kLI4aspum4RpsXFz62uO/Eti8BathQ==</entry>
+    <entry key="USERDUKCAPIL">mIyWJy2Gy2vMRM7Lkt3yHhWqrkPmoXFcm7APoCI/WWA==</entry>
+    <entry key="PASSDUKCAPIL">sj1rzVwrw7raYQ94foUq1Q==</entry>
+    <entry key="IPUSERDUKCAPIL">S7ZZIXFiwKuHJXmxdt1XMw==</entry>
     <entry key="AKTIFKANTRACKSQL">yes</entry>
     <entry key="HOSTWSLICA">http://localhost/bridging-lica/public</entry>
     <entry key="KEYWSLICA">yLT3/8b0KAb5QK1ueFkW7g==</entry>

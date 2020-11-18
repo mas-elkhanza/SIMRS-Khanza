@@ -75,7 +75,6 @@
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
                 </LineBorder>
               </Border>
-              <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
               <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
@@ -430,29 +429,6 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.Tanggal" name="Tanggal">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="32" green="46" red="32" type="rgb"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="05-06-2020"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
-                    <Property name="name" type="java.lang.String" value="Tanggal" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TanggalKeyPressed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="464" y="72" width="90" height="23"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
                 <Component class="widget.ComboBox" name="CmbJam">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -777,6 +753,16 @@
                     </Constraint>
                   </Constraints>
                 </Component>
+                <Component class="widget.Tanggal1" name="Tanggal">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="Tanggal" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="470" y="70" width="100" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -810,7 +796,6 @@
                           <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
-                      <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
                       <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </TitledBorder>
                   </Border>
@@ -967,7 +952,6 @@
                           <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
-                      <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
                       <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </TitledBorder>
                   </Border>
@@ -1123,7 +1107,6 @@
                           <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
-                      <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
                       <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </TitledBorder>
                   </Border>

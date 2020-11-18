@@ -33,9 +33,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -323,6 +321,7 @@ public final class sekuel {
      */
     public boolean menyimpantf(String table, String value, String sama, int i, String[] a) {
         try {
+            System.out.println("Query: "+"insert into " + table + " values(" + value + ")");
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             for (angka = 1; angka <= i; angka++) {
                 ps.setString(angka, a[angka - 1]);
@@ -1543,6 +1542,58 @@ public final class sekuel {
      * @param txt
      */
     public void cariIsi(String sql, JTextField txt) {
+        try {
+            ps = connect.prepareStatement(sql);
+            try {
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    txt.setText(rs.getString(1));
+                } else {
+                    txt.setText("");
+                }
+            } catch (Exception e) {
+
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    public void cariIsi(String sql, JTextField txt1, JTextField txt2) {
+        try {
+            ps = connect.prepareStatement(sql);
+            try {
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    txt1.setText(rs.getString(1));
+                    txt2.setText(rs.getString(2));
+                } else {
+                    txt1.setText("");
+                    txt2.setText("");
+                }
+            } catch (Exception e) {
+
+            } finally {
+                if (rs != null) {
+                    rs.close();
+                }
+
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    public void cariIsi(String sql, JTextArea txt) {
         try {
             ps = connect.prepareStatement(sql);
             try {

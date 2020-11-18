@@ -174,6 +174,8 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         Tgl1 = new widget.Tanggal();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
+        jLabel5 = new widget.Label();
+        cmbStatus = new widget.ComboBox();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -210,7 +212,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -238,6 +240,19 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         Tgl2.setName("Tgl2"); // NOI18N
         Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass5.add(Tgl2);
+
+        jLabel5.setText("Status Lanjut :");
+        jLabel5.setName("jLabel5"); // NOI18N
+        panelGlass5.add(jLabel5);
+
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "semua", "ralan", "ranap" }));
+        cmbStatus.setName("cmbStatus"); // NOI18N
+        cmbStatus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbStatusKeyPressed(evt);
+            }
+        });
+        panelGlass5.add(cmbStatus);
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
@@ -411,7 +426,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -642,6 +657,10 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
+    private void cmbStatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbStatusKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbStatusKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -674,9 +693,11 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
+    private widget.ComboBox cmbStatus;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
+    private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel8;
     private widget.TextBox kdpenjab;
@@ -744,7 +765,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='2'>Umur</td>"+
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' colspan='2'>Pengunjung</td>"+
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='2'>Cara Pembayaran</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%' rowspan='2'>Asal Rujukan &<br>Alamatnya</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%' rowspan='2'>Status Lanjut</td>"+
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%' rowspan='2'>Golongan Penyakit/<br>Sebab Penyakit</td>"+
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='2'>Dirujuk Ke</td>"+
                                 "</tr>"+
@@ -753,14 +774,22 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     "<td valign='top' bgcolor='#FFFAF8' align='center' width='3%'>Baru</td>"+
                                 "</tr>" 
                             );
+                            
+                            String status_lanjut = "";
+                            if(cmbStatus.getSelectedItem().toString().contains("ralan")){
+                                status_lanjut = " AND reg_periksa.status_lanjut='ralan' ";
+                            } else if(cmbStatus.getSelectedItem().toString().contains("ranap")){
+                                status_lanjut = " AND reg_periksa.status_lanjut='ranap' ";
+                            }
+                            
                             psreg=koneksi.prepareStatement(
                                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,"+
-                                    "reg_periksa.stts_daftar,penjab.png_jawab,reg_periksa.no_rawat from reg_periksa inner join pasien inner join penjab "+
+                                    "reg_periksa.stts_daftar,penjab.png_jawab,reg_periksa.no_rawat, reg_periksa.status_lanjut from reg_periksa inner join pasien inner join penjab "+
                                     "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj where "+
-                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? or "+
-                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.nm_pasien like ? or "+
-                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.alamat like ? or "+
-                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.stts_daftar like ? order by reg_periksa.no_reg ");
+                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? "+status_lanjut+" or "+
+                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.nm_pasien like ? "+status_lanjut+" or "+
+                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.alamat like ? "+status_lanjut+" or "+
+                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.stts_daftar like ? "+status_lanjut+" order by reg_periksa.no_reg ");
                             try {
                                 i=1;
                                 psreg.setString(1,rstanggal.getString("tgl_registrasi"));
@@ -808,7 +837,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                             "<td valign='top' align='center'>"+lama+"</td>"+
                                             "<td valign='top' align='center'>"+baru+"</td>"+
                                             "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
-                                            "<td valign='top'>"+rujukandari+" "+alamatrujukandari+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("status_lanjut")+"</td>"+
                                             "<td valign='top'>"+
                                                 "<table width='100%' border='0'>");
                                     pspenyakit=koneksi.prepareStatement(
@@ -974,7 +1003,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%' rowspan='2'>Umur</td>"+
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%' colspan='2'>Pengunjung</td>"+
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='2'>Cara Pembayaran</td>"+
-                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%' rowspan='2'>Asal Rujukan &<br>Alamatnya</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%' rowspan='2'>Status Lanjut</td>"+
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='19%' rowspan='2'>Golongan Penyakit/<br>Sebab Penyakit</td>"+
                                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='2'>Dirujuk Ke</td>"+
                                 "</tr>"+
@@ -983,14 +1012,22 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     "<td valign='top' bgcolor='#FFFAF8' align='center' width='3%'>Baru</td>"+
                                 "</tr>" 
                             );
+                            
+                            String status_lanjut = "";
+                            if(cmbStatus.getSelectedItem().toString().contains("ralan")){
+                                status_lanjut = " AND reg_periksa.status_lanjut='ralan' ";
+                            } else if(cmbStatus.getSelectedItem().toString().contains("ranap")){
+                                status_lanjut = " AND reg_periksa.status_lanjut='ranap' ";
+                            }
+                            
                             psreg=koneksi.prepareStatement(
                                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,"+
-                                    "reg_periksa.stts_daftar,penjab.png_jawab,reg_periksa.no_rawat from reg_periksa inner join pasien inner join penjab "+
+                                    "reg_periksa.stts_daftar,penjab.png_jawab,reg_periksa.no_rawat, reg_periksa.status_lanjut from reg_periksa inner join pasien inner join penjab "+
                                     "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj where "+
-                                    "reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? or "+
-                                    "reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.nm_pasien like ? or "+
-                                    "reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.alamat like ? or "+
-                                    "reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.stts_daftar like ? order by reg_periksa.no_reg ");
+                                    "reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? "+status_lanjut+" or "+
+                                    "reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.nm_pasien like ? "+status_lanjut+" or "+
+                                    "reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.alamat like ? "+status_lanjut+" or "+
+                                    "reg_periksa.stts<>'Batal' and reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.stts_daftar like ? "+status_lanjut+" order by reg_periksa.no_reg ");
                             try {
                                 i=1;
                                 psreg.setString(1,rstanggal.getString("tgl_registrasi"));
@@ -1038,7 +1075,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                             "<td valign='top' align='center'>"+lama+"</td>"+
                                             "<td valign='top' align='center'>"+baru+"</td>"+
                                             "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
-                                            "<td valign='top'>"+rujukandari+" "+alamatrujukandari+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("status_lanjut")+"</td>"+
                                             "<td valign='top'>"+
                                                 "<table width='100%' border='0'>");
                                     pspenyakit=koneksi.prepareStatement(

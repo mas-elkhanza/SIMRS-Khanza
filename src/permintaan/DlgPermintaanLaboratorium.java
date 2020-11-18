@@ -33,10 +33,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -96,22 +98,41 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
         tbPemeriksaan.setModel(tabMode);
         //tampilPr();
 
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
         tbPemeriksaan.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbPemeriksaan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 5; i++) {
             TableColumn column = tbPemeriksaan.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(20);
-            } else if (i == 1) {
-                column.setPreferredWidth(356);
-            } else if (i == 2) {
-                column.setPreferredWidth(50);
-            } else if (i == 3) {
-                column.setPreferredWidth(340);
-            } else if (i == 4) {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(20);
+                    break;
+                case 1:
+                    column.setPreferredWidth(356);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(340);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 4:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
 
@@ -149,8 +170,10 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
                 column.setPreferredWidth(20);
             } else if (i == 1) {
                 column.setPreferredWidth(100);
+                    column.setCellRenderer(leftRenderer);
             } else if (i == 2) {
                 column.setPreferredWidth(520);
+                    column.setCellRenderer(leftRenderer);
             }
         }
         tbTarif.setDefaultRenderer(Object.class, new WarnaTable());

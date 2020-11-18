@@ -2,6 +2,7 @@
 package widget;
 
 import java.awt.Color;
+import setting.Thema;
 import usu.widget.glass.TextBoxGlass;
 
 /**
@@ -16,8 +17,8 @@ public class TextBox extends TextBoxGlass {
     public TextBox() {
         super();
         setFont(new java.awt.Font("Tahoma", 0, 11));        
-        setSelectionColor(new Color(255,255,255));
-        setSelectedTextColor(new Color(255,0,0));
+        setSelectionColor(Thema.CREAM);
+        setSelectedTextColor(Thema.COKLAT_TUA);
         setForeground(new Color(50,50,50));
         setBackground(new Color(255,255,255));
         setHorizontalAlignment(LEFT);

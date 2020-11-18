@@ -19,9 +19,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import laporan.DlgICD9;
@@ -99,27 +101,54 @@ public class PanelDiagnosa extends widget.panelisi {
         tbDiagnosaPasien.setModel(TabModeDiagnosaPasien);
         tbDiagnosaPasien.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDiagnosaPasien.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
 
         for (i = 0; i < 9; i++) {
             TableColumn column = tbDiagnosaPasien.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
-                column.setPreferredWidth(80);
-            }else if(i==2){
-                column.setPreferredWidth(110);
-            }else if(i==3){
-                column.setPreferredWidth(70);
-            }else if(i==4){
-                column.setPreferredWidth(160);
-            }else if(i==5){
-                column.setPreferredWidth(50);
-            }else if(i==6){
-                column.setPreferredWidth(350);
-            }else if(i==7){
-                column.setPreferredWidth(50);
-            }else if(i==8){
-                column.setPreferredWidth(50);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(20);
+                    break;
+                case 1:
+                    column.setPreferredWidth(80);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(110);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
+                    break;
+                case 4:
+                    column.setPreferredWidth(160);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 5:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 6:
+                    column.setPreferredWidth(350);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 7:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 8:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
         tbDiagnosaPasien.setDefaultRenderer(Object.class, new WarnaTable());
@@ -148,20 +177,37 @@ public class PanelDiagnosa extends widget.panelisi {
         tbDiagnosa.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         for (i= 0; i < 7; i++) {
             TableColumn column = tbDiagnosa.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
-                column.setPreferredWidth(40);
-            }else if(i==2){
-                column.setPreferredWidth(280);
-            }else if(i==3){
-                column.setPreferredWidth(285);
-            }else if(i==4){
-                column.setPreferredWidth(75);
-            }else if(i==5){
-                column.setPreferredWidth(75);
-            }else if(i==6){
-                column.setPreferredWidth(75);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(20);
+                    break;
+                case 1:
+                    column.setPreferredWidth(40);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(280);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(285);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 4:
+                    column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 5:
+                    column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 6:
+                    column.setPreferredWidth(75);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
         tbDiagnosa.setDefaultRenderer(Object.class, new WarnaTable());
@@ -190,14 +236,25 @@ public class PanelDiagnosa extends widget.panelisi {
 
         for (i = 0; i < 4; i++) {
             TableColumn column = tbProsedur.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(20);
-            }else if(i==1){
-                column.setPreferredWidth(50);
-            }else if(i==2){
-                column.setPreferredWidth(350);
-            }else if(i==3){
-                column.setPreferredWidth(350);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(20);
+                    break;
+                case 1:
+                    column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 2:
+                    column.setPreferredWidth(350);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                case 3:
+                    column.setPreferredWidth(350);
+                    column.setCellRenderer(leftRenderer);
+                    break;
+                default:
+                    column.setCellRenderer(leftRenderer);
+                    break;
             }
         }
         tbProsedur.setDefaultRenderer(Object.class, new WarnaTable());
@@ -230,18 +287,25 @@ public class PanelDiagnosa extends widget.panelisi {
                 column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(80);
+                    column.setCellRenderer(centerRenderer);
             }else if(i==2){
                 column.setPreferredWidth(110);
+                    column.setCellRenderer(centerRenderer);
             }else if(i==3){
                 column.setPreferredWidth(70);
+                    column.setCellRenderer(centerRenderer);
             }else if(i==4){
                 column.setPreferredWidth(160);
+                    column.setCellRenderer(leftRenderer);
             }else if(i==5){
                 column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
             }else if(i==6){
                 column.setPreferredWidth(300);
+                    column.setCellRenderer(leftRenderer);
             }else if(i==7){
                 column.setPreferredWidth(50);
+                    column.setCellRenderer(leftRenderer);
             }
         }
         tbTindakanPasien.setDefaultRenderer(Object.class, new WarnaTable());

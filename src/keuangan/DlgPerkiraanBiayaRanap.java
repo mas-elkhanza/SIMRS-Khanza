@@ -17,6 +17,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -33,12 +34,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariBangsal;
+import simrskhanza.DlgPenanggungJawab;
 
 /**
  *
@@ -53,7 +56,8 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
     private PreparedStatement ps, ps2;
     private ResultSet rs, rs2;
     private final Properties prop = new Properties();
-    private DlgCariBangsal bangsal = new DlgCariBangsal(null, false);
+    public DlgCariBangsal bangsal = new DlgCariBangsal(null, true);
+    private DlgPenanggungJawab carabayar = new DlgPenanggungJawab(null, true);
     private double all = 0, Laborat = 0, Radiologi = 0, Operasi = 0, Obat = 0, Ranap_Dokter = 0, Ranap_Paramedis = 0, Ranap_Dokter_Paramedis = 0, Ralan_Dokter = 0,
             Ralan_Paramedis = 0, Ralan_Dokter_Paramedis = 0, Tambahan = 0, Potongan = 0, Kamar = 0, Registrasi = 0, Harian = 0, Retur_Obat = 0, Resep_Pulang = 0,
             ttlLaborat = 0, ttlRadiologi = 0, ttlOperasi = 0, ttlObat = 0, ttlRanap_Dokter = 0, ttlRanap_Paramedis = 0, ttlRalan_Dokter = 0,
@@ -75,7 +79,7 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
 
         tabMode = new DefaultTableModel(null, new Object[]{
             "No.Rawat", "No.RM", "Nama Pasien", "Jenis Bayar", "Kamar/Bangsal", "Registrasi", "Tindakan", "Obt+Emb+Tsl", "Retur Obat",
-            "Resep Pulang", "Laborat", "Radiologi", "Potongan", "Tambahan", "Kamar", "Operasi", "Harian", "Total", "Deposit", "Hak Kelas 1", "Hak Kelas 2", "Hak Kelas 3","Selisih","Penjaminan"
+            "Resep Pulang", "Laborat", "Radiologi", "Potongan", "Tambahan", "Kamar", "Operasi", "Harian", "Total", "Deposit", "Hak Kelas 1", "Hak Kelas 2", "Hak Kelas 3", "Selisih", "Penjaminan"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -144,6 +148,23 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
             });
         }
 
+        bangsal.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                        bangsal.dispose();
+                    }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+
         bangsal.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -156,9 +177,10 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (bangsal.getTable().getSelectedRow() != -1) {
+                    txtKdBangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 0).toString());
                     NmBangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 1).toString());
                 }
-                TCari.requestFocus();
+                txtKdBangsal.requestFocus();
             }
 
             @Override
@@ -171,7 +193,6 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
 
             @Override
             public void windowActivated(WindowEvent e) {
-                bangsal.emptTeks();
             }
 
             @Override
@@ -179,7 +200,42 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
             }
         });
 
-        bangsal.getTable().addKeyListener(new KeyListener() {
+        carabayar.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (carabayar.getTable().getSelectedRow() != -1) {
+                    kdPenjab.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(), 1).toString());
+                    nmPenjab.setText(carabayar.getTable().getValueAt(carabayar.getTable().getSelectedRow(), 2).toString());
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                carabayar.onCari();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+
+        carabayar.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
@@ -187,7 +243,7 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    bangsal.dispose();
+                    carabayar.dispose();
                 }
             }
 
@@ -195,7 +251,10 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {
             }
         });
+    }
 
+    public void setRM(String no_rekamedis) {
+        TCari.setText(no_rekamedis);
     }
 
     /**
@@ -212,8 +271,13 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
         tbBangsal = new widget.Table();
         panelGlass5 = new widget.panelisi();
         label17 = new widget.Label();
+        txtKdBangsal = new widget.TextBox();
         NmBangsal = new widget.TextBox();
         BtnSeek2 = new widget.Button();
+        label18 = new widget.Label();
+        kdPenjab = new widget.TextBox();
+        nmPenjab = new widget.TextBox();
+        BtnSeek3 = new widget.Button();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
@@ -244,18 +308,23 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass5.setName("panelGlass5"); // NOI18N
-        panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
-        panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass5.setPreferredSize(new java.awt.Dimension(55, 80));
 
         label17.setText("Kamar/Bangsal :");
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(85, 23));
-        panelGlass5.add(label17);
+
+        txtKdBangsal.setName("txtKdBangsal"); // NOI18N
+        txtKdBangsal.setPreferredSize(new java.awt.Dimension(100, 24));
+        txtKdBangsal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtKdBangsalKeyPressed(evt);
+            }
+        });
 
         NmBangsal.setEditable(false);
         NmBangsal.setName("NmBangsal"); // NOI18N
         NmBangsal.setPreferredSize(new java.awt.Dimension(160, 23));
-        panelGlass5.add(NmBangsal);
 
         BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek2.setMnemonic('3');
@@ -272,12 +341,42 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
                 BtnSeek2KeyPressed(evt);
             }
         });
-        panelGlass5.add(BtnSeek2);
+
+        label18.setText("Jenis Bayar :");
+        label18.setName("label18"); // NOI18N
+        label18.setPreferredSize(new java.awt.Dimension(85, 23));
+
+        kdPenjab.setName("kdPenjab"); // NOI18N
+        kdPenjab.setPreferredSize(new java.awt.Dimension(80, 23));
+        kdPenjab.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdPenjabKeyPressed(evt);
+            }
+        });
+
+        nmPenjab.setEditable(false);
+        nmPenjab.setName("nmPenjab"); // NOI18N
+        nmPenjab.setPreferredSize(new java.awt.Dimension(180, 23));
+
+        BtnSeek3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSeek3.setMnemonic('3');
+        BtnSeek3.setToolTipText("Alt+3");
+        BtnSeek3.setName("BtnSeek3"); // NOI18N
+        BtnSeek3.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnSeek3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeek3ActionPerformed(evt);
+            }
+        });
+        BtnSeek3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSeek3KeyPressed(evt);
+            }
+        });
 
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(68, 23));
-        panelGlass5.add(label9);
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(190, 23));
@@ -286,7 +385,6 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
                 TCariKeyPressed(evt);
             }
         });
-        panelGlass5.add(TCari);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari1.setMnemonic('2');
@@ -303,7 +401,6 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
                 BtnCari1KeyPressed(evt);
             }
         });
-        panelGlass5.add(BtnCari1);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
@@ -320,14 +417,13 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
                 BtnAllKeyPressed(evt);
             }
         });
-        panelGlass5.add(BtnAll);
 
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(28, 23));
-        panelGlass5.add(label10);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
+        BtnPrint.setText("Cetak");
         BtnPrint.setToolTipText("Alt+T");
         BtnPrint.setName("BtnPrint"); // NOI18N
         BtnPrint.setPreferredSize(new java.awt.Dimension(28, 23));
@@ -341,10 +437,10 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
                 BtnPrintKeyPressed(evt);
             }
         });
-        panelGlass5.add(BtnPrint);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
+        BtnKeluar.setText("Keluar");
         BtnKeluar.setToolTipText("Alt+K");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
         BtnKeluar.setPreferredSize(new java.awt.Dimension(28, 23));
@@ -358,7 +454,76 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
                 BtnKeluarKeyPressed(evt);
             }
         });
-        panelGlass5.add(BtnKeluar);
+
+        javax.swing.GroupLayout panelGlass5Layout = new javax.swing.GroupLayout(panelGlass5);
+        panelGlass5.setLayout(panelGlass5Layout);
+        panelGlass5Layout.setHorizontalGroup(
+            panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(label9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelGlass5Layout.createSequentialGroup()
+                        .addComponent(txtKdBangsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(NmBangsal, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelGlass5Layout.createSequentialGroup()
+                        .addComponent(BtnSeek2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(label18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(kdPenjab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(nmPenjab, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtnSeek3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelGlass5Layout.createSequentialGroup()
+                        .addComponent(BtnCari1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(BtnAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(77, 77, 77)
+                .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+        panelGlass5Layout.setVerticalGroup(
+            panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGlass5Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtKdBangsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NmBangsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnSeek2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kdPenjab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nmPenjab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnSeek3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGlass5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnCari1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelGlass5Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelGlass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(BtnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BtnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+        );
 
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
@@ -447,10 +612,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_BtnCari1KeyPressed
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
+//        akses.setform("DlgKamarInap");
         bangsal.isCek();
+        bangsal.emptTeks();
         bangsal.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         bangsal.setLocationRelativeTo(internalFrame1);
-        bangsal.setAlwaysOnTop(false);
         bangsal.setVisible(true);
     }//GEN-LAST:event_BtnSeek2ActionPerformed
 
@@ -461,6 +627,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         NmBangsal.setText("");
+        kdPenjab.setText("");
+        nmPenjab.setText("");
+        txtKdBangsal.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -488,6 +657,42 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_formWindowActivated
 
+    private void txtKdBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKdBangsalKeyPressed
+        // TODO add your handling code here:
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_ENTER:
+                Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?", NmBangsal, txtKdBangsal.getText());
+                BtnAll.requestFocus();
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_txtKdBangsalKeyPressed
+
+    private void kdPenjabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdPenjabKeyPressed
+        // TODO add your handling code here:
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_ENTER:
+                Sequel.cariIsi("select png_jawab from penjab where kd_pj=?", nmPenjab, kdPenjab.getText());
+                BtnAll.requestFocus();
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_kdPenjabKeyPressed
+
+    private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
+        // TODO add your handling code here:
+        carabayar.isCek();
+        carabayar.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        carabayar.setLocationRelativeTo(internalFrame1);
+        carabayar.setVisible(true);
+    }//GEN-LAST:event_BtnSeek3ActionPerformed
+
+    private void BtnSeek3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnSeek3KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -510,15 +715,20 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
+    private widget.Button BtnSeek3;
     private widget.TextBox NmBangsal;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
+    private widget.TextBox kdPenjab;
     private widget.Label label10;
     private widget.Label label17;
+    private widget.Label label18;
     private widget.Label label9;
+    private widget.TextBox nmPenjab;
     private widget.panelisi panelGlass5;
     private widget.Table tbBangsal;
+    private widget.TextBox txtKdBangsal;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -533,20 +743,33 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     + "from kamar_inap inner join reg_periksa inner join pasien inner join bangsal inner join kamar inner join penjab "
                     + "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                     + "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and reg_periksa.kd_pj=penjab.kd_pj "
-                    + "where kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and kamar_inap.no_rawat like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and reg_periksa.no_rkm_medis like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? or "
-                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and kamar.kd_kamar like ? "
+                    + "where "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and kamar_inap.no_rawat like ? or "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and reg_periksa.no_rkm_medis like ? or "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and pasien.nm_pasien like ? or "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and kamar.kd_kamar like ? or "
+                    + "kamar_inap.stts_pulang='-' and bangsal.nm_bangsal like ? and penjab.kd_pj like ? and penjab.png_jawab like ? "
                     + "order by bangsal.nm_bangsal");
             try {
                 ps.setString(1, "%" + NmBangsal.getText() + "%");
-                ps.setString(2, "%" + TCari.getText() + "%");
-                ps.setString(3, "%" + NmBangsal.getText() + "%");
-                ps.setString(4, "%" + TCari.getText() + "%");
-                ps.setString(5, "%" + NmBangsal.getText() + "%");
+                ps.setString(2, "%" + kdPenjab.getText() + "%");
+                ps.setString(3, "%" + TCari.getText() + "%");
+                
+                ps.setString(4, "%" + NmBangsal.getText() + "%");
+                ps.setString(5, "%" + kdPenjab.getText() + "%");
                 ps.setString(6, "%" + TCari.getText() + "%");
+                
                 ps.setString(7, "%" + NmBangsal.getText() + "%");
-                ps.setString(8, "%" + TCari.getText() + "%");
+                ps.setString(8, "%" + kdPenjab.getText() + "%");
+                ps.setString(9, "%" + TCari.getText() + "%");
+                
+                ps.setString(10, "%" + NmBangsal.getText() + "%");
+                ps.setString(11, "%" + kdPenjab.getText() + "%");
+                ps.setString(12, "%" + TCari.getText() + "%");
+                
+                ps.setString(13, "%" + NmBangsal.getText() + "%");
+                ps.setString(14, "%" + kdPenjab.getText() + "%");
+                ps.setString(15, "%" + TCari.getText() + "%");
                 rs = ps.executeQuery();
                 all = 0;
                 ttlLaborat = 0;
@@ -625,35 +848,35 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     deposit = Sequel.cariIsiAngka("select sum(besar_deposit) from deposit where no_rawat=? ", rs.getString("no_rawat"));
                     ttlDeposit += deposit;
 
-                    hak_kelas_1 = Sequel.cariIsi("select hak_kelas_1 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
-                    hak_kelas_2 = Sequel.cariIsi("select hak_kelas_2 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
-                    hak_kelas_3 = Sequel.cariIsi("select hak_kelas_3 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
-                    selisih = Sequel.cariIsi("select selisih from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
-                    penjaminan = Sequel.cariIsi("select penjaminan from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "'");
+                    hak_kelas_1 = Sequel.cariIsi("select hak_kelas_1 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
+                    hak_kelas_2 = Sequel.cariIsi("select hak_kelas_2 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
+                    hak_kelas_3 = Sequel.cariIsi("select hak_kelas_3 from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
+                    selisih = Sequel.cariIsi("select selisih from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
+                    penjaminan = Sequel.cariIsi("select penjaminan from coderbpjs where no_rawat='" + rs.getString("no_rawat") + "' order by id_coder desc");
                     if (hak_kelas_1.isEmpty()) {
                         hak_kelas_1 = "0";
-                    }else{
-                         hak_kelas_1 = nf.format(Double.parseDouble(hak_kelas_1));
+                    } else {
+                        hak_kelas_1 = nf.format(Double.parseDouble(hak_kelas_1));
                     }
                     if (hak_kelas_2.isEmpty()) {
                         hak_kelas_2 = "0";
-                    }else{
+                    } else {
                         hak_kelas_2 = nf.format(Double.parseDouble(hak_kelas_2));
                     }
                     if (hak_kelas_3.isEmpty()) {
                         hak_kelas_3 = "0";
-                    }else{
-                         hak_kelas_3 = nf.format(Double.parseDouble(hak_kelas_3));
+                    } else {
+                        hak_kelas_3 = nf.format(Double.parseDouble(hak_kelas_3));
                     }
                     if (selisih.isEmpty()) {
                         selisih = "0";
-                    }else{
-                         selisih = nf.format(Double.parseDouble(selisih));
+                    } else {
+                        selisih = nf.format(Double.parseDouble(selisih));
                     }
                     if (penjaminan.isEmpty()) {
                         penjaminan = "0";
-                    }else{
-                         penjaminan = nf.format(Double.parseDouble(penjaminan));
+                    } else {
+                        penjaminan = nf.format(Double.parseDouble(penjaminan));
                     }
 
                     tabMode.addRow(new Object[]{
@@ -662,7 +885,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         Valid.SetAngka(Obat), Valid.SetAngka(Retur_Obat), Valid.SetAngka(Resep_Pulang), Valid.SetAngka(Laborat), Valid.SetAngka(Radiologi), Valid.SetAngka(Potongan),
                         Valid.SetAngka(Tambahan), Valid.SetAngka(Kamar), Valid.SetAngka(Operasi), Valid.SetAngka(Harian), Valid.SetAngka(Laborat + Radiologi + Operasi + Obat + Ranap_Dokter
                         + Ranap_Dokter_Paramedis + Ranap_Paramedis + Ralan_Dokter + Ralan_Dokter_Paramedis + Ralan_Paramedis + Tambahan + Potongan + Kamar + Registrasi + Harian + Retur_Obat + Resep_Pulang),
-                        Valid.SetAngka(deposit), hak_kelas_1, hak_kelas_2, hak_kelas_3,selisih,penjaminan
+                        Valid.SetAngka(deposit), hak_kelas_1, hak_kelas_2, hak_kelas_3, selisih, penjaminan
                     });
 
                     all = all + Laborat + Radiologi + Operasi + Obat + Ranap_Dokter + Ranap_Dokter_Paramedis + Ranap_Paramedis + Ralan_Dokter + Ralan_Dokter_Paramedis + Ralan_Paramedis + Tambahan + Potongan + Kamar + Registrasi + Harian + Retur_Obat + Resep_Pulang;

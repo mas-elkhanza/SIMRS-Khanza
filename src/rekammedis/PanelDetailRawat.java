@@ -2207,7 +2207,9 @@ public class PanelDetailRawat extends widget.panelisi {
                                         "inner join dokter on rawat_inap_drpr.kd_dokter=dokter.kd_dokter inner join petugas on rawat_inap_drpr.nip=petugas.nip "
                                         + "INNER JOIN kamar ON rawat_inap_drpr.kd_kamar=kamar.kd_kamar "
                                         + "INNER JOIN bangsal ON kamar.kd_bangsal = bangsal.kd_bangsal "+
-                                        "where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
+                                        "where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' "
+                                        + "order by bangsal.nm_bangsal asc, jns_perawatan_inap.nm_perawatan asc, dokter.nm_dokter asc, "
+                                        + "rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+

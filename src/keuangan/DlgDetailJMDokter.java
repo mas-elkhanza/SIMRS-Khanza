@@ -102,47 +102,63 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         tabModeMiror = tabMode;
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800, 800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        DefaultTableCellRenderer leftRenderer = new DefaultTableCellRenderer();
+        leftRenderer.setHorizontalAlignment(JLabel.LEFT);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
 
         for (i = 0; i < 12; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
                     column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 1:
                     column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 2:
                     column.setPreferredWidth(150);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 3:
                     column.setPreferredWidth(120);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 4:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 5:
                     column.setPreferredWidth(280);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 6:
                     column.setPreferredWidth(80);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 7:
                     column.setPreferredWidth(25);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 8:
                     column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 9:
                     column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 10:
                     column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 case 11:
                     column.setPreferredWidth(85);
+                    column.setCellRenderer(leftRenderer);
                     break;
                 default:
                     break;

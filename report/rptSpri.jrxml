@@ -145,14 +145,6 @@
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy">
-				<reportElement x="192" y="436" width="64" height="12" uuid="6b78830f-8e76-4784-b713-5690bd21a1b9"/>
-				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="8"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="143" y="448" width="114" height="12" uuid="b962ac45-02da-4cfc-b86f-ce1ab45a2daf"/>
 				<textElement textAlignment="Center">
@@ -383,6 +375,16 @@ Wassalamu'alaikum Wr. Wb.]]></text>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="193" y="436" width="64" height="12" uuid="28772139-54e0-4846-b0fe-00eebeaef62d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
