@@ -106,6 +106,9 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         DTPCari2.setDate(new Date());
         DTPTgl.setDate(new Date());
         panelGlass8.setSize(WIDTH, 200);
+        jLabel24.setVisible(false);
+        TCariPasien.setVisible(false);
+        btnPasien.setVisible(false);
 
         TabRawat.setSelectedIndex(2);
         tabModeDr = new DefaultTableModel(null, new Object[]{
@@ -2097,14 +2100,14 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         .addComponent(TCariPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(btnPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGlass9Layout.createSequentialGroup()
+                    .addGroup(panelGlass9Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(BtnTambahTindakan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(931, 931, 931))
+                .addContainerGap(1238, Short.MAX_VALUE))
         );
         panelGlass9Layout.setVerticalGroup(
             panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2132,12 +2135,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         .addGap(9, 9, 9)
                         .addComponent(btnPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnTambahTindakan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelGlass9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BtnTambahTindakan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -4426,7 +4429,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
                     TNoRw.requestFocus();
                 } else {
-
                     for (i = 0; i < tbRawatDrPr.getRowCount(); i++) {
                         if (tbRawatDrPr.getValueAt(i, 0).toString().equals("true")) {
                             if (Sequel.cariRegistrasi(tbRawatDrPr.getValueAt(i, 1).toString()) > 0) {
@@ -4442,7 +4444,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             }
                         }
                     }
-
                     tampilDrPr();
                 }
                 break;
@@ -5058,6 +5059,41 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         Valid.textKosong(TNoRw, "No.Rawat");
     } else {
         switch (TabRawat.getSelectedIndex()) {
+            case 2:
+                if (tabModeDrPr.getRowCount() == 0) {
+                    JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
+                    TNoRw.requestFocus();
+                } else {
+                    for (i = 0; i < tbRawatDrPr.getRowCount(); i++) {
+                        if (tbRawatDrPr.getValueAt(i, 0).toString().equals("true")) {
+                            if (Sequel.cariRegistrasi(tbRawatDrPr.getValueAt(i, 1).toString()) > 0) {
+                                JOptionPane.showMessageDialog(rootPane, "Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                TCari.requestFocus();
+                            } else {
+                                //"P", "Kode", "Nama Perawatan", "Kategori Perawatan", "Tarif/Biaya",
+                                //"Bagian RS", "BHP", "JM Dokter", "JM Perawat", "KSO", "Menejemen"
+                                Sequel.mengedittf("rawat_jl_drpr", "no_rawat ='" + TNoRw.getText() + "'",
+                                        "no_rawat ='" + TNoRw.getText()
+                                        + "', kd_jenis_prw ='" + tbTindakan3.getValueAt(i, 1).toString()
+                                        + "', kd_dokter ='" + KdDok2.getText()
+                                        + "', nip ='" + kdptg2.getText()
+                                        + "', tgl_perawatan ='" + Valid.SetDateToString(DTPTgl.getDate())
+                                        + "', jam_rawat ='" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem()
+                                        + "', material ='" + tbTindakan3.getValueAt(i, 5).toString()
+                                        + "', bhp ='" + tbTindakan3.getValueAt(i, 6).toString()
+                                        + "', tarif_tindakandr ='" + tbTindakan3.getValueAt(i, 7).toString()
+                                        + "', tarif_tindakanpr ='" + tbTindakan3.getValueAt(i, 8).toString()
+                                        + "', kso ='" + tbTindakan3.getValueAt(i, 9).toString()
+                                        + "', menejemen ='" + tbTindakan3.getValueAt(i, 10).toString()
+                                        + "', biaya_rawat ='" + tbTindakan3.getValueAt(i, 4).toString()
+                                        + "'");
+                            }
+                        }
+                    }
+
+                    tampilDrPr();
+                }
+                break;
             case 3:
                 if ((!TKeluhan.getText().trim().equals("")) || (!TPemeriksaan.getText().trim().equals(""))
                         || (!TSuhu.getText().trim().equals("")) || (!TTensi.getText().trim().equals(""))
@@ -6549,52 +6585,52 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     + "dokter inner join rawat_jl_drpr inner join petugas on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "
                     + "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "
                     + "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter and rawat_jl_drpr.nip=petugas.nip "
-                    + "where rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and rawat_jl_drpr.no_rawat like ? or "
-                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and reg_periksa.no_rkm_medis like ? or "
-                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pasien.nm_pasien like ? or "
-                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and jns_perawatan.nm_perawatan like ? or "
-                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and rawat_jl_drpr.kd_dokter like ? or "
-                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and dokter.nm_dokter like ? or "
-                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and rawat_jl_drpr.nip like ? or "
-                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and petugas.nama like ? or "
-                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and tgl_perawatan like ?  "
+                    + "where rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? and rawat_jl_drpr.no_rawat like ? or "
+                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? and reg_periksa.no_rkm_medis like ? or "
+                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? and pasien.nm_pasien like ? or "
+                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? and jns_perawatan.nm_perawatan like ? or "
+                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? and rawat_jl_drpr.kd_dokter like ? or "
+                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? and dokter.nm_dokter like ? or "
+                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? and rawat_jl_drpr.nip like ? or "
+                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? and petugas.nama like ? or "
+                    + "rawat_jl_drpr.tgl_perawatan between ? and ? and rawat_jl_drpr.no_rawat like ? and tgl_perawatan like ?  "
                     + " order by rawat_jl_drpr.no_rawat desc");
             try {
                 ps3.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps3.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
-                ps3.setString(3, "%" + TCariPasien.getText() + "%");
+                ps3.setString(3, "%" + TNoRw.getText() + "%");
                 ps3.setString(4, "%" + TCari.getText().trim() + "%");
                 ps3.setString(5, Valid.SetDateToString(DTPCari1.getDate()));
                 ps3.setString(6, Valid.SetDateToString(DTPCari2.getDate()));
-                ps3.setString(7, "%" + TCariPasien.getText() + "%");
+                ps3.setString(7, "%" + TNoRw.getText() + "%");
                 ps3.setString(8, "%" + TCari.getText().trim() + "%");
                 ps3.setString(9, Valid.SetDateToString(DTPCari1.getDate()));
                 ps3.setString(10, Valid.SetDateToString(DTPCari2.getDate()));
-                ps3.setString(11, "%" + TCariPasien.getText() + "%");
+                ps3.setString(11, "%" + TNoRw.getText() + "%");
                 ps3.setString(12, "%" + TCari.getText().trim() + "%");
                 ps3.setString(13, Valid.SetDateToString(DTPCari1.getDate()));
                 ps3.setString(14, Valid.SetDateToString(DTPCari2.getDate()));
-                ps3.setString(15, "%" + TCariPasien.getText() + "%");
+                ps3.setString(15, "%" + TNoRw.getText() + "%");
                 ps3.setString(16, "%" + TCari.getText().trim() + "%");
                 ps3.setString(17, Valid.SetDateToString(DTPCari1.getDate()));
                 ps3.setString(18, Valid.SetDateToString(DTPCari2.getDate()));
-                ps3.setString(19, "%" + TCariPasien.getText() + "%");
+                ps3.setString(19, "%" + TNoRw.getText() + "%");
                 ps3.setString(20, "%" + TCari.getText().trim() + "%");
                 ps3.setString(21, Valid.SetDateToString(DTPCari1.getDate()));
                 ps3.setString(22, Valid.SetDateToString(DTPCari2.getDate()));
-                ps3.setString(23, "%" + TCariPasien.getText() + "%");
+                ps3.setString(23, "%" + TNoRw.getText() + "%");
                 ps3.setString(24, "%" + TCari.getText().trim() + "%");
                 ps3.setString(25, Valid.SetDateToString(DTPCari1.getDate()));
                 ps3.setString(26, Valid.SetDateToString(DTPCari2.getDate()));
-                ps3.setString(27, "%" + TCariPasien.getText() + "%");
+                ps3.setString(27, "%" + TNoRw.getText() + "%");
                 ps3.setString(28, "%" + TCari.getText().trim() + "%");
                 ps3.setString(29, Valid.SetDateToString(DTPCari1.getDate()));
                 ps3.setString(30, Valid.SetDateToString(DTPCari2.getDate()));
-                ps3.setString(31, "%" + TCariPasien.getText() + "%");
+                ps3.setString(31, "%" + TNoRw.getText() + "%");
                 ps3.setString(32, "%" + TCari.getText().trim() + "%");
                 ps3.setString(33, Valid.SetDateToString(DTPCari1.getDate()));
                 ps3.setString(34, Valid.SetDateToString(DTPCari2.getDate()));
-                ps3.setString(35, "%" + TCariPasien.getText() + "%");
+                ps3.setString(35, "%" + TNoRw.getText() + "%");
                 ps3.setString(36, "%" + TCari.getText().trim() + "%");
                 rs = ps3.executeQuery();
                 while (rs.next()) {
