@@ -321,7 +321,7 @@ public final class sekuel {
      */
     public boolean menyimpantf(String table, String value, String sama, int i, String[] a) {
         try {
-            System.out.println("Query: "+"insert into " + table + " values(" + value + ")");
+            System.out.println("Query: " + "insert into " + table + " values(" + value + ")");
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             for (angka = 1; angka <= i; angka++) {
                 ps.setString(angka, a[angka - 1]);
@@ -929,6 +929,7 @@ public final class sekuel {
     public boolean mengedittf(String table, String acuan_field, String update) {
         bool = true;
         try {
+            System.out.println("Query : " + "update " + table + " set " + update + " where " + acuan_field);
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
             try {
                 ps.executeUpdate();
@@ -1568,6 +1569,7 @@ public final class sekuel {
 
         }
     }
+
     public void cariIsi(String sql, JTextField txt1, JTextField txt2) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1595,6 +1597,7 @@ public final class sekuel {
 
         }
     }
+
     public void cariIsi(String sql, JTextArea txt) {
         try {
             ps = connect.prepareStatement(sql);
