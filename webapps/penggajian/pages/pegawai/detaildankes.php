@@ -1,11 +1,11 @@
 
 
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bulan         =$baris[1];
+   $_sql      = "SELECT * FROM set_tahun";
+   $hasil     = bukaquery($_sql);
+   $baris     = mysqli_fetch_row($hasil);
+   $tahun     = empty($baris[0])?date("Y"):$baris[0];
+   $bulan     = empty($baris[1])?date("m"):$baris[1];
 
 ?>
 <div id="post">
@@ -23,12 +23,12 @@
                 $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                 $hasilnext        	= bukaquery($_sqlnext);
                 $barisnext        	= mysqli_fetch_row($hasilnext);
-                $next                   = $barisnext[0];
+                @$next              = $barisnext[0];
 
                 $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                 $hasilprev        	= bukaquery($_sqlprev);
                 $barisprev        	= mysqli_fetch_row($hasilprev);
-                $prev                   = $barisprev[0];
+                @$prev              = $barisprev[0];
                 
                 if(empty($next)){
                     $next=$prev;
@@ -57,7 +57,7 @@
                 <tr class="head">
                     <td width="31%" >Tanggal Ambil</td><td width="">:</td>
                     <td width="67%">
-                        <select name="TglAmbil" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                        <select name="TglAmbil" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                              <?php
                                 loadTgl2();
                              ?>
@@ -88,19 +88,19 @@
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
-                    $id           =trim($_POST['id']);
-                    $TglAmbil     =trim($_POST['TglAmbil']);
-                    $BlnAmbil     =trim($_POST['BlnAmbil']);
+                    $id           = trim($_POST['id']);
+                    $TglAmbil     = trim($_POST['TglAmbil']);
+                    $BlnAmbil     = trim($_POST['BlnAmbil']);
                     $ktg          = validTeks(trim($_POST['ktg']));
                     $dankes       = validangka(trim($_POST['dankes']));
-                    if ((!empty($id))&&(!empty($dankes))) {
+                    if ((isset($id))&&(isset($dankes))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" ambil_dankes "," '$id','$tahun-$BlnAmbil-$TglAmbil','$ktg','$dankes'", " Ambil Dankes " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=SisaDankes&action=TAMBAH&id=$id'>";
                                 break;
                         }
-                    }else if ((empty($id))||(empty($dankes))){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }

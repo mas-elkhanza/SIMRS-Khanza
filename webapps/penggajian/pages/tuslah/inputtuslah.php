@@ -1,11 +1,9 @@
-
-
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bulan          = $baris[1];
+   $tahun        = empty($baris[0])?date("Y"):$baris[0];
+   $bulan        = empty($baris[1])?date("m"):$baris[1];
 ?>
 
 <div id="post">
@@ -17,14 +15,14 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $pendapatan_tuslah     =str_replace("_"," ",isset($_GET['pendapatan_tuslah']))?str_replace("_"," ",$_GET['pendapatan_tuslah']):NULL;
+                $action      = isset($_GET['action'])?$_GET['action']:NULL;
+                $pendapatan_tuslah = str_replace("_"," ",isset($_GET['pendapatan_tuslah']))?str_replace("_"," ",$_GET['pendapatan_tuslah']):NULL;
                 if($action == "TAMBAH"){
                     $pendapatan_tuslah = str_replace("_"," ",isset($_GET['pendapatan_tuslah']))?str_replace("_"," ",$_GET['pendapatan_tuslah']):NULL;
                     $persen_rs       = "";
-		    $bagian_rs       ="";
+		            $bagian_rs       = "";
                     $persen_kry      = "";
-		    $bagian_kry      ="";
+		            $bagian_kry      = "";
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT pendapatan_tuslah,persen_rs,
                                     bagian_rs,persen_kry,bagian_kry
@@ -33,16 +31,16 @@
                     $baris        = mysqli_fetch_row($hasil);
                     $pendapatan_tuslah = $baris[0];
                     $persen_rs       = $baris[1];
-		    $bagian_rs       = $baris[2];
+		            $bagian_rs       = $baris[2];
                     $persen_kry      = $baris[3];
-		    $bagian_kry      = $baris[4];
+		            $bagian_kry      = $baris[4];
                 }
                 echo"<input type=hidden name=pendapatan_tuslah value=$pendapatan_tuslah><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Pendapatan Tuslah</td><td width="">:</td>
-                    <td width="67%">Rp.<input name="pendapatan_tuslah" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $pendapatan_tuslah;?>" size="30" maxlength="15">
+                    <td width="67%">Rp.<input name="pendapatan_tuslah" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $pendapatan_tuslah;?>" size="30" maxlength="15" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -61,24 +59,22 @@
             </table>
             <div align="center"><input name=BtnSimpan type=submit class="button" value="SIMPAN">&nbsp<input name=BtnKosong type=reset class="button" value="KOSONG"></div>
             <?php
-                $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
-			
+                $BtnSimpan = isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;		
 				$_sql         = "SELECT * FROM set_tahun";
 				$hasil        = bukaquery($_sql);
 				$baris        = mysqli_fetch_row($hasil);
-				$tahun         = $baris[0];
-				$bulan          = $baris[1];
-
+                $tahun        = empty($baris[0])?date("Y"):$baris[0];
+                $bulan        = empty($baris[1])?date("m"):$baris[1];
                 if (isset($BtnSimpan)) {
-                    $pendapatan_tuslah    = trim($_POST['pendapatan_tuslah']);
-                    $pendapatan_tuslah      = validTeks($pendapatan_tuslah);
+                    $pendapatan_tuslah  = trim($_POST['pendapatan_tuslah']);
+                    $pendapatan_tuslah  = validangka($pendapatan_tuslah);
                     $persen_rs          = trim($_POST['persen_rs']);
-                    $persen_rs              = validangka($persen_rs);
-		    $bagian_rs          =($persen_rs/100)*$pendapatan_tuslah;
+                    $persen_rs          = validangka($persen_rs);
+		            $bagian_rs          = ($persen_rs/100)*$pendapatan_tuslah;
                     $persen_kry         = trim($_POST['persen_kry']);
                     $persen_kry         = validangka($persen_kry);
-		    $bagian_kry         =($persen_kry/100)*$pendapatan_tuslah;
-                    if (!empty($pendapatan_tuslah)) {
+		            $bagian_kry         = ($persen_kry/100)*$pendapatan_tuslah;
+                    if (isset($pendapatan_tuslah)) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" set_tuslah ","'$tahun','$bulan','$pendapatan_tuslah','$persen_rs','$bagian_rs','$persen_kry','$bagian_kry'", " Pendapatan Tuslah" );
@@ -86,11 +82,11 @@
                                 break;
                             case "UBAH":
                                 Ubah(" set_tuslah ","pendapatan_tuslah='$pendapatan_tuslah',persen_rs='$persen_rs',bagian_rs='$bagian_rs',persen_kry='$persen_kry',
-                                                bagian_kry='$bagian_kry'  WHERE tahun='$tahun' and bulan='$bulan'  ", " Pendapatan Tuslah");
+                                    bagian_kry='$bagian_kry'  WHERE tahun='$tahun' and bulan='$bulan'  ", " Pendapatan Tuslah");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListTuslah'></head><body></body></html>";
                                 break;
                         }
-                    }else if (empty($pendapatan_tuslah)){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

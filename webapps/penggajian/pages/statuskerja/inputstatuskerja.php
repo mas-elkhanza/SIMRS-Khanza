@@ -29,7 +29,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Status</td><td width="">:</td>
-                    <td width="67%"><input name="stts" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $stts;?>" size="10" maxlength="3">
+                    <td width="67%"><input name="stts" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $stts;?>" size="10" maxlength="3" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -51,9 +51,9 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $stts    = validTeks(trim($_POST['stts']));
-                    $ktg    = validTeks(trim($_POST['ktg']));
-                    $indek   = validTeks(trim($_POST['indek']));
-                    if ((!empty($stts))&&(!empty($ktg))&&(!empty($indek))) {
+                    $ktg     = validTeks(trim($_POST['ktg']));
+                    $indek   = validangka(trim($_POST['indek']));
+                    if ((isset($stts))&&(isset($ktg))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" stts_kerja "," '$stts','$ktg','$indek' ", " status kerja " );
@@ -64,7 +64,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListSttskerja'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($stts))||(empty($ktg))||(empty($indek))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

@@ -9,16 +9,18 @@
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
    $baristahun   = mysqli_fetch_row($hasil);
-   $tahun        = $baristahun[0];
-   $bln_leng     = strlen($baristahun[1]);
-   $hari         = $baristahun[2];
-   $bulan        = "0";
-   $bulanindex   = $baristahun[1];
+   $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
+   $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
+   $hari      = empty($baristhn[2])?date("d"):$baristhn[2];
+   $bln_leng  = strlen($blnini);
+   $bulan     = "0";
    if ($bln_leng==1){
-    	$bulan="0".$baristahun[1];
+       $bulan="0".$blnini;
    }else{
-	$bulan=$baristahun[1];
+       $bulan=$blnini;
    }
+
+   $bulanindex = empty($baristhn[1])?date("m"):$baristhn[1];
 
    $_sqllibur = "select `tanggal`, `ktg`
                         from set_hari_libur
@@ -102,93 +104,71 @@
                          $_sql2         = "SELECT normal-$jumlahlibur,jmlhr,normal FROM set_tahun";
 			 $hasil2        = bukaquery($_sql2);
 			 $baris2        = mysqli_fetch_row($hasil2);
-			 $jmlmsk         = $baris2[0];
-			 if($baris["wajibmasuk"]==-1){
-			     $jmlmsk=0;
-			 }else if($baris["wajibmasuk"]==-2){
-			     $jmlmsk=$baris2[1]-4;
-			 }else if($baris["wajibmasuk"]==-3){
-			     $jmlmsk=$baris2[1]-2-$jumlahlibur;
-			 }else if($baris["wajibmasuk"]==-4){
-			     $jmlmsk=$baris2[2];
-			 }else if($baris["wajibmasuk"]==-5){
-			     $jmlmsk=getOne("select (if(h1='',0,1)+if(h2='',0,1)+if(h3='',0,1)+if(h4='',0,1)+if(h5='',0,1)+"
-                                           ."if(h6='',0,1)+if(h7='',0,1)+if(h8='',0,1)+if(h9='',0,1)+if(h10='',0,1)+"
-                                           ."if(h11='',0,1)+if(h12='',0,1)+if(h13='',0,1)+if(h14='',0,1)+if(h15='',0,1)+"
-                                           ."if(h16='',0,1)+if(h17='',0,1)+if(h18='',0,1)+if(h19='',0,1)+if(h20='',0,1)+"
-                                           ."if(h21='',0,1)+if(h22='',0,1)+if(h23='',0,1)+if(h24='',0,1)+if(h25='',0,1)+"
-                                           ."if(h26='',0,1)+if(h27='',0,1)+if(h28='',0,1)+if(h29='',0,1)+if(h30='',0,1)+"
-                                           ."if(h31='',0,1)) from jadwal_pegawai where id='$baris[0]' and tahun='$tahun' and bulan='$bulan'");
-			 }else if($baris["wajibmasuk"]!=0){
-			     $jmlmsk=$baris["wajibmasuk"];
-			 }else if(!($baris["wajibmasuk"]==0)){
-			     $jmlmsk=$baris2[0];
-			 }
+			 $jmlmsk        = isset($baris2[0])?$baris2[0]:0;
+                if(isset($baris["wajibmasuk"])==-1){
+                    $jmlmsk=0;
+                }else if(isset($baris["wajibmasuk"])==-2){
+                    $jmlmsk=(isset($baris2[1])?$baris2[1]:0)-4;
+                }else if($baris["wajibmasuk"]==-3){
+                    $jmlmsk=(isset($baris2[1])?$baris2[1]:0)-2-$jumlahlibur;
+                }else if($baris["wajibmasuk"]==-4){
+                    $jmlmsk=(isset($baris2[2])?$baris2[2]:0);
+                }else if($baris["wajibmasuk"]==-5){
+                    $jmlmsk=getOne("select (if(h1='',0,1)+if(h2='',0,1)+if(h3='',0,1)+if(h4='',0,1)+if(h5='',0,1)+"
+                                   ."if(h6='',0,1)+if(h7='',0,1)+if(h8='',0,1)+if(h9='',0,1)+if(h10='',0,1)+"
+                                   ."if(h11='',0,1)+if(h12='',0,1)+if(h13='',0,1)+if(h14='',0,1)+if(h15='',0,1)+"
+                                   ."if(h16='',0,1)+if(h17='',0,1)+if(h18='',0,1)+if(h19='',0,1)+if(h20='',0,1)+"
+                                   ."if(h21='',0,1)+if(h22='',0,1)+if(h23='',0,1)+if(h24='',0,1)+if(h25='',0,1)+"
+                                   ."if(h26='',0,1)+if(h27='',0,1)+if(h28='',0,1)+if(h29='',0,1)+if(h30='',0,1)+"
+                                   ."if(h31='',0,1)) from jadwal_pegawai where id='$baris[0]' and tahun='$tahun' and bulan='$bulan'");
+                }else if($baris["wajibmasuk"]!=0){
+                    $jmlmsk=$baris["wajibmasuk"];
+                }else if(!($baris["wajibmasuk"]==0)){
+                    $jmlmsk=isset($baris2[0])?$baris2[0]:0;
+                }
 
                             $_sql3    = "SELECT sum(jml)
                             from jgmlm  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' group by id";
                             $hasil3   = bukaquery($_sql3);
                             $baris3   = mysqli_fetch_row($hasil3);
-                            $jgmlm    = $baris3[0];
-                            $sisamlm  =0;
-                            if($baris3[0]<=0){
-                                $jgmlm=0;
-                                $sisamlm=0;
-                            }else if($baris3[0]>0){
-                                $jgmlm=$baris3[0];
-                                $sisamlm=$baris3[0]-0;
-                            }
+                            $jgmlm=isset($baris3[0])?$baris3[0]:0;
+                            $sisamlm=(isset($baris3[0])?$baris3[0]:0)-0;
 
                             $_sql4    = "SELECT sum(jml)
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='A' group by id";
                             $hasil4   = bukaquery($_sql4);
                             $baris4   = mysqli_fetch_row($hasil4);
-                            $ttla     = $baris4[0];
-                            if(empty ($baris4[0])){
-                                $ttla=0;
-                            }
+                            $ttla     = isset($baris4[0])?$baris4[0]:0;
 
                             $_sql5    = "SELECT sum(jml)
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='S' group by id";
                             $hasil5   = bukaquery($_sql5);
                             $baris5   = mysqli_fetch_row($hasil5);
-                            $ttls     = $baris5[0];
-                            if(empty ($baris5[0])){
-                                $ttls=0;
-                            }
+                            $ttls     = isset($baris5[0])?$baris5[0]:0;
 
                             $_sql6    = "SELECT sum(jml)
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);
                             $baris6   = mysqli_fetch_row($hasil6);
-                            $ttlc     = $baris6[0]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
-                            if(empty ($ttlc)){
-                                $ttlc=0;
-                            }
-
+                            $ttlc     = (isset($baris6[0])?$baris6[0]:0)+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
+                
                             $_sql7    = "SELECT sum(jml)
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='I' group by id";
                             $hasil7   = bukaquery($_sql7);
                             $baris7   = mysqli_fetch_row($hasil7);
-                            $ttli     = $baris7[0];
-                            if(empty ($baris7[0])){
-                                $ttli=0;
-                            }
+                            $ttli     = isset($baris7[0])?$baris7[0]:0;
 
                             $_sql8    = "SELECT sum(jml)
                             from tambahjaga  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' group by id";
                             $hasil8   = bukaquery($_sql8);
                             $baris8   = mysqli_fetch_row($hasil8);
-                            $ttltmb   = $baris8[0];
-                            if(empty ($baris8[0])){
-                                $ttltmb=0;
-                            }
+                            $ttltmb   = isset($baris8[0])?$baris8[0]:0;
 
                             $ttln=getOne("select count(rekap_presensi.id) from rekap_presensi where rekap_presensi.id='$baris[0]' and rekap_presensi.jam_datang like '%$tahun-$bulan%'")+$ttltmb;
 			//bukainput("insert into indekref values('$baris["indexins"]','$ttln','$total')");
@@ -321,94 +301,72 @@
                          $_sql2         = "SELECT normal-$jumlahlibur,jmlhr,normal FROM set_tahun";
 			 $hasil2        = bukaquery($_sql2);
 			 $baris2        = mysqli_fetch_row($hasil2);
-			 $jmlmsk         = $baris2[0];
-			 if($baris["wajibmasuk"]==-1){
-			     $jmlmsk=0;
-			 }else if($baris["wajibmasuk"]==-2){
-			     $jmlmsk=$baris2[1]-4;
-			 }else if($baris["wajibmasuk"]==-3){
-			     $jmlmsk=$baris2[1]-2-$jumlahlibur;
-			 }else if($baris["wajibmasuk"]==-4){
-			     $jmlmsk=$baris2[2];
-			 }else if($baris["wajibmasuk"]==-5){
-			     $jmlmsk=getOne("select (if(h1='',0,1)+if(h2='',0,1)+if(h3='',0,1)+if(h4='',0,1)+if(h5='',0,1)+"
-                                           ."if(h6='',0,1)+if(h7='',0,1)+if(h8='',0,1)+if(h9='',0,1)+if(h10='',0,1)+"
-                                           ."if(h11='',0,1)+if(h12='',0,1)+if(h13='',0,1)+if(h14='',0,1)+if(h15='',0,1)+"
-                                           ."if(h16='',0,1)+if(h17='',0,1)+if(h18='',0,1)+if(h19='',0,1)+if(h20='',0,1)+"
-                                           ."if(h21='',0,1)+if(h22='',0,1)+if(h23='',0,1)+if(h24='',0,1)+if(h25='',0,1)+"
-                                           ."if(h26='',0,1)+if(h27='',0,1)+if(h28='',0,1)+if(h29='',0,1)+if(h30='',0,1)+"
-                                           ."if(h31='',0,1)) from jadwal_pegawai where id='$baris[0]' and tahun='$tahun' and bulan='$bulan'");
-			 }else if($baris["wajibmasuk"]!=0){
-			     $jmlmsk=$baris["wajibmasuk"];
-			 }else if(!($baris["wajibmasuk"]==0)){
-			     $jmlmsk=$baris2[0];
-			 }
+			 $jmlmsk         = isset($baris2[0])?$baris2[0]:0;
+                             if($baris["wajibmasuk"]==-1){
+                                 $jmlmsk=0;
+                             }else if($baris["wajibmasuk"]==-2){
+                                 $jmlmsk=(isset($baris2[1])?$baris2[1]:0)-4;
+                             }else if($baris["wajibmasuk"]==-3){
+                                 $jmlmsk=(isset($baris2[1])?$baris2[1]:0)-2-$jumlahlibur;
+                             }else if($baris["wajibmasuk"]==-4){
+                                 $jmlmsk=isset($baris2[2])?$baris2[2]:0;
+                             }else if($baris["wajibmasuk"]==-5){
+                                 $jmlmsk=getOne("select (if(h1='',0,1)+if(h2='',0,1)+if(h3='',0,1)+if(h4='',0,1)+if(h5='',0,1)+"
+                                               ."if(h6='',0,1)+if(h7='',0,1)+if(h8='',0,1)+if(h9='',0,1)+if(h10='',0,1)+"
+                                               ."if(h11='',0,1)+if(h12='',0,1)+if(h13='',0,1)+if(h14='',0,1)+if(h15='',0,1)+"
+                                               ."if(h16='',0,1)+if(h17='',0,1)+if(h18='',0,1)+if(h19='',0,1)+if(h20='',0,1)+"
+                                               ."if(h21='',0,1)+if(h22='',0,1)+if(h23='',0,1)+if(h24='',0,1)+if(h25='',0,1)+"
+                                               ."if(h26='',0,1)+if(h27='',0,1)+if(h28='',0,1)+if(h29='',0,1)+if(h30='',0,1)+"
+                                               ."if(h31='',0,1)) from jadwal_pegawai where id='$baris[0]' and tahun='$tahun' and bulan='$bulan'");
+                             }else if($baris["wajibmasuk"]!=0){
+                                 $jmlmsk=$baris["wajibmasuk"];
+                             }else if(!($baris["wajibmasuk"]==0)){
+                                 $jmlmsk=isset($baris2[0])?$baris2[0]:0;
+                             }
+
 
                             $_sql3    = "SELECT sum(jml)
                             from jgmlm  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' group by id";
                             $hasil3   = bukaquery($_sql3);
                             $baris3   = mysqli_fetch_row($hasil3);
-                            $jgmlm    = $baris3[0];
-                            $sisamlm  =0;
-                            if($baris3[0]<=0){
-                                $jgmlm=0;
-                                $sisamlm=0;
-                            }else if($baris3[0]>0){
-                                $jgmlm=$baris3[0];
-                                $sisamlm=$baris3[0]-0;
-                            }
+                            $jgmlm    = isset($baris3[0])?$baris3[0]:0;
+                            $sisamlm=(isset($baris3[0])?$baris3[0]:0)-0;
 
                             $_sql4    = "SELECT sum(jml)
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='A' group by id";
                             $hasil4   = bukaquery($_sql4);
                             $baris4   = mysqli_fetch_row($hasil4);
-                            $ttla     = $baris4[0];
-                            if(empty ($baris4[0])){
-                                $ttla=0;
-                            }
+                            $ttla     = isset($baris4[0])?$baris4[0]:0;
 
                             $_sql5    = "SELECT sum(jml)
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='S' group by id";
                             $hasil5   = bukaquery($_sql5);
                             $baris5   = mysqli_fetch_row($hasil5);
-                            $ttls     = $baris5[0];
-                            if(empty ($baris5[0])){
-                                $ttls=0;
-                            }
+                            $ttls     = isset($baris5[0])?$baris5[0]:0;
 
                             $_sql6    = "SELECT sum(jml)
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);
                             $baris6   = mysqli_fetch_row($hasil6);
-                            $ttlc     = $baris6[0]+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
-                            if(empty ($ttlc)){
-                                $ttlc=0;
-                            }
-
+                            $ttlc     = (isset($baris6[0])?$baris6[0]:0)+getOne("select sum(jumlah) from pengajuan_cuti where tanggal_awal like '%".$tahun."-".$bulan."%' and status='Disetujui' and nik='".$baris["nik"]."'");
+                                
                             $_sql7    = "SELECT sum(jml)
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='I' group by id";
                             $hasil7   = bukaquery($_sql7);
                             $baris7   = mysqli_fetch_row($hasil7);
-                            $ttli     = $baris7[0];
-                            if(empty ($baris7[0])){
-                                $ttli=0;
-                            }
+                            $ttli     = isset($baris7[0])?$baris7[0]:0;
 
                             $_sql8    = "SELECT sum(jml)
                             from tambahjaga  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' group by id";
                             $hasil8   = bukaquery($_sql8);
                             $baris8   = mysqli_fetch_row($hasil8);
-                            $ttltmb   = $baris8[0];
-                            if(empty ($baris8[0])){
-                                $ttltmb=0;
-                            }
-
+                            $ttltmb   = isset($baris8[0])?$baris8[0]:0;
 
                             $ttln=getOne("select count(rekap_presensi.id) from rekap_presensi where rekap_presensi.id='$baris[0]' and rekap_presensi.jam_datang like '%$tahun-$bulan%'")+$ttltmb;
                             $tmbh=$ttltmb;
@@ -416,13 +374,14 @@
 			    $_sql9    = "SELECT id,jmlks,bsr from kasift  where id='$baris[0]'";
                             $hasil9   = bukaquery($_sql9);
                             $baris9   = mysqli_fetch_row($hasil9);
-                            $ks   = $baris9[1];
-                            $bsrkasift=$baris9[2];
-                            if($baris9[1]!=0){
+                            
+                            $ks   = isset($baris9[1])?$baris9[1]:0;
+                            $bsrkasift=isset($baris9[2])?$baris9[2]:0;
+                            if(isset($baris9[1])!=0){
                                 $ks=$baris9[1];
-                            }else if($baris9[1]==0){
-				$ks=$ttln;
-			    }
+                            }else if(isset($baris9[1])==0){
+                                $ks=$ttln;
+                            }
                             $ttlkasift=$ks*$bsrkasift;
 
 			    $_sql10="select sum(presensi.lembur)
@@ -432,12 +391,7 @@
                                 group by presensi.id";
 			    $hasil10=bukaquery($_sql10);
 			    $baris10 = mysqli_fetch_array($hasil10);
-			    $hb   = $baris10[0];
-			    if(empty ($baris10[0])){
-                                $hb=0;
-                            }else {
-				$hb=$baris10[0];
-			    }
+                                $hb   = isset($baris10[0])?$baris10[0]:0;
 
 			    $_sql11="select sum(presensi.lembur)
                                 from presensi
@@ -446,12 +400,7 @@
                                 group by presensi.id";
 			    $hasil11=bukaquery($_sql11);
 			    $baris11 = mysqli_fetch_array($hasil11);
-			    $hr   = $baris11[0];
-			    if(empty ($baris11[0])){
-                                $hr=0;
-                            }else {
-				$hr=$baris11[0];
-			    }
+                $hr   = isset($baris11[0])?$baris11[0]:0;
 
 			    $gapok=0;
 			    if(empty ($gapokgp)){
@@ -479,10 +428,11 @@
 			    $hasil18 =bukaquery($_sql18);
 			    $baris18 = mysqli_fetch_array($hasil18);
 			    $tmbahanjg =0;
-                            $alpha=$baris18[0]*$ttla;
-			    if(($tmbh>0)){
-				 $tmbahanjg=$tmbh*$baris18[0];
-			    }
+                $alpha=(isset($baris18[0])?$baris18[0]:0)*$ttla;
+                                if(($tmbh>0)){
+                                     $tmbahanjg=$tmbh*(isset($baris18[0])?$baris18[0]:0);
+                                }
+                                
                             $ttltmbahanjg=$ttltmbahanjg+$tmbahanjg;
 
 			    $_sql19  ="SELECT tnj from set_hadir ";
@@ -490,8 +440,8 @@
 			    $baris19 = mysqli_fetch_array($hasil19);
 			    $tnjhadir =0;
 			    if(($ttln>=$jmlmsk)&&($jmlmsk!=0)){
-				 $tnjhadir=$baris19[0];
-			    }
+                    $tnjhadir=(isset($baris19[0])?$baris19[0]:0);
+               }
                             $ttltnjhadir=$ttltnjhadir+$tnjhadir;
                             
                             //potongan kurang kehadiran 25.000
@@ -503,13 +453,13 @@
                             $_sql20  ="SELECT tnj from set_lemburhb";
 			    $hasil20 =bukaquery($_sql20);
 			    $baris20 = mysqli_fetch_array($hasil20);
-			    $lemburhb=$hb*$baris20[0];
+                $lemburhb=$hb*(isset($baris20[0])?$baris20[0]:0);
                             $ttllemburhb=$ttllemburhb+$lemburhb;
 
                             $_sql21  ="SELECT tnj from set_lemburhr";
 			    $hasil21 =bukaquery($_sql21);
 			    $baris21 = mysqli_fetch_array($hasil21);
-			    $lemburhr=$hr*$baris21[0];
+                $lemburhr=$hr*(isset($baris21[0])?$baris21[0]:0);
                             $ttllemburhr=$ttllemburhr+$lemburhr;
 
                             $_sql22="";
@@ -521,7 +471,7 @@
                             
 			    $hasil22 =bukaquery($_sql22);
 			    $baris22 = mysqli_fetch_array($hasil22);
-			    $indexjaga=round($baris22[0],2);
+			    $indexjaga=round((isset($baris22[0])?$baris22[0]:0),2);
 
                             /*if($baris[0]=="1"){
                                 $indexjaga=0;
@@ -552,12 +502,7 @@
                                 group by tindakan.id";
 			    $hasil24=bukaquery($_sql24);
 			    $baris24 = mysqli_fetch_array($hasil24);
-			    $jm   = $baris24[0];
-			    if(empty ($baris24[0])){
-                                $jm=0;
-                            }else {
-				$jm=$baris24[0];
-			    }
+                $jm   = (isset($baris24[0])?$baris24[0]:0);
                             $ttljm=$ttljm+$jm;
 
                             $_sql26="select sum(jasa_lain.bsr_jasa)
@@ -592,13 +537,12 @@
 			    $hasil31=bukaquery($_sql31);
 			    $baris31 = mysqli_fetch_array($hasil31);
 
-			    $jl   = $baris26[0]+$baris27[0]+$baris28[0]+$baris29[0]+$baris31[0];
-			    if(empty($baris26[0])&&empty($baris27[0])&&empty($baris28[0])&&empty($baris29[0])&&empty($baris31[0])){
-                                $jl=0;
-                            }else {
-				$jl   = $baris26[0]+$baris27[0]+$baris28[0]+$baris29[0]+$baris31[0];
-			    }
-                            $ttljasalain=$ttljasalain+$jl;
+			    $jl   = (isset($baris26[0])?$baris26[0]:0)+
+                                        (isset($baris27[0])?$baris27[0]:0)+
+                                        (isset($baris28[0])?$baris28[0]:0)+
+                                        (isset($baris29[0])?$baris29[0]:0)+
+                                        (isset($baris31[0])?$baris31[0]:0);
+                                $ttljasalain=$ttljasalain+$jl;
 
 
                         echo "<tr class='isi'>
@@ -682,12 +626,12 @@
 						    harian_kurangi_bulanan.harian='".$baris16["id"]."' and pnm_tnj_bulanan.id='".$baris[0]."' ";
 						$hasilpengurang=bukaquery($_sqltnjpengurang);
 						$barispengurang=mysqli_fetch_array($hasilpengurang);
-						$tunjanganpengurang=$barispengurang["tnj"];						
-						$nilaitunjangan=0;
-						$nilaitunjangan=($ttln*$baris16[1])-$tunjanganpengurang;
-						if($nilaitunjangan<0){
+						$tunjanganpengurang=isset($barispengurang["tnj"])?$barispengurang["tnj"]:0;						
                                                     $nilaitunjangan=0;
-						}
+                                                    $nilaitunjangan=($ttln*(isset($baris16[1])?$baris16[1]:0))-$tunjanganpengurang;
+                                                    if($nilaitunjangan<0){
+                                                        $nilaitunjangan=0;
+                                                    }
 												 
                                                 $tnjtnj=$tnjtnj+$nilaitunjangan;
                                                 echo "<tr class='isi3'><td valign='top'  width='150px'>$baris16[0]&nbsp;</td><td valign='top' >: ".formatDuit($nilaitunjangan)."&nbsp;</td></tr>";
@@ -816,86 +760,27 @@
                                                 potongan.tahun='$tahun' and potongan.bulan='$bulanindex' ";
                                         $hasil25=bukaquery($_sql25);
                                         $baris25 = mysqli_fetch_array($hasil25);
-                                        $jamsostek   = $baris25[0];
-                                        $dansos      = $baris25[1];
-                                        $simwajib    = $baris25[2];
-                                        $angkop      = $baris25[3];
-                                        $angla       = $baris25[4];
-                                        $telpri      = $baris25[5];
-                                        $pajak       = $baris25[6];
-                                        $pribadi     = $baris25[7];
-                                        $lain        = $baris25[8];
-                                        $bpjs        = $baris25[9];
-                                        
-                                        if(empty ($baris25[0])){
-                                            $jamsostek=0;
-                                        }else {
-                                            $jamsostek=$baris25[0];
-                                        }
-                                        $ttljamsostek=$ttljamsostek+$jamsostek;
+                                        $jamsostek   = isset($baris25[0])?$baris25[0]:0;
+                                            $dansos      = isset($baris25[1])?$baris25[1]:0;
+                                            $simwajib    = isset($baris25[2])?$baris25[2]:0;
+                                            $angkop      = isset($baris25[3])?$baris25[3]:0;
+                                            $angla       = isset($baris25[4])?$baris25[4]:0;
+                                            $telpri      = isset($baris25[5])?$baris25[5]:0;
+                                            $pajak       = isset($baris25[6])?$baris25[6]:0;
+                                            $pribadi     = isset($baris25[7])?$baris25[7]:0;
+                                            $lain        = isset($baris25[8])?$baris25[8]:0;
+                                            $bpjs        = isset($baris25[9])?$baris25[9]:0;
 
-                                        if(empty ($baris25[1])){
-                                            $dansos=0;
-                                        }else {
-                                            $dansos=$baris25[1];
-                                        }
-                                        $ttldansos=$ttldansos+$dansos;
-
-                                        if(empty ($baris25[2])){
-                                            $simwajib=0;
-                                        }else {
-                                            $simwajib=$baris25[2];
-                                        }
-                                        $ttlsimwajib=$ttlsimwajib+$simwajib;
-
-                                        if(empty ($baris25[3])){
-                                            $angkop=0;
-                                        }else {
-                                            $angkop=$baris25[3];
-                                        }
-                                        $ttlangkop=$ttlangkop+$angkop;
-
-                                        if(empty ($baris25[4])){
-                                            $angla=0;
-                                        }else {
-                                            $angla=$baris25[4];
-                                        }
-                                        $ttlangla=$ttlangla+$angla;
-
-                                        if(empty ($baris25[5])){
-                                            $telpri=0;
-                                        }else {
-                                            $telpri=$baris25[5];
-                                        }
-                                        $ttltelpri=$ttltelpri+$telpri;
-
-                                        if(empty ($baris25[6])){
-                                            $pajak=0;
-                                        }else {
-                                            $pajak=$baris25[6];
-                                        }
-                                        $ttlpajak=$ttlpajak+$pajak;
-
-                                        if(empty ($baris25[7])){
-                                            $pribadi=0;
-                                        }else {
-                                            $pribadi=$baris25[7];
-                                        }
-                                        $ttlpribadi=$ttlpribadi+$pribadi;
-
-                                        if(empty ($baris25[8])){
-                                            $lain=0+$alpha;
-                                        }else {
-                                            $lain=$baris25[8]+$alpha;
-                                        }
-                                        $ttllain=$ttllain+$lain;
-
-                                        if(empty ($baris25[9])){
-                                            $bpjs=0;
-                                        }else {
-                                            $bpjs=$baris25[9];
-                                        }
-                                        $ttlbpjs=$ttlbpjs+$bpjs;
+                                            $ttljamsostek=$ttljamsostek+$jamsostek;
+                                            $ttldansos=$ttldansos+$dansos;
+                                            $ttlsimwajib=$ttlsimwajib+$simwajib;
+                                            $ttlangkop=$ttlangkop+$angkop;
+                                            $ttlangla=$ttlangla+$angla;
+                                            $ttltelpri=$ttltelpri+$telpri;
+                                            $ttlpajak=$ttlpajak+$pajak;
+                                            $ttlpribadi=$ttlpribadi+$pribadi;
+                                            $ttllain=$ttllain+$lain;
+                                            $ttlbpjs=$ttlbpjs+$bpjs;
 
                                         $ttlditerima=$ttlgaji-($bpjs+$jamsostek+$dansos+$simwajib+$angkop+$angla+$telpri+$pajak+$pribadi+$lain);
                                         $ttlttlditerima=$ttlttlditerima+$ttlditerima;

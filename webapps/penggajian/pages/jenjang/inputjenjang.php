@@ -10,8 +10,8 @@
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $kode        =str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL;
+                $action      = isset($_GET['action'])?$_GET['action']:NULL;
+                $kode        = str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL;
                 if($action == "TAMBAH"){
                     $kode      = str_replace("_"," ",isset($_GET['kode']))?str_replace("_"," ",$_GET['kode']):NULL;
                     $nama      = "";
@@ -31,7 +31,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Kode Jenjang</td><td width="">:</td>
-                    <td width="67%"><input name="kode" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode;?>" size="10" maxlength="5">
+                    <td width="67%"><input name="kode" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode;?>" size="10" maxlength="5" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -60,9 +60,9 @@
                 if (isset($BtnSimpan)) {
                     $kode    = validTeks(trim($_POST['kode']));
                     $nama    = validTeks(trim($_POST['nama']));
-                    $tnj     = validTeks(trim($_POST['tnj']));
-                    $indek   = validTeks(trim($_POST['indek']));
-                    if ((!empty($kode))&&(!empty($nama))&&(!empty($tnj))&&(!empty($indek))) {
+                    $tnj     = validangka(trim($_POST['tnj']));
+                    $indek   = validangka(trim($_POST['indek']));
+                    if ((isset($kode))&&(isset($nama))&&(isset($tnj))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" jnj_jabatan "," '$kode','$nama','$tnj','$indek' ", " Tunjangan Jabatan " );
@@ -73,7 +73,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListJenjang'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($kode))||(empty($nama))||(empty($tnj))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }
