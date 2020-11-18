@@ -692,6 +692,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             for(index=0;index<tbDokter.getRowCount();index++){   
                                 tbDokter.setValueAt("",index,0); 
                                 tbDokter.setValueAt(0,index,9);  
+                                tbDokter.setValueAt(0,index,10);  
                             }
                             ttl=0;
                             LTotal.setText("0");
