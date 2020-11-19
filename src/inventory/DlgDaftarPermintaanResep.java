@@ -2544,11 +2544,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "
                     + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
                     + "left join detail_pemberian_obat on reg_periksa.no_rawat=detail_pemberian_obat.no_rawat"
-                    + " where kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_resep like ? or "
-                    + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_rawat like ? or "
-                    + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.no_rkm_medis like ? or "
-                    + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.nm_pasien like ? or "
-                    + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? group by resep_obat.no_resep,detail_pemberian_obat.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    + " where resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_resep like ? or "
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_rawat like ? or "
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.no_rkm_medis like ? or "
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.nm_pasien like ? or "
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? group by resep_obat.no_resep,detail_pemberian_obat.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
@@ -2640,11 +2640,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
                     + "left join detail_pemberian_obat on reg_periksa.no_rawat=detail_pemberian_obat.no_rawat "
                     + "where"
-                    + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_resep like ? or "
-                    + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_rawat like ? or "
-                    + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.no_rkm_medis like ? or "
-                    + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.nm_pasien like ? or "
-                    + " kamar_inap.stts_pulang='-' and resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? "
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_resep like ? or "
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_rawat like ? or "
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.no_rkm_medis like ? or "
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.nm_pasien like ? or "
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? "
                     + "group by resep_obat.no_resep,detail_pemberian_obat.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
