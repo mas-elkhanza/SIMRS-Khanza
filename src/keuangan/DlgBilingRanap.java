@@ -2889,7 +2889,7 @@ private void MnInputResepPulangActionPerformed(java.awt.event.ActionEvent evt) {
             }else{
                 akses.setform("DLgBilingRanap");
                 reseppulang.inputresep.isCek();
-                reseppulang.inputresep.setNoRm(TNoRw.getText(),"-",Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
+                reseppulang.inputresep.setNoRm(TNoRw.getText(),"-",DTPTgl.getSelectedItem().toString().substring(0,10),
                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
                 reseppulang.inputresep.tampil();
                 reseppulang.inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
