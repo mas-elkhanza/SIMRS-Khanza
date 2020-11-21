@@ -159,7 +159,7 @@ public class DlgBulananKlasifikasiPasienRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Laporan Bulanan Klasifikasi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Laporan Bulanan Klasifikasi Pasien Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -507,9 +507,9 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent.append(                             
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='2%' rowspan='2'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='2'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%' rowspan='2'>Jml.Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='60%' colspan='3'>Klasifikasi Ketergantungan Pasien Rawat Inap</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='16%' rowspan='2'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='16%' rowspan='2'>Jml.Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='63%' colspan='3'>Klasifikasi Ketergantungan Pasien Rawat Inap</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#FFFAF8' align='center'>Minimal</td>"+

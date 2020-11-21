@@ -79,7 +79,7 @@
                                       'ListRiwayatPenghargaan','InputRiwayatPenelitian','ListRiwayatPenelitian','ListKelompokJabatan',
                                       'InputKelompokJabatan','InputResikoKerja','ListResikoKerja','InputEmergencyIndex','ListEmergencyIndex',
                                       'InputPencapaianKinerja','ListPencapaianKinerja','InputEvaluasiKinerja','ListEvaluasiKinerja',
-                                      'DetailEvaluasiKinerja','DetailPencapaianKinerja'
+                                      'DetailEvaluasiKinerja','DetailPencapaianKinerja','ListCariRiwayatKinerja'
                                  );
                         
 				foreach ($form as $page) {
@@ -211,6 +211,10 @@
                     case 'InputPencapaianKinerja'           : include_once('pages/pencapaiankinerja/inputpencapaiankinerja.php'); break;
                     case 'ListEvaluasiKinerja'              : include_once('pages/evaluasikinerja/listevaluasikinerja.php'); break;
                     case 'InputEvaluasiKinerja'             : include_once('pages/evaluasikinerja/inputevaluasikinerja.php'); break;
+                    case 'ListCariRiwayatKinerja'           : include_once('pages/riwayatkinerja/listkinerja.php'); break;
+                    case 'InputRiwayatKinerja'              : include_once('pages/riwayatkinerja/detailkinerja.php'); break;
+                    case 'ListCariRiwayatPencapaian'        : include_once('pages/riwayatpencapaian/listpencapaian.php'); break;
+                    case 'InputRiwayatPencapaian'           : include_once('pages/riwayatpencapaian/detailpencapaian.php'); break;
                     case 'DetailBerkasPegawai'              : include_once('pages/berkaspegawai/detail.php'); break;
                     default                                 : include_once('pages/kontak.php');
 			

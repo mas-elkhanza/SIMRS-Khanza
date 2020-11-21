@@ -2,9 +2,9 @@
     <?php 
        if ($_SESSION['ses_admin']=="admin"){
             echo "
-                <div style='width: 100%; height: 145%; overflow: auto;'> 
+                <div style='width: 100%; height: 150%; overflow: auto;'> 
                 <table width='120%' align='center' height='100%'>
-                     <tr width='100%' height='16.5%' align='center'>
+                     <tr width='100%' height='14.2%' align='center'>
                         <td width='16%' align='center'>
                           <a href='index.php?act=InputTahun'>                                                  
                              <img src='images/1360485865_schedule.png'/><br>
@@ -36,7 +36,7 @@
                            </a>
                         </td>                                        
                      </tr>     
-                     <tr width='100%' height='16.5%' align='center'>
+                     <tr width='100%' height='14.2%' align='center'>
                         <td width='16%' align='center'>
                            <a href='index.php?act=ListJenjang'>                                                  
                               <img src='images/edit-female-user.png'/><br>
@@ -68,7 +68,7 @@
                            </a>
                         </td>                                                                                                                  
                      </tr>
-                     <tr width='100%' height='16.5%' align='center'>
+                     <tr width='100%' height='14.2%' align='center'>
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListEvaluasiKinerja'>
                                 <img src='images/iconfinder_ordering_49597.png'/><br>
@@ -100,7 +100,7 @@
                             </a>
                         </td>                             
                      </tr>
-                     <tr width='100%' height='16.5%' align='center'> 
+                     <tr width='100%' height='14.2%' align='center'> 
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListResume'>
                                 <img src='images/1404047007_02.png'/><br>
@@ -124,15 +124,27 @@
                                 <img src='images/user3.png'/><br>
                                 Data Pegawai
                             </a>
-                        </td>   
+                        </td>
+                        <td width='16%' align='center'>
+                            <a href='index.php?act=ListCariRiwayatKinerja'>
+                                <img src='images/iconfinder_people04_1934228.png'/><br>
+                                Riwayat Evaluasi
+                            </a>
+                        </td>                                                           
+                     </tr>
+                     <tr width='100%' height='14.2%' align='center'>   
+                        <td width='16%' align='center'>
+                            <a href='index.php?act=ListCariRiwayatPencapaian'>
+                                <img src='images/iconfinder_f-target_256_282461.png'/><br>
+                                Riwayat Pencapaian
+                            </a>
+                        </td>                    
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListPresensi'>                                                  
-                                     <img src='images/1404047834_application-vnd.ms-excel.png'/><br>
-                                     Lembur Pegawai                                                  
+                                    <img src='images/1404047834_application-vnd.ms-excel.png'/><br>
+                                    Lembur Pegawai                                                  
                             </a>
-                        </td>                                                                          
-                     </tr>
-                     <tr width='100%' height='16.5%' align='center'>
+                        </td>                  
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListKeanggotaan'>
                                  <img src='images/user-group-new.png'/><br>
@@ -150,21 +162,21 @@
                                      <img src='images/doctor2.png'/><br>
                                      Tindakan Medis                                                  
                             </a>
-                        </td>  
+                        </td> 
+                     </tr>
+                     <tr width='100%' height='14.2%' align='center'>  
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListTunjangan'>                                                  
-                                     <img src='images/Money.png'/><br>
-                                     Tunjangan                                                  
+                                    <img src='images/Money.png'/><br>
+                                    Tunjangan                                                  
                             </a>
                         </td> 
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListJasLa'>                                                  
-                                     <img src='images/checklist_pencil-o.png'/><br>
-                                     Jasa Lain                                                  
+                                    <img src='images/checklist_pencil-o.png'/><br>
+                                    Jasa Lain                                                  
                             </a>
-                        </td> 
-                     </tr>
-                     <tr width='100%' height='16.5%' align='center'>
+                        </td>
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListKS&action=TAMBAH'>                                                  
                                      <img src='images/administrator.png'/><br>
@@ -183,19 +195,21 @@
                                      Koperasi                                                  
                             </a>
                         </td>
+                    </tr>
+                    <tr width='100%' height='14.2%' align='center'> 
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListJam&action=TAMBAH'>                                                  
-                                     <img src='images/Time.png'/><br>
-                                     Jam Jaga Departemen                                                  
+                                    <img src='images/Time.png'/><br>
+                                    Jam Jaga Departemen                                                  
                             </a>
                         </td> 
                         <td width='16%' align='center'>
                             <a href='index.php?act=ListLampiran&action=LIHAT'>                                                  
-                                     <img src='images/checklist.png'/><br>
-                                     Penggajian                                                  
+                                    <img src='images/checklist.png'/><br>
+                                    Penggajian                                                  
                             </a>
                         </td>
-                     </tr>
+                    </tr>
                 </table> 
                 </div>";		
        }elseif($_SESSION['ses_admin']=="paijo"){

@@ -31,7 +31,15 @@
                              </tr>";$no++;
                     }
             echo "</table>";
-        } 
+        }else{
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <caption><h3><font color='999999'>Laporan Master Bidang</font></h3></caption>
+                    <tr class='head'>
+                        <td width='10%'><div align='center'>No.</strong></div></td>
+                        <td width='90%'><div align='center'>Bidang</strong></div></td>
+                    </tr>
+                  </table>";
+        }  
     ?>
     </body>
 </html>
