@@ -146,7 +146,8 @@ public final class akses {
             grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false,hemodialisa=false,grafik_harian_hemodialisa=false,grafik_bulanan_hemodialisa=false,
             grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false,perbaikan_inventaris=false,surat_cuti_hamil=false,
             permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap,
-            harian_klasifikasi_pasien_ranap=false,klasifikasi_pasien_perbangsal=false,soap_perawatan=false,klaim_rawat_jalan=false;
+            harian_klasifikasi_pasien_ranap=false,klasifikasi_pasien_perbangsal=false,soap_perawatan=false,klaim_rawat_jalan=false,
+            skrining_gizi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -839,6 +840,7 @@ public final class akses {
                         akses.klasifikasi_pasien_perbangsal=true;
                         akses.soap_perawatan=true;
                         akses.klaim_rawat_jalan=true;
+                        akses.skrining_gizi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1515,6 +1517,7 @@ public final class akses {
                         akses.klasifikasi_pasien_perbangsal=rs2.getBoolean("klasifikasi_pasien_perbangsal");
                         akses.soap_perawatan=rs2.getBoolean("soap_perawatan");
                         akses.klaim_rawat_jalan=rs2.getBoolean("klaim_rawat_jalan");
+                        akses.skrining_gizi=rs2.getBoolean("skrining_gizi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2189,6 +2192,7 @@ public final class akses {
                         akses.klasifikasi_pasien_perbangsal=false;
                         akses.soap_perawatan=false;
                         akses.klaim_rawat_jalan=false;
+                        akses.skrining_gizi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2917,4 +2921,5 @@ public final class akses {
     public static boolean getklasifikasi_pasien_perbangsal(){return akses.klasifikasi_pasien_perbangsal;}
     public static boolean getsoap_perawatan(){return akses.soap_perawatan;}
     public static boolean getklaim_rawat_jalan(){return akses.klaim_rawat_jalan;}
+    public static boolean getskrining_gizi(){return akses.skrining_gizi;}
 }   

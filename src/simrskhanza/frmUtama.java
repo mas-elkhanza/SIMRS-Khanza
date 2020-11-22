@@ -524,6 +524,7 @@ import ipsrs.DlgPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSReturBeli;
 import ipsrs.IPSRSRiwayatBarang;
+import java.awt.event.ActionEvent;
 import java.net.InetAddress;
 import kepegawaian.DlgDokter;
 import kepegawaian.DlgPetugas;
@@ -605,6 +606,7 @@ import rekammedis.MasterTriaseSkala4;
 import rekammedis.MasterTriaseSkala5;
 import rekammedis.RMDataAsuhanGizi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
+import rekammedis.RMDataSkriningGiziLanjut;
 import rekammedis.RMDeteksiDiniCorona;
 import rekammedis.RMPenilaianAwalKeperawatanBayiAnak;
 import rekammedis.RMPenilaianAwalKeperawatanGigi;
@@ -16472,6 +16474,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningGiziLanjutActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataSkriningGiziLanjut form=new RMDataSkriningGiziLanjut(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.tampil();
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17081,7 +17096,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
-            btnKlaimRawatJalan;
+            btnKlaimRawatJalan,btnSkriningGiziLanjut;
     
     public void isWall(){
         try{            
@@ -19441,6 +19456,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdata_resume_pasien()==true){
                 Panelmenu.add(btnResumePasien);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_gizi()==true){
+                Panelmenu.add(btnSkriningGiziLanjut);
                 jmlmenu++;
             }
             
@@ -22797,6 +22817,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.getskrining_gizi()==true){
+            Panelmenu.add(btnSkriningGiziLanjut);
+            jmlmenu++;
+        }
+
         if(akses.getasuhan_gizi()==true){
             Panelmenu.add(btnAsuhanGizi);
             jmlmenu++;
@@ -27033,6 +27058,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_gizi()==true){
+            if(btnSkriningGiziLanjut.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningGiziLanjut);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getasuhan_gizi()==true){
             if(btnAsuhanGizi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAsuhanGizi);
@@ -30272,7 +30304,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKlaimRawatJalan.setName("btnKlaimRawatJalan"); 
         btnKlaimRawatJalan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKlaimRawatJalan.addActionListener(this::btnKlaimRawatJalanActionPerformed);
+        
+        btnSkriningGiziLanjut = new widget.ButtonBig();
+        btnSkriningGiziLanjut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_green_curry_3377058.png"))); 
+        btnSkriningGiziLanjut.setText("Skrining Gizi Lanjut");
+        btnSkriningGiziLanjut.setIconTextGap(0);
+        btnSkriningGiziLanjut.setName("btnSkriningGiziLanjut"); 
+        btnSkriningGiziLanjut.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningGiziLanjut.addActionListener(this::btnSkriningGiziLanjutActionPerformed);
     }
+
+    
 
     
 }
