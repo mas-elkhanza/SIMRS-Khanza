@@ -1353,6 +1353,12 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         for (i = 0; i < tbPemeriksaan.getRowCount(); i++) {
             if (tbPemeriksaan.getValueAt(i, 0).toString().equals("true")) {
                 tabMode.removeRow(i);
+                if (Penjab.getText().equals("364") || Penjab.getText().equals("INH")) {
+                    noSjp = Sequel.cariIsi("select no_sjp from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
+                    if (noSjp != null) {
+                        hapusTindakanInhealth(noSjp);
+                    }
+                }
             }
         }
     } catch (Exception ex) {
@@ -3114,5 +3120,23 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     void SetPoli(String KodePoli, String penjab) {
         txtKdPoli.setText(KodePoli);
         Penjab.setText(penjab); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void hapusTindakanInhealth(String noSjp) {
+        try {
+            String kodeProvider = Sequel.cariIsi("select kode_ppkinhealth from setting");
+            String kodeTindakan = Sequel.cariIsi("select kd_inhealth from inhealth_tindakan_laborat where kd_jenis_prw='" + tbTarif.getValueAt(i, 1).toString() + "'");
+            String date = Valid.SetDateToString(Tanggal.getDate());
+
+            String token = prop.getProperty("TOKENINHEALTH");
+            JsonNode response = inhealtsAPI.HapusTindakan(token, kodeProvider, noSjp, kodeTindakan, date, "salah", "");
+            if (response.path("ERRORCODE").asText().equals("00")) {
+                tbTarif.setValueAt(false, i, 0);
+            } else {
+                JOptionPane.showMessageDialog(null, response.path("ERRORDESC").asText());
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(DlgRawatJalan.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

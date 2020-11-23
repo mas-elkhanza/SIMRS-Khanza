@@ -10657,7 +10657,7 @@ public class frmUtama extends javax.swing.JFrame {
         setToolbar();
     }// GEN-LAST:event_formComponentMoved
 
-    private void BtnToolJualObatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_BtnToolJualObatActionPerformed
+    private void BtnToolJualObatActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         FlayMenu.removeAll();
         FlayMenu.add(btnInputPenjualan);
@@ -10671,7 +10671,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnDaftarPermintaanResep.setEnabled(akses.getresep_dokter());
         btnResepObatDepan.setEnabled(akses.getresep_obat());
         FlayMenu.setVisible(true);
-    }// GEN-LAST:event_BtnToolJualObatActionPerformed
+    }
 
     private void PanelWallMouseMoved(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_PanelWallMouseMoved
         setToolbar();
@@ -11472,7 +11472,7 @@ public class frmUtama extends javax.swing.JFrame {
 
     }// GEN-LAST:event_btnPerusahaanActionPerformed
 
-    private void btnDaftarPermintaanResepActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDaftarPermintaanResepActionPerformed
+    private void btnDaftarPermintaanResepActionPerformed(java.awt.event.ActionEvent evt) {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgDaftarPermintaanResep daftar = new DlgDaftarPermintaanResep(null, false);
         daftar.emptTeks();
@@ -11482,7 +11482,7 @@ public class frmUtama extends javax.swing.JFrame {
         daftar.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
-    }// GEN-LAST:event_btnDaftarPermintaanResepActionPerformed
+    }
 
     private void btnLamaPelayananApotekActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLamaPelayananApotekActionPerformed
         isTutup();

@@ -67,7 +67,7 @@ public class InhealtsAPI {
         return root;
     }
 
-    public String CekRestriksiEPrescriptions(String kodeProvider, String kodeObatrs, String user) throws FileNotFoundException, IOException {
+    public JsonNode CekRestriksiEPrescriptions(String token, String kodeProvider, String kodeObatrs, String user) throws FileNotFoundException, IOException {
         prop.loadFromXML(new FileInputStream("setting/database.xml"));
         String URL = prop.getProperty("URLAPIINHEALTH") + "/api/CekRestriksiEPrescriptions";
 
@@ -90,10 +90,36 @@ public class InhealtsAPI {
         } else {
             response = root.path("ERRORCODE").asText();
         }
-        return response;
+        return root;
+    }
+    
+public JsonNode DigitalFOI(String token, String kodeProvider, String kodeproviderifrs, String keyword) throws FileNotFoundException, IOException {
+        prop.loadFromXML(new FileInputStream("setting/database.xml"));
+        String URL = prop.getProperty("URLAPIINHEALTH") + "/api/CekRestriksiEPrescriptions";
+
+        headers.add("Content-Type", "application/json; utf-8");
+        requestJson = "{ \"token\": \"" + token + "\","
+                + "\"kodeprovider\": \"" + kodeProvider + "\","
+                + "\"kodeproviderifrs\": \"" + kodeproviderifrs + "\","
+                + "\"keyword\": \"" + keyword + "\""
+                + "}";
+
+        System.out.println("Request: " + requestJson);
+        HttpEntity requestEntity = new HttpEntity(requestJson, headers);
+        RestTemplate rest = new RestTemplate();
+        ObjectMapper mapper = new ObjectMapper();
+//            System.out.println("Data : "+rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+        JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+        if (root.path("ERRORCODE").asText().equals("00")) {
+            System.out.println("Response :" + root.path("ERRORCODE").asText());
+            response = root.path("ERRORCODE").asText();
+        } else {
+            response = root.path("ERRORCODE").asText();
+        }
+        return root;
     }
 
-    public String CekRestriksiTransaksi(String kodeProvider, String kodeObatrs, String noSjp, String kodeObatRs, int jumlahObat, String user) throws FileNotFoundException, IOException {
+    public JsonNode CekRestriksiTransaksi(String token, String kodeProvider, String noSjp, String kodeObatRs, String jumlahObat, String user) throws FileNotFoundException, IOException {
         prop.loadFromXML(new FileInputStream("setting/database.xml"));
         String URL = prop.getProperty("URLAPIINHEALTH") + "/api/CekRestriksiTransaksi";
 
@@ -118,7 +144,7 @@ public class InhealtsAPI {
         } else {
             response = root.path("ERRORCODE").asText();
         }
-        return response;
+        return root;
     }
 
     public String CekSJP(String kodeProvider, String noKaInhealth, String tanggalSjp, String poli, String tkp) throws FileNotFoundException, IOException {
@@ -437,7 +463,7 @@ public class InhealtsAPI {
         return response;
     }
 
-    public JsonNode HapusTindakan(String kodeProvider, String noSjp, String kodetindakan,
+    public JsonNode HapusTindakan(String token, String kodeProvider, String noSjp, String kodetindakan,
             String tgltindakan, String notes, String userid) throws FileNotFoundException, IOException {
         prop.loadFromXML(new FileInputStream("setting/database.xml"));
         String URL = prop.getProperty("URLAPIINHEALTH") + "/api/HapusTindakan";

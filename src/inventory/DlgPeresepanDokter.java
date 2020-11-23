@@ -11,12 +11,14 @@
  */
 package inventory;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import fungsi.WarnaTable2;
 import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import inhealth.InhealtsAPI;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -28,11 +30,16 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -62,6 +69,11 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private boolean[] pilih;
     private double[] jumlah, harga, beli, stok, kapasitas, p1, p2;
     private String[] no, kodebarang, namabarang, kodesatuan, kandungan, letakbarang, namajenis, aturan, industri;
+
+    //TODO: Inhealth Import
+    private final Properties prop = new Properties();
+    private InhealtsAPI inhealtsAPI = new InhealtsAPI();
+    private String noSjp = "";
 
     /**
      *
@@ -95,12 +107,19 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         DTPBeri.setDate(new Date());
         this.setLocation(10, 2);
         setSize(656, 250);
-        
+
         DTPBeri.addPropertyChangeListener("date", new PropertyChangeListener() {
             public void propertyChange(PropertyChangeEvent e) {
                 emptTeksobat();
             }
         });
+
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+        } catch (IOException ex) {
+            Logger.getLogger(DlgPeresepanDokter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         tabModeResep = new DefaultTableModel(null, new Object[]{
             "K", "Jumlah", "Kode Barang", "Nama Barang", "Satuan", "Kandungan",
             "Harga(Rp)", "Jenis Obat", "Aturan Pakai", "I.F.", "H.Beli", "Stok"
@@ -1158,6 +1177,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     } else {
         int reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah bener belum data yang mau disimpan..??", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
+            //TODO: Cek Restriksi Resep Obat Inhealth
+            if (KdPj.getText().equals("INH") || KdPj.getText().equals("364")) {
+                cekRestriksiEPrescriptions("");
+            }
             ChkJln.setSelected(false);
             Sequel.AutoComitFalse();
             sukses = true;
@@ -3396,6 +3419,56 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }
             } catch (Exception e) {
                 tbDetailResepObatRacikan.setValueAt(0, tbDetailResepObatRacikan.getSelectedRow(), 13);
+            }
+        }
+    }
+
+    private void cekRestriksiEPrescriptions(String user) {
+        String kodeProvider = Sequel.cariIsi("select kode_ppkinhealth from setting");
+        String token = prop.getProperty("TOKENINHEALTH");
+
+        for (i = 0; i < tbResep.getRowCount(); i++) {
+            if (Valid.SetAngka(tbResep.getValueAt(i, 1).toString()) > 0) {
+                if (tbResep.getValueAt(i, 0).toString().equals("true")) {
+                    try {
+                        String kodeObatRs = tbResep.getValueAt(i, 2).toString();
+                        JsonNode response = inhealtsAPI.CekRestriksiEPrescriptions(token, kodeProvider, kodeObatRs, user);
+                        if (response.path("ERRORCODE").asText().equals("00")) {
+                            System.out.println("Sukses Cek Restriksi Resep Obat");
+                            System.out.println("" + response.path("RESTRIKSI").asText());
+                        } else {
+                            JOptionPane.showMessageDialog(null, response.path("ERRORDESC").asText());
+                            sukses = false;
+                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(DlgPeresepanDokter.class.getName()).log(Level.SEVERE, null, ex.toString());
+                    }
+                }
+            }
+        }
+    }
+
+    private void DigitalFOI(String user) {
+        String kodeProvider = Sequel.cariIsi("select kode_ppkinhealth from setting");
+        String token = prop.getProperty("TOKENINHEALTH");
+
+        for (i = 0; i < tbResep.getRowCount(); i++) {
+            if (Valid.SetAngka(tbResep.getValueAt(i, 1).toString()) > 0) {
+                if (tbResep.getValueAt(i, 0).toString().equals("true")) {
+                    try {
+                        String kodeObatRs = tbResep.getValueAt(i, 2).toString();
+                        JsonNode response = inhealtsAPI.DigitalFOI(token, kodeProvider, kodeObatRs, user);
+                        if (response.path("ERRORCODE").asText().equals("00")) {
+                            System.out.println("Sukses Cek Restriksi Resep Obat");
+                            System.out.println("" + response.path("RESTRIKSI").asText());
+                        } else {
+                            JOptionPane.showMessageDialog(null, response.path("ERRORDESC").asText());
+                            sukses = false;
+                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(DlgPeresepanDokter.class.getName()).log(Level.SEVERE, null, ex.toString());
+                    }
+                }
             }
         }
     }

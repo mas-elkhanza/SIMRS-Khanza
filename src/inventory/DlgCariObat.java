@@ -15,11 +15,12 @@ import bridging.PcareApi;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable2;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
+import inhealth.InhealtsAPI;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -33,6 +34,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -76,6 +78,11 @@ public final class DlgCariObat extends javax.swing.JDialog {
      */
     public DlgBarang barang = new DlgBarang(null, false);
 
+    //TODO: Inhealth Import
+    private InhealtsAPI inhealtsAPI = new InhealtsAPI();
+    private String noSjp = "";
+    private final Properties prop = new Properties();
+    
     /**
      *
      */

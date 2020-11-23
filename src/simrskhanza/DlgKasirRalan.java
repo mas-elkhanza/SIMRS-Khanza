@@ -5524,7 +5524,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_MnBatalActionPerformed
 
-    private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnOperasiActionPerformed
+    private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         if (TNoRw.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             TCari.requestFocus();
@@ -5537,10 +5537,11 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 dlgro.setLocationRelativeTo(internalFrame1);
                 dlgro.setNoRm(TNoRw.getText(), tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 2).toString()
                         + ", " + tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 3).toString(), "Ralan");
+                dlgro.setNoRm(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(), 18).toString());
                 dlgro.setVisible(true);
             }
         }
-    }// GEN-LAST:event_MnOperasiActionPerformed
+    }
 
     private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnHapusTagihanOperasiActionPerformed
         if (TNoRw.getText().trim().equals("")) {
@@ -6181,7 +6182,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_MnMeninggalActionPerformed
 
-    private void MnResepDOkterActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnResepDOkterActionPerformed
+    private void MnResepDOkterActionPerformed(java.awt.event.ActionEvent evt) {
         if (TNoRw.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu pasien...!!!");
             tbKasirRalan.requestFocus();
@@ -6230,7 +6231,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 tbKasirRalan.requestFocus();
             }
         }
-    }// GEN-LAST:event_MnResepDOkterActionPerformed
+    }
 
     private void MnUrutNoRawatDescActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_MnUrutNoRawatDescActionPerformed
         order = "reg_periksa.no_rawat desc";

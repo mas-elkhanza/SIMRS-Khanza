@@ -1361,12 +1361,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             if (jmlparsial > 0) {
                 simpan();
             } else {//Sementara di Komen dulu yah
-//                if (Sequel.cariRegistrasi(TNoRw.getText()) > 0) {
-//                    JOptionPane.showMessageDialog(rootPane, "Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-//                    TCariPeriksa.requestFocus();
-//                } else {
-                simpan();
-//                }
+                if (Sequel.cariRegistrasi(TNoRw.getText()) > 0) {
+                    JOptionPane.showMessageDialog(rootPane, "Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCariPeriksa.requestFocus();
+                } else {
+                    simpan();
+                }
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
