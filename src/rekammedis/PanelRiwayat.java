@@ -11175,7 +11175,7 @@ public class PanelRiwayat extends widget.panelisi {
                                 }
                             }
                                                 
-                            //skrining gizi
+                            //skrining gizi lanjut
                             try {
                                 rs3=koneksi.prepareStatement(
                                         "select skrining_gizi.no_rawat,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
