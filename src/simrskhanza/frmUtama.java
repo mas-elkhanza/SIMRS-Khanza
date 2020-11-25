@@ -564,6 +564,7 @@ import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgKlasifikasiPasienPerBangsal;
 import laporan.DlgPelayananPoli;
+import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.DlgRekapPermintaanDiet;
@@ -16487,6 +16488,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLamaPenyiapanRMActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPenyiapanRM aplikasi=new DlgPenyiapanRM(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -17096,7 +17108,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
-            btnKlaimRawatJalan,btnSkriningGiziLanjut;
+            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM;
     
     public void isWall(){
         try{            
@@ -18488,6 +18500,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlama_pelayanan_poli()==true){  
                 Panelmenu.add(btnLamaPelayananPoli);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlama_penyiapan_rm()==true){  
+                Panelmenu.add(btnLamaPenyiapanRM);                 
                 jmlmenu++;
             }
             
@@ -21849,6 +21866,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getlama_pelayanan_poli()==true){  
             Panelmenu.add(btnLamaPelayananPoli);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getlama_penyiapan_rm()==true){  
+            Panelmenu.add(btnLamaPenyiapanRM);                 
             jmlmenu++;
         }
 
@@ -25706,6 +25728,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getlama_pelayanan_poli()==true){  
             if(btnLamaPelayananPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananPoli);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlama_penyiapan_rm()==true){  
+            if(btnLamaPenyiapanRM.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLamaPenyiapanRM);                 
                 jmlmenu++;
             }                
         }
@@ -30312,6 +30341,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningGiziLanjut.setName("btnSkriningGiziLanjut"); 
         btnSkriningGiziLanjut.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningGiziLanjut.addActionListener(this::btnSkriningGiziLanjutActionPerformed);
+        
+        btnLamaPenyiapanRM = new widget.ButtonBig();
+        btnLamaPenyiapanRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPenyiapanRM.setText("Lama Penyiapan RM");
+        btnLamaPenyiapanRM.setIconTextGap(0);
+        btnLamaPenyiapanRM.setName("btnLamaPenyiapanRM"); // NOI18N
+        btnLamaPenyiapanRM.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPenyiapanRM.addActionListener(this::btnLamaPenyiapanRMActionPerformed);
     }
 
     
