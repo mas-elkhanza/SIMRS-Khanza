@@ -660,7 +660,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "grafik_harian_hemodialisa,grafik_bulanan_hemodialisa,grafik_tahunan_hemodialisa,grafik_bulanan_meninggal,"+
                         "perbaikan_inventaris,surat_cuti_hamil,permintaan_stok_obat_pasien,pemeliharaan_inventaris,klasifikasi_pasien_ranap,"+
                         "bulanan_klasifikasi_pasien_ranap,harian_klasifikasi_pasien_ranap,klasifikasi_pasien_perbangsal,soap_perawatan,"+
-                        "klaim_rawat_jalan,skrining_gizi,lama_penyiapan_rm from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "klaim_rawat_jalan,skrining_gizi,lama_penyiapan_rm,dosis_radiologi from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1847,6 +1847,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[I]Lama Penyiapan RM".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[I]Lama Penyiapan RM",rs.getBoolean("lama_penyiapan_rm")});
+                    }
+                    
+                    if("[I]Dosis Radiologi".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[I]Dosis Radiologi",rs.getBoolean("dosis_radiologi")});
                     }
                     
                     if("[J]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4558,6 +4562,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[I]Lama Penyiapan RM".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","lama_penyiapan_rm='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[I]Dosis Radiologi".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","dosis_radiologi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[J]Deposit Pasien".equals(tbUser.getValueAt(i,1).toString())){
