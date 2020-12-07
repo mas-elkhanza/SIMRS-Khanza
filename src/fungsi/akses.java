@@ -147,7 +147,7 @@ public final class akses {
             grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false,perbaikan_inventaris=false,surat_cuti_hamil=false,
             permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap,
             harian_klasifikasi_pasien_ranap=false,klasifikasi_pasien_perbangsal=false,soap_perawatan=false,klaim_rawat_jalan=false,
-            skrining_gizi=false;
+            skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -841,6 +841,8 @@ public final class akses {
                         akses.soap_perawatan=true;
                         akses.klaim_rawat_jalan=true;
                         akses.skrining_gizi=true;
+                        akses.lama_penyiapan_rm=true;
+                        akses.dosis_radiologi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1518,6 +1520,8 @@ public final class akses {
                         akses.soap_perawatan=rs2.getBoolean("soap_perawatan");
                         akses.klaim_rawat_jalan=rs2.getBoolean("klaim_rawat_jalan");
                         akses.skrining_gizi=rs2.getBoolean("skrining_gizi");
+                        akses.lama_penyiapan_rm=rs2.getBoolean("lama_penyiapan_rm");
+                        akses.dosis_radiologi=rs2.getBoolean("dosis_radiologi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2193,6 +2197,8 @@ public final class akses {
                         akses.soap_perawatan=false;
                         akses.klaim_rawat_jalan=false;
                         akses.skrining_gizi=false;
+                        akses.lama_penyiapan_rm=false;
+                        akses.dosis_radiologi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2922,4 +2928,6 @@ public final class akses {
     public static boolean getsoap_perawatan(){return akses.soap_perawatan;}
     public static boolean getklaim_rawat_jalan(){return akses.klaim_rawat_jalan;}
     public static boolean getskrining_gizi(){return akses.skrining_gizi;}
+    public static boolean getlama_penyiapan_rm(){return akses.lama_penyiapan_rm;}
+    public static boolean getdosis_radiologi(){return akses.dosis_radiologi;}
 }   

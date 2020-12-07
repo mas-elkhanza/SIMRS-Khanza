@@ -557,6 +557,7 @@ import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
 import laporan.DlgDataKlasifikasiPasienRanap;
+import laporan.DlgDosisRadiologi;
 import rekammedis.RMDataResumePasien;
 import laporan.DlgHarianHAIs2;
 import laporan.DlgHarianKlasifikasiPasienRanap;
@@ -564,6 +565,7 @@ import laporan.DlgKIPPasienRalan;
 import laporan.DlgKIPPasienRanap;
 import laporan.DlgKlasifikasiPasienPerBangsal;
 import laporan.DlgPelayananPoli;
+import laporan.DlgPenyiapanRM;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
 import laporan.DlgRekapPermintaanDiet;
@@ -16487,6 +16489,28 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLamaPenyiapanRMActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPenyiapanRM aplikasi=new DlgPenyiapanRM(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
+    private void btnDosisRadiologiActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDosisRadiologi aplikasi=new DlgDosisRadiologi(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17096,7 +17120,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
-            btnKlaimRawatJalan,btnSkriningGiziLanjut;
+            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi;
     
     public void isWall(){
         try{            
@@ -18488,6 +18512,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlama_pelayanan_poli()==true){  
                 Panelmenu.add(btnLamaPelayananPoli);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlama_penyiapan_rm()==true){  
+                Panelmenu.add(btnLamaPenyiapanRM);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getdosis_radiologi()==true){  
+                Panelmenu.add(btnDosisRadiologi);                 
                 jmlmenu++;
             }
             
@@ -21849,6 +21883,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getlama_pelayanan_poli()==true){  
             Panelmenu.add(btnLamaPelayananPoli);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getlama_penyiapan_rm()==true){  
+            Panelmenu.add(btnLamaPenyiapanRM);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getdosis_radiologi()==true){  
+            Panelmenu.add(btnDosisRadiologi);                 
             jmlmenu++;
         }
 
@@ -25706,6 +25750,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getlama_pelayanan_poli()==true){  
             if(btnLamaPelayananPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananPoli);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlama_penyiapan_rm()==true){  
+            if(btnLamaPenyiapanRM.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLamaPenyiapanRM);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdosis_radiologi()==true){  
+            if(btnDosisRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDosisRadiologi);                 
                 jmlmenu++;
             }                
         }
@@ -30312,6 +30370,22 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningGiziLanjut.setName("btnSkriningGiziLanjut"); 
         btnSkriningGiziLanjut.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningGiziLanjut.addActionListener(this::btnSkriningGiziLanjutActionPerformed);
+        
+        btnLamaPenyiapanRM = new widget.ButtonBig();
+        btnLamaPenyiapanRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPenyiapanRM.setText("Lama Penyiapan RM");
+        btnLamaPenyiapanRM.setIconTextGap(0);
+        btnLamaPenyiapanRM.setName("btnLamaPenyiapanRM"); // NOI18N
+        btnLamaPenyiapanRM.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPenyiapanRM.addActionListener(this::btnLamaPenyiapanRMActionPerformed);
+        
+        btnDosisRadiologi = new widget.ButtonBig();
+        btnDosisRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_DocumentManagement-documentation-folder-projectmanagement-filemanagement_6071870.png"))); // NOI18N
+        btnDosisRadiologi.setText("Dosis Radiologi");
+        btnDosisRadiologi.setIconTextGap(0);
+        btnDosisRadiologi.setName("btnDosisRadiologi"); // NOI18N
+        btnDosisRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDosisRadiologi.addActionListener(this::btnDosisRadiologiActionPerformed);
     }
 
     
