@@ -147,7 +147,7 @@ public final class akses {
             grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false,perbaikan_inventaris=false,surat_cuti_hamil=false,
             permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap,
             harian_klasifikasi_pasien_ranap=false,klasifikasi_pasien_perbangsal=false,soap_perawatan=false,klaim_rawat_jalan=false,
-            skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false;
+            skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false,demografi_umur_kunjungan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -843,6 +843,7 @@ public final class akses {
                         akses.skrining_gizi=true;
                         akses.lama_penyiapan_rm=true;
                         akses.dosis_radiologi=true;
+                        akses.demografi_umur_kunjungan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1522,6 +1523,7 @@ public final class akses {
                         akses.skrining_gizi=rs2.getBoolean("skrining_gizi");
                         akses.lama_penyiapan_rm=rs2.getBoolean("lama_penyiapan_rm");
                         akses.dosis_radiologi=rs2.getBoolean("dosis_radiologi");
+                        akses.demografi_umur_kunjungan=rs2.getBoolean("demografi_umur_kunjungan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2199,6 +2201,7 @@ public final class akses {
                         akses.skrining_gizi=false;
                         akses.lama_penyiapan_rm=false;
                         akses.dosis_radiologi=false;
+                        akses.demografi_umur_kunjungan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2930,4 +2933,5 @@ public final class akses {
     public static boolean getskrining_gizi(){return akses.skrining_gizi;}
     public static boolean getlama_penyiapan_rm(){return akses.lama_penyiapan_rm;}
     public static boolean getdosis_radiologi(){return akses.dosis_radiologi;}
+    public static boolean getdemografi_umur_kunjungan(){return akses.demografi_umur_kunjungan;}
 }   

@@ -1113,6 +1113,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             try {
                 rsrekening=psrekening.executeQuery();
                 while(rsrekening.next()){
+                    Registrasi_Ralan=rsrekening.getString("Registrasi_Ralan");
                     Tindakan_Ralan=rsrekening.getString("Tindakan_Ralan");
                     Beban_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ralan");
                     Utang_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ralan");

@@ -557,6 +557,7 @@ import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapTNI;
 import laporan.DlgDataKlasifikasiPasienRanap;
+import laporan.DlgDemografiUmurKunjungan;
 import laporan.DlgDosisRadiologi;
 import rekammedis.RMDataResumePasien;
 import laporan.DlgHarianHAIs2;
@@ -1582,7 +1583,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/07/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/12/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -16511,6 +16512,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnDemografiUmurKunjunganActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDemografiUmurKunjungan aplikasi=new DlgDemografiUmurKunjungan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17120,7 +17132,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
-            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi;
+            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan;
     
     public void isWall(){
         try{            
@@ -18679,6 +18691,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getklasifikasi_pasien_perbangsal()==true){  
                 Panelmenu.add(btnKlasifikasiPasienPerRuang);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getdemografi_umur_kunjungan()==true){  
+                Panelmenu.add(btnDemografiUmurKunjungan);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -22050,6 +22067,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getklasifikasi_pasien_perbangsal()==true){  
             Panelmenu.add(btnKlasifikasiPasienPerRuang);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getdemografi_umur_kunjungan()==true){  
+            Panelmenu.add(btnDemografiUmurKunjungan);                 
             jmlmenu++;
         }
 
@@ -25983,6 +26005,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getklasifikasi_pasien_perbangsal()==true){  
             if(btnKlasifikasiPasienPerRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKlasifikasiPasienPerRuang);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getdemografi_umur_kunjungan()==true){  
+            if(btnDemografiUmurKunjungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDemografiUmurKunjungan);                 
                 jmlmenu++;
             }                
         }
@@ -30386,6 +30415,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDosisRadiologi.setName("btnDosisRadiologi"); // NOI18N
         btnDosisRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnDosisRadiologi.addActionListener(this::btnDosisRadiologiActionPerformed);
+        
+        btnDemografiUmurKunjungan = new widget.ButtonBig();
+        btnDemografiUmurKunjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); 
+        btnDemografiUmurKunjungan.setText("Demografi Umur Kunjungan");
+        btnDemografiUmurKunjungan.setIconTextGap(0);
+        btnDemografiUmurKunjungan.setName("btnDemografiUmurKunjungan"); // NOI18N
+        btnDemografiUmurKunjungan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDemografiUmurKunjungan.addActionListener(this::btnDemografiUmurKunjunganActionPerformed);
     }
 
     
