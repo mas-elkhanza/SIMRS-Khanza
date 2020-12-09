@@ -616,6 +616,7 @@ import rekammedis.RMPenilaianAwalKeperawatanGigi;
 import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
 import rekammedis.RMPenilaianAwalKeperawatanRalan;
 import rekammedis.RMSKriningRawatJalan;
+import setting.DlgJamDietPasien;
 import setting.DlgPasswordAsuransi;
 import setting.DlgSetHargaToko;
 import smsui.frmSmsView;
@@ -1583,7 +1584,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/12/2020" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/12/2020" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -16523,6 +16524,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnJamDietPasienActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgJamDietPasien form=new DlgJamDietPasien(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17132,7 +17145,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
-            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan;
+            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien;
     
     public void isWall(){
         try{            
@@ -20625,6 +20638,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSetHargaToko);
                 jmlmenu++;
             }
+            
+            if(akses.getjam_diet_pasien()==true){
+                Panelmenu.add(btnJamDietPasien);
+                jmlmenu++;
+            }
         }    
     }
 
@@ -23984,6 +24002,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettoko_set_harga()==true){
             Panelmenu.add(btnSetHargaToko);
+            jmlmenu++;
+        }
+        
+        if(akses.getjam_diet_pasien()==true){
+            Panelmenu.add(btnJamDietPasien);
             jmlmenu++;
         }
     }
@@ -28692,6 +28715,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getjam_diet_pasien()==true){
+            if(btnJamDietPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJamDietPasien);
+                jmlmenu++;
+            }                
+        }
     }
 
     private void initKhanza() {
@@ -30423,6 +30453,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnDemografiUmurKunjungan.setName("btnDemografiUmurKunjungan"); // NOI18N
         btnDemografiUmurKunjungan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnDemografiUmurKunjungan.addActionListener(this::btnDemografiUmurKunjunganActionPerformed);
+        
+        btnJamDietPasien = new widget.ButtonBig();
+        btnJamDietPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_alarm_32381.png"))); 
+        btnJamDietPasien.setText("Jam Diet Pasien");
+        btnJamDietPasien.setIconTextGap(0);
+        btnJamDietPasien.setName("btnJamDietPasien"); 
+        btnJamDietPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJamDietPasien.addActionListener(this::btnJamDietPasienActionPerformed);
     }
 
     

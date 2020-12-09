@@ -148,6 +148,7 @@ public final class akses {
             permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap,
             harian_klasifikasi_pasien_ranap=false,klasifikasi_pasien_perbangsal=false,soap_perawatan=false,klaim_rawat_jalan=false,
             skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false,demografi_umur_kunjungan=false;
+    private static boolean jam_diet_pasien=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -844,6 +845,7 @@ public final class akses {
                         akses.lama_penyiapan_rm=true;
                         akses.dosis_radiologi=true;
                         akses.demografi_umur_kunjungan=true;
+                        akses.jam_diet_pasien=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1524,6 +1526,7 @@ public final class akses {
                         akses.lama_penyiapan_rm=rs2.getBoolean("lama_penyiapan_rm");
                         akses.dosis_radiologi=rs2.getBoolean("dosis_radiologi");
                         akses.demografi_umur_kunjungan=rs2.getBoolean("demografi_umur_kunjungan");
+                        akses.jam_diet_pasien=rs2.getBoolean("jam_diet_pasien");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2202,6 +2205,7 @@ public final class akses {
                         akses.lama_penyiapan_rm=false;
                         akses.dosis_radiologi=false;
                         akses.demografi_umur_kunjungan=false;
+                        akses.jam_diet_pasien=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2934,4 +2938,5 @@ public final class akses {
     public static boolean getlama_penyiapan_rm(){return akses.lama_penyiapan_rm;}
     public static boolean getdosis_radiologi(){return akses.dosis_radiologi;}
     public static boolean getdemografi_umur_kunjungan(){return akses.demografi_umur_kunjungan;}
+    public static boolean getjam_diet_pasien(){return akses.jam_diet_pasien;}
 }   
