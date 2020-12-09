@@ -52,7 +52,7 @@ public class DlgJamDietPasien extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(628,674);
 
-        Object[] row={"P","Waktu Diet","Jam Diet"};
+        Object[] row={"P","Waktu Diet Pasien","Jam Diet Pasien"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -306,7 +306,7 @@ public class DlgJamDietPasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(380, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(350, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -385,7 +385,7 @@ public class DlgJamDietPasien extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(cmbWaktu);
-        cmbWaktu.setBounds(119, 12, 180, 23);
+        cmbWaktu.setBounds(119, 12, 150, 23);
 
         cmbJam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam1.setName("cmbJam1"); // NOI18N
