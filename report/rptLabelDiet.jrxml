@@ -181,7 +181,7 @@ and detail_beri_diet.waktu=jam_diet_pasien.waktu]]>
 					<font fontName="Tahoma" size="6"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[": "+$F{tanggal}+" "+$F{waktu}+" Jam "+$F{jam}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[": "+$F{tanggal}+" "+$F{waktu}.replaceAll( "2","" ).replaceAll( "3","" )+" Jam "+$F{jam}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="3" y="19" width="24" height="9" uuid="2485d094-2bb3-4757-8a07-a14110dcd81d"/>
