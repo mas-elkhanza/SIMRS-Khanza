@@ -1362,6 +1362,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         }
     } catch (Exception ex) {
+        System.out.println("Error :"+ex);
     }
 }//GEN-LAST:event_BtnHapusActionPerformed
 

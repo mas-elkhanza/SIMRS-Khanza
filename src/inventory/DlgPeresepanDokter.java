@@ -533,6 +533,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         KdPj = new widget.TextBox();
         LPpn = new widget.Label();
         jLabel6 = new widget.Label();
+        kdKamar = new javax.swing.JTextField();
         internalFrame1 = new widget.InternalFrame();
         panelisi3 = new widget.panelisi();
         label9 = new widget.Label();
@@ -608,6 +609,9 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(35, 23));
 
+        kdKamar.setText("jTextField1");
+        kdKamar.setName("kdKamar"); // NOI18N
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -620,7 +624,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -949,7 +953,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
         DTPBeri.setName("DTPBeri"); // NOI18N
         FormInput.add(DTPBeri);
-        DTPBeri.setBounds(80, 40, 90, 20);
+        DTPBeri.setBounds(80, 40, 90, 28);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -1175,6 +1179,10 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     } else if (NoResep.getText().trim().equals("")) {
         Valid.textKosong(NoResep, "No.Resep");
     } else {
+        String kamar = Sequel.cariIsi("Select kd_kamar from kamar_inap where no_rawat='" + TNoRw.getText() + "' and stts_pulang='-'");
+        kdKamar.setText(kamar);
+        System.out.println("kamar:" + kdKamar);
+
         int reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah bener belum data yang mau disimpan..??", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
             //TODO: Cek Restriksi Resep Obat Inhealth
@@ -1186,29 +1194,29 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             sukses = true;
             if (ubah == false) {
                 emptTeksobat();
-                if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?", "Nomer Resep", 8, new String[]{
+                if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?,?", "Nomer Resep", 9, new String[]{
                     NoResep.getText(), Valid.SetDateToString(DTPBeri.getDate()),
                     cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                     TNoRw.getText(), KdDokter.getText(), Valid.SetDateToString(DTPBeri.getDate()),
-                    cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status
+                    cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status, kdKamar.getText()
                 }) == true) {
                     simpandata();
                 } else {
                     emptTeksobat();
-                    if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?", "Nomer Resep", 8, new String[]{
+                    if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?,?", "Nomer Resep", 9, new String[]{
                         NoResep.getText(), Valid.SetDateToString(DTPBeri.getDate()),
                         cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                         TNoRw.getText(), KdDokter.getText(), Valid.SetDateToString(DTPBeri.getDate()),
-                        cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status
+                        cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status, kdKamar.getText()
                     }) == true) {
                         simpandata();
                     } else {
                         emptTeksobat();
-                        if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?", "Nomer Resep", 8, new String[]{
+                        if (Sequel.menyimpantf2("resep_obat", "?,?,?,?,?,?,?,?,?", "Nomer Resep", 9, new String[]{
                             NoResep.getText(), Valid.SetDateToString(DTPBeri.getDate()),
                             cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                             TNoRw.getText(), KdDokter.getText(), Valid.SetDateToString(DTPBeri.getDate()),
-                            cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status
+                            cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), status, kdKamar.getText()
                         }) == true) {
                             simpandata();
                         } else {
@@ -1550,6 +1558,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField kdKamar;
     private widget.Label label12;
     private widget.Label label9;
     private widget.panelisi panelisi3;

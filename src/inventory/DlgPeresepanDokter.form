@@ -69,6 +69,12 @@
         </Property>
       </Properties>
     </Component>
+    <Component class="javax.swing.JTextField" name="kdKamar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="name" type="java.lang.String" value="kdKamar" noResource="true"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
