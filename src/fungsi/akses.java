@@ -147,8 +147,8 @@ public final class akses {
             grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false,perbaikan_inventaris=false,surat_cuti_hamil=false,
             permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap,
             harian_klasifikasi_pasien_ranap=false,klasifikasi_pasien_perbangsal=false,soap_perawatan=false,klaim_rawat_jalan=false,
-            skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false,demografi_umur_kunjungan=false;
-    private static boolean jam_diet_pasien=false;
+            skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false,demografi_umur_kunjungan=false,jam_diet_pasien=false,
+            rvu_bpjs=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -846,6 +846,7 @@ public final class akses {
                         akses.dosis_radiologi=true;
                         akses.demografi_umur_kunjungan=true;
                         akses.jam_diet_pasien=true;
+                        akses.rvu_bpjs=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1527,6 +1528,7 @@ public final class akses {
                         akses.dosis_radiologi=rs2.getBoolean("dosis_radiologi");
                         akses.demografi_umur_kunjungan=rs2.getBoolean("demografi_umur_kunjungan");
                         akses.jam_diet_pasien=rs2.getBoolean("jam_diet_pasien");
+                        akses.rvu_bpjs=rs2.getBoolean("rvu_bpjs");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2206,6 +2208,7 @@ public final class akses {
                         akses.dosis_radiologi=false;
                         akses.demografi_umur_kunjungan=false;
                         akses.jam_diet_pasien=false;
+                        akses.rvu_bpjs=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2939,4 +2942,5 @@ public final class akses {
     public static boolean getdosis_radiologi(){return akses.dosis_radiologi;}
     public static boolean getdemografi_umur_kunjungan(){return akses.demografi_umur_kunjungan;}
     public static boolean getjam_diet_pasien(){return akses.jam_diet_pasien;}
+    public static boolean getrvu_bpjs(){return akses.rvu_bpjs;}
 }   

@@ -793,7 +793,7 @@ public class frmUtama extends javax.swing.JFrame {
         
         try{    
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                DlgHome.setOpacity(0.77f);
+                DlgHome.setOpacity(0.66f);
                 DlgLogin.setOpacity(0.77f);
             }     
         }catch(Exception e){            
@@ -16536,6 +16536,10 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnRVUPiutangBPJSActionPerformed(java.awt.event.ActionEvent evt) { 
+        
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17145,7 +17149,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
-            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien;
+            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien,btnRVUPiutangBPJS;
     
     public void isWall(){
         try{            
@@ -18825,6 +18829,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenagihan_piutang_pasien()==true){
                Panelmenu.add(btnPenagihanPiutangPasien); 
+               jmlmenu++;
+            }
+            
+            if(akses.getrvu_bpjs()==true){
+               Panelmenu.add(btnRVUPiutangBPJS); 
                jmlmenu++;
             }
             
@@ -22205,6 +22214,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenagihan_piutang_pasien()==true){
            Panelmenu.add(btnPenagihanPiutangPasien); 
+           jmlmenu++;
+        }
+        
+        if(akses.getrvu_bpjs()==true){
+           Panelmenu.add(btnRVUPiutangBPJS); 
            jmlmenu++;
         }
         
@@ -26196,6 +26210,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenagihan_piutang_pasien()==true){
             if(btnPenagihanPiutangPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                Panelmenu.add(btnPenagihanPiutangPasien); 
+               jmlmenu++; 
+            }               
+        }
+        
+        if(akses.getrvu_bpjs()==true){
+            if(btnRVUPiutangBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+               Panelmenu.add(btnRVUPiutangBPJS); 
                jmlmenu++; 
             }               
         }
@@ -30461,6 +30482,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnJamDietPasien.setName("btnJamDietPasien"); 
         btnJamDietPasien.setPreferredSize(new java.awt.Dimension(200, 90));
         btnJamDietPasien.addActionListener(this::btnJamDietPasienActionPerformed);
+        
+        btnRVUPiutangBPJS = new widget.ButtonBig();
+        btnRVUPiutangBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_wallet_pay_sale_shop_4177573.png"))); 
+        btnRVUPiutangBPJS.setText("RVU Piutang BPJS");
+        btnRVUPiutangBPJS.setIconTextGap(0);
+        btnRVUPiutangBPJS.setName("btnRVUPiutangBPJS"); 
+        btnRVUPiutangBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRVUPiutangBPJS.addActionListener(this::btnRVUPiutangBPJSActionPerformed);
     }
 
     
