@@ -211,6 +211,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
 
         Popup = new javax.swing.JPopupMenu();
         MnRestore = new javax.swing.JMenuItem();
+        MnKartu = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbPetugas = new widget.Table();
@@ -269,19 +270,32 @@ public final class DlgPetugas extends javax.swing.JDialog {
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnRestore.setForeground(new java.awt.Color(50, 50, 50));
-        MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRestore.setIconTextGap(5);
         MnRestore.setName("MnRestore"); // NOI18N
-        MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
+        MnRestore.setPreferredSize(new java.awt.Dimension(160, 28));
         MnRestore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRestoreActionPerformed(evt);
             }
         });
         Popup.add(MnRestore);
+
+        MnKartu.setBackground(new java.awt.Color(255, 255, 254));
+        MnKartu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKartu.setForeground(new java.awt.Color(50, 50, 50));
+        MnKartu.setText("Cetak Kartu Petugas");
+        MnKartu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnKartu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnKartu.setName("MnKartu"); // NOI18N
+        MnKartu.setPreferredSize(new java.awt.Dimension(160, 28));
+        MnKartu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKartuActionPerformed(evt);
+            }
+        });
+        Popup.add(MnKartu);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -651,7 +665,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
         jLabel13.setBounds(0, 102, 105, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-08-2020" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-12-2020" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1137,6 +1151,33 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_tbPetugasKeyReleased
 
+    private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKartuActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            BtnBatal.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            if(tbPetugas.getSelectedRow()> -1){
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());
+                param.put("logo",Sequel.cariGambar("select logo from setting"));
+                Valid.MyReportqry("rptKartuPetugas.jasper","report","::[ Kartu Petugas ]::",
+                    "select petugas.nip,petugas.nama,petugas.jk,petugas.tmp_lahir,petugas.tgl_lahir,concat('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/',pegawai.photo) as photo, "+
+                    "petugas.gol_darah,petugas.agama,petugas.stts_nikah,petugas.alamat,jabatan.nm_jbtn,petugas.no_telp "+
+                    "from petugas inner join jabatan on jabatan.kd_jbtn=petugas.kd_jbtn inner join pegawai on petugas.nip=pegawai.nik "+
+                    "where petugas.nip='"+TNip.getText()+"'",param);
+            }else{
+                JOptionPane.showMessageDialog(null,"Silahkan pilih data yang mau dicetak kartu anggotanya ..!!!");
+            }
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnKartuActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1173,6 +1214,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdJbtn;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnKartu;
     private javax.swing.JMenuItem MnRestore;
     private javax.swing.JPanel PanelInput;
     private javax.swing.JPopupMenu Popup;
