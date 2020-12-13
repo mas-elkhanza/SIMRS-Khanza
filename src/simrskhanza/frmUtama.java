@@ -520,6 +520,7 @@ import inventory.DlgSirkulasiBarang4;
 import inventory.DlgSirkulasiBarang5;
 import inventory.DlgSisaStok;
 import inventory.HibahObatBHP;
+import inventory.InventoryVerifikasiPenerimaan;
 import ipsrs.DlgPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSReturBeli;
@@ -16540,6 +16541,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
     }
     
+    private void btnVerifikasiPenerimaanFarmasiActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InventoryVerifikasiPenerimaan form=new InventoryVerifikasiPenerimaan(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17149,7 +17161,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLamaPelayananPoli,btnHemodialisa,btnGrafikHemodialisaPerTanggal,btnGrafikHemodialisaPerBulan,btnGrafikHemodialisaPerTahun,
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
-            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien,btnRVUPiutangBPJS;
+            btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien,btnRVUPiutangBPJS,
+            btnVerifikasiPenerimaanFarmasi;
     
     public void isWall(){
         try{            
@@ -17855,6 +17868,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getrekap_obat_pasien()==true){
                 Panelmenu.add(btnRekapObatPasien);
+                jmlmenu++;
+            }
+            
+            if(akses.getverifikasi_penerimaan_farmasi()==true){
+                Panelmenu.add(btnVerifikasiPenerimaanFarmasi);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -21252,6 +21270,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getrekap_obat_pasien()==true){
             Panelmenu.add(btnRekapObatPasien);
+            jmlmenu++;
+        }
+        
+        if(akses.getverifikasi_penerimaan_farmasi()==true){
+            Panelmenu.add(btnVerifikasiPenerimaanFarmasi);
             jmlmenu++;
         }
 
@@ -24864,6 +24887,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getrekap_obat_pasien()==true){
             if(btnRekapObatPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapObatPasien);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getverifikasi_penerimaan_farmasi()==true){
+            if(btnVerifikasiPenerimaanFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnVerifikasiPenerimaanFarmasi);
                 jmlmenu++;
             }                
         }
@@ -30490,6 +30520,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRVUPiutangBPJS.setName("btnRVUPiutangBPJS"); 
         btnRVUPiutangBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRVUPiutangBPJS.addActionListener(this::btnRVUPiutangBPJSActionPerformed);
+        
+        btnVerifikasiPenerimaanFarmasi = new widget.ButtonBig();
+        btnVerifikasiPenerimaanFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ToDoList-planing-list-planlist-todo_6071846.png"))); 
+        btnVerifikasiPenerimaanFarmasi.setText("Verifikasi Penerimaan Obat/Alkes/BHP");
+        btnVerifikasiPenerimaanFarmasi.setIconTextGap(0);
+        btnVerifikasiPenerimaanFarmasi.setName("btnVerifikasiPenerimaanFarmasi"); 
+        btnVerifikasiPenerimaanFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnVerifikasiPenerimaanFarmasi.addActionListener(this::btnVerifikasiPenerimaanFarmasiActionPerformed);
     }
 
     
