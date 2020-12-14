@@ -148,7 +148,7 @@ public final class akses {
             permintaan_stok_obat_pasien=false,pemeliharaan_inventaris=false,klasifikasi_pasien_ranap=false,bulanan_klasifikasi_pasien_ranap,
             harian_klasifikasi_pasien_ranap=false,klasifikasi_pasien_perbangsal=false,soap_perawatan=false,klaim_rawat_jalan=false,
             skrining_gizi=false,lama_penyiapan_rm=false,dosis_radiologi=false,demografi_umur_kunjungan=false,jam_diet_pasien=false,
-            rvu_bpjs=false,verifikasi_penerimaan_farmasi=false;
+            rvu_bpjs=false,verifikasi_penerimaan_farmasi=false,verifikasi_penerimaan_logistik=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -848,6 +848,7 @@ public final class akses {
                         akses.jam_diet_pasien=true;
                         akses.rvu_bpjs=true;
                         akses.verifikasi_penerimaan_farmasi=true;
+                        akses.verifikasi_penerimaan_logistik=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1531,6 +1532,7 @@ public final class akses {
                         akses.jam_diet_pasien=rs2.getBoolean("jam_diet_pasien");
                         akses.rvu_bpjs=rs2.getBoolean("rvu_bpjs");
                         akses.verifikasi_penerimaan_farmasi=rs2.getBoolean("verifikasi_penerimaan_farmasi");
+                        akses.verifikasi_penerimaan_logistik=rs2.getBoolean("verifikasi_penerimaan_logistik");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -2212,6 +2214,7 @@ public final class akses {
                         akses.jam_diet_pasien=false;
                         akses.rvu_bpjs=false;
                         akses.verifikasi_penerimaan_farmasi=false;
+                        akses.verifikasi_penerimaan_logistik=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2947,4 +2950,5 @@ public final class akses {
     public static boolean getjam_diet_pasien(){return akses.jam_diet_pasien;}
     public static boolean getrvu_bpjs(){return akses.rvu_bpjs;}
     public static boolean getverifikasi_penerimaan_farmasi(){return akses.verifikasi_penerimaan_farmasi;}
+    public static boolean getverifikasi_penerimaan_logistik(){return akses.verifikasi_penerimaan_logistik;}
 }   

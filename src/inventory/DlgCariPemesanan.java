@@ -35,7 +35,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
-    public  DlgSuplier suplier=new DlgSuplier(null,false);
+    public  InventarisSuplier suplier=new InventarisSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2,pscaripesan,psdetailpesan;
@@ -298,6 +298,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
+        
         ChkAccor.setSelected(false);
         isPhoto();
         HTMLEditorKit kit = new HTMLEditorKit();

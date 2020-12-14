@@ -661,7 +661,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         "perbaikan_inventaris,surat_cuti_hamil,permintaan_stok_obat_pasien,pemeliharaan_inventaris,klasifikasi_pasien_ranap,"+
                         "bulanan_klasifikasi_pasien_ranap,harian_klasifikasi_pasien_ranap,klasifikasi_pasien_perbangsal,soap_perawatan,"+
                         "klaim_rawat_jalan,skrining_gizi,lama_penyiapan_rm,dosis_radiologi,demografi_umur_kunjungan,jam_diet_pasien,"+
-                        "rvu_bpjs,verifikasi_penerimaan_farmasi from user where id_user=AES_ENCRYPT(?,'nur')");
+                        "rvu_bpjs,verifikasi_penerimaan_farmasi,verifikasi_penerimaan_logistik from user where id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1260,6 +1260,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     
                     if("[E]Riwayat Barang Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{false,"[E]Riwayat Barang Non Medis",rs.getBoolean("ipsrs_riwayat_barang")});
+                    }
+                    
+                    if("[E]Verifikasi Penerimaan Non Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[E]Verifikasi Penerimaan Non Medis",rs.getBoolean("verifikasi_penerimaan_logistik")});
                     }
                     
                     if("[F]Jenis Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -3991,6 +3995,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[E]Riwayat Barang Non Medis".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ipsrs_riwayat_barang='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[E]Verifikasi Penerimaan Non Medis".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","verifikasi_penerimaan_logistik='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[F]Jenis Inventaris".equals(tbUser.getValueAt(i,1).toString())){

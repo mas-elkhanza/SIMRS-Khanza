@@ -116,7 +116,7 @@ import setting.DlgSetHarga;
 import setting.DlgBiayaSekaliMasuk;
 import setting.DlgAdmin;
 import setting.DlgBiayaHarian;
-import inventory.DlgSuplier;
+import inventory.InventarisSuplier;
 import kepegawaian.DlgBarcode;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -299,7 +299,7 @@ import inventory.DlgRekapPermintaan;
 import inventory.DlgRiwayatBarangMedis;
 import inventory.DlgRiwayatBatch;
 import inventory.DlgSirkulasiBarang3;
-import inventory.DlgSuratPemesanan;
+import inventory.InventorySuratPemesanan;
 import ipsrs.IPSRSInputStok;
 import ipsrs.IPSRSPemesanan;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
@@ -525,6 +525,7 @@ import ipsrs.DlgPengajuanBarangNonMedis;
 import ipsrs.DlgSirkulasiNonMedis2;
 import ipsrs.IPSRSReturBeli;
 import ipsrs.IPSRSRiwayatBarang;
+import ipsrs.IPSRSVerifikasiPenerimaan;
 import java.awt.event.ActionEvent;
 import java.net.InetAddress;
 import kepegawaian.DlgDokter;
@@ -8257,7 +8258,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSuplier suplier=new DlgSuplier(this,false);
+        InventarisSuplier suplier=new InventarisSuplier(this,false);
         suplier.isCek();
         suplier.emptTeks();
         suplier.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
@@ -11829,7 +11830,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnSuratPemesananMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuratPemesananMedisActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSuratPemesanan form=new DlgSuratPemesanan(this,false);
+        InventorySuratPemesanan form=new InventorySuratPemesanan(this,false);
         form.isCek();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
@@ -16552,6 +16553,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnVerifikasiPenerimaanLogistikActionPerformed(java.awt.event.ActionEvent evt) { 
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        IPSRSVerifikasiPenerimaan form=new IPSRSVerifikasiPenerimaan(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17162,7 +17174,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnGrafikMeninggalPerBulan,btnLaporanTahunanIRJ,btnPerbaikanInventaris,btnSuratCutiHamil,btnPermintaanStokObatPasien,btnPemeliharaanInventaris,
             btnKlasifikasiPasienRanap,btnBulananKlasifikasiPasienRanap,btnHarianKlasifikasiPasienRanap,btnKlasifikasiPasienPerRuang,btnSOAPPerawatan,
             btnKlaimRawatJalan,btnSkriningGiziLanjut,btnLamaPenyiapanRM,btnDosisRadiologi,btnDemografiUmurKunjungan,btnJamDietPasien,btnRVUPiutangBPJS,
-            btnVerifikasiPenerimaanFarmasi;
+            btnVerifikasiPenerimaanFarmasi,btnVerifikasiPenerimaanLogistik;
     
     public void isWall(){
         try{            
@@ -17991,7 +18003,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSirkulasiNonMedis2);
                 jmlmenu++;
             }
-
+            
+            if(akses.getverifikasi_penerimaan_logistik()==true){
+                Panelmenu.add(btnVerifikasiPenerimaanLogistik);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==5){ 
             jmlmenu=0;
             if(akses.getasal_hibah()==true){
@@ -21390,6 +21406,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsirkulasi_non_medis2()==true){
             Panelmenu.add(btnSirkulasiNonMedis2);
+            jmlmenu++;
+        }
+        
+        if(akses.getverifikasi_penerimaan_logistik()==true){
+            Panelmenu.add(btnVerifikasiPenerimaanLogistik);
             jmlmenu++;
         }
 
@@ -25057,7 +25078,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSirkulasiNonMedis2);
                 jmlmenu++;
             }                
-        } 
+        }
+        
+        if(akses.getverifikasi_penerimaan_logistik()==true){
+            if(btnVerifikasiPenerimaanLogistik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnVerifikasiPenerimaanLogistik);
+                jmlmenu++;
+            }                
+        }
 
         if(akses.getasal_hibah()==true){
             if(btnAsalHibah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -30528,6 +30556,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnVerifikasiPenerimaanFarmasi.setName("btnVerifikasiPenerimaanFarmasi"); 
         btnVerifikasiPenerimaanFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnVerifikasiPenerimaanFarmasi.addActionListener(this::btnVerifikasiPenerimaanFarmasiActionPerformed);
+        
+        btnVerifikasiPenerimaanLogistik = new widget.ButtonBig();
+        btnVerifikasiPenerimaanLogistik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_File_Files_Folder_Document_Doc_Confirm-39_3909343.png"))); 
+        btnVerifikasiPenerimaanLogistik.setText("Verifikasi Penerimaan Non Medis");
+        btnVerifikasiPenerimaanLogistik.setIconTextGap(0);
+        btnVerifikasiPenerimaanLogistik.setName("btnVerifikasiPenerimaanLogistik"); 
+        btnVerifikasiPenerimaanLogistik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnVerifikasiPenerimaanLogistik.addActionListener(this::btnVerifikasiPenerimaanLogistikActionPerformed);
     }
 
     
