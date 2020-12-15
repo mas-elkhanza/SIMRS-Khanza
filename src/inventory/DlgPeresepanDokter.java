@@ -569,6 +569,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         jLabel7 = new widget.Label();
         LTotalTagihan = new widget.Label();
         DTPBeri = new widget.Tanggal1();
+        TKamar = new widget.TextBox();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
         tbResep = new widget.Table();
@@ -799,7 +800,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         FormInput.add(TPasien);
-        TPasien.setBounds(196, 12, 487, 23);
+        TPasien.setBounds(196, 12, 290, 23);
 
         KdDokter.setHighlighter(null);
         KdDokter.setName("KdDokter"); // NOI18N
@@ -857,7 +858,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoResep);
-        NoResep.setBounds(528, 72, 130, 23);
+        NoResep.setBounds(530, 70, 130, 23);
 
         jLabel8.setText("Tgl.Resep :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -906,7 +907,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             }
         });
         FormInput.add(ChkRM);
-        ChkRM.setBounds(660, 72, 23, 23);
+        ChkRM.setBounds(660, 70, 23, 23);
 
         ChkJln.setBorder(null);
         ChkJln.setSelected(true);
@@ -954,6 +955,16 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         DTPBeri.setName("DTPBeri"); // NOI18N
         FormInput.add(DTPBeri);
         DTPBeri.setBounds(80, 40, 90, 28);
+
+        TKamar.setHighlighter(null);
+        TKamar.setName("TKamar"); // NOI18N
+        TKamar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TKamarKeyPressed(evt);
+            }
+        });
+        FormInput.add(TKamar);
+        TKamar.setBounds(495, 12, 170, 23);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -1179,9 +1190,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     } else if (NoResep.getText().trim().equals("")) {
         Valid.textKosong(NoResep, "No.Resep");
     } else {
-        String kamar = Sequel.cariIsi("Select kd_kamar from kamar_inap where no_rawat='" + TNoRw.getText() + "' and stts_pulang='-'");
-        kdKamar.setText(kamar);
-        System.out.println("kamar:" + kdKamar);
+        if (status.equals("ranap")) {
+            String kamar = Sequel.cariIsi("Select kd_kamar from kamar_inap where no_rawat='" + TNoRw.getText() + "' and stts_pulang='-'");
+            kdKamar.setText(kamar);
+        } else {
+            kdKamar.setText("-");
+        }
+        System.out.println("kamar:" + kdKamar.getText());
 
         int reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah bener belum data yang mau disimpan..??", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
@@ -1500,6 +1515,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppStok1ActionPerformed
 
+    private void TKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKamarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TKamarKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1542,6 +1561,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private widget.TextBox TCari;
+    private widget.TextBox TKamar;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private javax.swing.JTabbedPane TabRawat;
@@ -1875,6 +1895,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         NmDokter.setText(NamaDokter);
         KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?", norwt));
         kenaikan = Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?", KdPj.getText());
+//        TKamar.setText(Sequel.cariIsi("Select nm_bangsal from kamar_inap inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal kamar.kd_bangsal=bangsal.kd_bangsal where no_rawat='" + TNoRw.getText() + "' and stts_pulang='-'"));
         TCari.requestFocus();
         this.status = status;
         SetHarga();
@@ -1898,6 +1919,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         NmDokter.setText(NamaDokter);
         KdPj.setText(kodepj);
         kenaikan = Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?", KdPj.getText());
+//        TKamar.setText(Sequel.cariIsi("Select nm_bangsal from kamar_inap inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal kamar.kd_bangsal=bangsal.kd_bangsal where no_rawat='" + TNoRw.getText() + "' and stts_pulang='-'"));
         TCari.requestFocus();
         this.status = status;
         SetHarga();
@@ -1925,6 +1947,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
         KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?", norwt));
         kenaikan = Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ralan where kd_pj=?", KdPj.getText());
+
+        TKamar.setText(Sequel.cariIsi("SELECT bangsal.nm_bangsal FROM kamar_inap "
+                + "INNER JOIN kamar ON kamar_inap.kd_kamar = kamar.kd_kamar "
+                + "INNER JOIN bangsal ON bangsal.kd_bangsal = kamar.kd_bangsal "
+                + "WHERE kamar_inap.no_rawat=? AND kamar_inap.stts_pulang='-'",norwt));
+        
         TCari.requestFocus();
         this.status = status;
         SetHarga();

@@ -99,9 +99,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbResepRalan.setPreferredScrollableViewportSize(new Dimension(500, 500));
-        tbResepRalan.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tbResepRalan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 13; i++) {
             TableColumn column = tbResepRalan.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -132,13 +132,19 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     column.setPreferredWidth(105);
                     break;
                 case 9:
-                    column.setPreferredWidth(130);
+                    column.setPreferredWidth(100);
                     break;
                 case 10:
-                    column.setPreferredWidth(90);
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
                     break;
                 case 11:
-                    column.setPreferredWidth(100);
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    break;
+                case 12:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
                     break;
                 default:
                     break;
@@ -2110,7 +2116,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and penjab.kd_pj like ?" + apotik + "and pasien.no_rkm_medis like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and penjab.kd_pj like ?" + apotik + "and pasien.nm_pasien like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? "
-                    + " group by reg_periksa.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    + " order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
@@ -2266,7 +2272,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.tabelKosong(tabMode2);
         String apotik = "";
         if (!kd_ruangan.equals("")) {
-            apotik = " and detail_pemberian_obat.kd_bangsal like " + kd_ruangan + "";
+            apotik = " and detail_pemberian_obat.kd_bangsal like %" + kd_ruangan + "%";
         }
         try {
             ps = koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,resep_obat.no_rawat,penjab.png_jawab,pasien.no_rkm_medis,"
@@ -2285,10 +2291,34 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? " + apotik + " and pasien.no_rkm_medis like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? " + apotik + " and pasien.nm_pasien like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? " + apotik + " and dokter.nm_dokter like ? "
-                    + "group by reg_periksa.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    + "order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
+                ps.setString(3, "%" + CrDokter.getText() + "%");
+                ps.setString(4, "%" + CrPoli.getText() + "%");
+                ps.setString(5, "%" + TCari.getText() + "%");
+                ps.setString(6, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(7, Valid.SetDateToString(DTPCari2.getDate()));
+                ps.setString(8, "%" + CrDokter.getText() + "%");
+                ps.setString(9, "%" + CrPoli.getText() + "%");
+                ps.setString(10, "%" + TCari.getText() + "%");
+                ps.setString(11, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(12, Valid.SetDateToString(DTPCari2.getDate()));
+                ps.setString(13, "%" + CrDokter.getText() + "%");
+                ps.setString(14, "%" + CrPoli.getText() + "%");
+                ps.setString(15, "%" + TCari.getText() + "%");
+                ps.setString(16, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(17, Valid.SetDateToString(DTPCari2.getDate()));
+                ps.setString(18, "%" + CrDokter.getText() + "%");
+                ps.setString(19, "%" + CrPoli.getText() + "%");
+                ps.setString(20, "%" + TCari.getText() + "%");
+                ps.setString(21, Valid.SetDateToString(DTPCari1.getDate()));
+                ps.setString(22, Valid.SetDateToString(DTPCari2.getDate()));
+                ps.setString(23, "%" + CrDokter.getText() + "%");
+                ps.setString(24, "%" + CrPoli.getText() + "%");
+                ps.setString(25, "%" + TCari.getText() + "%");
+                
                 rs = ps.executeQuery();
                 i = 0;
                 if (cmbStatus.getSelectedItem().toString().equals("Semua")) {
@@ -2454,7 +2484,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
                 LCount.setText("" + i);
             } catch (Exception ex) {
-                System.out.println("Notifikasi : " + ex);
+                System.out.println("Notifikasis : " + ex);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -2464,7 +2494,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Notifikasi : " + e);
+            System.out.println("Notifikasiss : " + e);
         }
     }
 

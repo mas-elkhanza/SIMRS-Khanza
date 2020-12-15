@@ -1850,7 +1850,7 @@ public final class sekuel {
                 }
             }
         } catch (Exception e) {
-
+            System.out.println("Cari isi error = "+e);
         }
 
         return dicari;
