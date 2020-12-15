@@ -2594,8 +2594,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + "inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "
                     + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
                     + "inner join dokter on resep_obat.kd_dokter=dokter.kd_dokter "
-                    + "inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat "
-                    + "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "
+                    + "inner join kamar on resep_obat.kd_kamar=kamar.kd_kamar "
                     + "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal "
                     + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "
                     + "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "
@@ -2604,7 +2603,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and resep_obat.no_rawat like ? or "
                     + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.no_rkm_medis like ? or "
                     + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.nm_pasien like ? or "
-                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? group by resep_obat.no_resep,detail_pemberian_obat.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? "
+                    + "group by resep_obat.no_resep,detail_pemberian_obat.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+            
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));

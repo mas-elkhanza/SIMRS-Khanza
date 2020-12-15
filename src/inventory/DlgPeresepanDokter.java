@@ -1196,7 +1196,6 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } else {
             kdKamar.setText("-");
         }
-        System.out.println("kamar:" + kdKamar.getText());
 
         int reply = JOptionPane.showConfirmDialog(rootPane, "Eeiiiiiits, udah bener belum data yang mau disimpan..??", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
