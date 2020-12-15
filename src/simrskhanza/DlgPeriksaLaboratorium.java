@@ -12,15 +12,14 @@ package simrskhanza;
 
 import bridging.koneksiDBELIMS;
 import bridging.koneksiDBSysmex;
-import kepegawaian.DlgCariDokter;
-import kepegawaian.DlgCariPetugas;
-import keuangan.DlgJnsPerawatanLab;
+import com.fasterxml.jackson.databind.JsonNode;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
+import inhealth.InhealtsAPI;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -29,9 +28,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -47,6 +49,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
+import keuangan.DlgJnsPerawatanLab;
 import keuangan.Jurnal;
 
 /**
@@ -82,6 +87,9 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
             Utang_Jasa_Medik_Dokter_Laborat_Ranap = "", Beban_Jasa_Medik_Petugas_Laborat_Ranap = "",
             Utang_Jasa_Medik_Petugas_Laborat_Ranap = "", Beban_Kso_Laborat_Ranap = "", Utang_Kso_Laborat_Ranap = "",
             HPP_Persediaan_Laborat_Rawat_inap = "", Persediaan_BHP_Laborat_Rawat_Inap = "", norawatibu = "";
+    String requestJson = "";
+    private InhealtsAPI inhealtsAPI = new InhealtsAPI();
+    private String noSjp = "";
 
     /**
      * Creates new form DlgPerawatan
@@ -97,7 +105,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
         setSize(885, 674);
 
         Tanggal.setDate(new Date());
-        
+
         Object[] row = {
             "P", "Pemeriksaan", "Hasil", "Satuan", "Nilai Rujukan",
             "Keterangan", "id_template", "Biaya Item", "bagian_rs", "bhp",
@@ -445,6 +453,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
         Popup = new javax.swing.JPopupMenu();
         ppBersihkan = new javax.swing.JMenuItem();
         ppSemua = new javax.swing.JMenuItem();
+        txtKdPoli = new javax.swing.JTextField();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -553,6 +562,9 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
         });
         Popup.add(ppSemua);
 
+        txtKdPoli.setText("jTextField1");
+        txtKdPoli.setName("txtKdPoli"); // NOI18N
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -562,7 +574,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Hasil Periksa Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Hasil Periksa Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1341,9 +1353,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         for (i = 0; i < tbPemeriksaan.getRowCount(); i++) {
             if (tbPemeriksaan.getValueAt(i, 0).toString().equals("true")) {
                 tabMode.removeRow(i);
+                if (Penjab.getText().equals("364") || Penjab.getText().equals("INH")) {
+                    noSjp = Sequel.cariIsi("select no_sjp from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
+                    if (noSjp != null) {
+                        hapusTindakanInhealth(noSjp);
+                    }
+                }
             }
         }
     } catch (Exception ex) {
+        System.out.println("Error :"+ex);
     }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1581,6 +1600,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.RadioButton rbDewasa;
     private widget.Table tbPemeriksaan;
     private widget.Table tbTarif;
+    private javax.swing.JTextField txtKdPoli;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
@@ -2882,45 +2902,22 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             ttlpendapatan = 0;
             ttlbhp = 0;
             koneksi.setAutoCommit(false);
+            noSjp = Sequel.cariIsi("select no_sjp from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
+
             for (i = 0; i < tbTarif.getRowCount(); i++) {
                 if (tbTarif.getValueAt(i, 0).toString().equals("true")) {
-                    sukses = false;
-                    pssimpanperiksa = koneksi.prepareStatement(
-                            "insert into periksa_lab values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    try {
-                        pssimpanperiksa.setString(1, TNoRw.getText());
-                        pssimpanperiksa.setString(2, KdPtg.getText());
-                        pssimpanperiksa.setString(3, tbTarif.getValueAt(i, 1).toString());
-                        pssimpanperiksa.setString(4, Valid.SetDateToString(Tanggal.getDate()));
-                        pssimpanperiksa.setString(5, CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem());
-                        pssimpanperiksa.setString(6, KodePerujuk.getText());
-                        pssimpanperiksa.setString(7, tbTarif.getValueAt(i, 4).toString());
-                        pssimpanperiksa.setString(8, tbTarif.getValueAt(i, 5).toString());
-                        pssimpanperiksa.setString(9, tbTarif.getValueAt(i, 6).toString());
-                        pssimpanperiksa.setString(10, tbTarif.getValueAt(i, 7).toString());
-                        pssimpanperiksa.setString(11, tbTarif.getValueAt(i, 8).toString());
-                        pssimpanperiksa.setString(12, tbTarif.getValueAt(i, 9).toString());
-                        pssimpanperiksa.setString(13, tbTarif.getValueAt(i, 10).toString());
-                        pssimpanperiksa.setString(14, tbTarif.getValueAt(i, 3).toString());
-                        pssimpanperiksa.setString(15, KodePj.getText());
-                        pssimpanperiksa.setString(16, status);
-                        pssimpanperiksa.executeUpdate();
-                        sukses = true;
-                    } catch (Exception e) {
-                        sukses = false;
-                        System.out.println("Notifikasi 1 : " + e);
-                        Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
-                    } finally {
-                        if (pssimpanperiksa != null) {
-                            pssimpanperiksa.close();
+
+                    if (Penjab.getText().equals("INH")) {
+
+                        if (!noSjp.equals("")) {
+                            if (tarifKhanza()) {
+                                simpanTindakanInhealth(noSjp);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No.SJP Belum ada, silahkan bridging dulu untuk dapat memberikan tindakan Pasien, Terimakasih.", "Information", JOptionPane.OK_OPTION);
                         }
-                    }
-                    if (sukses == true) {
-                        ttlbhp = ttlbhp + Double.parseDouble(tbTarif.getValueAt(i, 5).toString());
-                        ttljmdokter = ttljmdokter + Double.parseDouble(tbTarif.getValueAt(i, 7).toString()) + Double.parseDouble(tbTarif.getValueAt(i, 6).toString());
-                        ttljmpetugas = ttljmpetugas + Double.parseDouble(tbTarif.getValueAt(i, 8).toString());
-                        ttlkso = ttlkso + Double.parseDouble(tbTarif.getValueAt(i, 9).toString());
-                        ttlpendapatan = ttlpendapatan + Double.parseDouble(tbTarif.getValueAt(i, 3).toString());
+                    } else {
+                        tarifKhanza();
                     }
                 }
             }
@@ -3026,4 +3023,121 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         ChkJln.setSelected(true);
     }
 
+    private boolean tarifKhanza() throws NumberFormatException, SQLException {
+        sukses = false;
+        pssimpanperiksa = koneksi.prepareStatement(
+                "insert into periksa_lab values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        try {
+            pssimpanperiksa.setString(1, TNoRw.getText());
+            pssimpanperiksa.setString(2, KdPtg.getText());
+            pssimpanperiksa.setString(3, tbTarif.getValueAt(i, 1).toString());
+            pssimpanperiksa.setString(4, Valid.SetDateToString(Tanggal.getDate()));
+            pssimpanperiksa.setString(5, CmbJam.getSelectedItem() + ":" + CmbMenit.getSelectedItem() + ":" + CmbDetik.getSelectedItem());
+            pssimpanperiksa.setString(6, KodePerujuk.getText());
+            pssimpanperiksa.setString(7, tbTarif.getValueAt(i, 4).toString());
+            pssimpanperiksa.setString(8, tbTarif.getValueAt(i, 5).toString());
+            pssimpanperiksa.setString(9, tbTarif.getValueAt(i, 6).toString());
+            pssimpanperiksa.setString(10, tbTarif.getValueAt(i, 7).toString());
+            pssimpanperiksa.setString(11, tbTarif.getValueAt(i, 8).toString());
+            pssimpanperiksa.setString(12, tbTarif.getValueAt(i, 9).toString());
+            pssimpanperiksa.setString(13, tbTarif.getValueAt(i, 10).toString());
+            pssimpanperiksa.setString(14, tbTarif.getValueAt(i, 3).toString());
+            pssimpanperiksa.setString(15, KodePj.getText());
+            pssimpanperiksa.setString(16, status);
+            pssimpanperiksa.executeUpdate();
+            sukses = true;
+        } catch (Exception e) {
+            sukses = false;
+            System.out.println("Notifikasi 1 : " + e);
+            Logger.getLogger(DlgPeriksaLaboratorium.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            if (pssimpanperiksa != null) {
+                pssimpanperiksa.close();
+            }
+        }
+        if (sukses == true) {
+            ttlbhp = ttlbhp + Double.parseDouble(tbTarif.getValueAt(i, 5).toString());
+            ttljmdokter = ttljmdokter + Double.parseDouble(tbTarif.getValueAt(i, 7).toString()) + Double.parseDouble(tbTarif.getValueAt(i, 6).toString());
+            ttljmpetugas = ttljmpetugas + Double.parseDouble(tbTarif.getValueAt(i, 8).toString());
+            ttlkso = ttlkso + Double.parseDouble(tbTarif.getValueAt(i, 9).toString());
+            ttlpendapatan = ttlpendapatan + Double.parseDouble(tbTarif.getValueAt(i, 3).toString());
+        }
+        return sukses;
+    }
+
+    private void simpanTindakanInhealth(String noSjp) {
+        try {
+            String kodeProvider = Sequel.cariIsi("select kode_ppkinhealth from setting");
+            String jnsPelayanan = Sequel.cariIsi("select jnspelayanan from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
+            String tglMasukRawat = Sequel.cariIsi("select tgl_registrasi from bridging_inhealth inner join reg_periksa on reg_periksa.no_rawat=bridging_inhealth.no_rawat where bridging_inhealth.no_rawat='" + TNoRw.getText() + "'");
+            String kodeTindakan = Sequel.cariIsi("select kd_inhealth from inhealth_tindakan_laborat where kd_jenis_prw='" + tbTarif.getValueAt(i, 1).toString() + "'");
+            String poli = Sequel.cariIsi("select kd_poli_inhealth from inhealth_maping_poli where kd_poli_rs='" + txtKdPoli.getText() + "'");
+            String kodeDokter = Sequel.cariIsi("select kd_inhealth from inhealth_maping_dokter where kd_dokter='" + KodePj.getText() + "'");
+            String tarip = Sequel.cariIsi("select tarif from tarif_inhealth where kode_jenpel='" + kodeTindakan + "' and kode_kelas='000'");
+            String date = Valid.SetDateToString(Tanggal.getDate());
+            String token = token = prop.getProperty("TOKENINHEALTH");
+            JsonNode response = inhealtsAPI.SimpanTindakan(token, kodeProvider, jnsPelayanan, noSjp, tglMasukRawat, date, kodeTindakan, poli, kodeDokter, tarip);
+            if (response.path("ERRORCODE").asText().equals("00")) {
+                tbTarif.setValueAt(false, i, 0);
+            } else {
+                JOptionPane.showMessageDialog(null, response.path("ERRORDESC").asText());
+            }
+//            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+//
+//            String URL = prop.getProperty("URLAPIINHEALTH") + "/api/SimpanTindakan";
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.add("Content-Type", "application/json; utf-8");
+//            requestJson = "{ \"token\": \"" + prop.getProperty("TOKENINHEALTH") + "\","
+//                    + "\"kodeprovider\": \"" + kodeProvider + "\","
+//                    + "\"jenispelayanan\": \"" + jnsPelayanan + "\","
+//                    + "\"nosjp\": \"" + noSjp + "\","
+//                    + "\"tglmasukrawat\": \"" + tglMasukRawat + "\","
+//                    + "\"tanggalpelayanan\": \"" + Valid.SetDateToString(Tanggal.getDate()) + "\","
+//                    + "\"kodetindakan\": \"" + kodeTindakan + "\","
+//                    + "\"poli\": \"" + poli + "\","
+//                    + "\"kodedokter\": \"" + kodeDokter + "\","
+//                    + "\"biayaaju\": \"" + tarip + "\""
+//                    + "}";
+//
+//            System.out.println("Request: " + requestJson);
+//            HttpEntity requestEntity = new HttpEntity(requestJson, headers);
+//            RestTemplate rest = new RestTemplate();
+//            ObjectMapper mapper = new ObjectMapper();
+////            System.out.println("Data : "+rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+//            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+//            if (root.path("ERRORCODE").asText().equals("00")) {
+//                System.out.println("Response :" + root.path("ERRORCODE").asText());
+//                tbTarif.setValueAt(false, i, 0);
+//            } else {
+//                JOptionPane.showMessageDialog(null, root.path("ERRORDESC").asText());
+//            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DlgRawatJalan.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DlgRawatJalan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void SetPoli(String KodePoli, String penjab) {
+        txtKdPoli.setText(KodePoli);
+        Penjab.setText(penjab); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void hapusTindakanInhealth(String noSjp) {
+        try {
+            String kodeProvider = Sequel.cariIsi("select kode_ppkinhealth from setting");
+            String kodeTindakan = Sequel.cariIsi("select kd_inhealth from inhealth_tindakan_laborat where kd_jenis_prw='" + tbTarif.getValueAt(i, 1).toString() + "'");
+            String date = Valid.SetDateToString(Tanggal.getDate());
+
+            String token = prop.getProperty("TOKENINHEALTH");
+            JsonNode response = inhealtsAPI.HapusTindakan(token, kodeProvider, noSjp, kodeTindakan, date, "salah", "");
+            if (response.path("ERRORCODE").asText().equals("00")) {
+                tbTarif.setValueAt(false, i, 0);
+            } else {
+                JOptionPane.showMessageDialog(null, response.path("ERRORDESC").asText());
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(DlgRawatJalan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

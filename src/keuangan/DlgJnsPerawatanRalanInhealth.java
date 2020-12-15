@@ -8,7 +8,7 @@
  *
  * Created on May 22, 2010, 11:58:21 PM
  */
-package bridging;
+package keuangan;
 
 import fungsi.WarnaTable;
 import fungsi.akses;
@@ -16,30 +16,26 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.DlgJnsPerawatanRalan;
-import keuangan.DlgJnsPerawatanRalanInhealth;
+import restore.DlgRestoreTarifRalan;
+import simrskhanza.DlgCariPoli;
+import simrskhanza.DlgKtgPerawatan;
+import simrskhanza.DlgPenanggungJawab;
 
 /**
  *
  * @author dosen
  */
-public final class InhealthTindakanRalan extends javax.swing.JDialog {
+public final class DlgJnsPerawatanRalanInhealth extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode;
     private sekuel Sequel = new sekuel();
@@ -48,51 +44,70 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i = 0;
-    private DlgJnsPerawatanRalan barang = new DlgJnsPerawatanRalan(null, false);
-    private DlgJnsPerawatanRalanInhealth inhealth = new DlgJnsPerawatanRalanInhealth(null, false);
 
     /**
      * Creates new form DlgJnsPerawatanRalan
      *
-     * @param parent
-     * @param modal
+     * @param frame
+     * @param bln
      */
-    public InhealthTindakanRalan(java.awt.Frame parent, boolean modal) {
+    public DlgJnsPerawatanRalanInhealth(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
         this.setLocation(8, 1);
         setSize(628, 674);
 
-        tabMode = new DefaultTableModel(null, new Object[]{
-            "Kode RS", "Nama Tindakan Ralan", "Ttl Biaya Dr", "Ttl Biaya Pr", "Ttl Biaya Dr & Pr", "Kode Inhealth","Nama Tindakan","Tarif Inhealth"}) {
+        Valid.loadCombo2(cmbKodeKelas, "kode_kelas,nama_kelas", "kode_kelas", "kelas_inhealth");
+        Object[] row = {
+            "P",
+            "Kode Tindakan",
+            "Kode Kelas",
+            "Nama Tnd/Prw/Tagihan",
+            "Tarif"
+        };
+        tabMode = new DefaultTableModel(null, row) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
-                return false;
+                boolean a = false;
+                if (colIndex == 0) {
+                    a = true;
+                }
+                return a;
+            }
+            Class[] types = new Class[]{
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Double.class
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
             }
         };
         tbJnsPerawatan.setModel(tabMode);
 
+        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 5; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(20);
             } else if (i == 1) {
-                column.setPreferredWidth(300);
-            } else if (i == 5) {
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(80);
+            } else if (i == 2) {
+                column.setPreferredWidth(200);
             } else {
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
+        TKd.setDocument(new batasInput((byte) 15).getKata(TKd));
+        TNm.setDocument(new batasInput((byte) 80).getKata(TNm));
         TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
-        KdTindakanInhealth.setDocument(new batasInput((byte) 20).getKata(KdTindakanInhealth));
-
         if (koneksiDB.CARICEPAT().equals("aktif")) {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
                 @Override
@@ -118,110 +133,25 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
             });
         }
 
-        barang.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
+        ChkInput.setSelected(false);
+        isForm();
 
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (barang.getTable().getSelectedRow() != -1) {
-                    kdtindakan.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(), 1).toString());
-                    TTindakan.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(), 2).toString());
-                }
-                kdtindakan.requestFocus();
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
-        });
-
-        barang.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    barang.dispose();
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        });
-
-        inhealth.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (inhealth.getTable().getSelectedRow() != -1) {
-                    KdTindakanInhealth.setText(inhealth.getTable().getValueAt(inhealth.getTable().getSelectedRow(), 1).toString());
-                    TTindakanInhealth.setText(inhealth.getTable().getValueAt(inhealth.getTable().getSelectedRow(), 3).toString());
-                }
-                KdTindakanInhealth.requestFocus();
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
-        });
-
-        inhealth.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                    inhealth.dispose();
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        });
     }
+
+    /**
+     *
+     */
+    public DlgKtgPerawatan ktg = new DlgKtgPerawatan(null, false);
+
+    /**
+     *
+     */
+    public DlgCariPoli poli = new DlgCariPoli(null, false);
+
+    /**
+     *
+     */
+    public DlgPenanggungJawab penjab = new DlgPenanggungJawab(null, false);
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -232,6 +162,8 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnRestore = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -241,7 +173,6 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         BtnBatal = new widget.Button();
         BtnHapus = new widget.Button();
         BtnEdit = new widget.Button();
-        BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
         panelGlass9 = new widget.panelisi();
@@ -250,15 +181,35 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
+        PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
+        jLabel3 = new widget.Label();
+        TKd = new widget.TextBox();
+        jLabel8 = new widget.Label();
+        TNm = new widget.TextBox();
         jLabel4 = new widget.Label();
-        kdtindakan = new widget.TextBox();
-        TTindakan = new widget.TextBox();
-        btnPoliRS = new widget.Button();
-        jLabel19 = new widget.Label();
-        KdTindakanInhealth = new widget.TextBox();
-        TTindakanInhealth = new widget.TextBox();
-        btnPoliInhealth = new widget.Button();
+        jLabel20 = new widget.Label();
+        cmbKodeKelas = new widget.ComboBox();
+        TTarif = new widget.TextBox();
+        ChkInput = new widget.CekBox();
+
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnRestore.setBackground(new java.awt.Color(255, 255, 254));
+        MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
+        MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnRestore.setText("Data Sampah");
+        MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnRestore.setName("MnRestore"); // NOI18N
+        MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
+        MnRestore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRestoreActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnRestore);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -269,15 +220,17 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Tindakan Rawat Jalan di Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Tindakan/Perawatan/Tagihan Rawat Jalan]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setAutoCreateRowSorter(true);
-        tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit, untuk menghapus data silahkan centang kemudian klik hapus");
+        tbJnsPerawatan.setComponentPopupMenu(jPopupMenu1);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -287,6 +240,9 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         tbJnsPerawatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbJnsPerawatanKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbJnsPerawatanKeyReleased(evt);
             }
         });
         Scroll.setViewportView(tbJnsPerawatan);
@@ -307,7 +263,6 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         BtnSimpan.setText("Simpan");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
-        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSimpanActionPerformed(evt);
@@ -374,24 +329,6 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnEdit);
 
-        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        BtnPrint.setMnemonic('T');
-        BtnPrint.setText("Cetak");
-        BtnPrint.setToolTipText("Alt+T");
-        BtnPrint.setName("BtnPrint"); // NOI18N
-        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        BtnPrint.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPrintKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnPrint);
-
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
         BtnAll.setText("Semua");
@@ -439,6 +376,7 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel6);
 
+        TCari.setToolTipText("Silahkan masukkan kata kunci pencarian kemudian tekan ENTER atau tekan tombol centang. Pencarian bisa berdasar kode, nama perawatan, kategori, poli dan jenis bayar");
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(450, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -480,119 +418,135 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
 
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
+        PanelInput.setName("PanelInput"); // NOI18N
+        PanelInput.setOpaque(false);
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 248));
+        PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
+
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 44));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 100));
         FormInput.setLayout(null);
 
-        jLabel4.setText("Tindakan Ralan :");
+        jLabel3.setText("Kode Tnd/Prw :");
+        jLabel3.setName("jLabel3"); // NOI18N
+        FormInput.add(jLabel3);
+        jLabel3.setBounds(4, 12, 92, 23);
+
+        TKd.setToolTipText("Wajib diisi....! Cateeet yaaa ...! harus unix dan ga boleh sama dengan yang lain. Tekan ENTER buat lanjut ke field berikutnya, tekan PAGE UP buat ke field sebelumnya");
+        TKd.setHighlighter(null);
+        TKd.setName("TKd"); // NOI18N
+        TKd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TKdKeyPressed(evt);
+            }
+        });
+        FormInput.add(TKd);
+        TKd.setBounds(100, 12, 180, 23);
+
+        jLabel8.setText("Tarif :");
+        jLabel8.setName("jLabel8"); // NOI18N
+        FormInput.add(jLabel8);
+        jLabel8.setBounds(270, 40, 160, 23);
+
+        TNm.setToolTipText("Tekan ENTER untuk lanjut ke field berikutnya, tekan PAGE UP untuk ke field sebelumnya");
+        TNm.setHighlighter(null);
+        TNm.setName("TNm"); // NOI18N
+        TNm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNmKeyPressed(evt);
+            }
+        });
+        FormInput.add(TNm);
+        TNm.setBounds(440, 10, 270, 23);
+
+        jLabel4.setText("Kode Kelas :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 10, 95, 23);
+        jLabel4.setBounds(4, 42, 92, 23);
 
-        kdtindakan.setEditable(false);
-        kdtindakan.setHighlighter(null);
-        kdtindakan.setName("kdtindakan"); // NOI18N
-        FormInput.add(kdtindakan);
-        kdtindakan.setBounds(100, 10, 105, 23);
+        jLabel20.setText("Nama Tnd/Prw/Tagihan :");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(300, 10, 130, 23);
 
-        TTindakan.setEditable(false);
-        TTindakan.setHighlighter(null);
-        TTindakan.setName("TTindakan"); // NOI18N
-        FormInput.add(TTindakan);
-        TTindakan.setBounds(210, 10, 250, 23);
+        cmbKodeKelas.setName("cmbKodeKelas"); // NOI18N
+        FormInput.add(cmbKodeKelas);
+        cmbKodeKelas.setBounds(100, 40, 180, 24);
 
-        btnPoliRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPoliRS.setMnemonic('1');
-        btnPoliRS.setToolTipText("Alt+1");
-        btnPoliRS.setName("btnPoliRS"); // NOI18N
-        btnPoliRS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPoliRSActionPerformed(evt);
-            }
-        });
-        btnPoliRS.addKeyListener(new java.awt.event.KeyAdapter() {
+        TTarif.setToolTipText("Tekan ENTER untuk lanjut ke field berikutnya, tekan PAGE UP untuk ke field sebelumnya");
+        TTarif.setHighlighter(null);
+        TTarif.setName("TTarif"); // NOI18N
+        TTarif.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnPoliRSKeyPressed(evt);
+                TTarifKeyPressed(evt);
             }
         });
-        FormInput.add(btnPoliRS);
-        btnPoliRS.setBounds(460, 10, 28, 23);
+        FormInput.add(TTarif);
+        TTarif.setBounds(440, 40, 130, 23);
 
-        jLabel19.setText("Kode Inhealth :");
-        jLabel19.setName("jLabel19"); // NOI18N
-        FormInput.add(jLabel19);
-        jLabel19.setBounds(500, 10, 85, 23);
+        PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
-        KdTindakanInhealth.setHighlighter(null);
-        KdTindakanInhealth.setName("KdTindakanInhealth"); // NOI18N
-        FormInput.add(KdTindakanInhealth);
-        KdTindakanInhealth.setBounds(590, 10, 130, 23);
-
-        TTindakanInhealth.setEditable(false);
-        TTindakanInhealth.setHighlighter(null);
-        TTindakanInhealth.setName("TTindakanInhealth"); // NOI18N
-        FormInput.add(TTindakanInhealth);
-        TTindakanInhealth.setBounds(730, 10, 250, 23);
-
-        btnPoliInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPoliInhealth.setMnemonic('1');
-        btnPoliInhealth.setToolTipText("Alt+1");
-        btnPoliInhealth.setName("btnPoliInhealth"); // NOI18N
-        btnPoliInhealth.addActionListener(new java.awt.event.ActionListener() {
+        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setMnemonic('I');
+        ChkInput.setText(".: Input Data");
+        ChkInput.setToolTipText("Alt+I");
+        ChkInput.setBorderPainted(true);
+        ChkInput.setBorderPaintedFlat(true);
+        ChkInput.setFocusable(false);
+        ChkInput.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkInput.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkInput.setName("ChkInput"); // NOI18N
+        ChkInput.setPreferredSize(new java.awt.Dimension(192, 20));
+        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPoliInhealthActionPerformed(evt);
+                ChkInputActionPerformed(evt);
             }
         });
-        btnPoliInhealth.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnPoliInhealthKeyPressed(evt);
-            }
-        });
-        FormInput.add(btnPoliInhealth);
-        btnPoliInhealth.setBounds(980, 10, 28, 23);
+        PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
 
-        internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
+        internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPoliRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliRSActionPerformed
-        barang.isCek();
-        barang.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
-        barang.setLocationRelativeTo(internalFrame1);
-        barang.setVisible(true);
-}//GEN-LAST:event_btnPoliRSActionPerformed
+    private void TKdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKeyPressed
+        Valid.pindah(evt, TCari, TNm);
+}//GEN-LAST:event_TKdKeyPressed
 
-    private void btnPoliRSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliRSKeyPressed
-
-}//GEN-LAST:event_btnPoliRSKeyPressed
+    private void TNmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNmKeyPressed
+//        Valid.pindah(evt,TKd,KdKtg);
+}//GEN-LAST:event_TNmKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if (kdtindakan.getText().trim().equals("") || TTindakan.getText().trim().equals("")) {
-            Valid.textKosong(kdtindakan, "Tindakan RS");
-        } else if (KdTindakanInhealth.getText().trim().equals("")) {
-            Valid.textKosong(KdTindakanInhealth, "Kode Inhealth");
+        if (TKd.getText().trim().equals("")) {
+            Valid.textKosong(TKd, "Kode Jenis");
+        } else if (TNm.getText().trim().equals("")) {
+            Valid.textKosong(TNm, "Nama Perawatan");
+        } else if (TTarif.getText().trim().equals("")) {
+            Valid.textKosong(TTarif, "Tarif");
         } else {
-            if (Sequel.menyimpantf("inhealth_tindakan_ralan", "?,?", "Mapping Tindakan", 2, new String[]{
-                kdtindakan.getText(), KdTindakanInhealth.getText()
-            }) == true) {
-                tampil();
-                emptTeks();
-            }
+            Sequel.menyimpan("tarif_inhealth", "?,?,?,?,?", "Kode Tarif Inhealth", 5, new String[]{
+                TKd.getText(), cmbKodeKelas.getSelectedItem().toString().substring(0, 4), TNm.getText(), TTarif.getText(), "1"
+            });
+            BtnCariActionPerformed(evt);
+            emptTeks();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnSimpanActionPerformed(null);
-        } else {
-            Valid.pindah(evt, KdTindakanInhealth, BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
+        ChkInput.setSelected(true);
+        isForm();
         emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
@@ -605,8 +559,12 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode, kdtindakan, "inhealth_tindakan_ralan", "kd_jenis_prw");
-        tampil();
+        for (i = 0; i < tbJnsPerawatan.getRowCount(); i++) {
+            if (tbJnsPerawatan.getValueAt(i, 0).toString().equals("true")) {
+                Sequel.mengedit("tarif_inhealth", "kode_jenpel='" + tbJnsPerawatan.getValueAt(i, 1).toString() + "' and kode_kelas='" + tbJnsPerawatan.getValueAt(i, 2).toString() + "'", "status='0'");
+            }
+        }
+        BtnCariActionPerformed(evt);
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -619,27 +577,27 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if (kdtindakan.getText().trim().equals("") || TTindakan.getText().trim().equals("")) {
-            Valid.textKosong(kdtindakan, "Tindakan RS");
-        } else if (KdTindakanInhealth.getText().trim().equals("")) {
-            Valid.textKosong(KdTindakanInhealth, "Kode Inhealth");
+        if (TKd.getText().trim().equals("")) {
+            Valid.textKosong(TKd, "Kode Jenis");
+        } else if (TNm.getText().trim().equals("")) {
+            Valid.textKosong(TNm, "Nama Perawatan");
+        } else if (TTarif.getText().trim().equals("")) {
+            Valid.textKosong(TTarif, "Tarif");
         } else {
-            if (tbJnsPerawatan.getSelectedRow() > -1) {
-                if (Sequel.mengedittf("inhealth_tindakan_ralan", "kd_jenis_prw=?", "kd_jenis_prw=?,kd_inhealth=?", 3, new String[]{
-                    kdtindakan.getText(), KdTindakanInhealth.getText(), tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 0).toString()
-                }) == true) {
-                    emptTeks();
-                    tampil();
-                }
+            Sequel.mengedit("tarif_inhealth", "kode_jenpel=?,kode_kelas=?", "kode_jenpel=?,kode_kelas=?,nama_jenpel=?,tarif=?,status=?", 5, new String[]{
+                TKd.getText(), cmbKodeKelas.getSelectedItem().toString().substring(0, 4), TNm.getText(), TTarif.getText(), "1",
+                TKd.getText(), cmbKodeKelas.getSelectedItem().toString().substring(0, 4)
+            });
+            if (tabMode.getRowCount() != 0) {
+                BtnCariActionPerformed(evt);
             }
+            emptTeks();
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnEditActionPerformed(null);
-        } else {
-            Valid.pindah(evt, BtnHapus, BtnPrint);
         }
 }//GEN-LAST:event_BtnEditKeyPressed
 
@@ -654,34 +612,6 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
             Valid.pindah(evt, BtnEdit, TCari);
         }
 }//GEN-LAST:event_BtnKeluarKeyPressed
-
-    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if (tabMode.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            BtnBatal.requestFocus();
-        } else if (tabMode.getRowCount() != 0) {
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars", akses.getnamars());
-            param.put("alamatrs", akses.getalamatrs());
-            param.put("kotars", akses.getkabupatenrs());
-            param.put("propinsirs", akses.getpropinsirs());
-            param.put("kontakrs", akses.getkontakrs());
-            param.put("emailrs", akses.getemailrs());
-            param.put("logo", Sequel.cariGambar("select logo from setting"));
-            param.put("parameter", "%" + TCari.getText().trim() + "%");
-            Valid.MyReport("rptMapingTindakanInhealth.jasper", "report", "::[ Mapping Tarif Rawat Jalan Inhealth ]::", param);
-        }
-        this.setCursor(Cursor.getDefaultCursor());
-}//GEN-LAST:event_BtnPrintActionPerformed
-
-    private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
-            BtnPrintActionPerformed(null);
-        } else {
-            Valid.pindah(evt, BtnEdit, BtnKeluar);
-        }
-}//GEN-LAST:event_BtnPrintKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -714,8 +644,6 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             tampil();
             TCari.setText("");
-        } else {
-            Valid.pindah(evt, BtnPrint, BtnKeluar);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -725,10 +653,36 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
                 getData();
             } catch (java.lang.NullPointerException e) {
             }
+
         }
 }//GEN-LAST:event_tbJnsPerawatanMouseClicked
 
     private void tbJnsPerawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyPressed
+        if (tabMode.getRowCount() != 0) {
+            if (evt.getKeyCode() == KeyEvent.VK_A) {
+                for (i = 0; i < tbJnsPerawatan.getRowCount(); i++) {
+                    tbJnsPerawatan.setValueAt(true, i, 0);
+                }
+            }
+        }
+}//GEN-LAST:event_tbJnsPerawatanKeyPressed
+
+private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
+    isForm();
+}//GEN-LAST:event_ChkInputActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        tampil();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
+        DlgRestoreTarifRalan restore = new DlgRestoreTarifRalan(null, true);
+        restore.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
+        restore.setLocationRelativeTo(internalFrame1);
+        restore.setVisible(true);
+    }//GEN-LAST:event_MnRestoreActionPerformed
+
+    private void tbJnsPerawatanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyReleased
         if (tabMode.getRowCount() != 0) {
             if ((evt.getKeyCode() == KeyEvent.VK_ENTER) || (evt.getKeyCode() == KeyEvent.VK_UP) || (evt.getKeyCode() == KeyEvent.VK_DOWN)) {
                 try {
@@ -737,31 +691,18 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
                 }
             }
         }
-}//GEN-LAST:event_tbJnsPerawatanKeyPressed
+    }//GEN-LAST:event_tbJnsPerawatanKeyReleased
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-        emptTeks();
-    }//GEN-LAST:event_formWindowOpened
-
-    private void btnPoliInhealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliInhealthActionPerformed
+    private void TTarifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTarifKeyPressed
         // TODO add your handling code here:
-        inhealth.isCek();
-        inhealth.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
-        inhealth.setLocationRelativeTo(internalFrame1);
-        inhealth.setVisible(true);
-    }//GEN-LAST:event_btnPoliInhealthActionPerformed
-
-    private void btnPoliInhealthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliInhealthKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPoliInhealthKeyPressed
+    }//GEN-LAST:event_TTarifKeyPressed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            InhealthTindakanRalan dialog = new InhealthTindakanRalan(new javax.swing.JFrame(), true);
+            DlgJnsPerawatanRalanInhealth dialog = new DlgJnsPerawatanRalanInhealth(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -779,24 +720,27 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.CekBox ChkInput;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox KdTindakanInhealth;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnRestore;
+    private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
-    private widget.TextBox TTindakan;
-    private widget.TextBox TTindakanInhealth;
-    private widget.Button btnPoliInhealth;
-    private widget.Button btnPoliRS;
+    private widget.TextBox TKd;
+    private widget.TextBox TNm;
+    private widget.TextBox TTarif;
+    private widget.ComboBox cmbKodeKelas;
     private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel19;
+    private widget.Label jLabel20;
+    private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
+    private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
-    private widget.TextBox kdtindakan;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbJnsPerawatan;
@@ -805,22 +749,33 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try {
-            ps = koneksi.prepareStatement(
-                    "select inhealth_tindakan_ralan.kd_jenis_prw,jns_perawatan.nm_perawatan,jns_perawatan.total_byrdr,jns_perawatan.total_byrpr,jns_perawatan.total_byrdrpr,inhealth_tindakan_ralan.kd_inhealth,nama_jenpel,tarif "
-                    + "from inhealth_tindakan_ralan inner join jns_perawatan inner join tarif_inhealth on inhealth_tindakan_ralan.kd_jenis_prw=jns_perawatan.kd_jenis_prw and inhealth_tindakan_ralan.kd_inhealth=tarif_inhealth.kode_jenpel where "
-                    + "inhealth_tindakan_ralan.kd_jenis_prw like ? or jns_perawatan.nm_perawatan like ? or inhealth_tindakan_ralan.kd_inhealth like ? order by jns_perawatan.nm_perawatan");
+            ps = koneksi.prepareStatement("select * "
+                    + "from tarif_inhealth inner join kelas_inhealth "
+                    + "on tarif_inhealth.kode_kelas=kelas_inhealth.kode_kelas "
+                    + "where "
+                    + "tarif_inhealth.status='1' and tarif_inhealth.kode_jenpel like ? or "
+                    + "tarif_inhealth.status='1' and tarif_inhealth.kode_kelas like ? or "
+                    + "tarif_inhealth.status='1' and kelas_inhealth.nama_kelas like ? or "
+                    + "tarif_inhealth.status='1' and tarif_inhealth.nama_jenpel like ? "
+                    + "order by tarif_inhealth.kode_jenpel");
             try {
-                ps.setString(1, "%" + TCari.getText() + "%");
-                ps.setString(2, "%" + TCari.getText() + "%");
-                ps.setString(3, "%" + TCari.getText() + "%");
+                ps.setString(1, "%" + TCari.getText().trim() + "%");
+                ps.setString(2, "%" + TCari.getText().trim() + "%");
+                ps.setString(3, "%" + TCari.getText().trim() + "%");
+                ps.setString(4, "%" + TCari.getText().trim() + "%");
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     tabMode.addRow(new Object[]{
-                        rs.getString("kd_jenis_prw"), rs.getString("nm_perawatan"), Valid.SetAngka(rs.getDouble("total_byrdr")), Valid.SetAngka(rs.getDouble("total_byrpr")), Valid.SetAngka(rs.getDouble("total_byrdrpr")), rs.getString("kd_inhealth"), rs.getString("nama_jenpel"), rs.getString("tarif")
+                        false,
+                        rs.getString("kode_jenpel"),
+                        rs.getString("kode_kelas") + " - " + rs.getString("nama_kelas"),
+                        rs.getString("nama_jenpel"),
+                        rs.getDouble("tarif")
+
                     });
                 }
             } catch (Exception e) {
-                System.out.println("Notif Ketersediaan : " + e);
+                System.out.println(e);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -839,19 +794,40 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
      *
      */
     public void emptTeks() {
-        kdtindakan.setText("");
-        TTindakan.setText("");
-        TTindakanInhealth.setText("");
-        KdTindakanInhealth.setText("");
-        kdtindakan.requestFocus();
+        TKd.setText("");
+        TNm.setText("");
+        TTarif.setText("");
+        TKd.requestFocus();
     }
 
     private void getData() {
         if (tbJnsPerawatan.getSelectedRow() != -1) {
-            kdtindakan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 0).toString());
-            TTindakan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 1).toString());
-            KdTindakanInhealth.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 5).toString());
-            TTindakanInhealth.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 6).toString());
+            TKd.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 1).toString());
+            cmbKodeKelas.setSelectedItem(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 2).toString());
+            TNm.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 3).toString());
+            TTarif.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 4).toString());
+        }
+    }
+
+    /**
+     *
+     * @return
+     */
+    public JTextField getTextField() {
+        return TKd;
+    }
+
+    private void isForm() {
+        if (ChkInput.isSelected() == true) {
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH, 120));
+            FormInput.setVisible(true);
+            ChkInput.setVisible(true);
+        } else if (ChkInput.isSelected() == false) {
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH, 20));
+            FormInput.setVisible(false);
+            ChkInput.setVisible(true);
         }
     }
 
@@ -859,10 +835,14 @@ public final class InhealthTindakanRalan extends javax.swing.JDialog {
      *
      */
     public void isCek() {
-        BtnSimpan.setEnabled(akses.getinhealth_mapping_tindakan_ralan());
-        BtnHapus.setEnabled(akses.getinhealth_mapping_tindakan_ralan());
-        BtnEdit.setEnabled(akses.getinhealth_mapping_tindakan_ralan());
-        BtnPrint.setEnabled(akses.getinhealth_mapping_tindakan_ralan());
+        BtnSimpan.setEnabled(akses.gettarif_ralan());
+        BtnHapus.setEnabled(akses.gettarif_ralan());
+        BtnEdit.setEnabled(akses.gettarif_ralan());
+        if (akses.getkode().equals("Admin Utama")) {
+            MnRestore.setEnabled(true);
+        } else {
+            MnRestore.setEnabled(false);
+        }
     }
 
     /**

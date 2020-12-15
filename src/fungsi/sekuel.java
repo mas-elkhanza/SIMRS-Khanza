@@ -155,6 +155,7 @@ public final class sekuel {
      */
     public boolean menyimpantf2(String table, String value, String sama) {
         try {
+            System.out.println("Query : \ninsert into " + table + " \nvalues(\n" + value + "\n)\n");
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             ps.executeUpdate();
             if (ps != null) {
@@ -164,8 +165,7 @@ public final class sekuel {
             SimpanTrack("insert into " + table + " values(" + value + ")");
             return true;
         } catch (Exception e) {
-
-            System.out.println(sekuel.class.getName() + ", " + e);
+            System.out.println(sekuel.class.getName() + ", " + e.toString());
             return false;
         }
     }
@@ -321,7 +321,7 @@ public final class sekuel {
      */
     public boolean menyimpantf(String table, String value, String sama, int i, String[] a) {
         try {
-            System.out.println("Query: "+"insert into " + table + " values(" + value + ")");
+            System.out.println("Query: " + "insert into " + table + " values(" + value + ")");
             ps = connect.prepareStatement("insert into " + table + " values(" + value + ")");
             for (angka = 1; angka <= i; angka++) {
                 ps.setString(angka, a[angka - 1]);
@@ -929,6 +929,7 @@ public final class sekuel {
     public boolean mengedittf(String table, String acuan_field, String update) {
         bool = true;
         try {
+            System.out.println("Query : " + "update " + table + " set " + update + " where " + acuan_field);
             ps = connect.prepareStatement("update " + table + " set " + update + " where " + acuan_field);
             try {
                 ps.executeUpdate();
@@ -1454,6 +1455,7 @@ public final class sekuel {
         try {
             connect.commit();
         } catch (Exception e) {
+            System.err.println("Comit Connect Error : " + e.toString());
         }
     }
 
@@ -1463,8 +1465,9 @@ public final class sekuel {
     public void RollBack() {
         try {
             connect.rollback();
+            System.out.println("Rollback success, Cancel Transactions");
         } catch (Exception e) {
-            System.out.println("Notif : " + e);
+            System.err.println("Rollback Error : " + e.toString());
             JOptionPane.showMessageDialog(null, "Gagal melakukan rollback..!");
         }
     }
@@ -1566,6 +1569,7 @@ public final class sekuel {
 
         }
     }
+
     public void cariIsi(String sql, JTextField txt1, JTextField txt2) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1593,6 +1597,7 @@ public final class sekuel {
 
         }
     }
+
     public void cariIsi(String sql, JTextArea txt) {
         try {
             ps = connect.prepareStatement(sql);
@@ -1845,7 +1850,7 @@ public final class sekuel {
                 }
             }
         } catch (Exception e) {
-
+            System.out.println("Cari isi error = "+e);
         }
 
         return dicari;

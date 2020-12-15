@@ -1,12 +1,14 @@
 package inventory;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
+import inhealth.InhealtsAPI;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -16,6 +18,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,6 +28,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -63,9 +68,13 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private DlgCariBangsal caribangsal1 = new DlgCariBangsal(null, false);
     private int jmlparsial = 0, nilai_detik, resepbaru = 0, i = 0;
     private BackgroundMusic music;
-    private boolean aktif = false;
+    private boolean aktif = false, sukses = true;
     private String kd_penjab = "", kd_penjab_ranap = "";
     private String kd_ruangan = "", kd_ruangan_ranap = "";
+
+    //TODO: Inhealth Import
+    private InhealtsAPI inhealtsAPI = new InhealtsAPI();
+    private String noSjp = "";
 
     /**
      * Creates new form
@@ -79,7 +88,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
         tabMode = new DefaultTableModel(null, new Object[]{
             "No.Resep", "Tgl.Peresepan", "Jam Peresepan", "No.Rawat", "No.RM",
-            "Pasien", "Dokter Peresep", "Status", "Poli/Unit", "Jenis Bayar", "Kode Bangsal", "Apotik"
+            "Pasien", "Dokter Peresep", "Status", "Poli/Unit", "Jenis Bayar", "Kode Bangsal", "Apotik", "kd pj"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -90,9 +99,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbResepRalan.setPreferredScrollableViewportSize(new Dimension(500, 500));
-        tbResepRalan.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tbResepRalan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 13; i++) {
             TableColumn column = tbResepRalan.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -123,13 +132,19 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     column.setPreferredWidth(105);
                     break;
                 case 9:
-                    column.setPreferredWidth(130);
+                    column.setPreferredWidth(100);
                     break;
                 case 10:
-                    column.setPreferredWidth(90);
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
                     break;
                 case 11:
-                    column.setPreferredWidth(100);
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
+                    break;
+                case 12:
+                    column.setMinWidth(0);
+                    column.setMaxWidth(0);
                     break;
                 default:
                     break;
@@ -1119,27 +1134,27 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(CrDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                .addComponent(CrDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnSeek3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CrPoli, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                .addComponent(CrPoli, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnSeek4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtKdCaraBayar, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                .addComponent(txtKdCaraBayar, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCaraBayar, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addComponent(txtCaraBayar, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnSeek7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNmRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addComponent(txtNmRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnSeek8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
@@ -1335,13 +1350,13 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(CrDokter2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addComponent(CrDokter2, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnSeek5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Kamar, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addComponent(Kamar, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnSeek6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1349,7 +1364,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtKdCaraBayarRanap, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCaraBayarRanap, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addComponent(txtCaraBayarRanap, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnSeek9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1610,6 +1625,10 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 } else if (NoRawat.equals("")) {
                     JOptionPane.showMessageDialog(null, "Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
                 } else {
+                    if (tabMode.getValueAt(tbResepRalan.getSelectedRow(), 12).equals("364")
+                            || tabMode.getValueAt(tbResepRalan.getSelectedRow(), 12).equals("INH")) {
+                        cariDetails();
+                    }
                     if (Status.equals("Sudah Terlayani")) {
                         JOptionPane.showMessageDialog(rootPane, "Resep sudah tervalidasi ..!!");
                     } else {
@@ -1656,6 +1675,26 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         }
 }//GEN-LAST:event_BtnTambahActionPerformed
+
+    private void cekRestriksiEPrescriptions(String user, String kodeObatRs, String jumlahObat) {
+        System.out.println("Palametel =" + user + ", " + kodeObatRs + ", " + jumlahObat);
+        try {
+            String kodeProvider = Sequel.cariIsi("select kode_ppkinhealth from setting");
+            String token = prop.getProperty("TOKENINHEALTH");
+
+            JsonNode response = inhealtsAPI.CekRestriksiTransaksi(token, kodeProvider, noSjp, kodeObatRs, jumlahObat, user);
+            if (response.path("ERRORCODE").asText().equals("00")) {
+                System.out.println("Sukses Cek Restriksi Resep Obat");
+                System.out.println("" + response.path("RESTRIKSI").asText());
+            } else {
+                JOptionPane.showMessageDialog(null, response.path("ERRORDESC").asText());
+                sukses = false;
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(DlgDaftarPermintaanResep.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     private void BtnTambahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnTambahKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -2063,7 +2102,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             ps = koneksi.prepareStatement("select resep_obat.no_resep, resep_obat.tgl_peresepan, resep_obat.jam_peresepan, "
                     + " resep_obat.no_rawat, penjab.png_jawab, pasien.no_rkm_medis, pasien.nm_pasien, resep_obat.kd_dokter, dokter.nm_dokter, "
                     + " if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status, "
-                    + "poliklinik.nm_poli, reg_periksa.kd_poli,bangsal.nm_bangsal "
+                    + "poliklinik.nm_poli, reg_periksa.kd_poli,bangsal.nm_bangsal,penjab.kd_pj "
                     + "from resep_obat "
                     + "inner join reg_periksa on resep_obat.no_rawat=reg_periksa.no_rawat "
                     + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
@@ -2077,7 +2116,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and penjab.kd_pj like ?" + apotik + "and pasien.no_rkm_medis like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and penjab.kd_pj like ?" + apotik + "and pasien.nm_pasien like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? "
-                    + " group by reg_periksa.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    + " order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
@@ -2115,7 +2154,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         tabMode.addRow(new String[]{
                             rs.getString("no_resep"), rs.getString("tgl_peresepan"), rs.getString("jam_peresepan"), rs.getString("no_rawat"),
                             rs.getString("no_rkm_medis"), rs.getString("nm_pasien"), rs.getString("nm_dokter"), rs.getString("status"),
-                            rs.getString("nm_poli"), rs.getString("png_jawab"), rs.getString("kd_poli"), rs.getString("nm_bangsal")
+                            rs.getString("nm_poli"), rs.getString("png_jawab"), rs.getString("kd_poli"), rs.getString("nm_bangsal"), rs.getString("kd_pj")
                         });
                     }
                 } else {
@@ -2124,7 +2163,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tabMode.addRow(new String[]{
                                 rs.getString("no_resep"), rs.getString("tgl_peresepan"), rs.getString("jam_peresepan"), rs.getString("no_rawat"),
                                 rs.getString("no_rkm_medis"), rs.getString("nm_pasien"), rs.getString("nm_dokter"), rs.getString("status"),
-                                rs.getString("nm_poli"), rs.getString("png_jawab"), rs.getString("kd_poli"), rs.getString("nm_bangsal")
+                                rs.getString("nm_poli"), rs.getString("png_jawab"), rs.getString("kd_poli"), rs.getString("nm_bangsal"), rs.getString("kd_pj")
                             });
                         }
                     }
@@ -2212,12 +2251,28 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         TCari.setText(cari);
     }
 
+    private void cariDetails() {
+        try {
+            ps = koneksi.prepareStatement("select databarang.kode_brng,databarang.nama_brng,resep_dokter.jml,"
+                    + "databarang.kode_sat,resep_dokter.aturan_pakai from resep_dokter inner join databarang on "
+                    + "resep_dokter.kode_brng=databarang.kode_brng where resep_dokter.no_resep=? order by databarang.kode_brng");
+
+            ps.setString(1, tbResepRalan.getValueAt(tbResepRalan.getSelectedRow(), 0).toString());
+            rs = ps.executeQuery();
+            i = 0;
+            while (rs.next()) {
+                cekRestriksiEPrescriptions("", rs.getString("kode_brng"), rs.getString("jml"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DlgDaftarPermintaanResep.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private void tampil2() {
         Valid.tabelKosong(tabMode2);
-
         String apotik = "";
         if (!kd_ruangan.equals("")) {
-            apotik = " and detail_pemberian_obat.kd_bangsal like " + kd_ruangan + "";
+            apotik = " and detail_pemberian_obat.kd_bangsal like %" + kd_ruangan + "%";
         }
         try {
             ps = koneksi.prepareStatement("select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,resep_obat.no_rawat,penjab.png_jawab,pasien.no_rkm_medis,"
@@ -2236,33 +2291,34 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? " + apotik + " and pasien.no_rkm_medis like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? " + apotik + " and pasien.nm_pasien like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? " + apotik + " and dokter.nm_dokter like ? "
-                    + "group by reg_periksa.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    + "order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
-                ps.setString(3, "%" + CrDokter.getText().trim() + "%");
-                ps.setString(4, "%" + CrPoli.getText().trim() + "%");
-                ps.setString(5, "%" + TCari.getText().trim() + "%");
+                ps.setString(3, "%" + CrDokter.getText() + "%");
+                ps.setString(4, "%" + CrPoli.getText() + "%");
+                ps.setString(5, "%" + TCari.getText() + "%");
                 ps.setString(6, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(7, Valid.SetDateToString(DTPCari2.getDate()));
-                ps.setString(8, "%" + CrDokter.getText().trim() + "%");
-                ps.setString(9, "%" + CrPoli.getText().trim() + "%");
-                ps.setString(10, "%" + TCari.getText().trim() + "%");
+                ps.setString(8, "%" + CrDokter.getText() + "%");
+                ps.setString(9, "%" + CrPoli.getText() + "%");
+                ps.setString(10, "%" + TCari.getText() + "%");
                 ps.setString(11, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(12, Valid.SetDateToString(DTPCari2.getDate()));
-                ps.setString(13, "%" + CrDokter.getText().trim() + "%");
-                ps.setString(14, "%" + CrPoli.getText().trim() + "%");
-                ps.setString(15, "%" + TCari.getText().trim() + "%");
+                ps.setString(13, "%" + CrDokter.getText() + "%");
+                ps.setString(14, "%" + CrPoli.getText() + "%");
+                ps.setString(15, "%" + TCari.getText() + "%");
                 ps.setString(16, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(17, Valid.SetDateToString(DTPCari2.getDate()));
-                ps.setString(18, "%" + CrDokter.getText().trim() + "%");
-                ps.setString(19, "%" + CrPoli.getText().trim() + "%");
-                ps.setString(20, "%" + TCari.getText().trim() + "%");
+                ps.setString(18, "%" + CrDokter.getText() + "%");
+                ps.setString(19, "%" + CrPoli.getText() + "%");
+                ps.setString(20, "%" + TCari.getText() + "%");
                 ps.setString(21, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(22, Valid.SetDateToString(DTPCari2.getDate()));
-                ps.setString(23, "%" + CrDokter.getText().trim() + "%");
-                ps.setString(24, "%" + CrPoli.getText().trim() + "%");
-                ps.setString(25, "%" + TCari.getText().trim() + "%");
+                ps.setString(23, "%" + CrDokter.getText() + "%");
+                ps.setString(24, "%" + CrPoli.getText() + "%");
+                ps.setString(25, "%" + TCari.getText() + "%");
+                
                 rs = ps.executeQuery();
                 i = 0;
                 if (cmbStatus.getSelectedItem().toString().equals("Semua")) {
@@ -2428,7 +2484,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
                 LCount.setText("" + i);
             } catch (Exception ex) {
-                System.out.println("Notifikasi : " + ex);
+                System.out.println("Notifikasis : " + ex);
             } finally {
                 if (rs != null) {
                     rs.close();
@@ -2438,7 +2494,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Notifikasi : " + e);
+            System.out.println("Notifikasiss : " + e);
         }
     }
 

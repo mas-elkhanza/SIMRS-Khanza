@@ -1,22 +1,13 @@
-/*
-  Dilarang keras menggandakan/mengcopy/menyebarkan/membajak/mendecompile 
-  Software ini dalam bentuk apapun tanpa seijin pembuat software
-  (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
-  npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
-  nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
-  nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
-  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
-  karena telah berdoa buruk, semua ini kami lakukan karena kami ti
-  dak pernah rela karya kami dibajak tanpa ijin.
- */
 package simrskhanza;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import fungsi.WarnaTable;
 import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import inhealth.InhealtsAPI;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
@@ -29,6 +20,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,6 +31,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -79,7 +73,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private int i = 0, jmlparsial = 0, jml = 0, index = 0;
     private String aktifkanparsial = "no", kode_poli = "", kd_pj = "", poli_ralan = "No", cara_bayar_ralan = "No", form = "";
 
-//    private InhealtsAPI inhealtsAPI = new InhealtsAPI();
+    private InhealtsAPI inhealtsAPI = new InhealtsAPI();
     private boolean[] pilih;
     private String[] kode, nama, kategori;
     private double[] totaltnd, bagianrs, bhp, jmdokter, jmperawat, kso, menejemen;
@@ -4112,16 +4106,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 } else {
                     for (i = 0; i < tbRawatDrPr.getRowCount(); i++) {
                         if (tbRawatDrPr.getValueAt(i, 0).toString().equals("true")) {
-                            if (Sequel.cariRegistrasi(tbRawatDrPr.getValueAt(i, 1).toString()) > 0) {
-                                JOptionPane.showMessageDialog(rootPane, "Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                                TCari.requestFocus();
-                            } else {
-                                Sequel.queryu("delete from rawat_jl_drpr where no_rawat='" + tbRawatDrPr.getValueAt(i, 1).toString()
-                                        + "' and kd_jenis_prw='" + tbRawatDrPr.getValueAt(i, 12)
-                                        + "' and kd_dokter='" + tbRawatDrPr.getValueAt(i, 5).toString()
-                                        + "' and nip='" + tbRawatDrPr.getValueAt(i, 7).toString()
-                                        + "' and tgl_perawatan='" + tbRawatDrPr.getValueAt(i, 9).toString()
-                                        + "' and jam_rawat='" + tbRawatDrPr.getValueAt(i, 10).toString() + "' ");
+//                            if (Sequel.cariRegistrasi(tbRawatDrPr.getValueAt(i, 1).toString()) > 0) {
+//                                JOptionPane.showMessageDialog(rootPane, "Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+//                                TCari.requestFocus();
+//                            } else {
+                            Sequel.queryu("delete from rawat_jl_drpr where no_rawat='" + tbRawatDrPr.getValueAt(i, 1).toString()
+                                    + "' and kd_jenis_prw='" + tbRawatDrPr.getValueAt(i, 12)
+                                    + "' and kd_dokter='" + tbRawatDrPr.getValueAt(i, 5).toString()
+                                    + "' and nip='" + tbRawatDrPr.getValueAt(i, 7).toString()
+                                    + "' and tgl_perawatan='" + tbRawatDrPr.getValueAt(i, 9).toString()
+                                    + "' and jam_rawat='" + tbRawatDrPr.getValueAt(i, 10).toString() + "' ");
+
+                            if (txtPenjab.getText().equals("364")||txtPenjab.getText().equals("INH")) {
+                                noSjp = Sequel.cariIsi("select no_sjp from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
+                                if (noSjp != null) {
+                                    hapusTindakanInhealth(noSjp);
+                                }
+//                                }
                             }
                         }
                     }
@@ -7275,6 +7276,30 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //                    .getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
+    private void hapusTindakanInhealth(String noSjp) {
+        try {
+            String kodeProvider = Sequel.cariIsi("select kode_ppkinhealth from setting");
+            String jnsPelayanan = Sequel.cariIsi("select jnspelayanan from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
+            String tglMasukRawat = Sequel.cariIsi("select tgl_registrasi from bridging_inhealth inner join reg_periksa on reg_periksa.no_rawat=bridging_inhealth.no_rawat where bridging_inhealth.no_rawat='" + TNoRw.getText() + "'");
+            String kodeTindakan = Sequel.cariIsi("select kd_inhealth from inhealth_tindakan_ralan where kd_jenis_prw='" + tbRawatDrPr.getValueAt(i, 16).toString() + "'");
+            String poli = Sequel.cariIsi("select kd_poli_inhealth from inhealth_maping_poli where kd_poli_rs='" + kdpoli.getText() + "'");
+            String kodeDokter = Sequel.cariIsi("select kd_inhealth from inhealth_maping_dokter where kd_dokter='" + KdDok2.getText() + "'");
+            String tarip = Sequel.cariIsi("select tarif from tarif_inhealth where kode_jenpel='" + kodeTindakan + "' and kode_kelas='000'");
+            String date = Valid.SetDateToString(DTPTgl.getDate());
+
+            String token = prop.getProperty("TOKENINHEALTH");
+            JsonNode response = inhealtsAPI.HapusTindakan(token, kodeProvider, noSjp, kodeTindakan, date, "salah", "");
+            if (response.path("ERRORCODE").asText().equals("00")) {
+                tbTindakan3.setValueAt(false, i, 0);
+            } else {
+                JOptionPane.showMessageDialog(null, response.path("ERRORDESC").asText());
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(DlgRawatJalan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private void tampilkanPenangananPetugas() {
         if (TabRawatTindakanPetugas.getSelectedIndex() == 0) {
             tampilTindakan2();

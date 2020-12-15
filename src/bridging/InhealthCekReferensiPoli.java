@@ -9,33 +9,34 @@
   karena telah berdoa buruk, semua ini kami lakukan karena kami ti
   dak pernah rela karya kami dibajak tanpa ijin.
  */
-
 package bridging;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import java.awt.Dimension;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -43,77 +44,84 @@ import org.springframework.web.client.RestTemplate;
  * @author dosen
  */
 public final class InhealthCekReferensiPoli extends javax.swing.JDialog {
+
     private final DefaultTableModel tabMode;
     private final Properties prop = new Properties();
-    private validasi Valid=new validasi();
-    private sekuel Sequel=new sekuel();
-    private int i=0;
-    private String kodeppk=Sequel.cariIsi("select kode_ppkinhealth from setting"),requestJson=""; 
+    private validasi Valid = new validasi();
+    private sekuel Sequel = new sekuel();
+    private int i = 0;
+    private String kodeppk = Sequel.cariIsi("select kode_ppkinhealth from setting"), requestJson = "";
 
-    /** Creates new form DlgKamar
+    /**
+     * Creates new form DlgKamar
+     *
      * @param parent
-     * @param modal */
+     * @param modal
+     */
     public InhealthCekReferensiPoli(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
-        this.setLocation(10,2);
-        setSize(628,674);
+        this.setLocation(10, 2);
+        setSize(628, 674);
 
-        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Poli","Nama Poli"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        tabMode = new DefaultTableModel(null, new String[]{"No.", "Kode Poli", "Nama Poli"}) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
         };
         tbKamar.setModel(tabMode);
 
         //tbKamar.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamar.getBackground()));
-        tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbKamar.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (int i = 0; i < 3; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
-            if(i==0){
+            if (i == 0) {
                 column.setPreferredWidth(40);
-            }else if(i==1){
+            } else if (i == 1) {
                 column.setPreferredWidth(140);
-            }else if(i==2){
+            } else if (i == 2) {
                 column.setPreferredWidth(470);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-        
-        Poli.setDocument(new batasInput((byte)100).getKata(Poli));
-        
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            Poli.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+
+        Poli.setDocument(new batasInput((byte) 100).getKata(Poli));
+
+        if (koneksiDB.CARICEPAT().equals("aktif")) {
+            Poli.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    if(Poli.getText().length()>2){
+                    if (Poli.getText().length() > 2) {
                         tampil(Poli.getText());
                     }
                 }
+
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    if(Poli.getText().length()>2){
+                    if (Poli.getText().length() > 2) {
                         tampil(Poli.getText());
                     }
                 }
+
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    if(Poli.getText().length()>2){
+                    if (Poli.getText().length() > 2) {
                         tampil(Poli.getText());
                     }
                 }
             });
-        } 
-              
-    }
-    
-    
+        }
 
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -232,50 +240,52 @@ public final class InhealthCekReferensiPoli extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             dispose();
-        }else{Valid.pindah(evt,BtnPrint,BtnKeluar);}
+        } else {
+            Valid.pindah(evt, BtnPrint, BtnKeluar);
+        }
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
+        } else if (tabMode.getRowCount() != 0) {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            
+
             Sequel.queryu("delete from temporary");
-            int row=tabMode.getRowCount();
-            for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
-                                tabMode.getValueAt(r,0).toString()+"','"+
-                                tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+            int row = tabMode.getRowCount();
+            for (int r = 0; r < row; r++) {
+                Sequel.menyimpan("temporary", "'0','"
+                        + tabMode.getValueAt(r, 0).toString() + "','"
+                        + tabMode.getValueAt(r, 1).toString() + "','"
+                        + tabMode.getValueAt(r, 2).toString() + "','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Rekap Harian Pengadaan Ipsrs");
             }
-            
-            Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
+
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
             //param.put("peserta","No.Peserta : "+NoKartu.getText()+" Nama Peserta : "+NamaPasien.getText());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariInhealthReferensiPoli.jasper","report","[ Pencarian Referensi Poli Inhealth ]",param);
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("logo", Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptCariInhealthReferensiPoli.jasper", "report", "[ Pencarian Referensi Poli Inhealth ]", param);
             this.setCursor(Cursor.getDefaultCursor());
-        }        
+        }
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void PoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PoliKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             tampil(Poli.getText());
             BtnPrint.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             tampil(Poli.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
             BtnKeluar.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+        } else if (evt.getKeyCode() == KeyEvent.VK_UP) {
             BtnCariActionPerformed(null);
         }
     }//GEN-LAST:event_PoliKeyPressed
@@ -287,16 +297,16 @@ public final class InhealthCekReferensiPoli extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnCariActionPerformed(null);
-        }else{
-            Valid.pindah(evt,Poli,BtnPrint);
+        } else {
+            Valid.pindah(evt, Poli, BtnPrint);
         }
     }//GEN-LAST:event_BtnCariKeyPressed
 
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             InhealthCekReferensiPoli dialog = new InhealthCekReferensiPoli(new javax.swing.JFrame(), true);
@@ -330,43 +340,41 @@ public final class InhealthCekReferensiPoli extends javax.swing.JDialog {
     public void tampil(String poli) {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/Poli";	
-	    HttpHeaders headers = new HttpHeaders();            
-            headers.add("Content-Type","application/json");
-	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
-                            "\"kodeprovider\": \""+kodeppk+"\"," +
-                            "\"keyword\": \""+poli+"\"" +
-                         "}";
-            HttpEntity requestEntity = new HttpEntity(requestJson,headers);
+            String URL = prop.getProperty("URLAPIINHEALTH") + "/api/Poli";
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Type", "application/json; utf-8");
+            requestJson = "{ \"token\": \"" + prop.getProperty("TOKENINHEALTH") + "\","
+                    + "\"kodeprovider\": \"" + kodeppk + "\","
+                    + "\"keyword\": \"" + poli + "\""
+                    + "}";
+            System.out.println("Rewuest: " + requestJson.toString());
+            HttpEntity requestEntity = new HttpEntity(requestJson, headers);
             RestTemplate rest = new RestTemplate();
             ObjectMapper mapper = new ObjectMapper();
-            //System.out.println("Data : "+rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody()); 
+//            System.out.println("Data : "+rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
             Valid.tabelKosong(tabMode);
-            if(root.isArray()){
-                i=1;
-                for(JsonNode list:root){
-                    if(list.path("STATUS").asText().equals("True")){
+            if (root.isArray()) {
+                i = 1;
+                for (JsonNode list : root) {
+                    if (list.path("STATUS").asText().equals("True")) {
                         tabMode.addRow(new Object[]{
-                            i+".",list.path("KDPOLI").asText(),list.path("NMPOLI").asText()
+                            i + ".", list.path("KDPOLI").asText(), list.path("NMPOLI").asText()
                         });
                         i++;
-                    }                        
+                    }
                 }
-            }             
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
-            if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(rootPane,"Koneksi ke server Inhealth terputus...!");
             }
+        } catch (IOException ex) {
+            Logger.getLogger(InhealthCekReferensiPoli.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
 
     /**
      *
      * @return
      */
-    public JTable getTable(){
+    public JTable getTable() {
         return tbKamar;
     }
 }
