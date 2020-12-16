@@ -2881,7 +2881,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if (tabMode.getValueAt(i, 0).toString().equals("true")) {
                     if (simpanOperasi() == true) {
                         //TODO: Inhealth simpan jika simpan operasi berhasil
-                        simpanTindakanInhealth(noSjp);
+//                        simpanTindakanInhealth(noSjp);
                         ttljmdokter = ttljmdokter + Double.parseDouble(tbtindakan.getValueAt(i, 4).toString())
                                 + Double.parseDouble(tbtindakan.getValueAt(i, 5).toString())
                                 + Double.parseDouble(tbtindakan.getValueAt(i, 6).toString())
