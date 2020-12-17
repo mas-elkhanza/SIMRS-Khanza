@@ -554,6 +554,7 @@ import keuangan.DlgPerkiraanBiayaRanap;
 import keuangan.KeuanganBayarPesanToko;
 import keuangan.KeuanganKlaimRalan;
 import keuangan.KeuanganPenagihanPiutangPasien;
+import keuangan.KeuanganRVUBPJS;
 import keuangan.KeuanganSetTarifOnline;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
@@ -16539,7 +16540,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     }
     
     private void btnRVUPiutangBPJSActionPerformed(java.awt.event.ActionEvent evt) { 
-        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganRVUBPJS rbpaketbhp=new KeuanganRVUBPJS(this,false);
+        rbpaketbhp.tampil();
+        rbpaketbhp.isCek();
+        rbpaketbhp.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rbpaketbhp.setLocationRelativeTo(PanelUtama);
+        rbpaketbhp.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
     }
     
     private void btnVerifikasiPenerimaanFarmasiActionPerformed(java.awt.event.ActionEvent evt) { 
