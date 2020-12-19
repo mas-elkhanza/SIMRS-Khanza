@@ -7218,20 +7218,20 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             noSjp = Sequel.cariIsi("select no_sjp from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
             for (i = 0; i < tbTindakan3.getRowCount(); i++) {
                 if (tbTindakan3.getValueAt(i, 0).toString().equals("true")) {
-                    if (txtPenjab.getText().equals("364")) {
-                        if (!noSjp.equals("")) {
-                            if (simpanRawatJlDrpr() == true) {
-                                //TODO: kode madiri inhealth 
-//                                simpanTindakanInhealth(noSjp);
-                            }
-                            JOptionPane.showMessageDialog(rootPane, "Alhamdulillah berhasil simpan ^_^ .");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No.SJP Belum ada, silahkan bridging dulu untuk dapat memberikan tindakan Pasien, Terimakasih.", "Information", JOptionPane.OK_OPTION);
-                        }
-                    } else {
+//                    if (txtPenjab.getText().equals("364")) {
+//                        if (!noSjp.equals("")) {
+//                            if (simpanRawatJlDrpr() == true) {
+//                                //TODO: kode madiri inhealth 
+////                                simpanTindakanInhealth(noSjp);
+//                            }
+//                            JOptionPane.showMessageDialog(rootPane, "Alhamdulillah berhasil simpan ^_^ .");
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "No.SJP Belum ada, silahkan bridging dulu untuk dapat memberikan tindakan Pasien, Terimakasih.", "Information", JOptionPane.OK_OPTION);
+//                        }
+//                    } else {
                         if (simpanRawatJlDrpr() == true) {
                         }
-                    }
+//                    }
                 }
             }
             koneksi.setAutoCommit(true);

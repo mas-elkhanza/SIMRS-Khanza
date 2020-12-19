@@ -2906,19 +2906,19 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
             for (i = 0; i < tbTarif.getRowCount(); i++) {
                 if (tbTarif.getValueAt(i, 0).toString().equals("true")) {
-
-                    if (Penjab.getText().equals("INH")) {
-
-                        if (!noSjp.equals("")) {
-                            if (tarifKhanza()) {
-                                simpanTindakanInhealth(noSjp);
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No.SJP Belum ada, silahkan bridging dulu untuk dapat memberikan tindakan Pasien, Terimakasih.", "Information", JOptionPane.OK_OPTION);
-                        }
-                    } else {
+//
+//                    if (Penjab.getText().equals("INH")) {
+//
+//                        if (!noSjp.equals("")) {
+//                            if (tarifKhanza()) {
+//                                simpanTindakanInhealth(noSjp);
+//                            }
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "No.SJP Belum ada, silahkan bridging dulu untuk dapat memberikan tindakan Pasien, Terimakasih.", "Information", JOptionPane.OK_OPTION);
+//                        }
+//                    } else {
                         tarifKhanza();
-                    }
+//                    }
                 }
             }
 

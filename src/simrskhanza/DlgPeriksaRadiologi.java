@@ -2359,27 +2359,27 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     } else {
                         dosis = tbPemeriksaan.getValueAt(i, 18).toString();
                     }
-                    if (Penjab.getText().equals("INH") || Penjab.getText().equals("364")) {
-                        noSjp = Sequel.cariIsi("select no_sjp from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
-
-                        if (!noSjp.equals("")) {
-                            if (simpanPeriksaRad() == true) {
-                                try {
-                                    //Method Simpan Tindakan Ke Inhealth
-                                    simpanTindakanInhealth(noSjp);
-                                    totalTindakan();
-                                } catch (IOException ex) {
-                                    Logger.getLogger(DlgPeriksaRadiologi.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No.SJP Belum ada, silahkan bridging dulu untuk dapat memberikan tindakan Pasien, Terimakasih.", "Information", JOptionPane.OK_OPTION);
-                        }
-                    } else {
+//                    if (Penjab.getText().equals("INH") || Penjab.getText().equals("364")) {
+//                        noSjp = Sequel.cariIsi("select no_sjp from bridging_inhealth where no_rawat='" + TNoRw.getText() + "'");
+//
+//                        if (!noSjp.equals("")) {
+//                            if (simpanPeriksaRad() == true) {
+//                                try {
+//                                    //Method Simpan Tindakan Ke Inhealth
+//                                    simpanTindakanInhealth(noSjp);
+//                                    totalTindakan();
+//                                } catch (IOException ex) {
+//                                    Logger.getLogger(DlgPeriksaRadiologi.class.getName()).log(Level.SEVERE, null, ex);
+//                                }
+//                            }
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "No.SJP Belum ada, silahkan bridging dulu untuk dapat memberikan tindakan Pasien, Terimakasih.", "Information", JOptionPane.OK_OPTION);
+//                        }
+//                    } else {
                         if (simpanPeriksaRad() == true) {
                             totalTindakan();
                         }
-                    }
+//                    }
                 }
             }
         }
