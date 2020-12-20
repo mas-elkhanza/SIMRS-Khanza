@@ -2002,8 +2002,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                         tabMode.addRow(new Object[]{false,"[J]Klaim Rawat Jalan",rs.getBoolean("klaim_rawat_jalan")});
                     }
                     
-                    if("[J]RVU Piutang BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
-                        tabMode.addRow(new Object[]{false,"[J]RVU Piutang BPJS",rs.getBoolean("rvu_bpjs")});
+                    if("[J]RVC Piutang BPJS".toLowerCase().contains(TCari.getText().toLowerCase())){
+                        tabMode.addRow(new Object[]{false,"[J]RVC Piutang BPJS",rs.getBoolean("rvu_bpjs")});
                     }
                     
                     if("[K]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4737,7 +4737,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","klaim_rawat_jalan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[J]RVU Piutang BPJS".equals(tbUser.getValueAt(i,1).toString())){
+            if("[J]RVC Piutang BPJS".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","rvu_bpjs='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }

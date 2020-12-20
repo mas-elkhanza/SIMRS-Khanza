@@ -30,7 +30,7 @@ import kepegawaian.DlgCariPetugas;
  *
  * @author perpustakaan
  */
-public final class KeuanganRVUBPJS extends javax.swing.JDialog {
+public final class KeuanganRVCBPJS extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -40,19 +40,20 @@ public final class KeuanganRVUBPJS extends javax.swing.JDialog {
     private int row=0,i;
     private String koderekening="";
     private Jurnal jur=new Jurnal();
-    private WarnaTable2 warna=new WarnaTable2();
-    private String status="";
+    private String status="",tampilkan_administrasi_di_billingranap=Sequel.cariIsi("select tampilkan_administrasi_di_billingranap from set_nota");
     private double total=0,sisapiutang=0,cicilan=0,rugi=0,lebih=0,selisih=0,materialralan=0,bhpralan=0,tarif_tindakandrralan=0,tarif_tindakanprralan=0,ksoralan=0,menejemenralan=0,biaya_rawatralan=0,
                    materialranap=0,bhpranap=0,tarif_tindakandrranap=0,tarif_tindakanprranap=0,ksoranap=0,menejemenranap=0,biaya_rawatranap=0,bagian_rslabralan=0,bhplabralan=0,tarif_perujuklabralan=0,
-                   tarif_tindakan_dokterlabralan=0,tarif_tindakan_petugaslabralan=0,ksolabralan=0,menejemenlabralan=0,biayalabralan,bagian_rslabranap=0,bhplabranap=0,tarif_perujuklabranap=0,
-                   tarif_tindakan_dokterlabranap=0,tarif_tindakan_petugaslabranap=0,ksolabranap=0,menejemenlabranap=0,biayalabranap;
+                   tarif_tindakan_dokterlabralan=0,tarif_tindakan_petugaslabralan=0,ksolabralan=0,menejemenlabralan=0,biayalabralan=0,bagian_rslabranap=0,bhplabranap=0,tarif_perujuklabranap=0,
+                   tarif_tindakan_dokterlabranap=0,tarif_tindakan_petugaslabranap=0,ksolabranap=0,menejemenlabranap=0,biayalabranap=0,bagian_rsradiologiralan=0,bhpradiologiralan=0,tarif_perujukradiologiralan=0,
+                   tarif_tindakan_dokterradiologiralan=0,tarif_tindakan_petugasradiologiralan=0,ksoradiologiralan=0,menejemenradiologiralan=0,biayaradiologiralan=0,bagian_rsradiologiranap=0,bhpradiologiranap=0,
+                   tarif_perujukradiologiranap=0,tarif_tindakan_dokterradiologiranap=0,tarif_tindakan_petugasradiologiranap=0,ksoradiologiranap=0,menejemenradiologiranap=0,biayaradiologiranap=0,registrasi=0;
     private boolean sukses=true;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
 
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
-    public KeuanganRVUBPJS(java.awt.Frame parent, boolean modal) {
+    public KeuanganRVCBPJS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocation(8,1);
@@ -116,8 +117,7 @@ public final class KeuanganRVUBPJS extends javax.swing.JDialog {
                 column.setPreferredWidth(75);
             }
         }
-        warna.kolom=10;
-        tbBangsal.setDefaultRenderer(Object.class,warna);
+        tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -243,7 +243,7 @@ public final class KeuanganRVUBPJS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ RVU Piutang BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ RVC Piutang BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -756,10 +756,37 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         tbBangsal.setValueAt(selisih,tbBangsal.getSelectedRow(),13);
                     }
                     
+                    registrasi=0;
                     materialralan=0;bhpralan=0;tarif_tindakandrralan=0;tarif_tindakanprralan=0;ksoralan=0;menejemenralan=0;biaya_rawatralan=0;
                     materialranap=0;bhpranap=0;tarif_tindakandrranap=0;tarif_tindakanprranap=0;ksoranap=0;menejemenranap=0;biaya_rawatranap=0;
                     bagian_rslabralan=0;bhplabralan=0;tarif_perujuklabralan=0;tarif_tindakan_dokterlabralan=0;tarif_tindakan_petugaslabralan=0;ksolabralan=0;menejemenlabralan=0;biayalabralan=0;
                     bagian_rslabranap=0;bhplabranap=0;tarif_perujuklabranap=0;tarif_tindakan_dokterlabranap=0;tarif_tindakan_petugaslabranap=0;ksolabranap=0;menejemenlabranap=0;biayalabranap=0;
+                    bagian_rsradiologiralan=0;bhpradiologiralan=0;tarif_perujukradiologiralan=0;tarif_tindakan_dokterradiologiralan=0;tarif_tindakan_petugasradiologiralan=0;ksoradiologiralan=0;menejemenradiologiralan=0;biayaradiologiralan=0;
+                    bagian_rsradiologiranap=0;bhpradiologiranap=0;tarif_perujukradiologiranap=0;tarif_tindakan_dokterradiologiranap=0;tarif_tindakan_petugasradiologiranap=0;ksoradiologiranap=0;menejemenradiologiranap=0;biayaradiologiranap=0;
+                    
+                    ps=koneksi.prepareStatement("select biaya_reg,status_lanjut from reg_periksa where no_rawat=?");
+                    try {
+                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            if(rs.getString("status_lanjut").equals("Ralan")){
+                                registrasi=rs.getDouble("biaya_reg");
+                            }else if(rs.getString("status_lanjut").equals("Ranap")){
+                                if(tampilkan_administrasi_di_billingranap.equals("Yes")){
+                                    registrasi=rs.getDouble("biaya_reg");
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
                     
                     //cek rawat jalan
                     ps=koneksi.prepareStatement(
@@ -924,14 +951,161 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
                         rs=ps.executeQuery();
                         if(rs.next()){
-                            bagian_rslabralan=0;
-                            bhplabralan=0;
-                            tarif_perujuklabralan=0;
-                            tarif_tindakan_dokterlabralan=0;
-                            tarif_tindakan_petugaslabralan=0;
-                            ksolabralan=0;
-                            menejemenlabralan=0;
-                            biayalabralan=0;
+                            bagian_rslabralan=rs.getDouble("bagian_rs");
+                            bhplabralan=rs.getDouble("bhp");
+                            tarif_perujuklabralan=rs.getDouble("tarif_perujuk");
+                            tarif_tindakan_dokterlabralan=rs.getDouble("tarif_tindakan_dokter");
+                            tarif_tindakan_petugaslabralan=rs.getDouble("tarif_tindakan_petugas");
+                            ksolabralan=rs.getDouble("kso");
+                            menejemenlabralan=rs.getDouble("menejemen");
+                            biayalabralan=rs.getDouble("biaya");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    ps=koneksi.prepareStatement(
+                            "select sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                            "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,sum(detail_periksa_lab.kso) as kso,"+
+                            "sum(detail_periksa_lab.menejemen) as menejemen,sum(detail_periksa_lab.biaya_item) as biaya_item from detail_periksa_lab inner join periksa_lab on "+
+                            "detail_periksa_lab.no_rawat=periksa_lab.no_rawat and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa "+
+                            "and detail_periksa_lab.jam=periksa_lab.jam where detail_periksa_lab.no_rawat=? and periksa_lab.status='Ralan'");
+                    try {
+                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            bagian_rslabralan=bagian_rslabralan+rs.getDouble("bagian_rs");
+                            bhplabralan=bhplabralan+rs.getDouble("bhp");
+                            tarif_perujuklabralan=tarif_perujuklabralan+rs.getDouble("bagian_perujuk");
+                            tarif_tindakan_dokterlabralan=tarif_tindakan_dokterlabralan+rs.getDouble("bagian_dokter");
+                            tarif_tindakan_petugaslabralan=tarif_tindakan_petugaslabralan+rs.getDouble("bagian_laborat");
+                            ksolabralan=ksolabralan+rs.getDouble("kso");
+                            menejemenlabralan=menejemenlabralan+rs.getDouble("menejemen");
+                            biayalabralan=biayalabralan+rs.getDouble("biaya_item");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    //cek lab ranap
+                    ps=koneksi.prepareStatement(
+                            "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
+                            "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_lab "+
+                            "where no_rawat=? and status='Ranap'");
+                    try {
+                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            bagian_rslabranap=rs.getDouble("bagian_rs");
+                            bhplabranap=rs.getDouble("bhp");
+                            tarif_perujuklabranap=rs.getDouble("tarif_perujuk");
+                            tarif_tindakan_dokterlabranap=rs.getDouble("tarif_tindakan_dokter");
+                            tarif_tindakan_petugaslabranap=rs.getDouble("tarif_tindakan_petugas");
+                            ksolabranap=rs.getDouble("kso");
+                            menejemenlabranap=rs.getDouble("menejemen");
+                            biayalabranap=rs.getDouble("biaya");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    ps=koneksi.prepareStatement(
+                            "select sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                            "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,sum(detail_periksa_lab.kso) as kso,"+
+                            "sum(detail_periksa_lab.menejemen) as menejemen,sum(detail_periksa_lab.biaya_item) as biaya_item from detail_periksa_lab inner join periksa_lab on "+
+                            "detail_periksa_lab.no_rawat=periksa_lab.no_rawat and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa "+
+                            "and detail_periksa_lab.jam=periksa_lab.jam where detail_periksa_lab.no_rawat=? and periksa_lab.status='Ranap'");
+                    try {
+                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            bagian_rslabranap=bagian_rslabranap+rs.getDouble("bagian_rs");
+                            bhplabranap=bhplabranap+rs.getDouble("bhp");
+                            tarif_perujuklabranap=tarif_perujuklabranap+rs.getDouble("bagian_perujuk");
+                            tarif_tindakan_dokterlabranap=tarif_tindakan_dokterlabranap+rs.getDouble("bagian_dokter");
+                            tarif_tindakan_petugaslabranap=tarif_tindakan_petugaslabranap+rs.getDouble("bagian_laborat");
+                            ksolabranap=ksolabranap+rs.getDouble("kso");
+                            menejemenlabranap=menejemenlabranap+rs.getDouble("menejemen");
+                            biayalabranap=biayalabranap+rs.getDouble("biaya_item");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    //cek radiologi ralan
+                    ps=koneksi.prepareStatement(
+                            "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
+                            "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_radiologi "+
+                            "where no_rawat=? and status='Ralan'");
+                    try {
+                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            bagian_rsradiologiralan=rs.getDouble("bagian_rs");
+                            bhpradiologiralan=rs.getDouble("bhp");
+                            tarif_perujukradiologiralan=rs.getDouble("tarif_perujuk");
+                            tarif_tindakan_dokterradiologiralan=rs.getDouble("tarif_tindakan_dokter");
+                            tarif_tindakan_petugasradiologiralan=rs.getDouble("tarif_tindakan_petugas");
+                            ksoradiologiralan=rs.getDouble("kso");
+                            menejemenradiologiralan=rs.getDouble("menejemen");
+                            biayaradiologiralan=rs.getDouble("biaya");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    //cek radiologi ranap
+                    ps=koneksi.prepareStatement(
+                            "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
+                            "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_radiologi "+
+                            "where no_rawat=? and status='Ranap'");
+                    try {
+                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            bagian_rsradiologiranap=rs.getDouble("bagian_rs");
+                            bhpradiologiranap=rs.getDouble("bhp");
+                            tarif_perujukradiologiranap=rs.getDouble("tarif_perujuk");
+                            tarif_tindakan_dokterradiologiranap=rs.getDouble("tarif_tindakan_dokter");
+                            tarif_tindakan_petugasradiologiranap=rs.getDouble("tarif_tindakan_petugas");
+                            ksoradiologiranap=rs.getDouble("kso");
+                            menejemenradiologiranap=rs.getDouble("menejemen");
+                            biayaradiologiranap=rs.getDouble("biaya");
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -1003,7 +1177,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            KeuanganRVUBPJS dialog = new KeuanganRVUBPJS(new javax.swing.JFrame(), true);
+            KeuanganRVCBPJS dialog = new KeuanganRVCBPJS(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
