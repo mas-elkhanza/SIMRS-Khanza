@@ -46,7 +46,8 @@ public final class KeuanganRVCBPJS extends javax.swing.JDialog {
                    tarif_tindakan_dokterlabralan=0,tarif_tindakan_petugaslabralan=0,ksolabralan=0,menejemenlabralan=0,biayalabralan=0,bagian_rslabranap=0,bhplabranap=0,tarif_perujuklabranap=0,
                    tarif_tindakan_dokterlabranap=0,tarif_tindakan_petugaslabranap=0,ksolabranap=0,menejemenlabranap=0,biayalabranap=0,bagian_rsradiologiralan=0,bhpradiologiralan=0,tarif_perujukradiologiralan=0,
                    tarif_tindakan_dokterradiologiralan=0,tarif_tindakan_petugasradiologiralan=0,ksoradiologiralan=0,menejemenradiologiralan=0,biayaradiologiralan=0,bagian_rsradiologiranap=0,bhpradiologiranap=0,
-                   tarif_perujukradiologiranap=0,tarif_tindakan_dokterradiologiranap=0,tarif_tindakan_petugasradiologiranap=0,ksoradiologiranap=0,menejemenradiologiranap=0,biayaradiologiranap=0,registrasi=0;
+                   tarif_perujukradiologiranap=0,tarif_tindakan_dokterradiologiranap=0,tarif_tindakan_petugasradiologiranap=0,ksoradiologiranap=0,menejemenradiologiranap=0,biayaradiologiranap=0,registrasi=0,
+                   jmdokteroperasiralan=0,jmparamedisoperasiralan=0,bhpoperasiralan=0,pendapatanoperasiralan=0,jmdokteroperasiranap=0,jmparamedisoperasiranap=0,bhpoperasiranap=0,pendapatanoperasiranap=0;
     private boolean sukses=true;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
 
@@ -763,7 +764,10 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     bagian_rslabranap=0;bhplabranap=0;tarif_perujuklabranap=0;tarif_tindakan_dokterlabranap=0;tarif_tindakan_petugaslabranap=0;ksolabranap=0;menejemenlabranap=0;biayalabranap=0;
                     bagian_rsradiologiralan=0;bhpradiologiralan=0;tarif_perujukradiologiralan=0;tarif_tindakan_dokterradiologiralan=0;tarif_tindakan_petugasradiologiralan=0;ksoradiologiralan=0;menejemenradiologiralan=0;biayaradiologiralan=0;
                     bagian_rsradiologiranap=0;bhpradiologiranap=0;tarif_perujukradiologiranap=0;tarif_tindakan_dokterradiologiranap=0;tarif_tindakan_petugasradiologiranap=0;ksoradiologiranap=0;menejemenradiologiranap=0;biayaradiologiranap=0;
+                    jmdokteroperasiralan=0;jmparamedisoperasiralan=0;bhpoperasiralan=0;pendapatanoperasiralan=0;
+                    jmdokteroperasiranap=0;jmparamedisoperasiranap=0;bhpoperasiranap=0;pendapatanoperasiranap=0;
                     
+                    //cek registrasi
                     ps=koneksi.prepareStatement("select biaya_reg,status_lanjut from reg_periksa where no_rawat=?");
                     try {
                         ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
@@ -1117,6 +1121,61 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             ps.close();
                         }
                     }
+                    
+                    //cek operasi ralan
+                    ps=koneksi.prepareStatement(
+                            "select sum(biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as jmdokter, "+
+                            "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5) as jmparamedis,"+
+                            "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5+biayaalat+biayasewaok+akomodasi+bagian_rs+biayasarpras+biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as pendapatan "+
+                            "from operasi where no_rawat=? and status='Ralan'");
+                    try {
+                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            jmdokteroperasiralan=rs.getDouble("jmdokter");
+                            jmparamedisoperasiralan=rs.getDouble("jmparamedis");
+                            pendapatanoperasiralan=rs.getDouble("pendapatan");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    bhpoperasiralan=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ralan' and beri_obat_operasi.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                    
+                    //cek operasi ranap
+                    ps=koneksi.prepareStatement(
+                            "select sum(biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as jmdokter, "+
+                            "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5) as jmparamedis,"+
+                            "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5+biayaalat+biayasewaok+akomodasi+bagian_rs+biayasarpras+biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as pendapatan "+
+                            "from operasi where no_rawat=? and status='Ranap'");
+                    try {
+                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        rs=ps.executeQuery();
+                        if(rs.next()){
+                            jmdokteroperasiranap=rs.getDouble("jmdokter");
+                            jmparamedisoperasiranap=rs.getDouble("jmparamedis");
+                            pendapatanoperasiranap=rs.getDouble("pendapatan");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                    
+                    bhpoperasiranap=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ranap' and beri_obat_operasi.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                    
                 }  
             } catch (Exception e) {
             }
