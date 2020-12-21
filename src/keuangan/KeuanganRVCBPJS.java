@@ -3,7 +3,6 @@
 package keuangan;
 
 import fungsi.WarnaTable;
-import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -38,16 +37,17 @@ public final class KeuanganRVCBPJS extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int row=0,i;
-    private String koderekening="";
+    private String koderekening="",norawatbayi="";
     private Jurnal jur=new Jurnal();
-    private String status="",tampilkan_administrasi_di_billingranap=Sequel.cariIsi("select tampilkan_administrasi_di_billingranap from set_nota");
+    private String status="",tampilkan_administrasi_di_billingranap=Sequel.cariIsi("select tampilkan_administrasi_di_billingranap from set_nota"),tampilkan_ppnobat_ralan=Sequel.cariIsi("select tampilkan_ppnobat_ralan from set_nota");
     private double total=0,sisapiutang=0,cicilan=0,rugi=0,lebih=0,selisih=0,materialralan=0,bhpralan=0,tarif_tindakandrralan=0,tarif_tindakanprralan=0,ksoralan=0,menejemenralan=0,biaya_rawatralan=0,
                    materialranap=0,bhpranap=0,tarif_tindakandrranap=0,tarif_tindakanprranap=0,ksoranap=0,menejemenranap=0,biaya_rawatranap=0,bagian_rslabralan=0,bhplabralan=0,tarif_perujuklabralan=0,
                    tarif_tindakan_dokterlabralan=0,tarif_tindakan_petugaslabralan=0,ksolabralan=0,menejemenlabralan=0,biayalabralan=0,bagian_rslabranap=0,bhplabranap=0,tarif_perujuklabranap=0,
                    tarif_tindakan_dokterlabranap=0,tarif_tindakan_petugaslabranap=0,ksolabranap=0,menejemenlabranap=0,biayalabranap=0,bagian_rsradiologiralan=0,bhpradiologiralan=0,tarif_perujukradiologiralan=0,
                    tarif_tindakan_dokterradiologiralan=0,tarif_tindakan_petugasradiologiralan=0,ksoradiologiralan=0,menejemenradiologiralan=0,biayaradiologiralan=0,bagian_rsradiologiranap=0,bhpradiologiranap=0,
-                   tarif_perujukradiologiranap=0,tarif_tindakan_dokterradiologiranap=0,tarif_tindakan_petugasradiologiranap=0,ksoradiologiranap=0,menejemenradiologiranap=0,biayaradiologiranap=0,registrasi=0,
-                   jmdokteroperasiralan=0,jmparamedisoperasiralan=0,bhpoperasiralan=0,pendapatanoperasiralan=0,jmdokteroperasiranap=0,jmparamedisoperasiranap=0,bhpoperasiranap=0,pendapatanoperasiranap=0;
+                   tarif_perujukradiologiranap=0,tarif_tindakan_dokterradiologiranap=0,tarif_tindakan_petugasradiologiranap=0,ksoradiologiranap=0,menejemenradiologiranap=0,biayaradiologiranap=0,
+                   jmdokteroperasiralan=0,jmparamedisoperasiralan=0,bhpoperasiralan=0,pendapatanoperasiralan=0,jmdokteroperasiranap=0,jmparamedisoperasiranap=0,bhpoperasiranap=0,pendapatanoperasiranap=0,
+                   obatlangsung=0,obatralan=0,hppobatralan=0,obatranap=0,hppobatranap=0,returobat=0,tambahanbiaya=0,potonganbiaya=0,kamar=0,reseppulang=0;
     private boolean sukses=true;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
 
@@ -62,7 +62,8 @@ public final class KeuanganRVCBPJS extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "P","No.Rawat/No.tagihan","No.SEP VClaim","Tgl.Piutang","Pasien","Total Piutang","Iur/Ekses",
-                "Sudah Dibayar","Sisa Piutang","Tarif InaCBG","Dibayar BPJS","% Bayar","Kerugian","Lebih Bayar"
+                "Sudah Dibayar","Sisa Piutang","Tarif InaCBG","Dibayar BPJS","% Bayar","Kerugian","Lebih Bayar",
+                "Status","Registrasi"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -74,7 +75,8 @@ public final class KeuanganRVCBPJS extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
-                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class,
+                java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -86,7 +88,7 @@ public final class KeuanganRVCBPJS extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 16; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -116,6 +118,10 @@ public final class KeuanganRVCBPJS extends javax.swing.JDialog {
                 column.setPreferredWidth(75);
             }else if(i==13){
                 column.setPreferredWidth(75);
+            }else if(i==14){
+                column.setPreferredWidth(40);
+            }else if(i==15){
+                column.setPreferredWidth(65);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -757,7 +763,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         tbBangsal.setValueAt(selisih,tbBangsal.getSelectedRow(),13);
                     }
                     
-                    registrasi=0;
                     materialralan=0;bhpralan=0;tarif_tindakandrralan=0;tarif_tindakanprralan=0;ksoralan=0;menejemenralan=0;biaya_rawatralan=0;
                     materialranap=0;bhpranap=0;tarif_tindakandrranap=0;tarif_tindakanprranap=0;ksoranap=0;menejemenranap=0;biaya_rawatranap=0;
                     bagian_rslabralan=0;bhplabralan=0;tarif_perujuklabralan=0;tarif_tindakan_dokterlabralan=0;tarif_tindakan_petugaslabralan=0;ksolabralan=0;menejemenlabralan=0;biayalabralan=0;
@@ -766,31 +771,19 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     bagian_rsradiologiranap=0;bhpradiologiranap=0;tarif_perujukradiologiranap=0;tarif_tindakan_dokterradiologiranap=0;tarif_tindakan_petugasradiologiranap=0;ksoradiologiranap=0;menejemenradiologiranap=0;biayaradiologiranap=0;
                     jmdokteroperasiralan=0;jmparamedisoperasiralan=0;bhpoperasiralan=0;pendapatanoperasiralan=0;
                     jmdokteroperasiranap=0;jmparamedisoperasiranap=0;bhpoperasiranap=0;pendapatanoperasiranap=0;
+                    obatlangsung=0;obatralan=0;hppobatralan=0;obatranap=0;hppobatranap=0;returobat=0;tambahanbiaya=0;potonganbiaya=0;
+                    kamar=0;reseppulang=0;norawatbayi="";
                     
-                    //cek registrasi
-                    ps=koneksi.prepareStatement("select biaya_reg,status_lanjut from reg_periksa where no_rawat=?");
-                    try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-                        rs=ps.executeQuery();
-                        if(rs.next()){
-                            if(rs.getString("status_lanjut").equals("Ralan")){
-                                registrasi=rs.getDouble("biaya_reg");
-                            }else if(rs.getString("status_lanjut").equals("Ranap")){
-                                if(tampilkan_administrasi_di_billingranap.equals("Yes")){
-                                    registrasi=rs.getDouble("biaya_reg");
-                                }
-                            }
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
+                    status=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),14).toString();
+                    
+                    //cek obat langsung
+                    obatlangsung=Sequel.cariIsiAngka("select besar_tagihan from tagihan_obat_langsung where no_rawat=? ",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                    
+                    //cek tambahan biaya
+                    tambahanbiaya=Sequel.cariIsiAngka("select sum(besar_biaya) from tambahan_biaya where no_rawat=? ",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                    
+                    //cek potongan biaya
+                    potonganbiaya=Sequel.cariIsiAngka("select sum(besar_pengurangan) from pengurangan_biaya where no_rawat=? ",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
                     
                     //cek rawat jalan
                     ps=koneksi.prepareStatement(
@@ -869,83 +862,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         }
                     }
                     
-                    //cek rawat inap
-                    ps=koneksi.prepareStatement(
-                            "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
-                            "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_drpr where no_rawat=?");
-                    try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-                        rs=ps.executeQuery();
-                        if(rs.next()){
-                            materialranap=rs.getDouble("material");
-                            bhpranap=rs.getDouble("bhp");
-                            tarif_tindakandrranap=rs.getDouble("tarif_tindakandr");
-                            tarif_tindakanprranap=rs.getDouble("tarif_tindakanpr");
-                            ksoranap=rs.getDouble("kso");
-                            menejemenranap=rs.getDouble("menejemen");
-                            biaya_rawatranap=rs.getDouble("biaya_rawat");
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    ps=koneksi.prepareStatement(
-                            "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,"+
-                            "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_dr where no_rawat=?");
-                    try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-                        rs=ps.executeQuery();
-                        if(rs.next()){
-                            materialranap=+materialranap+rs.getDouble("material");
-                            bhpranap=bhpranap+rs.getDouble("bhp");
-                            tarif_tindakandrranap=tarif_tindakandrranap+rs.getDouble("tarif_tindakandr");
-                            ksoranap=ksoranap+rs.getDouble("kso");
-                            menejemenranap=menejemenranap+rs.getDouble("menejemen");
-                            biaya_rawatranap=biaya_rawatranap+rs.getDouble("biaya_rawat");
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    ps=koneksi.prepareStatement(
-                            "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
-                            "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_pr where no_rawat=?");
-                    try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-                        rs=ps.executeQuery();
-                        if(rs.next()){
-                            materialranap=+materialranap+rs.getDouble("material");
-                            bhpranap=bhpranap+rs.getDouble("bhp");
-                            tarif_tindakanprranap=tarif_tindakanprranap+rs.getDouble("tarif_tindakanpr");
-                            ksoranap=ksoranap+rs.getDouble("kso");
-                            menejemenranap=menejemenranap+rs.getDouble("menejemen");
-                            biaya_rawatranap=biaya_rawatranap+rs.getDouble("biaya_rawat");
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
                     //cek lab ralan
                     ps=koneksi.prepareStatement(
                             "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
@@ -1005,65 +921,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         }
                     }
                     
-                    //cek lab ranap
-                    ps=koneksi.prepareStatement(
-                            "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
-                            "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_lab "+
-                            "where no_rawat=? and status='Ranap'");
-                    try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-                        rs=ps.executeQuery();
-                        if(rs.next()){
-                            bagian_rslabranap=rs.getDouble("bagian_rs");
-                            bhplabranap=rs.getDouble("bhp");
-                            tarif_perujuklabranap=rs.getDouble("tarif_perujuk");
-                            tarif_tindakan_dokterlabranap=rs.getDouble("tarif_tindakan_dokter");
-                            tarif_tindakan_petugaslabranap=rs.getDouble("tarif_tindakan_petugas");
-                            ksolabranap=rs.getDouble("kso");
-                            menejemenlabranap=rs.getDouble("menejemen");
-                            biayalabranap=rs.getDouble("biaya");
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    ps=koneksi.prepareStatement(
-                            "select sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
-                            "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,sum(detail_periksa_lab.kso) as kso,"+
-                            "sum(detail_periksa_lab.menejemen) as menejemen,sum(detail_periksa_lab.biaya_item) as biaya_item from detail_periksa_lab inner join periksa_lab on "+
-                            "detail_periksa_lab.no_rawat=periksa_lab.no_rawat and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa "+
-                            "and detail_periksa_lab.jam=periksa_lab.jam where detail_periksa_lab.no_rawat=? and periksa_lab.status='Ranap'");
-                    try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-                        rs=ps.executeQuery();
-                        if(rs.next()){
-                            bagian_rslabranap=bagian_rslabranap+rs.getDouble("bagian_rs");
-                            bhplabranap=bhplabranap+rs.getDouble("bhp");
-                            tarif_perujuklabranap=tarif_perujuklabranap+rs.getDouble("bagian_perujuk");
-                            tarif_tindakan_dokterlabranap=tarif_tindakan_dokterlabranap+rs.getDouble("bagian_dokter");
-                            tarif_tindakan_petugaslabranap=tarif_tindakan_petugaslabranap+rs.getDouble("bagian_laborat");
-                            ksolabranap=ksolabranap+rs.getDouble("kso");
-                            menejemenlabranap=menejemenlabranap+rs.getDouble("menejemen");
-                            biayalabranap=biayalabranap+rs.getDouble("biaya_item");
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
                     //cek radiologi ralan
                     ps=koneksi.prepareStatement(
                             "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
@@ -1081,35 +938,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             ksoradiologiralan=rs.getDouble("kso");
                             menejemenradiologiralan=rs.getDouble("menejemen");
                             biayaradiologiralan=rs.getDouble("biaya");
-                        }
-                    } catch (Exception e) {
-                        System.out.println("Notif : "+e);
-                    } finally{
-                        if(rs!=null){
-                            rs.close();
-                        }
-                        if(ps!=null){
-                            ps.close();
-                        }
-                    }
-                    
-                    //cek radiologi ranap
-                    ps=koneksi.prepareStatement(
-                            "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
-                            "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_radiologi "+
-                            "where no_rawat=? and status='Ranap'");
-                    try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-                        rs=ps.executeQuery();
-                        if(rs.next()){
-                            bagian_rsradiologiranap=rs.getDouble("bagian_rs");
-                            bhpradiologiranap=rs.getDouble("bhp");
-                            tarif_perujukradiologiranap=rs.getDouble("tarif_perujuk");
-                            tarif_tindakan_dokterradiologiranap=rs.getDouble("tarif_tindakan_dokter");
-                            tarif_tindakan_petugasradiologiranap=rs.getDouble("tarif_tindakan_petugas");
-                            ksoradiologiranap=rs.getDouble("kso");
-                            menejemenradiologiranap=rs.getDouble("menejemen");
-                            biayaradiologiranap=rs.getDouble("biaya");
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -1149,19 +977,14 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     
                     bhpoperasiralan=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ralan' and beri_obat_operasi.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
                     
-                    //cek operasi ranap
-                    ps=koneksi.prepareStatement(
-                            "select sum(biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as jmdokter, "+
-                            "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5) as jmparamedis,"+
-                            "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5+biayaalat+biayasewaok+akomodasi+bagian_rs+biayasarpras+biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as pendapatan "+
-                            "from operasi where no_rawat=? and status='Ranap'");
+                    //cek obat rawat jalan
+                    ps=koneksi.prepareStatement("select sum(h_beli*jml) as hpp,sum(total) as total from detail_pemberian_obat where no_rawat=? and status='Ralan'");
                     try {
                         ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
                         rs=ps.executeQuery();
-                        if(rs.next()){
-                            jmdokteroperasiranap=rs.getDouble("jmdokter");
-                            jmparamedisoperasiranap=rs.getDouble("jmparamedis");
-                            pendapatanoperasiranap=rs.getDouble("pendapatan");
+                        while(rs.next()){
+                            obatralan=rs.getDouble("total");
+                            hppobatralan=rs.getDouble("hpp");
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -1174,8 +997,676 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         }
                     }
                     
-                    bhpoperasiranap=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ranap' and beri_obat_operasi.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-                    
+                    if(status.equals("Ranap")){
+                        //cek rawat inap
+                        ps=koneksi.prepareStatement(
+                                "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
+                                "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_drpr where no_rawat=?");
+                        try {
+                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                materialranap=rs.getDouble("material");
+                                bhpranap=rs.getDouble("bhp");
+                                tarif_tindakandrranap=rs.getDouble("tarif_tindakandr");
+                                tarif_tindakanprranap=rs.getDouble("tarif_tindakanpr");
+                                ksoranap=rs.getDouble("kso");
+                                menejemenranap=rs.getDouble("menejemen");
+                                biaya_rawatranap=rs.getDouble("biaya_rawat");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+
+                        ps=koneksi.prepareStatement(
+                                "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,"+
+                                "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_dr where no_rawat=?");
+                        try {
+                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                materialranap=+materialranap+rs.getDouble("material");
+                                bhpranap=bhpranap+rs.getDouble("bhp");
+                                tarif_tindakandrranap=tarif_tindakandrranap+rs.getDouble("tarif_tindakandr");
+                                ksoranap=ksoranap+rs.getDouble("kso");
+                                menejemenranap=menejemenranap+rs.getDouble("menejemen");
+                                biaya_rawatranap=biaya_rawatranap+rs.getDouble("biaya_rawat");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+
+                        ps=koneksi.prepareStatement(
+                                "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
+                                "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_pr where no_rawat=?");
+                        try {
+                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                materialranap=+materialranap+rs.getDouble("material");
+                                bhpranap=bhpranap+rs.getDouble("bhp");
+                                tarif_tindakanprranap=tarif_tindakanprranap+rs.getDouble("tarif_tindakanpr");
+                                ksoranap=ksoranap+rs.getDouble("kso");
+                                menejemenranap=menejemenranap+rs.getDouble("menejemen");
+                                biaya_rawatranap=biaya_rawatranap+rs.getDouble("biaya_rawat");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+                        
+                        //cek lab ranap
+                        ps=koneksi.prepareStatement(
+                                "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
+                                "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_lab "+
+                                "where no_rawat=? and status='Ranap'");
+                        try {
+                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                bagian_rslabranap=rs.getDouble("bagian_rs");
+                                bhplabranap=rs.getDouble("bhp");
+                                tarif_perujuklabranap=rs.getDouble("tarif_perujuk");
+                                tarif_tindakan_dokterlabranap=rs.getDouble("tarif_tindakan_dokter");
+                                tarif_tindakan_petugaslabranap=rs.getDouble("tarif_tindakan_petugas");
+                                ksolabranap=rs.getDouble("kso");
+                                menejemenlabranap=rs.getDouble("menejemen");
+                                biayalabranap=rs.getDouble("biaya");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+
+                        ps=koneksi.prepareStatement(
+                                "select sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                                "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,sum(detail_periksa_lab.kso) as kso,"+
+                                "sum(detail_periksa_lab.menejemen) as menejemen,sum(detail_periksa_lab.biaya_item) as biaya_item from detail_periksa_lab inner join periksa_lab on "+
+                                "detail_periksa_lab.no_rawat=periksa_lab.no_rawat and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa "+
+                                "and detail_periksa_lab.jam=periksa_lab.jam where detail_periksa_lab.no_rawat=? and periksa_lab.status='Ranap'");
+                        try {
+                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                bagian_rslabranap=bagian_rslabranap+rs.getDouble("bagian_rs");
+                                bhplabranap=bhplabranap+rs.getDouble("bhp");
+                                tarif_perujuklabranap=tarif_perujuklabranap+rs.getDouble("bagian_perujuk");
+                                tarif_tindakan_dokterlabranap=tarif_tindakan_dokterlabranap+rs.getDouble("bagian_dokter");
+                                tarif_tindakan_petugaslabranap=tarif_tindakan_petugaslabranap+rs.getDouble("bagian_laborat");
+                                ksolabranap=ksolabranap+rs.getDouble("kso");
+                                menejemenlabranap=menejemenlabranap+rs.getDouble("menejemen");
+                                biayalabranap=biayalabranap+rs.getDouble("biaya_item");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+                        
+                        //cek radiologi ranap
+                        ps=koneksi.prepareStatement(
+                                "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
+                                "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_radiologi "+
+                                "where no_rawat=? and status='Ranap'");
+                        try {
+                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                bagian_rsradiologiranap=rs.getDouble("bagian_rs");
+                                bhpradiologiranap=rs.getDouble("bhp");
+                                tarif_perujukradiologiranap=rs.getDouble("tarif_perujuk");
+                                tarif_tindakan_dokterradiologiranap=rs.getDouble("tarif_tindakan_dokter");
+                                tarif_tindakan_petugasradiologiranap=rs.getDouble("tarif_tindakan_petugas");
+                                ksoradiologiranap=rs.getDouble("kso");
+                                menejemenradiologiranap=rs.getDouble("menejemen");
+                                biayaradiologiranap=rs.getDouble("biaya");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+                        
+                        //cek operasi ranap
+                        ps=koneksi.prepareStatement(
+                                "select sum(biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as jmdokter, "+
+                                "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5) as jmparamedis,"+
+                                "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5+biayaalat+biayasewaok+akomodasi+bagian_rs+biayasarpras+biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as pendapatan "+
+                                "from operasi where no_rawat=? and status='Ranap'");
+                        try {
+                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                jmdokteroperasiranap=rs.getDouble("jmdokter");
+                                jmparamedisoperasiranap=rs.getDouble("jmparamedis");
+                                pendapatanoperasiranap=rs.getDouble("pendapatan");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+
+                        bhpoperasiranap=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ranap' and beri_obat_operasi.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+
+                        //cek obat rawat ranap
+                        ps=koneksi.prepareStatement("select sum(h_beli*jml) as hpp,sum(total) as total from detail_pemberian_obat where no_rawat=? and status='Ranap'");
+                        try {
+                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            rs=ps.executeQuery();
+                            while(rs.next()){
+                                obatranap=rs.getDouble("total");
+                                hppobatranap=rs.getDouble("hpp");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+                        
+                        //cek retur obat
+                        returobat=Sequel.cariIsiAngka("select sum(detreturjual.subtotal) from detreturjual where no_retur_jual like ?","%"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString()+"%");
+                        
+                        //cek kamar 
+                        kamar=Sequel.cariIsiAngka("select sum(totalbiaya) from billing where status='Kamar' and no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        
+                        //cek kamar 
+                        reseppulang=Sequel.cariIsiAngka("select sum(total) from resep_pulang where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        
+                        norawatbayi=Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        if(!norawatbayi.equals("")){
+                            //cek obat langsung
+                            obatlangsung=Sequel.cariIsiAngka("select besar_tagihan from tagihan_obat_langsung where no_rawat=? ",norawatbayi);
+
+                            //cek tambahan biaya
+                            tambahanbiaya=Sequel.cariIsiAngka("select sum(besar_biaya) from tambahan_biaya where no_rawat=? ",norawatbayi);
+
+                            //cek potongan biaya
+                            potonganbiaya=Sequel.cariIsiAngka("select sum(besar_pengurangan) from pengurangan_biaya where no_rawat=? ",norawatbayi);
+
+                            //cek rawat jalan
+                            ps=koneksi.prepareStatement(
+                                    "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
+                                    "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_jl_drpr where no_rawat=?");
+                            try {
+                                ps.setString(1,norawatbayi);
+                                rs=ps.executeQuery();
+                                if(rs.next()){
+                                    materialralan=rs.getDouble("material");
+                                    bhpralan=rs.getDouble("bhp");
+                                    tarif_tindakandrralan=rs.getDouble("tarif_tindakandr");
+                                    tarif_tindakanprralan=rs.getDouble("tarif_tindakanpr");
+                                    ksoralan=rs.getDouble("kso");
+                                    menejemenralan=rs.getDouble("menejemen");
+                                    biaya_rawatralan=rs.getDouble("biaya_rawat");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            ps=koneksi.prepareStatement(
+                                    "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,"+
+                                    "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_jl_dr where no_rawat=?");
+                            try {
+                                ps.setString(1,norawatbayi);
+                                rs=ps.executeQuery();
+                                if(rs.next()){
+                                    materialralan=+materialralan+rs.getDouble("material");
+                                    bhpralan=bhpralan+rs.getDouble("bhp");
+                                    tarif_tindakandrralan=tarif_tindakandrralan+rs.getDouble("tarif_tindakandr");
+                                    ksoralan=ksoralan+rs.getDouble("kso");
+                                    menejemenralan=menejemenralan+rs.getDouble("menejemen");
+                                    biaya_rawatralan=biaya_rawatralan+rs.getDouble("biaya_rawat");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            ps=koneksi.prepareStatement(
+                                    "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
+                                    "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_jl_pr where no_rawat=?");
+                            try {
+                                ps.setString(1,norawatbayi);
+                                rs=ps.executeQuery();
+                                if(rs.next()){
+                                    materialralan=+materialralan+rs.getDouble("material");
+                                    bhpralan=bhpralan+rs.getDouble("bhp");
+                                    tarif_tindakanprralan=tarif_tindakanprralan+rs.getDouble("tarif_tindakanpr");
+                                    ksoralan=ksoralan+rs.getDouble("kso");
+                                    menejemenralan=menejemenralan+rs.getDouble("menejemen");
+                                    biaya_rawatralan=biaya_rawatralan+rs.getDouble("biaya_rawat");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            //cek lab ralan
+                            ps=koneksi.prepareStatement(
+                                    "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
+                                    "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_lab "+
+                                    "where no_rawat=? and status='Ralan'");
+                            try {
+                                ps.setString(1,norawatbayi);
+                                rs=ps.executeQuery();
+                                if(rs.next()){
+                                    bagian_rslabralan=rs.getDouble("bagian_rs");
+                                    bhplabralan=rs.getDouble("bhp");
+                                    tarif_perujuklabralan=rs.getDouble("tarif_perujuk");
+                                    tarif_tindakan_dokterlabralan=rs.getDouble("tarif_tindakan_dokter");
+                                    tarif_tindakan_petugaslabralan=rs.getDouble("tarif_tindakan_petugas");
+                                    ksolabralan=rs.getDouble("kso");
+                                    menejemenlabralan=rs.getDouble("menejemen");
+                                    biayalabralan=rs.getDouble("biaya");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            ps=koneksi.prepareStatement(
+                                    "select sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                                    "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,sum(detail_periksa_lab.kso) as kso,"+
+                                    "sum(detail_periksa_lab.menejemen) as menejemen,sum(detail_periksa_lab.biaya_item) as biaya_item from detail_periksa_lab inner join periksa_lab on "+
+                                    "detail_periksa_lab.no_rawat=periksa_lab.no_rawat and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa "+
+                                    "and detail_periksa_lab.jam=periksa_lab.jam where detail_periksa_lab.no_rawat=? and periksa_lab.status='Ralan'");
+                            try {
+                                ps.setString(1,norawatbayi);
+                                rs=ps.executeQuery();
+                                if(rs.next()){
+                                    bagian_rslabralan=bagian_rslabralan+rs.getDouble("bagian_rs");
+                                    bhplabralan=bhplabralan+rs.getDouble("bhp");
+                                    tarif_perujuklabralan=tarif_perujuklabralan+rs.getDouble("bagian_perujuk");
+                                    tarif_tindakan_dokterlabralan=tarif_tindakan_dokterlabralan+rs.getDouble("bagian_dokter");
+                                    tarif_tindakan_petugaslabralan=tarif_tindakan_petugaslabralan+rs.getDouble("bagian_laborat");
+                                    ksolabralan=ksolabralan+rs.getDouble("kso");
+                                    menejemenlabralan=menejemenlabralan+rs.getDouble("menejemen");
+                                    biayalabralan=biayalabralan+rs.getDouble("biaya_item");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            //cek radiologi ralan
+                            ps=koneksi.prepareStatement(
+                                    "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
+                                    "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_radiologi "+
+                                    "where no_rawat=? and status='Ralan'");
+                            try {
+                                ps.setString(1,norawatbayi);
+                                rs=ps.executeQuery();
+                                if(rs.next()){
+                                    bagian_rsradiologiralan=rs.getDouble("bagian_rs");
+                                    bhpradiologiralan=rs.getDouble("bhp");
+                                    tarif_perujukradiologiralan=rs.getDouble("tarif_perujuk");
+                                    tarif_tindakan_dokterradiologiralan=rs.getDouble("tarif_tindakan_dokter");
+                                    tarif_tindakan_petugasradiologiralan=rs.getDouble("tarif_tindakan_petugas");
+                                    ksoradiologiralan=rs.getDouble("kso");
+                                    menejemenradiologiralan=rs.getDouble("menejemen");
+                                    biayaradiologiralan=rs.getDouble("biaya");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            //cek operasi ralan
+                            ps=koneksi.prepareStatement(
+                                    "select sum(biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as jmdokter, "+
+                                    "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5) as jmparamedis,"+
+                                    "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5+biayaalat+biayasewaok+akomodasi+bagian_rs+biayasarpras+biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as pendapatan "+
+                                    "from operasi where no_rawat=? and status='Ralan'");
+                            try {
+                                ps.setString(1,norawatbayi);
+                                rs=ps.executeQuery();
+                                if(rs.next()){
+                                    jmdokteroperasiralan=rs.getDouble("jmdokter");
+                                    jmparamedisoperasiralan=rs.getDouble("jmparamedis");
+                                    pendapatanoperasiralan=rs.getDouble("pendapatan");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            bhpoperasiralan=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ralan' and beri_obat_operasi.no_rawat=?",norawatbayi);
+
+                            //cek obat rawat jalan
+                            ps=koneksi.prepareStatement("select sum(h_beli*jml) as hpp,sum(total) as total from detail_pemberian_obat where no_rawat=? and status='Ralan'");
+                            try {
+                                ps.setString(1,norawatbayi);
+                                rs=ps.executeQuery();
+                                while(rs.next()){
+                                    obatralan=rs.getDouble("total");
+                                    hppobatralan=rs.getDouble("hpp");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }
+
+                            if(status.equals("Ranap")){
+                                //cek rawat inap
+                                ps=koneksi.prepareStatement(
+                                        "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
+                                        "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_drpr where no_rawat=?");
+                                try {
+                                    ps.setString(1,norawatbayi);
+                                    rs=ps.executeQuery();
+                                    if(rs.next()){
+                                        materialranap=rs.getDouble("material");
+                                        bhpranap=rs.getDouble("bhp");
+                                        tarif_tindakandrranap=rs.getDouble("tarif_tindakandr");
+                                        tarif_tindakanprranap=rs.getDouble("tarif_tindakanpr");
+                                        ksoranap=rs.getDouble("kso");
+                                        menejemenranap=rs.getDouble("menejemen");
+                                        biaya_rawatranap=rs.getDouble("biaya_rawat");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs!=null){
+                                        rs.close();
+                                    }
+                                    if(ps!=null){
+                                        ps.close();
+                                    }
+                                }
+
+                                ps=koneksi.prepareStatement(
+                                        "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,"+
+                                        "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_dr where no_rawat=?");
+                                try {
+                                    ps.setString(1,norawatbayi);
+                                    rs=ps.executeQuery();
+                                    if(rs.next()){
+                                        materialranap=+materialranap+rs.getDouble("material");
+                                        bhpranap=bhpranap+rs.getDouble("bhp");
+                                        tarif_tindakandrranap=tarif_tindakandrranap+rs.getDouble("tarif_tindakandr");
+                                        ksoranap=ksoranap+rs.getDouble("kso");
+                                        menejemenranap=menejemenranap+rs.getDouble("menejemen");
+                                        biaya_rawatranap=biaya_rawatranap+rs.getDouble("biaya_rawat");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs!=null){
+                                        rs.close();
+                                    }
+                                    if(ps!=null){
+                                        ps.close();
+                                    }
+                                }
+
+                                ps=koneksi.prepareStatement(
+                                        "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
+                                        "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_pr where no_rawat=?");
+                                try {
+                                    ps.setString(1,norawatbayi);
+                                    rs=ps.executeQuery();
+                                    if(rs.next()){
+                                        materialranap=+materialranap+rs.getDouble("material");
+                                        bhpranap=bhpranap+rs.getDouble("bhp");
+                                        tarif_tindakanprranap=tarif_tindakanprranap+rs.getDouble("tarif_tindakanpr");
+                                        ksoranap=ksoranap+rs.getDouble("kso");
+                                        menejemenranap=menejemenranap+rs.getDouble("menejemen");
+                                        biaya_rawatranap=biaya_rawatranap+rs.getDouble("biaya_rawat");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs!=null){
+                                        rs.close();
+                                    }
+                                    if(ps!=null){
+                                        ps.close();
+                                    }
+                                }
+
+                                //cek lab ranap
+                                ps=koneksi.prepareStatement(
+                                        "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
+                                        "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_lab "+
+                                        "where no_rawat=? and status='Ranap'");
+                                try {
+                                    ps.setString(1,norawatbayi);
+                                    rs=ps.executeQuery();
+                                    if(rs.next()){
+                                        bagian_rslabranap=rs.getDouble("bagian_rs");
+                                        bhplabranap=rs.getDouble("bhp");
+                                        tarif_perujuklabranap=rs.getDouble("tarif_perujuk");
+                                        tarif_tindakan_dokterlabranap=rs.getDouble("tarif_tindakan_dokter");
+                                        tarif_tindakan_petugaslabranap=rs.getDouble("tarif_tindakan_petugas");
+                                        ksolabranap=rs.getDouble("kso");
+                                        menejemenlabranap=rs.getDouble("menejemen");
+                                        biayalabranap=rs.getDouble("biaya");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs!=null){
+                                        rs.close();
+                                    }
+                                    if(ps!=null){
+                                        ps.close();
+                                    }
+                                }
+
+                                ps=koneksi.prepareStatement(
+                                        "select sum(detail_periksa_lab.bagian_rs) as bagian_rs,sum(detail_periksa_lab.bhp) as bhp,sum(detail_periksa_lab.bagian_perujuk) as bagian_perujuk,"+
+                                        "sum(detail_periksa_lab.bagian_dokter) as bagian_dokter,sum(detail_periksa_lab.bagian_laborat) as bagian_laborat,sum(detail_periksa_lab.kso) as kso,"+
+                                        "sum(detail_periksa_lab.menejemen) as menejemen,sum(detail_periksa_lab.biaya_item) as biaya_item from detail_periksa_lab inner join periksa_lab on "+
+                                        "detail_periksa_lab.no_rawat=periksa_lab.no_rawat and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa "+
+                                        "and detail_periksa_lab.jam=periksa_lab.jam where detail_periksa_lab.no_rawat=? and periksa_lab.status='Ranap'");
+                                try {
+                                    ps.setString(1,norawatbayi);
+                                    rs=ps.executeQuery();
+                                    if(rs.next()){
+                                        bagian_rslabranap=bagian_rslabranap+rs.getDouble("bagian_rs");
+                                        bhplabranap=bhplabranap+rs.getDouble("bhp");
+                                        tarif_perujuklabranap=tarif_perujuklabranap+rs.getDouble("bagian_perujuk");
+                                        tarif_tindakan_dokterlabranap=tarif_tindakan_dokterlabranap+rs.getDouble("bagian_dokter");
+                                        tarif_tindakan_petugaslabranap=tarif_tindakan_petugaslabranap+rs.getDouble("bagian_laborat");
+                                        ksolabranap=ksolabranap+rs.getDouble("kso");
+                                        menejemenlabranap=menejemenlabranap+rs.getDouble("menejemen");
+                                        biayalabranap=biayalabranap+rs.getDouble("biaya_item");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs!=null){
+                                        rs.close();
+                                    }
+                                    if(ps!=null){
+                                        ps.close();
+                                    }
+                                }
+
+                                //cek radiologi ranap
+                                ps=koneksi.prepareStatement(
+                                        "select sum(bagian_rs) as bagian_rs,sum(bhp) as bhp,sum(tarif_perujuk) as tarif_perujuk,sum(tarif_tindakan_dokter) as tarif_tindakan_dokter,"+
+                                        "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_radiologi "+
+                                        "where no_rawat=? and status='Ranap'");
+                                try {
+                                    ps.setString(1,norawatbayi);
+                                    rs=ps.executeQuery();
+                                    if(rs.next()){
+                                        bagian_rsradiologiranap=rs.getDouble("bagian_rs");
+                                        bhpradiologiranap=rs.getDouble("bhp");
+                                        tarif_perujukradiologiranap=rs.getDouble("tarif_perujuk");
+                                        tarif_tindakan_dokterradiologiranap=rs.getDouble("tarif_tindakan_dokter");
+                                        tarif_tindakan_petugasradiologiranap=rs.getDouble("tarif_tindakan_petugas");
+                                        ksoradiologiranap=rs.getDouble("kso");
+                                        menejemenradiologiranap=rs.getDouble("menejemen");
+                                        biayaradiologiranap=rs.getDouble("biaya");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs!=null){
+                                        rs.close();
+                                    }
+                                    if(ps!=null){
+                                        ps.close();
+                                    }
+                                }
+
+                                //cek operasi ranap
+                                ps=koneksi.prepareStatement(
+                                        "select sum(biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as jmdokter, "+
+                                        "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5) as jmparamedis,"+
+                                        "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5+biayaalat+biayasewaok+akomodasi+bagian_rs+biayasarpras+biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as pendapatan "+
+                                        "from operasi where no_rawat=? and status='Ranap'");
+                                try {
+                                    ps.setString(1,norawatbayi);
+                                    rs=ps.executeQuery();
+                                    if(rs.next()){
+                                        jmdokteroperasiranap=rs.getDouble("jmdokter");
+                                        jmparamedisoperasiranap=rs.getDouble("jmparamedis");
+                                        pendapatanoperasiranap=rs.getDouble("pendapatan");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs!=null){
+                                        rs.close();
+                                    }
+                                    if(ps!=null){
+                                        ps.close();
+                                    }
+                                }
+
+                                bhpoperasiranap=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ranap' and beri_obat_operasi.no_rawat=?",norawatbayi);
+
+                                //cek obat rawat ranap
+                                ps=koneksi.prepareStatement("select sum(h_beli*jml) as hpp,sum(total) as total from detail_pemberian_obat where no_rawat=? and status='Ranap'");
+                                try {
+                                    ps.setString(1,norawatbayi);
+                                    rs=ps.executeQuery();
+                                    while(rs.next()){
+                                        obatranap=rs.getDouble("total");
+                                        hppobatranap=rs.getDouble("hpp");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : "+e);
+                                } finally{
+                                    if(rs!=null){
+                                        rs.close();
+                                    }
+                                    if(ps!=null){
+                                        ps.close();
+                                    }
+                                }
+
+                                //cek retur obat
+                                returobat=Sequel.cariIsiAngka("select sum(detreturjual.subtotal) from detreturjual where no_retur_jual like ?","%"+norawatbayi+"%");
+
+                                //cek kamar 
+                                kamar=Sequel.cariIsiAngka("select sum(totalbiaya) from billing where status='Kamar' and no_rawat=?",norawatbayi);
+
+                                //cek kamar 
+                                reseppulang=Sequel.cariIsiAngka("select sum(total) from resep_pulang where no_rawat=?",norawatbayi);
+
+                            }
+                        }
+                    }
                 }  
             } catch (Exception e) {
             }
@@ -1289,8 +1780,8 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             sisapiutang=0;
             ps=koneksi.prepareStatement(
                    "select piutang_pasien.no_rawat,piutang_pasien.tgl_piutang, concat(piutang_pasien.no_rkm_medis,' ',pasien.nm_pasien) as namapasien, "+
-                   "piutang_pasien.totalpiutang,piutang_pasien.uangmuka,piutang_pasien.sisapiutang,bridging_sep.no_sep,inacbg_grouping_stage1.tarif "+
-                   "from piutang_pasien inner join pasien on piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
+                   "piutang_pasien.totalpiutang,piutang_pasien.uangmuka,piutang_pasien.sisapiutang,bridging_sep.no_sep,inacbg_grouping_stage1.tarif, "+
+                   "reg_periksa.biaya_reg,reg_periksa.status_lanjut from piutang_pasien inner join pasien on piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join reg_periksa on piutang_pasien.no_rawat=reg_periksa.no_rawat "+
                    "inner join bridging_sep on bridging_sep.no_rawat=reg_periksa.no_rawat "+
                    "inner join inacbg_grouping_stage1 on bridging_sep.no_sep=inacbg_grouping_stage1.no_sep "+
@@ -1311,7 +1802,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     tabMode.addRow(new Object[]{
                         false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),
                         rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
-                        rs.getDouble("tarif"),null,0,0,0
+                        rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg")
                     });
                     sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
                 }
@@ -1328,8 +1819,8 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             
             ps=koneksi.prepareStatement(
                    "select piutang_pasien.no_rawat,piutang_pasien.tgl_piutang, concat(piutang_pasien.no_rkm_medis,' ',pasien.nm_pasien) as namapasien, "+
-                   "piutang_pasien.totalpiutang,piutang_pasien.uangmuka,piutang_pasien.sisapiutang,inacbg_klaim_baru2.no_sep,inacbg_grouping_stage12.tarif "+
-                   "from piutang_pasien inner join pasien on piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
+                   "piutang_pasien.totalpiutang,piutang_pasien.uangmuka,piutang_pasien.sisapiutang,inacbg_klaim_baru2.no_sep,inacbg_grouping_stage12.tarif, "+
+                   "reg_periksa.biaya_reg,reg_periksa.status_lanjut from piutang_pasien inner join pasien on piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join reg_periksa on piutang_pasien.no_rawat=reg_periksa.no_rawat "+
                    "inner join inacbg_klaim_baru2 on inacbg_klaim_baru2.no_rawat=reg_periksa.no_rawat "+
                    "inner join inacbg_grouping_stage12 on inacbg_klaim_baru2.no_sep=inacbg_grouping_stage12.no_sep "+
@@ -1350,7 +1841,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     tabMode.addRow(new Object[]{
                         false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),
                         rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
-                        rs.getDouble("tarif"),null,0,0,0
+                        rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg")
                     });
                     sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
                 }
