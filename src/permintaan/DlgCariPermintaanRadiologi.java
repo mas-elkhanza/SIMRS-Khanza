@@ -2271,7 +2271,7 @@ private void tbRadiologiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRS
     
     public void isCek(){
         MnCetakHasilRadiologi.setEnabled(akses.getpermintaan_radiologi());
-        BtnSampel.setEnabled(akses.getpermintaan_radiologi());
+        BtnSampel.setEnabled(akses.getperiksa_radiologi());
         BtnHasil.setEnabled(akses.getperiksa_radiologi());
         BtnHapus.setEnabled(akses.getpermintaan_radiologi());
         BtnPrint.setEnabled(akses.getpermintaan_radiologi());

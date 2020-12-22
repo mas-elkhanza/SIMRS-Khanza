@@ -17,7 +17,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import inventory.DlgSuplier;
+import inventory.InventarisSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -50,7 +50,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgSuplier suplier=new DlgSuplier(null,false);
+    private InventarisSuplier suplier=new InventarisSuplier(null,false);
     private double total=0,hutang=0,sisahutang=0;
     private String koderekening="";
     private PreparedStatement ps;

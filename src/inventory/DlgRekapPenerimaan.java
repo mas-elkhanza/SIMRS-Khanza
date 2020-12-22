@@ -34,7 +34,7 @@ public class DlgRekapPenerimaan extends javax.swing.JDialog {
     private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    public  DlgSuplier suplier=new DlgSuplier(null,false);
+    public  InventarisSuplier suplier=new InventarisSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps;
