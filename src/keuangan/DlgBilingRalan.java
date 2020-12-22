@@ -459,7 +459,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         kdpoli.setDocument(new batasInput((byte)5).getKata(kdpoli));
-        kddokter.setDocument(new batasInput((byte)20).getKata(kddokter));        
+        kddokter.setDocument(new batasInput((byte)20).getKata(kddokter));       
+        TotalObat.setDocument(new batasInput((byte)17).getOnlyAngka(TotalObat));
         
         dokter.addWindowListener(new WindowListener() {
             @Override
