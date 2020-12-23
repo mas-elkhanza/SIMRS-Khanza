@@ -259,19 +259,20 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         jPanel1 = new javax.swing.JPanel();
         panelisi3 = new widget.panelisi();
-        label17 = new widget.Label();
-        TCari = new widget.TextBox();
-        BtnCari = new widget.Button();
-        BtnAll = new widget.Button();
+        jLabel10 = new javax.swing.JLabel();
+        LCount = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        LCount1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         LCount2 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         LCount3 = new javax.swing.JLabel();
         panelisi1 = new widget.panelisi();
-        jLabel10 = new javax.swing.JLabel();
-        LCount = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        LCount1 = new javax.swing.JLabel();
+        label17 = new widget.Label();
+        TCari = new widget.TextBox();
+        BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
+        jLabel15 = new javax.swing.JLabel();
         BtnBayar = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -408,19 +409,89 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
         panelisi3.setPreferredSize(new java.awt.Dimension(99, 44));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Belum Dibayar :");
+        jLabel10.setName("jLabel10"); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(87, 23));
+        panelisi3.add(jLabel10);
+
+        LCount.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        LCount.setForeground(new java.awt.Color(50, 50, 50));
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(140, 23));
+        panelisi3.add(LCount);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("Dipilih :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        jLabel12.setPreferredSize(new java.awt.Dimension(45, 23));
+        panelisi3.add(jLabel12);
+
+        LCount1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        LCount1.setForeground(new java.awt.Color(50, 50, 50));
+        LCount1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount1.setText("0");
+        LCount1.setName("LCount1"); // NOI18N
+        LCount1.setPreferredSize(new java.awt.Dimension(140, 23));
+        panelisi3.add(LCount1);
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("Kerugian :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        jLabel13.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelisi3.add(jLabel13);
+
+        LCount2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        LCount2.setForeground(new java.awt.Color(50, 50, 50));
+        LCount2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount2.setText("0");
+        LCount2.setName("LCount2"); // NOI18N
+        LCount2.setPreferredSize(new java.awt.Dimension(100, 23));
+        panelisi3.add(LCount2);
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setText("Lebih Bayar :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        jLabel14.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi3.add(jLabel14);
+
+        LCount3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        LCount3.setForeground(new java.awt.Color(50, 50, 50));
+        LCount3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount3.setText("0");
+        LCount3.setName("LCount3"); // NOI18N
+        LCount3.setPreferredSize(new java.awt.Dimension(100, 23));
+        panelisi3.add(LCount3);
+
+        jPanel1.add(panelisi3, java.awt.BorderLayout.CENTER);
+
+        panelisi1.setName("panelisi1"); // NOI18N
+        panelisi1.setPreferredSize(new java.awt.Dimension(55, 55));
+        panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
         label17.setText("Key Word :");
         label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelisi3.add(label17);
+        label17.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelisi1.add(label17);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(220, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(255, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
             }
         });
-        panelisi3.add(TCari);
+        panelisi1.add(TCari);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('2');
@@ -437,7 +508,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelisi3.add(BtnCari);
+        panelisi1.add(BtnCari);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
@@ -454,77 +525,14 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                 BtnAllKeyPressed(evt);
             }
         });
-        panelisi3.add(BtnAll);
+        panelisi1.add(BtnAll);
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("Kerugian :");
-        jLabel13.setName("jLabel13"); // NOI18N
-        jLabel13.setPreferredSize(new java.awt.Dimension(80, 23));
-        panelisi3.add(jLabel13);
-
-        LCount2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        LCount2.setForeground(new java.awt.Color(50, 50, 50));
-        LCount2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount2.setText("0");
-        LCount2.setName("LCount2"); // NOI18N
-        LCount2.setPreferredSize(new java.awt.Dimension(120, 23));
-        panelisi3.add(LCount2);
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("Lebih Bayar :");
-        jLabel14.setName("jLabel14"); // NOI18N
-        jLabel14.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi3.add(jLabel14);
-
-        LCount3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        LCount3.setForeground(new java.awt.Color(50, 50, 50));
-        LCount3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount3.setText("0");
-        LCount3.setName("LCount3"); // NOI18N
-        LCount3.setPreferredSize(new java.awt.Dimension(120, 23));
-        panelisi3.add(LCount3);
-
-        jPanel1.add(panelisi3, java.awt.BorderLayout.CENTER);
-
-        panelisi1.setName("panelisi1"); // NOI18N
-        panelisi1.setPreferredSize(new java.awt.Dimension(55, 55));
-        panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Belum Dibayar :");
-        jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(87, 23));
-        panelisi1.add(jLabel10);
-
-        LCount.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        LCount.setForeground(new java.awt.Color(50, 50, 50));
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(160, 23));
-        panelisi1.add(LCount);
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("Dipilih :");
-        jLabel12.setName("jLabel12"); // NOI18N
-        jLabel12.setPreferredSize(new java.awt.Dimension(45, 23));
-        panelisi1.add(jLabel12);
-
-        LCount1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        LCount1.setForeground(new java.awt.Color(50, 50, 50));
-        LCount1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount1.setText("0");
-        LCount1.setName("LCount1"); // NOI18N
-        LCount1.setPreferredSize(new java.awt.Dimension(150, 23));
-        panelisi1.add(LCount1);
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel15.setName("jLabel15"); // NOI18N
+        jLabel15.setPreferredSize(new java.awt.Dimension(67, 23));
+        panelisi1.add(jLabel15);
 
         BtnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnBayar.setMnemonic('B');
@@ -898,6 +906,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdptg;
@@ -966,7 +975,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                    "inner join inacbg_grouping_stage12 on inacbg_klaim_baru2.no_sep=inacbg_grouping_stage12.no_sep "+
                    "where piutang_pasien.status='Belum Lunas' "+
                    (TCari.getText().trim().equals("")?"":"and (piutang_pasien.no_rawat like ? or piutang_pasien.no_rkm_medis like ? "+
-                   "or pasien.nm_pasien like ? or bridging_sep.no_sep like ?)")+" order by piutang_pasien.tgl_piutang");
+                   "or pasien.nm_pasien like ? or inacbg_klaim_baru2.no_sep like ?)")+" order by piutang_pasien.tgl_piutang");
             try {
                 if(!TCari.getText().equals("")){
                     ps.setString(1,"%"+TCari.getText()+"%");
