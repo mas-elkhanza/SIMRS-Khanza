@@ -39,7 +39,8 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
     private int row=0,i;
     private String koderekening="",norawatbayi="";
     private Jurnal jur=new Jurnal();
-    private String status="",tampilkan_administrasi_di_billingranap="",tampilkan_ppnobat_ralan="",tampilkan_ppnobat_ranap="";
+    private String status="",tampilkan_administrasi_di_billingranap="",tampilkan_ppnobat_ralan="",tampilkan_ppnobat_ranap="",
+                   Piutang_BPJS_RVP="",Kerugian_Klaim_BPJS_RVP,Lebih_Bayar_Klaim_BPJS_RVP;
     private double total=0,sisapiutang=0,cicilan=0,rugi=0,lebih=0,selisih=0,materialralan=0,bhpralan=0,tarif_tindakandrralan=0,tarif_tindakanprralan=0,ksoralan=0,menejemenralan=0,biaya_rawatralan=0,
                    materialranap=0,bhpranap=0,tarif_tindakandrranap=0,tarif_tindakanprranap=0,ksoranap=0,menejemenranap=0,biaya_rawatranap=0,bagian_rslabralan=0,bhplabralan=0,tarif_perujuklabralan=0,
                    tarif_tindakan_dokterlabralan=0,tarif_tindakan_petugaslabralan=0,ksolabralan=0,menejemenlabralan=0,biayalabralan=0,bagian_rslabranap=0,bhplabranap=0,tarif_perujuklabranap=0,
@@ -228,7 +229,31 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
+        
         Valid.loadCombo(nama_bayar,"nama_bayar","akun_bayar");
+        
+        try {
+            ps=koneksi.prepareStatement("select * from set_akun");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    Piutang_BPJS_RVP=rs.getString("Piutang_BPJS_RVP");
+                    Kerugian_Klaim_BPJS_RVP=rs.getString("Kerugian_Klaim_BPJS_RVP");
+                    Lebih_Bayar_Klaim_BPJS_RVP=rs.getString("Lebih_Bayar_Klaim_BPJS_RVP");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }
    
@@ -733,6 +758,10 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         }else if(total<=0){
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih piutang yang mau dibayar..!!!!");
             TCari.requestFocus();
+        }else if(nmptg.getText().trim().equals("")){
+            Valid.textKosong(kdptg,"Petugas");
+        }else if(nama_bayar.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(nama_bayar,"Akun Bayar");
         }else if(tabMode.getRowCount()!=0){
             Sequel.AutoComitFalse();
             sukses=true;
@@ -743,19 +772,39 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 if(tabMode.getValueAt(i,0).toString().equals("true")){
                     if(Sequel.menyimpantf("bayar_piutang","?,?,?,?,?,?,?","Data",7,new String[]{
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",tabMode.getValueAt(i,1).toString()),
-                        tabMode.getValueAt(i,11).toString(),"diverifikasi oleh "+akses.getkode(),tabMode.getValueAt(i,1).toString(),koderekening,kdptg.getText()
+                        tabMode.getValueAt(i,10).toString(),"diverifikasi oleh "+kdptg.getText(),tabMode.getValueAt(i,1).toString(),koderekening,Piutang_BPJS_RVP
                     })==true){
-                        sisapiutang=(Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang_pasien.sisapiutang),0) FROM piutang_pasien where piutang_pasien.no_rawat=?",tabMode.getValueAt(i,1).toString())
-                            -Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",tabMode.getValueAt(i,1).toString())
-                            -Double.parseDouble(tabMode.getValueAt(i,11).toString()));
-                        if(sisapiutang<=1){
-                            Sequel.mengedit("piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","status='Lunas'");
-                        }    
-                        Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"' and nama_bayar='"+nmptg.getText()+"'","sisapiutang=sisapiutang-"+tabMode.getValueAt(i,11).toString());
+                        Sequel.mengedit("piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","status='Lunas'");
+                        Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","sisapiutang=0");
                         Sequel.queryu("delete from tampjurnal");                    
-                        Sequel.menyimpan("tampjurnal","'"+kdptg.getText()+"','BAYAR PIUTANG','0','"+tabMode.getValueAt(i,11).toString()+"'","Rekening");    
-                        Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+nama_bayar.getSelectedItem()+"','"+tabMode.getValueAt(i,11).toString()+"','0'","Rekening"); 
-                        sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","BAYAR PIUTANG"+", OLEH "+akses.getkode());                   
+                        Sequel.menyimpan("tampjurnal","'"+Piutang_BPJS_RVP+"','PIUTANG BPJS','0','"+tabMode.getValueAt(i,8).toString()+"'","kredit=kredit+'"+tabMode.getValueAt(i,8).toString()+"'","kd_rek='"+Piutang_BPJS_RVP+"'");     
+                        Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+nama_bayar.getSelectedItem()+"','"+tabMode.getValueAt(i,10).toString()+"','0'","debet=debet+'"+tabMode.getValueAt(i,10).toString()+"'","kd_rek='"+koderekening+"'"); 
+                        if(Valid.SetAngka(tabMode.getValueAt(i,13).toString())>0){
+                            Sequel.menyimpan("tampjurnal","'"+Lebih_Bayar_Klaim_BPJS_RVP+"','LEBIH BAYAR BPJS','0','"+tabMode.getValueAt(i,13).toString()+"'","kredit=kredit+'"+tabMode.getValueAt(i,13).toString()+"'","kd_rek='"+Lebih_Bayar_Klaim_BPJS_RVP+"'"); 
+                        }
+                        if(Valid.SetAngka(tabMode.getValueAt(i,12).toString())>0){
+                            Sequel.menyimpan("tampjurnal","'"+Kerugian_Klaim_BPJS_RVP+"','KERUGIAN KLAIM BPJS','"+tabMode.getValueAt(i,12).toString()+"','0'","debet=debet+'"+tabMode.getValueAt(i,12).toString()+"'","kd_rek='"+Kerugian_Klaim_BPJS_RVP+"'");  
+                        }    
+                        sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","BAYAR PIUTANG"+", OLEH "+kdptg.getText());      
+                        if(sukses==true){
+                            if(Sequel.menyimpantf2("rvp_klaim_bpjs","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",78,new String[]{
+                                    tabMode.getValueAt(i,1).toString(),Valid.SetTgl(Tanggal.getSelectedItem()+""),kdptg.getText(),tabMode.getValueAt(i,5).toString(),tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,7).toString(),tabMode.getValueAt(i,8).toString(),
+                                    tabMode.getValueAt(i,9).toString(),tabMode.getValueAt(i,10).toString(),tabMode.getValueAt(i,11).toString(),tabMode.getValueAt(i,12).toString(),tabMode.getValueAt(i,13).toString(),tabMode.getValueAt(i,16).toString(),
+                                    tabMode.getValueAt(i,17).toString(),tabMode.getValueAt(i,18).toString(),tabMode.getValueAt(i,19).toString(),tabMode.getValueAt(i,20).toString(),tabMode.getValueAt(i,21).toString(),tabMode.getValueAt(i,22).toString(),
+                                    tabMode.getValueAt(i,23).toString(),tabMode.getValueAt(i,24).toString(),tabMode.getValueAt(i,25).toString(),tabMode.getValueAt(i,26).toString(),tabMode.getValueAt(i,27).toString(),tabMode.getValueAt(i,28).toString(),
+                                    tabMode.getValueAt(i,29).toString(),tabMode.getValueAt(i,30).toString(),tabMode.getValueAt(i,31).toString(),tabMode.getValueAt(i,32).toString(),tabMode.getValueAt(i,33).toString(),tabMode.getValueAt(i,34).toString(),
+                                    tabMode.getValueAt(i,35).toString(),tabMode.getValueAt(i,36).toString(),tabMode.getValueAt(i,37).toString(),tabMode.getValueAt(i,38).toString(),tabMode.getValueAt(i,39).toString(),tabMode.getValueAt(i,40).toString(),
+                                    tabMode.getValueAt(i,41).toString(),tabMode.getValueAt(i,42).toString(),tabMode.getValueAt(i,43).toString(),tabMode.getValueAt(i,44).toString(),tabMode.getValueAt(i,45).toString(),tabMode.getValueAt(i,46).toString(),
+                                    tabMode.getValueAt(i,47).toString(),tabMode.getValueAt(i,48).toString(),tabMode.getValueAt(i,49).toString(),tabMode.getValueAt(i,50).toString(),tabMode.getValueAt(i,51).toString(),tabMode.getValueAt(i,52).toString(),
+                                    tabMode.getValueAt(i,53).toString(),tabMode.getValueAt(i,54).toString(),tabMode.getValueAt(i,55).toString(),tabMode.getValueAt(i,56).toString(),tabMode.getValueAt(i,57).toString(),tabMode.getValueAt(i,58).toString(),
+                                    tabMode.getValueAt(i,59).toString(),tabMode.getValueAt(i,60).toString(),tabMode.getValueAt(i,61).toString(),tabMode.getValueAt(i,62).toString(),tabMode.getValueAt(i,63).toString(),tabMode.getValueAt(i,64).toString(),
+                                    tabMode.getValueAt(i,65).toString(),tabMode.getValueAt(i,66).toString(),tabMode.getValueAt(i,67).toString(),tabMode.getValueAt(i,68).toString(),tabMode.getValueAt(i,69).toString(),tabMode.getValueAt(i,70).toString(),
+                                    tabMode.getValueAt(i,71).toString(),tabMode.getValueAt(i,72).toString(),tabMode.getValueAt(i,73).toString(),tabMode.getValueAt(i,74).toString(),tabMode.getValueAt(i,75).toString(),tabMode.getValueAt(i,76).toString(),
+                                    tabMode.getValueAt(i,77).toString(),tabMode.getValueAt(i,78).toString(),tabMode.getValueAt(i,79).toString(),tabMode.getValueAt(i,80).toString(),tabMode.getValueAt(i,81).toString()
+                                })==false){
+                                    sukses=false;
+                            }
+                        }
                     }else{
                         sukses=false;
                     }
@@ -769,6 +818,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                 Sequel.RollBack();
             }
+            
             Sequel.AutoComitTrue();
             
             if(sukses==true){
