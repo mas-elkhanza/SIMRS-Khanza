@@ -1833,7 +1833,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
      */
     public void emptTeksobat() {
         if (ChkRM.isSelected() == true) {
-            Valid.newAutoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,4),signed)),0) from resep_obat where tgl_perawatan='" + Valid.SetDateToString(DTPBeri.getDate()) + "' ",
+            Valid.newAutoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_resep,4),signed)),0) from resep_obat where tgl_peresepan='" + Valid.SetDateToString(DTPBeri.getDate()) + "' ",
                     Valid.SetDateToString(DTPBeri.getDate()).substring(0, 4) + Valid.SetDateToString(DTPBeri.getDate()).substring(5, 7) + Valid.SetDateToString(DTPBeri.getDate()).substring(8, 10), 4, NoResep);
         }
     }
