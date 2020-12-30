@@ -1785,7 +1785,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     + "pasien.kabupatenpj,pasien.propinsipj,pasien.keluarga,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun, "
                     + "(TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12)) as bulan, "
                     + "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(pasien.tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari, "
-                    + "booking_registrasi.limit_reg,booking_registrasi.status,booking_registrasi.kd_pj,penjab.png_jawab from booking_registrasi inner join pasien "
+                    + "booking_registrasi.limit_reg, booking_registrasi.status, booking_registrasi.kd_pj, penjab.png_jawab from booking_registrasi inner join pasien "
                     + "inner join dokter inner join poliklinik inner join penjab on "
                     + "booking_registrasi.no_rkm_medis=pasien.no_rkm_medis and booking_registrasi.kd_pj=penjab.kd_pj and "
                     + "booking_registrasi.kd_dokter=dokter.kd_dokter and booking_registrasi.kd_poli=poliklinik.kd_poli "
@@ -1808,7 +1808,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         rs.getString("namakeluarga"), rs.getString("alamatpj"), rs.getString("kelurahanpj"),
                         rs.getString("kecamatanpj"), rs.getString("kabupatenpj"), rs.getString("propinsipj"),
                         rs.getString("keluarga"), rs.getString("kd_pj"), rs.getString("tahun"), rs.getString("bulan"),
-                        rs.getString("hari"), rs.getString("limit_reg").replaceAll("0", "Offline").replace("1", "Online"),
+                        rs.getString("hari"), rs.getString("limit_reg").replaceAll("0", "Offline").replace("1", "Online").replace("2", "Online"),
                         rs.getString("status"), rs.getString("kd_pj"), rs.getString("png_jawab")
                     });
                 }
