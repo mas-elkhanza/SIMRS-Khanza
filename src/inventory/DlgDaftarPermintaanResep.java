@@ -1625,10 +1625,10 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 } else if (NoRawat.equals("")) {
                     JOptionPane.showMessageDialog(null, "Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
                 } else {
-                    if (tabMode.getValueAt(tbResepRalan.getSelectedRow(), 12).equals("364")
-                            || tabMode.getValueAt(tbResepRalan.getSelectedRow(), 12).equals("INH")) {
-                        cariDetails();
-                    }
+////                    if (tabMode.getValueAt(tbResepRalan.getSelectedRow(), 12).equals("364")
+////                            || tabMode.getValueAt(tbResepRalan.getSelectedRow(), 12).equals("INH")) {
+////                        cariDetails();
+////                    }
                     if (Status.equals("Sudah Terlayani")) {
                         JOptionPane.showMessageDialog(rootPane, "Resep sudah tervalidasi ..!!");
                     } else {
@@ -2116,7 +2116,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and penjab.kd_pj like ?" + apotik + "and pasien.no_rkm_medis like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and penjab.kd_pj like ?" + apotik + "and pasien.nm_pasien like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? "
-                    + " order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    + " group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
@@ -2291,7 +2291,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? " + apotik + " and pasien.no_rkm_medis like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? " + apotik + " and pasien.nm_pasien like ? or "
                     + " resep_obat.status='ralan' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? " + apotik + " and dokter.nm_dokter like ? "
-                    + "order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
+                    + " group by resep_obat.no_resep order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
@@ -2318,7 +2318,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ps.setString(23, "%" + CrDokter.getText() + "%");
                 ps.setString(24, "%" + CrPoli.getText() + "%");
                 ps.setString(25, "%" + TCari.getText() + "%");
-                
+
                 rs = ps.executeQuery();
                 i = 0;
                 if (cmbStatus.getSelectedItem().toString().equals("Semua")) {
@@ -2605,7 +2605,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and pasien.nm_pasien like ? or "
                     + " resep_obat.status='ranap' and resep_obat.tgl_perawatan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and penjab.kd_pj like ?" + apotik + "and dokter.nm_dokter like ? "
                     + "group by resep_obat.no_resep,detail_pemberian_obat.no_rawat order by resep_obat.tgl_perawatan desc,resep_obat.jam desc");
-            
+
             try {
                 ps.setString(1, Valid.SetDateToString(DTPCari1.getDate()));
                 ps.setString(2, Valid.SetDateToString(DTPCari2.getDate()));
