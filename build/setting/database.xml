@@ -14,6 +14,7 @@
     <entry key="ANTRIAN">player</entry>
     <entry key="ALARMAPOTEK">yes</entry>
     <entry key="FORMALARMAPOTEK">ralan + ranap</entry>
+    <entry key="STOKKOSONGRESEP">no</entry>
     <entry key="ALARMLAB">yes</entry>
     <entry key="FORMALARMLAB">ralan + ranap</entry>
     <entry key="ALARMRADIOLOGI">yes</entry>
