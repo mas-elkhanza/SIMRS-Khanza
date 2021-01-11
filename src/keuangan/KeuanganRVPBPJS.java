@@ -78,7 +78,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
                    tarif_perujukradiologiranap=0,tarif_tindakan_dokterradiologiranap=0,tarif_tindakan_petugasradiologiranap=0,ksoradiologiranap=0,menejemenradiologiranap=0,biayaradiologiranap=0,
                    jmdokteroperasiralan=0,jmparamedisoperasiralan=0,bhpoperasiralan=0,pendapatanoperasiralan=0,jmdokteroperasiranap=0,jmparamedisoperasiranap=0,bhpoperasiranap=0,pendapatanoperasiranap=0,
                    obatlangsung=0,obatralan=0,hppobatralan=0,obatranap=0,hppobatranap=0,returobat=0,tambahanbiaya=0,potonganbiaya=0,kamar=0,reseppulang=0,totalbiaya=0,registrasi=0,harianranap=0,rugihppralan=0,
-                   rugihppranap=0,serviceranap=0;
+                   rugihppranap=0,serviceranap=0,ttlpiutang=0,ttliur=0,ttlsudahdibayar=0,ttlsisapiutang=0,ttlinacbg=0;
     private boolean sukses=true;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
 
@@ -454,6 +454,8 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
         TKd = new widget.TextBox();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnDetailPiutang = new javax.swing.JMenuItem();
+        ppBersihkan = new javax.swing.JMenuItem();
+        ppPilihSemua = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -498,13 +500,45 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
         MnDetailPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDetailPiutang.setText("Detail Piutang");
         MnDetailPiutang.setName("MnDetailPiutang"); // NOI18N
-        MnDetailPiutang.setPreferredSize(new java.awt.Dimension(200, 28));
+        MnDetailPiutang.setPreferredSize(new java.awt.Dimension(160, 26));
         MnDetailPiutang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDetailPiutangActionPerformed(evt);
             }
         });
         jPopupMenu1.add(MnDetailPiutang);
+
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBersihkan.setText("Hilangkan Pilihan");
+        ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkan.setName("ppBersihkan"); // NOI18N
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(160, 26));
+        ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppBersihkan);
+
+        ppPilihSemua.setBackground(new java.awt.Color(255, 255, 254));
+        ppPilihSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPilihSemua.setForeground(new java.awt.Color(50, 50, 50));
+        ppPilihSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPilihSemua.setText("Pilih Semua");
+        ppPilihSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPilihSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPilihSemua.setName("ppPilihSemua"); // NOI18N
+        ppPilihSemua.setPreferredSize(new java.awt.Dimension(160, 26));
+        ppPilihSemua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppPilihSemuaActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppPilihSemua);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -639,7 +673,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(50, 50, 50));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("Dipilih :");
+        jLabel12.setText("Dibayar :");
         jLabel12.setName("jLabel12"); // NOI18N
         jLabel12.setPreferredSize(new java.awt.Dimension(45, 23));
         panelisi3.add(jLabel12);
@@ -832,23 +866,36 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            
             Sequel.queryu("truncate table temporary");
-            int row=tabMode.getRowCount();
+            row=tabMode.getRowCount();
+            ttlpiutang=0;ttliur=0;ttlsudahdibayar=0;ttlsisapiutang=0;ttlinacbg=0;total=0;
             for(int i=0;i<row;i++){  
-                    Sequel.menyimpan("temporary","'0','"+
-                                tabMode.getValueAt(i,0).toString()+"','"+
-                                tabMode.getValueAt(i,1).toString()+"','"+
-                                tabMode.getValueAt(i,2).toString()+"','"+
-                                tabMode.getValueAt(i,3).toString()+"','"+
-                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,4).toString()))+"','"+
-                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,5).toString()))+"','"+
-                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString()))+"','"+
-                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString()))+"','"+
-                                tabMode.getValueAt(i,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Piutang Pasien"); 
+                sisapiutang=0;
+                try {
+                    sisapiutang=Double.parseDouble(tabMode.getValueAt(i,10).toString());
+                } catch (Exception e) {
+                    sisapiutang=0;
+                }
+                ttlpiutang=ttlpiutang+Double.parseDouble(tabMode.getValueAt(i,5).toString());
+                ttliur=ttliur+Double.parseDouble(tabMode.getValueAt(i,6).toString());
+                ttlsudahdibayar=ttlsudahdibayar+Double.parseDouble(tabMode.getValueAt(i,7).toString());
+                ttlsisapiutang=ttlsisapiutang+Double.parseDouble(tabMode.getValueAt(i,8).toString());
+                ttlinacbg=ttlinacbg+Double.parseDouble(tabMode.getValueAt(i,9).toString());
+                total=total+sisapiutang;
+                Sequel.menyimpan("temporary","'0','"+
+                            tabMode.getValueAt(i,1).toString()+"','"+
+                            tabMode.getValueAt(i,2).toString()+"','"+
+                            tabMode.getValueAt(i,3).toString()+"','"+
+                            tabMode.getValueAt(i,4).toString()+"','"+
+                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,5).toString()))+"','"+
+                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,6).toString()))+"','"+
+                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,7).toString()))+"','"+
+                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,8).toString()))+"','"+
+                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,9).toString()))+"','"+
+                            Valid.SetAngka(sisapiutang)+"','"+
+                            Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,11).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","RVP Piutang"); 
             }
-            Sequel.menyimpan("temporary","'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
-            Sequel.menyimpan("temporary","'0','TOTAL PIUTANG','',':','','','','','"+LCount.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Tindakan Dokter"); 
+            Sequel.menyimpan("temporary","'0','Total :','','','','"+Valid.SetAngka(ttlpiutang)+"','"+Valid.SetAngka(ttliur)+"','"+Valid.SetAngka(ttlsudahdibayar)+"','"+Valid.SetAngka(ttlsisapiutang)+"','"+Valid.SetAngka(ttlinacbg)+"','"+Valid.SetAngka(total)+"','','','','','','','','','','','','','','','','','','','','','','','','','','',''","RVP Piutangr"); 
             
             
             Map<String, Object> param = new HashMap<>();                 
@@ -859,7 +906,7 @@ public final class KeuanganRVPBPJS extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRPiutangMasuk.jasper","report","::[ Rekap Piutang Masuk ]::",param);
+            Valid.MyReport("rptRVPPiutang.jasper","report","::[ Data Piutang BPJS Sebelum RVP ]::",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1694,7 +1741,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
         if(tabMode.getRowCount()!=0){
             if(tbBangsal.getSelectedColumn()==0){
-                getdata();
+                getdata(tbBangsal.getSelectedRow());
             }
         }
     }//GEN-LAST:event_tbBangsalMouseClicked
@@ -1797,6 +1844,20 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }//GEN-LAST:event_BtnCari1KeyPressed
 
+    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        for(i=0;i<tbBangsal.getRowCount();i++){
+            tbBangsal.setValueAt(false,i,0);
+            getdata(i);
+        }
+    }//GEN-LAST:event_ppBersihkanActionPerformed
+
+    private void ppPilihSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihSemuaActionPerformed
+        for(i=0;i<tbBangsal.getRowCount();i++){
+            tbBangsal.setValueAt(true,i,0);
+            getdata(i);
+        }
+    }//GEN-LAST:event_ppPilihSemuaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1848,6 +1909,8 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
+    private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppPilihSemua;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
@@ -1944,12 +2007,12 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         }
     }
     
-    private void getdata() {
+    private void getdata(int pilih) {
         try {
-            if(tbBangsal.getSelectedRow()!= -1){
-                if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
-                    tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),9).toString()),tbBangsal.getSelectedRow(),10);
-                    tbBangsal.setValueAt((( (Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),10).toString())+Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString())+Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),7).toString())) / Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),5).toString()) )*100),tbBangsal.getSelectedRow(),11);
+            if(pilih!= -1){
+                if(tbBangsal.getValueAt(pilih,0).toString().equals("true")){
+                    tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(pilih,9).toString()),pilih,10);
+                    tbBangsal.setValueAt((( (Valid.SetAngka(tbBangsal.getValueAt(pilih,10).toString())+Valid.SetAngka(tbBangsal.getValueAt(pilih,6).toString())+Valid.SetAngka(tbBangsal.getValueAt(pilih,7).toString())) / Valid.SetAngka(tbBangsal.getValueAt(pilih,5).toString()) )*100),pilih,11);
                     materialralan=0;bhpralan=0;tarif_tindakandrralan=0;tarif_tindakanprralan=0;ksoralan=0;menejemenralan=0;biaya_rawatralan=0;
                     materialranap=0;bhpranap=0;tarif_tindakandrranap=0;tarif_tindakanprranap=0;ksoranap=0;menejemenranap=0;biaya_rawatranap=0;
                     bagian_rslabralan=0;bhplabralan=0;tarif_perujuklabralan=0;tarif_tindakan_dokterlabralan=0;tarif_tindakan_petugaslabralan=0;ksolabralan=0;menejemenlabralan=0;biayalabralan=0;
@@ -1960,20 +2023,20 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     jmdokteroperasiranap=0;jmparamedisoperasiranap=0;bhpoperasiranap=0;pendapatanoperasiranap=0;
                     obatlangsung=0;obatralan=0;hppobatralan=0;obatranap=0;hppobatranap=0;returobat=0;tambahanbiaya=0;potonganbiaya=0;
                     kamar=0;reseppulang=0;norawatbayi="";registrasi=0;harianranap=0;serviceranap=0;
-                    status=tbBangsal.getValueAt(tbBangsal.getSelectedRow(),14).toString();
-                    registrasi=Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),15).toString());
+                    status=tbBangsal.getValueAt(pilih,14).toString();
+                    registrasi=Valid.SetAngka(tbBangsal.getValueAt(pilih,15).toString());
                     //cek obat langsung
-                    obatlangsung=Sequel.cariIsiAngka("select besar_tagihan from tagihan_obat_langsung where no_rawat=? ",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                    obatlangsung=Sequel.cariIsiAngka("select besar_tagihan from tagihan_obat_langsung where no_rawat=? ",tbBangsal.getValueAt(pilih,1).toString());
                     //cek tambahan biaya
-                    tambahanbiaya=Sequel.cariIsiAngka("select sum(besar_biaya) from tambahan_biaya where no_rawat=? ",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                    tambahanbiaya=Sequel.cariIsiAngka("select sum(besar_biaya) from tambahan_biaya where no_rawat=? ",tbBangsal.getValueAt(pilih,1).toString());
                     //cek potongan biaya
-                    potonganbiaya=Sequel.cariIsiAngka("select sum(besar_pengurangan) from pengurangan_biaya where no_rawat=? ",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                    potonganbiaya=Sequel.cariIsiAngka("select sum(besar_pengurangan) from pengurangan_biaya where no_rawat=? ",tbBangsal.getValueAt(pilih,1).toString());
                     //cek rawat jalan
                     ps=koneksi.prepareStatement(
                             "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
                             "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_jl_drpr where no_rawat=?");
                     try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                         rs=ps.executeQuery();
                         if(rs.next()){
                             materialralan=rs.getDouble("material");
@@ -1998,7 +2061,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,"+
                             "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_jl_dr where no_rawat=?");
                     try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                         rs=ps.executeQuery();
                         if(rs.next()){
                             materialralan=+materialralan+rs.getDouble("material");
@@ -2022,7 +2085,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
                             "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_jl_pr where no_rawat=?");
                     try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                         rs=ps.executeQuery();
                         if(rs.next()){
                             materialralan=+materialralan+rs.getDouble("material");
@@ -2048,7 +2111,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_lab "+
                             "where no_rawat=? and status='Ralan'");
                     try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                         rs=ps.executeQuery();
                         if(rs.next()){
                             bagian_rslabralan=rs.getDouble("bagian_rs");
@@ -2077,7 +2140,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             "detail_periksa_lab.no_rawat=periksa_lab.no_rawat and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa "+
                             "and detail_periksa_lab.jam=periksa_lab.jam where detail_periksa_lab.no_rawat=? and periksa_lab.status='Ralan'");
                     try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                         rs=ps.executeQuery();
                         if(rs.next()){
                             bagian_rslabralan=bagian_rslabralan+rs.getDouble("bagian_rs");
@@ -2105,7 +2168,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_radiologi "+
                             "where no_rawat=? and status='Ralan'");
                     try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                         rs=ps.executeQuery();
                         if(rs.next()){
                             bagian_rsradiologiralan=rs.getDouble("bagian_rs");
@@ -2134,7 +2197,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5+biayaalat+biayasewaok+akomodasi+bagian_rs+biayasarpras+biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as pendapatan "+
                             "from operasi where no_rawat=? and status='Ralan'");
                     try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                         rs=ps.executeQuery();
                         if(rs.next()){
                             jmdokteroperasiralan=rs.getDouble("jmdokter");
@@ -2151,11 +2214,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             ps.close();
                         }
                     }
-                    bhpoperasiralan=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ralan' and beri_obat_operasi.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                    bhpoperasiralan=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ralan' and beri_obat_operasi.no_rawat=?",tbBangsal.getValueAt(pilih,1).toString());
                     //cek obat rawat jalan
                     ps=koneksi.prepareStatement("select sum(h_beli*jml) as hpp,sum(total) as total from detail_pemberian_obat where no_rawat=? and status='Ralan'");
                     try {
-                        ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
                             obatralan=rs.getDouble("total");
@@ -2177,7 +2240,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
                                 "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_drpr where no_rawat=?");
                         try {
-                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                             rs=ps.executeQuery();
                             if(rs.next()){
                                 materialranap=rs.getDouble("material");
@@ -2202,7 +2265,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakandr) as tarif_tindakandr,"+
                                 "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_dr where no_rawat=?");
                         try {
-                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                             rs=ps.executeQuery();
                             if(rs.next()){
                                 materialranap=+materialranap+rs.getDouble("material");
@@ -2226,7 +2289,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 "select sum(material) as material,sum(bhp) as bhp,sum(tarif_tindakanpr) as tarif_tindakanpr,"+
                                 "sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya_rawat) as biaya_rawat from rawat_inap_pr where no_rawat=?");
                         try {
-                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                             rs=ps.executeQuery();
                             if(rs.next()){
                                 materialranap=+materialranap+rs.getDouble("material");
@@ -2252,7 +2315,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_lab "+
                                 "where no_rawat=? and status='Ranap'");
                         try {
-                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                             rs=ps.executeQuery();
                             if(rs.next()){
                                 bagian_rslabranap=rs.getDouble("bagian_rs");
@@ -2281,7 +2344,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 "detail_periksa_lab.no_rawat=periksa_lab.no_rawat and detail_periksa_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw and detail_periksa_lab.tgl_periksa=periksa_lab.tgl_periksa "+
                                 "and detail_periksa_lab.jam=periksa_lab.jam where detail_periksa_lab.no_rawat=? and periksa_lab.status='Ranap'");
                         try {
-                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                             rs=ps.executeQuery();
                             if(rs.next()){
                                 bagian_rslabranap=bagian_rslabranap+rs.getDouble("bagian_rs");
@@ -2309,7 +2372,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 "sum(tarif_tindakan_petugas) as tarif_tindakan_petugas,sum(kso) as kso,sum(menejemen) as menejemen,sum(biaya) as biaya from periksa_radiologi "+
                                 "where no_rawat=? and status='Ranap'");
                         try {
-                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                             rs=ps.executeQuery();
                             if(rs.next()){
                                 bagian_rsradiologiranap=rs.getDouble("bagian_rs");
@@ -2338,7 +2401,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 "sum(biayaasisten_operator1+biayaasisten_operator2+biayaasisten_operator3+biayainstrumen+biayaperawaat_resusitas+biayaasisten_anestesi+biayaasisten_anestesi2+biayabidan+biayabidan2+biayabidan3+biayaperawat_luar+biaya_omloop+biaya_omloop2+biaya_omloop3+biaya_omloop4+biaya_omloop5+biayaalat+biayasewaok+akomodasi+bagian_rs+biayasarpras+biayaoperator1+biayaoperator2+biayaoperator3+biayadokter_anak+biayadokter_anestesi+biaya_dokter_pjanak+biaya_dokter_umum) as pendapatan "+
                                 "from operasi where no_rawat=? and status='Ranap'");
                         try {
-                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                             rs=ps.executeQuery();
                             if(rs.next()){
                                 jmdokteroperasiranap=rs.getDouble("jmdokter");
@@ -2355,11 +2418,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 ps.close();
                             }
                         }
-                        bhpoperasiranap=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ranap' and beri_obat_operasi.no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        bhpoperasiranap=Sequel.cariIsiAngka("select sum(beri_obat_operasi.hargasatuan*beri_obat_operasi.jumlah) from beri_obat_operasi inner join operasi on beri_obat_operasi.no_rawat=operasi.no_rawat and beri_obat_operasi.tanggal=operasi.tgl_operasi where operasi.status='Ranap' and beri_obat_operasi.no_rawat=?",tbBangsal.getValueAt(pilih,1).toString());
                         //cek obat rawat ranap
                         ps=koneksi.prepareStatement("select sum(h_beli*jml) as hpp,sum(total) as total from detail_pemberian_obat where no_rawat=? and status='Ranap'");
                         try {
-                            ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                            ps.setString(1,tbBangsal.getValueAt(pilih,1).toString());
                             rs=ps.executeQuery();
                             while(rs.next()){
                                 obatranap=rs.getDouble("total");
@@ -2376,16 +2439,16 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             }
                         }
                         //cek retur obat
-                        returobat=Sequel.cariIsiAngka("select sum(detreturjual.subtotal) from detreturjual where no_retur_jual like ?","%"+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString()+"%");
+                        returobat=Sequel.cariIsiAngka("select sum(detreturjual.subtotal) from detreturjual where no_retur_jual like ?","%"+tbBangsal.getValueAt(pilih,1).toString()+"%");
                         //cek kamar 
-                        kamar=Sequel.cariIsiAngka("select sum(totalbiaya) from billing where status='Kamar' and no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        kamar=Sequel.cariIsiAngka("select sum(totalbiaya) from billing where status='Kamar' and no_rawat=?",tbBangsal.getValueAt(pilih,1).toString());
                         //cek harian 
-                        harianranap=Sequel.cariIsiAngka("select sum(totalbiaya) from billing where status='Harian' and no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        harianranap=Sequel.cariIsiAngka("select sum(totalbiaya) from billing where status='Harian' and no_rawat=?",tbBangsal.getValueAt(pilih,1).toString());
                         //cek service 
-                        serviceranap=Sequel.cariIsiAngka("select sum(totalbiaya) from billing where status='Service' and no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        serviceranap=Sequel.cariIsiAngka("select sum(totalbiaya) from billing where status='Service' and no_rawat=?",tbBangsal.getValueAt(pilih,1).toString());
                         //cek resep pulang 
-                        reseppulang=Sequel.cariIsiAngka("select sum(total) from resep_pulang where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-                        norawatbayi=Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                        reseppulang=Sequel.cariIsiAngka("select sum(total) from resep_pulang where no_rawat=?",tbBangsal.getValueAt(pilih,1).toString());
+                        norawatbayi=Sequel.cariIsi("select no_rawat2 from ranap_gabung where no_rawat=?",tbBangsal.getValueAt(pilih,1).toString());
                         if(!norawatbayi.equals("")){
                             //cek obat langsung bayi
                             obatlangsung=obatlangsung+Sequel.cariIsiAngka("select besar_tagihan from tagihan_obat_langsung where no_rawat=? ",norawatbayi);
@@ -2820,238 +2883,238 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     totalbiaya=Math.round(registrasi+biaya_rawatralan+biaya_rawatranap+biayalabralan+biayalabranap+biayaradiologiralan+biayaradiologiranap+
                                bhpoperasiralan+pendapatanoperasiralan+bhpoperasiranap+pendapatanoperasiranap+obatlangsung+obatralan+obatranap-returobat+
                                tambahanbiaya-potonganbiaya+kamar+reseppulang+harianranap+serviceranap);
-                    if(Math.round(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),5).toString()))==totalbiaya){
-                        tbBangsal.setValueAt(materialralan,tbBangsal.getSelectedRow(),16);
-                        tbBangsal.setValueAt(bhpralan,tbBangsal.getSelectedRow(),17);
-                        tbBangsal.setValueAt(tarif_tindakandrralan,tbBangsal.getSelectedRow(),18);
-                        tbBangsal.setValueAt(tarif_tindakanprralan,tbBangsal.getSelectedRow(),19);
-                        tbBangsal.setValueAt(ksoralan,tbBangsal.getSelectedRow(),20);
-                        tbBangsal.setValueAt(menejemenralan,tbBangsal.getSelectedRow(),21);
-                        tbBangsal.setValueAt(biaya_rawatralan,tbBangsal.getSelectedRow(),22);
-                        tbBangsal.setValueAt(materialranap,tbBangsal.getSelectedRow(),23);
-                        tbBangsal.setValueAt(bhpranap,tbBangsal.getSelectedRow(),24);
-                        tbBangsal.setValueAt(tarif_tindakandrranap,tbBangsal.getSelectedRow(),25);
-                        tbBangsal.setValueAt(tarif_tindakanprranap,tbBangsal.getSelectedRow(),26);
-                        tbBangsal.setValueAt(ksoranap,tbBangsal.getSelectedRow(),27);
-                        tbBangsal.setValueAt(menejemenranap,tbBangsal.getSelectedRow(),28);
-                        tbBangsal.setValueAt(biaya_rawatranap,tbBangsal.getSelectedRow(),29);
-                        tbBangsal.setValueAt(bagian_rslabralan,tbBangsal.getSelectedRow(),30);
-                        tbBangsal.setValueAt(bhplabralan,tbBangsal.getSelectedRow(),31);
-                        tbBangsal.setValueAt(tarif_perujuklabralan,tbBangsal.getSelectedRow(),32);
-                        tbBangsal.setValueAt(tarif_tindakan_dokterlabralan,tbBangsal.getSelectedRow(),33);
-                        tbBangsal.setValueAt(tarif_tindakan_petugaslabralan,tbBangsal.getSelectedRow(),34);
-                        tbBangsal.setValueAt(ksolabralan,tbBangsal.getSelectedRow(),35);
-                        tbBangsal.setValueAt(menejemenlabralan,tbBangsal.getSelectedRow(),36);
-                        tbBangsal.setValueAt(biayalabralan,tbBangsal.getSelectedRow(),37);
-                        tbBangsal.setValueAt(bagian_rslabranap,tbBangsal.getSelectedRow(),38);
-                        tbBangsal.setValueAt(bhplabranap,tbBangsal.getSelectedRow(),39);
-                        tbBangsal.setValueAt(tarif_perujuklabranap,tbBangsal.getSelectedRow(),40);
-                        tbBangsal.setValueAt(tarif_tindakan_dokterlabranap,tbBangsal.getSelectedRow(),41);
-                        tbBangsal.setValueAt(tarif_tindakan_petugaslabranap,tbBangsal.getSelectedRow(),42);
-                        tbBangsal.setValueAt(ksolabranap,tbBangsal.getSelectedRow(),43);
-                        tbBangsal.setValueAt(menejemenlabranap,tbBangsal.getSelectedRow(),44);
-                        tbBangsal.setValueAt(biayalabranap,tbBangsal.getSelectedRow(),45);
-                        tbBangsal.setValueAt(bagian_rsradiologiralan,tbBangsal.getSelectedRow(),46);
-                        tbBangsal.setValueAt(bhpradiologiralan,tbBangsal.getSelectedRow(),47);
-                        tbBangsal.setValueAt(tarif_perujukradiologiralan,tbBangsal.getSelectedRow(),48);
-                        tbBangsal.setValueAt(tarif_tindakan_dokterradiologiralan,tbBangsal.getSelectedRow(),49);
-                        tbBangsal.setValueAt(tarif_tindakan_petugasradiologiralan,tbBangsal.getSelectedRow(),50);
-                        tbBangsal.setValueAt(ksoradiologiralan,tbBangsal.getSelectedRow(),51);
-                        tbBangsal.setValueAt(menejemenradiologiralan,tbBangsal.getSelectedRow(),52);
-                        tbBangsal.setValueAt(biayaradiologiralan,tbBangsal.getSelectedRow(),53);
-                        tbBangsal.setValueAt(bagian_rsradiologiranap,tbBangsal.getSelectedRow(),54);
-                        tbBangsal.setValueAt(bhpradiologiranap,tbBangsal.getSelectedRow(),55);
-                        tbBangsal.setValueAt(tarif_perujukradiologiranap,tbBangsal.getSelectedRow(),56);
-                        tbBangsal.setValueAt(tarif_tindakan_dokterradiologiranap,tbBangsal.getSelectedRow(),57);
-                        tbBangsal.setValueAt(tarif_tindakan_petugasradiologiranap,tbBangsal.getSelectedRow(),58);
-                        tbBangsal.setValueAt(ksoradiologiranap,tbBangsal.getSelectedRow(),59);
-                        tbBangsal.setValueAt(menejemenradiologiranap,tbBangsal.getSelectedRow(),60);
-                        tbBangsal.setValueAt(biayaradiologiranap,tbBangsal.getSelectedRow(),61);
-                        tbBangsal.setValueAt(jmdokteroperasiralan,tbBangsal.getSelectedRow(),62);
-                        tbBangsal.setValueAt(jmparamedisoperasiralan,tbBangsal.getSelectedRow(),63);
-                        tbBangsal.setValueAt(bhpoperasiralan,tbBangsal.getSelectedRow(),64);
-                        tbBangsal.setValueAt(pendapatanoperasiralan,tbBangsal.getSelectedRow(),65);
-                        tbBangsal.setValueAt(jmdokteroperasiranap,tbBangsal.getSelectedRow(),66);
-                        tbBangsal.setValueAt(jmparamedisoperasiranap,tbBangsal.getSelectedRow(),67);
-                        tbBangsal.setValueAt(bhpoperasiranap,tbBangsal.getSelectedRow(),68);
-                        tbBangsal.setValueAt(pendapatanoperasiranap,tbBangsal.getSelectedRow(),69);
-                        tbBangsal.setValueAt(obatlangsung,tbBangsal.getSelectedRow(),70);
-                        tbBangsal.setValueAt(obatralan,tbBangsal.getSelectedRow(),71);
-                        tbBangsal.setValueAt(hppobatralan,tbBangsal.getSelectedRow(),72);
-                        tbBangsal.setValueAt(obatranap,tbBangsal.getSelectedRow(),73);
-                        tbBangsal.setValueAt(hppobatranap,tbBangsal.getSelectedRow(),74);
-                        tbBangsal.setValueAt(returobat,tbBangsal.getSelectedRow(),75);
-                        tbBangsal.setValueAt(tambahanbiaya,tbBangsal.getSelectedRow(),76);
-                        tbBangsal.setValueAt(potonganbiaya,tbBangsal.getSelectedRow(),77);
-                        tbBangsal.setValueAt(kamar,tbBangsal.getSelectedRow(),78);
-                        tbBangsal.setValueAt(reseppulang,tbBangsal.getSelectedRow(),79);
-                        tbBangsal.setValueAt(harianranap,tbBangsal.getSelectedRow(),80);
-                        tbBangsal.setValueAt(registrasi,tbBangsal.getSelectedRow(),81);
-                        tbBangsal.setValueAt(serviceranap,tbBangsal.getSelectedRow(),82);
+                    if(Math.round(Valid.SetAngka(tbBangsal.getValueAt(pilih,5).toString()))==totalbiaya){
+                        tbBangsal.setValueAt(materialralan,pilih,16);
+                        tbBangsal.setValueAt(bhpralan,pilih,17);
+                        tbBangsal.setValueAt(tarif_tindakandrralan,pilih,18);
+                        tbBangsal.setValueAt(tarif_tindakanprralan,pilih,19);
+                        tbBangsal.setValueAt(ksoralan,pilih,20);
+                        tbBangsal.setValueAt(menejemenralan,pilih,21);
+                        tbBangsal.setValueAt(biaya_rawatralan,pilih,22);
+                        tbBangsal.setValueAt(materialranap,pilih,23);
+                        tbBangsal.setValueAt(bhpranap,pilih,24);
+                        tbBangsal.setValueAt(tarif_tindakandrranap,pilih,25);
+                        tbBangsal.setValueAt(tarif_tindakanprranap,pilih,26);
+                        tbBangsal.setValueAt(ksoranap,pilih,27);
+                        tbBangsal.setValueAt(menejemenranap,pilih,28);
+                        tbBangsal.setValueAt(biaya_rawatranap,pilih,29);
+                        tbBangsal.setValueAt(bagian_rslabralan,pilih,30);
+                        tbBangsal.setValueAt(bhplabralan,pilih,31);
+                        tbBangsal.setValueAt(tarif_perujuklabralan,pilih,32);
+                        tbBangsal.setValueAt(tarif_tindakan_dokterlabralan,pilih,33);
+                        tbBangsal.setValueAt(tarif_tindakan_petugaslabralan,pilih,34);
+                        tbBangsal.setValueAt(ksolabralan,pilih,35);
+                        tbBangsal.setValueAt(menejemenlabralan,pilih,36);
+                        tbBangsal.setValueAt(biayalabralan,pilih,37);
+                        tbBangsal.setValueAt(bagian_rslabranap,pilih,38);
+                        tbBangsal.setValueAt(bhplabranap,pilih,39);
+                        tbBangsal.setValueAt(tarif_perujuklabranap,pilih,40);
+                        tbBangsal.setValueAt(tarif_tindakan_dokterlabranap,pilih,41);
+                        tbBangsal.setValueAt(tarif_tindakan_petugaslabranap,pilih,42);
+                        tbBangsal.setValueAt(ksolabranap,pilih,43);
+                        tbBangsal.setValueAt(menejemenlabranap,pilih,44);
+                        tbBangsal.setValueAt(biayalabranap,pilih,45);
+                        tbBangsal.setValueAt(bagian_rsradiologiralan,pilih,46);
+                        tbBangsal.setValueAt(bhpradiologiralan,pilih,47);
+                        tbBangsal.setValueAt(tarif_perujukradiologiralan,pilih,48);
+                        tbBangsal.setValueAt(tarif_tindakan_dokterradiologiralan,pilih,49);
+                        tbBangsal.setValueAt(tarif_tindakan_petugasradiologiralan,pilih,50);
+                        tbBangsal.setValueAt(ksoradiologiralan,pilih,51);
+                        tbBangsal.setValueAt(menejemenradiologiralan,pilih,52);
+                        tbBangsal.setValueAt(biayaradiologiralan,pilih,53);
+                        tbBangsal.setValueAt(bagian_rsradiologiranap,pilih,54);
+                        tbBangsal.setValueAt(bhpradiologiranap,pilih,55);
+                        tbBangsal.setValueAt(tarif_perujukradiologiranap,pilih,56);
+                        tbBangsal.setValueAt(tarif_tindakan_dokterradiologiranap,pilih,57);
+                        tbBangsal.setValueAt(tarif_tindakan_petugasradiologiranap,pilih,58);
+                        tbBangsal.setValueAt(ksoradiologiranap,pilih,59);
+                        tbBangsal.setValueAt(menejemenradiologiranap,pilih,60);
+                        tbBangsal.setValueAt(biayaradiologiranap,pilih,61);
+                        tbBangsal.setValueAt(jmdokteroperasiralan,pilih,62);
+                        tbBangsal.setValueAt(jmparamedisoperasiralan,pilih,63);
+                        tbBangsal.setValueAt(bhpoperasiralan,pilih,64);
+                        tbBangsal.setValueAt(pendapatanoperasiralan,pilih,65);
+                        tbBangsal.setValueAt(jmdokteroperasiranap,pilih,66);
+                        tbBangsal.setValueAt(jmparamedisoperasiranap,pilih,67);
+                        tbBangsal.setValueAt(bhpoperasiranap,pilih,68);
+                        tbBangsal.setValueAt(pendapatanoperasiranap,pilih,69);
+                        tbBangsal.setValueAt(obatlangsung,pilih,70);
+                        tbBangsal.setValueAt(obatralan,pilih,71);
+                        tbBangsal.setValueAt(hppobatralan,pilih,72);
+                        tbBangsal.setValueAt(obatranap,pilih,73);
+                        tbBangsal.setValueAt(hppobatranap,pilih,74);
+                        tbBangsal.setValueAt(returobat,pilih,75);
+                        tbBangsal.setValueAt(tambahanbiaya,pilih,76);
+                        tbBangsal.setValueAt(potonganbiaya,pilih,77);
+                        tbBangsal.setValueAt(kamar,pilih,78);
+                        tbBangsal.setValueAt(reseppulang,pilih,79);
+                        tbBangsal.setValueAt(harianranap,pilih,80);
+                        tbBangsal.setValueAt(registrasi,pilih,81);
+                        tbBangsal.setValueAt(serviceranap,pilih,82);
                         
                         selisih=0;
-                        selisih=(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),10).toString())+Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString())+Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),7).toString()))-Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),5).toString());
+                        selisih=(Valid.SetAngka(tbBangsal.getValueAt(pilih,10).toString())+Valid.SetAngka(tbBangsal.getValueAt(pilih,6).toString())+Valid.SetAngka(tbBangsal.getValueAt(pilih,7).toString()))-Valid.SetAngka(tbBangsal.getValueAt(pilih,5).toString());
                         if(selisih>=0){
-                            tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),12);
-                            tbBangsal.setValueAt(selisih,tbBangsal.getSelectedRow(),13);
+                            tbBangsal.setValueAt(0,pilih,12);
+                            tbBangsal.setValueAt(selisih,pilih,13);
                         }else{
-                            selisih=( (bhpralan+bhpranap+bhplabralan+bhplabranap+bhpradiologiralan+bhpradiologiranap+bhpoperasiralan+bhpoperasiranap+reseppulang) * ((100-Valid.SetAngka(tabMode.getValueAt(tbBangsal.getSelectedRow(),11).toString()))/100) );
-                            rugihppralan=(hppobatralan-(obatralan*(Valid.SetAngka(tabMode.getValueAt(tbBangsal.getSelectedRow(),11).toString())/100)));
+                            selisih=( (bhpralan+bhpranap+bhplabralan+bhplabranap+bhpradiologiralan+bhpradiologiranap+bhpoperasiralan+bhpoperasiranap+reseppulang) * ((100-Valid.SetAngka(tabMode.getValueAt(pilih,11).toString()))/100) );
+                            rugihppralan=(hppobatralan-(obatralan*(Valid.SetAngka(tabMode.getValueAt(pilih,11).toString())/100)));
                             if(rugihppralan>0){
                                 selisih=selisih+rugihppralan;
                             }
-                            rugihppranap=((hppobatranap-returobat)-((obatlangsung+obatranap-returobat)*(Valid.SetAngka(tabMode.getValueAt(tbBangsal.getSelectedRow(),11).toString())/100)));
+                            rugihppranap=((hppobatranap-returobat)-((obatlangsung+obatranap-returobat)*(Valid.SetAngka(tabMode.getValueAt(pilih,11).toString())/100)));
                             if(rugihppranap>0){
                                 selisih=selisih+rugihppranap;
                             }
-                            tbBangsal.setValueAt(selisih,tbBangsal.getSelectedRow(),12);
-                            tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),13);
+                            tbBangsal.setValueAt(selisih,pilih,12);
+                            tbBangsal.setValueAt(0,pilih,13);
                         } 
                     }else{
                         JOptionPane.showMessageDialog(null,"Ditemukan perbedaan Total Biaya pada closing billing,\nsilahkan cek data billing dengan Hapus Nota Salah... !!! ");
-                        tbBangsal.setValueAt(false,tbBangsal.getSelectedRow(),0);
-                        tbBangsal.setValueAt(null,tbBangsal.getSelectedRow(),10);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),11);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),16);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),17);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),18);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),19);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),20);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),21);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),22);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),23);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),24);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),25);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),26);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),27);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),28);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),29);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),30);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),31);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),32);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),33);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),34);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),35);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),36);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),37);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),38);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),39);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),40);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),41);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),42);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),43);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),44);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),45);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),46);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),47);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),48);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),49);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),50);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),51);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),52);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),53);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),54);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),55);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),56);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),57);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),58);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),59);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),60);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),61);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),62);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),63);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),64);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),65);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),66);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),67);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),68);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),69);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),70);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),71);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),72);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),73);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),74);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),75);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),76);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),77);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),78);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),79);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),80);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),81);
-                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),82);
+                        tbBangsal.setValueAt(false,pilih,0);
+                        tbBangsal.setValueAt(null,pilih,10);
+                        tbBangsal.setValueAt(0,pilih,11);
+                        tbBangsal.setValueAt(0,pilih,16);
+                        tbBangsal.setValueAt(0,pilih,17);
+                        tbBangsal.setValueAt(0,pilih,18);
+                        tbBangsal.setValueAt(0,pilih,19);
+                        tbBangsal.setValueAt(0,pilih,20);
+                        tbBangsal.setValueAt(0,pilih,21);
+                        tbBangsal.setValueAt(0,pilih,22);
+                        tbBangsal.setValueAt(0,pilih,23);
+                        tbBangsal.setValueAt(0,pilih,24);
+                        tbBangsal.setValueAt(0,pilih,25);
+                        tbBangsal.setValueAt(0,pilih,26);
+                        tbBangsal.setValueAt(0,pilih,27);
+                        tbBangsal.setValueAt(0,pilih,28);
+                        tbBangsal.setValueAt(0,pilih,29);
+                        tbBangsal.setValueAt(0,pilih,30);
+                        tbBangsal.setValueAt(0,pilih,31);
+                        tbBangsal.setValueAt(0,pilih,32);
+                        tbBangsal.setValueAt(0,pilih,33);
+                        tbBangsal.setValueAt(0,pilih,34);
+                        tbBangsal.setValueAt(0,pilih,35);
+                        tbBangsal.setValueAt(0,pilih,36);
+                        tbBangsal.setValueAt(0,pilih,37);
+                        tbBangsal.setValueAt(0,pilih,38);
+                        tbBangsal.setValueAt(0,pilih,39);
+                        tbBangsal.setValueAt(0,pilih,40);
+                        tbBangsal.setValueAt(0,pilih,41);
+                        tbBangsal.setValueAt(0,pilih,42);
+                        tbBangsal.setValueAt(0,pilih,43);
+                        tbBangsal.setValueAt(0,pilih,44);
+                        tbBangsal.setValueAt(0,pilih,45);
+                        tbBangsal.setValueAt(0,pilih,46);
+                        tbBangsal.setValueAt(0,pilih,47);
+                        tbBangsal.setValueAt(0,pilih,48);
+                        tbBangsal.setValueAt(0,pilih,49);
+                        tbBangsal.setValueAt(0,pilih,50);
+                        tbBangsal.setValueAt(0,pilih,51);
+                        tbBangsal.setValueAt(0,pilih,52);
+                        tbBangsal.setValueAt(0,pilih,53);
+                        tbBangsal.setValueAt(0,pilih,54);
+                        tbBangsal.setValueAt(0,pilih,55);
+                        tbBangsal.setValueAt(0,pilih,56);
+                        tbBangsal.setValueAt(0,pilih,57);
+                        tbBangsal.setValueAt(0,pilih,58);
+                        tbBangsal.setValueAt(0,pilih,59);
+                        tbBangsal.setValueAt(0,pilih,60);
+                        tbBangsal.setValueAt(0,pilih,61);
+                        tbBangsal.setValueAt(0,pilih,62);
+                        tbBangsal.setValueAt(0,pilih,63);
+                        tbBangsal.setValueAt(0,pilih,64);
+                        tbBangsal.setValueAt(0,pilih,65);
+                        tbBangsal.setValueAt(0,pilih,66);
+                        tbBangsal.setValueAt(0,pilih,67);
+                        tbBangsal.setValueAt(0,pilih,68);
+                        tbBangsal.setValueAt(0,pilih,69);
+                        tbBangsal.setValueAt(0,pilih,70);
+                        tbBangsal.setValueAt(0,pilih,71);
+                        tbBangsal.setValueAt(0,pilih,72);
+                        tbBangsal.setValueAt(0,pilih,73);
+                        tbBangsal.setValueAt(0,pilih,74);
+                        tbBangsal.setValueAt(0,pilih,75);
+                        tbBangsal.setValueAt(0,pilih,76);
+                        tbBangsal.setValueAt(0,pilih,77);
+                        tbBangsal.setValueAt(0,pilih,78);
+                        tbBangsal.setValueAt(0,pilih,79);
+                        tbBangsal.setValueAt(0,pilih,80);
+                        tbBangsal.setValueAt(0,pilih,81);
+                        tbBangsal.setValueAt(0,pilih,82);
                     }  
-                }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
-                    tbBangsal.setValueAt(null,tbBangsal.getSelectedRow(),10);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),11);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),12);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),13);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),16);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),17);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),18);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),19);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),20);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),21);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),22);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),23);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),24);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),25);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),26);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),27);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),28);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),29);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),30);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),31);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),32);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),33);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),34);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),35);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),36);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),37);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),38);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),39);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),40);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),41);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),42);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),43);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),44);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),45);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),46);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),47);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),48);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),49);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),50);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),51);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),52);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),53);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),54);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),55);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),56);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),57);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),58);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),59);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),60);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),61);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),62);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),63);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),64);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),65);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),66);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),67);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),68);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),69);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),70);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),71);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),72);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),73);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),74);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),75);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),76);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),77);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),78);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),79);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),80);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),81);
-                    tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),82);
+                }else if(tbBangsal.getValueAt(pilih,0).toString().equals("false")){
+                    tbBangsal.setValueAt(null,pilih,10);
+                    tbBangsal.setValueAt(0,pilih,11);
+                    tbBangsal.setValueAt(0,pilih,12);
+                    tbBangsal.setValueAt(0,pilih,13);
+                    tbBangsal.setValueAt(0,pilih,16);
+                    tbBangsal.setValueAt(0,pilih,17);
+                    tbBangsal.setValueAt(0,pilih,18);
+                    tbBangsal.setValueAt(0,pilih,19);
+                    tbBangsal.setValueAt(0,pilih,20);
+                    tbBangsal.setValueAt(0,pilih,21);
+                    tbBangsal.setValueAt(0,pilih,22);
+                    tbBangsal.setValueAt(0,pilih,23);
+                    tbBangsal.setValueAt(0,pilih,24);
+                    tbBangsal.setValueAt(0,pilih,25);
+                    tbBangsal.setValueAt(0,pilih,26);
+                    tbBangsal.setValueAt(0,pilih,27);
+                    tbBangsal.setValueAt(0,pilih,28);
+                    tbBangsal.setValueAt(0,pilih,29);
+                    tbBangsal.setValueAt(0,pilih,30);
+                    tbBangsal.setValueAt(0,pilih,31);
+                    tbBangsal.setValueAt(0,pilih,32);
+                    tbBangsal.setValueAt(0,pilih,33);
+                    tbBangsal.setValueAt(0,pilih,34);
+                    tbBangsal.setValueAt(0,pilih,35);
+                    tbBangsal.setValueAt(0,pilih,36);
+                    tbBangsal.setValueAt(0,pilih,37);
+                    tbBangsal.setValueAt(0,pilih,38);
+                    tbBangsal.setValueAt(0,pilih,39);
+                    tbBangsal.setValueAt(0,pilih,40);
+                    tbBangsal.setValueAt(0,pilih,41);
+                    tbBangsal.setValueAt(0,pilih,42);
+                    tbBangsal.setValueAt(0,pilih,43);
+                    tbBangsal.setValueAt(0,pilih,44);
+                    tbBangsal.setValueAt(0,pilih,45);
+                    tbBangsal.setValueAt(0,pilih,46);
+                    tbBangsal.setValueAt(0,pilih,47);
+                    tbBangsal.setValueAt(0,pilih,48);
+                    tbBangsal.setValueAt(0,pilih,49);
+                    tbBangsal.setValueAt(0,pilih,50);
+                    tbBangsal.setValueAt(0,pilih,51);
+                    tbBangsal.setValueAt(0,pilih,52);
+                    tbBangsal.setValueAt(0,pilih,53);
+                    tbBangsal.setValueAt(0,pilih,54);
+                    tbBangsal.setValueAt(0,pilih,55);
+                    tbBangsal.setValueAt(0,pilih,56);
+                    tbBangsal.setValueAt(0,pilih,57);
+                    tbBangsal.setValueAt(0,pilih,58);
+                    tbBangsal.setValueAt(0,pilih,59);
+                    tbBangsal.setValueAt(0,pilih,60);
+                    tbBangsal.setValueAt(0,pilih,61);
+                    tbBangsal.setValueAt(0,pilih,62);
+                    tbBangsal.setValueAt(0,pilih,63);
+                    tbBangsal.setValueAt(0,pilih,64);
+                    tbBangsal.setValueAt(0,pilih,65);
+                    tbBangsal.setValueAt(0,pilih,66);
+                    tbBangsal.setValueAt(0,pilih,67);
+                    tbBangsal.setValueAt(0,pilih,68);
+                    tbBangsal.setValueAt(0,pilih,69);
+                    tbBangsal.setValueAt(0,pilih,70);
+                    tbBangsal.setValueAt(0,pilih,71);
+                    tbBangsal.setValueAt(0,pilih,72);
+                    tbBangsal.setValueAt(0,pilih,73);
+                    tbBangsal.setValueAt(0,pilih,74);
+                    tbBangsal.setValueAt(0,pilih,75);
+                    tbBangsal.setValueAt(0,pilih,76);
+                    tbBangsal.setValueAt(0,pilih,77);
+                    tbBangsal.setValueAt(0,pilih,78);
+                    tbBangsal.setValueAt(0,pilih,79);
+                    tbBangsal.setValueAt(0,pilih,80);
+                    tbBangsal.setValueAt(0,pilih,81);
+                    tbBangsal.setValueAt(0,pilih,82);
                 }
             }  
         } catch (Exception e) {
