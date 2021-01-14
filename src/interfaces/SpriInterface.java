@@ -8,7 +8,6 @@ package interfaces;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,7 +37,7 @@ public interface SpriInterface<T> {
      * @param domain
      * @throws SQLException
      */
-    void delete(DefaultTableModel a, JTextField text ,String domain)throws SQLException;
+    void delete(String tgl_awal, JTextField text ,String tgl_ahir)throws SQLException;
 
     /**
      *

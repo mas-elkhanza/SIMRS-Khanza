@@ -1180,7 +1180,7 @@ public final class sekuel {
             try {
                 ps.executeQuery();
             } catch (Exception e) {
-
+                System.out.println("error :" + e.toString());
                 JOptionPane.showMessageDialog(null, "Maaf, Query tidak bisa dijalankan...!!!!");
             } finally {
                 if (ps != null) {
@@ -1189,7 +1189,7 @@ public final class sekuel {
             }
             SimpanTrack(qry);
         } catch (Exception e) {
-
+                System.out.println("error :" + e.toString());
         }
     }
 
@@ -1850,7 +1850,7 @@ public final class sekuel {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Cari isi error = "+e);
+            System.out.println("Cari isi error = " + e);
         }
 
         return dicari;

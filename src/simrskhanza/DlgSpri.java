@@ -1264,9 +1264,13 @@ public class DlgSpri extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if (TNoRM.getText().trim().equals("")) {
-            spriDao.delete(tabMode, txtId, "temp_spri.id");
+        if (!TNoRM.getText().trim().equals("No. RM")) {
+            int a = JOptionPane.showConfirmDialog(rootPane, "Yakin ingin menghapus data?","Hapus",JOptionPane.OK_CANCEL_OPTION);
+            if (a == 0) {
+                spriDao.delete(Valid.SetDateToString(DTPCari1.getDate()), txtId, Valid.SetDateToString(DTPCari2.getDate()));
+            }
         } else {
+            JOptionPane.showMessageDialog(rootPane, "Pilih data yang akan dihapus.");
         }
         emptTeks();
         TCari.setText("");
@@ -1755,9 +1759,9 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         } else {
             if (!TNoRM.getText().equals("No. RM")) {
                 spris = spriDao.search(TNoRM.getText());
-            } else if (!txtKdDokter.getText().equals("Kode Dokter")||!txtKdDokter.getText().equals("")) {
+            } else if (!txtKdDokter.getText().equals("Kode Dokter") || !txtKdDokter.getText().equals("")) {
                 spris = spriDao.search(txtKdDokter.getText());
-            } else if (!txtKdPenyakit.getText().equals("Kode Penyakit")||txtKdPenyakit.getText().equals("")) {
+            } else if (!txtKdPenyakit.getText().equals("Kode Penyakit") || txtKdPenyakit.getText().equals("")) {
                 spris = spriDao.search(txtKdPenyakit.getText());
             } else if (!TCari.getText().trim().equals("")) {
                 spris = spriDao.search(TCari.getText());

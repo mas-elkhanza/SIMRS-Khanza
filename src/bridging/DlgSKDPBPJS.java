@@ -1,11 +1,11 @@
 package bridging;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -1117,6 +1117,7 @@ public class DlgSKDPBPJS extends javax.swing.JDialog {
             Valid.textKosong(Diagnosa, "Diagnosa");
         } else {
             if (akses.getkode().equals("Admin Utama")) {
+                System.out.println("Kouta Dokter>>>"+kuota);
                 isBooking();
             } else {
                 if (aktifjadwal.equals("aktif")) {

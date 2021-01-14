@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 import model.Dokter;
 import model.Pasien;
 import model.Spri;
@@ -66,8 +65,9 @@ public class SpriDao implements SpriInterface<Spri> {
      * @param domain
      */
     @Override
-    public void delete(DefaultTableModel a, JTextField text, String domain) {
-        Valid.hapusTable(a, text, "temp_spri", domain);
+    public void delete(String tgl_awal, JTextField text, String tgl_ahir) {
+        System.out.println("DELETE FROM temp_spri WHERE id = "+text.getText()+" AND tanggal between '"+tgl_awal+"' AND '"+tgl_ahir+"'");
+        Sequel.queryu("DELETE FROM temp_spri WHERE id = "+text.getText()+" AND tanggal between '"+tgl_awal+"' AND '"+tgl_ahir+"'");
     }
 
     /**
