@@ -1938,12 +1938,10 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                                tambahanbiaya-potonganbiaya+kamar+reseppulang+harianranap+serviceranap);
                                     
                                     if(rs.getDouble("totalpiutang")==totalbiaya){
-                                        selisih=0;
                                         rugi=0;
                                         lebih=0;
                                         selisih=(list.path("dibayar").asDouble()+rs.getDouble("uangmuka")+cicilan)-rs.getDouble("totalpiutang");
                                         if(selisih>=0){
-                                            rugi=0;
                                             lebih=selisih;
                                         }else{
                                             selisih=( (bhpralan+bhpranap+bhplabralan+bhplabranap+bhpradiologiralan+bhpradiologiranap+bhpoperasiralan+bhpoperasiranap+reseppulang) * ((100-persenbayar)/100) );
@@ -1956,12 +1954,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                                 selisih=selisih+rugihppranap;
                                             }
                                             rugi=selisih;
-                                            lebih=0;
                                         } 
                                         tabMode.addRow(new Object[]{
                                             true,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),rs.getDouble("totalpiutang"),
                                             rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),rs.getDouble("tarif"),list.path("dibayar").asDouble(),persenbayar,
-                                            rugi,selisih,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),materialralan,bhpralan,tarif_tindakandrralan,tarif_tindakanprralan,
+                                            rugi,lebih,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),materialralan,bhpralan,tarif_tindakandrralan,tarif_tindakanprralan,
                                             ksoralan,menejemenralan,biaya_rawatralan,materialranap,bhpranap,tarif_tindakandrranap,tarif_tindakanprranap,ksoranap,menejemenranap,
                                             biaya_rawatranap,bagian_rslabralan,bhplabralan,tarif_perujuklabralan,tarif_tindakan_dokterlabralan,tarif_tindakan_petugaslabralan,ksolabralan,
                                             menejemenlabralan,biayalabralan,bagian_rslabranap,bhplabranap,tarif_perujuklabranap,tarif_tindakan_dokterlabranap,tarif_tindakan_petugaslabranap,
@@ -1977,7 +1974,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                         selisih=0;
                                         rugi=0;
                                         lebih=0;
-                                        selisih=0;
                                         tabMode.addRow(new Object[]{
                                             false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),rs.getDouble("totalpiutang"),
                                             rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),rs.getDouble("tarif"),list.path("dibayar").asDouble(),persenbayar,
@@ -2045,12 +2041,10 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                                tambahanbiaya-potonganbiaya+kamar+reseppulang+harianranap+serviceranap);
                                     
                                     if(rs.getDouble("totalpiutang")==totalbiaya){
-                                        selisih=0;
                                         rugi=0;
                                         lebih=0;
                                         selisih=(list.path("dibayar").asDouble()+rs.getDouble("uangmuka")+cicilan)-rs.getDouble("totalpiutang");
                                         if(selisih>=0){
-                                            rugi=0;
                                             lebih=selisih;
                                         }else{
                                             selisih=( (bhpralan+bhpranap+bhplabralan+bhplabranap+bhpradiologiralan+bhpradiologiranap+bhpoperasiralan+bhpoperasiranap+reseppulang) * ((100-persenbayar)/100) );
@@ -2063,12 +2057,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                                 selisih=selisih+rugihppranap;
                                             }
                                             rugi=selisih;
-                                            lebih=0;
                                         } 
                                         tabMode.addRow(new Object[]{
                                             true,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),rs.getDouble("totalpiutang"),
                                             rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),rs.getDouble("tarif"),list.path("dibayar").asDouble(),persenbayar,
-                                            rugi,selisih,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),materialralan,bhpralan,tarif_tindakandrralan,tarif_tindakanprralan,
+                                            rugi,lebih,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),materialralan,bhpralan,tarif_tindakandrralan,tarif_tindakanprralan,
                                             ksoralan,menejemenralan,biaya_rawatralan,materialranap,bhpranap,tarif_tindakandrranap,tarif_tindakanprranap,ksoranap,menejemenranap,
                                             biaya_rawatranap,bagian_rslabralan,bhplabralan,tarif_perujuklabralan,tarif_tindakan_dokterlabralan,tarif_tindakan_petugaslabralan,ksolabralan,
                                             menejemenlabralan,biayalabralan,bagian_rslabranap,bhplabranap,tarif_perujuklabranap,tarif_tindakan_dokterlabranap,tarif_tindakan_petugaslabranap,
@@ -2084,7 +2077,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                         selisih=0;
                                         rugi=0;
                                         lebih=0;
-                                        selisih=0;
                                         tabMode.addRow(new Object[]{
                                             false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),rs.getDouble("totalpiutang"),
                                             rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),rs.getDouble("tarif"),list.path("dibayar").asDouble(),persenbayar,
