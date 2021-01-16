@@ -34,7 +34,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
     private boolean[] pilihan;
     private String[] kodebarang,namabarang,satuan,jenis,jumlah,kodesat;
     private double harga=0,jml=0;
-    private DlgSuratPemesanan form=new DlgSuratPemesanan(null,false);    
+    private InventorySuratPemesanan form=new InventorySuratPemesanan(null,false);    
     
     /** Creates new form DlgProgramStudi
      * @param parent

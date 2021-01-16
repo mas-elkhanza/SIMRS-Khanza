@@ -29,7 +29,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Kode</td><td width="">:</td>
-                    <td width="67%"><input name="kode_pencapaian" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_pencapaian;?>" size="10" maxlength="3">
+                    <td width="67%"><input name="kode_pencapaian" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $kode_pencapaian;?>" size="10" maxlength="3" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -52,8 +52,8 @@
                 if (isset($BtnSimpan)) {
                     $kode_pencapaian    = validTeks(trim($_POST['kode_pencapaian']));
                     $nama_pencapaian    = validTeks(trim($_POST['nama_pencapaian']));
-                    $indek              = validTeks(trim($_POST['indek']));
-                    if ((!empty($kode_pencapaian))&&(!empty($nama_pencapaian))&&(!empty($indek))) {
+                    $indek              = validangka(trim($_POST['indek']));
+                    if ((isset($kode_pencapaian))&&(isset($nama_pencapaian))&&(isset($indek))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" pencapaian_kinerja "," '$kode_pencapaian','$nama_pencapaian','$indek' ", " pencapaian index " );
@@ -64,7 +64,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListPencapaianKinerja'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($kode_pencapaian))||(empty($nama_pencapaian))||(empty($indek))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

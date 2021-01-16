@@ -377,7 +377,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    "if(billing.tambahan<>0,billing.tambahan,null) as tiga, "+
                    "if(billing.totalbiaya<>0,billing.totalbiaya,null) as empat,billing.pemisah "+
                    "from billing where billing.no_rawat not in(select piutang_pasien.no_rawat from piutang_pasien group by piutang_pasien.no_rawat) "+
-                   "and billing.tgl_byr between ? and ?  order by billing.noindex"); 
+                   "and billing.tgl_byr between ? and ?  order by billing.no_rawat,billing.noindex"); 
             try {
                 pstampil.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 pstampil.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));

@@ -627,9 +627,6 @@
               <Font name="Dialog" size="11" style="0"/>
             </Property>
             <Property name="name" type="java.lang.String" value="internalFrame2" noResource="true"/>
-            <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="eb" green="f5" red="f0" type="rgb"/>
-            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -1586,7 +1583,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="19-10-2020 10:40:20"/>
+                    <StringItem index="0" value="25-12-2020 11:37:39"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>

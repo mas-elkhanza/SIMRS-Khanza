@@ -892,7 +892,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="13-10-2020 23:07:06"/>
+                                <StringItem index="0" value="29-10-2020 07:43:24"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1481,7 +1481,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel55">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Cara kelahiran :"/>
+                            <Property name="text" type="java.lang.String" value="Cara Kelahiran :"/>
                             <Property name="name" type="java.lang.String" value="jLabel55" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -3832,7 +3832,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="13-10-2020"/>
+                            <StringItem index="0" value="29-10-2020"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3860,7 +3860,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="13-10-2020"/>
+                            <StringItem index="0" value="29-10-2020"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -4084,10 +4084,37 @@
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="0"/>
                         <Property name="horizontalGap" type="int" value="1"/>
-                        <Property name="rows" type="int" value="2"/>
+                        <Property name="rows" type="int" value="3"/>
                         <Property name="verticalGap" type="int" value="1"/>
                       </Layout>
                       <SubComponents>
+                        <Container class="widget.ScrollPane" name="scrollPane9">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                <TitledBorder justification="1" position="2" title="Riwayat Imunisasi :">
+                                  <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder>
+                                      <Color PropertyName="color" blue="fe" green="ff" red="ff" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                  <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
+                                  <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
+                                </TitledBorder>
+                              </Border>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="scrollPane9" noResource="true"/>
+                          </Properties>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="widget.Table" name="tbImunisasi2">
+                              <Properties>
+                                <Property name="name" type="java.lang.String" value="tbImunisasi2" noResource="true"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
                         <Container class="widget.ScrollPane" name="Scroll7">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

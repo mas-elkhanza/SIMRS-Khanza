@@ -1,11 +1,9 @@
-
-
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bulan          = $baris[1];
+   $_sql    = "SELECT * FROM set_tahun";
+   $hasil   = bukaquery($_sql);
+   $baris   = mysqli_fetch_row($hasil);
+   $tahun   = empty($baris[0])?date("Y"):$baris[0];
+   $bulan   = empty($baris[1])?date("m"):$baris[1];
 ?>
 
 <div id="post">
@@ -16,15 +14,14 @@
     <div class="entry">
         <form name="frm_pelatihan" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
-                echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $pendapatan_akte     =str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL;
+                $action              = isset($_GET['action'])?$_GET['action']:NULL;
+                $pendapatan_akte     = str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL;
                 if($action == "TAMBAH"){
                     $pendapatan_akte = str_replace("_"," ",isset($_GET['pendapatan_akte']))?str_replace("_"," ",$_GET['pendapatan_akte']):NULL;
                     $persen_rs       = "";
-                    $bagian_rs       ="";
+                    $bagian_rs       = "";
                     $persen_kry      = "";
-                    $bagian_kry      ="";
+                    $bagian_kry      = "";
                 }else if($action == "UBAH"){
                     $_sql               = "SELECT pendapatan_akte,persen_rs,
                                             bagian_rs,persen_kry,bagian_kry
@@ -42,7 +39,7 @@
             <table width="100%" align="center">
                 <tr class="head">
                     <td width="31%" >Pendapatan Akte</td><td width="">:</td>
-                    <td width="67%">Rp.<input name="pendapatan_akte" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $pendapatan_akte;?>" size="30" maxlength="15">
+                    <td width="67%">Rp.<input name="pendapatan_akte" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $pendapatan_akte;?>" size="30" maxlength="15" autofocus>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
@@ -62,21 +59,14 @@
             <div align="center"><input name=BtnSimpan type=submit class="button" value="SIMPAN">&nbsp<input name=BtnKosong type=reset class="button" value="KOSONG"></div>
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
-			
-                $_sql         = "SELECT * FROM set_tahun";
-                $hasil        = bukaquery($_sql);
-                $baris        = mysqli_fetch_row($hasil);
-                $tahun        = $baris[0];
-                $bulan        = $baris[1];
-
                 if (isset($BtnSimpan)) {
                     $pendapatan_akte    = trim($_POST['pendapatan_akte']);
-                    $pendapatan_akte    = validTeks($pendapatan_akte);
+                    $pendapatan_akte    = validangka($pendapatan_akte);
                     $persen_rs          = trim($_POST['persen_rs']);
-                    $persen_rs          = validTeks($persen_rs);
+                    $persen_rs          = validangka($persen_rs);
                     $persen_kry         = trim($_POST['persen_kry']);
-                    $persen_kry         = validTeks($persen_kry);
-                    if ((!empty($pendapatan_akte))&&(!empty($persen_rs))&&(!empty($persen_kry))) {
+                    $persen_kry         = validangka($persen_kry);
+                    if ((isset($pendapatan_akte))&&(isset($persen_rs))&&(isset($persen_kry))) {
                         @$bagian_rs          = ($persen_rs/100)*$pendapatan_akte;
                         @$bagian_kry         = ($persen_kry/100)*$pendapatan_akte;
                         switch($action) {
@@ -90,7 +80,7 @@
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListAkte'></head><body></body></html>";
                                 break;
                         }
-                    }else if ((empty($pendapatan_akte))||(empty($persen_rs))||(empty($persen_kry))){
+                    }else{
                         echo 'Semua field harus isi..!!';
                     }
                 }

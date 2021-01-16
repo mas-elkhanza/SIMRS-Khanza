@@ -3783,8 +3783,6 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
         }else if(TotalHasil.getText().trim().equals("")){
             Valid.textKosong(TotalHasil,"Total Hasil");
-        }else if(Lokasi.getText().trim().equals("")){
-            Valid.textKosong(Lokasi,"Lokasi");
         }else if(Masalah.getText().trim().equals("")){
             Valid.textKosong(Masalah,"Masalah Kebidanan");
         }else if(Tindakan.getText().trim().equals("")){
@@ -3882,8 +3880,6 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             Valid.textKosong(KeluhanUtama,"Keluhan Utama");
         }else if(TotalHasil.getText().trim().equals("")){
             Valid.textKosong(TotalHasil,"Total Hasil");
-        }else if(Lokasi.getText().trim().equals("")){
-            Valid.textKosong(Lokasi,"Lokasi");
         }else if(Masalah.getText().trim().equals("")){
             Valid.textKosong(Masalah,"Masalah Kebidanan");
         }else if(Tindakan.getText().trim().equals("")){

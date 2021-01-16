@@ -11,14 +11,13 @@
                 $_sql2  	= "SELECT id, banyak_angsur, pinjaman, pokok,jasa, tanggal, status  FROM peminjaman_koperasi where id='$id' and tanggal='$tanggal'";
                 $hasil2 	=bukaquery($_sql2);
                 $baris2 	= mysqli_fetch_row($hasil2);
-                $id         = $baris2[0];
-                $banyak_angsur = $baris2[1];
-                $pinjaman   = $baris2[2];
-                $pokok      = $baris2[3];
-                $jasa       = $baris2[4];
-                $setoran    = $baris2[4]+$baris2[3];
-                $tanggal 	= $baris2[5];
-                $status     = $baris2[6];                
+                @$id         = $baris2[0];
+                @$banyak_angsur = $baris2[1];
+                @$pinjaman   = $baris2[2];
+                @$pokok      = $baris2[3];
+                @$jasa       = $baris2[4];
+                @$setoran    = $baris2[4]+$baris2[3];
+                @$status     = $baris2[6];                
                 
 		        $_sql  = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil = bukaquery($_sql);
@@ -28,9 +27,9 @@
                         from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal'  group by id";
                 $hasilj=bukaquery($_sqlj);
                 $barisj = mysqli_fetch_array($hasilj);
-                $jml_sdh_angsur =$barisj[0];
-                $sdh_setor      =$barisj[1];
-                $sisa_pinjam    =$pinjaman-($jml_sdh_angsur*$pokok);
+                @$jml_sdh_angsur =$barisj[0];
+                @$sdh_setor      =$barisj[1];
+                @$sisa_pinjam    =$pinjaman-($jml_sdh_angsur*$pokok);
 
                 echo "<input type=hidden name=id value=$id>
                       <input type=hidden name=setoran value=$setoran>
@@ -46,12 +45,12 @@
                 <tr class="head">
                     <td width="31%" >NIP</td><td width="">:</td>
                     <td width="67%">
-                     <?php echo $baris[0];?>
+                     <?php echo @$baris[0];?>
                     </td>
                 </tr>
 		<tr class="head">
                     <td width="31%">Nama</td><td width="">:</td>
-                    <td width="67%"><?php echo $baris[1];?></td>
+                    <td width="67%"><?php echo @$baris[1];?></td>
                 </tr>
                 <tr class="head">
                     <td width="31%" >Tanggal Pinjam</td><td width="">:</td>
@@ -102,10 +101,10 @@
                       <input type=hidden name=pokok value=$pokok>
                       <input type=hidden name=jasa value=$jasa>";
                 ?>
-	    <table width="100%" align="center">		
+	        <table width="100%" align="center">		
                 <tr class="head">
                     <td width="31%" >No.Angsuran Terakhir</td><td width="">:</td>
-                    <td width="67%"><input name="banyak_angsur" class="text" type=text  size="10" maxlength="4" />
+                    <td width="67%"><input name="banyak_angsur" class="text" type=text  size="10" maxlength="4" autofocus/>
                     <input name=BtnGenerate type=submit class="button" value="Generate">
                     </td>
                 </tr>
@@ -123,8 +122,8 @@
                 $_sql         = "SELECT * FROM set_tahun";
                 $hasil        = bukaquery($_sql);
                 $baris        = mysqli_fetch_row($hasil);
-                $tahun        = $baris[0];
-                $bulan        = $baris[1];
+                $tahun        = empty($baris[0])?date("Y"):$baris[0];
+                $bulan        = empty($baris[1])?date("m"):$baris[1];
                 if(strlen($bulan)==1){
                     $bulan="0".($bulan+1);
                 }
@@ -171,7 +170,18 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data Bayar Peminjaman masih kosong !";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='10%'><div align='center'>Proses</div></td>
+                                <td width='5%'><div align='center'>No.</div></td>
+                                <td width='15%'><div align='center'>Tgl.Angsur</div></td>
+                                <td width='23%'><div align='center'>Pokok</div></td>
+                                <td width='23%'><div align='center'>Jasa</div></td>
+                                <td width='24%'><div align='center'>Angsuran</div></td>
+                            </tr>
+                        </table>";
+            }
         ?>
         </div>
         <?php

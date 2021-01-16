@@ -42,7 +42,8 @@ public class PanelRiwayat extends widget.panelisi {
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rs5;
     private PreparedStatement ps,ps2;
-    private String tanggal="",jam="",dpjp="",kddpjp="",tanggal1="",tanggal2="",norm="",keputusan="",dokterrujukan="",polirujukan="";
+    private String tanggal="",jam="",dpjp="",kddpjp="",tanggal1="",tanggal2="",norm="",keputusan="",dokterrujukan="",polirujukan="",
+            ke1="",ke2="",ke3="",ke4="",ke5="",ke6="";
     private StringBuilder htmlContent;
     private boolean caritanggal=false;
     private int i=0,y=0,w=0,urut;
@@ -108,6 +109,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML20.setEditorKit(kit);
         LoadHTML21.setEditorKit(kit);
         LoadHTML22.setEditorKit(kit);
+        LoadHTML23.setEditorKit(kit);
         
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;border: white;}");
@@ -134,6 +136,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML20.setDocument(doc);
         LoadHTML21.setDocument(doc);
         LoadHTML22.setDocument(doc);
+        LoadHTML23.setDocument(doc);
         
         LoadHTML.setEditable(false);
         LoadHTML2.setEditable(false);
@@ -157,6 +160,7 @@ public class PanelRiwayat extends widget.panelisi {
         LoadHTML20.setEditable(false);
         LoadHTML21.setEditable(false);
         LoadHTML22.setEditable(false);
+        LoadHTML23.setEditable(false);
         
         LoadHTML.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -379,6 +383,16 @@ public class PanelRiwayat extends widget.panelisi {
               }
             }
         });
+        LoadHTML23.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
     }
 
     /**
@@ -460,6 +474,9 @@ public class PanelRiwayat extends widget.panelisi {
         internalFrame24 = new widget.InternalFrame();
         Scroll22 = new widget.ScrollPane();
         LoadHTML22 = new widget.editorpane();
+        internalFrame25 = new widget.InternalFrame();
+        Scroll23 = new widget.ScrollPane();
+        LoadHTML23 = new widget.editorpane();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
@@ -794,6 +811,20 @@ public class PanelRiwayat extends widget.panelisi {
 
         TabRawat.addTab("Hemodialisa", internalFrame24);
 
+        internalFrame25.setBackground(new java.awt.Color(255, 255, 255));
+        internalFrame25.setBorder(null);
+        internalFrame25.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll23.setOpaque(true);
+
+        LoadHTML23.setBorder(null);
+        Scroll23.setViewportView(LoadHTML23);
+
+        internalFrame25.add(Scroll23, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Keperawatan Anak", internalFrame25);
+
         add(TabRawat, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -818,6 +849,7 @@ public class PanelRiwayat extends widget.panelisi {
     private widget.editorpane LoadHTML20;
     private widget.editorpane LoadHTML21;
     private widget.editorpane LoadHTML22;
+    private widget.editorpane LoadHTML23;
     private widget.editorpane LoadHTML3;
     private widget.editorpane LoadHTML4;
     private widget.editorpane LoadHTML5;
@@ -841,6 +873,7 @@ public class PanelRiwayat extends widget.panelisi {
     private widget.ScrollPane Scroll20;
     private widget.ScrollPane Scroll21;
     private widget.ScrollPane Scroll22;
+    private widget.ScrollPane Scroll23;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
     private widget.ScrollPane Scroll5;
@@ -865,6 +898,7 @@ public class PanelRiwayat extends widget.panelisi {
     private widget.InternalFrame internalFrame22;
     private widget.InternalFrame internalFrame23;
     private widget.InternalFrame internalFrame24;
+    private widget.InternalFrame internalFrame25;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
@@ -1977,6 +2011,413 @@ public class PanelRiwayat extends widget.panelisi {
                                                 "</td>"+
                                              "</tr>"
                                         );    
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //menampilkan asuhan awal keperawatan anak
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_bayi.tanggal,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.informasi,penilaian_awal_keperawatan_ralan_bayi.td,penilaian_awal_keperawatan_ralan_bayi.nadi,penilaian_awal_keperawatan_ralan_bayi.rr,penilaian_awal_keperawatan_ralan_bayi.suhu,penilaian_awal_keperawatan_ralan_bayi.gcs,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.bb,penilaian_awal_keperawatan_ralan_bayi.tb,penilaian_awal_keperawatan_ralan_bayi.lp,penilaian_awal_keperawatan_ralan_bayi.lk,penilaian_awal_keperawatan_ralan_bayi.ld,penilaian_awal_keperawatan_ralan_bayi.keluhan_utama,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.rpd,penilaian_awal_keperawatan_ralan_bayi.rpk,penilaian_awal_keperawatan_ralan_bayi.rpo,penilaian_awal_keperawatan_ralan_bayi.alergi,penilaian_awal_keperawatan_ralan_bayi.anakke,penilaian_awal_keperawatan_ralan_bayi.darisaudara,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.caralahir,penilaian_awal_keperawatan_ralan_bayi.ket_caralahir,penilaian_awal_keperawatan_ralan_bayi.umurkelahiran,penilaian_awal_keperawatan_ralan_bayi.kelainanbawaan,penilaian_awal_keperawatan_ralan_bayi.ket_kelainan_bawaan,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.usiatengkurap,penilaian_awal_keperawatan_ralan_bayi.usiaduduk,penilaian_awal_keperawatan_ralan_bayi.usiaberdiri,penilaian_awal_keperawatan_ralan_bayi.usiagigipertama,penilaian_awal_keperawatan_ralan_bayi.usiaberjalan,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.usiabicara,penilaian_awal_keperawatan_ralan_bayi.usiamembaca,penilaian_awal_keperawatan_ralan_bayi.usiamenulis,penilaian_awal_keperawatan_ralan_bayi.gangguanemosi,penilaian_awal_keperawatan_ralan_bayi.alat_bantu,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.ket_bantu,penilaian_awal_keperawatan_ralan_bayi.prothesa,penilaian_awal_keperawatan_ralan_bayi.ket_pro,penilaian_awal_keperawatan_ralan_bayi.adl,penilaian_awal_keperawatan_ralan_bayi.status_psiko,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.ket_psiko,penilaian_awal_keperawatan_ralan_bayi.hub_keluarga,penilaian_awal_keperawatan_ralan_bayi.pengasuh,penilaian_awal_keperawatan_ralan_bayi.ket_pengasuh,penilaian_awal_keperawatan_ralan_bayi.ekonomi,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.budaya,penilaian_awal_keperawatan_ralan_bayi.ket_budaya,penilaian_awal_keperawatan_ralan_bayi.edukasi,penilaian_awal_keperawatan_ralan_bayi.ket_edukasi,penilaian_awal_keperawatan_ralan_bayi.berjalan_a,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.berjalan_b,penilaian_awal_keperawatan_ralan_bayi.berjalan_c,penilaian_awal_keperawatan_ralan_bayi.hasil,penilaian_awal_keperawatan_ralan_bayi.lapor,penilaian_awal_keperawatan_ralan_bayi.ket_lapor,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.sg1,penilaian_awal_keperawatan_ralan_bayi.nilai1,penilaian_awal_keperawatan_ralan_bayi.sg2,penilaian_awal_keperawatan_ralan_bayi.nilai2,penilaian_awal_keperawatan_ralan_bayi.sg3,penilaian_awal_keperawatan_ralan_bayi.nilai3,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.sg4,penilaian_awal_keperawatan_ralan_bayi.nilai4,penilaian_awal_keperawatan_ralan_bayi.total_hasil,penilaian_awal_keperawatan_ralan_bayi.wajah,penilaian_awal_keperawatan_ralan_bayi.nilaiwajah,penilaian_awal_keperawatan_ralan_bayi.kaki,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.nilaikaki,penilaian_awal_keperawatan_ralan_bayi.aktifitas,penilaian_awal_keperawatan_ralan_bayi.nilaiaktifitas,penilaian_awal_keperawatan_ralan_bayi.menangis,penilaian_awal_keperawatan_ralan_bayi.nilaimenangis,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.bersuara,penilaian_awal_keperawatan_ralan_bayi.nilaibersuara,penilaian_awal_keperawatan_ralan_bayi.hasilnyeri,penilaian_awal_keperawatan_ralan_bayi.nyeri,penilaian_awal_keperawatan_ralan_bayi.lokasi,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.durasi,penilaian_awal_keperawatan_ralan_bayi.frekuensi,penilaian_awal_keperawatan_ralan_bayi.nyeri_hilang,penilaian_awal_keperawatan_ralan_bayi.ket_nyeri,penilaian_awal_keperawatan_ralan_bayi.pada_dokter,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.ket_dokter,penilaian_awal_keperawatan_ralan_bayi.rencana,penilaian_awal_keperawatan_ralan_bayi.nip,petugas.nama "+
+                                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                        "inner join penilaian_awal_keperawatan_ralan_bayi on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_bayi.no_rawat "+
+                                        "inner join petugas on penilaian_awal_keperawatan_ralan_bayi.nip=petugas.nip "+
+                                        "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
+                                        "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where reg_periksa.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penilaian Awal<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rawat Jalan Bayi/Anak</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                                    );
+                                    rs3.beforeFirst();
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "YANG MELAKUKAN PENGKAJIAN"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='33%' border='0'>Tanggal : "+rs3.getString("tanggal")+"</td>"+
+                                                          "<td width='33%' border='0'>Petugas : "+rs3.getString("nip")+" "+rs3.getString("nama")+"</td>"+
+                                                          "<td width='33%' border='0'>Informasi didapat dari : "+rs3.getString("informasi")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "I. KEADAAN UMUM"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='20%' border='0'>TD : "+rs3.getString("td")+" mmHg</td>"+
+                                                          "<td width='20%' border='0'>Nadi : "+rs3.getString("nadi")+" x/menit</td>"+
+                                                          "<td width='20%' border='0'>RR : "+rs3.getString("rr")+" x/menit</td>"+
+                                                          "<td width='20%' border='0'>Suhu : "+rs3.getString("suhu")+" °C</td>"+
+                                                          "<td width='20%' border='0'>GCS(E,V,M) : "+rs3.getString("gcs")+" °C</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='20%' border='0'>BB : "+rs3.getString("bb")+" Kg</td>"+
+                                                          "<td width='20%' border='0'>TB : "+rs3.getString("tb")+" Cm</td>"+
+                                                          "<td width='20%' border='0'>LP : "+rs3.getString("lp")+" Cm</td>"+
+                                                          "<td width='20%' border='0'>LK : "+rs3.getString("lk")+" Cm</td>"+
+                                                          "<td width='20%' border='0'>LD : "+rs3.getString("ld")+" Cm</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "II. RIWAYAT KESEHATAN"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td colspan='2'>Keluhan Utama : "+rs3.getString("keluhan_utama")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%'>Riwayat Penyakit Dahulu : "+rs3.getString("rpd")+"</td>"+
+                                                          "<td width='50%'>Riwayat Alergi : "+rs3.getString("alergi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%'>Riwayat Penyakit Keluarga : "+rs3.getString("rpk")+"</td>"+
+                                                          "<td width='50%'>Riwayat Pengobatan : "+rs3.getString("rpd")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "III. RIWAYAT TUMBUH KEMBANG DAN PERINATAL CARE"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Riwayat Kelahiran : Anak ke "+rs3.getString("anakke")+" dari "+rs3.getString("darisaudara")+" saudara</td>"+
+                                                          "<td width='50%' border='0'>Cara kelahiran : "+rs3.getString("caralahir")+(rs3.getString("ket_caralahir").equals("")?"":", "+rs3.getString("ket_caralahir"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Umur Kelahiran : "+rs3.getString("umurkelahiran")+"</td>"+
+                                                          "<td width='50%' border='0'>Kelainan Bawaan : "+rs3.getString("kelainanbawaan")+(rs3.getString("ket_kelainan_bawaan").equals("")?"":", "+rs3.getString("ket_kelainan_bawaan"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "IV. RIWAYAT IMUNISASI"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='70%' bgcolor='#FFFAF8' align='center' valign='middle'>Imunisasi</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>1</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>2</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>3</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>4</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>5</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>6</td>"+
+                                                      "</tr>");
+                                        try {
+                                            rs4=koneksi.prepareStatement(
+                                                "select master_imunisasi.kode_imunisasi,master_imunisasi.nama_imunisasi from master_imunisasi inner join riwayat_imunisasi on riwayat_imunisasi.kode_imunisasi=master_imunisasi.kode_imunisasi "+
+                                                "where riwayat_imunisasi.no_rkm_medis='"+rs3.getString("no_rkm_medis")+"' group by master_imunisasi.kode_imunisasi order by master_imunisasi.kode_imunisasi").executeQuery();
+                                            while(rs4.next()){
+                                                ke1="";ke2="";ke3="";ke4="";ke5="";ke6="";
+                                                try {
+                                                    rs5=koneksi.prepareStatement("select * from riwayat_imunisasi where no_rkm_medis='"+rs3.getString("no_rkm_medis")+"' and kode_imunisasi='"+rs4.getString("kode_imunisasi")+"'").executeQuery();
+                                                    while(rs5.next()){
+                                                        if(rs5.getInt("no_imunisasi")==1){
+                                                            ke1="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==2){
+                                                            ke2="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==3){
+                                                            ke3="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==4){
+                                                            ke4="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==5){
+                                                            ke5="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==6){
+                                                            ke6="&#10003;";
+                                                        }
+                                                    }
+                                                } catch (Exception e) {
+                                                    System.out.println("Notif : "+e);
+                                                } finally{
+                                                    if(rs5!=null){
+                                                        rs5.close();
+                                                    }
+                                                }
+                                                htmlContent.append("<tr>"+
+                                                                      "<td align='left'>"+rs4.getString("nama_imunisasi")+"</td>"+
+                                                                      "<td align='center'>"+ke1+"</td>"+
+                                                                      "<td align='center'>"+ke2+"</td>"+
+                                                                      "<td align='center'>"+ke3+"</td>"+
+                                                                      "<td align='center'>"+ke4+"</td>"+
+                                                                      "<td align='center'>"+ke5+"</td>"+
+                                                                      "<td align='center'>"+ke6+"</td>"+
+                                                                   "</tr>");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notif : "+e);
+                                        } finally{
+                                            if(rs4!=null){
+                                                rs4.close();
+                                            }
+                                        }
+                                        
+                                        htmlContent.append(
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "V. RIWAYAT TUMBUH KEMBANG ANAK"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='33%' border='0'>a. Tengkurap, usia "+rs3.getString("usiatengkurap")+"</td>"+
+                                                          "<td width='33%' border='0'>b. Duduk, usia "+rs3.getString("usiaduduk")+"</td>"+
+                                                          "<td width='33%' border='0'>c. Berdiri, usia "+rs3.getString("usiaberdiri")+"</td>"+
+                                                          "<td width='33%' border='0'>d. Pertumbuhan gigi pertama, usia "+rs3.getString("usiagigipertama")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='33%' border='0'>e. Berjalan, usia "+rs3.getString("usiaberjalan")+"</td>"+
+                                                          "<td width='33%' border='0'>f. Bicara, usia "+rs3.getString("usiabicara")+"</td>"+
+                                                          "<td width='33%' border='0'>g. Mulai bisa membaca, usia "+rs3.getString("usiamembaca")+"</td>"+
+                                                          "<td width='33%' border='0'>h. Mulai bisa menulis, usia "+rs3.getString("usiamenulis")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='100%' border='0' colspan='4'>Gangguan perkembangan mental / emosi, bila ada, jelaskan "+rs3.getString("gangguanemosi")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "VI. FUNGSIONAL"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Alat Bantu : "+rs3.getString("alat_bantu")+(rs3.getString("ket_bantu").equals("")?"":", "+rs3.getString("ket_bantu"))+"</td>"+
+                                                          "<td width='50%' border='0'>Prothesa : "+rs3.getString("prothesa")+(rs3.getString("ket_pro").equals("")?"":", "+rs3.getString("ket_pro"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Cacat Fisik : "+rs3.getString("nama_cacat")+"</td>"+
+                                                          "<td width='50%' border='0'>Aktivitas Kehidupan Sehari-hari ( ADL ) : "+rs3.getString("adl")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "VII. RIWAYAT PSIKO-SOSIAL, SPIRITUAL DAN BUDAYA"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Status Psikologis : "+rs3.getString("status_psiko")+(rs3.getString("ket_psiko").equals("")?"":", "+rs3.getString("ket_psiko"))+"</td>"+
+                                                          "<td width='50%' border='0'>Bahasa yang digunakan sehari-hari : "+rs3.getString("nama_bahasa")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td border='0' colspan='2'>Status Sosial dan Ekonomi :</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;a. Hubungan pasien dengan anggota keluarga</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("hub_keluarga")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;b. Pengasuh</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("pengasuh")+(rs3.getString("ket_pengasuh").equals("")?"":", "+rs3.getString("ket_pengasuh"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;c. Ekonomi (Orang tua)</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("ekonomi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Kepercayaan / Budaya / Nilai-nilai khusus yang perlu diperhatikan</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("budaya")+(rs3.getString("ket_budaya").equals("")?"":", "+rs3.getString("ket_budaya"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Agama : "+rs3.getString("agama")+"</td>"+
+                                                          "<td width='50%' border='0'>Edukasi diberikan kepada : "+rs3.getString("edukasi")+(rs3.getString("ket_edukasi").equals("")?"":", "+rs3.getString("ket_edukasi"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "VIII. PENILAIAN RESIKO JATUH"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td colpsan='2' border='0'>a. Cara Berjalan :</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='75%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;1. Tidak seimbang / sempoyongan / limbung</td>"+
+                                                          "<td width='25%' border='0'>: "+rs3.getString("berjalan_a")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='75%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;2. Jalan dengan menggunakan alat bantu (kruk, tripot, kursi roda, orang lain)</td>"+
+                                                          "<td width='25%' border='0'>: "+rs3.getString("berjalan_b")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='75%' border='0'>b. Duduk di kursi tanpa menggunakan tangan sebagai penopang (tampak memegang kursi atau meja/ benda lain)</td>"+
+                                                          "<td width='25%' border='0'>: "+rs3.getString("berjalan_c")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td colspan='2' border='0'>Hasil : "+rs3.getString("hasil")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Diberitahukan ke dokter ? "+rs3.getString("lapor")+(rs3.getString("ket_lapor").equals("")?"":" Jam dilaporkan : "+rs3.getString("ket_lapor"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "IX. SKRINING GIZI (Strong kid)"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>No.</td>"+
+                                                          "<td width='75%' bgcolor='#FFFAF8' align='center' valign='middle'>Parameter</td>"+
+                                                          "<td width='20%' bgcolor='#FFFAF8' colspan='2' align='center' valign='middle'>Nilai</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>1</td>"+
+                                                          "<td>Apakah pasien tampak kurus</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg1")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai1")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>2</td>"+
+                                                          "<td>Apakah terdapat penurunan berat badan selama satu bulan terakhir? (berdasarkan penilaian objektif data berat badan bila ada atau untuk bayi < 1 tahun ; berat badan tidak naik selama 3 bulan terakhir</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg2")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai2")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>3</td>"+
+                                                          "<td>Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari salam seminggu terakhir; Asupan makanan berkurang selama 1 minggu terakhir</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg3")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai3")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>4</td>"+
+                                                          "<td>Apakah terdapat penyakit atau keadaan yang menyebabkan pasien beresiko mengalami malnutrisi?</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg4")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai4")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center' colspan='3'>Total Skor</td>"+
+                                                          "<td align='center'>"+rs3.getString("total_hasil")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "X. PENILAIAN TINGKAT NYERI (Skala FLACCS)"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='30%' bgcolor='#FFFAF8' align='center' valign='middle'>Pengkajian</td>"+
+                                                          "<td width='60%' bgcolor='#FFFAF8' align='center' valign='middle'>Parameter</td>"+
+                                                          "<td width='10%' bgcolor='#FFFAF8' align='center' valign='middle'>Nilai</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Wajah</td>"+
+                                                          "<td>"+rs3.getString("wajah")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaiwajah")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Kaki</td>"+
+                                                          "<td>"+rs3.getString("kaki")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaikaki")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Aktifitas</td>"+
+                                                          "<td>"+rs3.getString("aktifitas")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaiaktifitas")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Menangis</td>"+
+                                                          "<td>"+rs3.getString("menangis")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaimenangis")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Bersuara</td>"+
+                                                          "<td>"+rs3.getString("bersuara")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaibersuara")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='left' colspan='2'>Keterangan : 0 : Nyaman 1-3 : Kurang nyaman 4-6 : Nyeri sedang 7-10 : Nyeri berat</td>"+
+                                                          "<td align='center'>"+rs3.getString("hasilnyeri")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Tingkat Nyeri : "+rs3.getString("nyeri")+"</td>"+
+                                                          "<td width='50%' border='0'>Lokasi : "+rs3.getString("lokasi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Durasi : "+rs3.getString("durasi")+"</td>"+
+                                                          "<td width='50%' border='0'>Frekuensi : "+rs3.getString("frekuensi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Nyeri hilang bila : "+rs3.getString("nyeri_hilang")+(rs3.getString("ket_nyeri").equals("")?"":", "+rs3.getString("ket_nyeri"))+"</td>"+
+                                                          "<td width='50%' border='0'>Diberitahukan pada dokter ? "+rs3.getString("pada_dokter")+(rs3.getString("ket_dokter").equals("")?"":", Jam : "+rs3.getString("ket_dokter"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                           "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>MASALAH KEPERAWATAN :</td>"+
+                                                           "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEPERAWATAN :</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                           "<td>");
+                                        try {
+                                            rs4=koneksi.prepareStatement(
+                                                "select master_masalah_keperawatan_anak.kode_masalah,master_masalah_keperawatan_anak.nama_masalah from master_masalah_keperawatan_anak "+
+                                                "inner join penilaian_awal_keperawatan_ralan_bayi_masalah on penilaian_awal_keperawatan_ralan_bayi_masalah.kode_masalah=master_masalah_keperawatan_anak.kode_masalah "+
+                                                "where penilaian_awal_keperawatan_ralan_bayi_masalah.no_rawat='"+rs2.getString("no_rawat")+"' order by kode_masalah").executeQuery();
+                                            while(rs4.next()){
+                                                htmlContent.append(rs4.getString("nama_masalah")+"<br>");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notif : "+e);
+                                        } finally{
+                                            if(rs4!=null){
+                                                rs4.close();
+                                            }
+                                        }
+                                        htmlContent.append("</td>"+
+                                                           "<td>"+rs3.getString("rencana")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>");
                                     }
                                     htmlContent.append(
                                           "</table>"+
@@ -3215,6 +3656,72 @@ public class PanelRiwayat extends widget.panelisi {
                                         "</td>"+
                                       "</tr>");
                                 }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //skrining gizi
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select skrining_gizi.no_rawat,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
+                                        "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb,skrining_gizi.parameter_penyakit,"+
+                                        "skrining_gizi.skor_penyakit,skrining_gizi.skor_total,skrining_gizi.parameter_total,skrining_gizi.nip,petugas.nama "+
+                                        "from skrining_gizi inner join petugas on skrining_gizi.nip=petugas.nip where "+
+                                        "skrining_gizi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Skrining Gizi Lanjut</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='25%' bgcolor='#FFFAF8'>Pemeriksaan</td>"+
+                                                "<td valign='top' width='40%' bgcolor='#FFFAF8'>Parameter</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Skor</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Ahli Gizi</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' rowspan='2'>"+rs3.getString("tanggal")+"</td>"+
+                                                "<td valign='top'>"+
+                                                        "BB : "+rs3.getString("skrining_bb")+"<br>"+
+                                                        "TB : "+rs3.getString("skrining_tb")+"<br>"+
+                                                        "Alergi : "+rs3.getString("alergi")+"<br>"+
+                                                "</td>"+
+                                                "<td valign='top'>"+
+                                                        "1. Skor IMT : "+rs3.getString("parameter_imt")+"<br>"+
+                                                        "2. Skor Kehilangan BB : "+rs3.getString("parameter_bb")+"<br>"+
+                                                        "3. Skor Efek Penyakit Akut : "+rs3.getString("parameter_penyakit")+"<br>"+
+                                                "</td>"+
+                                                "<td valign='top' align='center'>"+
+                                                        rs3.getString("skor_imt")+"<br>"+
+                                                        rs3.getString("skor_bb")+"<br>"+
+                                                        rs3.getString("skor_penyakit")+"<br>"+
+                                                "</td>"+
+                                                "<td valign='top' align='center' rowspan='2'>"+rs3.getString("nip")+"<br>"+rs3.getString("nama")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>Total Skor : </td>"+
+                                                "<td valign='top'>"+rs3.getString("parameter_total")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs3.getString("skor_total")+"</td>"+
+                                             "</tr>");                                        
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }
                             } catch (Exception e) {
                                 System.out.println("Notifikasi : "+e);
                             } finally{
@@ -9028,6 +9535,413 @@ public class PanelRiwayat extends widget.panelisi {
                                 }
                             }
                             
+                            //menampilkan asuhan awal keperawatan anak
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_bayi.tanggal,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.informasi,penilaian_awal_keperawatan_ralan_bayi.td,penilaian_awal_keperawatan_ralan_bayi.nadi,penilaian_awal_keperawatan_ralan_bayi.rr,penilaian_awal_keperawatan_ralan_bayi.suhu,penilaian_awal_keperawatan_ralan_bayi.gcs,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.bb,penilaian_awal_keperawatan_ralan_bayi.tb,penilaian_awal_keperawatan_ralan_bayi.lp,penilaian_awal_keperawatan_ralan_bayi.lk,penilaian_awal_keperawatan_ralan_bayi.ld,penilaian_awal_keperawatan_ralan_bayi.keluhan_utama,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.rpd,penilaian_awal_keperawatan_ralan_bayi.rpk,penilaian_awal_keperawatan_ralan_bayi.rpo,penilaian_awal_keperawatan_ralan_bayi.alergi,penilaian_awal_keperawatan_ralan_bayi.anakke,penilaian_awal_keperawatan_ralan_bayi.darisaudara,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.caralahir,penilaian_awal_keperawatan_ralan_bayi.ket_caralahir,penilaian_awal_keperawatan_ralan_bayi.umurkelahiran,penilaian_awal_keperawatan_ralan_bayi.kelainanbawaan,penilaian_awal_keperawatan_ralan_bayi.ket_kelainan_bawaan,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.usiatengkurap,penilaian_awal_keperawatan_ralan_bayi.usiaduduk,penilaian_awal_keperawatan_ralan_bayi.usiaberdiri,penilaian_awal_keperawatan_ralan_bayi.usiagigipertama,penilaian_awal_keperawatan_ralan_bayi.usiaberjalan,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.usiabicara,penilaian_awal_keperawatan_ralan_bayi.usiamembaca,penilaian_awal_keperawatan_ralan_bayi.usiamenulis,penilaian_awal_keperawatan_ralan_bayi.gangguanemosi,penilaian_awal_keperawatan_ralan_bayi.alat_bantu,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.ket_bantu,penilaian_awal_keperawatan_ralan_bayi.prothesa,penilaian_awal_keperawatan_ralan_bayi.ket_pro,penilaian_awal_keperawatan_ralan_bayi.adl,penilaian_awal_keperawatan_ralan_bayi.status_psiko,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.ket_psiko,penilaian_awal_keperawatan_ralan_bayi.hub_keluarga,penilaian_awal_keperawatan_ralan_bayi.pengasuh,penilaian_awal_keperawatan_ralan_bayi.ket_pengasuh,penilaian_awal_keperawatan_ralan_bayi.ekonomi,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.budaya,penilaian_awal_keperawatan_ralan_bayi.ket_budaya,penilaian_awal_keperawatan_ralan_bayi.edukasi,penilaian_awal_keperawatan_ralan_bayi.ket_edukasi,penilaian_awal_keperawatan_ralan_bayi.berjalan_a,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.berjalan_b,penilaian_awal_keperawatan_ralan_bayi.berjalan_c,penilaian_awal_keperawatan_ralan_bayi.hasil,penilaian_awal_keperawatan_ralan_bayi.lapor,penilaian_awal_keperawatan_ralan_bayi.ket_lapor,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.sg1,penilaian_awal_keperawatan_ralan_bayi.nilai1,penilaian_awal_keperawatan_ralan_bayi.sg2,penilaian_awal_keperawatan_ralan_bayi.nilai2,penilaian_awal_keperawatan_ralan_bayi.sg3,penilaian_awal_keperawatan_ralan_bayi.nilai3,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.sg4,penilaian_awal_keperawatan_ralan_bayi.nilai4,penilaian_awal_keperawatan_ralan_bayi.total_hasil,penilaian_awal_keperawatan_ralan_bayi.wajah,penilaian_awal_keperawatan_ralan_bayi.nilaiwajah,penilaian_awal_keperawatan_ralan_bayi.kaki,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.nilaikaki,penilaian_awal_keperawatan_ralan_bayi.aktifitas,penilaian_awal_keperawatan_ralan_bayi.nilaiaktifitas,penilaian_awal_keperawatan_ralan_bayi.menangis,penilaian_awal_keperawatan_ralan_bayi.nilaimenangis,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.bersuara,penilaian_awal_keperawatan_ralan_bayi.nilaibersuara,penilaian_awal_keperawatan_ralan_bayi.hasilnyeri,penilaian_awal_keperawatan_ralan_bayi.nyeri,penilaian_awal_keperawatan_ralan_bayi.lokasi,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.durasi,penilaian_awal_keperawatan_ralan_bayi.frekuensi,penilaian_awal_keperawatan_ralan_bayi.nyeri_hilang,penilaian_awal_keperawatan_ralan_bayi.ket_nyeri,penilaian_awal_keperawatan_ralan_bayi.pada_dokter,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.ket_dokter,penilaian_awal_keperawatan_ralan_bayi.rencana,penilaian_awal_keperawatan_ralan_bayi.nip,petugas.nama "+
+                                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                        "inner join penilaian_awal_keperawatan_ralan_bayi on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_bayi.no_rawat "+
+                                        "inner join petugas on penilaian_awal_keperawatan_ralan_bayi.nip=petugas.nip "+
+                                        "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
+                                        "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where reg_periksa.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penilaian Awal<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rawat Jalan Bayi/Anak</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                                    );
+                                    rs3.beforeFirst();
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "YANG MELAKUKAN PENGKAJIAN"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='33%' border='0'>Tanggal : "+rs3.getString("tanggal")+"</td>"+
+                                                          "<td width='33%' border='0'>Petugas : "+rs3.getString("nip")+" "+rs3.getString("nama")+"</td>"+
+                                                          "<td width='33%' border='0'>Informasi didapat dari : "+rs3.getString("informasi")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "I. KEADAAN UMUM"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='20%' border='0'>TD : "+rs3.getString("td")+" mmHg</td>"+
+                                                          "<td width='20%' border='0'>Nadi : "+rs3.getString("nadi")+" x/menit</td>"+
+                                                          "<td width='20%' border='0'>RR : "+rs3.getString("rr")+" x/menit</td>"+
+                                                          "<td width='20%' border='0'>Suhu : "+rs3.getString("suhu")+" °C</td>"+
+                                                          "<td width='20%' border='0'>GCS(E,V,M) : "+rs3.getString("gcs")+" °C</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='20%' border='0'>BB : "+rs3.getString("bb")+" Kg</td>"+
+                                                          "<td width='20%' border='0'>TB : "+rs3.getString("tb")+" Cm</td>"+
+                                                          "<td width='20%' border='0'>LP : "+rs3.getString("lp")+" Cm</td>"+
+                                                          "<td width='20%' border='0'>LK : "+rs3.getString("lk")+" Cm</td>"+
+                                                          "<td width='20%' border='0'>LD : "+rs3.getString("ld")+" Cm</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "II. RIWAYAT KESEHATAN"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td colspan='2'>Keluhan Utama : "+rs3.getString("keluhan_utama")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%'>Riwayat Penyakit Dahulu : "+rs3.getString("rpd")+"</td>"+
+                                                          "<td width='50%'>Riwayat Alergi : "+rs3.getString("alergi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%'>Riwayat Penyakit Keluarga : "+rs3.getString("rpk")+"</td>"+
+                                                          "<td width='50%'>Riwayat Pengobatan : "+rs3.getString("rpd")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "III. RIWAYAT TUMBUH KEMBANG DAN PERINATAL CARE"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Riwayat Kelahiran : Anak ke "+rs3.getString("anakke")+" dari "+rs3.getString("darisaudara")+" saudara</td>"+
+                                                          "<td width='50%' border='0'>Cara kelahiran : "+rs3.getString("caralahir")+(rs3.getString("ket_caralahir").equals("")?"":", "+rs3.getString("ket_caralahir"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Umur Kelahiran : "+rs3.getString("umurkelahiran")+"</td>"+
+                                                          "<td width='50%' border='0'>Kelainan Bawaan : "+rs3.getString("kelainanbawaan")+(rs3.getString("ket_kelainan_bawaan").equals("")?"":", "+rs3.getString("ket_kelainan_bawaan"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "IV. RIWAYAT IMUNISASI"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='70%' bgcolor='#FFFAF8' align='center' valign='middle'>Imunisasi</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>1</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>2</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>3</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>4</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>5</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>6</td>"+
+                                                      "</tr>");
+                                        try {
+                                            rs4=koneksi.prepareStatement(
+                                                "select master_imunisasi.kode_imunisasi,master_imunisasi.nama_imunisasi from master_imunisasi inner join riwayat_imunisasi on riwayat_imunisasi.kode_imunisasi=master_imunisasi.kode_imunisasi "+
+                                                "where riwayat_imunisasi.no_rkm_medis='"+rs3.getString("no_rkm_medis")+"' group by master_imunisasi.kode_imunisasi order by master_imunisasi.kode_imunisasi").executeQuery();
+                                            while(rs4.next()){
+                                                ke1="";ke2="";ke3="";ke4="";ke5="";ke6="";
+                                                try {
+                                                    rs5=koneksi.prepareStatement("select * from riwayat_imunisasi where no_rkm_medis='"+rs3.getString("no_rkm_medis")+"' and kode_imunisasi='"+rs4.getString("kode_imunisasi")+"'").executeQuery();
+                                                    while(rs5.next()){
+                                                        if(rs5.getInt("no_imunisasi")==1){
+                                                            ke1="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==2){
+                                                            ke2="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==3){
+                                                            ke3="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==4){
+                                                            ke4="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==5){
+                                                            ke5="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==6){
+                                                            ke6="&#10003;";
+                                                        }
+                                                    }
+                                                } catch (Exception e) {
+                                                    System.out.println("Notif : "+e);
+                                                } finally{
+                                                    if(rs5!=null){
+                                                        rs5.close();
+                                                    }
+                                                }
+                                                htmlContent.append("<tr>"+
+                                                                      "<td align='left'>"+rs4.getString("nama_imunisasi")+"</td>"+
+                                                                      "<td align='center'>"+ke1+"</td>"+
+                                                                      "<td align='center'>"+ke2+"</td>"+
+                                                                      "<td align='center'>"+ke3+"</td>"+
+                                                                      "<td align='center'>"+ke4+"</td>"+
+                                                                      "<td align='center'>"+ke5+"</td>"+
+                                                                      "<td align='center'>"+ke6+"</td>"+
+                                                                   "</tr>");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notif : "+e);
+                                        } finally{
+                                            if(rs4!=null){
+                                                rs4.close();
+                                            }
+                                        }
+                                        
+                                        htmlContent.append(
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "V. RIWAYAT TUMBUH KEMBANG ANAK"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='33%' border='0'>a. Tengkurap, usia "+rs3.getString("usiatengkurap")+"</td>"+
+                                                          "<td width='33%' border='0'>b. Duduk, usia "+rs3.getString("usiaduduk")+"</td>"+
+                                                          "<td width='33%' border='0'>c. Berdiri, usia "+rs3.getString("usiaberdiri")+"</td>"+
+                                                          "<td width='33%' border='0'>d. Pertumbuhan gigi pertama, usia "+rs3.getString("usiagigipertama")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='33%' border='0'>e. Berjalan, usia "+rs3.getString("usiaberjalan")+"</td>"+
+                                                          "<td width='33%' border='0'>f. Bicara, usia "+rs3.getString("usiabicara")+"</td>"+
+                                                          "<td width='33%' border='0'>g. Mulai bisa membaca, usia "+rs3.getString("usiamembaca")+"</td>"+
+                                                          "<td width='33%' border='0'>h. Mulai bisa menulis, usia "+rs3.getString("usiamenulis")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='100%' border='0' colspan='4'>Gangguan perkembangan mental / emosi, bila ada, jelaskan "+rs3.getString("gangguanemosi")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "VI. FUNGSIONAL"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Alat Bantu : "+rs3.getString("alat_bantu")+(rs3.getString("ket_bantu").equals("")?"":", "+rs3.getString("ket_bantu"))+"</td>"+
+                                                          "<td width='50%' border='0'>Prothesa : "+rs3.getString("prothesa")+(rs3.getString("ket_pro").equals("")?"":", "+rs3.getString("ket_pro"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Cacat Fisik : "+rs3.getString("nama_cacat")+"</td>"+
+                                                          "<td width='50%' border='0'>Aktivitas Kehidupan Sehari-hari ( ADL ) : "+rs3.getString("adl")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "VII. RIWAYAT PSIKO-SOSIAL, SPIRITUAL DAN BUDAYA"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Status Psikologis : "+rs3.getString("status_psiko")+(rs3.getString("ket_psiko").equals("")?"":", "+rs3.getString("ket_psiko"))+"</td>"+
+                                                          "<td width='50%' border='0'>Bahasa yang digunakan sehari-hari : "+rs3.getString("nama_bahasa")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td border='0' colspan='2'>Status Sosial dan Ekonomi :</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;a. Hubungan pasien dengan anggota keluarga</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("hub_keluarga")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;b. Pengasuh</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("pengasuh")+(rs3.getString("ket_pengasuh").equals("")?"":", "+rs3.getString("ket_pengasuh"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;c. Ekonomi (Orang tua)</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("ekonomi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Kepercayaan / Budaya / Nilai-nilai khusus yang perlu diperhatikan</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("budaya")+(rs3.getString("ket_budaya").equals("")?"":", "+rs3.getString("ket_budaya"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Agama : "+rs3.getString("agama")+"</td>"+
+                                                          "<td width='50%' border='0'>Edukasi diberikan kepada : "+rs3.getString("edukasi")+(rs3.getString("ket_edukasi").equals("")?"":", "+rs3.getString("ket_edukasi"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "VIII. PENILAIAN RESIKO JATUH"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td colpsan='2' border='0'>a. Cara Berjalan :</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='75%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;1. Tidak seimbang / sempoyongan / limbung</td>"+
+                                                          "<td width='25%' border='0'>: "+rs3.getString("berjalan_a")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='75%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;2. Jalan dengan menggunakan alat bantu (kruk, tripot, kursi roda, orang lain)</td>"+
+                                                          "<td width='25%' border='0'>: "+rs3.getString("berjalan_b")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='75%' border='0'>b. Duduk di kursi tanpa menggunakan tangan sebagai penopang (tampak memegang kursi atau meja/ benda lain)</td>"+
+                                                          "<td width='25%' border='0'>: "+rs3.getString("berjalan_c")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td colspan='2' border='0'>Hasil : "+rs3.getString("hasil")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Diberitahukan ke dokter ? "+rs3.getString("lapor")+(rs3.getString("ket_lapor").equals("")?"":" Jam dilaporkan : "+rs3.getString("ket_lapor"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "IX. SKRINING GIZI (Strong kid)"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>No.</td>"+
+                                                          "<td width='75%' bgcolor='#FFFAF8' align='center' valign='middle'>Parameter</td>"+
+                                                          "<td width='20%' bgcolor='#FFFAF8' colspan='2' align='center' valign='middle'>Nilai</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>1</td>"+
+                                                          "<td>Apakah pasien tampak kurus</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg1")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai1")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>2</td>"+
+                                                          "<td>Apakah terdapat penurunan berat badan selama satu bulan terakhir? (berdasarkan penilaian objektif data berat badan bila ada atau untuk bayi < 1 tahun ; berat badan tidak naik selama 3 bulan terakhir</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg2")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai2")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>3</td>"+
+                                                          "<td>Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari salam seminggu terakhir; Asupan makanan berkurang selama 1 minggu terakhir</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg3")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai3")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>4</td>"+
+                                                          "<td>Apakah terdapat penyakit atau keadaan yang menyebabkan pasien beresiko mengalami malnutrisi?</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg4")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai4")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center' colspan='3'>Total Skor</td>"+
+                                                          "<td align='center'>"+rs3.getString("total_hasil")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "X. PENILAIAN TINGKAT NYERI (Skala FLACCS)"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='30%' bgcolor='#FFFAF8' align='center' valign='middle'>Pengkajian</td>"+
+                                                          "<td width='60%' bgcolor='#FFFAF8' align='center' valign='middle'>Parameter</td>"+
+                                                          "<td width='10%' bgcolor='#FFFAF8' align='center' valign='middle'>Nilai</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Wajah</td>"+
+                                                          "<td>"+rs3.getString("wajah")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaiwajah")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Kaki</td>"+
+                                                          "<td>"+rs3.getString("kaki")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaikaki")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Aktifitas</td>"+
+                                                          "<td>"+rs3.getString("aktifitas")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaiaktifitas")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Menangis</td>"+
+                                                          "<td>"+rs3.getString("menangis")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaimenangis")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Bersuara</td>"+
+                                                          "<td>"+rs3.getString("bersuara")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaibersuara")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='left' colspan='2'>Keterangan : 0 : Nyaman 1-3 : Kurang nyaman 4-6 : Nyeri sedang 7-10 : Nyeri berat</td>"+
+                                                          "<td align='center'>"+rs3.getString("hasilnyeri")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Tingkat Nyeri : "+rs3.getString("nyeri")+"</td>"+
+                                                          "<td width='50%' border='0'>Lokasi : "+rs3.getString("lokasi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Durasi : "+rs3.getString("durasi")+"</td>"+
+                                                          "<td width='50%' border='0'>Frekuensi : "+rs3.getString("frekuensi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Nyeri hilang bila : "+rs3.getString("nyeri_hilang")+(rs3.getString("ket_nyeri").equals("")?"":", "+rs3.getString("ket_nyeri"))+"</td>"+
+                                                          "<td width='50%' border='0'>Diberitahukan pada dokter ? "+rs3.getString("pada_dokter")+(rs3.getString("ket_dokter").equals("")?"":", Jam : "+rs3.getString("ket_dokter"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                           "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>MASALAH KEPERAWATAN :</td>"+
+                                                           "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEPERAWATAN :</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                           "<td>");
+                                        try {
+                                            rs4=koneksi.prepareStatement(
+                                                "select master_masalah_keperawatan_anak.kode_masalah,master_masalah_keperawatan_anak.nama_masalah from master_masalah_keperawatan_anak "+
+                                                "inner join penilaian_awal_keperawatan_ralan_bayi_masalah on penilaian_awal_keperawatan_ralan_bayi_masalah.kode_masalah=master_masalah_keperawatan_anak.kode_masalah "+
+                                                "where penilaian_awal_keperawatan_ralan_bayi_masalah.no_rawat='"+rs2.getString("no_rawat")+"' order by kode_masalah").executeQuery();
+                                            while(rs4.next()){
+                                                htmlContent.append(rs4.getString("nama_masalah")+"<br>");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notif : "+e);
+                                        } finally{
+                                            if(rs4!=null){
+                                                rs4.close();
+                                            }
+                                        }
+                                        htmlContent.append("</td>"+
+                                                           "<td>"+rs3.getString("rencana")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>");
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
                             //menampilkan asuhan awal keperawatan kebidanan
                             try {
                                 rs3=koneksi.prepareStatement(
@@ -10253,6 +11167,72 @@ public class PanelRiwayat extends widget.panelisi {
                                         "</td>"+
                                       "</tr>");
                                 }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                                                
+                            //skrining gizi lanjut
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select skrining_gizi.no_rawat,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
+                                        "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb,skrining_gizi.parameter_penyakit,"+
+                                        "skrining_gizi.skor_penyakit,skrining_gizi.skor_total,skrining_gizi.parameter_total,skrining_gizi.nip,petugas.nama "+
+                                        "from skrining_gizi inner join petugas on skrining_gizi.nip=petugas.nip where "+
+                                        "skrining_gizi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Skrining Gizi Lanjut</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='25%' bgcolor='#FFFAF8'>Pemeriksaan</td>"+
+                                                "<td valign='top' width='40%' bgcolor='#FFFAF8'>Parameter</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Skor</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Ahli Gizi</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' rowspan='2'>"+rs3.getString("tanggal")+"</td>"+
+                                                "<td valign='top'>"+
+                                                        "BB : "+rs3.getString("skrining_bb")+"<br>"+
+                                                        "TB : "+rs3.getString("skrining_tb")+"<br>"+
+                                                        "Alergi : "+rs3.getString("alergi")+"<br>"+
+                                                "</td>"+
+                                                "<td valign='top'>"+
+                                                        "1. Skor IMT : "+rs3.getString("parameter_imt")+"<br>"+
+                                                        "2. Skor Kehilangan BB : "+rs3.getString("parameter_bb")+"<br>"+
+                                                        "3. Skor Efek Penyakit Akut : "+rs3.getString("parameter_penyakit")+"<br>"+
+                                                "</td>"+
+                                                "<td valign='top' align='center'>"+
+                                                        rs3.getString("skor_imt")+"<br>"+
+                                                        rs3.getString("skor_bb")+"<br>"+
+                                                        rs3.getString("skor_penyakit")+"<br>"+
+                                                "</td>"+
+                                                "<td valign='top' align='center' rowspan='2'>"+rs3.getString("nip")+"<br>"+rs3.getString("nama")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>Total Skor : </td>"+
+                                                "<td valign='top'>"+rs3.getString("parameter_total")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs3.getString("skor_total")+"</td>"+
+                                             "</tr>");                                        
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }
                             } catch (Exception e) {
                                 System.out.println("Notifikasi : "+e);
                             } finally{
@@ -12246,6 +13226,72 @@ public class PanelRiwayat extends widget.panelisi {
                             );                            
                             urut++;
                             
+                            //skrining gizi
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select skrining_gizi.no_rawat,skrining_gizi.tanggal,skrining_gizi.skrining_bb,skrining_gizi.skrining_tb,skrining_gizi.alergi,"+
+                                        "skrining_gizi.parameter_imt,skrining_gizi.skor_imt,skrining_gizi.parameter_bb,skrining_gizi.skor_bb,skrining_gizi.parameter_penyakit,"+
+                                        "skrining_gizi.skor_penyakit,skrining_gizi.skor_total,skrining_gizi.parameter_total,skrining_gizi.nip,petugas.nama "+
+                                        "from skrining_gizi inner join petugas on skrining_gizi.nip=petugas.nip where "+
+                                        "skrining_gizi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Skrining Gizi Lanjut</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
+                                                "<td valign='top' width='25%' bgcolor='#FFFAF8'>Pemeriksaan</td>"+
+                                                "<td valign='top' width='40%' bgcolor='#FFFAF8'>Parameter</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#FFFAF8'>Skor</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#FFFAF8'>Ahli Gizi</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' rowspan='2'>"+rs3.getString("tanggal")+"</td>"+
+                                                "<td valign='top'>"+
+                                                        "BB : "+rs3.getString("skrining_bb")+"<br>"+
+                                                        "TB : "+rs3.getString("skrining_tb")+"<br>"+
+                                                        "Alergi : "+rs3.getString("alergi")+"<br>"+
+                                                "</td>"+
+                                                "<td valign='top'>"+
+                                                        "1. Skor IMT : "+rs3.getString("parameter_imt")+"<br>"+
+                                                        "2. Skor Kehilangan BB : "+rs3.getString("parameter_bb")+"<br>"+
+                                                        "3. Skor Efek Penyakit Akut : "+rs3.getString("parameter_penyakit")+"<br>"+
+                                                "</td>"+
+                                                "<td valign='top' align='center'>"+
+                                                        rs3.getString("skor_imt")+"<br>"+
+                                                        rs3.getString("skor_bb")+"<br>"+
+                                                        rs3.getString("skor_penyakit")+"<br>"+
+                                                "</td>"+
+                                                "<td valign='top' align='center' rowspan='2'>"+rs3.getString("nip")+"<br>"+rs3.getString("nama")+"</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>Total Skor : </td>"+
+                                                "<td valign='top'>"+rs3.getString("parameter_total")+"</td>"+
+                                                "<td valign='top' align='center'>"+rs3.getString("skor_total")+"</td>"+
+                                             "</tr>");                                        
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
                             //menampilkan asuhan gizi
                             try {
                                 rs3=koneksi.prepareStatement(
@@ -13668,7 +14714,6 @@ public class PanelRiwayat extends widget.panelisi {
                                                    "</table>"+
                                                 "</td>"+
                                              "</tr>"+
-                                             
                                              "<tr>"+
                                                 "<td valign='top'>"+
                                                    "IV. FUNGSIONAL"+  
@@ -14111,6 +15156,594 @@ public class PanelRiwayat extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    public void tampil24(){     
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try{
+            htmlContent = new StringBuilder();
+            try {
+                rs=koneksi.prepareStatement(
+                   "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
+                   "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
+                   "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+norm+"' order by pasien.no_rkm_medis desc ").executeQuery();
+                y=1;
+                while(rs.next()){   
+                    htmlContent.append(
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>No.RM</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("no_rkm_medis")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Nama Pasien</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("nm_pasien")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Alamat</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("alamat")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Umur</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("umur")+" ("+rs.getString("jk").replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")+")</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Tempat & Tanggal Lahir</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("tmp_lahir")+" "+rs.getString("tgl_lahir")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Ibu Kandung</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("nm_ibu")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Golongan Darah</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("gol_darah")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Status Nikah</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("stts_nikah")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Agama</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("agama")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Pendidikan Terakhir</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("pnd")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Pertama Daftar</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("tgl_daftar")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Riwayat Perawatan</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'></td>"+
+                        "</tr>"
+                    );
+                    try {
+                        if(caritanggal==true){
+                            rs2=koneksi.prepareStatement(
+                                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                                   "reg_periksa.kd_dokter,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.p_jawab,reg_periksa.almt_pj,"+
+                                   "reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.status_lanjut,penjab.png_jawab "+
+                                   "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
+                                   "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "where reg_periksa.stts<>'Batal' and "+
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
+                        }else{
+                            rs2=koneksi.prepareStatement(
+                                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                                   "reg_periksa.kd_dokter,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.p_jawab,reg_periksa.almt_pj,"+
+                                   "reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.status_lanjut,penjab.png_jawab "+
+                                   "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
+                                   "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "where reg_periksa.stts<>'Batal' and "+
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg").executeQuery();
+                        }
+                            
+                        urut=1;
+                        while(rs2.next()){      
+                            htmlContent.append(
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;"+urut+". No.Rawat</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("no_rawat")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No.Registrasi</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("no_reg")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tanggal Registrasi</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("tgl_registrasi")+" "+rs2.getString("jam_reg")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unit/Poliklinik</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_poli")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dokter</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cara Bayar</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("png_jawab")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penanggung Jawab</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("p_jawab")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alamat P.J.</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("almt_pj")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hubungan P.J.</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("hubunganpj")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("status_lanjut")+"</td>"+
+                              "</tr>"
+                            );                            
+                            urut++;
+                            
+                            //menampilkan asuhan awal keperawatan anak
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_bayi.tanggal,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.informasi,penilaian_awal_keperawatan_ralan_bayi.td,penilaian_awal_keperawatan_ralan_bayi.nadi,penilaian_awal_keperawatan_ralan_bayi.rr,penilaian_awal_keperawatan_ralan_bayi.suhu,penilaian_awal_keperawatan_ralan_bayi.gcs,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.bb,penilaian_awal_keperawatan_ralan_bayi.tb,penilaian_awal_keperawatan_ralan_bayi.lp,penilaian_awal_keperawatan_ralan_bayi.lk,penilaian_awal_keperawatan_ralan_bayi.ld,penilaian_awal_keperawatan_ralan_bayi.keluhan_utama,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.rpd,penilaian_awal_keperawatan_ralan_bayi.rpk,penilaian_awal_keperawatan_ralan_bayi.rpo,penilaian_awal_keperawatan_ralan_bayi.alergi,penilaian_awal_keperawatan_ralan_bayi.anakke,penilaian_awal_keperawatan_ralan_bayi.darisaudara,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.caralahir,penilaian_awal_keperawatan_ralan_bayi.ket_caralahir,penilaian_awal_keperawatan_ralan_bayi.umurkelahiran,penilaian_awal_keperawatan_ralan_bayi.kelainanbawaan,penilaian_awal_keperawatan_ralan_bayi.ket_kelainan_bawaan,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.usiatengkurap,penilaian_awal_keperawatan_ralan_bayi.usiaduduk,penilaian_awal_keperawatan_ralan_bayi.usiaberdiri,penilaian_awal_keperawatan_ralan_bayi.usiagigipertama,penilaian_awal_keperawatan_ralan_bayi.usiaberjalan,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.usiabicara,penilaian_awal_keperawatan_ralan_bayi.usiamembaca,penilaian_awal_keperawatan_ralan_bayi.usiamenulis,penilaian_awal_keperawatan_ralan_bayi.gangguanemosi,penilaian_awal_keperawatan_ralan_bayi.alat_bantu,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.ket_bantu,penilaian_awal_keperawatan_ralan_bayi.prothesa,penilaian_awal_keperawatan_ralan_bayi.ket_pro,penilaian_awal_keperawatan_ralan_bayi.adl,penilaian_awal_keperawatan_ralan_bayi.status_psiko,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.ket_psiko,penilaian_awal_keperawatan_ralan_bayi.hub_keluarga,penilaian_awal_keperawatan_ralan_bayi.pengasuh,penilaian_awal_keperawatan_ralan_bayi.ket_pengasuh,penilaian_awal_keperawatan_ralan_bayi.ekonomi,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.budaya,penilaian_awal_keperawatan_ralan_bayi.ket_budaya,penilaian_awal_keperawatan_ralan_bayi.edukasi,penilaian_awal_keperawatan_ralan_bayi.ket_edukasi,penilaian_awal_keperawatan_ralan_bayi.berjalan_a,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.berjalan_b,penilaian_awal_keperawatan_ralan_bayi.berjalan_c,penilaian_awal_keperawatan_ralan_bayi.hasil,penilaian_awal_keperawatan_ralan_bayi.lapor,penilaian_awal_keperawatan_ralan_bayi.ket_lapor,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.sg1,penilaian_awal_keperawatan_ralan_bayi.nilai1,penilaian_awal_keperawatan_ralan_bayi.sg2,penilaian_awal_keperawatan_ralan_bayi.nilai2,penilaian_awal_keperawatan_ralan_bayi.sg3,penilaian_awal_keperawatan_ralan_bayi.nilai3,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.sg4,penilaian_awal_keperawatan_ralan_bayi.nilai4,penilaian_awal_keperawatan_ralan_bayi.total_hasil,penilaian_awal_keperawatan_ralan_bayi.wajah,penilaian_awal_keperawatan_ralan_bayi.nilaiwajah,penilaian_awal_keperawatan_ralan_bayi.kaki,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.nilaikaki,penilaian_awal_keperawatan_ralan_bayi.aktifitas,penilaian_awal_keperawatan_ralan_bayi.nilaiaktifitas,penilaian_awal_keperawatan_ralan_bayi.menangis,penilaian_awal_keperawatan_ralan_bayi.nilaimenangis,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.bersuara,penilaian_awal_keperawatan_ralan_bayi.nilaibersuara,penilaian_awal_keperawatan_ralan_bayi.hasilnyeri,penilaian_awal_keperawatan_ralan_bayi.nyeri,penilaian_awal_keperawatan_ralan_bayi.lokasi,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.durasi,penilaian_awal_keperawatan_ralan_bayi.frekuensi,penilaian_awal_keperawatan_ralan_bayi.nyeri_hilang,penilaian_awal_keperawatan_ralan_bayi.ket_nyeri,penilaian_awal_keperawatan_ralan_bayi.pada_dokter,"+
+                                        "penilaian_awal_keperawatan_ralan_bayi.ket_dokter,penilaian_awal_keperawatan_ralan_bayi.rencana,penilaian_awal_keperawatan_ralan_bayi.nip,petugas.nama "+
+                                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                        "inner join penilaian_awal_keperawatan_ralan_bayi on reg_periksa.no_rawat=penilaian_awal_keperawatan_ralan_bayi.no_rawat "+
+                                        "inner join petugas on penilaian_awal_keperawatan_ralan_bayi.nip=petugas.nip "+
+                                        "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
+                                        "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where reg_periksa.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penilaian Awal<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rawat Jalan Bayi/Anak</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                                    );
+                                    rs3.beforeFirst();
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "YANG MELAKUKAN PENGKAJIAN"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='33%' border='0'>Tanggal : "+rs3.getString("tanggal")+"</td>"+
+                                                          "<td width='33%' border='0'>Petugas : "+rs3.getString("nip")+" "+rs3.getString("nama")+"</td>"+
+                                                          "<td width='33%' border='0'>Informasi didapat dari : "+rs3.getString("informasi")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "I. KEADAAN UMUM"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='20%' border='0'>TD : "+rs3.getString("td")+" mmHg</td>"+
+                                                          "<td width='20%' border='0'>Nadi : "+rs3.getString("nadi")+" x/menit</td>"+
+                                                          "<td width='20%' border='0'>RR : "+rs3.getString("rr")+" x/menit</td>"+
+                                                          "<td width='20%' border='0'>Suhu : "+rs3.getString("suhu")+" °C</td>"+
+                                                          "<td width='20%' border='0'>GCS(E,V,M) : "+rs3.getString("gcs")+" °C</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='20%' border='0'>BB : "+rs3.getString("bb")+" Kg</td>"+
+                                                          "<td width='20%' border='0'>TB : "+rs3.getString("tb")+" Cm</td>"+
+                                                          "<td width='20%' border='0'>LP : "+rs3.getString("lp")+" Cm</td>"+
+                                                          "<td width='20%' border='0'>LK : "+rs3.getString("lk")+" Cm</td>"+
+                                                          "<td width='20%' border='0'>LD : "+rs3.getString("ld")+" Cm</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "II. RIWAYAT KESEHATAN"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td colspan='2'>Keluhan Utama : "+rs3.getString("keluhan_utama")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%'>Riwayat Penyakit Dahulu : "+rs3.getString("rpd")+"</td>"+
+                                                          "<td width='50%'>Riwayat Alergi : "+rs3.getString("alergi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%'>Riwayat Penyakit Keluarga : "+rs3.getString("rpk")+"</td>"+
+                                                          "<td width='50%'>Riwayat Pengobatan : "+rs3.getString("rpd")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "III. RIWAYAT TUMBUH KEMBANG DAN PERINATAL CARE"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Riwayat Kelahiran : Anak ke "+rs3.getString("anakke")+" dari "+rs3.getString("darisaudara")+" saudara</td>"+
+                                                          "<td width='50%' border='0'>Cara kelahiran : "+rs3.getString("caralahir")+(rs3.getString("ket_caralahir").equals("")?"":", "+rs3.getString("ket_caralahir"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Umur Kelahiran : "+rs3.getString("umurkelahiran")+"</td>"+
+                                                          "<td width='50%' border='0'>Kelainan Bawaan : "+rs3.getString("kelainanbawaan")+(rs3.getString("ket_kelainan_bawaan").equals("")?"":", "+rs3.getString("ket_kelainan_bawaan"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "IV. RIWAYAT IMUNISASI"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='70%' bgcolor='#FFFAF8' align='center' valign='middle'>Imunisasi</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>1</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>2</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>3</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>4</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>5</td>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>6</td>"+
+                                                      "</tr>");
+                                        try {
+                                            rs4=koneksi.prepareStatement(
+                                                "select master_imunisasi.kode_imunisasi,master_imunisasi.nama_imunisasi from master_imunisasi inner join riwayat_imunisasi on riwayat_imunisasi.kode_imunisasi=master_imunisasi.kode_imunisasi "+
+                                                "where riwayat_imunisasi.no_rkm_medis='"+rs3.getString("no_rkm_medis")+"' group by master_imunisasi.kode_imunisasi order by master_imunisasi.kode_imunisasi").executeQuery();
+                                            while(rs4.next()){
+                                                ke1="";ke2="";ke3="";ke4="";ke5="";ke6="";
+                                                try {
+                                                    rs5=koneksi.prepareStatement("select * from riwayat_imunisasi where no_rkm_medis='"+rs3.getString("no_rkm_medis")+"' and kode_imunisasi='"+rs4.getString("kode_imunisasi")+"'").executeQuery();
+                                                    while(rs5.next()){
+                                                        if(rs5.getInt("no_imunisasi")==1){
+                                                            ke1="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==2){
+                                                            ke2="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==3){
+                                                            ke3="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==4){
+                                                            ke4="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==5){
+                                                            ke5="&#10003;";
+                                                        }
+                                                        if(rs5.getInt("no_imunisasi")==6){
+                                                            ke6="&#10003;";
+                                                        }
+                                                    }
+                                                } catch (Exception e) {
+                                                    System.out.println("Notif : "+e);
+                                                } finally{
+                                                    if(rs5!=null){
+                                                        rs5.close();
+                                                    }
+                                                }
+                                                htmlContent.append("<tr>"+
+                                                                      "<td align='left'>"+rs4.getString("nama_imunisasi")+"</td>"+
+                                                                      "<td align='center'>"+ke1+"</td>"+
+                                                                      "<td align='center'>"+ke2+"</td>"+
+                                                                      "<td align='center'>"+ke3+"</td>"+
+                                                                      "<td align='center'>"+ke4+"</td>"+
+                                                                      "<td align='center'>"+ke5+"</td>"+
+                                                                      "<td align='center'>"+ke6+"</td>"+
+                                                                   "</tr>");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notif : "+e);
+                                        } finally{
+                                            if(rs4!=null){
+                                                rs4.close();
+                                            }
+                                        }
+                                        
+                                        htmlContent.append(
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "V. RIWAYAT TUMBUH KEMBANG ANAK"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='33%' border='0'>a. Tengkurap, usia "+rs3.getString("usiatengkurap")+"</td>"+
+                                                          "<td width='33%' border='0'>b. Duduk, usia "+rs3.getString("usiaduduk")+"</td>"+
+                                                          "<td width='33%' border='0'>c. Berdiri, usia "+rs3.getString("usiaberdiri")+"</td>"+
+                                                          "<td width='33%' border='0'>d. Pertumbuhan gigi pertama, usia "+rs3.getString("usiagigipertama")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='33%' border='0'>e. Berjalan, usia "+rs3.getString("usiaberjalan")+"</td>"+
+                                                          "<td width='33%' border='0'>f. Bicara, usia "+rs3.getString("usiabicara")+"</td>"+
+                                                          "<td width='33%' border='0'>g. Mulai bisa membaca, usia "+rs3.getString("usiamembaca")+"</td>"+
+                                                          "<td width='33%' border='0'>h. Mulai bisa menulis, usia "+rs3.getString("usiamenulis")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='100%' border='0' colspan='4'>Gangguan perkembangan mental / emosi, bila ada, jelaskan "+rs3.getString("gangguanemosi")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "VI. FUNGSIONAL"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Alat Bantu : "+rs3.getString("alat_bantu")+(rs3.getString("ket_bantu").equals("")?"":", "+rs3.getString("ket_bantu"))+"</td>"+
+                                                          "<td width='50%' border='0'>Prothesa : "+rs3.getString("prothesa")+(rs3.getString("ket_pro").equals("")?"":", "+rs3.getString("ket_pro"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Cacat Fisik : "+rs3.getString("nama_cacat")+"</td>"+
+                                                          "<td width='50%' border='0'>Aktivitas Kehidupan Sehari-hari ( ADL ) : "+rs3.getString("adl")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "VII. RIWAYAT PSIKO-SOSIAL, SPIRITUAL DAN BUDAYA"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Status Psikologis : "+rs3.getString("status_psiko")+(rs3.getString("ket_psiko").equals("")?"":", "+rs3.getString("ket_psiko"))+"</td>"+
+                                                          "<td width='50%' border='0'>Bahasa yang digunakan sehari-hari : "+rs3.getString("nama_bahasa")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td border='0' colspan='2'>Status Sosial dan Ekonomi :</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;a. Hubungan pasien dengan anggota keluarga</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("hub_keluarga")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;b. Pengasuh</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("pengasuh")+(rs3.getString("ket_pengasuh").equals("")?"":", "+rs3.getString("ket_pengasuh"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;c. Ekonomi (Orang tua)</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("ekonomi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Kepercayaan / Budaya / Nilai-nilai khusus yang perlu diperhatikan</td>"+
+                                                          "<td width='50%' border='0'>: "+rs3.getString("budaya")+(rs3.getString("ket_budaya").equals("")?"":", "+rs3.getString("ket_budaya"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Agama : "+rs3.getString("agama")+"</td>"+
+                                                          "<td width='50%' border='0'>Edukasi diberikan kepada : "+rs3.getString("edukasi")+(rs3.getString("ket_edukasi").equals("")?"":", "+rs3.getString("ket_edukasi"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "VIII. PENILAIAN RESIKO JATUH"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td colpsan='2' border='0'>a. Cara Berjalan :</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='75%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;1. Tidak seimbang / sempoyongan / limbung</td>"+
+                                                          "<td width='25%' border='0'>: "+rs3.getString("berjalan_a")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='75%' border='0'>&nbsp;&nbsp;&nbsp;&nbsp;2. Jalan dengan menggunakan alat bantu (kruk, tripot, kursi roda, orang lain)</td>"+
+                                                          "<td width='25%' border='0'>: "+rs3.getString("berjalan_b")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='75%' border='0'>b. Duduk di kursi tanpa menggunakan tangan sebagai penopang (tampak memegang kursi atau meja/ benda lain)</td>"+
+                                                          "<td width='25%' border='0'>: "+rs3.getString("berjalan_c")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td colspan='2' border='0'>Hasil : "+rs3.getString("hasil")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Diberitahukan ke dokter ? "+rs3.getString("lapor")+(rs3.getString("ket_lapor").equals("")?"":" Jam dilaporkan : "+rs3.getString("ket_lapor"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "IX. SKRINING GIZI (Strong kid)"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='5%' bgcolor='#FFFAF8' align='center' valign='middle'>No.</td>"+
+                                                          "<td width='75%' bgcolor='#FFFAF8' align='center' valign='middle'>Parameter</td>"+
+                                                          "<td width='20%' bgcolor='#FFFAF8' colspan='2' align='center' valign='middle'>Nilai</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>1</td>"+
+                                                          "<td>Apakah pasien tampak kurus</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg1")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai1")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>2</td>"+
+                                                          "<td>Apakah terdapat penurunan berat badan selama satu bulan terakhir? (berdasarkan penilaian objektif data berat badan bila ada atau untuk bayi < 1 tahun ; berat badan tidak naik selama 3 bulan terakhir</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg2")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai2")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>3</td>"+
+                                                          "<td>Apakah terdapat salah satu dari kondisi tersebut? Diare > 5 kali/hari dan/muntah > 3 kali/hari salam seminggu terakhir; Asupan makanan berkurang selama 1 minggu terakhir</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg3")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai3")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td>4</td>"+
+                                                          "<td>Apakah terdapat penyakit atau keadaan yang menyebabkan pasien beresiko mengalami malnutrisi?</td>"+
+                                                          "<td align='center'>"+rs3.getString("sg4")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilai4")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center' colspan='3'>Total Skor</td>"+
+                                                          "<td align='center'>"+rs3.getString("total_hasil")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "X. PENILAIAN TINGKAT NYERI (Skala FLACCS)"+  
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='30%' bgcolor='#FFFAF8' align='center' valign='middle'>Pengkajian</td>"+
+                                                          "<td width='60%' bgcolor='#FFFAF8' align='center' valign='middle'>Parameter</td>"+
+                                                          "<td width='10%' bgcolor='#FFFAF8' align='center' valign='middle'>Nilai</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Wajah</td>"+
+                                                          "<td>"+rs3.getString("wajah")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaiwajah")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Kaki</td>"+
+                                                          "<td>"+rs3.getString("kaki")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaikaki")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Aktifitas</td>"+
+                                                          "<td>"+rs3.getString("aktifitas")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaiaktifitas")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Menangis</td>"+
+                                                          "<td>"+rs3.getString("menangis")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaimenangis")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='center'>Bersuara</td>"+
+                                                          "<td>"+rs3.getString("bersuara")+"</td>"+
+                                                          "<td align='center'>"+rs3.getString("nilaibersuara")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td align='left' colspan='2'>Keterangan : 0 : Nyaman 1-3 : Kurang nyaman 4-6 : Nyeri sedang 7-10 : Nyeri berat</td>"+
+                                                          "<td align='center'>"+rs3.getString("hasilnyeri")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Tingkat Nyeri : "+rs3.getString("nyeri")+"</td>"+
+                                                          "<td width='50%' border='0'>Lokasi : "+rs3.getString("lokasi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Durasi : "+rs3.getString("durasi")+"</td>"+
+                                                          "<td width='50%' border='0'>Frekuensi : "+rs3.getString("frekuensi")+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                          "<td width='50%' border='0'>Nyeri hilang bila : "+rs3.getString("nyeri_hilang")+(rs3.getString("ket_nyeri").equals("")?"":", "+rs3.getString("ket_nyeri"))+"</td>"+
+                                                          "<td width='50%' border='0'>Diberitahukan pada dokter ? "+rs3.getString("pada_dokter")+(rs3.getString("ket_dokter").equals("")?"":", Jam : "+rs3.getString("ket_dokter"))+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>"+
+                                             "<tr>"+
+                                                "<td valign='top'>"+
+                                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                           "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>MASALAH KEPERAWATAN :</td>"+
+                                                           "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEPERAWATAN :</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                           "<td>");
+                                        try {
+                                            rs4=koneksi.prepareStatement(
+                                                "select master_masalah_keperawatan_anak.kode_masalah,master_masalah_keperawatan_anak.nama_masalah from master_masalah_keperawatan_anak "+
+                                                "inner join penilaian_awal_keperawatan_ralan_bayi_masalah on penilaian_awal_keperawatan_ralan_bayi_masalah.kode_masalah=master_masalah_keperawatan_anak.kode_masalah "+
+                                                "where penilaian_awal_keperawatan_ralan_bayi_masalah.no_rawat='"+rs2.getString("no_rawat")+"' order by kode_masalah").executeQuery();
+                                            while(rs4.next()){
+                                                htmlContent.append(rs4.getString("nama_masalah")+"<br>");
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("Notif : "+e);
+                                        } finally{
+                                            if(rs4!=null){
+                                                rs4.close();
+                                            }
+                                        }
+                                        htmlContent.append("</td>"+
+                                                           "<td>"+rs3.getString("rencana")+"</td>"+
+                                                      "</tr>"+
+                                                   "</table>"+
+                                                "</td>"+
+                                             "</tr>");
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            htmlContent.append("<tr class='isi'><td colspan='3'>&nbsp;</td></tr>");
+                        }    
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    y++;
+                }
+                LoadHTML23.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     public void setRM(String norm,String tanggal1,String tanggal2,boolean caritanggal){
         this.norm=norm;
         this.tanggal1=tanggal1;
@@ -14188,6 +15821,9 @@ public class PanelRiwayat extends widget.panelisi {
                 break;
            case 22:
                 tampil23();
+                break;
+           case 23:
+                tampil24();
                 break;
            default:
                 break;
@@ -14291,6 +15927,9 @@ public class PanelRiwayat extends widget.panelisi {
                 break;
             case 22:
                 panggilLaporan(LoadHTML22.getText());
+                break;
+            case 23:
+                panggilLaporan(LoadHTML23.getText());
                 break;
             default:
                 break;

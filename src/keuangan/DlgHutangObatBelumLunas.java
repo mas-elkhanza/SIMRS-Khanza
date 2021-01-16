@@ -8,7 +8,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
-import inventory.DlgSuplier;
+import inventory.InventarisSuplier;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -25,6 +25,9 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 /**
@@ -38,7 +41,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgSuplier suplier=new DlgSuplier(null,false);
+    private InventarisSuplier suplier=new InventarisSuplier(null,false);
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int row=0,i;
     private String koderekening="",tanggaldatang="",tanggaltempo="",akunbayar=Sequel.cariIsi("select Bayar_Pemesanan_Obat from set_akun");
@@ -208,6 +211,27 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         });        
         
         Valid.loadCombo(nama_bayar,"nama_bayar","akun_bayar");
+        
+        ChkAccor.setSelected(false);
+        isPhoto();
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
 
     }
     
@@ -269,6 +293,11 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         nama_bayar = new widget.ComboBox();
         keterangan = new widget.TextBox();
         label39 = new widget.Label();
+        PanelAccor = new widget.PanelBiasa();
+        ChkAccor = new widget.CekBox();
+        FormPhoto = new widget.PanelBiasa();
+        Scroll4 = new widget.ScrollPane();
+        LoadHTML = new widget.editorpane();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
@@ -726,6 +755,50 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
+        PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
+        PanelAccor.setName("PanelAccor"); // NOI18N
+        PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
+        PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 248));
+        ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccor.setSelected(true);
+        ChkAccor.setFocusable(false);
+        ChkAccor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkAccor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkAccor.setName("ChkAccor"); // NOI18N
+        ChkAccor.setPreferredSize(new java.awt.Dimension(15, 20));
+        ChkAccor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
+        ChkAccor.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccor.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
+        ChkAccor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkAccorActionPerformed(evt);
+            }
+        });
+        PanelAccor.add(ChkAccor, java.awt.BorderLayout.WEST);
+
+        FormPhoto.setBackground(new java.awt.Color(255, 255, 255));
+        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Photo Faktur : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormPhoto.setName("FormPhoto"); // NOI18N
+        FormPhoto.setPreferredSize(new java.awt.Dimension(115, 73));
+        FormPhoto.setLayout(new java.awt.BorderLayout());
+
+        Scroll4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll4.setName("Scroll4"); // NOI18N
+        Scroll4.setOpaque(true);
+        Scroll4.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
+        Scroll4.setViewportView(LoadHTML);
+
+        FormPhoto.add(Scroll4, java.awt.BorderLayout.CENTER);
+
+        PanelAccor.add(FormPhoto, java.awt.BorderLayout.CENTER);
+
+        internalFrame1.add(PanelAccor, java.awt.BorderLayout.EAST);
+
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -825,6 +898,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
                         }
                         getData();
                     }
+                    panggilPhoto();
                 }    
             }
         }
@@ -1062,6 +1136,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_tbBangsalPropertyChange
 
+    private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
+        if(tbBangsal.getSelectedRow()!= -1){
+            isPhoto();
+            panggilPhoto();
+        }else{
+            ChkAccor.setSelected(false);
+            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Faktur Penerimaan...!!!");
+        }
+    }//GEN-LAST:event_ChkAccorActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1086,12 +1170,17 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPetugas;
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
+    private widget.CekBox ChkAccor;
     private widget.CekBox ChkTanggalDatang;
     private widget.CekBox ChkTanggalTempo;
+    private widget.PanelBiasa FormPhoto;
     private javax.swing.JLabel LCount;
     private javax.swing.JLabel LCount1;
+    private widget.editorpane LoadHTML;
+    private widget.PanelBiasa PanelAccor;
     private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
+    private widget.ScrollPane Scroll4;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
     private widget.Tanggal TglDatang1;
@@ -1203,5 +1292,51 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
         }
         LCount1.setText(Valid.SetAngka(bayar));
+    }
+    
+    private void isPhoto(){
+        if(ChkAccor.isSelected()==true){
+            ChkAccor.setVisible(false);
+            PanelAccor.setPreferredSize(new Dimension(internalFrame1.getWidth()-300,HEIGHT));
+            FormPhoto.setVisible(true);  
+            ChkAccor.setVisible(true);
+        }else if(ChkAccor.isSelected()==false){    
+            ChkAccor.setVisible(false);
+            PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
+            FormPhoto.setVisible(false);  
+            ChkAccor.setVisible(true);
+        }
+    }
+    
+    private void panggilPhoto() {
+        if(FormPhoto.isVisible()==true){
+            try {
+                ps=koneksi.prepareStatement("select photo from bukti_pemesanan where no_faktur=?");
+                try {
+                    ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
+                            LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+                        }else{
+                            LoadHTML.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penerimaanapotek/"+rs.getString("photo")+"' alt='photo' width='"+(internalFrame1.getWidth()-340)+"' height='"+(internalFrame1.getHeight()-275)+"'/></center></body></html>");
+                        }  
+                    }else{
+                        LoadHTML.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } 
+        }
     }
 }

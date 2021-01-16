@@ -3277,7 +3277,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     
     public void isCek(){
         MnCetakHasilLab.setEnabled(akses.getpermintaan_lab());
-        BtnHasil.setEnabled(akses.getpermintaan_lab());
+        BtnHasil.setEnabled(akses.getperiksa_lab());
         BtnSampel.setEnabled(akses.getperiksa_lab());
         BtnHapus.setEnabled(akses.getpermintaan_lab());
         BtnPrint.setEnabled(akses.getpermintaan_lab());
@@ -3619,6 +3619,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                     JOptionPane.showMessageDialog(null,"Permintaan Lab berhasil dikirim...");
                                 }else if(engine.getLocation().contains("json")){
                                     json=engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/json=","").replaceAll("_"," ");
+                                    JOptionPane.showMessageDialog(null,json);
                                 }else{
                                     JOptionPane.showMessageDialog(null,"Proses gagal....!");
                                 }

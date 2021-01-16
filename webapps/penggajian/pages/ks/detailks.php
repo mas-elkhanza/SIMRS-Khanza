@@ -18,7 +18,7 @@
                 <tr class="head">
                     <td width="25%" >Pegawai</td><td width="">:</td>
                     <td width="75%">
-                        <select name="id" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
+                        <select name="id" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1" autofocus>
                             <!--<option id='TxtIsi12' value='null'>- Ruang -</option>-->
                             <?php
                                 $_sql = "SELECT id,nik,nama FROM pegawai  ORDER BY nama";
@@ -52,14 +52,14 @@
                     $id                 = trim($_POST['id']);
                     $jmlks              = validangka(trim($_POST['jmlks']));
                     $bsr                = validangka(trim($_POST['bsr']));
-                    if (!empty($id)) {
+                    if (isset($id)) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" kasift "," '$id','$jmlks','$bsr'", " Daftar Kasift " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=ListKS&action=TAMBAH&id='$id'>";
                                 break;
                         }
-                    }else if (empty($id)){
+                    }else{
                         echo 'Semua field harus isi..!!!';
                     }
                 }
@@ -90,7 +90,7 @@
                                  <td width='9%'><div align='center'>Bidang</div></td>
                             </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
-                      echo "<tr class='isi'>
+                        echo "<tr class='isi'>
                                 <td>
                                     <center>";?>
                                     <a href="?act=ListKS&action=HAPUS&id=<?php print $baris[0] ?>" >[hapus]</a>
@@ -109,7 +109,21 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data kasift masih kosong !";}
+            } else {
+                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='7%'><div align='center'>Proses</div></td>
+                                <td width='5%'><div align='center'>KS</div></td>
+                                <td width='11%'><div align='center'>Bsr.Tnj</div></td>
+                                <td width='9%'><div align='center'>NIP</div></td>
+                                 <td width='20%'><div align='center'>Nama</div></td>
+                                 <td width='17%'><div align='center'>Jabatan</div></td>
+                                 <td width='11%'><div align='center'>Kode Jenjang</div></td>
+                                 <td width='11%'><div align='center'>Departemen</div></td>
+                                 <td width='9%'><div align='center'>Bidang</div></td>
+                            </tr>
+                        </table>";
+            }
         ?>
         </div>
         </form>

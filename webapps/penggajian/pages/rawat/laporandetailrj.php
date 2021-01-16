@@ -11,13 +11,14 @@
         $_sql         = "SELECT * FROM set_tahun";
         $hasil          = bukaquery($_sql);
         $baris          = mysqli_fetch_row($hasil);
-        $tahun          = $baris[0];
-        $bln_leng       = strlen($baris[1]);
-        $bulan          = "0";
+        $tahun     = empty($baristhn[0])?date("Y"):$baristhn[0];
+        $blnini    = empty($baristhn[1])?date("m"):$baristhn[1];
+        $bln_leng  = strlen($blnini);
+        $bulan     = "0";
         if ($bln_leng==1){
-            $bulan      = "0".$baris[1];
+            $bulan="0".$blnini;
         }else{
-            $bulan      = $baris[1];
+            $bulan=$blnini;
         }
         $id             = $_GET['id'];
 		
@@ -65,7 +66,17 @@
                         <td><div align='left'>Jumlah Total JM : Jumlah Total JM : ".formatDuit($ttljm)."</div></td>                        
                     </tr>     
                  </table>");
-        } 
+        }else{
+            echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                    <caption><h1 class=title><font color='999999'>Laporan Rawat Jalan Dokter ".$nik." ".$nama." Tahun ".$tahun." Bulan ".$bulan."</font></h1><br>
+					</caption>
+                    <tr class='head'>
+                        <td width='20%'><div align='center'>Jmlh.Tindakan</div></td>
+                        <td width='50%'><div align='center'>Nama Tindakan</div></td>
+                        <td width='30%'><div align='center'>JM Tindakan</div></td>
+                    </tr>
+                    </table>";
+        }
     ?>
     </body>
 </html>

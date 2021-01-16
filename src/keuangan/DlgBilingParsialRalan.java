@@ -1113,6 +1113,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             try {
                 rsrekening=psrekening.executeQuery();
                 while(rsrekening.next()){
+                    Registrasi_Ralan=rsrekening.getString("Registrasi_Ralan");
                     Tindakan_Ralan=rsrekening.getString("Tindakan_Ralan");
                     Beban_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ralan");
                     Utang_Jasa_Medik_Dokter_Tindakan_Ralan=rsrekening.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ralan");
@@ -5164,7 +5165,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 if(rsreg.next()){
                     NoNota=Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",TNoRw.getText());
                     if(NoNota.equals("")){
-                        tabModeBilling.addRow(new Object[]{"No.Nota",": "+Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RJ/",6),"",null,null,null,"-"});                
+                        tabModeBilling.addRow(new Object[]{"No.Nota",": "+Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,4),signed)),0) from nota_jalan where tanggal='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10).replaceAll("-","/")+"/PS",4),"",null,null,null,"-"});                
                     }else{
                         tabModeBilling.addRow(new Object[]{"No.Nota",": "+NoNota,"",null,null,null,"-"});                
                     }
@@ -5769,7 +5770,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 
                 noorderlaborat="";
                 if(jmllaborat>0){
-                    noorderlaborat=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_lab where tgl_permintaan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"' ","PR"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").replaceAll("-",""),4);
+                    noorderlaborat=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_lab where tgl_permintaan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"' ","PL"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").replaceAll("-",""),4);
                     if((!KdDokPerujukLab.getText().equals(""))&&(!TDokterPerujukLab.getText().equals(""))){
                         if(Sequel.menyimpantf("permintaan_lab","?,?,?,?,?,?,?,?,?,'ralan',?,?","No.Permintaan",11,new String[]{
                             noorderlaborat,TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
@@ -5857,7 +5858,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             
                 if(sukses==true){
                     Sequel.menyimpan2("nota_jalan","?,?,?,?",4,new String[]{
-                        TNoRw.getText(),Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RJ/",6),
+                        TNoRw.getText(),Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,4),signed)),0) from nota_jalan where tanggal='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10).replaceAll("-","/")+"/PS",4),
                         Valid.SetTgl(DTPTgl.getSelectedItem()+""),DTPTgl.getSelectedItem().toString().substring(11,19)
                     });
                     //simpan billing

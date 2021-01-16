@@ -30,7 +30,7 @@ public class DlgReturBeli extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private riwayatobat Trackobat=new riwayatobat();
-    private DlgSuplier suplier=new DlgSuplier(null,false);
+    private InventarisSuplier suplier=new InventarisSuplier(null,false);
     private DlgCariReturBeli form=new DlgCariReturBeli(null,false);  
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private PreparedStatement ps;

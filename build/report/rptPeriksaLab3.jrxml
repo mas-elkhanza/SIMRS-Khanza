@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="493" leftMargin="85" rightMargin="17" topMargin="20" bottomMargin="20" uuid="22f4e44c-f0ab-46c2-b076-4b416bf31664">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -352,7 +352,7 @@
 					<font fontName="Tahoma" size="10" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="5" y="1" width="190" height="13" uuid="36b90d60-d35a-4326-b3d8-7a3b4c386309"/>
@@ -370,7 +370,7 @@
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="293" y="1" width="153" height="13" uuid="6e76b838-6518-4610-8ee9-4847e16d4d8b"/>
@@ -389,7 +389,7 @@
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="195" y="1" width="98" height="13" forecolor="#FF0000" uuid="8047aff7-f4e6-4743-8673-df867290ede8">
@@ -400,7 +400,7 @@
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{temp2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{temp2}.replaceAll("`","'")]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="1" y="14" width="446" height="1" uuid="7252cfa2-5613-475f-855d-5cb586447de0"/>

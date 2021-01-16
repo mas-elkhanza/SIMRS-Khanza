@@ -791,4 +791,14 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String STOKKOSONGRESEP(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("STOKKOSONGRESEP");
+        }catch(Exception e){
+            var="no"; 
+        }
+        return var;
+    }
 }

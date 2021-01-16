@@ -1117,7 +1117,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
                     Sequel.menyimpan("temporary_lab","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                         "0",tbPemeriksaan.getValueAt(i,1).toString(),
-                        tbPemeriksaan.getValueAt(i,2).toString(),
+                        tbPemeriksaan.getValueAt(i,2).toString().replaceAll("'","`"),
                         tbPemeriksaan.getValueAt(i,3).toString(),
                         tbPemeriksaan.getValueAt(i,4).toString(),
                         tbPemeriksaan.getValueAt(i,5).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""

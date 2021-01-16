@@ -143,6 +143,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         ppResepObat = new javax.swing.JMenuItem();
         ppResepObat1 = new javax.swing.JMenuItem();
         ppResepObat2 = new javax.swing.JMenuItem();
+        ppLabelObat = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -221,6 +222,22 @@ public final class DlgStokPasien extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppResepObat2);
+
+        ppLabelObat.setBackground(new java.awt.Color(255, 255, 254));
+        ppLabelObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppLabelObat.setForeground(new java.awt.Color(50, 50, 50));
+        ppLabelObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppLabelObat.setText("Cetak Label Obat");
+        ppLabelObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppLabelObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppLabelObat.setName("ppLabelObat"); // NOI18N
+        ppLabelObat.setPreferredSize(new java.awt.Dimension(190, 25));
+        ppLabelObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppLabelObatActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppLabelObat);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -647,6 +664,27 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_ppResepObat2ActionPerformed
 
+    private void ppLabelObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppLabelObatActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            Valid.MyReportqry("rptLabelDaftarObatStokPasien.jasper","report","::[ Label Obat Stok Pasien ]::",
+                    "select stok_obat_pasien.tanggal,stok_obat_pasien.jam, stok_obat_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                    "stok_obat_pasien.kode_brng,databarang.nama_brng, stok_obat_pasien.jumlah,stok_obat_pasien.kd_bangsal,"+
+                    "stok_obat_pasien.no_batch,stok_obat_pasien.no_faktur,stok_obat_pasien.aturan_pakai "+
+                    "from stok_obat_pasien inner join reg_periksa on stok_obat_pasien.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join databarang on stok_obat_pasien.kode_brng=databarang.kode_brng "+
+                    "where  stok_obat_pasien.no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()+"' and stok_obat_pasien.tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' and stok_obat_pasien.jam='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"'",param);
+            this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppLabelObatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -684,6 +722,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
+    private javax.swing.JMenuItem ppLabelObat;
     private javax.swing.JMenuItem ppResepObat;
     private javax.swing.JMenuItem ppResepObat1;
     private javax.swing.JMenuItem ppResepObat2;
